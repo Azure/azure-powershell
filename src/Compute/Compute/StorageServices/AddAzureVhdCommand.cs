@@ -212,7 +212,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     {
                         WriteVerbose("Skipping VHD resizing.");
                     }
-
                     
 
                     if (this.ParameterSetName == DirectUploadToManagedDiskSet)
@@ -230,12 +229,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
                         // 3-3: GENERATE SAS
                         WriteVerbose("Generating SAS");
-                        var grantAccessData = new GrantAccessData();
-                        grantAccessData.Access = "Write";
-                        long gbInBytes = 1073741824;
-                        int gb = (int)(vhdFileToBeUploaded.Length / gbInBytes);
-                        grantAccessData.DurationInSeconds = 86400 * Math.Max(gb / 100, 1);   // 24h per 100gb
-                        var accessUri = this.ComputeClient.ComputeManagementClient.Disks.GrantAccess(this.ResourceGroupName, this.DiskName, grantAccessData);
+                        var accessUri = generateSAS();
                         Uri sasUri = new Uri(accessUri.AccessSAS);
                         WriteVerbose("SAS generated: " + accessUri.AccessSAS);
 
@@ -255,23 +249,24 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         }
                         else
                         {
-                            WriteVerbose("Upload failed");
+                            // TODO
+                            // clean up resources
+                            revokeSAS();
+                            this.ComputeClient.ComputeManagementClient.Disks.Delete(this.ResourceGroupName, this.DiskName);
+                            // throw terminating error 
+                            Exception outputEx = new Exception("Failed to the VHD file. Please try again later.");
+                            ThrowTerminatingError(new ErrorRecord(
+                                outputEx,
+                                "Error uploading data.",
+                                ErrorCategory.NotSpecified,
+                                null));
                         }
 
                         // 3-5: REVOKE SAS
                         WriteVerbose("Revoking SAS");
-                        var RevokeResult = this.ComputeClient.ComputeManagementClient.Disks.RevokeAccessWithHttpMessagesAsync(this.ResourceGroupName, this.DiskName).GetAwaiter().GetResult();
-                        PSOperationStatusResponse output = new PSOperationStatusResponse
-                        {
-                            StartTime = this.StartTime,
-                            EndTime = DateTime.Now
-                        };
-                        if (RevokeResult != null && RevokeResult.Request != null && RevokeResult.Request.RequestUri != null)
-                        {
-                            output.Name = GetOperationIdFromUrlString(RevokeResult.Request.RequestUri.ToString());
-                        }
-
+                        revokeSAS();
                         WriteVerbose("SAS revoked.");
+                        
                         WriteVerbose("\nUpload complete.");
 
                     }
@@ -506,6 +501,9 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         private FileInfo convertVhd()
         {
+            // TODO check OS 
+            // add warning 
+
             string ConvertedPath = returnAvailExtensionName(vhdFileToBeUploaded.FullName, "_converted", ".vhd");
             FileInfo vhdFileInfo = new FileInfo(ConvertedPath);
             ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
@@ -566,6 +564,9 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         private FileInfo resizeVhdFile(long FileSize)
         {
+            // TODO check OS
+            // add warning 
+
             try
             {
                 ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
@@ -620,6 +621,32 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         null));
                 }
                 throw ex;
+            }
+        }
+
+        private AccessUri generateSAS()
+        {
+            var grantAccessData = new GrantAccessData();
+            grantAccessData.Access = "Write";
+            long gbInBytes = 1073741824;
+            int gb = (int)(vhdFileToBeUploaded.Length / gbInBytes);
+            grantAccessData.DurationInSeconds = 86400 * Math.Max(gb / 100, 1);   // 24h per 100gb
+            var accessUri = this.ComputeClient.ComputeManagementClient.Disks.GrantAccess(this.ResourceGroupName, this.DiskName, grantAccessData);
+
+            return accessUri;
+        }
+
+        private void revokeSAS()
+        {
+            var RevokeResult = this.ComputeClient.ComputeManagementClient.Disks.RevokeAccessWithHttpMessagesAsync(this.ResourceGroupName, this.DiskName).GetAwaiter().GetResult();
+            PSOperationStatusResponse output = new PSOperationStatusResponse
+            {
+                StartTime = this.StartTime,
+                EndTime = DateTime.Now
+            };
+            if (RevokeResult != null && RevokeResult.Request != null && RevokeResult.Request.RequestUri != null)
+            {
+                output.Name = GetOperationIdFromUrlString(RevokeResult.Request.RequestUri.ToString());
             }
         }
     }
