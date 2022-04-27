@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
                     throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
                 }
 
-                vpnConnectionToModify.RoutingConfiguration = RoutingConfiguration;
+                vpnConnectionToModify.RoutingConfiguration = this.RoutingConfiguration;
             }
 
             if(!String.IsNullOrEmpty(this.VpnLinkConnectionMode))

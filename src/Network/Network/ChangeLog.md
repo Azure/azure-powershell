@@ -19,6 +19,16 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
+    - `Add-AzExpressRoutePortAuthorization`
+    - `Get-AzExpressRoutePortAuthorization`
+    - `Remove-AzExpressRoutePortAuthorization`
+* Added option parameter `AuthorizationKey` to cmdlet `New-AzExpressRouteCircuit` to allow creating ExpressRoute Circuit on a ExpressRoutePort with a different owner.
+* Fix bug that can't display CustomIpPrefix in PublicIpPrefix.
+* Updated cmdlets to add new property of `HubRoutingPreference` in VirtualHub and set property of `PreferredRoutingGateway` deprecated .
+    - `New-AzVirtualHub`
+    - `Update-AzVirtualHub`
+* Added optional parameter `AuxiliaryMode` to cmdlet `New-AzNetworkInterface` to enable this network interface as Sirius enabled. Allowed values are None(default) and MaxConnections.
 
 ## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
