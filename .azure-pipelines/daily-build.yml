@@ -155,6 +155,8 @@ jobs:
       Inline: |
         $context = New-AzStorageContext -StorageAccountName "$(StorageAccountName)"
         # Push nupkg files
-        Get-ChildItem -Path . -Filter *.nupkg | Set-AzStorageBlobContent -Container $(ContainerName) -Context $context
+        $nupkgs = Get-ChildItem -Path artifacts -Filter *.nupkg
+        Write-Host $nupkgs 
+        $nupkgs | Set-AzStorageBlobContent -Container $(ContainerName) -Context $context
       azurePowerShellVersion: LatestVersion
     condition: succeeded()
