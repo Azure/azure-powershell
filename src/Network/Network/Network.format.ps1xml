@@ -973,6 +973,10 @@
                 <PropertyName>BgpSettingsText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>CustomRoutes</Label>
+                <PropertyName>CustomRoutesText</PropertyName>
+              </ListItem>			  
+              <ListItem>
                 <Label>NatRules</Label>
                 <PropertyName>NatRulesText</PropertyName>
               </ListItem>
