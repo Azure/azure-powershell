@@ -146,7 +146,7 @@ $vnet = New-AzVirtualNetwork -AddressPrefix "10.254.0.0/27" -Location "UK West" 
 $subnet = Get-AzVirtualNetworkSubnetConfig -name 'gatewaysubnet' -VirtualNetwork $vnet
 $ngwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name ipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $ngwpip.Id
 
-$ipconfigurationId1 = $ngwipconfig.id
+$ipconfigurationId1 = $ngwipconfig.Id
 $addresslist1 = @('169.254.21.10')
 $gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
 

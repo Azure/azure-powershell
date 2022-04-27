@@ -50,17 +50,17 @@ $virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testR
 New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -VpnGatewayScaleUnit 2
 $vpnGateway = Get-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw"
 New-AzVpnGatewayNatRule -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testNatRule" -Type Static -Mode EgressSnat -InternalMapping "10.0.0.1/26" -ExternalMapping "192.168.0.0/26"
-$natRule = Update-AzVpnGatewayNatRule -InputObject $vpnConnection
+$natRule = Get-AzVpnGatewayNatRule -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testNatRule"
 Update-AzVpnGatewayNatRule -InputObject $natRule -Type Dynamic -Mode IngressSnat
 ```
 
 ```output
-Type             		  : Dynamic
+Type                      : Dynamic
 Mode                      : IngressSnat
 VpnConnectionProtocolType : IKEv2
 InternalMappings          : 10.0.0.1/26
 ExternalMappings          : 192.168.0.0/26
-IpConfigurationId   	  :
+IpConfigurationId         :
 IngressVpnSiteLinkConnections : [Microsoft.Azure.Commands.Network.Models.PSResourceId]
 EgressVpnSiteLinkConnections  : [Microsoft.Azure.Commands.Network.Models.PSResourceId]
 ProvisioningState         : Provisioned
