@@ -40,7 +40,7 @@ Removes a peering service prefix from a peering service.
 Get-AzPeeringServicePrefix -ResourceGroupName $rgName -PeeringServiceName $peeringServiceName -Name $prefixName | Remove-AzPeeringServicePrefix
 ```
 
-Remove a prefix from a peering service object
+Remove a prefix from a peering service prefix object
 
 ### Example 2
 ```powershell
@@ -51,7 +51,7 @@ Remove-AzPeeringServicePrefix -ResourceId $peeringServicePrefixResourceId -PassT
 True
 ```
 
-Remove a prefix from a peering service resource id.
+Remove a prefix from a peering service prefix resource id.
 
 ### Example 3
 ```powershell

@@ -43,7 +43,7 @@ $peering | New-AzPeeringRegisteredPrefix -Name $asnName -Prefix $prefix
 
 Get the peering you want to add a registered prefix. Then pass that to the commandlet.
 
-### Example 2: Use peering resourceId to create a registered asn
+### Example 2: Use peering resourceId to create a registered prefix
 ```powershell
 New-AzPeeringRegisteredPrefix -ResourceId $resourceId -Name $asnName -Prefix $prefix
 ```
