@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             using (var context = MockContext.Start("ApiManagementTests", "CreateApiManagementService"))
             {
                 var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient(context);
-                ResourceGroupName = "powershelltest";
+                ResourceGroupName = "Apim-NetSdk-20210801";
                 Location = "CentralUSEUAP";
 
                 if (string.IsNullOrWhiteSpace(ResourceGroupName))
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
                     resourceManagementClient.TryRegisterResourceGroup(Location, ResourceGroupName);
                 }
 
-                ApiManagementServiceName = "powershellsdkservice";
+                ApiManagementServiceName = "powershellsdkservicetest";
                 ApiManagementHelper.GetApiManagementClient(context).TryCreateApiService(ResourceGroupName, ApiManagementServiceName, Location);
             }
         }
