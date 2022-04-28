@@ -23,6 +23,9 @@ Lists key credentials and password credentials for an application.
 ### [Get-AzADApplication](Get-AzADApplication.md)
 Lists entities from applications or get entity from applications by key
 
+### [Get-AzADApplicationFederatedIdentityCredential](Get-AzADApplicationFederatedIdentityCredential.md)
+Get federatedIdentityCredentials by Id from applications.
+
 ### [Get-AzADAppPermission](Get-AzADAppPermission.md)
 Lists API permissions the application has requested.
 
@@ -47,6 +50,9 @@ Creates key credentials or password credentials for an application.
 ### [New-AzADApplication](New-AzADApplication.md)
 Adds new entity to applications
 
+### [New-AzADapplicationfederatedidentitycredential](New-AzADapplicationfederatedidentitycredential.md)
+Create federatedIdentityCredential for applications.
+
 ### [New-AzADGroup](New-AzADGroup.md)
 Adds new entity to groups
 
@@ -64,6 +70,9 @@ Removes key credentials or password credentials for an application.
 
 ### [Remove-AzADApplication](Remove-AzADApplication.md)
 Deletes entity from applications
+
+### [Remove-AzADapplicationfederatedidentitycredential](Remove-AzADapplicationfederatedidentitycredential.md)
+Delete federatedIdentityCredentials for applications.
 
 ### [Remove-AzADAppPermission](Remove-AzADAppPermission.md)
 Removes an API permission.
@@ -89,6 +98,9 @@ Deletes entity from users.
 
 ### [Update-AzADApplication](Update-AzADApplication.md)
 Updates entity in applications
+
+### [Update-AzADapplicationfederatedidentitycredential](Update-AzADapplicationfederatedidentitycredential.md)
+Update the federatedIdentityCredentials in applications.
 
 ### [Update-AzADGroup](Update-AzADGroup.md)
 Update entity in groups

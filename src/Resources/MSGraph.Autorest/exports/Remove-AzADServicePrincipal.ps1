@@ -22,7 +22,7 @@ Deletes entity from service principal.
 .Example
 Remove-AzADServicePrincipal -DisplayName $name
 .Example
-Get-AzADServicePrincipal -Application $id | Remove-AzADServicePrincipal
+Get-AzADServicePrincipal -ApplicationId $id | Remove-AzADServicePrincipal
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
