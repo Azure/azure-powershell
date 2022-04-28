@@ -259,4 +259,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Az.KeyVault](/powershell/module/az.keyvault)
+[Get-AzKeyVaultManagedStorageSasDefinition](./Get-AzKeyVaultManagedStorageSasDefinition.md)
+
+[Remove-AzKeyVaultManagedStorageSasDefinition](./Remove-AzKeyVaultManagedStorageSasDefinition.md)
+
+[Undo-AzKeyVaultManagedStorageSasDefinitionRemoval](./Undo-AzKeyVaultManagedStorageSasDefinitionRemoval.md)
