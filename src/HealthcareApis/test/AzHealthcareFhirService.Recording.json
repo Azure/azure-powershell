@@ -1,0 +1,2186 @@
+{
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4?api-version=2021-11-01",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"authenticationConfiguration\": {\r\n      \"authority\": \"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"audience\": \"https://azpshcws-hv9eu4.fhir.azurehealthcareapis.com\"\r\n    }\r\n  },\r\n  \"kind\": \"fhir-R4\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "289" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ce0082b3-0000-0400-0000-6242f6a90000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "e7d42c47-2cd5-47e5-af92-a14909e0c17e" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "6cefe11c4fac514e8209fb3e5777acd4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1187" ],
+        "x-ms-correlation-request-id": [ "dab307c3-5874-4912-9cdb-e725c2c18e65" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T120811Z:dab307c3-5874-4912-9cdb-e725c2c18e65" ],
+        "Date": [ "Tue, 29 Mar 2022 12:08:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "849" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4\",\"name\":\"ax2qzb/hv9eu4\",\"type\":\"Microsoft.HealthcareApis/workspaces/fhirservices\",\"etag\":\"\\\"ce0082b3-0000-0400-0000-6242f6a90000\\\"\",\"location\":\"eastus2\",\"kind\":\"fhir-R4\",\"properties\":{\"accessPolicies\":[],\"acrConfiguration\":{\"loginServers\":[]},\"authenticationConfiguration\":{\"authority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"audience\":\"https://azpshcws-hv9eu4.fhir.azurehealthcareapis.com\",\"smartProxyEnabled\":false},\"corsConfiguration\":{\"origins\":[],\"headers\":[],\"methods\":[],\"allowCredentials\":false},\"exportConfiguration\":{},\"eventState\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Creating\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "199" ],
+        "x-ms-client-request-id": [ "10da968f-d8db-4ab9-87d1-704859a16fcb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "56328c47-dc1a-4f75-a552-1b78683901ba" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "132011f4cbcc0d4cb1466698577f7d1e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11850" ],
+        "x-ms-correlation-request-id": [ "17adc58c-5581-4394-9bc8-0e0df6c32886" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T120841Z:17adc58c-5581-4394-9bc8-0e0df6c32886" ],
+        "Date": [ "Tue, 29 Mar 2022 12:08:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu\",\"name\":\"6bxlh9zbp554rc0iikrgunrxu\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:08:09.6365155Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "200" ],
+        "x-ms-client-request-id": [ "10da968f-d8db-4ab9-87d1-704859a16fcb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "e00cdf43-80e7-4118-bc86-f1e98e11fd35" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "2d601b050d5ca641b7a4e6e7e162d633" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11849" ],
+        "x-ms-correlation-request-id": [ "09346c0a-436d-4a53-a47b-a2ac2bca4b9f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T120911Z:09346c0a-436d-4a53-a47b-a2ac2bca4b9f" ],
+        "Date": [ "Tue, 29 Mar 2022 12:09:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu\",\"name\":\"6bxlh9zbp554rc0iikrgunrxu\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:08:09.6365155Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "201" ],
+        "x-ms-client-request-id": [ "10da968f-d8db-4ab9-87d1-704859a16fcb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11848" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "9f05a9cb-0efa-4078-9630-e0505b0e32ba" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "b33a488f4543494990d4e354e295ab10" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "2e042b66-57f3-4ab7-9c12-11bea5bc0867" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T120942Z:2e042b66-57f3-4ab7-9c12-11bea5bc0867" ],
+        "Date": [ "Tue, 29 Mar 2022 12:09:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu\",\"name\":\"6bxlh9zbp554rc0iikrgunrxu\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:08:09.6365155Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "202" ],
+        "x-ms-client-request-id": [ "10da968f-d8db-4ab9-87d1-704859a16fcb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "c0f6ebb4-2828-447d-a533-f739603ce2ca" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "ce2d0e49b6fdf54099fff734f4de3443" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11857" ],
+        "x-ms-correlation-request-id": [ "06e44a3e-1267-4cdd-8a46-a2fc0530d1ca" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121012Z:06e44a3e-1267-4cdd-8a46-a2fc0530d1ca" ],
+        "Date": [ "Tue, 29 Mar 2022 12:10:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu\",\"name\":\"6bxlh9zbp554rc0iikrgunrxu\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:08:09.6365155Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "203" ],
+        "x-ms-client-request-id": [ "10da968f-d8db-4ab9-87d1-704859a16fcb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "52749264-71db-46cf-a2a7-f63e34c0964e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "539a35ef0b19e2459ca9a478a5c011b4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11856" ],
+        "x-ms-correlation-request-id": [ "07c7ff7c-7fd2-4101-9b90-9f977ca5645c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121042Z:07c7ff7c-7fd2-4101-9b90-9f977ca5645c" ],
+        "Date": [ "Tue, 29 Mar 2022 12:10:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu\",\"name\":\"6bxlh9zbp554rc0iikrgunrxu\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:08:09.6365155Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "204" ],
+        "x-ms-client-request-id": [ "10da968f-d8db-4ab9-87d1-704859a16fcb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "30f3b58a-af52-4a4f-b384-e5a64da8c97a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "2c02ac6566ad2f45ba22985f7de36dcf" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11855" ],
+        "x-ms-correlation-request-id": [ "f0cbf45e-8257-4f57-a628-89b98b12a3b8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121113Z:f0cbf45e-8257-4f57-a628-89b98b12a3b8" ],
+        "Date": [ "Tue, 29 Mar 2022 12:11:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu\",\"name\":\"6bxlh9zbp554rc0iikrgunrxu\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:08:09.6365155Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "205" ],
+        "x-ms-client-request-id": [ "10da968f-d8db-4ab9-87d1-704859a16fcb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "efe8a2a3-e6e4-4535-a5a8-0550060f4360" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "3b88fc8024d81041a12be6dbb63a2356" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11854" ],
+        "x-ms-correlation-request-id": [ "ed9eb634-b37a-42c5-9784-f242a7f23080" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121143Z:ed9eb634-b37a-42c5-9784-f242a7f23080" ],
+        "Date": [ "Tue, 29 Mar 2022 12:11:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu\",\"name\":\"6bxlh9zbp554rc0iikrgunrxu\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:08:09.6365155Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "206" ],
+        "x-ms-client-request-id": [ "10da968f-d8db-4ab9-87d1-704859a16fcb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "d14a355d-94ca-49e0-a217-f8279e12e5f8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "72c28a6a83265a44b81e2b355c71415c" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11853" ],
+        "x-ms-correlation-request-id": [ "cc945497-e39d-420e-b65f-a06113c31d73" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121213Z:cc945497-e39d-420e-b65f-a06113c31d73" ],
+        "Date": [ "Tue, 29 Mar 2022 12:12:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu\",\"name\":\"6bxlh9zbp554rc0iikrgunrxu\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:08:09.6365155Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "207" ],
+        "x-ms-client-request-id": [ "10da968f-d8db-4ab9-87d1-704859a16fcb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "b50bd072-b969-419f-9d3b-e87f6330f5d7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "f799d42a344a5344b4c5cf7e8897e98a" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11852" ],
+        "x-ms-correlation-request-id": [ "f236a3d5-923a-4419-b107-4f952de00ed0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121244Z:f236a3d5-923a-4419-b107-4f952de00ed0" ],
+        "Date": [ "Tue, 29 Mar 2022 12:12:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu\",\"name\":\"6bxlh9zbp554rc0iikrgunrxu\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:08:09.6365155Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "208" ],
+        "x-ms-client-request-id": [ "10da968f-d8db-4ab9-87d1-704859a16fcb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "a489ea9e-d932-4752-8c05-bb96b74de131" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "d6758f1a873f9d4ca4b1024de6f6b98c" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11851" ],
+        "x-ms-correlation-request-id": [ "526a2c16-5681-49d4-ab5e-be8c509fb410" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121314Z:526a2c16-5681-49d4-ab5e-be8c509fb410" ],
+        "Date": [ "Tue, 29 Mar 2022 12:13:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu\",\"name\":\"6bxlh9zbp554rc0iikrgunrxu\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:08:09.6365155Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "209" ],
+        "x-ms-client-request-id": [ "10da968f-d8db-4ab9-87d1-704859a16fcb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "c7258601-d6c9-477c-a52c-54f37429867a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "0191a9386a815f448024f939f7bf6b2a" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11850" ],
+        "x-ms-correlation-request-id": [ "5a603cf5-9ce4-4022-bf01-3e613771e3b3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121344Z:5a603cf5-9ce4-4022-bf01-3e613771e3b3" ],
+        "Date": [ "Tue, 29 Mar 2022 12:13:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu\",\"name\":\"6bxlh9zbp554rc0iikrgunrxu\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:08:09.6365155Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "210" ],
+        "x-ms-client-request-id": [ "10da968f-d8db-4ab9-87d1-704859a16fcb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "267036b6-cafe-4a72-9091-7a3dcac36cbe" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "475f4608fc8cd74dad4642ddd47b089d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11849" ],
+        "x-ms-correlation-request-id": [ "7a3019a8-5218-4027-8d06-bd433fdd649e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121415Z:7a3019a8-5218-4027-8d06-bd433fdd649e" ],
+        "Date": [ "Tue, 29 Mar 2022 12:14:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu\",\"name\":\"6bxlh9zbp554rc0iikrgunrxu\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:08:09.6365155Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01+14": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "211" ],
+        "x-ms-client-request-id": [ "10da968f-d8db-4ab9-87d1-704859a16fcb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "1b5d9998-7edd-4486-a591-b6179d453b54" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "ca63b2ca05bed14a959bd2630e25c499" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11848" ],
+        "x-ms-correlation-request-id": [ "13b5409f-79cb-4f19-b7b6-8719451dee73" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121445Z:13b5409f-79cb-4f19-b7b6-8719451dee73" ],
+        "Date": [ "Tue, 29 Mar 2022 12:14:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "255" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/6bxlh9zbp554rc0iikrgunrxu\",\"name\":\"6bxlh9zbp554rc0iikrgunrxu\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-29T12:08:09.6365155Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4?api-version=2021-11-01+15": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "212" ],
+        "x-ms-client-request-id": [ "10da968f-d8db-4ab9-87d1-704859a16fcb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ce00b7d4-0000-0400-0000-6242f82f0000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "6b72b946-7667-463b-8686-a22f9aa49f16" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "f9c8bf09690e0b46b94c595da3d4cfbb" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11847" ],
+        "x-ms-correlation-request-id": [ "d22d27af-b527-4c27-bd53-fc271a70878c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121445Z:d22d27af-b527-4c27-bd53-fc271a70878c" ],
+        "Date": [ "Tue, 29 Mar 2022 12:14:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "850" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4\",\"name\":\"ax2qzb/hv9eu4\",\"type\":\"Microsoft.HealthcareApis/workspaces/fhirservices\",\"etag\":\"\\\"ce00b7d4-0000-0400-0000-6242f82f0000\\\"\",\"location\":\"eastus2\",\"kind\":\"fhir-R4\",\"properties\":{\"accessPolicies\":[],\"acrConfiguration\":{\"loginServers\":[]},\"authenticationConfiguration\":{\"authority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"audience\":\"https://azpshcws-hv9eu4.fhir.azurehealthcareapis.com\",\"smartProxyEnabled\":false},\"corsConfiguration\":{\"origins\":[],\"headers\":[],\"methods\":[],\"allowCredentials\":false},\"exportConfiguration\":{},\"eventState\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol?api-version=2021-11-01+16": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol?api-version=2021-11-01",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"authenticationConfiguration\": {\r\n      \"authority\": \"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"audience\": \"https://azpshcws-kxrdol.fhir.azurehealthcareapis.com\"\r\n    }\r\n  },\r\n  \"kind\": \"fhir-R4\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "289" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ce008fd5-0000-0400-0000-6242f83a0000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "b58428c9-e84d-4d8c-a79b-6ad8d72257c1" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "6e9e11784cde8f46be451e4e293477e0" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
+        "x-ms-correlation-request-id": [ "fdffeae4-95c4-4ee6-92ef-3c4c3194de69" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121452Z:fdffeae4-95c4-4ee6-92ef-3c4c3194de69" ],
+        "Date": [ "Tue, 29 Mar 2022 12:14:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "849" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol\",\"name\":\"ax2qzb/kxrdol\",\"type\":\"Microsoft.HealthcareApis/workspaces/fhirservices\",\"etag\":\"\\\"ce008fd5-0000-0400-0000-6242f83a0000\\\"\",\"location\":\"eastus2\",\"kind\":\"fhir-R4\",\"properties\":{\"accessPolicies\":[],\"acrConfiguration\":{\"loginServers\":[]},\"authenticationConfiguration\":{\"authority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"audience\":\"https://azpshcws-kxrdol.fhir.azurehealthcareapis.com\",\"smartProxyEnabled\":false},\"corsConfiguration\":{\"origins\":[],\"headers\":[],\"methods\":[],\"allowCredentials\":false},\"exportConfiguration\":{},\"eventState\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Creating\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01+17": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "214" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "8b227dd9-b62a-4f43-8173-0b09ba641983" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "2e2d8c61fd06e64c94b0e68b3d94d954" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11857" ],
+        "x-ms-correlation-request-id": [ "b156f81e-1dac-4d1a-8a37-88072b81b35b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121522Z:b156f81e-1dac-4d1a-8a37-88072b81b35b" ],
+        "Date": [ "Tue, 29 Mar 2022 12:15:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u\",\"name\":\"721p2rw8jvm3hgncp3tv6qy2u\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:14:50.7243225Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01+18": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "215" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "1b02a638-6528-4766-a4f1-80b71accd856" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "31215c3235ab2f4bb4da0831b0d1be54" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11856" ],
+        "x-ms-correlation-request-id": [ "3519c864-f048-4b11-a56f-f7bedfaea39f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121552Z:3519c864-f048-4b11-a56f-f7bedfaea39f" ],
+        "Date": [ "Tue, 29 Mar 2022 12:15:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u\",\"name\":\"721p2rw8jvm3hgncp3tv6qy2u\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:14:50.7243225Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01+19": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "216" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11855" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "b175e06b-0dc2-4b4f-be00-4205698c6fdb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "005f0488ac30674a97d722e9f39667d6" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "ab0b1b1a-262a-45d4-857a-c28ed6d81987" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121623Z:ab0b1b1a-262a-45d4-857a-c28ed6d81987" ],
+        "Date": [ "Tue, 29 Mar 2022 12:16:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u\",\"name\":\"721p2rw8jvm3hgncp3tv6qy2u\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:14:50.7243225Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01+20": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "217" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "dab49f16-f2b7-4fbb-8fb4-a471aaa3bcaf" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "6c28e4224a1ec64f82b8c9a3bc95ef70" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11854" ],
+        "x-ms-correlation-request-id": [ "9312db5f-adee-424c-b403-141c14d95a8d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121653Z:9312db5f-adee-424c-b403-141c14d95a8d" ],
+        "Date": [ "Tue, 29 Mar 2022 12:16:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u\",\"name\":\"721p2rw8jvm3hgncp3tv6qy2u\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:14:50.7243225Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01+21": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "218" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "9ef55603-025e-455d-88fb-5ba070ec732e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "659a756a75e1da47be7eee997d91b910" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11853" ],
+        "x-ms-correlation-request-id": [ "ae655d7e-ae5f-427c-a614-4774de4ff726" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121724Z:ae655d7e-ae5f-427c-a614-4774de4ff726" ],
+        "Date": [ "Tue, 29 Mar 2022 12:17:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u\",\"name\":\"721p2rw8jvm3hgncp3tv6qy2u\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:14:50.7243225Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01+22": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "219" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "2eaae5d6-276d-4651-a545-f0e763ad2d6f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "5d0551fce57936478b5055b5e0f803b4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11852" ],
+        "x-ms-correlation-request-id": [ "4c6a9f45-99f2-4019-9e4c-76ecf9f09ad9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121754Z:4c6a9f45-99f2-4019-9e4c-76ecf9f09ad9" ],
+        "Date": [ "Tue, 29 Mar 2022 12:17:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u\",\"name\":\"721p2rw8jvm3hgncp3tv6qy2u\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:14:50.7243225Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01+23": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "220" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "b94390c3-1115-4225-b307-039781848afe" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "43ad00edf5fe314f87e48c9a1d2416a2" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11851" ],
+        "x-ms-correlation-request-id": [ "a18ef281-9a8d-4e0f-a7c7-ef6655f3a9c8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121824Z:a18ef281-9a8d-4e0f-a7c7-ef6655f3a9c8" ],
+        "Date": [ "Tue, 29 Mar 2022 12:18:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u\",\"name\":\"721p2rw8jvm3hgncp3tv6qy2u\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:14:50.7243225Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01+24": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "221" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "7d1f7cd1-121a-4eb2-a3b9-51ef4a405acc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "ce184e58ba056048ae5c9727075ea5a4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11850" ],
+        "x-ms-correlation-request-id": [ "97142df2-ac0a-4868-b93d-c745e9c4b9c9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121855Z:97142df2-ac0a-4868-b93d-c745e9c4b9c9" ],
+        "Date": [ "Tue, 29 Mar 2022 12:18:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u\",\"name\":\"721p2rw8jvm3hgncp3tv6qy2u\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:14:50.7243225Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01+25": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "222" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "8239a391-54fb-499b-9f6b-0063051469a3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "7b77a24037976d4cb706a8413ce1e90e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11849" ],
+        "x-ms-correlation-request-id": [ "cc5dfa11-2751-4dcd-a946-be7481d91beb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121925Z:cc5dfa11-2751-4dcd-a946-be7481d91beb" ],
+        "Date": [ "Tue, 29 Mar 2022 12:19:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u\",\"name\":\"721p2rw8jvm3hgncp3tv6qy2u\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:14:50.7243225Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01+26": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "223" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "807f9998-9acd-4032-88e1-8d40b691bc31" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "8dc9512af6e70c41800b5e750507a163" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11848" ],
+        "x-ms-correlation-request-id": [ "9ee4cae3-10e3-4ad1-af12-45e01e98691b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T121955Z:9ee4cae3-10e3-4ad1-af12-45e01e98691b" ],
+        "Date": [ "Tue, 29 Mar 2022 12:19:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u\",\"name\":\"721p2rw8jvm3hgncp3tv6qy2u\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:14:50.7243225Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01+27": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "224" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "0eb22635-b8bc-4e70-8c5c-75c4986ccf1a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "3341e7badb6c4f409adb79184efe7c45" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11858" ],
+        "x-ms-correlation-request-id": [ "84218268-634f-4eee-b57b-dabb0a7225b7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122026Z:84218268-634f-4eee-b57b-dabb0a7225b7" ],
+        "Date": [ "Tue, 29 Mar 2022 12:20:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u\",\"name\":\"721p2rw8jvm3hgncp3tv6qy2u\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:14:50.7243225Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01+28": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "225" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "5b8409f4-df07-4270-8cc4-206d3b920dc0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "55a7aa52fa6332498c7cb895ab0db5aa" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11857" ],
+        "x-ms-correlation-request-id": [ "8f80382b-0bfb-43dd-acdd-e81fde7d8da6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122056Z:8f80382b-0bfb-43dd-acdd-e81fde7d8da6" ],
+        "Date": [ "Tue, 29 Mar 2022 12:20:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u\",\"name\":\"721p2rw8jvm3hgncp3tv6qy2u\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:14:50.7243225Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01+29": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "226" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "d193d841-190b-4bef-8796-c2b7920dcac8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "c27ab41941d2ed49bbfd05b35bdeeb44" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11856" ],
+        "x-ms-correlation-request-id": [ "3b63935a-a9f2-4eec-afa3-81e35bcb5dc2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122126Z:3b63935a-a9f2-4eec-afa3-81e35bcb5dc2" ],
+        "Date": [ "Tue, 29 Mar 2022 12:21:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u\",\"name\":\"721p2rw8jvm3hgncp3tv6qy2u\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:14:50.7243225Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01+30": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "227" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "fa2bb9f3-1cfc-466c-a21e-bc0032591205" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "8dc7e0943d3e9645b5cb3e8e604728a6" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11855" ],
+        "x-ms-correlation-request-id": [ "7afae796-67aa-45f8-b4c4-b8907adf44aa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122157Z:7afae796-67aa-45f8-b4c4-b8907adf44aa" ],
+        "Date": [ "Tue, 29 Mar 2022 12:21:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "255" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/721p2rw8jvm3hgncp3tv6qy2u\",\"name\":\"721p2rw8jvm3hgncp3tv6qy2u\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-29T12:14:50.7243225Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol?api-version=2021-11-01+31": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "228" ],
+        "x-ms-client-request-id": [ "96e18b72-f2a6-4dc6-8adc-00bcb8deaccb" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareFhirService" ],
+        "FullCommandName": [ "New-AzHealthcareFhirService_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ce0076f8-0000-0400-0000-6242f9d20000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "5f7e6eed-8ed6-43b7-bfc8-d7f424b9b2aa" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "311c2bab57f8d94496ce5ab53b3567fa" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11854" ],
+        "x-ms-correlation-request-id": [ "f9699d60-f877-45c0-a6ae-3e66a38d3097" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122157Z:f9699d60-f877-45c0-a6ae-3e66a38d3097" ],
+        "Date": [ "Tue, 29 Mar 2022 12:21:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "850" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol\",\"name\":\"ax2qzb/kxrdol\",\"type\":\"Microsoft.HealthcareApis/workspaces/fhirservices\",\"etag\":\"\\\"ce0076f8-0000-0400-0000-6242f9d20000\\\"\",\"location\":\"eastus2\",\"kind\":\"fhir-R4\",\"properties\":{\"accessPolicies\":[],\"acrConfiguration\":{\"loginServers\":[]},\"authenticationConfiguration\":{\"authority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"audience\":\"https://azpshcws-kxrdol.fhir.azurehealthcareapis.com\",\"smartProxyEnabled\":false},\"corsConfiguration\":{\"origins\":[],\"headers\":[],\"methods\":[],\"allowCredentials\":false},\"exportConfiguration\":{},\"eventState\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "229" ],
+        "x-ms-client-request-id": [ "a316f6b7-bec2-48f2-9e1b-e3cae2856fed" ],
+        "CommandName": [ "Get-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Get-AzHealthcareFhirService_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "d534bd92-7ba5-4a38-8d22-164529293295" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "2fb6f2d81bcf01408d9a1de9bca92f15" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11853" ],
+        "x-ms-correlation-request-id": [ "eac91b2e-cc4d-4879-80ef-232bd20c8d9a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122158Z:eac91b2e-cc4d-4879-80ef-232bd20c8d9a" ],
+        "Date": [ "Tue, 29 Mar 2022 12:21:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2564" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/wq9m2j\",\"name\":\"ax2qzb/wq9m2j\",\"type\":\"Microsoft.HealthcareApis/workspaces/fhirservices\",\"etag\":\"\\\"cd00af49-0000-0400-0000-6242e68f0000\\\"\",\"location\":\"eastus2\",\"kind\":\"fhir-R4\",\"properties\":{\"accessPolicies\":[],\"acrConfiguration\":{\"loginServers\":[]},\"authenticationConfiguration\":{\"authority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"audience\":\"https://azpshcws-wq9m2j.fhir.azurehealthcareapis.com\",\"smartProxyEnabled\":false},\"corsConfiguration\":{\"origins\":[],\"headers\":[],\"methods\":[],\"allowCredentials\":false},\"exportConfiguration\":{},\"eventState\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4\",\"name\":\"ax2qzb/hv9eu4\",\"type\":\"Microsoft.HealthcareApis/workspaces/fhirservices\",\"etag\":\"\\\"ce00b7d4-0000-0400-0000-6242f82f0000\\\"\",\"location\":\"eastus2\",\"kind\":\"fhir-R4\",\"properties\":{\"accessPolicies\":[],\"acrConfiguration\":{\"loginServers\":[]},\"authenticationConfiguration\":{\"authority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"audience\":\"https://azpshcws-hv9eu4.fhir.azurehealthcareapis.com\",\"smartProxyEnabled\":false},\"corsConfiguration\":{\"origins\":[],\"headers\":[],\"methods\":[],\"allowCredentials\":false},\"exportConfiguration\":{},\"eventState\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol\",\"name\":\"ax2qzb/kxrdol\",\"type\":\"Microsoft.HealthcareApis/workspaces/fhirservices\",\"etag\":\"\\\"ce0076f8-0000-0400-0000-6242f9d20000\\\"\",\"location\":\"eastus2\",\"kind\":\"fhir-R4\",\"properties\":{\"accessPolicies\":[],\"acrConfiguration\":{\"loginServers\":[]},\"authenticationConfiguration\":{\"authority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"audience\":\"https://azpshcws-kxrdol.fhir.azurehealthcareapis.com\",\"smartProxyEnabled\":false},\"corsConfiguration\":{\"origins\":[],\"headers\":[],\"methods\":[],\"allowCredentials\":false},\"exportConfiguration\":{},\"eventState\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "230" ],
+        "x-ms-client-request-id": [ "bdc935f9-e64b-4ddf-81d8-d250117e8752" ],
+        "CommandName": [ "Get-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Get-AzHealthcareFhirService_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ce00b7d4-0000-0400-0000-6242f82f0000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "7951cdc5-b81e-4669-87af-cf4a96a5799c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "cb84f535b84e4741b57df72f13ee0ee4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11852" ],
+        "x-ms-correlation-request-id": [ "e3984a99-4d85-458f-ae63-18404b38fc00" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122159Z:e3984a99-4d85-458f-ae63-18404b38fc00" ],
+        "Date": [ "Tue, 29 Mar 2022 12:21:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "850" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4\",\"name\":\"ax2qzb/hv9eu4\",\"type\":\"Microsoft.HealthcareApis/workspaces/fhirservices\",\"etag\":\"\\\"ce00b7d4-0000-0400-0000-6242f82f0000\\\"\",\"location\":\"eastus2\",\"kind\":\"fhir-R4\",\"properties\":{\"accessPolicies\":[],\"acrConfiguration\":{\"loginServers\":[]},\"authenticationConfiguration\":{\"authority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"audience\":\"https://azpshcws-hv9eu4.fhir.azurehealthcareapis.com\",\"smartProxyEnabled\":false},\"corsConfiguration\":{\"origins\":[],\"headers\":[],\"methods\":[],\"allowCredentials\":false},\"exportConfiguration\":{},\"eventState\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4?api-version=2021-11-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"123\": \"abc\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "40" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ce00ebfa-0000-0400-0000-6242f9e90000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "ef9d12a1-4258-4c7d-aa45-548d26f2c540" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "b7e33cfc628b5943b8f7990d62396f5c" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1187" ],
+        "x-ms-correlation-request-id": [ "195d1b1b-1398-4e6d-b85f-178e409b3216" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122203Z:195d1b1b-1398-4e6d-b85f-178e409b3216" ],
+        "Date": [ "Tue, 29 Mar 2022 12:22:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "871" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4\",\"name\":\"ax2qzb/hv9eu4\",\"type\":\"Microsoft.HealthcareApis/workspaces/fhirservices\",\"etag\":\"\\\"ce00ebfa-0000-0400-0000-6242f9e90000\\\"\",\"location\":\"eastus2\",\"kind\":\"fhir-R4\",\"tags\":{\"123\":\"abc\"},\"properties\":{\"accessPolicies\":[],\"acrConfiguration\":{\"loginServers\":[]},\"authenticationConfiguration\":{\"authority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"audience\":\"https://azpshcws-hv9eu4.fhir.azurehealthcareapis.com\",\"smartProxyEnabled\":false},\"corsConfiguration\":{\"origins\":[],\"headers\":[],\"methods\":[],\"allowCredentials\":false},\"exportConfiguration\":{},\"eventState\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "232" ],
+        "x-ms-client-request-id": [ "189e3441-aceb-4cba-a13b-ea2c5b73dfb3" ],
+        "CommandName": [ "Get-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Get-AzHealthcareFhirService_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ce0076f8-0000-0400-0000-6242f9d20000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "3f5173db-d938-481d-b854-505fcd738d6e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "fbcdb81fd3985b42893db65a4263a9e4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11851" ],
+        "x-ms-correlation-request-id": [ "f36d1172-6973-487c-abed-51512d2979a1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122204Z:f36d1172-6973-487c-abed-51512d2979a1" ],
+        "Date": [ "Tue, 29 Mar 2022 12:22:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "850" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol\",\"name\":\"ax2qzb/kxrdol\",\"type\":\"Microsoft.HealthcareApis/workspaces/fhirservices\",\"etag\":\"\\\"ce0076f8-0000-0400-0000-6242f9d20000\\\"\",\"location\":\"eastus2\",\"kind\":\"fhir-R4\",\"properties\":{\"accessPolicies\":[],\"acrConfiguration\":{\"loginServers\":[]},\"authenticationConfiguration\":{\"authority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"audience\":\"https://azpshcws-kxrdol.fhir.azurehealthcareapis.com\",\"smartProxyEnabled\":false},\"corsConfiguration\":{\"origins\":[],\"headers\":[],\"methods\":[],\"allowCredentials\":false},\"exportConfiguration\":{},\"eventState\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol?api-version=2021-11-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"123\": \"abc\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "40" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ce0039fb-0000-0400-0000-6242f9ee0000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "f8f9648a-68e9-49d8-8fa6-3046421e258b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "b2cb8e81298750448ee62e663b1bc2af" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
+        "x-ms-correlation-request-id": [ "43c6e095-6106-4acf-b601-48b4b73c3ee6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122208Z:43c6e095-6106-4acf-b601-48b4b73c3ee6" ],
+        "Date": [ "Tue, 29 Mar 2022 12:22:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "871" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol\",\"name\":\"ax2qzb/kxrdol\",\"type\":\"Microsoft.HealthcareApis/workspaces/fhirservices\",\"etag\":\"\\\"ce0039fb-0000-0400-0000-6242f9ee0000\\\"\",\"location\":\"eastus2\",\"kind\":\"fhir-R4\",\"tags\":{\"123\":\"abc\"},\"properties\":{\"accessPolicies\":[],\"acrConfiguration\":{\"loginServers\":[]},\"authenticationConfiguration\":{\"authority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"audience\":\"https://azpshcws-kxrdol.fhir.azurehealthcareapis.com\",\"smartProxyEnabled\":false},\"corsConfiguration\":{\"origins\":[],\"headers\":[],\"methods\":[],\"allowCredentials\":false},\"exportConfiguration\":{},\"eventState\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/hv9eu4?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "234" ],
+        "x-ms-client-request-id": [ "876a4c4b-1073-44b9-a420-09f030f6ce28" ],
+        "CommandName": [ "Remove-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Remove-AzHealthcareFhirService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk?api-version=2021-11-01\u0026operationResultResponseType=Location" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk?api-version=2021-11-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "a41ff6af14f78e468bd117347019de4e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14993" ],
+        "x-ms-request-id": [ "8d2a9fb4-34f5-4096-9d8c-859a31fb6035" ],
+        "x-ms-correlation-request-id": [ "8d2a9fb4-34f5-4096-9d8c-859a31fb6035" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122209Z:8d2a9fb4-34f5-4096-9d8c-859a31fb6035" ],
+        "Date": [ "Tue, 29 Mar 2022 12:22:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "235" ],
+        "x-ms-client-request-id": [ "876a4c4b-1073-44b9-a420-09f030f6ce28" ],
+        "CommandName": [ "Remove-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Remove-AzHealthcareFhirService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "8e3b7453-2145-4b12-8e9b-cded68043ee3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "8b94f7695097dc4ba85a4eddb81302eb" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11850" ],
+        "x-ms-correlation-request-id": [ "c313e945-05c2-40a5-97f2-6c184a31014c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122240Z:c313e945-05c2-40a5-97f2-6c184a31014c" ],
+        "Date": [ "Tue, 29 Mar 2022 12:22:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk\",\"name\":\"g2ch7fkarqupp363bz99cajfk\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:22:09.4060959Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "236" ],
+        "x-ms-client-request-id": [ "876a4c4b-1073-44b9-a420-09f030f6ce28" ],
+        "CommandName": [ "Remove-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Remove-AzHealthcareFhirService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11849" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "18887299-0ce5-4273-bd9c-4e3c4c3dc357" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "2218093c640de54a930a44645eb25bd4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "9a3b69bb-f2e1-442c-92f5-6990a1a7c64b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122310Z:9a3b69bb-f2e1-442c-92f5-6990a1a7c64b" ],
+        "Date": [ "Tue, 29 Mar 2022 12:23:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk\",\"name\":\"g2ch7fkarqupp363bz99cajfk\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:22:09.4060959Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk?api-version=2021-11-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "237" ],
+        "x-ms-client-request-id": [ "876a4c4b-1073-44b9-a420-09f030f6ce28" ],
+        "CommandName": [ "Remove-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Remove-AzHealthcareFhirService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "b270370c-d015-4822-8f3b-4ac27d9dd824" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "a0216f963ea00247ab71221689f36c5a" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11848" ],
+        "x-ms-correlation-request-id": [ "c5b8a967-a385-4d5d-a08f-eea5a820a0b3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122340Z:c5b8a967-a385-4d5d-a08f-eea5a820a0b3" ],
+        "Date": [ "Tue, 29 Mar 2022 12:23:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk\",\"name\":\"g2ch7fkarqupp363bz99cajfk\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:22:09.4060959Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk?api-version=2021-11-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "238" ],
+        "x-ms-client-request-id": [ "876a4c4b-1073-44b9-a420-09f030f6ce28" ],
+        "CommandName": [ "Remove-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Remove-AzHealthcareFhirService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "5fa09dd9-80ed-4bb3-ab0a-e81e42a3d101" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "7901427374aa9b45977aaf5f8c4c061a" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11847" ],
+        "x-ms-correlation-request-id": [ "796189f2-ccd1-4dfa-8222-5d7a1a5eac4c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122411Z:796189f2-ccd1-4dfa-8222-5d7a1a5eac4c" ],
+        "Date": [ "Tue, 29 Mar 2022 12:24:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "255" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk\",\"name\":\"g2ch7fkarqupp363bz99cajfk\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-29T12:22:09.4060959Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk?api-version=2021-11-01\u0026operationResultResponseType=Location+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/g2ch7fkarqupp363bz99cajfk?api-version=2021-11-01\u0026operationResultResponseType=Location",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "239" ],
+        "x-ms-client-request-id": [ "876a4c4b-1073-44b9-a420-09f030f6ce28" ],
+        "CommandName": [ "Remove-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Remove-AzHealthcareFhirService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "5487a127-5f3d-4da8-8042-62842b977ae9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "16ac3a9def49be4395f2e5fe2cca2c5d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11846" ],
+        "x-ms-correlation-request-id": [ "9f158a17-1558-4e56-a8ce-539c6bf8175e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122411Z:9f158a17-1558-4e56-a8ce-539c6bf8175e" ],
+        "Date": [ "Tue, 29 Mar 2022 12:24:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "240" ],
+        "x-ms-client-request-id": [ "8727d68d-fda6-4542-8965-5f7ee0df58c4" ],
+        "CommandName": [ "Get-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Get-AzHealthcareFhirService_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ce0039fb-0000-0400-0000-6242f9ee0000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "d56a93f5-9ad9-4324-8e74-0ea33218c545" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "f25f7fd573077e46a1251d91699df131" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11845" ],
+        "x-ms-correlation-request-id": [ "2a378e29-245c-4373-a1b4-4df610f54bb6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122411Z:2a378e29-245c-4373-a1b4-4df610f54bb6" ],
+        "Date": [ "Tue, 29 Mar 2022 12:24:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "871" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol\",\"name\":\"ax2qzb/kxrdol\",\"type\":\"Microsoft.HealthcareApis/workspaces/fhirservices\",\"etag\":\"\\\"ce0039fb-0000-0400-0000-6242f9ee0000\\\"\",\"location\":\"eastus2\",\"kind\":\"fhir-R4\",\"tags\":{\"123\":\"abc\"},\"properties\":{\"accessPolicies\":[],\"acrConfiguration\":{\"loginServers\":[]},\"authenticationConfiguration\":{\"authority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"audience\":\"https://azpshcws-kxrdol.fhir.azurehealthcareapis.com\",\"smartProxyEnabled\":false},\"corsConfiguration\":{\"origins\":[],\"headers\":[],\"methods\":[],\"allowCredentials\":false},\"exportConfiguration\":{},\"eventState\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/kxrdol?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "241" ],
+        "x-ms-client-request-id": [ "9666a9f5-0649-4892-9217-7291d417419b" ],
+        "CommandName": [ "Remove-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Remove-AzHealthcareFhirService_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01\u0026operationResultResponseType=Location" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "10cabdd3b283f340bc8c049b3e0538f8" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14992" ],
+        "x-ms-request-id": [ "35a71347-f127-4f84-8e2a-c85f2378688e" ],
+        "x-ms-correlation-request-id": [ "35a71347-f127-4f84-8e2a-c85f2378688e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122413Z:35a71347-f127-4f84-8e2a-c85f2378688e" ],
+        "Date": [ "Tue, 29 Mar 2022 12:24:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "242" ],
+        "x-ms-client-request-id": [ "9666a9f5-0649-4892-9217-7291d417419b" ],
+        "CommandName": [ "Remove-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Remove-AzHealthcareFhirService_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "0af1997f-a042-45a9-a5ed-90341fae9873" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "9fd00735b84c414bb15842e720cb0d19" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11844" ],
+        "x-ms-correlation-request-id": [ "743a5607-58ca-43d7-bd86-ad5af2f0ff07" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122444Z:743a5607-58ca-43d7-bd86-ad5af2f0ff07" ],
+        "Date": [ "Tue, 29 Mar 2022 12:24:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v\",\"name\":\"gi8lrnx4ie3mp6i680damya4v\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:24:13.3851481Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "243" ],
+        "x-ms-client-request-id": [ "9666a9f5-0649-4892-9217-7291d417419b" ],
+        "CommandName": [ "Remove-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Remove-AzHealthcareFhirService_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "168b3b07-7f39-44d0-9dd6-554e312ab7d7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "52ffd9be141a3a4b8ca9df3d101b3a43" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11857" ],
+        "x-ms-correlation-request-id": [ "bcced586-6d57-4f11-909a-eaccab424a38" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122514Z:bcced586-6d57-4f11-909a-eaccab424a38" ],
+        "Date": [ "Tue, 29 Mar 2022 12:25:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v\",\"name\":\"gi8lrnx4ie3mp6i680damya4v\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:24:13.3851481Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "244" ],
+        "x-ms-client-request-id": [ "9666a9f5-0649-4892-9217-7291d417419b" ],
+        "CommandName": [ "Remove-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Remove-AzHealthcareFhirService_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "aeab991e-a71a-45e8-84e8-97e51872ec0f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "aae721c6a961344f92fd5a2872c8e057" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11856" ],
+        "x-ms-correlation-request-id": [ "6b81cdf2-0e81-44ec-97bc-72861b835df4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122544Z:6b81cdf2-0e81-44ec-97bc-72861b835df4" ],
+        "Date": [ "Tue, 29 Mar 2022 12:25:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v\",\"name\":\"gi8lrnx4ie3mp6i680damya4v\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:24:13.3851481Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "245" ],
+        "x-ms-client-request-id": [ "9666a9f5-0649-4892-9217-7291d417419b" ],
+        "CommandName": [ "Remove-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Remove-AzHealthcareFhirService_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "d6e0b2ef-0b6a-48cb-b19b-811584f89128" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "7c06ed50bb8c2647b677bd3b77421156" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11855" ],
+        "x-ms-correlation-request-id": [ "40cee713-8b27-422a-802d-c7757c48bceb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122614Z:40cee713-8b27-422a-802d-c7757c48bceb" ],
+        "Date": [ "Tue, 29 Mar 2022 12:26:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v\",\"name\":\"gi8lrnx4ie3mp6i680damya4v\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:24:13.3851481Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "246" ],
+        "x-ms-client-request-id": [ "9666a9f5-0649-4892-9217-7291d417419b" ],
+        "CommandName": [ "Remove-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Remove-AzHealthcareFhirService_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "d759641f-7daf-4a66-ab43-2944b59e9adc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "d66d5c217d45fe488b65c092fdfc7deb" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11854" ],
+        "x-ms-correlation-request-id": [ "8f018730-2f84-4923-8b05-3ece12025fd1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122645Z:8f018730-2f84-4923-8b05-3ece12025fd1" ],
+        "Date": [ "Tue, 29 Mar 2022 12:26:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v\",\"name\":\"gi8lrnx4ie3mp6i680damya4v\",\"status\":\"Running\",\"startTime\":\"2022-03-29T12:24:13.3851481Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "247" ],
+        "x-ms-client-request-id": [ "9666a9f5-0649-4892-9217-7291d417419b" ],
+        "CommandName": [ "Remove-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Remove-AzHealthcareFhirService_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "9d5ce478-b0e6-4c58-a35a-672100132e7c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "f5574592c149be44a54f892c804a15d9" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11853" ],
+        "x-ms-correlation-request-id": [ "19086642-1ea1-4ade-9c21-c2f2a6ee4291" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122715Z:19086642-1ea1-4ade-9c21-c2f2a6ee4291" ],
+        "Date": [ "Tue, 29 Mar 2022 12:27:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "255" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v\",\"name\":\"gi8lrnx4ie3mp6i680damya4v\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-29T12:24:13.3851481Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareFhirService+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01\u0026operationResultResponseType=Location+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/gi8lrnx4ie3mp6i680damya4v?api-version=2021-11-01\u0026operationResultResponseType=Location",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "248" ],
+        "x-ms-client-request-id": [ "9666a9f5-0649-4892-9217-7291d417419b" ],
+        "CommandName": [ "Remove-AzHealthcareFhirService" ],
+        "FullCommandName": [ "Remove-AzHealthcareFhirService_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "1f85a981-fa95-4de0-b51b-1db92f1a6c81" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "ce7c5405239b2a41927c9ae21caf0671" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11852" ],
+        "x-ms-correlation-request-id": [ "9b3d8e66-35ab-4cbe-ab26-d66a4d17fcaa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T122715Z:9b3d8e66-35ab-4cbe-ab26-d66a4d17fcaa" ],
+        "Date": [ "Tue, 29 Mar 2022 12:27:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}
