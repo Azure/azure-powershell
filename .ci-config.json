@@ -62,8 +62,7 @@
         "README.md",
         "**/ChangeLog.md",
         "**/readme.md",
-        "src/**/document/*",
-        "tools/GeneratedModuleList.txt"
+        "src/**/document/*"
       ],
       "phases": []
     },
