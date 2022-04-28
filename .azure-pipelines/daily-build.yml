@@ -157,6 +157,6 @@ jobs:
         # Push nupkg files
         $nupkgs = Get-ChildItem -Path artifacts -Filter *.nupkg
         Write-Host $nupkgs 
-        $nupkgs | Set-AzStorageBlobContent -Container $(ContainerName) -Context $context
+        $nupkgs | Set-AzStorageBlobContent -Container $(ContainerName) -Context $context -Force
       azurePowerShellVersion: LatestVersion
     condition: succeeded()
