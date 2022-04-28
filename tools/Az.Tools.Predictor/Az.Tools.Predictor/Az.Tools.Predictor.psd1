@@ -67,9 +67,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated dependency on PSReadline 2.2.2
-* Updated dependency on PowerShell 7.2
-* Added validation of pre-requisites before loading module'
+        ReleaseNotes = '* Updated dependencies'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -78,7 +76,7 @@ PrivateData = @{
         # RequireLicenseAcceptance = $false
 
         # External dependent modules of this module
-        ExternalModuleDependencies = @()
+        ExternalModuleDependencies = @('Az.Accounts', 'PSReadLine')
 
     } # End of PSData hashtable
 
