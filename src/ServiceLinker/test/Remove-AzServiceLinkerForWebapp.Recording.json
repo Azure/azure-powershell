@@ -1,0 +1,39 @@
+{
+  "Remove-AzServiceLinkerForWebapp+[NoContext]+Delete+$DELETE+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-powershell/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-powershell/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "dc5ab2c0-8280-4fab-a438-a12105374c16" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Remove-AzServiceLinker" ],
+        "FullCommandName": [ "Remove-AzServiceLinker_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "x-ms-correlation-request-id": [ "43ad83bd-06db-4180-8086-39a7cadd4309" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20220504T113459Z:43ad83bd-06db-4180-8086-39a7cadd4309" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 04 May 2022 11:34:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  }
+}

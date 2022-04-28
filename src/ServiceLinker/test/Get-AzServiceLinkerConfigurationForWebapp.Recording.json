@@ -1,0 +1,43 @@
+{
+  "Get-AzServiceLinkerConfigurationForWebapp+[NoContext]+Get+$POST+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker/listConfigurations?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker/listConfigurations?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "54efdc25-d00a-4b45-8036-e6ea1e59e08f" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Get-AzServiceLinkerConfiguration" ],
+        "FullCommandName": [ "Get-AzServiceLinkerConfiguration_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "7f20d8aa-7bf1-4e47-af4a-ece7b8b3ff68" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "4f3836d6-57a4-48ce-8a8e-be7215703819" ],
+        "x-ms-correlation-request-id": [ "95ef1375-09f5-4bdd-9aee-3851b81dfb32" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220504T112043Z:95ef1375-09f5-4bdd-9aee-3851b81dfb32" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 04 May 2022 11:20:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "339" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"configurations\":[{\"name\":\"AZURE_POSTGRESQL_NAME\",\"value\":\"postgres\"},{\"name\":\"AZURE_POSTGRESQL_HOST\",\"value\":\"servicelinker-postgresql-function-test.postgres.database.azure.com\"},{\"name\":\"AZURE_POSTGRESQL_USER\",\"value\":\"servicelinker@servicelinker-postgresql-function-test\"},{\"name\":\"AZURE_POSTGRESQL_PASSWORD\",\"value\":\"microsoft123!\"}]}"
+    }
+  }
+}
