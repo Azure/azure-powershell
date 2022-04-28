@@ -16,14 +16,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzManagedServicesDefiniti
 
 Describe 'Get-AzManagedServicesDefinition' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $definitions = Get-AzManagedServicesDefinition | Format-List -Property Id, Name, Type, ProvisioningState
+        $definitions.Count | Should -Be 2
     }
 
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $definition = Get-AzManagedServicesDefinition -Name $env.DefinitionId
+        $definition.Name | Should -Be $env.DefinitionId
     }
 
     It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $definition = Get-AzManagedServicesDefinition -Name $env.DefinitionId
+        $definition = Get-AzManagedServicesDefinition -InputObject $definition
+        $definition.Name | Should -Be $env.DefinitionId
     }
 }

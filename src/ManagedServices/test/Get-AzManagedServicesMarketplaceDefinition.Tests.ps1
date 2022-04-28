@@ -15,23 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzManagedServicesMarketpl
 }
 
 Describe 'Get-AzManagedServicesMarketplaceDefinition' {
-    It 'ListWithScope' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetWithScope' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetWithoutScope' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' -skip {
+        $marketplaceDefinition = Get-AzManagedServicesMarketplaceDefinition -MarketplaceIdentifier $env.MarketplaceIdentifier | Format-List Id, PlanProduct, PlanPublisher, PlanName, PlanVersion
+        $marketplaceDefinition.PlanName | Should -Be "plan1pms"
     }
 
     It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ListWithoutScope' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $marketplaceDefinition = Get-AzManagedServicesMarketplaceDefinition -MarketplaceIdentifier $env.MarketplaceIdentifier
+        $marketplaceDefinition = Get-AzManagedServicesMarketplaceDefinition -InputObject $marketplaceDefinition
+        $marketplaceDefinition.PlanName | Should -Be "plan1pms"
     }
 }

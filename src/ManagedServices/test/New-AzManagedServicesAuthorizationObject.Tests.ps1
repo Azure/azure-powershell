@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzManagedServicesAuthoriz
 
 Describe 'New-AzManagedServicesAuthorizationObject' {
     It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { New-AzManagedServicesAuthorizationObject -PrincipalId $env.PrincipalId -RoleDefinitionId $env.RoleDefinitionId -PrincipalIdDisplayName $env.PrincipalIdDisplayName } | Should -Not -Throw
     }
 }

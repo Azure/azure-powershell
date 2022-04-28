@@ -16,10 +16,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzManagedServicesDefin
 
 Describe 'Remove-AzManagedServicesDefinition' {
     It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { 
+            $permantAuth = New-AzManagedServicesAuthorizationObject -PrincipalId $env.PrincipalId -RoleDefinitionId $env.RoleDefinitionId -PrincipalIdDisplayName $env.PrincipalIdDisplayName
+            $newDefinition = New-AzManagedServicesDefinition -Name $env.DefinitionId -RegistrationDefinitionName $env.DefinitionName -ManagedByTenantId $env.ManagedByTenantId -Authorization $permantAuth -Description $env.DefinitionName -Scope $env.Scope
+            $newDefinition.ProvisioningState | Should -Be "Succeeded"
+
+            Remove-AzManagedServicesDefinition -Name $env.DefinitionId
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            $permantAuth = New-AzManagedServicesAuthorizationObject -PrincipalId $env.PrincipalId -RoleDefinitionId $env.RoleDefinitionId -PrincipalIdDisplayName $env.PrincipalIdDisplayName
+            $newDefinition = New-AzManagedServicesDefinition -Name $env.DefinitionId -RegistrationDefinitionName $env.DefinitionName -ManagedByTenantId $env.ManagedByTenantId -Authorization $permantAuth -Description $env.DefinitionName -Scope $env.Scope
+            $newDefinition.ProvisioningState | Should -Be "Succeeded"
+
+            Remove-AzManagedServicesDefinition -InputObject $newDefinition
+        } | Should -Not -Throw
     }
 }

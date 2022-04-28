@@ -16,10 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzManagedServicesAssig
 
 Describe 'Remove-AzManagedServicesAssignment' {
     It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { Remove-AzManagedServicesAssignment -Name $env.AssignmentId -Scope $env.Scope } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            $assignment = Get-AzManagedServicesAssignment -Name $env.AssignmentId
+            Remove-AzManagedServicesAssignment -InputObject $assignment
+        } | Should -Not -Throw
     }
 }

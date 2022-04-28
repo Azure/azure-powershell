@@ -16,14 +16,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzManagedServicesAssignme
 
 Describe 'Get-AzManagedServicesAssignment' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $assignments = Get-AzManagedServicesAssignment | Format-List -Property Id, Name, Type, RegistrationDefinitionId, ProvisioningState
+        $assignments.Count | Should -Be 2
     }
 
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $assignment = Get-AzManagedServicesAssignment -Name $env.AssignmentId
+        $assignment.Name | Should -Be $env.AssignmentId
     }
 
     It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $assignment = Get-AzManagedServicesAssignment -Name $env.AssignmentId
+        $assignment = Get-AzManagedServicesAssignment -InputObject $assignment
+        $assignment.Name | Should -Be $env.AssignmentId
     }
 }

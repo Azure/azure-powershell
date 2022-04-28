@@ -16,6 +16,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzManagedServicesAssignme
 
 Describe 'New-AzManagedServicesAssignment' {
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $permantAuth = New-AzManagedServicesAuthorizationObject -PrincipalId $env.PrincipalId -RoleDefinitionId $env.RoleDefinitionId -PrincipalIdDisplayName $env.PrincipalIdDisplayName
+        $newDefinition = New-AzManagedServicesDefinition -Name $env.DefinitionId -RegistrationDefinitionName $env.DefinitionName -ManagedByTenantId $env.ManagedByTenantId -Authorization $permantAuth -Description $env.DefinitionName -Scope $env.Scope
+        $newDefinition.ProvisioningState | Should -Be "Succeeded"
+
+        $newAssignment = New-AzManagedServicesAssignment -Name $env.AssignmentId -Scope $env.Scope -RegistrationDefinitionId $newDefinition.Id
+
+        $newAssignment.ProvisioningState | Should -Be "Succeeded"
+
+        Remove-AzManagedServicesAssignment -InputObject $newAssignment
+        Remove-AzManagedServicesDefinition -InputObject $newDefinition
     }
 }

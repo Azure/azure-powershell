@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzManagedServicesEligible
 
 Describe 'New-AzManagedServicesEligibleApproverObject' {
     It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { New-AzManagedServicesEligibleApproverObject -PrincipalId $env.PrincipalId -PrincipalIdDisplayName $env.PrincipalIdDisplayName } | Should -Not -Throw
     }
 }
