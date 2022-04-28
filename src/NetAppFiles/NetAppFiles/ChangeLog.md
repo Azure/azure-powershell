@@ -18,16 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added `Subvolumes` support `Get-AzNetAppFilesSubvolume`, `Get-AzNetAppFilesSubvolume`,`New-AzNetAppFilesSubvolume`,`Update-AzNetAppFilesSubvolume`, `Remove-AzNetAppFilesSubvolume` and `Get-AzNetAppFilesSubvolumeMetadata`
-* Added `VolumeGroups` support `Get-AzNetAppFilesVolumeGroup`, `Get-AzNetAppFilesVolumeGroup`,`New-AzNetAppFilesVolumeGroup`,`Update-AzNetAppFilesVolumeGroup`, `Remove-AzNetAppFilesVolumeGroup` 
-* Added `Restore-AzNetAppFilesSnapshot`, To restore the specified files from the specified snapshot to the active filesystem
-* Added `LdapSearchScope` to `ActiveDirectory`
-* Added `SystemData` to `BackupPolicy`, `CapacityPool`, `Volumes` and `SnapshotPolicy` output 
-* Added `MaximumNumberOfFiles` and `EnableSubvolumes` to `Get-AzNetAppFilesVolume` output
-* Added `EnableSubvolumes` to `Update-AzNetAppFilesVolume` 
-* Added `UnixPermissions` to `Update-AzNetAppFilesVolume`
-* Added `forceDelete' to `Remove-AzNetAppFilesVolume`
-
+* Added cmdlet `New/Remove/Get/Update-AzNetAppFilesSubvolume` and `Get-AzNetAppFilesSubvolumeMetadata`
+* Added cmdlet `New/Remove/Get-AzNetAppFilesVolumeGroup`
+* Added cmdlet `New-AzExportPolicyRuleObject` and `New-AzExportPolicyObject`
+* Added `Restore-AzNetAppFilesSnapshot` to restore the specified files from the specified snapshot to the active filesystem
+* Added property `LdapSearchScope` to `PSNetAppFilesActiveDirectory`
+* Added property `SystemData` to `PSNetAppFilesBackupPolicy`, `PSNetAppFilesAccount` and `PSNetAppFilesPool` 
+* Added property `SystemData` and `MonthlySchedule` to output type `PSNetAppFilesSnapshotPolicy` 
+* Added property `SystemData`, `MaximumNumberOfFiles` and `EnableSubvolumes` to output type `PSNetAppFilesVolume` 
+* Added parameter `EnableSubvolume` and `UnixPermission` to `Update-AzNetAppFilesVolume`
+* Added parameter `ForceDelete' to `Remove-AzNetAppFilesVolume`
 
 ## Version 0.9.0
 * Added `Administrators` and `EncryptDCConnections` to `ActiveDirectory`
