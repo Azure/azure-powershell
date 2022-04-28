@@ -11,7 +11,7 @@
 RootModule = 'Az.Tools.Predictor.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.0.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -67,7 +67,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated dependency on PSReadline 2.2.2 
+        ReleaseNotes = '* Updated dependency on PSReadline 2.2.2
 * Updated dependency on PowerShell 7.2
 * Added validation of pre-requisites before loading module'
 
@@ -78,7 +78,7 @@ PrivateData = @{
         # RequireLicenseAcceptance = $false
 
         # External dependent modules of this module
-        ExternalModuleDependencies = @('Az.Accounts', 'PSReadLine')
+        ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
 
