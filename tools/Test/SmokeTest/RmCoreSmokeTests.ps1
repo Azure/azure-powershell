@@ -52,7 +52,7 @@ function Retry-AzCommand {
     $loopLimit = 0
     do {
         try {
-            $script = if($loopLimit -gt 0) {"`$ErrorActionPreference='Continue' `n"} Else {"`$ErrorActionPreference='SilentlyContinue' `n"}
+            $script = "`$ErrorActionPreference='Continue' `n"
             $script += $Command.ToString()
             &([ScriptBlock]::Create($script))
             break
