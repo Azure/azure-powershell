@@ -801,7 +801,8 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.Equals(endpoint.Type, "AzureVM", StringComparison.OrdinalIgnoreCase) && !string.Equals(endpoint.Type, "AzureVNet", StringComparison.OrdinalIgnoreCase)
                 && !string.Equals(endpoint.Type, "AzureSubnet", StringComparison.OrdinalIgnoreCase) && !string.Equals(endpoint.Type, "MMAWorkspaceMachine", StringComparison.OrdinalIgnoreCase)
-                && !string.Equals(endpoint.Type, "MMAWorkspaceNetwork", StringComparison.OrdinalIgnoreCase) && !string.Equals(endpoint.Type, "ExternalAddress", StringComparison.OrdinalIgnoreCase))
+                && !string.Equals(endpoint.Type, "MMAWorkspaceNetwork", StringComparison.OrdinalIgnoreCase) && !string.Equals(endpoint.Type, "ExternalAddress", StringComparison.OrdinalIgnoreCase)
+                && !string.Equals(endpoint.Type, "AzureVMSS", StringComparison.OrdinalIgnoreCase))
             {
                 throw new PSArgumentException(Properties.Resources.InvalidEndpointType, endpoint.Name);
             }
@@ -825,7 +826,8 @@ namespace Microsoft.Azure.Commands.Network
             string resourceType = splittedName[7];
             if (string.IsNullOrEmpty(resourceType) || (!resourceType.Equals("virtualMachines", StringComparison.OrdinalIgnoreCase)
                 && !resourceType.Equals("workspaces", StringComparison.OrdinalIgnoreCase)
-                && !resourceType.Equals("virtualNetworks", StringComparison.OrdinalIgnoreCase)))
+                && !resourceType.Equals("virtualNetworks", StringComparison.OrdinalIgnoreCase)
+                && !resourceType.Equals("virtualMachineScaleSets", StringComparison.OrdinalIgnoreCase)))
             {
                 throw new PSArgumentException(Properties.Resources.InvalidEndpointResourceType);
             }
@@ -856,6 +858,13 @@ namespace Microsoft.Azure.Commands.Network
                 && !resourceType.Equals("workspaces", StringComparison.OrdinalIgnoreCase))
             {
                 throw new PSArgumentException(Properties.Resources.InvalidEndpointResourceIdForSpecifiedType, endpoint.Type);
+            }
+            else if (string.Equals(endpoint.Type, "AzureVMSS", StringComparison.OrdinalIgnoreCase))
+            {
+                if (!resourceType.Equals("virtualMachineScaleSets", StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new PSArgumentException(Properties.Resources.InvalidEndpointResourceIdForSpecifiedType, endpoint.Type);
+                }
             }
         }
 
