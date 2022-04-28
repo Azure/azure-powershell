@@ -37,7 +37,6 @@ using Microsoft.Samples.HyperV.Storage;
 using Microsoft.Samples.HyperV.Common;
 using System.Threading;
 
-
 namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
     /// <summary>
@@ -188,7 +187,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 try
                 {
-                    WriteVerbose("To be compatible with Azure, Add-AzVhd will automatically try to convert VHDX files to VHD and resize VHD files to N * Mib using Hyper-V Platform, a Windows native virtualization product. During the process the cmdlet will temporarily create a converted/resized file in the same directory as the provided VHD/VHDX file. \nFor more information visit https://aka.ms/usingAdd-AzVhd \n");
+                    WriteVerbose("To be compatible with Azure, Add-AzVhd will automatically try to convert VHDX files to VHD and resize VHD files to N * Mib using Hyper-V Platform, a Windows native virtualization product. During the process, the cmdlet will temporarily create a converted/resized file in the same directory as the provided VHD/VHDX file. \nFor more information visit https://aka.ms/usingAdd-AzVhd \n");
 
                     Program.SyncOutput = new PSSyncOutputEvents(this);
                     PathIntrinsics currentPath = SessionState.Path;
@@ -249,11 +248,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         }
                         else
                         {
-                            // TODO
-                            // clean up resources
                             revokeSAS();
                             this.ComputeClient.ComputeManagementClient.Disks.Delete(this.ResourceGroupName, this.DiskName);
-                            // throw terminating error 
                             Exception outputEx = new Exception("Failed to the VHD file. Please try again later.");
                             ThrowTerminatingError(new ErrorRecord(
                                 outputEx,
@@ -501,8 +497,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         private FileInfo convertVhd()
         {
-            // TODO check OS 
-            // add warning 
+            checkOS();
+            WriteWarning("The VHDX file needs to be converted to VHD. During the conversion process, the cmdlet will temporarily create a resized file in the same directory as the provided VHDX file.");
 
             string ConvertedPath = returnAvailExtensionName(vhdFileToBeUploaded.FullName, "_converted", ".vhd");
             FileInfo vhdFileInfo = new FileInfo(ConvertedPath);
@@ -564,8 +560,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         private FileInfo resizeVhdFile(long FileSize)
         {
-            // TODO check OS
-            // add warning 
+            checkOS();
+            WriteWarning("The VHD file needs to be resized. During the resizing process, the cmdlet will temporarily create a resized file in the same directory as the provided VHD/VHDX file.");
 
             try
             {
@@ -647,6 +643,20 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             if (RevokeResult != null && RevokeResult.Request != null && RevokeResult.Request.RequestUri != null)
             {
                 output.Name = GetOperationIdFromUrlString(RevokeResult.Request.RequestUri.ToString());
+            }
+        }
+
+        private void checkOS()
+        {
+            var isWindows = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows);
+            if (!isWindows)
+            {
+                Exception outputEx = new Exception("Failed to resize/convert the VHD/VHDX file. Currently the automatic resizing and converting is done using Hyper-V, a Windows native feature. Please reszie and convert file manually: https://aka.ms/usingAdd-AzVhd");
+                ThrowTerminatingError(new ErrorRecord(
+                    outputEx,
+                    "Hyper-V is unavailable",
+                    ErrorCategory.InvalidOperation,
+                    null));
             }
         }
     }
