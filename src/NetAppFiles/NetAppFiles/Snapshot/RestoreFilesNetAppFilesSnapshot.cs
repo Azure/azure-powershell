@@ -25,15 +25,16 @@ using Microsoft.Azure.Management.NetApp.Models;
 namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 {
     [Cmdlet(
-        "Restore",
+        "Restore",        
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesSnapshotFile",
+        SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesSnapshot))]
     [Alias("Restore-AnfSnapshotFiles")]
     public class RestoreFilesAzureRmNetAppFilesSnapshot : AzureNetAppFilesCmdletBase
     {
         [Parameter
             (Mandatory = true,
-            ParameterSetName = FieldsParameterSet,
+            ParameterSetName = FieldsParameterSet,            
             HelpMessage = "The resource group of the ANF volume")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
