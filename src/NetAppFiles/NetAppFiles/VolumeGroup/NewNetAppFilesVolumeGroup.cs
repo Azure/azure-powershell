@@ -258,11 +258,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesVolumeExportPolicy ExportPolicy { get; set; }
 
-        //[Parameter(
-        //    Mandatory = false,
-        //    HelpMessage = "Application specific placement rules for the volume group")]
-        //[ValidateNotNullOrEmpty]
-        //public IList<PSKeyValuePairs> GlobalPlacementRule { get; set; }        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Application specific placement rules for the volume group")]
+        [ValidateNotNullOrEmpty]
+        public IList<PlacementKeyValuePairs> GlobalPlacementRule { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -387,8 +387,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
         }
 
         private VolumeGroupDetails CreateHostVolumeGroup(string name, string sid, string poolResourceId, IDictionary<string, string> tagPairs, string[] volumeBackupProtocolTypes, VolumePropertiesExportPolicy volumeExportPolicy, int startingHostId,  int hostCount)
-        {
-            var globalPlacementRules = new List<PlacementKeyValuePairs> { new PlacementKeyValuePairs { Key = "Key1", Value = "value1" } };
+        {                        
             var dataUsageThreshold = this.DataSize ?? CalulateUsageThreshold(NodeMemory, CapacityOverhead, this.HostCount, null, null, SapVolumeType.Data);
             var logUsageThreshold = this.LogSize ?? CalulateUsageThreshold(NodeMemory, CapacityOverhead, this.HostCount, null, null, SapVolumeType.Log);
             var sharedUsageThreshold = this.SharedSize ?? CalulateUsageThreshold(NodeMemory, CapacityOverhead, this.HostCount, dataUsageThreshold, logUsageThreshold, SapVolumeType.Shared);
@@ -497,7 +496,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                 {
                     ApplicationType = ApplicationType,
                     ApplicationIdentifier = ApplicationIdentifier,
-                    GlobalPlacementRules = globalPlacementRules,
+                    GlobalPlacementRules = GlobalPlacementRule,
                     DeploymentSpecId = SAPHANAOnGENPOPDeploymentSpecID,
                     GroupDescription = GroupDescription                    
                 },

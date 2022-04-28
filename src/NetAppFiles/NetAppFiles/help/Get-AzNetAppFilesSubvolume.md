@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetAppFilesSubvolume
 
 ## SYNOPSIS
-Gets details of an Azure NetApp Files (ANF) volume.
+Gets details of an Azure NetApp Files (ANF) subvolume.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzNetAppFilesSubvolume [-Name <String>] -VolumeObject <PSNetAppFilesVolume>
 ```
 
 ## DESCRIPTION
-The **Get-AzNetAppFilesVolume** cmdlet gets details of an ANF subvolume.
+The **Get-AzNetAppFilesSubvolume** cmdlet gets details of an ANF subvolume.
 
 ## EXAMPLES
 
@@ -40,7 +40,7 @@ The **Get-AzNetAppFilesVolume** cmdlet gets details of an ANF subvolume.
 PS C:\> Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSubvolume"
 ```
 
-The **Get-AzNetAppFilesVolume** cmdlet gets details of an ANF volume.
+The **Get-AzNetAppFilesSubvolume** cmdlet gets details of an ANF volume.
 
 ## PARAMETERS
 
@@ -180,3 +180,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetAppFilesSubvolume](./New-AzNetAppFilesSubvolume.md)
+[Update-AzNetAppFilesSubvolume](./Update-AzNetAppFilesSubvolume.md)
+[Remove-AzNetAppFilesSubvolume](./Remove-AzNetAppFilesSubvolume.md)

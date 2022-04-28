@@ -42,10 +42,10 @@ Gets details of an Azure NetApp Files (ANF) snapshot.
 Gets details of an Azure NetApp Files (ANF) snapshot policy.
 
 ### [Get-AzNetAppFilesSubvolume](Get-AzNetAppFilesSubvolume.md)
-Gets details of an Azure NetApp Files (ANF) volume.
+Gets details of an Azure NetApp Files (ANF) subvolume.
 
 ### [Get-AzNetAppFilesSubvolumeMetadata](Get-AzNetAppFilesSubvolumeMetadata.md)
-{{ Fill in the Synopsis }}
+Gets metadata details of an Azure NetApp Files (ANF) subvolume.
 
 ### [Get-AzNetAppFilesVault](Get-AzNetAppFilesVault.md)
 Gets list of Azure NetApp Files (ANF) Accounts backup vaults.
@@ -69,7 +69,7 @@ Re-Initializes the replication connection on the destination volume
 Creates export policy object.
 
 ### [New-AzExportPolicyRuleObject](New-AzExportPolicyRuleObject.md)
-{{ Fill in the Synopsis }}
+Creates export policy rule object.
 
 ### [New-AzNetAppFilesAccount](New-AzNetAppFilesAccount.md)
 Creates a new Azure NetApp Files (ANF) account.

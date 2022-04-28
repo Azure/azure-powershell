@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; })
+#RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.NetApp.dll'
@@ -134,7 +134,7 @@ AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount',
                'Get-AnfActiveDirectory', 'New-AnfActiveDirectory', 
                'Remove-AnfActiveDirectory', 'Update-AnfActiveDirectory', 
                'Get-AnfQuotaLimit',
-                'Get-AnfSubvolume', 'Get-AnfSubvolumeMetadata','New-AnfSubvolume', 'Set-AnfSubvolume', 
+               'Get-AnfSubvolume', 'Get-AnfSubvolumeMetadata','New-AnfSubvolume', 'Set-AnfSubvolume', 
                'Remove-AnfSubvolume', 'Update-AnfSubvolume',
                'Get-AnfVolumeGroup', 'New-AnfVolumeGroup', 'Remove-AnfVolumeGroup'               
 

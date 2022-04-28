@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetAppFilesSubvolumeMetadata
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets metadata details of an Azure NetApp Files (ANF) subvolume.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Get-AzNetAppFilesSubvolumeMetadata -Name <String> -VolumeObject <PSNetAppFilesVo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetAppFilesSubvolume** cmdlet gets details of an ANF subvolume.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzNetAppFilesSubvolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSubvolume"
 ```
 
-{{ Add example description here }}
+The gets details of the MyAnfSubvolume subvolume.
 
 ## PARAMETERS
 

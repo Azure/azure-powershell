@@ -150,7 +150,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, Name)))
             {
-                AzureNetAppFilesManagementClient.Subvolumes.Delete( ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName, subvolumeName: Name);                
+                AzureNetAppFilesManagementClient.Subvolumes.Delete( ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName, subvolumeName: Name);
+                success = true;
             }
 
             if (PassThru)

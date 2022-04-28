@@ -13,7 +13,7 @@ Creates export policy object.
 ## SYNTAX
 
 ```
-New-AzExportPolicyObject -Rules <PSNetAppFilesExportPolicyRule[]> [-DefaultProfile <IAzureContextContainer>]
+New-AzExportPolicyObject -Rule <PSNetAppFilesExportPolicyRule[]> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Rules
+### -Rule
 List of items which need to be included into endpont scope.
 
 ```yaml

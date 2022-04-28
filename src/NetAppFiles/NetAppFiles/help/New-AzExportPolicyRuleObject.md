@@ -15,7 +15,7 @@ Creates export policy rule object.
 ```
 New-AzExportPolicyRuleObject -RuleIndex <Int32> [-UnixReadOnly] [-UnixReadWrite] [-Kerberos5ReadOnly]
  [-Kerberos5ReadWrite] [-Kerberos5iReadOnly] [-Kerberos5iReadWrite] [-Kerberos5p] [-Kerberos5pReadWrite]
- [-Cifs] [-Nfsv3] [-Nfsv41] [-AllowedClients <String>] [-HasRootAccess] [-ChownMode <String>]
+ [-Cifs] [-Nfsv3] [-Nfsv41] [-AllowedClient <String>] [-HasRootAccess] [-ChownMode <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ This example creates an ExportPolicyRule in variable $exportPolicyRule, sets it 
 
 ## PARAMETERS
 
-### -AllowedClients
+### -AllowedClient
 Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names.
 
 ```yaml
