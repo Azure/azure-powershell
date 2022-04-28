@@ -12,13 +12,13 @@
 RootModule = './Az.HealthcareApis.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.3.0'
+ModuleVersion = '1.3.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
-GUID = '36cc732b-665f-4db7-bdfa-70d09e08f7b1'
+GUID = 'de3f478d-0227-4782-85cf-62fb649b685a'
 
 # Author of this module
 Author = 'Microsoft Corporation'
