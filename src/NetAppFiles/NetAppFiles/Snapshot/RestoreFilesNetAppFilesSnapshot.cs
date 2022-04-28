@@ -25,10 +25,10 @@ using Microsoft.Azure.Management.NetApp.Models;
 namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 {
     [Cmdlet(
-        "RestoreFiles",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesSnapshot",
+        "Restore",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesSnapshotFile",
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesSnapshot))]
-    [Alias("RestoreFiles-AnfSnapshot")]
+    [Alias("Restore-AnfSnapshotFiles")]
     public class RestoreFilesAzureRmNetAppFilesSnapshot : AzureNetAppFilesCmdletBase
     {
         [Parameter

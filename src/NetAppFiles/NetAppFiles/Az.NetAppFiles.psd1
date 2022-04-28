@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-#RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.NetApp.dll'
@@ -82,7 +82,8 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
                'Get-AzNetAppFilesVolume', 'New-AzNetAppFilesVolume', 
                'Remove-AzNetAppFilesVolume', 'Update-AzNetAppFilesVolume', 
                'Get-AzNetAppFilesSnapshot', 'New-AzNetAppFilesSnapshot', 
-               'Remove-AzNetAppFilesSnapshot', 'Approve-AzNetAppFilesReplication', 
+               'Remove-AzNetAppFilesSnapshot', 'Restore-AzNetAppFilesSnapshotFile',
+               'Approve-AzNetAppFilesReplication', 
                'Get-AzNetAppFilesReplicationStatus', 
                'Suspend-AzNetAppFilesReplication', 
                'Remove-AzNetAppFilesReplication', 
@@ -120,6 +121,7 @@ AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount',
                'Set-AnfPool', 'Update-AnfPool', 'Remove-AnfPool', 'Get-AnfVolume', 
                'New-AnfVolume', 'Remove-AnfVolume', 'Update-AnfVolume', 
                'Get-AnfSnapshot', 'New-AnfSnapshot', 'Remove-AnfSnapshot', 
+               'Restore-AnfSnapshotFile',
                'Approve-AnfReplication', 'Get-AnfReplicationStatus', 
                'Suspend-AnfReplication', 'Remove-AnfReplication', 
                'Resume-AnfReplication', 'Restore-AnfVolume', 

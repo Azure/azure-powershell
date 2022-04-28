@@ -31,16 +31,31 @@ Get-AzNetAppFilesSubvolumeMetadata -Name <String> -VolumeObject <PSNetAppFilesVo
 ```
 
 ## DESCRIPTION
-The **Get-AzNetAppFilesSubvolume** cmdlet gets details of an ANF subvolume.
+The **Get-AzNetAppFilesSubvolume** cmdlet gets metadata details of an ANF Subvolume.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:\> Get-AzNetAppFilesSubvolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSubvolume"
+
+ResourceGroupName : myrg
+Id                : /subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/myrg/providers/Microsoft.NetApp/netAppAccounts/myanfaccount/capacityPools/myanfpool/volumes/myanfvolume/subvolumes/myanfsubvolume
+Name              : myanfaccount/myanfpool/myanfvolume/myanfsubvolume
+Type              : Microsoft.NetApp/netAppAccounts/capacityPools/volumes/subvolumes
+Path              : /subvolumePath
+ParentPath        :
+Size              : 5
+BytesUsed         : 0
+Permissions       : 644
+CreationTimeStamp : 28/04/2022 15:49:24
+AccessedTimeStamp : 28/04/2022 15:49:23
+ModifiedTimeStamp : 28/04/2022 15:49:24
+ChangedTimeStamp  : 28/04/2022 15:49:24
+ProvisioningState : Succeeded
 ```
 
-The gets details of the MyAnfSubvolume subvolume.
+The gets details of the MyAnfSubvolume Subvolume metadata.
 
 ## PARAMETERS
 

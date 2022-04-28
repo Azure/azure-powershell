@@ -1,56 +1,48 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilessubvolume
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzNetAppFilesSubvolume
+# Restore-AzNetAppFilesSnapshotFile
 
 ## SYNOPSIS
-Gets details of an Azure NetApp Files (ANF) subvolume.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzNetAppFilesSubvolume -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- [-VolumeName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Restore-AzNetAppFilesSnapshotFile -ResourceGroupName <String> -AccountName <String> -PoolName <String>
+ -VolumeName <String> [-Name <String>] -FilePath <String[]> [-DestinationPath <String>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzNetAppFilesSubvolume [-Name <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Restore-AzNetAppFilesSnapshotFile [-Name <String>] -FilePath <String[]> [-DestinationPath <String>]
+ -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzNetAppFilesSubvolume [-Name <String>] -VolumeObject <PSNetAppFilesVolume>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Restore-AzNetAppFilesSnapshotFile [-Name <String>] -FilePath <String[]> [-DestinationPath <String>]
+ -VolumeObject <PSNetAppFilesVolume> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzNetAppFilesSubvolume** cmdlet gets details of an ANF Subvolume.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSubvolume"
-
-ResourceGroupName : myrg
-Id                : /subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/myrg/providers/Microsoft.NetApp/netAppAccounts/myanfaccount/capacityPools/myanfpool/volumes/myanfvolume/subvolumes/myanfsubvolume
-Name              : myanfaccount/myanfpool/myanfvolume/myanfsubvolume
-Type              : Microsoft.NetApp/netAppAccounts/capacityPools/volumes/subvolumes
-Etag              :
-Path              : /subvolumePath
-Size              :
-ParentPath        :
-ProvisioningState : Succeeded
+PS C:\> {{ Add example code here }}
 ```
 
-The **Get-AzNetAppFilesSubvolume** cmdlet gets details of an ANF Subvolume.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -58,7 +50,7 @@ The **Get-AzNetAppFilesSubvolume** cmdlet gets details of an ANF Subvolume.
 The name of the ANF account
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -73,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -84,13 +76,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the ANF Subvolume
+### -DestinationPath
+Destination folder where the files will be restored
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases: SubvolumeName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FilePath
+List of files to be restored
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the ANF snapshot
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: SnapshotName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Return whether the specified files where successfully restored
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -103,7 +140,7 @@ Accept wildcard characters: False
 The name of the ANF pool
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -115,10 +152,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group of the ANF Subvolume
+The resource group of the ANF volume
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -130,10 +167,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ANF Subvolume
+The resource id of the ANF snapshot
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -148,11 +185,11 @@ Accept wildcard characters: False
 The name of the ANF volume
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -160,10 +197,10 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeObject
-The volume object containing the Subvolume to return
+The volume object containing the snapshot
 
 ```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+Type: PSNetAppFilesVolume
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -185,12 +222,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzNetAppFilesSubvolume](./New-AzNetAppFilesSubvolume.md)
-[Update-AzNetAppFilesSubvolume](./Update-AzNetAppFilesSubvolume.md)
-[Remove-AzNetAppFilesSubvolume](./Remove-AzNetAppFilesSubvolume.md)
