@@ -34,7 +34,7 @@ For example, if user wants to restore the database account to a timestamp when a
 
 ### Example 1
 ```powershell
-Get-AzCosmosDBSqlRestorableDatabase -Location {location} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId}
+Get-AzCosmosDBSqlRestorableDatabase -Location "location" -DatabaseAccountInstanceId "DatabaseAccountInstanceIdInstanceId"
 ```
 
 ```output
