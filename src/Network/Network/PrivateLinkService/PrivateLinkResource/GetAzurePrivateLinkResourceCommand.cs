@@ -63,9 +63,10 @@ namespace Microsoft.Azure.Commands.Network
 
         public new object GetDynamicParameters()
         {
+            InvocationInfo invocationInfo = MyInvocation;
             var parameters = new RuntimeDefinedParameterDictionary();
             RuntimeDefinedParameter namedParameter;
-            if (ProviderConfiguration.TryGetProvideServiceParameter(privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
+            if (ProviderConfiguration.TryGetProvideServiceParameter("PLR", privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
             {
                 parameters.Add(privateEndpointTypeName, namedParameter);
             }

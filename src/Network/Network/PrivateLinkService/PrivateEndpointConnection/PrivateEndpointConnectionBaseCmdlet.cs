@@ -60,9 +60,10 @@ namespace Microsoft.Azure.Commands.Network
         string NamedContextParameterSet = "ByResource";
         public new object GetDynamicParameters()
         {
+            InvocationInfo invocationInfo = MyInvocation;
             var parameters = new RuntimeDefinedParameterDictionary();
             RuntimeDefinedParameter namedParameter;
-            if (ProviderConfiguration.TryGetProvideServiceParameter(privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
+            if (ProviderConfiguration.TryGetProvideServiceParameter("PEC", privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
             {
                 parameters.Add(privateEndpointTypeName, namedParameter);
             }
