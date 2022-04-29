@@ -43,7 +43,7 @@ The **Get-AzResource** cmdlet gets Azure resources.
 ### Example 1: Get all resources in the current subscription
 
 ```powershell
-Get-AzResource | ft
+Get-AzResource | Format-Table
 ```
 
 ```output
@@ -65,7 +65,7 @@ This command gets all of the resources in the current subscription.
 ### Example 2: Get all resources in a resource group
 
 ```powershell
-Get-AzResource -ResourceGroupName testRG | ft
+Get-AzResource -ResourceGroupName testRG | Format-Table
 ```
 
 ```output
@@ -84,7 +84,7 @@ This command gets all of the resources in the resource group "testRG".
 ### Example 3: Get all resources whose resource group matches the provided wildcard
 
 ```powershell
-Get-AzResource -ResourceGroupName other* | ft
+Get-AzResource -ResourceGroupName other* | Format-Table
 ```
 
 ```output
@@ -100,7 +100,7 @@ This command gets all of the resources whose resource group they belong in being
 ### Example 4: Get all resources with a given name
 
 ```powershell
-Get-AzResource -Name testVM | fl
+Get-AzResource -Name testVM | Format-List
 ```
 
 ```output
@@ -122,7 +122,7 @@ This command gets all of the resources whose resource name is "testVM".
 ### Example 5: Get all resources whose name matches the provided wildcard
 
 ```powershell
-Get-AzResource -Name test* | ft
+Get-AzResource -Name test* | Format-Table
 ```
 
 ```output
@@ -138,7 +138,7 @@ This command gets all of the resources whose resource name begins with "test".
 ### Example 6: Get all resources of a given resource type
 
 ```powershell
-Get-AzResource -ResourceType Microsoft.Compute/virtualMachines | ft
+Get-AzResource -ResourceType Microsoft.Compute/virtualMachines | Format-Table
 ```
 
 ```output

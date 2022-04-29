@@ -56,3 +56,4 @@ Event and Error Logs Folder Path: C:\Users\vmanhas\AppData\Local\Microsoft\SqlAs
 This command runs Performance Data Collection on given SQL Server using the config file.
 
 
+

@@ -36,14 +36,14 @@ Please understand the following impact to your storage account before you initia
 
 ### Example 1: Invoke failover of a Storage account
 ```
-PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -IncludeGeoReplicationStats
+PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -IncludeGeoReplicationStats
 PS C:\>$account.GeoReplicationStats
 
 Status LastSyncTime
 ------ ------------
 Live   11/13/2018 2:44:22 AM
 
-PS C:\>$job = Invoke-AzStorageAccountFailover -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Force -AsJob
+PS C:\>$job = Invoke-AzStorageAccountFailover -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Force -AsJob
 PS C:\>$job | Wait-Job
 ```
 

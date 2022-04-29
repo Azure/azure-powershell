@@ -80,7 +80,7 @@ Don't pass -EnableAcceleratedNetworkingOnRecovery to disable accelerated Network
 ### Example 6
 ```powershell
 $currentJob = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $rpi `
-		-DiskEncryptionVaultId $DiskEncryptionVaultId -DiskEncryptionSecertUrl $DiskEncryptionSecertUrl `
+		-DiskEncryptionVaultId $DiskEncryptionVaultId -DiskEncryptionSecretUrl $DiskEncryptionSecertUrl `
 		-KeyEncryptionVaultId $KeyEncryptionVaultId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl
 ```
 

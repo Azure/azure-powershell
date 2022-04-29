@@ -122,10 +122,18 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         {
             if (moduleName.Equals(AllModule))
             {
-                moduleName = ACCOUNT_MODULE_NAME;
+                HashSet<string> csprojSet = new HashSet<string>();
+                foreach (string m in GetSelectedModuleList())
+                {
+                    csprojSet.UnionWith(GetBuildCsprojList(m, csprojMap));
+                }
+                return csprojSet.ToList();
             }
-            return GetRelatedCsprojList(moduleName, csprojMap)
-                .Where(x => !x.Contains("Test")).ToList();
+            else
+            {
+                return GetRelatedCsprojList(moduleName, csprojMap)
+                    .Where(x => !x.Contains("Test")).ToList();
+            }
         }
 
         private string GetModuleNameFromCsprojPath(string csprojPath)
@@ -137,6 +145,10 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private List<string> GetDependenceModuleList(string moduleName, Dictionary<string, string[]> csprojMap)
         {
+            if (moduleName.Equals(ACCOUNT_MODULE_NAME))
+            {
+                return GetSelectedModuleList();
+            }
             List<string> moduleList = new List<string>();
 
             foreach (string key in csprojMap.Keys)
@@ -162,22 +174,45 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         {
             if (moduleName.Equals(AllModule))
             {
-                moduleName = ACCOUNT_MODULE_NAME;
+                HashSet<string> csprojSet = new HashSet<string>();
+                foreach (string m in GetSelectedModuleList())
+                {
+                    csprojSet.UnionWith(GetDependentModuleList(m, csprojMap));
+                }
+                return csprojSet.ToList();
             }
-            return GetRelatedCsprojList(moduleName, csprojMap)
-                .Select(GetModuleNameFromCsprojPath)
-                .Distinct()
-                .ToList();
+            else
+            {
+                return GetRelatedCsprojList(moduleName, csprojMap)
+                    .Select(GetModuleNameFromCsprojPath)
+                    .Distinct()
+                    .ToList();
+            }
+        }
+
+        // Run a selected module list instead of run all the modules to speed up the CI process.
+        private List<string> GetSelectedModuleList()
+        {
+            string[] lines = System.IO.File.ReadAllLines(@"./tools/BuildPackagesTask/Microsoft.Azure.Build.Tasks/SelectedModuleList.txt");
+            return new List<string>(lines);
         }
 
         private List<string> GetTestCsprojList(string moduleName, Dictionary<string, string[]> csprojMap)
         {
             if (moduleName.Equals(AllModule))
             {
-                moduleName = ACCOUNT_MODULE_NAME;
+                HashSet<string> csprojSet = new HashSet<string>();
+                foreach (string m in GetSelectedModuleList())
+                {
+                    csprojSet.UnionWith(GetTestCsprojList(m, csprojMap));
+                }
+                return csprojSet.ToList();
             }
-            return GetRelatedCsprojList(moduleName, csprojMap)
-                .Where(x => x.Contains("Test")).ToList();;
+            else
+            {
+                return GetRelatedCsprojList(moduleName, csprojMap)
+                    .Where(x => x.Contains("Test")).ToList();;
+            }
         }
 
         private bool ProcessTargetModule(Dictionary<string, string[]> csprojMap)

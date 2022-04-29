@@ -55,6 +55,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool VnetEncryptionSupported { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string AuxiliaryMode { get; set; }
+
         [JsonIgnore]
         public string VirtualMachineText
         {

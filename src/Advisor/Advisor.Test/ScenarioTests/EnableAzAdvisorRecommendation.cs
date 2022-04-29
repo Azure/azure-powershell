@@ -12,46 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 
 namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 {
-    public class EnableAzAdvisorRecommendation
+    public class EnableAzAdvisorRecommendation : AdvisorTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public EnableAzAdvisorRecommendation(Xunit.Abstractions.ITestOutputHelper output)
+        public EnableAzAdvisorRecommendation(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzAdvisorRecommendationByNameParameterSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Enable-AzAdvisorRecommendationByNameParameterSet");
+            TestRunner.RunTestScript("Enable-AzAdvisorRecommendationByNameParameterSet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzAdvisorRecommendationByIdParameterSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Enable-AzAdvisorRecommendationByIdParameterSet");
+            TestRunner.RunTestScript("Enable-AzAdvisorRecommendationByIdParameterSet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzAdvisorRecommendationPipeline()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Enable-AzAdvisorRecommendationPipeline");
+            TestRunner.RunTestScript("Enable-AzAdvisorRecommendationPipeline");
         }
     }
 }

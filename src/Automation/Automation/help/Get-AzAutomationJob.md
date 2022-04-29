@@ -39,22 +39,22 @@ The **Get-AzAutomationJob** cmdlet gets runbook jobs in Azure Automation.
 ## EXAMPLES
 
 ### Example 1: Get a specific runbook job
-```
-PS C:\>Get-AzAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b647
+```powershell
+Get-AzAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b647
 ```
 
 This command gets the job that has the specified GUID.
 
 ### Example 2: Get all jobs for a runbook
-```
-PS C:\>Get-AzAutomationJob -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -RunbookName "Runbook02"
+```powershell
+Get-AzAutomationJob -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -RunbookName "Runbook02"
 ```
 
 This command gets all jobs associated with a runbook named Runbook02.
 
 ### Example 3: Get all running jobs
-```
-PS C:\>Get-AzAutomationJob -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Status "Running"
+```powershell
+Get-AzAutomationJob -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Status "Running"
 ```
 
 This command gets all running jobs in the Automation account named Contoso17.

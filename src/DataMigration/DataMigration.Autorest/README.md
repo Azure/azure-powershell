@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the DataMigration service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -30,11 +30,11 @@ For information on how to develop for `Az.DataMigration`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 7086ee861c3a6196bb98f8b327af11d03e545a05
+branch: e8c359d8821038f133695c9b1f4cf40d330cbc80
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-input-file:
-  - $(repo)/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2021-10-30-preview/sqlmigration.json
+input-file: 
+  - $(repo)/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/sqlmigration.json
 
 title: DataMigration
 module-version: 0.1.0
@@ -42,6 +42,10 @@ module-version: 0.1.0
 directive:
 
   #Swagger description changes
+  #- from: swagger-document
+  #  where: $.info
+  #  transform: $["version"] = "2022-01-30-preview"
+    
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}"].get
     transform: $["description"] = "Retrieve the Database Migration Service."
@@ -57,6 +61,10 @@ directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"].get
     transform: $["description"] = "Retrieve the specified database migration for a given SQL VM."
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"].get
+    transform: $["description"] = "Retrieve the specified database migration for a given SQL Db."
   
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover"].post
@@ -79,6 +87,10 @@ directive:
     transform: $["description"] = "Create a new database migration to a given SQL VM."
 
   - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"].put
+    transform: $["description"] = "Create a new database migration to a given SQL Db."
+
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}"].delete
     transform: $["description"] = "Delete Database Migration Service."
 
@@ -89,6 +101,14 @@ directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel"].post
     transform: $["description"] = "Stop in-progress database migration to SQL VM."
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel"].post
+    transform: $["description"] = "Stop in-progress database migration to SQL Db."
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"].delete
+    transform: $["description"] = "Remove the specified database migration for a given SQL Db."
   
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}"].patch
@@ -146,6 +166,16 @@ directive:
       subject: ToSqlVM
   
   - where:
+      subject: (DatabaseMigrationSqlDb$)
+    set:
+      subject: ToSqlDb
+
+  - where:
+      subject: DatabaseMigrationsSqlDb
+    set:
+      subject: ToSqlDb
+  
+  - where:
       subject: (MonitoringData$)
     set:
       subject: IntegrationRuntimeMetric
@@ -154,6 +184,49 @@ directive:
       subject: (^SqlMigrationService)
     set:
       subject: SqlService
+
+  #Deleting parameters :
+  - where:
+      verb: New
+      subject: ToSqlDb
+      parameter-name: MigrationOperationId
+    hide: true
+
+  - where:
+      verb: New
+      subject: ToSqlManagedInstance
+      parameter-name: MigrationOperationId
+    hide: true
+
+  - where:
+      verb: New
+      subject: ToSqlVM
+      parameter-name: MigrationOperationId
+    hide: true
+
+  - where:
+      verb: New
+      subject: ToSqlDb
+      parameter-name: ProvisioningError
+    hide: true
+
+  - where:
+      verb: New
+      subject: ToSqlManagedInstance
+      parameter-name: ProvisioningError
+    hide: true
+
+  - where:
+      verb: New
+      subject: ToSqlVM
+      parameter-name: ProvisioningError
+    hide: true
+
+  - where:
+      verb: Get
+      subject: ToSqlDb
+      parameter-name: PassThru
+    hide: true
 
   #Changing parameter names
   - where:
@@ -198,6 +271,14 @@ directive:
     set:
       parameter-name: StorageAccountKey
 
+  # Changing parameter description
+  - where:
+      parameter-name: Scope
+      verb: New
+      subject: ToSqlVM
+    set:
+      parameter-description: Resource Id of the target resource (SQL VM). For the Scope parameter, use the Scope of the SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/xyz-SqlVM) and not the Compute SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/xyz-SqlVM)
+
   # Remove the set-* cmdlet
   - where:
       verb: Set
@@ -235,6 +316,16 @@ directive:
           - ProvisioningState
           - MigrationStatus
   - where:
+      model-name: DatabaseMigrationSqlDb
+    set:
+      format-table:
+        properties:
+          - Name
+          - Type
+          - Kind
+          - ProvisioningState
+          - MigrationStatus
+  - where:
       model-name: DatabaseMigration
     set:
       format-table:
@@ -244,4 +335,28 @@ directive:
           - Kind
           - ProvisioningState
           - MigrationStatus
+
+  # Giving preview message to each command
+  - where:
+      subject: (^SqlService)
+    set:
+      preview-message: This is a SQL Service resource and can only be accessed using cmdlets that have SqlService in their name. (For example Get-AzDataMigrationSqlService should be used to access a data migration SQL Service and NOT Get-AzDataMigrationService)
+  - where:
+      subject: (^ToSqlManagedInstance)
+    set:
+      preview-message: Only use cmdlets containing ToSqlManagedInstance in their name for getting or deleting or performing cutover on a migration created using New-AzDataMigrationToSqlManagedInstance
+  - where:
+      subject: (^ToSqlVM)
+    set:
+      preview-message: Only use cmdlets containing ToSqlVM in their name for getting or deleting or performing cutover on a migration created using New-AzDataMigrationToSqlVM
+  - where:
+      subject: (^ToSqlDb)
+    set:
+      preview-message: Only use cmdlets containing ToSqlDb in their name for getting or stopping or deleting a migration created using New-AzDataMigrationToSqlDb
+
+  # Making parameters required/optional
+  - from: swagger-document
+    where: $.definitions.MigrationOperationInput
+    transform: $['required'] = ['migrationOperationId']
+
 ```
