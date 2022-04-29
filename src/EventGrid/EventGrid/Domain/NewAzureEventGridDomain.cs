@@ -186,10 +186,14 @@ namespace Microsoft.Azure.Commands.EventGrid
 
             EventGridUtils.ValidateInputMappingInfo(this.InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
 
-            Dictionary<string, UserIdentityProperties> userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
-            foreach (string identityId in IdentityIds)
+            Dictionary<string, UserIdentityProperties> userAssignedIdentities = null;
+            if (IdentityIds != null && IdentityIds.Length > 0)
             {
-                userAssignedIdentities.Add(identityId, new UserIdentityProperties());
+                userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
+                foreach (string identityId in IdentityIds)
+                {
+                    userAssignedIdentities.Add(identityId, new UserIdentityProperties());
+                }
             }
 
             if (this.ShouldProcess(this.Name, $"Create a new EventGrid domain {this.Name} in Resource Group {this.ResourceGroupName}"))

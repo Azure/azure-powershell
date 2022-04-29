@@ -167,10 +167,14 @@ namespace Microsoft.Azure.Commands.EventGrid
             string resourceGroupName = string.Empty;
             string topicName = string.Empty;
 
-            Dictionary<string, UserIdentityProperties> userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
-            foreach (string identityId in IdentityIds)
+            Dictionary<string, UserIdentityProperties> userAssignedIdentities = null;
+            if (IdentityIds != null && IdentityIds.Length > 0)
             {
-                userAssignedIdentities.Add(identityId, new UserIdentityProperties());
+                userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
+                foreach (string identityId in IdentityIds)
+                {
+                    userAssignedIdentities.Add(identityId, new UserIdentityProperties());
+                }
             }
 
             if (!string.IsNullOrEmpty(this.ResourceId))

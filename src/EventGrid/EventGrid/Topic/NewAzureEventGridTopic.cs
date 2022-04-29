@@ -149,11 +149,16 @@ namespace Microsoft.Azure.Commands.EventGrid
             Dictionary<string, string> inputMappingFieldsDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingField, true);
             Dictionary<string, string> inputMappingDefaultValuesDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingDefaultValue, true);
             Dictionary<string, string> inboundIpRuleDictionary = TagsConversionHelper.CreateTagDictionary(this.InboundIpRule, true);
-            Dictionary<string, UserIdentityProperties> userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
-            foreach (string identityId in IdentityIds)
+            Dictionary<string, UserIdentityProperties> userAssignedIdentities = null;
+            if(IdentityIds != null && IdentityIds.Length > 0)
             {
-                userAssignedIdentities.Add(identityId, new UserIdentityProperties());
+                userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
+                foreach (string identityId in IdentityIds)
+                {
+                    userAssignedIdentities.Add(identityId, new UserIdentityProperties());
+                }
             }
+            
 
             EventGridUtils.ValidateInputMappingInfo(this.InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
 

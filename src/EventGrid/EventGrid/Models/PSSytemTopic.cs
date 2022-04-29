@@ -53,13 +53,5 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public IDictionary<string, string> Tags { get; set; }
         public string TopicType { get; private set; }
 
-        /// <summary>
-        /// Return a string representation of this topic
-        /// </summary>
-        /// <returns>null</returns>
-        public override string ToString()
-        {
-            return null;
-        }
     }
 }

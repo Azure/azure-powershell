@@ -89,11 +89,15 @@ namespace Microsoft.Azure.Commands.EventGrid
         {
             // Create a new Event Grid Topic
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
-            Dictionary<string, UserIdentityProperties> userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
+            Dictionary<string, UserIdentityProperties> userAssignedIdentities = null;
 
-            foreach (string identityId in IdentityIds)
+            if (IdentityIds != null && IdentityIds.Length > 0)
             {
-                userAssignedIdentities.Add(identityId, new UserIdentityProperties());
+                userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
+                foreach (string identityId in IdentityIds)
+                {
+                    userAssignedIdentities.Add(identityId, new UserIdentityProperties());
+                }
             }
 
             if (this.ShouldProcess(this.Name, $"Create a new EventGrid topic {this.Name} in Resource Group {this.ResourceGroupName}"))
