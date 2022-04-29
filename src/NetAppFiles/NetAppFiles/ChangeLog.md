@@ -20,7 +20,7 @@
 ## Upcoming Release
 * Added cmdlet `New/Remove/Get/Update-AzNetAppFilesSubvolume` and `Get-AzNetAppFilesSubvolumeMetadata`
 * Added cmdlet `New/Remove/Get-AzNetAppFilesVolumeGroup`
-* Added cmdlet `New-AzExportPolicyRuleObject` and `New-AzExportPolicyObject`
+* Added cmdlet `New-AzNetAppFilesExportPolicyRuleObject` and `New-AzNetAppFilesExportPolicyObject`
 * Added `Restore-AzNetAppFilesSnapshot` to restore the specified files from the specified snapshot to the active filesystem
 * Added property `LdapSearchScope` to `PSNetAppFilesActiveDirectory`
 * Added property `SystemData` to `PSNetAppFilesBackupPolicy`, `PSNetAppFilesAccount` and `PSNetAppFilesPool` 
