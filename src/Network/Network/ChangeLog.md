@@ -40,6 +40,9 @@
     - `New-AzVpnServerConfigurationPolicyGroup`
     - `Update-AzVpnServerConfigurationPolicyGroup`
     - `Remove-AzVpnServerConfigurationPolicyGroup`
+* Updated cmdlets to add new option of `HubRoutingPreference` in RouteServer.
+    - `New-AzRouteServer`
+    - `Update-AzRouteServer`
 
 ## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.

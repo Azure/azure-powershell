@@ -42,7 +42,7 @@ function Test-RouteServerCRUD
       $publicIp = Get-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgName
 
       # Create route server
-      $actualvr = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedsubnet.Id -PublicIpAddress $publicIp
+      $actualvr = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedsubnet.Id -PublicIpAddress $publicIp -HubRoutingPreference "ExpressRoute"
       $expectedvr = Get-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
       Assert-AreEqual $expectedvr.ResourceGroupName $actualvr.ResourceGroupName	
       Assert-AreEqual $expectedvr.Name $actualvr.Name
