@@ -51,7 +51,7 @@ Update-AzManagedCassandraDataCenter `
  -ResourceGroupName "resourceGroupName" `
  -ClusterName "clusterName" `
  -DataCenterName "dataCenterName" `
- -NodeCount "N"
+ -NodeCount 3
 ```
 
 ## PARAMETERS

@@ -44,7 +44,7 @@ RoleDefinitionId can be either fully qualified or just the Guid.
 
 ### Example 1
 ```powershell
-New-AzCosmosDBSqlRoleAssignment 
+New-AzCosmosDBSqlRoleAssignment `
 	-AccountName accountName `
 	-ResourceGroupName resourceGroupName `
 	-RoleDefinitionId "/subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleDefinitions/roleDefinitionId" `

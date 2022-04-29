@@ -43,7 +43,7 @@ New-AzManagedCassandraDataCenter `
  -DataCenterName "dataCenterName" `
  -DelegatedSubnetId "resourceId" `
  -Location "location" `
- -NodeCount "N"
+ -NodeCount 3
 ```
 
 ## PARAMETERS

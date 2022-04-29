@@ -46,7 +46,7 @@ The **Remove-AzManagedCassandraDataCenter** cmdlet deletes a managed Cassandra d
 Remove-AzManagedCassandraDataCenter `
  -ResourceGroupName "resourceGroupName" `
  -ClusterName "clusterName" `
- -DataCenterName "dataCenterName"}
+ -DataCenterName "dataCenterName"
 ```
 
 ### Example 2

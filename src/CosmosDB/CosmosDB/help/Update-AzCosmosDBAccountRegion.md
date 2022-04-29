@@ -42,7 +42,7 @@ Please note, we only support Addition of Regions. Please provide either Location
 
 ### Example 1
 ```powershell
-Update-AzCosmosDBAccountRegion -ResourceGroupName rg -Name dbname -Location "location1,location2"
+Update-AzCosmosDBAccountRegion -ResourceGroupName rg -Name dbname -Location "location1", "location2"
 ```
 
 ```output

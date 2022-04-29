@@ -51,7 +51,7 @@ Update-AzManagedCassandraCluster `
  -ClusterName "clusterName" `
  -ExternalGossipCertificate "certificates" `
  -ClientCertificate "certificates" `
- -RepairEnabled "boolean"
+ -RepairEnabled $true
 ```
 
 ### Example 2
@@ -60,7 +60,7 @@ Update-AzManagedCassandraCluster `
  -ResourceId "clusterResourceId" `
  -ExternalGossipCertificate "certificates" `
  -ClientCertificate "certificates" `
- -RepairEnabled "boolean"
+ -RepairEnabled $true
 ```
 
 ### Example 3
@@ -68,7 +68,7 @@ Update-AzManagedCassandraCluster `
 $clusterResource | Update-AzManagedCassandraCluster `
  -ExternalGossipCertificate "certificates" `
  -ClientCertificate "certificates" `
- -RepairEnabled "boolean"
+ -RepairEnabled $true
 ```
 
 ## PARAMETERS
