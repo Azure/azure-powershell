@@ -134,3 +134,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetAppFilesBackup](./New-AzNetAppFilesBackup.md)
+[Remove-AzNetAppFilesBackup](./Remove-AzNetAppFilesBackup.md)
+[Update-AzNetAppFilesBackup](./Update-AzNetAppFilesBackup.md)
+[Get-AzNetAppFilesBackupPolicy](./Get-AzNetAppFilesBackupPolicy.md)
+[New-AzNetAppFilesBackupPolicy](./New-AzNetAppFilesBackupPolicy.md)
+[Update-AzNetAppFilesBackupPolicy](./Update-AzNetAppFilesBackupPolicy.md)
+[Remove-AzNetAppFilesBackupPolicy](./Remove-AzNetAppFilesBackupPolicy.md)
+[Get-AzNetAppFilesVolume](./Get-AzNetAppFilesAzNetAppFilesVolume.md)
+[New-AzNetAppFilesVolume](./New-AzNetAppFilesAzNetAppFilesVolume.md)
+[Update-AzNetAppFilesVolume](./Update-AzNetAppFilesAzNetAppFilesVolume.md)
+[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilesAzNetAppFilesVolume.md)

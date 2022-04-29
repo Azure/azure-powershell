@@ -8,7 +8,7 @@ schema: 2.0.0
 # Restore-AzNetAppFilesSnapshotFile
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Restore the specified files from the specified snapshot to the active filesystem 
 
 ## SYNTAX
 
@@ -34,16 +34,16 @@ Restore-AzNetAppFilesSnapshotFile [-Name <String>] -FilePath <String[]> [-Destin
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Restore the specified files from the specified snapshot to the active filesystem 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Restore-AzNetAppFilesSnapshotFile -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyVolume" -Name "MySnapshotName" -FilePath "/dir1/customer1.db" -DestintationPath "/AVSdataStore"
 ```
 
-{{ Add example description here }}
+This command Restores the files provided in FilePath to the directory /AVSdataStore from the MyVolume snapshot called MySnapshotName
 
 ## PARAMETERS
 

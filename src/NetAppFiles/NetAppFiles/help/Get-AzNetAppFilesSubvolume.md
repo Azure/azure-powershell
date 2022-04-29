@@ -194,3 +194,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzNetAppFilesSubvolume](./New-AzNetAppFilesSubvolume.md)
 [Update-AzNetAppFilesSubvolume](./Update-AzNetAppFilesSubvolume.md)
 [Remove-AzNetAppFilesSubvolume](./Remove-AzNetAppFilesSubvolume.md)
+[Get-AzNetAppFilesSubvolumeMetadata](./Get-AzNetAppFilesSubvolumeMetadata.md)

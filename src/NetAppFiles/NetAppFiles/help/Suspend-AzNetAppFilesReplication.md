@@ -227,3 +227,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Approve-AzNetAppFilesReplication](./Approve-AzNetAppFilesReplication.md)
+[Inititialize-AzNetAppFilesReplication](./Inititialize-AzNetAppFilesReplication.md)
+[Resume-AzNetAppFilesReplication](./Resume-AzNetAppFilesReplication.md)
+[Remove-AzNetAppFilesReplication](./Remove-AzNetAppFilesReplication.md)
+[Get-AzNetAppFilesReplicationStatus](./Get-AzNetAppFilesReplicationStatus.md)
+[Get-AzNetAppFilesVolume](./Get-AzNetAppFilesAzNetAppFilesVolume.md)
+[New-AzNetAppFilesVolume](./New-AzNetAppFilesAzNetAppFilesVolume.md)
+[Update-AzNetAppFilesVolume](./Update-AzNetAppFilesAzNetAppFilesVolume.md)
+[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilesAzNetAppFilesVolume.md)

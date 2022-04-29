@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesSnapshot))]
     [Alias("Restore-AnfSnapshotFiles")]
-    public class RestoreFilesAzureRmNetAppFilesSnapshot : AzureNetAppFilesCmdletBase
+    public class RestoreAzureRmNetAppFilesSnapshotFiles : AzureNetAppFilesCmdletBase
     {
         [Parameter
             (Mandatory = true,
