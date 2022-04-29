@@ -532,7 +532,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             {
                 tokenStr = tokenValue;
             });
+#if DEBUG
             WriteDebug(DateTime.Now.ToString() + ": token:" + tokenStr);
+#endif
             return tokenStr;
         }
 

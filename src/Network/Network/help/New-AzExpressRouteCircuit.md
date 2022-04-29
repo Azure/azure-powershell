@@ -26,7 +26,7 @@ New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <
 ```
 New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String> [-SkuTier <String>]
  [-SkuFamily <String>] -ExpressRoutePort <PSExpressRoutePort> -BandwidthInGbps <Double>
- [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
+ [-AuthorizationKey <String>] [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
  [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -104,6 +104,21 @@ A list of circuit authorizations.
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization[]
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AuthorizationKey
+The authorization key used when the circuit is provisioned on an ExpressRoutePort resource in different subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: ExpressRoutePort
 Aliases:
 
 Required: False
@@ -361,7 +376,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
