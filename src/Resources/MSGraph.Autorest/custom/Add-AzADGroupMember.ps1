@@ -28,6 +28,7 @@ System.Boolean
 https://docs.microsoft.com/powershell/module/az.resources/add-azadgroupmember
 #>
 function Add-AzADGroupMember {
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PreviewMessageAttribute("This cmdlet is using API version beta which is under preview.")]
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='MemberObjectIdWithGroupObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(

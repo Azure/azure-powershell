@@ -34,6 +34,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IMicrosof
 https://docs.microsoft.com/powershell/module/az.resources/get-azadapplicationfederatedidentitycredentials
 #>
 function Get-AzADApplicationFederatedIdentityCredential {
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PreviewMessageAttribute("This cmdlet is using API version beta which is under preview.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IMicrosoftGraphFederatedIdentityCredential])]
     [CmdletBinding(DefaultParameterSetName='ListByApplicationObjectId', PositionalBinding=$false)]
     param(
@@ -168,6 +169,6 @@ function Get-AzADApplicationFederatedIdentityCredential {
             $PSBoundParameters['ApplicationObjectId'] = $PSBoundParameters['ApplicationObject'].Id
             $PSBoundParameters.Remove('ApplicationObject')
         }
-        . Az.MSGraph.internal\Get-AzADApplicationFederatedIdentityCredentials @PSBoundParameters
+        . Az.MSGraph.internal\Get-AzADApplicationFederatedIdentityCredential @PSBoundParameters
     }
 }
