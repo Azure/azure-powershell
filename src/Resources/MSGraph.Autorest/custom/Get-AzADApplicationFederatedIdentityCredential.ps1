@@ -38,18 +38,21 @@ function Get-AzADApplicationFederatedIdentityCredential {
     [CmdletBinding(DefaultParameterSetName='ListByApplicationObjectId', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName = 'ListByApplicationObjectId', Mandatory)]
+        [Parameter(ParameterSetName='GetByApplicationObjectId', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
         [System.String]
         # key: id of application
         ${ApplicationObjectId},
 
         [Parameter(ParameterSetName = 'ListByApplicationObject', Mandatory)]
+        [Parameter(ParameterSetName='GetByApplicationObject', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphApplication]
         # application object
         ${ApplicationObject},
     
-        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName='GetByApplicationObjectId', Mandatory)]
+        [Parameter(ParameterSetName='GetByApplicationObject', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
         [System.String]
         # key: id of federatedIdentityCredential
@@ -69,38 +72,44 @@ function Get-AzADApplicationFederatedIdentityCredential {
         # Select properties to be returned
         ${Select},
     
-        [Parameter(ParameterSetName='List')]
+        [Parameter(ParameterSetName='ListByApplicationObjectId')]
+        [Parameter(ParameterSetName='ListByApplicationObject')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
         [System.Management.Automation.SwitchParameter]
         # Include count of items
         ${Count},
     
-        [Parameter(ParameterSetName='List')]
+        [Parameter(ParameterSetName='ListByApplicationObjectId')]
+        [Parameter(ParameterSetName='ListByApplicationObject')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
         [System.String]
         # Filter items by property values
         ${Filter},
     
-        [Parameter(ParameterSetName='List')]
+        [Parameter(ParameterSetName='ListByApplicationObjectId')]
+        [Parameter(ParameterSetName='ListByApplicationObject')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
         [System.String[]]
         # Order items by property values
         ${Orderby},
     
-        [Parameter(ParameterSetName='List')]
+        [Parameter(ParameterSetName='ListByApplicationObjectId')]
+        [Parameter(ParameterSetName='ListByApplicationObject')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
         [System.String]
         # Search items by search phrases
         ${Search},
     
-        [Parameter(ParameterSetName='List')]
+        [Parameter(ParameterSetName='ListByApplicationObjectId')]
+        [Parameter(ParameterSetName='ListByApplicationObject')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.UInt64]
         # Gets only the first 'n' objects.
         ${First},
     
-        [Parameter(ParameterSetName='List')]
+        [Parameter(ParameterSetName='ListByApplicationObjectId')]
+        [Parameter(ParameterSetName='ListByApplicationObject')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.UInt64]
         # Ignores the first 'n' objects and then gets the remaining objects.
@@ -159,6 +168,6 @@ function Get-AzADApplicationFederatedIdentityCredential {
             $PSBoundParameters['ApplicationObjectId'] = $PSBoundParameters['ApplicationObject'].Id
             $PSBoundParameters.Remove('ApplicationObject')
         }
-        . Az.MSGraph.internal\Get-AzADApplicationFederatedIdentityCredential @PSBoundParameters
+        . Az.MSGraph.internal\Get-AzADApplicationFederatedIdentityCredentials @PSBoundParameters
     }
 }

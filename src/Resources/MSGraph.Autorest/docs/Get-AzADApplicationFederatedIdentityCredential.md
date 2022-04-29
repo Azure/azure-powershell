@@ -14,27 +14,28 @@ Get federatedIdentityCredentials by Id from applications.
 
 ### ListByApplicationObjectId (Default)
 ```
-Get-AzADApplicationFederatedIdentityCredential -ApplicationObjectId <String> [-Expand <String[]>]
+Get-AzADApplicationFederatedIdentityCredential -ApplicationObjectId <String> [-Count] [-Expand <String[]>]
+ [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-First <UInt64>]
+ [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByApplicationObject
+```
+Get-AzADApplicationFederatedIdentityCredential -ApplicationObject <MicrosoftGraphApplication> -Id <String>
+ [-Expand <String[]>] [-Select <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByApplicationObjectId
+```
+Get-AzADApplicationFederatedIdentityCredential -ApplicationObjectId <String> -Id <String> [-Expand <String[]>]
  [-Select <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzADApplicationFederatedIdentityCredential -Id <String> [-Expand <String[]>] [-Select <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzADApplicationFederatedIdentityCredential [-Count] [-Expand <String[]>] [-Filter <String>]
- [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByApplicationObject
 ```
-Get-AzADApplicationFederatedIdentityCredential -ApplicationObject <MicrosoftGraphApplication>
- [-Expand <String[]>] [-Select <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADApplicationFederatedIdentityCredential -ApplicationObject <MicrosoftGraphApplication> [-Count]
+ [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
+ [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +65,7 @@ To construct, see NOTES section for APPLICATIONOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphApplication
-Parameter Sets: ListByApplicationObject
+Parameter Sets: GetByApplicationObject, ListByApplicationObject
 Aliases:
 
 Required: True
@@ -79,7 +80,7 @@ key: id of application
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByApplicationObjectId
+Parameter Sets: GetByApplicationObjectId, ListByApplicationObjectId
 Aliases:
 
 Required: True
@@ -94,7 +95,7 @@ Include count of items
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List
+Parameter Sets: ListByApplicationObject, ListByApplicationObjectId
 Aliases:
 
 Required: False
@@ -139,7 +140,7 @@ Filter items by property values
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: ListByApplicationObject, ListByApplicationObjectId
 Aliases:
 
 Required: False
@@ -154,7 +155,7 @@ Gets only the first 'n' objects.
 
 ```yaml
 Type: System.UInt64
-Parameter Sets: List
+Parameter Sets: ListByApplicationObject, ListByApplicationObjectId
 Aliases:
 
 Required: False
@@ -169,7 +170,7 @@ key: id of federatedIdentityCredential
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetByApplicationObject, GetByApplicationObjectId
 Aliases:
 
 Required: True
@@ -184,7 +185,7 @@ Order items by property values
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List
+Parameter Sets: ListByApplicationObject, ListByApplicationObjectId
 Aliases:
 
 Required: False
@@ -199,7 +200,7 @@ Search items by search phrases
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: ListByApplicationObject, ListByApplicationObjectId
 Aliases:
 
 Required: False
@@ -229,7 +230,7 @@ Ignores the first 'n' objects and then gets the remaining objects.
 
 ```yaml
 Type: System.UInt64
-Parameter Sets: List
+Parameter Sets: ListByApplicationObject, ListByApplicationObjectId
 Aliases:
 
 Required: False
