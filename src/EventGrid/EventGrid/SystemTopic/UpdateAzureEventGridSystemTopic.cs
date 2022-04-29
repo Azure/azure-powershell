@@ -26,7 +26,7 @@ using EventGridModels = Microsoft.Azure.Management.EventGrid.Models;
 namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
-        "New",
+        "Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSystemTopic",
         SupportsShouldProcess = true,
         DefaultParameterSetName = TopicNameParameterSet),
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = SystemTopicNameParameterSet)]
         [ResourceNameCompleter("Microsoft.EventGrid/systemTopics", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
-        [Alias("Name")]
+        [Alias("SystemTopicName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -64,30 +64,14 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = SystemTopicNameParameterSet)]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None", IgnoreCase = true)]
         public string IdentityType { get; set; }
 
-        /// <summary>
-        /// string which represents the PrincipalId.
-        /// </summary>
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TagsHelp,
-            ParameterSetName = SystemTopicNameParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string PrincipalId { get; set; }
-
-        /// <summary>
-        /// string which represents the TenantId.
-        /// </summary>
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TagsHelp,
-            ParameterSetName = SystemTopicNameParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string TenantId { get; set; }
+            HelpMessage = "List of user assigned Identity Ids")]
+        public string[] IdentityIds { get; set; }
 
         /// <summary>
         /// Hashtable which represents resource Tags.
@@ -107,14 +91,17 @@ namespace Microsoft.Azure.Commands.EventGrid
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
             Dictionary<string, UserIdentityProperties> userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
 
+            foreach (string identityId in IdentityIds)
+            {
+                userAssignedIdentities.Add(identityId, new UserIdentityProperties());
+            }
+
             if (this.ShouldProcess(this.Name, $"Create a new EventGrid topic {this.Name} in Resource Group {this.ResourceGroupName}"))
             {
                 SystemTopic topic = this.Client.UpdateSystemTopic(
                     this.ResourceGroupName,
                     this.Name,
                     this.IdentityType,
-                    this.PrincipalId,
-                    this.TenantId,
                     userAssignedIdentities,
                     tagDictionary);
 

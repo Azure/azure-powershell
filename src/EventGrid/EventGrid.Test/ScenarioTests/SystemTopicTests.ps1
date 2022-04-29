@@ -47,7 +47,7 @@ function SystemTopicTests {
     {
         Write-Debug "Creating a new EventGrid SystemTopic: $topicName in resource group $resourceGroupName"
         Write-Debug "Topic: $topicName"
-        $result = New-AzEventGridSystemTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location -Source $sbNamespaceInRg1.Id -TopicType 'Microsoft.ServiceBus/Namespaces'
+        $result = New-AzEventGridSystemTopic -ResourceGroup $resourceGroupName -Name $topicName -Source $sbNamespaceInRg1.Id -TopicType 'Microsoft.ServiceBus.Namespaces' -Location $location
         Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
         Write-Debug "Getting the created topic within the resource group"
@@ -56,11 +56,11 @@ function SystemTopicTests {
         Assert-True {$createdTopic.TopicName -eq $topicName} "System Topic created earlier is not found."
 
         Write-Debug "Creating a second EventGrid SystemTopic: $topicName2 in resource group $secondResourceGroup"
-        $result = New-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName2 -Location $location -Tag @{ Dept = "IT"; Environment = "Test" } -Source $sbNamespace1InRg2.Id -TopicType 'Microsoft.ServiceBus/Namespaces'
+        $result = New-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName2 -Source $sbNamespace1InRg2.Id -TopicType 'Microsoft.ServiceBus.Namespaces' -Location $location -Tag @{ Dept = "IT"; Environment = "Test" } 
         Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
         Write-Debug "Creating a third EventGrid SystemTopic: $topicName3 in resource group $secondResourceGroup"
-        $result = New-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName3 -Location $location -Source $sbNamespace1InRg2.Id -TopicType 'Microsoft.ServiceBus/Namespaces'
+        $result = New-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName3 -Source $sbNamespace2InRg2.Id -TopicType 'Microsoft.ServiceBus.Namespaces' -Location $location 
         Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
         Write-Debug "Listing all the system topics created in the resourceGroup $secondResourceGroup"

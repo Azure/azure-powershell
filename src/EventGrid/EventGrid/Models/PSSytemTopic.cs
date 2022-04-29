@@ -23,13 +23,12 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public PSSystemTopic(SystemTopic topic)
         {
             this.Id = topic.Id;
-            this.Identity = topic.Identity;
+            this.Identity = new PsIdentityInfo(topic.Identity);
             this.Location = topic.Location;
             this.MetricResourceId = topic.MetricResourceId;
             this.TopicName = topic.Name;
             this.ProvisioningState = topic.ProvisioningState;
             this.Source = topic.Source;
-            this.SystemData = topic.SystemData;
             this.Tags = topic.Tags;
             this.TopicType = topic.TopicType;
             this.Type = topic.Type;
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public string TopicName { get; set; }
 
         public string Id { get; set; }
-        public IdentityInfo Identity { get; set; }
+        public PsIdentityInfo Identity { get; set; }
         public string Type { get; set; }
 
         public string Location { get; set; }
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
 
         public string ProvisioningState { get; set; }
         public string Source { get; set; }
-        public SystemData SystemData { get; set; }
 
         public IDictionary<string, string> Tags { get; set; }
         public string TopicType { get; private set; }

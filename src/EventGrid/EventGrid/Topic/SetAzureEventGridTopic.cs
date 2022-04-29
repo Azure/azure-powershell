@@ -115,6 +115,27 @@ namespace Microsoft.Azure.Commands.EventGrid
         public Hashtable InboundIpRule { get; set; }
 
         /// <summary>
+        /// string which represents the IdentityType.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.IdentityTypeHelp,
+            ParameterSetName = TopicInputObjectParameterSet)]
+        [ValidateSet("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None", IgnoreCase = true)]
+        public string IdentityType { get; set; }
+
+        /// <summary>
+        /// string array of identity ids for user assigned identities
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.IdentityIdsHelp,
+            ParameterSetName = TopicInputObjectParameterSet)]
+        public string[] IdentityIds { get; set; }
+
+        /// <summary>
         /// Public network access.
         /// </summary>
         [Parameter(
@@ -146,6 +167,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             string resourceGroupName = string.Empty;
             string topicName = string.Empty;
 
+            Dictionary<string, UserIdentityProperties> userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
+            foreach (string identityId in IdentityIds)
+            {
+                userAssignedIdentities.Add(identityId, new UserIdentityProperties());
+            }
+
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
                 EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
@@ -175,7 +202,9 @@ namespace Microsoft.Azure.Commands.EventGrid
                     existingTopic.Location,
                     tagDictionary,
                     inboundIpRuleDictionary,
-                    this.PublicNetworkAccess);
+                    this.PublicNetworkAccess,
+                    this.IdentityType,
+                    userAssignedIdentities);
 
                 PSTopic psTopic = new PSTopic(topic);
                 this.WriteObject(psTopic);

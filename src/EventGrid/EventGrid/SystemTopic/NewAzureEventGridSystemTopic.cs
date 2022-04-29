@@ -53,51 +53,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = SystemTopicNameParameterSet)]
         [ResourceNameCompleter("Microsoft.EventGrid/systemTopics", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
-        [Alias("Name")]
         public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
-            Position = 3,
-            HelpMessage = EventGridConstants.TopicNameHelp,
-            ParameterSetName = SystemTopicNameParameterSet)]
-        [ResourceNameCompleter("Microsoft.EventGrid/systemTopics", nameof(ResourceGroupName))]
-        [ValidateNotNullOrEmpty]
-        [Alias("ResourceId")]
-        public string ResourceId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
-            Position = 4,
-            HelpMessage = EventGridConstants.TopicNameHelp,
-            ParameterSetName = SystemTopicNameParameterSet)]
-        [ResourceNameCompleter("Microsoft.EventGrid/systemTopics", nameof(ResourceGroupName))]
-        [ValidateNotNullOrEmpty]
-        [Alias("ResourceName")]
-        public string ResourceName { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
-            Position = 5,
-            HelpMessage = EventGridConstants.TopicNameHelp,
-            ParameterSetName = SystemTopicNameParameterSet)]
-        [ResourceNameCompleter("Microsoft.EventGrid/systemTopics", nameof(ResourceGroupName))]
-        [ValidateNotNullOrEmpty]
-        [Alias("ResourceType")]
-        public string ResourceType { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 6,
-            HelpMessage = EventGridConstants.TopicLocationHelp,
-            ParameterSetName = SystemTopicNameParameterSet)]
-        [LocationCompleter("Microsoft.EventGrid/systemTopics")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
 
         /// <summary>
         /// string which represents the source.
@@ -105,7 +61,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TagsHelp,
+            HelpMessage = EventGridConstants.SourceHelp,
             ParameterSetName = SystemTopicNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Source { get; set; }
@@ -116,21 +72,21 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TagsHelp,
+            HelpMessage = EventGridConstants.TopicTypeNameHelp,
             ParameterSetName = SystemTopicNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string TopicType { get; set; }
 
-        /// <summary>
-        /// string which represents the MetricResourceId.
-        /// </summary>
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TagsHelp,
+            Position = 6,
+            HelpMessage = EventGridConstants.TopicLocationHelp,
             ParameterSetName = SystemTopicNameParameterSet)]
+        [LocationCompleter("Microsoft.EventGrid/systemTopics")]
         [ValidateNotNullOrEmpty]
-        public string MetricResourceId { get; set; }
+        public string Location { get; set; }
+
 
         /// <summary>
         /// string which represents the IdentityType.
@@ -138,32 +94,20 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TagsHelp,
+            HelpMessage = EventGridConstants.IdentityTypeHelp,
             ParameterSetName = SystemTopicNameParameterSet)]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None", IgnoreCase = true)]
         public string IdentityType { get; set; }
 
         /// <summary>
-        /// string which represents the PrincipalId.
+        /// string array of identity ids for user assigned identities
         /// </summary>
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TagsHelp,
+            HelpMessage = EventGridConstants.IdentityIdsHelp,
             ParameterSetName = SystemTopicNameParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string PrincipalId { get; set; }
-
-        /// <summary>
-        /// string which represents the TenantId.
-        /// </summary>
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TagsHelp,
-            ParameterSetName = SystemTopicNameParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string TenantId { get; set; }
+        public string[] IdentityIds { get; set; }
 
         /// <summary>
         /// Hashtable which represents resource Tags.
@@ -182,22 +126,20 @@ namespace Microsoft.Azure.Commands.EventGrid
             // Create a new Event Grid Topic
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
             Dictionary<string, UserIdentityProperties> userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
+            foreach(string identityId in IdentityIds)
+            {
+                userAssignedIdentities.Add(identityId, new UserIdentityProperties());
+            }
 
             if (this.ShouldProcess(this.Name, $"Create a new EventGrid topic {this.Name} in Resource Group {this.ResourceGroupName}"))
             {
                 SystemTopic topic = this.Client.CreateSystemTopic(
                     this.ResourceGroupName,
                     this.Name,
-                    this.ResourceId,
-                    this.ResourceName,
-                    this.ResourceType,
                     this.Location,
                     this.Source,
                     this.TopicType,
-                    this.MetricResourceId,
                     this.IdentityType,
-                    this.PrincipalId,
-                    this.TenantId,
                     userAssignedIdentities,
                     tagDictionary);
 

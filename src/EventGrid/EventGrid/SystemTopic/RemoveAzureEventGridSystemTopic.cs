@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = SystemTopicNameParameterSet)]
         [ResourceNameCompleter("Microsoft.EventGrid/systemTopics", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
-        [Alias("TopicName")]
+        [Alias("SystemTopicName")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true,

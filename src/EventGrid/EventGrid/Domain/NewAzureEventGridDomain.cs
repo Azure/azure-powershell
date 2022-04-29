@@ -120,6 +120,62 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string PublicNetworkAccess { get; set; } = EventGridConstants.Enabled;
 
+        /// <summary>
+        /// DisableLocalAuth
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.DisableLocalAuthHelp,
+            ParameterSetName = DomainNameParameterSet)]
+        [ValidateSet(EventGridConstants.Enabled, EventGridConstants.Disabled, IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter DisableLocalAuth { get; set; }
+
+        /// <summary>
+        /// DisableLocalAuth
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.AutoCreateTopicWithFirstSubscriptionHelp,
+            ParameterSetName = DomainNameParameterSet)]
+        [ValidateSet(EventGridConstants.Enabled, EventGridConstants.Disabled, IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AutoCreateTopicWithFirstSubscription { get; set; }
+
+        /// <summary>
+        /// DisableLocalAuth
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.AutoDeleteTopicWithLastSubscriptionHelp,
+            ParameterSetName = DomainNameParameterSet)]
+        [ValidateSet(EventGridConstants.Enabled, EventGridConstants.Disabled, IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AutoDeleteTopicWithLastSubscription { get; set; }
+
+        /// <summary>
+        /// string which represents the IdentityType.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.IdentityTypeHelp,
+            ParameterSetName = DomainNameParameterSet)]
+        [ValidateSet("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None", IgnoreCase = true)]
+        public string IdentityType { get; set; }
+
+        /// <summary>
+        /// string array of identity ids for user assigned identities
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.IdentityIdsHelp)]
+        public string[] IdentityIds { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // Create a new Event Grid Domain
@@ -129,6 +185,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             Dictionary<string, string> inboundIpRuleDictionary = TagsConversionHelper.CreateTagDictionary(this.InboundIpRule, true);
 
             EventGridUtils.ValidateInputMappingInfo(this.InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
+
+            Dictionary<string, UserIdentityProperties> userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
+            foreach (string identityId in IdentityIds)
+            {
+                userAssignedIdentities.Add(identityId, new UserIdentityProperties());
+            }
 
             if (this.ShouldProcess(this.Name, $"Create a new EventGrid domain {this.Name} in Resource Group {this.ResourceGroupName}"))
             {
@@ -141,7 +203,12 @@ namespace Microsoft.Azure.Commands.EventGrid
                     inputMappingFieldsDictionary,
                     inputMappingDefaultValuesDictionary,
                     inboundIpRuleDictionary,
-                    this.PublicNetworkAccess);
+                    this.PublicNetworkAccess,
+                    this.IdentityType,
+                    userAssignedIdentities,
+                    this.DisableLocalAuth.IsPresent,
+                    this.AutoCreateTopicWithFirstSubscription.IsPresent,
+                    this.AutoDeleteTopicWithLastSubscription.IsPresent);
 
                 PSDomain psDomain = new PSDomain(domain);
                 this.WriteObject(psDomain);

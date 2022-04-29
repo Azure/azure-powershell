@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         protected const string TopicNameParameterSet = "TopicNameParameterSet";
         protected const string SystemTopicNameParameterSet = "SystemTopicNameParameterSet";
+        protected const string SystemTopicEventSuscriptionParameterSet = "SystemTopicEventSuscriptionParameterSet";
         protected const string ResourceGroupNameParameterSet = "ResourceGroupNameParameterSet";
         protected const string CustomTopicEventSubscriptionParameterSet = "CustomTopicEventSubscriptionParameterSet";
         protected const string SubscriptionAndResourceGroupEventSubscriptionParameterSet = "SubscriptionAndResourceGroupEventSubscriptionParameterSet";
