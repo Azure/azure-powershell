@@ -26,31 +26,50 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using Xunit;
+using Microsoft.Azure.Commands.TestFx;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
     using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
 
-    public class ApiManagementTests : RMTestBase
+    public class ApiManagementTestRunner
     {
-        private readonly EnvironmentSetupHelper _helper;
+        protected readonly ITestRunner TestRunner;
 
-        public ApiManagementTests(Xunit.Abstractions.ITestOutputHelper output)
+        protected ApiManagementTestRunner(ITestOutputHelper output)
         {
-            _helper = new EnvironmentSetupHelper
-            {
-                TracingInterceptor = new XunitTracingInterceptor(output)
-            };
-            XunitTracingInterceptor.AddToContext(_helper.TracingInterceptor);
-        }
-
-        protected void SetupManagementClients(MockContext context)
-        {
-            var resourceManagementClient = GetResourceManagementClient(context);
-            var armStorageManagementClient = GetArmStorageManagementClient(context);
-            var apiManagementClient = GetApiManagementManagementClient(context);
-
-            _helper.SetupSomeOfManagementClients(resourceManagementClient, armStorageManagementClient, apiManagementClient);
+            TestRunner = TestManager.CreateInstance (output)
+                .WithNewPsScriptFilename ($"{GetType().Name}.ps1")
+                .WithProjectSubfolderForTests ("ScenarioTests")
+                .WithCommonPsScripts (new[]
+                {
+                    @"Common.ps1",
+                    @"../AzureRM.Storage.ps1",
+                    @"../AzureRM.Resources.ps1"
+                })
+                .WithNewRmModules (helper => new[]
+                {
+                    helper.RMProfileModule,
+                    helper.GetRMModulePath("Az.ApiManagement.psd1")
+                })
+                .WithNewRecordMatcherArguments (
+                    userAgentsToIgnore: new Dictionary<string, string>
+                    {
+                        {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
+                    },
+                    resourceProviders: new Dictionary<string, string>
+                    {
+                        {"Microsoft.Resources", null},
+                        {"Microsoft.Features", null},
+                        {"Microsoft.Authorization", null}
+                    }
+                ).WithManagementClients(
+                    GetResourceManagementClient,
+                    GetArmStorageManagementClient,
+                    GetApiManagementManagementClient
+                )
+                .Build();
         }
 
         private static StorageManagementClient GetArmStorageManagementClient(MockContext context)
@@ -67,12 +86,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         {
             return context.GetServiceClient<ApiManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
+    }
+
+    public class ApiManagementTests : ApiManagementTestRunner
+    {
+        public ApiManagementTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
+        {
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudApiManagement()
         {
-            RunPowerShellTest("Test-CrudApiManagement");
+            TestRunner.RunTestScript("Test-CrudApiManagement");
         }
 
 #if NETSTANDARD
@@ -84,64 +110,28 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBackupRestoreApiManagement()
         {
-            RunPowerShellTest("Test-BackupRestoreApiManagement");
+            TestRunner.RunTestScript("Test-BackupRestoreApiManagement");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestApiManagementHostnamesCrud()
         {
-            RunPowerShellTest("Test-ApiManagementHostnamesCRUD");
+            TestRunner.RunTestScript("Test-ApiManagementHostnamesCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudApiManagementWithVirtualNetwork()
         {
-            RunPowerShellTest("Test-ApiManagementVirtualNetworkCRUD");
+            TestRunner.RunTestScript("Test-ApiManagementVirtualNetworkCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudApiManagementWithAdditionalRegions()
         {
-            RunPowerShellTest("Test-ApiManagementWithAdditionalRegionsCRUD");
-        }
-
-        private void RunPowerShellTest(params string[] scripts)
-        {
-            var sf = new StackTrace().GetFrame(1);
-            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
-            var mockName = sf.GetMethod().Name;
-
-            var d = new Dictionary<string, string>
-            {
-                {"Microsoft.Resources", null},
-                {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null}
-            };
-            var providersToIgnore = new Dictionary<string, string>
-            {
-                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
-            };
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
-            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-
-            using (var context = MockContext.Start(callingClassType, mockName))
-            {
-                SetupManagementClients(context);
-
-                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                _helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + GetType().Name + ".ps1",
-                    _helper.RMProfileModule,
-                    _helper.GetRMModulePath("AzureRM.ApiManagement.psd1"),
-                    "AzureRM.Storage.ps1",
-                    "AzureRM.Resources.ps1");
-
-                _helper.RunPowerShellTest(scripts);
-            }
+            TestRunner.RunTestScript("Test-ApiManagementWithAdditionalRegionsCRUD");
         }
     }
 }
