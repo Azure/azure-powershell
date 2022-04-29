@@ -16,27 +16,27 @@ using System;
 using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
-using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.EventGrid.Utilities;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
+
     [Cmdlet(
-        "New",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SystemTopicEventGridSubscription",
+        "Update",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSystemTopicEventSubscription",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ResourceGroupNameParameterSet),
+        DefaultParameterSetName = SystemTopicEventSuscriptionParameterSet),
     OutputType(typeof(PSEventSubscription))]
-    class NewAzureSystemTopicEventSubscription : AzureEventGridCmdletBase
+    class UpdateAzureEventGridSystemTopicEventSubscription : AzureEventGridCmdletBase
     {
+
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
-            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           Position = 0,
+           HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
+           ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string EventSubscriptionName { get; set; }
 
@@ -57,24 +57,6 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string SystemTopicName { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.AzureActiveDirectoryApplicationIdOrUriHelp,
-            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string AzureActiveDirectoryApplicationIdOrUri { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.AzureActiveDirectoryTenantIdHelp,
-            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string AzureActiveDirectoryTenantId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -116,64 +98,10 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = EventGridConstants.DeliverySchemaHelp,
-            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string DeliverySchema { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.EventTtlHelp,
-            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public int EventTtl { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.ExpirationDateHelp,
-            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public DateTime ExpirationDate { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
             HelpMessage = EventGridConstants.LabelsHelp,
             ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string[] Labels { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.MaxDeliveryAttemptHelp,
-            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public int MaxDeliveryAttempt { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.MaxEventsPerBatchHelp,
-            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public int MaxEventsPerBatch { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.PreferredBatchSizeInKiloByteHelp,
-            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public int PreferredBatchSizeInKiloByte { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -243,31 +171,9 @@ namespace Microsoft.Azure.Commands.EventGrid
         {
             if (this.ShouldProcess(this.EventSubscriptionName, $"Create a new Event Grid subscription {this.EventSubscriptionName}"))
             {
-                
+
                 bool isSubjectCaseSensitive = this.SubjectCaseSensitive.IsPresent;
                 bool enableAdvancedFilteringOnArrays = this.AdvancedFilteringOnArrays.IsPresent;
-                RetryPolicy retryPolicy = null;
-
-
-                if (this.IsParameterBound(c => c.MaxDeliveryAttempt) || this.IsParameterBound(c => c.EventTtl))
-                {
-                    retryPolicy = new RetryPolicy(
-                        maxDeliveryAttempts: this.MaxDeliveryAttempt == 0 ? (int?)null : this.MaxDeliveryAttempt,
-                        eventTimeToLiveInMinutes: this.EventTtl == 0 ? (int?)null : this.EventTtl);
-                }
-
-                if (!string.Equals(this.EndpointType, EventGridConstants.Webhook, StringComparison.OrdinalIgnoreCase))
-                {
-                    if (this.IsParameterBound(c => c.MaxEventsPerBatch) || this.IsParameterBound(c => c.PreferredBatchSizeInKiloByte))
-                    {
-                        throw new ArgumentException("MaxEventsPerBatch and PreferredBatchSizeInKiloByte are supported when EndpointType is webhook only.");
-                    }
-
-                    if (this.IsParameterBound(c => c.AzureActiveDirectoryApplicationIdOrUri) || this.IsParameterBound(c => c.AzureActiveDirectoryTenantId))
-                    {
-                        throw new ArgumentException("AzureActiveDirectoryApplicationIdOrUri and AzureActiveDirectoryTenantId are supported when EndpointType is webhook only.");
-                    }
-                }
 
                 if (EventGridUtils.ShouldShowEventSubscriptionWarningMessage(this.Endpoint, this.EndpointType))
                 {
@@ -281,22 +187,15 @@ namespace Microsoft.Azure.Commands.EventGrid
                     WriteWarning(EventGridConstants.IncludedEventTypeDeprecationMessage);
                 }
 
-                EventSubscription eventSubscription = this.Client.createSystemTopicEventSubscriptiion(
+                EventSubscription eventSubscription = this.Client.UpdateSystemTopicEventSubscriptiion(
                     this.EventSubscriptionName,
                     this.ResourceGroupName,
                     this.SystemTopicName,
-                    this.AzureActiveDirectoryApplicationIdOrUri,
-                    this.AzureActiveDirectoryTenantId,
                     this.DeadLetterEndpoint,
                     this.DeliveryAttributeMapping,
                     this.Endpoint,
                     this.EndpointType,
-                    this.DeliverySchema,
-                    retryPolicy,
-                    this.ExpirationDate,
                     this.Labels,
-                    this.MaxEventsPerBatch,
-                    this.PreferredBatchSizeInKiloByte,
                     this.StorageQueueMessageTtl,
                     this.AdvancedFilter,
                     enableAdvancedFilteringOnArrays,

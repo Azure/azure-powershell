@@ -13,22 +13,23 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
-using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
+using Microsoft.Azure.Management.EventGrid.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 
-namespace Microsoft.Azure.Commands.EventGrid.SystemTopicEventSubscription
+namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
-        "Remove",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SystemTopicEventGridSubscription",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = TopicNameParameterSet),
-    OutputType(typeof(PSSystemTopic))]
-    class RemoveAzureSystemTopicEventSubscription : AzureEventGridCmdletBase
+        "Get",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSystemTopicEventSubscriptionsDeliveryAttribute",
+        DefaultParameterSetName = SystemTopicEventSuscriptionParameterSet),
+    OutputType(typeof(PsDeliveryAttribute))]
+
+    class GetAzureEventGridSystemTopicEventSubscriptionsDeliveryAttribute : AzureEventGridCmdletBase
     {
         [Parameter(
            Mandatory = true,
@@ -57,20 +58,11 @@ namespace Microsoft.Azure.Commands.EventGrid.SystemTopicEventSubscription
         [ValidateNotNullOrEmpty]
         public string SystemTopicName { get; set; }
 
-        [Parameter(
-            Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.EventSubscriptionName, $"Remove event subscription {this.EventSubscriptionName}"))
-            {
-                this.Client.DeleteSystemTopicEventSubscriptiion(this.ResourceGroupName, this.SystemTopicName, this.EventSubscriptionName);
-                if (this.PassThru)
-                {
-                    this.WriteObject(true);
-                }
-            }
+            DeliveryAttributeListResult deliveryAttributeListResult = this.Client.GetAzEventSubscriptionsDeliveryAttribute(this.EventSubscriptionName, this.ResourceGroupName, this.SystemTopicName);
+            PsDeliveryAttribute PsDeliveryAttribute = new PsDeliveryAttribute(deliveryAttributeListResult);
+            this.WriteObject(PsDeliveryAttribute, true);
         }
     }
 }

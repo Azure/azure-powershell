@@ -25,11 +25,10 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
         "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SystemTopicEventSubscriptionsDeliveryAttribute",
-        DefaultParameterSetName = EventSubscriptionTopicNameParameterSet),
-    OutputType(typeof(PSEventSubscription))]
-
-    class GetAzureSystemTopicEventSubscriptionsDeliveryAttribute : AzureEventGridCmdletBase
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridFullUrlForSystemTopicEventSubscription",
+        DefaultParameterSetName = SystemTopicEventSuscriptionParameterSet),
+    OutputType(typeof(string))]
+    class GetAzureEventGridFullUrlForSystemTopicEventSubscription : AzureEventGridCmdletBase
     {
         [Parameter(
            Mandatory = true,
@@ -60,9 +59,8 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public override void ExecuteCmdlet()
         {
-            DeliveryAttributeListResult deliveryAttributeListResult = this.Client.GetAzEventSubscriptionsDeliveryAttribute(this.EventSubscriptionName, this.ResourceGroupName, this.SystemTopicName);
-            PsDeliveryAttribute PsDeliveryAttribute = new PsDeliveryAttribute(deliveryAttributeListResult);
-            this.WriteObject(PsDeliveryAttribute, true);
+            EventSubscriptionFullUrl eventSubscriptionFullUrl = this.Client.GetAzFullUrlForSystemTopicEventSubscription(this.EventSubscriptionName, this.ResourceGroupName, this.SystemTopicName);
+            this.WriteObject(eventSubscriptionFullUrl.EndpointUrl, true);
         }
     }
 }

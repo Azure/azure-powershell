@@ -13,22 +13,22 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
-using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.EventGrid.Utilities;
 
 
-namespace Microsoft.Azure.Commands.EventGrid
+namespace Microsoft.Azure.Commands.EventGrid.SystemTopicEventSubscription
 {
     [Cmdlet(
-        "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FullUrlForSystemTopicEventSubscription",
-        DefaultParameterSetName = EventSubscriptionTopicNameParameterSet),
-    OutputType(typeof(PSEventSubscription))]
-    class GetAzureFullUrlForSystemTopicEventSubscription : AzureEventGridCmdletBase
+        "Remove",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSystemTopicEventSubscription",
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = SystemTopicEventSuscriptionParameterSet),
+    OutputType(typeof(bool))]
+    class RemoveAzureEventGridSystemTopicEventSubscription : AzureEventGridCmdletBase
     {
         [Parameter(
            Mandatory = true,
@@ -57,10 +57,20 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string SystemTopicName { get; set; }
 
+        [Parameter(
+            Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            EventSubscriptionFullUrl eventSubscriptionFullUrl = this.Client.GetAzFullUrlForSystemTopicEventSubscription(this.EventSubscriptionName, this.ResourceGroupName, this.SystemTopicName);
-            this.WriteObject(eventSubscriptionFullUrl.EndpointUrl, true);
+            if (this.ShouldProcess(this.EventSubscriptionName, $"Remove event subscription {this.EventSubscriptionName}"))
+            {
+                this.Client.DeleteSystemTopicEventSubscriptiion(this.ResourceGroupName, this.SystemTopicName, this.EventSubscriptionName);
+                if (this.PassThru)
+                {
+                    this.WriteObject(true);
+                }
+            }
         }
     }
 }

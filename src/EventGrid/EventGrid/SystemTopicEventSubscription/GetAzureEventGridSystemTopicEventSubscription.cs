@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.EventGrid
 
     [Cmdlet(
         "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SystemTopicEventGridSubscription",
-        DefaultParameterSetName = ResourceGroupNameParameterSet,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSystemTopicEventSubscription",
+        DefaultParameterSetName = SystemTopicEventSuscriptionParameterSet,
         SupportsShouldProcess = true),
-    OutputType(typeof(bool))]
-    class GetAzureSystemTopicEventSubscription : AzureEventGridCmdletBase
+    OutputType(typeof(PSEventSubscription), typeof(PSEventSubscriptionListInstance))]
+    class GetAzureEventGridSystemTopicEventSubscription : AzureEventGridCmdletBase
     {
         [Parameter(
            Mandatory = true,
