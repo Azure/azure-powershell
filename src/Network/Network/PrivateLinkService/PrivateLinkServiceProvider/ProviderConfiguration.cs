@@ -101,7 +101,9 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         public static ProviderConfiguration GetProviderConfiguration(string type)
         {
-            return _configurations[type];
+            ProviderConfiguration outProviderConfiguration = null;
+            _configurations.TryGetValue(type, out outProviderConfiguration);
+            return outProviderConfiguration;
         }
 
         /// <summary>

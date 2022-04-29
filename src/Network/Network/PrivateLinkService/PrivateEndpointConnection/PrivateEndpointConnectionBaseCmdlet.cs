@@ -77,6 +77,8 @@ namespace Microsoft.Azure.Commands.Network
 
         protected IPrivateLinkProvider BuildProvider(string subscription, string privateLinkResourceType)
         {
+            if (!GenericProvider.SupportsPrivateLinkResourceType(privateLinkResourceType))
+                throw new System.Exception($"The {privateLinkResourceType} doesn't support private endpoint connection");
             return PrivateLinkProviderFactory.CreatePrivateLinkProvder(this, subscription, privateLinkResourceType);
         }
     }
