@@ -19,7 +19,7 @@ Set-AzServiceBusNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [-
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### NetwrokruleSetInputObjectSet
+### NetworkRuleSetInputObjectSet
 ```
 Set-AzServiceBusNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String>
  [-InputObject] <PSNetworkRuleSetAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -33,7 +33,7 @@ Set-AzServiceBusNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [-
 ```
 
 ## DESCRIPTION
-Update the NetwrokruleSet of the given Namespace in the current Azure subscription.
+Update the NetworkRuleSet of the given Namespace in the current Azure subscription.
 
 ## EXAMPLES
 
@@ -124,7 +124,7 @@ NetworkruleSet Configuration Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes
-Parameter Sets: NetwrokruleSetInputObjectSet
+Parameter Sets: NetworkRuleSetInputObjectSet
 Aliases:
 
 Required: True
