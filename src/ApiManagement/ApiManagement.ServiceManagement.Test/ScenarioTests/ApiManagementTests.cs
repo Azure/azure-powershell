@@ -12,24 +12,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System.Linq;
 using Xunit;
-using Microsoft.Azure.Commands.TestFx;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using Microsoft.Azure.ServiceManagement.Common.Models;
-    using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
-
     public class ApiManagementTestRunner
     {
         protected readonly ITestRunner TestRunner;
@@ -90,19 +81,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiCrudGraphQLTest()
         {
-            RunPowerShellTest("Api-CrudGraphQlTest");
+            TestRunner.RunTestScript(ConvertScriptName("Api-CrudGraphQlTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiCrudWebSocketTest()
         {
-            RunPowerShellTest("Api-CrudWebSocketTest");
+            TestRunner.RunTestScript(ConvertScriptName("Api-CrudWebSocketTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-         public void ApiCloneCrudTest()
+        public void ApiCrudTest()
         {
             TestRunner.RunTestScript(ConvertScriptName("Api-CrudTest"));
         }

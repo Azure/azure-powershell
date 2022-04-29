@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBackupRestoreApiManagementUsingManagedIdentity()
         {
-            RunPowerShellTest("Test-BackupRestoreApiManagementUsingManagedIdentity");
+            TestRunner.RunTestScript("Test-BackupRestoreApiManagementUsingManagedIdentity");
         }
 
         [Fact]
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudApiManagementVirtualNetworkStv2CRUD()
         {
-            RunPowerShellTest("Test-ApiManagementVirtualNetworkStv2CRUD");
+            TestRunner.RunTestScript("Test-ApiManagementVirtualNetworkStv2CRUD");
         }
 
         [Fact]
