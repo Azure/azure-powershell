@@ -13,7 +13,7 @@ Public Ip assoicated to the firewall on virtual hub
 ## SYNTAX
 
 ```
-New-AzFirewallHubPublicIpAddress [-Count <Int32>] [-Addresses <PSAzureFirewallPublicIpAddress[]>]
+New-AzFirewallHubPublicIpAddress [-Count <Int32>] [-Address <PSAzureFirewallPublicIpAddress[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -40,11 +40,11 @@ This will create 1 new public ip on the firewall by retain $publicIp1, $publicIp
 
 ## PARAMETERS
 
-### -Addresses
+### -Address
 The Public IP Addresses of the Firewall attached to a hub
 
 ```yaml
-Type: PSAzureFirewallPublicIpAddress[]
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPublicIpAddress[]
 Parameter Sets: (All)
 Aliases:
 
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 The count of public Ip addresses
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
