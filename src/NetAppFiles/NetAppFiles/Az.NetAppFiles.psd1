@@ -110,7 +110,7 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
                'Remove-AzNetAppFilesSubvolume',
                'New-AzNetAppFilesVolumeGroup', 'Get-AzNetAppFilesVolumeGroup',
                'Remove-AzNetAppFilesVolumeGroup',
-               'New-AzExportPolicyRuleObject', 'New-AzExportPolicyObject'
+               'New-AzNetAppFilesExportPolicyRuleObject', 'New-AzNetAppFilesExportPolicyObject'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/new-azexportpolicyobject
+online version: https://docs.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilesexportpolicyobject
 schema: 2.0.0
 ---
 
-# New-AzExportPolicyObject
+# New-AzNetAppFilesExportPolicyObject
 
 ## SYNOPSIS
 Creates export policy object.
@@ -13,21 +13,21 @@ Creates export policy object.
 ## SYNTAX
 
 ```
-New-AzExportPolicyObject -Rule <PSNetAppFilesExportPolicyRule[]> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetAppFilesExportPolicyObject -Rule <PSNetAppFilesExportPolicyRule[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-New-AzExportPolicyObject is a helper cmdlet that creates an export policy object that can be used with New-AzNetAppFilesVolume.
+New-AzNetAppFilesExportPolicyObject is a helper cmdlet that creates an export policy object that can be used with New-AzNetAppFilesVolume.
 Each ExportPolicy object consists of a set of ExportPolicy rules that can be applied to an ANF volume. 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $exportPolicyRule = New-AzExportPolicyRuleObject -RuleIndex 1 -AllowedClients '0.0.0.0/0' -UnixReadOnly -UnixReadWrite -Cifs -Nfsv3 
+PS C:\> $exportPolicyRule = New-NetAppFilesAzExportPolicyRuleObject -RuleIndex 1 -AllowedClients '0.0.0.0/0' -UnixReadOnly -UnixReadWrite -Cifs -Nfsv3 
 PS C:\> $exportPolicyRules = $($exportPolicyRule)
-PS C:\> $newExportPolicy = New-AzExportPolicyObject -Rules $exportPolicyRules
+PS C:\> $newExportPolicy = New-NetAppFilesAzExportPolicyObject -Rules $exportPolicyRules
 PS C:\> New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -l "westus2" -CreationToken "MyAnfVolume" -UsageThreshold 1099511627776 -ServiceLevel "Premium" -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName" -ExportPolicy $newExportPolicy
 ```
 

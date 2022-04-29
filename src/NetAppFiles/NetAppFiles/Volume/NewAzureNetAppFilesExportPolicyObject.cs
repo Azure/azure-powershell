@@ -19,8 +19,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExportPolicyObject", SupportsShouldProcess = true), OutputType(typeof(PSNetAppFilesVolumeExportPolicy))]
-    public class NewExportPolicyObject: AzureNetAppFilesCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesExportPolicyObject", SupportsShouldProcess = true), OutputType(typeof(PSNetAppFilesVolumeExportPolicy))]
+    public class NewAzureNetAppFilesExportPolicyObject : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,

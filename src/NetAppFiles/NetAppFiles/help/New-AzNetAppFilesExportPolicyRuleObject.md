@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/new-azexportpolicyruleobject
+online version: https://docs.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilesexportpolicyruleobject
 schema: 2.0.0
 ---
 
-# New-AzExportPolicyRuleObject
+# New-AzNetAppFilesExportPolicyRuleObject
 
 ## SYNOPSIS
 Creates export policy rule object.
@@ -13,22 +13,22 @@ Creates export policy rule object.
 ## SYNTAX
 
 ```
-New-AzExportPolicyRuleObject -RuleIndex <Int32> [-UnixReadOnly] [-UnixReadWrite] [-Kerberos5ReadOnly]
- [-Kerberos5ReadWrite] [-Kerberos5iReadOnly] [-Kerberos5iReadWrite] [-Kerberos5p] [-Kerberos5pReadWrite]
- [-Cifs] [-Nfsv3] [-Nfsv41] [-AllowedClient <String>] [-HasRootAccess] [-ChownMode <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetAppFilesExportPolicyRuleObject -RuleIndex <Int32> [-UnixReadOnly] [-UnixReadWrite]
+ [-Kerberos5ReadOnly] [-Kerberos5ReadWrite] [-Kerberos5iReadOnly] [-Kerberos5iReadWrite] [-Kerberos5p]
+ [-Kerberos5pReadWrite] [-Cifs] [-Nfsv3] [-Nfsv41] [-AllowedClient <String>] [-HasRootAccess]
+ [-ChownMode <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-New-AzExportPolicyRuleObject is a helper cmdlet that creates an export policy rule object that can be used with New-AzExportPolicyObject and New-AzNetAppFilesVolume.
+New-AzNetAppFilesExportPolicyRuleObject is a helper cmdlet that creates an export policy rule object that can be used with New-AzExportPolicyObject and New-AzNetAppFilesVolume.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $exportPolicyRule = New-AzExportPolicyRuleObject -RuleIndex 1 -AllowedClients '0.0.0.0/0' -UnixReadOnly -UnixReadWrite -Cifs -Nfsv3 
+PS C:\> $exportPolicyRule = New-AzNetAppFilesExportPolicyRuleObject -RuleIndex 1 -AllowedClients '0.0.0.0/0' -UnixReadOnly -UnixReadWrite -Cifs -Nfsv3 
 PS C:\> $exportPolicyRules = $($exportPolicyRule)
-PS C:\> $newExportPolicy = New-AzExportPolicyObject -Rules $exportPolicyRules
+PS C:\> $newExportPolicy = New-AzNetAppFilesExportPolicyObject -Rules $exportPolicyRules
 PS C:\> New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -l "westus2" -CreationToken "MyAnfVolume" -UsageThreshold 1099511627776 -ServiceLevel "Premium" -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName" -ExportPolicy $newExportPolicy
 ```
 

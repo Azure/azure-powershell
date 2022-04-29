@@ -20,8 +20,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExportPolicyRuleObject", SupportsShouldProcess = true), OutputType(typeof(PSNetAppFilesExportPolicyRule))]
-    public class NewExportPolicyRuleObject: AzureNetAppFilesCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesExportPolicyRuleObject", SupportsShouldProcess = true), OutputType(typeof(PSNetAppFilesExportPolicyRule))]
+    public class NewAzureNetAppFilesExportPolicyRuleObject : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,
