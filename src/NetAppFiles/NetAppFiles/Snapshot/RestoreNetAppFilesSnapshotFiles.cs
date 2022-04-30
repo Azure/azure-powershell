@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
                 AzureNetAppFilesManagementClient.Snapshots.RestoreFiles(snapshotRestoreFilesBody, ResourceGroupName, AccountName, PoolName, VolumeName, Name);
                 success = true;
             }
-            if (PassThru)
+            if (PassThru.IsPresent)
             {
                 WriteObject(success);
             }
