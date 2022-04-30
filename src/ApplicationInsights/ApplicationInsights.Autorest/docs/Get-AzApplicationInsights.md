@@ -50,23 +50,19 @@ Returns an Application Insights component.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get application insights resource
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzApplicationInsights -ResourceGroupName "testgroup" -Name "test"
 ```
 
-{{ Add description here }}
+Get application insights resource
 
-### Example 2: {{ Add title here }}
+### Example 2: Get application insights resource with pricing plan information
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzApplicationInsights -ResourceGroupName "testgroup" -Name "test" -IncludePricingPlan
 ```
 
-{{ Add description here }}
+Get application insights resource with pricing plan information
 
 ## PARAMETERS
 

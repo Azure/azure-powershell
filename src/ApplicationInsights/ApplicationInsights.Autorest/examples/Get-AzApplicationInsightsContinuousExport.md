@@ -1,18 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get continuous export for an application insights resource
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test"
 ```
 
-{{ Add description here }}
+Get continuous export for an application insights resource
 
-### Example 2: {{ Add title here }}
+### Example 2: Get continuous export for an application insights resource
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" -ExportId "ZJrfffySPdtG3ESn3iRxVIEFuNY="
 ```
 
-{{ Add description here }}
+Get continuous export for an application insights resource
 

@@ -86,7 +86,7 @@ directive:
       parameter-name: Name
   - where:
       subject: Component
-      verb: Get|New|Clear
+      verb: Get|New|Clear|Set
     hide: true
   # Rename Component related cmdlets  
   - where:

@@ -30,23 +30,12 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new application insights resource
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location eastus
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Add a new application insights resource named as "test" in resource group "testgroup" with kind "java"
 
 ## PARAMETERS
 

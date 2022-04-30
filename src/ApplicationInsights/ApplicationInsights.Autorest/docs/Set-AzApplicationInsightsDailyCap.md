@@ -23,23 +23,12 @@ Update current billing features for an Application Insights component.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Set daily data volume cap for an application insights resource
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Set-AzApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "test" -DailyCapGB 400 -DisableNotificationWhenHitCap
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Set the daily data volume cap to 400GB per day and stop send notification when hit cap for resource "test" in resource group "testgroup"
 
 ## PARAMETERS
 

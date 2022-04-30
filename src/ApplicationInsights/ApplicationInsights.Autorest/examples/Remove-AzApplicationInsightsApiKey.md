@@ -1,18 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove an application insights api key for an application insights resource
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -ApiKeyId dd173f38-4fd1-4c75-8af5-99c29aa0f867 -PassThru
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Remove an application insights api key for an application insights resource

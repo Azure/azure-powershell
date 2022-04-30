@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an application insights linked storage account
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $account = Get-AzStorageAccount -ResourceGroupName "rgName" -Name "accountName"
+PS C:\> Get-AzApplicationInsights -ResourceGroupName "rgName" -Name "componentName" | New-AzApplicationInsightsLinkedStorageAccount -LinkedStorageAccountResourceId $account.Id
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create linked storage account $account under component "componentName"
 

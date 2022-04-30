@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update linked storage account
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $account = Get-AzStorageAccount -ResourceGroupName "rgName" -Name "accountName"
+PS C:\> Get-AzApplicationInsights -ResourceGroupName "rgName" -Name "componentName" | Update-AzApplicationInsightsLinkedStorageAccount -LinkedStorageAccountResourceId $account.Id
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update linked storage account under component "componentName" to associate with $account
 

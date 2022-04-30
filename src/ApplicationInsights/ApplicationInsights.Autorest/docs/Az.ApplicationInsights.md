@@ -63,10 +63,6 @@ Delete linked storage accounts for an Application Insights component.
 ### [Remove-AzApplicationInsightsWebTest](Remove-AzApplicationInsightsWebTest.md)
 Deletes an Application Insights web test.
 
-### [Set-AzApplicationInsights](Set-AzApplicationInsights.md)
-Creates (or updates) an Application Insights component.
-Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
-
 ### [Set-AzApplicationInsightsContinuousExport](Set-AzApplicationInsightsContinuousExport.md)
 Create a Continuous Export configuration of an Application Insights component.
 

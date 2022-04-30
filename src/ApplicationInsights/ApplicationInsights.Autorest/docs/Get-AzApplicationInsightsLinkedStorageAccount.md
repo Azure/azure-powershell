@@ -29,23 +29,12 @@ Returns the current linked storage settings for an Application Insights componen
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get linked storage account associated with component "componentName"
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName "rgName" -ComponentName "componentName"
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get linked storage account associated with component "componentName"
 
 ## PARAMETERS
 
