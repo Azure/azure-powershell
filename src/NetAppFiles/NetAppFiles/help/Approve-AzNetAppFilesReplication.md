@@ -232,7 +232,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Inititialize-AzNetAppFilesReplication](./Approve-AzNetAppFilesReplication.md)
+[Inititialize-AzNetAppFilesReplication](./Inititialize-AzNetAppFilesReplication.md)
 [Suspend-AzNetAppFilesReplication](./Suspend-AzNetAppFilesReplication.md)
 [Resume-AzNetAppFilesReplication](./Resume-AzNetAppFilesReplication.md)
 [Remove-AzNetAppFilesReplication](./Remove-AzNetAppFilesReplication.md)

@@ -21,6 +21,8 @@ using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using System.Linq;
 using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 {
@@ -128,13 +130,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
                 VolumeName = parentResources[5];
                 Name = resourceIdentifier.ResourceName;
             }
-            else if (ParameterSetName == ParentObjectParameterSet)
+            else if (ParameterSetName == ParentObjectParameterSet && this.IsParameterBound(c => c.VolumeObject))
             {
                 ResourceGroupName = VolumeObject.ResourceGroupName;
                 var NameParts = VolumeObject.Name.Split('/');
-                AccountName = NameParts[0];
-                PoolName = NameParts[1];
-                VolumeName = NameParts[2];
+                if (NameParts.Length > 2)
+                {
+                    AccountName = NameParts[0];
+                    PoolName = NameParts[1];
+                    VolumeName = NameParts[2];
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid Parent id in volume object input .", "VolumeObject");
+                }
             }
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RestoringFilesMessage, string.Join(",",FilePath))))
