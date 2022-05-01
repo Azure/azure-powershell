@@ -952,7 +952,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = false,
             HelpMessage = EventGridConstants.AdvancedFilteringOnArraysHelp,
             ParameterSetName = EventSubscriptionDomainTopicInputObjectParameterSet)]
-        public SwitchParameter AdvancedFilteringOnArrays { get; set; }
+        public SwitchParameter AdvancedFilteringOnArray { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -1044,7 +1044,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 string scope;
                 bool isSubjectCaseSensitive = this.SubjectCaseSensitive.IsPresent;
-                bool IsAdvancedFilteringOnArraysEnabled = AdvancedFilteringOnArrays.IsPresent;
+                bool IsAdvancedFilteringOnArraysEnabled = AdvancedFilteringOnArray.IsPresent;
                 RetryPolicy retryPolicy = null;
 
                 if (!string.IsNullOrEmpty(this.ResourceId))

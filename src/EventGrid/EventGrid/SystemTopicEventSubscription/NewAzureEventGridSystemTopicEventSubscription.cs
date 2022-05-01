@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.AdvancedFilteringOnArraysHelp,
             ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter AdvancedFilteringOnArrays { get; set; }
+        public SwitchParameter AdvancedFilteringOnArray { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 
                 bool isSubjectCaseSensitive = this.SubjectCaseSensitive.IsPresent;
-                bool enableAdvancedFilteringOnArrays = this.AdvancedFilteringOnArrays.IsPresent;
+                bool enableAdvancedFilteringOnArrays = this.AdvancedFilteringOnArray.IsPresent;
                 RetryPolicy retryPolicy = null;
 
 

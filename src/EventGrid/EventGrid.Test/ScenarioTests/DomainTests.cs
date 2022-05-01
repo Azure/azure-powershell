@@ -59,11 +59,11 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
             EventGridController.NewInstance.RunPsTest(_logger, "DomainInputMappingTests");
         }
 
-        [Fact]
+        /*[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_DomainTopics()
         {
             EventGridController.NewInstance.RunPsTest(_logger, "DomainTopicTests");
-        }
+        }*/
     }
 }

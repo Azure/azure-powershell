@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Commands.EventGrid
     public class GetAzureRmEventGridSystemTopic : AzureEventGridCmdletBase
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = SystemTopicNameParameterSet)]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
