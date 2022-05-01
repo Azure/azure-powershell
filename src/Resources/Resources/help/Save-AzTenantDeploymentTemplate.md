@@ -38,7 +38,7 @@ This command gets the deployment template from TestDeployment and saves it as a 
 
 ### Example 2: Get a deployment and save its template
 ```powershell
-Get-AzTenantDeploymentTemplate -Name "RolesDeployment" | Save-AzTenantDeploymentTemplate
+Get-AzTenantDeployment -Name "RolesDeployment" | Save-AzTenantDeploymentTemplate
 ```
 
 This command gets the deployment "RolesDeployment" at the current tenant scope and saves its template.

@@ -26,8 +26,8 @@ To resume a suspended job, use the Resume-AzAutomationJob cmdlet.
 ## EXAMPLES
 
 ### Example 1: Suspend a job
-```
-PS C:\>Suspend-AzAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64 -ResourceGroupName "ResourceGroup01"
+```powershell
+Suspend-AzAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64 -ResourceGroupName "ResourceGroup01"
 ```
 
 This command suspends the job that has the specified ID.

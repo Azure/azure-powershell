@@ -153,6 +153,35 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 return ComputeClient.ComputeManagementClient.GalleryImageVersions;
             }
         }
+        public IGallerySharingProfileOperations GallerySharingProfileClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.GallerySharingProfile;
+            }
+        }
+        public ISharedGalleriesOperations SharedGalleriesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.SharedGalleries;
+            }
+        }
+
+        public ISharedGalleryImagesOperations SharedGalleryImagesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.SharedGalleryImages;
+            }
+        }
+        public ISharedGalleryImageVersionsOperations SharedGalleryImageVersionsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.SharedGalleryImageVersions;
+            }
+        }
 
         public IImagesOperations ImagesClient
         {

@@ -108,6 +108,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
                         do
                         {
+                            nextPageLink = pageResult.NextPageLink;
                             List<AlertProcessingRule> tempList = pageResult.ToList();
                             if (currentCount + (ulong)tempList.Count - 1 < skip)
                             {
@@ -141,7 +142,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                                 {
                                     pageResult = this.AlertsManagementClient.AlertProcessingRules.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink).Result.Body;
                                 }
-                                nextPageLink = pageResult.NextPageLink;
                             }
 
                         } while (!string.IsNullOrEmpty(nextPageLink) && currentCount < lastCount);

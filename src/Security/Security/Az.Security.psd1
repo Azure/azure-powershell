@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.4.0'
+ModuleVersion = '1.2.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.6'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.SecurityCenter.dll'
@@ -76,6 +76,7 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 
 CmdletsToExport = 'Get-AzSecuritySolution', 'Get-AzSecuritySolutionsReferenceData', 'New-AzAlertsSuppressionRuleScope', 'Get-AzAlertsSuppressionRule', 'Set-AzAlertsSuppressionRule', 'Remove-AzAlertsSuppressionRule',
+
                'Get-AzSecurityAlert', 'Set-AzSecurityAlert', 
                'Get-AzSecurityAutoProvisioningSetting', 
                'Set-AzSecurityAutoProvisioningSetting', 'Get-AzSecurityCompliance', 

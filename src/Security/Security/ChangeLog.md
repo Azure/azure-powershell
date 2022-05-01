@@ -53,7 +53,6 @@
     `Set-AlertsSuppressionRule`
     `New-AzAlertsSuppressionRuleScope`
 
-
 ## Version 1.4.0
 * Added new cmdlets for security  SecuritySolutions API
 

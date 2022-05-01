@@ -25,11 +25,11 @@ The **New-AzAutomationCredential** cmdlet creates a credential as a **PSCredenti
 ## EXAMPLES
 
 ### Example 1: Create a credential
-```
-PS C:\>$User = "Contoso\PFuller"
-PS C:\> $Password = ConvertTo-SecureString "Password" -AsPlainText -Force
-PS C:\> $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $Password
-PS C:\> New-AzAutomationCredential -AutomationAccountName "Contoso17" -Name "ContosoCredential" -Value $Credential -ResourceGroupName "ResourceGroup01"
+```powershell
+$User = "Contoso\PFuller"
+$Password = ConvertTo-SecureString "Password" -AsPlainText -Force
+$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $Password
+New-AzAutomationCredential -AutomationAccountName "Contoso17" -Name "ContosoCredential" -Value $Credential -ResourceGroupName "ResourceGroup01"
 ```
 
 The first command assigns a user name to the $User variable.

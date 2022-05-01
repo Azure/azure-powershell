@@ -24,8 +24,8 @@ The **Remove-AzAutomationCredential** cmdlet removes a credential from Azure Aut
 ## EXAMPLES
 
 ### Example 1: Remove a credential
-```
-PS C:\>Remove-AzAutomationCredential -AutomationAccountName "Contoso17" -Name "ContosoCredential" -ResourceGroupName "ResourceGroup01"
+```powershell
+Remove-AzAutomationCredential -AutomationAccountName "Contoso17" -Name "ContosoCredential" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes a credential named ContosoCredential in the Azure Automation account named Contoso17.

@@ -564,9 +564,10 @@ function Test-StorageBlobServiceProperties
 		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
 		
 		# Enable and Disable Blob Delete Retention Policy
-		$policy = Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru -RetentionDays 3
+		$policy = Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru -RetentionDays 3 -AllowPermanentDelete
 		Assert-AreEqual $true $policy.Enabled
 		Assert-AreEqual 3 $policy.Days
+		Assert-AreEqual $true $policy.AllowPermanentDelete
 		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
 		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
 		Assert-AreEqual $true $property.DeleteRetentionPolicy.Enabled
@@ -868,7 +869,7 @@ function Test-StorageBlobContainerSoftDelete
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 
         # Enable Blob Delete Retention Policy
-        $policy = Enable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru -RetentionDays 30
+        $policy = Enable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru -RetentionDays 30 
         Assert-AreEqual $true $policy.Enabled
         Assert-AreEqual 30 $policy.Days
         $property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname

@@ -14,7 +14,7 @@ Stop in-progress database migration to SQL VM.
 
 ```
 Stop-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <String> -TargetDbName <String>
- [-SubscriptionId <String>] [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] -MigrationOperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -78,7 +78,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

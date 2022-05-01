@@ -86,6 +86,7 @@ Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -Serve
 The **Restore-AzSqlDatabase** cmdlet restores a SQL database from a geo-redundant backup, a backup of a deleted database, a long term retention backup, or a point in time in a live database.
 The restored database is created as a new database.
 You can create an elastic SQL database by setting the *ElasticPoolName* parameter to an existing elastic pool.
+You can also perform a cross subscription restore for a datawarehouse database.
 
 ## EXAMPLES
 

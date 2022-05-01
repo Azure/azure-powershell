@@ -25,7 +25,7 @@ This cmdlet will create Proximity Placement Group resource.
 
 ### Example 1
 ```powershell
-New-AzureRmProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName -Location $location -Tag @{key1 = "val1"}
+New-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName -Location $location -Tag @{key1 = "val1"}
 ```
 
 ```output

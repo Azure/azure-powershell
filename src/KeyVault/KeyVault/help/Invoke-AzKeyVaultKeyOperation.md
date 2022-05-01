@@ -45,7 +45,7 @@ Invoke-AzKeyVaultKeyOperation cmdlet supports
 ### Encrypts using an encryption key
 ```powershell
 $result = Invoke-AzKeyVaultKeyOperation -Operation Encrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String "test" -AsPlainText -Force) ult
-$result | fl
+$result | Format-List
 ```
 
 ```output
@@ -60,7 +60,7 @@ Encrypts string "test" using test-key stored in test-kv. The returned result is 
 ```powershell
 $result
 $result = Invoke-AzKeyVaultKeyOperation -Operation Decrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String $result.Result -AsPlainText -Force) ult
-$result | fl
+$result | Format-List
 ```
 
 ```output
@@ -75,7 +75,7 @@ Decrypts encrypted data that is encrypted using test-key stored in test-kv.
 ```powershell
 $result = Invoke-AzKeyVaultKeyOperation -Operation Encrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String "test" -AsPlainText -Force) 
 
-$result | fl
+$result | Format-List
 ```
 
 ```output
@@ -90,7 +90,7 @@ Encrypts string "test" using test-key stored in test-kv. The returned result is 
 ```powershell
 $result = Invoke-AzKeyVaultKeyOperation -Operation Wrap -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String "ovQIlbB0DgWhZA7sgkPxbg9H-Ly-VlNGPSgGrrZvlIo" -AsPlainText -Force) 
 
-$result | fl
+$result | Format-List
 ```
 
 ```output
