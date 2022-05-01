@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.IdentityIdsHelp,
             ParameterSetName = SystemTopicNameParameterSet)]
-        public string[] IdentityIds { get; set; }
+        public string[] IdentityId { get; set; }
 
         /// <summary>
         /// Hashtable which represents resource Tags.
@@ -126,10 +126,10 @@ namespace Microsoft.Azure.Commands.EventGrid
             // Create a new Event Grid Topic
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
             Dictionary<string, UserIdentityProperties> userAssignedIdentities = null;
-            if (IdentityIds != null && IdentityIds.Length > 0)
+            if (IdentityId != null && IdentityId.Length > 0)
             {
                 userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
-                foreach (string identityId in IdentityIds)
+                foreach (string identityId in IdentityId)
                 {
                     userAssignedIdentities.Add(identityId, new UserIdentityProperties());
                 }

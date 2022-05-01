@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.IdentityIdsHelp)]
-        public string[] IdentityIds { get; set; }
+        public string[] IdentityId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -187,10 +187,10 @@ namespace Microsoft.Azure.Commands.EventGrid
             EventGridUtils.ValidateInputMappingInfo(this.InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
 
             Dictionary<string, UserIdentityProperties> userAssignedIdentities = null;
-            if (IdentityIds != null && IdentityIds.Length > 0)
+            if (IdentityId != null && IdentityId.Length > 0)
             {
                 userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
-                foreach (string identityId in IdentityIds)
+                foreach (string identityId in IdentityId)
                 {
                     userAssignedIdentities.Add(identityId, new UserIdentityProperties());
                 }

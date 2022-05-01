@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.IdentityIdsHelp,
             ParameterSetName = TopicNameParameterSet)]
-        public string[] IdentityIds { get; set; }
+        public string[] IdentityId { get; set; }
 
         /// <summary>
         /// Public network access.
@@ -150,10 +150,10 @@ namespace Microsoft.Azure.Commands.EventGrid
             Dictionary<string, string> inputMappingDefaultValuesDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingDefaultValue, true);
             Dictionary<string, string> inboundIpRuleDictionary = TagsConversionHelper.CreateTagDictionary(this.InboundIpRule, true);
             Dictionary<string, UserIdentityProperties> userAssignedIdentities = null;
-            if(IdentityIds != null && IdentityIds.Length > 0)
+            if(IdentityId != null && IdentityId.Length > 0)
             {
                 userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
-                foreach (string identityId in IdentityIds)
+                foreach (string identityId in IdentityId)
                 {
                     userAssignedIdentities.Add(identityId, new UserIdentityProperties());
                 }

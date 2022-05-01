@@ -20,11 +20,17 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
     {
         public PsIdentityInfo(IdentityInfo identityInfo)
         {
-            this.IdentityType = identityInfo.Type;
-            UserAssignedIdentities = new List<string>();
-            foreach (string userAssignedIdentity in identityInfo.UserAssignedIdentities.Keys)
+            if(identityInfo != null)
             {
-                UserAssignedIdentities.Add(userAssignedIdentity);
+                this.IdentityType = identityInfo.Type;
+                if(identityInfo.UserAssignedIdentities != null && identityInfo.UserAssignedIdentities.Count > 0)
+                {
+                    this.UserAssignedIdentities = new List<string>();
+                    foreach (string userAssignedIdentity in identityInfo.UserAssignedIdentities.Keys)
+                    {
+                        UserAssignedIdentities.Add(userAssignedIdentity);
+                    }
+                }
             }
         }
 
