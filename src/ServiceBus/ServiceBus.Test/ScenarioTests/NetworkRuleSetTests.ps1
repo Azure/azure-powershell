@@ -102,6 +102,13 @@ function NetworkRuleSetTests {
     Assert-AreEqual $setResult.DefaultAction "Allow"
     Assert-True {$setResult.TrustedServiceAccessEnabled}
 
+    $setResult = Set-AzServiceBusNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -IPRule $setResult.IpRules -VirtualNetworkRule $setResult.VirtualNetworkRules
+    Assert-AreEqual $setResult.VirtualNetworkRules.Count 3 "Set -VirtualNetworkRules count did not matched"
+    Assert-AreEqual $setResult.IpRules.Count 3 "Set - IPRules count did not matched"
+    Assert-AreEqual $setResult.PublicNetworkAccess "Disabled"
+    Assert-AreEqual $setResult.DefaultAction "Allow"
+    Assert-True {$setResult.TrustedServiceAccessEnabled}
+
     # Set-AzServiceBusNetworkRuleSet with Resource ID
     $setResult1 = Set-AzServiceBusNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -ResourceId $getResult.Id
     Assert-AreEqual $setResult1.IpRules.Count 2 "Set1 - IPRules count did not matched after deleting one IPRule"
