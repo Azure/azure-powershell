@@ -283,5 +283,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes
 ## NOTES
 ## RELATED LINKS
-
-## RELATED LINKS
