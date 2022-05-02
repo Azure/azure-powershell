@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Making changes in the required parameter set for Set-AzEventHubNetworkRuleSet
 
 ## Version 1.11.1
 
