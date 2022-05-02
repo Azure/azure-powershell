@@ -128,7 +128,6 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.DisableLocalAuthHelp,
             ParameterSetName = DomainNameParameterSet)]
-        [ValidateSet(EventGridConstants.Enabled, EventGridConstants.Disabled, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter DisableLocalAuth { get; set; }
 
@@ -140,7 +139,6 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.AutoCreateTopicWithFirstSubscriptionHelp,
             ParameterSetName = DomainNameParameterSet)]
-        [ValidateSet(EventGridConstants.Enabled, EventGridConstants.Disabled, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AutoCreateTopicWithFirstSubscription { get; set; }
 
@@ -152,7 +150,6 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.AutoDeleteTopicWithLastSubscriptionHelp,
             ParameterSetName = DomainNameParameterSet)]
-        [ValidateSet(EventGridConstants.Enabled, EventGridConstants.Disabled, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AutoDeleteTopicWithLastSubscription { get; set; }
 

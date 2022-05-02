@@ -105,3 +105,75 @@ function SystemTopicTests {
     }
 }
 
+
+
+<#
+.SYNOPSIS
+Tests EventGrid system Topic Create with identity
+#>
+function SystemTopicIdentityTests {
+    # Setup
+    $location = Get-LocationForEventGrid
+    $topicName = Get-TopicName
+    $topicName2 = Get-TopicName
+    $topicName3 = Get-TopicName
+    $topicName4 = Get-TopicName
+    $resourceGroupName = Get-ResourceGroupName
+    $secondResourceGroup = Get-ResourceGroupName
+    $subscriptionId = Get-SubscriptionId
+
+    New-ResourceGroup $resourceGroupName $location
+
+    New-ResourceGroup $secondResourceGroup $location
+
+    $sbNamespaceName = Get-ServiceBusNameSpaceName
+    $sbNamespaceName2 = Get-ServiceBusNameSpaceName
+    $sbNamespaceName3 = Get-ServiceBusNameSpaceName
+    $sbQueueName = Get-ServiceBusQueueName
+    $sbTopicName = Get-ServiceBusTopicName
+
+    $sbNamespaceInRg1 = New-ServiceBusNamespace $ResourceGroupName $sbNamespaceName $Location
+
+    $sbNamespace1InRg2 = New-ServiceBusNamespace $secondResourceGroup $sbNamespaceName2 $Location
+
+    $sbNamespace2InRg2 = New-ServiceBusNamespace $secondResourceGroup $sbNamespaceName3 $Location
+
+    try
+    {
+        Write-Debug "Creating a new EventGrid SystemTopic: $topicName in resource group $resourceGroupName"
+        Write-Debug "Topic: $topicName"
+        $result = New-AzEventGridSystemTopic -ResourceGroup $resourceGroupName -Name $topicName -Source $sbNamespaceInRg1.Id -TopicType 'Microsoft.ServiceBus.Namespaces' -Location $location -IdentityType 'SystemAssigned'
+        Assert-True {$result.ProvisioningState -eq "Succeeded"} 
+        Assert-True {$result.Identity.IdentityType -eq "SystemAssigned"}
+
+        Write-Debug "Creating a second EventGrid SystemTopic: $topicName2 in resource group $secondResourceGroup"
+        $result = New-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName2 -Source $sbNamespace1InRg2.Id -TopicType 'Microsoft.ServiceBus.Namespaces' -Location $location -IdentityType 'None'
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.Identity.IdentityType -eq "None"}
+
+        Write-Debug "Updating second EventGrid SystemTopic: $topicName2 in resource group $secondResourceGroup with user assigned identity"
+        $userIdentity = "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/amh/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testIdentity1"
+        $result = Update-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName2 -IdentityType 'UserAssigned' -IdentityId $userIdentity
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.Identity.IdentityType -eq "UserAssigned"}
+
+
+        Write-Debug "Deleting topic: $topicName"
+        Remove-AzEventGridSystemTopic -ResourceGroup $resourceGroupName -Name $topicName
+
+        Write-Debug "Deleting topic: $topicName"
+        Remove-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName2
+
+       
+    }
+    finally
+    {
+        Remove-AzServiceBusNamespace -ResourceGroup $resourceGroupName -Name $sbNamespaceInRg1
+        Remove-AzServiceBusNamespace -ResourceGroup $secondResourceGroup -Name $sbNamespace1InRg2
+        Remove-AzServiceBusNamespace -ResourceGroup $secondResourceGroup -Name $sbNamespace2InRg2
+
+        Remove-ResourceGroup $resourceGroupName
+        Remove-ResourceGroup $secondResourceGroup
+    }
+}
+

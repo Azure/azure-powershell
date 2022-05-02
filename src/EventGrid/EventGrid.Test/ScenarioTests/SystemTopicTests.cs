@@ -33,9 +33,16 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void EventGrid_TopicsGetKey()
+        public void EventGrid_SystemTopicsCRUD()
         {
             EventGridController.NewInstance.RunPsTest(_logger, "SystemTopicTests");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EventGrid_SystemTopicsIdentityTests()
+        {
+            EventGridController.NewInstance.RunPsTest(_logger, "SystemTopicIdentityTests");
         }
     }
 }

@@ -121,6 +121,16 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.IdentityTypeHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.IdentityTypeHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.IdentityTypeHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         [ValidateSet("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None", IgnoreCase = true)]
         public string IdentityType { get; set; }
@@ -128,6 +138,16 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// <summary>
         /// string array of identity ids for user assigned identities
         /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.IdentityIdsHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.IdentityIdsHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
