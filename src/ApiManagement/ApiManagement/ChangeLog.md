@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* `Get-AzApiManagementSubscription` Updated documentation to clarify examples.
 
 ## Version 2.3.2
 Added warning message for upcoming breaking change.
