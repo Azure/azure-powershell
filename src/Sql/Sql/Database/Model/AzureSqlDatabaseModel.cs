@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         }
 
         /// <summary>
-        /// Map internal BackupStorageRedundancy value (GRS/LRS/ZRS) to external (Geo/Local/Zone)
+        /// Map internal BackupStorageRedundancy value (GZRS/GRS/LRS/ZRS) to external (GeoZone/Geo/Local/Zone)
         /// </summary>
         /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
         /// <returns>internal backupStorageRedundancy</returns>
@@ -336,6 +336,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         {
             switch (backupStorageRedundancy)
             {
+                case "GZRS":
+                    return "GeoZone";
                 case "GRS":
                     return "Geo";
                 case "LRS":
