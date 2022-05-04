@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     if (!this.SkipResizing.IsPresent && (vdsLength - 512) % 1048576 != 0)
                     {
                         long resizeTo = Convert.ToInt64(1048576 * Math.Ceiling((vdsLength - 512) / 1048576.0));
-                        vhdFileToBeUploaded = ResizeVhdFile(resizeTo);
+                        vhdFileToBeUploaded = ResizeVhdFile(vdsLength,resizeTo);
                         vdsLength = resizeTo + 512;
                     }
                     else if (this.SkipResizing.IsPresent)
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         {
                             RevokeSAS();
                             this.ComputeClient.ComputeManagementClient.Disks.Delete(this.ResourceGroupName, this.DiskName);
-                            Exception outputEx = new Exception("Failed to the VHD file. Please try again later.");
+                            Exception outputEx = new Exception("Upload failed. Please try again later.");
                             ThrowTerminatingError(new ErrorRecord(
                                 outputEx,
                                 "Error uploading data.",
@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             }
         }
 
-        private FileInfo ResizeVhdFile(long FileSize)
+        private FileInfo ResizeVhdFile(long FileSizeBefore, long FileSize)
         {
             CheckOS();
             WriteWarning("The VHD file needs to be resized. During the resizing process, the cmdlet will temporarily create a resized file in the same directory as the provided VHD/VHDX file.");
@@ -576,7 +576,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 {
                     CreateBackUp(vhdFileToBeUploaded.FullName);
                     WriteVerbose("Resizing VHD file");
-                    long sizeBefore = vhdFileToBeUploaded.Length;
                     using (ManagementBaseObject inParams =
                         imageManagementService.GetMethodParameters("ResizeVirtualHardDisk"))
                     {
@@ -601,7 +600,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                             WmiUtilities.ValidateOutput(outParams, scope);
                         }
                     }
-                    WriteVerbose("Resized " + vhdFileToBeUploaded + " from " + sizeBefore + " bytes to " + FullFileSize + " bytes.");
+                    WriteVerbose("Resized " + vhdFileToBeUploaded + " from " + FileSizeBefore + " bytes to " + FullFileSize + " bytes.");
                     temporaryFileCreated = true;
                     return new FileInfo(vhdFileToBeUploaded.FullName);
                 }
@@ -649,7 +648,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         private void CheckOS()
         {
-            var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);)
+            var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
             if (!isWindows)
             {
                 Exception outputEx = new Exception("Failed to resize/convert the VHD/VHDX file. Currently automatic resizing and conversion is performed using Hyper-V, a native Windows feature. Please resize and convert file manually: https://aka.ms/usingAdd-AzVhd");
