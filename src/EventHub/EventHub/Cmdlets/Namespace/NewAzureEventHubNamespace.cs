@@ -115,13 +115,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         public string ClusterARMId { get; set; }
 
         /// <summary>
-        /// Indicates whether Identity is enabled.
-        /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
-        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
-        public SwitchParameter Identity { get; set; }
-
-        /// <summary>
         /// Indicates whether DisableLocalAuth is enabled.
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling  SAS authentication for namespace")]
@@ -154,22 +147,21 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
                 try
                 {
                     WriteObject(Client.BeginCreateNamespace(
-                        ResourceGroupName,
-                        Name,
-                        Location,
-                        SkuName,
-                        SkuCapacity,
-                        tagDictionary,
-                        EnableAutoInflate.IsPresent,
-                        MaximumThroughputUnits,
-                        EnableKafka.IsPresent,
-                        ClusterARMId,
-                        ZoneRedundant.IsPresent,
-                        DisableLocalAuth.IsPresent,
-                        Identity.IsPresent,
-                        IdentityType,
-                        IdentityId,
-                        EncryptionConfig));
+                        resourceGroupName: ResourceGroupName,
+                        namespaceName: Name,
+                        location: Location,
+                        skuName: SkuName,
+                        skuCapacity: SkuCapacity,
+                        tags: tagDictionary,
+                        isAutoInflateEnabled: EnableAutoInflate.IsPresent,
+                        maximumThroughputUnits: MaximumThroughputUnits,
+                        isKafkaEnabled: EnableKafka.IsPresent,
+                        clusterARMId: ClusterARMId,
+                        isZoneRedundant: ZoneRedundant.IsPresent,
+                        isDisableLocalAuth: DisableLocalAuth.IsPresent,
+                        identityType: IdentityType,
+                        identityId: IdentityId,
+                        encryptionConfigs: EncryptionConfig));
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {
