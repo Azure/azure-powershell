@@ -2409,9 +2409,13 @@ function Test-ApplicationGatewayTopLevelFirewallPolicy
 		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 
 		# WAF Policy and Custom Rule
-		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
-		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Lowercase -NegationCondition $False
-		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
+		$variable1 = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
+		$condition1 =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable1 -Operator GreaterThan -MatchValue 1000 -Transform Lowercase -NegationCondition $False
+
+		$variable2 = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Malicious-Header
+		$condition2 =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable2 -Operator Any -NegationCondition $False
+
+		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition1,$condition2 -Action Block
 		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
 		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.0"
 		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet 
@@ -2443,6 +2447,9 @@ function Test-ApplicationGatewayTopLevelFirewallPolicy
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchValues[0] $rule.MatchConditions[0].MatchValues[0]
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $rule.MatchConditions[0].MatchVariables[0].VariableName
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $rule.MatchConditions[0].MatchVariables[0].Selector
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[1].OperatorProperty $rule.MatchConditions[1].OperatorProperty
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[1].Transforms[0] $rule.MatchConditions[1].Transforms[0]
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[1].NegationConditon $rule.MatchConditions[1].NegationConditon
 		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
 		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
 		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
