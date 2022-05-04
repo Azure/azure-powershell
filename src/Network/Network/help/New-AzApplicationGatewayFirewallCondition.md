@@ -99,7 +99,7 @@ Describes operator to be matched.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: IPMatch, Equal, Contains, LessThan, GreaterThan, LessThanOrEqual, GreaterThanOrEqual, BeginsWith, EndsWith, Regex
+Accepted values: IPMatch, Equal, Contains, LessThan, GreaterThan, LessThanOrEqual, GreaterThanOrEqual, BeginsWith, EndsWith, Regex, Any
 
 Required: True
 Position: Named
