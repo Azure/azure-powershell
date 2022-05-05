@@ -21,11 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--PackageReference Include="Microsoft.Azure.Management.Sql" Version="2.1.1-preview" /-->
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="3.0.0-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="D:\vs\gh_repos\azure-sdk-for-net\artifacts\bin\Microsoft.Azure.Management.Sql\Debug\net461\Microsoft.Azure.Management.Sql.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sql.LegacySdk\Sql.LegacySdk.csproj" />
