@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Making changes in the required parameter set for Set-AzEventHubNetworkRuleSet
+* Made `IPRule` and `VirtualNetworkRule` optional in `Set-AzEventHubNetworkRuleSet`.
 
 ## Version 1.11.1
 
