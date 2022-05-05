@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.LabelsHelp,
             ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string[] Labels { get; set; }
+        public string[] Label { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                     this.DeliverySchema,
                     retryPolicy,
                     this.ExpirationDate,
-                    this.Labels,
+                    this.Label,
                     this.MaxEventsPerBatch,
                     this.PreferredBatchSizeInKiloByte,
                     this.StorageQueueMessageTtl,

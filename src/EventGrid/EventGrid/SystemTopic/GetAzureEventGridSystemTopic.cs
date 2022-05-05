@@ -91,8 +91,13 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.NextLinkHelp,
-            ParameterSetName = NextLinkParameterSet)]
+            HelpMessage = EventGridConstants.TopHelp,
+            ParameterSetName = SystemTopicNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.TopHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string NextLink { get; set; }
 

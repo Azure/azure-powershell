@@ -22,10 +22,14 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public PsDeliveryAttribute(DeliveryAttributeListResult deliveryAttributeListResult)
         {
             this.DeliveryAttribute = new List<string>();
-            foreach (DeliveryAttributeMapping deliveryAttributeMapping in deliveryAttributeListResult.Value)
+            if(deliveryAttributeListResult != null && deliveryAttributeListResult.Value != null)
             {
-                this.DeliveryAttribute.Add(deliveryAttributeMapping.Name);
+                foreach (DeliveryAttributeMapping deliveryAttributeMapping in deliveryAttributeListResult.Value)
+                {
+                    this.DeliveryAttribute.Add(deliveryAttributeMapping.Name);
+                }
             }
+            
         }
 
         public IList<string> DeliveryAttribute { get; set; }

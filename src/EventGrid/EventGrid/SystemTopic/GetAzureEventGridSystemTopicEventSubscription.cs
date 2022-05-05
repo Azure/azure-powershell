@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.NextLinkHelp,
-            ParameterSetName = NextLinkParameterSet)]
+            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string NextLink { get; set; }
 
@@ -107,6 +107,11 @@ namespace Microsoft.Azure.Commands.EventGrid
                 throw new ArgumentNullException(
                     this.SystemTopicName,
                     "System topic Name should be specified to retrieve event subscriptions for a system topic");
+            }
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(this.Top)))
+            {
+                providedTop = this.Top;
             }
 
             if (!string.IsNullOrEmpty(this.EventSubscriptionName))

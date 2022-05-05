@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Commands.EventGrid
     public class UpdateAzureEventGridSystemTopicEventSubscription : AzureEventGridCmdletBase
     {
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
-           ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
+            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string EventSubscriptionName { get; set; }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.LabelsHelp,
             ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string[] Labels { get; set; }
+        public string[] Label { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                     this.DeliveryAttributeMapping,
                     this.Endpoint,
                     this.EndpointType,
-                    this.Labels,
+                    this.Label,
                     this.StorageQueueMessageTtl,
                     this.AdvancedFilter,
                     enableAdvancedFilteringOnArrays,

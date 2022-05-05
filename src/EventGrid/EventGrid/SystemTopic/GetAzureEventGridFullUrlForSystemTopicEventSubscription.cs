@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
         "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSystemFullUrlForTopicEventSubscription",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridFullUrlForSystemTopicEventSubscription",
         SupportsShouldProcess = true,
         DefaultParameterSetName = TopicNameParameterSet),
     OutputType(typeof(string))]
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public override void ExecuteCmdlet()
         {
-            EventSubscriptionFullUrl eventSubscriptionFullUrl = this.Client.GetAzFullUrlForSystemTopicEventSubscription(this.EventSubscriptionName, this.ResourceGroupName, this.SystemTopicName);
+            EventSubscriptionFullUrl eventSubscriptionFullUrl = this.Client.GetAzFullUrlForSystemTopicEventSubscription(this.ResourceGroupName, this.SystemTopicName, this.EventSubscriptionName);
             this.WriteObject(eventSubscriptionFullUrl.EndpointUrl, true);
         }
     }

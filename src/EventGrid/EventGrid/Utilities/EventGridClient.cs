@@ -679,7 +679,10 @@ namespace Microsoft.Azure.Commands.EventGrid
             }
 
             EventSubscriptionUpdateParameters eventSubscriptionUpdateParameters = new EventSubscriptionUpdateParameters();
-            eventSubscriptionUpdateParameters.Destination = destination;
+            if(!string.IsNullOrEmpty(endpoint))
+            {
+                eventSubscriptionUpdateParameters.Destination = destination;
+            }
             eventSubscriptionUpdateParameters.DeliveryWithResourceIdentity = null;
             eventSubscriptionUpdateParameters.Filter = filter;
             eventSubscriptionUpdateParameters.Labels = labels;
