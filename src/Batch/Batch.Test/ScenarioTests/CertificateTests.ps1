@@ -62,8 +62,8 @@ function Test-TestCancelCertificateDelete
     Get-AzBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context | Stop-AzBatchCertificateDeletion -BatchContext $context
 
     # Verify the cert went back to the active state
-    $filter = "state eq 'active'"
+    $filter = "state eq 'active'";
     $cert = Get-AzBatchCertificate -Filter $filter -BatchContext $context
     
-    Assert-AreEqual $thumbprint $cert.Thumbprint.ToLowerInvariant()
+    Assert-ContainsItem $cert.Thumbprint.ToLowerInvariant() $thumbprint
 }

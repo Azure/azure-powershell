@@ -21,6 +21,7 @@
 * Added new cmdlet `Get-AzSqlInstanceEndpointCertificate`
 
 ## Version 3.8.0
+* Added parameter `HighAvailabilityReplicaCount` to `New-AzSqlElasticPool` and `Set-AzSqlElasticPool`
 * Added parameter `ServicePrincipalType` to `New-AzSqlInstance` and `Set-AzSqlInstance`
 * [Breaking change] Removed `Get-AzSqlDatabaseTransparentDataEncryptionActivity`
 * Added property `CurrentBackupStorageRedundancy` and `RequestedBackupStorageRedundancy` in  the outputs of Managed Instance CRUD commands

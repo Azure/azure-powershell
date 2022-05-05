@@ -18,6 +18,12 @@ Get-AzGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <Strin
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### SharedGalleryParameterSet
+```
+Get-AzGalleryImageDefinition [[-Name] <String>] -GalleryUniqueName <String> [-Scope <String>]
+ -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ResourceIdParameter
 ```
 Get-AzGalleryImageDefinition [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
@@ -248,12 +254,42 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -GalleryUniqueName
+The unique name of the Shared Image Gallery.
+
+```yaml
+Type: System.String
+Parameter Sets: SharedGalleryParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the Shared Image Gallery.
+
+```yaml
+Type: System.String
+Parameter Sets: SharedGalleryParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the gallery image definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: DefaultParameter
+Parameter Sets: DefaultParameter, SharedGalleryParameterSet
 Aliases: GalleryImageDefinitionName
 
 Required: False
@@ -288,6 +324,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Scope
+Specifies galleries shared to subscription or tenant.
+
+```yaml
+Type: System.String
+Parameter Sets: SharedGalleryParameterSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

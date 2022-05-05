@@ -60,7 +60,7 @@ This command downloads a file that is named CurrentDataFile in the folder Contos
 
 ### Example 2: Downloads the files under sample file share
 ```
-PS C:\>Get-AzStorageFile -ShareName sample | ? {$_.GetType().Name -eq "CloudFile"} | Get-AzStorageFileContent
+PS C:\>Get-AzStorageFile -ShareName sample | Where-Object {$_.GetType().Name -eq "CloudFile"} | Get-AzStorageFileContent
 ```
 
 This example downloads the files under sample file share
