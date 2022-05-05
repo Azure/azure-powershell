@@ -20,6 +20,9 @@ Gets the shared access keys used to publish events to an Event Grid domain.
 ### [Get-AzEventGridDomainTopic](Get-AzEventGridDomainTopic.md)
 Gets the details of an Event Grid domain topic, or gets a list of all Event Grid domain topics under specific Event Grid domain in the current Azure subscription.
 
+### [Get-AzEventGridFullUrlForSystemTopicEventSubscription](Get-AzEventGridFullUrlForSystemTopicEventSubscription.md)
+{{ Fill in the Synopsis }}
+
 ### [Get-AzEventGridSubscription](Get-AzEventGridSubscription.md)
 Gets the details of an event subscription, or gets a list of all event subscriptions in the current Azure subscription.
 

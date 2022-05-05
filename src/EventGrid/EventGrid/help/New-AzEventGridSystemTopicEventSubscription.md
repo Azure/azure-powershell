@@ -24,7 +24,7 @@ New-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -Res
  -SystemTopicName <String> [-AzureActiveDirectoryApplicationIdOrUri <String>]
  [-AzureActiveDirectoryTenantId <String>] [-DeadLetterEndpoint <String>] [-DeliveryAttributeMapping <String[]>]
  [-Endpoint <String>] [-EndpointType <String>] [-DeliverySchema <String>] [-EventTtl <Int32>]
- [-ExpirationDate <DateTime>] [-Labels <String[]>] [-MaxDeliveryAttempt <Int32>] [-MaxEventsPerBatch <Int32>]
+ [-ExpirationDate <DateTime>] [-Label <String[]>] [-MaxDeliveryAttempt <Int32>] [-MaxEventsPerBatch <Int32>]
  [-PreferredBatchSizeInKiloByte <Int32>] [-StorageQueueMessageTtl <Int64>] [-AdvancedFilter <Hashtable[]>]
  [-AdvancedFilteringOnArray] [-IncludedEventType <String[]>] [-SubjectBeginsWith <String>]
  [-SubjectEndsWith <String>] [-SubjectCaseSensitive] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -272,7 +272,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Labels
+### -Label
 Labels for the event subscription.
 
 ```yaml

@@ -21,14 +21,8 @@ Get-AzEventGridSystemTopicEventSubscription [-DefaultProfile <IAzureContextConta
 ### SystemTopicEventSuscriptionParameterSet
 ```
 Get-AzEventGridSystemTopicEventSubscription [-EventSubscriptionName <String>] -ResourceGroupName <String>
- -SystemTopicName <String> [-IncludeFullEndpointUrl] [-ODataQuery <String>] [-Top <Int32>]
+ -SystemTopicName <String> [-IncludeFullEndpointUrl] [-ODataQuery <String>] [-Top <Int32>] [-NextLink <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### NextLinkParameterSet
-```
-Get-AzEventGridSystemTopicEventSubscription [-NextLink <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,7 +90,7 @@ This value is obtained with the first Get-AzEventGrid cmdlet call when more reso
 
 ```yaml
 Type: System.String
-Parameter Sets: NextLinkParameterSet
+Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
 
 Required: False

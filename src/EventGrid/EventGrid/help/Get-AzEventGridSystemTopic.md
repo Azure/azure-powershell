@@ -15,18 +15,13 @@ schema: 2.0.0
 ### ResourceGroupNameParameterSet (Default)
 ```
 Get-AzEventGridSystemTopic [-ResourceGroupName <String>] [-ODataQuery <String>] [-Top <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-NextLink <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SystemTopicNameParameterSet
 ```
 Get-AzEventGridSystemTopic [-ResourceGroupName <String>] [-Name <String>] [-ODataQuery <String>] [-Top <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### NextLinkParameterSet
-```
-Get-AzEventGridSystemTopic [-NextLink <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-NextLink <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +74,7 @@ This value is obtained with the first Get-AzEventGrid cmdlet call when more reso
 
 ```yaml
 Type: System.String
-Parameter Sets: NextLinkParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -95,7 +90,7 @@ Filtering is currently allowed on the Name property only.The supported operation
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSet, SystemTopicNameParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -110,7 +105,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSet, SystemTopicNameParameterSet
+Parameter Sets: (All)
 Aliases: ResourceGroup
 
 Required: False
@@ -128,7 +123,7 @@ If the Top value is not specified, the full list of resources will be returned a
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ResourceGroupNameParameterSet, SystemTopicNameParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False

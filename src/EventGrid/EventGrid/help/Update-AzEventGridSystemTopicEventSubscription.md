@@ -22,7 +22,7 @@ Update-AzEventGridSystemTopicEventSubscription [-DefaultProfile <IAzureContextCo
 ```
 Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
  -SystemTopicName <String> [-DeadLetterEndpoint <String>] [-DeliveryAttributeMapping <String[]>]
- [-Endpoint <String>] [-EndpointType <String>] [-Labels <String[]>] [-StorageQueueMessageTtl <Int64>]
+ [-Endpoint <String>] [-EndpointType <String>] [-Label <String[]>] [-StorageQueueMessageTtl <Int64>]
  [-AdvancedFilter <Hashtable[]>] [-AdvancedFilteringOnArray] [-IncludedEventType <String[]>]
  [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>] [-SubjectCaseSensitive]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -191,7 +191,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Labels
+### -Label
 Labels for the event subscription.
 
 ```yaml
