@@ -100,14 +100,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 cfg
                     .CreateMap<PsApiManagementRepresentation, RepresentationContract>()
                     .ForMember(dest => dest.ContentType, opt => opt.MapFrom(src => src.ContentType))
-                    .ForMember(dest => dest.Sample, opt => opt.MapFrom(src => src.Sample))
+                    .ForMember(dest => dest.Examples, opt => opt.Ignore())
                     .ForMember(dest => dest.FormParameters, opt => opt.Ignore())
                     .ForMember(dest => dest.SchemaId, opt => opt.MapFrom(src => src.SchemaId))
                     .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.TypeName))
                     .AfterMap((src, dest) =>
                         dest.FormParameters = src.FormParameters == null || !src.FormParameters.Any()
                             ? null
-                            : ToParameterContract(src.FormParameters));
+                            : ToParameterContract(src.FormParameters))
+                    .AfterMap((src, dest) =>
+                        dest.Examples = src.Examples == null || !src.Examples.Any()
+                            ? null
+                            : ToExampleContract(src.Examples));
 
                 cfg
                     .CreateMap<ApiContract, PsApiManagementApi>()
@@ -124,6 +128,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.IsOnline, opt => opt.MapFrom(src => src.IsOnline ?? false))
                     .ForMember(dest => dest.ApiVersionSetDescription, opt => opt.MapFrom(src => src.ApiVersionDescription))
                     .ForMember(dest => dest.Protocols, opt => opt.MapFrom(src => src.Protocols.ToArray()))
+                    .ForMember(dest => dest.TermsOfServiceUrl, opt => opt.MapFrom(src => src.TermsOfServiceUrl))
                     .ForMember(
                         dest => dest.AuthorizationServerId,
                         opt => opt.MapFrom(
@@ -160,6 +165,36 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                             src => src.AuthenticationSettings != null && src.AuthenticationSettings.Openid != null && src.AuthenticationSettings.Openid.BearerTokenSendingMethods != null &&
                                 src.AuthenticationSettings.Openid.BearerTokenSendingMethods.Any()
                                 ? src.AuthenticationSettings.Openid.BearerTokenSendingMethods.ToArray()
+                                : null))
+                    .ForMember(
+                        dest => dest.ContactEmail,
+                        opt => opt.MapFrom(
+                            src => src.Contact != null
+                                ? src.Contact.Email
+                                : null))
+                    .ForMember(
+                        dest => dest.ContactName,
+                        opt => opt.MapFrom(
+                            src => src.Contact != null
+                                ? src.Contact.Name
+                                : null))
+                    .ForMember(
+                        dest => dest.ContactUrl,
+                        opt => opt.MapFrom(
+                            src => src.Contact != null
+                                ? src.Contact.Url
+                                : null))
+                    .ForMember(
+                        dest => dest.LicenseName,
+                        opt => opt.MapFrom(
+                            src => src.License != null
+                                ? src.License.Name
+                                : null))
+                    .ForMember(
+                        dest => dest.LicenseUrl,
+                        opt => opt.MapFrom(
+                            src => src.License != null
+                                ? src.License.Url
                                 : null));
 
                 cfg
@@ -177,10 +212,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.IsOnline, opt => opt.MapFrom(src => src.IsOnline))
                     .ForMember(dest => dest.ApiVersionDescription, opt => opt.MapFrom(src => src.ApiVersionSetDescription))
                     .ForMember(dest => dest.Protocols, opt => opt.MapFrom(src => src.Protocols.ToArray()))
+                    .ForMember(dest => dest.TermsOfServiceUrl, opt => opt.MapFrom(src => src.TermsOfServiceUrl))
                     .AfterMap((src, dest) =>
                         dest.AuthenticationSettings = Utils.ToAuthenticationSettings(src))
                     .AfterMap((src, dest) =>
-                        dest.SubscriptionKeyParameterNames = Utils.ToSubscriptionKeyParameterNamesContract(src));
+                        dest.SubscriptionKeyParameterNames = Utils.ToSubscriptionKeyParameterNamesContract(src))
+                    .AfterMap((src, dest) =>
+                        dest.Contact = Utils.ToContactInformation(src))
+                    .AfterMap((src, dest) =>
+                        dest.License = Utils.ToLicenseInformation(src));
 
                 cfg
                     .CreateMap<PsApiManagementApi, ApiCreateOrUpdateParameter>()
@@ -195,24 +235,33 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.IsOnline, opt => opt.MapFrom(src => src.IsOnline))
                     .ForMember(dest => dest.ApiVersionDescription, opt => opt.MapFrom(src => src.ApiVersionSetDescription))
                     .ForMember(dest => dest.Protocols, opt => opt.MapFrom(src => src.Protocols.ToArray()))
+                    .ForMember(dest => dest.TermsOfServiceUrl, opt => opt.MapFrom(src => src.TermsOfServiceUrl))
                     .AfterMap((src, dest) =>
                         dest.AuthenticationSettings = Utils.ToAuthenticationSettings(src))
                     .AfterMap((src, dest) =>
-                        dest.SubscriptionKeyParameterNames = Utils.ToSubscriptionKeyParameterNamesContract(src));
+                        dest.SubscriptionKeyParameterNames = Utils.ToSubscriptionKeyParameterNamesContract(src))
+                    .AfterMap((src, dest) =>
+                        dest.Contact = Utils.ToContactInformation(src))
+                    .AfterMap((src, dest) =>
+                        dest.License = Utils.ToLicenseInformation(src));
 
                 cfg.CreateMap<ApiContract, ApiCreateOrUpdateParameter>();
 
                 cfg
                    .CreateMap<RepresentationContract, PsApiManagementRepresentation>()
                    .ForMember(dest => dest.ContentType, opt => opt.MapFrom(src => src.ContentType))
-                   .ForMember(dest => dest.Sample, opt => opt.MapFrom(src => src.Sample))
+                   .ForMember(dest => dest.Examples, opt => opt.Ignore())
                    .ForMember(dest => dest.FormParameters, opt => opt.Ignore())
                    .ForMember(dest => dest.SchemaId, opt => opt.MapFrom(src => src.SchemaId))
                    .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.TypeName))
                    .AfterMap((src, dest) =>
                        dest.FormParameters = src.FormParameters == null || !src.FormParameters.Any()
                            ? null
-                           : ToParameterContract(src.FormParameters));
+                           : ToParameterContract(src.FormParameters))
+                    .AfterMap((src, dest) =>
+                        dest.Examples = src.Examples == null || !src.Examples.Any()
+                            ? null
+                            : ToExampleContract(src.Examples));
 
                 cfg
                     .CreateMap<RequestContract, PsApiManagementRequest>()
@@ -426,7 +475,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 cfg
                     .CreateMap<AccessInformationSecretsContract, PsApiManagementAccessInformation>()
                     .ForMember(dest => dest.Enabled, opt => opt.MapFrom(src => src.Enabled))
-                    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.PrincipalId))
+                    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                     .ForMember(dest => dest.PrimaryKey, opt => opt.MapFrom(src => src.PrimaryKey))
                     .ForMember(dest => dest.SecondaryKey, opt => opt.MapFrom(src => src.SecondaryKey));
 
@@ -647,6 +696,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 cfg
                     .CreateMap<ClientSecretContract, PsApiManagementClientSecret>()
                     .ForMember(dest => dest.ClientSecret, opt => opt.MapFrom(src => src.ClientSecret));
+
+                cfg
+                    .CreateMap<ParameterExampleContract, PsApiManagementParameterExample>()
+                    .ForMember(dest => dest.Value , opt => opt.MapFrom(src => src.Value))
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.ExternalValue, opt => opt.MapFrom(src => src.ExternalValue))
+                    .ForMember(dest => dest.Summary, opt => opt.MapFrom(src => src.Summary));
+
+                cfg
+                    .CreateMap<PsApiManagementParameterExample, ParameterExampleContract>()
+                    .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.Value))
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.ExternalValue, opt => opt.MapFrom(src => src.ExternalValue))
+                    .ForMember(dest => dest.Summary, opt => opt.MapFrom(src => src.Summary));
             });
 
             _mapper = config.CreateMapper();
@@ -769,13 +832,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string apiVersionDescription,
             string apiVersionSetId,
             string apiVersion,
+            string apiType,
             PsApiManagementSchema[] urlSchema,
             string authorizationServerId,
             string authorizationScope,
             string subscriptionKeyHeaderName,
             string subscriptionKeyQueryParamName,
             string openIdProviderId,
-            string[] bearerTokenSendingMethods)
+            string[] bearerTokenSendingMethods,
+            string termsOfServiceUrl,
+            string contactName,
+            string contactUrl,
+            string contactEmail,
+            string licenseName,
+            string licenseUrl)
         {
             var api = new ApiCreateOrUpdateParameter
             {
@@ -783,9 +853,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 Description = description,
                 ServiceUrl = serviceUrl,
                 Path = urlSuffix,
-                Protocols = Mapper.Map<IList<Protocol?>>(urlSchema),
+                Protocols = Mapper.Map<IList<string>>(urlSchema)
             };
-
+            if (!string.IsNullOrWhiteSpace(apiType))
+            {
+                api.ApiType = apiType;
+            }
             if (!string.IsNullOrWhiteSpace(authorizationServerId))
             {
                 api.AuthenticationSettings = new AuthenticationSettingsContract
@@ -846,6 +919,36 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 api.ApiVersion = apiVersion;
             }
 
+            if (!string.IsNullOrWhiteSpace(apiType))
+            {
+                api.ApiType = apiType;
+            }
+
+            if (!string.IsNullOrWhiteSpace(termsOfServiceUrl))
+            {
+                api.TermsOfServiceUrl = termsOfServiceUrl;
+            }
+
+            if (!string.IsNullOrWhiteSpace(contactEmail) || !string.IsNullOrWhiteSpace(contactName) || !string.IsNullOrWhiteSpace(contactUrl))
+            {
+                api.Contact = new ApiContactInformation
+                {
+                    Email = contactEmail,
+                    Name = contactName,
+                    Url = contactUrl
+                };
+            }
+
+            if (!string.IsNullOrWhiteSpace(licenseName) || !string.IsNullOrWhiteSpace(licenseUrl))
+            {
+                api.License = new ApiLicenseInformation
+                {
+                    Name = licenseName,
+                    Url = licenseUrl
+                };
+            }
+
+
             var getResponse = Client.Api.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, id, api, null);
 
             return Mapper.Map<PsApiManagementApi>(getResponse);
@@ -878,7 +981,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string subscriptionKeyQueryParamName,
             string openIdProviderId,
             string[] bearerTokenSendingMethods,
-            PsApiManagementApi apiObject)
+            PsApiManagementApi apiObject, 
+            string apiType,
+            string termsOfServiceUrl,
+            string contactName,
+            string contactUrl,
+            string contactEmail,
+            string licenseName,
+            string licenseUrl)
         {
             ApiCreateOrUpdateParameter api;
             if (apiObject == null)
@@ -922,7 +1032,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             if (urlSchema != null)
             {
                 urlSchema = urlSchema.Distinct().ToArray();
-                api.Protocols = Mapper.Map<IList<Protocol?>>(urlSchema);
+                api.Protocols = Mapper.Map<IList<string>>(urlSchema);
             }
 
             if (subscriptionRequired)
@@ -960,6 +1070,35 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 {
                     Header = subscriptionKeyHeaderName,
                     Query = subscriptionKeyQueryParamName
+                };
+            }
+
+            if (apiType != null)
+            {
+                api.ApiType = apiType;
+            }
+
+            if (!string.IsNullOrWhiteSpace(termsOfServiceUrl))
+            {
+                api.TermsOfServiceUrl = termsOfServiceUrl;
+            }
+
+            if (!string.IsNullOrWhiteSpace(contactEmail) || !string.IsNullOrWhiteSpace(contactName) || !string.IsNullOrWhiteSpace(contactUrl))
+            {
+                api.Contact = new ApiContactInformation
+                {
+                    Email = contactEmail,
+                    Name = contactName,
+                    Url = contactUrl
+                };
+            }
+
+            if (!string.IsNullOrWhiteSpace(licenseName) || !string.IsNullOrWhiteSpace(licenseUrl))
+            {
+                api.License = new ApiLicenseInformation
+                {
+                    Name = licenseName,
+                    Url = licenseUrl
                 };
             }
 
@@ -1008,7 +1147,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             if (protocols != null)
             {
-                apiCreateOrUpdateParams.Protocols = Mapper.Map<IList<Protocol?>>(protocols);
+                apiCreateOrUpdateParams.Protocols = Mapper.Map<IList<string>>(protocols);
             }
 
             if (!string.IsNullOrEmpty(serviceUrl))
@@ -1070,7 +1209,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             if (protocols != null)
             {
-                createOrUpdateContract.Protocols = Mapper.Map<IList<Protocol?>>(protocols);
+                createOrUpdateContract.Protocols = Mapper.Map<IList<string>>(protocols);
             }
 
             if (!string.IsNullOrEmpty(serviceUrl))
@@ -4139,6 +4278,39 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             }
 
             return parameterList.ToArray();
+        }
+
+        static IDictionary<string, ParameterExampleContract> ToExampleContract(PsApiManagementParameterExample[] examples)
+        {
+            if (examples == null || !examples.Any())
+            {
+                return null;
+            }
+
+            var examplesList = new Dictionary<string, ParameterExampleContract>();
+
+            foreach (var example in examples)
+            {
+                examplesList.Add("default", Mapper.Map<ParameterExampleContract>(example));
+            }
+
+            return examplesList;
+        }
+
+        static PsApiManagementParameterExample[] ToExampleContract(IDictionary<string, ParameterExampleContract> examples)
+        {
+            if (examples == null || !examples.Any())
+            {
+                return null;
+            }
+
+            var examplesList = new List<PsApiManagementParameterExample>();
+            foreach (var example in examples)
+            {
+                examplesList.Add(Mapper.Map<PsApiManagementParameterExample>(example.Value));
+            }
+
+            return examplesList.ToArray();
         }
         #endregion
 

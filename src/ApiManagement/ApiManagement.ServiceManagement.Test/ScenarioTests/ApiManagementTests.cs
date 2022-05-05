@@ -12,24 +12,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System.Linq;
 using Xunit;
-using Microsoft.Azure.Commands.TestFx;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using Microsoft.Azure.ServiceManagement.Common.Models;
-    using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
-
     public class ApiManagementTestRunner
     {
         protected readonly ITestRunner TestRunner;
@@ -67,7 +58,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             using (var context = MockContext.Start("ApiManagementTests", "CreateApiManagementService"))
             {
                 var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient(context);
-                ResourceGroupName = "powershelltest";
+                ResourceGroupName = "Apim-NetSdk-20210801";
                 Location = "CentralUSEUAP";
 
                 if (string.IsNullOrWhiteSpace(ResourceGroupName))
@@ -76,7 +67,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
                     resourceManagementClient.TryRegisterResourceGroup(Location, ResourceGroupName);
                 }
 
-                ApiManagementServiceName = "powershellsdkservice";
+                ApiManagementServiceName = "powershellsdkservicetest";
                 ApiManagementHelper.GetApiManagementClient(context).TryCreateApiService(ResourceGroupName, ApiManagementServiceName, Location);
             }
         }
@@ -84,6 +75,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
         public string[] ConvertScriptName(params string[] scripts)
         {
             return scripts.Select(s => s + $" {ResourceGroupName} {ApiManagementServiceName}").ToArray();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiCrudGraphQLTest()
+        {
+            TestRunner.RunTestScript(ConvertScriptName("Api-CrudGraphQlTest"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiCrudWebSocketTest()
+        {
+            TestRunner.RunTestScript(ConvertScriptName("Api-CrudWebSocketTest"));
         }
 
         [Fact]
