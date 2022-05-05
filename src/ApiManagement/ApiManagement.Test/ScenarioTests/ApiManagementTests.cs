@@ -12,82 +12,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using Xunit;
-using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
-using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using Microsoft.Azure.Commands.TestFx;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
-    using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
-
-    public class ApiManagementTestRunner
-    {
-        protected readonly ITestRunner TestRunner;
-
-        protected ApiManagementTestRunner(ITestOutputHelper output)
-        {
-            TestRunner = TestManager.CreateInstance (output)
-                .WithNewPsScriptFilename ($"{GetType().Name}.ps1")
-                .WithProjectSubfolderForTests ("ScenarioTests")
-                .WithCommonPsScripts (new[]
-                {
-                    @"Common.ps1",
-                    @"../AzureRM.Storage.ps1",
-                    @"../AzureRM.Resources.ps1"
-                })
-                .WithNewRmModules (helper => new[]
-                {
-                    helper.RMProfileModule,
-                    helper.GetRMModulePath("Az.ApiManagement.psd1")
-                })
-                .WithNewRecordMatcherArguments (
-                    userAgentsToIgnore: new Dictionary<string, string>
-                    {
-                        {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
-                    },
-                    resourceProviders: new Dictionary<string, string>
-                    {
-                        {"Microsoft.Resources", null},
-                        {"Microsoft.Features", null},
-                        {"Microsoft.Authorization", null}
-                    }
-                ).WithManagementClients(
-                    GetResourceManagementClient,
-                    GetArmStorageManagementClient,
-                    GetApiManagementManagementClient
-                )
-                .Build();
-        }
-
-        private static StorageManagementClient GetArmStorageManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private static ApiManagementClient GetApiManagementManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<ApiManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-    }
-
     public class ApiManagementTests : ApiManagementTestRunner
     {
         public ApiManagementTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)

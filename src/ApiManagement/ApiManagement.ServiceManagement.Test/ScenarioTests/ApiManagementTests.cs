@@ -12,41 +12,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Linq;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    public class ApiManagementTestRunner
-    {
-        protected readonly ITestRunner TestRunner;
-
-        protected ApiManagementTestRunner(ITestOutputHelper output)
-        {
-            TestRunner = TestManager.CreateInstance (output)
-                .WithNewPsScriptFilename ($"{GetType().Name}.ps1")
-                .WithProjectSubfolderForTests ("ScenarioTests")
-                .WithCommonPsScripts (new[]
-                {
-                    @"Common.ps1"
-                })
-                .WithNewRmModules (helper => new[]
-                {
-                    helper.RMProfileModule,
-                    helper.GetRMModulePath("Az.ApiManagement.psd1")
-                })
-                .WithManagementClients(
-                    ApiManagementHelper.GetApiManagementClient,
-                    ApiManagementHelper.GetResourceManagementClient
-                )
-                .Build();
-        }
-    }
-
     public class ApiManagementTests : ApiManagementTestRunner
     {
         public string Location { get; set; }
