@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzEventGridSystemTopic
+# Get-AzEventGridSystemTopicEventSubscription
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -14,14 +14,21 @@ schema: 2.0.0
 
 ### TopicNameParameterSet (Default)
 ```
-New-AzEventGridSystemTopic [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzEventGridSystemTopicEventSubscription [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### SystemTopicNameParameterSet
+### SystemTopicEventSuscriptionParameterSet
 ```
-New-AzEventGridSystemTopic -ResourceGroupName <String> -Name <String> -Source <String> -TopicType <String>
- [-Location <String>] [-IdentityType <String>] [-IdentityId <String[]>] [-Tag <Hashtable>]
+Get-AzEventGridSystemTopicEventSubscription [-EventSubscriptionName <String>] -ResourceGroupName <String>
+ -SystemTopicName <String> [-IncludeFullEndpointUrl] [-ODataQuery <String>] [-Top <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### NextLinkParameterSet
+```
+Get-AzEventGridSystemTopicEventSubscription [-NextLink <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,12 +60,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityId
-The list of user assigned identities
+### -EventSubscriptionName
+EventGrid event subscription name.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: SystemTopicNameParameterSet
+Type: System.String
+Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
 
 Required: False
@@ -68,15 +75,29 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Different identity types.
-Could be either  of following 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+### -IncludeFullEndpointUrl
+If specified, include the full endpoint URL of the event subscription destination in the response.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NextLink
+The link for the next page of resources to be obtained.
+This value is obtained with the first Get-AzEventGrid cmdlet call when more resources are still available to be queried.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
+Parameter Sets: NextLinkParameterSet
 Aliases:
-Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
 
 Required: False
 Position: Named
@@ -85,30 +106,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Location
-The location of the topic.
+### -ODataQuery
+The OData query used for filtering the list results.
+Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
+Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-EventGrid topic name.
-
-```yaml
-Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -120,22 +127,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
-Aliases: ResourceGroup
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Source
-Source for a system topic
-
-```yaml
-Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
+Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
 
 Required: True
@@ -145,30 +137,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tag
-Hashtable which represents resource Tags.
+### -SystemTopicName
+EventGrid topic name.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: SystemTopicNameParameterSet
+Type: System.String
+Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Top
+The maximum number of resources to be obtained.
+Valid value is between 1 and 100.
+If top value is specified and more results are still available, the result will contain a link to the next page to be queried in NextLink.
+If the Top value is not specified, the full list of resources will be returned at once.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TopicType
-EventGrid topic type name.
-
-```yaml
-Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -213,13 +208,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.String[]
-
-### System.Collections.Hashtable
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSSystemTopic
+### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
+
+### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscriptionListInstance
 
 ## NOTES
 

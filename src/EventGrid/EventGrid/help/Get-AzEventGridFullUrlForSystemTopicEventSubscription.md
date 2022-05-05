@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Update-AzEventGridSystemTopic
+# Get-AzEventGridFullUrlForSystemTopicEventSubscription
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -14,15 +14,15 @@ schema: 2.0.0
 
 ### TopicNameParameterSet (Default)
 ```
-Update-AzEventGridSystemTopic [-IdentityId <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Get-AzEventGridFullUrlForSystemTopicEventSubscription [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### SystemTopicNameParameterSet
+### SystemTopicEventSuscriptionParameterSet
 ```
-Update-AzEventGridSystemTopic -ResourceGroupName <String> -Name <String> [-IdentityType <String>]
- [-IdentityId <String[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzEventGridFullUrlForSystemTopicEventSubscription -EventSubscriptionName <String>
+ -ResourceGroupName <String> -SystemTopicName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +43,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -54,44 +54,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityId
-List of user assigned Identity Ids
+### -EventSubscriptionName
+EventGrid event subscription name.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
+Type: String
+Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Hashtable which represents resource Tags.
-
-```yaml
-Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
-Aliases:
-Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-EventGrid topic name.
-
-```yaml
-Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
-Aliases: SystemTopicName
 
 Required: True
 Position: Named
@@ -104,9 +73,9 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
-Aliases: ResourceGroup
+Type: String
+Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -115,15 +84,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tag
-Hashtable which represents resource Tags.
+### -SystemTopicName
+EventGrid topic name.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: SystemTopicNameParameterSet
+Type: String
+Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -134,7 +103,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -150,7 +119,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -168,13 +137,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.String[]
-
-### System.Collections.Hashtable
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSSystemTopic
+### System.String
 
 ## NOTES
 

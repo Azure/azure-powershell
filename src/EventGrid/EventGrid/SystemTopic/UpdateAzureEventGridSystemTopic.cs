@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = SystemTopicNameParameterSet)]
         [ResourceGroupCompleter]
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            Position = 1,
             HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = SystemTopicNameParameterSet)]
         [ResourceNameCompleter("Microsoft.EventGrid/systemTopics", nameof(ResourceGroupName))]

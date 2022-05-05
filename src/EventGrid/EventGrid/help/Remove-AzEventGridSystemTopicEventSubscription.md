@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzEventGridSystemTopic
+# Remove-AzEventGridSystemTopicEventSubscription
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -14,14 +14,15 @@ schema: 2.0.0
 
 ### TopicNameParameterSet (Default)
 ```
-New-AzEventGridSystemTopic [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzEventGridSystemTopicEventSubscription [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### SystemTopicNameParameterSet
+### SystemTopicEventSuscriptionParameterSet
 ```
-New-AzEventGridSystemTopic -ResourceGroupName <String> -Name <String> -Source <String> -TopicType <String>
- [-Location <String>] [-IdentityType <String>] [-IdentityId <String[]>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
+ -SystemTopicName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,65 +54,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityId
-The list of user assigned identities
-
-```yaml
-Type: System.String[]
-Parameter Sets: SystemTopicNameParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Different identity types.
-Could be either  of following 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+### -EventSubscriptionName
+EventGrid event subscription name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
-Aliases:
-Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Location
-The location of the topic.
-
-```yaml
-Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-EventGrid topic name.
-
-```yaml
-Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
+Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+{{ Fill PassThru Description }}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -120,22 +89,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
-Aliases: ResourceGroup
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Source
-Source for a system topic
-
-```yaml
-Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
+Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
 
 Required: True
@@ -145,27 +99,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tag
-Hashtable which represents resource Tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: SystemTopicNameParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TopicType
-EventGrid topic type name.
+### -SystemTopicName
+EventGrid topic name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
+Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
 
 Required: True
@@ -213,13 +152,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.String[]
-
-### System.Collections.Hashtable
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSSystemTopic
+### System.Boolean
 
 ## NOTES
 

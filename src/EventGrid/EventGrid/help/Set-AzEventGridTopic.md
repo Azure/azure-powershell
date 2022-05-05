@@ -15,15 +15,15 @@ Sets the properties of an Event Grid topic.
 ### TopicNameParameterSet (Default)
 ```
 Set-AzEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-Tag] <Hashtable>
- [-InboundIpRule] <Hashtable> [-PublicNetworkAccess] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InboundIpRule] <Hashtable> [-IdentityType <String>] [-IdentityId <String[]>] [-PublicNetworkAccess] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
 Set-AzEventGridTopic [-ResourceId] <String> [-Tag] <Hashtable> [-InboundIpRule] <Hashtable>
- [-PublicNetworkAccess] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IdentityType <String>] [-IdentityId <String[]>] [-PublicNetworkAccess] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TopicInputObjectParameterSet
@@ -67,7 +67,7 @@ The list of user assigned identities
 
 ```yaml
 Type: System.String[]
-Parameter Sets: TopicInputObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -82,7 +82,7 @@ Different identity types. Could be either  of following 'SystemAssigned', 'UserA
 
 ```yaml
 Type: System.String
-Parameter Sets: TopicInputObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False

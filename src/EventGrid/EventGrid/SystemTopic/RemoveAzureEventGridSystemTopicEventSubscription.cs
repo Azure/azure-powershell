@@ -13,37 +13,39 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
-using Microsoft.Azure.Commands.EventGrid.Utilities;
-using Microsoft.Azure.Management.EventGrid.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-
+using Microsoft.Azure.Management.EventGrid.Models;
+using Microsoft.Azure.Commands.EventGrid.Utilities;
+using EventGridModels = Microsoft.Azure.Management.EventGrid.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
-        "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSystemTopicEventSubscriptionsDeliveryAttribute",
-        DefaultParameterSetName = SystemTopicEventSuscriptionParameterSet),
-    OutputType(typeof(PsDeliveryAttribute))]
+        "Remove",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSystemTopicEventSubscription",
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = TopicNameParameterSet),
+    OutputType(typeof(bool))]
 
-    class GetAzureEventGridSystemTopicEventSubscriptionsDeliveryAttribute : AzureEventGridCmdletBase
+    public class RemoveAzureEventGridSystemTopicEventSubscription : AzureEventGridCmdletBase
     {
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           Position = 0,
-           HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
-           ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
+            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string EventSubscriptionName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -52,17 +54,25 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
             HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string SystemTopicName { get; set; }
 
+        [Parameter(
+            Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            DeliveryAttributeListResult deliveryAttributeListResult = this.Client.GetAzEventSubscriptionsDeliveryAttribute(this.EventSubscriptionName, this.ResourceGroupName, this.SystemTopicName);
-            PsDeliveryAttribute PsDeliveryAttribute = new PsDeliveryAttribute(deliveryAttributeListResult);
-            this.WriteObject(PsDeliveryAttribute, true);
+            if (this.ShouldProcess(this.EventSubscriptionName, $"Remove event subscription {this.EventSubscriptionName}"))
+            {
+                this.Client.DeleteSystemTopicEventSubscriptiion(this.ResourceGroupName, this.SystemTopicName, this.EventSubscriptionName);
+                if (this.PassThru)
+                {
+                    this.WriteObject(true);
+                }
+            }
         }
     }
 }

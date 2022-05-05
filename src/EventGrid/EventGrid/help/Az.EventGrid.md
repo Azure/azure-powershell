@@ -23,6 +23,15 @@ Gets the details of an Event Grid domain topic, or gets a list of all Event Grid
 ### [Get-AzEventGridSubscription](Get-AzEventGridSubscription.md)
 Gets the details of an event subscription, or gets a list of all event subscriptions in the current Azure subscription.
 
+### [Get-AzEventGridSystemTopic](Get-AzEventGridSystemTopic.md)
+{{ Fill in the Synopsis }}
+
+### [Get-AzEventGridSystemTopicEventSubscription](Get-AzEventGridSystemTopicEventSubscription.md)
+{{ Fill in the Synopsis }}
+
+### [Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute](Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute.md)
+{{ Fill in the Synopsis }}
+
 ### [Get-AzEventGridTopic](Get-AzEventGridTopic.md)
 Gets the details of an Event Grid topic, or gets a list of all Event Grid topics in the current Azure subscription.
 
@@ -44,6 +53,12 @@ Creates a new Azure Event Grid Domain Topic.
 ### [New-AzEventGridSubscription](New-AzEventGridSubscription.md)
 Creates a new Azure Event Grid Event Subscription to a topic, Azure resource, Azure subscription or Resource Group.
 
+### [New-AzEventGridSystemTopic](New-AzEventGridSystemTopic.md)
+{{ Fill in the Synopsis }}
+
+### [New-AzEventGridSystemTopicEventSubscription](New-AzEventGridSystemTopicEventSubscription.md)
+{{ Fill in the Synopsis }}
+
 ### [New-AzEventGridTopic](New-AzEventGridTopic.md)
 Creates a new Azure Event Grid Topic.
 
@@ -59,6 +74,12 @@ Removes an Azure Event Grid Domain Topic.
 ### [Remove-AzEventGridSubscription](Remove-AzEventGridSubscription.md)
 Removes an Azure Event Grid event subscription.
 
+### [Remove-AzEventGridSystemTopic](Remove-AzEventGridSystemTopic.md)
+{{ Fill in the Synopsis }}
+
+### [Remove-AzEventGridSystemTopicEventSubscription](Remove-AzEventGridSystemTopicEventSubscription.md)
+{{ Fill in the Synopsis }}
+
 ### [Remove-AzEventGridTopic](Remove-AzEventGridTopic.md)
 Removes an Azure Event Grid Topic.
 
@@ -67,4 +88,10 @@ Sets the properties of an Event Grid topic.
 
 ### [Update-AzEventGridSubscription](Update-AzEventGridSubscription.md)
 Update the properties of an Event Grid event subscription.
+
+### [Update-AzEventGridSystemTopic](Update-AzEventGridSystemTopic.md)
+{{ Fill in the Synopsis }}
+
+### [Update-AzEventGridSystemTopicEventSubscription](Update-AzEventGridSystemTopicEventSubscription.md)
+{{ Fill in the Synopsis }}
 

@@ -14,14 +14,14 @@ schema: 2.0.0
 
 ### ResourceGroupNameParameterSet (Default)
 ```
-Get-AzEventGridSystemTopic [[-ResourceGroupName] <String>] [-ODataQuery <String>] [-Top <Int32>]
+Get-AzEventGridSystemTopic [-ResourceGroupName <String>] [-ODataQuery <String>] [-Top <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SystemTopicNameParameterSet
 ```
-Get-AzEventGridSystemTopic [[-ResourceGroupName] <String>] [[-Name] <String>] [-ODataQuery <String>]
- [-Top <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridSystemTopic [-ResourceGroupName <String>] [-Name <String>] [-ODataQuery <String>] [-Top <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NextLinkParameterSet
@@ -47,7 +47,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -62,12 +62,12 @@ Accept wildcard characters: False
 EventGrid topic name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SystemTopicNameParameterSet
 Aliases: SystemTopicName
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -78,7 +78,7 @@ The link for the next page of resources to be obtained.
 This value is obtained with the first Get-AzEventGrid cmdlet call when more resources are still available to be queried.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NextLinkParameterSet
 Aliases:
 
@@ -94,7 +94,7 @@ The OData query used for filtering the list results.
 Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, SystemTopicNameParameterSet
 Aliases:
 
@@ -109,12 +109,12 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, SystemTopicNameParameterSet
 Aliases: ResourceGroup
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -127,7 +127,7 @@ If top value is specified and more results are still available, the result will 
 If the Top value is not specified, the full list of resources will be returned at once.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: ResourceGroupNameParameterSet, SystemTopicNameParameterSet
 Aliases:
 

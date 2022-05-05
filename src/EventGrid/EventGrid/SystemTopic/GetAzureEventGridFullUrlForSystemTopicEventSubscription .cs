@@ -13,27 +13,31 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
-using Microsoft.Azure.Commands.EventGrid.Utilities;
-using Microsoft.Azure.Management.EventGrid.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-
+using Microsoft.Azure.Management.EventGrid.Models;
+using Microsoft.Azure.Commands.EventGrid.Utilities;
+using EventGridModels = Microsoft.Azure.Management.EventGrid.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
         "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridFullUrlForSystemTopicEventSubscription",
-        DefaultParameterSetName = SystemTopicEventSuscriptionParameterSet),
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSystemFullUrlForTopicEventSubscription",
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = TopicNameParameterSet),
     OutputType(typeof(string))]
-    class GetAzureEventGridFullUrlForSystemTopicEventSubscription : AzureEventGridCmdletBase
+
+    public class GetAzureEventGridFullUrlForSystemTopicEventSubscription : AzureEventGridCmdletBase
     {
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           Position = 0,
            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -42,7 +46,6 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -51,7 +54,6 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
             HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]

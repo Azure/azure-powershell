@@ -20,19 +20,19 @@ Remove-AzEventGridSystemTopic [-PassThru] [-DefaultProfile <IAzureContextContain
 
 ### SystemTopicNameParameterSet
 ```
-Remove-AzEventGridSystemTopic [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
+Remove-AzEventGridSystemTopic -ResourceGroupName <String> -Name <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-Remove-AzEventGridSystemTopic [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzEventGridSystemTopic -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TopicInputObjectParameterSet
 ```
-Remove-AzEventGridSystemTopic [-InputObject] <PSSystemTopic> [-PassThru]
+Remove-AzEventGridSystemTopic -InputObject <PSSystemTopic> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -69,12 +69,12 @@ Accept wildcard characters: False
 EventGrid Topic object.
 
 ```yaml
-Type: PSSystemTopic
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSSystemTopic
 Parameter Sets: TopicInputObjectParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -84,12 +84,12 @@ Accept wildcard characters: False
 EventGrid topic name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SystemTopicNameParameterSet
 Aliases: SystemTopicName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 {{ Fill PassThru Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -114,12 +114,12 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SystemTopicNameParameterSet
 Aliases: ResourceGroup
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -129,12 +129,12 @@ Accept wildcard characters: False
 EventGrid System Topic ResourceID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -160,7 +160,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
