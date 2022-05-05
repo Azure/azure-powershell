@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 sqlContainerResource.AnalyticalStorageTtl = AnalyticalStorageTtl;
             }
-           
+
             CreateUpdateOptions options = ThroughputHelper.PopulateCreateUpdateOptions(Throughput, AutoscaleMaxThroughput);
 
             SqlContainerCreateUpdateParameters sqlContainerCreateUpdateParameters = new SqlContainerCreateUpdateParameters
