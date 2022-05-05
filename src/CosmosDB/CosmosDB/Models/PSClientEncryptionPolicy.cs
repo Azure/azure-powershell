@@ -48,11 +48,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             this.PolicyFormatVersion = (int)clientEncryptionPolicy.PolicyFormatVersion;
         }
 
-        //
-        // Summary:
-        //     Gets or sets list of unique keys on that enforces uniqueness constraint on documents
-        //     in the collection in the Azure Cosmos DB service.
-        public IList<PSClientEncryptionIncludedPath> IncludedPaths { get; set; }
+        ///  <summary>
+        ///  Gets or sets paths of the item that need encryption along with path-specific settings.
+        /// </summary>
+        public IList<PSClientEncryptionIncludedPath> IncludedPaths { get; private set; }
 
         /// <summary>
         /// Version of the client encryption policy definition.
