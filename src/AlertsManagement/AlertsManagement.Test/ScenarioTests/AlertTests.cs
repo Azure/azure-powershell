@@ -14,16 +14,13 @@
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
 {
     public class AlertTests : AlertsManagementTestRunner
     {
-
         public AlertTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-
         }
 
         [Fact]

@@ -14,17 +14,13 @@
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Xunit.Abstractions;
-using Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
 {
     public class AlertPRuleTests : AlertsManagementTestRunner
     {
-
         public AlertPRuleTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-
         }
 
         [Fact]
@@ -47,6 +43,5 @@ namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CreateUpdateAndDeleteActionGroupRule");
         }
-
     }
 }

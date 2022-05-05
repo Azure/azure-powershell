@@ -12,20 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.IO;
 using Microsoft.Azure.Commands.TestFx;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Management.AlertsManagement;
-using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
@@ -47,7 +35,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
                 .WithNewRmModules(helper => new[]
                {
                     helper.RMProfileModule,
-                    helper.GetRMModulePath("AzureRM.AlertsManagement.psd1")
+                    helper.GetRMModulePath("Az.AlertsManagement.psd1")
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
@@ -61,7 +49,5 @@ namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
                 )
                 .Build();
         }
-
-
     }
 }
