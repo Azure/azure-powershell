@@ -735,4 +735,10 @@
   <data name="VirtualNetworkGatewayNatRuleNotFound" xml:space="preserve">
     <value>The VirtualNetworkGatewayNatRule could not be found</value>
   </data>
+  <data name="RemoveRoutingIntentWarning" xml:space="preserve">
+    <value>Removing this Routing Intent resource will remove all routing policies present in this and may affect the routing in your VirtualHub</value>
+  </data>
+  <data name="RoutingIntentNotFound" xml:space="preserve">
+    <value>The routing intent resource could not be found</value>
+  </data>
 </root>

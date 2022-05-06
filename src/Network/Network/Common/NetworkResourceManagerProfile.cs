@@ -1231,6 +1231,15 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.PropagatedRouteTable, CNM.PSPropagatedRouteTable>();
                 cfg.CreateMap<MNM.StaticRoute, CNM.PSStaticRoute>();
 
+                //// Virtual Hub Routing Intent
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSRoutingIntent, MNM.RoutingIntent>();
+                cfg.CreateMap<CNM.PSRoutingPolicy, MNM.RoutingPolicy>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.RoutingIntent, CNM.PSRoutingIntent>();
+                cfg.CreateMap<MNM.RoutingPolicy, CNM.PSRoutingPolicy>();
+
                 // Virtual wan Point to site
                 // MNM to CNM
                 cfg.CreateMap<MNM.P2SVpnGateway, CNM.PSP2SVpnGateway>();
