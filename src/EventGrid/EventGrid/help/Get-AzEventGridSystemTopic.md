@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventGridSystemTopic
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the details of an Event Grid system topic, or gets a list of all Event Grid system topics in the current Azure subscription.
 
 ## SYNTAX
 
@@ -25,16 +25,54 @@ Get-AzEventGridSystemTopic [-ResourceGroupName <String>] [-Name <String>] [-ODat
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-AzEventGridSystemTopic cmdlet gets either the details of a specified Event Grid System Topic, or a list of all Event Grid topics in the current Azure subscription.
+If the topic name is provided, the details of a single Event Grid Topic is returned.
+If the topic name is not provided, a list of topics is returned. The number of elements returned in this list is controlled by the Top parameter. If the Top value is not specified or $null, the list will contain all the topics items. Otherwise, Top will indicate the maximum number of elements to be returned in the list.
+If more topics are still available, the value in NextLink should be used in the next call to get the next page of topics.
+Finally, ODataQuery parameter is used to perform filtering for the search results. The filtering query follows OData syntax using the Name property only. The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzEventGridSystemTopic -ResourceGroup MyResourceGroupName -Name Topic1
 ```
 
-{{ Add example description here }}
+Gets the details of Event Grid System topic \`Topic1\` in resource group \`MyResourceGroupName\`.
+
+
+### Example 2
+```powershell
+Get-AzEventGridSystemTopic -ResourceGroup MyResourceGroupName
+```
+
+List all the Event Grid System topics in resource group \`MyResourceGroupName\` without pagination.
+
+### Example 3
+```powershell
+$odataFilter = "Name ne 'ABCD'"
+$result = Get-AzEventGridSystemTopic -ResourceGroup MyResourceGroupName -Top 10 -ODataQuery $odataFilter
+Get-AzEventGridSystemTopic $result.NextLink
+```
+
+List the first 10 Event Grid System topics (if any) in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of topics, user is expected to re-call Get-AzEventGridSystemTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
+
+### Example 4
+```powershell
+Get-AzEventGridSystemTopic
+```
+
+List all the Event Grid topics in the subscription without pagination.
+
+### Example 5
+```powershell
+$odataFilter = "Name ne 'ABCD'"
+$result = Get-AzEventGridSystemTopic -Top 10 -ODataQuery $odataFilter
+Get-AzEventGridSystemTopic $result.NextLink
+```
+
+List the first 10 Event Grid System topics (if any) in the subscription that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of topics, user is expected to re-call Get-AzEventGridSystemTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
+
 
 ## PARAMETERS
 
@@ -151,3 +189,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+https://docs.microsoft.com/en-us/azure/event-grid/system-topics

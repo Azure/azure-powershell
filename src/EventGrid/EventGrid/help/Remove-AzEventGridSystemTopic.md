@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzEventGridSystemTopic
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes an Azure Event Grid System Topic.
 
 ## SYNTAX
 
@@ -43,10 +43,17 @@ Remove-AzEventGridSystemTopic -InputObject <PSSystemTopic> [-PassThru]
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzEventGridSystemTopic -ResourceGroupName MyResourceGroupName -Name Topic1
 ```
 
-{{ Add example description here }}
+Removes the Event Grid System topic \`Topic1\` in resource group \`MyResourceGroupName\`.
+
+### Example 2
+```powershell
+Get-AzResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/systemTopics/Topic1" | Remove-AzEventGridSystemTopic
+```
+
+Removes the Event Grid System topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 
@@ -187,3 +194,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+https://docs.microsoft.com/en-us/azure/event-grid/system-topics

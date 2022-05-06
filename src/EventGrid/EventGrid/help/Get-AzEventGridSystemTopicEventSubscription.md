@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventGridSystemTopicEventSubscription
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the details of an event subscription, or gets a list of all event subscriptions for a given Azure Eventgrid system topic.
 
 ## SYNTAX
 
@@ -26,16 +26,39 @@ Get-AzEventGridSystemTopicEventSubscription [-EventSubscriptionName <String>] -R
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-AzEventGridSystemTopicEventSubscription cmdlet gets either the details of a specified Event Grid sytem topic subscription, or a list of all Event Grid sytem topic subscriptions for a given Azure Eventgrid system topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName MyResourceGroupName -SystemTopicName Topic1 -EventSubscriptionName EventSubscription1
 ```
 
-{{ Add example description here }}
+Gets the details of event subscription \`EventSubscription1\` created for system topic \`Topic1\` in resource group \`MyResourceGroupName\`.
+
+### Example 2
+```powershell
+Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName MyResourceGroupName -SystemTopicName Topic1 -EventSubscriptionName EventSubscription1 -IncludeFullEndpointUrl
+```
+
+Gets the details of event subscription \`EventSubscription1\` created for system topic \`Topic1\` in resource group \`MyResourceGroupName\`, including the full endpoint URL if it is a webhook based event subscription.
+
+### Example 3
+```powershell
+Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName MyResourceGroupName -SystemTopicName Topic1
+```
+
+Get a list of all the event subscriptions created for system topic \`Topic1\` in resource group \`MyResourceGroupName\` without pagination.
+
+### Example 4
+```powershell
+$odataFilter = "Name ne 'ABCD'"
+Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1 -Top 10 -ODataQuery $odataFilter
+Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1 $result.NextLink
+```
+
+List the first 10 event subscriptions (if any) created for system topic \`Topic1\` in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of event subscriptions, user is expected to re-call Get-AzEventGridSystemTopicEventSubscription and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
 
 ## PARAMETERS
 
@@ -213,3 +236,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+https://docs.microsoft.com/en-us/azure/event-grid/system-topics

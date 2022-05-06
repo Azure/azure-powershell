@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridSystemTopic
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the properties of an Event Grid System topic.
 
 ## SYNTAX
 
@@ -26,16 +26,34 @@ Update-AzEventGridSystemTopic -ResourceGroupName <String> -Name <String> [-Ident
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates the properties of an Event Grid System topic. Can be used to update the identity and tags of a system topic
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Update-AzEventGridSystemTopic -ResourceGroup MyResourceGroupName -Name Topic1 -Tag @{ Department="Finance"; Environment="Test" }
 ```
 
-{{ Add example description here }}
+Sets the properties of the Event Grid System topic \`Topic1\` in resource group \`MyResourceGroupName\` to replace the tags with the specified tags "Department" and "Environment".
+
+### Example 2
+```powershell
+Update-AzEventGridSystemTopic -ResourceGroup MyResourceGroupName -Name Topic1 -IdentityType "SystemAssigned"
+```
+
+Sets the properties of the Event Grid System topic \`Topic1\` in resource group \`MyResourceGroupName\` to change identity type to \`SystemAssigned\`.
+
+### Example 3
+```powershell
+$id1 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
+$id2 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
+
+Update-AzEventGridSystemTopic -ResourceGroup MyResourceGroupName -Name Topic1 -IdentityType "UserAssigned" -IdentityId $id1,$id2
+```
+
+Sets the properties of the Event Grid System topic \`Topic1\` in resource group \`MyResourceGroupName\` to change identity type to \`UserAssigned\` with given identity ids.
+
 
 ## PARAMETERS
 
@@ -179,3 +197,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+https://docs.microsoft.com/en-us/azure/event-grid/system-topics

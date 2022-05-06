@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the delivery attributes for system topic event subscription
 
 ## SYNTAX
 
@@ -26,16 +26,16 @@ Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute -EventSubscriptionN
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Gets the list of delivery attributes for system topic event subscription
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute -ResourceGroupName MyResourceGroupName -SystemTopicName Topic1 -EventSubscriptionName EventSubscription1
 ```
 
-{{ Add example description here }}
+Gets the list of delivery attributest for event subscription \`EventSubscription1\` created for system topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 
@@ -144,3 +144,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+https://docs.microsoft.com/en-us/azure/event-grid/system-topics

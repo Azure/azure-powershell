@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventGridFullUrlForSystemTopicEventSubscription
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the full URL for system topic event subscription
 
 ## SYNTAX
 
@@ -26,16 +26,17 @@ Get-AzEventGridFullUrlForSystemTopicEventSubscription -EventSubscriptionName <St
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get the full endpoint URL if it is a webhook based event subscription.
 
 ## EXAMPLES
 
+
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzEventGridFullUrlForSystemTopicEventSubscription -ResourceGroupName MyResourceGroupName -SystemTopicName Topic1 -EventSubscriptionName EventSubscription1
 ```
 
-{{ Add example description here }}
+Gets the full  endpoint URL for event subscription \`EventSubscription1\` created for system topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 
@@ -144,3 +145,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+https://docs.microsoft.com/en-us/azure/event-grid/system-topics

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridSystemTopicEventSubscription
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update the properties of an Event Grid System topic event subscription.
 
 ## SYNTAX
 
@@ -29,16 +29,31 @@ Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Update the properties of an Event Grid System topic event subscription. This can be used to update the filter, destination, or labels of an existing event subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName ES1 -SystemTopicName Topic1 -ResourceGroup MyResourceGroupName -Endpoint https://requestb.in/1kxxoui1
 ```
 
-{{ Add example description here }}
+Updates the endpoint of the event subscription \`ES1\` for system topic \`Topic1\` in resource group \`MyResourceGroupName\` to \`https://requestb.in/1kxxoui1\`
+
+### Example 2
+```powershell
+$labels = "Finance", "HR"
+Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName ES1 -SystemTopicName Topic1 -ResourceGroup MyResourceGroupName -Label $labels
+```
+
+Updates the properties of the event subscription \`ES1\` for system topic \`Topic1\` in \`MyResourceGroupName\` with the new labels $labels.
+
+### Example 3
+```powershell
+Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName ES1 -SystemTopicName Topic1 -ResourceGroup MyResourceGroupName -Endpoint https://requestb.in/1kxxoui1 -SubjectEndsWith "jpg"
+```
+
+Updates the properties of the event subscription \`ES1\` for system topic \`Topic1\` in \`MyResourceGroupName\` with new endpoint \`https://requestb.in/1kxxoui1\` and the new SubjectEndsWith filter as \`jpg\`
 
 ## PARAMETERS
 
@@ -352,3 +367,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+https://docs.microsoft.com/en-us/azure/event-grid/system-topics

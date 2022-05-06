@@ -63,6 +63,25 @@ ProvisioningState : Succeeded
 Tags              : {[Department, Finance], [Environment, Test]}
 ```
 
+### Example 3
+
+Creates an Event Grid domain \`Domain1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\`  \`SystemAssigned\` identity type.
+
+```powershell
+New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2 -IdentityType "SystemAssigned"
+```
+
+### Example 4
+
+Creates an Event Grid domain \`Domain1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\`  \`UserAssigned\` identity type with given identity ids.
+
+```powershell
+$id1 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
+$id2 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
+
+New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2 -IdentityType "UserAssigned" -IdentityId $id1,$id2
+```
+
 ## PARAMETERS
 
 ### -AutoCreateTopicWithFirstSubscription
