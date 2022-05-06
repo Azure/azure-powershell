@@ -209,5 +209,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-https://docs.microsoft.com/en-us/azure/event-grid/system-topics
