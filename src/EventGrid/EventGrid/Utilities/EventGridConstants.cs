@@ -48,6 +48,12 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string DomainLocationHelp = "The location of the domain.";
         public const string TagsHelp = "Hashtable which represents resource Tags.";
         public const string ResourceIdNameHelp = "The identifier of the resource to which the event subscription should be created.";
+        public const string AdvancedFilteringOnArraysHelp = "The presence of this parameter denotes that advanced filtering on arrays is enabled";
+
+        public const string IdentityTypeHelp = "Different identity types. Could be either  of following 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'";
+        public const string IdentityIdsHelp = "The list of user assigned identities";
+        public const string SourceHelp = "Source for a system topic";
+        public const string ForceHelp = "Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the resource";
 
         public const string ODataQueryHelp = "The OData query used for filtering the list results. Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.";
         public const string TopHelp = "The maximum number of resources to be obtained. Valid value is between 1 and 100. If top value is specified and more results are still available, the result will contain a link to the next page to be queried in NextLink. If the Top value is not specified, the full list of resources will be returned at once.";
@@ -62,7 +68,9 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string InputMappingFieldHelp = "Hashtable which represents the input mapping fields in space separated key = value format. Allowed key names are: id, topic, eventtime, subject, eventtype, and dataversion. This is used when InputSchemaHelp is customeventschema only.";
         public const string InputMappingDefaultValueHelp = "Hashtable which represents the input mapping fields with default value in space separated key = value format. Allowed key names are: subject, eventtype, and dataversion. This is used when InputSchemaHelp is customeventschema only.";
         public const string EventTtlHelp = "The time in minutes for the event delivery. This value must be between 1 and 1440";
+        public const string StorageQueueMessageTtlHelp = "The time in milliseconds for time to live of a storage queue message";
         public const string MaxDeliveryAttemptHelp = "The maximum number of attempts to deliver the event. This value must be between 1 and 30.";
+        public const string DeliveryAttributeMappingHelp = "The delivery attribute mappings for this system topic event subscription";
         public const string DeliverySchemaHelp = "The schema to be used when delivering events to the destination. The possible values are: eventgridschema, CustomInputSchema, or cloudeventv01schema. Default value is CustomInputSchema.";
         public const string DeadletterEndpointHelp = "The endpoint used for storing undelivered events. Specify the Azure resource ID of a Storage blob container. For example: " +
                                                      "/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Storage/storageAccounts/[StorageAccountName]/blobServices/default/containers/[ContainerName].";
@@ -91,6 +99,9 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string InboundIpRuleHelp = "Hashtable which represents list of inbound IP rules. Each rule specifies the IP Address in CIDR notation e.g., 10.0.0.0/8 along with the corresponding Action to be performed based on the match or no match of the IpMask. Possible Action values include Allow only";
         public const string PublicNetworkAccessHelp = "This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring InboundIpRule parameters. Allowed values are disabled and enabled.";
 
+        public const string DisableLocalAuthHelp = "Switch param to disable local auth.";
+        public const string AutoCreateTopicWithFirstSubscriptionHelp = "Switch param to auto create topic with first subscription";
+        public const string AutoDeleteTopicWithLastSubscriptionHelp = "Switch param to auto delete topic with last subscription";
         // Event Subscription destination types
         public const string Webhook = "webhook";
         public const string EventHub = "eventhub";
