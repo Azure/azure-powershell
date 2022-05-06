@@ -1,7 +1,7 @@
 {
   "schemaRegistry": "https://psrc-xxxx.westus2.azure.confluent.cloud",
   "postgresqId": "/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/postgres",
-  "preparedWebapp": "servicelinker-test-app",
+  "preparedWebApp": "servicelinker-test-app",
   "storageId": "/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Storage/storageAccounts/servicelinkerteststorage/blobServices/default",
   "webapp": "servicelinker-powershell",
   "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",

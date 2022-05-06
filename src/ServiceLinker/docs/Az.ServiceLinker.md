@@ -11,16 +11,22 @@ Locale: en-US
 Microsoft Azure PowerShell: ServiceLinker cmdlets
 
 ## Az.ServiceLinker Cmdlets
-### [Get-AzServiceLinkerConfigurationForSpringcloud](Get-AzServiceLinkerConfigurationForSpringcloud.md)
+### [Get-AzServiceLinkerConfigurationForContainerApp](Get-AzServiceLinkerConfigurationForContainerApp.md)
 list source configurations for a linker.
 
-### [Get-AzServiceLinkerConfigurationForWebapp](Get-AzServiceLinkerConfigurationForWebapp.md)
+### [Get-AzServiceLinkerConfigurationForSpringCloud](Get-AzServiceLinkerConfigurationForSpringCloud.md)
 list source configurations for a linker.
 
-### [Get-AzServiceLinkerForSpringcloud](Get-AzServiceLinkerForSpringcloud.md)
+### [Get-AzServiceLinkerConfigurationForWebApp](Get-AzServiceLinkerConfigurationForWebApp.md)
+list source configurations for a linker.
+
+### [Get-AzServiceLinkerForContainerApp](Get-AzServiceLinkerForContainerApp.md)
 Returns Linker resource for a given name.
 
-### [Get-AzServiceLinkerForWebapp](Get-AzServiceLinkerForWebapp.md)
+### [Get-AzServiceLinkerForSpringCloud](Get-AzServiceLinkerForSpringCloud.md)
+Returns Linker resource for a given name.
+
+### [Get-AzServiceLinkerForWebApp](Get-AzServiceLinkerForWebApp.md)
 Returns Linker resource for a given name.
 
 ### [New-AzServiceLinkerAzureResourceObject](New-AzServiceLinkerAzureResourceObject.md)
@@ -32,10 +38,13 @@ Create an in-memory object for ConfluentBootstrapServer.
 ### [New-AzServiceLinkerConfluentSchemaRegistryObject](New-AzServiceLinkerConfluentSchemaRegistryObject.md)
 Create an in-memory object for ConfluentSchemaRegistry.
 
-### [New-AzServiceLinkerForSpringcloud](New-AzServiceLinkerForSpringcloud.md)
+### [New-AzServiceLinkerForContainerApp](New-AzServiceLinkerForContainerApp.md)
 Create or update linker resource.
 
-### [New-AzServiceLinkerForWebapp](New-AzServiceLinkerForWebapp.md)
+### [New-AzServiceLinkerForSpringCloud](New-AzServiceLinkerForSpringCloud.md)
+Create or update linker resource.
+
+### [New-AzServiceLinkerForWebApp](New-AzServiceLinkerForWebApp.md)
 Create or update linker resource.
 
 ### [New-AzServiceLinkerSecretAuthInfoObject](New-AzServiceLinkerSecretAuthInfoObject.md)
@@ -50,21 +59,30 @@ Create an in-memory object for SystemAssignedIdentityAuthInfo.
 ### [New-AzServiceLinkerUserAssignedIdentityAuthInfoObject](New-AzServiceLinkerUserAssignedIdentityAuthInfoObject.md)
 Create an in-memory object for UserAssignedIdentityAuthInfo.
 
+### [Remove-AzServiceLinkerForContainerApp](Remove-AzServiceLinkerForContainerApp.md)
+Delete a link.
+
 ### [Remove-AzServiceLinkerForSpringcloud](Remove-AzServiceLinkerForSpringcloud.md)
 Delete a link.
 
-### [Remove-AzServiceLinkerForWebapp](Remove-AzServiceLinkerForWebapp.md)
+### [Remove-AzServiceLinkerForWebApp](Remove-AzServiceLinkerForWebApp.md)
 Delete a link.
 
-### [Test-AzServiceLinkerForSpringcloud](Test-AzServiceLinkerForSpringcloud.md)
+### [Test-AzServiceLinkerForContainerApp](Test-AzServiceLinkerForContainerApp.md)
 Validate a link.
 
-### [Test-AzServiceLinkerForWebapp](Test-AzServiceLinkerForWebapp.md)
+### [Test-AzServiceLinkerForSpringCloud](Test-AzServiceLinkerForSpringCloud.md)
 Validate a link.
 
-### [Update-AzServiceLinkerForSpringcloud](Update-AzServiceLinkerForSpringcloud.md)
+### [Test-AzServiceLinkerForWebApp](Test-AzServiceLinkerForWebApp.md)
+Validate a link.
+
+### [Update-AzServiceLinkerForContainerApp](Update-AzServiceLinkerForContainerApp.md)
 Operation to update an existing link.
 
-### [Update-AzServiceLinkerForWebapp](Update-AzServiceLinkerForWebapp.md)
+### [Update-AzServiceLinkerForSpringCloud](Update-AzServiceLinkerForSpringCloud.md)
+Operation to update an existing link.
+
+### [Update-AzServiceLinkerForWebApp](Update-AzServiceLinkerForWebApp.md)
 Operation to update an existing link.
 
