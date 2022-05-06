@@ -12,11 +12,11 @@ function Transform-ResourceUri {
     }
     $subscription = (Get-AzContext).Subscription.Id
     $ResourceGroupName = $PSBoundParameters['ResourceGroupName']
-    if($PSBoundParameters.ContainsKey("Webapp") ){
-        $Webapp = $PSBoundParameters['Webapp']
-        $resourceId = "/subscriptions/$subscription/resourceGroups/$ResourceGroupName/providers/Microsoft.Web/sites/$Webapp"
+    if($PSBoundParameters.ContainsKey("WebApp") ){
+        $WebApp = $PSBoundParameters['WebApp']
+        $resourceId = "/subscriptions/$subscription/resourceGroups/$ResourceGroupName/providers/Microsoft.Web/sites/$WebApp"
         $PSBoundParameters['ResourceUri'] = $resourceId
-        $null = $PSBoundParameters.Remove("Webapp")
+        $null = $PSBoundParameters.Remove("WebApp")
     }
     elseif($PSBoundParameters.ContainsKey("Service") )
     {
@@ -29,6 +29,14 @@ function Transform-ResourceUri {
         $null = $PSBoundParameters.Remove("Service")
         $null = $PSBoundParameters.Remove("App")
         $null = $PSBoundParameters.Remove("Deployment")
+    }elseif($PSBoundParameters.ContainsKey("ContainerApp") )
+    {
+        $service = $PSBoundParameters['Service']
+        $containerapp = $PSBoundParameters['ContainerApp']
+        
+        $resourceId = "/subscriptions/$subscription/resourceGroups/$ResourceGroupName/providers/Microsoft.App/containerApps/$containerapp"
+        $PSBoundParameters['ResourceUri'] = $resourceId
+        $null = $PSBoundParameters.Remove("ContainerApp")
     }
    
     $null = $PSBoundParameters.Remove("ResourceGroupName")

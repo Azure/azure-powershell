@@ -28,8 +28,11 @@ function setupEnv() {
     $env.spring = "servicelinker-springcloud"
     $env.springApp = "e2etest"
 
+    $env.containerApp = "servicelinker-containerapp"
+    $env.container = "simple-hello-world-container"
+
     $env.webapp = "servicelinker-powershell"
-    $env.preparedWebapp = "servicelinker-test-app"
+    $env.preparedWebApp = "servicelinker-test-app"
     $env.preparedLinker = "preparedLinker"
     $storage = "servicelinkerteststorage"
     $env.storageId = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Storage/storageAccounts/$storage/blobServices/default"
@@ -50,5 +53,8 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    $null = Remove-AzServiceLinkerForWebApp -ResourceGroupName $env.resourceGroup -WebApp $env.webapp  -LinkerName $env.newLinker
+    $null = Remove-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -Service $env.spring -App $env.springApp -LinkerName $env.newLinker
+    $null = Remove-AzServiceLinkerForContainerApp -ResourceGroupName $env.resourceGroup -ContainerApp $env.containerApp -LinkerName $env.newLinker
 }
 
