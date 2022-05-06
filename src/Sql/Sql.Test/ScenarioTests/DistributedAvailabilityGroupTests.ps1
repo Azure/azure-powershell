@@ -58,13 +58,12 @@ function Test-ManagedInstanceLink
         Assert-Null $listLinksZero
 
         $upsertJ = New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -PrimaryAvailabilityGroupName $primaryAGName -SecondaryAvailabilityGroupName $secondaryAGName -TargetDatabase $targetDatabase -SourceEndpoint $sourceEndpoint -AsJob
+
+        # wait a little bit for the link resource to be created
+        Wait-Seconds 60
         $listResp = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
-        $tries = 1
-        while ($listResp.Count -eq 0 -And $tries -le 5) {
-            $tries = $tries + 1
-            Wait-Seconds 30
-            $listResp = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
-        }
+        Write-Debug ('$listLinksZero is ' + (ConvertTo-Json $listLinksZero))
+        Assert-AreEqual $listResp.Count 1 # if this fails during recording, please increase Wait-Seconds duration (3 lines above)
         
         # Test all 4 parameter sets for GET:
         # GetByNameParameterSet
