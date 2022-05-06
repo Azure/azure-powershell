@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
             Name = networkRuleSet.Name;
             Type = networkRuleSet.Type;
             PublicNetworkAccess = networkRuleSet?.PublicNetworkAccess;
+            TrustedServiceAccessEnabled = networkRuleSet?.TrustedServiceAccessEnabled;
         }
 
         /// <summary>
