@@ -60,37 +60,48 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public PSSystemTopic InputObject { get; set; }
 
+        /// <summary>
+        /// If present, do not ask for confirmation
+        /// </summary>
+        [Parameter(Mandatory = false,
+           HelpMessage = EventGridConstants.ForceHelp)]
+        public SwitchParameter Force { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, $"Remove topic {this.Name} in resource group {this.ResourceGroupName}"))
+            string resourceGroupName = string.Empty;
+            string topicName = string.Empty;
+            if (!string.IsNullOrEmpty(this.Name))
             {
-                string resourceGroupName = string.Empty;
-                string topicName = string.Empty;
-
-                if (!string.IsNullOrEmpty(this.Name))
-                {
-                    resourceGroupName = this.ResourceGroupName;
-                    topicName = this.Name;
-                }
-                else if (!string.IsNullOrEmpty(this.ResourceId))
-                {
-                    EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
-                }
-                else if (this.InputObject != null)
-                {
-                    resourceGroupName = this.InputObject.ResourceGroupName;
-                    topicName = this.InputObject.TopicName;
-                }
-
-                this.Client.DeleteSystemTopic(resourceGroupName, topicName);
-                if (this.PassThru)
-                {
-                    this.WriteObject(true);
-                }
+                resourceGroupName = this.ResourceGroupName;
+                topicName = this.Name;
             }
+            else if (!string.IsNullOrEmpty(this.ResourceId))
+            {
+                EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+            }
+            else if (this.InputObject != null)
+            {
+                resourceGroupName = this.InputObject.ResourceGroupName;
+                topicName = this.InputObject.TopicName;
+            }
+
+            ConfirmAction(Force.IsPresent,
+                $"Remove topic {this.Name} in resource group {this.ResourceGroupName}",
+                $"Removing topic {this.Name} in resource group {this.ResourceGroupName}",
+                topicName,
+                () =>
+                {
+                    this.Client.DeleteSystemTopic(resourceGroupName, topicName);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
+            
         }
     }
 }

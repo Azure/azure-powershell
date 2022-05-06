@@ -59,20 +59,31 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string SystemTopicName { get; set; }
 
+        /// <summary>
+        /// If present, do not ask for confirmation
+        /// </summary>
+        [Parameter(Mandatory = false,
+           HelpMessage = EventGridConstants.ForceHelp)]
+        public SwitchParameter Force { get; set; }
+
         [Parameter(
             Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.EventSubscriptionName, $"Remove event subscription {this.EventSubscriptionName}"))
-            {
-                this.Client.DeleteSystemTopicEventSubscriptiion(this.ResourceGroupName, this.SystemTopicName, this.EventSubscriptionName);
-                if (this.PassThru)
+            ConfirmAction(Force.IsPresent,
+                $"Remove event subscription {this.EventSubscriptionName}",
+                $"Removing event subscription {this.EventSubscriptionName}",
+                this.EventSubscriptionName,
+                () =>
                 {
-                    this.WriteObject(true);
-                }
-            }
+                    this.Client.DeleteSystemTopicEventSubscriptiion(this.ResourceGroupName, this.SystemTopicName, this.EventSubscriptionName);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

@@ -40,7 +40,6 @@ Get-AzEventGridSystemTopic -ResourceGroup MyResourceGroupName -Name Topic1
 
 Gets the details of Event Grid System topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
-
 ### Example 2
 ```powershell
 Get-AzEventGridSystemTopic -ResourceGroup MyResourceGroupName
@@ -72,7 +71,6 @@ Get-AzEventGridSystemTopic $result.NextLink
 ```
 
 List the first 10 Event Grid System topics (if any) in the subscription that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of topics, user is expected to re-call Get-AzEventGridSystemTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
-
 
 ## PARAMETERS
 
@@ -189,4 +187,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 https://docs.microsoft.com/en-us/azure/event-grid/system-topics

@@ -54,7 +54,6 @@ Update-AzEventGridSystemTopic -ResourceGroup MyResourceGroupName -Name Topic1 -I
 
 Sets the properties of the Event Grid System topic \`Topic1\` in resource group \`MyResourceGroupName\` to change identity type to \`UserAssigned\` with given identity ids.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -197,4 +196,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 https://docs.microsoft.com/en-us/azure/event-grid/system-topics

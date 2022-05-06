@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string IdentityTypeHelp = "Different identity types. Could be either  of following 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'";
         public const string IdentityIdsHelp = "The list of user assigned identities";
         public const string SourceHelp = "Source for a system topic";
+        public const string ForceHelp = "Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the resource";
 
         public const string ODataQueryHelp = "The OData query used for filtering the list results. Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.";
         public const string TopHelp = "The maximum number of resources to be obtained. Valid value is between 1 and 100. If top value is specified and more results are still available, the result will contain a link to the next page to be queried in NextLink. If the Top value is not specified, the full list of resources will be returned at once.";

@@ -13,14 +13,14 @@ Removes an Azure Event Grid system topic event subscription.
 
 ### TopicNameParameterSet (Default)
 ```
-Remove-AzEventGridSystemTopicEventSubscription [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Remove-AzEventGridSystemTopicEventSubscription [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### SystemTopicEventSuscriptionParameterSet
 ```
 Remove-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
- -SystemTopicName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -SystemTopicName <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -64,6 +64,20 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+### -Force
+Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the resource
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

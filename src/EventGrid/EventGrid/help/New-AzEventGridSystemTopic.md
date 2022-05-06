@@ -53,7 +53,6 @@ New-AzEventGridSystemTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -
 
 Creates an Event Grid System topic \`Topic1\`  for the Azure ServiceBus namespace with resource id \`ServiceBusNamespaceResourceId\`  in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with \`UserAssigned\` identity type with given identity ids.
 
-
 ### Example 4
 ```powershell
 New-AzEventGridSystemTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Source ServiceBusNamespaceResourceId -TopicType 'Microsoft.ServiceBus.Namespaces' -Location westus2 -IdentityType "SystemAssigned"
@@ -249,4 +248,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 https://docs.microsoft.com/en-us/azure/event-grid/system-topics

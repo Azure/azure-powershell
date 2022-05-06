@@ -101,14 +101,14 @@ function SystemTopicEventSubscriptionTests {
 
 
         Write-Debug "Deleting event subscription :  $eventSubscriptionName for system topic : $topicName"
-        Remove-AzEventGridSystemTopicEventSubscription -ResourceGroup $resourceGroupName -SystemTopicName $topicName -EventSubscriptionName $eventSubscriptionName
+        Remove-AzEventGridSystemTopicEventSubscription -ResourceGroup $resourceGroupName -SystemTopicName $topicName -EventSubscriptionName $eventSubscriptionName -Force
 
         Write-Debug "Deleting event subscription :  $eventSubscriptionName for system topic : $topicName"
-        Remove-AzEventGridSystemTopicEventSubscription -ResourceGroup $resourceGroupName -SystemTopicName $topicName -EventSubscriptionName $eventSubscriptionName2
+        Remove-AzEventGridSystemTopicEventSubscription -ResourceGroup $resourceGroupName -SystemTopicName $topicName -EventSubscriptionName $eventSubscriptionName2 -Force
 
 
         Write-Debug "Deleting topic: $topicName"
-        Remove-AzEventGridSystemTopic -ResourceGroup $resourceGroupName -Name $topicName
+        Remove-AzEventGridSystemTopic -ResourceGroup $resourceGroupName -Name $topicName -Force
 
         #Write-Debug "Deleting topic: $topicName"
         #Remove-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName2

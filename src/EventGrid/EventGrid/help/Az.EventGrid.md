@@ -21,19 +21,19 @@ Gets the shared access keys used to publish events to an Event Grid domain.
 Gets the details of an Event Grid domain topic, or gets a list of all Event Grid domain topics under specific Event Grid domain in the current Azure subscription.
 
 ### [Get-AzEventGridFullUrlForSystemTopicEventSubscription](Get-AzEventGridFullUrlForSystemTopicEventSubscription.md)
-{{ Fill in the Synopsis }}
+Gets the full URL for system topic event subscription
 
 ### [Get-AzEventGridSubscription](Get-AzEventGridSubscription.md)
 Gets the details of an event subscription, or gets a list of all event subscriptions in the current Azure subscription.
 
 ### [Get-AzEventGridSystemTopic](Get-AzEventGridSystemTopic.md)
-{{ Fill in the Synopsis }}
+Gets the details of an Event Grid system topic, or gets a list of all Event Grid system topics in the current Azure subscription.
 
 ### [Get-AzEventGridSystemTopicEventSubscription](Get-AzEventGridSystemTopicEventSubscription.md)
-{{ Fill in the Synopsis }}
+Gets the details of an event subscription, or gets a list of all event subscriptions for a given Azure Eventgrid system topic.
 
 ### [Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute](Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute.md)
-{{ Fill in the Synopsis }}
+Gets the delivery attributes for system topic event subscription
 
 ### [Get-AzEventGridTopic](Get-AzEventGridTopic.md)
 Gets the details of an Event Grid topic, or gets a list of all Event Grid topics in the current Azure subscription.
@@ -57,10 +57,10 @@ Creates a new Azure Event Grid Domain Topic.
 Creates a new Azure Event Grid Event Subscription to a topic, Azure resource, Azure subscription or Resource Group.
 
 ### [New-AzEventGridSystemTopic](New-AzEventGridSystemTopic.md)
-{{ Fill in the Synopsis }}
+Creates a new Azure Event Grid System Topic.
 
 ### [New-AzEventGridSystemTopicEventSubscription](New-AzEventGridSystemTopicEventSubscription.md)
-{{ Fill in the Synopsis }}
+Creates a new Azure Event Grid Event Subscription to a System topic.
 
 ### [New-AzEventGridTopic](New-AzEventGridTopic.md)
 Creates a new Azure Event Grid Topic.
@@ -78,10 +78,10 @@ Removes an Azure Event Grid Domain Topic.
 Removes an Azure Event Grid event subscription.
 
 ### [Remove-AzEventGridSystemTopic](Remove-AzEventGridSystemTopic.md)
-{{ Fill in the Synopsis }}
+Removes an Azure Event Grid System Topic.
 
-### [Remove-AzEventGridSystemTopicEventSubscription](Remove-AzEventGridSystemTopicEventSubscription.md)
-{{ Fill in the Synopsis }}
+### [Remove-AzEventGridSystemTopic](Remove-AzEventGridSystemTopic.md)
+Removes an Azure Event Grid System Topic.
 
 ### [Remove-AzEventGridTopic](Remove-AzEventGridTopic.md)
 Removes an Azure Event Grid Topic.
@@ -93,8 +93,8 @@ Sets the properties of an Event Grid topic.
 Update the properties of an Event Grid event subscription.
 
 ### [Update-AzEventGridSystemTopic](Update-AzEventGridSystemTopic.md)
-{{ Fill in the Synopsis }}
+Updates the properties of an Event Grid System topic.
 
 ### [Update-AzEventGridSystemTopicEventSubscription](Update-AzEventGridSystemTopicEventSubscription.md)
-{{ Fill in the Synopsis }}
+Update the properties of an Event Grid System topic event subscription.
 

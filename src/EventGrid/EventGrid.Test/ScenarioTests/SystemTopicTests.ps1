@@ -84,13 +84,13 @@ function SystemTopicTests {
         Assert-True {$allCreatedTopics.PsSystemTopicsList.Count -ge 0} "Topics created earlier are not found."
 
         Write-Debug "Deleting topic: $topicName"
-        Remove-AzEventGridSystemTopic -ResourceGroup $resourceGroupName -Name $topicName
+        Remove-AzEventGridSystemTopic -ResourceGroup $resourceGroupName -Name $topicName -Force
 
         Write-Debug "Deleting topic: $topicName"
-        Remove-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName2
+        Remove-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName2 -Force
 
         Write-Debug "Deleting topic: $topicName"
-        Remove-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName3
+        Remove-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName3 -Force
 
        
     }
@@ -159,10 +159,10 @@ function SystemTopicIdentityTests {
 
 
         Write-Debug "Deleting topic: $topicName"
-        Remove-AzEventGridSystemTopic -ResourceGroup $resourceGroupName -Name $topicName
+        Remove-AzEventGridSystemTopic -ResourceGroup $resourceGroupName -Name $topicName -Force
 
         Write-Debug "Deleting topic: $topicName"
-        Remove-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName2
+        Remove-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName2 -Force
 
        
     }
