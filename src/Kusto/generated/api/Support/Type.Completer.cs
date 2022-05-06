@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Kusto/Clusters/databases".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Kusto/Clusters/databases", "Microsoft.Kusto/Clusters/databases", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Kusto/Clusters/databases");
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.Kusto/Clusters/databases'", "Microsoft.Kusto/Clusters/databases", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Kusto/Clusters/databases");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Kusto/Clusters/attachedDatabaseConfigurations".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Kusto/Clusters/attachedDatabaseConfigurations", "Microsoft.Kusto/Clusters/attachedDatabaseConfigurations", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Kusto/Clusters/attachedDatabaseConfigurations");
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.Kusto/Clusters/attachedDatabaseConfigurations'", "Microsoft.Kusto/Clusters/attachedDatabaseConfigurations", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Kusto/Clusters/attachedDatabaseConfigurations");
             }
         }
     }

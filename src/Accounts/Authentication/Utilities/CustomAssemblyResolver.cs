@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {"System.Net.Http.WinHttpHandler", new Version("4.0.2.0")},
                 {"System.Numerics.Vectors", new Version("4.1.4.0")},
                 {"System.Private.ServiceModel", new Version("4.7.0.0")}, //used by Compute
-                {"System.Reflection.DispatchProxy", new Version("4.0.3.0")},
+                {"System.Reflection.DispatchProxy", new Version("4.0.4.0")},
                 {"System.Runtime.CompilerServices.Unsafe", new Version("4.0.6.0")},
                 {"System.Security.AccessControl", new Version("4.1.1.0")},
                 {"System.Security.Cryptography.Cng", new Version("4.3.0.0")},

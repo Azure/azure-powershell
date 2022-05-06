@@ -17,7 +17,7 @@ Update a security setting in Azure Security Center
 Set-AzSecuritySetting [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DataExportSettingsScope
+### SettingsScope
 ```
 Set-AzSecuritySetting -SettingName <String> -SettingKind <String> -Enabled <Boolean>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -70,7 +70,7 @@ Enables the setting.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: DataExportSettingsScope
+Parameter Sets: SettingsScope
 Aliases:
 
 Required: True
@@ -112,7 +112,7 @@ Setting kind. (DataExportSettings/AlertSyncSettings)
 
 ```yaml
 Type: System.String
-Parameter Sets: DataExportSettingsScope
+Parameter Sets: SettingsScope
 Aliases:
 
 Required: True
@@ -127,7 +127,7 @@ Setting name. (MCAS/WDATP/Sentinel)
 
 ```yaml
 Type: System.String
-Parameter Sets: DataExportSettingsScope
+Parameter Sets: SettingsScope
 Aliases:
 
 Required: True

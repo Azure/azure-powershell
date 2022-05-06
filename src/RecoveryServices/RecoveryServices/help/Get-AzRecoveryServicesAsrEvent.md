@@ -51,7 +51,7 @@ List of all events.
 
 ### Example 2
 ```powershell
-Get-AzRecoveryServicesAsrEvent -EventName "VmMonitoringEvent;9091897569816476200_84576304-bafc-4714-8ba6-197a5d09d84f"
+Get-AzRecoveryServicesAsrEvent -Name "VmMonitoringEvent;9091897569816476200_84576304-bafc-4714-8ba6-197a5d09d84f"
 ```
 
 ```output
@@ -72,14 +72,14 @@ Get event by name.
 
 ### Example 3
 ```powershell
-Get-AzRecoveryServicesAsrEvent -AffectedObjectName xxxxxxxxxxxxx
+Get-AzRecoveryServicesAsrEvent -AffectedObjectFriendlyName xxxxxxxxxxxxx
 ```
 
 List of event for affected Object.
 
 ### Example 4
 ```powershell
-Get-AzRecoveryServicesAsrEvent -AffectedObjectName xxxxxxxxxxxx -StartTime "8/17/2017 12:31:40 PM" -EndTime "8/17/2017 12:31:44 PM" -Severity Critical -EventType VmHealth
+Get-AzRecoveryServicesAsrEvent -AffectedObjectFriendlyName xxxxxxxxxxxx -StartTime "8/17/2017 12:31:40 PM" -EndTime "8/17/2017 12:31:44 PM" -Severity Critical -EventType VmHealth
 ```
 
 List of event between time start time and end time , severity critical and health type VmHealth.

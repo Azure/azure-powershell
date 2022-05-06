@@ -30,7 +30,7 @@ Commit your changes to the profile for Traffic Manager by using the Set-AzTraffi
 ### Example 1: Remove custom header information from a profile
 ```powershell
 $TrafficManagerProfile = Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
-Remove-AzTrafficManagerCustomHeaderFromEndpoint -TrafficManagerProfile $TrafficManagerProfile -Name "host"
+Remove-AzTrafficManagerCustomHeaderFromProfile -TrafficManagerProfile $TrafficManagerProfile -Name "host"
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile
 ```
 

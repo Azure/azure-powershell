@@ -1,7 +1,9 @@
 ### Example 1: List all data connections in a specific database
 ```powershell
-PS C:\> Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase"
+Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase"
+```
 
+```output
 Kind     Location Name                                               Type
 ----     -------- ----                                               ----
 EventHub East US  testnewkustocluster/mykustodatabase/mykustodataconnection Microsoft.Kusto/Clusters/Databases/DataConnections
@@ -11,8 +13,10 @@ The above command returns all Kusto databases in the cluster "testnewkustocluste
 
 ### Example 2: Get a specific data connection by name
 ```powershell
-PS C:\> Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "mykustodataconnection"
+Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "mykustodataconnection"
+```
 
+```output
 Kind     Location Name                                               Type
 ----     -------- ----                                               ----
 EventHub East US  testnewkustocluster/mykustodatabase/mykustodataconnection Microsoft.Kusto/Clusters/Databases/DataConnections

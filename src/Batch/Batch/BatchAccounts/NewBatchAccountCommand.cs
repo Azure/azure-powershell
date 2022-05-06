@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Batch.Models;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -61,11 +63,25 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Mandatory = false, HelpMessage = "The public network access type")]
         public PublicNetworkAccessType PublicNetworkAccess { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The identity associated with the BatchAccount")]
+        [Parameter(Mandatory = false, HelpMessage = "The type of identity associated with the BatchAccount.\r\nIf set to UserAssigned, the UserAssignedIdentities parameter must also be provided.")]
         public ResourceIdentityType IdentityType { get; set; } = ResourceIdentityType.None;
+
+        [Parameter(Mandatory = false, HelpMessage = "An array containing user assigned identities associated with the BatchAccount. This parameter is only used when IdentityType is set to UserAssigned.")]
+        public string[] IdentityId { get; set; }
 
         protected override void ExecuteCmdletImpl()
         {
+            Dictionary<string, UserAssignedIdentities> identityDictionary = null;
+            if (IdentityType == ResourceIdentityType.UserAssigned)
+            {
+                if (IdentityId == null)
+                {
+                    throw new PSArgumentNullException("IdentityId", "IdentityId must be provided when IdentityType is set to UserAssigned.");
+                }
+
+                identityDictionary = IdentityId.ToDictionary(i => i, i => new UserAssignedIdentities());
+            }
+
             AccountCreateParameters parameters = new AccountCreateParameters(this.ResourceGroupName, this.AccountName, this.Location)
             {
                 AutoStorageAccountId = this.AutoStorageAccountId,
@@ -74,8 +90,9 @@ namespace Microsoft.Azure.Commands.Batch
                 KeyVaultUrl = this.KeyVaultUrl,
                 Tags = this.Tag,
                 PublicNetworkAccess = this.PublicNetworkAccess,
-                Identity = new BatchAccountIdentity(this.IdentityType)
+                Identity = new BatchAccountIdentity(IdentityType, null, null, identityDictionary)
             };
+
             BatchAccountContext context = BatchClient.CreateAccount(parameters);
             WriteObject(context);
         }

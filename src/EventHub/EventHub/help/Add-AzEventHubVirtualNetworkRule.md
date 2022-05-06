@@ -33,7 +33,7 @@ Add a single VirtualNetworkRule to NetworkRuleSet for the given Namespace
 
 ### Example 1
 ```powershell
-Add-AzEventHubVirtualNetworkRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01" -IgnoreMissingVnetServiceEndpoint
+Add-AzEventHubVirtualNetworkRule -ResourceGroupName v-ajnavtest -Name Eventhub-Namespace1-2389 -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01" -IgnoreMissingVnetServiceEndpoint
 ```
 
 ```output
@@ -48,7 +48,7 @@ Adds the given Subnet and IgnoreMissingVnetServiceEndpoint (VirtualNetworkRule) 
 
 ### Example 2
 ```powershell
-Add-AzEventHubVirtualNetworkRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -VirtualNetworkRuleObject $virtualruleset1
+Add-AzEventHubVirtualNetworkRule -ResourceGroupName v-ajnavtest -Name Eventhub-Namespace1-2389 -VirtualNetworkRuleObject $virtualruleset1
 ```
 
 ```output

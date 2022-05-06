@@ -25,8 +25,10 @@ Create or Update Database Migration Service.
 
 ### Example 1: Create a Sql Migration Service in a given Resource Group
 ```powershell
-PS C:\> New-AzDataMigrationSqlService -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" -Location "eastus2"
+New-AzDataMigrationSqlService -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" -Location "eastus2"
+```
 
+```output
 Location  Name                  Type                                         ProvisioningState IntegrationRuntimeState
 --------  ----                  ----                                         ----------------- -----------------------
 eastus2   MySqlMigrationService Microsoft.DataMigration/sqlMigrationServices Succeeded         NeedRegistration
@@ -210,7 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationService
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService
 
 ## NOTES
 
