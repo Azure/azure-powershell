@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ServiceLinker service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -35,9 +35,9 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/servicelinker.json
+  # - $(repo)/specification/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/servicelinker.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-  # - $(this-folder)/APISpecs/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/servicelinker.json
+  - $(this-folder)/../APISpecs/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/servicelinker.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
@@ -70,37 +70,37 @@ directive:
             "type": "string",
             "in": "header"
           }
-  - from: swagger-document
-    where:
-      - $..ValidateResult
-    transform: >-
-      $["properties"] = {
-        "properties": {
-          "type": "object",
-          "properties": {
-            "message": {
-              "description": "validate message",
-              "type": "string"
-            }
-          }
-        },
-        "startTime": {
-          "description": "Start time of validation",
-          "type": "string"
-        },
-        "endTime": {
-          "description": "End time of validation",
-          "type": "string"
-        },
-        "resourceId": {
-          "description": "Validated Linker Id",
-          "type": "string"
-        },
-        "status": {
-          "description": "Validation Status",
-          "type": "string"
-        }
-      }
+  # - from: swagger-document
+  #   where:
+  #     - $..ValidateResult
+  #   transform: >-
+  #     $["properties"] = {
+  #       "properties": {
+  #         "type": "object",
+  #         "properties": {
+  #           "message": {
+  #             "description": "validate message",
+  #             "type": "string"
+  #           }
+  #         }
+  #       },
+  #       "startTime": {
+  #         "description": "Start time of validation",
+  #         "type": "string"
+  #       },
+  #       "endTime": {
+  #         "description": "End time of validation",
+  #         "type": "string"
+  #       },
+  #       "resourceId": {
+  #         "description": "Validated Linker Id",
+  #         "type": "string"
+  #       },
+  #       "status": {
+  #         "description": "Validation Status",
+  #         "type": "string"
+  #       }
+  #     }
   - no-inline:
     - TargetServiceBase
     - AuthInfoBase

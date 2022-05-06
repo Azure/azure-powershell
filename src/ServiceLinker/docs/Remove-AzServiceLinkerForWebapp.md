@@ -15,7 +15,8 @@ Delete a link.
 ### Delete (Default)
 ```
 Remove-AzServiceLinkerForWebapp -Name <String> -ResourceGroupName <String> -Webapp <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -32,6 +33,10 @@ Delete a link.
 ### Example 1: Remove linker
 ```powershell
 Remove-AzServiceLinkerForWebapp -Webapp servicelinker-portal-e2e -ResourceGroupName servicelinker-test-linux-group -Name testLinker       
+```
+
+```output
+
 ```
 
 Remove linker
@@ -144,11 +149,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceUri
+The fully qualified Azure Resource manager identifier of the resource to be connected.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Webapp
-[Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
-[System.String]
-# The fully qualified Azure Resource manager identifier of the resource to be connected.
-${ResourceUri},
 The Name of webapp of the resource to be connected.
 
 ```yaml

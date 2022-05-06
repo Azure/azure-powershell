@@ -14,14 +14,14 @@ Returns Linker resource for a given name.
 
 ### List (Default)
 ```
-Get-AzServiceLinkerForWebapp -ResourceGroupName <String> -Webapp <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzServiceLinkerForWebapp -ResourceGroupName <String> -Webapp <String> [-ResourceUri <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzServiceLinkerForWebapp -Name <String> -ResourceGroupName <String> -Webapp <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-ResourceUri <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -54,6 +54,42 @@ List all linkers in the webapp
 ### Example 2: Get linker by name
 ```powershell
 Get-AzServiceLinkerForWebapp -Webapp servicelinker-webapp -ResourceGroupName servicelinker-test-group  -Name postgresql_connection | fl
+```
+
+```output
+AuthInfo                     : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model
+                               s.Api20220501.SecretAuthInfo
+ClientType                   : dotnet
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/re 
+                               sourceGroups/servicelinker-test-group/providers/ 
+                               Microsoft.Web/sites/servicelinker-webapp/providers 
+                               /Microsoft.ServiceLinker/linkers/postgresql_connection     
+Name                         : postgresql_connection
+ProvisioningState            : Succeeded
+Scope                        : 
+SecretStoreKeyVaultId        :
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+TargetService                : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model 
+                               s.Api20220501.AzureResource
+Type                         : microsoft.servicelinker/linkers
+VNetSolutionType             : serviceEndpoint
+
+```
+
+Get linker by name
+
+### Example 3: Get linker via identity object
+```powershell
+$identity = @{
+ResourceUri = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-webapp'
+LinkerName = 'postgresql_connection'}
+
+$identity | Get-AzServiceLinkerForWebapp  |fl
 ```
 
 ```output
@@ -146,13 +182,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceUri
+The fully qualified Azure Resource manager identifier of the resource to be connected.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Webapp
-[Parameter(ParameterSetName='Get', Mandatory)]
-[Parameter(ParameterSetName='List', Mandatory)]
-[Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
-[System.String]
-# The fully qualified Azure Resource manager identifier of the resource to be connected.
-${ResourceUri},
 The Name of webapp of the resource to be connected.
 
 ```yaml

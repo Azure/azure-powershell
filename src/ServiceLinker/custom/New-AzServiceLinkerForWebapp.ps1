@@ -33,11 +33,11 @@ function New-AzServiceLinkerForWebapp {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        # [Parameter(Mandatory)]
-        # [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
-        # [System.String]
-        # # The fully qualified Azure Resource manager identifier of the resource to be connected.
-        # ${ResourceUri},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+        [System.String]
+        # The fully qualified Azure Resource manager identifier of the resource to be connected.
+        ${ResourceUri},
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
@@ -171,7 +171,7 @@ function New-AzServiceLinkerForWebapp {
     
     process {
         # $targetType = Get-TargetType $TargetService
-        $PSBoundParameters = Transform-WebappUri -PSBoundParameters $PSBoundParameters
+        $PSBoundParameters = Transform-ResourceUri -PSBoundParameters $PSBoundParameters
         $PSBoundParameters = Set-Header -PSBoundParameters $PSBoundParameters
         Az.ServiceLinker.internal\New-AzServiceLinker @PSBoundParameters
     }

@@ -58,7 +58,7 @@ Describe 'New-AzServiceLinkerForWebapp' {
     }
 
     It 'New storage connection' { 
-        $target = New-AzServiceLinkerAzureResourceObject -Id $env.postgresqId
+        $target = New-AzServiceLinkerAzureResourceObject -Id $env.storageId
         $authInfo = New-AzServiceLinkerSecretAuthInfoObject
         $newLinker = New-AzServiceLinkerForWebapp -ResourceGroupName $env.resourceGroup -Webapp $env.webapp -LinkerName $env.newLinker -TargetService $target -AuthInfo $authInfo
         # assert the linker create successfully

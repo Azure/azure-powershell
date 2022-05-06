@@ -57,6 +57,12 @@ param(
     # The name Linker resource.
     ${Name},
 
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [System.String]
+    # The fully qualified Azure Resource manager identifier of the resource to be connected.
+    ${ResourceUri},
+    
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
     [System.String]
@@ -183,7 +189,7 @@ param(
 )
 
 process {
-    $PSBoundParameters = Transform-WebappUri -PSBoundParameters $PSBoundParameters
+    $PSBoundParameters = Transform-ResourceUri -PSBoundParameters $PSBoundParameters
     $PSBoundParameters = Set-Header -PSBoundParameters $PSBoundParameters
     Az.ServiceLinker.internal\New-AzServiceLinker @PSBoundParameters
 }

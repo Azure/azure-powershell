@@ -24,9 +24,13 @@ function setupEnv() {
     $env.resourceGroup = $resourceGroup
     $env.newLinker = "ps_linker"
     $env.clientType = "dotnet"
+
+    $env.spring = "servicelinker-springcloud"
+    $env.springApp = "e2etest"
+
     $env.webapp = "servicelinker-powershell"
     $env.preparedWebapp = "servicelinker-test-app"
-    $env.preparedLinker = “preparedLinker"
+    $env.preparedLinker = "preparedLinker"
     $storage = "servicelinkerteststorage"
     $env.storageId = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Storage/storageAccounts/$storage/blobServices/default"
     $env.confluentEndpoint = "pkc-xxxx.eastus.azure.confluent.cloud:9092"

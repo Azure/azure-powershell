@@ -25,4 +25,13 @@ Describe 'Get-AzServiceLinkerForWebapp' {
         $linker.Name | Should -Be $env.preparedLinker
     }
 
+    It 'GetViaIdentity' -skip {
+        $identity = @{
+            ResourceUri = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Web/sites/$($env.preparedWebapp)"
+            LinkerName = $env.preparedLinker
+        }
+        $linker = $identity | Get-AzServiceLinkerForWebapp
+        $linker.Name | Should -Be $env.preparedLinker
+    }
+
 }

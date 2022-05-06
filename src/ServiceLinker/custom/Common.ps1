@@ -1,20 +1,37 @@
 #This script converts securestring to plaintext
 
-function Transform-WebappUri {
+function Transform-ResourceUri {
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory)]
         $PSBoundParameters
     )
-
+    if($PSBoundParameters.ContainsKey("ResourceUri") ){
+        # todo: validate resourceUri
+        return $PSBoundParameters
+    }
     $subscription = (Get-AzContext).Subscription.Id
     $ResourceGroupName = $PSBoundParameters['ResourceGroupName']
-    $Webapp = $PSBoundParameters['Webapp']
-    $resourceId = "/subscriptions/$subscription/resourceGroups/$ResourceGroupName/providers/Microsoft.Web/sites/$Webapp"
-    $PSBoundParameters['ResourceUri'] = $resourceId
+    if($PSBoundParameters.ContainsKey("Webapp") ){
+        $Webapp = $PSBoundParameters['Webapp']
+        $resourceId = "/subscriptions/$subscription/resourceGroups/$ResourceGroupName/providers/Microsoft.Web/sites/$Webapp"
+        $PSBoundParameters['ResourceUri'] = $resourceId
+        $null = $PSBoundParameters.Remove("Webapp")
+    }
+    elseif($PSBoundParameters.ContainsKey("Service") )
+    {
+        $service = $PSBoundParameters['Service']
+        $app = $PSBoundParameters['App']
+        $deployment=$PSBoundParameters['Deployment']
+        
+        $resourceId = "/subscriptions/$subscription/resourceGroups/$ResourceGroupName/providers/Microsoft.AppPlatform/Spring/$service/apps/$app/deployments/$deployment"
+        $PSBoundParameters['ResourceUri'] = $resourceId
+        $null = $PSBoundParameters.Remove("Service")
+        $null = $PSBoundParameters.Remove("App")
+        $null = $PSBoundParameters.Remove("Deployment")
+    }
+   
     $null = $PSBoundParameters.Remove("ResourceGroupName")
-    $null = $PSBoundParameters.Remove("Webapp")
-
     return $PSBoundParameters
 }
 

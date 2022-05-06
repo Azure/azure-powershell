@@ -51,10 +51,11 @@ param(
     # The name Linker resource.
     ${Name},
 
-    # [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
-    # [System.String]
-    # # The fully qualified Azure Resource manager identifier of the resource to be connected.
-    # ${ResourceUri},
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [System.String]
+    # The fully qualified Azure Resource manager identifier of the resource to be connected.
+    ${ResourceUri},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
@@ -142,7 +143,7 @@ param(
 )
 
 process {
-    $PSBoundParameters = Transform-WebappUri -PSBoundParameters $PSBoundParameters
+    $PSBoundParameters = Transform-ResourceUri -PSBoundParameters $PSBoundParameters
     Az.ServiceLinker.internal\Remove-AzServiceLinker @PSBoundParameters
 }
 }

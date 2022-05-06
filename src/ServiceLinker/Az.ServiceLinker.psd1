@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ServiceLinker.private.dll'
   FormatsToProcess = './Az.ServiceLinker.format.ps1xml'
-  FunctionsToExport = 'Get-AzServiceLinkerConfigurationForWebapp', 'Get-AzServiceLinkerForWebapp', 'New-AzServiceLinkerAzureResourceObject', 'New-AzServiceLinkerConfluentBootstrapServerObject', 'New-AzServiceLinkerConfluentSchemaRegistryObject', 'New-AzServiceLinkerForWebapp', 'New-AzServiceLinkerSecretAuthInfoObject', 'New-AzServiceLinkerServicePrincipalSecretAuthInfoObject', 'New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject', 'New-AzServiceLinkerUserAssignedIdentityAuthInfoObject', 'Remove-AzServiceLinkerForWebapp', 'Test-AzServiceLinkerForWebapp', 'Update-AzServiceLinkerForWebapp', '*'
+  FunctionsToExport = 'Get-AzServiceLinkerConfigurationForSpringcloud', 'Get-AzServiceLinkerConfigurationForWebapp', 'Get-AzServiceLinkerForSpringcloud', 'Get-AzServiceLinkerForWebapp', 'New-AzServiceLinkerAzureResourceObject', 'New-AzServiceLinkerConfluentBootstrapServerObject', 'New-AzServiceLinkerConfluentSchemaRegistryObject', 'New-AzServiceLinkerForSpringcloud', 'New-AzServiceLinkerForWebapp', 'New-AzServiceLinkerSecretAuthInfoObject', 'New-AzServiceLinkerServicePrincipalSecretAuthInfoObject', 'New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject', 'New-AzServiceLinkerUserAssignedIdentityAuthInfoObject', 'Remove-AzServiceLinkerForSpringcloud', 'Remove-AzServiceLinkerForWebapp', 'Test-AzServiceLinkerForSpringcloud', 'Test-AzServiceLinkerForWebapp', 'Update-AzServiceLinkerForSpringcloud', 'Update-AzServiceLinkerForWebapp', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

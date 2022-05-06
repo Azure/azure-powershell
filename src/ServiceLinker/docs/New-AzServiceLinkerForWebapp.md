@@ -14,9 +14,10 @@ Create or update linker resource.
 
 ```
 New-AzServiceLinkerForWebapp -AuthInfo <IAuthInfoBase> -TargetService <ITargetServiceBase>
- -ResourceGroupName <String> -Webapp <String> [-Name <String>] [-ClientType <ClientType>] [-Scope <String>]
- [-SecretStoreKeyVaultId <String>] [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -Webapp <String> [-Name <String>] [-ResourceUri <String>]
+ [-ClientType <ClientType>] [-Scope <String>] [-SecretStoreKeyVaultId <String>]
+ [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,15 +25,13 @@ Create or update linker resource.
 
 ## EXAMPLES
 
-### Example 1: Create target service object of Azure resource
+### Example 1: Create service linker between webapp and postgresql
 ```powershell
 $target=New-AzServiceLinkerAzureResourceObject -Id /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/servicelinker-test-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/test
 
 $authInfo=New-AzServiceLinkerSecretAuthInfoObject -Name testUser -SecretValue ***  
 
 New-AzServiceLinkerForWebapp -TargetService $target -AuthInfo $auth -ClientType dotnet -LinkerName testLinker -Webapp servicelinker-portal-e2e -ResourceGroupName servicelinker-test-linux-group
-
-
 ```
 
 ```output
@@ -41,7 +40,7 @@ Name
 testLinker
 ```
 
-Create target service object of Azure resource
+Create service linker between webapp and postgresql
 
 ## PARAMETERS
 
@@ -137,11 +136,6 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-[Parameter(Mandatory)]
-[Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
-[System.String]
-# The fully qualified Azure Resource manager identifier of the resource to be connected.
-${ResourceUri},
 [ResourceGroupCompleter]
 The resource group of the resource to be connected.
 
@@ -151,6 +145,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceUri
+The fully qualified Azure Resource manager identifier of the resource to be connected.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

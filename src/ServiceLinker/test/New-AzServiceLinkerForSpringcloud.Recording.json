@@ -1,0 +1,469 @@
+{
+  "New-AzServiceLinkerForSpringcloud+[NoContext]+CreateExpanded+$PUT+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01",
+      "Content": "{\n  \"properties\": {\n    \"targetService\": {\n      \"type\": \"AzureResource\",\n      \"id\": \"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.KeyVault/vaults/servicelinker-test-kv\"\n    },\n    \"authInfo\": {\n      \"authType\": \"systemAssignedIdentity\"\n    },\n    \"clientType\": \"none\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-serviceconnector-user-token": [ "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyIsImtpZCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNjUxODIxNTUyLCJuYmYiOjE2NTE4MjE1NTIsImV4cCI6MTY1MTgyNzA2MiwiX2NsYWltX25hbWVzIjp7Imdyb3VwcyI6InNyYzEifSwiX2NsYWltX3NvdXJjZXMiOnsic3JjMSI6eyJlbmRwb2ludCI6Imh0dHBzOi8vZ3JhcGgud2luZG93cy5uZXQvNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3VzZXJzL2IwYTlkM2M2LTMzODctNDA2Ny05ZjAzLTM5ODA4ZTcyOTFmZi9nZXRNZW1iZXJPYmplY3RzIn19LCJhY3IiOiIxIiwiYWlvIjoiQVZRQXEvOFRBQUFBekUxWGoxMDBnZjBvK3BEcTB3ZkhqTTlrSUF6R1BHZ0pNQjNjYTdFUjNCdXFZVXduYy9IaEdjNmM1VnkrMnd3SHFDRFlOSExic3lvMzd4VzJjS0ZIaEJaTE56NTZJbThPeWFDRWFhcUNUNzA9IiwiYW1yIjpbInB3ZCIsInJzYSIsIm1mYSJdLCJhcHBpZCI6IjE5NTBhMjU4LTIyN2ItNGUzMS1hOWNmLTcxNzQ5NTk0NWZjMiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiWmhvdSIsImdpdmVuX25hbWUiOiJYaWFvZmFuIiwiaXBhZGRyIjoiMTY3LjIyMC4yNTUuMTUiLCJuYW1lIjoiWGlhb2ZhbiBaaG91Iiwib2lkIjoiYjBhOWQzYzYtMzM4Ny00MDY3LTlmMDMtMzk4MDhlNzI5MWZmIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxNDY3NzMwODUtOTAzMzYzMjg1LTcxOTM0NDcwNy0yNzEyMTMzIiwicHVpZCI6IjEwMDMyMDAxMjZBMzAwMkIiLCJyaCI6IjAuQVFFQXY0ajVjdkdHcjBHUnF5MTgwQkhiUjBaSWYza0F1dGRQdWtQYXdmajJNQk1hQUhRLiIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6ImladElGXzE1MWZNTHowUVQ5dHhrSk9LR2ZLZENpcWtuaWNQdlh6M202MmciLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ1bmlxdWVfbmFtZSI6InhpYW9mYW56aG91QG1pY3Jvc29mdC5jb20iLCJ1cG4iOiJ4aWFvZmFuemhvdUBtaWNyb3NvZnQuY29tIiwidXRpIjoiem9pcDUwRFhpVWVwYWZoM3V6a0tBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc19jYyI6WyJDUDEiXSwieG1zX3RjZHQiOjEyODkyNDE1NDd9.BfzeWXupAu6SeXn47W7o3znTkHU5KCB1mIcalKvijL_9KmYpkkgrN0lNVnsbf6HjuVZUDbxX5HVLQ9dWiYR6nFSLb4BSrDZ3w3aSZsxPHCENJA7V8KJ5GDpxZphDDxj9f82fh3mkH2yntejGJfCJIGhhkMcT7oNjVbTV4Nh8KsVYZpDIogLNcjGk9ZdY4qPOcMdXWQCEZy-abC_c9dHL6hc4bbuOQx4XMO47uMs5p4GIoF1gVu8PEqnBKB5XY-JBUESjr6MldfSTFIpzOdowoAWg0uE9o6wzxFyS4faaatOkthbM2oNc3SB2OCKam_-_GuQxDSkODB87p_b1IlqrIQ" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "349" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3500e35b-0000-0100-0000-6274d9340000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "53c6dae4-aaf2-4a7b-83d8-93a74c60f2a9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/bc710d98-d206-4a24-8528-1e5e2c37362f*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01" ],
+        "x-ms-request-id": [ "bc710d98-d206-4a24-8528-1e5e2c37362f" ],
+        "x-ms-correlation-request-id": [ "d2a5fc1c-5183-46e1-b225-639370dd6424" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220506T081549Z:d2a5fc1c-5183-46e1-b225-639370dd6424" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 06 May 2022 08:15:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "955" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker\",\"name\":\"ps_linker\",\"type\":\"microsoft.servicelinker/linkers\",\"systemData\":{\"createdBy\":\"xiaofanzhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-05-06T08:15:48.2643427Z\",\"lastModifiedBy\":\"xiaofanzhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-05-06T08:15:48.2643427Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.KeyVault/vaults/servicelinker-test-kv\",\"resourceProperties\":null,\"type\":\"AzureResource\"},\"authInfo\":{\"authType\":\"systemAssignedIdentity\"},\"vNetSolution\":null,\"clientType\":\"none\",\"secretStore\":null,\"scope\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzServiceLinkerForSpringcloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/bc710d98-d206-4a24-8528-1e5e2c37362f*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/bc710d98-d206-4a24-8528-1e5e2c37362f*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-serviceconnector-user-token": [ "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyIsImtpZCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNjUxODIxNTUyLCJuYmYiOjE2NTE4MjE1NTIsImV4cCI6MTY1MTgyNzA2MiwiX2NsYWltX25hbWVzIjp7Imdyb3VwcyI6InNyYzEifSwiX2NsYWltX3NvdXJjZXMiOnsic3JjMSI6eyJlbmRwb2ludCI6Imh0dHBzOi8vZ3JhcGgud2luZG93cy5uZXQvNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3VzZXJzL2IwYTlkM2M2LTMzODctNDA2Ny05ZjAzLTM5ODA4ZTcyOTFmZi9nZXRNZW1iZXJPYmplY3RzIn19LCJhY3IiOiIxIiwiYWlvIjoiQVZRQXEvOFRBQUFBekUxWGoxMDBnZjBvK3BEcTB3ZkhqTTlrSUF6R1BHZ0pNQjNjYTdFUjNCdXFZVXduYy9IaEdjNmM1VnkrMnd3SHFDRFlOSExic3lvMzd4VzJjS0ZIaEJaTE56NTZJbThPeWFDRWFhcUNUNzA9IiwiYW1yIjpbInB3ZCIsInJzYSIsIm1mYSJdLCJhcHBpZCI6IjE5NTBhMjU4LTIyN2ItNGUzMS1hOWNmLTcxNzQ5NTk0NWZjMiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiWmhvdSIsImdpdmVuX25hbWUiOiJYaWFvZmFuIiwiaXBhZGRyIjoiMTY3LjIyMC4yNTUuMTUiLCJuYW1lIjoiWGlhb2ZhbiBaaG91Iiwib2lkIjoiYjBhOWQzYzYtMzM4Ny00MDY3LTlmMDMtMzk4MDhlNzI5MWZmIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxNDY3NzMwODUtOTAzMzYzMjg1LTcxOTM0NDcwNy0yNzEyMTMzIiwicHVpZCI6IjEwMDMyMDAxMjZBMzAwMkIiLCJyaCI6IjAuQVFFQXY0ajVjdkdHcjBHUnF5MTgwQkhiUjBaSWYza0F1dGRQdWtQYXdmajJNQk1hQUhRLiIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6ImladElGXzE1MWZNTHowUVQ5dHhrSk9LR2ZLZENpcWtuaWNQdlh6M202MmciLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ1bmlxdWVfbmFtZSI6InhpYW9mYW56aG91QG1pY3Jvc29mdC5jb20iLCJ1cG4iOiJ4aWFvZmFuemhvdUBtaWNyb3NvZnQuY29tIiwidXRpIjoiem9pcDUwRFhpVWVwYWZoM3V6a0tBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc19jYyI6WyJDUDEiXSwieG1zX3RjZHQiOjEyODkyNDE1NDd9.BfzeWXupAu6SeXn47W7o3znTkHU5KCB1mIcalKvijL_9KmYpkkgrN0lNVnsbf6HjuVZUDbxX5HVLQ9dWiYR6nFSLb4BSrDZ3w3aSZsxPHCENJA7V8KJ5GDpxZphDDxj9f82fh3mkH2yntejGJfCJIGhhkMcT7oNjVbTV4Nh8KsVYZpDIogLNcjGk9ZdY4qPOcMdXWQCEZy-abC_c9dHL6hc4bbuOQx4XMO47uMs5p4GIoF1gVu8PEqnBKB5XY-JBUESjr6MldfSTFIpzOdowoAWg0uE9o6wzxFyS4faaatOkthbM2oNc3SB2OCKam_-_GuQxDSkODB87p_b1IlqrIQ" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "d4dbe09b-c8d4-45ba-973e-3a8b4a7e53b9" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\New-AzServiceLinker" ],
+        "FullCommandName": [ "New-AzServiceLinker_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ServiceLinker/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0200b6c2-0000-0100-0000-6274d9400000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-request-id": [ "03dea951-3d1b-4222-880b-d121c62326c2" ],
+        "x-ms-correlation-request-id": [ "e8b4db3e-1591-483b-ad2f-019fab18d047" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220506T081619Z:e8b4db3e-1591-483b-ad2f-019fab18d047" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 06 May 2022 08:16:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "726" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/bc710d98-d206-4a24-8528-1e5e2c37362f*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C\",\"name\":\"bc710d98-d206-4a24-8528-1e5e2c37362f*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C\",\"resourceId\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker\",\"status\":\"Succeeded\",\"startTime\":\"2022-05-06T08:15:48.8830949Z\",\"endTime\":\"2022-05-06T08:16:00.0705037Z\",\"properties\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzServiceLinkerForSpringcloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-serviceconnector-user-token": [ "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyIsImtpZCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNjUxODIxNTUyLCJuYmYiOjE2NTE4MjE1NTIsImV4cCI6MTY1MTgyNzA2MiwiX2NsYWltX25hbWVzIjp7Imdyb3VwcyI6InNyYzEifSwiX2NsYWltX3NvdXJjZXMiOnsic3JjMSI6eyJlbmRwb2ludCI6Imh0dHBzOi8vZ3JhcGgud2luZG93cy5uZXQvNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3VzZXJzL2IwYTlkM2M2LTMzODctNDA2Ny05ZjAzLTM5ODA4ZTcyOTFmZi9nZXRNZW1iZXJPYmplY3RzIn19LCJhY3IiOiIxIiwiYWlvIjoiQVZRQXEvOFRBQUFBekUxWGoxMDBnZjBvK3BEcTB3ZkhqTTlrSUF6R1BHZ0pNQjNjYTdFUjNCdXFZVXduYy9IaEdjNmM1VnkrMnd3SHFDRFlOSExic3lvMzd4VzJjS0ZIaEJaTE56NTZJbThPeWFDRWFhcUNUNzA9IiwiYW1yIjpbInB3ZCIsInJzYSIsIm1mYSJdLCJhcHBpZCI6IjE5NTBhMjU4LTIyN2ItNGUzMS1hOWNmLTcxNzQ5NTk0NWZjMiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiWmhvdSIsImdpdmVuX25hbWUiOiJYaWFvZmFuIiwiaXBhZGRyIjoiMTY3LjIyMC4yNTUuMTUiLCJuYW1lIjoiWGlhb2ZhbiBaaG91Iiwib2lkIjoiYjBhOWQzYzYtMzM4Ny00MDY3LTlmMDMtMzk4MDhlNzI5MWZmIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxNDY3NzMwODUtOTAzMzYzMjg1LTcxOTM0NDcwNy0yNzEyMTMzIiwicHVpZCI6IjEwMDMyMDAxMjZBMzAwMkIiLCJyaCI6IjAuQVFFQXY0ajVjdkdHcjBHUnF5MTgwQkhiUjBaSWYza0F1dGRQdWtQYXdmajJNQk1hQUhRLiIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6ImladElGXzE1MWZNTHowUVQ5dHhrSk9LR2ZLZENpcWtuaWNQdlh6M202MmciLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ1bmlxdWVfbmFtZSI6InhpYW9mYW56aG91QG1pY3Jvc29mdC5jb20iLCJ1cG4iOiJ4aWFvZmFuemhvdUBtaWNyb3NvZnQuY29tIiwidXRpIjoiem9pcDUwRFhpVWVwYWZoM3V6a0tBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc19jYyI6WyJDUDEiXSwieG1zX3RjZHQiOjEyODkyNDE1NDd9.BfzeWXupAu6SeXn47W7o3znTkHU5KCB1mIcalKvijL_9KmYpkkgrN0lNVnsbf6HjuVZUDbxX5HVLQ9dWiYR6nFSLb4BSrDZ3w3aSZsxPHCENJA7V8KJ5GDpxZphDDxj9f82fh3mkH2yntejGJfCJIGhhkMcT7oNjVbTV4Nh8KsVYZpDIogLNcjGk9ZdY4qPOcMdXWQCEZy-abC_c9dHL6hc4bbuOQx4XMO47uMs5p4GIoF1gVu8PEqnBKB5XY-JBUESjr6MldfSTFIpzOdowoAWg0uE9o6wzxFyS4faaatOkthbM2oNc3SB2OCKam_-_GuQxDSkODB87p_b1IlqrIQ" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "d4dbe09b-c8d4-45ba-973e-3a8b4a7e53b9" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\New-AzServiceLinker" ],
+        "FullCommandName": [ "New-AzServiceLinker_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ServiceLinker/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3500135c-0000-0100-0000-6274d9400000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "b7641912-5cf5-4707-8ce1-911c9b176323" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "f30451d8-365b-45b8-a277-134e1d840afd" ],
+        "x-ms-correlation-request-id": [ "cb432874-9cd2-469e-a0ae-f738d0d81960" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220506T081620Z:cb432874-9cd2-469e-a0ae-f738d0d81960" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 06 May 2022 08:16:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "714" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker\",\"name\":\"ps_linker\",\"type\":\"microsoft.servicelinker/linkers\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.KeyVault/vaults/servicelinker-test-kv\",\"resourceProperties\":null,\"type\":\"AzureResource\"},\"authInfo\":{\"authType\":\"systemAssignedIdentity\"},\"clientType\":\"none\",\"scope\":null,\"vNetSolution\":null,\"secretStore\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzServiceLinkerForSpringcloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers?api-version=2022-05-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "ab107a2e-de2b-4507-9054-1fbdfb7a8852" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Get-AzServiceLinker" ],
+        "FullCommandName": [ "Get-AzServiceLinker_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ServiceLinker/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "68574273-6c49-4bd4-afdb-39eeed17083c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "55c692b9-b8b8-45eb-aa86-1b1cf5cde5ef" ],
+        "x-ms-correlation-request-id": [ "fa254aa4-9cbd-4c26-8fcc-8dc39dc93c6f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220506T081621Z:fa254aa4-9cbd-4c26-8fcc-8dc39dc93c6f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 06 May 2022 08:16:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1593" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker\",\"name\":\"ps_linker\",\"type\":\"microsoft.servicelinker/linkers\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.KeyVault/vaults/servicelinker-test-kv\",\"resourceProperties\":null,\"type\":\"AzureResource\"},\"authInfo\":{\"authType\":\"systemAssignedIdentity\"},\"clientType\":\"none\",\"scope\":null,\"vNetSolution\":null,\"secretStore\":null}},{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"name\":\"preparedLinker\",\"type\":\"microsoft.servicelinker/linkers\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/pollsdb\",\"resourceProperties\":{\"connectAsKubernetesCsiDriver\":false,\"type\":\"KeyVault\"},\"type\":\"AzureResource\"},\"authInfo\":{\"name\":\"servicelinker\",\"secretInfo\":{\"value\":null,\"secretType\":\"rawValue\"},\"authType\":\"secret\"},\"clientType\":\"dotnet\",\"scope\":null,\"vNetSolution\":null,\"secretStore\":null}}]}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzServiceLinkerForSpringcloud+[NoContext]+CreateExpanded+$PUT+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01+5": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01",
+      "Content": "{\n  \"properties\": {\n    \"targetService\": {\n      \"type\": \"AzureResource\",\n      \"id\": \"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.KeyVault/vaults/servicelinker-test-kv\"\n    },\n    \"authInfo\": {\n      \"authType\": \"systemAssignedIdentity\"\n    },\n    \"clientType\": \"dotnet\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-serviceconnector-user-token": [ "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyIsImtpZCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNjUxODIxNTUyLCJuYmYiOjE2NTE4MjE1NTIsImV4cCI6MTY1MTgyNzA2MiwiX2NsYWltX25hbWVzIjp7Imdyb3VwcyI6InNyYzEifSwiX2NsYWltX3NvdXJjZXMiOnsic3JjMSI6eyJlbmRwb2ludCI6Imh0dHBzOi8vZ3JhcGgud2luZG93cy5uZXQvNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3VzZXJzL2IwYTlkM2M2LTMzODctNDA2Ny05ZjAzLTM5ODA4ZTcyOTFmZi9nZXRNZW1iZXJPYmplY3RzIn19LCJhY3IiOiIxIiwiYWlvIjoiQVZRQXEvOFRBQUFBekUxWGoxMDBnZjBvK3BEcTB3ZkhqTTlrSUF6R1BHZ0pNQjNjYTdFUjNCdXFZVXduYy9IaEdjNmM1VnkrMnd3SHFDRFlOSExic3lvMzd4VzJjS0ZIaEJaTE56NTZJbThPeWFDRWFhcUNUNzA9IiwiYW1yIjpbInB3ZCIsInJzYSIsIm1mYSJdLCJhcHBpZCI6IjE5NTBhMjU4LTIyN2ItNGUzMS1hOWNmLTcxNzQ5NTk0NWZjMiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiWmhvdSIsImdpdmVuX25hbWUiOiJYaWFvZmFuIiwiaXBhZGRyIjoiMTY3LjIyMC4yNTUuMTUiLCJuYW1lIjoiWGlhb2ZhbiBaaG91Iiwib2lkIjoiYjBhOWQzYzYtMzM4Ny00MDY3LTlmMDMtMzk4MDhlNzI5MWZmIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxNDY3NzMwODUtOTAzMzYzMjg1LTcxOTM0NDcwNy0yNzEyMTMzIiwicHVpZCI6IjEwMDMyMDAxMjZBMzAwMkIiLCJyaCI6IjAuQVFFQXY0ajVjdkdHcjBHUnF5MTgwQkhiUjBaSWYza0F1dGRQdWtQYXdmajJNQk1hQUhRLiIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6ImladElGXzE1MWZNTHowUVQ5dHhrSk9LR2ZLZENpcWtuaWNQdlh6M202MmciLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ1bmlxdWVfbmFtZSI6InhpYW9mYW56aG91QG1pY3Jvc29mdC5jb20iLCJ1cG4iOiJ4aWFvZmFuemhvdUBtaWNyb3NvZnQuY29tIiwidXRpIjoiem9pcDUwRFhpVWVwYWZoM3V6a0tBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc19jYyI6WyJDUDEiXSwieG1zX3RjZHQiOjEyODkyNDE1NDd9.BfzeWXupAu6SeXn47W7o3znTkHU5KCB1mIcalKvijL_9KmYpkkgrN0lNVnsbf6HjuVZUDbxX5HVLQ9dWiYR6nFSLb4BSrDZ3w3aSZsxPHCENJA7V8KJ5GDpxZphDDxj9f82fh3mkH2yntejGJfCJIGhhkMcT7oNjVbTV4Nh8KsVYZpDIogLNcjGk9ZdY4qPOcMdXWQCEZy-abC_c9dHL6hc4bbuOQx4XMO47uMs5p4GIoF1gVu8PEqnBKB5XY-JBUESjr6MldfSTFIpzOdowoAWg0uE9o6wzxFyS4faaatOkthbM2oNc3SB2OCKam_-_GuQxDSkODB87p_b1IlqrIQ" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "351" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"35006e5c-0000-0100-0000-6274d9570000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "ca479ee9-26d7-47a5-8c8f-477d799d1c7b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/6979c81e-2a5a-46e9-83ce-593176758779*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01" ],
+        "x-ms-request-id": [ "6979c81e-2a5a-46e9-83ce-593176758779" ],
+        "x-ms-correlation-request-id": [ "76a0018e-b272-4238-a6b6-40daa1297209" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220506T081623Z:76a0018e-b272-4238-a6b6-40daa1297209" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 06 May 2022 08:16:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "957" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker\",\"name\":\"ps_linker\",\"type\":\"microsoft.servicelinker/linkers\",\"systemData\":{\"createdBy\":\"xiaofanzhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-05-06T08:15:48.2643427Z\",\"lastModifiedBy\":\"xiaofanzhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-05-06T08:16:22.8268166Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.KeyVault/vaults/servicelinker-test-kv\",\"resourceProperties\":null,\"type\":\"AzureResource\"},\"authInfo\":{\"authType\":\"systemAssignedIdentity\"},\"vNetSolution\":null,\"clientType\":\"dotnet\",\"secretStore\":null,\"scope\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzServiceLinkerForSpringcloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/6979c81e-2a5a-46e9-83ce-593176758779*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/6979c81e-2a5a-46e9-83ce-593176758779*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-serviceconnector-user-token": [ "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyIsImtpZCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNjUxODIxNTUyLCJuYmYiOjE2NTE4MjE1NTIsImV4cCI6MTY1MTgyNzA2MiwiX2NsYWltX25hbWVzIjp7Imdyb3VwcyI6InNyYzEifSwiX2NsYWltX3NvdXJjZXMiOnsic3JjMSI6eyJlbmRwb2ludCI6Imh0dHBzOi8vZ3JhcGgud2luZG93cy5uZXQvNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3VzZXJzL2IwYTlkM2M2LTMzODctNDA2Ny05ZjAzLTM5ODA4ZTcyOTFmZi9nZXRNZW1iZXJPYmplY3RzIn19LCJhY3IiOiIxIiwiYWlvIjoiQVZRQXEvOFRBQUFBekUxWGoxMDBnZjBvK3BEcTB3ZkhqTTlrSUF6R1BHZ0pNQjNjYTdFUjNCdXFZVXduYy9IaEdjNmM1VnkrMnd3SHFDRFlOSExic3lvMzd4VzJjS0ZIaEJaTE56NTZJbThPeWFDRWFhcUNUNzA9IiwiYW1yIjpbInB3ZCIsInJzYSIsIm1mYSJdLCJhcHBpZCI6IjE5NTBhMjU4LTIyN2ItNGUzMS1hOWNmLTcxNzQ5NTk0NWZjMiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiWmhvdSIsImdpdmVuX25hbWUiOiJYaWFvZmFuIiwiaXBhZGRyIjoiMTY3LjIyMC4yNTUuMTUiLCJuYW1lIjoiWGlhb2ZhbiBaaG91Iiwib2lkIjoiYjBhOWQzYzYtMzM4Ny00MDY3LTlmMDMtMzk4MDhlNzI5MWZmIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxNDY3NzMwODUtOTAzMzYzMjg1LTcxOTM0NDcwNy0yNzEyMTMzIiwicHVpZCI6IjEwMDMyMDAxMjZBMzAwMkIiLCJyaCI6IjAuQVFFQXY0ajVjdkdHcjBHUnF5MTgwQkhiUjBaSWYza0F1dGRQdWtQYXdmajJNQk1hQUhRLiIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6ImladElGXzE1MWZNTHowUVQ5dHhrSk9LR2ZLZENpcWtuaWNQdlh6M202MmciLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ1bmlxdWVfbmFtZSI6InhpYW9mYW56aG91QG1pY3Jvc29mdC5jb20iLCJ1cG4iOiJ4aWFvZmFuemhvdUBtaWNyb3NvZnQuY29tIiwidXRpIjoiem9pcDUwRFhpVWVwYWZoM3V6a0tBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc19jYyI6WyJDUDEiXSwieG1zX3RjZHQiOjEyODkyNDE1NDd9.BfzeWXupAu6SeXn47W7o3znTkHU5KCB1mIcalKvijL_9KmYpkkgrN0lNVnsbf6HjuVZUDbxX5HVLQ9dWiYR6nFSLb4BSrDZ3w3aSZsxPHCENJA7V8KJ5GDpxZphDDxj9f82fh3mkH2yntejGJfCJIGhhkMcT7oNjVbTV4Nh8KsVYZpDIogLNcjGk9ZdY4qPOcMdXWQCEZy-abC_c9dHL6hc4bbuOQx4XMO47uMs5p4GIoF1gVu8PEqnBKB5XY-JBUESjr6MldfSTFIpzOdowoAWg0uE9o6wzxFyS4faaatOkthbM2oNc3SB2OCKam_-_GuQxDSkODB87p_b1IlqrIQ" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "2e4f86d6-c46d-46ab-a917-d6092ee7cb7c" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\New-AzServiceLinker" ],
+        "FullCommandName": [ "New-AzServiceLinker_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ServiceLinker/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"dc04aff0-0000-0200-0000-6274d9600000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-request-id": [ "d27e3eb8-8b8c-4f14-935d-8b73963174bb" ],
+        "x-ms-correlation-request-id": [ "db0790cc-49f7-4688-b5c0-f195361728c3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220506T081653Z:db0790cc-49f7-4688-b5c0-f195361728c3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 06 May 2022 08:16:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "726" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/6979c81e-2a5a-46e9-83ce-593176758779*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C\",\"name\":\"6979c81e-2a5a-46e9-83ce-593176758779*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C\",\"resourceId\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker\",\"status\":\"Succeeded\",\"startTime\":\"2022-05-06T08:16:23.2542473Z\",\"endTime\":\"2022-05-06T08:16:32.3420449Z\",\"properties\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzServiceLinkerForSpringcloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-serviceconnector-user-token": [ "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyIsImtpZCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNjUxODIxNTUyLCJuYmYiOjE2NTE4MjE1NTIsImV4cCI6MTY1MTgyNzA2MiwiX2NsYWltX25hbWVzIjp7Imdyb3VwcyI6InNyYzEifSwiX2NsYWltX3NvdXJjZXMiOnsic3JjMSI6eyJlbmRwb2ludCI6Imh0dHBzOi8vZ3JhcGgud2luZG93cy5uZXQvNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3VzZXJzL2IwYTlkM2M2LTMzODctNDA2Ny05ZjAzLTM5ODA4ZTcyOTFmZi9nZXRNZW1iZXJPYmplY3RzIn19LCJhY3IiOiIxIiwiYWlvIjoiQVZRQXEvOFRBQUFBekUxWGoxMDBnZjBvK3BEcTB3ZkhqTTlrSUF6R1BHZ0pNQjNjYTdFUjNCdXFZVXduYy9IaEdjNmM1VnkrMnd3SHFDRFlOSExic3lvMzd4VzJjS0ZIaEJaTE56NTZJbThPeWFDRWFhcUNUNzA9IiwiYW1yIjpbInB3ZCIsInJzYSIsIm1mYSJdLCJhcHBpZCI6IjE5NTBhMjU4LTIyN2ItNGUzMS1hOWNmLTcxNzQ5NTk0NWZjMiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiWmhvdSIsImdpdmVuX25hbWUiOiJYaWFvZmFuIiwiaXBhZGRyIjoiMTY3LjIyMC4yNTUuMTUiLCJuYW1lIjoiWGlhb2ZhbiBaaG91Iiwib2lkIjoiYjBhOWQzYzYtMzM4Ny00MDY3LTlmMDMtMzk4MDhlNzI5MWZmIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxNDY3NzMwODUtOTAzMzYzMjg1LTcxOTM0NDcwNy0yNzEyMTMzIiwicHVpZCI6IjEwMDMyMDAxMjZBMzAwMkIiLCJyaCI6IjAuQVFFQXY0ajVjdkdHcjBHUnF5MTgwQkhiUjBaSWYza0F1dGRQdWtQYXdmajJNQk1hQUhRLiIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6ImladElGXzE1MWZNTHowUVQ5dHhrSk9LR2ZLZENpcWtuaWNQdlh6M202MmciLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ1bmlxdWVfbmFtZSI6InhpYW9mYW56aG91QG1pY3Jvc29mdC5jb20iLCJ1cG4iOiJ4aWFvZmFuemhvdUBtaWNyb3NvZnQuY29tIiwidXRpIjoiem9pcDUwRFhpVWVwYWZoM3V6a0tBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc19jYyI6WyJDUDEiXSwieG1zX3RjZHQiOjEyODkyNDE1NDd9.BfzeWXupAu6SeXn47W7o3znTkHU5KCB1mIcalKvijL_9KmYpkkgrN0lNVnsbf6HjuVZUDbxX5HVLQ9dWiYR6nFSLb4BSrDZ3w3aSZsxPHCENJA7V8KJ5GDpxZphDDxj9f82fh3mkH2yntejGJfCJIGhhkMcT7oNjVbTV4Nh8KsVYZpDIogLNcjGk9ZdY4qPOcMdXWQCEZy-abC_c9dHL6hc4bbuOQx4XMO47uMs5p4GIoF1gVu8PEqnBKB5XY-JBUESjr6MldfSTFIpzOdowoAWg0uE9o6wzxFyS4faaatOkthbM2oNc3SB2OCKam_-_GuQxDSkODB87p_b1IlqrIQ" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "2e4f86d6-c46d-46ab-a917-d6092ee7cb7c" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\New-AzServiceLinker" ],
+        "FullCommandName": [ "New-AzServiceLinker_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ServiceLinker/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"be004747-0000-0200-0000-6274d9600000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "4d0d7dd1-66dd-4967-b5dd-588ceba8c819" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9b63b865-88fa-4bfe-a2ba-2ac8e97b26e0" ],
+        "x-ms-correlation-request-id": [ "e14e3440-f600-4cb8-8264-5a1fcc946e91" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220506T081654Z:e14e3440-f600-4cb8-8264-5a1fcc946e91" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 06 May 2022 08:16:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "716" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker\",\"name\":\"ps_linker\",\"type\":\"microsoft.servicelinker/linkers\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.KeyVault/vaults/servicelinker-test-kv\",\"resourceProperties\":null,\"type\":\"AzureResource\"},\"authInfo\":{\"authType\":\"systemAssignedIdentity\"},\"clientType\":\"dotnet\",\"scope\":null,\"vNetSolution\":null,\"secretStore\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzServiceLinkerForSpringcloud+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01+8": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "ab973f9a-fa14-4294-8c71-1560dc50700d" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Remove-AzServiceLinker" ],
+        "FullCommandName": [ "Remove-AzServiceLinker_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ServiceLinker/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3500f95c-0000-0100-0000-6274d9780000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/f32b619a-c5d8-4197-8d90-128025189204*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "0aa758aa-4734-42a6-aabf-ae9815e7f3e2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/f32b619a-c5d8-4197-8d90-128025189204*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01" ],
+        "x-ms-request-id": [ "f32b619a-c5d8-4197-8d90-128025189204" ],
+        "x-ms-correlation-request-id": [ "9c5accf8-91cd-4a3e-bf5f-98818685bb73" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220506T081656Z:9c5accf8-91cd-4a3e-bf5f-98818685bb73" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 06 May 2022 08:16:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "New-AzServiceLinkerForSpringcloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/f32b619a-c5d8-4197-8d90-128025189204*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/f32b619a-c5d8-4197-8d90-128025189204*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "ab973f9a-fa14-4294-8c71-1560dc50700d" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Remove-AzServiceLinker" ],
+        "FullCommandName": [ "Remove-AzServiceLinker_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ServiceLinker/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0200cfc2-0000-0100-0000-6274d97c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-request-id": [ "d87742e0-bb60-4cb3-bc47-f9efc7259540" ],
+        "x-ms-correlation-request-id": [ "d89ea704-0d32-46fe-97c5-a76a1c50b9af" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220506T081726Z:d89ea704-0d32-46fe-97c5-a76a1c50b9af" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 06 May 2022 08:17:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "727" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/f32b619a-c5d8-4197-8d90-128025189204*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C\",\"name\":\"f32b619a-c5d8-4197-8d90-128025189204*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C\",\"resourceId\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker\",\"status\":\"Succeeded\",\"startTime\":\"2022-05-06T08:16:56.271203Z\",\"endTime\":\"2022-05-06T08:17:00.0940823Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzServiceLinkerForSpringcloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/f32b619a-c5d8-4197-8d90-128025189204*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/f32b619a-c5d8-4197-8d90-128025189204*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "ab973f9a-fa14-4294-8c71-1560dc50700d" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Remove-AzServiceLinker" ],
+        "FullCommandName": [ "Remove-AzServiceLinker_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ServiceLinker/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0200cfc2-0000-0100-0000-6274d97c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-request-id": [ "be20963d-0f33-4c65-a914-2db2036da900" ],
+        "x-ms-correlation-request-id": [ "7006bbbe-c944-41e3-9e16-47892934a362" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220506T081727Z:7006bbbe-c944-41e3-9e16-47892934a362" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 06 May 2022 08:17:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "727" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/f32b619a-c5d8-4197-8d90-128025189204*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C\",\"name\":\"f32b619a-c5d8-4197-8d90-128025189204*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C\",\"resourceId\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker\",\"status\":\"Succeeded\",\"startTime\":\"2022-05-06T08:16:56.271203Z\",\"endTime\":\"2022-05-06T08:17:00.0940823Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzServiceLinkerForSpringcloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers?api-version=2022-05-01+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "c35e07dc-54ca-466a-8a86-f39674461cbb" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Get-AzServiceLinker" ],
+        "FullCommandName": [ "Get-AzServiceLinker_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ServiceLinker/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "34c769c1-54b2-41c9-8668-ea6e1e1479af" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "7360452d-a2d9-4848-8538-e689656b6551" ],
+        "x-ms-correlation-request-id": [ "db095a97-8dcb-40a3-b4ac-68f75aaab33d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220506T081728Z:db095a97-8dcb-40a3-b4ac-68f75aaab33d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 06 May 2022 08:17:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "878" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"name\":\"preparedLinker\",\"type\":\"microsoft.servicelinker/linkers\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/pollsdb\",\"resourceProperties\":{\"connectAsKubernetesCsiDriver\":false,\"type\":\"KeyVault\"},\"type\":\"AzureResource\"},\"authInfo\":{\"name\":\"servicelinker\",\"secretInfo\":{\"value\":null,\"secretType\":\"rawValue\"},\"authType\":\"secret\"},\"clientType\":\"dotnet\",\"scope\":null,\"vNetSolution\":null,\"secretStore\":null}}]}",
+      "isContentBase64": false
+    }
+  }
+}

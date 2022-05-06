@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzServiceLinkerForWebapp
 }
 
 Describe 'Test-AzServiceLinkerForWebapp' {
-    It 'Validate' -skip {
+    It 'Validate' {
         $result = Test-AzServiceLinkerForWebapp -ResourceGroupName $env.resourceGroup -Webapp $env.preparedWebapp -LinkerName $env.preparedLinker
     }
 
-    It 'ValidateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ValidateViaIdentity' {
+        $identity = @{
+            ResourceUri = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Web/sites/$($env.webapp)"
+            LinkerName = $env.newLinker
+        }
     }
 }

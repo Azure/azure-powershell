@@ -15,9 +15,9 @@ Operation to update an existing link.
 ### UpdateExpanded (Default)
 ```
 Update-AzServiceLinkerForWebapp -Name <String> -AuthInfo <IAuthInfoBase> -ClientType <ClientType>
- -TargetService <ITargetServiceBase> -ResourceGroupName <String> -Webapp <String> [-Scope <String>]
- [-SecretStoreKeyVaultId <String>] [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -TargetService <ITargetServiceBase> -ResourceGroupName <String> -Webapp <String> [-ResourceUri <String>]
+ [-Scope <String>] [-SecretStoreKeyVaultId <String>] [-VNetSolutionType <VNetSolutionType>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -166,6 +166,21 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceUri
+The fully qualified Azure Resource manager identifier of the resource to be connected.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

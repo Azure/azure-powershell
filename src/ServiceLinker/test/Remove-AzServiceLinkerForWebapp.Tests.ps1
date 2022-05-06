@@ -21,6 +21,10 @@ Describe 'Remove-AzServiceLinkerForWebapp' {
     }
 
     It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $identity = @{
+            ResourceUri = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Web/sites/$($env.webapp)"
+            LinkerName = $env.newLinker
+        }
+        $null = $identity | Remove-AzServiceLinkerForWebapp
     }
 }

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzServiceLinkerForWeba
 }
 
 Describe 'Update-AzServiceLinkerForWebapp' {
-    It 'UpdateExpanded' -skip {
+    It 'UpdateExpanded' {
         $linker = Get-AzServiceLinkerForWebapp -ResourceGroupName $env.resourceGroup -Webapp $env.preparedWebapp -Name $env.preparedLinker
 
         $updateLinker = Update-AzServiceLinkerForWebapp -ResourceGroupName $env.resourceGroup -Webapp $env.preparedWebapp -LinkerName $linker.Name -TargetService $linker.TargetService -AuthInfo $linker.AuthInfo -ClientType dotnet
