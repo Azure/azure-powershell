@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.EventGrid
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridFullUrlForSystemTopicEventSubscription",
-        SupportsShouldProcess = true,
         DefaultParameterSetName = TopicNameParameterSet),
     OutputType(typeof(string))]
 
