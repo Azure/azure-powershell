@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzEventGridSystemTopicEventSubscription
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes an Azure Event Grid system topic event subscription.
 
 ## SYNTAX
 
@@ -26,16 +26,16 @@ Remove-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Removes an Azure Event Grid event subscription for an Azure Event Grid system topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzEventGridSystemTopicEventSubscription -ResourceGroup MyResourceGroup -SystemTopicName Topic1 -EventSubscriptionName EventSubscription1
 ```
 
-{{ Add example description here }}
+Removes the event subscription \`EventSubscription1\` to an Azure Event Grid system topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Returns the status of the Remove operation. By default, this cmdlet does not generate any output.
 
 ```yaml
 Type: SwitchParameter

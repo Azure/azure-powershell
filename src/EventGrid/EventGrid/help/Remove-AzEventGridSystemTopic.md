@@ -37,7 +37,7 @@ Remove-AzEventGridSystemTopic -InputObject <PSSystemTopic> [-Force] [-PassThru]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Removes an Azure Event Grid System Topic either by using name of system topic or by piping system topic object.
 
 ## EXAMPLES
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Returns the status of the Remove operation. By default, this cmdlet does not generate any output.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
