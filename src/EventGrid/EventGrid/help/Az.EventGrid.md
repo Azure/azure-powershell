@@ -80,9 +80,6 @@ Removes an Azure Event Grid event subscription.
 ### [Remove-AzEventGridSystemTopic](Remove-AzEventGridSystemTopic.md)
 Removes an Azure Event Grid System Topic.
 
-### [Remove-AzEventGridSystemTopic](Remove-AzEventGridSystemTopic.md)
-Removes an Azure Event Grid System Topic.
-
 ### [Remove-AzEventGridTopic](Remove-AzEventGridTopic.md)
 Removes an Azure Event Grid Topic.
 

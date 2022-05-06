@@ -7,14 +7,15 @@ schema: 2.0.0
 
 # Remove-AzEventGridSystemTopicEventSubscription
 
-Removes an Azure Event Grid system topic event subscription.
+## SYNOPSIS
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### TopicNameParameterSet (Default)
 ```
-Remove-AzEventGridSystemTopicEventSubscription [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzEventGridSystemTopicEventSubscription [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SystemTopicEventSuscriptionParameterSet
@@ -25,15 +26,16 @@ Remove-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -
 ```
 
 ## DESCRIPTION
-Removes an Azure Event Grid event subscription for an Azure Event Grid system topic.
+{{ Fill in the Description }}
+
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Remove-AzEventGridSystemTopicEventSubscription -ResourceGroup MyResourceGroup -SystemTopicName Topic1 -EventSubscriptionName EventSubscription1
+PS C:\> {{ Add example code here }}
 ```
 
-Removes the event subscription \`EventSubscription1\` to an Azure Event Grid system topic \`Topic1\` in resource group \`MyResourceGroupName\`.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -41,7 +43,7 @@ Removes the event subscription \`EventSubscription1\` to an Azure Event Grid sys
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -56,7 +58,7 @@ Accept wildcard characters: False
 EventGrid event subscription name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
 
@@ -66,11 +68,13 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
 ### -Force
-Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the resource
+Indicates that the cmdlet does not prompt you for confirmation.
+By default, this cmdlet prompts you to confirm that you want to delete the resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +89,7 @@ Accept wildcard characters: False
 {{ Fill PassThru Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +104,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
 
@@ -115,7 +119,7 @@ Accept wildcard characters: False
 EventGrid topic name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
 
@@ -130,7 +134,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -146,7 +150,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -171,4 +175,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-https://docs.microsoft.com/en-us/azure/event-grid/system-topics
