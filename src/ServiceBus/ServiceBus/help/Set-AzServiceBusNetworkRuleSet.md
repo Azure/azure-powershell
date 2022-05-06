@@ -41,7 +41,7 @@ Update the NetworkRuleSet of the given Namespace in the current Azure subscripti
 ```powershell
 $IpRules = @([Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "4.4.4.4";Action = "Allow"},[Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "3.3.3.3";Action = "Allow"})
 $VirtualNetworkRules = @([Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetVirtualNetworkRulesAttributes]@{Subnet=@{Id="/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default"};IgnoreMissingVnetServiceEndpoint=$True})
-Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-1375 -IPRule $IpRules -VirtualNetworkRule $VirtualNetworkRules -DefaultAction "Allow" -Debug
+Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-1375 -IPRule $IpRules -VirtualNetworkRule $VirtualNetworkRules -DefaultAction "Allow" -Debug
 
 ```
 
@@ -57,8 +57,8 @@ Update the NetworkRuleSet using -IPRule and -VirtualNetworkRule parameters
 
 ### Example 2
 ```powershell
-$getresult = Get-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-1375
-Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-1375 -InputObject $getresult
+$getresult = Get-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-1375
+Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-1375 -InputObject $getresult
 ```
 
 ```output
@@ -74,7 +74,7 @@ Update the NetworkRuleSet using -InputObject
 
 ### Example 3
 ```powershell
-Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-1375 -ResourceId /subscriptions/SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace1-1375
+Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-1375 -ResourceId /subscriptions/SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace1-1375
 ```
 
 ```output
