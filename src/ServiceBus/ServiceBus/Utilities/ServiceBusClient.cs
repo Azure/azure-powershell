@@ -216,10 +216,10 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
                 parameter.Identity.Type = FindIdentity(identityType);
 
-                if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
+                /*if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
                 {
                     parameter.Identity.UserAssignedIdentities = null;
-                }
+                }*/
             }
 
             if (identityIds != null)
@@ -236,9 +236,13 @@ namespace Microsoft.Azure.Commands.ServiceBus
                 {
                     parameter.Identity.UserAssignedIdentities = UserAssignedIdentities;
                 }
-                if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
+                if (identityIds.Length == 0)
                 {
-                    throw new Exception("Please change -IdentityType to 'UserAssigned' or 'SystemAssigned, UserAssigned' if you want to add User Assigned Identities");
+                    parameter.Identity.UserAssignedIdentities = null;
+                }
+                else if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
+                {
+                    throw new Exception("Please change -IdentityType to UserAssigned or 'SystemAssigned, UserAssigned' if you want to add User Assigned Identities");
                 }
             }
 

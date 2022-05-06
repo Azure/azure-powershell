@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
         [Parameter(Mandatory = false, ParameterSetName = NetworkRuleSetPropertiesParameterSet, HelpMessage = "Trusted Service Access for NetworkRuleSet")]
         public SwitchParameter TrustedServiceAccessEnabled { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = NetworkRuleSetPropertiesParameterSet, HelpMessage = "List of IPRuleSet")]
+        [Parameter(Mandatory = false, ParameterSetName = NetworkRuleSetPropertiesParameterSet, Position = 2, HelpMessage = "List of IPRuleSet")]
         public PSNWRuleSetIpRulesAttributes[] IPRule { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = NetworkRuleSetPropertiesParameterSet, HelpMessage = "List of VirtualNetworkRules")]
+        [Parameter(Mandatory = false, ParameterSetName = NetworkRuleSetPropertiesParameterSet, Position = 3, HelpMessage = "List of VirtualNetworkRules")]
         [Alias(AliasVirtualNetworkRule)]
         public PSNWRuleSetVirtualNetworkRulesAttributes[] VirtualNetworkRule { get; set; }
 
