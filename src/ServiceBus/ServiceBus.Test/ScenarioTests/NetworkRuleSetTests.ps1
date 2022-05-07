@@ -20,6 +20,9 @@ Tests New Parameter for ServiceBus Namespace Create List Remove operations.
 function NetworkRuleSetTests {
     # Setup  
 
+    #Customer can use this cmdlet to 
+    #Set default action, trustedservice, publicnetworkaccess
+
     $location = Get-Location
     $resourceGroupName = getAssetName "RSG"
     $namespaceName = getAssetName "ServiceBus-Namespace-"
@@ -92,11 +95,19 @@ function NetworkRuleSetTests {
     Assert-AreEqual $setResult.IpRules.Count 3 "Set - IPRules count did not matched"
 
     # Set-AzServiceBusNetworkRuleSet with parameters
-    $setResult = Set-AzServiceBusNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -IPRule $setResult.IpRules -VirtualNetworkRule $setResult.VirtualNetworkRules -DefaultAction "Allow" -PublicNetworkAccess "Disabled"
+    $setResult = Set-AzServiceBusNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -DefaultAction "Allow" -PublicNetworkAccess "Disabled" -TrustedServiceAccessEnabled
     Assert-AreEqual $setResult.VirtualNetworkRules.Count 3 "Set -VirtualNetworkRules count did not matched"
     Assert-AreEqual $setResult.IpRules.Count 3 "Set - IPRules count did not matched"
     Assert-AreEqual $setResult.PublicNetworkAccess "Disabled"
     Assert-AreEqual $setResult.DefaultAction "Allow"
+    Assert-True {$setResult.TrustedServiceAccessEnabled}
+
+    $setResult = Set-AzServiceBusNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -IPRule $setResult.IpRules -VirtualNetworkRule $setResult.VirtualNetworkRules
+    Assert-AreEqual $setResult.VirtualNetworkRules.Count 3 "Set -VirtualNetworkRules count did not matched"
+    Assert-AreEqual $setResult.IpRules.Count 3 "Set - IPRules count did not matched"
+    Assert-AreEqual $setResult.PublicNetworkAccess "Disabled"
+    Assert-AreEqual $setResult.DefaultAction "Allow"
+    Assert-True {$setResult.TrustedServiceAccessEnabled}
 
     # Set-AzServiceBusNetworkRuleSet with Resource ID
     $setResult1 = Set-AzServiceBusNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -ResourceId $getResult.Id
