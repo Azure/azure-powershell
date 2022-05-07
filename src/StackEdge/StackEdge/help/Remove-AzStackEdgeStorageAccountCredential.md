@@ -38,7 +38,7 @@ The **Remove-AzStackEdgeStorageAccountCredential** cmdlet removes the storage ac
 
 ### Example 1
 ```powershell
-Remove-AzStackEdgeStorageAccountCredential ResourceGroupName resourceGroupName -DeviceName deviceName -Name storageAccountCredentialName
+Remove-AzStackEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName -Name storageAccountName
 ```
 
 ## PARAMETERS

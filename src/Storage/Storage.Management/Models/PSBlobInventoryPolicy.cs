@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.SystemData = policy.SystemData is null ? null : new PSSystemData(policy.SystemData);
 
             this.Enabled = policy.Policy.Enabled;
-            //this.Destination = policy.Policy.Destination;
+            this.Destination = policy.Policy.Destination;
 
             if (policy.Policy.Rules != null)
             {
@@ -108,6 +108,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         [Ps1Xml(Label = "Rules", Target = ViewControl.List, Position = 7)]
         public PSBlobInventoryPolicyRule[] Rules { get; set; }
         public PSSystemData SystemData { get; set; }
+        public string Destination { get; private set; }
     }
 
     /// <summary>

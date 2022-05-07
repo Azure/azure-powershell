@@ -483,7 +483,7 @@ function Test-SetWebAppSlot
         # Assert
         Assert-NotNull  $slot.Identity
         Assert-AreEqual ($appSettings.Keys.Count) $slot.SiteConfig.AppSettings.Count
-		Assert-AreEqual "1.0" $slot.SiteConfig.MinTlsVersion
+		Assert-AreEqual "1.2" $slot.SiteConfig.MinTlsVersion
 
         $slot = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -ConnectionStrings $connectionStrings -numberofworkers $numberOfWorkers
 

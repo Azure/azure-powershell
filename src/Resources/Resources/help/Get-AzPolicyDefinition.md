@@ -84,7 +84,7 @@ This command gets all built-in policy definitions from the subscription with ID 
 
 ### Example 5: Get policy definitions from a given category
 ```powershell
-Get-AzPolicyDefinition | where-object {$_.Properties.metadata.category -eq "Virtual Machine"}
+Get-AzPolicyDefinition | Where-Object {$_.Properties.metadata.category -eq "Virtual Machine"}
 ```
 
 This command gets all policy definitions in category "Virtual Machine".

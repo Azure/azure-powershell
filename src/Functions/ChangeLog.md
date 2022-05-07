@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.0.2
 * Exposed PowerShell 7.2 stack definition for function app creation in Functions V4 only
 
 ## Version 4.0.1

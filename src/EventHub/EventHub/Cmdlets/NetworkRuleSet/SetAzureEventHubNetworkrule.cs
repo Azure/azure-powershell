@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
         [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet, HelpMessage = "Indicates whether TrustedServiceAccessEnabled is enabled")]
         public SwitchParameter TrustedServiceAccessEnabled { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet,  Position = 2, HelpMessage = "List of IPRuleSet")]
+        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet,  Position = 2, HelpMessage = "List of IPRuleSet")]
         [ValidateNotNullOrEmpty]
         public PSNWRuleSetIpRulesAttributes[] IPRule { get; set; }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
         [PSDefaultValue(Value = "Enabled")]
         public string PublicNetworkAccess { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet,  Position = 3, HelpMessage = "List of VirtualNetworkRules")]
+        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet,  Position = 3, HelpMessage = "List of VirtualNetworkRules")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasVirtualNetworkRule)]
         public PSNWRuleSetVirtualNetworkRulesAttributes[] VirtualNetworkRule { get; set; }
@@ -81,16 +81,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
                 {
                     if (ParameterSetName.Equals(NetwrokruleSetPropertiesParameterSet))
                     {
-                        PSNetworkRuleSetAttributes networkRuleSetAttributes = new PSNetworkRuleSetAttributes()
-                        {
-                            DefaultAction = DefaultAction,
-                            TrustedServiceAccessEnabled = TrustedServiceAccessEnabled.IsPresent,
-                            IpRules = IPRule.OfType<PSNWRuleSetIpRulesAttributes>().ToList(),
-                            VirtualNetworkRules = VirtualNetworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList(),
-                            PublicNetworkAccess = PublicNetworkAccess
-                        };
-
-                        WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSetAttributes));
+                        WriteObject(Client.UpdateNetworkRuleSet(resourceGroupName: ResourceGroupName,
+                                                                namespaceName: Name,
+                                                                publicNetworkAccess: PublicNetworkAccess,
+                                                                trustedServiceAccessEnabled: TrustedServiceAccessEnabled,
+                                                                defaultAction: DefaultAction,
+                                                                iPRule: IPRule,
+                                                                virtualNetworkRule: VirtualNetworkRule));
                     }
 
                     if (ParameterSetName.Equals(NetwrokruleSetInputObjectParameterSet))

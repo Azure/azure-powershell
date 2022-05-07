@@ -68,8 +68,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             // Override the default error message so it will include information passed from Backend
             Management.OperationalInsights.Models.ErrorResponseException errorException = exception as Management.OperationalInsights.Models.ErrorResponseException;
             if (errorException != null)
-            {
-                exception = new Exception(string.Format("{0}\n{1}", errorException.Message, errorException.Response.ReasonPhrase), errorException);
+            {                
+                exception = new Exception(string.Format("{0}\n{1}\n{2}", errorException.Message, errorException.Response?.ReasonPhrase, errorException.Response?.Content), errorException);
             }
             base.WriteExceptionError(exception);
         }

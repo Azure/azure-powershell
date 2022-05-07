@@ -145,6 +145,48 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                           "representing the set API.")]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Type of API to create. This parameter is optional.")]
+        public String ApiType { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "A URL to the Terms of Service for the API. This parameter is optional.")]
+        public String TermsOfServiceUrl { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "The identifying name of the contact person/organization. This parameter is optional.")]
+        public String ContactName { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "The URL pointing to the contact information. MUST be in the format of a URL. This parameter is optional.")]
+        public String ContactUrl { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "The email address of the contact person/organization. MUST be in the format of an email address. This parameter is optional.")]
+        public String ContactEmail { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "The license name used for the API. This parameter is optional.")]
+        public String LicenseName { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "A URL to the Terms of Service for the API. This parameter is optional.")]
+        public String LicenseUrl { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
             string resourcegroupName;
@@ -180,7 +222,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 SubscriptionKeyQueryParamName,
                 OpenIdProviderId,
                 BearerTokenSendingMethod,
-                InputObject);
+                InputObject,
+                ApiType,
+                TermsOfServiceUrl,
+                ContactName,
+                ContactUrl,
+                ContactEmail,
+                LicenseName,
+                LicenseUrl);
 
             if (PassThru.IsPresent)
             {

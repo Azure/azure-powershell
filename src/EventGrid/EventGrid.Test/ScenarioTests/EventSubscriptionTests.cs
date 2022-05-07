@@ -52,12 +52,12 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_CustomTopic_Webhook_Batching");
         }
 
-        [Fact]
+        /* not applicable [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_CustomTopics_WebhookAad()
         {
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_CustomTopic_Webhook_AAD");
-        }
+        }*/
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -110,11 +110,11 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Domains");
         }
 
-        [Fact]
+        /* no longer applicable[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_DomainTopics()
         {
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_DomainTopics");
-        }
+        }*/
     }
 }

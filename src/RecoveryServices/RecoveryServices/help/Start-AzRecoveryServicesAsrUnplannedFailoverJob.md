@@ -44,7 +44,7 @@ You can check whether the job succeeded by using the Get-AzRecoveryServicesAsrJo
 
 ### Example 1
 ```powershell
-$currentJob = Start-AzRecoveryServicesAsrUnplannedFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery -VMNetwork $RecoveryNetwork
+Start-AzRecoveryServicesAsrUnplannedFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery
 ```
 
 Starts the unplanned failover operation for the recovery plan with the specified parameters and returns the ASR job used to track the operation.

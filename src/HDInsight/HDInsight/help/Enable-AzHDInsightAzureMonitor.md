@@ -42,7 +42,7 @@ $clusterName = "your-hadoop-001"
 $resourceGroupName = "Group"
 $workspaceId = "your-workspace-id"
 $primaryKey = "your-primary-key"
-Enable-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroup $resourceGroupName -WorkspaceId $workspaceId -PrimaryKey $primaryKey
+Enable-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroupName $resourceGroupName -WorkspaceId $workspaceId -PrimaryKey $primaryKey
 ```
 
 This cmdlet enables the azure monitor in a specified HDInsight cluster.

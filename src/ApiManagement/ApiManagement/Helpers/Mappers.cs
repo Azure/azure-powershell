@@ -152,7 +152,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 Tags = apiManagement.Tags,
                 EnableClientCertificate = apiManagement.EnableClientCertificate,
                 Zones = apiManagement.Zone,
-                DisableGateway = apiManagement.DisableGateway
+                DisableGateway = apiManagement.DisableGateway,
+                PublicNetworkAccess = apiManagement.PublicNetworkAccess
             };
 
             if (apiManagement.VirtualNetwork != null)
@@ -161,6 +162,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 {
                     SubnetResourceId = apiManagement.VirtualNetwork.SubnetResourceId
                 };
+
+                parameters.PublicIpAddressId = apiManagement.PublicIpAddressId;
             }
 
             if (apiManagement.AdditionalRegions != null && apiManagement.AdditionalRegions.Any())
@@ -183,7 +186,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                                         SubnetResourceId = region.VirtualNetwork.SubnetResourceId
                                     },
                                 Zones = region.Zone,
-                                DisableGateway = region.DisableGateway
+                                DisableGateway = region.DisableGateway,
+                                PublicIpAddressId = region.PublicIpAddressId
                             })
                         .ToList();
             }

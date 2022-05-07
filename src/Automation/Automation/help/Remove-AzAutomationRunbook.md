@@ -25,8 +25,8 @@ The **Remove-AzAutomationRunbook** cmdlet removes a runbook from Azure Automatio
 ## EXAMPLES
 
 ### Example 1: Remove a runbook
-```
-PS C:\>Remove-AzAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbook03" -ResourceGroupName "ResourceGroup01"
+```powershell
+Remove-AzAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbook03" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes the runbook named Runbook03 in the Azure Automation account named Contoso17.

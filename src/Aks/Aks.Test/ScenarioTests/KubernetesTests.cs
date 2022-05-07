@@ -1,83 +1,76 @@
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Commands.Aks.Test.ScenarioTests
 {
-    public class KubernetesTests : RMTestBase
+    public class KubernetesTests : AksTestRunner
     {
-        XunitTracingInterceptor _logger;
-        public KubernetesTests(ITestOutputHelper output)
+        public KubernetesTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleAzureKubernetes()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewAzAksSimple");
+            TestRunner.RunTestScript("Test-NewAzAksSimple");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureKubernetes()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewAzAks");
+            TestRunner.RunTestScript("Test-NewAzAks");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureKubernetesByServicePrincipal()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewAzAksByServicePrincipal");
+            TestRunner.RunTestScript("Test-NewAzAksByServicePrincipal");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureKubernetesAddons()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewAzAksAddons");
+            TestRunner.RunTestScript("Test-NewAzAksAddons");
         }
 
         [Fact(Skip = "Please make sure you have graph directory.read permission which is required for grant acrpull permission.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzAksWithAcr()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewAzAksWithAcr");
+            TestRunner.RunTestScript("Test-NewAzAksWithAcr");
         }
         
         [Fact(Skip = "Updating service principal profile is not allowed on MSI cluster.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResetAzureKubernetesServicePrincipal()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ResetAzureKubernetesServicePrincipal");
+            TestRunner.RunTestScript("Test-ResetAzureKubernetesServicePrincipal");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpgradeKubernetesVersion()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpgradeKubernetesVersion");
+            TestRunner.RunTestScript("Test-UpgradeKubernetesVersion");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancer()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-LoadBalancer");
+            TestRunner.RunTestScript("Test-LoadBalancer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestApiServiceAccess()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ApiServiceAccess");
+            TestRunner.RunTestScript("Test-ApiServiceAccess");
         }
     }
 }

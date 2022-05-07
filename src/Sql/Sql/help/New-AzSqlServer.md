@@ -79,6 +79,26 @@ AzureADOnlyAuthentication : True
 
 This command creates a version 12 Azure SQL Database server with external administrator properties and azure active directory only authentication enabled.
 
+### Example 3: Create a new Azure SQL Database server with TDE CMK
+```powershell
+New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "East US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -AssignIdentity -IdentityType "UserAssigned" -PrimaryUserAssignedIdentityId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity01" -UserAssignedIdentityId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity01" -KeyId "https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901"
+```
+
+```output
+ResourceGroupName        : resourcegroup01
+ServerName               : server01
+Location                 : East US
+SqlAdministratorLogin    : adminLogin
+SqlAdministratorPassword :
+ServerVersion            : 12.0
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+KeyId                    : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
+PrimaryUserAssignedIdentityId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity01
+```
+
+This command creates a version 12 Azure SQL Database server with TDE CMK enabled.
+
 ## PARAMETERS
 
 ### -AsJob

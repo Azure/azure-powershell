@@ -19,6 +19,15 @@
 -->
 
 ## Upcoming Release
+* Set UploadedTimestamp when adding package to spark pool by `Update-AzSynapseSparkPool`
+
+## Version 1.3.0
+* Added support for Synapse Azure Active Directory (Azure AD) only authentication
+    - Added `Get-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
+    - Added `Enable-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
+    - Added `Disable-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
+
+## Version 1.2.0
 * Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.14
 * Fixed the issue that following cmdlets only shows 100 entries
     - `Get-AzSynapseRoleAssignment` cmdlet
