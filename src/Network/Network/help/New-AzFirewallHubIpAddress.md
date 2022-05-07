@@ -25,10 +25,10 @@ Ip addresses assoicated to the firewall on virtual hub. These can be public and 
 ### Example 1
 ```powershell
 $fwpips = New-AzFirewallHubPublicIpAddress -Count 2
-New-AzFirewallHubIpAddress -PublicIPs $fwpips
+New-AzFirewallHubIpAddress -PublicIP $fwpips
 ```
 
-This example creates a Hub Ip address object with a count of 2 public IPs. The HubIPAddress object is ssociated to the firewall on the virtual hub.
+This example creates a Hub Ip address object with a count of 2 public IPs. The HubIPAddress object is associated to the firewall on the virtual hub.
 
 ## PARAMETERS
 
