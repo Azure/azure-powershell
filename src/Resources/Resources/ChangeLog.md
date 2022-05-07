@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 5.7.0
 * Added the following cmdlets to remain in parity with 2021-04-01 API version:
     - `New-AzHierarchySetting`
     - `Get-AzHierarchySetting`
