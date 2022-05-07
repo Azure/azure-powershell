@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added `DisableIPsecProtection` to `Virtual Network Gateway`.
 * Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
     - `Add-AzExpressRoutePortAuthorization`
     - `Get-AzExpressRoutePortAuthorization`
