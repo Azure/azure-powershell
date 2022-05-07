@@ -65,7 +65,7 @@ $dcrAssoc | Remove-AzDataCollectionRule
 
 ### Example 3: Delete data collection rule with the association resource ID property
 ```powershell
-Remove-AzDataCollectionRule -AssociationId $dcrAssoc.Id
+Remove-AzDataCollectionRuleAssociation -AssociationId $dcrAssoc.Id
 ```
 
 ## PARAMETERS
