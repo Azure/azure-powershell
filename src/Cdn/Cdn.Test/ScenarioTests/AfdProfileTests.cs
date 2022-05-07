@@ -17,42 +17,38 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class AfdProfileTests
+    public class AfdProfileTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public AfdProfileTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AfdProfileTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateStandardAfdProfile()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateStandardAfdProfile");
+            TestRunner.RunTestScript("Test-CreateStandardAfdProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatePremiumAfdProfile()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreatePremiumAfdProfile");
+            TestRunner.RunTestScript("Test-CreatePremiumAfdProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetStandardAfdProfile()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetStandardAfdProfile");
+            TestRunner.RunTestScript("Test-GetStandardAfdProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemovePremiumAfdProfile()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RemovePremiumAfdProfile");
+            TestRunner.RunTestScript("Test-RemovePremiumAfdProfile");
         }
     }
 }
