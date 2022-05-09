@@ -13,42 +13,36 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Billing.Test.ScenarioTests.ScenarioTest;
-using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
 {
-    public class InvoiceSectionsTests
+    public class InvoiceSectionsTests : BillingTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public InvoiceSectionsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public InvoiceSectionsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListInvoiceSections()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListInvoiceSections");
+            TestRunner.RunTestScript("Test-ListInvoiceSections");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetInvoiceSectionWithName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetInvoiceSectionWithName");
+            TestRunner.RunTestScript("Test-GetInvoiceSectionWithName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetInvoiceSectionWithNames()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetInvoiceSectionWithNames");
+            TestRunner.RunTestScript("Test-GetInvoiceSectionWithNames");
         }
     }
 }

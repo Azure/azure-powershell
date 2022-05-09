@@ -24,6 +24,7 @@ using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
 {
+    // This TestController class called EnvironmentSetupHelper.SetupSomeOfManagementClients() method.
     public sealed class UsageAggregatesTestController
     {
         private readonly EnvironmentSetupHelper _helper;
