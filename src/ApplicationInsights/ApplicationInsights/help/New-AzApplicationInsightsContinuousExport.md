@@ -1,6 +1,6 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
-Module Name: Az.ApplicationInsights
+---
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.applicationinsights
 online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport
 schema: 2.0.0
 ---
@@ -8,83 +8,44 @@ schema: 2.0.0
 # New-AzApplicationInsightsContinuousExport
 
 ## SYNOPSIS
-Create a new application insights continuous export configuration for an application insights resource
+Create a Continuous Export configuration of an Application Insights component.
 
 ## SYNTAX
 
-### ComponentNameParameterSet (Default)
 ```
 New-AzApplicationInsightsContinuousExport [-ResourceGroupName] <String> [-Name] <String>
- -DocumentType <String[]> -StorageAccountId <String> -StorageLocation <String> -StorageSASUri <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ComponentObjectParameterSet
-```
-New-AzApplicationInsightsContinuousExport [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
- -DocumentType <String[]> -StorageAccountId <String> -StorageLocation <String> -StorageSASUri <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceIdParameterSet
-```
-New-AzApplicationInsightsContinuousExport [-ResourceId] <String> -DocumentType <String[]>
- -StorageAccountId <String> -StorageLocation <String> -StorageSASUri <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DestinationType <String>] [-NotificationQueueEnabled <String>]
+ [-NotificationQueueUri <String>] [-DocumentType  <String[]>] [-StorageAccountId <String>]
+ [-StorageLocation <String>] [-StorageSASUri <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new application insights continuous export configuration for an application insights resource
+Create a Continuous Export configuration of an Application Insights component.
 
 ## EXAMPLES
 
-### Example 1 Create a new continuous export configuration for an application insights resource
+### Example 1: Create a new continuous export configuration for an application insights resource
 ```powershell
-$sastoken = New-AzStorageContainerSASToken -Name testcontainer -Context $context -ExpiryTime (Get-Date).AddYears(50) -Permission w
-$sasuri = "https://teststorageaccount.blob.core.windows.net/testcontainer" + $sastoken
-New-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" `
+PS C:\> $sastoken = New-AzStorageContainerSASToken -Name testcontainer -Context $context -ExpiryTime (Get-Date).AddYears(50) -Permission w
+PS C:\> $sasuri = "https://teststorageaccount.blob.core.windows.net/testcontainer" + $sastoken
+PS C:\> New-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" `
 -DocumentType "Request","Trace", "Custom Event" -StorageAccountId "/subscriptions/50359d91-7b9d-4823-85af-eb298a61ba96/resourceGroups/testgroup/providers/Microsoft.Storage/storageAccounts/teststorageaccount" -StorageLocation sourcecentralus `
 -StorageSASUri $sasuri
 ```
-```output
-ExportId                         : jlTFEiBg1rkDXOCIeJQ2mB2TxZg=
-StorageName                      : teststorageaccount
-ContainerName                    : testcontainer
-DocumentTypes                    : Request, Custom Event, Trace
-DestinationStorageSubscriptionId : 50359d91-7b9d-4823-85af-eb298a61ba96
-DestinationStorageLocationId     : sourcecentralus
-DestinationStorageAccountId      : /subscriptions/50359d91-7b9d-4823-85af-eb298a61ba96/resourceGroups/testgroup/providers/Microsoft.Storage/storageAccounts/teststorageaccount
-IsEnabled                        : True
-ExportStatus                     : Preparing
-LastSuccessTime                  :
-```
 
-Create a new application insights continuous export configuration to export "Request" and "Trace" document types to storage contain "testcontainer" in storage account "teststorageaccount" in resource group "testgroup". The SAS token have to be valid and have write permission to the container, otherwise continuous export feature won't work.If SAS token expired, the continuous export feature will stop working.
+Create a new application insights continuous export configuration to export "Request" and "Trace" document types to storage contain "testcontainer" in storage account "teststorageaccount" in resource group "testgroup".
+The SAS token have to be valid and have write permission to the container, otherwise continuous export feature won't work.If SAS token expired, the continuous export feature will stop working.
 
 ## PARAMETERS
 
-### -ApplicationInsightsComponent
-Application Insights Component Object.
-
-```yaml
-Type: Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
-Parameter Sets: ComponentObjectParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -93,16 +54,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DocumentType
-Document types that need exported.
+### -DestinationType
+The Continuous Export destination type.
+This has to be 'Blob'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DocumentType 
+{{ Fill DocumentType  Description }}
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Request, Exception, Custom Event, Trace, Metric, Page Load, Page View, Dependency, Availability, Performance Counter
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -110,12 +86,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Component Name.
+The name of the Application Insights component resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ComponentNameParameterSet
-Aliases: ApplicationInsightsComponentName, ComponentName
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: 1
@@ -124,12 +100,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource Group Name.
+### -NotificationQueueEnabled
+Deprecated
 
 ```yaml
 Type: System.String
-Parameter Sets: ComponentNameParameterSet
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotificationQueueUri
+Deprecated
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -139,30 +146,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Application Insights Component Resource Id.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -StorageAccountId
-Destination Storage Account Id.
+The name of destination storage account.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -170,14 +162,14 @@ Accept wildcard characters: False
 ```
 
 ### -StorageLocation
-Destination Storage Location Id.
+The location ID of the destination storage container.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -185,16 +177,32 @@ Accept wildcard characters: False
 ```
 
 ### -StorageSASUri
-Destination Storage SAS Uri.
+The SAS URL for the destination storage container.
+It must grant write permission.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -215,7 +223,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -230,18 +239,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
-
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS

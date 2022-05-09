@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ApplicationInsights servic
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -36,7 +36,13 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/preview/2018-05-01-preview/webTests_API.json
-
+  - https://github.com/Azure/azure-rest-api-specs/blob/9735d8c1580e6b56e6d4508be6ec00f46e45cb77/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/components_API.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/e129012901bbd9cc0f182ec5b539bccf2440ef4a/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentApiKeys_API.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/8f0d54f788304518eca62ddf281b8c889ad9613c/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentAnnotations_API.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/e129012901bbd9cc0f182ec5b539bccf2440ef4a/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentFeaturesAndPricing_API.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/e129012901bbd9cc0f182ec5b539bccf2440ef4a/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentContinuousExport_API.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/e129012901bbd9cc0f182ec5b539bccf2440ef4a/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/aiOperations_API.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/88e7838a09868a51de3894114355c75929847a46/specification/applicationinsights/resource-manager/Microsoft.Insights/preview/2020-03-01-preview/componentLinkedStorageAccounts_API.json
 module-version: 0.1.0
 subject-prefix: $(service-name)
 
@@ -45,6 +51,10 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  - from: swagger-document
+    where: $.info.title
+    transform: return "ApplicationInsightsManagementClient"
+
   #  Kind 'basic' is not supported on the server.
   - from: swagger-document
     where: $.definitions.WebTestProperties.properties.Kind.enum
@@ -64,12 +74,130 @@ directive:
     transform: return $.replace(/providers\/Microsoft.Insights\//g, "providers/microsoft.insights/")
 
   - where:
-      verb: Set
-    remove: true
-
-  - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
+
+  # Hide ApplicationInsightsComponent related cmdlets
+  - where:
+      subject: Component
+      verb: Remove
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
+  - where:
+      subject: Component
+      verb: Get|New|Clear|Set
+    hide: true
+  # Rename Component related cmdlets  
+  - where:
+      subject: (^Component$)(.*)
+    set:
+      subject: $2
+
+  # Hide ComponentCurrentBillingFeature related cmdlets
+  - where:
+      subject: ComponentCurrentBillingFeature|ComponentQuotaStatus
+    hide: true
+
+  # Rename ExportConfiguration to ContinuousExport
+  - where:
+      subject: ExportConfiguration
+    set:
+      subject: ContinuousExport
+
+  # Rename parameters for New|Set ApplicationInsightsExportConfiguration
+  - where:
+      subject: ContinuousExport
+      verb: Get
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
+  - where:
+      subject: ContinuousExport
+      verb: New|Set
+      parameter-name: DestinationAccountId
+    set:
+      parameter-name: StorageAccountId
+  - where:
+      subject: ContinuousExport
+      verb: New|Set
+      parameter-name: DestinationAddress
+    set:
+      parameter-name: StorageSASUri
+  - where:
+      subject: ContinuousExport
+      verb: New|Set
+      parameter-name: DestinationStorageLocationId
+    set:
+      parameter-name: StorageLocation
+  - where:
+      subject: ContinuousExport
+      verb: New|Set
+      parameter-name: RecordTypes
+    set:
+      parameter-name: DocumentType
+  - where:
+      subject: ContinuousExport
+      verb: New|Set
+    hide: true
+
+  # Rename parameters for ComponentLinkedStorageAccount
+  - where:
+      subject: ComponentLinkedStorageAccountAndUpdate
+    set:
+      subject: ComponentLinkedStorageAccount
+  - where:
+      subject: ComponentLinkedStorageAccount
+      parameter-name: ResourceName
+    set:
+      parameter-name: ComponentName
+  - where:
+      subject: ComponentLinkedStorageAccount
+      parameter-name: LinkedStorageAccount
+    set:
+      parameter-name: LinkedStorageAccountResourceId
+  - where:
+      subject: ComponentLinkedStorageAccount
+    set:
+      subject: LinkedStorageAccount
+
+  # Rename parameter 'ResourceName' to 'Name'
+  - where:
+      subject: ApiKey|ExportConfiguration
+      verb: Get|Remove
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
+      alias: 
+        - ApplicationInsightsComponentNameAlias
+        - ComponentNameAlias
+
+  # Rename parameter 'KeyId' to 'ApiKeyId'
+  - where:
+      subject: ApiKey
+      verb: Get|Remove
+      parameter-name: KeyId
+    set:
+      parameter-name: ApiKeyId
+
+  # Rename parameter 'InputObject' to 'ApplicationInsightsComponent'
+  - where:
+      subject: ApiKey|ExportConfiguration
+      verb: Get|Remove
+      parameter-name: InputObject
+    set:
+      parameter-name: ApplicationInsightsComponent
+
+  # Hide New-AzApplicationInsightsApiKey for customization
+  - where:
+      subject: ApiKey
+      verb: New
+    hide: true
+
+  # Hide cmdlets
+  - where:
+      subject: Annotation|AvailableFeature|FeatureCapability|PurgeStatus|ComponentTag
+    hide: true
 
   # Hide the SyntheticMonitorId parameter because the default value is passed by the server.
   - where:

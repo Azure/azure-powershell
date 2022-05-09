@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.applicationinsights
 online version: https://docs.microsoft.com/powershell/module/az.ApplicationInsights/new-AzApplicationInsightsWebTestGeolocationObject
 schema: 2.0.0
 ---
@@ -25,6 +25,7 @@ Create an in-memory object for WebTestGeolocation.
 ```powershell
 New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
 ```
+
 ```output
 Location
 --------
@@ -65,4 +66,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

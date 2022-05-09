@@ -1,6 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.applicationinsights
 online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightslinkedstorageaccount
 schema: 2.0.0
 ---
@@ -8,36 +8,30 @@ schema: 2.0.0
 # Get-AzApplicationInsightsLinkedStorageAccount
 
 ## SYNOPSIS
-Get application insights linked storage account
+Returns the current linked storage settings for an Application Insights component.
 
 ## SYNTAX
 
-### ByResourceNameParameterSet (Default)
+### Get (Default)
 ```
-Get-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName <String> -ComponentName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByInputObjectParameterSet
-```
-Get-AzApplicationInsightsLinkedStorageAccount -InputObject <PSApplicationInsightsComponent>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzApplicationInsightsLinkedStorageAccount -ComponentName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
+### GetViaIdentity
 ```
-Get-AzApplicationInsightsLinkedStorageAccount -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzApplicationInsightsLinkedStorageAccount -InputObject <IApplicationInsightsIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get application insights linked storage account
+Returns the current linked storage settings for an Application Insights component.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get linked storage account associated with component "componentName"
 ```powershell
-Get-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName "rgName" -ComponentName "componentName"
+PS C:\> Get-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName "rgName" -ComponentName "componentName"
 ```
 
 Get linked storage account associated with component "componentName"
@@ -45,11 +39,11 @@ Get linked storage account associated with component "componentName"
 ## PARAMETERS
 
 ### -ComponentName
-Component Name
+The name of the Application Insights component resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceNameParameterSet
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -63,9 +57,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -75,11 +69,12 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-PSApplicationInsightsComponent
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
-Parameter Sets: ByInputObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -90,11 +85,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceNameParameterSet
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -104,17 +100,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Component ResourceId
+### -SubscriptionId
+The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceIdParameterSet
+Type: System.String[]
+Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -124,14 +120,32 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ApplicationInsights.Models.PSComponentLinkedStorageAccounts
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20200301Preview.IComponentLinkedStorageAccounts
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
+  - `[AnnotationId <String>]`: The unique annotation ID. This is unique within a Application Insights component.
+  - `[ComponentName <String>]`: The name of the Application Insights component resource.
+  - `[ExportId <String>]`: The Continuous Export configuration ID. This is unique within a Application Insights component.
+  - `[Id <String>]`: Resource identity path
+  - `[KeyId <String>]`: The API Key ID. This is unique within a Application Insights component.
+  - `[PurgeId <String>]`: In a purge status request, this is the Id of the operation the status of which is returned.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[ResourceName <String>]`: The name of the Application Insights component resource.
+  - `[StorageType <StorageType?>]`: The type of the Application Insights component data source for the linked storage account.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 
 ## RELATED LINKS

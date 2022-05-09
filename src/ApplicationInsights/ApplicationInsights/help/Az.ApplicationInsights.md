@@ -12,58 +12,32 @@ Creates and manages application insights in Azure Resource Manager.
 
 ## Az.ApplicationInsights Cmdlets
 ### [Get-AzApplicationInsights](Get-AzApplicationInsights.md)
-Get application insights resources
+Returns an Application Insights component.
 
 ### [Get-AzApplicationInsightsApiKey](Get-AzApplicationInsightsApiKey.md)
-Get application insights api keys for an application insights resource
+Get the API Key for this key id.
 
 ### [Get-AzApplicationInsightsContinuousExport](Get-AzApplicationInsightsContinuousExport.md)
-Get application insights continuous export configuration for an application insights resource
+Get the Continuous Export configuration for this export id.
 
 ### [Get-AzApplicationInsightsLinkedStorageAccount](Get-AzApplicationInsightsLinkedStorageAccount.md)
-Get application insights linked storage account
-
-### [New-AzApplicationInsights](New-AzApplicationInsights.md)
-Create a new application insights resource
-
-### [New-AzApplicationInsightsApiKey](New-AzApplicationInsightsApiKey.md)
-Create an application insights api key for an application insights resource
-
-### [New-AzApplicationInsightsContinuousExport](New-AzApplicationInsightsContinuousExport.md)
-Create a new application insights continuous export configuration for an application insights resource
-
-### [New-AzApplicationInsightsLinkedStorageAccount](New-AzApplicationInsightsLinkedStorageAccount.md)
-Create an application insights linked storage account
-
-### [Remove-AzApplicationInsights](Remove-AzApplicationInsights.md)
-Remove an application insights resource
-
-### [Remove-AzApplicationInsightsApiKey](Remove-AzApplicationInsightsApiKey.md)
-Remove an application insights api key for an application insights resource
-
-### [Remove-AzApplicationInsightsContinuousExport](Remove-AzApplicationInsightsContinuousExport.md)
-Remove a continuous export configuration in an application insights resource
-
-### [Remove-AzApplicationInsightsLinkedStorageAccount](Remove-AzApplicationInsightsLinkedStorageAccount.md)
-Delete application insights linked storage account
-
-### [Set-AzApplicationInsightsContinuousExport](Set-AzApplicationInsightsContinuousExport.md)
-Update a continuous export configuration in an application insights resource
-
-### [Set-AzApplicationInsightsDailyCap](Set-AzApplicationInsightsDailyCap.md)
-Set daily data volume cap for an application insights resource
-
-### [Set-AzApplicationInsightsPricingPlan](Set-AzApplicationInsightsPricingPlan.md)
-Set pricing plan and daily data volume information for an application insights resource
-
-### [Update-AzApplicationInsights](Update-AzApplicationInsights.md)
-update an existing application insights resource
-
-### [Update-AzApplicationInsightsLinkedStorageAccount](Update-AzApplicationInsightsLinkedStorageAccount.md)
-Update application insights linked storage account
+Returns the current linked storage settings for an Application Insights component.
 
 ### [Get-AzApplicationInsightsWebTest](Get-AzApplicationInsightsWebTest.md)
 Get a specific Application Insights web test definition.
+
+### [New-AzApplicationInsights](New-AzApplicationInsights.md)
+Creates (or updates) an Application Insights component.
+Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
+
+### [New-AzApplicationInsightsApiKey](New-AzApplicationInsightsApiKey.md)
+Create an API Key of an Application Insights component.
+
+### [New-AzApplicationInsightsContinuousExport](New-AzApplicationInsightsContinuousExport.md)
+Create a Continuous Export configuration of an Application Insights component.
+
+### [New-AzApplicationInsightsLinkedStorageAccount](New-AzApplicationInsightsLinkedStorageAccount.md)
+Replace current linked storage account for an Application Insights component.
 
 ### [New-AzApplicationInsightsWebTest](New-AzApplicationInsightsWebTest.md)
 Creates or updates an Application Insights web test definition.
@@ -74,8 +48,39 @@ Create an in-memory object for WebTestGeolocation.
 ### [New-AzApplicationInsightsWebTestHeaderFieldObject](New-AzApplicationInsightsWebTestHeaderFieldObject.md)
 Create a in-memory object for HeaderField
 
+### [Remove-AzApplicationInsights](Remove-AzApplicationInsights.md)
+Deletes an Application Insights component.
+
+### [Remove-AzApplicationInsightsApiKey](Remove-AzApplicationInsightsApiKey.md)
+Delete an API Key of an Application Insights component.
+
+### [Remove-AzApplicationInsightsContinuousExport](Remove-AzApplicationInsightsContinuousExport.md)
+Delete a Continuous Export configuration of an Application Insights component.
+
+### [Remove-AzApplicationInsightsLinkedStorageAccount](Remove-AzApplicationInsightsLinkedStorageAccount.md)
+Delete linked storage accounts for an Application Insights component.
+
 ### [Remove-AzApplicationInsightsWebTest](Remove-AzApplicationInsightsWebTest.md)
 Deletes an Application Insights web test.
+
+### [Set-AzApplicationInsightsContinuousExport](Set-AzApplicationInsightsContinuousExport.md)
+Create a Continuous Export configuration of an Application Insights component.
+
+### [Set-AzApplicationInsightsDailyCap](Set-AzApplicationInsightsDailyCap.md)
+Update current billing features for an Application Insights component.
+
+### [Set-AzApplicationInsightsPricingPlan](Set-AzApplicationInsightsPricingPlan.md)
+Update current billing features for an Application Insights component.
+
+### [Set-AzApplicationInsightsWebTest](Set-AzApplicationInsightsWebTest.md)
+Creates or updates an Application Insights web test definition.
+
+### [Update-AzApplicationInsights](Update-AzApplicationInsights.md)
+Creates (or updates) an Application Insights component.
+Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
+
+### [Update-AzApplicationInsightsLinkedStorageAccount](Update-AzApplicationInsightsLinkedStorageAccount.md)
+Update linked storage accounts for an Application Insights component.
 
 ### [Update-AzApplicationInsightsWebTestTag](Update-AzApplicationInsightsWebTestTag.md)
 Creates or updates an Application Insights web test definition.

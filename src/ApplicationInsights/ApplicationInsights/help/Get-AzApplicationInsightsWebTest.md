@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.applicationinsights
 online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightswebtest
 schema: 2.0.0
 ---
@@ -14,8 +14,7 @@ Get a specific Application Insights web test definition.
 
 ### List1 (Default)
 ```
-Get-AzApplicationInsightsWebTest [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzApplicationInsightsWebTest [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -24,10 +23,10 @@ Get-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> [-Su
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### List2
 ```
-Get-AzApplicationInsightsWebTest -InputObject <IApplicationInsightsIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzApplicationInsightsWebTest -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -AppInsightsName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
@@ -36,10 +35,10 @@ Get-AzApplicationInsightsWebTest -ResourceGroupName <String> [-SubscriptionId <S
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List2
+### GetViaIdentity
 ```
-Get-AzApplicationInsightsWebTest -AppInsightsName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationInsightsWebTest -InputObject <IApplicationInsightsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +50,7 @@ Get a specific Application Insights web test definition.
 ```powershell
 Get-AzApplicationInsightsWebTest
 ```
+
 ```output
 Name                                 Location WebTestKind ResourceGroupName
 ----                                 -------- ----------- -----------------
@@ -65,8 +65,9 @@ This command lists all Application Insights web tests under a subscription.
 
 ### Example 2: List all Application Insights web tests under a resource group
 ```powershell
- Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test
+Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test
 ```
+
 ```output
 Name                                 Location WebTestKind ResourceGroupName
 ----                                 -------- ----------- -----------------
@@ -83,6 +84,7 @@ This command lists all Application Insights web tests under a resource group.
 ```powershell
 Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -AppInsightsName appinsights-portal01
 ```
+
 ```output
 Name                                 Location WebTestKind ResourceGroupName   Enabled
 ----                                 -------- ----------- -----------------   -------
@@ -99,6 +101,7 @@ This command lists all Application Insights web tests under a specific Applicati
 ```powershell
 Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name standard-pwsh01
 ```
+
 ```output
 Name            Location WebTestKind ResourceGroupName  Enabled
 ----            -------- ----------- -----------------  -------
@@ -118,6 +121,7 @@ New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name standar
 -RuleSslCheck -RuleSslCertRemainingLifetimeCheck 7 -RuleExpectedHttpStatusCode 200 `
 -Enabled -Frequency 300 -Timeout 120 -Kind "standard" -RetryEnabled -GeoLocation $location01, $location02 ` |Get-AzApplicationInsightsWebTest
 ```
+
 ```output
 Name                    Location WebTestKind ResourceGroupName  Enabled
 ----                    -------- ----------- -----------------  -------
@@ -195,7 +199,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List2
+Parameter Sets: Get, List2, List
 Aliases:
 
 Required: True
@@ -210,7 +214,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1, List2
+Parameter Sets: List1, Get, List2, List
 Aliases:
 
 Required: False
@@ -241,11 +245,16 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
+  - `[AnnotationId <String>]`: The unique annotation ID. This is unique within a Application Insights component.
   - `[ComponentName <String>]`: The name of the Application Insights component resource.
+  - `[ExportId <String>]`: The Continuous Export configuration ID. This is unique within a Application Insights component.
   - `[Id <String>]`: Resource identity path
+  - `[KeyId <String>]`: The API Key ID. This is unique within a Application Insights component.
+  - `[PurgeId <String>]`: In a purge status request, this is the Id of the operation the status of which is returned.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[ResourceName <String>]`: The name of the Application Insights component resource.
+  - `[StorageType <StorageType?>]`: The type of the Application Insights component data source for the linked storage account.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 
 ## RELATED LINKS
-
