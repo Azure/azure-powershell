@@ -50,5 +50,4 @@
     <Message Text="Package $(ModuleName)" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;&amp;'$(RepoTools)/PublishToolsModule.ps1' -RepositoryLocation '$(ArtifactFolder)' -PublishLocation '$(ArtifactFolder)' -ModuleName $(ModuleName) -ErrorAction Stop &quot;" />
   </Target>
-  
 </Project>
