@@ -17,56 +17,52 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class CustomDomainTests
+    public class CustomDomainTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public CustomDomainTests(Xunit.Abstractions.ITestOutputHelper output)
+        public CustomDomainTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCustomDomainEnableDisableWithRunningEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CustomDomainEnableDisableWithRunningEndpoint");
+            TestRunner.RunTestScript("Test-CustomDomainEnableDisableWithRunningEndpoint");
         }
 
         [Fact(Skip = "Test is flaky due to creation of custom domain issue which prolongs response time. Will enable once RP issue is resolved.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCustomDomainGetRemoveWithRunningEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CustomDomainGetRemoveWithRunningEndpoint");
+            TestRunner.RunTestScript("Test-CustomDomainGetRemoveWithRunningEndpoint");
         }
 
         [Fact(Skip = "Test is flaky due to creation of custom domain issue which prolongs response time. Will enable once RP issue is resolved.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCustomDomainGetRemoveWithStoppedEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CustomDomainGetRemoveWithStoppedEndpoint");
+            TestRunner.RunTestScript("Test-CustomDomainGetRemoveWithStoppedEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVerizonCustomDomainHttpsWithRunningEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-VerizonCustomDomainEnableHttpsWithRunningEndpoint");
+            TestRunner.RunTestScript("Test-VerizonCustomDomainEnableHttpsWithRunningEndpoint");
         }
 
         [Fact(Skip = "Test is flaky due to creation of custom domain issue which prolongs response time. Will enable once RP issue is resolved.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAkamaiCustomDomainHttpsWithRunningEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AkamaiCustomDomainEnableHttpsWithRunningEndpoint");
+            TestRunner.RunTestScript("Test-AkamaiCustomDomainEnableHttpsWithRunningEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMicrosoftCustomDomainHttpsWithRunningEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MicrosoftCustomDomainEnableHttpsWithRunningEndpoint");
+            TestRunner.RunTestScript("Test-MicrosoftCustomDomainEnableHttpsWithRunningEndpoint");
         }
     }
 }
