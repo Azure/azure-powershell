@@ -18,7 +18,7 @@ Update-AzServiceLinkerForSpringCloud -Name <String> -AuthInfo <IAuthInfoBase> -C
  -TargetService <ITargetServiceBase> -App <String> -ResourceGroupName <String> -Service <String>
  [-ResourceUri <String>] [-Scope <String>] [-SecretStoreKeyVaultId <String>]
  [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] [-AsJob] [-Deployment <String>] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -26,7 +26,7 @@ Update-AzServiceLinkerForSpringCloud -Name <String> -AuthInfo <IAuthInfoBase> -C
 Update-AzServiceLinkerForSpringCloud -InputObject <IServiceLinkerIdentity> -AuthInfo <IAuthInfoBase>
  -ClientType <ClientType> -TargetService <ITargetServiceBase> [-Scope <String>]
  [-SecretStoreKeyVaultId <String>] [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -259,6 +259,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Gets subscription ID which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

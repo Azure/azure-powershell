@@ -15,19 +15,19 @@ Returns Linker resource for a given name.
 ### List (Default)
 ```
 Get-AzServiceLinkerForContainerApp -ContainerApp <String> -ResourceGroupName <String> [-ResourceUri <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzServiceLinkerForContainerApp -Name <String> -ContainerApp <String> -ResourceGroupName <String>
- [-ResourceUri <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzServiceLinkerForContainerApp -InputObject <IServiceLinkerIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -208,6 +208,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Gets subscription ID which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -82,6 +82,14 @@ param(
     # The resource group of the resource to be connected.
     ${ResourceGroupName},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Gets subscription ID which uniquely identify the Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity]

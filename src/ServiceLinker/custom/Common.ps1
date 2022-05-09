@@ -10,7 +10,7 @@ function Transform-ResourceUri {
         # todo: validate resourceUri
         return $PSBoundParameters
     }
-    $subscription = (Get-AzContext).Subscription.Id
+    $subscription = $PSBoundParameters['SubscriptionId']
     $ResourceGroupName = $PSBoundParameters['ResourceGroupName']
     if($PSBoundParameters.ContainsKey("WebApp") ){
         $WebApp = $PSBoundParameters['WebApp']
@@ -40,6 +40,7 @@ function Transform-ResourceUri {
     }
    
     $null = $PSBoundParameters.Remove("ResourceGroupName")
+    $null = $PSBoundParameters.Remove("SubscriptionId")
     return $PSBoundParameters
 }
 

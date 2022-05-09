@@ -58,6 +58,14 @@ param(
     ${ResourceGroupName},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Gets subscription ID which uniquely identify the Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Azure')]
