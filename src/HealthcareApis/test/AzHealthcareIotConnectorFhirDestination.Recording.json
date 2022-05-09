@@ -1,0 +1,645 @@
+{
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+CreateExpanded1+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/v0276w?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/v0276w?api-version=2021-11-01",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"fhirMapping\": {\r\n      \"content\": {\r\n        \"templateType\": \"CollectionFhirTemplate\",\r\n        \"template\": [ ]\r\n      }\r\n    },\r\n    \"resourceIdentityResolutionType\": \"Create\",\r\n    \"fhirServiceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/wq9m2j\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "429" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"cf00625b-0000-0400-0000-6242fe580000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "7632ebd5-fedd-4e6c-93a7-f971684b1464" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/lwnkosymdnylu86z25vr3y7gs?api-version=2021-11-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "400e79a9ead1e94fa669faffa2e448b3" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1183" ],
+        "x-ms-correlation-request-id": [ "a38332dc-b8b9-4ba8-a355-b248d8f35d6e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124056Z:a38332dc-b8b9-4ba8-a355-b248d8f35d6e" ],
+        "Date": [ "Tue, 29 Mar 2022 12:40:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "724" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/v0276w\",\"name\":\"ax2qzb/xuez6r/v0276w\",\"type\":\"Microsoft.HealthcareApis/workspaces/iotconnectors/fhirdestinations\",\"etag\":\"\\\"cf00625b-0000-0400-0000-6242fe580000\\\"\",\"location\":\"eastus2\",\"properties\":{\"resourceIdentityResolutionType\":\"Create\",\"fhirServiceResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/wq9m2j\",\"fhirMapping\":{\"content\":{\"templateType\":\"CollectionFhirTemplate\",\"template\":[]}},\"provisioningState\":\"Creating\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+CreateExpanded1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/lwnkosymdnylu86z25vr3y7gs?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/lwnkosymdnylu86z25vr3y7gs?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "290" ],
+        "x-ms-client-request-id": [ "1914ad6e-d241-425f-b678-ac8e61606a8a" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareIotConnectorFhirDestination" ],
+        "FullCommandName": [ "New-AzHealthcareIotConnectorFhirDestination_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "33c918e7-e123-4f07-9412-9e6061dad614" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "56aee5cb0b97af46a4c60cdfe03736de" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11848" ],
+        "x-ms-correlation-request-id": [ "157430d8-5ce4-4cdf-ad5c-12425fe42ba5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124126Z:157430d8-5ce4-4cdf-ad5c-12425fe42ba5" ],
+        "Date": [ "Tue, 29 Mar 2022 12:41:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "255" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/lwnkosymdnylu86z25vr3y7gs\",\"name\":\"lwnkosymdnylu86z25vr3y7gs\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-29T12:40:56.2577837Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+CreateExpanded1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/v0276w?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/v0276w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "291" ],
+        "x-ms-client-request-id": [ "1914ad6e-d241-425f-b678-ac8e61606a8a" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareIotConnectorFhirDestination" ],
+        "FullCommandName": [ "New-AzHealthcareIotConnectorFhirDestination_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"cf00615d-0000-0400-0000-6242fe6f0000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "6bc610ec-2fa4-4b4a-b9bf-9e4db93b2380" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "570fa2dfea54f844a1cef2dcf9069579" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11847" ],
+        "x-ms-correlation-request-id": [ "138c8c5b-184d-48cc-959c-2609a1ca6787" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124127Z:138c8c5b-184d-48cc-959c-2609a1ca6787" ],
+        "Date": [ "Tue, 29 Mar 2022 12:41:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "725" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/v0276w\",\"name\":\"ax2qzb/xuez6r/v0276w\",\"type\":\"Microsoft.HealthcareApis/workspaces/iotconnectors/fhirdestinations\",\"etag\":\"\\\"cf00615d-0000-0400-0000-6242fe6f0000\\\"\",\"location\":\"eastus2\",\"properties\":{\"resourceIdentityResolutionType\":\"Create\",\"fhirServiceResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/wq9m2j\",\"fhirMapping\":{\"content\":{\"templateType\":\"CollectionFhirTemplate\",\"template\":[]}},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/v0276w?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/v0276w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "292" ],
+        "x-ms-client-request-id": [ "916dad75-2de1-42d4-af62-b5cfb8e91769" ],
+        "CommandName": [ "Get-AzHealthcareIotConnectorFhirDestination" ],
+        "FullCommandName": [ "Get-AzHealthcareIotConnectorFhirDestination_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"cf00615d-0000-0400-0000-6242fe6f0000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "f2161345-8949-4cfe-afe5-8406a744c6d9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "0fa9f966a49ead4ebd3fbf499caec3b3" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11846" ],
+        "x-ms-correlation-request-id": [ "ddc6c010-5409-4ec5-853c-a89d8b647caa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124128Z:ddc6c010-5409-4ec5-853c-a89d8b647caa" ],
+        "Date": [ "Tue, 29 Mar 2022 12:41:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "725" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/v0276w\",\"name\":\"ax2qzb/xuez6r/v0276w\",\"type\":\"Microsoft.HealthcareApis/workspaces/iotconnectors/fhirdestinations\",\"etag\":\"\\\"cf00615d-0000-0400-0000-6242fe6f0000\\\"\",\"location\":\"eastus2\",\"properties\":{\"resourceIdentityResolutionType\":\"Create\",\"fhirServiceResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/wq9m2j\",\"fhirMapping\":{\"content\":{\"templateType\":\"CollectionFhirTemplate\",\"template\":[]}},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/v0276w?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/v0276w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "293" ],
+        "x-ms-client-request-id": [ "f06480a9-77ba-4ec0-b10a-c0a9335972fa" ],
+        "CommandName": [ "Remove-AzHealthcareIotConnectorFhirDestination" ],
+        "FullCommandName": [ "Remove-AzHealthcareIotConnectorFhirDestination_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/h2oegg8kebohowbn01dwtebhz?api-version=2021-11-01\u0026operationResultResponseType=Location" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/h2oegg8kebohowbn01dwtebhz?api-version=2021-11-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "bfdf99f30bc7cb41aa128b034d6b2fba" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14991" ],
+        "x-ms-request-id": [ "69e43690-73d7-4782-b6e3-6d3164605f3c" ],
+        "x-ms-correlation-request-id": [ "69e43690-73d7-4782-b6e3-6d3164605f3c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124129Z:69e43690-73d7-4782-b6e3-6d3164605f3c" ],
+        "Date": [ "Tue, 29 Mar 2022 12:41:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/h2oegg8kebohowbn01dwtebhz?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/h2oegg8kebohowbn01dwtebhz?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "294" ],
+        "x-ms-client-request-id": [ "f06480a9-77ba-4ec0-b10a-c0a9335972fa" ],
+        "CommandName": [ "Remove-AzHealthcareIotConnectorFhirDestination" ],
+        "FullCommandName": [ "Remove-AzHealthcareIotConnectorFhirDestination_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "4339c30b-2a93-43b3-b325-b547ff5a6e42" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "623e1624ac187242b901c126ab3154b4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11845" ],
+        "x-ms-correlation-request-id": [ "69d33303-f6ba-4ad8-a218-6fd7d8cb0984" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124159Z:69d33303-f6ba-4ad8-a218-6fd7d8cb0984" ],
+        "Date": [ "Tue, 29 Mar 2022 12:41:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "255" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/h2oegg8kebohowbn01dwtebhz\",\"name\":\"h2oegg8kebohowbn01dwtebhz\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-29T12:41:29.0998988Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/h2oegg8kebohowbn01dwtebhz?api-version=2021-11-01\u0026operationResultResponseType=Location+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/h2oegg8kebohowbn01dwtebhz?api-version=2021-11-01\u0026operationResultResponseType=Location",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "295" ],
+        "x-ms-client-request-id": [ "f06480a9-77ba-4ec0-b10a-c0a9335972fa" ],
+        "CommandName": [ "Remove-AzHealthcareIotConnectorFhirDestination" ],
+        "FullCommandName": [ "Remove-AzHealthcareIotConnectorFhirDestination_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "135899f9-2150-4e4d-ab8e-489f6dccdd3c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "7175bac102d2e84a946a19394b1662a6" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11844" ],
+        "x-ms-correlation-request-id": [ "3c413449-0772-4e52-9624-305ba556f0ad" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124200Z:3c413449-0772-4e52-9624-305ba556f0ad" ],
+        "Date": [ "Tue, 29 Mar 2022 12:41:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+CreateExpanded2+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/9z3v0m?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/9z3v0m?api-version=2021-11-01",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"fhirMapping\": {\r\n      \"content\": {\r\n        \"templateType\": \"CollectionFhirTemplate\",\r\n        \"template\": [ ]\r\n      }\r\n    },\r\n    \"resourceIdentityResolutionType\": \"Create\",\r\n    \"fhirServiceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/wq9m2j\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "429" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"cf000961-0000-0400-0000-6242fe990000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "2ad8d2fa-f36a-4d41-9c5f-58c1695e480d" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/ikus4jvog4yrldrdemhovne3h?api-version=2021-11-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "19eae26ab4836349848155c89a674a2e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1182" ],
+        "x-ms-correlation-request-id": [ "44e48c7d-a180-4cb7-a5f2-f9b33f37365f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124201Z:44e48c7d-a180-4cb7-a5f2-f9b33f37365f" ],
+        "Date": [ "Tue, 29 Mar 2022 12:42:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "724" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/9z3v0m\",\"name\":\"ax2qzb/xuez6r/9z3v0m\",\"type\":\"Microsoft.HealthcareApis/workspaces/iotconnectors/fhirdestinations\",\"etag\":\"\\\"cf000961-0000-0400-0000-6242fe990000\\\"\",\"location\":\"eastus2\",\"properties\":{\"resourceIdentityResolutionType\":\"Create\",\"fhirServiceResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/wq9m2j\",\"fhirMapping\":{\"content\":{\"templateType\":\"CollectionFhirTemplate\",\"template\":[]}},\"provisioningState\":\"Creating\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+CreateExpanded2+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/ikus4jvog4yrldrdemhovne3h?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/ikus4jvog4yrldrdemhovne3h?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "297" ],
+        "x-ms-client-request-id": [ "d634a8ba-474f-4a5a-96f8-cbf55fb70b01" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareIotConnectorFhirDestination" ],
+        "FullCommandName": [ "New-AzHealthcareIotConnectorFhirDestination_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11843" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "e5efb152-e86d-423d-8964-1b0d98e5fcbb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "86b3f905c551e34eb814756b871665fe" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "59b81945-8c11-48a0-b79e-0ca223d26c4f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124231Z:59b81945-8c11-48a0-b79e-0ca223d26c4f" ],
+        "Date": [ "Tue, 29 Mar 2022 12:42:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "255" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/ikus4jvog4yrldrdemhovne3h\",\"name\":\"ikus4jvog4yrldrdemhovne3h\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-29T12:42:01.3512071Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+CreateExpanded2+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/9z3v0m?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/9z3v0m?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "298" ],
+        "x-ms-client-request-id": [ "d634a8ba-474f-4a5a-96f8-cbf55fb70b01" ],
+        "CommandName": [ "Az.HealthcareApis.internal\\New-AzHealthcareIotConnectorFhirDestination" ],
+        "FullCommandName": [ "New-AzHealthcareIotConnectorFhirDestination_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"cf00d662-0000-0400-0000-6242feaf0000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "e3e86298-bbc6-4f1d-a325-fb3a245aed33" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "43c986178973f24fa4203b6e9069f996" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11842" ],
+        "x-ms-correlation-request-id": [ "e3666f09-7f64-483a-9def-39a2877a7d3d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124232Z:e3666f09-7f64-483a-9def-39a2877a7d3d" ],
+        "Date": [ "Tue, 29 Mar 2022 12:42:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "725" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/9z3v0m\",\"name\":\"ax2qzb/xuez6r/9z3v0m\",\"type\":\"Microsoft.HealthcareApis/workspaces/iotconnectors/fhirdestinations\",\"etag\":\"\\\"cf00d662-0000-0400-0000-6242feaf0000\\\"\",\"location\":\"eastus2\",\"properties\":{\"resourceIdentityResolutionType\":\"Create\",\"fhirServiceResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/wq9m2j\",\"fhirMapping\":{\"content\":{\"templateType\":\"CollectionFhirTemplate\",\"template\":[]}},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "299" ],
+        "x-ms-client-request-id": [ "ab981284-15f4-41e5-8304-965986ce8f5d" ],
+        "CommandName": [ "Get-AzHealthcareFhirDestination" ],
+        "FullCommandName": [ "Get-AzHealthcareFhirDestination_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "a055438c-b697-4a6f-8289-724a6f143f03" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "532deac03fc25f40adc7e77b936cb2f6" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11841" ],
+        "x-ms-correlation-request-id": [ "e450d3b2-ee2a-416f-bf5b-86f05307472c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124233Z:e450d3b2-ee2a-416f-bf5b-86f05307472c" ],
+        "Date": [ "Tue, 29 Mar 2022 12:42:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "737" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/9z3v0m\",\"name\":\"ax2qzb/xuez6r/9z3v0m\",\"type\":\"Microsoft.HealthcareApis/workspaces/iotconnectors/fhirdestinations\",\"etag\":\"\\\"cf00d662-0000-0400-0000-6242feaf0000\\\"\",\"location\":\"eastus2\",\"properties\":{\"resourceIdentityResolutionType\":\"Create\",\"fhirServiceResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/wq9m2j\",\"fhirMapping\":{\"content\":{\"templateType\":\"CollectionFhirTemplate\",\"template\":[]}},\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/9z3v0m?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/9z3v0m?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "300" ],
+        "x-ms-client-request-id": [ "ec56a1a3-5256-4e02-aee3-58cb1ae59827" ],
+        "CommandName": [ "Get-AzHealthcareIotConnectorFhirDestination" ],
+        "FullCommandName": [ "Get-AzHealthcareIotConnectorFhirDestination_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"cf00d662-0000-0400-0000-6242feaf0000\"" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "d7bb80d9-33c1-4bab-bd62-cfd8c54c2f24" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "8674c4f3797fc242b40eb660479f8bc4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11840" ],
+        "x-ms-correlation-request-id": [ "7a228f21-ee55-41e4-9bce-3e6a05371bec" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124233Z:7a228f21-ee55-41e4-9bce-3e6a05371bec" ],
+        "Date": [ "Tue, 29 Mar 2022 12:42:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "725" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/9z3v0m\",\"name\":\"ax2qzb/xuez6r/9z3v0m\",\"type\":\"Microsoft.HealthcareApis/workspaces/iotconnectors/fhirdestinations\",\"etag\":\"\\\"cf00d662-0000-0400-0000-6242feaf0000\\\"\",\"location\":\"eastus2\",\"properties\":{\"resourceIdentityResolutionType\":\"Create\",\"fhirServiceResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/fhirservices/wq9m2j\",\"fhirMapping\":{\"content\":{\"templateType\":\"CollectionFhirTemplate\",\"template\":[]}},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/9z3v0m?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-eus2/providers/Microsoft.HealthcareApis/workspaces/ax2qzb/iotconnectors/xuez6r/fhirdestinations/9z3v0m?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "301" ],
+        "x-ms-client-request-id": [ "4fee43d5-ccb3-4775-8329-11cca50a4f10" ],
+        "CommandName": [ "Remove-AzHealthcareIotConnectorFhirDestination" ],
+        "FullCommandName": [ "Remove-AzHealthcareIotConnectorFhirDestination_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/3etgfgjmi6l109dn3i9rsohoa?api-version=2021-11-01\u0026operationResultResponseType=Location" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/3etgfgjmi6l109dn3i9rsohoa?api-version=2021-11-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "dd55ab21601f8540aa081de9175b896e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14990" ],
+        "x-ms-request-id": [ "0b7e9867-e88e-4583-b831-6a18ec57a69e" ],
+        "x-ms-correlation-request-id": [ "0b7e9867-e88e-4583-b831-6a18ec57a69e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124235Z:0b7e9867-e88e-4583-b831-6a18ec57a69e" ],
+        "Date": [ "Tue, 29 Mar 2022 12:42:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/3etgfgjmi6l109dn3i9rsohoa?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/3etgfgjmi6l109dn3i9rsohoa?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "302" ],
+        "x-ms-client-request-id": [ "4fee43d5-ccb3-4775-8329-11cca50a4f10" ],
+        "CommandName": [ "Remove-AzHealthcareIotConnectorFhirDestination" ],
+        "FullCommandName": [ "Remove-AzHealthcareIotConnectorFhirDestination_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "6c4e973f-dd53-4b42-a5aa-160adf580e61" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "fc1a5b5eefbf7146aa8c888bac00c925" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11839" ],
+        "x-ms-correlation-request-id": [ "5a923c5f-e665-4822-b8c5-752d81bf67fb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124305Z:5a923c5f-e665-4822-b8c5-752d81bf67fb" ],
+        "Date": [ "Tue, 29 Mar 2022 12:43:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "255" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/3etgfgjmi6l109dn3i9rsohoa\",\"name\":\"3etgfgjmi6l109dn3i9rsohoa\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-29T12:42:34.8346643Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzHealthcareIotConnectorFhirDestination+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/3etgfgjmi6l109dn3i9rsohoa?api-version=2021-11-01\u0026operationResultResponseType=Location+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/locations/eastus2/operationresults/3etgfgjmi6l109dn3i9rsohoa?api-version=2021-11-01\u0026operationResultResponseType=Location",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "303" ],
+        "x-ms-client-request-id": [ "4fee43d5-ccb3-4775-8329-11cca50a4f10" ],
+        "CommandName": [ "Remove-AzHealthcareIotConnectorFhirDestination" ],
+        "FullCommandName": [ "Remove-AzHealthcareIotConnectorFhirDestination_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.HealthcareApis/0.3.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:3de0b58a-5b02-4f39-a0b3-83315651f823" ],
+        "x-ms-request-id": [ "26f61e16-21a4-45f9-a74b-8d94c4b0b797" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "ffb99f6e3a208c4c85d6e15a8a013d21" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11838" ],
+        "x-ms-correlation-request-id": [ "6ad225f7-9ee7-47ba-bc62-bd089afd8cf0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220329T124305Z:6ad225f7-9ee7-47ba-bc62-bd089afd8cf0" ],
+        "Date": [ "Tue, 29 Mar 2022 12:43:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}
