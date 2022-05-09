@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
         }
-
+/*
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestNewGetUpdateSetRemoveScheduledQueryRule()
@@ -41,6 +41,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         public void TestPipingRemoveSetUpdateScheduledQueryRule()
         {
             TestsController.NewInstance.RunPsTest(_logger, "Test-PipingRemoveSetUpdateScheduledQueryRule");
-        }
+        }*/
     }
 }
