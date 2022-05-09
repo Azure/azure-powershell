@@ -141,16 +141,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 
         private void RegisterConfigs(IConfigManager configManager)
         {
-            // simple configs
-            // todo: review the help messages
-            //configManager.RegisterConfig(new SimpleTypedConfig<bool>(ConfigKeys.SuppressWarningMessage, "Controls if the warning messages of upcoming breaking changes are enabled or suppressed. The messages are typically displayed when a cmdlet that will have breaking change in the future is executed.", false, BreakingChangeAttributeHelper.SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
-            //configManager.RegisterConfig(new SimpleTypedConfig<bool>(ConfigKeys.EnableInterceptSurvey, "When enabled, a message of taking part in the survey about the user experience of Azure PowerShell will prompt at low frequency.", true, "Azure_PS_Intercept_Survey"));
-            // todo: when the input is not a valid subscription name or id. Connect-AzAccount will throw an error. Is it right?
-            //configManager.RegisterConfig(new SimpleTypedConfig<string>(ConfigKeys.DefaultSubscriptionForLogin, "Subscription name or GUID. If defined, when logging in Azure PowerShell without specifying the subscription, this one will be used to select the default context.", string.Empty));
-            // todo: add later
-            //configManager.RegisterConfig(new RetryConfig());
-            // todo: how to migrate old config
-        //configManager.RegisterConfig(new EnableDataCollectionConfig());
         }
     }
 }

@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.Azure.PowerShell.Common.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
@@ -26,10 +26,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
     /// </summary>
     public static class AppliesToHelper
     {
-        internal static readonly Regex ModulePattern = new Regex(@"^az\.[a-z]+$", RegexOptions.IgnoreCase);
-        internal static readonly Regex CmdletPattern = new Regex(@"^[a-z]+-[a-z]+$", RegexOptions.IgnoreCase);
-        internal static readonly Regex ModuleOrCmdletPattern = new Regex(@"^az\.[a-z]+$|^[a-z]+-[a-z]+$", RegexOptions.IgnoreCase);
-
         /// <summary>
         /// Tries to parse a user-input text to an <see cref="AppliesTo"/> enum.
         /// </summary>
@@ -44,13 +40,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 return true;
             }
 
-            if (ModulePattern.IsMatch(text))
+            if (PSNamingUtilities.IsModuleName(text))
             {
                 appliesTo = AppliesTo.Module;
                 return true;
             }
 
-            if (CmdletPattern.IsMatch(text))
+            if (PSNamingUtilities.IsCmdletName(text))
             {
                 appliesTo = AppliesTo.Cmdlet;
                 return true;
