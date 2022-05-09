@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/r
 schema: 2.0.0
 ---
 
-# Remove-AzHealthcareAPIsWorkspace
+# Remove-AzHealthcareApisWorkspace
 
 ## SYNOPSIS
 Deletes a specified workspace.
@@ -14,13 +14,13 @@ Deletes a specified workspace.
 
 ### Delete (Default)
 ```
-Remove-AzHealthcareAPIsWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzHealthcareApisWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzHealthcareAPIsWorkspace -InputObject <IHealthcareApisIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzHealthcareApisWorkspace -InputObject <IHealthcareApisIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Deletes a specified workspace.
 
 ### Example 1: Deletes a specified workspace.
 ```powershell
-PS C:\> Remove-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group
+PS C:\> Remove-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group
 
 ```
 
@@ -39,7 +39,7 @@ Deletes a specified workspace.
 
 ### Example 2: Deletes a specified workspace.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group | Remove-AzHealthcareAPIsWorkspace
+PS C:\> Get-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group | Remove-AzHealthcareApisWorkspace
 
 ```
 

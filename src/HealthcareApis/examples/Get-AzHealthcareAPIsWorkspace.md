@@ -1,6 +1,6 @@
 ### Example 1: List the properties.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsWorkspace
+PS C:\> Get-AzHealthcareApisWorkspace
 
 Location Name       ResourceGroupName
 -------- ----       -----------------
@@ -12,7 +12,7 @@ List the properties.
 
 ### Example 2: Gets the properties of the specified workspace.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group
+PS C:\> Get-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group
 
 Location Name     ResourceGroupName
 -------- ----     -----------------
@@ -23,7 +23,7 @@ Gets the properties of the specified workspace.
 
 ### Example 3: List the properties of the resource group.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsWorkspace -ResourceGroupName azps_test_group
+PS C:\> Get-AzHealthcareApisWorkspace -ResourceGroupName azps_test_group
 
 Location Name       ResourceGroupName
 -------- ----       -----------------

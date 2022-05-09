@@ -20,10 +20,10 @@ Deletes a specified workspace.
 .Description
 Deletes a specified workspace.
 .Example
-PS C:\> Remove-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group
+PS C:\> Remove-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group
 
 .Example
-PS C:\> Get-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group | Remove-AzHealthcareAPIsWorkspace
+PS C:\> Get-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group | Remove-AzHealthcareApisWorkspace
 
 
 .Inputs
@@ -52,7 +52,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareapisworkspace
 #>
-function Remove-AzHealthcareAPIsWorkspace {
+function Remove-AzHealthcareApisWorkspace {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -175,8 +175,8 @@ begin {
         }
 
         $mapping = @{
-            Delete = 'Az.HealthcareApis.private\Remove-AzHealthcareAPIsWorkspace_Delete';
-            DeleteViaIdentity = 'Az.HealthcareApis.private\Remove-AzHealthcareAPIsWorkspace_DeleteViaIdentity';
+            Delete = 'Az.HealthcareApis.private\Remove-AzHealthcareApisWorkspace_Delete';
+            DeleteViaIdentity = 'Az.HealthcareApis.private\Remove-AzHealthcareApisWorkspace_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

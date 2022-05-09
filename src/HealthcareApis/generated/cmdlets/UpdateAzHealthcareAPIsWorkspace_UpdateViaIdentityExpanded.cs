@@ -12,11 +12,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzHealthcareAPIsWorkspace_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzHealthcareApisWorkspace_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Description(@"Patch workspace details.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Generated]
-    public partial class UpdateAzHealthcareAPIsWorkspace_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
+    public partial class UpdateAzHealthcareApisWorkspace_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -32,6 +32,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>
+        /// List of key value pairs that describe the resource. This will overwrite the existing tags.
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceTags1 _workspacePatchResourceBody = new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.ResourceTags1();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -125,15 +130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"Resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceTags Tag { get => WorkspacePatchResourceBody.Tag ?? null /* object */; set => WorkspacePatchResourceBody.Tag = value; }
-
-        /// <summary>Backing field for <see cref="WorkspacePatchResourceBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceTags1 _workspacePatchResourceBody= new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.ResourceTags1();
-
-        /// <summary>
-        /// List of key value pairs that describe the resource. This will overwrite the existing tags.
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceTags1 WorkspacePatchResourceBody { get => this._workspacePatchResourceBody; set => this._workspacePatchResourceBody = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceTags Tag { get => _workspacePatchResourceBody.Tag ?? null /* object */; set => _workspacePatchResourceBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -179,11 +176,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
         /// <returns>
-        /// a duplicate instance of UpdateAzHealthcareAPIsWorkspace_UpdateViaIdentityExpanded
+        /// a duplicate instance of UpdateAzHealthcareApisWorkspace_UpdateViaIdentityExpanded
         /// </returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets.UpdateAzHealthcareAPIsWorkspace_UpdateViaIdentityExpanded Clone()
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets.UpdateAzHealthcareApisWorkspace_UpdateViaIdentityExpanded Clone()
         {
-            var clone = new UpdateAzHealthcareAPIsWorkspace_UpdateViaIdentityExpanded();
+            var clone = new UpdateAzHealthcareApisWorkspace_UpdateViaIdentityExpanded();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -196,7 +193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.WorkspacePatchResourceBody = this.WorkspacePatchResourceBody;
+            clone._workspacePatchResourceBody = this._workspacePatchResourceBody;
             return clone;
         }
 
@@ -352,7 +349,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.WorkspacesUpdateViaIdentity(InputObject.Id, WorkspacePatchResourceBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.WorkspacesUpdateViaIdentity(InputObject.Id, _workspacePatchResourceBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -369,13 +366,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.WorkspaceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.WorkspacesUpdate(InputObject.ResourceGroupName ?? null, InputObject.SubscriptionId ?? null, InputObject.WorkspaceName ?? null, WorkspacePatchResourceBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.WorkspacesUpdate(InputObject.ResourceGroupName ?? null, InputObject.SubscriptionId ?? null, InputObject.WorkspaceName ?? null, _workspacePatchResourceBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=WorkspacePatchResourceBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_workspacePatchResourceBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -395,9 +392,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzHealthcareAPIsWorkspace_UpdateViaIdentityExpanded" /> cmdlet class.
+        /// Intializes a new instance of the <see cref="UpdateAzHealthcareApisWorkspace_UpdateViaIdentityExpanded" /> cmdlet class.
         /// </summary>
-        public UpdateAzHealthcareAPIsWorkspace_UpdateViaIdentityExpanded()
+        public UpdateAzHealthcareApisWorkspace_UpdateViaIdentityExpanded()
         {
 
         }
@@ -429,14 +426,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IErrorDetails>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=WorkspacePatchResourceBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_workspacePatchResourceBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=WorkspacePatchResourceBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_workspacePatchResourceBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

@@ -20,10 +20,10 @@ Delete a service instance.
 .Description
 Delete a service instance.
 .Example
-PS C:\> Remove-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice
+PS C:\> Remove-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice
 
 .Example
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice | Remove-AzHealthcareAPIsService
+PS C:\> Get-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice | Remove-AzHealthcareApisService
 
 
 .Inputs
@@ -52,7 +52,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareapisservice
 #>
-function Remove-AzHealthcareAPIsService {
+function Remove-AzHealthcareApisService {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -174,8 +174,8 @@ begin {
         }
 
         $mapping = @{
-            Delete = 'Az.HealthcareApis.private\Remove-AzHealthcareAPIsService_Delete';
-            DeleteViaIdentity = 'Az.HealthcareApis.private\Remove-AzHealthcareAPIsService_DeleteViaIdentity';
+            Delete = 'Az.HealthcareApis.private\Remove-AzHealthcareApisService_Delete';
+            DeleteViaIdentity = 'Az.HealthcareApis.private\Remove-AzHealthcareApisService_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

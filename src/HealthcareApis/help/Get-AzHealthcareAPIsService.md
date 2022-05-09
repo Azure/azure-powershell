@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/g
 schema: 2.0.0
 ---
 
-# Get-AzHealthcareAPIsService
+# Get-AzHealthcareApisService
 
 ## SYNOPSIS
 Get the metadata of a service instance.
@@ -14,24 +14,24 @@ Get the metadata of a service instance.
 
 ### List (Default)
 ```
-Get-AzHealthcareAPIsService [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzHealthcareApisService [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzHealthcareAPIsService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzHealthcareAPIsService -InputObject <IHealthcareApisIdentity> [-DefaultProfile <PSObject>]
+Get-AzHealthcareApisService -InputObject <IHealthcareApisIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzHealthcareAPIsService -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzHealthcareApisService -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ Get the metadata of a service instance.
 
 ### Example 1: List the metadata of service instance.
 ```powershell
-PS C:\>  Get-AzHealthcareAPIsService
+PS C:\>  Get-AzHealthcareApisService
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
@@ -53,7 +53,7 @@ List the metadata of service instance.
 
 ### Example 2: List the metadata of service instance by resource group.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group
+PS C:\> Get-AzHealthcareApisService -ResourceGroupName azps_test_group
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
@@ -64,7 +64,7 @@ List the metadata of service instance by resource group.
 
 ### Example 3: Get the metadata of a service instance.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice
+PS C:\> Get-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------

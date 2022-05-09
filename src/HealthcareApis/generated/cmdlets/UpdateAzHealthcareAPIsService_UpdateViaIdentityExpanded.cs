@@ -12,11 +12,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzHealthcareAPIsService_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzHealthcareApisService_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Description(@"Update the metadata of a service instance.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Generated]
-    public partial class UpdateAzHealthcareAPIsService_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
+    public partial class UpdateAzHealthcareApisService_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -32,6 +32,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>The description of the service.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesPatchDescription _servicePatchDescriptionBody = new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.ServicesPatchDescription();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -127,13 +130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess))]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess PublicNetworkAccess { get => ServicePatchDescriptionBody.PublicNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess)""); set => ServicePatchDescriptionBody.PublicNetworkAccess = value; }
-
-        /// <summary>Backing field for <see cref="ServicePatchDescriptionBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesPatchDescription _servicePatchDescriptionBody= new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.ServicesPatchDescription();
-
-        /// <summary>The description of the service.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesPatchDescription ServicePatchDescriptionBody { get => this._servicePatchDescriptionBody; set => this._servicePatchDescriptionBody = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess PublicNetworkAccess { get => _servicePatchDescriptionBody.PublicNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess)""); set => _servicePatchDescriptionBody.PublicNetworkAccess = value; }
 
         /// <summary>Instance tags</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -145,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"Instance tags",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesPatchDescriptionTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesPatchDescriptionTags Tag { get => ServicePatchDescriptionBody.Tag ?? null /* object */; set => ServicePatchDescriptionBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesPatchDescriptionTags Tag { get => _servicePatchDescriptionBody.Tag ?? null /* object */; set => _servicePatchDescriptionBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -190,10 +187,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         }
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
-        /// <returns>a duplicate instance of UpdateAzHealthcareAPIsService_UpdateViaIdentityExpanded</returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets.UpdateAzHealthcareAPIsService_UpdateViaIdentityExpanded Clone()
+        /// <returns>a duplicate instance of UpdateAzHealthcareApisService_UpdateViaIdentityExpanded</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets.UpdateAzHealthcareApisService_UpdateViaIdentityExpanded Clone()
         {
-            var clone = new UpdateAzHealthcareAPIsService_UpdateViaIdentityExpanded();
+            var clone = new UpdateAzHealthcareApisService_UpdateViaIdentityExpanded();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -206,7 +203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.ServicePatchDescriptionBody = this.ServicePatchDescriptionBody;
+            clone._servicePatchDescriptionBody = this._servicePatchDescriptionBody;
             return clone;
         }
 
@@ -362,7 +359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.ServicesUpdateViaIdentity(InputObject.Id, ServicePatchDescriptionBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.ServicesUpdateViaIdentity(InputObject.Id, _servicePatchDescriptionBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -379,13 +376,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.ServicesUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ResourceName ?? null, ServicePatchDescriptionBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.ServicesUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ResourceName ?? null, _servicePatchDescriptionBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=ServicePatchDescriptionBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_servicePatchDescriptionBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -405,9 +402,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzHealthcareAPIsService_UpdateViaIdentityExpanded" /> cmdlet class.
+        /// Intializes a new instance of the <see cref="UpdateAzHealthcareApisService_UpdateViaIdentityExpanded" /> cmdlet class.
         /// </summary>
-        public UpdateAzHealthcareAPIsService_UpdateViaIdentityExpanded()
+        public UpdateAzHealthcareApisService_UpdateViaIdentityExpanded()
         {
 
         }
@@ -439,14 +436,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IErrorDetails>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ServicePatchDescriptionBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_servicePatchDescriptionBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ServicePatchDescriptionBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_servicePatchDescriptionBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

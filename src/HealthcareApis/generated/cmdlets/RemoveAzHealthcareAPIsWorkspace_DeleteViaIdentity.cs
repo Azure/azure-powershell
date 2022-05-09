@@ -12,11 +12,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
     /// <remarks>
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzHealthcareAPIsWorkspace_DeleteViaIdentity", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzHealthcareApisWorkspace_DeleteViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Description(@"Deletes a specified workspace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Generated]
-    public partial class RemoveAzHealthcareAPIsWorkspace_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
+    public partial class RemoveAzHealthcareApisWorkspace_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -173,10 +173,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         }
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
-        /// <returns>a duplicate instance of RemoveAzHealthcareAPIsWorkspace_DeleteViaIdentity</returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets.RemoveAzHealthcareAPIsWorkspace_DeleteViaIdentity Clone()
+        /// <returns>a duplicate instance of RemoveAzHealthcareApisWorkspace_DeleteViaIdentity</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets.RemoveAzHealthcareApisWorkspace_DeleteViaIdentity Clone()
         {
-            var clone = new RemoveAzHealthcareAPIsWorkspace_DeleteViaIdentity();
+            var clone = new RemoveAzHealthcareApisWorkspace_DeleteViaIdentity();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -380,9 +380,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="RemoveAzHealthcareAPIsWorkspace_DeleteViaIdentity" /> cmdlet class.
+        /// Intializes a new instance of the <see cref="RemoveAzHealthcareApisWorkspace_DeleteViaIdentity" /> cmdlet class.
         /// </summary>
-        public RemoveAzHealthcareAPIsWorkspace_DeleteViaIdentity()
+        public RemoveAzHealthcareApisWorkspace_DeleteViaIdentity()
         {
 
         }

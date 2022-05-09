@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/n
 schema: 2.0.0
 ---
 
-# New-AzHealthcareAPIsService
+# New-AzHealthcareApisService
 
 ## SYNOPSIS
 Create or update the metadata of a service instance.
@@ -13,15 +13,13 @@ Create or update the metadata of a service instance.
 ## SYNTAX
 
 ```
-New-AzHealthcareAPIsService -Name <String> -ResourceGroupName <String>
- -CosmoDbConfigurationOfferThroughput <Int32> -Kind <Kind> -Location <String> [-SubscriptionId <String>]
- [-AccessPolicy <IServiceAccessPolicyEntry[]>] [-AcrConfigurationLoginServer <String[]>]
- [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>] [-AuthenticationConfigurationAudience <String>]
- [-AuthenticationConfigurationAuthority <String>] [-AuthenticationConfigurationSmartProxyEnabled]
- [-CorConfigurationAllowCredentials] [-CorConfigurationHeader <String[]>] [-CorConfigurationMaxAge <Int32>]
- [-CorConfigurationMethod <String[]>] [-CorConfigurationOrigin <String[]>]
- [-CosmoDbConfigurationKeyVaultKeyUri <String>] [-Etag <String>]
- [-ExportConfigurationStorageAccountName <String>] [-IdentityType <ManagedServiceIdentityType>]
+New-AzHealthcareApisService -Name <String> -ResourceGroupName <String> -CosmosOfferThroughput <Int32>
+ -Kind <Kind> -Location <String> [-SubscriptionId <String>]
+ [-AccessPolicyObjectId <IServiceAccessPolicyEntry[]>] [-AcrConfigurationLoginServer <String[]>]
+ [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>] [-AllowCorsCredential] [-Audience <String>]
+ [-Authority <String>] [-CorsHeader <String[]>] [-CorsMaxAge <Int32>] [-CorsMethod <String[]>]
+ [-CorsOrigin <String[]>] [-CosmosKeyVaultKeyUri <String>] [-EnableSmartProxy] [-Etag <String>]
+ [-ExportStorageAccountName <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -33,7 +31,7 @@ Create or update the metadata of a service instance.
 
 ### Example 1: Create or update the metadata of a service instance.
 ```powershell
-PS C:\> New-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice -Kind 'fhir' -Location eastus2 -CosmoDbConfigurationOfferThroughput 400
+PS C:\> New-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice -Kind 'fhir' -Location eastus2 -CosmosOfferThroughput 400
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
@@ -44,9 +42,9 @@ Create or update the metadata of a service instance.
 
 ## PARAMETERS
 
-### -AccessPolicy
+### -AccessPolicyObjectId
 The access policies of the service instance.
-To construct, see NOTES section for ACCESSPOLICY properties and create a hash table.
+To construct, see NOTES section for ACCESSPOLICYOBJECTID properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceAccessPolicyEntry[]
@@ -91,6 +89,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AllowCorsCredential
+If credentials are allowed via CORS.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -106,7 +119,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AuthenticationConfigurationAudience
+### -Audience
 The audience url for the service
 
 ```yaml
@@ -121,7 +134,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AuthenticationConfigurationAuthority
+### -Authority
 The authority url for the service
 
 ```yaml
@@ -136,37 +149,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AuthenticationConfigurationSmartProxyEnabled
-If the SMART on FHIR proxy is enabled
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CorConfigurationAllowCredentials
-If credentials are allowed via CORS.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CorConfigurationHeader
+### -CorsHeader
 The headers to be allowed via CORS.
 
 ```yaml
@@ -181,7 +164,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CorConfigurationMaxAge
+### -CorsMaxAge
 The max age to be allowed via CORS.
 
 ```yaml
@@ -196,7 +179,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CorConfigurationMethod
+### -CorsMethod
 The methods to be allowed via CORS.
 
 ```yaml
@@ -211,7 +194,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CorConfigurationOrigin
+### -CorsOrigin
 The origins to be allowed via CORS.
 
 ```yaml
@@ -226,7 +209,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CosmoDbConfigurationKeyVaultKeyUri
+### -CosmosKeyVaultKeyUri
 The URI of the customer-managed key for the backing database.
 
 ```yaml
@@ -241,7 +224,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CosmoDbConfigurationOfferThroughput
+### -CosmosOfferThroughput
 The provisioned throughput for the backing database.
 
 ```yaml
@@ -271,6 +254,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSmartProxy
+If the SMART on FHIR proxy is enabled
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Etag
 An etag associated with the resource, used for optimistic concurrency when editing it.
 
@@ -286,7 +284,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExportConfigurationStorageAccountName
+### -ExportStorageAccountName
 The name of the default export storage account.
 
 ```yaml
@@ -501,7 +499,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ACCESSPOLICY <IServiceAccessPolicyEntry[]>: The access policies of the service instance.
+ACCESSPOLICYOBJECTID <IServiceAccessPolicyEntry[]>: The access policies of the service instance.
   - `ObjectId <String>`: An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
 
 ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Container Initiative (OCI) artifacts.

@@ -12,11 +12,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzHealthcareAPIsWorkspace_Get")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzHealthcareApisWorkspace_Get")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Description(@"Gets the properties of the specified workspace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Generated]
-    public partial class GetAzHealthcareAPIsWorkspace_Get : global::System.Management.Automation.PSCmdlet,
+    public partial class GetAzHealthcareApisWorkspace_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -190,9 +190,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="GetAzHealthcareAPIsWorkspace_Get" /> cmdlet class.
+        /// Intializes a new instance of the <see cref="GetAzHealthcareApisWorkspace_Get" /> cmdlet class.
         /// </summary>
-        public GetAzHealthcareAPIsWorkspace_Get()
+        public GetAzHealthcareApisWorkspace_Get()
         {
 
         }

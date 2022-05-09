@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzHealthcareAPIsWorkspace'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzHealthcareApisWorkspace'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzHealthcareAPIsWorkspace.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzHealthcareApisWorkspace.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzHealthcareAPIsWorkspace
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzHealthcareAPIsWorkspace' {
+Describe 'New-AzHealthcareApisWorkspace' {
     It 'CreateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

@@ -20,7 +20,7 @@ Create or update the metadata of a service instance.
 .Description
 Create or update the metadata of a service instance.
 .Example
-PS C:\> New-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice -Kind 'fhir' -Location eastus2 -CosmoDbConfigurationOfferThroughput 400
+PS C:\> New-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice -Kind 'fhir' -Location eastus2 -CosmosOfferThroughput 400
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
@@ -33,7 +33,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-ACCESSPOLICY <IServiceAccessPolicyEntry[]>: The access policies of the service instance.
+ACCESSPOLICYOBJECTID <IServiceAccessPolicyEntry[]>: The access policies of the service instance.
   ObjectId <String>: An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
 
 ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Container Initiative (OCI) artifacts.
@@ -48,7 +48,7 @@ PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: The list of private en
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisservice
 #>
-function New-AzHealthcareAPIsService {
+function New-AzHealthcareApisService {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
@@ -89,8 +89,8 @@ function New-AzHealthcareAPIsService {
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceAccessPolicyEntry[]]
         # The access policies of the service instance.
-        # To construct, see NOTES section for ACCESSPOLICY properties and create a hash table.
-        ${AccessPolicy},
+        # To construct, see NOTES section for ACCESSPOLICYOBJECTID properties and create a hash table.
+        ${AccessPolicyObjectId},
 
         [Parameter()]
         [AllowEmptyCollection()]
@@ -109,66 +109,66 @@ function New-AzHealthcareAPIsService {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # If credentials are allowed via CORS.
+        ${AllowCorsCredential},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # The audience url for the service
-        ${AuthenticationConfigurationAudience},
+        ${Audience},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # The authority url for the service
-        ${AuthenticationConfigurationAuthority},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # If the SMART on FHIR proxy is enabled
-        ${AuthenticationConfigurationSmartProxyEnabled},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # If credentials are allowed via CORS.
-        ${CorConfigurationAllowCredentials},
+        ${Authority},
 
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String[]]
         # The headers to be allowed via CORS.
-        ${CorConfigurationHeader},
+        ${CorsHeader},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.Int32]
         # The max age to be allowed via CORS.
-        ${CorConfigurationMaxAge},
+        ${CorsMaxAge},
 
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String[]]
         # The methods to be allowed via CORS.
-        ${CorConfigurationMethod},
+        ${CorsMethod},
 
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String[]]
         # The origins to be allowed via CORS.
-        ${CorConfigurationOrigin},
+        ${CorsOrigin},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # The URI of the customer-managed key for the backing database.
-        ${CosmoDbConfigurationKeyVaultKeyUri},
+        ${CosmosKeyVaultKeyUri},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.Int32]
         # The provisioned throughput for the backing database.
-        ${CosmoDbConfigurationOfferThroughput},
+        ${CosmosOfferThroughput},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # If the SMART on FHIR proxy is enabled
+        ${EnableSmartProxy},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
@@ -180,7 +180,7 @@ function New-AzHealthcareAPIsService {
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # The name of the default export storage account.
-        ${ExportConfigurationStorageAccountName},
+        ${ExportStorageAccountName},
 
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ManagedServiceIdentityType])]
@@ -270,10 +270,9 @@ function New-AzHealthcareAPIsService {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
 )
-
     process {
         try {
-            Az.HealthcareApis.internal\New-AzHealthcareAPIsService @PSBoundParameters
+            Az.HealthcareApis.internal\New-AzHealthcareApisService @PSBoundParameters
         } catch {
             throw
         }

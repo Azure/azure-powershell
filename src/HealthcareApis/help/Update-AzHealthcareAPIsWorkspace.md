@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/u
 schema: 2.0.0
 ---
 
-# Update-AzHealthcareAPIsWorkspace
+# Update-AzHealthcareApisWorkspace
 
 ## SYNOPSIS
 Patch workspace details.
@@ -14,13 +14,13 @@ Patch workspace details.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzHealthcareAPIsWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzHealthcareApisWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzHealthcareAPIsWorkspace -InputObject <IHealthcareApisIdentity> [-Tag <Hashtable>]
+Update-AzHealthcareApisWorkspace -InputObject <IHealthcareApisIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Patch workspace details.
 
 ### Example 1: Patch workspace details.
 ```powershell
-PS C:\> Update-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
+PS C:\> Update-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 
 Location Name     ResourceGroupName
 -------- ----     -----------------
@@ -42,7 +42,7 @@ Patch workspace details.
 
 ### Example 2: Patch workspace details.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group | Update-AzHealthcareAPIsWorkspace -Tag @{"abc"="123"}
+PS C:\> Get-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group | Update-AzHealthcareApisWorkspace -Tag @{"abc"="123"}
 
 Location Name     ResourceGroupName
 -------- ----     -----------------

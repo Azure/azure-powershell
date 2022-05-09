@@ -12,11 +12,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
     /// <remarks>
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApis/services"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzHealthcareAPIsService_List")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzHealthcareApisService_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Description(@"Get all the service instances in a subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Generated]
-    public partial class GetAzHealthcareAPIsService_List : global::System.Management.Automation.PSCmdlet,
+    public partial class GetAzHealthcareApisService_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -167,9 +167,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="GetAzHealthcareAPIsService_List" /> cmdlet class.
+        /// Intializes a new instance of the <see cref="GetAzHealthcareApisService_List" /> cmdlet class.
         /// </summary>
-        public GetAzHealthcareAPIsService_List()
+        public GetAzHealthcareApisService_List()
         {
 
         }
