@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.BotService/botServices", "2021-05-01-preview", true, true);
         }
         /// <summary>
-        /// Register priavte endopoint connection and private link resource configuration
+        /// Register private endpoint connection and private link resource configuration
         /// </summary>
         /// <param name="type">Resource type</param>
         /// <param name="apiVersion">Resource api version</param>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                     {
                     new ParameterAttribute { Mandatory = false,
                                             ValueFromPipeline = true,
-                                            HelpMessage = "The private link resource type.",
+                                            HelpMessage = "The resource provider and resource type which supports private link resource.",
                                             ParameterSetName = parameterSetName },
                     new ValidateSetAttribute(ProvideTypeList)
                     }
