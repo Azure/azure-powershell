@@ -11,6 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
 using Microsoft.Azure.Attestation;
 using Microsoft.Azure.Management.Attestation;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
                     @"../AzureRM.Resources.ps1"
                 })
                 .WithNewRmModules(helper => new[]
-               {
+                {
                     helper.RMProfileModule,
                     helper.GetRMModulePath("Az.Attestation.psd1")
                 })
@@ -97,4 +98,3 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
         }
     }
 }
-

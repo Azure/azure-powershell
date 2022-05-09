@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
     public class AttstationTests : AttestationTestRunner
     {
         public AttstationTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
-        { 
+        {
         }
 
         #region New-AzureRmAttestation

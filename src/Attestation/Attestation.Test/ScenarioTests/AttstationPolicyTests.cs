@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
     public class AttstationPolicyTests : AttestationTestRunner
     {
         public AttstationPolicyTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
-        {          
+        {
         }
 
         [Fact]
