@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Upgraded System.Reflection.DispatchProxy on Windows PowerShell [#17856]
+* Supported specifying scope in `-ResourceUrl` of `Get-AzAccessToken` [#14085]
 
 ## Version 2.7.6
 * Upgraded Microsoft.Rest.ClientRuntime to 2.3.24

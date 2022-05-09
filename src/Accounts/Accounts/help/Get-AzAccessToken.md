@@ -8,7 +8,10 @@ schema: 2.0.0
 # Get-AzAccessToken
 
 ## SYNOPSIS
-Get raw access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
+Get raw access token. The format of `-ResourceUrl` concatenates a desired resource identifier with an 
+optional desired OAuth2 permission for that resource. Please make sure resource identifier matches current 
+Azure environment. You may refer to the value of `(Get-AzContext).Environment`. If permission is not 
+provided, `/.default` is appended automatically for all app-level permission.
 
 ## SYNTAX
 
@@ -83,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceUrl
-Resource url for that you're requesting token, e.g. 'https://graph.microsoft.com/'.
+Resource url for that you're requesting token, e.g. 'https://graph.microsoft.com/'. Permission can be appended.
 
 ```yaml
 Type: System.String
