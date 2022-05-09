@@ -40,11 +40,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             SimpleSchedulePolicy psPolicy = new SimpleSchedulePolicy();
 
-            psPolicy.ScheduleRunDays =
-                HelperUtils.EnumListConverter<ServiceClientModel.DayOfWeek?, DayOfWeek>(
-                    serviceClientPolicy.ScheduleRunDays);
-            psPolicy.ScheduleRunFrequency = (ScheduleRunType)Enum.Parse(
-                    typeof(ScheduleRunType), serviceClientPolicy.ScheduleRunFrequency.ToString());
+            psPolicy.ScheduleRunDays = HelperUtils.EnumListConverter<ServiceClientModel.DayOfWeek?, DayOfWeek>(serviceClientPolicy.ScheduleRunDays);
+
+            psPolicy.ScheduleRunFrequency = (ScheduleRunType)Enum.Parse(typeof(ScheduleRunType), serviceClientPolicy.ScheduleRunFrequency.ToString());
             psPolicy.ScheduleRunTimes = ParseDateTimesToUTC(serviceClientPolicy.ScheduleRunTimes, timeZone);
 
             if (psPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
@@ -82,23 +80,89 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 psPolicy.ScheduleWindowStartTime = serviceClientPolicy.HourlySchedule.ScheduleWindowStartTime;
                 psPolicy.ScheduleWindowDuration = serviceClientPolicy.HourlySchedule.ScheduleWindowDuration;
                 psPolicy.ScheduleRunTimeZone = timeZone;
-                psPolicy.ScheduleRunDays = null;
-                psPolicy.ScheduleRunTimes = null;
             }
             else
             {
-                psPolicy.ScheduleInterval = null;
-                psPolicy.ScheduleWindowStartTime = null;
-                psPolicy.ScheduleWindowDuration = null;
                 psPolicy.ScheduleRunTimeZone = timeZone;
             }
 
             // safe side validation
-            if (psPolicy.ScheduleRunFrequency != ScheduleRunType.Hourly)
-            {
-                psPolicy.Validate();
-            }            
+            psPolicy.Validate();       
                         
+            return psPolicy;
+        }
+
+        // <summary>
+        /// Helper function to convert ps simple schedule policy from service response.
+        /// </summary>
+        public static SimpleSchedulePolicyV2 GetPSSimpleSchedulePolicyV2(
+            ServiceClientModel.SimpleSchedulePolicyV2 serviceClientPolicy, string timeZone)
+        {
+            if (serviceClientPolicy == null)
+            {
+                return null;
+            }
+                        
+            SimpleSchedulePolicyV2 psPolicy = new SimpleSchedulePolicyV2();
+            
+            psPolicy.ScheduleRunFrequency = (ScheduleRunType)Enum.Parse(typeof(ScheduleRunType), serviceClientPolicy.ScheduleRunFrequency.ToString());
+
+            if (psPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
+            {   
+                psPolicy.WeeklySchedule = new WeeklySchedule();
+                                
+                int offset = 0;
+                if (serviceClientPolicy.WeeklySchedule != null)
+                {
+                    psPolicy.WeeklySchedule.ScheduleRunDays = HelperUtils.EnumListConverter<ServiceClientModel.DayOfWeek?, DayOfWeek>(serviceClientPolicy.WeeklySchedule.ScheduleRunDays);                    
+                    psPolicy.WeeklySchedule.ScheduleRunTimes = ParseDateTimesToUTC(serviceClientPolicy.WeeklySchedule.ScheduleRunTimes, timeZone);
+
+                    offset = psPolicy.WeeklySchedule.ScheduleRunTimes[0].DayOfWeek.GetHashCode() - serviceClientPolicy.WeeklySchedule.ScheduleRunTimes[0].Value.DayOfWeek.GetHashCode();
+                }
+
+                for (int index = 0; index < psPolicy.WeeklySchedule.ScheduleRunDays.Count(); index++)
+                {
+                    if (offset == -1)
+                    {
+                        int value = psPolicy.WeeklySchedule.ScheduleRunDays[index].GetHashCode() - 1;
+                        if (value == -1)
+                        {
+                            value = 6;
+                        }
+                        
+                        psPolicy.WeeklySchedule.ScheduleRunDays[index] = (DayOfWeek)value;
+                    }
+                    else if (offset == 1)
+                    {
+                        int value = psPolicy.WeeklySchedule.ScheduleRunDays[index].GetHashCode() + 1;
+                        if (value == 7)
+                        {
+                            value = 0;
+                        }
+                        psPolicy.WeeklySchedule.ScheduleRunDays[index] = (DayOfWeek)value;
+                    }
+                }                
+            }
+            else if (psPolicy.ScheduleRunFrequency == ScheduleRunType.Hourly)
+            {   
+                psPolicy.HourlySchedule = new HourlySchedule();
+                
+                // multiple backups per day 
+                psPolicy.HourlySchedule.Interval = serviceClientPolicy.HourlySchedule.Interval;
+                psPolicy.HourlySchedule.WindowStartTime = serviceClientPolicy.HourlySchedule.ScheduleWindowStartTime;
+                psPolicy.HourlySchedule.WindowDuration = serviceClientPolicy.HourlySchedule.ScheduleWindowDuration;
+            }
+            else
+            {
+                psPolicy.DailySchedule = new DailySchedule();
+                psPolicy.DailySchedule.ScheduleRunTimes = (serviceClientPolicy.DailySchedule != null) ? ParseDateTimesToUTC(serviceClientPolicy.DailySchedule.ScheduleRunTimes, timeZone) : null;
+            }
+
+            psPolicy.ScheduleRunTimeZone = timeZone;
+
+            // safe side validation
+            psPolicy.Validate();
+            
             return psPolicy;
         }
 
@@ -161,38 +225,72 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         // <summary>
         /// Helper function to convert service simple schedule policy from ps schedule policy.
         /// </summary>
-        public static ServiceClientModel.SimpleSchedulePolicy GetServiceClientSimpleSchedulePolicy(
-            SimpleSchedulePolicy psPolicy)
+        public static ServiceClientModel.SchedulePolicy GetServiceClientSimpleSchedulePolicy(
+            SchedulePolicyBase psPolicy)
         {
             if (psPolicy == null)
             {
                 return null;
             }
 
-            ServiceClientModel.SimpleSchedulePolicy serviceClientPolicy = new ServiceClientModel.SimpleSchedulePolicy();
-            serviceClientPolicy.ScheduleRunFrequency =
-                ServiceClientHelpers.GetServiceClientScheduleRunType(
-                    psPolicy.ScheduleRunFrequency);
+            if (psPolicy.GetType() == typeof(SimpleSchedulePolicy))
+            {
+                SimpleSchedulePolicy schPolicy = (SimpleSchedulePolicy)psPolicy;
+                ServiceClientModel.SimpleSchedulePolicy serviceClientPolicy = new ServiceClientModel.SimpleSchedulePolicy();
 
-            if (psPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
-            {
-                serviceClientPolicy.ScheduleRunDays =
-                    HelperUtils.EnumListConverter<DayOfWeek, ServiceClientModel.DayOfWeek>(
-                        psPolicy.ScheduleRunDays).Cast<ServiceClientModel.DayOfWeek?>().ToList();
+                serviceClientPolicy.ScheduleRunFrequency = ServiceClientHelpers.GetServiceClientScheduleRunType(schPolicy.ScheduleRunFrequency);
+
+                if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
+                {
+                    serviceClientPolicy.ScheduleRunDays = HelperUtils.EnumListConverter<DayOfWeek, ServiceClientModel.DayOfWeek>(
+                            schPolicy.ScheduleRunDays).Cast<ServiceClientModel.DayOfWeek?>().ToList();
+                }
+
+                if (schPolicy.ScheduleRunFrequency != ScheduleRunType.Hourly)
+                {
+                    serviceClientPolicy.ScheduleRunTimes = schPolicy.ScheduleRunTimes.ConvertAll(dateTime => (DateTime?)dateTime);
+                }
+                else
+                {
+                    serviceClientPolicy.HourlySchedule = new ServiceClientModel.HourlySchedule();
+                    serviceClientPolicy.HourlySchedule.Interval = schPolicy.ScheduleInterval;
+                    serviceClientPolicy.HourlySchedule.ScheduleWindowDuration = schPolicy.ScheduleWindowDuration;
+                    serviceClientPolicy.HourlySchedule.ScheduleWindowStartTime = schPolicy.ScheduleWindowStartTime;
+                }
+                return serviceClientPolicy;
             }
 
-            if (psPolicy.ScheduleRunFrequency != ScheduleRunType.Hourly)
+            else if (psPolicy.GetType() == typeof(SimpleSchedulePolicyV2))
             {
-                serviceClientPolicy.ScheduleRunTimes = psPolicy.ScheduleRunTimes.ConvertAll(dateTime => (DateTime?)dateTime);
+                SimpleSchedulePolicyV2 schPolicyV2 = (SimpleSchedulePolicyV2)psPolicy;
+                ServiceClientModel.SimpleSchedulePolicyV2 serviceClientPolicyV2 = new ServiceClientModel.SimpleSchedulePolicyV2();
+
+                serviceClientPolicyV2.ScheduleRunFrequency = ServiceClientHelpers.GetServiceClientScheduleRunType(schPolicyV2.ScheduleRunFrequency);
+
+                if (schPolicyV2.ScheduleRunFrequency == ScheduleRunType.Weekly)
+                {
+                    serviceClientPolicyV2.WeeklySchedule = new ServiceClientModel.WeeklySchedule();
+                    serviceClientPolicyV2.WeeklySchedule.ScheduleRunDays = HelperUtils.EnumListConverter<DayOfWeek, ServiceClientModel.DayOfWeek>(
+                            schPolicyV2.WeeklySchedule.ScheduleRunDays).Cast<ServiceClientModel.DayOfWeek?>().ToList(); 
+
+                    serviceClientPolicyV2.WeeklySchedule.ScheduleRunTimes = schPolicyV2.WeeklySchedule.ScheduleRunTimes.ConvertAll(dateTime => (DateTime?)dateTime);
+                }
+                else if (schPolicyV2.ScheduleRunFrequency == ScheduleRunType.Daily)
+                {
+                    serviceClientPolicyV2.DailySchedule = new ServiceClientModel.DailySchedule();
+                    serviceClientPolicyV2.DailySchedule.ScheduleRunTimes = schPolicyV2.DailySchedule.ScheduleRunTimes.ConvertAll(dateTime => (DateTime?)dateTime); 
+                }
+                else if(schPolicyV2.ScheduleRunFrequency == ScheduleRunType.Hourly)
+                {
+                    serviceClientPolicyV2.HourlySchedule = new ServiceClientModel.HourlySchedule();
+                    serviceClientPolicyV2.HourlySchedule.Interval = schPolicyV2.HourlySchedule.Interval;
+                    serviceClientPolicyV2.HourlySchedule.ScheduleWindowDuration = schPolicyV2.HourlySchedule.WindowDuration;
+                    serviceClientPolicyV2.HourlySchedule.ScheduleWindowStartTime = schPolicyV2.HourlySchedule.WindowStartTime;
+                }
+                return serviceClientPolicyV2;
             }
-            else
-            {
-                serviceClientPolicy.HourlySchedule = new ServiceClientModel.HourlySchedule();
-                serviceClientPolicy.HourlySchedule.Interval = psPolicy.ScheduleInterval;
-                serviceClientPolicy.HourlySchedule.ScheduleWindowDuration = psPolicy.ScheduleWindowDuration;
-                serviceClientPolicy.HourlySchedule.ScheduleWindowStartTime = psPolicy.ScheduleWindowStartTime;
-            }
-            return serviceClientPolicy;
+
+            return null;
         }
 
         public static ServiceClientModel.LogSchedulePolicy GetServiceClientLogSchedulePolicy(

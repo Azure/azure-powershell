@@ -34,8 +34,8 @@ Specifying *Encrypted* for an existing, non-encrypted, variable fails.
 ## EXAMPLES
 
 ### Example 1: Set the value of a variable
-```
-PS C:\>Set-AzAutomationVariable -AutomationAccountName "Contoso17" -Name "StringVariable22" -ResourceGroupName "ResourceGroup01" -Value "New Value" -Encrypted $False
+```powershell
+Set-AzAutomationVariable -AutomationAccountName "Contoso17" -Name "StringVariable22" -ResourceGroupName "ResourceGroup01" -Value "New Value" -Encrypted $False
 ```
 
 This command sets a new value for the variable named StringVariable22 in the Azure Automation account named Contoso17.

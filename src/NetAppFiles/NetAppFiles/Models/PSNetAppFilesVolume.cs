@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets Resource location
         /// </summary>
         public string Location { get; set; }
-        
+
         /// <summary>
         /// Gets resource Id
         /// </summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <remarks>
         /// Mount targets associated with the volume
         /// </remarks>
-        public object MountTargets { get; set;  }
+        public object MountTargets { get; set; }
 
         /// <summary>
         /// Gets or sets snapshot ID
@@ -358,5 +358,30 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Application specific placement rules for the particular volume.
         /// </value>
         public IList<PSKeyValuePairs> PlacementRules { get; set; }
+
+        /// <summary>
+        /// Gets or sets SystemData
+        /// </summary>
+        public PSSystemData SystemData { get; set; }
+
+        /// <summary>
+        /// Gets or sets MaximumNumberOfFiles
+        /// </summary>
+        /// <value>
+        /// Gets maximum number of files allowed. Needs a service request in
+        /// order to be changed. Only allowed to be changed if volume quota is
+        /// more than 4TiB.
+        /// </value>
+        public long? MaximumNumberOfFiles {get; set;}
+
+        /// <summary>
+        /// Gets or sets EnableSubvolumes
+        /// </summary>
+        /// <value>
+        /// Gets or sets flag indicating whether subvolume operations are
+        /// enabled on the volume. Possible values include: 'Enabled',
+        /// 'Disabled'
+        /// </value>
+        public string EnableSubvolumes { get; set; }
     }
 }

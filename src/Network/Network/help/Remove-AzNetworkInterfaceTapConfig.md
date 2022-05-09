@@ -37,7 +37,7 @@ The **Remove-AzNetworkInterfaceTapConfig** cmdlet removes an Azure tap configura
 
 ### Example 1: Remove a tap configuration
 ```powershell
-Remove-AzNetworkInterfaceTapConfig -Name "TapConfiguration" -NetworkInterfaceName "NetworkInterface1" -ResourceGroup "ResourceGroup1"
+Remove-AzNetworkInterfaceTapConfig -Name "TapConfiguration" -NetworkInterfaceName "NetworkInterface1" -ResourceGroupName "ResourceGroup1"
 ```
 
 This command removes the TapConfiguration from NetworkInterface1 in a resource group ResourceGroup1.
@@ -45,7 +45,7 @@ Because the *Force* parameter is not used, the user will be prompted to confirm 
 
 ### Example 2: Remove a network interface
 ```powershell
-Get-AzNetworkInterfaceTapConfig -Name "TapConfiguration" -NetworkInterfaceName "NetworkInterface1" -ResourceGroup "ResourceGroup1" | Remove-AzNetworkInterfaceTapConfig -Force
+Get-AzNetworkInterfaceTapConfig -Name "TapConfiguration" -NetworkInterfaceName "NetworkInterface1" -ResourceGroupName "ResourceGroup1" | Remove-AzNetworkInterfaceTapConfig -Force
 ```
 
 This command removes the TapConfiguration from NetworkInterface1 in a resource group ResourceGroup1.

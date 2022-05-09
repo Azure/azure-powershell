@@ -98,6 +98,8 @@ namespace Microsoft.Azure.Commands.Network
         [PSArgumentCompleter("Basic", "Standard")]
         public string Sku { get; set; }
 
+        public const String PreferredGWChangeDesc = "PreferredRoutingGateway parameter is deprecated. Use *HubRoutingPreference* property";
+        [CmdletParameterBreakingChange("PreferredRoutingGateway", ChangeDescription = PreferredGWChangeDesc)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Preferred Routing Gateway to Route On-Prem traffic from VNET")]
@@ -106,6 +108,16 @@ namespace Microsoft.Azure.Commands.Network
             MNM.PreferredRoutingGateway.VpnGateway,
             IgnoreCase = true)]
         public string PreferredRoutingGateway { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Virtual Hub Routing Preference to route traffic")]
+        [ValidateSet(
+            MNM.HubRoutingPreference.ExpressRoute,
+            MNM.HubRoutingPreference.VpnGateway,
+            MNM.HubRoutingPreference.ASPath,
+            IgnoreCase = true)]
+        public string HubRoutingPreference { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -181,6 +193,15 @@ namespace Microsoft.Azure.Commands.Network
                     else
                     {
                         virtualHub.PreferredRoutingGateway = this.PreferredRoutingGateway;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(this.HubRoutingPreference))
+                    {
+                        virtualHub.HubRoutingPreference = "ExpressRoute";
+                    }
+                    else
+                    {
+                        virtualHub.HubRoutingPreference = this.HubRoutingPreference;
                     }
 
                     WriteObject(CreateOrUpdateVirtualHub(

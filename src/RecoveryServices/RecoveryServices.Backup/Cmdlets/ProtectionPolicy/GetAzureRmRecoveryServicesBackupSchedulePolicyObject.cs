@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
@@ -58,8 +59,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, Position = 2,
             HelpMessage = ParamHelpMsgs.Policy.ScheduleRunFrequency)]
-        [ValidateSet("Daily", "Hourly")]
+        [ValidateSet("Daily", "Hourly", "Weekly")]
         public ScheduleRunType ScheduleRunFrequency = ScheduleRunType.Daily;
+
+        /// <summary>
+        /// Schedule policy subtype. 
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 3,
+            HelpMessage = ParamHelpMsgs.Policy.SchedulePolicySubType)]
+        public PSPolicyType PolicySubType = PSPolicyType.Standard;
 
         public override void ExecuteCmdlet()
         {
@@ -69,6 +77,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 Dictionary<Enum, object> providerParameters = new Dictionary<Enum, object>();
                 providerParameters.Add(PolicyParams.ScheduleRunFrequency, ScheduleRunFrequency);
+                providerParameters.Add(PolicyParams.PolicySubType, PolicySubType);
+
+                if (ScheduleRunFrequency != ScheduleRunType.Daily && WorkloadType != WorkloadType.AzureVM && WorkloadType != WorkloadType.AzureFiles)
+                {
+                    throw new ArgumentException(Resources.UnexpectedParamScheduleRunFrequency);
+                }
+                
+                if(ScheduleRunFrequency == ScheduleRunType.Weekly && WorkloadType == WorkloadType.AzureFiles)
+                {
+                    throw new ArgumentException(Resources.WeeklyScheduleNotSupported);
+                }
+
+                if (PolicySubType == PSPolicyType.Enhanced && WorkloadType != WorkloadType.AzureVM)
+                {
+                    throw new ArgumentException(Resources.EnhancedPolicyNotSupported);
+                }
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     providerParameters, ServiceClientAdapter);

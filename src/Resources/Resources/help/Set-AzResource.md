@@ -70,6 +70,7 @@ $Resource = Get-AzResource -ResourceGroupName testrg
 $Resource | ForEach-Object { $_.Tags.Add("testkey", "testval") }
 $Resource | Set-AzResource -Force
 ```
+
 ```output
 Name              : kv-test
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.KeyVault/vaults/kv-test

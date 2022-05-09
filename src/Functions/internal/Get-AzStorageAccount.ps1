@@ -22,13 +22,9 @@ Note that storage keys are not returned; use the ListKeys operation for this.
 Lists all the storage accounts available under the subscription.
 Note that storage keys are not returned; use the ListKeys operation for this.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount

@@ -1,24 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <PsModuleName>RecoveryServices</PsModuleName>
-  </PropertyGroup>
+	<PropertyGroup>
+		<PsModuleName>RecoveryServices</PsModuleName>
+	</PropertyGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+	<Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
-  <PropertyGroup>
-    <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName).Backup.Helpers</AssemblyName>
-    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName).Backup.Helpers</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<AssemblyName>$(AzAssemblyPrefix)$(PsModuleName).Backup.Helpers</AssemblyName>
+		<RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName).Backup.Helpers</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-	<PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="4.3.0-preview" />
-    <PackageReference Include="TimeZoneConverter" Version="3.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="4.4.0-preview" />
+		<PackageReference Include="TimeZoneConverter" Version="3.0.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\RecoveryServices.Backup.Logger\RecoveryServices.Backup.Logger.csproj" />
-    <ProjectReference Include="..\RecoveryServices.Backup.Models\RecoveryServices.Backup.Models.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\RecoveryServices.Backup.Logger\RecoveryServices.Backup.Logger.csproj" />
+		<ProjectReference Include="..\RecoveryServices.Backup.Models\RecoveryServices.Backup.Models.csproj" />
+	</ItemGroup>
 
 </Project>

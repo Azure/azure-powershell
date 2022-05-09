@@ -172,12 +172,11 @@ Template parameter values that you enter at the command prompt take precedence o
 
 ### Example 1: Use a custom template and parameter file to create a deployment
 ```powershell
-New-AzDeployment -Location "West US" -TemplateFile "D:\Azure\Templates\EngineeringSite.json" -TemplateParameterFile "D:\Azure\Templates\EngSiteParms.json" -TemplateVersion "2.1" -Tag @{"key1"="value1"; "key2"="value2";}
+New-AzDeployment -Location "West US" -TemplateFile "D:\Azure\Templates\EngineeringSite.json" -TemplateParameterFile "D:\Azure\Templates\EngSiteParms.json" -Tag @{"key1"="value1"; "key2"="value2";}
 ```
 
 This command creates a new deployment at the current subscription scope by using a custom template and a template file on disk, with defined tags parameter.
 The command uses the *TemplateFile* parameter to specify the template and the *TemplateParameterFile* parameter to specify a file that contains parameters and parameter values.
-It uses the *TemplateVersion* parameter to specify the version of the template.
 
 ### Example 2: Deploy a template stored in a non public storage account using a uri and SAS token
 ```powershell
@@ -192,13 +191,12 @@ This can be used if you want to use a template in a storage account by providing
 ```powershell
 $TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\EngineeringSite.json")
 $TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
-New-AzDeployment -Location "West US" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\EngSiteParams.json" -TemplateVersion "2.1"
+New-AzDeployment -Location "West US" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\EngSiteParams.json"
 ```
 
 This command creates a new deployment at the current subscription scope by using a custom template and a template file on disk that has been converted to an in-memory hashtable.
 The first two commands read the text for the template file on disk and convert it to an in-memory hashtable.
 The last command uses the *TemplateObject* parameter to specify this hashtable and the *TemplateParameterFile* parameter to specify a file that contains parameters and parameter values.
-It uses the *TemplateVersion* parameter to specify the version of the template.
 
 ## PARAMETERS
 

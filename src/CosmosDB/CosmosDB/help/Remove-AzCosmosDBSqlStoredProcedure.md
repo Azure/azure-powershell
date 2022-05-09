@@ -32,7 +32,7 @@ The **Remove-AzCosmosDBSqlStoredProcedure** cmdlet deletes the CosmosDB Sql Stor
 
 ### Example 1
 ```powershell
-Remove-AzCosmosDBSqlStoredProcedure -ResourceGroupName {resourceGroupName} -AccountName {accountName} -DatabaseName {databaseName} -ContainerName {containerName} -Name {storedProcedureName}
+Remove-AzCosmosDBSqlStoredProcedure -ResourceGroupName "resourceGroupName" -AccountName "accountName" -DatabaseName "databaseName" -ContainerName "containerName" -Name "storedProcedureName"
 ```
 
 ## PARAMETERS

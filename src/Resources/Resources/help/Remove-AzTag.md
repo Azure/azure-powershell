@@ -51,6 +51,7 @@ If the tag has been applied to any resources or resource groups, the command fai
 ```powershell
 Remove-AzTag -Name "Department" -Value "HumanResources" -PassThru
 ```
+
 ```output
 Name:   Department
 Count:  14
@@ -70,7 +71,7 @@ If the value has been applied to any resources or resource groups, the command f
 ### Example 3: Deletes the entire set of tags on a subscription
 
 ```powershell
-Remove-AzTag -ResourceId /subscriptions/{subId}
+Remove-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 This command deletes the entire set of tags on the subscription with {subId}. It will not return the object deleted if not passing in "-PassThru".
@@ -78,8 +79,9 @@ This command deletes the entire set of tags on the subscription with {subId}. It
 ### Example 4: Deletes the entire set of tags on a resource
 
 ```powershell
-Remove-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1 -PassThru
+Remove-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/testrg/providers/Microsoft.Sql/servers/Server1 -PassThru
 ```
+
 ```output
 Id         : {Id}
 Name       : {Name}

@@ -34,8 +34,8 @@ The schedule no longer starts the runbook.
 ## EXAMPLES
 
 ### Example 1: Remove the association between a runbook and a schedule
-```
-PS C:\>Unregister-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -Name "Runbk01" -ResourceGroupName "ResourceGroup01" -ScheduleName "Runbk01Sched"
+```powershell
+Unregister-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -Name "Runbk01" -ResourceGroupName "ResourceGroup01" -ScheduleName "Runbk01Sched"
 ```
 
 This command removes the association between the runbook named Runbk01 and the schedule named Runbk01Sched.

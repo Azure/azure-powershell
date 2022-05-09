@@ -40,7 +40,7 @@ Note that once a rollout is stopped, it cannot be resumed or restarted. You can 
 
 ### Example 1
 ```powershell
-Stop-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout -SkipSucceeded
+Stop-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout
 ```
 
 This command stops a rollout named ContosoRollout in the ContosoResourceGroup. 

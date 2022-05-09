@@ -59,8 +59,8 @@ The **Set-AzPolicySetDefinition** cmdlet modifies a policy definition.
 
 ### Example 1: Update the description of a policy set definition
 ```powershell
- $PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
- Set-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
+$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
+Set-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
 ```
 
 The first command gets a policy set definition by using the Get-AzPolicySetDefinition cmdlet.
@@ -71,8 +71,8 @@ The second command updates the description of the policy set definition identifi
 ```powershell
 Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}'
 ```
-```output
 
+```output
 Name                  : VMPolicySetDefinition
 ResourceId            : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/policySetDefinitions/VMPolicySetDefinition
 ResourceName          : VMPolicySetDefinition
@@ -93,7 +93,7 @@ This command updates the groups of a policy set definition named VMPolicySetDefi
 
 ### Example 4: Update the groups of a policy set definition using a hash table
 ```powershell
-$groupsJson = ConvertTo-Json @{ name = "group1", displayName = "Virtual Machine Security" }, @{ name = "group2" }
+$groupsJson = ConvertTo-Json @{ name = "group1"; displayName = "Virtual Machine Security" }, @{ name = "group2" }
 Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groupsJson
 ```
 

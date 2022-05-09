@@ -58,13 +58,13 @@ The New-AzPrivateDnsRecordConfig cmdlet creates a local PSPrivateDnsRecord objec
 
 ### Example 1: Create a RecordSet of type A
 ```powershell
- $Records = @()
- $Records += New-AzPrivateDnsRecordConfig -IPv4Address 1.2.3.4
- $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+$Records = @()
+$Records += New-AzPrivateDnsRecordConfig -IPv4Address 1.2.3.4
+$RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
 
 # When creating a RecordSet containing a single record, the above sequence can also be condensed into a single line:
 
- $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address 1.2.3.4)
+$RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address 1.2.3.4)
 
 Id                : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Netwo
                     rk/privateDnsZones/myzone.com/A/www
@@ -82,10 +82,10 @@ IsAutoRegistered  :
 # To create a record set containing multiple records, use New-AzPrivateDnsRecordConfig to add each record to the $Records array,
 # then call New-AzPrivateDnsRecordSet, as follows:
 
- $Records = @()
- $Records += New-AzPrivateDnsRecordConfig -IPv4Address 1.2.3.4
+$Records = @()
+$Records += New-AzPrivateDnsRecordConfig -IPv4Address 1.2.3.4
 $Records += New-AzPrivateDnsRecordConfig -IPv4Address 5.6.7.8
- $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+$RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
 
 Id                : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Netwo
                     rk/privateDnsZones/myzone.com/A/www
@@ -104,9 +104,9 @@ This example creates a RecordSet named www in the private zone myzone.com. The r
 
 ### Example 2: Create a RecordSet of type AAAA
 ```powershell
- $Records = @()
- $Records += New-AzPrivateDnsRecordConfig -Ipv6Address 2001:db8::1
- $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+$Records = @()
+$Records += New-AzPrivateDnsRecordConfig -Ipv6Address 2001:db8::1
+$RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
 ```
 
 ```output
@@ -127,9 +127,9 @@ This example creates a RecordSet named www in the private zone myzone.com. The r
 
 ### Example 3: Create a RecordSet of type CNAME
 ```powershell
- $Records = @()
- $Records += New-AzPrivateDnsRecordConfig -Cname www.contoso.com
- $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType CNAME -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+$Records = @()
+$Records += New-AzPrivateDnsRecordConfig -Cname www.contoso.com
+$RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType CNAME -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
 ```
 
 ```output
@@ -150,9 +150,9 @@ This example creates a RecordSet named www in the private zone myzone.com. The r
 
 ### Example 4: Create a RecordSet of type MX
 ```powershell
- $Records = @()
- $Records += New-AzPrivateDnsRecordConfig -Exchange "mail.microsoft.com" -Preference 5
- $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType MX -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+$Records = @()
+$Records += New-AzPrivateDnsRecordConfig -Exchange "mail.microsoft.com" -Preference 5
+$RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType MX -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
 ```
 
 ```output
@@ -173,9 +173,9 @@ This command creates a RecordSet named www in the private zone myzone.com. The r
 
 ### Example 5: Create a RecordSet of type PTR
 ```powershell
- $Records = @()
- $Records += New-AzPrivateDnsRecordConfig -Ptrdname www.contoso.com
- $RecordSet = New-AzPrivateDnsRecordSet -Name "4" -RecordType PTR -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "3.2.1.in-addr.arpa" -PrivateDnsRecords $Records
+$Records = @()
+$Records += New-AzPrivateDnsRecordConfig -Ptrdname www.contoso.com
+$RecordSet = New-AzPrivateDnsRecordSet -Name "4" -RecordType PTR -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "3.2.1.in-addr.arpa" -PrivateDnsRecords $Records
 ```
 
 ```output
@@ -196,9 +196,9 @@ This command creates a RecordSet named 4 in the private zone 3.2.1.in-addr.arpa.
 
 ### Example 6: Create a RecordSet of type SRV
 ```powershell
- $Records = @()
- $Records += New-AzPrivateDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target sipservice.contoso.com
- $RecordSet = New-AzPrivateDnsRecordSet -Name "_sip._tcp" -RecordType SRV -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+$Records = @()
+$Records += New-AzPrivateDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target sipservice.contoso.com
+$RecordSet = New-AzPrivateDnsRecordSet -Name "_sip._tcp" -RecordType SRV -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
 ```
 
 ```output
@@ -219,9 +219,9 @@ This command creates a RecordSet named _sip._tcp in the private zone myzone.com.
 
 ### Example 7: Create a RecordSet of type TXT
 ```powershell
- $Records = @()
- $Records += New-AzPrivateDnsRecordConfig -Value "This is a TXT Record"
- $RecordSet = New-AzPrivateDnsRecordSet -Name "text" -RecordType TXT -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+$Records = @()
+$Records += New-AzPrivateDnsRecordConfig -Value "This is a TXT Record"
+$RecordSet = New-AzPrivateDnsRecordSet -Name "text" -RecordType TXT -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
 ```
 
 ```output

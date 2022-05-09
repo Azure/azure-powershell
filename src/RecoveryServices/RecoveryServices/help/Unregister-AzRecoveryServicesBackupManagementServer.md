@@ -30,7 +30,7 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 ### Example 1: Unregister an SCDPM server from the vault
 ```powershell
 $BMS = Get-AzRecoveryServicesBackupManagementServer -Name "dpmserver01.contoso.com"
-Unregister-AzRecoveryServicesBackupManagementServer -AzBackupManagementServer $BMS
+Unregister-AzRecoveryServicesBackupManagementServer -AzureRmBackupManagementServer $BMS
 ```
 
 The first command gets the Backup management server named dpmserver01.contoso.com, and then stores it in the $BMS variable.

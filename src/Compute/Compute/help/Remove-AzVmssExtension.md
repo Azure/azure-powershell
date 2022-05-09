@@ -42,10 +42,10 @@ This command removes the extension of a VMSS and update the VMSS after the modif
 ### Example 2: Remove an instance from within a VMSS
 ```powershell
 $vmss = Get-AzVmss -ResourceGroupName $RGName -VMScaleSetName $vmssName 
-Remove-AzVmssExtension -ResourceGroupName "Group002" -VirtualMachineScaleSet $vmss -Id $extensionId
+Remove-AzVmssExtension -VirtualMachineScaleSet $vmss -Id $extensionId
 ```
 
-This command removes specify extension id from the VMSS that belongs to the resource group named Group002.
+This command removes specify extension id from the VMSS.
 
 ## PARAMETERS
 

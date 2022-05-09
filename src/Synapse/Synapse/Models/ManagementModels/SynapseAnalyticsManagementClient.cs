@@ -2596,6 +2596,44 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #endregion
 
+        #region Azure AD-Only Authentication
+
+        public List<AzureADOnlyAuthentication> ListAzureADOnlyAuthentications(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+                var firstPage = this._synapseManagementClient.AzureADOnlyAuthentications.List(resourceGroupName, workspaceName);
+                return ListResources(firstPage, _synapseManagementClient.AzureADOnlyAuthentications.ListNext);
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+        }
+
+        public AzureADOnlyAuthentication CreateOrUpdateAzureADOnlyAuthentication(string resourceGroupName, string workspaceName, AzureADOnlyAuthentication azureADOnlyAuthentication)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }            
+
+                return this._synapseManagementClient.AzureADOnlyAuthentications.Create(resourceGroupName, workspaceName, azureADOnlyAuthentication);
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+        }
+
+        #endregion
+
         #region helpers
 
         private static List<T> ListResources<T>(

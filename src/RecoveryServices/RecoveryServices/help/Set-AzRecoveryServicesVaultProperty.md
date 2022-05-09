@@ -15,8 +15,9 @@ Updates properties of a Vault.
 
 ### AzureRSVaultSoftDelteParameterSet (Default)
 ```
-Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState <String> [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzRecoveryServicesVaultProperty [-SoftDeleteFeatureState <String>]
+ [-DisableHybridBackupSecurityFeature <Boolean>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureRSVaultCMKParameterSet
@@ -66,6 +67,16 @@ Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -VaultId $vault.ID 
 First cmdlet gets the RSVault to update encryption properties. Second cmdlet gets the azure key vault. Third cmdlet gets the key from the key vault.
 Fourth cmdlet updates the customer managed encryption key within the RSVault to be accessed via UserAssigned identity.
 
+### Example 4: Update HybridBackupSecurityFeature of a vault
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"
+$prop = Set-AzRecoveryServicesVaultProperty -VaultId $vault.Id -DisableHybridBackupSecurityFeature $false
+```
+
+The first command gets a Vault object and then stores it in the $vault variable.
+The second command disables the HybridBackupSecurityFeature of the vault, set $true to enable it again.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -75,6 +86,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableHybridBackupSecurityFeature
+Optional flag ($true/$false) to disable/enable security setting for hybrid backups against accidental deletes and add additional layer of authentication for critical operations. Provide $false to enable the security.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: AzureRSVaultSoftDelteParameterSet
+Aliases:
 
 Required: False
 Position: Named
@@ -137,7 +163,7 @@ Parameter Sets: AzureRSVaultSoftDelteParameterSet
 Aliases:
 Accepted values: Enable, Disable
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -12,69 +12,64 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class ProfileTests
+    public class ProfileTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public ProfileTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ProfileTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileCrud");
+            TestRunner.RunTestScript("Test-ProfileCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSkuCreate()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SkuCreate");
+            TestRunner.RunTestScript("Test-SkuCreate");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileCrudWithPiping()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileDeleteAndSsoWithPiping");
+            TestRunner.RunTestScript("Test-ProfileDeleteAndSsoWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfilePipeline()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfilePipeline");
+            TestRunner.RunTestScript("Test-ProfilePipeline");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileDeleteWithEndpoints()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileDeleteWithEndpoints");
+            TestRunner.RunTestScript("Test-ProfileDeleteWithEndpoints");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileGetResourceUsage()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileGetResourceUsages");
+            TestRunner.RunTestScript("Test-ProfileGetResourceUsages");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProfileGetSupportedOptimizationType()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileGetSupportedOptimizationType");
+            TestRunner.RunTestScript("Test-ProfileGetSupportedOptimizationType");
         }
     }
 }

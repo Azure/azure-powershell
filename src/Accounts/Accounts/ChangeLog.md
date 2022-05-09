@@ -23,6 +23,12 @@
     - `Get-AzConfig`
     - `Update-AzConfig`
     - `Clear-AzConfig`
+* Upgraded System.Reflection.DispatchProxy on Windows PowerShell [#17856]
+
+## Version 2.7.6
+* Upgraded Microsoft.Rest.ClientRuntime to 2.3.24
+
+## Version 2.7.5
 * Added `SshCredentialFactory` to support get ssh credential of vm from msal.
 * Fixed the bug of cmdlet fails when -DefaultProfile is set to service principal login context. [#16617]
 * Fixed the issue that authorization does not work in Dogfood environment

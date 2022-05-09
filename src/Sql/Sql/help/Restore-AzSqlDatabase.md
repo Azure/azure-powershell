@@ -18,15 +18,15 @@ Restores a SQL database.
 Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -ResourceId <String>
  -ServerName <String> -TargetDatabaseName <String> [-Edition <String>] [-ServiceObjectiveName <String>]
  [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>] [-BackupStorageRedundancy <String>]
- [-ZoneRedundant] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ZoneRedundant] [-Tag <Hashtable>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromPointInTimeBackupWithVcore
 ```
 Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -ResourceId <String>
  -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String>
- -VCore <Int32> [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant]
+ -VCore <Int32> [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -36,7 +36,7 @@ Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -Resource
 Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -DeletionDate <DateTime>
  -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> [-Edition <String>]
  [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>]
- [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-ResourceGroupName] <String>
+ [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,23 +45,24 @@ Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -De
 Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -DeletionDate <DateTime>
  -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob]
  -ComputeGeneration <String> -VCore <Int32> [-LicenseType <String>] [-BackupStorageRedundancy <String>]
- [-ZoneRedundant] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ZoneRedundant] [-Tag <Hashtable>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromGeoBackup
 ```
 Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String> -TargetDatabaseName <String>
  [-Edition <String>] [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob]
- [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### FromGeoBackupWithVcore
 ```
 Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String> -TargetDatabaseName <String>
  -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32> [-LicenseType <String>]
- [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-ResourceGroupName] <String>
+ [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -69,7 +70,7 @@ Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
 ```
 Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -ServerName <String>
  -TargetDatabaseName <String> [-Edition <String>] [-ServiceObjectiveName <String>] [-ElasticPoolName <String>]
- [-AsJob] [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant]
+ [-AsJob] [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -78,14 +79,16 @@ Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -Serve
 ```
 Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -ServerName <String>
  -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
- [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Restore-AzSqlDatabase** cmdlet restores a SQL database from a geo-redundant backup, a backup of a deleted database, a long term retention backup, or a point in time in a live database.
 The restored database is created as a new database.
 You can create an elastic SQL database by setting the *ElasticPoolName* parameter to an existing elastic pool.
+You can also perform a cross subscription restore for a datawarehouse database.
 
 ## EXAMPLES
 
@@ -428,6 +431,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tag
+The tags to associate with the Azure Sql Database
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

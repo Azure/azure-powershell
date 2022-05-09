@@ -37,7 +37,7 @@ The **Get-AzRelayAuthorizationRule** cmdlet gets the description of the specifie
 
 ### Example 1: Namespace
 ```powershell
-Get-AzRelayNamespaceAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
+Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
 ```
 
 ```output
@@ -52,7 +52,7 @@ Returns the specified authorization rule description for a specified namespace.
 
 ### Example 2: WcfRelay
 ```powershell
-Get-AzWcfRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1
+Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1
 ```
 
 ```output
@@ -67,7 +67,7 @@ Returns the specified authorization rule description for a given WcfRelay.
 
 ### Example 3: HybridConnection
 ```powershell
-Get-AzRelayHybridConnectionAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnections TestHybridConnection -Name AuthoRule1
+Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnections TestHybridConnection -Name AuthoRule1
 ```
 
 ```output

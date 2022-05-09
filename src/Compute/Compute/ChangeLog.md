@@ -20,11 +20,35 @@
 
 -->
 ## Upcoming Release
+* Edited `New-AzVm` cmdlet internal logic to use the `PlatformFaultDomain` value in the `PSVirtualMachine` object passed to it in the new virtual machine.
+
+## Version 4.26.0
+* Added `-ImageReferenceId` parameter to following cmdlets: `New-AzVm`, `New-AzVmConfig`, `New-AzVmss`, `Set-AzVmssStorageProfile`
+* Added functionality for cross-tenant image reference for VM, VMSS, Managed Disk, and Gallery Image Version creation. 
+* `New-AzGallery` can take in `-Permission` parameter to set its sharingProfile property.
+* `Update-AzGallery` can update sharingProfile.
+* `Get-AzGallery` can take in `-Expand` parameter for expanded resource view.
+* New parameter set for the following cmdlets to support Shared Image Gallery Direct Sharing
+    - Get-AzGallery
+    - Get-AzGalleryImageDefinition
+    - Get-AzGalleryImageVersion
+* Updates and improvements to `Add-AzVhd`
+    - Added `-DiskHyperVGeneration` and `-DiskOsType` parameters to the DirectUploadToManagedDisk parameter set for upload to more robust managed disk settings.
+    - Updated progress output functions so that it works with VHD files with "&" character in its name.
+    - Updated so that uploading dynamically sized VHD files are converted to fixed size during upload.
+    - Fixed a bug in uploading a differencing disk.
+    - Automatically delete converted/resized VHD files after upload.
+    - Fixed a bug that indicates `-ResourceGroupName` parameter as optional when it is actually mandatory.
+
+## Version 4.25.0
 * Updated `New-AzVM` to create a new storage account for boot diagnostics if one does not exist. This will prevent the cmdlet from using a random storage account in the current subscription to use for boot diagnostics.
 * Added `AutomaticRepairAction` string parameter to the `New-AzVmssConfig` and `Update-AzVmss` cmdlets.
 * Updated `Get-AzVm` to include `GetVirtualMachineById` parameter set.
 * Edited the documentation for the cmdlet `Set-AzVMADDomainExtension` to ensure the example is accurate. 
 * Improved description and examples for disk creation.
+* Added new parameters to `New-AzRestorePoint` and `New-AzRestorePointCollection` for copying Restore Points and Restore Point Collections.
+* Added `Zone` and `PlacementGroupId` Parameters to `Repair-AzVmssServiceFabricUpdateDomain`.
+* Edited `New-AzVmss` logic to better check for null properties when the parameter `OrchestrationMode` is used.
 
 ## Version 4.24.1
 * Updated New-AzVM feature for `vCPUsAvailable` and `vCPUsPerCore` parameters. Cmdlets will not try to use the new `VMCustomizationPreview` feature if the user does not have access to that feature. [#17370]

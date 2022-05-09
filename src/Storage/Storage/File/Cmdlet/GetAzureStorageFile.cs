@@ -22,6 +22,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Management.Automation;
     using System.Net;
 
+    [GenericBreakingChange("The cmdlet might run slower in a furture release since more file properties will be returned. Add parameter '-ExcludeExtendedInfo' to get same performance as before. " +
+        "The returned file properties will be moved from CloudFile to FileProperties (with '-Path'), ListFileProperties (without '-Path'). " +
+        "The returned Directory properties will be moved from CloudFileDirectory to ShareDirectoryProperties (with '-Path'), ListFileProperties (without '-Path').")]
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFile", DefaultParameterSetName = Constants.ShareNameParameterSetName)]
     [OutputType(typeof(AzureStorageFile))]
     public class GetAzureStorageFile : AzureStorageFileCmdletBase

@@ -198,6 +198,10 @@
                 <Label>PublicNetworkAccess</Label>
                 <PropertyName>PublicNetworkAccess</PropertyName>
               </ListItem>
+			  <ListItem>
+			    <Label>TrustedServiceAccessEnabled</Label>
+				<PropertyName>TrustedServiceAccessEnabled</PropertyName>
+			  </ListItem>
               <ListItem>
                 <Label>Id</Label>
                 <PropertyName>Id</PropertyName>

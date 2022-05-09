@@ -54,7 +54,7 @@ Deletes an assessment result on a subscription
 Full resource ID of the resource that the assessment is calculated on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdLevelResource
 Aliases:
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 Input Object.
 
 ```yaml
-Type: PSSecurityAssessment
+Type: Microsoft.Azure.Commands.Security.Models.Assessments.PSSecurityAssessment
 Parameter Sets: InputObject
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionLevelResource, ResourceIdLevelResource
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 Return whether the operation was successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 ID of the security resource that you want to invoke the command on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -160,7 +160,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
