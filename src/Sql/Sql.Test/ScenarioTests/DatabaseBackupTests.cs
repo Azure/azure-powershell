@@ -206,5 +206,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-CreateRestoreRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateRestoreWithGeoZoneBackupStorageRedundancy()
+        {
+            RunPowerShellTest("Test-CreateRestoreWithGeoZoneBackupStorageRedundancy");
+        }
     }
 }

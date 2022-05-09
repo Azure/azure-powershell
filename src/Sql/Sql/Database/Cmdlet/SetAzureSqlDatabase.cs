@@ -238,8 +238,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the database backup storage redundancy.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
-        [ValidateSet("Local", "Zone", "Geo")]
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone, Geo and GeoZone.")]
+        [ValidateSet("Local", "Zone", "Geo", "GeoZone")]
         public string BackupStorageRedundancy { get; set; }
 
         /// <summary>

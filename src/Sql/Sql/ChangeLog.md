@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Added `GeoZone` option to `BackupStorageRedundancy` parameter to `New-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary`, and `Restore-AzSqlDatabase` to enable RAGZRS create, update, copy, geo secondary and PITR support for hyperscale databases
 ## Version 3.8.0
 * Added parameter `HighAvailabilityReplicaCount` to `New-AzSqlElasticPool` and `Set-AzSqlElasticPool`
 * Added parameter `ServicePrincipalType` to `New-AzSqlInstance` and `Set-AzSqlInstance`
