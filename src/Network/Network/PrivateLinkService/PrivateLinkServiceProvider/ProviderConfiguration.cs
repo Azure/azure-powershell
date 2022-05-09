@@ -78,8 +78,8 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         /// <param name="type">Resource type</param>
         /// <param name="apiVersion">Resource api version</param>
         /// <param name="hasConnectionsURI">True if the private endpoint connection can be list by URL <see cref="GenericProvider.BuildPrivateEndpointConnectionsURL(string, string)"/>, otherwise it can be list by URL <see cref="GenericProvider.BuildPrivateEndpointConnectionsOwnerURL(string, string)"/></param>
-        /// <param name="supportGetPrivateLinkResource">True if the private link resource can be get by Id, otherwise it can be list</param>
-        /// <param name="supportListPrivateLinkResource">True if the private link resource can be list, otherwise false</param>
+        /// <param name="supportGetPrivateLinkResource">True if the private link resource can be obtained by Id, otherwise false</param>
+        /// <param name="supportListPrivateLinkResource">True if the private link resource can be listed, otherwise false</param>
         private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = false, bool supportGetPrivateLinkResource = false, bool supportListPrivateLinkResource = true)
         {
             ProviderConfiguration configuration = new ProviderConfiguration
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                     {
                     new ParameterAttribute { Mandatory = false,
                                             ValueFromPipeline = true,
-                                            HelpMessage = "The resource type that supported private endpoint connection.",
+                                            HelpMessage = "The resource provider and resource type which supports private link resource.",
                                             ParameterSetName = parameterSetName },
                     new ValidateSetAttribute(ProvideTypeList)
                     }
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                     {
                     new ParameterAttribute { Mandatory = false,
                                             ValueFromPipeline = true,
-                                            HelpMessage = "The resource type that supported private link resource.",
+                                            HelpMessage = "The resource provider and resource type which supports private link resource.",
                                             ParameterSetName = parameterSetName },
                     new ValidateSetAttribute(ProvideTypeList)
                     }
