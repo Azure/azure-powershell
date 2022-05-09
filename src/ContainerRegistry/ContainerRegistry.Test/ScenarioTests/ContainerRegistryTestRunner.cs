@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
                 .WithCommonPsScripts(new[]
                 {
                     @"Common.ps1",
-                    @"../AzureRM.Resources.ps1",
+                    @"../AzureRM.Resources.ps1"
                 })
                 .WithNewRmModules(helper => new[]
-               {
+                {
                     helper.RMProfileModule,
                     helper.GetRMModulePath("Az.Network.psd1"),
                     helper.GetRMModulePath("Az.ContainerRegistry.psd1")
