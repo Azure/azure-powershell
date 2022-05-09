@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -20,10 +19,8 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
 {
     public class AttestationPolicySignerTests : AttestationTestRunner
     {
-
         public AttestationPolicySignerTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            
         }
 
         [Fact]

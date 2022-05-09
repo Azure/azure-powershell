@@ -12,23 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
 {
     public class AttstationTests : AttestationTestRunner
     {
-
         public AttstationTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            
         }
 
-        #region New-AzureRmAttestation        
+        #region New-AzureRmAttestation
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAttestation()

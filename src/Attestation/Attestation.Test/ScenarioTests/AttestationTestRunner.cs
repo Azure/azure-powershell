@@ -11,17 +11,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
 using Microsoft.Azure.Attestation;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Attestation;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -45,7 +40,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
                     @"../AzureRM.Resources.ps1"
                 })
                 .WithNewRmModules(helper => new[]
-               {
+                {
                     helper.RMProfileModule,
                     helper.GetRMModulePath("Az.Attestation.psd1")
                 })
@@ -61,8 +56,45 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null}
                     }
+                ).WithManagementClients(
+                    GetResourceManagementClient,
+                    GetAttestationManagementClient,
+                    GetAttestationClient
                 )
                 .Build();
+        }
+
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static AttestationManagementClient GetAttestationManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<AttestationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static AttestationClient GetAttestationClient(MockContext context)
+        {
+            string environmentConnectionString = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
+            string accessToken = "fakefakefake";
+
+            // When recording, we should have a connection string passed into the code from the environment
+            if (!string.IsNullOrEmpty(environmentConnectionString))
+            {
+                // Gather test client credential information from the environment
+                var connectionInfo = new ConnectionString(Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION"));
+                string servicePrincipal = connectionInfo.GetValue<string>(ConnectionStringKeys.ServicePrincipalKey);
+                string servicePrincipalSecret = connectionInfo.GetValue<string>(ConnectionStringKeys.ServicePrincipalSecretKey);
+                string aadTenant = connectionInfo.GetValue<string>(ConnectionStringKeys.AADTenantKey);
+
+                // Create credentials
+                var clientCredentials = new ClientCredential(servicePrincipal, servicePrincipalSecret);
+                var authContext = new AuthenticationContext($"https://login.windows.net/{aadTenant}", TokenCache.DefaultShared);
+                accessToken = authContext.AcquireTokenAsync("https://attest.azure.net", clientCredentials).Result.AccessToken;
+            }
+
+            return new AttestationClient(new AttestationCredentials(accessToken), HttpMockServer.CreateInstance());
         }
     }
 }
