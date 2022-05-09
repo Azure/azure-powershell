@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                     {
                     new ParameterAttribute { Mandatory = false,
                                             ValueFromPipeline = true,
-                                            HelpMessage = "The resource provider and resource type which supports private link resource.",
+                                            HelpMessage = "The resource provider and resource type which supports private endpoint connection.",
                                             ParameterSetName = parameterSetName },
                     new ValidateSetAttribute(ProvideTypeList)
                     }
