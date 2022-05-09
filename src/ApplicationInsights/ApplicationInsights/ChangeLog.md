@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* [Breaking change] Upgrade API version for ApplicationInsights component to 2020-02
+* [Breaking change] Upgrade API version for ApplicationInsights component to 2020-02-02
 
 ## Version 1.3.1
 * Added breaking change warnings for upcoming Az.ApplicationInsights 2.0.0
