@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestBackupPolicyCrud()
+            public void TestBackupPolicyCrud()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-BackupPolicyCrud");
         }

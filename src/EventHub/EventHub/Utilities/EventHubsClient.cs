@@ -862,6 +862,55 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSNetworkRuleSetAttributes(response);
         }
 
+        public PSNetworkRuleSetAttributes UpdateNetworkRuleSet(string resourceGroupName, string namespaceName, string publicNetworkAccess, bool? trustedServiceAccessEnabled, string defaultAction, PSNWRuleSetIpRulesAttributes[] iPRule, PSNWRuleSetVirtualNetworkRulesAttributes[] virtualNetworkRule)
+        {
+            NetworkRuleSet networkRuleSet = Client.Namespaces.GetNetworkRuleSet(resourceGroupName, namespaceName);
+
+            if (networkRuleSet == null)
+            {
+                networkRuleSet = new NetworkRuleSet();
+            }
+
+            if (defaultAction != null)
+            {
+                networkRuleSet.DefaultAction = defaultAction;
+            }
+
+            if (publicNetworkAccess != null)
+            {
+                networkRuleSet.PublicNetworkAccess = publicNetworkAccess;
+            }
+
+            if (trustedServiceAccessEnabled == true)
+            {
+                networkRuleSet.TrustedServiceAccessEnabled = trustedServiceAccessEnabled;
+            }
+
+            if (iPRule != null)
+            {
+                networkRuleSet.IpRules = new List<NWRuleSetIpRules>();
+
+                foreach (PSNWRuleSetIpRulesAttributes psiprules in iPRule)
+                {
+                    networkRuleSet.IpRules.Add(new NWRuleSetIpRules { Action = psiprules.Action, IpMask = psiprules.IpMask });
+                }
+            }
+
+            if (virtualNetworkRule != null)
+            {
+                networkRuleSet.VirtualNetworkRules = new List<NWRuleSetVirtualNetworkRules>();
+
+                foreach (PSNWRuleSetVirtualNetworkRulesAttributes psvisrtualnetworkrules in virtualNetworkRule)
+                {
+                    networkRuleSet.VirtualNetworkRules.Add(new NWRuleSetVirtualNetworkRules { Subnet = new Subnet { Id = psvisrtualnetworkrules.Subnet.Id }, IgnoreMissingVnetServiceEndpoint = psvisrtualnetworkrules.IgnoreMissingVnetServiceEndpoint });
+                }
+            }
+
+            var response = Client.Namespaces.CreateOrUpdateNetworkRuleSet(resourceGroupName, namespaceName, networkRuleSet);
+            return new PSNetworkRuleSetAttributes(response);
+
+        }
+
         #endregion
 
         #region SchemaRegistry

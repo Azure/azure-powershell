@@ -17,42 +17,38 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class AfdEndpointTests
+    public class AfdEndpointTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public AfdEndpointTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AfdEndpointTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAfdEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAfdEndpoint");
+            TestRunner.RunTestScript("Test-CreateAfdEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAfdEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAfdEndpoint");
+            TestRunner.RunTestScript("Test-GetAfdEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAfdEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveAfdEndpoint");
+            TestRunner.RunTestScript("Test-RemoveAfdEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAfdEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetAfdEndpoint");
+            TestRunner.RunTestScript("Test-SetAfdEndpoint");
         }
     }
 }

@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed these aliases:
+  * `Get-AzAks`
+  * `New-AzAks`
+  * `Set-AzAks`
+  * `Remove-AzAks`
 
 ## Version 3.1.3
 * Updated the description of `Force` in `Invoke-AzAksRunCommand` [#17756]

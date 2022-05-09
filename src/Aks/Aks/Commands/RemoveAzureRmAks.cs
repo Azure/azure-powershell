@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Aks
 {
     [GenericBreakingChange("Remove-AzAks will be removed in the next major release. Please use Remove-AzAksCluster instead of Remove-AzAks")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", SupportsShouldProcess = true, DefaultParameterSetName = GroupNameParameterSet)]
-    [Alias("Remove-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks")]
     [OutputType(typeof(bool))]
     public class RemoveAzureRmAks : KubeCmdletBase
     {

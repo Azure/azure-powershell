@@ -39,7 +39,7 @@ Use Update-AzPostgreSqlFlexibleServerConfiguration instead if you want update se
 
 ### Example 1: Update PostgreSql server by resource group and server name
 ```powershell
- Update-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -Sku Standard_D4s_v3
+Update-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -Sku Standard_D4s_v3
 ```
 
 ```output
@@ -52,7 +52,7 @@ This cmdlet updates PostgreSql server by resource group and server name.
 
 ### Example 2: Update PostgreSql server by identity.
 ```powershell
- Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Update-AzPostgreSqlFlexibleServer -BackupRetentionDay 23 -StorageMb 262144
+Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Update-AzPostgreSqlFlexibleServer -BackupRetentionDay 23 -StorageInMb 262144
 ```
 
 ```output

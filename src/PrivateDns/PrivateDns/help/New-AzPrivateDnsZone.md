@@ -43,7 +43,8 @@ NumberOfRecordSets            : 1
 MaxNumberOfRecordSets         : 5000
 ```
 This command creates a new private DNS zone named myzone.com in the specified resource group, and then
-stores it in the $Zone variable. $Zone object looks something like this,
+stores it in the $Zone variable.
+
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -27,12 +27,10 @@ You can use the **PrivateDnsZone** object to update the zone, for example you ca
 
 ### Example 1: Get a zone
 ```powershell
- $Zone = Get-AzPrivateDnsZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com"
+$Zone = Get-AzPrivateDnsZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com"
 ```
 
 ```output
-$Zone looks something like this: 
-
 Name                          : myzone.com
 ResourceId:                   : "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/PrivateZones/myzone.com"
 ResourceGroupName             : MyResourceGroup
@@ -43,9 +41,10 @@ NumberOfRecordSets            : 1
 MaxNumberOfRecordSets         : 5000
 ```
 This example gets the Private DNS zone named myzone.com from the specified resource group, and then stores it in the $Zone variable.
+
 ### Example 2: Get all of the zones in a resource group
 ```powershell
- $Zones = Get-AzPrivateDnsZone -ResourceGroupName "MyResourceGroup"
+$Zones = Get-AzPrivateDnsZone -ResourceGroupName "MyResourceGroup"
 ```
 
 ```output
@@ -74,7 +73,7 @@ This example gets all of the Private DNS zones in the specified resource group, 
 
 ### Example 3: Get all of the zones in a subscription
 ```powershell
- $Zones = Get-AzPrivateDnsZone
+$Zones = Get-AzPrivateDnsZone
 ```
 
 ```output
