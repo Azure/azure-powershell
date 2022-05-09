@@ -79,8 +79,8 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         /// <param name="apiVersion">Resource api version</param>
         /// <param name="hasConnectionsURI">True if the private endpoint connection can be list by URL <see cref="GenericProvider.BuildPrivateEndpointConnectionsURL(string, string)"/>, otherwise it can be list by URL <see cref="GenericProvider.BuildPrivateEndpointConnectionsOwnerURL(string, string)"/></param>
         /// <param name="supportGetPrivateLinkResource">True if the private link resource can be get by Id, otherwise it can be list</param>
-        /// <param name="supportPrivateLinkResource">True if the private link resource be supported, otherwise false</param>
-        private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = false, bool supportGetPrivateLinkResource = false, bool supportPrivateLinkResource = true)
+        /// <param name="supportListPrivateLinkResource">True if the private link resource can be list, otherwise false</param>
+        private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = false, bool supportGetPrivateLinkResource = false, bool supportListPrivateLinkResource = true)
         {
             ProviderConfiguration configuration = new ProviderConfiguration
             {
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                 ApiVersion = apiVersion,
                 HasConnectionsURI = hasConnectionsURI,
                 SupportGetPrivateLinkResource = supportGetPrivateLinkResource,
-                SupportPrivateLinkResource = supportPrivateLinkResource,
+                SupportListPrivateLinkResource = supportListPrivateLinkResource,
             };
             _configurations.Add(type, configuration);
         }
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         public string ApiVersion { get; set; }
         public bool HasConnectionsURI { get; set; }
         public bool SupportGetPrivateLinkResource { get; set; }
-        public bool SupportPrivateLinkResource { get; set; }
+        public bool SupportListPrivateLinkResource { get; set; }
 
         public static ProviderConfiguration GetProviderConfiguration(string type)
         {
@@ -109,25 +109,54 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         /// <summary>
         /// Generate a runtime parameter with ValidateSet matching the current context
         /// </summary>
-        /// <param name="serviceType">Has two value, PLR => private link resource, PEC => private endpoint connection.</param>
         /// <param name="name">The name of the parameter</param>
         /// <param name="runtimeParameter">The returned runtime parameter for context, with appropriate validate set</param>
         /// <returns>True if one or more contexts were found, otherwise false</returns>
-        public static bool TryGetProvideServiceParameter(string serviceType, string name, string parameterSetName, out RuntimeDefinedParameter runtimeParameter)
+        public static bool TryGetEndpointConnectionServiceParameter(string name, string parameterSetName, out RuntimeDefinedParameter runtimeParameter)
         {
             var result = false;
             runtimeParameter = null;
             if (_configurations != null && _configurations.Values != null)
             {
                 var ObjArray = _configurations.Values.ToArray();
-                var ProvideTypeList = serviceType.ToUpper() == "PLR" ? ObjArray.Where(c => c.SupportPrivateLinkResource).Select(c => c.Type).ToArray() : ObjArray.Select(c => c.Type).ToArray();
+                var ProvideTypeList = ObjArray.Select(c => c.Type).ToArray();
                 runtimeParameter = new RuntimeDefinedParameter(
                     name, typeof(string),
                     new Collection<Attribute>()
                     {
                     new ParameterAttribute { Mandatory = false,
                                             ValueFromPipeline = true,
-                                            HelpMessage = "The private link resource type.",
+                                            HelpMessage = "The resource type that supported private endpoint connection.",
+                                            ParameterSetName = parameterSetName },
+                    new ValidateSetAttribute(ProvideTypeList)
+                    }
+                );
+                result = true;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Generate a runtime parameter with ValidateSet matching the current context
+        /// </summary>
+        /// <param name="name">The name of the parameter</param>
+        /// <param name="runtimeParameter">The returned runtime parameter for context, with appropriate validate set</param>
+        /// <returns>True if one or more contexts were found, otherwise false</returns>
+        public static bool TryGetLinkResourceServiceParameter(string name, string parameterSetName, out RuntimeDefinedParameter runtimeParameter)
+        {
+            var result = false;
+            runtimeParameter = null;
+            if (_configurations != null && _configurations.Values != null)
+            {
+                var ObjArray = _configurations.Values.ToArray();
+                var ProvideTypeList = ObjArray.Where(c => (c.SupportListPrivateLinkResource || c.SupportGetPrivateLinkResource)).Select(c => c.Type).ToArray();
+                runtimeParameter = new RuntimeDefinedParameter(
+                    name, typeof(string),
+                    new Collection<Attribute>()
+                    {
+                    new ParameterAttribute { Mandatory = false,
+                                            ValueFromPipeline = true,
+                                            HelpMessage = "The resource type that supported private link resource.",
                                             ParameterSetName = parameterSetName },
                     new ValidateSetAttribute(ProvideTypeList)
                     }

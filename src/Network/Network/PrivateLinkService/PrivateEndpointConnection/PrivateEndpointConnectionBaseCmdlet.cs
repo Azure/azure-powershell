@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkServiceProvider;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
             InvocationInfo invocationInfo = MyInvocation;
             var parameters = new RuntimeDefinedParameterDictionary();
             RuntimeDefinedParameter namedParameter;
-            if (ProviderConfiguration.TryGetProvideServiceParameter("PEC", privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
+            if (ProviderConfiguration.TryGetEndpointConnectionServiceParameter(privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
             {
                 parameters.Add(privateEndpointTypeName, namedParameter);
             }
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
         protected IPrivateLinkProvider BuildProvider(string subscription, string privateLinkResourceType)
         {
             if (!GenericProvider.SupportsPrivateLinkResourceType(privateLinkResourceType))
-                throw new System.Exception($"The {privateLinkResourceType} doesn't support private endpoint connection");
+                throw new AzPSApplicationException(string.Format(Properties.Resources.UnsupportPrivateEndpointConnectionType, privateLinkResourceType));
             return PrivateLinkProviderFactory.CreatePrivateLinkProvder(this, subscription, privateLinkResourceType);
         }
     }

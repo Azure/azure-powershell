@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -853,7 +853,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TargetResourceId specified in flow log is not a valid resource ID of Network security group..
+        ///   Looks up a localized string similar to TargetResourceId specified in flow log is not a valid resource ID of Network security group, Virtual Network, Subnet or Network Interface..
         /// </summary>
         internal static string InvalidTargetResourceId {
             get {
@@ -1551,6 +1551,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string UnsupportedProtocolConfigurationType {
             get {
                 return ResourceManager.GetString("UnsupportedProtocolConfigurationType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The {0} doesn&apos;t support private endpoint connection..
+        /// </summary>
+        internal static string UnsupportPrivateEndpointConnectionType {
+            get {
+                return ResourceManager.GetString("UnsupportPrivateEndpointConnectionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The {0} doesn&apos;t support private link resource..
+        /// </summary>
+        internal static string UnsupportPrivateLinkResourceType {
+            get {
+                return ResourceManager.GetString("UnsupportPrivateLinkResourceType", resourceCulture);
             }
         }
         

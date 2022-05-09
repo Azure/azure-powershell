@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkServiceProvider;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
             InvocationInfo invocationInfo = MyInvocation;
             var parameters = new RuntimeDefinedParameterDictionary();
             RuntimeDefinedParameter namedParameter;
-            if (ProviderConfiguration.TryGetProvideServiceParameter("PLR", privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
+            if (ProviderConfiguration.TryGetLinkResourceServiceParameter(privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
             {
                 parameters.Add(privateEndpointTypeName, namedParameter);
             }
@@ -93,7 +94,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!GenericProvider.SupportsPrivateLinkResourceType(this.PrivateLinkResourceType))
             {
-                throw new Exception($"The {this.PrivateLinkResourceType} doesn't support private link resource");
+                throw new ArgumentException(string.Format(Properties.Resources.UnsupportPrivateLinkResourceType, this.PrivateLinkResourceType));
             }
 
             IPrivateLinkProvider provider = PrivateLinkProviderFactory.CreatePrivateLinkProvder(this, Subscription, PrivateLinkResourceType);

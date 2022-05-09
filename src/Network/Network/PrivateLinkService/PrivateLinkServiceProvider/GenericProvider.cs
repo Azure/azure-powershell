@@ -20,6 +20,7 @@ using Microsoft.Rest.Azure;
 using Microsoft.Azure.Internal.Common;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkServiceProvider
 {
@@ -133,9 +134,9 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         public PSPrivateLinkResource GetPrivateLinkResource(string resourceGroupName, string serviceName, string name)
         {
-            if (!_configuration.SupportPrivateLinkResource)
+            if (!_configuration.SupportListPrivateLinkResource)
             {
-                throw new System.Exception($"The {_configuration.Type} api {_configuration.ApiVersion} doesn't support private link resource");
+                throw new AzPSApplicationException(string.Format(Properties.Resources.UnsupportPrivateLinkResourceType, $"{_configuration.Type} api {_configuration.ApiVersion}"));
             }
             if (_configuration.SupportGetPrivateLinkResource)
             {
@@ -151,9 +152,9 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         public List<PSPrivateLinkResource> ListPrivateLinkResource(string resourceGroupName, string serviceName)
         {
-            if (!_configuration.SupportPrivateLinkResource)
+            if (!_configuration.SupportListPrivateLinkResource)
             {
-                throw new System.Exception($"The {_configuration.Type} api {_configuration.ApiVersion} doesn't support private link resource");
+                throw new AzPSApplicationException(string.Format(Properties.Resources.UnsupportPrivateLinkResourceType, $"{_configuration.Type} api {_configuration.ApiVersion}"));
             }
             var psPLRs = new List<PSPrivateLinkResource>();
             string url = BuildPrivateLinkResourcesURL(resourceGroupName, serviceName);
