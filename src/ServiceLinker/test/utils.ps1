@@ -16,7 +16,8 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    $subscription = (Get-AzContext).Subscription.Id
+    # $subscription = (Get-AzContext).Subscription.Id
+    $subscription = "937bc588-a144-4083-8612-5f9ffbbddb14"
     $env.SubscriptionId = $subscription
     $env.Tenant = (Get-AzContext).Tenant.Id
     
