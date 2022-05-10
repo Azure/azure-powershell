@@ -12,11 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.CognitiveServices;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.Internal.Resources;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.TestFx;
 using Xunit.Abstractions;
 
@@ -54,30 +50,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTes
                         {"Microsoft.Authorization", null},
                         {"Microsoft.Network", null}
                     }
-                ).WithManagementClients(
-                    GetResourceManagementClient,
-                    GetCognitiveServicesManagementClient,
-                    GetNetworkClient
                 )
                 .Build();
-        }
-
-        private static ResourceManagementClient GetResourceManagementClient(RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private static CognitiveServicesManagementClient GetCognitiveServicesManagementClient(RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<CognitiveServicesManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected NetworkManagementClient GetNetworkClient(RestTestFramework.MockContext context)
-        {
-            NetworkManagementClient client =
-                context.GetServiceClient<NetworkManagementClient>(
-                    RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-            return client;
         }
     }
 }
