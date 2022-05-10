@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzServiceLinkerForSpringC
 }
 
 Describe 'New-AzServiceLinkerForSpringCloud' {
-
-    It 'CreateExpanded' { 
+    # skip because the test requires user token
+    It 'CreateExpanded' -skip { 
         $target = New-AzServiceLinkerAzureResourceObject -Id $env.keyvaultId
         $authInfo = New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject
         $newLinker = New-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup-Service $env.spring -App $env.springApp -LinkerName $env.newLinker -TargetService $target -AuthInfo $authInfo

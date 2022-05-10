@@ -19,7 +19,7 @@ Describe 'New-AzServiceLinkerForWebApp' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'New Key Vault connection' { 
+    It 'New Key Vault connection' -skip { 
         $target = New-AzServiceLinkerAzureResourceObject -Id $env.keyvaultId
         $authInfo = New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject
         $newLinker = New-AzServiceLinkerForWebApp -ResourceGroupName $env.resourceGroup -WebApp $env.webapp -LinkerName $env.newLinker -TargetService $target -AuthInfo $authInfo
