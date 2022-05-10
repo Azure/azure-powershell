@@ -42,11 +42,14 @@ function Test-RouteServerCRUD
       $publicIp = Get-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgName
 
       # Create route server
-      $actualvr = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedsubnet.Id -PublicIpAddress $publicIp -HubRoutingPreference "ExpressRoute"
+      $actualvr = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedsubnet.Id -PublicIpAddress $publicIp
       $expectedvr = Get-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
       Assert-AreEqual $expectedvr.ResourceGroupName $actualvr.ResourceGroupName	
       Assert-AreEqual $expectedvr.Name $actualvr.Name
       Assert-AreEqual $expectedvr.Location $actualvr.Location
+
+      # Update route server
+      $actualvr = Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -HubRoutingPreference "ASPath"
 
       # List route servers
       $list = Get-AzRouteServer -ResourceGroupName $rgname
