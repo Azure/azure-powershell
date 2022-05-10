@@ -3424,6 +3424,7 @@ function Test-VirtualMachineScaleSetConfidentialVMFeatures
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssSecurityProfile -SecurityType $securityTypeCV `
+            | Set-AzVmssUefi -EnableSecureBoot $true -EnableVtpm $true `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
             -ImageReferencePublisher $imgRef.PublisherName -DiffDiskSetting 'Local' -DiffDiskPlacement $diffDiskPlacement;
