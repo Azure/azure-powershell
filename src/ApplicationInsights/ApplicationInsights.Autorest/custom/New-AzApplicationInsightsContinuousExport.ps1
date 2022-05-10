@@ -45,6 +45,7 @@ function New-AzApplicationInsightsContinuousExport {
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
+        [Alias("ApplicationInsightsComponentName", "ComponentName")]
         [System.String]
         # The name of the Application Insights component resource.
         ${Name},
@@ -153,8 +154,6 @@ function New-AzApplicationInsightsContinuousExport {
         if ($PSBoundParameters['StorageAccountId']) {
             $PSBoundParameters['DestinationStorageSubscriptionId'] = [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Utilities]::ParseSubscriptionFromId($PSBoundParameters['StorageAccountId'])
         }
-        $PSBoundParameters['ResourceName'] = $PSBoundParameters['Name']
-        $null = $PSBoundParameters.Remove('Name')
         $PSBoundParameters['RecordType'] = [System.String]::Join(",", $PSBoundParameters['DocumentType'])
         $null = $PSBoundParameters.Remove('DocumentType')
         $PSBoundParameters['IsEnabled'] = 'true'

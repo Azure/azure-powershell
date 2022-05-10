@@ -53,7 +53,7 @@ https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplic
 #>
 function Get-AzApplicationInsights {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent], [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan])]
-    [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+    [CmdletBinding(DefaultParameterSetName='ListBySubscription', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]
         [Parameter(ParameterSetName='ListByResourceGroupName', Mandatory)]
@@ -66,6 +66,7 @@ function Get-AzApplicationInsights {
         [Parameter(ParameterSetName='Get', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
         [System.String]
+        [Alias("ApplicationInsightsComponentName", "ComponentName")]
         # The name of the Application Insights component resource.
         ${Name},
     
@@ -80,7 +81,7 @@ function Get-AzApplicationInsights {
 
         [Parameter(ParameterSetName='GetByResourceId', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
-        [System.String[]]
+        [System.String]
         # The resource ID of applicationinsights component.
         ${ResourceId},
 
@@ -164,8 +165,6 @@ function Get-AzApplicationInsights {
             }
             default {
                 if ($PSBoundParameters['Name']) {
-                    $PSBoundParameters['ResourceName'] = $PSBoundParameters['Name']
-                    $null = $PSBoundParameters.Remove('Name')
                     if ($full) {
                         $pricingPlan = (. Az.ApplicationInsights.internal\Get-AzApplicationInsightsComponentCurrentBillingFeature @PSBoundParameters)
                         $dailyCapStatus  = (. Az.ApplicationInsights.internal\Get-AzApplicationInsightsComponentQuotaStatus @PSBoundParameters)

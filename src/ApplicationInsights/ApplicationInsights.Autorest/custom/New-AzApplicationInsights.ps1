@@ -48,6 +48,7 @@ function New-AzApplicationInsights {
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
+        [Alias("ApplicationInsightsComponentName", "ComponentName")]
         [System.String]
         # The name of the Application Insights component resource.
         ${Name},
@@ -229,8 +230,6 @@ function New-AzApplicationInsights {
     )
     
     process {
-        $PSBoundParameters['ResourceName'] = $PSBoundParameters['Name']
-        $null = $PSBoundParameters.Remove("Name")
         if ($PSBoundParameters.ContainsKey("RetentionInDays")) {
             $PSBoundParameters["RetentionInDay"] = $PSBoundParameters["RetentionInDays"]
             $null = $PSBoundParameters.Remove("RetentionInDays")

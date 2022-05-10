@@ -12,9 +12,9 @@ Returns an Application Insights component.
 
 ## SYNTAX
 
-### List (Default)
+### ListBySubscription (Default)
 ```
-Get-AzApplicationInsights [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationInsights [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -31,18 +31,13 @@ Get-AzApplicationInsights -InputObject <IApplicationInsightsIdentity> [-DefaultP
 
 ### GetByResourceId
 ```
-Get-AzApplicationInsights -ResourceId <String[]> [-Full] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationInsights -ResourceId <String> [-Full] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByResourceGroupName
 ```
 Get-AzApplicationInsights -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListBySubscription
-```
-Get-AzApplicationInsights [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,7 +113,7 @@ The name of the Application Insights component resource.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
 Position: Named
@@ -147,7 +142,7 @@ Accept wildcard characters: False
 The resource ID of applicationinsights component.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: GetByResourceId
 Aliases:
 

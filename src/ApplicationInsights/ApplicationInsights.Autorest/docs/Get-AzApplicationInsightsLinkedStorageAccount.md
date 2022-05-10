@@ -14,7 +14,7 @@ Returns the current linked storage settings for an Application Insights componen
 
 ### Get (Default)
 ```
-Get-AzApplicationInsightsLinkedStorageAccount -ComponentName <String> -ResourceGroupName <String>
+Get-AzApplicationInsightsLinkedStorageAccount -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -37,21 +37,6 @@ PS C:\> Get-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName "rgName
 Get linked storage account associated with component "componentName"
 
 ## PARAMETERS
-
-### -ComponentName
-The name of the Application Insights component resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -81,6 +66,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Application Insights component resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: ApplicationInsightsComponentName, ComponentName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

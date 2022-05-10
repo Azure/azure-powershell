@@ -13,7 +13,7 @@ Replace current linked storage account for an Application Insights component.
 ## SYNTAX
 
 ```
-New-AzApplicationInsightsLinkedStorageAccount -ComponentName <String> -ResourceGroupName <String>
+New-AzApplicationInsightsLinkedStorageAccount -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-LinkedStorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -32,21 +32,6 @@ PS C:\> Get-AzApplicationInsights -ResourceGroupName "rgName" -Name "componentNa
 Create linked storage account $account under component "componentName"
 
 ## PARAMETERS
-
-### -ComponentName
-The name of the Application Insights component resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -72,6 +57,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Application Insights component resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ApplicationInsightsComponentName, ComponentName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

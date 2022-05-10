@@ -52,6 +52,7 @@ function New-AzApplicationInsightsApiKey {
     
         [Parameter(ParameterSetName="ComponentNameParameterSet", Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
+        [Alias("ApplicationInsightsComponentName", "ComponentName")]
         [System.String]
         # The name of the Application Insights component resource.
         ${Name},
@@ -119,11 +120,7 @@ function New-AzApplicationInsightsApiKey {
     )
     
     process {
-        $PSBoundParameters['ResourceName'] = $PSBoundParameters['Name']
-        $PSBoundParameters['Name'] = $PSBoundParameters['Description']
-        $null = $PSBoundParameters.Remove('Description')
-
-        $pattern = "/subscriptions/$($PSBoundParameters['SubscriptionId'])/resourceGroups/$($PSBoundParameters['ResourceGroupName'])/providers/microsoft.insights/components/$($PSBoundParameters['ResourceName'])/{0}"
+        $pattern = "/subscriptions/$($PSBoundParameters['SubscriptionId'])/resourceGroups/$($PSBoundParameters['ResourceGroupName'])/providers/microsoft.insights/components/$($PSBoundParameters['Name'])/{0}"
         $read = @()
         $write = @()
 

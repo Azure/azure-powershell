@@ -91,7 +91,7 @@ The name of the Application Insights component resource.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: ApplicationInsightsComponentNameAlias, ComponentNameAlias
+Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
 Position: Named

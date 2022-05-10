@@ -14,9 +14,8 @@ Delete a Continuous Export configuration of an Application Insights component.
 
 ### Delete (Default)
 ```
-Remove-AzApplicationInsightsContinuousExport -ExportId <String> -ResourceGroupName <String>
- -ResourceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzApplicationInsightsContinuousExport -ExportId <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -86,14 +85,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+The name of the Application Insights component resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
 Position: Named
@@ -102,8 +100,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-The name of the Application Insights component resource.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String

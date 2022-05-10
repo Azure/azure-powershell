@@ -104,7 +104,7 @@ The name of the Application Insights component resource.
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases: ApplicationInsightsComponentNameAlias, ComponentNameAlias
+Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
 Position: Named

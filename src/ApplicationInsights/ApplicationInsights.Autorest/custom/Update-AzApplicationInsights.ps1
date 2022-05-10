@@ -48,6 +48,7 @@ function Update-AzApplicationInsights {
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
+        [Alias("ApplicationInsightsComponentName", "ComponentName")]
         [System.String]
         # The name of the Application Insights component resource.
         ${Name},

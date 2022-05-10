@@ -14,7 +14,7 @@ Delete linked storage accounts for an Application Insights component.
 
 ### Delete (Default)
 ```
-Remove-AzApplicationInsightsLinkedStorageAccount -ComponentName <String> -ResourceGroupName <String>
+Remove-AzApplicationInsightsLinkedStorageAccount -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -37,21 +37,6 @@ PS C:\> Get-AzApplicationInsights -ResourceGroupName "rgName" -Name "componentNa
 Delete linked storage account associated with application insights component "componentName"
 
 ## PARAMETERS
-
-### -ComponentName
-The name of the Application Insights component resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -81,6 +66,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Application Insights component resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: ApplicationInsightsComponentName, ComponentName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

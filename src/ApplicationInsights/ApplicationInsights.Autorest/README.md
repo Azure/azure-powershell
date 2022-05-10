@@ -77,23 +77,6 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
 
-  # Hide ApplicationInsightsComponent related cmdlets
-  - where:
-      subject: Component
-      verb: Remove
-      parameter-name: ResourceName
-    set:
-      parameter-name: Name
-  - where:
-      subject: Component
-      verb: Get|New|Clear|Set
-    hide: true
-  # Rename Component related cmdlets  
-  - where:
-      subject: (^Component$)(.*)
-    set:
-      subject: $2
-
   # Hide ComponentCurrentBillingFeature related cmdlets
   - where:
       subject: ComponentCurrentBillingFeature|ComponentQuotaStatus
@@ -105,13 +88,34 @@ directive:
     set:
       subject: ContinuousExport
 
-  # Rename parameters for New|Set ApplicationInsightsExportConfiguration
+  # Rename parameter 'ResourceName' to 'Name'
   - where:
-      subject: ContinuousExport
-      verb: Get
+      subject: ApiKey
+      verb: New
+      parameter-name: Name
+    set:
+      parameter-name: Description
+  - where:
+      subject: ApiKey|ContinuousExport|Component
       parameter-name: ResourceName
     set:
       parameter-name: Name
+      alias: 
+        - ApplicationInsightsComponentName
+        - ComponentName
+
+  # Hide ApplicationInsightsComponent related cmdlets
+  - where:
+      subject: Component
+      verb: Get|New|Clear|Set
+    hide: true
+  # Rename Component related cmdlets  
+  - where:
+      subject: (^Component$)(.*)
+    set:
+      subject: $2
+
+  # Rename parameters for New|Set ApplicationInsightsExportConfiguration
   - where:
       subject: ContinuousExport
       verb: New|Set
@@ -161,17 +165,6 @@ directive:
     set:
       subject: LinkedStorageAccount
 
-  # Rename parameter 'ResourceName' to 'Name'
-  - where:
-      subject: ApiKey|ExportConfiguration
-      verb: Get|Remove
-      parameter-name: ResourceName
-    set:
-      parameter-name: Name
-      alias: 
-        - ApplicationInsightsComponentNameAlias
-        - ComponentNameAlias
-
   # Rename parameter 'KeyId' to 'ApiKeyId'
   - where:
       subject: ApiKey
@@ -182,7 +175,7 @@ directive:
 
   # Rename parameter 'InputObject' to 'ApplicationInsightsComponent'
   - where:
-      subject: ApiKey|ExportConfiguration
+      subject: ApiKey|ContinuousExport
       verb: Get|Remove
       parameter-name: InputObject
     set:
