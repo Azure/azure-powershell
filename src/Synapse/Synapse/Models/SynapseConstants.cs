@@ -207,7 +207,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string ActiveDirectoryOnlyAuthentication = nameof(ActiveDirectoryOnlyAuthentication);
 
-
         public const string LinkConnectionLinkTable = nameof(LinkConnectionLinkTable);
 
         public const string LinkConnectionLinkTableStatus = nameof(LinkConnectionLinkTableStatus);
