@@ -134,19 +134,19 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         public PSPrivateLinkResource GetPrivateLinkResource(string resourceGroupName, string serviceName, string name)
         {
-            if (!_configuration.SupportListPrivateLinkResource)
-            {
-                throw new AzPSApplicationException(string.Format(Properties.Resources.UnsupportPrivateLinkResourceType, $"{_configuration.Type} api {_configuration.ApiVersion}"));
-            }
             if (_configuration.SupportGetPrivateLinkResource)
             {
                 string url = BuildPrivateLinkResourceURL(resourceGroupName, serviceName, name);
                 PrivateLinkResource resource = ServiceClient.Operations.GetResource<PrivateLinkResource>(url, _configuration.ApiVersion);
                 return ToPsPrivateLinkResource(resource);
             }
-            else 
+            else if (_configuration.SupportListPrivateLinkResource)
             {
                 return ListPrivateLinkResource(resourceGroupName, serviceName).Single(plr => plr.Name.Equals(name));
+            }
+            else
+            {
+                throw new AzPSApplicationException(string.Format(Properties.Resources.UnsupportPrivateLinkResourceType, $"{_configuration.Type} api {_configuration.ApiVersion}"));
             }
         }
 

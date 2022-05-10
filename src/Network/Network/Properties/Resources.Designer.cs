@@ -1555,7 +1555,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} doesn&apos;t support private endpoint connection..
+        ///   Looks up a localized string similar to The {0} doesn&apos;t register private endpoint connection..
         /// </summary>
         internal static string UnsupportPrivateEndpointConnectionType {
             get {
@@ -1564,7 +1564,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} doesn&apos;t support private link resource..
+        ///   Looks up a localized string similar to The {0} doesn&apos;t register private link resource..
         /// </summary>
         internal static string UnsupportPrivateLinkResourceType {
             get {
