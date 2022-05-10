@@ -14,53 +14,44 @@
 
 
 using Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTests;
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using System;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace CognitiveServices.Test.ScenarioTests
 {
-    public class CognitiveServicesAccountTests : RMTestBase
+    public class CognitiveServicesAccountTests : CognitiveServicesTestRunner
     {
-        XunitTracingInterceptor traceInterceptor;
-
-        public CognitiveServicesAccountTests(ITestOutputHelper output)
+        public CognitiveServicesAccountTests(ITestOutputHelper output) : base(output)
         {
-            this.traceInterceptor = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(this.traceInterceptor);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAccount()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmCognitiveServicesAccount");
+            TestRunner.RunTestScript("Test-NewAzureRmCognitiveServicesAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAccountWithCustomDomain()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmCognitiveServicesAccountWithCustomDomain");
+            TestRunner.RunTestScript("Test-NewAzureRmCognitiveServicesAccountWithCustomDomain");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAccountWithVnet()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmCognitiveServicesAccountWithVnet");
+            TestRunner.RunTestScript("Test-NewAzureRmCognitiveServicesAccountWithVnet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAccount()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-RemoveAzureRmCognitiveServicesAccount");
+            TestRunner.RunTestScript("Test-RemoveAzureRmCognitiveServicesAccount");
         }
 
 
@@ -68,42 +59,42 @@ namespace CognitiveServices.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAccounts()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureCognitiveServiceAccount");
+            TestRunner.RunTestScript("Test-GetAzureCognitiveServiceAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAsyncAccountOperations()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-AsyncAccountOperations");
+            TestRunner.RunTestScript("Test-AsyncAccountOperations");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAccount()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-SetAzureRmCognitiveServicesAccount");
+            TestRunner.RunTestScript("Test-SetAzureRmCognitiveServicesAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAccountWithCustomDomain()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-SetAzureRmCognitiveServicesAccountWithCustomDomain");
+            TestRunner.RunTestScript("Test-SetAzureRmCognitiveServicesAccountWithCustomDomain");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAccountWithVnet()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-SetAzureRmCognitiveServicesAccountWithVnet");
+            TestRunner.RunTestScript("Test-SetAzureRmCognitiveServicesAccountWithVnet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkRuleSet()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NetworkRuleSet");
+            TestRunner.RunTestScript("Test-NetworkRuleSet");
         }
 
 
@@ -111,56 +102,56 @@ namespace CognitiveServices.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkRuleSetDefaultActions()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NetworkRuleSetDefaultActions");
+            TestRunner.RunTestScript("Test-NetworkRuleSetDefaultActions");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAccountKeys()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureRmCognitiveServicesAccountKey");
+            TestRunner.RunTestScript("Test-GetAzureRmCognitiveServicesAccountKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAccountKey()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmCognitiveServicesAccountKey");
+            TestRunner.RunTestScript("Test-NewAzureRmCognitiveServicesAccountKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAccountSkus()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureRmCognitiveServicesAccountSkus");
+            TestRunner.RunTestScript("Test-GetAzureRmCognitiveServicesAccountSkus");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAccountType()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureRmCognitiveServicesAccountType");
+            TestRunner.RunTestScript("Test-GetAzureRmCognitiveServicesAccountType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingToGetKey()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PipingGetAccountToGetKey");
+            TestRunner.RunTestScript("Test-PipingGetAccountToGetKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingToSetAccount()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PipingToSetAzureAccount");
+            TestRunner.RunTestScript("Test-PipingToSetAzureAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMinMaxAccountNames()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-MinMaxAccountName");
+            TestRunner.RunTestScript("Test-MinMaxAccountName");
         }
         
 
@@ -168,105 +159,105 @@ namespace CognitiveServices.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUsages()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetUsages");
+            TestRunner.RunTestScript("Test-GetUsages");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedIdentity()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManagedIdentity");
+            TestRunner.RunTestScript("Test-ManagedIdentity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUserAssignedIdentity()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-UserAssignedIdentity");
+            TestRunner.RunTestScript("Test-UserAssignedIdentity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEncryption()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-Encryption");
+            TestRunner.RunTestScript("Test-Encryption");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUserOwnedStorage()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-UserOwnedStorage");
+            TestRunner.RunTestScript("Test-UserOwnedStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateEndpoint()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PrivateEndpoint");
+            TestRunner.RunTestScript("Test-PrivateEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPublicNetworkAccess()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PublicNetworkAccess");
+            TestRunner.RunTestScript("Test-PublicNetworkAccess");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestrictOutboundNetworkAccess()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-RestrictOutboundNetworkAccess");
+            TestRunner.RunTestScript("Test-RestrictOutboundNetworkAccess");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableLocalAuth()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-DisableLocalAuth");
+            TestRunner.RunTestScript("Test-DisableLocalAuth");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCapabilities()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-Capabilities");
+            TestRunner.RunTestScript("Test-Capabilities");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestApiProperties()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ApiProperties");
+            TestRunner.RunTestScript("Test-ApiProperties");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSoftDelete()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-SoftDelete");
+            TestRunner.RunTestScript("Test-SoftDelete");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCommitmentPlan()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-CommitmentPlan");
+            TestRunner.RunTestScript("Test-CommitmentPlan");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeployment()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-Deployment");
+            TestRunner.RunTestScript("Test-Deployment");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListModels()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ListModels");
+            TestRunner.RunTestScript("Test-ListModels");
         }
     }
 }
