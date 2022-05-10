@@ -63,6 +63,7 @@ function New-AzApplicationInsights {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.String]
+        [Alias("ApplicationKind")]
         [ValidateSet("web", "other", "nodejs", "java", "ios", "store", "phone", IgnoreCase)]
         # The kind of application that this component refers to, used to customize UI.
         # This value is a freeform string, values should typically be one of the following: web, ios, other, store, java, phone.
@@ -168,6 +169,7 @@ function New-AzApplicationInsights {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
+        [Alias("Tags")]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IComponentsResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags

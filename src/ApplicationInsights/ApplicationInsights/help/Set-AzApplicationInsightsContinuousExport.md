@@ -1,5 +1,5 @@
 ---
-external help file: Az.ApplicationInsights-help.xml
+external help file:
 Module Name: Az.ApplicationInsights
 online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport
 schema: 2.0.0
@@ -13,10 +13,11 @@ Create a Continuous Export configuration of an Application Insights component.
 ## SYNTAX
 
 ```
-Set-AzApplicationInsightsContinuousExport -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
- [-DestinationType <String>] [-NotificationQueueEnabled <String>] [-NotificationQueueUri <String>]
- [-DocumentType  <String[]>] [-StorageAccountId <String>] [-StorageLocation <String>] [-DisableConfiguration]
- [-StorageSASUri <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzApplicationInsightsContinuousExport -ExportId <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DestinationType <String>] [-DisableConfiguration] [-DocumentType  <String[]>]
+ [-NotificationQueueEnabled <String>] [-NotificationQueueUri <String>] [-StorageAccountId <String>]
+ [-StorageLocation <String>] [-StorageSASUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +72,7 @@ Accept wildcard characters: False
 
 ### -DisableConfiguration
 
+
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -84,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -DocumentType 
-{{ Fill DocumentType  Description }}
+
 
 ```yaml
 Type: System.String[]
@@ -92,6 +94,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExportId
+The Continuous Export configuration ID.
+This is unique within a Application Insights component.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -265,3 +283,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
+

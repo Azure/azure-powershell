@@ -154,6 +154,7 @@ function Update-AzApplicationInsights {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
+        [Alias("Tags")]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IComponentsResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags

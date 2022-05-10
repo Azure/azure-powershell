@@ -13,7 +13,7 @@ Create a Continuous Export configuration of an Application Insights component.
 ## SYNTAX
 
 ```
-Set-AzApplicationInsightsContinuousExport -Name <String> -ResourceGroupName <String>
+Set-AzApplicationInsightsContinuousExport -ExportId <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DestinationType <String>] [-DisableConfiguration] [-DocumentType  <String[]>]
  [-NotificationQueueEnabled <String>] [-NotificationQueueUri <String>] [-StorageAccountId <String>]
  [-StorageLocation <String>] [-StorageSASUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -94,6 +94,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExportId
+The Continuous Export configuration ID.
+This is unique within a Application Insights component.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

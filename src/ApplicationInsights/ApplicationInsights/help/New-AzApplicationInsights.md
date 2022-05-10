@@ -1,5 +1,5 @@
 ---
-external help file: Az.ApplicationInsights-help.xml
+external help file:
 Module Name: Az.ApplicationInsights
 online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights
 schema: 2.0.0
@@ -14,14 +14,14 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 ## SYNTAX
 
 ```
-New-AzApplicationInsights -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
- -Location <String> [-Kind <String>] [-ApplicationType <ApplicationType>] [-DisableIPMasking]
- [-DisableLocalAuth] [-Etag <String>] [-FlowType <FlowType>] [-ForceCustomerStorageForProfiler]
- [-HockeyAppId <String>] [-ImmediatePurgeDataOn30Day] [-IngestionMode <IngestionMode>]
+New-AzApplicationInsights -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-ApplicationType <ApplicationType>] [-DisableIPMasking] [-DisableLocalAuth]
+ [-Etag <String>] [-FlowType <FlowType>] [-ForceCustomerStorageForProfiler] [-HockeyAppId <String>]
+ [-ImmediatePurgeDataOn30Day] [-IngestionMode <IngestionMode>] [-Kind <String>]
  [-PublicNetworkAccessForIngestion <PublicNetworkAccessType>]
  [-PublicNetworkAccessForQuery <PublicNetworkAccessType>] [-RequestSource <RequestSource>]
  [-RetentionInDays <Int32>] [-SamplingPercentage <Double>] [-Tag <Hashtable>] [-WorkspaceResourceId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -197,7 +197,7 @@ This value is a freeform string, values should typically be one of the following
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ApplicationKind
 
 Required: False
 Position: Named
@@ -349,7 +349,7 @@ Resource tags
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: Tags
 
 Required: False
 Position: Named
@@ -420,3 +420,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
+
