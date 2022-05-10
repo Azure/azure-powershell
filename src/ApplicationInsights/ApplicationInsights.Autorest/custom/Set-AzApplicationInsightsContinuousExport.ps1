@@ -49,6 +49,13 @@ function Set-AzApplicationInsightsContinuousExport {
         [System.String]
         # The name of the Application Insights component resource.
         ${Name},
+
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
+        [System.String]
+        # The Continuous Export configuration ID.
+        # This is unique within a Application Insights component.
+        ${ExportId},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]

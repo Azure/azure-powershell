@@ -197,7 +197,7 @@ This value is a freeform string, values should typically be one of the following
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ApplicationKind
 
 Required: False
 Position: Named
@@ -349,7 +349,7 @@ Resource tags
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: Tags
 
 Required: False
 Position: Named
