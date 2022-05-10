@@ -30,17 +30,17 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
                 .WithCommonPsScripts(new[]
                 {
                     @"Common.ps1",
-                    @"../AzureRM.Resources.ps1",
+                    @"../AzureRM.Resources.ps1"
                 })
                 .WithNewRmModules(helper => new[]
-               {
+                {
                     helper.RMProfileModule,
                     helper.GetRMModulePath("Az.AnalysisServices.psd1")
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
                     {
-                        {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
+                        {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
                     },
                     resourceProviders: new Dictionary<string, string>
                     {
