@@ -22,13 +22,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 {
-    public class AdlaTestRunner
+    public class DataLakeAnalyticsTestRunner
     {
-        internal const string ResourceGroupLocation = "eastus2";
-
         protected readonly ITestRunner TestRunner;
 
-        protected AdlaTestRunner(ITestOutputHelper output)
+        protected DataLakeAnalyticsTestRunner(ITestOutputHelper output)
         {
             TestRunner = TestManager.CreateInstance(output)
                 .WithNewPsScriptFilename($"{GetType().Name}.ps1")

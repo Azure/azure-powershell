@@ -17,8 +17,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class AdlaTests : AdlaTestRunner
+    public class AdlaTests : DataLakeAnalyticsTestRunner
     {
+        internal const string ResourceGroupLocation = "eastus2";
         public AdlaTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
         }
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format(
                 "Test-DataLakeAnalyticsAccount -blobAccountKey -location '{0}'",
-                AdlaTestRunner.ResourceGroupLocation));
+                ResourceGroupLocation));
         }
 
         [Fact]
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format(
                 "Test-DataLakeAnalyticsAccountTiers -location '{0}'",
-                AdlaTestRunner.ResourceGroupLocation));
+                ResourceGroupLocation));
         }
 
         [Fact]
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format(
                 "Test-DataLakeAnalyticsFirewall -location '{0}'",
-                AdlaTestRunner.ResourceGroupLocation));
+                ResourceGroupLocation));
         }
 
         [Fact]
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format(
                 "Test-DataLakeAnalyticsComputePolicy -location '{0}'",
-                AdlaTestRunner.ResourceGroupLocation));
+                ResourceGroupLocation));
         }
 
 #if NETSTANDARD
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format(
                 "Test-DataLakeAnalyticsCatalog -location '{0}'",
-                AdlaTestRunner.ResourceGroupLocation));
+                ResourceGroupLocation));
         }
 
         [Fact]
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format(
                 "Test-DataLakeAnalyticsJob -location '{0}'",
-                AdlaTestRunner.ResourceGroupLocation));
+                ResourceGroupLocation));
         }
 
         [Fact]
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format(
                 "Test-DataLakeAnalyticsJobRelationships -location '{0}'",
-                AdlaTestRunner.ResourceGroupLocation));
+                ResourceGroupLocation));
         }
 
         [Fact]
@@ -96,7 +97,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format(
                 "Test-NegativeDataLakeAnalyticsAccount -location '{0}'",
-                AdlaTestRunner.ResourceGroupLocation));
+                ResourceGroupLocation));
         }
 
         [Fact]
@@ -105,7 +106,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format(
                 "Test-NegativeDataLakeAnalyticsJob -location '{0}'",
-                AdlaTestRunner.ResourceGroupLocation));
+                ResourceGroupLocation));
         }
     }
 }
