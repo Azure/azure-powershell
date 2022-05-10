@@ -36,7 +36,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 {
-    public class DataPlaneCommandTests : AsTestsBase
+    public class DataPlaneCommandTests : AnalysisServicesTestRunner
     {
         private const string testInstance = "asazure://westcentralus.asazure.windows.net/testserver";
 
@@ -61,9 +61,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                                         + "65kxhZWVUbTHaPuEvg03ZQ3esDb6wxQewJPAL-GARg6S9wIN776Esw8-53AWhzFu0fIut-9FXGma6jV7"
                                         + "MYPoUUcFuQzLZgphecPyMPXSVhummVCdBwX9sizxnmFA";
 
-        public DataPlaneCommandTests(ITestOutputHelper output)
+        public DataPlaneCommandTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             SynchronizeAzureAzureAnalysisServer.DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(0);
         }
 
