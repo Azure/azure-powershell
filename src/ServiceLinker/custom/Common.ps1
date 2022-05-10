@@ -54,12 +54,11 @@ function Set-Header {
     if($TargetService.Type -eq "AzureResource"  -And ($TargetService.Id -match $Pattern)) {
         $provider=$Matches.resourceProvider.ToLower()
         $resourceType=$Matches.resourceType.ToLower()
-        if($PSBoundParameters.ContainsKey("VNetSolutionType") ){
-            $PSBoundParameters['XmsServiceconnectorUserToken'] = (Get-AzAccessToken).Token
-        }elseif ($PSBoundParameters.ContainsKey("SecretStoreKeyVaultId")) {
-            $PSBoundParameters['XmsServiceconnectorUserToken'] = (Get-AzAccessToken).Token
-        }elseif($provider -eq "microsoft.keyvault" -Or $resourceType -eq "flexibleservers"){
-            $PSBoundParameters['XmsServiceconnectorUserToken'] = (Get-AzAccessToken).Token
+        if($PSBoundParameters.ContainsKey("VNetSolutionType") -Or $PSBoundParameters.ContainsKey("SecretStoreKeyVaultId") `
+            -Or $provider -eq "microsoft.keyvault" -Or $resourceType -eq "flexibleservers") {
+            if(-Not $PSBoundParameters.ContainsKey('XmsServiceconnectorUserToken')){
+                $PSBoundParameters['XmsServiceconnectorUserToken'] = (Get-AzAccessToken).Token
+            }
         }
     } 
     return $PSBoundParameters
