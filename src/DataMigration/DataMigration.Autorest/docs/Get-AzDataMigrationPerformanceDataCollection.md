@@ -15,13 +15,14 @@ Collect performance data for given SQL Server instance(s)
 ### CommandLine (Default)
 ```
 Get-AzDataMigrationPerformanceDataCollection -SqlConnectionStrings <String[]> [-NumberOfIterations <String>]
- [-OutputFolder <String>] [-PerfQueryInterval <String>] [-StaticQueryInterval <String>] [-PassThru]
- [<CommonParameters>]
+ [-OutputFolder <String>] [-PerfQueryInterval <String>] [-StaticQueryInterval <String>] [-Time <Int64>]
+ [-PassThru] [<CommonParameters>]
 ```
 
 ### ConfigFile
 ```
-Get-AzDataMigrationPerformanceDataCollection -ConfigFilePath <String> [-PassThru] [<CommonParameters>]
+Get-AzDataMigrationPerformanceDataCollection -ConfigFilePath <String> [-Time <Int64>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -187,6 +188,21 @@ Interval at which to query and persist static configuration data, in seconds.
 ```yaml
 Type: System.String
 Parameter Sets: CommandLine
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Time
+Duration of time in seconds for which you want to collect performance data
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
 Aliases:
 
 Required: False
