@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkServiceProvider;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -75,9 +76,22 @@ namespace Microsoft.Azure.Commands.Network
 
         public string Subscription { get; set; }
 
+        /// <summary>
+        /// Check if the resource id format is valid.
+        /// </summary>
+        /// <exception cref="AzPSApplicationException">unvaild throw exception</exception>
+        public void CheckResourceId ()
+        {
+            var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+            if (string.IsNullOrEmpty(resourceIdentifier.ParentResource))
+            {
+                throw new AzPSApplicationException(string.Format(Properties.Resources.InvalidResourceId, this.ResourceId));
+            }
+
+        }
         protected IPrivateLinkProvider BuildProvider(string subscription, string privateLinkResourceType)
         {
-            if (!GenericProvider.SupportsPrivateLinkResourceType(privateLinkResourceType))
+            if (!GenericProvider.SupportsPrivateLinkFeature(privateLinkResourceType))
                 throw new AzPSApplicationException(string.Format(Properties.Resources.UnsupportPrivateEndpointConnectionType, privateLinkResourceType));
             return PrivateLinkProviderFactory.CreatePrivateLinkProvder(this, subscription, privateLinkResourceType);
         }

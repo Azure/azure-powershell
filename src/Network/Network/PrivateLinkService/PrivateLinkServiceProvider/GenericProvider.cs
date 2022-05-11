@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         #region Interface Implementation
 
-        public static bool SupportsPrivateLinkResourceType(string privateLinkResourceType)
+        public static bool SupportsPrivateLinkFeature(string privateLinkResourceType)
         {
             ProviderConfiguration configuration = ProviderConfiguration.GetProviderConfiguration(privateLinkResourceType);
             return (configuration != null);
@@ -140,22 +140,12 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                 PrivateLinkResource resource = ServiceClient.Operations.GetResource<PrivateLinkResource>(url, _configuration.ApiVersion);
                 return ToPsPrivateLinkResource(resource);
             }
-            else if (_configuration.SupportListPrivateLinkResource)
-            {
-                return ListPrivateLinkResource(resourceGroupName, serviceName).Single(plr => plr.Name.Equals(name));
-            }
-            else
-            {
-                throw new AzPSApplicationException(string.Format(Properties.Resources.UnsupportPrivateLinkResourceType, $"{_configuration.Type} api {_configuration.ApiVersion}"));
-            }
+
+            return ListPrivateLinkResource(resourceGroupName, serviceName).Single(plr => plr.Name.Equals(name));
         }
 
         public List<PSPrivateLinkResource> ListPrivateLinkResource(string resourceGroupName, string serviceName)
         {
-            if (!_configuration.SupportListPrivateLinkResource)
-            {
-                throw new AzPSApplicationException(string.Format(Properties.Resources.UnsupportPrivateLinkResourceType, $"{_configuration.Type} api {_configuration.ApiVersion}"));
-            }
             var psPLRs = new List<PSPrivateLinkResource>();
             string url = BuildPrivateLinkResourcesURL(resourceGroupName, serviceName);
             IPage<PrivateLinkResource> list = ServiceClient.Operations.GetResourcePage<Page<PrivateLinkResource>, PrivateLinkResource>(url, _configuration.ApiVersion);

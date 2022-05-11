@@ -91,8 +91,8 @@ namespace Microsoft.Azure.Commands.Network
                 this.Subscription = DefaultProfile.DefaultContext.Subscription.Id;
                 this.PrivateLinkResourceType = DynamicParameters[privateEndpointTypeName].Value as string;
             }
-
-            if (!GenericProvider.SupportsPrivateLinkResourceType(this.PrivateLinkResourceType))
+            // First check resource type whether support private link feature, if support then check whether support private link resource feature.
+            if (!GenericProvider.SupportsPrivateLinkFeature(this.PrivateLinkResourceType) || !ProviderConfiguration.GetProviderConfiguration(this.PrivateLinkResourceType).SupportListPrivateLinkResource)
             {
                 throw new AzPSApplicationException(string.Format(Properties.Resources.UnsupportPrivateLinkResourceType, this.PrivateLinkResourceType));
             }

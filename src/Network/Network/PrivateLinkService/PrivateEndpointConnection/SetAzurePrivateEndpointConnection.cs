@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.IsParameterBound(c => c.ResourceId))
             {
+                CheckResourceId();
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.Name = resourceIdentifier.ResourceName;
