@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Network
         /// Validate parent resource of the resource id not null or empty.
         /// </summary>
         [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-        public sealed class ValidateParentResourceNotNullOrEmptyAttribute : ValidateArgumentsAttribute
+        internal sealed class ValidateParentResourceNotNullOrEmptyAttribute : ValidateArgumentsAttribute
         {
             protected override void Validate(object arguments, EngineIntrinsics engineIntrinsics)
             {
