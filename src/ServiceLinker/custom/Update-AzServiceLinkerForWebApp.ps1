@@ -19,15 +19,9 @@
 Operation to update an existing link in webapp.
 .Description
 Operation to update an existing link in webapp.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 

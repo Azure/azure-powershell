@@ -19,13 +19,6 @@
 Create or update linker resource in container app.
 .Description
 Create or update linker resource in container app.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource
 .Link
 https://docs.microsoft.com/powershell/module/az.servicelinker/new-azservicelinkerforcontainerapp
 #>

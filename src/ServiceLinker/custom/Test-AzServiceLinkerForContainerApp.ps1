@@ -19,10 +19,6 @@
 Validate a link.
 .Description
 Validate a link in container app.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity

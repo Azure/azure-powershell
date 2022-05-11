@@ -19,15 +19,9 @@
 Validate a link in webapp.
 .Description
 Validate a link in webapp.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IValidateResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 

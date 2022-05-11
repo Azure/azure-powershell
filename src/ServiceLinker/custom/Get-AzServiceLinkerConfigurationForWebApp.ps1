@@ -19,13 +19,6 @@
 list source configurations for a linker in webapp.
 .Description
 list source configurations for a linker in webapp.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISourceConfiguration
 .Link
 https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforwebapp
 #>
