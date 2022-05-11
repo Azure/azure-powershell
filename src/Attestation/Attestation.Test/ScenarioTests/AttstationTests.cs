@@ -12,45 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
 {
-    public class AttstationTests : RMTestBase
+    public class AttstationTests : AttestationTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public AttstationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AttstationTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
-        #region New-AzureRmAttestation        
+        #region New-AzureRmAttestation
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAttestation()
         {
-            AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAttestation");
+            TestRunner.RunTestScript("Test-CreateAttestation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAttestationWithPolicySigningCertificate()
         {
-            AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAttestationWithPolicySigningCertificate");
+            TestRunner.RunTestScript("Test-CreateAttestationWithPolicySigningCertificate");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAttestationWithTags()
         {
-            AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAttestationWithTags");
+            TestRunner.RunTestScript("Test-CreateAttestationWithTags");
         }
         #endregion
 
@@ -59,21 +51,21 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAttestation()
         {
-            AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-GetAttestation");
+            TestRunner.RunTestScript("Test-GetAttestation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDefaultProviders()
         {
-            AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-GetDefaultProviders");
+            TestRunner.RunTestScript("Test-GetDefaultProviders");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDefaultProviderByLocation()
         {
-            AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-GetDefaultProviderByLocation");
+            TestRunner.RunTestScript("Test-GetDefaultProviderByLocation");
         }
         #endregion
 
@@ -82,7 +74,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteAttestationByName()
         {
-            AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-DeleteAttestationByName");
+            TestRunner.RunTestScript("Test-DeleteAttestationByName");
         }
         #endregion
     }

@@ -56,12 +56,12 @@ In order to specify the Role Definition's Permissions, either use the DataAction
 
 ### Example 1: Using DataAction
 ```powershell
-New-AzCosmosDBSqlRoleDefinition
-	-AccountName accountName 
-	-ResourceGroupName resourceGroupName 
-	-Type CustomRole
-	-RoleName roleName
-	-DataAction "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create"
+New-AzCosmosDBSqlRoleDefinition `
+	-AccountName accountName `
+	-ResourceGroupName resourceGroupName `
+	-Type CustomRole `
+	-RoleName roleName `
+	-DataAction "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create" `
 	-AssignableScope "/"
 ```
 
@@ -77,11 +77,11 @@ AssignableScopes : {/subscriptions/subId/resourceGroups/resourceGroupName/provid
 ```powershell
 $DatabaseAccount = Get-AzCosmosDBAccount -Name accountName -ResourceGroupName resourceGroupName
 $Permission = New-AzCosmosDBPermission -DataAction "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create"
-New-AzCosmosDBSqlRoleDefinition
-	-Type CustomRole
-	-RoleName roleName
-	-Permission $Permission
-	-AssignableScope "/"
+New-AzCosmosDBSqlRoleDefinition `
+	-Type CustomRole `
+	-RoleName roleName `
+	-Permission $Permission `
+	-AssignableScope "/" `
 	-ParentObject $DatabaseAccount
 ```
 

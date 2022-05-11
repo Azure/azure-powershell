@@ -17,35 +17,31 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class AfdOriginTests
+    public class AfdOriginTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public AfdOriginTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AfdOriginTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAfdOrigin()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAfdOrigin");
+            TestRunner.RunTestScript("Test-CreateAfdOrigin");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAfdOrigin()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAfdOrigin");
+            TestRunner.RunTestScript("Test-GetAfdOrigin");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAfdOrigin()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetAfdOrigin");
+            TestRunner.RunTestScript("Test-SetAfdOrigin");
         }
     }
 }

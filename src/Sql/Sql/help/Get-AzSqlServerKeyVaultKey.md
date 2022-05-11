@@ -44,7 +44,9 @@ Uri               : https://contoso.vault.azure.net/keys/contosokey2/09876543210
 Thumbprint        : 0099887766554433221100998877665544332211
 CreationDate      : 1/1/2017 12:00:00 AM
 ```
+
 This command gets all the Key Vault keys on a SQL server.
+
 ### Example 2: Get a specific Key Vault key
 ```powershell
 $MyServerKeyVaultKey = Get-AzSqlServerKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'

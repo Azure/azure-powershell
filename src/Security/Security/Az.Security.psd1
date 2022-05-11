@@ -75,7 +75,8 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 
-CmdletsToExport = 'Get-AzSecuritySolutionsReferenceData', 'New-AzAlertsSuppressionRuleScope', 'Get-AzAlertsSuppressionRule', 'Set-AzAlertsSuppressionRule', 'Remove-AzAlertsSuppressionRule',
+CmdletsToExport = 'Get-AzSecuritySolution', 'Get-AzSecuritySolutionsReferenceData', 'New-AzAlertsSuppressionRuleScope', 'Get-AzAlertsSuppressionRule', 'Set-AzAlertsSuppressionRule', 'Remove-AzAlertsSuppressionRule',
+
                'Get-AzSecurityAlert', 'Set-AzSecurityAlert', 
                'Get-AzSecurityAutoProvisioningSetting', 
                'Set-AzSecurityAutoProvisioningSetting', 'Get-AzSecurityCompliance', 
@@ -191,4 +192,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

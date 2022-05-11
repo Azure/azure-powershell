@@ -1,0 +1,73 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/providers/Microsoft.Security/securitySolutions?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdiYzYwNGItNTRiMi00Yzc4LWE3YmEtNzI1MDQ5MjBhMzE5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvc2VjdXJpdHlTb2x1dGlvbnM/YXBpLXZlcnNpb249MjAyMC0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f378fdcf-41b5-4409-99e7-69c0c811a745"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.16002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-original-request-ids": [
+          "",
+          "",
+          ""
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "749"
+        ],
+        "x-ms-request-id": [
+          "a10d7f95-216c-4532-aa03-554944621480"
+        ],
+        "x-ms-correlation-request-id": [
+          "a10d7f95-216c-4532-aa03-554944621480"
+        ],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20220501T112827Z:a10d7f95-216c-4532-aa03-554944621480"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 01 May 2022 11:28:27 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "6739"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"securityFamily\": \"Va\",\r\n        \"integrationLevel\": \"SemiIntegrated\",\r\n        \"protectionStatus\": \"Good\",\r\n        \"template\": \"qualys.qualysAgent\",\r\n        \"protectedResourcesStates\": [],\r\n        \"protectedResourcesTypes\": [],\r\n        \"managementUrl\": \"http://www.qualys.com/\",\r\n        \"creationDate\": \"2017-10-09T12:37:15.9527562Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"clusterId\": \"67931ECFB2B86BFFE512B04C745D307FE7F15FF4\",\r\n        \"configurations\": {\r\n          \"AutoUpdate\": false\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/resourceGroups/QualysLICTest/providers/Microsoft.Security/locations/centralus/securitySolutions/QualysLICTest\",\r\n      \"name\": \"QualysLICTest\",\r\n      \"type\": \"Microsoft.Security/locations/securitySolutions\",\r\n      \"location\": \"westcentralus\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"securityFamily\": \"SaasWaf\",\r\n        \"integrationLevel\": \"SemiIntegrated\",\r\n        \"protectionStatus\": \"Good\",\r\n        \"template\": \"Microsoft.ApplicationGateway-ARM\",\r\n        \"protectedResourcesStates\": [],\r\n        \"protectedResourcesTypes\": [],\r\n        \"managementUrl\": \"https://portal.azure.com#resource/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/resourceGroups/OfriWafTest/providers/Microsoft.Network/applicationGateways/OfriWafTest/overview\",\r\n        \"creationDate\": \"2020-10-05T11:01:57.6339395Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"clusterId\": \"9C29D374728B41DC6923D87B1E159EFCB0BF2768\"\r\n      },\r\n      \"id\": \"/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/resourceGroups/OfriWafTest/providers/Microsoft.Security/locations/centralus/securitySolutions/OfriWafTest\",\r\n      \"name\": \"OfriWafTest\",\r\n      \"type\": \"Microsoft.Security/locations/securitySolutions\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"securityFamily\": \"SaasWaf\",\r\n        \"integrationLevel\": \"SemiIntegrated\",\r\n        \"protectionStatus\": \"UnReported\",\r\n        \"template\": \"microsoft.ApplicationGateway-ARM\",\r\n        \"protectedResourcesStates\": [],\r\n        \"protectedResourcesTypes\": [],\r\n        \"managementUrl\": \"https://portal.azure.com#resource/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/resourceGroups/waf155/providers/Microsoft.Network/applicationGateways/waf155vm/overview\",\r\n        \"creationDate\": \"2020-07-22T11:45:47.9115946Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"clusterId\": \"2C8995EFB1500186BC1958C032CC360BAC33C5BC\"\r\n      },\r\n      \"id\": \"/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/resourceGroups/waf155/providers/Microsoft.Security/locations/centralus/securitySolutions/waf155vm\",\r\n      \"name\": \"waf155vm\",\r\n      \"type\": \"Microsoft.Security/locations/securitySolutions\",\r\n      \"location\": \"westcentralus\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"securityFamily\": \"SaasWaf\",\r\n        \"integrationLevel\": \"SemiIntegrated\",\r\n        \"protectionStatus\": \"Good\",\r\n        \"template\": \"microsoft.ApplicationGateway-ARM\",\r\n        \"protectedResourcesStates\": [],\r\n        \"protectedResourcesTypes\": [],\r\n        \"managementUrl\": \"https://portal.azure.com#resource/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/resourceGroups/solutionsProdTest/providers/Microsoft.Network/applicationGateways/msWafProdTest/overview\",\r\n        \"creationDate\": \"2020-12-22T12:36:21.3564505Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"clusterId\": \"DF6A40AD0A3A9FEDA4635882E1D15AEF63E2CAF9\"\r\n      },\r\n      \"id\": \"/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/resourceGroups/solutionsProdTest/providers/Microsoft.Security/locations/centralus/securitySolutions/msWafProdTest\",\r\n      \"name\": \"msWafProdTest\",\r\n      \"type\": \"Microsoft.Security/locations/securitySolutions\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"securityFamily\": \"SaasWaf\",\r\n        \"integrationLevel\": \"SemiIntegrated\",\r\n        \"protectionStatus\": \"Good\",\r\n        \"template\": \"microsoft.ApplicationGateway-ARM\",\r\n        \"protectedResourcesStates\": [],\r\n        \"protectedResourcesTypes\": [],\r\n        \"managementUrl\": \"https://portal.azure.com#resource/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/resourceGroups/waf-rg2/providers/Microsoft.Network/applicationGateways/Ofri-WAF/overview\",\r\n        \"creationDate\": \"2021-08-16T15:07:07.0095098Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"clusterId\": \"8E21D225069917B73D65FB806785076F443F4530\"\r\n      },\r\n      \"id\": \"/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/resourceGroups/waf-rg2/providers/Microsoft.Security/locations/centralus/securitySolutions/Ofri-WAF\",\r\n      \"name\": \"Ofri-WAF\",\r\n      \"type\": \"Microsoft.Security/locations/securitySolutions\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"securityFamily\": \"Va\",\r\n        \"integrationLevel\": \"SemiIntegrated\",\r\n        \"protectionStatus\": \"UnReported\",\r\n        \"template\": \"qualys.qualysAgent\",\r\n        \"protectedResourcesStates\": [],\r\n        \"protectedResourcesTypes\": [],\r\n        \"managementUrl\": \"http://www.qualys.com/\",\r\n        \"creationDate\": \"2021-03-09T10:40:18.7014776Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"clusterId\": \"FDE9EB85DB07E8354B3AFF34DA84B0929F14F222\",\r\n        \"configurations\": {\r\n          \"AutoUpdate\": false\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/resourceGroups/tryNomisolutions/providers/Microsoft.Security/locations/centralus/securitySolutions/DedicatedEHTest3\",\r\n      \"name\": \"DedicatedEHTest3\",\r\n      \"type\": \"Microsoft.Security/locations/securitySolutions\",\r\n      \"location\": \"westcentralus\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"securityFamily\": \"Va\",\r\n        \"integrationLevel\": \"SemiIntegrated\",\r\n        \"protectionStatus\": \"Good\",\r\n        \"template\": \"qualys.qualysAgent\",\r\n        \"protectedResourcesStates\": [],\r\n        \"protectedResourcesTypes\": [],\r\n        \"managementUrl\": \"http://www.qualys.com/\",\r\n        \"creationDate\": \"2017-10-01T14:51:37.5457917Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"clusterId\": \"3120660E864F689F9166DB122386B71E27C2D565\",\r\n        \"configurations\": {\r\n          \"AutoUpdate\": false\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/resourceGroups/QualysLinuxTest/providers/Microsoft.Security/locations/centralus/securitySolutions/Qualys1\",\r\n      \"name\": \"Qualys1\",\r\n      \"type\": \"Microsoft.Security/locations/securitySolutions\",\r\n      \"location\": \"westcentralus\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"securityFamily\": \"Va\",\r\n        \"integrationLevel\": \"SemiIntegrated\",\r\n        \"protectionStatus\": \"NotReporting\",\r\n        \"template\": \"rapid7.insightplatform\",\r\n        \"protectedResourcesStates\": [],\r\n        \"protectedResourcesTypes\": [],\r\n        \"managementUrl\": \"\",\r\n        \"creationDate\": \"2018-06-11T13:24:27.1314378Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"clusterId\": \"1A54F1A20AB90FDAD835897B4A413B1F40473DD9\",\r\n        \"configurations\": {\r\n          \"AutoUpdate\": false\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/resourceGroups/Rapid7Va/providers/Microsoft.Security/locations/centralus/securitySolutions/Rapid7VaRome3\",\r\n      \"name\": \"Rapid7VaRome3\",\r\n      \"type\": \"Microsoft.Security/locations/securitySolutions\",\r\n      \"location\": \"centralus\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"securityFamily\": \"SaasWaf\",\r\n        \"integrationLevel\": \"SemiIntegrated\",\r\n        \"protectionStatus\": \"Good\",\r\n        \"template\": \"microsoft.ApplicationGateway-ARM\",\r\n        \"protectedResourcesStates\": [],\r\n        \"protectedResourcesTypes\": [],\r\n        \"managementUrl\": \"https://portal.azure.com#resource/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/resourceGroups/MatanWafTest/providers/Microsoft.Network/applicationGateways/MatanWAFtEST/overview\",\r\n        \"creationDate\": \"2021-08-16T15:06:32.3284944Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"clusterId\": \"B95CAE8386CD79955A26A6E2AF0D62B7331D17D5\"\r\n      },\r\n      \"id\": \"/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/resourceGroups/MatanWafTest/providers/Microsoft.Security/locations/centralus/securitySolutions/MatanWAFtEST\",\r\n      \"name\": \"MatanWAFtEST\",\r\n      \"type\": \"Microsoft.Security/locations/securitySolutions\",\r\n      \"location\": \"eastus2\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "67bc604b-54b2-4c78-a7ba-72504920a319"
+  }
+}

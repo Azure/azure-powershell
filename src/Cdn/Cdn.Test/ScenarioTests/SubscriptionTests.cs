@@ -12,34 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class SubscriptionTests
+    public class SubscriptionTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public SubscriptionTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SubscriptionTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSubscriptionGetResourceUsage()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SubscriptionGetResourceUsage");
+            TestRunner.RunTestScript("Test-SubscriptionGetResourceUsage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSubscriptionEdgeNode()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SubscriptionEdgeNode");
+            TestRunner.RunTestScript("Test-SubscriptionEdgeNode");
         }
     }
 }

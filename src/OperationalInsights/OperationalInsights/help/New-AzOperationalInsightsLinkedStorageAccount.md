@@ -25,9 +25,9 @@ Create linked storage account for workspace
 
 ### Example 1
 ```powershell
-$account = Get-AzStorageAccount -ResourceGroupName {rg-name} -Name {account-name}
+$account = Get-AzStorageAccount -ResourceGroupName "rg-name" -Name "storage-account"
 
-New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -DataSourceType CustomLogs -StorageAccountIds $account.Id
+New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "rg-name" -WorkspaceName "workspace-name" -DataSourceType CustomLogs -StorageAccountId $account.Id
 ```
 
 ```output

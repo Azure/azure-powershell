@@ -25,7 +25,7 @@ The **New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride** creates a
 
 ### Example 1
 ```powershell
-$overrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName $ruleName -Rules $rule1,$rule2
+$overrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName $ruleName -Rule $rule1,$rule2
 ```
 
 Creates a RuleGroupOverride entry with group name as $ruleName and Rules as $rule1, $rule2. Assigns the same to $overrideEntry

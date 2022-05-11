@@ -396,9 +396,9 @@ function Test-VolumeBackupStatus
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte    
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
-    $resourceLocation = "westus2"
-    $backupLocation = "eastus2euap"
-    $backupVNetLocation = "eastus2euap"
+    $resourceLocation = "eastus2"
+    $backupLocation = "eastus2"
+    $backupVNetLocation = "eastus2"
     $label = "powershellBackupTest"
     #$backupLocation = "eastus2euap"
     #$backupVNetLocation = "eastus2euap"

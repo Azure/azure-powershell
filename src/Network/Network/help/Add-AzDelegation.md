@@ -27,7 +27,7 @@ The **Add-AzDelegation** cmdlet adds a service delegation to an Azure subnet.
 $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet
 $subnet = Add-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.Sql/servers" -Subnet $subnet
-Set-AzVirtualNetwork $vnet
+Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
 
 The first command retrieves the virtual network on which the subnet lies. The second command isolates out the subnet of interest - the one which you want to delegate. The third command adds a delegation to the subnet. This particular example would be useful when you want to enable SQL to create interface endpoints in this subnet. The final command sends the updated subnet to the server to actually update your subnet.
