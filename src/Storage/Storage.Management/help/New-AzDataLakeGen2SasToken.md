@@ -12,7 +12,7 @@ Generates a SAS token for Azure DatalakeGen2 item.
 
 ## SYNTAX
 
-### ReceiveManual
+### ReceiveManual (Default)
 ```
 New-AzDataLakeGen2SasToken [-FileSystem] <String> [-Path <String>] [-Permission <String>]
  [-Protocol <SasProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTimeOffset>]
@@ -35,7 +35,7 @@ The **New-AzDataLakeGen2SasToken** cmdlet generates a Shared Access Signature (S
 
 ### Example 1: Generate a SAS token with full permission
 ```
-PS C:\> New-AzDataLakeGen2SasToken -FileSystem "filesystem1" -Path "dir1/dir2" -Permission racwdlmeop 
+PS C:\> New-AzDataLakeGen2SasToken -FileSystem "filesystem1" -Path "dir1/dir2" -Permission racwdlmeop
 ```
 
 This example generates a DatalakeGen2 SAS token with full permission.

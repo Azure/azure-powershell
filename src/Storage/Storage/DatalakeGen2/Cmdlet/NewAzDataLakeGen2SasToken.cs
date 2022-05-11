@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// list azure blobs in specified azure FileSystem
     /// </summary>
-    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DataLakeGen2SasToken"), OutputType(typeof(String))]
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DataLakeGen2SasToken", DefaultParameterSetName = ManualParameterSet), OutputType(typeof(String))]
     public class NewDataLakeGen2SasTokenCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>
