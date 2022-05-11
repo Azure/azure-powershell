@@ -15,7 +15,7 @@ Creates or updates a Collector Policy resource
 ### CreateExpanded (Default)
 ```
 New-CollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
- -ResourceGroupName <String> -SubscriptionId <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>]
  [-EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]
  [-IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]
  [-IngestionPolicyIngestionType <IngestionType>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -24,7 +24,7 @@ New-CollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <St
 ### Create
 ```
 New-CollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
- -ResourceGroupName <String> -SubscriptionId <String> -Parameters <ICollectorPolicy> [-AsJob] [-NoWait]
+ -ResourceGroupName <String> -Parameters <ICollectorPolicy> [-SubscriptionId <String>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -233,9 +233,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

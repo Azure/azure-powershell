@@ -14,14 +14,14 @@ Gets the collector policy in a specified Traffic Collector
 
 ### List (Default)
 ```
-Get-CollectorPolicy -AzureTrafficCollectorName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Get-CollectorPolicy -AzureTrafficCollectorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-CollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -127,9 +127,9 @@ Type: System.String
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

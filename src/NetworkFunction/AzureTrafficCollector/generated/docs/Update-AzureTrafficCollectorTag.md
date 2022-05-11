@@ -15,13 +15,13 @@ Updates the specified Azure Traffic Collector tags.
 ### UpdateExpanded (Default)
 ```
 Update-AzureTrafficCollectorTag -AzureTrafficCollectorName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Tags <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Tags <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzureTrafficCollectorTag -AzureTrafficCollectorName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Parameters <ITagsObject> [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Parameters <ITagsObject> [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -135,9 +135,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

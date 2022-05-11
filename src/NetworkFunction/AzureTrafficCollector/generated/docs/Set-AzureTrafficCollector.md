@@ -14,16 +14,15 @@ Creates or updates a Azure Traffic Collector resource
 
 ### UpdateExpanded (Default)
 ```
-Set-AzureTrafficCollector -AzureTrafficCollectorName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-CollectorPolicies <ICollectorPolicy[]>] [-Location <String>] [-Tags <Hashtable>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzureTrafficCollector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-CollectorPolicies <ICollectorPolicy[]>] [-Location <String>] [-Tags <Hashtable>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzureTrafficCollector -AzureTrafficCollectorName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Parameters <IAzureTrafficCollector> [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzureTrafficCollector -Name <String> -ResourceGroupName <String> -Parameters <IAzureTrafficCollector>
+ [-SubscriptionId <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -82,21 +81,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureTrafficCollectorName
-Azure Traffic Collector name
-
-```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CollectorPolicies
 Collector Policies for Azure Traffic Collector.
 To construct, see NOTES section for COLLECTORPOLICIES properties and create a hash table.
@@ -138,6 +122,21 @@ Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Azure Traffic Collector name
+
+```yaml
+Type: System.String
+Parameter Sets: Update, UpdateExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -198,9 +197,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
