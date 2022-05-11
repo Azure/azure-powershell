@@ -18,11 +18,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 {
-    public class BillingTestRunner
+    public class ConsumptionTestRunner
     {
         protected readonly ITestRunner TestRunner;
 
-        protected BillingTestRunner(ITestOutputHelper output)
+        protected ConsumptionTestRunner(ITestOutputHelper output)
         {
             TestRunner = TestManager.CreateInstance(output)
                 .WithNewPsScriptFilename($"{GetType().Name}.ps1")

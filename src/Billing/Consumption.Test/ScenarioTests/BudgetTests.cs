@@ -18,7 +18,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
 {
-    public class BudgetTests : BillingTestRunner
+    public class BudgetTests : ConsumptionTestRunner
     {
         public BudgetTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {

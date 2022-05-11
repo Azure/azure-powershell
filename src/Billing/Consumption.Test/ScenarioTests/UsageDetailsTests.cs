@@ -18,7 +18,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
 {
-    public class UsageDetailsTests : BillingTestRunner
+    public class UsageDetailsTests : ConsumptionTestRunner
     {
         public UsageDetailsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
