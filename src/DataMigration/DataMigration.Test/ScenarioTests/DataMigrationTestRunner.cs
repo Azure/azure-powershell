@@ -18,10 +18,10 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
 {
-
     public class DataMigrationTestRunner
     {
         protected readonly ITestRunner TestRunner;
+
         protected DataMigrationTestRunner(ITestOutputHelper output)
         {
             TestRunner = TestManager.CreateInstance(output)
