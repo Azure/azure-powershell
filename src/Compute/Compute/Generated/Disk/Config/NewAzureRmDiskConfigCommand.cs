@@ -228,6 +228,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "True if the image from which the OS disk is created supports accelerated networking.")]
         public bool? AcceleratedNetwork { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "CPU architecture supported by an OS disk. Possible values are \"X64\" and \"Arm64\".")]
+        [PSArgumentCompleter("X64", "Arm64")]
+        public string Architecture { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Disk", "New"))
@@ -416,6 +423,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vSupportedCapabilities = new SupportedCapabilities();
                 }
                 vSupportedCapabilities.AcceleratedNetwork = AcceleratedNetwork;
+            }
+
+            if (this.IsParameterBound(c => c.Architecture))
+            {
+                if (vSupportedCapabilities == null)
+                {
+                    vSupportedCapabilities = new SupportedCapabilities();
+                }
+                vSupportedCapabilities.Architecture = this.Architecture;
             }
 
             var vDisk = new PSDisk

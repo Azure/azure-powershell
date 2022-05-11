@@ -403,6 +403,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
+                    if (this.IsParameterBound(c => c.Architecture))
+                    {
+                        galleryImage.Architecture = this.Architecture;
+                    }
+
                     if (this.IsParameterBound(c => c.MinimumVCPU))
                     {
                         if (galleryImage.Recommended == null)
@@ -604,6 +609,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string ReleaseNoteUri { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "CPU architecture supported by an OS disk. Possible values are \"X64\" and \"Arm64\".")]
+        [PSArgumentCompleter("X64", "Arm64")]
+        public string Architecture { get; set; }
 
         [Parameter(
             Mandatory = false,
