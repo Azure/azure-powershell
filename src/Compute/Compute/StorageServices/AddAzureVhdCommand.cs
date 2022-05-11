@@ -233,7 +233,10 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         Uri sasUri = new Uri(accessUri.AccessSAS);
                         WriteVerbose("SAS generated: " + accessUri.AccessSAS);
 
+                        /*
                         var pageBlobClient = new PSPageBlobClient(sasUri);
+
+
                         PSBlobProperties blobProperties;
                         try
                         {
@@ -245,7 +248,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                             if (audience != null)
                             {
                                 Console.WriteLine(string.Format("Need bearer token with audience {0} to access the blob, so will generate bearer token and resend the request.", audience));
-                                pageBlobClient = new PSPageBlobClient(sasUri, DefaultContext, audience);
+                                pageBlobClient = new PSPageBlobClient(sasUri, DefaultContext, "https://disk.compute.azure.com/");
                             }
                             else
                             {
@@ -253,7 +256,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                             }
                         }
                         blobProperties = pageBlobClient.GetProperties();
-
+                        */
 
                         // 3-4: UPLOAD                  
                         WriteVerbose("Preparing for Upload");

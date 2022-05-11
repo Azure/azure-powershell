@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public PSPageBlobClient(Uri blobUri, IAzureContext DefaultContext, string audience)
         {
-           AzureSessionCredential customerToken = new AzureSessionCredential(DefaultContext, customAudience: audience);
+            AzureSessionCredential customerToken = new AzureSessionCredential(DefaultContext, customAudience: audience);
             _pageBlobClient = new PageBlobClient(blobUri, customerToken);
         }
 
@@ -47,10 +47,14 @@ namespace Microsoft.Azure.Commands.Compute
             _pageBlobClient.UploadPagesAsync(content, offset).ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
+        /*
         public PSBlobProperties GetProperties()
         {
-            var blobProperties = new PSBlobProperties(_pageBlobClient.GetProperties());
+            
+            var test = _pageBlobClient.GetProperties();
+            var testValue = test.Value;
+            var blobProperties = new PSBlobProperties(testValue);
             return blobProperties;
-        }
+        }*/
     }
 }
