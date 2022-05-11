@@ -17,6 +17,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
     public enum PsApiManagementSchema
     {
         Http = 1,
-        Https = 2
+        Https = 2,
+        Ws = 3,
+        Wss = 4
     }
 }

@@ -32,28 +32,30 @@ Add a single IP rule to the NetworkRuleSet of the given Namespace
 
 ### Example 1
 ```powershell
-Add-AzServiceBusIPRule -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-2389 -IpMask "11.22.33.44" -Action Allow
+Add-AzServiceBusIPRule -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-2389 -IpMask "11.22.33.44" -Action Allow
 ```
+```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/SubscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-2389/networkRuleSets/default
 Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
 VirtualNetworkRules : 
-
+```
 add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namespace.
 
 ### Example 2
 ```powershell
-Add-AzServiceBusIPRule -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-2389 -IpRuleObject $ipruleObject
+Add-AzServiceBusIPRule -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-2389 -IpRuleObject $ipruleObject
 ```
+```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/SubscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-2389/networkRuleSets/default
 Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
 VirtualNetworkRules : 
-
+```
 add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namespace.
 
 ## PARAMETERS

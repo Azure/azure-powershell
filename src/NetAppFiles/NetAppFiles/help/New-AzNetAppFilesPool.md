@@ -280,3 +280,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetAppFilesPool](./Get-AzNetAppFilesPool.md)
+[Remove-AzNetAppFilesPool](./Remove-AzNetAppFilesPool.md)
+[Set-AzNetAppFilesPool](./Set-AzNetAppFilesPool.md)
+[Update-AzNetAppFilesPool](./Update-AzNetAppFilesPool.md)

@@ -24,7 +24,29 @@
 * Fixed shows friendly message if rp and resource is not supported [#17091].
     - `Get-AzPrivateEndpointConnection`
     - `Get-AzPrivateLinkResource`
-
+* Added `DisableIPsecProtection` to `Virtual Network Gateway`.
+* Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
+    - `Add-AzExpressRoutePortAuthorization`
+    - `Get-AzExpressRoutePortAuthorization`
+    - `Remove-AzExpressRoutePortAuthorization`
+* Added option parameter `AuthorizationKey` to cmdlet `New-AzExpressRouteCircuit` to allow creating ExpressRoute Circuit on a ExpressRoutePort with a different owner.
+* Fix bug that can't display CustomIpPrefix in PublicIpPrefix.
+* Updated cmdlets to add new property of `HubRoutingPreference` in VirtualHub and set property of `PreferredRoutingGateway` deprecated .
+    - `New-AzVirtualHub`
+    - `Update-AzVirtualHub`
+* Added optional parameter `AuxiliaryMode` to cmdlet `New-AzNetworkInterface` to enable this network interface as Sirius enabled. Allowed values are None(default) and MaxConnections.
+* Multipool feature change: Updated cmdlets to add new optional property: `ConfigurationPolicyGroups` object for associating policy groups.
+    - `Update-AzVpnServerConfiguration`
+    - `New-AzVpnServerConfiguration`
+* Multipool feature change: Updated cmdlets to add new optional property: `P2SConnectionConfiguration` object for specifying multiple Connection configurations.
+    - `Update-AzP2sVpnGateway`
+    - `New-AzP2sVpnGateway`
+* Multipool feature change: Added new cmdlets to suppport CRUD of Configuration policy groups for VpnServerConfiguration.
+    - `Get-AzVpnServerConfigurationPolicyGroup`
+    - `New-AzVpnServerConfigurationPolicyGroup`
+    - `Update-AzVpnServerConfigurationPolicyGroup`
+    - `Remove-AzVpnServerConfigurationPolicyGroup`
+    - 
 ## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
 

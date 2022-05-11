@@ -70,7 +70,7 @@ $appName = "testApp"
 $version = "v2"
 $packageUrl = "https://sftestapp.blob.core.windows.net/sftestapp/testAppType_v2.sfpkg"
 New-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName -Version $version -PackageUrl $packageUrl -Verbose
-Set-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationTypeVersion $version -Name $appName -ApplicationParameter @{key0="value0";key1=$null;key2="value2"} -Tags @{tag0="updated"}
+Set-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationTypeVersion $version -Name $appName -ApplicationParameter @{key0="value0";key1=$null;key2="value2"} -Tag @{tag0="updated"}
 ```
 
 This example will start an managed application upgrade to update the type version to "v2" which was created with **New-AzServiceFabricManagedClusterApplicationTypeVersion**. The application parameters used should be defined in the application manifest.

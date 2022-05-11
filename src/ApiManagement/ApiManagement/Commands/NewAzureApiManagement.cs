@@ -153,6 +153,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Minimal Control Plane Apis version  to allow for managing the API Management service.")]
         public string MinimalControlPlaneApiVersion { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether or not public endpoint access is allowed for this service.Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        public string PublicNetworkAccess { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments")]
+        public string PublicIpAddressId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var apiManagementService = Client.CreateApiManagementService(
@@ -175,7 +182,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     UserAssignedIdentity,
                     Zone,
                     DisableGateway,
-                    MinimalControlPlaneApiVersion);
+                    MinimalControlPlaneApiVersion,
+                    PublicNetworkAccess,
+                    PublicIpAddressId);
 
             this.WriteObject(apiManagementService);
         }

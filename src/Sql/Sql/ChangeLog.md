@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdlet `Get-AzSqlInstanceEndpointCertificate`
 
 ## Version 3.8.0
 * Added parameter `HighAvailabilityReplicaCount` to `New-AzSqlElasticPool` and `Set-AzSqlElasticPool`

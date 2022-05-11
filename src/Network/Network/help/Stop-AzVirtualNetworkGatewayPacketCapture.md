@@ -38,14 +38,14 @@ Stops Packet Capture Operation on a Virtual Network Gateway and will upload the 
 ### Example 1
 ```powershell
 $rgname = "testRg"
- $storeName = "teststorage"
- $containerName = "packetcaptureresults"
- $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
- $context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
- New-AzStorageContainer -Name $containerName -Context $context
- $container = Get-AzStorageContainer -Name $containerName -Context $context
- $now=get-date
- $sasurl = New-AzStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+$storeName = "teststorage"
+$containerName = "packetcaptureresults"
+$key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
+$context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
+New-AzStorageContainer -Name $containerName -Context $context
+$container = Get-AzStorageContainer -Name $containerName -Context $context
+$now = Get-Date
+$sasurl = New-AzStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
 Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName $rgname -Name "testgw" -SasUrl $sasurl
 ```
 
@@ -68,14 +68,14 @@ Id                :
 ### Example 2
 ```powershell
 $rgname = "testRg"
- $storeName = "teststorage"
- $containerName = "packetcaptureresults"
- $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
- $context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
- $container = Get-AzStorageContainer -Name $containerName -Context $context
- $now=get-date
- $sasurl = New-AzStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
- $gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name "testGw"
+$storeName = "teststorage"
+$containerName = "packetcaptureresults"
+$key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
+$context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
+$container = Get-AzStorageContainer -Name $containerName -Context $context
+$now = Get-Date
+$sasurl = New-AzStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+$gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name "testGw"
 Stop-AzVirtualNetworkGatewayPacketCapture -InputObject $gw -SasUrl $sasurl
 ```
 

@@ -17,42 +17,38 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 {
-    public class TableOperationsTests
+    public class TableOperationsTests : CosmosDBTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public TableOperationsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public TableOperationsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTableOperationsCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-TableOperationsCmdlets");
+            TestRunner.RunTestScript("Test-TableOperationsCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTableOperationsCmdletsUsingInputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-TableOperationsCmdletsUsingInputObject");
+            TestRunner.RunTestScript("Test-TableOperationsCmdletsUsingInputObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTableThroughputCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-TableThroughputCmdlets");
+            TestRunner.RunTestScript("Test-TableThroughputCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTableMigrateThroughputCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-TableMigrateThroughputCmdlets");
+            TestRunner.RunTestScript("Test-TableMigrateThroughputCmdlets");
         }
     }
 }

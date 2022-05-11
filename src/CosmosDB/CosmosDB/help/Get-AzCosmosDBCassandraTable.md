@@ -31,7 +31,7 @@ The **Get-AzCosmosDBCassandraTable** cmdlet creates a new or updates an existing
 
 ### Example 1
 ```powershell
-$table = Get-AzCosmosDBCassandraTable -ResourceGroupName {resourceGroupName} -AccountName {accountName} -KeyspaceName {keyspaceName} -Name {name}
+Get-AzCosmosDBCassandraTable -ResourceGroupName "resourceGroupName" -AccountName "accountName" -KeyspaceName "keyspaceName" -Name "tableName"
 ```
 
 ```output
