@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.DevSpaces.Test.ScenarioTests
     public class DevSpacesTestRunner
     {
         protected readonly ITestRunner TestRunner;
+
         protected DevSpacesTestRunner(ITestOutputHelper output)
         {
             TestRunner = TestManager.CreateInstance(output)

@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Commands.DevSpaces.Test.ScenarioTests
 {
     public class DevSpacesTests : DevSpacesTestRunner
     {
-
         public DevSpacesTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
         }
