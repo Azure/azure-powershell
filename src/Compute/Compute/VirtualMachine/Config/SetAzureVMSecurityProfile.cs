@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
-        [PSArgumentCompleter("TrustedLaunch")]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
         public string SecurityType { get; set; }
 
         public override void ExecuteCmdlet()

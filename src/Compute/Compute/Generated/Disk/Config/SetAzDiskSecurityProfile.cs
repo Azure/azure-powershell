@@ -42,9 +42,16 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Gets or sets possible values include: TrustedLaunch")]
-        [PSArgumentCompleter("TrustedLaunch")]
+            HelpMessage = "Gets or sets possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey")]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM_DiskEncryptedWithCustomerKey", "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey",
+            "ConfidentialVM_DiskEncryptedWithPlatformKey")]
         public string SecurityType { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ResourceId of the disk encryption set to use for enabling encryption at rest.")]
+        public string SecureDiskEncryptionSetId { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -62,6 +69,11 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             this.Disk.SecurityProfile.SecurityType = SecurityType;
+
+            if (this.SecureDiskEncryptionSetId != null)
+            {
+                this.Disk.SecurityProfile.SecureVMDiskEncryptionSetId = this.SecureDiskEncryptionSetId;
+            }
 
             WriteObject(this.Disk);
         }

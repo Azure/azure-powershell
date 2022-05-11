@@ -192,6 +192,13 @@ namespace Microsoft.Azure.Commands.Compute
         [PSArgumentCompleter("Detach", "Delete")]
         public string DeleteOption { get; set; }
 
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey")]
+        [PSArgumentCompleter("DiskWithVMGuestState", "VMGuestStateOnly")]
+        public string SecurityEncryptionType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
