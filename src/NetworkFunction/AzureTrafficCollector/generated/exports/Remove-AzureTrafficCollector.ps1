@@ -29,9 +29,9 @@ INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/remove-azuretrafficcollector
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/remove-aztrafficcollector
 #>
-function Remove-AzureTrafficCollector {
+function Remove-AzTrafficCollector {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(

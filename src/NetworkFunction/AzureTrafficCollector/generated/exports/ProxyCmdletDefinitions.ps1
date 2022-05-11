@@ -29,9 +29,9 @@ INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-azuretrafficcollector
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-azTrafficCollector
 #>
-function Get-AzureTrafficCollector {
+function Get-AzTrafficCollector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
@@ -176,9 +176,9 @@ INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-collectorpolicy
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-aztrafficcollectorpolicy
 #>
-function Get-CollectorPolicy {
+function Get-AzTrafficCollectorPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
@@ -265,9 +265,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Get = 'TrafficCollector.private\Get-CollectorPolicy_Get';
-            GetViaIdentity = 'TrafficCollector.private\Get-CollectorPolicy_GetViaIdentity';
-            List = 'TrafficCollector.private\Get-CollectorPolicy_List';
+            Get = 'TrafficCollector.private\Get-AzTrafficCollectorPolicy_Get';
+            GetViaIdentity = 'TrafficCollector.private\Get-AzTrafficCollectorPolicy_GetViaIdentity';
+            List = 'TrafficCollector.private\Get-AzTrafficCollectorPolicy_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
@@ -448,9 +448,9 @@ PARAMETERS <IAzureTrafficCollector>: Azure Traffic Collector resource.
       [SourceType <SourceType?>]: Ingestion source type.
     [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/new-azuretrafficcollector
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/new-aztrafficcollector
 #>
-function New-AzureTrafficCollector {
+function New-AzTrafficCollector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -658,9 +658,9 @@ PARAMETERS <ICollectorPolicy>: Collection policy resource.
     [SourceType <SourceType?>]: Ingestion source type.
   [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/new-collectorpolicy
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/new-aztrafficcollectorpolicy
 #>
-function New-CollectorPolicy {
+function New-AzTrafficCollectorPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -795,10 +795,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Create = 'TrafficCollector.private\New-CollectorPolicy_Create';
-            CreateExpanded = 'TrafficCollector.private\New-CollectorPolicy_CreateExpanded';
-            CreateViaIdentity = 'TrafficCollector.private\New-CollectorPolicy_CreateViaIdentity';
-            CreateViaIdentityExpanded = 'TrafficCollector.private\New-CollectorPolicy_CreateViaIdentityExpanded';
+            Create = 'TrafficCollector.private\New-AzTrafficCollectorPolicy_Create';
+            CreateExpanded = 'TrafficCollector.private\New-AzTrafficCollectorPolicy_CreateExpanded';
+            CreateViaIdentity = 'TrafficCollector.private\New-AzTrafficCollectorPolicy_CreateViaIdentity';
+            CreateViaIdentityExpanded = 'TrafficCollector.private\New-AzTrafficCollectorPolicy_CreateViaIdentityExpanded';
         }
         if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
@@ -856,9 +856,9 @@ INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/remove-azuretrafficcollector
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/remove-aztrafficcollector
 #>
-function Remove-AzureTrafficCollector {
+function Remove-AzTrafficCollector {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -1013,9 +1013,9 @@ INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/remove-collectorpolicy
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/remove-aztrafficcollectorpolicy
 #>
-function Remove-CollectorPolicy {
+function Remove-AzTrafficCollectorPolicy {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -1117,8 +1117,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Delete = 'TrafficCollector.private\Remove-CollectorPolicy_Delete';
-            DeleteViaIdentity = 'TrafficCollector.private\Remove-CollectorPolicy_DeleteViaIdentity';
+            Delete = 'TrafficCollector.private\Remove-AzTrafficCollectorPolicy_Delete';
+            DeleteViaIdentity = 'TrafficCollector.private\Remove-AzTrafficCollectorPolicy_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
@@ -1202,9 +1202,9 @@ PARAMETERS <IAzureTrafficCollector>: Azure Traffic Collector resource.
       [SourceType <SourceType?>]: Ingestion source type.
     [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/set-azuretrafficcollector
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/set-azTrafficCollector
 #>
-function Set-AzureTrafficCollector {
+function Set-AzTrafficCollector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -1412,9 +1412,9 @@ PARAMETERS <ICollectorPolicy>: Collection policy resource.
     [SourceType <SourceType?>]: Ingestion source type.
   [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/set-collectorpolicy
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/set-aztrafficcollectorpolicy
 #>
-function Set-CollectorPolicy {
+function Set-AzTrafficCollectorPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -1549,10 +1549,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Update = 'TrafficCollector.private\Set-CollectorPolicy_Update';
-            UpdateExpanded = 'TrafficCollector.private\Set-CollectorPolicy_UpdateExpanded';
-            UpdateViaIdentity = 'TrafficCollector.private\Set-CollectorPolicy_UpdateViaIdentity';
-            UpdateViaIdentityExpanded = 'TrafficCollector.private\Set-CollectorPolicy_UpdateViaIdentityExpanded';
+            Update = 'TrafficCollector.private\Set-AzTrafficCollectorPolicy_Update';
+            UpdateExpanded = 'TrafficCollector.private\Set-AzTrafficCollectorPolicy_UpdateExpanded';
+            UpdateViaIdentity = 'TrafficCollector.private\Set-AzTrafficCollectorPolicy_UpdateViaIdentity';
+            UpdateViaIdentityExpanded = 'TrafficCollector.private\Set-AzTrafficCollectorPolicy_UpdateViaIdentityExpanded';
         }
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
@@ -1616,9 +1616,9 @@ PARAMETERS <ITagsObject>: Tags object for patch operations.
   [Tags <ITagsObjectTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/update-azuretrafficcollectortag
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/update-aztrafficcollectortag
 #>
-function Update-AzureTrafficCollectorTag {
+function Update-AzTrafficCollectorTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -1716,10 +1716,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Update = 'TrafficCollector.private\Update-AzureTrafficCollectorTag_Update';
-            UpdateExpanded = 'TrafficCollector.private\Update-AzureTrafficCollectorTag_UpdateExpanded';
-            UpdateViaIdentity = 'TrafficCollector.private\Update-AzureTrafficCollectorTag_UpdateViaIdentity';
-            UpdateViaIdentityExpanded = 'TrafficCollector.private\Update-AzureTrafficCollectorTag_UpdateViaIdentityExpanded';
+            Update = 'TrafficCollector.private\Update-AzTrafficCollectorTag_Update';
+            UpdateExpanded = 'TrafficCollector.private\Update-AzTrafficCollectorTag_UpdateExpanded';
+            UpdateViaIdentity = 'TrafficCollector.private\Update-AzTrafficCollectorTag_UpdateViaIdentity';
+            UpdateViaIdentityExpanded = 'TrafficCollector.private\Update-AzTrafficCollectorTag_UpdateViaIdentityExpanded';
         }
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

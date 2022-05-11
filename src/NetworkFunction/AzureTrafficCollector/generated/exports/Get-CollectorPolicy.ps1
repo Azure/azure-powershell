@@ -29,9 +29,9 @@ INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-collectorpolicy
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-aztrafficcollectorpolicy
 #>
-function Get-CollectorPolicy {
+function Get-AzTrafficCollectorPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
@@ -118,9 +118,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Get = 'TrafficCollector.private\Get-CollectorPolicy_Get';
-            GetViaIdentity = 'TrafficCollector.private\Get-CollectorPolicy_GetViaIdentity';
-            List = 'TrafficCollector.private\Get-CollectorPolicy_List';
+            Get = 'TrafficCollector.private\Get-AzTrafficCollectorPolicy_Get';
+            GetViaIdentity = 'TrafficCollector.private\Get-AzTrafficCollectorPolicy_GetViaIdentity';
+            List = 'TrafficCollector.private\Get-AzTrafficCollectorPolicy_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

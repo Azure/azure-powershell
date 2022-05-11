@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: TrafficCollector
-online version: https://docs.microsoft.com/en-us/powershell/module/trafficcollector/update-azuretrafficcollectortag
+online version: https://docs.microsoft.com/en-us/powershell/module/trafficcollector/update-aztrafficcollectortag
 schema: 2.0.0
 ---
 
-# Update-AzureTrafficCollectorTag
+# Update-AzTrafficCollectorTag
 
 ## SYNOPSIS
 Updates the specified Azure Traffic Collector tags.
@@ -14,25 +14,25 @@ Updates the specified Azure Traffic Collector tags.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzureTrafficCollectorTag -AzureTrafficCollectorName <String> -ResourceGroupName <String>
+Update-AzTrafficCollectorTag -AzureTrafficCollectorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Tags <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Update-AzureTrafficCollectorTag -AzureTrafficCollectorName <String> -ResourceGroupName <String>
+Update-AzTrafficCollectorTag -AzureTrafficCollectorName <String> -ResourceGroupName <String>
  -Parameters <ITagsObject> [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzureTrafficCollectorTag -InputObject <ITrafficCollectorIdentity> -Parameters <ITagsObject> [-Confirm]
+Update-AzTrafficCollectorTag -InputObject <ITrafficCollectorIdentity> -Parameters <ITagsObject> [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzureTrafficCollectorTag -InputObject <ITrafficCollectorIdentity> [-Tags <Hashtable>] [-Confirm]
+Update-AzTrafficCollectorTag -InputObject <ITrafficCollectorIdentity> [-Tags <Hashtable>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 

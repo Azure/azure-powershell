@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: TrafficCollector
-online version: https://docs.microsoft.com/en-us/powershell/module/trafficcollector/remove-azuretrafficcollector
+online version: https://docs.microsoft.com/en-us/powershell/module/trafficcollector/remove-aztrafficcollector
 schema: 2.0.0
 ---
 
-# Remove-AzureTrafficCollector
+# Remove-AzTrafficCollector
 
 ## SYNOPSIS
 Deletes a specified Azure Traffic Collector resource.
@@ -14,13 +14,13 @@ Deletes a specified Azure Traffic Collector resource.
 
 ### Delete (Default)
 ```
-Remove-AzureTrafficCollector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-AsJob]
+Remove-AzTrafficCollector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzureTrafficCollector -InputObject <ITrafficCollectorIdentity> [-AsJob] [-NoWait] [-PassThru]
+Remove-AzTrafficCollector -InputObject <ITrafficCollectorIdentity> [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

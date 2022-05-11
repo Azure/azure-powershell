@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Update-AzureTrafficCollectorTag'))
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzTrafficCollectorTag'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzureTrafficCollectorTag.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzTrafficCollectorTag.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzureTrafficCollectorT
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzureTrafficCollectorTag' {
+Describe 'Update-AzTrafficCollectorTag' {
     It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

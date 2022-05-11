@@ -29,9 +29,9 @@ INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/remove-collectorpolicy
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/remove-aztrafficcollectorpolicy
 #>
-function Remove-CollectorPolicy {
+function Remove-AzTrafficCollectorPolicy {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -133,8 +133,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Delete = 'TrafficCollector.private\Remove-CollectorPolicy_Delete';
-            DeleteViaIdentity = 'TrafficCollector.private\Remove-CollectorPolicy_DeleteViaIdentity';
+            Delete = 'TrafficCollector.private\Remove-AzTrafficCollectorPolicy_Delete';
+            DeleteViaIdentity = 'TrafficCollector.private\Remove-AzTrafficCollectorPolicy_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

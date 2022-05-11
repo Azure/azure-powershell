@@ -11,33 +11,33 @@ Locale: en-US
 
 
 ## TrafficCollector Cmdlets
-### [Get-AzureTrafficCollector](Get-AzureTrafficCollector.md)
+### [Get-AzTrafficCollector](Get-AzTrafficCollector.md)
 Gets the specified Azure Traffic Collector in a specified resource group
 
-### [Get-CollectorPolicy](Get-CollectorPolicy.md)
+### [Get-AzTrafficCollectorPolicy](Get-AzTrafficCollectorPolicy.md)
 Gets the collector policy in a specified Traffic Collector
 
 ### [Get-NetworkFunctionOperation](Get-NetworkFunctionOperation.md)
 Lists all of the available NetworkFunction Rest API operations.
 
-### [New-AzureTrafficCollector](New-AzureTrafficCollector.md)
+### [New-AzTrafficCollector](New-AzTrafficCollector.md)
 Creates or updates a Azure Traffic Collector resource
 
-### [New-CollectorPolicy](New-CollectorPolicy.md)
+### [New-AzTrafficCollectorPolicy](New-AzTrafficCollectorPolicy.md)
 Creates or updates a Collector Policy resource
 
-### [Remove-AzureTrafficCollector](Remove-AzureTrafficCollector.md)
+### [Remove-AzTrafficCollector](Remove-AzTrafficCollector.md)
 Deletes a specified Azure Traffic Collector resource.
 
-### [Remove-CollectorPolicy](Remove-CollectorPolicy.md)
+### [Remove-AzTrafficCollectorPolicy](Remove-AzTrafficCollectorPolicy.md)
 Deletes a specified Collector Policy resource.
 
-### [Set-AzureTrafficCollector](Set-AzureTrafficCollector.md)
+### [Set-AzTrafficCollector](Set-AzTrafficCollector.md)
 Creates or updates a Azure Traffic Collector resource
 
-### [Set-CollectorPolicy](Set-CollectorPolicy.md)
+### [Set-AzTrafficCollectorPolicy](Set-AzTrafficCollectorPolicy.md)
 Creates or updates a Collector Policy resource
 
-### [Update-AzureTrafficCollectorTag](Update-AzureTrafficCollectorTag.md)
+### [Update-AzTrafficCollectorTag](Update-AzTrafficCollectorTag.md)
 Updates the specified Azure Traffic Collector tags.
 

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: TrafficCollector
-online version: https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-collectorpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-aztrafficcollectorpolicy
 schema: 2.0.0
 ---
 
-# Get-CollectorPolicy
+# Get-AzTrafficCollectorPolicy
 
 ## SYNOPSIS
 Gets the collector policy in a specified Traffic Collector
@@ -14,19 +14,19 @@ Gets the collector policy in a specified Traffic Collector
 
 ### List (Default)
 ```
-Get-CollectorPolicy -AzureTrafficCollectorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Get-AzTrafficCollectorPolicy -AzureTrafficCollectorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-CollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
+Get-AzTrafficCollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-CollectorPolicy -InputObject <ITrafficCollectorIdentity> [<CommonParameters>]
+Get-AzTrafficCollectorPolicy -InputObject <ITrafficCollectorIdentity> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

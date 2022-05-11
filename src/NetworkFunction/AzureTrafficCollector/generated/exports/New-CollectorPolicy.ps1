@@ -50,9 +50,9 @@ PARAMETERS <ICollectorPolicy>: Collection policy resource.
     [SourceType <SourceType?>]: Ingestion source type.
   [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/new-collectorpolicy
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/new-aztrafficcollectorpolicy
 #>
-function New-CollectorPolicy {
+function New-AzTrafficCollectorPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -187,10 +187,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Create = 'TrafficCollector.private\New-CollectorPolicy_Create';
-            CreateExpanded = 'TrafficCollector.private\New-CollectorPolicy_CreateExpanded';
-            CreateViaIdentity = 'TrafficCollector.private\New-CollectorPolicy_CreateViaIdentity';
-            CreateViaIdentityExpanded = 'TrafficCollector.private\New-CollectorPolicy_CreateViaIdentityExpanded';
+            Create = 'TrafficCollector.private\New-AzTrafficCollectorPolicy_Create';
+            CreateExpanded = 'TrafficCollector.private\New-AzTrafficCollectorPolicy_CreateExpanded';
+            CreateViaIdentity = 'TrafficCollector.private\New-AzTrafficCollectorPolicy_CreateViaIdentity';
+            CreateViaIdentityExpanded = 'TrafficCollector.private\New-AzTrafficCollectorPolicy_CreateViaIdentityExpanded';
         }
         if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

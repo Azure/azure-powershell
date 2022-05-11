@@ -29,9 +29,9 @@ INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-azuretrafficcollector
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-azTrafficCollector
 #>
-function Get-AzureTrafficCollector {
+function Get-AzTrafficCollector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(

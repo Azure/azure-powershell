@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: TrafficCollector
-online version: https://docs.microsoft.com/en-us/powershell/module/trafficcollector/set-collectorpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/trafficcollector/set-aztrafficcollectorpolicy
 schema: 2.0.0
 ---
 
-# Set-CollectorPolicy
+# Set-AzTrafficCollectorPolicy
 
 ## SYNOPSIS
 Creates or updates a Collector Policy resource
@@ -14,7 +14,7 @@ Creates or updates a Collector Policy resource
 
 ### UpdateExpanded (Default)
 ```
-Set-CollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
+Set-AzTrafficCollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>]
  [-EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]
  [-IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]
@@ -23,20 +23,20 @@ Set-CollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <St
 
 ### Update
 ```
-Set-CollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
+Set-AzTrafficCollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
  -ResourceGroupName <String> -Parameters <ICollectorPolicy> [-SubscriptionId <String>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Set-CollectorPolicy -InputObject <ITrafficCollectorIdentity> -Parameters <ICollectorPolicy> [-AsJob] [-NoWait]
+Set-AzTrafficCollectorPolicy -InputObject <ITrafficCollectorIdentity> -Parameters <ICollectorPolicy> [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Set-CollectorPolicy -InputObject <ITrafficCollectorIdentity>
+Set-AzTrafficCollectorPolicy -InputObject <ITrafficCollectorIdentity>
  [-EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]
  [-IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]
  [-IngestionPolicyIngestionType <IngestionType>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]

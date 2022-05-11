@@ -55,9 +55,9 @@ PARAMETERS <IAzureTrafficCollector>: Azure Traffic Collector resource.
       [SourceType <SourceType?>]: Ingestion source type.
     [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/set-azuretrafficcollector
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/set-azTrafficCollector
 #>
-function Set-AzureTrafficCollector {
+function Set-AzTrafficCollector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(

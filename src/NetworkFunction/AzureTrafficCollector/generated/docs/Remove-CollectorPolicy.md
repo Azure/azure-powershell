@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: TrafficCollector
-online version: https://docs.microsoft.com/en-us/powershell/module/trafficcollector/remove-collectorpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/trafficcollector/remove-aztrafficcollectorpolicy
 schema: 2.0.0
 ---
 
-# Remove-CollectorPolicy
+# Remove-AzTrafficCollectorPolicy
 
 ## SYNOPSIS
 Deletes a specified Collector Policy resource.
@@ -14,14 +14,14 @@ Deletes a specified Collector Policy resource.
 
 ### Delete (Default)
 ```
-Remove-CollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
+Remove-AzTrafficCollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-CollectorPolicy -InputObject <ITrafficCollectorIdentity> [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+Remove-AzTrafficCollectorPolicy -InputObject <ITrafficCollectorIdentity> [-AsJob] [-NoWait] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 

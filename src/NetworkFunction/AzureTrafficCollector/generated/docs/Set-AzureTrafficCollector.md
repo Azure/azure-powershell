@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: TrafficCollector
-online version: https://docs.microsoft.com/en-us/powershell/module/trafficcollector/set-azuretrafficcollector
+online version: https://docs.microsoft.com/en-us/powershell/module/trafficcollector/set-azTrafficCollector
 schema: 2.0.0
 ---
 
-# Set-AzureTrafficCollector
+# Set-AzTrafficCollector
 
 ## SYNOPSIS
 Creates or updates a Azure Traffic Collector resource
@@ -14,26 +14,26 @@ Creates or updates a Azure Traffic Collector resource
 
 ### UpdateExpanded (Default)
 ```
-Set-AzureTrafficCollector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Set-AzTrafficCollector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-CollectorPolicies <ICollectorPolicy[]>] [-Location <String>] [-Tags <Hashtable>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzureTrafficCollector -Name <String> -ResourceGroupName <String> -Parameters <IAzureTrafficCollector>
+Set-AzTrafficCollector -Name <String> -ResourceGroupName <String> -Parameters <IAzureTrafficCollector>
  [-SubscriptionId <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Set-AzureTrafficCollector -InputObject <ITrafficCollectorIdentity> -Parameters <IAzureTrafficCollector>
+Set-AzTrafficCollector -InputObject <ITrafficCollectorIdentity> -Parameters <IAzureTrafficCollector>
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Set-AzureTrafficCollector -InputObject <ITrafficCollectorIdentity> [-CollectorPolicies <ICollectorPolicy[]>]
+Set-AzTrafficCollector -InputObject <ITrafficCollectorIdentity> [-CollectorPolicies <ICollectorPolicy[]>]
  [-Location <String>] [-Tags <Hashtable>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: TrafficCollector
-online version: https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-azuretrafficcollector
+online version: https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-azTrafficCollector
 schema: 2.0.0
 ---
 
-# Get-AzureTrafficCollector
+# Get-AzTrafficCollector
 
 ## SYNOPSIS
 Gets the specified Azure Traffic Collector in a specified resource group
@@ -14,13 +14,13 @@ Gets the specified Azure Traffic Collector in a specified resource group
 
 ### Get (Default)
 ```
-Get-AzureTrafficCollector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Get-AzTrafficCollector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzureTrafficCollector -InputObject <ITrafficCollectorIdentity> [<CommonParameters>]
+Get-AzTrafficCollector -InputObject <ITrafficCollectorIdentity> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

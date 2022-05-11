@@ -35,9 +35,9 @@ PARAMETERS <ITagsObject>: Tags object for patch operations.
   [Tags <ITagsObjectTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/update-azuretrafficcollectortag
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/update-aztrafficcollectortag
 #>
-function Update-AzureTrafficCollectorTag {
+function Update-AzTrafficCollectorTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -135,10 +135,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Update = 'TrafficCollector.private\Update-AzureTrafficCollectorTag_Update';
-            UpdateExpanded = 'TrafficCollector.private\Update-AzureTrafficCollectorTag_UpdateExpanded';
-            UpdateViaIdentity = 'TrafficCollector.private\Update-AzureTrafficCollectorTag_UpdateViaIdentity';
-            UpdateViaIdentityExpanded = 'TrafficCollector.private\Update-AzureTrafficCollectorTag_UpdateViaIdentityExpanded';
+            Update = 'TrafficCollector.private\Update-AzTrafficCollectorTag_Update';
+            UpdateExpanded = 'TrafficCollector.private\Update-AzTrafficCollectorTag_UpdateExpanded';
+            UpdateViaIdentity = 'TrafficCollector.private\Update-AzTrafficCollectorTag_UpdateViaIdentity';
+            UpdateViaIdentityExpanded = 'TrafficCollector.private\Update-AzTrafficCollectorTag_UpdateViaIdentityExpanded';
         }
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
