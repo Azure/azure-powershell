@@ -895,18 +895,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector
             {
                 //uri string
                 var uri = "/subscriptions/" + global::System.Uri.EscapeDataString(subscriptionId);
-                if(resourceGroupName.Length > 0) {
+                if(resourceGroupName != null && resourceGroupName.Length > 0) {
                     uri += "/resourceGroups/" + global::System.Uri.EscapeDataString(resourceGroupName);
                 }
-                uri += "/providers/Microsoft.NetworkFunction/azureTrafficCollectors/";
-                if(azureTrafficCollectorName.Length > 0) {
-                    uri += global::System.Uri.EscapeDataString(azureTrafficCollectorName);
+                uri += "/providers/Microsoft.NetworkFunction/azureTrafficCollectors";
+                if(azureTrafficCollectorName != null && azureTrafficCollectorName.Length > 0) {
+                    uri += "/" + global::System.Uri.EscapeDataString(azureTrafficCollectorName);
                 }
                 uri += "?api-version=" + global::System.Uri.EscapeDataString(apiVersion);
                 // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        uri
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+                var pathAndQuery = uri;
+                // var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                //         uri
+                //         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
