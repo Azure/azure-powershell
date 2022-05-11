@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!GenericProvider.SupportsPrivateLinkResourceType(this.PrivateLinkResourceType))
             {
-                throw new ArgumentException(string.Format(Properties.Resources.UnsupportPrivateLinkResourceType, this.PrivateLinkResourceType));
+                throw new AzPSApplicationException(string.Format(Properties.Resources.UnsupportPrivateLinkResourceType, this.PrivateLinkResourceType));
             }
 
             IPrivateLinkProvider provider = PrivateLinkProviderFactory.CreatePrivateLinkProvder(this, Subscription, PrivateLinkResourceType);
