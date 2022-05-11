@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests
 
     public class DeploymentManagerTests : DeploymentManagerTestRunner
     {
-
         public DeploymentManagerTests(ITestOutputHelper output) : base(output)
         {
         }

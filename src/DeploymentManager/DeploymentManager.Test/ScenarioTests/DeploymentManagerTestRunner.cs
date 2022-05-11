@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests
     public class DeploymentManagerTestRunner
     {
         protected readonly ITestRunner TestRunner;
+
         protected DeploymentManagerTestRunner(ITestOutputHelper output)
         {
             TestRunner = TestManager.CreateInstance(output)
@@ -40,10 +41,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests
                     helper.GetRMModulePath(@"Az.DeploymentManager.psd1")
                 })
                 .WithNewRecordMatcherArguments(
-                    userAgentsToIgnore: new Dictionary<string, string>
-                    {
-
-                    },
+                    userAgentsToIgnore: new Dictionary<string, string>(),
                     resourceProviders: new Dictionary<string, string>
                     {
                         {"Microsoft.Resources", null},
