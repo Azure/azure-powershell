@@ -40,8 +40,8 @@ Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkusto
 ```
 
 ```output
-Kind     Location Name                                                      Type
-----     -------- ----                                                      ----
+Kind     Location Name                                               Type
+----     -------- ----                                               ----
 EventHub East US  testnewkustocluster/mykustodatabase/mykustodataconnection Microsoft.Kusto/Clusters/Databases/DataConnections
 ```
 
@@ -53,8 +53,8 @@ Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkusto
 ```
 
 ```output
-Kind     Location Name                                                      Type
-----     -------- ----                                                      ----
+Kind     Location Name                                               Type
+----     -------- ----                                               ----
 EventHub East US  testnewkustocluster/mykustodatabase/mykustodataconnection Microsoft.Kusto/Clusters/Databases/DataConnections
 ```
 
@@ -178,7 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IDataConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection
 
 ## NOTES
 

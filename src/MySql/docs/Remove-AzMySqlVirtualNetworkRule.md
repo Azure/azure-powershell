@@ -32,7 +32,7 @@ Deletes the virtual network rule with the given name.
 
 ### Example 1: Remove MySql server Virtual Network Rule by name
 ```powershell
-Remove-AzMySqlVirtualNetworkRule -Name vnet -ResourceGroupName PowershellMySqlTest-ServerName mysql-test
+Remove-AzMySqlVirtualNetworkRule -Name vnet -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 ```
 
 This cmdlet removes MySql server Virtual Network Rule by name.

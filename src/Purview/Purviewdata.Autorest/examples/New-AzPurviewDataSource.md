@@ -1,8 +1,10 @@
 ### Example 1: Create a data source
 ```powershell
-PS C:\> $obj = New-AzPurviewAzureStorageDataSourceObject -Kind 'AzureStorage' -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint https://datascantest.blob.core.windows.net/
+$obj = New-AzPurviewAzureStorageDataSourceObject -Kind 'AzureStorage' -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint https://datascantest.blob.core.windows.net/
 New-AzPurviewDataSource -Endpoint 'https://parv-brs-2.purview.azure.com/' -Name 'NewDataSource' -Body $obj
+```
 
+```output
 CollectionLastModifiedAt : 2/15/2022 10:36:25 AM
 CollectionReferenceName  : parv-brs-2
 CollectionType           : CollectionReference

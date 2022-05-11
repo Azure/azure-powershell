@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         private readonly AzPredictorService _noPredictorService;
         private readonly AzContext _azContext;
 
-        private PowerShellRuntime _powerShellRuntime;
+        private MockPowerShellRuntime _powerShellRuntime;
 
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictorServiceTests"/>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public AzPredictorServiceTests(ModelFixture fixture)
         {
             this._fixture = fixture;
-            _powerShellRuntime = new PowerShellRuntime();
+            _powerShellRuntime = new MockPowerShellRuntime();
             _azContext = new AzContext(_powerShellRuntime);
             var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
             this._commandBasedPredictor = new CommandLinePredictor(this._fixture.PredictionCollection[startHistory], null, null, _azContext);

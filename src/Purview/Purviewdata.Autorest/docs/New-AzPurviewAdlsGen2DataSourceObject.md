@@ -25,8 +25,10 @@ Create an in-memory object for AdlsGen2DataSource.
 
 ### Example 1: Create AdlsGen2 data source object
 ```powershell
-PS C:\> New-AzPurviewAdlsGen2DataSourceObject -Kind 'AdlsGen2' -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint 'https://adlsgen2datascan.dfs.core.windows.net'
+New-AzPurviewAdlsGen2DataSourceObject -Kind 'AdlsGen2' -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint 'https://adlsgen2datascan.dfs.core.windows.net'
+```
 
+```output
 CollectionLastModifiedAt :
 CollectionReferenceName  : parv-brs-2
 CollectionType           : CollectionReference

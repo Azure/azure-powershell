@@ -47,7 +47,7 @@ Create a in-memory object for ImageRegistryCredential
 Create a in-memory object for Port
 
 ### [New-AzContainerGroupVolumeObject](New-AzContainerGroupVolumeObject.md)
-Create a in-memory object for Volume
+Create an in-memory object for Volume.
 
 ### [New-AzContainerInstanceEnvironmentVariableObject](New-AzContainerInstanceEnvironmentVariableObject.md)
 Create a in-memory object for EnvironmentVariable

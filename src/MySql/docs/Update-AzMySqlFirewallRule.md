@@ -73,7 +73,7 @@ These cmdlets update MySql Firewall Rule by identity.
 ### Example 3: Update MySql Firewall Rule by -ClientIPAddress.
 ```powershell
 $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
-Update-AzMySqlFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
+Update-AzMySqlFirewallRule -InputObject $ID -ClientIPAddress 0.0.0.2
 ```
 
 ```output
