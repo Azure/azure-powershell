@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzServiceLinkerForContainerApp
 
 ## SYNOPSIS
-Operation to update an existing link.
+Operation to update an existing link in container app.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Update-AzServiceLinkerForContainerApp -InputObject <IServiceLinkerIdentity> -Aut
 ```
 
 ## DESCRIPTION
-Operation to update an existing link.
+Operation to update an existing link in container app.
 
 ## EXAMPLES
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Delete a link.
+Delete a link in webapp.
 .Description
-Delete a link.
+Delete a link in webapp.
 .Example
 {{ Add code here }}
 .Example

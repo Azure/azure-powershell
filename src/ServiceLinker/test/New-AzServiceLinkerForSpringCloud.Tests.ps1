@@ -19,9 +19,9 @@ Describe 'New-AzServiceLinkerForSpringCloud' {
     It 'CreateExpanded' -skip { 
         $target = New-AzServiceLinkerAzureResourceObject -Id $env.keyvaultId
         $authInfo = New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject
-        $newLinker = New-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup-Service $env.spring -App $env.springApp -LinkerName $env.newLinker -TargetService $target -AuthInfo $authInfo
+        $newLinker = New-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup-ServiceName $env.spring -AppName $env.springApp -LinkerName $env.newLinker -TargetService $target -AuthInfo $authInfo
         # assert the linker create successfully
-        $linkers = Get-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -Service $env.spring -App $env.springApp
+        $linkers = Get-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -ServiceName $env.spring -AppName $env.springApp
         $linkers.Name.Contains($env.newLinker) | Should -Be $true
 
     }

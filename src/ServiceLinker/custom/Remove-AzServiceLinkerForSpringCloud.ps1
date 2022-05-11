@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Delete a link.
+Delete a link in spring cloud.
 .Description
-Delete a link.
+Delete a link in spring cloud.
 .Example
 {{ Add code here }}
 .Example
@@ -61,20 +61,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
     [System.String]
     # The Name of spring cloud service to be connected.
-    ${Service},
+    ${ServiceName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
     [System.String]
     # The app Name of spring cloud service to be connected.
-    ${App},
+    ${AppName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='"default"')]
     [System.String]
     # The deployment Name of spring cloud app to be connected.
-    ${Deployment},
+    ${DeploymentName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]

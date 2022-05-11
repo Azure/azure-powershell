@@ -1,6 +1,6 @@
 ### Example 1: Get spring cloud's linker configuration list
 ```powershell
-Get-AzServiceLinkerConfigurationForSpringCloud -Service servicelinker-springcloud -App appconfiguration -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker |fl
+Get-AzServiceLinkerConfigurationForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker |fl
 ```
 
 ```output

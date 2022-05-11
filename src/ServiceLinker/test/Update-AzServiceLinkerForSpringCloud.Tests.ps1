@@ -16,9 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzServiceLinkerForSpri
 
 Describe 'Update-AzServiceLinkerForSpringCloud' {
     It 'UpdateExpanded' {
-        $linker = Get-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -Service $env.spring -App $env.springApp -LinkerName $env.preparedLinker
+        $linker = Get-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -ServiceName $env.spring -AppName $env.springApp -LinkerName $env.preparedLinker
 
-        $updateLinker = Update-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -Service $env.spring -App $env.springApp -LinkerName $linker.Name -TargetService $linker.TargetService -AuthInfo $linker.AuthInfo -ClientType dotnet
+        $updateLinker = Update-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -ServiceName $env.spring -AppName $env.springApp -LinkerName $linker.Name -TargetService $linker.TargetService -AuthInfo $linker.AuthInfo -ClientType dotnet
         $updateLinker.ClientType | Should -Be dotnet
     }
 }

@@ -8,24 +8,24 @@ schema: 2.0.0
 # Get-AzServiceLinkerConfigurationForSpringCloud
 
 ## SYNOPSIS
-list source configurations for a linker.
+list source configurations for a linker in spring cloud.
 
 ## SYNTAX
 
 ```
-Get-AzServiceLinkerConfigurationForSpringCloud -LinkerName <String> -App <String> -ResourceGroupName <String>
- -Service <String> [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-Deployment <String>]
- [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzServiceLinkerConfigurationForSpringCloud -LinkerName <String> -AppName <String>
+ -ResourceGroupName <String> -ServiceName <String> [-ResourceUri <String>] [-DefaultProfile <PSObject>]
+ [-DeploymentName <String>] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-list source configurations for a linker.
+list source configurations for a linker in spring cloud.
 
 ## EXAMPLES
 
 ### Example 1: Get spring cloud's linker configuration list
 ```powershell
-Get-AzServiceLinkerConfigurationForSpringCloud -Service servicelinker-springcloud -App appconfiguration -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker |fl
+Get-AzServiceLinkerConfigurationForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker |fl
 ```
 
 ```output
@@ -39,7 +39,7 @@ Get Linker's configuration list
 
 ## PARAMETERS
 
-### -App
+### -AppName
 The app Name of spring cloud service to be connected.
 
 ```yaml
@@ -69,7 +69,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Deployment
+### -DeploymentName
 The deployment Name of spring cloud app to be connected.
 
 ```yaml
@@ -129,7 +129,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Service
+### -ServiceName
 The Name of spring cloud service to be connected.
 
 ```yaml

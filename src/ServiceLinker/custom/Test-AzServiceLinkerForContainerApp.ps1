@@ -18,7 +18,7 @@
 .Synopsis
 Validate a link.
 .Description
-Validate a link.
+Validate a link in container app.
 .Example
 {{ Add code here }}
 .Example

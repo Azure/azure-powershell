@@ -26,7 +26,7 @@ Test-AzServiceLinkerForContainerApp -InputObject <IServiceLinkerIdentity> [-Defa
 ```
 
 ## DESCRIPTION
-Validate a link.
+Validate a link in container app.
 
 ## EXAMPLES
 

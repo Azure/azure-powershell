@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzServiceLinkerForWebApp
 
 ## SYNOPSIS
-Delete a link.
+Delete a link in webapp.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Remove-AzServiceLinkerForWebApp -InputObject <IServiceLinkerIdentity> [-DefaultP
 ```
 
 ## DESCRIPTION
-Delete a link.
+Delete a link in webapp.
 
 ## EXAMPLES
 

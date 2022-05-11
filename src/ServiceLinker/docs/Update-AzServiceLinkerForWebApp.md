@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzServiceLinkerForWebApp
 
 ## SYNOPSIS
-Operation to update an existing link.
+Operation to update an existing link in webapp.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Update-AzServiceLinkerForWebApp -InputObject <IServiceLinkerIdentity> -AuthInfo 
 ```
 
 ## DESCRIPTION
-Operation to update an existing link.
+Operation to update an existing link in webapp.
 
 ## EXAMPLES
 

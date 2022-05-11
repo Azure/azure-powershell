@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-list source configurations for a linker.
+list source configurations for a linker in webapp.
 .Description
-list source configurations for a linker.
+list source configurations for a linker in webapp.
 .Example
 {{ Add code here }}
 .Example

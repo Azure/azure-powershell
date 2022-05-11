@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Validate a link.
+Validate a link in webapp.
 .Description
-Validate a link.
+Validate a link in webapp.
 .Example
 {{ Add code here }}
 .Example

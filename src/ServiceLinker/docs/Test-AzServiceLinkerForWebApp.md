@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzServiceLinkerForWebApp
 
 ## SYNOPSIS
-Validate a link.
+Validate a link in webapp.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Test-AzServiceLinkerForWebApp -InputObject <IServiceLinkerIdentity> [-DefaultPro
 ```
 
 ## DESCRIPTION
-Validate a link.
+Validate a link in webapp.
 
 ## EXAMPLES
 

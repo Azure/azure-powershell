@@ -8,15 +8,15 @@ schema: 2.0.0
 # Test-AzServiceLinkerForSpringCloud
 
 ## SYNOPSIS
-Validate a link.
+Validate a link in spring cloud.
 
 ## SYNTAX
 
 ### Validate (Default)
 ```
-Test-AzServiceLinkerForSpringCloud -Name <String> -App <String> -ResourceGroupName <String> -Service <String>
- [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Deployment <String>] [-NoWait]
- [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzServiceLinkerForSpringCloud -Name <String> -AppName <String> -ResourceGroupName <String>
+ -ServiceName <String> [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-DeploymentName <String>] [-NoWait] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentity
@@ -26,13 +26,13 @@ Test-AzServiceLinkerForSpringCloud -InputObject <IServiceLinkerIdentity> [-Defau
 ```
 
 ## DESCRIPTION
-Validate a link.
+Validate a link in spring cloud.
 
 ## EXAMPLES
 
 ### Example 1: Test Linker
 ```powershell
-Test-AzServiceLinkerForSpringCloud -Service servicelinker-springcloud -App appconfiguration -Deployment "default" -ResourceGroupName servicelinker-test-group -Name postgresql_connection  | fl
+Test-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group -Name postgresql_connection  | fl
 ```
 
 ```output
@@ -57,7 +57,7 @@ Test Linker
 
 ## PARAMETERS
 
-### -App
+### -AppName
 The app Name of spring cloud service to be connected.
 
 ```yaml
@@ -102,7 +102,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Deployment
+### -DeploymentName
 The deployment Name of spring cloud app to be connected.
 
 ```yaml
@@ -193,7 +193,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Service
+### -ServiceName
 The Name of spring cloud service to be connected.
 
 ```yaml

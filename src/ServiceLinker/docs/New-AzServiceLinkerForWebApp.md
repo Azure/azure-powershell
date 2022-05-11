@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceLinkerForWebApp
 
 ## SYNOPSIS
-Create or update linker resource.
+Create or update linker resource in webapp.
 
 ## SYNTAX
 
@@ -21,7 +21,7 @@ New-AzServiceLinkerForWebApp -AuthInfo <IAuthInfoBase> -TargetService <ITargetSe
 ```
 
 ## DESCRIPTION
-Create or update linker resource.
+Create or update linker resource in webapp.
 
 ## EXAMPLES
 

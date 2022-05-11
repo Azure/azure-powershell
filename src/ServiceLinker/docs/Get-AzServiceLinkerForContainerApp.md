@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzServiceLinkerForContainerApp
 
 ## SYNOPSIS
-Returns Linker resource for a given name.
+Returns Linker resource for a given name in container app.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzServiceLinkerForContainerApp -InputObject <IServiceLinkerIdentity> [-Defau
 ```
 
 ## DESCRIPTION
-Returns Linker resource for a given name.
+Returns Linker resource for a given name in container app.
 
 ## EXAMPLES
 

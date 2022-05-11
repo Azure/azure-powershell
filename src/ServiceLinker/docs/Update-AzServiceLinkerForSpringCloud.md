@@ -8,17 +8,17 @@ schema: 2.0.0
 # Update-AzServiceLinkerForSpringCloud
 
 ## SYNOPSIS
-Operation to update an existing link.
+Operation to update an existing link in spring cloud.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzServiceLinkerForSpringCloud -Name <String> -AuthInfo <IAuthInfoBase> -ClientType <ClientType>
- -TargetService <ITargetServiceBase> -App <String> -ResourceGroupName <String> -Service <String>
+ -TargetService <ITargetServiceBase> -AppName <String> -ResourceGroupName <String> -ServiceName <String>
  [-ResourceUri <String>] [-Scope <String>] [-SecretStoreKeyVaultId <String>]
- [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] [-AsJob] [-Deployment <String>] [-NoWait]
- [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] [-AsJob] [-DeploymentName <String>]
+ [-NoWait] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -30,7 +30,7 @@ Update-AzServiceLinkerForSpringCloud -InputObject <IServiceLinkerIdentity> -Auth
 ```
 
 ## DESCRIPTION
-Operation to update an existing link.
+Operation to update an existing link in spring cloud.
 
 ## EXAMPLES
 
@@ -38,7 +38,7 @@ Operation to update an existing link.
 ```powershell
 $target=New-AzServiceLinkerAzureResourceObject -Id /subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/test
 $authInfo=New-AzServiceLinkerSecretAuthInfoObject -Name username -SecretValue password 
-Update-AzServiceLinkerForSpringCloud -Service servicelinker-springcloud -App appconfiguration -Deployment "default" -ResourceGroupName servicelinker-test-group  -TargetService $target -AuthInfo $authInfo -ClientType 'none' -Name postgres_connection
+Update-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group  -TargetService $target -AuthInfo $authInfo -ClientType 'none' -Name postgres_connection
 ```
 
 ```output
@@ -51,7 +51,7 @@ Update linker
 
 ## PARAMETERS
 
-### -App
+### -AppName
 The app Name of spring cloud service to be connected.
 
 ```yaml
@@ -127,7 +127,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Deployment
+### -DeploymentName
 The deployment Name of spring cloud app to be connected.
 
 ```yaml
@@ -248,7 +248,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Service
+### -ServiceName
 The Name of spring cloud service to be connected.
 
 ```yaml

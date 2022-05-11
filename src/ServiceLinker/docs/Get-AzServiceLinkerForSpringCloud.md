@@ -8,22 +8,22 @@ schema: 2.0.0
 # Get-AzServiceLinkerForSpringCloud
 
 ## SYNOPSIS
-Returns Linker resource for a given name.
+Returns Linker resource for a given name in spring cloud.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzServiceLinkerForSpringCloud -App <String> -ResourceGroupName <String> -Service <String>
- [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-Deployment <String>] [-SubscriptionId <String>]
+Get-AzServiceLinkerForSpringCloud -AppName <String> -ResourceGroupName <String> -ServiceName <String>
+ [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-DeploymentName <String>] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzServiceLinkerForSpringCloud -Name <String> -App <String> -ResourceGroupName <String> -Service <String>
- [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-Deployment <String>] [-SubscriptionId <String>]
- [<CommonParameters>]
+Get-AzServiceLinkerForSpringCloud -Name <String> -AppName <String> -ResourceGroupName <String>
+ -ServiceName <String> [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-DeploymentName <String>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -33,13 +33,13 @@ Get-AzServiceLinkerForSpringCloud -InputObject <IServiceLinkerIdentity> [-Defaul
 ```
 
 ## DESCRIPTION
-Returns Linker resource for a given name.
+Returns Linker resource for a given name in spring cloud.
 
 ## EXAMPLES
 
 ### Example 1: List all linkers in a spring cloud app's deployment
 ```powershell
-Get-AzServiceLinkerForSpringCloud -Service servicelinker-springcloud -App appconfiguration -ResourceGroupName servicelinker-test-group -Deployment "default"
+Get-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -ResourceGroupName servicelinker-test-group -DeploymentName "default"
 ```
 
 ```output
@@ -55,7 +55,7 @@ List all linkers in a spring cloud app's deployment
 
 ### Example 2: Get linker by name
 ```powershell
-Get-AzServiceLinkerForSpringCloud -Service servicelinker-springcloud -App appconfiguration -Deployment "default" -ResourceGroupName servicelinker-test-group  -Name postgresql_connection | fl
+Get-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group  -Name postgresql_connection | fl
 ```
 
 ```output
@@ -123,7 +123,7 @@ Get linker by name
 
 ## PARAMETERS
 
-### -App
+### -AppName
 The app Name of spring cloud service to be connected.
 
 ```yaml
@@ -153,7 +153,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Deployment
+### -DeploymentName
 The deployment Name of spring cloud app to be connected.
 
 ```yaml
@@ -229,7 +229,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Service
+### -ServiceName
 The Name of spring cloud service to be connected.
 
 ```yaml

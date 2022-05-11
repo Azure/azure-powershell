@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-list source configurations for a linker.
+list source configurations for a linker in container app.
 .Description
-list source configurations for a linker.
+list source configurations for a linker in container app.
 .Example
 {{ Add code here }}
 .Example

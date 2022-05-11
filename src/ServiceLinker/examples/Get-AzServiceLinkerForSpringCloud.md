@@ -1,6 +1,6 @@
 ### Example 1: List all linkers in a spring cloud app's deployment
 ```powershell
-Get-AzServiceLinkerForSpringCloud -Service servicelinker-springcloud -App appconfiguration -ResourceGroupName servicelinker-test-group -Deployment "default"
+Get-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -ResourceGroupName servicelinker-test-group -DeploymentName "default"
 ```
 
 ```output
@@ -16,7 +16,7 @@ List all linkers in a spring cloud app's deployment
 
 ### Example 2: Get linker by name
 ```powershell
-Get-AzServiceLinkerForSpringCloud -Service servicelinker-springcloud -App appconfiguration -Deployment "default" -ResourceGroupName servicelinker-test-group  -Name postgresql_connection | fl
+Get-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group  -Name postgresql_connection | fl
 ```
 
 ```output

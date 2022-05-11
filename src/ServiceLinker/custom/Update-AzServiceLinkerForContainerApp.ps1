@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Operation to update an existing link.
+Operation to update an existing link in container app.
 .Description
-Operation to update an existing link.
+Operation to update an existing link in container app.
 .Example
 {{ Add code here }}
 .Example

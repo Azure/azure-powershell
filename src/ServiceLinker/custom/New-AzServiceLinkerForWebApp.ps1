@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create or update linker resource.
+Create or update linker resource in webapp.
 .Description
-Create or update linker resource.
+Create or update linker resource in webapp.
 .Example
 {{ Add code here }}
 .Example

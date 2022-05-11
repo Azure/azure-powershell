@@ -16,12 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceLinkerForSpringC
 
 Describe 'Get-AzServiceLinkerForSpringCloud' {
     It 'List' {
-        $linkers = Get-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -Service $env.spring -App $env.springApp
+        $linkers = Get-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -ServiceName $env.spring -AppName $env.springApp
         $linkers.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $linker = Get-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -Service $env.spring -App $env.springApp -LinkerName $env.preparedLinker
+        $linker = Get-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -ServiceName $env.spring -AppName $env.springApp -LinkerName $env.preparedLinker
         $linker.Name | Should -Be $env.preparedLinker
     }
 

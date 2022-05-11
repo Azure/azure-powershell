@@ -18,7 +18,7 @@
 .Synopsis
 Delete a link.
 .Description
-Delete a link.
+Delete a link in container app.
 .Example
 {{ Add code here }}
 .Example

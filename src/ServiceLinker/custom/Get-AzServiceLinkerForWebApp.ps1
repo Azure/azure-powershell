@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Returns Linker resource for a given name.
+Returns Linker resource for a given name in webapp.
 .Description
-Returns Linker resource for a given name.
+Returns Linker resource for a given name in webapp.
 .Example
 {{ Add code here }}
 .Example

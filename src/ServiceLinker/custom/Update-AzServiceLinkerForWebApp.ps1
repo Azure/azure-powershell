@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Operation to update an existing link.
+Operation to update an existing link in webapp.
 .Description
-Operation to update an existing link.
+Operation to update an existing link in webapp.
 .Example
 {{ Add code here }}
 .Example

@@ -26,7 +26,7 @@ Remove-AzServiceLinkerForContainerApp -InputObject <IServiceLinkerIdentity> [-De
 ```
 
 ## DESCRIPTION
-Delete a link.
+Delete a link in container app.
 
 ## EXAMPLES
 

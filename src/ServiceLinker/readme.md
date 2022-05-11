@@ -30,6 +30,7 @@ For information on how to develop for `Az.ServiceLinker`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: 3abdf3eaf45b42d78e242a2cca4a977e8dcf3103
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
@@ -70,37 +71,6 @@ directive:
             "type": "string",
             "in": "header"
           }
-  # - from: swagger-document
-  #   where:
-  #     - $..ValidateResult
-  #   transform: >-
-  #     $["properties"] = {
-  #       "properties": {
-  #         "type": "object",
-  #         "properties": {
-  #           "message": {
-  #             "description": "validate message",
-  #             "type": "string"
-  #           }
-  #         }
-  #       },
-  #       "startTime": {
-  #         "description": "Start time of validation",
-  #         "type": "string"
-  #       },
-  #       "endTime": {
-  #         "description": "End time of validation",
-  #         "type": "string"
-  #       },
-  #       "resourceId": {
-  #         "description": "Validated Linker Id",
-  #         "type": "string"
-  #       },
-  #       "status": {
-  #         "description": "Validation Status",
-  #         "type": "string"
-  #       }
-  #     }
   - no-inline:
     - TargetServiceBase
     - AuthInfoBase

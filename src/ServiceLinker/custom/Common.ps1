@@ -18,20 +18,19 @@ function Transform-ResourceUri {
         $PSBoundParameters['ResourceUri'] = $resourceId
         $null = $PSBoundParameters.Remove("WebApp")
     }
-    elseif($PSBoundParameters.ContainsKey("Service") )
+    elseif($PSBoundParameters.ContainsKey("ServiceName") )
     {
-        $service = $PSBoundParameters['Service']
-        $app = $PSBoundParameters['App']
-        $deployment=$PSBoundParameters['Deployment']
+        $service = $PSBoundParameters['ServiceName']
+        $app = $PSBoundParameters['AppName']
+        $deployment=$PSBoundParameters['DeploymentName']
         
         $resourceId = "/subscriptions/$subscription/resourceGroups/$ResourceGroupName/providers/Microsoft.AppPlatform/Spring/$service/apps/$app/deployments/$deployment"
         $PSBoundParameters['ResourceUri'] = $resourceId
-        $null = $PSBoundParameters.Remove("Service")
-        $null = $PSBoundParameters.Remove("App")
-        $null = $PSBoundParameters.Remove("Deployment")
+        $null = $PSBoundParameters.Remove("ServiceName")
+        $null = $PSBoundParameters.Remove("AppName")
+        $null = $PSBoundParameters.Remove("DeploymentName")
     }elseif($PSBoundParameters.ContainsKey("ContainerApp") )
     {
-        $service = $PSBoundParameters['Service']
         $containerapp = $PSBoundParameters['ContainerApp']
         
         $resourceId = "/subscriptions/$subscription/resourceGroups/$ResourceGroupName/providers/Microsoft.App/containerApps/$containerapp"

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzServiceLinkerForSpri
 
 Describe 'Remove-AzServiceLinkerForSpringCloud' {
     It 'Delete' {
-        $null = Remove-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -Service $env.spring -App $env.springApp -LinkerName $env.newLinker
+        $null = Remove-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -ServiceName $env.spring -AppName $env.springApp -LinkerName $env.newLinker
     }
 
     It 'DeleteViaIdentity' {

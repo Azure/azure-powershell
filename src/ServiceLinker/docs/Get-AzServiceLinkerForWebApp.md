@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzServiceLinkerForWebApp
 
 ## SYNOPSIS
-Returns Linker resource for a given name.
+Returns Linker resource for a given name in webapp.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzServiceLinkerForWebApp -InputObject <IServiceLinkerIdentity> [-DefaultProf
 ```
 
 ## DESCRIPTION
-Returns Linker resource for a given name.
+Returns Linker resource for a given name in webapp.
 
 ## EXAMPLES
 

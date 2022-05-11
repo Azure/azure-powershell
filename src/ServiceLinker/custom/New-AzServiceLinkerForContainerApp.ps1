@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create or update linker resource.
+Create or update linker resource in container app.
 .Description
-Create or update linker resource.
+Create or update linker resource in container app.
 .Example
 {{ Add code here }}
 .Example

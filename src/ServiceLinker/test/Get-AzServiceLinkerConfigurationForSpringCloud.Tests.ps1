@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceLinkerConfigurat
 
 Describe 'Get-AzServiceLinkerConfigurationForSpringCloud' {
     It 'Get' {
-        $configs = Get-AzServiceLinkerConfigurationForSpringCloud -ResourceGroupName $env.resourceGroup -Service $env.spring -App $env.springApp -LinkerName $env.preparedLinker
+        $configs = Get-AzServiceLinkerConfigurationForSpringCloud -ResourceGroupName $env.resourceGroup -ServiceName $env.spring -AppName $env.springApp -LinkerName $env.preparedLinker
         $configs.Count | Should -BeGreaterOrEqual 1
     }
 }

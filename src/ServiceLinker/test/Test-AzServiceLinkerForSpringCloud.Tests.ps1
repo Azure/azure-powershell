@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzServiceLinkerForSpring
 
 Describe 'Test-AzServiceLinkerForSpringCloud' {
     It 'Validate' {
-        $result = Test-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -Service $env.spring -App $env.springApp -LinkerName $env.preparedLinker
+        $result = Test-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -ServiceName $env.spring -AppName $env.springApp -LinkerName $env.preparedLinker
     }
 
     It 'ValidateViaIdentity' {

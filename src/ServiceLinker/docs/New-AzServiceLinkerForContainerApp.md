@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceLinkerForContainerApp
 
 ## SYNOPSIS
-Create or update linker resource.
+Create or update linker resource in container app.
 
 ## SYNTAX
 
@@ -21,7 +21,7 @@ New-AzServiceLinkerForContainerApp -AuthInfo <IAuthInfoBase> -Scope <String>
 ```
 
 ## DESCRIPTION
-Create or update linker resource.
+Create or update linker resource in container app.
 
 ## EXAMPLES
 
@@ -40,7 +40,7 @@ Name
 testLinker
 ```
 
-Create service linker between Container App and postgresql
+Create service linker between Container AppName and postgresql
 
 ## PARAMETERS
 

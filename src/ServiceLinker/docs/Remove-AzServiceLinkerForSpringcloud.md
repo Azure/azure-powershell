@@ -8,15 +8,16 @@ schema: 2.0.0
 # Remove-AzServiceLinkerForSpringcloud
 
 ## SYNOPSIS
-Delete a link.
+Delete a link in spring cloud.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzServiceLinkerForSpringcloud -Name <String> -App <String> -ResourceGroupName <String>
- -Service <String> [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Deployment <String>]
- [-NoWait] [-PassThru] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzServiceLinkerForSpringcloud -Name <String> -AppName <String> -ResourceGroupName <String>
+ -ServiceName <String> [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-DeploymentName <String>] [-NoWait] [-PassThru] [-SubscriptionId <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -26,13 +27,13 @@ Remove-AzServiceLinkerForSpringcloud -InputObject <IServiceLinkerIdentity> [-Def
 ```
 
 ## DESCRIPTION
-Delete a link.
+Delete a link in spring cloud.
 
 ## EXAMPLES
 
 ### Example 1: Remove linker
 ```powershell
-Remove-AzServiceLinkerForSpringCloud -Service servicelinker-springcloud -App appconfiguration -Deployment "default" -ResourceGroupName servicelinker-test-group -Name testLinker
+Remove-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group -Name testLinker
 ```
 
 ```output
@@ -43,7 +44,7 @@ Remove linker
 
 ## PARAMETERS
 
-### -App
+### -AppName
 The app Name of spring cloud service to be connected.
 
 ```yaml
@@ -88,7 +89,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Deployment
+### -DeploymentName
 The deployment Name of spring cloud app to be connected.
 
 ```yaml
@@ -194,7 +195,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Service
+### -ServiceName
 The Name of spring cloud service to be connected.
 
 ```yaml

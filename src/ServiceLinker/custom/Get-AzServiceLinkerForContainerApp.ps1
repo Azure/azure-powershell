@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Returns Linker resource for a given name.
+Returns Linker resource for a given name in container app.
 .Description
-Returns Linker resource for a given name.
+Returns Linker resource for a given name in container app.
 .Example
 {{ Add code here }}
 .Example

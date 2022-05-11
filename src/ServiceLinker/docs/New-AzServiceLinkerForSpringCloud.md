@@ -8,20 +8,20 @@ schema: 2.0.0
 # New-AzServiceLinkerForSpringCloud
 
 ## SYNOPSIS
-Create or update linker resource.
+Create or update linker resource in spring cloud.
 
 ## SYNTAX
 
 ```
-New-AzServiceLinkerForSpringCloud -AuthInfo <IAuthInfoBase> -TargetService <ITargetServiceBase> -App <String>
- -ResourceGroupName <String> -Service <String> [-Name <String>] [-ResourceUri <String>]
+New-AzServiceLinkerForSpringCloud -AuthInfo <IAuthInfoBase> -TargetService <ITargetServiceBase>
+ -AppName <String> -ResourceGroupName <String> -ServiceName <String> [-Name <String>] [-ResourceUri <String>]
  [-ClientType <ClientType>] [-Scope <String>] [-SecretStoreKeyVaultId <String>]
- [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] [-AsJob] [-Deployment <String>] [-NoWait]
- [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] [-AsJob] [-DeploymentName <String>]
+ [-NoWait] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update linker resource.
+Create or update linker resource in spring cloud.
 
 ## EXAMPLES
 
@@ -31,7 +31,7 @@ $target=New-AzServiceLinkerAzureResourceObject -Id /subscriptions/00000000-0000-
 
 $authInfo=New-AzServiceLinkerSecretAuthInfoObject -Name testUser -SecretValue ***  
 
-New-AzServiceLinkerForSpringCloud -TargetService $target -AuthInfo $auth -ClientType dotnet -LinkerName testLinker -Service servicelinker-springcloud -App appconfiguration -Deployment "default" -ResourceGroupName servicelinker-test-group 
+New-AzServiceLinkerForSpringCloud -TargetService $target -AuthInfo $auth -ClientType dotnet -LinkerName testLinker -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group 
 
 
 ```
@@ -46,7 +46,7 @@ Create service linker between spring cloud app and postgresql
 
 ## PARAMETERS
 
-### -App
+### -AppName
 The app Name of spring cloud service to be connected.
 
 ```yaml
@@ -122,7 +122,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Deployment
+### -DeploymentName
 The deployment Name of spring cloud app to be connected.
 
 ```yaml
@@ -228,7 +228,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Service
+### -ServiceName
 The Name of spring cloud service to be connected.
 
 ```yaml

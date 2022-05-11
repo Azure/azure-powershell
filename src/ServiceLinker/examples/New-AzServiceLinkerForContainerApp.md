@@ -13,5 +13,5 @@ Name
 testLinker
 ```
 
-Create service linker between Container App and postgresql
+Create service linker between Container AppName and postgresql
 

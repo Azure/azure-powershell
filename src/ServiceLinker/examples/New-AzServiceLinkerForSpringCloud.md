@@ -4,7 +4,7 @@ $target=New-AzServiceLinkerAzureResourceObject -Id /subscriptions/00000000-0000-
 
 $authInfo=New-AzServiceLinkerSecretAuthInfoObject -Name testUser -SecretValue ***  
 
-New-AzServiceLinkerForSpringCloud -TargetService $target -AuthInfo $auth -ClientType dotnet -LinkerName testLinker -Service servicelinker-springcloud -App appconfiguration -Deployment "default" -ResourceGroupName servicelinker-test-group 
+New-AzServiceLinkerForSpringCloud -TargetService $target -AuthInfo $auth -ClientType dotnet -LinkerName testLinker -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group 
 
 
 ```

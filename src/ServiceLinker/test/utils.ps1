@@ -54,7 +54,7 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     $null = Remove-AzServiceLinkerForWebApp -ResourceGroupName $env.resourceGroup -WebApp $env.webapp  -LinkerName $env.newLinker
-    $null = Remove-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -Service $env.spring -App $env.springApp -LinkerName $env.newLinker
+    $null = Remove-AzServiceLinkerForSpringCloud -ResourceGroupName $env.resourceGroup -ServiceName $env.spring -AppName $env.springApp -LinkerName $env.newLinker
     $null = Remove-AzServiceLinkerForContainerApp -ResourceGroupName $env.resourceGroup -ContainerApp $env.containerApp -LinkerName $env.newLinker
 }
 
