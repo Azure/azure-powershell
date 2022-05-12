@@ -35,14 +35,14 @@ The **New-AzDataLakeGen2SasToken** cmdlet generates a Shared Access Signature (S
 
 ### Example 1: Generate a SAS token with full permission
 ```
-PS C:\> New-AzDataLakeGen2SasToken -FileSystem "filesystem1" -Path "dir1/dir2" -Permission racwdlmeop
+New-AzDataLakeGen2SasToken -FileSystem "filesystem1" -Path "dir1/dir2" -Permission racwdlmeop
 ```
 
 This example generates a DatalakeGen2 SAS token with full permission.
 
 ### Example 2: Generate a SAS token with specific StartTime, ExpireTime, Protocal, IPAddressOrRange, by pipeline a datalakegen2 item
 ```
-PS C:\> Get-AzDataLakeGen2Item -FileSystem test -Path "testdir/dir2" | New-AzDataLakeGen2SasToken -Permission rw -Protocol Https -IPAddressOrRange 10.0.0.0-12.10.0.0 -StartTime (Get-Date) -ExpiryTime (Get-Date).AddDays(6)
+Get-AzDataLakeGen2Item -FileSystem test -Path "testdir/dir2" | New-AzDataLakeGen2SasToken -Permission rw -Protocol Https -IPAddressOrRange 10.0.0.0-12.10.0.0 -StartTime (Get-Date) -ExpiryTime (Get-Date).AddDays(6)
 ```
 
 This example generates a DatalakeGen2 SAS token by pipeline a datalake gen2 item, and with specific StartTime, ExpireTime, Protocal, IPAddressOrRange.
