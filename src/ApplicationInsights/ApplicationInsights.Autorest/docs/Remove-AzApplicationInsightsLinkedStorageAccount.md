@@ -31,7 +31,7 @@ Delete linked storage accounts for an Application Insights component.
 
 ### Example 1: Delete linked storage account associated with application insights component "componentName"
 ```powershell
-PS C:\> Get-AzApplicationInsights -ResourceGroupName "rgName" -Name "componentName" | Remove-AzApplicationInsightsLinkedStorageAccount
+Get-AzApplicationInsights -ResourceGroupName "rgName" -Name "componentName" | Remove-AzApplicationInsightsLinkedStorageAccount
 ```
 
 Delete linked storage account associated with application insights component "componentName"

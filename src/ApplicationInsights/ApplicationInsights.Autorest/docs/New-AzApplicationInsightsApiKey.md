@@ -25,9 +25,9 @@ Create an API Key of an Application Insights component.
 
 ### Example 1: Create a new Api Key for an application insights resource
 ```powershell
-PS C:\> $apiKeyDescription = "testapiKey"
-PS C:\> $permissions = @("ReadTelemetry", "WriteAnnotations")
-PS C:\> New-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -Description $apiKeyDescription -Permissions $permissions
+$apiKeyDescription = "testapiKey"
+$permissions = @("ReadTelemetry", "WriteAnnotations")
+New-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -Description $apiKeyDescription -Permissions $permissions
 
 ```
 

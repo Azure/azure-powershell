@@ -74,6 +74,11 @@ directive:
     transform: return $.replace(/providers\/Microsoft.Insights\//g, "providers/microsoft.insights/")
 
   - where:
+      subject: WebTest
+      verb: Set
+    remove: true
+
+  - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
 

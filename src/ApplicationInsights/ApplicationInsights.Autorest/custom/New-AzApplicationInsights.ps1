@@ -21,17 +21,6 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 .Description
 Creates (or updates) an Application Insights component.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
 .Link
 https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights
 #>

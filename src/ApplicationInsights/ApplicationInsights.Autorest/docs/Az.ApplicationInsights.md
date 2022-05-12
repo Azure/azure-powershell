@@ -72,9 +72,6 @@ Update current billing features for an Application Insights component.
 ### [Set-AzApplicationInsightsPricingPlan](Set-AzApplicationInsightsPricingPlan.md)
 Update current billing features for an Application Insights component.
 
-### [Set-AzApplicationInsightsWebTest](Set-AzApplicationInsightsWebTest.md)
-Creates or updates an Application Insights web test definition.
-
 ### [Update-AzApplicationInsights](Update-AzApplicationInsights.md)
 Creates (or updates) an Application Insights component.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
