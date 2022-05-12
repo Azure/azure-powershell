@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         public void TestAdlsFirewallRules()
         {
             TestRunner.RunTestScript(NewScripts(string.Format("Test-DataLakeStoreFirewall -location '{0}'", ResourceGroupLocation)));
+            ReSetDataLakeStoreFileSystemManagementClient();
         }
 
         [Fact]
@@ -50,6 +51,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         public void TestAdlsVirtualNetworkRules()
         {
             TestRunner.RunTestScript(NewScripts(string.Format("Test-DataLakeStoreVirtualNetwork -location '{0}'", ResourceGroupLocation)));
+            ReSetDataLakeStoreFileSystemManagementClient();
         }
 
         [Fact]
@@ -57,6 +59,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         public void TestAdlsTrustedIdProvider()
         {
             TestRunner.RunTestScript(NewScripts(string.Format("Test-DataLakeStoreTrustedIdProvider -location '{0}'", ResourceGroupLocation)));
+            ReSetDataLakeStoreFileSystemManagementClient();
         }
 
         [Fact]
@@ -64,6 +67,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         public void TestAdlsAccount()
         {
             TestRunner.RunTestScript(NewScripts(string.Format("Test-DataLakeStoreAccount -location '{0}'", ResourceGroupLocation)));
+            ReSetDataLakeStoreFileSystemManagementClient();
         }
 
         [Fact]
@@ -71,6 +75,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         public void TestAdlsAccountTiers()
         {
             TestRunner.RunTestScript(NewScripts(string.Format("Test-DataLakeStoreAccountTiers -location '{0}'", ResourceGroupLocation)));
+            ReSetDataLakeStoreFileSystemManagementClient();
         }
 
         [Fact]
@@ -80,6 +85,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             var workingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
             var testLocation = Path.Combine(workingPath, "ScenarioTests", (this.GetType().Name + ".ps1"));
             TestRunner.RunTestScript(NewScripts(string.Format("Test-DataLakeStoreFileSystem -fileToCopy '{0}' -location '{1}'", testLocation, TestFileSystemResourceGroupLocation)));
+            ReSetDataLakeStoreFileSystemManagementClient();
         }
 
         [Fact]
@@ -87,6 +93,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         public void TestAdlsFileSystemPermissions()
         {
             TestRunner.RunTestScript(NewScripts(string.Format("Test-DataLakeStoreFileSystemPermissions -location '{0}'", TestFileSystemPermissionResourceGroupLocation)));
+            ReSetDataLakeStoreFileSystemManagementClient();
         }
 
         [Fact]
@@ -94,6 +101,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         public void TestNegativeAdlsAccount()
         {
             TestRunner.RunTestScript(NewScripts(string.Format("Test-NegativeDataLakeStoreAccount -location '{0}'", ResourceGroupLocation)));
+            ReSetDataLakeStoreFileSystemManagementClient();
         }
 
         [Fact]
@@ -101,6 +109,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         public void TestAdlsEnumerateAndRestoreDeletedItem()
         {
             TestRunner.RunTestScript(NewScripts(string.Format("Test-EnumerateAndRestoreDataLakeStoreDeletedItem -location '{0}'", ResourceGroupLocation)));
+            ReSetDataLakeStoreFileSystemManagementClient();
         }
     }
 }

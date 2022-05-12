@@ -73,6 +73,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
                 .Build();
         }
 
+        protected static void ReSetDataLakeStoreFileSystemManagementClient() { AdlsClientFactory.IsTest = false; }
+
         private static void SetDataLakeStoreFileSystemManagementClient(MockContext context)
         {
             var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
