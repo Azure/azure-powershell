@@ -12,43 +12,38 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.HealthcareApis.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests
 {
-    public class HealthcareApisServiceTests : RMTestBase
+    public class HealthcareApisServiceTests : HealthcareApisTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public HealthcareApisServiceTests(ITestOutputHelper output)
+        public HealthcareApisServiceTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzRmHealthcareApisService()
         {
-            HealthcareApisServiceController.NewInstance.RunPsTest(_logger, "Test-AzRmHealthcareApisService");
+            TestRunner.RunTestScript("Test-AzRmHealthcareApisService");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateEndpointConnection()
         {
-            HealthcareApisServiceController.NewInstance.RunPsTest(_logger, "Test-PrivateEndpointConnection");
+            TestRunner.RunTestScript("Test-PrivateEndpointConnection");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPublicNetworkAccessControl()
         {
-            HealthcareApisServiceController.NewInstance.RunPsTest(_logger, "Test-PublicNetworkAccessControl");
+            TestRunner.RunTestScript("Test-PublicNetworkAccessControl");
         }
     }
 }
