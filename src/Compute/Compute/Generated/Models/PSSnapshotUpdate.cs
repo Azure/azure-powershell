@@ -40,5 +40,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         // Summary:
         //     Gets or sets possible values include: 'Enabled', 'Disabled'
         public string PublicNetworkAccess { get; set; }
+        public string DataAccessAuthMode { get; set; }
     }
 }

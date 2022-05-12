@@ -21,6 +21,11 @@
 -->
 ## Upcoming Release
 * Edited `New-AzVm` cmdlet internal logic to use the `PlatformFaultDomain` value in the `PSVirtualMachine` object passed to it in the new virtual machine.
+* Add `-DataAccessAuthMode` parameter to the following cmdlets:
+    - New-AzDiskConfig
+    - New-AzDiskUpdateConfig
+    - New-AzSnapshotConfig
+    - New-AzSnapshotUpdateConfig
 * Added `-Architecture` parameter to the following cmdlets:
     - New-AzDiskConfig``
     - New-AzDiskUpdateConfig

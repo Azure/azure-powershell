@@ -176,6 +176,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Additional authentication requirements when exporting or uploading to a disk or snapshot.")]
+        [PSArgumentCompleter("AzureActiveDirectory", "None")]
+        public string DataAccessAuthMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "CPU architecture supported by an OS disk. Possible values are \"X64\" and \"Arm64\".")]
         [PSArgumentCompleter("X64", "Arm64")]
         public string Architecture { get; set; }
@@ -370,7 +377,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 PurchasePlan = this.IsParameterBound(c => c.PurchasePlan) ? this.PurchasePlan : null,
                 SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
                 SupportedCapabilities = vSupportedCapabilities,
-                PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null
+                PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null,
+                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null
             };
 
             WriteObject(vSnapshot);
