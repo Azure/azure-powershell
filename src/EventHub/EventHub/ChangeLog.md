@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Made `IPRule` and `VirtualNetworkRule` optional in `Set-AzEventHubNetworkRuleSet`.
+* Deprecating older MSI properties in Set-AzEventHubNamespace and New-AzEventHubNamespace
 
 ## Version 1.11.1
 

@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// <summary>
         /// Upper limit of throughput units when AutoInflate is enabled.
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 7, HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.")]
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 6, HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.")]
         [ValidateRange(0, 20)]
         public int? MaximumThroughputUnits { get; set; }
 
