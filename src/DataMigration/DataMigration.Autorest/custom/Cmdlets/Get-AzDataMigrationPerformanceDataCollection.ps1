@@ -160,7 +160,8 @@ function Get-AzDataMigrationPerformanceDataCollection
                     $jsonHash | ConvertTo-Json -depth 100 | Set-Content $saveas
                     $pro = Start-Process -FilePath $ExePath -ArgumentList "--configFile ""$saveas"""  -PassThru -NoNewWindow
                     Start-Sleep -Seconds $Time
-                    $pro | stop-process         
+                    $pro | stop-process  
+                    Remove-Item -Path $saveas       
                 }
                 else
                 {
@@ -176,6 +177,7 @@ function Get-AzDataMigrationPerformanceDataCollection
                     $pro = Start-Process -FilePath $ExePath -ArgumentList "--configFile ""$paramPath"""  -PassThru -NoNewWindow
                     Start-Sleep -Seconds $Time
                     $pro | stop-process
+                    
                 }
                 else{
                     Test-ConfigFile $PSBoundParameters.ConfigFilePath "PerfDataCollection"
