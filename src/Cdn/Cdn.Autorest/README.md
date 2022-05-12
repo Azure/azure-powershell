@@ -147,12 +147,6 @@ directive:
       subject: ProfileSsoUri
     hide: true
   - where:
-      subject: Policy
-    hide: true
-  - where:
-      subject: ManagedRuleSet
-    hide: true
-  - where:
       subject: SecretValidate
     hide: true
   - where:
