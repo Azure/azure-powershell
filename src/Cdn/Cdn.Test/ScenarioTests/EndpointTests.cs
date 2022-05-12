@@ -12,90 +12,85 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class EndpointTests
+    public class EndpointTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public EndpointTests(Xunit.Abstractions.ITestOutputHelper output)
+        public EndpointTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointCrudAndAction()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCrudAndAction");
+            TestRunner.RunTestScript("Test-EndpointCrudAndAction");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointCreateWithRulesEngine()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCreateWithRulesEngine");
+            TestRunner.RunTestScript("Test-EndpointCreateWithRulesEngine");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointCrudAndActionWithPiping()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCrudAndActionWithPiping");
+            TestRunner.RunTestScript("Test-EndpointCrudAndActionWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointCrudAndActionWithAllProperties()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCrudAndActionWithAllProperties");
+            TestRunner.RunTestScript("Test-EndpointCrudAndActionWithAllProperties");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointCreateWithDsa()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCreateWithDSA");
+            TestRunner.RunTestScript("Test-EndpointCreateWithDSA");
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointCrudAndActionWithAllPropertiesWithPiping()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCrudAndActionWithAllPropertiesWithPiping");
+            TestRunner.RunTestScript("Test-EndpointCrudAndActionWithAllPropertiesWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointPipeline()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointPipeline");
+            TestRunner.RunTestScript("Test-EndpointPipeline");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointGeoFilters()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointGeoFilters");
+            TestRunner.RunTestScript("Test-EndpointGeoFilters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointResourceUsage()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointResourceUsage");
+            TestRunner.RunTestScript("Test-EndpointResourceUsage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EndpointValidateProbeUrl()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointValidateProbeUrl");
+            TestRunner.RunTestScript("Test-EndpointValidateProbeUrl");
         }
     }
 }

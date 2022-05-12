@@ -12,48 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class OriginTests
+    public class OriginTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public OriginTests(Xunit.Abstractions.ITestOutputHelper output)
+        public OriginTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestOriginGetSetWithRunningEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-OriginGetSetWithRunningEndpoint");
+            TestRunner.RunTestScript("Test-OriginGetSetWithRunningEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestOriginGetSetWithStoppedEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-OriginGetSetWithStoppedEndpoint");
+            TestRunner.RunTestScript("Test-OriginGetSetWithStoppedEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestOriginGetSetWhenEndpointDoesnotExist()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-OriginGetSetWhenEndpointDoesnotExist");
+            TestRunner.RunTestScript("Test-OriginGetSetWhenEndpointDoesnotExist");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetOriginProperties()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetOriginProperties");
+            TestRunner.RunTestScript("Test-SetOriginProperties");
         }
     }
 }

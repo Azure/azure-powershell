@@ -108,6 +108,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("AzureActiveDirectory", "None")]
         public string DataAccessAuthMode { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "CPU architecture supported by an OS disk. Possible values are \"X64\" and \"Arm64\".")]
+        [PSArgumentCompleter("X64", "Arm64")]
+        public string Architecture { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("SnapshotUpdate", "New"))
@@ -126,6 +133,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // Sku
             SnapshotSku vSku = null;
+
+            SupportedCapabilities vSupportedCapabilities = null;
 
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
             {
@@ -200,6 +209,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSku.Name = this.SkuName;
             }
 
+            if (this.IsParameterBound(c => c.Architecture))
+            {
+                if (vSupportedCapabilities == null)
+                {
+                    vSupportedCapabilities = new SupportedCapabilities();
+                }
+                vSupportedCapabilities.Architecture = this.Architecture;
+            }
+
             var vSnapshotUpdate = new PSSnapshotUpdate
             {
                 OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
@@ -210,7 +228,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Sku = vSku,
                 SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
                 PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null,
-                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null
+                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null,
+                SupportedCapabilities = vSupportedCapabilities
             };
 
             WriteObject(vSnapshotUpdate);

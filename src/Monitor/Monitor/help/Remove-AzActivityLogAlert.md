@@ -40,7 +40,7 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 
 ### Example 1: Remove an activity log alert
 ```powershell
-Remove-AzActivityLogAlert -ResourceGroup "Default-Web-CentralUS" -Name "myalert"
+Remove-AzActivityLogAlert -ResourceGroupName "Default-Web-CentralUS" -Name "myalert"
 ```
 
 ```output
@@ -53,7 +53,7 @@ Removes an activity log alert using name and resource group name as inputs.
 
 ### Example 2: Remove an activity log alert using a PSActivityLogAlertResource as input
 ```powershell
-Get-AzActivityLogAlert -ResourceGroup "Default-activityLogAlerts" -Name "alert1" | Remove-AzActivityLogAlert 
+Get-AzActivityLogAlert -ResourceGroupName "Default-activityLogAlerts" -Name "alert1" | Remove-AzActivityLogAlert 
 ```
 
 ```output

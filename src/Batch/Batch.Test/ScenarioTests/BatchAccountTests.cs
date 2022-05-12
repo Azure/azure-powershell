@@ -12,48 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class BatchAccountTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class BatchAccountTests : BatchTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public BatchAccountTests(Xunit.Abstractions.ITestOutputHelper output)
+        public BatchAccountTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBatchAccountEndToEnd()
         {
-            BatchController.NewInstance.RunPsTest(_logger, "Test-BatchAccountEndToEnd");
+            TestRunner.RunTestScript("Test-BatchAccountEndToEnd");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBatchSupportedImages()
         {
-            BatchController.NewInstance.RunPsTest(_logger, "Test-GetBatchSupportedImage");
+            TestRunner.RunTestScript("Test-GetBatchSupportedImage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewBatchAccountWithNoPublicIp()
         {
-            BatchController.NewInstance.RunPsTest(_logger, "Test-CreateNewBatchAccountWithNoPublicIp");
+            TestRunner.RunTestScript("Test-CreateNewBatchAccountWithNoPublicIp");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewBatchAccountWithSystemIdentity()
         {
-            BatchController.NewInstance.RunPsTest(_logger, "Test-CreateNewBatchAccountWithSystemIdentity");
+            TestRunner.RunTestScript("Test-CreateNewBatchAccountWithSystemIdentity");
         }
     }
 }

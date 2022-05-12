@@ -17,70 +17,66 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 {
-    public class AccountTests
+    public class AccountTests : CosmosDBTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public AccountTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AccountTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAccountRelatedCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AccountRelatedCmdlets");
+            TestRunner.RunTestScript("Test-AccountRelatedCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAccountRelatedCmdletsUsingRid()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AccountRelatedCmdletsUsingRid");
+            TestRunner.RunTestScript("Test-AccountRelatedCmdletsUsingRid");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAccountRelatedCmdletsUsingObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AccountRelatedCmdletsUsingObject");
+            TestRunner.RunTestScript("Test-AccountRelatedCmdletsUsingObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddRegionOperation()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AddRegionOperation");
+            TestRunner.RunTestScript("Test-AddRegionOperation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-PrivateEndpoint");
+            TestRunner.RunTestScript("Test-PrivateEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAnalyticalStorageSchemaTypeNewAccount()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AnalyticalStorageSchemaTypeNewAccount");
+            TestRunner.RunTestScript("Test-AnalyticalStorageSchemaTypeNewAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAnalyticalStorageSchemaTypeUpdateAccount()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AnalyticalStorageSchemaTypeUpdateAccount");
+            TestRunner.RunTestScript("Test-AnalyticalStorageSchemaTypeUpdateAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCosmosDBLocations()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CosmosDBLocations");
+            TestRunner.RunTestScript("Test-CosmosDBLocations");
         }
     }
 }

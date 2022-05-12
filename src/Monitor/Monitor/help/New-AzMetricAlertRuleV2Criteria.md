@@ -62,7 +62,7 @@ This command creates a simple metric alert criteria that can be used in a metric
 ### Example 2: Create a dynamic metric alert criteria
 
 ```powershell
-New-AzMetricAlertRuleV2Criteria -Dynamic -MetricName "Percentage CPU" -MetricNameSpace "Microsoft.Compute/virtualMachines" -TimeAggregation Average -Operator GreaterThan -ThresholdSensitivity Medium -ViolationCount 2 -ExaminedAggregatedPointCount 4
+New-AzMetricAlertRuleV2Criteria -DynamicThreshold -MetricName "Percentage CPU" -MetricNameSpace "Microsoft.Compute/virtualMachines" -TimeAggregation Average -Operator GreaterThan -ThresholdSensitivity Medium -ViolationCount 2 -ExaminedAggregatedPointCount 4
 ```
 
 ```output

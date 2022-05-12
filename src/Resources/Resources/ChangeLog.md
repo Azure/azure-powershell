@@ -19,6 +19,17 @@
 -->
 
 ## Upcoming Release
+* Added the following cmdlets to remain in parity with 2021-04-01 API version:
+    - `New-AzHierarchySetting`
+    - `Get-AzHierarchySetting`
+    - `Update-AzHierarchySetting`
+    - `Remove-AzHierarchySetting`
+    - `Get-AzManagementGroupSubscription`
+    - `Get-AzSubscriptionUnderManagementGroup` 
+    - `Start-AzTenantBackfill`
+    - `Get-AzTenantBackfillStatus` 
+    - `Get-AzManagementGroupNameAvailability`
+    - `Get-AzEntity` 
 
 ## Version 5.6.0
 * Fixed redundant quotes in list pagination [#17667]

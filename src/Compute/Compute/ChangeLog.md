@@ -26,6 +26,12 @@
     - New-AzDiskUpdateConfig
     - New-AzSnapshotConfig
     - New-AzSnapshotUpdateConfig
+* Added `-Architecture` parameter to the following cmdlets:
+    - New-AzDiskConfig``
+    - New-AzDiskUpdateConfig
+    - New-AzSnapshotConfig
+    - New-AzSnapshotUpdateConfig
+    - New-AzGalleryImageDefinition
 
 ## Version 4.26.0
 * Added `-ImageReferenceId` parameter to following cmdlets: `New-AzVm`, `New-AzVmConfig`, `New-AzVmss`, `Set-AzVmssStorageProfile`

@@ -168,6 +168,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("AzureActiveDirectory", "None")]
         public string DataAccessAuthMode { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "CPU architecture supported by an OS disk. Possible values are \"X64\" and \"Arm64\".")]
+        [PSArgumentCompleter("X64", "Arm64")]
+        public string Architecture { get; set; }
+
 
         protected override void ProcessRecord()
         {
@@ -279,6 +286,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vSupportedCapabilities = new SupportedCapabilities();
                 }
                 vSupportedCapabilities.AcceleratedNetwork = AcceleratedNetwork;
+            }
+
+            if (this.IsParameterBound(c => c.Architecture))
+            {
+                if (vSupportedCapabilities == null)
+                {
+                    vSupportedCapabilities = new SupportedCapabilities();
+                }
+                vSupportedCapabilities.Architecture = this.Architecture;
             }
 
             var vDiskUpdate = new PSDiskUpdate

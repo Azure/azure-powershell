@@ -31,7 +31,7 @@ The **Remove-AzCosmosDBSqlDatabase** cmdlet deletes the CosmosDB Sql Database co
 
 ### Example 1
 ```powershell
-Remove-AzCosmosDBSqlDatabase -ResourceGroupName {resourceGroupName} -AccountName {accountName} -Name {databaseName}
+Remove-AzCosmosDBSqlDatabase -ResourceGroupName "resourceGroupName" -AccountName "accountName" -Name "databaseName"
 ```
 
 ## PARAMETERS

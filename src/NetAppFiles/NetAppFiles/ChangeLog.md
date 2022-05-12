@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlet `New/Remove/Get/Update-AzNetAppFilesSubvolume` and `Get-AzNetAppFilesSubvolumeMetadata`
+* Added cmdlet `New/Remove/Get-AzNetAppFilesVolumeGroup`
+* Added cmdlet `New-AzNetAppFilesExportPolicyRuleObject` and `New-AzNetAppFilesExportPolicyObject`
+* Added `Restore-AzNetAppFilesSnapshot` to restore the specified files from the specified snapshot to the active filesystem
+* Added property `LdapSearchScope` to `PSNetAppFilesActiveDirectory`
+* Added property `SystemData` to `PSNetAppFilesBackupPolicy`, `PSNetAppFilesAccount` and `PSNetAppFilesPool` 
+* Added property `SystemData` and `MonthlySchedule` to output type `PSNetAppFilesSnapshotPolicy` 
+* Added property `SystemData`, `MaximumNumberOfFiles` and `EnableSubvolumes` to output type `PSNetAppFilesVolume` 
+* Added parameter `EnableSubvolume` and `UnixPermission` to `Update-AzNetAppFilesVolume`
+* Added parameter `ForceDelete' to `Remove-AzNetAppFilesVolume`
 
 ## Version 0.9.0
 * Added `Administrators` and `EncryptDCConnections` to `ActiveDirectory`

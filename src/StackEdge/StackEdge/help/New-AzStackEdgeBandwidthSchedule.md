@@ -33,7 +33,7 @@ The **New-AzStackEdgeBandwidthSchedule** cmdlet creates a new Bandwidth Schedule
 
 ### Example 1
 ```powershell
-New-AzStackEdgeBandwidthSchedule  -Days Sunday,Tuesday,Saturday -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule -StartTime 11:00 -StopTime 12:00 -Bandwidth 30
+New-AzStackEdgeBandwidthSchedule  -DaysOfWeek Sunday,Tuesday,Saturday -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule -StartTime 11:00 -StopTime 12:00 -Bandwidth 30
 ```
 
 ```output
@@ -44,7 +44,7 @@ bandwidthSchedule  Sunday, Tuesday, Saturday    30         11:00:00  12:00:00
 
 ### Example 2
 ```powershell
-New-AzStackEdgeBandwidthSchedule  -Days Sunday,Tuesday,Saturday -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthScheduleUnlimited -StartTime 11:00 -StopTime 12:00 -UnlimitedBandwidth
+New-AzStackEdgeBandwidthSchedule  -DaysOfWeek Sunday,Tuesday,Saturday -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthScheduleUnlimited -StartTime 11:00 -StopTime 12:00 -UnlimitedBandwidth
 ```
 
 ```output

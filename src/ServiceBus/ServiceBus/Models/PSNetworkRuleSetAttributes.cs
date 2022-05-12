@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
             Name = networkRuleSet.Name;
             Type = networkRuleSet.Type;
             PublicNetworkAccess = networkRuleSet.PublicNetworkAccess;
+            TrustedServiceAccessEnabled = networkRuleSet.TrustedServiceAccessEnabled;
         }
 
         /// <summary>
@@ -79,6 +80,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// include: 'Enabled', 'Disabled'
         /// </summary>
         public string PublicNetworkAccess { get; set; }
+
+        /// <summary>
+        /// Value that indicates whether Trusted Service Access is Enabled or not.
+        /// </summary>
+        public bool? TrustedServiceAccessEnabled { get; set; }
 
         /// <summary>
         /// Gets or sets list VirtualNetwork Rules
