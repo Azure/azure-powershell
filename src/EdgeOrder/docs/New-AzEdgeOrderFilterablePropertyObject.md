@@ -25,7 +25,7 @@ Create an in-memory object for FilterableProperty.
 ### Example 1: Filterable property object 
 ```powershell
 $filterableProperty = New-AzEdgeOrderFilterablePropertyObject -Type "ShipToCountries" -SupportedValue @("US")
-$filterableProperty | fl
+$filterableProperty | Format-List
 ```
 
 ```output

@@ -1,0 +1,174 @@
+{
+  "New-AzOperationalInsightsTable+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2/tables/danielKukuTest_CL?api-version=2021-12-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2/tables/danielKukuTest_CL?api-version=2021-12-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"schema\": {\n      \"name\": \"danielKukuTest_CL\",\n      \"columns\": [\n        {\n          \"name\": \"SourceSystem\",\n          \"type\": \"string\",\n          \"description\": \"Type of agent the data was collected from. Possible values are OpsManager (Windows agent) or Linux.\"\n        },\n        {\n          \"name\": \"TimeGenerated\",\n          \"type\": \"datetime\",\n          \"description\": \"Date and time the record was created.\"\n        }\n      ]\n    },\n    \"retentionInDays\": 33,\n    \"totalRetentionInDays\": 55\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "528" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2/tables/danielKukuTest_CL/operationresults/8321dad9-df24-41f7-8e27-c6426781f602?api-version=2021-12-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/8321dad9-df24-41f7-8e27-c6426781f602?api-version=2015-11-01-preview" ],
+        "X-AMS-APIVersion": [ "WebAPI1.0" ],
+        "CacheControl": [ "no-cache" ],
+        "x-ms-request-id": [ "7f66b9f3-8064-4753-84cb-6108abc06961" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "f9200b32-cfd6-4053-9f2d-904144856a83" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDWEST:20220307T082907Z:f9200b32-cfd6-4053-9f2d-904144856a83" ],
+        "Date": [ "Mon, 07 Mar 2022 08:29:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzOperationalInsightsTable+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/8321dad9-df24-41f7-8e27-c6426781f602?api-version=2015-11-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/8321dad9-df24-41f7-8e27-c6426781f602?api-version=2015-11-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "d4e7067f-f726-4688-973a-3d7437f31784" ],
+        "CommandName": [ "New-AzOperationalInsightsTable" ],
+        "FullCommandName": [ "New-AzOperationalInsightsTable_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-AMS-APIVersion": [ "WebAPI1.0" ],
+        "CacheControl": [ "no-cache" ],
+        "x-ms-request-id": [ "aa41b1d0-736a-4744-918f-ea85d2b5cbd6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-correlation-request-id": [ "125ae623-f6cc-4a77-a428-31a86cc8951f" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDWEST:20220307T082937Z:125ae623-f6cc-4a77-a428-31a86cc8951f" ],
+        "Date": [ "Mon, 07 Mar 2022 08:29:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "306" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"8321dad9-df24-41f7-8e27-c6426781f602\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/8321dad9-df24-41f7-8e27-c6426781f602\",\r\n  \"startTime\": \"Mon, 07 Mar 2022 08:29:07 GMT\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzOperationalInsightsTable+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/8321dad9-df24-41f7-8e27-c6426781f602?api-version=2015-11-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/8321dad9-df24-41f7-8e27-c6426781f602?api-version=2015-11-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "d4e7067f-f726-4688-973a-3d7437f31784" ],
+        "CommandName": [ "New-AzOperationalInsightsTable" ],
+        "FullCommandName": [ "New-AzOperationalInsightsTable_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-AMS-APIVersion": [ "WebAPI1.0" ],
+        "CacheControl": [ "no-cache" ],
+        "x-ms-request-id": [ "0e8e9a0e-1667-403a-a08a-285dbc4640f7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-correlation-request-id": [ "a411c97f-c9c1-4e12-8d67-894e1cd18da5" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDWEST:20220307T083008Z:a411c97f-c9c1-4e12-8d67-894e1cd18da5" ],
+        "Date": [ "Mon, 07 Mar 2022 08:30:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "352" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"8321dad9-df24-41f7-8e27-c6426781f602\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/8321dad9-df24-41f7-8e27-c6426781f602\",\r\n  \"startTime\": \"Mon, 07 Mar 2022 08:29:07 GMT\",\r\n  \"endTime\": \"Mon, 07 Mar 2022 08:29:52 GMT\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzOperationalInsightsTable+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2/tables/danielKukuTest_CL?api-version=2021-12-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2/tables/danielKukuTest_CL?api-version=2021-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "d4e7067f-f726-4688-973a-3d7437f31784" ],
+        "CommandName": [ "New-AzOperationalInsightsTable" ],
+        "FullCommandName": [ "New-AzOperationalInsightsTable_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-AMS-APIVersion": [ "WebAPI1.0" ],
+        "CacheControl": [ "no-cache" ],
+        "x-ms-request-id": [ "7ea2d148-a0f3-41c0-bdf0-ead649d624c9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-correlation-request-id": [ "58442737-90c8-4bdc-9c0b-1e925ea4d9dd" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDWEST:20220307T083008Z:58442737-90c8-4bdc-9c0b-1e925ea4d9dd" ],
+        "Date": [ "Mon, 07 Mar 2022 08:30:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1378" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 55,\r\n    \"archiveRetentionInDays\": 22,\r\n    \"plan\": \"Analytics\",\r\n    \"lastPlanModifiedDate\": \"2022-01-31T14:14:41.9Z\",\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"danielKukuTest_CL\",\r\n      \"tableType\": \"CustomLog\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"SourceSystem\",\r\n          \"type\": \"string\",\r\n          \"description\": \"Type of agent the data was collected from. Possible values are OpsManager (Windows agent) or Linux.\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"description\": \"Date and time the record was created.\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 33\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2/tables/danielKukuTest_CL\",\r\n  \"name\": \"danielKukuTest_CL\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -24,8 +24,9 @@ Return trial status for subscription by region
 
 ### Example 1: Check trial availability
 ```powershell
-PS C:\> Test-AzVMwareLocationTrialAvailability -Location westcentralus
-
+Test-AzVMwareLocationTrialAvailability -Location westcentralus
+```
+```output
 AvailableHost Status
 ------------- ------
 0             TrialDisabled

@@ -27,8 +27,10 @@ Create an in-memory object for AzureResourceGroupCredentialScan.
 
 ### Example 1: Create Azure resource group Credential scan object
 ```powershell
-PS C:\> New-AzPurviewAzureResourceGroupCredentialScanObject -Kind 'AzureResourceGroupCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp'
+New-AzPurviewAzureResourceGroupCredentialScanObject -Kind 'AzureResourceGroupCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp'
+```
 
+```output
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference

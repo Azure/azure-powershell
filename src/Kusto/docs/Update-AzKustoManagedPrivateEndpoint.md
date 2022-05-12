@@ -171,7 +171,7 @@ Class representing a managed private endpoint.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IManagedPrivateEndpoint
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -294,13 +294,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IManagedPrivateEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IManagedPrivateEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint
 
 ## NOTES
 
@@ -328,6 +328,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 PARAMETER <IManagedPrivateEndpoint>: Class representing a managed private endpoint.
+  - `[AzureAsyncOperation <String>]`: 
   - `[GroupId <String>]`: The groupId in which the managed private endpoint is created.
   - `[PrivateLinkResourceId <String>]`: The ARM resource ID of the resource for which the managed private endpoint is created.
   - `[PrivateLinkResourceRegion <String>]`: The region of the resource to which the managed private endpoint is created.

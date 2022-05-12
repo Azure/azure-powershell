@@ -90,6 +90,9 @@ Deletes entity from users.
 ### [Update-AzADApplication](Update-AzADApplication.md)
 Updates entity in applications
 
+### [Update-AzADGroup](Update-AzADGroup.md)
+Update entity in groups
+
 ### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
 Updates entity in service principal
 

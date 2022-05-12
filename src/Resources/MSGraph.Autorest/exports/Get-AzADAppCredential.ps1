@@ -20,7 +20,7 @@ Lists key credentials and password credentials for an application.
 .Description
 Lists key credentials and password credentials for an application.
 .Example
-PS C:\> Get-AzADAppCredential -DisplayName $name
+Get-AzADAppCredential -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -249,10 +249,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ApplicationObjectIdParameterSet = 'MSGraph.custom\Get-AzADAppCredential';
-            ApplicationIdParameterSet = 'MSGraph.custom\Get-AzADAppCredential';
-            DisplayNameParameterSet = 'MSGraph.custom\Get-AzADAppCredential';
-            ApplicationObjectParameterSet = 'MSGraph.custom\Get-AzADAppCredential';
+            ApplicationObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADAppCredential';
+            ApplicationIdParameterSet = 'Az.MSGraph.custom\Get-AzADAppCredential';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Get-AzADAppCredential';
+            ApplicationObjectParameterSet = 'Az.MSGraph.custom\Get-AzADAppCredential';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

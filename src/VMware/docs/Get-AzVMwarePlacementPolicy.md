@@ -36,8 +36,9 @@ Get a placement policy by name in a private cloud cluster
 
 ### Example 1: List placement policy by private cloud cluster
 ```powershell
-PS C:\> Get-AzVMwarePlacementPolicy -ClusterName cluster1 -PrivateCloudName cloud1 -ResourceGroupName group1
-
+Get-AzVMwarePlacementPolicy -ClusterName cluster1 -PrivateCloudName cloud1 -ResourceGroupName group1
+```
+```output
 Name    ResourceGroupName
 ----    -----------------
 policy1 group1
@@ -48,8 +49,9 @@ List placement policy by private cloud cluster
 
 ### Example 2: Get a placement policy by name in a private cloud cluster
 ```powershell
-PS C:\> Get-AzVMwarePlacementPolicy -ClusterName cluster1 -Name policy1 -PrivateCloudName cloud1 -ResourceGroupName group1
-
+Get-AzVMwarePlacementPolicy -ClusterName cluster1 -Name policy1 -PrivateCloudName cloud1 -ResourceGroupName group1
+```
+```output
 Name    ResourceGroupName
 ----    -----------------
 policy1 group1

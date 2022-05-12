@@ -26,8 +26,10 @@ Create an in-memory object for AzureStorageCredentialScan.
 
 ### Example 1: Create Azure Storage Credential scan object
 ```powershell
-PS C:\> New-AzPurviewAzureStorageCredentialScanObject -Kind 'AzureStorageCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
+New-AzPurviewAzureStorageCredentialScanObject -Kind 'AzureStorageCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
+```
 
+```output
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference
