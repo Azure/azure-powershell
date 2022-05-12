@@ -30,13 +30,12 @@ namespace Microsoft.Azure.Commands.DevSpaces.Test.ScenarioTests
                 .WithCommonPsScripts(new[]
                 {
                     @"Common.ps1",
-                    @"../AzureRM.Resources.ps1"
                 })
                 .WithNewRmModules(helper => new[]
                 {
                     helper.RMProfileModule,
                     helper.RMResourceModule,
-                    helper.GetRMModulePath(@"AzureRM.DevSpaces.psd1")
+                    helper.GetRMModulePath(@"Az.DevSpaces.psd1")
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
