@@ -1,35 +1,40 @@
-﻿using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.DevSpaces.Test.ScenarioTests
 {
-    public class DevSpacesTests : RMTestBase
+    public class DevSpacesTests : DevSpacesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public DevSpacesTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DevSpacesTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDevSpaces()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmDevSpacesController");
+            TestRunner.RunTestScript("Test-AzureRmDevSpacesController");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDevSpacesAsJobParameter()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-TestAzureDevSpacesAsJobParameter");
+            TestRunner.RunTestScript("Test-TestAzureDevSpacesAsJobParameter");
         }
     }
 }
