@@ -36,9 +36,9 @@ The **New-AzStackEdgeRole** cmdlet creates a new Role for a Stack Edge device.
 
 ### Example 1
 ```powershell
-New-AzStackEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName -Name iotrole -DeviceProperties
- -IotDeviceId iotDeviceId -IotDeviceAccessKey iotAccessKey -IotEdgeDeviceId iotEdgeDeviceId -IotEdgeDeviceAccessKey iotEdgeDeviceAccessKey
- -IotHostHub "ehub.azure-devices.net" -EncryptionKey @SecureString -Platform Linux -RoleStatus Enabled
+New-AzStackEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName -Name iotrole -DeviceProperty `
+ -IotDeviceId iotDeviceId -IotDeviceAccessKey iotAccessKey -IotEdgeDeviceId iotEdgeDeviceId -IotEdgeDeviceAccessKey iotEdgeDeviceAccessKey `
+ -IotHostHub "ehub.azure-devices.net" -EncryptionKey $SecureString -Platform Linux -RoleStatus Enabled
 ```
 
 ```output

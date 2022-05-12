@@ -17,63 +17,59 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 {
-    public class RestoreTests
+    public class RestoreTests : CosmosDBTestRunner
     {
-        private readonly ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public RestoreTests(Xunit.Abstractions.ITestOutputHelper output)
+        public RestoreTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Unrecognized time format for linux/mac.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreAccountCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RestoreAccountCmdlets");
+            TestRunner.RunTestScript("Test-RestoreAccountCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreFromNewAccountCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RestoreFromNewAccountCmdlets");
+            TestRunner.RunTestScript("Test-RestoreFromNewAccountCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMongoRestoreAccountCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MongoRestoreAccountCmdlets");
+            TestRunner.RunTestScript("Test-MongoRestoreAccountCmdlets");
         }
 
         [Fact(Skip = "Unrecognized time format for linux/mac.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreFailuresAccountCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RestoreFailuresAccountCmdlets");
+            TestRunner.RunTestScript("Test-RestoreFailuresAccountCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlContainerBackupInformationCmdLets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SqlContainerBackupInformationCmdLets");
+            TestRunner.RunTestScript("Test-SqlContainerBackupInformationCmdLets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMongoDBCollectionBackupInformationCmdLets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MongoDBCollectionBackupInformationCmdLets");
+            TestRunner.RunTestScript("Test-MongoDBCollectionBackupInformationCmdLets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateCosmosDBAccountBackupPolicyCmdLet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateCosmosDBAccountBackupPolicyCmdLet");
+            TestRunner.RunTestScript("Test-UpdateCosmosDBAccountBackupPolicyCmdLet");
         }
     }
 }

@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Upgraded System.Reflection.DispatchProxy on Windows PowerShell [#17856]
+* Upgraded Azure.Identity to 1.6.0 and Azure.Core to 1.24.0
+
+## Version 2.7.6
 * Upgraded Microsoft.Rest.ClientRuntime to 2.3.24
 
 ## Version 2.7.5

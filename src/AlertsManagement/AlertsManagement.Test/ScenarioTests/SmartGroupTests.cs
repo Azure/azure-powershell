@@ -12,29 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
 {
-    public class SmartGroupTests : RMTestBase
+    public class SmartGroupTests : AlertsManagementTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public SmartGroupTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SmartGroupTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSmartGroupChangeState()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SmartGroupChangeState");
+            TestRunner.RunTestScript("Test-SmartGroupChangeState");
         }
     }
 }

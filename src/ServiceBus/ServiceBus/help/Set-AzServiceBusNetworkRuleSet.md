@@ -15,11 +15,12 @@ Update the NetworkruleSet of the given Namespace in the current Azure subscripti
 ### NetworkRuleSetPropertiesSet (Default)
 ```
 Set-AzServiceBusNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [-DefaultAction <String>]
- [-IPRule] <PSNWRuleSetIpRulesAttributes[]> [-VirtualNetworkRule] <PSNWRuleSetVirtualNetworkRulesAttributes[]>
+ [-PublicNetworkAccess <String>] [-TrustedServiceAccessEnabled] [[-IPRule] <PSNWRuleSetIpRulesAttributes[]>]
+ [[-VirtualNetworkRule] <PSNWRuleSetVirtualNetworkRulesAttributes[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### NetwrokruleSetInputObjectSet
+### NetworkRuleSetInputObjectSet
 ```
 Set-AzServiceBusNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String>
  [-InputObject] <PSNetworkRuleSetAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -33,7 +34,7 @@ Set-AzServiceBusNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [-
 ```
 
 ## DESCRIPTION
-Update the NetwrokruleSet of the given Namespace in the current Azure subscription.
+Update the NetworkRuleSet of the given Namespace in the current Azure subscription.
 
 ## EXAMPLES
 
@@ -41,7 +42,7 @@ Update the NetwrokruleSet of the given Namespace in the current Azure subscripti
 ```powershell
 $IpRules = @([Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "4.4.4.4";Action = "Allow"},[Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "3.3.3.3";Action = "Allow"})
 $VirtualNetworkRules = @([Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetVirtualNetworkRulesAttributes]@{Subnet=@{Id="/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default"};IgnoreMissingVnetServiceEndpoint=$True})
-Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-1375 -IPRule $IpRules -VirtualNetworkRule $VirtualNetworkRules -DefaultAction "Allow" -Debug
+Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-1375 -IPRule $IpRules -VirtualNetworkRule $VirtualNetworkRules -DefaultAction "Allow" -Debug
 
 ```
 
@@ -57,8 +58,8 @@ Update the NetworkRuleSet using -IPRule and -VirtualNetworkRule parameters
 
 ### Example 2
 ```powershell
-$getresult = Get-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-1375
-Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-1375 -InputObject $getresult
+$getresult = Get-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-1375
+Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-1375 -InputObject $getresult
 ```
 
 ```output
@@ -74,7 +75,7 @@ Update the NetworkRuleSet using -InputObject
 
 ### Example 3
 ```powershell
-Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-1375 -ResourceId /subscriptions/SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace1-1375
+Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-1375 -ResourceId /subscriptions/SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace1-1375
 ```
 
 ```output
@@ -124,7 +125,7 @@ NetworkruleSet Configuration Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes
-Parameter Sets: NetwrokruleSetInputObjectSet
+Parameter Sets: NetworkRuleSetInputObjectSet
 Aliases:
 
 Required: True
@@ -142,7 +143,7 @@ Type: Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetIpRulesAttributes[]
 Parameter Sets: NetworkRuleSetPropertiesSet
 Aliases:
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
@@ -165,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicNetworkAccess
-Public Network Access for NetwrokeuleSet
+Public Network Access for NetworkRuleSet
 
 ```yaml
 Type: System.String
@@ -209,6 +210,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -TrustedServiceAccessEnabled
+Trusted Service Access for NetworkRuleSet
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: NetworkRuleSetPropertiesSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VirtualNetworkRule
 List of VirtualNetworkRules
 
@@ -217,7 +233,7 @@ Type: Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetVirtualNetworkRulesA
 Parameter Sets: NetworkRuleSetPropertiesSet
 Aliases: VirtualNteworkRule
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False
@@ -234,7 +250,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -250,25 +266,20 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes
-
 ### System.String
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes
-
 ## NOTES
-
 ## RELATED LINKS

@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Set UploadedTimestamp when adding package to spark pool by `Update-AzSynapseSparkPool`
+
+## Version 1.3.0
 * Added support for Synapse Azure Active Directory (Azure AD) only authentication
     - Added `Get-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
     - Added `Enable-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet

@@ -3571,23 +3571,33 @@ param(
             $retry = 2
             while ($retry -ne 0)
             {
-                $clusInterface = Get-ClusterNetworkInterface | Where-Object {$_.AdapterId -eq ($hostNetAdapter.DeviceId -replace "[{}]","")}
+                $clusInterface = Get-ClusterNetworkInterface -ErrorAction SilentlyContinue | Where-Object {$_.AdapterId -eq ($hostNetAdapter.DeviceId -replace "[{}]","")}
 
-                if (($clusInterface | Measure-Object).Count -eq 0)
+                if (($clusInterface | Measure-Object).Count -eq 1)
                 {
-                    Write-Verbose "Retrying..."
-                    $retry--
-                    Start-Sleep 2
-                    continue
+                    Write-Information "Found ClusterNetworkInterface for Attestation adapter $($hostNetAdapter.DeviceId)."
+                    $notAttestationNet = ($clusInterface.Network | Get-ClusterNetworkInterface -ErrorAction SilentlyContinue -ErrorVariable e | Where-Object {$_.Name -notlike "*$($hostNetAdapter.Name)*"})
+
+                    if (($notAttestationNet | Measure-Object).Count -eq 0 -and $null -eq $e)
+                    {
+                        Write-Information "Setting Cluster network $($clusInterface.Network.Name) Role to None."
+                        ($clusInterface.Network).Role = 0
+                        break
+                    }
+
+                    if ($null -ne $e)
+                    {
+                        Write-Information "Could not query Cluster network interface. Error=$($e | Out-String)"
+                    }
+                    else
+                    {
+                        Write-Information "Cluster network contains other network adapters. Not updating Role."
+                    }
                 }
 
-                $notAttestationNet  = ($clusInterface.Network | Get-ClusterNetworkInterface | Where-Object {$_.Name -notlike "*$($hostNetAdapter.Name)*"})
-
-                if (($notAttestationNet | Measure-Object).Count -eq 0)
-                {
-                    ($clusInterface.Network).Role = 0
-                    break
-                }
+                Write-Information "Retrying Attestation Cluster Network Interface check..."
+                $retry--
+                Start-Sleep 2
             }
 
             $HostAdapterVlanCommonParams = @{

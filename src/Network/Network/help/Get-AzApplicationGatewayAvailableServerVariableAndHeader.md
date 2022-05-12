@@ -45,7 +45,7 @@ This commands returns all the available response headers.
 
 ### Example 4
 ```powershell
-Get-AzApplicationGatewayAvailableServerVariableAndHeader - ServerVariable -RequestHeader -ResponseHeader
+Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariable -RequestHeader -ResponseHeader
 ```
 
 This commands returns all the available server variables, request and response headers.

@@ -29,6 +29,9 @@ Disables the advanced threat protection policy for a storage / cosmosDB account.
 ### [Enable-AzSecurityAdvancedThreatProtection](Enable-AzSecurityAdvancedThreatProtection.md)
 Enables the advanced threat protection policy for a storage / cosmosDB account.
 
+### [Get-AzAlertsSuppressionRule](Get-AzAlertsSuppressionRule.md)
+Gets alerts suppression rules.
+
 ### [Get-AzAllowedConnection](Get-AzAllowedConnection.md)
 Used to display allowed traffic between resources for the subscription
 
@@ -140,6 +143,9 @@ Gets the configured security workspace settings on a subscription.
 ### [Get-AzSqlInformationProtectionPolicy](Get-AzSqlInformationProtectionPolicy.md)
 Retrieves the effective tenant SQL information protection policy.
 
+### [New-AzAlertsSuppressionRuleScope](New-AzAlertsSuppressionRuleScope.md)
+Helper cmdlet to create PSIScopeElement.
+
 ### [New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject](New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject.md)
 Create new allow list custom alert rule for device security group (IoT Security)
 
@@ -157,6 +163,9 @@ Create new recommendation configuration for iot security solution
 
 ### [New-AzIotSecuritySolutionUserDefinedResourcesObject](New-AzIotSecuritySolutionUserDefinedResourcesObject.md)
 Create new user defined resources for iot security solution
+
+### [Remove-AzAlertsSuppressionRule](Remove-AzAlertsSuppressionRule.md)
+Deletes an alerts suppression rule.
 
 ### [New-AzSecurityAutomation](New-AzSecurityAutomation.md)
 Creates new security automation
@@ -202,6 +211,9 @@ Removes SQL vulnerability assessment baseline.
 
 ### [Remove-AzSecurityWorkspaceSetting](Remove-AzSecurityWorkspaceSetting.md)
 Deletes the security workspace setting for this subscription.
+
+### [Set-AzAlertsSuppressionRule](Set-AzAlertsSuppressionRule.md)
+Create or update an alerts suppression rule.
 
 ### [Set-AzDeviceSecurityGroup](Set-AzDeviceSecurityGroup.md)
 Create or update device security group

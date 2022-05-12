@@ -31,13 +31,13 @@ Enumerate routes learned by a route server peer from other sources.
 
 ### Example 1
 ```powershell
-Get-AzRouteServerPeerLearnedRouter -ResourceGroupName $resourceGroupName -RouteServerName $routeServerName -PeerName $peerName
+Get-AzRouteServerPeerLearnedRoute -ResourceGroupName $resourceGroupName -RouteServerName $routeServerName -PeerName $peerName
 ```
 
 ### Example 2
 ```powershell
 $routerServerPeer = Get-AzRouteServerPeer -ResourceGroupName $resourceGroupName -RouteServerName $routeServerName -PeerName $peerName
-Get-AzRouteServerPeerLearnedRouter -InputObject $routerServerPeer
+Get-AzRouteServerPeerLearnedRoute -InputObject $routerServerPeer
 ```
 
 ## PARAMETERS

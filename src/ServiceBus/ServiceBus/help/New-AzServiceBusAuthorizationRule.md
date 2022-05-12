@@ -39,21 +39,21 @@ The **New-AzServiceBusAuthorizationRule** cmdlet creates a new authorization rul
 
 ### Example 1
 ```powershell
-New-AzServiceBusAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Name AuthoRule1 -Rights @("Listen","Send")
+New-AzServiceBusAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Name AuthoRule1 -Rights @("Listen","Send")
 ```
 
 Creates `AuthoRule1` with **Listen** and **Send** rights for the namespace `SB-Example1`.
 
 ### Example 2
 ```powershell
-New-AzServiceBusAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Queue SBQueue -Name AuthoRule1 -Rights @("Listen","Send")
+New-AzServiceBusAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Queue SBQueue -Name AuthoRule1 -Rights @("Listen","Send")
 ```
 
 Creates `AuthoRule1` with **Listen** and **Send** rights for the queue `SBQueue`.
 
 ### Example 3
 ```powershell
-New-AzServiceBusAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Topic SBTopic -Name AuthoRule1 -Rights @("Listen","Send")
+New-AzServiceBusAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Topic SBTopic -Name AuthoRule1 -Rights @("Listen","Send")
 ```
 
 Creates `AuthoRule1` with **Listen** and **Send** rights for the topic `SBTopic`.

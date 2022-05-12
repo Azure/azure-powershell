@@ -18,7 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated the decsription of `Force` in `Invoke-AzAksRunCommand` [#17756]
+* Removed these aliases:
+  * `Get-AzAks`
+  * `New-AzAks`
+  * `Set-AzAks`
+  * `Remove-AzAks`
+
+## Version 3.1.3
+* Updated the description of `Force` in `Invoke-AzAksRunCommand` [#17756]
 * Fixed the issue that `identity` cannot be piped into `Set-AzAksCluster` [#17376]
 
 ## Version 3.1.2
