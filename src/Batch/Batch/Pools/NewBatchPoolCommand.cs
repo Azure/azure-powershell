@@ -18,7 +18,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -70,7 +70,9 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public int? MaxTasksPerComputeNode { get; set; }
+        [CmdletParameterBreakingChange("MaxTasksPerComputeNode", "MaxTasksPerComputeNode alias will be removed in an upcoming breaking change release.")]
+        [Alias("MaxTasksPerComputeNode")]
+        public int? TaskSlotsPerNode { get; set; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -135,7 +137,7 @@ namespace Microsoft.Azure.Commands.Batch
                 TargetLowPriorityComputeNodes = this.TargetLowPriorityComputeNodes,
                 AutoScaleEvaluationInterval = this.AutoScaleEvaluationInterval,
                 AutoScaleFormula = this.AutoScaleFormula,
-                MaxTasksPerComputeNode = this.MaxTasksPerComputeNode,
+                TaskSlotsPerNode = this.TaskSlotsPerNode,
                 TaskSchedulingPolicy = this.TaskSchedulingPolicy,
                 Metadata = this.Metadata,
                 InterComputeNodeCommunicationEnabled = this.InterComputeNodeCommunicationEnabled.IsPresent,

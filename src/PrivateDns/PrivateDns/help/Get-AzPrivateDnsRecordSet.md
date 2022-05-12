@@ -55,7 +55,7 @@ The Get-AzPrivateDnsRecordSet cmdlet gets the Private Domain Name System (DNS) r
 
 ### Example 1: Get record sets with a specified name and type
 ```powershell
-$RecordSet = Get-AzPrivateDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "www" -RecordType A
+Get-AzPrivateDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "www" -RecordType A
 ```
 
 ```output
@@ -76,7 +76,7 @@ This command gets the record set of record type A named www in the specified res
 
 ### Example 2: Get record sets of a specified type
 ```powershell
-$RecordSets = Get-AzPrivateDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -RecordType A
+Get-AzPrivateDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -RecordType A
 ```
 
 ```output
@@ -109,7 +109,7 @@ This command gets an array of all record sets of record type A in the private zo
 
 ### Example 3: Get all record sets in a private zone
 ```powershell
-$RecordSets = Get-AzPrivateDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
+Get-AzPrivateDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
 ```
 
 ```output
@@ -142,8 +142,8 @@ This command gets an array of all record sets in the private zone named myzone.c
 
 ### Example 4: Get all record sets in a private zone, using a PSPrivateDnsZone object
 ```powershell
- $Zone = Get-AzPrivateDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
- $RecordSets = Get-AzPrivateDnsRecordSet -Zone $Zone
+$Zone = Get-AzPrivateDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
+Get-AzPrivateDnsRecordSet -Zone $Zone
 ```
 
 ```output

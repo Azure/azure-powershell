@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Updated firewall rules for Attestation network to block all other traffic
+* Updated cluster to ignore Attestation network
+
 ## Version 1.1.0
 * Adding support cmdlet for Remote Support 
     - New cmdlets - Install-AzStackHCIRemoteSupport, Remove-AzStackHCIRemoteSupport, Enable-AzStackHCIRemoteSupport, Disable-AzStackHCIRemoteSupport, Get-AzStackHCIRemoteSupportAccess,Get-AzStackHCIRemoteSupportSessionHistory

@@ -43,7 +43,7 @@ Updates the CosmosDB Sql UserDefinedFunction. Performs a client side patch opera
 Update-AzCosmosDBSqlUserDefinedFunction -AccountName MyAccountName -ResourceGroupName MyRgName -DatabaseName MyDatabaseName -ContainerName MyContainerName -Name myUDFName -Body myBody
 ```
 
-```output 
+```output
 Name     : myTriggerName
 Id       : /subscriptions/mySubId/resourceGroups/MyRgName/providers/Microsoft.DocumentDB/databaseAccounts/MyAccountName/sqlDatabases/MyDatabaseName/contain
            ers/MyContainerName/userDefinedFunctions/myUDFName

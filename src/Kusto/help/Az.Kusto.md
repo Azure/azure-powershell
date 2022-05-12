@@ -29,6 +29,9 @@ Returns a list of databases that are owned by this cluster and were followed by 
 ### [Get-AzKustoClusterLanguageExtension](Get-AzKustoClusterLanguageExtension.md)
 Returns a list of language extensions that can run within KQL queries.
 
+### [Get-AzKustoClusterOutboundNetworkDependencyEndpoint](Get-AzKustoClusterOutboundNetworkDependencyEndpoint.md)
+Gets the network endpoints of all outbound dependencies of a Kusto cluster
+
 ### [Get-AzKustoClusterPrincipalAssignment](Get-AzKustoClusterPrincipalAssignment.md)
 Gets a Kusto cluster principalAssignment.
 
@@ -47,8 +50,20 @@ Gets a Kusto cluster database principalAssignment.
 ### [Get-AzKustoDataConnection](Get-AzKustoDataConnection.md)
 Returns a data connection.
 
+### [Get-AzKustoManagedPrivateEndpoint](Get-AzKustoManagedPrivateEndpoint.md)
+Gets a managed private endpoint.
+
 ### [Get-AzKustoOperationsResult](Get-AzKustoOperationsResult.md)
 Returns operation results.
+
+### [Get-AzKustoOperationsResultLocation](Get-AzKustoOperationsResultLocation.md)
+Returns operation results.
+
+### [Get-AzKustoPrivateEndpointConnection](Get-AzKustoPrivateEndpointConnection.md)
+Gets a private endpoint connection.
+
+### [Get-AzKustoPrivateLinkResource](Get-AzKustoPrivateLinkResource.md)
+Gets a private link resource.
 
 ### [Get-AzKustoScript](Get-AzKustoScript.md)
 Gets a Kusto cluster database script.
@@ -80,6 +95,12 @@ Creates a Kusto cluster database principalAssignment.
 ### [New-AzKustoDataConnection](New-AzKustoDataConnection.md)
 Creates or updates a data connection.
 
+### [New-AzKustoManagedPrivateEndpoint](New-AzKustoManagedPrivateEndpoint.md)
+Creates a managed private endpoint.
+
+### [New-AzKustoPrivateEndpointConnection](New-AzKustoPrivateEndpointConnection.md)
+Approve or reject a private endpoint connection with a given name.
+
 ### [New-AzKustoScript](New-AzKustoScript.md)
 Creates a Kusto database script.
 
@@ -107,6 +128,12 @@ Deletes a Kusto principalAssignment.
 ### [Remove-AzKustoDataConnection](Remove-AzKustoDataConnection.md)
 Deletes the data connection with the given name.
 
+### [Remove-AzKustoManagedPrivateEndpoint](Remove-AzKustoManagedPrivateEndpoint.md)
+Deletes a managed private endpoint.
+
+### [Remove-AzKustoPrivateEndpointConnection](Remove-AzKustoPrivateEndpointConnection.md)
+Deletes a private endpoint connection with a given name.
+
 ### [Remove-AzKustoScript](Remove-AzKustoScript.md)
 Deletes a Kusto principalAssignment.
 
@@ -116,6 +143,9 @@ Starts a Kusto cluster.
 ### [Stop-AzKustoCluster](Stop-AzKustoCluster.md)
 Stops a Kusto cluster.
 
+### [Test-AzKustoAttachedDatabaseConfigurationNameAvailability](Test-AzKustoAttachedDatabaseConfigurationNameAvailability.md)
+Checks that the attached database configuration resource name is valid and is not already in use.
+
 ### [Test-AzKustoClusterNameAvailability](Test-AzKustoClusterNameAvailability.md)
 Checks that the cluster name is valid and is not already in use.
 
@@ -123,13 +153,16 @@ Checks that the cluster name is valid and is not already in use.
 Checks that the principal assignment name is valid and is not already in use.
 
 ### [Test-AzKustoDatabaseNameAvailability](Test-AzKustoDatabaseNameAvailability.md)
-Checks that the database name is valid and is not already in use.
+Checks that the databases resource name is valid and is not already in use.
 
 ### [Test-AzKustoDatabasePrincipalAssignmentNameAvailability](Test-AzKustoDatabasePrincipalAssignmentNameAvailability.md)
 Checks that the database principal assignment is valid and is not already in use.
 
 ### [Test-AzKustoDataConnectionNameAvailability](Test-AzKustoDataConnectionNameAvailability.md)
 Checks that the data connection name is valid and is not already in use.
+
+### [Test-AzKustoManagedPrivateEndpointNameAvailability](Test-AzKustoManagedPrivateEndpointNameAvailability.md)
+Checks that the managed private endpoints resource name is valid and is not already in use.
 
 ### [Test-AzKustoScriptNameAvailability](Test-AzKustoScriptNameAvailability.md)
 Checks that the script name is valid and is not already in use.
@@ -142,6 +175,9 @@ Updates a database.
 
 ### [Update-AzKustoDataConnection](Update-AzKustoDataConnection.md)
 Updates a data connection.
+
+### [Update-AzKustoManagedPrivateEndpoint](Update-AzKustoManagedPrivateEndpoint.md)
+Updates a managed private endpoint.
 
 ### [Update-AzKustoScript](Update-AzKustoScript.md)
 Updates a database script.

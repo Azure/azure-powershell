@@ -1,0 +1,73 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/providers/Microsoft.Security/securitySolutionsReferenceData?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdiYzYwNGItNTRiMi00Yzc4LWE3YmEtNzI1MDQ5MjBhMzE5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvc2VjdXJpdHlTb2x1dGlvbnNSZWZlcmVuY2VEYXRhP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "abc510fc-77d5-480e-a2ce-f779e2587af4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.16002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-original-request-ids": [
+          "",
+          "",
+          ""
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "749"
+        ],
+        "x-ms-request-id": [
+          "6b136efa-30f0-4e91-b561-196ba47198e8"
+        ],
+        "x-ms-correlation-request-id": [
+          "6b136efa-30f0-4e91-b561-196ba47198e8"
+        ],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20220424T150245Z:6b136efa-30f0-4e91-b561-196ba47198e8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 24 Apr 2022 15:02:44 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "1903"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/providers/Microsoft.Security/locations/centralus/securitySolutionsReferenceData/rapid7.insightplatform\",\r\n      \"name\": \"rapid7.insightplatform\",\r\n      \"type\": \"Microsoft.Security/locations/securitySolutionsReferenceData\",\r\n      \"properties\": {\r\n        \"alertVendorName\": \"Rapid7\",\r\n        \"securityFamily\": \"Va\",\r\n        \"packageInfoUrl\": \"www.azure.com\",\r\n        \"productName\": \"Vulnerability Assessment\",\r\n        \"provisionType\": \"SemiIntegrated\",\r\n        \"publisher\": \"rapid7\",\r\n        \"publisherDisplayName\": \"Rapid7 Inc.\",\r\n        \"template\": \"rapid7/insightplatform\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/providers/Microsoft.Security/locations/centralus/securitySolutionsReferenceData/qualys.qualysAgent\",\r\n      \"name\": \"qualys.qualysAgent\",\r\n      \"type\": \"Microsoft.Security/locations/securitySolutionsReferenceData\",\r\n      \"properties\": {\r\n        \"alertVendorName\": \"Qualys VA\",\r\n        \"securityFamily\": \"Va\",\r\n        \"packageInfoUrl\": \"http://www.qualys.com/\",\r\n        \"productName\": \"Vulnerability Assessment\",\r\n        \"provisionType\": \"SemiIntegrated\",\r\n        \"publisher\": \"qualys\",\r\n        \"publisherDisplayName\": \"Qualys, Inc.\",\r\n        \"template\": \"qualys/qualysAgent\",\r\n        \"templateAdministrationExpression\": \"http://www.qualys.com/\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/67bc604b-54b2-4c78-a7ba-72504920a319/providers/Microsoft.Security/locations/centralus/securitySolutionsReferenceData/microsoft.ApplicationGateway-ARM\",\r\n      \"name\": \"microsoft.ApplicationGateway-ARM\",\r\n      \"type\": \"Microsoft.Security/locations/securitySolutionsReferenceData\",\r\n      \"properties\": {\r\n        \"alertVendorName\": \"Microsoft\",\r\n        \"securityFamily\": \"SaasWaf\",\r\n        \"packageInfoUrl\": \"www.azure.com\",\r\n        \"productName\": \"Web Application Firewall\",\r\n        \"provisionType\": \"SemiIntegrated\",\r\n        \"publisher\": \"microsoft\",\r\n        \"publisherDisplayName\": \"Microsoft Inc.\",\r\n        \"template\": \"microsoft/ApplicationGateway-ARM\",\r\n        \"templateAdministrationExpression\": \"https://portal.azure.com#resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Network/applicationGateways/{name}/overview\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "67bc604b-54b2-4c78-a7ba-72504920a319"
+  }
+}

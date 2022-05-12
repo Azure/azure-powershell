@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Network
                 BandwidthInGbps = this.BandwidthInGbps,
                 Encapsulation = this.Encapsulation,
                 Location = this.Location,
-                Links = this.Link?.ToList(),
+                Links = this.Link?.ToList()
             };
 
             if (this.Identity != null)

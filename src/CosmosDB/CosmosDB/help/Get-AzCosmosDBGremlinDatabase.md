@@ -31,7 +31,7 @@ The **Get-AzCosmosDBGremlinDatabase** cmdlet gets the CosmosDB Gremlin Database.
 
 ### Example 1
 ```powershell
-Get-AzCosmosDBGremlinDatabase -ResourceGroupName {rgName} -AccountName {accountName} -Name {databaseName}
+Get-AzCosmosDBGremlinDatabase -ResourceGroupName "rgName" -AccountName "accountName" -Name "databaseName"
 ```
 
 ```output

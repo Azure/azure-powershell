@@ -108,6 +108,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
         public string ImageReferenceId { get; set; }
 
         [Parameter(

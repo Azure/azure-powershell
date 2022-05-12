@@ -47,7 +47,7 @@ Get-AzDataCollectionRule
 ## DESCRIPTION
 The **Get-AzDataCollectionRule** cmdlet gets one or more data collection rules.
 
-Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection-rule-overview).
+Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview).
 
 ## EXAMPLES
 
@@ -74,7 +74,7 @@ This command lists all the data collection rules for the current subscription.
 
 ### Example 2: Get data collection rules for the given resource group
 ```powershell
-Get-AzDataCollectionRule -ResourceGroup "testgroup"
+Get-AzDataCollectionRule -ResourceGroupName "testgroup"
 ```
 
 ```output
@@ -95,7 +95,7 @@ This command lists data collection rules for the given resource group.
 
 ### Example 3: Get a data collection rule
 ```powershell
-Get-AzDataCollectionRule -ResourceGroup "testgroup" -RuleName "testDcr"
+Get-AzDataCollectionRule -ResourceGroupName "testgroup" -RuleName "testDcr"
 ```
 
 ```output

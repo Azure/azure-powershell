@@ -225,6 +225,22 @@ function Test-SetManagedInstance
 		Assert-StartsWith ($managedInstance7.ManagedInstanceName + ".") $managedInstance6.FullyQualifiedDomainName
 		Assert-AreEqual $managedInstance7.SubnetId $targetSubnetResourceId
 
+		# Test service principal update
+		$servicePrincipalType = "SystemAssigned"
+
+		$managedInstance8 = Set-AzSqlInstance -Name $managedInstance.ManagedInstanceName -ResourceGroupName $rg.ResourceGroupName -ServicePrincipalType $servicePrincipalType -Force
+
+		Assert-AreEqual $managedInstance8.ManagedInstanceName $managedInstance.ManagedInstanceName
+		Assert-AreEqual $managedInstance8.AdministratorLogin $managedInstance6.AdministratorLogin
+		Assert-AreEqual $managedInstance8.VCores $vCore
+		Assert-AreEqual $managedInstance8.StorageSizeInGB $managedInstance6.StorageSizeInGB
+		Assert-AreEqual $managedInstance8.Sku.Tier $generalPurpose
+		Assert-AreEqual $managedInstance8.Sku.Family $managedInstance6.Sku.Family
+		Assert-StartsWith ($managedInstance8.ManagedInstanceName + ".") $managedInstance6.FullyQualifiedDomainName
+		Assert-AreEqual $managedInstance8.SubnetId $targetSubnetResourceId
+		Assert-AreEqual $managedInstance8.ServicePrincipal.Type $servicePrincipalType
+		Assert-AreEqual $managedInstance8.Identity.Type $managedInstance6.Identity.Type
+
 		# Test zone redundant update SLO. Since the feature is still not rolled-out, the operation should fail.
 		try
 		{

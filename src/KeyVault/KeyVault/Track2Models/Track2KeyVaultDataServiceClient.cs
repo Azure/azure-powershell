@@ -116,6 +116,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             throw new NotImplementedException();
         }
 
+        public byte[] GetRandomNumber()
+        {
+            throw new NotImplementedException();
+        }
+
         #region Key rotation
         public PSKeyVaultKey RotateKey(string vaultName, string keyName)
         {
@@ -576,6 +581,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         {
             return HsmClient.RestoreKey(managedHsmName, inputBlobPath);
         }
+
+        public byte[] GetManagedHsmRandomNumber(string managedHsmName, int count)
+        {
+            return HsmClient.GetRandomNumberBytes(managedHsmName, count);
+        }
+
         #endregion
 
         #region Key rotation

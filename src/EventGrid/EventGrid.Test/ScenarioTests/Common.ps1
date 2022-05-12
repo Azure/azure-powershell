@@ -366,6 +366,16 @@ function Get-DeadletterResourceId($ResourceGroupName, $StorageAccountName, $Cont
 
 <#
 .SYNOPSIS
+Get Storage Account ResourceId
+#>
+function Get-StorageAccountResourceId($ResourceGroupName, $StorageAccountName)
+{
+    $subId = Get-SubscriptionID
+    return "/subscriptions/$subId/resourceGroups/$ResourceGroupName/providers/Microsoft.Storage/storageAccounts/$StorageAccountName"
+}
+
+<#
+.SYNOPSIS
 Create new Storage Blob
 #>
 function New-StorageBlob($ResourceGroupName, $StorageAccountName, $ContainerName, $Location)

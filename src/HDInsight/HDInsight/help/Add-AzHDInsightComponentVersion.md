@@ -32,7 +32,7 @@ The Add-AzHDInsightComponentVersion cmdlet adds a version for a service running 
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | %{ $_.Key1 }
+            -Name $storageAccountName | ForEach-Object{ $_.Key1 }
         $storageContainer = "container001"
 
         # Cluster configuration info

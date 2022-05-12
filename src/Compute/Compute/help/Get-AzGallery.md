@@ -14,13 +14,19 @@ Get or list galleries.
 
 ### DefaultParameter (Default)
 ```
-Get-AzGallery [[-ResourceGroupName] <String>] [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzGallery [[-ResourceGroupName] <String>] [[-Name] <String>] [-Expand <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
 Get-AzGallery [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SharedGalleryParameterSet
+```
+Get-AzGallery [-GalleryUniqueName <String>] [-Scope <String>] -Location <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +41,7 @@ Get-AzGallery -ResourceGroupName rg1 -GalleryName gallery1
 
 ```output
 ResourceGroupName : rg1
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
   UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
 ProvisioningState : Succeeded
@@ -55,7 +61,7 @@ Get-AzGallery -ResourceGroupName rg1
 
 ```output
 ResourceGroupName : rg1
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
   UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
 ProvisioningState : Succeeded
@@ -66,9 +72,9 @@ Location          : southcentralus
 Tags              : {}
 
 ResourceGroupName : rg1
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
-  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery2
 ProvisioningState : Succeeded
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/galleries/gallery2
 Name              : gallery2
@@ -86,7 +92,7 @@ Get-AzGallery
 
 ```output
 ResourceGroupName : rg1
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
   UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
 ProvisioningState : Succeeded
@@ -97,9 +103,9 @@ Location          : southcentralus
 Tags              : {}
 
 ResourceGroupName : rg1
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
-  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery2
 ProvisioningState : Succeeded
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/galleries/gallery2
 Name              : gallery2
@@ -108,9 +114,9 @@ Location          : southcentralus
 Tags              : {}
 
 ResourceGroupName : rg2
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
-  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery3
 ProvisioningState : Succeeded
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Compute/galleries/gallery3
 Name              : gallery3
@@ -128,7 +134,7 @@ Get-AzGallery -Name gallery*
 
 ```output
 ResourceGroupName : rg1
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
   UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
 ProvisioningState : Succeeded
@@ -139,9 +145,9 @@ Location          : southcentralus
 Tags              : {}
 
 ResourceGroupName : rg1
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
-  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery2
 ProvisioningState : Succeeded
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/galleries/gallery2
 Name              : gallery2
@@ -150,9 +156,9 @@ Location          : southcentralus
 Tags              : {}
 
 ResourceGroupName : rg2
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
-  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery3
 ProvisioningState : Succeeded
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Compute/galleries/gallery3
 Name              : gallery3
@@ -162,6 +168,14 @@ Tags              : {}
 ```
 
 Get all galleries in subscription that start with "gallery".
+
+### Example 5
+```powershell
+PS C:\> Get-AzGallery -Name galleryName -ResourceGroupName rg -Expand SharingProfile/Groups
+
+```
+
+Get a gallery's sharing profile.
 
 ## PARAMETERS
 
@@ -177,6 +191,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GalleryUniqueName
+The unique name of the Shared Image Gallery.
+
+```yaml
+Type: System.String
+Parameter Sets: SharedGalleryParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the Shared Image Gallery.
+
+```yaml
+Type: System.String
+Parameter Sets: SharedGalleryParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -220,6 +264,36 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Scope
+Specifies galleries shared to subscription or tenant.
+
+```yaml
+Type: System.String
+Parameter Sets: SharedGalleryParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Expand
+The expand query option to apply on the operation. Possible value(s): "SharingProfile/Groups"
+
+```yaml
+Type: System.String
+Parameter Sets: DefaultParameter
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

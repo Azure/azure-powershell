@@ -17,56 +17,52 @@ namespace Microsoft.Azure.Commands.DataShare.Test.ScenarioTests.ScenarioTest
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class SynchronizationTests
+    public class SynchronizationTests : DataShareTestRunner
     {
-        private readonly ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
-        public SynchronizationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SynchronizationTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStartSynchronization()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SynchronizationStart");
+            TestRunner.RunTestScript("Test-SynchronizationStart");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCancelSynchronization()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SynchronizationCancel");
+            TestRunner.RunTestScript("Test-SynchronizationCancel");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListShareSubscriptionSynchronizationCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ListShareSubscriptionSynchronizationCrud");
+            TestRunner.RunTestScript("Test-ListShareSubscriptionSynchronizationCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListShareSubscriptionSynchronizationDetailsCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ListShareSubscriptionSynchronizationDetailsCrud");
+            TestRunner.RunTestScript("Test-ListShareSubscriptionSynchronizationDetailsCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListShareSynchronizationCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ListShareSynchronizationCrud");
+            TestRunner.RunTestScript("Test-ListShareSynchronizationCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListShareSynchronizationDetailsCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ListShareSynchronizationDetailsCrud");
+            TestRunner.RunTestScript("Test-ListShareSynchronizationDetailsCrud");
         }
     }
 }

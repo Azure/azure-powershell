@@ -40,7 +40,7 @@ The **Update-AzNetAppFilesAccount** cmdlet modifies an ANF account.
 
 ### Example 1 : Updates an ANF account
 ```powershell
-Update-AzNetAppFilesAccount -ResourceGroupName "MyRG" -l "westus2" -Name "MyAnfAccount" -Tag @{'Tag1' = 'Value1'}
+Update-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Location "westus2" -Name "MyAnfAccount" -Tag @{'Tag1' = 'Value1'}
 ```
 
 ```output
@@ -225,3 +225,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetAppFilesAccount](./New-AzNetAppFilesAccount.md)
+[Get-AzNetAppFilesAccount](./Get-AzNetAppFilesAccount.md)
+[Remove-AzNetAppFilesAccount](./Remove-AzNetAppFilesAccount.md)
+[Set-AzNetAppFilesAccount](./Set-AzNetAppFilesAccount.md)
+[Get-AzNetAppFilesActiveDirectory](./Get-AzNetAppFilesActiveDirectory.md)
+[New-AzNetAppFilesActiveDirectory](./New-AzNetAppFilesActiveDirectory.md)
+[Remove-AzNetAppFilesActiveDirectory](./Remove-AzNetAppFilesActiveDirectory.md)
+[Update-AzNetAppFilesActiveDirectory](./Update-AzNetAppFilesActiveDirectory.md)

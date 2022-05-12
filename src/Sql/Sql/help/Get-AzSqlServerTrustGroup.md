@@ -43,28 +43,28 @@ The **Get-AzSqlServerTrustGroup** cmdlet get information about Server Trust Grou
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup01" -Location "West Europe" -Name "ServerTrustGroup01"
+Get-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup01" -Location "West Europe" -Name "ServerTrustGroup01"
 ```
 
 Gets information about Server Trust Group named ServerTrustGroup01 in resource group ResourceGroup01 in location West Europe.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup01" -Location "West Europe"
+Get-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup01" -Location "West Europe"
 ```
 
 Gets information about all Server Trust Groups in location West Europe in resource group ResourceGroup01.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+Get-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
 ```
 
 Gets information about all Server Trust Groups that have managed instance ManagedInstance01 as a member.
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzSqlServerTrustGroup -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/locations/WestEurope/serverTrustGroups/ServerTrustGroup01"
+Get-AzSqlServerTrustGroup -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/locations/WestEurope/serverTrustGroups/ServerTrustGroup01"
 ```
 
 Gets information about Server Trust Group specified by its id.

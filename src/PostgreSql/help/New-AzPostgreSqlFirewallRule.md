@@ -40,7 +40,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 
 ### Example 1: Create a new PostgreSql server Firewall Rule
 ```powershell
- New-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
+New-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
 ```
 
 ```output
@@ -53,7 +53,7 @@ This cmdlets create a PostgreSql server Firewall Rule.
 
 ### Example 2: Create a new PostgreSql Firewall Rule using -ClientIPAddress.
 ```powershell
- New-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -ClientIPAddress 0.0.0.1
+New-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -ClientIPAddress 0.0.0.1
 ```
 
 ```output
@@ -66,7 +66,7 @@ This cmdlets create a PostgreSql Firewall Rule using -ClientIPAddress.
 
 ### Example 3: Create a new PostgreSql Firewall Rule to allow all IPs
 ```powershell
- New-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -AllowAll
+New-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -AllowAll
 ```
 
 ```output

@@ -19,6 +19,46 @@
 -->
 
 ## Upcoming Release
+* Added the following cmdlets to remain in parity with 2021-04-01 API version:
+    - `New-AzHierarchySetting`
+    - `Get-AzHierarchySetting`
+    - `Update-AzHierarchySetting`
+    - `Remove-AzHierarchySetting`
+    - `Get-AzManagementGroupSubscription`
+    - `Get-AzSubscriptionUnderManagementGroup` 
+    - `Start-AzTenantBackfill`
+    - `Get-AzTenantBackfillStatus` 
+    - `Get-AzManagementGroupNameAvailability`
+    - `Get-AzEntity` 
+
+## Version 5.6.0
+* Fixed redundant quotes in list pagination [#17667]
+* Added cmdlet `Update-AzADGroup` [#17514]
+* Updated API version to beta for group member related cmdlet to allow service principal to be add, get and delete from group [#16698]
+* Added parameter '-OwnedApplication' for `Get-AzADApplication` to get applications owned by current user
+* Added parameter '-Web' for `Update-AzADApplication` [#16750]
+
+## Version 5.5.0
+* Removed `-ApplicationId` from `New-AzADServicePrincipal` `SimpleParameterSet` [#17256]
+* Added `New-AzResourceManagementPrivateLink`, and `New-AzPrivateLinkAssociation` cmdlets
+* Added authorization related cmdlets:
+    - `Get-AzRoleAssignmentSchedule`
+    - `Get-AzRoleAssignmentScheduleInstance`
+    - `Get-AzRoleAssignmentScheduleRequest`
+    - `Get-AzRoleEligibilitySchedule`
+    - `Get-AzRoleEligibilityScheduleInstance`
+    - `Get-AzRoleEligibilityScheduleRequest` 
+    - `Get-AzRoleEligibleChildResource`
+    - `Get-AzRoleManagementPolicy` 
+    - `Get-AzRoleManagementPolicyAssignment`
+    - `New-AzRoleAssignmentScheduleRequest` 
+    - `New-AzRoleEligibilityScheduleRequest`
+    - `New-AzRoleManagementPolicyAssignment` 
+    - `Remove-AzRoleManagementPolicy`
+    - `Remove-AzRoleManagementPolicyAssignment` 
+    - `Stop-AzRoleAssignmentScheduleRequest`
+    - `Stop-AzRoleEligibilityScheduleRequest` 
+    - `Update-AzRoleManagementPolicy`
 * Added `Get-AzResourceManagementPrivateLink`, `Remove-AzResourceManagementPrivateLink`, `Get-AzResourceManagementPrivateLinkAssociation` and  `Remove-AzResourceManagementPrivateLinkAssociation` cmdlets
 
 ## Version 5.4.0

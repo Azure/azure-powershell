@@ -36,9 +36,11 @@ This command swaps the roles of the managed instances in a Instance Failover Gro
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Switch-AzSqlDatabaseInstanceFailoverGroup -AllowDataLoss
 ```
-C:\> Get-AzSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Switch-AzSqlDatabaseInstanceFailoverGroup -AllowDataLoss
-Output:
+
+```output
 ResourceGroupName                     : rg
 Location                              : East US
 Name                                  : fg
@@ -57,9 +59,11 @@ Id                                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-x
 Issue a failover operation allowing data loss by piping in the Instance Failover Group.
 
 ### Example 2
+```powershell
+Get-AzSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Switch-AzSqlDatabaseInstanceFailoverGroup
 ```
-C:\> Get-AzSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Switch-AzSqlDatabaseInstanceFailoverGroup
-Output:
+
+```output
 ResourceGroupName                     : rg
 Location                              : East US
 Name                                  : fg

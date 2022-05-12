@@ -38,10 +38,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool? EnablePurgeProtection { get; set; }
         public bool? EnableRbacAuthorization { get; set; }
         public int? SoftDeleteRetentionInDays { get; set; }
+        public string PublicNetworkAccess { get; set; }
         public Guid TenantId { get; set; }
         public Track1ManagementSdk.AccessPolicyEntry AccessPolicy { get; set; }
         public Track1ManagementSdk.NetworkRuleSet NetworkAcls { get; set; }
         public Track1ManagementSdk.CreateMode? CreateMode { get; set; }
+
+        public Track1ManagementSdk.MHSMNetworkRuleSet MhsmNetworkAcls { get; set; }
         public string[] Administrator { get; set; }
 
         public Track1ManagementSdk.VaultCreateOrUpdateParameters ToTrack1VaultCreateOrUpdateParameters(

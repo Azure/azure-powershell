@@ -52,8 +52,8 @@ This operation allows adding or replacing the entire set of tags on the specifie
 ```powershell
 New-AzTag -Name "FY2015"
 ```
+
 ```output
-                                
 Name   ValuesTable Count Values 
 ----   ----------- ----- ------
 FY2015             0     {}
@@ -68,6 +68,7 @@ You can also specify a value when you apply the tag to the resource or resource 
 ```powershell
 New-AzTag -Name "Department" -Value "Finance"
 ```
+
 ```output
 Name:   Department
 Count:  0
@@ -106,13 +107,16 @@ If the tag name exists, **New-AzTag** adds the value to the existing tag instead
 ### Example 4: Use a predefined tag
 ```powershell
 New-AzTag -Name "CostCenter" -Value "0001"
+
 Name:   CostCenter
 Count:  0
 Values: 
         Name        Count
         =========   =====
         0001        0 
+
 Set-AzResourceGroup -Name "EngineerBlog" -Tag @{Name="CostCenter";Value="0001"}
+
 Name:      EngineerBlog
 Location:  East US
 Resources: 
@@ -126,14 +130,18 @@ Tags:
     Name         Value
     ==========   =====
     CostCenter   0001 
+
 Get-AzTag -Name "CostCenter"
+
 Name:   CostCenter
 Count:  1
 Values: 
         Name        Count
         =========   =====
         0001        1 
+
 Get-AzResourceGroup -Tag @{Name="CostCenter"}
+
 Name:      EngineerBlog
 Location:  East US
 Resources: 
@@ -155,8 +163,9 @@ The commands in this example create and use a predefined tag.
 
 ```powershell
 $Tags = @{"tagKey1"="tagValue1"; "tagKey2"="tagValue2"}
-New-AzTag -ResourceId /subscriptions/{subId} -Tag $Tags
+New-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Tag $Tags
 ```
+
 ```output
 Id         : {Id}
 Name       : {Name}
@@ -174,8 +183,9 @@ This command creates or updates the entire set of tags on the subscription with 
 
 ```powershell
 $Tags = @{"Dept"="Finance"; "Status"="Normal"}
-New-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1 -Tag $Tags
+New-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/testrg/providers/Microsoft.Sql/servers/Server1 -Tag $Tags
 ```
+
 ```output
 Id         : {Id}
 Name       : {Name}

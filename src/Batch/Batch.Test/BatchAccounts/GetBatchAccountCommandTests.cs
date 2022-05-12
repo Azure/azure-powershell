@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
-            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup, identity: new BatchAccountIdentity(ResourceIdentityType.None, string.Empty, string.Empty));
+            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup, identity: new BatchAccountIdentity(ResourceIdentityType.None, string.Empty, string.Empty, null as IDictionary<string, UserAssignedIdentities>));
             BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource, null);
             batchClientMock.Setup(b => b.GetAccount(resourceGroup, accountName)).Returns(expected);
 

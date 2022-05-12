@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 AccountName = NameParts[0];
             }
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
             {
                 AzureNetAppFilesManagementClient.BackupPolicies.Delete(ResourceGroupName, AccountName, backupPolicyName: Name);
                 success = true;
@@ -133,7 +133,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             {
                 WriteObject(success);
             }
-
         }
     }
 }

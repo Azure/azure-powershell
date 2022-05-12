@@ -35,7 +35,7 @@ Creates a new CosmosDB Sql StoredProcedure.
 New-AzCosmosDBSqlStoredProcedure -AccountName MyAccountName -ResourceGroupName MyRgName -DatabaseName MyDatabaseName -ContainerName MyContainerName -Name mySprocrName -Body myBody
 ```
 
-```output 
+```output
 Name     : mySprocName
 Id       : /subscriptions/mySubId/resourceGroups/MyRgName/providers/Microsoft.DocumentDB/databaseAccounts/MyAccountName/sqlDatabases/MyDatabaseName/contain
            ers/MyContainerName/storedProcedures/mySprocName

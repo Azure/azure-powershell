@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* **[Breaking change]** Upgraded API version for ApplicationInsights component to 2020-02-02
+
+## Version 1.3.1
+* Added breaking change warnings for upcoming Az.ApplicationInsights 2.0.0
 
 ## Version 1.3.0
 * Added WebTest function. Below is the new cmdlet

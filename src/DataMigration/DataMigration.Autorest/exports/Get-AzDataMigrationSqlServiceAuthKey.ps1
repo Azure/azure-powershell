@@ -20,19 +20,15 @@ Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
 .Description
 Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
 .Example
-PS C:\> Get-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
-
-AuthKey1                                                 AuthKey2
---------                                                 --------
-IR@abcd1-efgh2-jklmn3-opqr4@mysqlms@eastus@stuv5/wxyz6=  IR@abcd6-efgh5-jklmn4-opqr3@mysqlms@eastus@stuv2/wxyz1=
+Get-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IAuthenticationKeys
+Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IAuthenticationKeys
 .Link
 https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationsqlserviceauthkey
 #>
 function Get-AzDataMigrationSqlServiceAuthKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IAuthenticationKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IAuthenticationKeys])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -116,6 +112,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             List = 'Az.DataMigration.private\Get-AzDataMigrationSqlServiceAuthKey_List';
         }
@@ -129,6 +143,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -137,15 +152,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }
