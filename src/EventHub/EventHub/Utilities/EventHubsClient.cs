@@ -881,7 +881,7 @@ namespace Microsoft.Azure.Commands.Eventhub
                 networkRuleSet.PublicNetworkAccess = publicNetworkAccess;
             }
 
-            if (trustedServiceAccessEnabled == true)
+            if (trustedServiceAccessEnabled != null)
             {
                 networkRuleSet.TrustedServiceAccessEnabled = trustedServiceAccessEnabled;
             }

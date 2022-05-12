@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
 {
@@ -79,10 +80,18 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
 
                     if (ParameterSetName.Equals(NetworkRuleSetPropertiesParameterSet))
                     {
+                        bool? trustedServiceAccessEnabled = null;
+
+                        if (this.IsParameterBound(c => c.TrustedServiceAccessEnabled) == true)
+                        {
+                            trustedServiceAccessEnabled = TrustedServiceAccessEnabled.IsPresent;
+                        }
+
+
                         WriteObject(Client.UpdateNetworkRuleSet(resourceGroupName: ResourceGroupName, 
                                                                 namespaceName: Name, 
                                                                 publicNetworkAccess: PublicNetworkAccess,
-                                                                trustedServiceAccessEnabled: TrustedServiceAccessEnabled,
+                                                                trustedServiceAccessEnabled: trustedServiceAccessEnabled,
                                                                 defaultAction: DefaultAction,
                                                                 iPRule: IPRule,
                                                                 virtualNetworkRule: VirtualNetworkRule));
