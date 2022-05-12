@@ -20,13 +20,13 @@ Update the metadata of a service instance.
 .Description
 Update the metadata of a service instance.
 .Example
-PS C:\> Update-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice -Tag @{"abc"="123"}
+PS C:\> Update-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice -Tag @{"abc"="123"}
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
 eastus2  azpsapiservice fhir azps_test_group
 .Example
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice | Update-AzHealthcareAPIsService -Tag @{"abc"="123"}
+PS C:\> Get-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice | Update-AzHealthcareApisService -Tag @{"abc"="123"}
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
@@ -58,7 +58,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/update-azhealthcareapisservice
 #>
-function Update-AzHealthcareAPIsService {
+function Update-AzHealthcareApisService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -188,8 +188,8 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareAPIsService_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareAPIsService_UpdateViaIdentityExpanded';
+            UpdateExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareApisService_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareApisService_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

@@ -20,19 +20,19 @@ Get the metadata of a service instance.
 .Description
 Get the metadata of a service instance.
 .Example
-PS C:\>  Get-AzHealthcareAPIsService
+PS C:\>  Get-AzHealthcareApisService
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
 eastus2  azpsapiservice fhir azps_test_group
 .Example
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group
+PS C:\> Get-AzHealthcareApisService -ResourceGroupName azps_test_group
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
 eastus2  azpsapiservice fhir azps_test_group
 .Example
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice
+PS C:\> Get-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
@@ -64,7 +64,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareapisservice
 #>
-function Get-AzHealthcareAPIsService {
+function Get-AzHealthcareApisService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
@@ -171,10 +171,10 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsService_Get';
-            GetViaIdentity = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsService_GetViaIdentity';
-            List = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsService_List';
-            List1 = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsService_List1';
+            Get = 'Az.HealthcareApis.private\Get-AzHealthcareApisService_Get';
+            GetViaIdentity = 'Az.HealthcareApis.private\Get-AzHealthcareApisService_GetViaIdentity';
+            List = 'Az.HealthcareApis.private\Get-AzHealthcareApisService_List';
+            List1 = 'Az.HealthcareApis.private\Get-AzHealthcareApisService_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

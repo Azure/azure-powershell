@@ -20,7 +20,7 @@ Creates or updates a workspace resource with the specified parameters.
 .Description
 Creates or updates a workspace resource with the specified parameters.
 .Example
-PS C:\> New-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group -Location eastus2
+PS C:\> New-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group -Location eastus2
 
 Location Name     ResourceGroupName
 -------- ----     -----------------
@@ -31,7 +31,7 @@ Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisworkspace
 #>
-function New-AzHealthcareAPIsWorkspace {
+function New-AzHealthcareApisWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -150,7 +150,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
-            CreateExpanded = 'Az.HealthcareApis.private\New-AzHealthcareAPIsWorkspace_CreateExpanded';
+            CreateExpanded = 'Az.HealthcareApis.private\New-AzHealthcareApisWorkspace_CreateExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

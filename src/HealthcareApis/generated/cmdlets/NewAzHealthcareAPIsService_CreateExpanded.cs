@@ -13,11 +13,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.InternalExport]
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzHealthcareAPIsService_CreateExpanded", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzHealthcareApisService_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Description(@"Create or update the metadata of a service instance.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Generated]
-    public partial class NewAzHealthcareAPIsService_CreateExpanded : global::System.Management.Automation.PSCmdlet,
+    public partial class NewAzHealthcareApisService_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -34,6 +34,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>The description of the service.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription _serviceDescriptionBody = new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.ServicesDescription();
+
         /// <summary>The access policies of the service instance.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The access policies of the service instance.")]
@@ -44,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The access policies of the service instance.",
         SerializedName = @"accessPolicies",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceAccessPolicyEntry) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceAccessPolicyEntry[] AccessPolicy { get => ServiceDescriptionBody.AccessPolicy ?? null /* arrayOf */; set => ServiceDescriptionBody.AccessPolicy = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceAccessPolicyEntry[] AccessPolicyObjectId { get => _serviceDescriptionBody.AccessPolicy ?? null /* arrayOf */; set => _serviceDescriptionBody.AccessPolicy = value; }
 
         /// <summary>The list of the ACR login servers.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -56,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The list of the ACR login servers.",
         SerializedName = @"loginServers",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] AcrConfigurationLoginServer { get => ServiceDescriptionBody.AcrConfigurationLoginServer ?? null /* arrayOf */; set => ServiceDescriptionBody.AcrConfigurationLoginServer = value; }
+        public string[] AcrConfigurationLoginServer { get => _serviceDescriptionBody.AcrConfigurationLoginServer ?? null /* arrayOf */; set => _serviceDescriptionBody.AcrConfigurationLoginServer = value; }
 
         /// <summary>The list of Open Container Initiative (OCI) artifacts.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -68,7 +71,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The list of Open Container Initiative (OCI) artifacts.",
         SerializedName = @"ociArtifacts",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceOciArtifactEntry) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceOciArtifactEntry[] AcrConfigurationOciArtifact { get => ServiceDescriptionBody.AcrConfigurationOciArtifact ?? null /* arrayOf */; set => ServiceDescriptionBody.AcrConfigurationOciArtifact = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceOciArtifactEntry[] AcrConfigurationOciArtifact { get => _serviceDescriptionBody.AcrConfigurationOciArtifact ?? null /* arrayOf */; set => _serviceDescriptionBody.AcrConfigurationOciArtifact = value; }
+
+        /// <summary>If credentials are allowed via CORS.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If credentials are allowed via CORS.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If credentials are allowed via CORS.",
+        SerializedName = @"allowCredentials",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter AllowCorsCredential { get => _serviceDescriptionBody.CorConfigurationAllowCredentials ?? default(global::System.Management.Automation.SwitchParameter); set => _serviceDescriptionBody.CorConfigurationAllowCredentials = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -84,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The audience url for the service",
         SerializedName = @"audience",
         PossibleTypes = new [] { typeof(string) })]
-        public string AuthenticationConfigurationAudience { get => ServiceDescriptionBody.AuthenticationConfigurationAudience ?? null; set => ServiceDescriptionBody.AuthenticationConfigurationAudience = value; }
+        public string Audience { get => _serviceDescriptionBody.AuthenticationConfigurationAudience ?? null; set => _serviceDescriptionBody.AuthenticationConfigurationAudience = value; }
 
         /// <summary>The authority url for the service</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The authority url for the service")]
@@ -95,18 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The authority url for the service",
         SerializedName = @"authority",
         PossibleTypes = new [] { typeof(string) })]
-        public string AuthenticationConfigurationAuthority { get => ServiceDescriptionBody.AuthenticationConfigurationAuthority ?? null; set => ServiceDescriptionBody.AuthenticationConfigurationAuthority = value; }
-
-        /// <summary>If the SMART on FHIR proxy is enabled</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If the SMART on FHIR proxy is enabled")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"If the SMART on FHIR proxy is enabled",
-        SerializedName = @"smartProxyEnabled",
-        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter AuthenticationConfigurationSmartProxyEnabled { get => ServiceDescriptionBody.AuthenticationConfigurationSmartProxyEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => ServiceDescriptionBody.AuthenticationConfigurationSmartProxyEnabled = value; }
+        public string Authority { get => _serviceDescriptionBody.AuthenticationConfigurationAuthority ?? null; set => _serviceDescriptionBody.AuthenticationConfigurationAuthority = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -115,17 +118,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.HealthcareApis Client => Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Module.Instance.ClientAPI;
-
-        /// <summary>If credentials are allowed via CORS.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If credentials are allowed via CORS.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"If credentials are allowed via CORS.",
-        SerializedName = @"allowCredentials",
-        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter CorConfigurationAllowCredentials { get => ServiceDescriptionBody.CorConfigurationAllowCredentials ?? default(global::System.Management.Automation.SwitchParameter); set => ServiceDescriptionBody.CorConfigurationAllowCredentials = value; }
 
         /// <summary>The headers to be allowed via CORS.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -137,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The headers to be allowed via CORS.",
         SerializedName = @"headers",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] CorConfigurationHeader { get => ServiceDescriptionBody.CorConfigurationHeader ?? null /* arrayOf */; set => ServiceDescriptionBody.CorConfigurationHeader = value; }
+        public string[] CorsHeader { get => _serviceDescriptionBody.CorConfigurationHeader ?? null /* arrayOf */; set => _serviceDescriptionBody.CorConfigurationHeader = value; }
 
         /// <summary>The max age to be allowed via CORS.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The max age to be allowed via CORS.")]
@@ -148,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The max age to be allowed via CORS.",
         SerializedName = @"maxAge",
         PossibleTypes = new [] { typeof(int) })]
-        public int CorConfigurationMaxAge { get => ServiceDescriptionBody.CorConfigurationMaxAge ?? default(int); set => ServiceDescriptionBody.CorConfigurationMaxAge = value; }
+        public int CorsMaxAge { get => _serviceDescriptionBody.CorConfigurationMaxAge ?? default(int); set => _serviceDescriptionBody.CorConfigurationMaxAge = value; }
 
         /// <summary>The methods to be allowed via CORS.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -160,7 +152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The methods to be allowed via CORS.",
         SerializedName = @"methods",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] CorConfigurationMethod { get => ServiceDescriptionBody.CorConfigurationMethod ?? null /* arrayOf */; set => ServiceDescriptionBody.CorConfigurationMethod = value; }
+        public string[] CorsMethod { get => _serviceDescriptionBody.CorConfigurationMethod ?? null /* arrayOf */; set => _serviceDescriptionBody.CorConfigurationMethod = value; }
 
         /// <summary>The origins to be allowed via CORS.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -172,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The origins to be allowed via CORS.",
         SerializedName = @"origins",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] CorConfigurationOrigin { get => ServiceDescriptionBody.CorConfigurationOrigin ?? null /* arrayOf */; set => ServiceDescriptionBody.CorConfigurationOrigin = value; }
+        public string[] CorsOrigin { get => _serviceDescriptionBody.CorConfigurationOrigin ?? null /* arrayOf */; set => _serviceDescriptionBody.CorConfigurationOrigin = value; }
 
         /// <summary>The URI of the customer-managed key for the backing database.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The URI of the customer-managed key for the backing database.")]
@@ -183,7 +175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The URI of the customer-managed key for the backing database.",
         SerializedName = @"keyVaultKeyUri",
         PossibleTypes = new [] { typeof(string) })]
-        public string CosmoDbConfigurationKeyVaultKeyUri { get => ServiceDescriptionBody.CosmoDbConfigurationKeyVaultKeyUri ?? null; set => ServiceDescriptionBody.CosmoDbConfigurationKeyVaultKeyUri = value; }
+        public string CosmosKeyVaultKeyUri { get => _serviceDescriptionBody.CosmoDbConfigurationKeyVaultKeyUri ?? null; set => _serviceDescriptionBody.CosmoDbConfigurationKeyVaultKeyUri = value; }
 
         /// <summary>The provisioned throughput for the backing database.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The provisioned throughput for the backing database.")]
@@ -194,7 +186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The provisioned throughput for the backing database.",
         SerializedName = @"offerThroughput",
         PossibleTypes = new [] { typeof(int) })]
-        public int CosmoDbConfigurationOfferThroughput { get => ServiceDescriptionBody.CosmoDbConfigurationOfferThroughput ?? default(int); set => ServiceDescriptionBody.CosmoDbConfigurationOfferThroughput = value; }
+        public int CosmosOfferThroughput { get => _serviceDescriptionBody.CosmoDbConfigurationOfferThroughput ?? default(int); set => _serviceDescriptionBody.CosmoDbConfigurationOfferThroughput = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -204,6 +196,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>If the SMART on FHIR proxy is enabled</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If the SMART on FHIR proxy is enabled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If the SMART on FHIR proxy is enabled",
+        SerializedName = @"smartProxyEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter EnableSmartProxy { get => _serviceDescriptionBody.AuthenticationConfigurationSmartProxyEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _serviceDescriptionBody.AuthenticationConfigurationSmartProxyEnabled = value; }
 
         /// <summary>
         /// An etag associated with the resource, used for optimistic concurrency when editing it.
@@ -216,7 +219,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"An etag associated with the resource, used for optimistic concurrency when editing it.",
         SerializedName = @"etag",
         PossibleTypes = new [] { typeof(string) })]
-        public string Etag { get => ServiceDescriptionBody.Etag ?? null; set => ServiceDescriptionBody.Etag = value; }
+        public string Etag { get => _serviceDescriptionBody.Etag ?? null; set => _serviceDescriptionBody.Etag = value; }
 
         /// <summary>The name of the default export storage account.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the default export storage account.")]
@@ -227,7 +230,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The name of the default export storage account.",
         SerializedName = @"storageAccountName",
         PossibleTypes = new [] { typeof(string) })]
-        public string ExportConfigurationStorageAccountName { get => ServiceDescriptionBody.ExportConfigurationStorageAccountName ?? null; set => ServiceDescriptionBody.ExportConfigurationStorageAccountName = value; }
+        public string ExportStorageAccountName { get => _serviceDescriptionBody.ExportConfigurationStorageAccountName ?? null; set => _serviceDescriptionBody.ExportConfigurationStorageAccountName = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -253,7 +256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ManagedServiceIdentityType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ManagedServiceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ManagedServiceIdentityType IdentityType { get => ServiceDescriptionBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ManagedServiceIdentityType)""); set => ServiceDescriptionBody.IdentityType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ManagedServiceIdentityType IdentityType { get => _serviceDescriptionBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ManagedServiceIdentityType)""); set => _serviceDescriptionBody.IdentityType = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -268,7 +271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         SerializedName = @"kind",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.Kind) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.Kind))]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.Kind Kind { get => ServiceDescriptionBody.Kind; set => ServiceDescriptionBody.Kind = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.Kind Kind { get => _serviceDescriptionBody.Kind; set => _serviceDescriptionBody.Kind = value; }
 
         /// <summary>The resource location.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The resource location.")]
@@ -279,14 +282,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The resource location.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => ServiceDescriptionBody.Location ?? null; set => ServiceDescriptionBody.Location = value; }
+        public string Location { get => _serviceDescriptionBody.Location ?? null; set => _serviceDescriptionBody.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -326,7 +329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The list of private endpoint connections that are set up for this resource.",
         SerializedName = @"privateEndpointConnections",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api10.IPrivateEndpointConnection) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api10.IPrivateEndpointConnection[] PrivateEndpointConnection { get => ServiceDescriptionBody.PrivateEndpointConnection ?? null /* arrayOf */; set => ServiceDescriptionBody.PrivateEndpointConnection = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api10.IPrivateEndpointConnection[] PrivateEndpointConnection { get => _serviceDescriptionBody.PrivateEndpointConnection ?? null /* arrayOf */; set => _serviceDescriptionBody.PrivateEndpointConnection = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -356,7 +359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess))]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess PublicNetworkAccess { get => ServiceDescriptionBody.PublicNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess)""); set => ServiceDescriptionBody.PublicNetworkAccess = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess PublicNetworkAccess { get => _serviceDescriptionBody.PublicNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess)""); set => _serviceDescriptionBody.PublicNetworkAccess = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -371,12 +374,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
-
-        /// <summary>Backing field for <see cref="ServiceDescriptionBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription _serviceDescriptionBody= new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.ServicesDescription();
-
-        /// <summary>The description of the service.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription ServiceDescriptionBody { get => this._serviceDescriptionBody; set => this._serviceDescriptionBody = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -406,7 +403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesResourceTags Tag { get => ServiceDescriptionBody.Tag ?? null /* object */; set => ServiceDescriptionBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesResourceTags Tag { get => _serviceDescriptionBody.Tag ?? null /* object */; set => _serviceDescriptionBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -451,10 +448,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         }
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
-        /// <returns>a duplicate instance of NewAzHealthcareAPIsService_CreateExpanded</returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets.NewAzHealthcareAPIsService_CreateExpanded Clone()
+        /// <returns>a duplicate instance of NewAzHealthcareApisService_CreateExpanded</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets.NewAzHealthcareApisService_CreateExpanded Clone()
         {
-            var clone = new NewAzHealthcareAPIsService_CreateExpanded();
+            var clone = new NewAzHealthcareApisService_CreateExpanded();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -467,7 +464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.ServiceDescriptionBody = this.ServiceDescriptionBody;
+            clone._serviceDescriptionBody = this._serviceDescriptionBody;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
@@ -553,9 +550,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzHealthcareAPIsService_CreateExpanded" /> cmdlet class.
+        /// Intializes a new instance of the <see cref="NewAzHealthcareApisService_CreateExpanded" /> cmdlet class.
         /// </summary>
-        public NewAzHealthcareAPIsService_CreateExpanded()
+        public NewAzHealthcareApisService_CreateExpanded()
         {
 
         }
@@ -632,12 +629,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ServicesCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, ServiceDescriptionBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.ServicesCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _serviceDescriptionBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=ServiceDescriptionBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_serviceDescriptionBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -683,14 +680,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IErrorDetails>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=ServiceDescriptionBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_serviceDescriptionBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=ServiceDescriptionBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_serviceDescriptionBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

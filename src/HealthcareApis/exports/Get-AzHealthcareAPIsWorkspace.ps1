@@ -20,20 +20,20 @@ Gets the properties of the specified workspace.
 .Description
 Gets the properties of the specified workspace.
 .Example
-PS C:\> Get-AzHealthcareAPIsWorkspace
+PS C:\> Get-AzHealthcareApisWorkspace
 
 Location Name       ResourceGroupName
 -------- ----       -----------------
 eastus2  azpshcws   azps_test_group
 eastus2  azpshcws02 azps_test_group
 .Example
-PS C:\> Get-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group
+PS C:\> Get-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group
 
 Location Name     ResourceGroupName
 -------- ----     -----------------
 eastus2  azpshcws azps_test_group
 .Example
-PS C:\> Get-AzHealthcareAPIsWorkspace -ResourceGroupName azps_test_group
+PS C:\> Get-AzHealthcareApisWorkspace -ResourceGroupName azps_test_group
 
 Location Name       ResourceGroupName
 -------- ----       -----------------
@@ -66,7 +66,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareapisworkspace
 #>
-function Get-AzHealthcareAPIsWorkspace {
+function Get-AzHealthcareApisWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
@@ -174,10 +174,10 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsWorkspace_Get';
-            GetViaIdentity = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsWorkspace_GetViaIdentity';
-            List = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsWorkspace_List';
-            List1 = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsWorkspace_List1';
+            Get = 'Az.HealthcareApis.private\Get-AzHealthcareApisWorkspace_Get';
+            GetViaIdentity = 'Az.HealthcareApis.private\Get-AzHealthcareApisWorkspace_GetViaIdentity';
+            List = 'Az.HealthcareApis.private\Get-AzHealthcareApisWorkspace_List';
+            List1 = 'Az.HealthcareApis.private\Get-AzHealthcareApisWorkspace_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

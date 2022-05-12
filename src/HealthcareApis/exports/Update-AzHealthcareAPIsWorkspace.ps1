@@ -20,13 +20,13 @@ Patch workspace details.
 .Description
 Patch workspace details.
 .Example
-PS C:\> Update-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
+PS C:\> Update-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 
 Location Name     ResourceGroupName
 -------- ----     -----------------
 eastus2  azpshcws azps_test_group
 .Example
-PS C:\> Get-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group | Update-AzHealthcareAPIsWorkspace -Tag @{"abc"="123"}
+PS C:\> Get-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group | Update-AzHealthcareApisWorkspace -Tag @{"abc"="123"}
 
 Location Name     ResourceGroupName
 -------- ----     -----------------
@@ -58,7 +58,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/update-azhealthcareapisworkspace
 #>
-function Update-AzHealthcareAPIsWorkspace {
+function Update-AzHealthcareApisWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -182,8 +182,8 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareAPIsWorkspace_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareAPIsWorkspace_UpdateViaIdentityExpanded';
+            UpdateExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareApisWorkspace_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareApisWorkspace_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

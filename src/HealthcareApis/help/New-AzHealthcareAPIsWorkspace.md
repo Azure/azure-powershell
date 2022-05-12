@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/n
 schema: 2.0.0
 ---
 
-# New-AzHealthcareAPIsWorkspace
+# New-AzHealthcareApisWorkspace
 
 ## SYNOPSIS
 Creates or updates a workspace resource with the specified parameters.
@@ -13,7 +13,7 @@ Creates or updates a workspace resource with the specified parameters.
 ## SYNTAX
 
 ```
-New-AzHealthcareAPIsWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzHealthcareApisWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-Etag <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Creates or updates a workspace resource with the specified parameters.
 
 ### Example 1: Creates or update a workspace resource with the specified parameters.
 ```powershell
-PS C:\> New-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group -Location eastus2
+PS C:\> New-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group -Location eastus2
 
 Location Name     ResourceGroupName
 -------- ----     -----------------

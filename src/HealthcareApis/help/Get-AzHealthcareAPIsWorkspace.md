@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/g
 schema: 2.0.0
 ---
 
-# Get-AzHealthcareAPIsWorkspace
+# Get-AzHealthcareApisWorkspace
 
 ## SYNOPSIS
 Gets the properties of the specified workspace.
@@ -14,24 +14,24 @@ Gets the properties of the specified workspace.
 
 ### List (Default)
 ```
-Get-AzHealthcareAPIsWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzHealthcareApisWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzHealthcareAPIsWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzHealthcareApisWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzHealthcareAPIsWorkspace -InputObject <IHealthcareApisIdentity> [-DefaultProfile <PSObject>]
+Get-AzHealthcareApisWorkspace -InputObject <IHealthcareApisIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzHealthcareAPIsWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzHealthcareApisWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ Gets the properties of the specified workspace.
 
 ### Example 1: List the properties.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsWorkspace
+PS C:\> Get-AzHealthcareApisWorkspace
 
 Location Name       ResourceGroupName
 -------- ----       -----------------
@@ -54,7 +54,7 @@ List the properties.
 
 ### Example 2: Gets the properties of the specified workspace.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group
+PS C:\> Get-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group
 
 Location Name     ResourceGroupName
 -------- ----     -----------------
@@ -65,7 +65,7 @@ Gets the properties of the specified workspace.
 
 ### Example 3: List the properties of the resource group.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsWorkspace -ResourceGroupName azps_test_group
+PS C:\> Get-AzHealthcareApisWorkspace -ResourceGroupName azps_test_group
 
 Location Name       ResourceGroupName
 -------- ----       -----------------

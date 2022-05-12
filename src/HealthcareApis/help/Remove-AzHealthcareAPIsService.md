@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/r
 schema: 2.0.0
 ---
 
-# Remove-AzHealthcareAPIsService
+# Remove-AzHealthcareApisService
 
 ## SYNOPSIS
 Delete a service instance.
@@ -14,13 +14,13 @@ Delete a service instance.
 
 ### Delete (Default)
 ```
-Remove-AzHealthcareAPIsService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzHealthcareAPIsService -InputObject <IHealthcareApisIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzHealthcareApisService -InputObject <IHealthcareApisIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Delete a service instance.
 
 ### Example 1: Delete a service instance.
 ```powershell
-PS C:\> Remove-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice
+PS C:\> Remove-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice
 
 ```
 
@@ -39,7 +39,7 @@ Delete a service instance.
 
 ### Example 2: Delete a service instance.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice | Remove-AzHealthcareAPIsService
+PS C:\> Get-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice | Remove-AzHealthcareApisService
 
 ```
 
