@@ -216,11 +216,11 @@ directive:
       }
   - where:
       verb: New
-      subject: APIsService
+      subject: ApisService
     hide: true
   - where:
       verb: New
-      subject: APIsWorkspace
+      subject: ApisWorkspace
     hide: true
   - where:
       verb: New

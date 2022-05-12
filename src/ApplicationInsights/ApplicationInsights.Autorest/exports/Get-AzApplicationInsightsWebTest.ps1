@@ -20,54 +20,22 @@ Get a specific Application Insights web test definition.
 .Description
 Get a specific Application Insights web test definition.
 .Example
-PS C:\> Get-AzApplicationInsightsWebTest
-
-Name                                 Location WebTestKind ResourceGroupName
-----                                 -------- ----------- -----------------
-bsaic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test
-basic-portal02-appinsights-portal01  westus2  ping        azpwsh-rg-test
-basic-portal03-appinsights-portal01  westus2  ping        azpwsh-rg-test
-standard-portal-appinsights-portal01 westus2  standard    azpwsh-rg-test
-standard-pwsh01                      westus2  standard    azpwsh-rg-test
+Get-AzApplicationInsightsWebTest
 .Example
-PS C:\> Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test
-
-Name                                 Location WebTestKind ResourceGroupName
-----                                 -------- ----------- -----------------
-bsaic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test
-basic-portal02-appinsights-portal01  westus2  ping        azpwsh-rg-test
-basic-portal03-appinsights-portal01  westus2  ping        azpwsh-rg-test
-standard-portal-appinsights-portal01 westus2  standard    azpwsh-rg-test
-standard-pwsh01                      westus2  standard    azpwsh-rg-test
+Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test
 .Example
-PS C:\> Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -AppInsightsName appinsights-portal01
-
-Name                                 Location WebTestKind ResourceGroupName   Enabled
-----                                 -------- ----------- -----------------   -------
-bsaic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test      True
-basic-portal02-appinsights-portal01  westus2  ping        azpwsh-rg-test      True  
-basic-portal03-appinsights-portal01  westus2  ping        azpwsh-rg-test      True
-standard-portal-appinsights-portal01 westus2  standard    azpwsh-rg-test      True
-standard-pwsh01                      westus2  standard    azpwsh-rg-test      True
+Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -AppInsightsName appinsights-portal01
 .Example
-PS C:\> Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name standard-pwsh01
-
-Name            Location WebTestKind ResourceGroupName  Enabled
-----            -------- ----------- -----------------  -------
-standard-pwsh01 westus2  standard    azpwsh-rg-test     True
+Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name standard-pwsh01
 .Example
-PS C:\> $location01 = New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
-PS C:\> $location02 = New-AzApplicationInsightsWebTestGeolocationObject -Location "us-ca-sjc-azr"
-PS C:\> New-AzApplicationInsightsWebTest -ResourceGroup azpwsh-rg-test -Name standardwebtestpwsh03 -Location 'westus2' `
+$location01 = New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
+$location02 = New-AzApplicationInsightsWebTestGeolocationObject -Location "us-ca-sjc-azr"
+New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name standardwebtestpwsh03 -Location 'westus2' `
 -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/appinsightsportal01" = "Resource"} `
--RequestUrl "https://docs.microsoft.com/"  -RequestHttpVerb "GET" `
--NameInAppInsights 'standardwebtestpwsh03' `
+-RequestUrl "https://docs.microsoft.com/" -RequestHttpVerb "GET" `
+-TestName 'standardwebtestpwsh03' `
 -RuleSslCheck -RuleSslCertRemainingLifetimeCheck 7 -RuleExpectedHttpStatusCode 200 `
--Enabled -Frequency 300 -Timeout 120 -WebTestKind "standard" -RetryEnabled -GeoLocations $location01, $location02 ` |Get-AzApplicationInsightsWebTest
-
-Name                    Location WebTestKind ResourceGroupName  Enabled
-----                    -------- ----------- -----------------  -------
-standardwebtestpwsh03   westus2  standard    azpwsh-rg-test     True
+-Enabled -Frequency 300 -Timeout 120 -Kind "standard" -RetryEnabled -GeoLocation $location01, $location02 ` |Get-AzApplicationInsightsWebTest
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
@@ -79,9 +47,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
+  [AnnotationId <String>]: The unique annotation ID. This is unique within a Application Insights component.
   [ComponentName <String>]: The name of the Application Insights component resource.
+  [ExportId <String>]: The Continuous Export configuration ID. This is unique within a Application Insights component.
   [Id <String>]: Resource identity path
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [StorageType <StorageType?>]: The type of the Application Insights component data source for the linked storage account.
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
@@ -185,6 +159,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Get = 'Az.ApplicationInsights.private\Get-AzApplicationInsightsWebTest_Get';
             GetViaIdentity = 'Az.ApplicationInsights.private\Get-AzApplicationInsightsWebTest_GetViaIdentity';
@@ -202,6 +194,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -210,15 +203,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

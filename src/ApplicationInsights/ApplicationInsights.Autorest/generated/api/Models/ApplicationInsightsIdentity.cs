@@ -12,12 +12,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="AnnotationId" /> property.</summary>
+        private string _annotationId;
+
+        /// <summary>
+        /// The unique annotation ID. This is unique within a Application Insights component.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Origin(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PropertyOrigin.Owned)]
+        public string AnnotationId { get => this._annotationId; set => this._annotationId = value; }
+
         /// <summary>Backing field for <see cref="ComponentName" /> property.</summary>
         private string _componentName;
 
         /// <summary>The name of the Application Insights component resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Origin(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PropertyOrigin.Owned)]
         public string ComponentName { get => this._componentName; set => this._componentName = value; }
+
+        /// <summary>Backing field for <see cref="ExportId" /> property.</summary>
+        private string _exportId;
+
+        /// <summary>
+        /// The Continuous Export configuration ID. This is unique within a Application Insights component.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Origin(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PropertyOrigin.Owned)]
+        public string ExportId { get => this._exportId; set => this._exportId = value; }
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
@@ -26,12 +44,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Origin(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="KeyId" /> property.</summary>
+        private string _keyId;
+
+        /// <summary>The API Key ID. This is unique within a Application Insights component.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Origin(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PropertyOrigin.Owned)]
+        public string KeyId { get => this._keyId; set => this._keyId = value; }
+
+        /// <summary>Backing field for <see cref="PurgeId" /> property.</summary>
+        private string _purgeId;
+
+        /// <summary>
+        /// In a purge status request, this is the Id of the operation the status of which is returned.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Origin(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PropertyOrigin.Owned)]
+        public string PurgeId { get => this._purgeId; set => this._purgeId = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Origin(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="ResourceName" /> property.</summary>
+        private string _resourceName;
+
+        /// <summary>The name of the Application Insights component resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Origin(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PropertyOrigin.Owned)]
+        public string ResourceName { get => this._resourceName; set => this._resourceName = value; }
+
+        /// <summary>Backing field for <see cref="StorageType" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType? _storageType;
+
+        /// <summary>
+        /// The type of the Application Insights component data source for the linked storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Origin(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType? StorageType { get => this._storageType; set => this._storageType = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -56,6 +106,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
     public partial interface IApplicationInsightsIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// The unique annotation ID. This is unique within a Application Insights component.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The unique annotation ID. This is unique within a Application Insights component.",
+        SerializedName = @"annotationId",
+        PossibleTypes = new [] { typeof(string) })]
+        string AnnotationId { get; set; }
         /// <summary>The name of the Application Insights component resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
@@ -64,6 +124,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         SerializedName = @"componentName",
         PossibleTypes = new [] { typeof(string) })]
         string ComponentName { get; set; }
+        /// <summary>
+        /// The Continuous Export configuration ID. This is unique within a Application Insights component.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Continuous Export configuration ID. This is unique within a Application Insights component.",
+        SerializedName = @"exportId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExportId { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
@@ -72,6 +142,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>The API Key ID. This is unique within a Application Insights component.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The API Key ID. This is unique within a Application Insights component.",
+        SerializedName = @"keyId",
+        PossibleTypes = new [] { typeof(string) })]
+        string KeyId { get; set; }
+        /// <summary>
+        /// In a purge status request, this is the Id of the operation the status of which is returned.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"In a purge status request, this is the Id of the operation the status of which is returned.",
+        SerializedName = @"purgeId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PurgeId { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
@@ -80,6 +168,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>The name of the Application Insights component resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the Application Insights component resource.",
+        SerializedName = @"resourceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceName { get; set; }
+        /// <summary>
+        /// The type of the Application Insights component data source for the linked storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of the Application Insights component data source for the linked storage account.",
+        SerializedName = @"storageType",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType? StorageType { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
@@ -101,12 +207,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
     internal partial interface IApplicationInsightsIdentityInternal
 
     {
+        /// <summary>
+        /// The unique annotation ID. This is unique within a Application Insights component.
+        /// </summary>
+        string AnnotationId { get; set; }
         /// <summary>The name of the Application Insights component resource.</summary>
         string ComponentName { get; set; }
+        /// <summary>
+        /// The Continuous Export configuration ID. This is unique within a Application Insights component.
+        /// </summary>
+        string ExportId { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>The API Key ID. This is unique within a Application Insights component.</summary>
+        string KeyId { get; set; }
+        /// <summary>
+        /// In a purge status request, this is the Id of the operation the status of which is returned.
+        /// </summary>
+        string PurgeId { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
+        /// <summary>The name of the Application Insights component resource.</summary>
+        string ResourceName { get; set; }
+        /// <summary>
+        /// The type of the Application Insights component data source for the linked storage account.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType? StorageType { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
         /// <summary>The name of the Application Insights WebTest resource.</summary>
