@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        [PSArgumentCompleter("TrustedLaunch")]
         public string SecurityType { get; set; }
 
         protected override void ProcessRecord()
