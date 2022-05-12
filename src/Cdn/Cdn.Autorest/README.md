@@ -37,7 +37,6 @@ input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/cdn.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/cdnwebapplicationfirewall.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 

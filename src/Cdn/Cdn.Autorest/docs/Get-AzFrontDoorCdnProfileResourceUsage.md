@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFrontDoorCdnProfileResourceUsage
 
 ## SYNOPSIS
-Checks the quota and actual usage of endpoints under the given CDN profile.
+Checks the quota and actual usage of AzureFrontDoor endpoints under the given CDN profile.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzFrontDoorCdnProfileResourceUsage -ProfileName <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
-Checks the quota and actual usage of endpoints under the given CDN profile.
+Checks the quota and actual usage of AzureFrontDoor endpoints under the given CDN profile.
 
 ## EXAMPLES
 

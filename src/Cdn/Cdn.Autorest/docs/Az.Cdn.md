@@ -61,7 +61,7 @@ Gets an existing AzureFrontDoor domain with the specified domain name under the 
 Gets an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
 ### [Get-AzFrontDoorCdnEndpointResourceUsage](Get-AzFrontDoorCdnEndpointResourceUsage.md)
-Checks the quota and actual usage of endpoints under the given CDN profile.
+Checks the quota and actual usage of the given AzureFrontDoor endpoint under the given CDN profile.
 
 ### [Get-AzFrontDoorCdnOrigin](Get-AzFrontDoorCdnOrigin.md)
 Gets an existing origin within an origin group.
@@ -70,13 +70,13 @@ Gets an existing origin within an origin group.
 Gets an existing origin group within a profile.
 
 ### [Get-AzFrontDoorCdnOriginGroupResourceUsage](Get-AzFrontDoorCdnOriginGroupResourceUsage.md)
-Checks the quota and actual usage of endpoints under the given CDN profile.
+Checks the quota and actual usage of the given AzureFrontDoor origin group under the given CDN profile.
 
 ### [Get-AzFrontDoorCdnProfile](Get-AzFrontDoorCdnProfile.md)
 
 
 ### [Get-AzFrontDoorCdnProfileResourceUsage](Get-AzFrontDoorCdnProfileResourceUsage.md)
-Checks the quota and actual usage of endpoints under the given CDN profile.
+Checks the quota and actual usage of AzureFrontDoor endpoints under the given CDN profile.
 
 ### [Get-AzFrontDoorCdnRoute](Get-AzFrontDoorCdnRoute.md)
 Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
@@ -88,7 +88,7 @@ Gets an existing delivery rule within a rule set.
 Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
 
 ### [Get-AzFrontDoorCdnRuleSetResourceUsage](Get-AzFrontDoorCdnRuleSetResourceUsage.md)
-Checks the quota and actual usage of endpoints under the given CDN profile.
+Checks the quota and actual usage of the given AzureFrontDoor rule set under the given CDN profile.
 
 ### [Get-AzFrontDoorCdnSecret](Get-AzFrontDoorCdnSecret.md)
 Gets an existing Secret within a profile.
@@ -391,14 +391,14 @@ Probe path is the path to a file hosted on the origin server to help accelerate 
 This path is relative to the origin path specified in the endpoint configuration.
 
 ### [Test-AzFrontDoorCdnEndpointCustomDomain](Test-AzFrontDoorCdnEndpointCustomDomain.md)
-Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
+Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.This api isn't work for apex domain.
 
 ### [Test-AzFrontDoorCdnEndpointNameAvailability](Test-AzFrontDoorCdnEndpointNameAvailability.md)
 Check the availability of a resource name.
 This is needed for resources where name is globally unique, such as a afdx endpoint.
 
 ### [Test-AzFrontDoorCdnProfileHostNameAvailability](Test-AzFrontDoorCdnProfileHostNameAvailability.md)
-Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
+Check the name availability of a host name.
 
 ### [Update-AzCdnEndpoint](Update-AzCdnEndpoint.md)
 Updates an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
