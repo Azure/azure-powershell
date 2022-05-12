@@ -36,7 +36,6 @@ using System.Management;
 using Microsoft.Samples.HyperV.Storage;
 using Microsoft.Samples.HyperV.Common;
 using System.Threading;
-using Azure.Core;
 
 
 namespace Microsoft.Azure.Commands.Compute.StorageServices
@@ -103,7 +102,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         public string DiskName { get; set; }
 
         [Parameter(
-            Mandatory = true, 
+            Mandatory = true,
             Position = 1,
             ParameterSetName = DirectUploadToManagedDiskSet,
             ValueFromPipelineByPropertyName = true,
@@ -179,13 +178,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Skips the resizing of VHD")]
         public SwitchParameter SkipResizing { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Additional authentication requirements when exporting or uploading to a disk or snapshot.")]
-        [PSArgumentCompleter("AzureActiveDirectory", "None")]
-        public string DataAccessAuthMode { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -233,30 +225,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         Uri sasUri = new Uri(accessUri.AccessSAS);
                         WriteVerbose("SAS generated: " + accessUri.AccessSAS);
 
-                        /*
-                        var pageBlobClient = new PSPageBlobClient(sasUri);
-
-
-                        PSBlobProperties blobProperties;
-                        try
-                        {
-                            blobProperties = pageBlobClient.GetProperties();
-                        }
-                        catch (global::Azure.RequestFailedException e) when (e.Status == 401) // need diskRP bearer token
-                        {
-                            string audience = GetAudienceFrom401ExceptionMessage(e.Message);
-                            if (audience != null)
-                            {
-                                Console.WriteLine(string.Format("Need bearer token with audience {0} to access the blob, so will generate bearer token and resend the request.", audience));
-                                pageBlobClient = new PSPageBlobClient(sasUri, DefaultContext, "https://disk.compute.azure.com/");
-                            }
-                            else
-                            {
-                                throw e;
-                            }
-                        }
-                        blobProperties = pageBlobClient.GetProperties();
-                        */
 
                         // 3-4: UPLOAD                  
                         WriteVerbose("Preparing for Upload");
@@ -311,28 +279,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             });
 
 
-        }
-
-        public static string GetAudienceFrom401ExceptionMessage(string exceptionMessage)
-        {
-            string authenticateHeaderName = "WWW-Authenticate";
-            string audienceName = "resource_id=";
-            string[] exceptionMessageTexts = exceptionMessage.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (string messageText in exceptionMessageTexts)
-            {
-                if (messageText.StartsWith(authenticateHeaderName))
-                {
-                    string[] authTexts = messageText.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string authText in authTexts)
-                    {
-                        if (authText.StartsWith(audienceName))
-                        {
-                            return authText.Substring(audienceName.Length);
-                        }
-                    }
-                }
-            }
-            return null;
         }
 
         public UploadParameters ValidateParameters()
@@ -432,8 +378,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 EncryptionSettingsCollection = null,
                 Encryption = null,
                 NetworkAccessPolicy = null,
-                DiskAccessId = null,
-                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? this.DataAccessAuthMode : null
+                DiskAccessId = null
             };
             return vDisk;
         }
@@ -516,7 +461,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             try
             {
                 bool resizeNeeded = false;
-                long resizeTo=0;
+                long resizeTo = 0;
                 using (VirtualDiskStream vds = new VirtualDiskStream(filePath.FullName))
                 {
                     if (vds.Length < 20971520 || vds.Length > 4396972769280)

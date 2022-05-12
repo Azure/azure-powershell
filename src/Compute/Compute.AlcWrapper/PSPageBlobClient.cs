@@ -17,7 +17,6 @@ using System.Collections.Generic;
 using System.Text;
 using Azure.Storage.Blobs.Specialized;
 using System.IO;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -34,27 +33,11 @@ namespace Microsoft.Azure.Commands.Compute
             _pageBlobClient = new PageBlobClient(blobUri, null);
         }
 
-        public PSPageBlobClient(Uri blobUri, IAzureContext DefaultContext, string audience)
-        {
-            AzureSessionCredential customerToken = new AzureSessionCredential(DefaultContext, customAudience: audience);
-            _pageBlobClient = new PageBlobClient(blobUri, customerToken);
-        }
-
         public Uri Uri { get { return _pageBlobClient.Uri; } }
 
         public void UploadPages(Stream content, long offset)
         {
             _pageBlobClient.UploadPagesAsync(content, offset).ConfigureAwait(false).GetAwaiter().GetResult();
         }
-
-        /*
-        public PSBlobProperties GetProperties()
-        {
-            
-            var test = _pageBlobClient.GetProperties();
-            var testValue = test.Value;
-            var blobProperties = new PSBlobProperties(testValue);
-            return blobProperties;
-        }*/
     }
 }

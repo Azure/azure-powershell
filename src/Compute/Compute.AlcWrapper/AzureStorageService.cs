@@ -57,15 +57,4 @@ namespace Microsoft.Azure.Commands.Compute
 
         public string ContentType { get { return _blobDownloadInfo.ContentType; } }
     }
-
-    public class PSBlobProperties
-    {
-        private BlobProperties _blobProperties;
-
-        internal PSBlobProperties(BlobProperties blobProperties)
-        {
-            _blobProperties = blobProperties;
-        }
-
-    }
 }
