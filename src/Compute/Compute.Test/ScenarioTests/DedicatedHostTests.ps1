@@ -265,7 +265,7 @@ function Test-DedicatedHostRestart
 
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $hostGroupName = $rgname + 'hostgroup'
+        $hostGroupName = $rgname + 'hostgroup';
         New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1  -Zone "2" -Tag @{key1 = "val1"};
 
         $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName;

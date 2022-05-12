@@ -49,9 +49,14 @@ New-AzHost -ResourceGroupName $ResourceGroupName -HostGroupName $hostGroupName -
 
 $dedicatedHost = Get-AzHost -ResourceGroupName $ResourceGroupName -HostGroupName $hostGroupName -Name $hostName;
 Restart-AzHost -ResourceGroupName $ResourceGroupName -HostGroupName $hostGroupName -Name $hostName;
+
+# Check the status of the restart operation
+$hostRestart = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -InstanceView;
+$hostRestart.InstanceView.Statuses[1].DisplayStatus;
 ```
 
-This example creates a dedicated host group, a dedicated host, and a dedicated host. Then restart the dedicated host. 
+This example creates a dedicated host group and a dedicated host. Then it begins restarting the dedicated host, and checks the status of this restart operation.
+You can query the status of the restart operation with the `Get-AzHost` cmdlet using the `-InstanceView` parameter.
 
 ## PARAMETERS
 
