@@ -34,7 +34,7 @@ steps:
   displayName: Use .NET 6.0
   inputs:
     packageType: sdk
-    version: 6.0.3
+    version: 6.0.x
 
 - task: DotNetCoreCLI@2
   displayName: Build
