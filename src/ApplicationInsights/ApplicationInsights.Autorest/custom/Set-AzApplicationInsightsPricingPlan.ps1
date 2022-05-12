@@ -19,17 +19,6 @@
 Update current billing features for an Application Insights component.
 .Description
 Update current billing features for an Application Insights component.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures
 .Link
 https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan
 #>

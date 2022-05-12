@@ -18,17 +18,6 @@
 Create an API Key of an Application Insights component.
 .Description
 Create an API Key of an Application Insights component.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey
 .Link
 https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsapikey
 #>
