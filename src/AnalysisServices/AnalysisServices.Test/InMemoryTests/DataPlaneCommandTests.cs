@@ -21,7 +21,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
-using Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -31,12 +30,12 @@ using Xunit;
 using Xunit.Abstractions;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using Newtonsoft.Json;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 {
-    public class DataPlaneCommandTests : AnalysisServicesTestRunner
+    public class DataPlaneCommandTests : RMTestBase
     {
         private const string testInstance = "asazure://westcentralus.asazure.windows.net/testserver";
 
@@ -61,8 +60,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                                         + "65kxhZWVUbTHaPuEvg03ZQ3esDb6wxQewJPAL-GARg6S9wIN776Esw8-53AWhzFu0fIut-9FXGma6jV7"
                                         + "MYPoUUcFuQzLZgphecPyMPXSVhummVCdBwX9sizxnmFA";
 
-        public DataPlaneCommandTests(ITestOutputHelper output) : base(output)
+        public DataPlaneCommandTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             SynchronizeAzureAzureAnalysisServer.DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(0);
         }
 
