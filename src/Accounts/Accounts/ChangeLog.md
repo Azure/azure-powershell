@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Added a preview feature allowing user to control the configurations of Azure PowerShell by using the following cmdlets:
+    - `Get-AzConfig`
+    - `Update-AzConfig`
+    - `Clear-AzConfig`
 * Upgraded System.Reflection.DispatchProxy on Windows PowerShell [#17856]
 * Upgraded Azure.Identity to 1.6.0 and Azure.Core to 1.24.0
 
@@ -216,7 +220,7 @@
 * Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix
 
 ## Version 1.6.6
-* Add client-side telemetry info for Az 4.0 preview
+* Add client-side telemetry info for Az 4.0 `preview`
 
 ## Version 1.6.5
 * Update references in .psd1 to use relative path

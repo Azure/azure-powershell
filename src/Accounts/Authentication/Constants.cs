@@ -24,5 +24,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public const string MicrosoftGraphAccessToken = "MicrosoftGraphAccessToken";
 
         public const string DefaultValue = "Default";
+
+        public class ConfigProviderIds
+        {
+            public const string MachineEnvironment = "Environment (Machine)";
+            public const string UserEnvironment = "Environment (User)";
+            public const string ProcessEnvironment = "Environment (Process)";
+            public const string UserConfig = "Config (User)";
+            public const string ProcessConfig = "Config (Process)";
+            /// <summary>
+            /// Represents that the value is not in any providers.
+            /// </summary>
+            public const string None = "None";
+        }
     }
 }

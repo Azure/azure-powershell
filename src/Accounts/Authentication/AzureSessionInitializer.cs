@@ -24,10 +24,11 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCache;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-
+using Microsoft.Azure.Commands.Common.Authentication.Config;
 using Newtonsoft.Json;
 
 using TraceLevel = System.Diagnostics.TraceLevel;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -244,10 +245,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = autoSave.CacheFile;
 
+            InitializeConfigs(session);
             InitializeDataCollection(session);
             session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());
             session.TokenCache = session.TokenCache ?? new AzureTokenCache();
             return session;
+        }
+
+        private static void InitializeConfigs(AzureSession session)
+        {
+            var fallbackList = new List<string>()
+            {
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".Azure", "PSConfig.json"),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), ".Azure", "PSConfig.json")
+            };
+            new ConfigInitializer(fallbackList).InitializeForAzureSession(session);
         }
 
         public class AdalSession : AzureSession
