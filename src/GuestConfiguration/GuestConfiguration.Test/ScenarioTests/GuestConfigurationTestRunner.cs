@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
                     {
-                        {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
                     },
                     resourceProviders: new Dictionary<string, string>
                     {
