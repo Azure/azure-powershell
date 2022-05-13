@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly SparkConfigurationClient _sparkConfigurationClient;
         private readonly KqlScriptClient _kqlScriptClient;
         private readonly KqlScriptsClient _kqlScriptsClient;
+        private readonly LinkConnectionClient _linkConnectionClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
         {
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _sparkConfigurationClient = new SparkConfigurationClient(uri, new AzureSessionCredential(context));
             _kqlScriptClient = new KqlScriptClient(uri, new AzureSessionCredential(context));
             _kqlScriptsClient = new KqlScriptsClient(uri, new AzureSessionCredential(context));
+            _linkConnectionClient = new LinkConnectionClient(uri, new AzureSessionCredential(context));
         }
 
         #region pipeline
@@ -478,6 +480,67 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return operation.Poll().Value;
         }
 
+        #endregion
+
+        #region Link Connection
+
+        public void EditTables(string linkConnectionName, string rawJsonContent)
+        {
+            EditTablesRequest editTablesRequest = JsonConvert.DeserializeObject<EditTablesRequest>(rawJsonContent);
+            _linkConnectionClient.EditTables(linkConnectionName, editTablesRequest);
+        }
+
+        public IReadOnlyList<LinkTableResource> ListLinkTables(string linkConnectionName)
+        {
+            return _linkConnectionClient.ListLinkTables(linkConnectionName).Value.Value;
+        }
+
+        public LinkConnectionQueryTableStatus QueryTableStatus(string linkConnectionName, QueryTableStatusRequest queryTableStatusRequest)
+        {
+            return _linkConnectionClient.QueryTableStatus(linkConnectionName, queryTableStatusRequest);
+        }
+
+        public void UpdateLandingZoneCredential(string linkConnectionName, UpdateLandingZoneCredential updateLandingZoneCredentialRequest)
+        {
+            _linkConnectionClient.UpdateLandingZoneCredential(linkConnectionName, updateLandingZoneCredentialRequest);
+        }
+
+        public LinkConnectionResource GetLinkConnection(string linkConnectionName)
+        {
+            return _linkConnectionClient.GetLinkConnection(linkConnectionName).Value;
+        }
+
+        public Pageable<LinkConnectionResource> GetLinkConnectionByWorkspace()
+        {
+            return _linkConnectionClient.ListLinkConnectionsByWorkspace();
+        }
+
+        public void StartLinkConnection(string linkConnectionName)
+        {
+            _linkConnectionClient.Start(linkConnectionName);
+        }
+
+        public void StopLinkConnection(string linkConnectionName)
+        {
+             _linkConnectionClient.Stop(linkConnectionName);
+        }
+
+        public void DeleteLinkConnection(string linkConnectionName)
+        {
+            _linkConnectionClient.DeleteLinkConnection(linkConnectionName);
+        }
+
+        public LinkConnectionResource CreateOrUpdateLinkConnection(string linkConnectionName, string rawJsonContent)
+        {
+            LinkConnectionResource linkConnection = JsonConvert.DeserializeObject<LinkConnectionResource>(rawJsonContent);
+            var response = _linkConnectionClient.CreateOrUpdateLinkConnection(linkConnectionName, linkConnection);
+            return response.Value;
+        }
+
+        public LinkConnectionDetailedStatus GetLinkConnectionDetailedStatus(string linkConnectionName)
+        {
+            return _linkConnectionClient.GetDetailedStatus(linkConnectionName).Value;
+        }
         #endregion
 
         #region helpers

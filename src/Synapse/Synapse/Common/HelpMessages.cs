@@ -228,6 +228,18 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string ObjectId = "Specifies the object ID of the user or group in Azure Active Directory for which to grant permissions.";
 
+        public const string LinkConnectionName = "Name of link connection.";
+
+        public const string MaxSegmentCount = "Max segment count to query table status.";
+
+        public const string SasToken = "Landing zone's sas token.";
+
+        public const string EditTablesRequestFile = "Specifies a local file path for a file to edit link tables";
+
+        public const string LinkTableContinuationToken = "Continuation token to query table status.";
+
+        public const string LinkConnectionObject = "The information about the link connection.";
+
         // TODO: need to update to Synapse link in future
         public const string AuditActionGroup =
 @"The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins:  
