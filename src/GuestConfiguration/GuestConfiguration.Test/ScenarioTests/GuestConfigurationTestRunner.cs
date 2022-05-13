@@ -37,9 +37,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
                     helper.GetRMModulePath("Az.GuestConfiguration.psd1")
                 })
                 .WithNewRecordMatcherArguments(
-                    userAgentsToIgnore: new Dictionary<string, string>
-                    {
-                    },
+                    userAgentsToIgnore: new Dictionary<string, string>(),
                     resourceProviders: new Dictionary<string, string>
                     {
                         {"Microsoft.Resources", null},
