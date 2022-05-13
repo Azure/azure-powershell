@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
             return new PSNetworkRuleSetAttributes(response);
         }
 
-        public PSNetworkRuleSetAttributes UpdateNetworkRuleSet(string resourceGroupName, string namespaceName, string publicNetworkAccess, bool trustedServiceAccessEnabled, string defaultAction, PSNWRuleSetIpRulesAttributes[] iPRule, PSNWRuleSetVirtualNetworkRulesAttributes[] virtualNetworkRule)
+        public PSNetworkRuleSetAttributes UpdateNetworkRuleSet(string resourceGroupName, string namespaceName, string publicNetworkAccess, bool? trustedServiceAccessEnabled, string defaultAction, PSNWRuleSetIpRulesAttributes[] iPRule, PSNWRuleSetVirtualNetworkRulesAttributes[] virtualNetworkRule)
         {
             NetworkRuleSet networkRuleSet = Client.Namespaces.GetNetworkRuleSet(resourceGroupName, namespaceName);
             
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
                 networkRuleSet.PublicNetworkAccess = publicNetworkAccess;
             }
 
-            if (trustedServiceAccessEnabled == true)
+            if (trustedServiceAccessEnabled != null)
             {
                 networkRuleSet.TrustedServiceAccessEnabled = trustedServiceAccessEnabled;
             }
