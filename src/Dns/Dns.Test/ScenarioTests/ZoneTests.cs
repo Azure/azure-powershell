@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
     public class ZoneTests : DnsTestRunner
     {
-
         public ZoneTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
         }
