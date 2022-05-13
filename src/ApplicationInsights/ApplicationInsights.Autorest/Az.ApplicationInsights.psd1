@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ApplicationInsights.private.dll'
   FormatsToProcess = './Az.ApplicationInsights.format.ps1xml'
-  FunctionsToExport = 'Get-AzApplicationInsightsWebTest', 'New-AzApplicationInsightsWebTest', 'New-AzApplicationInsightsWebTestGeolocationObject', 'New-AzApplicationInsightsWebTestHeaderFieldObject', 'Remove-AzApplicationInsightsWebTest', 'Update-AzApplicationInsightsWebTestTag', '*'
+  FunctionsToExport = 'Get-AzApplicationInsights', 'Get-AzApplicationInsightsApiKey', 'Get-AzApplicationInsightsContinuousExport', 'Get-AzApplicationInsightsLinkedStorageAccount', 'Get-AzApplicationInsightsWebTest', 'New-AzApplicationInsights', 'New-AzApplicationInsightsApiKey', 'New-AzApplicationInsightsContinuousExport', 'New-AzApplicationInsightsLinkedStorageAccount', 'New-AzApplicationInsightsWebTest', 'New-AzApplicationInsightsWebTestGeolocationObject', 'New-AzApplicationInsightsWebTestHeaderFieldObject', 'Remove-AzApplicationInsights', 'Remove-AzApplicationInsightsApiKey', 'Remove-AzApplicationInsightsContinuousExport', 'Remove-AzApplicationInsightsLinkedStorageAccount', 'Remove-AzApplicationInsightsWebTest', 'Set-AzApplicationInsightsContinuousExport', 'Set-AzApplicationInsightsDailyCap', 'Set-AzApplicationInsightsPricingPlan', 'Update-AzApplicationInsights', 'Update-AzApplicationInsightsLinkedStorageAccount', 'Update-AzApplicationInsightsWebTestTag', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

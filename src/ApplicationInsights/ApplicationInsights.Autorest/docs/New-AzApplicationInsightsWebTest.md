@@ -49,6 +49,7 @@ New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name standar
 -RequestUrl "https://www.bing.com" -RequestHttpVerb "GET" -TestName 'standard-pwsh01' `
 -RuleExpectedHttpStatusCode 200 -Frequency 300 -Enabled -Timeout 120 -Kind 'standard' -RetryEnabled -GeoLocation $geoLocation
 ```
+
 ```output
 Name            Location WebTestKind ResourceGroupName  Enabled
 ----            -------- ----------- -----------------  -------
@@ -70,6 +71,7 @@ New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name 'pingwe
 -Kind 'ping' -RequestUrl 'https://cn.bing.com' -RequestParseDependent -RuleExpectedHttpStatusCode 200 `
 -ContentMatch "status"
 ```
+
 ```output
 Name               Location WebTestKind ResourceGroupName   Enabled
 ----               -------- ----------- -----------------   -------
@@ -103,6 +105,7 @@ New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name 'pingwe
     </ValidationRules> 
 </WebTest>"
 ```
+
 ```output
 Name               Location WebTestKind ResourceGroupName   Enabled
 ----               -------- ----------- -----------------   -------

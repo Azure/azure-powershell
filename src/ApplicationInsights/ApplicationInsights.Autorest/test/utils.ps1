@@ -61,6 +61,9 @@ function setupEnv() {
     -RuleExpectedHttpStatusCode 200 -Frequency 300 -Enabled -Timeout 120 -Kind 'standard' -RetryEnabled -GeoLocation $geoLocation
     Write-Host -ForegroundColor Green 'standard web test created successfully.'
 
+    #Variables for application insights test
+    $env.component1 = "component" + (RandomString -allChars $false -len 6)
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -72,4 +75,3 @@ function cleanupEnv() {
     # Clean resources you create for testing
     Remove-AzResourceGroup -Name $env.resourceGroup
 }
-
