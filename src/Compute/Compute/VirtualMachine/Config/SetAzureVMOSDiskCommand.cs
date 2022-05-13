@@ -199,6 +199,12 @@ namespace Microsoft.Azure.Commands.Compute
         [PSArgumentCompleter("DiskWithVMGuestState", "VMGuestStateOnly")]
         public string SecurityEncryptionType { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Placeholder")]
+        public string SecureDiskEncryptionSetId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
@@ -304,7 +310,54 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            WriteObject(this.VM);
+            if (this.IsParameterBound(c => c.SecureDiskEncryptionSetId))
+            {
+                if (this.VM.StorageProfile == null)
+                {
+                    this.VM.StorageProfile = new StorageProfile();
+                }
+                if (this.VM.StorageProfile.OsDisk == null)
+                {
+                    this.VM.StorageProfile.OsDisk = new OSDisk();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk = new ManagedDiskParameters();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile = new VMDiskSecurityProfile();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet = new DiskEncryptionSetParameters();
+                }
+                this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet.Id = SecureDiskEncryptionSetId;
+            }
+            if (this.IsParameterBound(c => c.SecurityEncryptionType))
+            {
+                if (this.VM.StorageProfile == null)
+                {
+                    this.VM.StorageProfile = new StorageProfile();
+                }
+                if (this.VM.StorageProfile.OsDisk == null)
+                {
+                    this.VM.StorageProfile.OsDisk = new OSDisk();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk = new ManagedDiskParameters();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile = new VMDiskSecurityProfile();
+                }
+                this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType = SecurityEncryptionType;
+            }
+
+
+
+                WriteObject(this.VM);
         }
     }
 }

@@ -269,5 +269,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetOrchestrationModeNullChecks");
         }
+
     }
 }
