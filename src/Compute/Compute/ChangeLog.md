@@ -32,6 +32,7 @@
     - `New-AzSnapshotConfig`
     - `New-AzSnapshotUpdateConfig`
     - `New-AzGalleryImageDefinition`
+* Added -InstanceView to Get-AzRestorePoint
 
 ## Version 4.26.0
 * Added `-ImageReferenceId` parameter to following cmdlets: `New-AzVm`, `New-AzVmConfig`, `New-AzVmss`, `Set-AzVmssStorageProfile`
