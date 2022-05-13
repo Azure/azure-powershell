@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported generae Sas token for DataLakeGen2
+    -  `New-AzDataLakeGen2SasToken`
 * Show OAuth token in debug log in debug build only
     -  `New-AzStorageContext`
 

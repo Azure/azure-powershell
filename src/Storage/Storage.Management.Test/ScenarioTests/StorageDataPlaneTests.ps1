@@ -846,7 +846,9 @@ function Test-DatalakeGen2
                 -Permission rw-rw--wx `
                 -Owner '$superuser' `
                 -Group '$superuser'
-		$file1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1
+        $sas = New-AzDataLakeGen2SasToken -FileSystem $filesystemName -Path $filePath1 -Permission rw -Context $storageContext
+        $ctxsas = New-AzStorageContext -StorageAccountName $StorageAccountName -SasToken $sas
+		$file1 = Get-AzDataLakeGen2Item -Context $ctxsas -FileSystem $filesystemName -Path $filePath1
 		Assert-AreEqual $file1.Path $filePath1
         Assert-AreEqual $file1.Permissions.ToSymbolicPermissions() "rw-rw--wx"
         Assert-AreEqual $file1.Properties.ContentType $ContentType
