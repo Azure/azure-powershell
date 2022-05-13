@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.11.0
+* Adding an optional `Time` parameter in the custom cmdlet `Get-AzDataMigrationPerfDataCollection` to stop the perf collection after the given time 
+
 ## Version 0.10.0
 * Added support for migrating SQL Server databases to Azure SQL DB
 * Used `System.Security.SecureString` for secrets and passwords
