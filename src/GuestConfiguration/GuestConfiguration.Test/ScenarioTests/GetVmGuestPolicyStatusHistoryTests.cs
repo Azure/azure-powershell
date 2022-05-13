@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-
     public class GetVmGuestPolicyStatusHistoryTests : GuestConfigurationTestRunner
     {
         public GetVmGuestPolicyStatusHistoryTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
