@@ -14,13 +14,12 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
 {
-    using Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests;
-    using Xunit.Abstractions;
+    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
     /// <summary>
     /// Base class for the Logic app command tests
     /// </summary>
-    public class LogicAppUnitTestBase : LogicAppTestRunner
+    public class LogicAppUnitTestBase : RMTestBase
     {
         /// <summary>
         /// Name of the workflow used for testing.
@@ -42,8 +41,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
         /// </summary>
         protected const string ResourceGroupName = "TestResourceGroup";
 
-        protected LogicAppUnitTestBase(ITestOutputHelper output) : base(output)
-        {
-        }
     }
 }
