@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
             
             var creds = AzureSession.Instance.AuthenticationFactory.GetTokenCredential(context, endpoint);
-            return new ArmClient(context.Subscription.Id.ToString(), creds, option);
+            return new ArmClient(creds, context.Subscription.Id.ToString(), option);
         }
 
         public virtual TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Microsoft.Rest.ServiceClient<TClient>

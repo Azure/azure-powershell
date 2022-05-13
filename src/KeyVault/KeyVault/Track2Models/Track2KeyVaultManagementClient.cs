@@ -1,4 +1,6 @@
-﻿using Azure.ResourceManager;
+﻿using Azure;
+using Azure.Core;
+using Azure.ResourceManager;
 using Azure.ResourceManager.KeyVault;
 using Azure.ResourceManager.KeyVault.Models;
 using Azure.ResourceManager.Resources;
@@ -23,18 +25,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             _subscription = context.Subscription.Id;
         }
 
-        private ResourceGroup GetResourceGroup(string resourcegroup) =>
-            _armClient.GetResourceGroup(new ResourceIdentifier(
-                string.Format("/subscriptions/{0}/resourceGroups/{1}", _subscription, resourcegroup)));
+        private ResourceGroupResource GetResourceGroup(string resourceGroupName) =>
+              _armClient.GetResourceGroupResource(ResourceGroupResource.CreateResourceIdentifier(_subscription, resourceGroupName));
 
-        public IEnumerable<Vault> ListVaults(string resourcegroup) =>
-            GetResourceGroup(resourcegroup).GetVaults().GetAll();
 
-        public Vault GetVault(string resourcegroup, string vaultName) =>
-            _armClient.GetVault(Vault.CreateResourceIdentifier(_subscription, resourcegroup, vaultName));
+        public IEnumerable<VaultResource> ListVaults(string resourceGroupName) =>
+            GetResourceGroup(resourceGroupName).GetVaults().GetAll();
 
-        public Vault CreateVault(string resourcegroup, string vaultName, VaultCreateOrUpdateParameters parameters) =>
-            GetResourceGroup(resourcegroup).GetVaults().CreateOrUpdate(vaultName, parameters).Value;
-        
+        public VaultResource GetVault(string resourcegroup, string vaultName) =>
+            _armClient.GetVaultResource(VaultResource.CreateResourceIdentifier(_subscription, resourcegroup, vaultName));
+
+        public VaultResource CreateVault(string resourceGroupName, string vaultName, VaultCreateOrUpdateContent parameters) =>
+            GetResourceGroup(resourceGroupName).GetVaults().CreateOrUpdate(WaitUntil.Completed, vaultName, parameters).WaitForCompletion();
+
     }
 }

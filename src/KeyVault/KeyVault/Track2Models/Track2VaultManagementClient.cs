@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         #region Vault-related METHODS
         public PSKeyVault CreateVault(string resourcegroup, string vaultName, VaultCreationOrUpdateParameters parameters, IMicrosoftGraphClient msGraphClient = null) =>
-            new PSKeyVault(Track2KeyVaultManagementClient.CreateVault(resourcegroup, vaultName, parameters.ToTrack2VaultCreateOrUpdateParameters()), msGraphClient);
+            new PSKeyVault(Track2KeyVaultManagementClient.CreateVault(resourcegroup, vaultName, parameters.ToTrack2VaultCreateOrUpdateContent()), msGraphClient);
 
         public IList<PSKeyVault> ListVaults(string resourcegroup, IMicrosoftGraphClient msGraphClient = null)
         {

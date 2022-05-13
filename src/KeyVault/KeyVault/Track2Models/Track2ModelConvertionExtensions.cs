@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 Bypass = track2NetworkRuleSet.Bypass.ToString(),
                 DefaultAction = track2NetworkRuleSet.DefaultAction.ToString(),
-                IpRules = track2NetworkRuleSet.IpRules.Select(ipRule => new Track1ManagementSdk.Models.IPRule(ipRule.Value)).ToList(),
+                IpRules = track2NetworkRuleSet.IPRules.Select(ipRule => new Track1ManagementSdk.Models.IPRule(ipRule.Value)).ToList(),
                 VirtualNetworkRules = track2NetworkRuleSet.VirtualNetworkRules.Select(vnRule => new Track1ManagementSdk.Models.VirtualNetworkRule(vnRule.Id)).ToList()
             };
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             return track1CreateMode;
         }
 
-        public static Track1ManagementSdk.Models.Permissions ToTrack1Permissions(this Track2ManagementSdk.Models.Permissions track2Permissions) =>
+        public static Track1ManagementSdk.Models.Permissions ToTrack1Permissions(this Track2ManagementSdk.Models.AccessPermissions track2Permissions) =>
             new Track1ManagementSdk.Models.Permissions(track2Permissions.Keys.Select(key => key.ToString()).ToList(),
                     track2Permissions.Secrets.Select(key => key.ToString()).ToList(),
                     track2Permissions.Certificates.Select(key => key.ToString()).ToList(),
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 TenantId = track2AccessPolicyEntry.TenantId
             };
 
-        public static Track1ManagementSdk.Models.Sku ToTrack1Sku(this Track2ManagementSdk.Models.Sku track2Sku)
+        public static Track1ManagementSdk.Models.Sku ToTrack1Sku(this Track2ManagementSdk.Models.KeyVaultSku track2Sku)
         {
             Track1ManagementSdk.Models.Sku track1Sku = new Track1ManagementSdk.Models.Sku();
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public static Track1ManagementSdk.Models.PrivateEndpointConnectionItem ToTrack1PrivateEndpointConnectionItem(this Track2ManagementSdk.Models.PrivateEndpointConnectionItem track2PrivateEndpointConnectionItem) =>
             new Track1ManagementSdk.Models.PrivateEndpointConnectionItem()
             {
-                PrivateEndpoint = new Track1ManagementSdk.Models.PrivateEndpoint(track2PrivateEndpointConnectionItem.PrivateEndpoint.Id),
+                PrivateEndpoint = new Track1ManagementSdk.Models.PrivateEndpoint(track2PrivateEndpointConnectionItem.Id),
                 PrivateLinkServiceConnectionState = new Track1ManagementSdk.Models.PrivateLinkServiceConnectionState(
                     track2PrivateEndpointConnectionItem.PrivateLinkServiceConnectionState.Status?.ToString(),
                     track2PrivateEndpointConnectionItem.PrivateLinkServiceConnectionState.Description,
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 TenantId = track2VaultProperties.TenantId,
                 Sku = track2VaultProperties.Sku?.ToTrack1Sku(),
                 AccessPolicies = track2VaultProperties.AccessPolicies.Select(ap => ap?.ToTrack1AccessPolicyEntry()).ToList(),
-                VaultUri = track2VaultProperties.VaultUri,
+                VaultUri = track2VaultProperties.VaultUri.ToString(),
                 EnabledForDeployment = track2VaultProperties.EnabledForDeployment,
                 EnabledForDiskEncryption = track2VaultProperties.EnabledForDiskEncryption,
                 EnabledForTemplateDeployment = track2VaultProperties.EnabledForTemplateDeployment,
@@ -133,9 +133,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                 // PrivateEndpointConnections = track2VaultProperties.PrivateEndpointConnections.Select(peCon => peCon?.ToTrack1PrivateEndpointConnectionItem()).ToList()
             };
 
-        public static Track1ManagementSdk.Models.Vault ToTrack1Vault(this Track2ManagementSdk.Vault track2Vault) =>
+       public static Track1ManagementSdk.Models.Vault ToTrack1Vault(this Track2ManagementSdk.VaultResource track2Vault) =>
             new Track1ManagementSdk.Models.Vault(
                 track2Vault.Data.Properties?.ToTrack1VaultProperties(),
-                track2Vault.Data.Id, track2Vault.Data.Name, track2Vault.Data.Type, track2Vault.Data.Location, track2Vault.Data.Tags.ToDictionary(pair => pair.Key, pair => pair.Value));
+                track2Vault.Data.Id, track2Vault.Data.Name, track2Vault.Data.ResourceType, track2Vault.Data.Location, track2Vault.Data.Tags.ToDictionary(pair => pair.Key, pair => pair.Value));
     }
 }

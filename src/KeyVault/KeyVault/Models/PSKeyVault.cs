@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
         }
 
-        public PSKeyVault(Track2ManagementSdk.Vault vault, IMicrosoftGraphClient graphClient)
+        public PSKeyVault(Track2ManagementSdk.VaultResource vault, IMicrosoftGraphClient graphClient)
         {
             if (!vault.HasData) 
             {
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             TenantId = vault.Data.Properties.TenantId;
             var vaultTenantDisplayName = ModelExtensions.GetDisplayNameForTenant(vault.Data.Properties.TenantId, graphClient);
             TenantName = vaultTenantDisplayName;
-            VaultUri = vault.Data.Properties.VaultUri;
+            VaultUri = vault.Data.Properties.VaultUri.ToString();
             EnabledForDeployment = vault.Data.Properties.EnabledForDeployment ?? false;
             EnabledForTemplateDeployment = vault.Data.Properties.EnabledForTemplateDeployment;
             EnabledForDiskEncryption = vault.Data.Properties.EnabledForDiskEncryption;

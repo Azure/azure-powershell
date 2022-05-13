@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             };
         }
 
-        public Track2ManagementSdk.VaultCreateOrUpdateParameters ToTrack2VaultCreateOrUpdateParameters()
+        public Track2ManagementSdk.VaultCreateOrUpdateContent ToTrack2VaultCreateOrUpdateContent()
         {
             if (this == null)
                 throw new ArgumentNullException("parameters");
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (string.IsNullOrWhiteSpace(Location))
                 throw new ArgumentNullException("parameters.Location");
 
-            Track2ManagementSdk.Sku sku = null;
+            Track2ManagementSdk.KeyVaultSku sku = null;
             Track2ManagementSdk.VaultProperties properties = null;
 
             if (CreateMode != Track1ManagementSdk.CreateMode.Recover)
@@ -130,10 +130,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 if (!string.IsNullOrWhiteSpace(SkuName) && !string.IsNullOrWhiteSpace(SkuFamilyName))
                 {
-                    if (Enum.TryParse(SkuName, true, out Track2ManagementSdk.SkuName skuName) &&
-                        Enum.TryParse(SkuFamilyName, true, out Track2ManagementSdk.SkuFamily skuFamily))
+                    if (Enum.TryParse(SkuName, true, out Track2ManagementSdk.KeyVaultSkuName skuName) &&
+                        Enum.TryParse(SkuFamilyName, true, out Track2ManagementSdk.KeyVaultSkuFamily skuFamily))
                     {
-                        sku = new Track2ManagementSdk.Sku(skuFamily, skuName);
+                        sku = new Track2ManagementSdk.KeyVaultSku(skuFamily, skuName);
                     }
                     else
                     {
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     EnableRbacAuthorization = EnableRbacAuthorization,
                     SoftDeleteRetentionInDays = SoftDeleteRetentionInDays,
                     TenantId = TenantId,
-                    VaultUri = ""
+                    VaultUri = new Uri("")
                 };
                 /*properties.AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } :
                     new Track1ManagementSdk.AccessPolicyEntry[] { };
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 properties.CreateMode = Track2ManagementSdk.CreateMode.Recover;
             }
 
-            return new Track2ManagementSdk.VaultCreateOrUpdateParameters(Location, properties);
+            return new Track2ManagementSdk.VaultCreateOrUpdateContent(Location, properties);
         }
 
         private void UpdateVaultNetworkRuleSetProperties(Track1ManagementSdk.VaultProperties vaultProperties, PSKeyVaultNetworkRuleSet psRuleSet)
