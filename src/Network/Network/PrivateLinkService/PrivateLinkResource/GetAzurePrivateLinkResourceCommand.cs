@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkServiceProvider;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -63,9 +64,10 @@ namespace Microsoft.Azure.Commands.Network
 
         public new object GetDynamicParameters()
         {
+            InvocationInfo invocationInfo = MyInvocation;
             var parameters = new RuntimeDefinedParameterDictionary();
             RuntimeDefinedParameter namedParameter;
-            if (ProviderConfiguration.TryGetProvideServiceParameter(privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
+            if (ProviderConfiguration.TryGetLinkResourceServiceParameter(privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
             {
                 parameters.Add(privateEndpointTypeName, namedParameter);
             }
@@ -89,6 +91,12 @@ namespace Microsoft.Azure.Commands.Network
                 this.Subscription = DefaultProfile.DefaultContext.Subscription.Id;
                 this.PrivateLinkResourceType = DynamicParameters[privateEndpointTypeName].Value as string;
             }
+            // First check resource type whether support private link feature, if support then check whether support private link resource feature.
+            if (!GenericProvider.SupportsPrivateLinkFeature(this.PrivateLinkResourceType) || !ProviderConfiguration.GetProviderConfiguration(this.PrivateLinkResourceType).SupportListPrivateLinkResource)
+            {
+                throw new AzPSApplicationException(string.Format(Properties.Resources.UnsupportPrivateLinkResourceType, this.PrivateLinkResourceType));
+            }
+
             IPrivateLinkProvider provider = PrivateLinkProviderFactory.CreatePrivateLinkProvder(this, Subscription, PrivateLinkResourceType);
             if (provider == null)
             {

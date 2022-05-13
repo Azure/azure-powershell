@@ -17,28 +17,24 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class AfdCustomDomainTests
+    public class AfdCustomDomainTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public AfdCustomDomainTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AfdCustomDomainTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Test is flaky due to creation of custom domain issue which prolongs response time. Will enable once RP issue is resolved.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAfdCustomDomain()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAfdCustomDomain");
+            TestRunner.RunTestScript("Test-CreateAfdCustomDomain");
         }
 
         [Fact(Skip = "Test is flaky due to RP issue which prolongs response time. Will enable once RP issue is resolved.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAfdCustomDomain()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAfdCustomDomain");
+            TestRunner.RunTestScript("Test-GetAfdCustomDomain");
         }
     }
 }

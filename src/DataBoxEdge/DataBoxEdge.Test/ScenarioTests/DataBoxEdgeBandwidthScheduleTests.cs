@@ -18,49 +18,45 @@ using Xunit;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
 {
-    public class DataBoxEdgeBandwidthScheduleTests : DataBoxEdgeScenarioTestBase
+    public class DataBoxEdgeBandwidthScheduleTests : DataBoxEdgeTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public DataBoxEdgeBandwidthScheduleTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataBoxEdgeBandwidthScheduleTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingBandwidthSchedule()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-GetNonExistingBandwidthSchedule");
+            TestRunner.RunTestScript("Test-GetNonExistingBandwidthSchedule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateBandwidthSchedule()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateBandwidthSchedule");
+            TestRunner.RunTestScript("Test-CreateBandwidthSchedule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateBandwidthSchedule()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-UpdateBandwidthSchedule");
+            TestRunner.RunTestScript("Test-UpdateBandwidthSchedule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateUnlimitedBandwidthSchedule()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateUnlimitedBandwidthSchedule");
+            TestRunner.RunTestScript("Test-CreateUnlimitedBandwidthSchedule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveBandwidthSchedule()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-RemoveBandwidthSchedule");
+            TestRunner.RunTestScript("Test-RemoveBandwidthSchedule");
         }
     }
 }

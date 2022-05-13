@@ -17,36 +17,31 @@ using Xunit;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
 {
-    public class DataBoxEdgeRoleTests : DataBoxEdgeScenarioTestBase
+    public class DataBoxEdgeRoleTests : DataBoxEdgeTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public DataBoxEdgeRoleTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataBoxEdgeRoleTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingRole()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger,
-                "Test-GetRoleNonExistent");
+            TestRunner.RunTestScript("Test-GetRoleNonExistent");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestCreateRole()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateRole");
+            TestRunner.RunTestScript("Test-CreateRole");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveRole()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-RemoveRole");
+            TestRunner.RunTestScript("Test-RemoveRole");
         }
     }
 }

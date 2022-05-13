@@ -12,6 +12,7 @@ Removes a Subscription from a Management Group.
 
 ## SYNTAX
 
+### DeleteOperation
 ```
 Remove-AzManagementGroupSubscription [-GroupName] <String> [-SubscriptionId] <Guid> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

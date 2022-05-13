@@ -51,7 +51,7 @@ VPN connection creates an IPsec connection that connects a VPN gateway to a remo
 New-AzResourceGroup -Location "West US" -Name "testRG"
 $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
 $virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
-New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
+New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -VpnGatewayScaleUnit 2
 $vpnGateway = Get-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw"
 $vpnSiteAddressSpaces = New-Object string[] 2
 $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
@@ -108,7 +108,7 @@ The connection is then updated to have a new IpSecPolicy by using the Set-AzVpnC
 New-AzResourceGroup -Location "West US" -Name "testRG"
 $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
 $virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
-New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
+New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -VpnGatewayScaleUnit 2
 $vpnGateway = Get-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw"
 $vpnSiteAddressSpaces = New-Object string[] 2
 $vpnSiteAddressSpaces[0] = "192.168.2.0/24"

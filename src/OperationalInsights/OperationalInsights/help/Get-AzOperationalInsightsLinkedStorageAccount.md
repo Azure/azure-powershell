@@ -24,7 +24,7 @@ Get linked storage account, list all linked storage accounts when "-DataSourceTy
 
 ### Example 1
 ```powershell
-Get-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName {rg-name} -WorkspaceName {workspace-name}
+Get-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "rg-name" -WorkspaceName "workspace-name"
 ```
 
 ```output

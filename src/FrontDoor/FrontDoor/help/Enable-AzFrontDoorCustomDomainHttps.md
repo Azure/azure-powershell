@@ -90,7 +90,7 @@ Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of
 ### Example 2: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using customer's own certificate in Key Vault with the specific version.
 ```powershell
 $vaultId = (Get-AzKeyVault -VaultName $vaultName).ResourceId
-Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -Vault $vaultId -secretName $secretName -SecretVersion $secretVersion -MinimumTlsVersion "1.0"
+Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -VaultId $vaultId -secretName $secretName -SecretVersion $secretVersion -MinimumTlsVersion "1.0"
 ```
 
 ```output
@@ -178,7 +178,7 @@ Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" with resource i
 ### Example 5: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using customer's own certificate in Key Vault with the latest version to enable certificate auto-rotation.
 ```powershell
 $vaultId = (Get-AzKeyVault -VaultName $vaultName).ResourceId
-Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -Vault $vaultId -secretName $secretName -MinimumTlsVersion "1.0"
+Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -VaultId $vaultId -secretName $secretName -MinimumTlsVersion "1.0"
 ```
 
 ```output

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>ApiManagement</PsModuleName>
@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="7.0.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="8.0.0-preview" />
   </ItemGroup>
 
   <ItemGroup>

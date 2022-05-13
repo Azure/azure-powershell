@@ -28,7 +28,7 @@ The **Enable-AzSqlServerAdvancedDataSecurity** cmdlet enables Advanced Data Secu
 ```powershell
 Enable-AzSqlServerAdvancedDataSecurity `
             -ResourceGroupName "ResourceGroup01" `
-            -ServerName "Server01" 
+            -ServerName "Server01"
 ```
 
 ```output

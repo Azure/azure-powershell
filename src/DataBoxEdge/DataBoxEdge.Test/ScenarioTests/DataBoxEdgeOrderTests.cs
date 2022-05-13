@@ -18,21 +18,17 @@ using Xunit;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
 {
-    public class DataBoxEdgeOrderTests : DataBoxEdgeScenarioTestBase
+    public class DataBoxEdgeOrderTests : DataBoxEdgeTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public DataBoxEdgeOrderTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataBoxEdgeOrderTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingOrder()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-GetOrderNonExistent");
+            TestRunner.RunTestScript("Test-GetOrderNonExistent");
         }
 
 
@@ -40,14 +36,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateOrder()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateNewOrder");
+            TestRunner.RunTestScript("Test-CreateNewOrder");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveOrder()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-RemoveOrder");
+            TestRunner.RunTestScript("Test-RemoveOrder");
         }
     }
 }

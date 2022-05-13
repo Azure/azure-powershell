@@ -1,4 +1,4 @@
-﻿﻿---
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Billing.dll-Help.xml
 Module Name: Az.Billing
 online version: https://docs.microsoft.com/powershell/module/az.billing/get-azbillinginvoice

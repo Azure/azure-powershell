@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added new cmdlet: `Get-AzSecuritySolution`
 * Added Alerts Suppression Rules to cmdlets:
     `Get-AlertsSuppressionRule`
     `Remove-AlertsSuppressionRule`
