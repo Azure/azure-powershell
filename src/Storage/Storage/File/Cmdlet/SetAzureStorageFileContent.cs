@@ -165,7 +165,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     else // use Track2 SDK
                     {
                         //Create File
-                        ShareFileClient fileClient = AzureStorageFile.GetTrack2FileClient(cloudFileToBeUploaded, Channel.StorageContext);
+                        ShareFileClient fileClient = AzureStorageFile.GetTrack2FileClient(cloudFileToBeUploaded, ClientOptions);
 
                         // confirm overwrite if file exist
                         if(!this.Force.IsPresent && 
