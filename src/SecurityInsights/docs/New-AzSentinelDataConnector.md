@@ -52,15 +52,15 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
 ### GenericUI
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String>
- -AvailabilityIsPreview <Boolean> -ConnectorUiConfigConnectivityCriterion <ConnectivityCriteria[]>
- -ConnectorUiConfigDataType <LastDataReceivedDataType[]> -ConnectorUiConfigDescriptionMarkdown <String>
- -ConnectorUiConfigGraphQueriesTableName <String> -ConnectorUiConfigGraphQuery <GraphQueries[]>
- -ConnectorUiConfigInstructionStep <InstructionSteps[]> -ConnectorUiConfigPublisher <String>
- -ConnectorUiConfigSampleQuery <SampleQueries[]> -ConnectorUiConfigTitle <String> -Kind <DataConnectorKind>
+ -AvailabilityIsPreview <Boolean> -Kind <DataConnectorKind>
+ -UiConfigConnectivityCriterion <ConnectivityCriteria[]> -UiConfigDataType <LastDataReceivedDataType[]>
+ -UiConfigDescriptionMarkdown <String> -UiConfigGraphQueriesTableName <String>
+ -UiConfigGraphQuery <GraphQueries[]> -UiConfigInstructionStep <InstructionSteps[]>
+ -UiConfigPublisher <String> -UiConfigSampleQuery <SampleQueries[]> -UiConfigTitle <String>
  [-DataConnectorId <String>] [-SubscriptionId <String>] [-AvailabilityStatus <Int32>]
- [-ConnectorUiConfigCustomImage <String>] [-PermissionCustom <PermissionsCustomsItem[]>]
- [-PermissionResourceProvider <PermissionsResourceProviderItem[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PermissionCustom <PermissionsCustomsItem[]>]
+ [-PermissionResourceProvider <PermissionsResourceProviderItem[]>] [-UiConfigCustomImage <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MicrosoftCloudAppSecurity
@@ -305,161 +305,6 @@ Parameter Sets: Dynamics365
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigConnectivityCriterion
-[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-To construct, see NOTES section for CONNECTORUICONFIGCONNECTIVITYCRITERION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]
-Parameter Sets: GenericUI
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigCustomImage
-[Parameter(ParameterSetName = 'APIPolling')]
-
-```yaml
-Type: System.String
-Parameter Sets: GenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigDataType
-[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-To construct, see NOTES section for CONNECTORUICONFIGDATATYPE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]
-Parameter Sets: GenericUI
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigDescriptionMarkdown
-[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-
-```yaml
-Type: System.String
-Parameter Sets: GenericUI
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigGraphQueriesTableName
-[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-
-```yaml
-Type: System.String
-Parameter Sets: GenericUI
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigGraphQuery
-[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-To construct, see NOTES section for CONNECTORUICONFIGGRAPHQUERY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]
-Parameter Sets: GenericUI
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigInstructionStep
-[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-To construct, see NOTES section for CONNECTORUICONFIGINSTRUCTIONSTEP properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]
-Parameter Sets: GenericUI
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigPublisher
-[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-
-```yaml
-Type: System.String
-Parameter Sets: GenericUI
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigSampleQuery
-[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-To construct, see NOTES section for CONNECTORUICONFIGSAMPLEQUERY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]
-Parameter Sets: GenericUI
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigTitle
-[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-
-```yaml
-Type: System.String
-Parameter Sets: GenericUI
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -829,6 +674,161 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UiConfigConnectivityCriterion
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+To construct, see NOTES section for UICONFIGCONNECTIVITYCRITERION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigCustomImage
+[Parameter(ParameterSetName = 'APIPolling')]
+
+```yaml
+Type: System.String
+Parameter Sets: GenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigDataType
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+To construct, see NOTES section for UICONFIGDATATYPE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigDescriptionMarkdown
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+
+```yaml
+Type: System.String
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigGraphQueriesTableName
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+
+```yaml
+Type: System.String
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigGraphQuery
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+To construct, see NOTES section for UICONFIGGRAPHQUERY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigInstructionStep
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+To construct, see NOTES section for UICONFIGINSTRUCTIONSTEP properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigPublisher
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+
+```yaml
+Type: System.String
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigSampleQuery
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+To construct, see NOTES section for UICONFIGSAMPLEQUERY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigTitle
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+
+```yaml
+Type: System.String
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UserName
 
 
@@ -923,30 +923,6 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CONNECTORUICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-  - `[Type <ConnectivityType?>]`: type of connectivity
-  - `[Value <String[]>]`: Queries for checking connectivity
-
-CONNECTORUICONFIGDATATYPE <LastDataReceivedDataType[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-  - `[LastDataReceivedQuery <String>]`: Query for indicate last data received
-  - `[Name <String>]`: Name of the data type to show in the graph. can be use with {{graphQueriesTableName}} placeholder
-
-CONNECTORUICONFIGGRAPHQUERY <GraphQueries[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-  - `[BaseQuery <String>]`: The base query for the graph
-  - `[Legend <String>]`: The legend for the graph
-  - `[MetricName <String>]`: the metric that the query is checking
-
-CONNECTORUICONFIGINSTRUCTIONSTEP <InstructionSteps[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-  - `[Description <String>]`: Instruction step description
-  - `[Instruction <IConnectorInstructionModelBase[]>]`: Instruction step details
-    - `Type <SettingType>`: The kind of the setting
-    - `[Parameter <IAny>]`: The parameters for the setting
-  - `[Title <String>]`: Instruction step title
-
-CONNECTORUICONFIGSAMPLEQUERY <SampleQueries[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-  - `[Description <String>]`: The sample query description
-  - `[Query <String>]`: the sample query
-
 PERMISSIONCUSTOM <PermissionsCustomsItem[]>: [Parameter(ParameterSetName = 'APIPolling')]
   - `[Description <String>]`: Customs permissions description
   - `[Name <String>]`: Customs permissions name
@@ -960,6 +936,30 @@ PERMISSIONRESOURCEPROVIDER <PermissionsResourceProviderItem[]>: [Parameter(Param
   - `[RequiredPermissionRead <Boolean?>]`: read permission
   - `[RequiredPermissionWrite <Boolean?>]`: write permission
   - `[Scope <PermissionProviderScope?>]`: Permission provider scope
+
+UICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+  - `[Type <ConnectivityType?>]`: type of connectivity
+  - `[Value <String[]>]`: Queries for checking connectivity
+
+UICONFIGDATATYPE <LastDataReceivedDataType[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+  - `[LastDataReceivedQuery <String>]`: Query for indicate last data received
+  - `[Name <String>]`: Name of the data type to show in the graph. can be use with {{graphQueriesTableName}} placeholder
+
+UICONFIGGRAPHQUERY <GraphQueries[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+  - `[BaseQuery <String>]`: The base query for the graph
+  - `[Legend <String>]`: The legend for the graph
+  - `[MetricName <String>]`: the metric that the query is checking
+
+UICONFIGINSTRUCTIONSTEP <InstructionSteps[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+  - `[Description <String>]`: Instruction step description
+  - `[Instruction <IConnectorInstructionModelBase[]>]`: Instruction step details
+    - `Type <SettingType>`: The kind of the setting
+    - `[Parameter <IAny>]`: The parameters for the setting
+  - `[Title <String>]`: Instruction step title
+
+UICONFIGSAMPLEQUERY <SampleQueries[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+  - `[Description <String>]`: The sample query description
+  - `[Query <String>]`: the sample query
 
 ## RELATED LINKS
 

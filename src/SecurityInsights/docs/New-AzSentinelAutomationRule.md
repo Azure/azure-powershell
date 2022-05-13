@@ -14,15 +14,15 @@ Creates or updates the automation rule.
 
 ### CreateExpanded (Default)
 ```
-New-AzSentinelAutomationRule -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-Action <IAutomationRuleAction[]>] [-DisplayName <String>] [-Order <Int32>]
+New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
+ [-Action <IAutomationRuleAction[]>] [-DisplayName <String>] [-Order <Int32>]
  [-TriggeringLogicCondition <IAutomationRuleCondition[]>] [-TriggeringLogicExpirationTimeUtc <DateTime>]
  [-TriggeringLogicIsEnabled] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzSentinelAutomationRule -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
+New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String>
  -AutomationRule <IAutomationRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -118,21 +118,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-Automation rule ID
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: AutomationRuleId
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

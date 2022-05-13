@@ -183,7 +183,7 @@ directive:
       subject: EntityTimeline
       variant: List
     remove: true
-  # add Aliases for user expierence
+  # Rename Id for user expierence
   - where:
       subject: AlertRuleAction
       parameter-name: Id
@@ -295,6 +295,27 @@ directive:
       parameter-name: DataConnectorsCheckRequirement
     set:
       parameter-name: DataConnectorCheckRequirement
+  - where:
+      verb: New
+      subject: AlertRuleAction
+      variant: Create
+    hide: true
+  - where:
+      verb: New
+      subject: ^AlertRuleAction$|^AutomationRule$|^Bookmark$|^Incident$|^IncidentComment$|
+      parameter-name: Id
+    hide: true
+    set:
+      default:
+        script: '(New-Guid).Guid'
+  - where:
+      verb: New
+      subject: ^BookmarkRelation$|^IncidentRelation$
+      parameter-name: RelationName
+    hide: true
+    set:
+      default:
+        script: '(New-Guid).Guid'
   # Hide Expand
   - where:
       verb: Expand

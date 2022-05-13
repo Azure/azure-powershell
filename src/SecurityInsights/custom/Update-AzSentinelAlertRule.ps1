@@ -219,7 +219,7 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [Switch]
-        ${IncidentConfigurationCreateIncident},
+        ${CreateIncident},
 
         [Parameter(ParameterSetName = 'UpdateNRT')]
         [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -235,7 +235,7 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [Switch]
-        ${GroupingConfigurationReOpenClosedIncident},
+        ${ReOpenClosedIncident},
 
         [Parameter(ParameterSetName = 'UpdateNRT')]
         [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -244,7 +244,7 @@ function Update-AzSentinelAlertRule {
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = 'New-TimeSpan -Hours 5')]
         [System.TimeSpan]
-        ${GroupingConfigurationLookbackDuration},
+        ${LookbackDuration},
 
         [Parameter(ParameterSetName = 'UpdateNRT')]
         [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -254,7 +254,7 @@ function Update-AzSentinelAlertRule {
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '"AllEntities"')]
         [ValidateSet('AllEntities', 'AnyAlert', 'Selected')]
         [System.String]
-        ${GroupingConfigurationMatchingMethod},
+        ${MatchingMethod},
             
         
         [Parameter(ParameterSetName = 'UpdateNRT')]
@@ -264,7 +264,7 @@ function Update-AzSentinelAlertRule {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail]
-        ${GroupingConfigurationGroupByAlertDetail}, 
+        ${GroupByAlertDetail}, 
         
         [Parameter(ParameterSetName = 'UpdateNRT')]
         [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -272,7 +272,7 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [string[]] 
-        ${GroupingConfigurationGroupByCustomDetail},
+        ${GroupByCustomDetail},
         
         [Parameter(ParameterSetName = 'UpdateNRT')]
         [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -281,7 +281,7 @@ function Update-AzSentinelAlertRule {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType]
-        ${GroupingConfigurationGroupByEntity},
+        ${GroupByEntity},
     
         
         [Parameter(ParameterSetName = 'UpdateNRT')]
@@ -299,7 +299,7 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${AlertDetailOverrideAlertDescriptionFormat},
+        ${AlertDescriptionFormat},
 
         [Parameter(ParameterSetName = 'UpdateNRT')]
         [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -307,7 +307,7 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${AlertDetailOverrideAlertDisplayNameFormat},
+        ${AlertDisplayNameFormat},
 
         [Parameter(ParameterSetName = 'UpdateNRT')]
         [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -315,7 +315,7 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${AlertDetailOverrideAlertSeverityColumnName},
+        ${AlertSeverityColumnName},
 
         [Parameter(ParameterSetName = 'UpdateNRT')]
         [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -323,7 +323,7 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${AlertDetailOverrideAlertTacticsColumnName},
+        ${AlertTacticsColumnName},
 
 
         [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -568,45 +568,45 @@ function Update-AzSentinelAlertRule {
                     $AlertRule.IncidentConfigurationCreateIncident = $false
                 }
                 
-                If($PSBoundParameters['GroupingConfigurationEnabled']){
+                If($PSBoundParameters['Enabled']){
                     $AlertRule.GroupingConfigurationEnabled = $true
-                    $null = $PSBoundParameters.Remove('GroupingConfigurationEnabled')
+                    $null = $PSBoundParameters.Remove('Enabled')
                 }
                 else{
                     $AlertRule.GroupingConfigurationEnabled = $false
                 }
                 
-                If($PSBoundParameters['GroupingConfigurationReOpenClosedIncident']){
+                If($PSBoundParameters['ReOpenClosedIncident']){
                     $AlertRule.GroupingConfigurationReOpenClosedIncident = $true
-                    $null = $PSBoundParameters.Remove('GroupingConfigurationReOpenClosedIncident')
+                    $null = $PSBoundParameters.Remove('ReOpenClosedIncident')
                 }
                 else{
                     $AlertRule.GroupingConfigurationReOpenClosedIncident = $false
                 }
                 
-                If($PSBoundParameters['GroupingConfigurationLookbackDuration']){
-                    $AlertRule.GroupingConfigurationLookbackDuration = $PSBoundParameters['GroupingConfigurationLookbackDuration']
-                    $null = $PSBoundParameters.Remove('GroupingConfigurationLookbackDuration')
+                If($PSBoundParameters['LookbackDuration']){
+                    $AlertRule.GroupingConfigurationLookbackDuration = $PSBoundParameters['LookbackDuration']
+                    $null = $PSBoundParameters.Remove('LookbackDuration')
                 }
 
-                If($PSBoundParameters['GroupingConfigurationLookbackDuration']){
-                    $AlertRule.GroupingConfigurationMatchingMethod = $PSBoundParameters['GroupingConfigurationMatchingMethod']
-                    $null = $PSBoundParameters.Remove('GroupingConfigurationMatchingMethod')
+                If($PSBoundParameters['LookbackDuration']){
+                    $AlertRule.GroupingConfigurationMatchingMethod = $PSBoundParameters['MatchingMethod']
+                    $null = $PSBoundParameters.Remove('MatchingMethod')
                 }
 
-                If($PSBoundParameters['GroupingConfigurationGroupByAlertDetail']){
-                    $AlertRule.GroupingConfigurationGroupByAlertDetail = $PSBoundParameters['GroupingConfigurationGroupByAlertDetail']
-                    $null = $PSBoundParameters.Remove('GroupingConfigurationGroupByAlertDetail')
+                If($PSBoundParameters['GroupByAlertDetail']){
+                    $AlertRule.GroupingConfigurationGroupByAlertDetail = $PSBoundParameters['GroupByAlertDetail']
+                    $null = $PSBoundParameters.Remove('GroupByAlertDetail')
                 }
 
-                If($PSBoundParameters['GroupingConfigurationGroupByCustomDetail']){
-                    $AlertRule.GroupingConfigurationGroupByCustomDetail = $PSBoundParameters['GroupingConfigurationGroupByCustomDetail']
-                    $null = $PSBoundParameters.Remove('GroupingConfigurationGroupByCustomDetail')
+                If($PSBoundParameters['GroupByCustomDetail']){
+                    $AlertRule.GroupingConfigurationGroupByCustomDetail = $PSBoundParameters['GroupByCustomDetail']
+                    $null = $PSBoundParameters.Remove('GroupByCustomDetail')
                 }
                 
-                If($PSBoundParameters['GroupingConfigurationGroupByEntity']){
-                    $AlertRule.GroupingConfigurationGroupByEntity = $PSBoundParameters['GroupingConfigurationGroupByEntity']
-                    $null = $PSBoundParameters.Remove('GroupingConfigurationGroupByEntity')
+                If($PSBoundParameters['GroupByEntity']){
+                    $AlertRule.GroupingConfigurationGroupByEntity = $PSBoundParameters['GroupByEntity']
+                    $null = $PSBoundParameters.Remove('GroupByEntity')
                 }
 
                 If($PSBoundParameters['EntityMapping']){
@@ -614,24 +614,24 @@ function Update-AzSentinelAlertRule {
                     $null = $PSBoundParameters.Remove('EntityMapping')
                 }
 
-                If($PSBoundParameters['AlertDetailOverrideAlertDescriptionFormat']){
-                    $AlertRule.AlertDetailOverrideAlertDescriptionFormat = $PSBoundParameters['AlertDetailOverrideAlertDescriptionFormat']
-                    $null = $PSBoundParameters.Remove('AlertDetailOverrideAlertDescriptionFormat')
+                If($PSBoundParameters['AlertDescriptionFormat']){
+                    $AlertRule.AlertDetailOverrideAlertDescriptionFormat = $PSBoundParameters['AlertDescriptionFormat']
+                    $null = $PSBoundParameters.Remove('AlertDescriptionFormat')
                 }
 
-                If($PSBoundParameters['AlertDetailOverrideAlertDisplayNameFormat']){
-                    $AlertRule.AlertDetailOverrideAlertDisplayNameFormat = $PSBoundParameters['AlertDetailOverrideAlertDisplayNameFormat']
-                    $null = $PSBoundParameters.Remove('AlertDetailOverrideAlertDisplayNameFormat')
+                If($PSBoundParameters['AlertDisplayNameFormat']){
+                    $AlertRule.AlertDetailOverrideAlertDisplayNameFormat = $PSBoundParameters['AlertDisplayNameFormat']
+                    $null = $PSBoundParameters.Remove('AlertDisplayNameFormat')
                 }
 
-                If($PSBoundParameters['AlertDetailOverrideAlertSeverityColumnName']){
-                    $AlertRule.AlertDetailOverrideAlertSeverityColumnName = $PSBoundParameters['AlertDetailOverrideAlertSeverityColumnName']
-                    $null = $PSBoundParameters.Remove('AlertDetailOverrideAlertSeverityColumnName')
+                If($PSBoundParameters['AlertSeverityColumnName']){
+                    $AlertRule.AlertDetailOverrideAlertSeverityColumnName = $PSBoundParameters['AlertSeverityColumnName']
+                    $null = $PSBoundParameters.Remove('AlertSeverityColumnName')
                 }
 
-                If($PSBoundParameters['AlertDetailOverrideAlertTacticsColumnName']){
-                    $AlertRule.AlertDetailOverrideAlertTacticsColumnName = $PSBoundParameters['AlertDetailOverrideAlertTacticsColumnName']
-                    $null = $PSBoundParameters.Remove('AlertDetailOverrideAlertTacticsColumnName')
+                If($PSBoundParameters['AlertTacticsColumnName']){
+                    $AlertRule.AlertDetailOverrideAlertTacticsColumnName = $PSBoundParameters['AlertTacticsColumnName']
+                    $null = $PSBoundParameters.Remove('AlertTacticsColumnName')
                 }
                 
             }
@@ -688,9 +688,9 @@ function Update-AzSentinelAlertRule {
                     $null = $PSBoundParameters.Remove('Tactic')
                 }
                 
-                If($PSBoundParameters['IncidentConfigurationCreateIncident']){
+                If($PSBoundParameters['CreateIncident']){
                     $AlertRule.IncidentConfigurationCreateIncident = $true
-                    $null = $PSBoundParameters.Remove('IncidentConfigurationCreateIncident')
+                    $null = $PSBoundParameters.Remove('CreateIncident')
                 }
                 else{
                     $AlertRule.IncidentConfigurationCreateIncident = $false
@@ -704,37 +704,37 @@ function Update-AzSentinelAlertRule {
                     $AlertRule.GroupingConfigurationEnabled = $false
                 }
                 
-                If($PSBoundParameters['GroupingConfigurationReOpenClosedIncident']){
-                    $AlertRule.GroupingConfigurationReOpenClosedIncident = $PSBoundParameters['GroupingConfigurationReOpenClosedIncident']
-                    $null = $PSBoundParameters.Remove('GroupingConfigurationReOpenClosedIncident')
+                If($PSBoundParameters['ReOpenClosedIncident']){
+                    $AlertRule.GroupingConfigurationReOpenClosedIncident = $PSBoundParameters['ReOpenClosedIncident']
+                    $null = $PSBoundParameters.Remove('ReOpenClosedIncident')
                 }
                 else{
                     $AlertRule.GroupingConfigurationReOpenClosedIncident = $false
                 }
                 
-                If($PSBoundParameters['GroupingConfigurationLookbackDuration']){
-                    $AlertRule.GroupingConfigurationLookbackDuration = $PSBoundParameters['GroupingConfigurationLookbackDuration']
-                    $null = $PSBoundParameters.Remove('GroupingConfigurationLookbackDuration')
+                If($PSBoundParameters['LookbackDuration']){
+                    $AlertRule.GroupingConfigurationLookbackDuration = $PSBoundParameters['LookbackDuration']
+                    $null = $PSBoundParameters.Remove('LookbackDuration')
                 }
 
-                If($PSBoundParameters['GroupingConfigurationMatchingMethod']){
-                    $AlertRule.GroupingConfigurationMatchingMethod = $PSBoundParameters['GroupingConfigurationMatchingMethod']
-                    $null = $PSBoundParameters.Remove('GroupingConfigurationMatchingMethod')
+                If($PSBoundParameters['MatchingMethod']){
+                    $AlertRule.GroupingConfigurationMatchingMethod = $PSBoundParameters['MatchingMethod']
+                    $null = $PSBoundParameters.Remove('MatchingMethod')
                 }
 
-                If($PSBoundParameters['GroupingConfigurationGroupByAlertDetail']){
-                    $AlertRule.GroupingConfigurationGroupByAlertDetail = $PSBoundParameters['GroupingConfigurationGroupByAlertDetail']
-                    $null = $PSBoundParameters.Remove('GroupingConfigurationGroupByAlertDetail')
+                If($PSBoundParameters['GroupByAlertDetail']){
+                    $AlertRule.GroupingConfigurationGroupByAlertDetail = $PSBoundParameters['GroupByAlertDetail']
+                    $null = $PSBoundParameters.Remove('GroupByAlertDetail')
                 }
 
-                If($PSBoundParameters['GroupingConfigurationGroupByCustomDetail']){
-                    $AlertRule.GroupingConfigurationGroupByCustomDetail = $PSBoundParameters['GroupingConfigurationGroupByCustomDetail']
-                    $null = $PSBoundParameters.Remove('GroupingConfigurationGroupByCustomDetail')
+                If($PSBoundParameters['GroupByCustomDetail']){
+                    $AlertRule.GroupingConfigurationGroupByCustomDetail = $PSBoundParameters['GroupByCustomDetail']
+                    $null = $PSBoundParameters.Remove('GroupByCustomDetail')
                 }
                 
-                If($PSBoundParameters['GroupingConfigurationGroupByEntity']){
-                    $AlertRule.GroupingConfigurationGroupByEntity = $PSBoundParameters['GroupingConfigurationGroupByEntity']
-                    $null = $PSBoundParameters.Remove('GroupingConfigurationGroupByEntity')
+                If($PSBoundParameters['GroupByEntity']){
+                    $AlertRule.GroupingConfigurationGroupByEntity = $PSBoundParameters['GroupByEntity']
+                    $null = $PSBoundParameters.Remove('GroupByEntity')
                 }
 
                 If($PSBoundParameters['EntityMapping']){
@@ -742,24 +742,24 @@ function Update-AzSentinelAlertRule {
                     $null = $PSBoundParameters.Remove('EntityMapping')
                 }
 
-                If($PSBoundParameters['AlertDetailOverrideAlertDescriptionFormat']){
-                    $AlertRule.AlertDetailOverrideAlertDescriptionFormat = $PSBoundParameters['AlertDetailOverrideAlertDescriptionFormat']
-                    $null = $PSBoundParameters.Remove('AlertDetailOverrideAlertDescriptionFormat')
+                If($PSBoundParameters['AlertDescriptionFormat']){
+                    $AlertRule.AlertDetailOverrideAlertDescriptionFormat = $PSBoundParameters['AlertDescriptionFormat']
+                    $null = $PSBoundParameters.Remove('AlertDescriptionFormat')
                 }
 
-                If($PSBoundParameters['AlertDetailOverrideAlertDisplayNameFormat']){
-                    $AlertRule.AlertDetailOverrideAlertDisplayNameFormat = $PSBoundParameters['AlertDetailOverrideAlertDisplayNameFormat']
-                    $null = $PSBoundParameters.Remove('AlertDetailOverrideAlertDisplayNameFormat')
+                If($PSBoundParameters['AlertDisplayNameFormat']){
+                    $AlertRule.AlertDetailOverrideAlertDisplayNameFormat = $PSBoundParameters['AlertDisplayNameFormat']
+                    $null = $PSBoundParameters.Remove('AlertDisplayNameFormat')
                 }
 
-                If($PSBoundParameters['AlertDetailOverrideAlertSeverityColumnName']){
-                    $AlertRule.AlertDetailOverrideAlertSeverityColumnName = $PSBoundParameters['AlertDetailOverrideAlertSeverityColumnName']
-                    $null = $PSBoundParameters.Remove('AlertDetailOverrideAlertSeverityColumnName')
+                If($PSBoundParameters['AlertSeverityColumnName']){
+                    $AlertRule.AlertDetailOverrideAlertSeverityColumnName = $PSBoundParameters['AlertSeverityColumnName']
+                    $null = $PSBoundParameters.Remove('AlertSeverityColumnName')
                 }
 
-                If($PSBoundParameters['AlertDetailOverrideAlertTacticsColumnName']){
-                    $AlertRule.AlertDetailOverrideAlertTacticsColumnName = $PSBoundParameters['AlertDetailOverrideAlertTacticsColumnName']
-                    $null = $PSBoundParameters.Remove('AlertDetailOverrideAlertTacticsColumnName')
+                If($PSBoundParameters['AlertTacticsColumnName']){
+                    $AlertRule.AlertDetailOverrideAlertTacticsColumnName = $PSBoundParameters['AlertTacticsColumnName']
+                    $null = $PSBoundParameters.Remove('AlertTacticsColumnName')
                 }
 
                 If($PSBoundParameters['QueryFrequency']){

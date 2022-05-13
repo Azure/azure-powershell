@@ -14,16 +14,16 @@ Creates or updates the incident comment.
 
 ### CreateExpanded (Default)
 ```
-New-AzSentinelIncidentComment -Id <String> -IncidentId <String> -ResourceGroupName <String>
- -WorkspaceName <String> [-SubscriptionId <String>] [-Message <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSentinelIncidentComment -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String>] [-Message <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzSentinelIncidentComment -Id <String> -IncidentId <String> -ResourceGroupName <String>
- -WorkspaceName <String> -IncidentComment <IIncidentComment> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSentinelIncidentComment -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
+ -IncidentComment <IIncidentComment> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,21 +50,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-Incident comment ID
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: IncidentCommentId
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

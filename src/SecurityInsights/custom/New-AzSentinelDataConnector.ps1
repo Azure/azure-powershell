@@ -229,55 +229,55 @@ function New-AzSentinelDataConnector {
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${ConnectorUiConfigTitle},
+        ${UiConfigTitle},
 
         [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${ConnectorUiConfigPublisher},
+        ${UiConfigPublisher},
 
         [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${ConnectorUiConfigDescriptionMarkdown},
+        ${UiConfigDescriptionMarkdown},
 
         [Parameter(ParameterSetName = 'GenericUI')]
         #[Parameter(ParameterSetName = 'APIPolling')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${ConnectorUiConfigCustomImage},
+        ${UiConfigCustomImage},
 
         [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${ConnectorUiConfigGraphQueriesTableName},
+        ${UiConfigGraphQueriesTableName},
 
         [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]]
-        ${ConnectorUiConfigGraphQuery},
+        ${UiConfigGraphQuery},
 
         [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]]
-        ${ConnectorUiConfigSampleQuery},
+        ${UiConfigSampleQuery},
 
         [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]]
-        ${ConnectorUiConfigDataType},
+        ${UiConfigDataType},
 
         [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]]
-        ${ConnectorUiConfigConnectivityCriterion},
+        ${UiConfigConnectivityCriterion},
 
         [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
@@ -308,7 +308,7 @@ function New-AzSentinelDataConnector {
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]]
-        ${ConnectorUiConfigInstructionStep},
+        ${UiConfigInstructionStep},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -638,34 +638,34 @@ function New-AzSentinelDataConnector {
             if($PSBoundParameters['Kind'] -eq 'GenericUI'){
                 $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.CodelessUiDataConnector]::new()
                 
-                $DataConnector.ConnectorUiConfigTitle = $PSBoundParameters['ConnectorUiConfigTitle']
-                $null = $PSBoundParameters.Remove('ConnectorUiConfigTitle')
+                $DataConnector.ConnectorUiConfigTitle = $PSBoundParameters['UiConfigTitle']
+                $null = $PSBoundParameters.Remove('UiConfigTitle')
 
-                $DataConnector.ConnectorUiConfigPublisher = $PSBoundParameters['ConnectorUiConfigPublisher']
-                $null = $PSBoundParameters.Remove('ConnectorUiConfigPublisher')
+                $DataConnector.ConnectorUiConfigPublisher = $PSBoundParameters['UiConfigPublisher']
+                $null = $PSBoundParameters.Remove('UiConfigPublisher')
 
-                $DataConnector.ConnectorUiConfigDescriptionMarkdown = $PSBoundParameters['ConnectorUiConfigDescriptionMarkdown']
-                $null = $PSBoundParameters.Remove('ConnectorUiConfigDescriptionMarkdown')
+                $DataConnector.ConnectorUiConfigDescriptionMarkdown = $PSBoundParameters['UiConfigDescriptionMarkdown']
+                $null = $PSBoundParameters.Remove('UiConfigDescriptionMarkdown')
 
                 If($PSBoundParameters['Logs']){
-                    $DataConnector.ConnectorUiConfigCustomImage = $PSBoundParameters['ConnectorUiConfigCustomImage']
-                    $null = $PSBoundParameters.Remove('ConnectorUiConfigCustomImage')
+                    $DataConnector.ConnectorUiConfigCustomImage = $PSBoundParameters['UiConfigCustomImage']
+                    $null = $PSBoundParameters.Remove('UiConfigCustomImage')
                 }
 
-                $DataConnector.ConnectorUiConfigGraphQueriesTableName = $PSBoundParameters['ConnectorUiConfigGraphQueriesTableName']
-                $null = $PSBoundParameters.Remove('ConnectorUiConfigGraphQueriesTableName')
+                $DataConnector.ConnectorUiConfigGraphQueriesTableName = $PSBoundParameters['UiConfigGraphQueriesTableName']
+                $null = $PSBoundParameters.Remove('UiConfigGraphQueriesTableName')
 
-                $DataConnector.ConnectorUiConfigGraphQuery = $PSBoundParameters['ConnectorUiConfigGraphQuery']
-                $null = $PSBoundParameters.Remove('ConnectorUiConfigGraphQuery')
+                $DataConnector.ConnectorUiConfigGraphQuery = $PSBoundParameters['UiConfigGraphQuery']
+                $null = $PSBoundParameters.Remove('UiConfigGraphQuery')
 
-                $DataConnector.ConnectorUiConfigSampleQuery = $PSBoundParameters['ConnectorUiConfigSampleQuery']
-                $null = $PSBoundParameters.Remove('ConnectorUiConfigSampleQuery')
+                $DataConnector.ConnectorUiConfigSampleQuery = $PSBoundParameters['UiConfigSampleQuery']
+                $null = $PSBoundParameters.Remove('UiConfigSampleQuery')
         
-                $DataConnector.ConnectorUiConfigDataType = $PSBoundParameters['ConnectorUiConfigDataType']
-                $null = $PSBoundParameters.Remove('ConnectorUiConfigDataType')
+                $DataConnector.ConnectorUiConfigDataType = $PSBoundParameters['UiConfigDataType']
+                $null = $PSBoundParameters.Remove('UiConfigDataType')
 
-                $DataConnector.ConnectorUiConfigConnectivityCriterion = $PSBoundParameters['ConnectorUiConfigConnectivityCriterion']
-                $null = $PSBoundParameters.Remove('ConnectorUiConfigConnectivityCriterion')
+                $DataConnector.ConnectorUiConfigConnectivityCriterion = $PSBoundParameters['UiConfigConnectivityCriterion']
+                $null = $PSBoundParameters.Remove('UiConfigConnectivityCriterion')
 
                 $DataConnector.AvailabilityIsPreview = $PSBoundParameters['AvailabilityIsPreview']
                 $null = $PSBoundParameters.Remove('AvailabilityIsPreview')
@@ -688,8 +688,8 @@ function New-AzSentinelDataConnector {
                     break
                 }
 
-                $DataConnector.ConnectorUiConfigInstructionStep = $PSBoundParameters['ConnectorUiConfigInstructionStep']
-                $null = $PSBoundParameters.Remove('ConnectorUiConfigInstructionStep')
+                $DataConnector.ConnectorUiConfigInstructionStep = $PSBoundParameters['UiConfigInstructionStep']
+                $null = $PSBoundParameters.Remove('UiConfigInstructionStep')
 
             }
     

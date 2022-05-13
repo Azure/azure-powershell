@@ -15,19 +15,16 @@ Updates the alert rule.
 ### UpdateScheduled (Default)
 ```
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-AlertDetailOverrideAlertDescriptionFormat <String>]
- [-AlertDetailOverrideAlertDisplayNameFormat <String>] [-AlertDetailOverrideAlertSeverityColumnName <String>]
- [-AlertDetailOverrideAlertTacticsColumnName <String>] [-AlertRuleTemplateName <String>]
- [-Description <String>] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
- [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>] [-GroupingConfigurationEnabled]
- [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
- [-GroupingConfigurationGroupByCustomDetail <String[]>]
- [-GroupingConfigurationGroupByEntity <EntityMappingType>] [-GroupingConfigurationLookbackDuration <TimeSpan>]
- [-GroupingConfigurationMatchingMethod <String>] [-GroupingConfigurationReOpenClosedIncident]
- [-IncidentConfigurationCreateIncident] [-Query <String>] [-QueryFrequency <TimeSpan>]
- [-QueryPeriod <TimeSpan>] [-Severity <AlertSeverity>] [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled]
- [-Tactic <AttackTactic>] [-TriggerOperator <TriggerOperator>] [-TriggerThreshold <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Scheduled] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>]
+ [-AlertRuleTemplateName <String>] [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>]
+ [-CreateIncident] [-Description <String>] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
+ [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>] [-GroupByAlertDetail <AlertDetail>]
+ [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType>] [-GroupingConfigurationEnabled]
+ [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-Query <String>] [-QueryFrequency <TimeSpan>]
+ [-QueryPeriod <TimeSpan>] [-ReOpenClosedIncident] [-Severity <AlertSeverity>]
+ [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <AttackTactic>]
+ [-TriggerOperator <TriggerOperator>] [-TriggerThreshold <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Scheduled] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateFusionMLTI
@@ -50,17 +47,14 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
 ### UpdateNRT
 ```
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-AlertDetailOverrideAlertDescriptionFormat <String>]
- [-AlertDetailOverrideAlertDisplayNameFormat <String>] [-AlertDetailOverrideAlertSeverityColumnName <String>]
- [-AlertDetailOverrideAlertTacticsColumnName <String>] [-AlertRuleTemplateName <String>]
- [-Description <String>] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
- [-GroupingConfigurationEnabled] [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
- [-GroupingConfigurationGroupByCustomDetail <String[]>]
- [-GroupingConfigurationGroupByEntity <EntityMappingType>] [-GroupingConfigurationLookbackDuration <TimeSpan>]
- [-GroupingConfigurationMatchingMethod <String>] [-GroupingConfigurationReOpenClosedIncident]
- [-IncidentConfigurationCreateIncident] [-Query <String>] [-Severity <AlertSeverity>]
- [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <AttackTactic>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-NRT] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>]
+ [-AlertRuleTemplateName <String>] [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>]
+ [-CreateIncident] [-Description <String>] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
+ [-GroupByAlertDetail <AlertDetail>] [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType>]
+ [-GroupingConfigurationEnabled] [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-Query <String>]
+ [-ReOpenClosedIncident] [-Severity <AlertSeverity>] [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled]
+ [-Tactic <AttackTactic>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-NRT] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityFusionMLTI
@@ -81,35 +75,29 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> [-AlertRuleT
 
 ### UpdateViaIdentityNRT
 ```
-Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity>
- [-AlertDetailOverrideAlertDescriptionFormat <String>] [-AlertDetailOverrideAlertDisplayNameFormat <String>]
- [-AlertDetailOverrideAlertSeverityColumnName <String>] [-AlertDetailOverrideAlertTacticsColumnName <String>]
- [-AlertRuleTemplateName <String>] [-Description <String>] [-DisplayName <String>] [-Enabled]
- [-EntityMapping <EntityMapping>] [-GroupingConfigurationEnabled]
- [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
- [-GroupingConfigurationGroupByCustomDetail <String[]>]
- [-GroupingConfigurationGroupByEntity <EntityMappingType>] [-GroupingConfigurationLookbackDuration <TimeSpan>]
- [-GroupingConfigurationMatchingMethod <String>] [-GroupingConfigurationReOpenClosedIncident]
- [-IncidentConfigurationCreateIncident] [-Query <String>] [-Severity <AlertSeverity>]
- [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <AttackTactic>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-NRT] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> [-AlertDescriptionFormat <String>]
+ [-AlertDisplayNameFormat <String>] [-AlertRuleTemplateName <String>] [-AlertSeverityColumnName <String>]
+ [-AlertTacticsColumnName <String>] [-CreateIncident] [-Description <String>] [-DisplayName <String>]
+ [-Enabled] [-EntityMapping <EntityMapping>] [-GroupByAlertDetail <AlertDetail>]
+ [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType>] [-GroupingConfigurationEnabled]
+ [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-Query <String>] [-ReOpenClosedIncident]
+ [-Severity <AlertSeverity>] [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <AttackTactic>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-NRT] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityUpdateScheduled
 ```
-Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity>
- [-AlertDetailOverrideAlertDescriptionFormat <String>] [-AlertDetailOverrideAlertDisplayNameFormat <String>]
- [-AlertDetailOverrideAlertSeverityColumnName <String>] [-AlertDetailOverrideAlertTacticsColumnName <String>]
- [-AlertRuleTemplateName <String>] [-Description <String>] [-DisplayName <String>] [-Enabled]
- [-EntityMapping <EntityMapping>] [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>]
- [-GroupingConfigurationEnabled] [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
- [-GroupingConfigurationGroupByCustomDetail <String[]>]
- [-GroupingConfigurationGroupByEntity <EntityMappingType>] [-GroupingConfigurationLookbackDuration <TimeSpan>]
- [-GroupingConfigurationMatchingMethod <String>] [-GroupingConfigurationReOpenClosedIncident]
- [-IncidentConfigurationCreateIncident] [-Query <String>] [-QueryFrequency <TimeSpan>]
- [-QueryPeriod <TimeSpan>] [-Severity <AlertSeverity>] [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled]
- [-Tactic <AttackTactic>] [-TriggerOperator <TriggerOperator>] [-TriggerThreshold <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Scheduled] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> [-AlertDescriptionFormat <String>]
+ [-AlertDisplayNameFormat <String>] [-AlertRuleTemplateName <String>] [-AlertSeverityColumnName <String>]
+ [-AlertTacticsColumnName <String>] [-CreateIncident] [-Description <String>] [-DisplayName <String>]
+ [-Enabled] [-EntityMapping <EntityMapping>]
+ [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>] [-GroupByAlertDetail <AlertDetail>]
+ [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType>] [-GroupingConfigurationEnabled]
+ [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-Query <String>] [-QueryFrequency <TimeSpan>]
+ [-QueryPeriod <TimeSpan>] [-ReOpenClosedIncident] [-Severity <AlertSeverity>]
+ [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <AttackTactic>]
+ [-TriggerOperator <TriggerOperator>] [-TriggerThreshold <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Scheduled] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,7 +115,7 @@ This command updates a scheduled alert rule
 
 ## PARAMETERS
 
-### -AlertDetailOverrideAlertDescriptionFormat
+### -AlertDescriptionFormat
 
 
 ```yaml
@@ -142,37 +130,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AlertDetailOverrideAlertDisplayNameFormat
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AlertDetailOverrideAlertSeverityColumnName
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AlertDetailOverrideAlertTacticsColumnName
+### -AlertDisplayNameFormat
 
 
 ```yaml
@@ -202,12 +160,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AlertSeverityColumnName
+
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AlertTacticsColumnName
+
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CreateIncident
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
 Aliases:
 
 Required: False
@@ -353,22 +356,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupingConfigurationEnabled
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GroupingConfigurationGroupByAlertDetail
+### -GroupByAlertDetail
 
 
 ```yaml
@@ -383,7 +371,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupingConfigurationGroupByCustomDetail
+### -GroupByCustomDetail
 
 
 ```yaml
@@ -398,7 +386,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupingConfigurationGroupByEntity
+### -GroupByEntity
 
 
 ```yaml
@@ -413,52 +401,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupingConfigurationLookbackDuration
-
-
-```yaml
-Type: System.TimeSpan
-Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
-Aliases:
-
-Required: False
-Position: Named
-Default value: New-TimeSpan -Hours 5
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GroupingConfigurationMatchingMethod
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
-Aliases:
-
-Required: False
-Position: Named
-Default value: "AllEntities"
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GroupingConfigurationReOpenClosedIncident
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IncidentConfigurationCreateIncident
+### -GroupingConfigurationEnabled
 
 
 ```yaml
@@ -486,6 +429,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LookbackDuration
+
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
+Aliases:
+
+Required: False
+Position: Named
+Default value: New-TimeSpan -Hours 5
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MatchingMethod
+
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
+Aliases:
+
+Required: False
+Position: Named
+Default value: "AllEntities"
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -585,6 +558,21 @@ Accept wildcard characters: False
 ```yaml
 Type: System.TimeSpan
 Parameter Sets: UpdateScheduled, UpdateViaIdentityUpdateScheduled
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReOpenClosedIncident
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
 Aliases:
 
 Required: False

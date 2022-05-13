@@ -51,13 +51,13 @@ Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <Str
 ### UpdateGenericUI
 ```
 Update-AzSentinelDataConnector [-AvailabilityIsPreview <Boolean>] [-AvailabilityStatus <Int32>]
- [-ConnectorUiConfigConnectivityCriterion <ConnectivityCriteria[]>] [-ConnectorUiConfigCustomImage <String>]
- [-ConnectorUiConfigDataType <LastDataReceivedDataType[]>] [-ConnectorUiConfigDescriptionMarkdown <String>]
- [-ConnectorUiConfigGraphQueriesTableName <String>] [-ConnectorUiConfigGraphQuery <GraphQueries[]>]
- [-ConnectorUiConfigInstructionStep <InstructionSteps[]>] [-ConnectorUiConfigPublisher <String>]
- [-ConnectorUiConfigSampleQuery <SampleQueries[]>] [-ConnectorUiConfigTitle <String>]
  [-PermissionCustom <PermissionsCustomsItem[]>]
- [-PermissionResourceProvider <PermissionsResourceProviderItem[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-PermissionResourceProvider <PermissionsResourceProviderItem[]>]
+ [-UiConfigConnectivityCriterion <ConnectivityCriteria[]>] [-UiConfigCustomImage <String>]
+ [-UiConfigDataType <LastDataReceivedDataType[]>] [-UiConfigDescriptionMarkdown <String>]
+ [-UiConfigGraphQueriesTableName <String>] [-UiConfigGraphQuery <GraphQueries[]>]
+ [-UiConfigInstructionStep <InstructionSteps[]>] [-UiConfigPublisher <String>]
+ [-UiConfigSampleQuery <SampleQueries[]>] [-UiConfigTitle <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -166,13 +166,13 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Common
 ### UpdateViaIdentityGenericUI
 ```
 Update-AzSentinelDataConnector [-AvailabilityIsPreview <Boolean>] [-AvailabilityStatus <Int32>]
- [-ConnectorUiConfigConnectivityCriterion <ConnectivityCriteria[]>] [-ConnectorUiConfigCustomImage <String>]
- [-ConnectorUiConfigDataType <LastDataReceivedDataType[]>] [-ConnectorUiConfigDescriptionMarkdown <String>]
- [-ConnectorUiConfigGraphQueriesTableName <String>] [-ConnectorUiConfigGraphQuery <GraphQueries[]>]
- [-ConnectorUiConfigInstructionStep <InstructionSteps[]>] [-ConnectorUiConfigPublisher <String>]
- [-ConnectorUiConfigSampleQuery <SampleQueries[]>] [-ConnectorUiConfigTitle <String>]
  [-PermissionCustom <PermissionsCustomsItem[]>]
- [-PermissionResourceProvider <PermissionsResourceProviderItem[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-PermissionResourceProvider <PermissionsResourceProviderItem[]>]
+ [-UiConfigConnectivityCriterion <ConnectivityCriteria[]>] [-UiConfigCustomImage <String>]
+ [-UiConfigDataType <LastDataReceivedDataType[]>] [-UiConfigDescriptionMarkdown <String>]
+ [-UiConfigGraphQueriesTableName <String>] [-UiConfigGraphQuery <GraphQueries[]>]
+ [-UiConfigInstructionStep <InstructionSteps[]>] [-UiConfigPublisher <String>]
+ [-UiConfigSampleQuery <SampleQueries[]>] [-UiConfigTitle <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -413,156 +413,6 @@ Accept wildcard characters: False
 ```yaml
 Type: System.String
 Parameter Sets: UpdateDynamics365, UpdateViaIdentityDynamics365
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigConnectivityCriterion
-To construct, see NOTES section for CONNECTORUICONFIGCONNECTIVITYCRITERION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigCustomImage
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigDataType
-To construct, see NOTES section for CONNECTORUICONFIGDATATYPE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigDescriptionMarkdown
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigGraphQueriesTableName
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigGraphQuery
-To construct, see NOTES section for CONNECTORUICONFIGGRAPHQUERY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigInstructionStep
-To construct, see NOTES section for CONNECTORUICONFIGINSTRUCTIONSTEP properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigPublisher
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigSampleQuery
-To construct, see NOTES section for CONNECTORUICONFIGSAMPLEQUERY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorUiConfigTitle
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
 Aliases:
 
 Required: False
@@ -940,6 +790,156 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UiConfigConnectivityCriterion
+To construct, see NOTES section for UICONFIGCONNECTIVITYCRITERION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigCustomImage
+
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigDataType
+To construct, see NOTES section for UICONFIGDATATYPE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigDescriptionMarkdown
+
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigGraphQueriesTableName
+
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigGraphQuery
+To construct, see NOTES section for UICONFIGGRAPHQUERY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigInstructionStep
+To construct, see NOTES section for UICONFIGINSTRUCTIONSTEP properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigPublisher
+
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigSampleQuery
+To construct, see NOTES section for UICONFIGSAMPLEQUERY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UiConfigTitle
+
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UserName
 
 
@@ -1037,30 +1037,6 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CONNECTORUICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>: 
-  - `[Type <ConnectivityType?>]`: type of connectivity
-  - `[Value <String[]>]`: Queries for checking connectivity
-
-CONNECTORUICONFIGDATATYPE <LastDataReceivedDataType[]>: 
-  - `[LastDataReceivedQuery <String>]`: Query for indicate last data received
-  - `[Name <String>]`: Name of the data type to show in the graph. can be use with {{graphQueriesTableName}} placeholder
-
-CONNECTORUICONFIGGRAPHQUERY <GraphQueries[]>: 
-  - `[BaseQuery <String>]`: The base query for the graph
-  - `[Legend <String>]`: The legend for the graph
-  - `[MetricName <String>]`: the metric that the query is checking
-
-CONNECTORUICONFIGINSTRUCTIONSTEP <InstructionSteps[]>: 
-  - `[Description <String>]`: Instruction step description
-  - `[Instruction <IConnectorInstructionModelBase[]>]`: Instruction step details
-    - `Type <SettingType>`: The kind of the setting
-    - `[Parameter <IAny>]`: The parameters for the setting
-  - `[Title <String>]`: Instruction step title
-
-CONNECTORUICONFIGSAMPLEQUERY <SampleQueries[]>: 
-  - `[Description <String>]`: The sample query description
-  - `[Query <String>]`: the sample query
-
 INPUTOBJECT <ISecurityInsightsIdentity>: [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory, ValueFromPipeline)]  Identity Parameter 
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
@@ -1098,6 +1074,30 @@ PERMISSIONRESOURCEPROVIDER <PermissionsResourceProviderItem[]>:
   - `[RequiredPermissionRead <Boolean?>]`: read permission
   - `[RequiredPermissionWrite <Boolean?>]`: write permission
   - `[Scope <PermissionProviderScope?>]`: Permission provider scope
+
+UICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>: 
+  - `[Type <ConnectivityType?>]`: type of connectivity
+  - `[Value <String[]>]`: Queries for checking connectivity
+
+UICONFIGDATATYPE <LastDataReceivedDataType[]>: 
+  - `[LastDataReceivedQuery <String>]`: Query for indicate last data received
+  - `[Name <String>]`: Name of the data type to show in the graph. can be use with {{graphQueriesTableName}} placeholder
+
+UICONFIGGRAPHQUERY <GraphQueries[]>: 
+  - `[BaseQuery <String>]`: The base query for the graph
+  - `[Legend <String>]`: The legend for the graph
+  - `[MetricName <String>]`: the metric that the query is checking
+
+UICONFIGINSTRUCTIONSTEP <InstructionSteps[]>: 
+  - `[Description <String>]`: Instruction step description
+  - `[Instruction <IConnectorInstructionModelBase[]>]`: Instruction step details
+    - `Type <SettingType>`: The kind of the setting
+    - `[Parameter <IAny>]`: The parameters for the setting
+  - `[Title <String>]`: Instruction step title
+
+UICONFIGSAMPLEQUERY <SampleQueries[]>: 
+  - `[Description <String>]`: The sample query description
+  - `[Query <String>]`: the sample query
 
 ## RELATED LINKS
 
