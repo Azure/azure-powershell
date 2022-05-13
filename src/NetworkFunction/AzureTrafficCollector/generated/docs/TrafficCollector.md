@@ -11,14 +11,14 @@ Locale: en-US
 
 
 ## TrafficCollector Cmdlets
+### [Get-AzNetworkFunctionOperation](Get-AzNetworkFunctionOperation.md)
+Lists all of the available NetworkFunction Rest API operations.
+
 ### [Get-AzTrafficCollector](Get-AzTrafficCollector.md)
 Gets the specified Azure Traffic Collector in a specified resource group
 
 ### [Get-AzTrafficCollectorPolicy](Get-AzTrafficCollectorPolicy.md)
 Gets the collector policy in a specified Traffic Collector
-
-### [Get-NetworkFunctionOperation](Get-NetworkFunctionOperation.md)
-Lists all of the available NetworkFunction Rest API operations.
 
 ### [New-AzTrafficCollector](New-AzTrafficCollector.md)
 Creates or updates a Azure Traffic Collector resource

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
     /// <remarks>
     /// [OpenAPI] UpdateTags=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzureTrafficCollectorTag_UpdateExpanded", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzTrafficCollectorTag_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Description(@"Updates the specified Azure Traffic Collector tags.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Generated]

@@ -6,15 +6,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Extensions;
     using System;
 
-    /// <summary>Creates or updates a Collector Policy resource</summary>
+    /// <summary>Return list of Azure Traffic Collectors in a Resource Group</summary>
     /// <remarks>
-    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}"
+    /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzTrafficCollectorPolicy_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Description(@"Creates or updates a Collector Policy resource")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzTrafficCollector_List")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Description(@"Return list of Azure Traffic Collectors in a Resource Group")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Generated]
-    public partial class SetAzTrafficCollectorPolicy_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
+    public partial class GetAzTrafficCollector_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -30,10 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.ParameterCategory.Runtime)]
-        public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
+        /// <summary>A flag to tell whether it is the first onOK call.</summary>
+        private bool _isFirst = true;
+
+        /// <summary>Link to retrieve next page.</summary>
+        private string _nextLink;
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -42,18 +43,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.AzureTrafficCollector Client => Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Module.Instance.ClientAPI;
-
-        /// <summary>Emission policies.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Emission policies.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Emission policies.",
-        SerializedName = @"emissionPolicies",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IEmissionPoliciesPropertiesFormat) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IEmissionPoliciesPropertiesFormat[] EmissionPolicies { get => ParametersBody.EmissionPolicies ?? null /* arrayOf */; set => ParametersBody.EmissionPolicies = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -67,38 +56,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
-        /// <summary>Ingestion Sources.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Ingestion Sources.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Ingestion Sources.",
-        SerializedName = @"ingestionSources",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IIngestionSourcesPropertiesFormat) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IIngestionSourcesPropertiesFormat[] IngestionPolicyIngestionSources { get => ParametersBody.IngestionPolicyIngestionSources ?? null /* arrayOf */; set => ParametersBody.IngestionPolicyIngestionSources = value; }
-
-        /// <summary>The ingestion type.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ingestion type.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The ingestion type.",
-        SerializedName = @"ingestionType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Support.IngestionType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Support.IngestionType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Support.IngestionType IngestionPolicyIngestionType { get => ParametersBody.IngestionPolicyIngestionType ?? ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Support.IngestionType)""); set => ParametersBody.IngestionPolicyIngestionType = value; }
-
-        /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity _inputObject;
-
-        /// <summary>Identity Parameter</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.ParameterCategory.Path)]
-        public Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity InputObject { get => this._inputObject; set => this._inputObject = value; }
-
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
@@ -109,20 +66,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
 
         /// <summary><see cref="IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
-
-        /// <summary>
-        /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
-        /// asynchronously.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.ParameterCategory.Runtime)]
-        public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
-
-        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.CollectorPolicy();
-
-        /// <summary>Collection policy resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.HttpPipeline" /> that the remote call will use.
@@ -145,6 +88,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
+        private string _resourceGroupName;
+
+        /// <summary>The name of the resource group.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the resource group.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the resource group.",
+        SerializedName = @"resourceGroupName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.ParameterCategory.Path)]
+        public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
+        private string _subscriptionId;
+
+        /// <summary>Azure Subscription ID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Azure Subscription ID.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Azure Subscription ID.",
+        SerializedName = @"subscriptionId",
+        PossibleTypes = new [] { typeof(string) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.DefaultInfo(
+        Name = @"",
+        Description =@"",
+        Script = @"(Get-AzContext).Subscription.Id")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.ParameterCategory.Path)]
+        public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -161,11 +136,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy" /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollectorListResult" /> from the
+        /// remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollectorListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -180,28 +156,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
             ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.CmdletBeginProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
         }
 
-        /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
-        /// <returns>a duplicate instance of SetAzTrafficCollectorPolicy_UpdateViaIdentityExpanded</returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets.SetAzTrafficCollectorPolicy_UpdateViaIdentityExpanded Clone()
-        {
-            var clone = new SetAzTrafficCollectorPolicy_UpdateViaIdentityExpanded();
-            clone.InvocationInformation = this.InvocationInformation;
-            clone.Proxy = this.Proxy;
-            clone.Pipeline = this.Pipeline;
-            clone.AsJob = this.AsJob;
-            clone.Break = this.Break;
-            clone.ProxyCredential = this.ProxyCredential;
-            clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
-            clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
-            clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.ParametersBody = this.ParametersBody;
-            return clone;
-        }
-
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+        }
+
+        /// <summary>
+        /// Intializes a new instance of the <see cref="GetAzTrafficCollector_List" /> cmdlet class.
+        /// </summary>
+        public GetAzTrafficCollector_List()
+        {
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -234,8 +200,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.Information:
                     {
-                        // When an operation supports asjob, Information messages must go thru verbose.
-                        WriteVerbose($"INFORMATION: {(messageData().Message ?? global::System.String.Empty)}");
+                        var data = messageData();
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.Debug:
@@ -247,24 +213,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
                     {
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
-                    }
-                    case Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.DelayBeforePolling:
-                    {
-                        if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
-                        {
-                            var data = messageData();
-                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
-                            {
-                                var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
-                                var location = response.GetFirstHeader(@"Location");
-                                var uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? response.RequestMessage.RequestUri.AbsoluteUri : location : asyncOperation;
-                                WriteObject(new Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.PowerShell.AsyncOperationResponse { Target = uri });
-                                // do nothing more.
-                                data.Cancel();
-                                return;
-                            }
-                        }
-                        break;
                     }
                 }
                 await Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
@@ -284,24 +232,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'CollectorPoliciesCreateOrUpdate' operation"))
+                using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Token) )
                 {
-                    if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
-                    {
-                        var instance = this.Clone();
-                        var job = new Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.PowerShell.AsyncJob(instance, this.MyInvocation.Line, this.MyInvocation.MyCommand.Name, this._cancellationTokenSource.Token, this._cancellationTokenSource.Cancel);
-                        JobRepository.Add(job);
-                        var task = instance.ProcessRecordAsync();
-                        job.Monitor(task);
-                        WriteObject(job);
-                    }
-                    else
-                    {
-                        using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Token) )
-                        {
-                            asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Token);
-                        }
-                    }
+                    asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Token);
                 }
             }
             catch (global::System.AggregateException aggregateException)
@@ -349,29 +282,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    // try to call with PATH parameters from Input Object
-                    if (null == InputObject.ResourceGroupName)
-                    {
-                        ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
-                    }
-                    if (null == InputObject.SubscriptionId)
-                    {
-                        ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
-                    }
-                    if (null == InputObject.AzureTrafficCollectorName)
-                    {
-                        ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.AzureTrafficCollectorName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
-                    }
-                    if (null == InputObject.CollectorPolicyName)
-                    {
-                        ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.CollectorPolicyName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
-                    }
-                    await this.Client.CollectorPoliciesCreateOrUpdate(InputObject.ResourceGroupName ?? null, InputObject.SubscriptionId ?? null, InputObject.AzureTrafficCollectorName ?? null, InputObject.CollectorPolicyName ?? null, ParametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.AzureTrafficCollectorsByResourceGroupList(ResourceGroupName, SubscriptionId, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=ParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,SubscriptionId=SubscriptionId})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -381,14 +297,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.CmdletProcessRecordAsyncEnd);
                 }
             }
-        }
-
-        /// <summary>
-        /// Intializes a new instance of the <see cref="SetAzTrafficCollectorPolicy_UpdateViaIdentityExpanded" /> cmdlet class.
-        /// </summary>
-        public SetAzTrafficCollectorPolicy_UpdateViaIdentityExpanded()
-        {
-
         }
 
         /// <summary>Interrupts currently running code within the command.</summary>
@@ -424,14 +332,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -441,11 +349,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy" /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollectorListResult" /> from the
+        /// remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollectorListResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -457,8 +366,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy
-                WriteObject((await response));
+                // response should be returning an array of some kind. +Pageable
+                // pageable / value / nextLink
+                var result = await response;
+                WriteObject(result.Value,true);
+                _nextLink = result.NextLink;
+                if (_isFirst)
+                {
+                    _isFirst = false;
+                    while (_nextLink != null)
+                    {
+                        if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                        {
+                            requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Method.Get );
+                            await ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                            await this.Client.AzureTrafficCollectorsByResourceGroupList_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        }
+                    }
+                }
             }
         }
     }

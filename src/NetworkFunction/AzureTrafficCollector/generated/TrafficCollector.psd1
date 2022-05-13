@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/TrafficCollector.private.dll'
   FormatsToProcess = './TrafficCollector.format.ps1xml'
-  FunctionsToExport = 'Get-AzureTrafficCollector', 'Get-AzTrafficCollectorPolicy', 'Get-NetworkFunctionOperation', 'New-AzTrafficCollector', 'New-AzTrafficCollectorPolicy', 'Remove-AzTrafficCollector', 'Remove-AzTrafficCollectorPolicy', 'Set-AzTrafficCollector', 'Set-AzTrafficCollectorPolicy', 'Update-AzTrafficCollectorTag', '*'
+  FunctionsToExport = 'Get-AzNetworkFunctionOperation', 'Get-AzTrafficCollector', 'Get-AzTrafficCollectorPolicy', 'New-AzTrafficCollector', 'New-AzTrafficCollectorPolicy', 'Remove-AzTrafficCollector', 'Remove-AzTrafficCollectorPolicy', 'Set-AzTrafficCollector', 'Set-AzTrafficCollectorPolicy', 'Update-AzTrafficCollectorTag', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

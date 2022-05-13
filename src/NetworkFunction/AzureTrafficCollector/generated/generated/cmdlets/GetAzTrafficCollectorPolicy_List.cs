@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
     /// <remarks>
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"CollectorPolicy_List")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzTrafficCollectorPolicy_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Description(@"Return list of Collector policies in a Azure Traffic Collector")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Generated]

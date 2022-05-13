@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"CollectorPolicy_CreateViaIdentity", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzTrafficCollectorPolicy_CreateViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Description(@"Creates or updates a Collector Policy resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Generated]

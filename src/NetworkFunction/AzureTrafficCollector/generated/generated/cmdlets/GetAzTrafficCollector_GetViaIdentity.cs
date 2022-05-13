@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Cmdlets
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzureTrafficCollector_GetViaIdentity")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzTrafficCollector_GetViaIdentity")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Description(@"Gets the specified Azure Traffic Collector in a specified resource group")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Generated]

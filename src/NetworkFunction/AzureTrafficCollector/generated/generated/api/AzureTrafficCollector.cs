@@ -30,15 +30,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.NetworkFunction/azureTrafficCollectors"
+                var uri = "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId);
+                if(resourceGroupName != null && resourceGroupName.Length > 0) {
+                    uri += "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName);
+                }
+                uri +=  "/providers/Microsoft.NetworkFunction/azureTrafficCollectors"
                         + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion);
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(uri, "\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
@@ -889,38 +890,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector
         /// </returns>
         public async global::System.Threading.Tasks.Task AzureTrafficCollectorsGet(string resourceGroupName, string subscriptionId, string azureTrafficCollectorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-09-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                //uri string
-                var uri = "/subscriptions/" + global::System.Uri.EscapeDataString(subscriptionId);
-                if(resourceGroupName != null && resourceGroupName.Length > 0) {
-                    uri += "/resourceGroups/" + global::System.Uri.EscapeDataString(resourceGroupName);
+            // if(azureTrafficCollectorName == null || azureTrafficCollectorName.Length == 0) {
+            //     if(resourceGroupName == null || resourceGroupName.Length == 0) {
+            //         //list by subscription
+            //         await this.AzureTrafficCollectorsBySubscriptionList(subscriptionId,onOk,onDefault,eventListener,sender);
+            //     }
+            //     else {
+            //         //list by resource group
+            //         await this.AzureTrafficCollectorsByResourceGroupList(resourceGroupName, subscriptionId, onOk,onDefault,eventListener,sender);
+            //     }
+            // }
+            // else {
+                var apiVersion = @"2021-09-01-preview";
+                // Constant Parameters
+                using( NoSynchronizationContext )
+                {
+                    //uri string
+                    var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.NetworkFunction/azureTrafficCollectors/"
+                        + global::System.Uri.EscapeDataString(azureTrafficCollectorName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                    // generate request object
+                    var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                    var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Method.Get, _url);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // make the call
+                    await this.AzureTrafficCollectorsGet_Call(request,onOk,onDefault,eventListener,sender);
                 }
-                uri += "/providers/Microsoft.NetworkFunction/azureTrafficCollectors";
-                if(azureTrafficCollectorName != null && azureTrafficCollectorName.Length > 0) {
-                    uri += "/" + global::System.Uri.EscapeDataString(azureTrafficCollectorName);
-                }
-                uri += "?api-version=" + global::System.Uri.EscapeDataString(apiVersion);
-                // construct URL
-                var pathAndQuery = uri;
-                // var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                //         uri
-                //         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.AzureTrafficCollectorsGet_Call(request,onOk,onDefault,eventListener,sender);
             }
-        }
+        // }
 
         /// <summary>Gets the specified Azure Traffic Collector in a specified resource group</summary>
         /// <param name="viaIdentity"></param>
@@ -951,19 +960,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector
                 var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var azureTrafficCollectorName = _match.Groups["azureTrafficCollectorName"].Value;
                 
-                var uri = "/subscriptions/" + global::System.Uri.EscapeDataString(subscriptionId);
-                if(resourceGroupName.Length > 0) {
-                    uri += "/resourceGroups/" + global::System.Uri.EscapeDataString(resourceGroupName);
-                }
-                uri += "/providers/Microsoft.NetworkFunction/azureTrafficCollectors/";
-                if(azureTrafficCollectorName.Length > 0) {
-                    uri += global::System.Uri.EscapeDataString(azureTrafficCollectorName);
-                }
-                uri += "?api-version=" + global::System.Uri.EscapeDataString(apiVersion);
-
-                // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                       uri
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.NetworkFunction/azureTrafficCollectors/"
+                        + global::System.Uri.EscapeDataString(azureTrafficCollectorName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1993,7 +1998,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object

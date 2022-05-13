@@ -6,69 +6,23 @@
 
 <#
 .Synopsis
-Gets the specified Azure Traffic Collector in a specified resource group
+Lists all of the available NetworkFunction Rest API operations.
 .Description
-Gets the specified Azure Traffic Collector in a specified resource group
+Lists all of the available NetworkFunction Rest API operations.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
-  [AzureTrafficCollectorName <String>]: Azure Traffic Collector name
-  [CollectorPolicyName <String>]: Collector Policy Name
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: Azure Subscription ID.
+Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IOperation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-azTrafficCollector
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-aznetworkfunctionoperation
 #>
-function Get-AzTrafficCollector {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+function Get-AzNetworkFunctionOperation {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IOperation])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
-    [System.String]
-    # Azure Traffic Collector name
-    ${Name},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # Azure Subscription ID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Get')]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
@@ -117,11 +71,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Get = 'TrafficCollector.private\Get-AzureTrafficCollector_Get';
-            GetViaIdentity = 'TrafficCollector.private\Get-AzureTrafficCollector_GetViaIdentity';
-        }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            List = 'TrafficCollector.private\Get-AzNetworkFunctionOperation_List';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -302,113 +252,14 @@ end {
 
 <#
 .Synopsis
-Lists all of the available NetworkFunction Rest API operations.
+Gets the specified Azure Traffic Collector in a specified resource group
 .Description
-Lists all of the available NetworkFunction Rest API operations.
+Gets the specified Azure Traffic Collector in a specified resource group
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IOperation
-.Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-networkfunctionoperation
-#>
-function Get-NetworkFunctionOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IOperation])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            List = 'TrafficCollector.private\Get-NetworkFunctionOperation_List';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
-}
-
-<#
-.Synopsis
-Creates or updates a Azure Traffic Collector resource
-.Description
-Creates or updates a Azure Traffic Collector resource
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity
 .Outputs
@@ -418,109 +269,53 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-COLLECTORPOLICIES <ICollectorPolicy[]>: Collector Policies for Azure Traffic Collector.
-  [EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
-    [EmissionDestinations <IEmissionPolicyDestination[]>]: Emission policy destinations.
-      [DestinationType <DestinationType?>]: Emission destination type.
-    [EmissionType <EmissionType?>]: Emission format type.
-  [IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
-    [ResourceId <String>]: Resource ID.
-    [SourceType <SourceType?>]: Ingestion source type.
-  [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
-
 INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
   [AzureTrafficCollectorName <String>]: Azure Traffic Collector name
   [CollectorPolicyName <String>]: Collector Policy Name
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
-
-PARAMETERS <IAzureTrafficCollector>: Azure Traffic Collector resource.
-  [Location <String>]: Resource location.
-  [Tags <IResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [CollectorPolicies <ICollectorPolicy[]>]: Collector Policies for Azure Traffic Collector.
-    [EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
-      [EmissionDestinations <IEmissionPolicyDestination[]>]: Emission policy destinations.
-        [DestinationType <DestinationType?>]: Emission destination type.
-      [EmissionType <EmissionType?>]: Emission format type.
-    [IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
-      [ResourceId <String>]: Resource ID.
-      [SourceType <SourceType?>]: Ingestion source type.
-    [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/new-aztrafficcollector
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/get-aztrafficcollector
 #>
-function New-AzTrafficCollector {
+function Get-AzTrafficCollector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
     [System.String]
     # Azure Traffic Collector name
     ${Name},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Create')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector]
-    # Azure Traffic Collector resource.
-    # To construct, see NOTES section for PARAMETERS properties and create a hash table.
-    ${Parameters},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy[]]
-    # Collector Policies for Azure Traffic Collector.
-    # To construct, see NOTES section for COLLECTORPOLICIES properties and create a hash table.
-    ${CollectorPolicies},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
-    [System.String]
-    # Resource location.
-    ${Location},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tags},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
+    [Parameter(ParameterSetName='Get')]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
@@ -541,12 +336,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
@@ -576,12 +365,11 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Create = 'TrafficCollector.private\New-AzureTrafficCollector_Create';
-            CreateExpanded = 'TrafficCollector.private\New-AzureTrafficCollector_CreateExpanded';
-            CreateViaIdentity = 'TrafficCollector.private\New-AzureTrafficCollector_CreateViaIdentity';
-            CreateViaIdentityExpanded = 'TrafficCollector.private\New-AzureTrafficCollector_CreateViaIdentityExpanded';
+            Get = 'TrafficCollector.private\Get-AzTrafficCollector_Get';
+            GetViaIdentity = 'TrafficCollector.private\Get-AzTrafficCollector_GetViaIdentity';
+            List = 'TrafficCollector.private\Get-AzTrafficCollector_List';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -833,60 +621,122 @@ end {
 
 <#
 .Synopsis
-Deletes a specified Azure Traffic Collector resource.
+Creates or updates a Azure Traffic Collector resource
 .Description
-Deletes a specified Azure Traffic Collector resource.
+Creates or updates a Azure Traffic Collector resource
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector
+.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+COLLECTORPOLICIES <ICollectorPolicy[]>: Collector Policies for Azure Traffic Collector.
+  [EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
+    [EmissionDestinations <IEmissionPolicyDestination[]>]: Emission policy destinations.
+      [DestinationType <DestinationType?>]: Emission destination type.
+    [EmissionType <EmissionType?>]: Emission format type.
+  [IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
+    [ResourceId <String>]: Resource ID.
+    [SourceType <SourceType?>]: Ingestion source type.
+  [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 
 INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
   [AzureTrafficCollectorName <String>]: Azure Traffic Collector name
   [CollectorPolicyName <String>]: Collector Policy Name
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
+
+PARAMETERS <IAzureTrafficCollector>: Azure Traffic Collector resource.
+  [Location <String>]: Resource location.
+  [Tags <IResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [CollectorPolicies <ICollectorPolicy[]>]: Collector Policies for Azure Traffic Collector.
+    [EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
+      [EmissionDestinations <IEmissionPolicyDestination[]>]: Emission policy destinations.
+        [DestinationType <DestinationType?>]: Emission destination type.
+      [EmissionType <EmissionType?>]: Emission format type.
+    [IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
+      [ResourceId <String>]: Resource ID.
+      [SourceType <SourceType?>]: Ingestion source type.
+    [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/remove-aztrafficcollector
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/new-aztrafficcollector
 #>
-function Remove-AzTrafficCollector {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function New-AzTrafficCollector {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
     [System.String]
     # Azure Traffic Collector name
     ${Name},
 
-    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Delete')]
+    [Parameter(ParameterSetName='Create')]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector]
+    # Azure Traffic Collector resource.
+    # To construct, see NOTES section for PARAMETERS properties and create a hash table.
+    ${Parameters},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy[]]
+    # Collector Policies for Azure Traffic Collector.
+    # To construct, see NOTES section for COLLECTORPOLICIES properties and create a hash table.
+    ${CollectorPolicies},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
+    [System.String]
+    # Resource location.
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tags},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
@@ -920,12 +770,6 @@ param(
     # Run the command asynchronously
     ${NoWait},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
     [System.Uri]
@@ -954,10 +798,12 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Delete = 'TrafficCollector.private\Remove-AzureTrafficCollector_Delete';
-            DeleteViaIdentity = 'TrafficCollector.private\Remove-AzureTrafficCollector_DeleteViaIdentity';
+            Create = 'TrafficCollector.private\New-AzTrafficCollector_Create';
+            CreateExpanded = 'TrafficCollector.private\New-AzTrafficCollector_CreateExpanded';
+            CreateViaIdentity = 'TrafficCollector.private\New-AzTrafficCollector_CreateViaIdentity';
+            CreateViaIdentityExpanded = 'TrafficCollector.private\New-AzTrafficCollector_CreateViaIdentityExpanded';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -1153,122 +999,60 @@ end {
 
 <#
 .Synopsis
-Creates or updates a Azure Traffic Collector resource
+Deletes a specified Azure Traffic Collector resource.
 .Description
-Creates or updates a Azure Traffic Collector resource
+Deletes a specified Azure Traffic Collector resource.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-COLLECTORPOLICIES <ICollectorPolicy[]>: Collector Policies for Azure Traffic Collector.
-  [EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
-    [EmissionDestinations <IEmissionPolicyDestination[]>]: Emission policy destinations.
-      [DestinationType <DestinationType?>]: Emission destination type.
-    [EmissionType <EmissionType?>]: Emission format type.
-  [IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
-    [ResourceId <String>]: Resource ID.
-    [SourceType <SourceType?>]: Ingestion source type.
-  [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 
 INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
   [AzureTrafficCollectorName <String>]: Azure Traffic Collector name
   [CollectorPolicyName <String>]: Collector Policy Name
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
-
-PARAMETERS <IAzureTrafficCollector>: Azure Traffic Collector resource.
-  [Location <String>]: Resource location.
-  [Tags <IResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [CollectorPolicies <ICollectorPolicy[]>]: Collector Policies for Azure Traffic Collector.
-    [EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
-      [EmissionDestinations <IEmissionPolicyDestination[]>]: Emission policy destinations.
-        [DestinationType <DestinationType?>]: Emission destination type.
-      [EmissionType <EmissionType?>]: Emission format type.
-    [IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
-      [ResourceId <String>]: Resource ID.
-      [SourceType <SourceType?>]: Ingestion source type.
-    [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/trafficcollector/set-azTrafficCollector
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/remove-aztrafficcollector
 #>
-function Set-AzTrafficCollector {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Remove-AzTrafficCollector {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
     [System.String]
     # Azure Traffic Collector name
     ${Name},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Update')]
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector]
-    # Azure Traffic Collector resource.
-    # To construct, see NOTES section for PARAMETERS properties and create a hash table.
-    ${Parameters},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy[]]
-    # Collector Policies for Azure Traffic Collector.
-    # To construct, see NOTES section for COLLECTORPOLICIES properties and create a hash table.
-    ${CollectorPolicies},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
-    [System.String]
-    # Resource location.
-    ${Location},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tags},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
@@ -1302,6 +1086,12 @@ param(
     # Run the command asynchronously
     ${NoWait},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
     [System.Uri]
@@ -1330,12 +1120,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Update = 'TrafficCollector.private\Set-AzureTrafficCollector_Update';
-            UpdateExpanded = 'TrafficCollector.private\Set-AzureTrafficCollector_UpdateExpanded';
-            UpdateViaIdentity = 'TrafficCollector.private\Set-AzureTrafficCollector_UpdateViaIdentity';
-            UpdateViaIdentityExpanded = 'TrafficCollector.private\Set-AzureTrafficCollector_UpdateViaIdentityExpanded';
+            Delete = 'TrafficCollector.private\Remove-AzTrafficCollector_Delete';
+            DeleteViaIdentity = 'TrafficCollector.private\Remove-AzTrafficCollector_DeleteViaIdentity';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -1553,6 +1341,221 @@ begin {
             UpdateExpanded = 'TrafficCollector.private\Set-AzTrafficCollectorPolicy_UpdateExpanded';
             UpdateViaIdentity = 'TrafficCollector.private\Set-AzTrafficCollectorPolicy_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'TrafficCollector.private\Set-AzTrafficCollectorPolicy_UpdateViaIdentityExpanded';
+        }
+        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        throw
+    }
+}
+
+end {
+    try {
+        $steppablePipeline.End()
+    } catch {
+        throw
+    }
+}
+}
+
+<#
+.Synopsis
+Creates or updates a Azure Traffic Collector resource
+.Description
+Creates or updates a Azure Traffic Collector resource
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+COLLECTORPOLICIES <ICollectorPolicy[]>: Collector Policies for Azure Traffic Collector.
+  [EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
+    [EmissionDestinations <IEmissionPolicyDestination[]>]: Emission policy destinations.
+      [DestinationType <DestinationType?>]: Emission destination type.
+    [EmissionType <EmissionType?>]: Emission format type.
+  [IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
+    [ResourceId <String>]: Resource ID.
+    [SourceType <SourceType?>]: Ingestion source type.
+  [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
+
+INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
+  [AzureTrafficCollectorName <String>]: Azure Traffic Collector name
+  [CollectorPolicyName <String>]: Collector Policy Name
+  [ResourceGroupName <String>]: The name of the resource group.
+  [SubscriptionId <String>]: Azure Subscription ID.
+
+PARAMETERS <IAzureTrafficCollector>: Azure Traffic Collector resource.
+  [Location <String>]: Resource location.
+  [Tags <IResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [CollectorPolicies <ICollectorPolicy[]>]: Collector Policies for Azure Traffic Collector.
+    [EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
+      [EmissionDestinations <IEmissionPolicyDestination[]>]: Emission policy destinations.
+        [DestinationType <DestinationType?>]: Emission destination type.
+      [EmissionType <EmissionType?>]: Emission format type.
+    [IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
+      [ResourceId <String>]: Resource ID.
+      [SourceType <SourceType?>]: Ingestion source type.
+    [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
+.Link
+https://docs.microsoft.com/en-us/powershell/module/trafficcollector/set-aztrafficcollector
+#>
+function Set-AzTrafficCollector {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
+    [System.String]
+    # Azure Traffic Collector name
+    ${Name},
+
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Update')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Azure Subscription ID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector]
+    # Azure Traffic Collector resource.
+    # To construct, see NOTES section for PARAMETERS properties and create a hash table.
+    ${Parameters},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy[]]
+    # Collector Policies for Azure Traffic Collector.
+    # To construct, see NOTES section for COLLECTORPOLICIES properties and create a hash table.
+    ${CollectorPolicies},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
+    [System.String]
+    # Resource location.
+    ${Location},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tags},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        $mapping = @{
+            Update = 'TrafficCollector.private\Set-AzTrafficCollector_Update';
+            UpdateExpanded = 'TrafficCollector.private\Set-AzTrafficCollector_UpdateExpanded';
+            UpdateViaIdentity = 'TrafficCollector.private\Set-AzTrafficCollector_UpdateViaIdentity';
+            UpdateViaIdentityExpanded = 'TrafficCollector.private\Set-AzTrafficCollector_UpdateViaIdentityExpanded';
         }
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
