@@ -12,41 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class OriginGroupTests
+    public class OriginGroupTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public OriginGroupTests(Xunit.Abstractions.ITestOutputHelper output)
+        public OriginGroupTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateOriginGroup()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateOriginGroup");
+            TestRunner.RunTestScript("Test-CreateOriginGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSetOriginGroup()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetSetOriginGroup");
+            TestRunner.RunTestScript("Test-GetSetOriginGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveOriginGroup()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveOriginGroup");
+            TestRunner.RunTestScript("Test-RemoveOriginGroup");
         }
 
     }

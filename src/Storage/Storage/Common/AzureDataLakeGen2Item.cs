@@ -104,6 +104,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public string Group { get; set; }
 
         /// <summary>
+        /// The PathItem properties of the item, the property only exist if the item is listout
+        /// </summary>
+        public PathItem ListPathItem { get; set; }
+
+        /// <summary>
         /// Azure DataLakeGen2 Item constructor
         /// </summary>
         /// <param name="blob">CloudBlockBlob blob object</param>
@@ -190,6 +195,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         {
             this.Name = item.Name;
             this.Path = item.Name;
+            this.ListPathItem = item;
             this.IsDirectory = item.IsDirectory is null ? false : item.IsDirectory.Value;
             DataLakePathClient pathclient = null;
             if (this.IsDirectory) // Directory

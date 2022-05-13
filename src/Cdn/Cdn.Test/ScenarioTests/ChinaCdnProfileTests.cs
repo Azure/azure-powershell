@@ -12,27 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class ChinaCdnProfileTests
+    public class ChinaCdnProfileTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public ChinaCdnProfileTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ChinaCdnProfileTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Test needs to be run by the China CDN team")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileList()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileList");
+            TestRunner.RunTestScript("Test-ProfileList");
         }
     }
 }

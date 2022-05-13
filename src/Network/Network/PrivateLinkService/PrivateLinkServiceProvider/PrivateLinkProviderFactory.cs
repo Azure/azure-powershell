@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                 return new NetworkingProvider(cmdlet);
             }
 
-            if(GenericProvider.SupportsPrivateLinkResourceType(privateLinkResourceType))
+            if(GenericProvider.SupportsPrivateLinkFeature(privateLinkResourceType))
             {
                 return new GenericProvider(cmdlet, subscription, privateLinkResourceType);
             }

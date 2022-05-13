@@ -24,7 +24,7 @@ Get-AzManagementGroup [-GroupName] <String> [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-The Get-AzManagementGroup cmdlet Gets all or a specific Management Group.
+The **Get-AzManagementGroup** cmdlet Gets all or a specific Management Group by its **GroupName**.
 
 ## EXAMPLES
 

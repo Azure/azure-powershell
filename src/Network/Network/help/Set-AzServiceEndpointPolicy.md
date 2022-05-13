@@ -18,13 +18,14 @@ Set-AzServiceEndpointPolicy -ServiceEndpointPolicy <PSServiceEndpointPolicy>
 ```
 
 ## DESCRIPTION
-The **Set-AzServiceEndpointPolicy** cmdlet create a service endpoint policy.
+The **Set-AzServiceEndpointPolicy** cmdlet updates a service endpoint policy.
 
 ## EXAMPLES
 
 ### Example 1: Sets a service endpoint policy
 ```powershell
-$serviceEndpointPolicy = Set-AzServiceEndpointPolicy -Name "Policy1" -ServiceEndpointPolicy $serviceEndpointPolicy -ResourceGroup "resourcegroup1"
+$serviceEndpointPolicy = Get-AzServiceEndpointPolicy -Name "Policy1" -ResourceGroupName "resourcegroup1"
+Set-AzServiceEndpointPolicy -ServiceEndpointPolicy $serviceEndpointPolicy
 ```
 
 This command updates a service endpoint policy named Policy1 defined by the object $serviceEndpointPolicy belong to the resourcegroup "resourcegroup1".

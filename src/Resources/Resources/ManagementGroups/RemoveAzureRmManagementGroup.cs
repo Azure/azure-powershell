@@ -59,11 +59,11 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
                 {
                     PreregisterSubscription();
 
-                    ManagementGroupsApiClient.ManagementGroups.Delete(GroupName);
+                    dynamic response = ManagementGroupsApiClient.ManagementGroups.Delete(GroupName);
 
                     if (PassThru.IsPresent)
                     {
-                        WriteObject(true);
+                        WriteObject(response);
                     }
                 }
             }

@@ -24,7 +24,7 @@ The **Get-AzAutoscaleHistory** cmdlet gets the history of events related to an A
 ## EXAMPLES
 
 ### Example 1: Get all events associated with a subscription
-```
+```powershell
 Get-AzAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -DetailedOutput
 ```
 

@@ -31,21 +31,21 @@ The **Get-AzNetworkInterfaceTapConfig** cmdlet gets an Azure Tap Configuration f
 
 ### Example 1: Get all tap configurations for a given network interface
 ```powershell
-Get-AzNetworkInterfaceTapConfig -ResourceGroupName "ResourceGroup1" -NetworkInterface "sourceNicName"
+Get-AzNetworkInterfaceTapConfig -ResourceGroupName "ResourceGroup1" -NetworkInterfaceName "sourceNicName"
 ```
 
 This command gets tap configurations added for the given network interface.
 
 ### Example 2: Get a given tap configuration
 ```powershell
-Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -NetworkInterface "sourceNicName" -Name "tapconfigName"
+Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -NetworkInterfaceName "sourceNicName" -Name "tapconfigName"
 ```
 
 This command gets specific tap configuration added for the given network interface.
 
 ### Example 3: Get a given tap configuration
 ```powershell
-Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -NetworkInterface "sourceNicName" -Name "tapconfig*"
+Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -NetworkInterfaceName "sourceNicName" -Name "tapconfig*"
 ```
 
 This command gets tap configurations added for the given network interface with name starting with "tapconfig".
