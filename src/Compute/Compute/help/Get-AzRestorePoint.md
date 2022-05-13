@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceView
-{{ Fill InstanceView Description }}
+InstanceView of the resource
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
