@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added an optional `Time` parameter in `Get-AzDataMigrationPerfDataCollection` to stop the perf collection after the given time 
 
 ## Version 0.10.0
 * Added support for migrating SQL Server databases to Azure SQL DB
