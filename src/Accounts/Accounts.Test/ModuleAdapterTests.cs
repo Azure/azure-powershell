@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
             internal static TelemetryProvider Create(IEventStore store)
             {
-                var profile = new AzurePSDataCollectionProfile(false);
+                var profile = new AzurePSDataCollectionProfile();
                 return new MockTelemetryProvider(profile, new MetricHelper(profile), store.GetWarningLogger(), store.GetDebugLogger());
             }
 

@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns></returns>
         public static TelemetryProvider Create(bool collect, IEventStore store)
         {
-            var profile = new AzurePSDataCollectionProfile(false);
+            var profile = new AzurePSDataCollectionProfile();
             var helper = CreateMetricHelper(profile);
             return new TelemetryProvider(profile, helper, store.GetWarningLogger(), store.GetDebugLogger());
         }
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.Common
             }
 
             warningLogger(Resources.DataCollectionEnabledWarning);
-            return new AzurePSDataCollectionProfile(true);
+            return new AzurePSDataCollectionProfile();
         }
 
         public void Dispose()

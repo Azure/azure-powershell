@@ -323,6 +323,7 @@ namespace Microsoft.Azure.Authentication.Test.Config
             var config2 = new SimpleTypedConfig<int>(key2, "", 0);
             const string key3 = "key3";
             var config3 = new SimpleTypedConfig<int>(key3, "", 0);
+            
             // register using wrong order
             var icm = GetConfigManager(config2, config1, config3);
 
@@ -333,6 +334,32 @@ namespace Microsoft.Azure.Authentication.Test.Config
                 Assert.Equal(key1, definitions.ElementAt(0).Key);
                 Assert.Equal(key2, definitions.ElementAt(1).Key);
                 Assert.Equal(key3, definitions.ElementAt(2).Key);
+            }
+
+        }
+
+        [Fact]
+        [Trait(TestTraits.AcceptanceType, TestTraits.CheckIn)]
+        public void ListConfigsShouldBeDictOrder()
+        {
+            const string key1 = "key1";
+            var config1 = new SimpleTypedConfig<int>(key1, "", 0);
+            const string key2 = "key2";
+            var config2 = new SimpleTypedConfig<int>(key2, "", 0);
+            const string key3 = "key3";
+            var config3 = new SimpleTypedConfig<int>(key3, "", 0);
+            var icm = GetConfigManager(config1, config2, config3);
+
+            // update second config
+            icm.UpdateConfig(key2, 1, ConfigScope.CurrentUser);
+
+            for (int i = 0; i != 10; ++i)
+            {
+                var configs = icm.ListConfigs();
+                // expect return with dict order
+                Assert.Equal(key1, configs.ElementAt(0).Definition.Key);
+                Assert.Equal(key2, configs.ElementAt(1).Definition.Key);
+                Assert.Equal(key3, configs.ElementAt(2).Definition.Key);
             }
         }
     }

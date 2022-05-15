@@ -14,12 +14,12 @@ Gets the configs of Azure PowerShell.
 
 ```
 Get-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
- [-DefaultSubscriptionForLogin] [-EnableDataCollection] [-EnableInterceptSurvey] [-SuppressWarningMessage]
- [<CommonParameters>]
+ [-DefaultSubscriptionForLogin] [-DisplayBreakingChangeWarnings] [-EnableDataCollection] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Gets the configs of Azure PowerShell.
+By default it lists all the configs. You can filter the result using various parameters.
 
 ## EXAMPLES
 
@@ -29,22 +29,39 @@ Get-AzConfig
 ```
 
 ```output
-Todo
+Key                           Value Applies To Scope       Help Message
+---                           ----- ---------- -----       ------------
+EnableDataCollection          False Az         CurrentUser When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the custom…
+DefaultSubscriptionForLogin         Az         Default     Subscription name or GUID. Sets the default context for Azure PowerShell when logging in with…
+DisplayBreakingChangeWarnings True  Az         Default     Controls if warning messages for breaking changes are displayed or suppressed. When enabled, …
 ```
 
-Todo
+Gets all the configs.
+
+### Example 2
+```powershell
+Get-AzConfig -EnableDataCollection
+```
+
+```output
+Key                           Value Applies To Scope       Help Message
+---                           ----- ---------- -----       ------------
+EnableDataCollection          False Az         CurrentUser When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the custom…
+```
+
+Gets the "EnableDataCollection" config.
 
 ## PARAMETERS
 
 ### -AppliesTo
 Specifies what part of Azure PowerShell the config applies to.
 Possible values are:
-- "Az": the config applies to all modules and cmdlets of Azure PowerShell.
+- "Az": the config applies to all modules and cmdlets of Azure PowerShell. 
 - Module name: the config applies to a certain module of Azure PowerShell.
 For example, "Az.Storage".
 - Cmdlet name: the config applies to a certain cmdlet of Azure PowerShell.
 For example, "Get-AzKeyVault".
-If not specified, when getting configs, output will be all of the above; when updating or clearing configs, it defaults to "Az"
+If not specified, when getting or clearing configs, it defaults to all the above; when updating, it defaults to "Az".
 
 ```yaml
 Type: System.String
@@ -75,7 +92,23 @@ Accept wildcard characters: False
 
 ### -DefaultSubscriptionForLogin
 Subscription name or GUID.
-If defined, when logging in Azure PowerShell without specifying the subscription, this one will be used to select the default context.
+Sets the default context for Azure PowerShell when logging in without specifying a subscription.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayBreakingChangeWarnings
+Controls if warning messages for breaking changes are displayed or suppressed.
+When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -90,22 +123,8 @@ Accept wildcard characters: False
 ```
 
 ### -EnableDataCollection
-todo
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableInterceptSurvey
-When enabled, a message of taking part in the survey about the user experience of Azure PowerShell will prompt at low frequency.
+When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience.
+For more information, see our privacy statement: https://aka.ms/privacy
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -136,22 +155,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SuppressWarningMessage
-Controls if the warning messages of upcoming breaking changes are enabled or suppressed.
-The messages are typically displayed when a cmdlet that will have breaking change in the future is executed.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -161,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Common.Authentication.Config.PSConfig
+### Microsoft.Azure.Commands.Profile.Models.PSConfig
 
 ## NOTES
 
