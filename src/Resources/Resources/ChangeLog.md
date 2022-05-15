@@ -20,12 +20,9 @@
 
 ## Upcoming Release
 
-## Version 5.6.0
-
 * Upgraded `subscriptionClient` for `Get-AzLocation`. Changed its apiVersion from 2016-01-01 to 2021-01-01.[#18002]
 * Added all attributes of location info for `Get-AzLocation`, including `pairedRegion` and so on. [#18045][#17536]
 * Support ExtendedLocations by `Get-AzLocation` [#18046]
-
 
 ## Version 5.5.0
 
