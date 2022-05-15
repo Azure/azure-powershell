@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
         protected const string GeoDRInputObjectParameterSet = "GeoDRConfigurationInputObjectSet";
         protected const string RuleInputObjectParameterSet = "RuleResourceIdSet";
-        protected const string NetwrokruleSetInputObjectParameterSet = "NetwrokruleSetInputObjectSet";
+        protected const string NetworkRuleSetInputObjectParameterSet = "NetworkRuleSetInputObjectSet";
         protected const string VirtualNetworkRuleInputObjectParameterSet = "VirtualNetworkRuleInputObjectParameterSet";
         protected const string IPRuleInputObjectParameterSet = "IPRuleInputObjectParameterSet";
 
@@ -100,8 +100,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string MigrationConfigurationParameterSet = "MigrationConfigurationPropertiesSet";
         protected const string RuleResourceParameterSet = "RulePropertiesSet";
         protected const string RuleResourceActionParameterSet = "RuleActionPropertiesSet";
-        protected const string NetwrokruleSetPropertiesParameterSet = "NetworkRuleSetPropertiesSet";
-        protected const string NetwrokruleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
+        protected const string NetworkRuleSetPropertiesParameterSet = "NetworkRuleSetPropertiesSet";
+        protected const string NetworkRuleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
         protected const string VirtualNetworkRulePropertiesParameterSet = "VirtualNetworkRulePropertiesParameterSet";
         protected const string IPRulePropertiesParameterSet = "IPRulePropertiesParameterSet";
 

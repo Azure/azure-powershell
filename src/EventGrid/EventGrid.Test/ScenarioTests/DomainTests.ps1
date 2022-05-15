@@ -115,6 +115,73 @@ function DomainTests {
 
 <#
 .SYNOPSIS
+Tests EventGrid Domain Identity
+#>
+function DomainIdentityTests {
+    # Setup
+    $location = Get-LocationForEventGrid
+    $domainName = Get-DomainName
+    $domainName2 = Get-DomainName
+    $domainName3 = Get-DomainName
+    $domainName4 = Get-DomainName
+
+    $resourceGroupName = Get-ResourceGroupName
+    $secondResourceGroup = Get-ResourceGroupName
+
+    $subscriptionId = Get-SubscriptionId
+
+    New-ResourceGroup $resourceGroupName $location
+
+    New-ResourceGroup $secondResourceGroup $location
+
+    try
+    {
+        Write-Debug "Creating a new EventGrid domain: $domainName in resource group $resourceGroupName"
+        Write-Debug "Domain: $domainName"
+        $result = New-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName -Location $location -IdentityType 'SystemAssigned'
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.Identity.IdentityType -eq "SystemAssigned"}
+
+        Write-Debug "Creating a second EventGrid domain: $domainName2 in resource group $secondResourceGroup with tags and none Identity"
+        $result = New-AzEventGridDomain -ResourceGroup $secondResourceGroup -Name $domainName2 -Location $location -Tag @{ Dept = "IT"; Environment = "Test" } -IdentityType 'None'
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.Identity.IdentityType -eq "None"}
+
+        Write-Debug "Creating a third EventGrid domain: $domainName3 in resource group $secondResourceGroup with user assigned identity"
+        $userIdentity = "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/amh/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testIdentity1"
+        $result = New-AzEventGridDomain -ResourceGroup $secondResourceGroup -Name $domainName3 -Location $location -IdentityType 'UserAssigned' -IdentityId $userIdentity
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.Identity.IdentityType -eq "UserAssigned"} "Domain not created with user identity"
+
+       
+
+        Write-Debug "Deleting domain: $domainName"
+        Remove-AzEventGridDomain -ResourceGroup $resourceGroupName -Name $domainName
+
+        Write-Debug "Deleting domain: $domainName2 using the ResourceID parameter set"
+        Remove-AzEventGridDomain -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$secondResourceGroup/providers/Microsoft.EventGrid/domains/$domainName2"
+
+        Write-Debug "Deleting domain: $domainName3 using the ResourceID parameter"
+        Remove-AzEventGridDomain -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$secondResourceGroup/providers/Microsoft.EventGrid/domains/$domainName3"
+
+        # Remove-AzEventGridDomain -ResourceGroup $secondResourceGroup -Name $domainName3
+
+        # Verify that all domains have been deleted correctly
+        $returnedDomains1 = Get-AzEventGridDomain -ResourceGroup $resourceGroupName
+        Assert-True {$returnedDomains1.PsDomainsList.Count -eq 0}
+
+        $returnedDomains2 = Get-AzEventGridDomain -ResourceGroup $secondResourceGroup
+        Assert-True {$returnedDomains2.PsDomainsList.Count -eq 0}
+    }
+    finally
+    {
+        Remove-ResourceGroup $resourceGroupName
+        Remove-ResourceGroup $secondResourceGroup
+    }
+}
+
+<#
+.SYNOPSIS
 Tests EventGrid Domain Key retrieval related operations.
 #>
 function DomainGetKeyTests {

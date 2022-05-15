@@ -37,7 +37,7 @@ connectivity.
 
 ### Example 1: Display the route table for the primary path
 ```powershell
-Get-AzExpressRouteCrossConnectionRouteTable -ResourceGroupName $RG -ExpressRouteCrossConnectionName $CircuitName -DevicePath 'Primary'
+Get-AzExpressRouteCrossConnectionRouteTable -ResourceGroupName $RG -CrossConnectionName $CircuitName -PeeringType MicrosoftPeering -DevicePath Primary
 ```
 
 ## PARAMETERS

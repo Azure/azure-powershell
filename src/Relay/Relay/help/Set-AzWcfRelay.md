@@ -32,8 +32,8 @@ The Set-AzWcfRelay cmdlet updates the description for the WcfRelay in the specif
 
 ### Example 1 - InputObject
 ```powershell
-$getWcfRelay = Get-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay
-$getWcfRelay.UserMetadata = "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  desc
+$getWcfRelay = Get-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay
+$getWcfRelay.UserMetadata = "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store desc
 riptive data, such as list of teams and their contact information also user-defined configuration settings can be stored."
 Set-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1 -InputObject $getWcfRelay
 ```
@@ -46,8 +46,8 @@ ListenerCount               :
 RequiresClientAuthorization : False
 RequiresTransportSecurity   : True
 IsDynamic                   : False
-UserMetadata                : usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  desc
-riptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
+UserMetadata                : usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store desc
+                              riptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
 Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Rel
                               ay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay2
 Name                        : TestWCFRelay2

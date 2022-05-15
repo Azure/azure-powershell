@@ -31,7 +31,7 @@ The **Remove-AzCosmosDBCassandraKeyspace** cmdlet deletes an existing CosmosDB C
 
 ### Example 1
 ```powershell
-Remove-AzCosmosDBCassandraKeyspace -ResourceGroupName {resourceGroupName} -AccountName {accountName} -Name {keyspaceName}
+Remove-AzCosmosDBCassandraKeyspace -ResourceGroupName "resourceGroupName" -AccountName "accountName" -Name "keyspaceName"
 ```
 
 The cmdlet returns an object of type bool(when -PassThru is passed) which is true if the delete was successful.

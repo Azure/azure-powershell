@@ -33,17 +33,6 @@ New-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Na
 
 This command creates a standard SKU workspace named MyWorkspace in the resource group named ContosoResourceGroup.
 
-### Example 2: Create a workspace and link it to an existing account
-```powershell
-$OILinkTargets = Get-AzOperationalInsightsLinkTargets
-
-$OILinkTargets[0] | New-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace"
-```
-
-The first command uses the Get-AzOperationalInsightsLinkTargets cmdlet to get Operational Insights account link targets, and then stores them in the $OILinkTargets variable.
-The second command passes the first account link target in $OILinkTargets to the **New-AzOperationalInsightsWorkspace** cmdlet by using the pipeline operator.
-The command creates a standard SKU workspace named MyWorkspace that is linked to the first Operational Insights account in $OILinkTargets.
-
 ## PARAMETERS
 
 ### -DefaultProfile

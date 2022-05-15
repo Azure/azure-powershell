@@ -49,8 +49,10 @@ Get a specific Application Insights web test definition.
 
 ### Example 1: List all Application Insights web tests under a subscription
 ```powershell
-PS C:\> Get-AzApplicationInsightsWebTest
+Get-AzApplicationInsightsWebTest
+```
 
+```output
 Name                                 Location WebTestKind ResourceGroupName
 ----                                 -------- ----------- -----------------
 bsaic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test
@@ -64,8 +66,10 @@ This command lists all Application Insights web tests under a subscription.
 
 ### Example 2: List all Application Insights web tests under a resource group
 ```powershell
-PS C:\> Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test
+Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test
+```
 
+```output
 Name                                 Location WebTestKind ResourceGroupName
 ----                                 -------- ----------- -----------------
 bsaic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test
@@ -79,12 +83,14 @@ This command lists all Application Insights web tests under a resource group.
 
 ### Example 3: List all Application Insights web tests under a specific Application Insights
 ```powershell
-PS C:\> Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -AppInsightsName appinsights-portal01
+Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -AppInsightsName appinsights-portal01
+```
 
+```output
 Name                                 Location WebTestKind ResourceGroupName   Enabled
 ----                                 -------- ----------- -----------------   -------
 bsaic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test      True
-basic-portal02-appinsights-portal01  westus2  ping        azpwsh-rg-test      True  
+basic-portal02-appinsights-portal01  westus2  ping        azpwsh-rg-test      True
 basic-portal03-appinsights-portal01  westus2  ping        azpwsh-rg-test      True
 standard-portal-appinsights-portal01 westus2  standard    azpwsh-rg-test      True
 standard-pwsh01                      westus2  standard    azpwsh-rg-test      True
@@ -94,8 +100,10 @@ This command lists all Application Insights web tests under a specific Applicati
 
 ### Example 4: Get a specific Application Insights web test definition
 ```powershell
-PS C:\> Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name standard-pwsh01
+Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name standard-pwsh01
+```
 
+```output
 Name            Location WebTestKind ResourceGroupName  Enabled
 ----            -------- ----------- -----------------  -------
 standard-pwsh01 westus2  standard    azpwsh-rg-test     True
@@ -105,15 +113,17 @@ This command gets a specific Application Insights web test definition.
 
 ### Example 5: Get a specific Application Insights web test definition by pipeline
 ```powershell
-PS C:\> $location01 = New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
-PS C:\> $location02 = New-AzApplicationInsightsWebTestGeolocationObject -Location "us-ca-sjc-azr"
-PS C:\> New-AzApplicationInsightsWebTest -ResourceGroup azpwsh-rg-test -Name standardwebtestpwsh03 -Location 'westus2' `
+$location01 = New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
+$location02 = New-AzApplicationInsightsWebTestGeolocationObject -Location "us-ca-sjc-azr"
+New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name standardwebtestpwsh03 -Location 'westus2' `
 -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/appinsightsportal01" = "Resource"} `
--RequestUrl "https://docs.microsoft.com/"  -RequestHttpVerb "GET" `
--NameInAppInsights 'standardwebtestpwsh03' `
+-RequestUrl "https://docs.microsoft.com/" -RequestHttpVerb "GET" `
+-TestName 'standardwebtestpwsh03' `
 -RuleSslCheck -RuleSslCertRemainingLifetimeCheck 7 -RuleExpectedHttpStatusCode 200 `
--Enabled -Frequency 300 -Timeout 120 -WebTestKind "standard" -RetryEnabled -GeoLocations $location01, $location02 ` |Get-AzApplicationInsightsWebTest
+-Enabled -Frequency 300 -Timeout 120 -Kind "standard" -RetryEnabled -GeoLocation $location01, $location02 ` |Get-AzApplicationInsightsWebTest
+```
 
+```output
 Name                    Location WebTestKind ResourceGroupName  Enabled
 ----                    -------- ----------- -----------------  -------
 standardwebtestpwsh03   westus2  standard    azpwsh-rg-test     True
@@ -236,9 +246,15 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
+  - `[AnnotationId <String>]`: The unique annotation ID. This is unique within a Application Insights component.
   - `[ComponentName <String>]`: The name of the Application Insights component resource.
+  - `[ExportId <String>]`: The Continuous Export configuration ID. This is unique within a Application Insights component.
   - `[Id <String>]`: Resource identity path
+  - `[KeyId <String>]`: The API Key ID. This is unique within a Application Insights component.
+  - `[PurgeId <String>]`: In a purge status request, this is the Id of the operation the status of which is returned.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[ResourceName <String>]`: The name of the Application Insights component resource.
+  - `[StorageType <StorageType?>]`: The type of the Application Insights component data source for the linked storage account.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 

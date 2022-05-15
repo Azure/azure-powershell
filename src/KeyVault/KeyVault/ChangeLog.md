@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `Rotate` into the list of permissions to keys [#17970]
+
+## Version 4.4.0
+* Supported getting random number from managed HSM by `Get-AzKeyVaultRandomNumber`
+* Skipped subscription connection status validation for Az.KeyVault.Extension [#17712]
+* Enabled public network access setting
 
 ## Version 4.3.1
 * Fixed a bug to continue visiting `NextPageLink` when listing key vaults from ARM API

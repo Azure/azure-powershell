@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestNewGetUpdateSetRemoveScheduledQueryRule()
         {
             TestsController.NewInstance.RunPsTest(_logger, "Test-NewGetUpdateSetRemoveScheduledQueryRule");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestPipingRemoveSetUpdateScheduledQueryRule()
         {
             TestsController.NewInstance.RunPsTest(_logger, "Test-PipingRemoveSetUpdateScheduledQueryRule");

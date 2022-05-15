@@ -138,7 +138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021090
             }
             if (content.Contains("EmptyDir"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeInternal)this).EmptyDir = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IAny) content.GetValueForProperty("EmptyDir",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeInternal)this).EmptyDir, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.AnyTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeInternal)this).EmptyDir = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeEmptyDir) content.GetValueForProperty("EmptyDir",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeInternal)this).EmptyDir, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.VolumeEmptyDirTypeConverter.ConvertFrom);
             }
             if (content.Contains("Secret"))
             {
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021090
             }
             if (content.Contains("EmptyDir"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeInternal)this).EmptyDir = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IAny) content.GetValueForProperty("EmptyDir",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeInternal)this).EmptyDir, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.AnyTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeInternal)this).EmptyDir = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeEmptyDir) content.GetValueForProperty("EmptyDir",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeInternal)this).EmptyDir, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.VolumeEmptyDirTypeConverter.ConvertFrom);
             }
             if (content.Contains("Secret"))
             {

@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestAddAzureRmWebtestAlertRuleV2()
         {
             TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmMetricAlertRuleV2-Webtest");

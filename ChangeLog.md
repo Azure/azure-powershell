@@ -1,3 +1,130 @@
+## 7.5.0 - April 2022
+#### Az.Accounts
+* Upgraded Microsoft.Rest.ClientRuntime to 2.3.24
+
+#### Az.Aks
+* Updated the description of 'Force' in 'Invoke-AzAksRunCommand' [#17756]
+* Fixed the issue that 'identity' cannot be piped into 'Set-AzAksCluster' [#17376]
+
+#### Az.ApiManagement
+Added warning message for upcoming breaking change.
+
+#### Az.Batch
+* Updated Az.Batch to use 'Microsoft.Azure.Batch' SDK version 15.3.0
+  - Add ability to assign user-assigned managed identities to 'PSCloudPool'. These identities will be made available on each node in the pool, and can be used to access various resources.
+  - Added 'IdentityReference' property to the following models to support accessing resources via managed identity:
+    - 'PSAzureBlobFileSystemConfiguration'
+    - 'PSOutputFileBlobContainerDestination'
+    - 'PSContainerRegistry'
+    - 'PSResourceFile'
+    - 'PSUploadBatchServiceLogsConfiguration'
+  - Added new 'extensions' property to 'PSVirtualMachineConfiguration' on 'PSCloudPool' to specify virtual machine extensions for nodes
+  - Added the ability to specify availability zones using a new property 'NodePlacementConfiguration' on 'VirtualMachineConfiguration'
+  - Added new 'OSDisk' property to 'VirtualMachineConfiguration', which contains settings for the operating system disk of the Virtual Machine.
+    - The 'Placement' property on 'PSDiffDiskSettings' specifies the ephemeral disk placement for operating system disks for all VMs in the pool. Setting it to 'CacheDisk' will store the ephemeral OS disk on the VM cache.
+  - Added 'MaxParallelTasks' property on 'PSCloudJob' to control the maximum allowed tasks per job (defaults to -1, meaning unlimited).
+  - Added 'VirtualMachineInfo' property on 'PSComputeNode' which contains information about the current state of the virtual machine, including the exact version of the marketplace image the VM is using.
+  - Added 'RecurrenceInterval' property to 'PSSchedule' to control the interval between the start times of two successive job under a job schedule.
+  - Added a new 'Get-AzBatchComputeNodeExtension' command, which gets a specific extension by name, or a list of all extensions, for a given compute node.
+* Updated Az.Batch'Microsoft.Azure.Management.Batch' SDK version 14.0.0.
+  - Added a new 'Get-AzBatchSupportedVirtualMachineSku' command, which gets the list of Batch-supported Virtual Machine VM sizes available at a given location.
+  - Added a new 'Get-AzBatchTaskSlotCount' command, which gets the number of task slots required by a given job.
+  - 'MaxTasksPerComputeNode' has been renamed to 'TaskSlotsPerNode', to match a change in functionality.
+    - 'MaxTasksPerComputeNode' will remain as an alias but will be removed in a coming update.
+
+#### Az.Cdn
+* Added breaking change messages for all cmdlets in Az.CDN module
+
+#### Az.CognitiveServices
+* Updated CognitiveServices PowerShell to use 2022-03-01 version.
+* Added 'Get-AzCognitiveServicesAccountModel' cmdlet.
+
+#### Az.Compute
+* Added '-ImageReferenceId' parameter to following cmdlets: 'New-AzVm', 'New-AzVmConfig', 'New-AzVmss', 'Set-AzVmssStorageProfile'
+* Added functionality for cross-tenant image reference for VM, VMSS, Managed Disk, and Gallery Image Version creation. 
+* 'New-AzGallery' can take in '-Permission' parameter to set its sharingProfile property.
+* 'Update-AzGallery' can update sharingProfile.
+* 'Get-AzGallery' can take in '-Expand' parameter for expanded resource view.
+* New parameter set for the following cmdlets to support Shared Image Gallery Direct Sharing
+    - Get-AzGallery
+    - Get-AzGalleryImageDefinition
+    - Get-AzGalleryImageVersion
+* Updates and improvements to 'Add-AzVhd'
+    - Added '-DiskHyperVGeneration' and '-DiskOsType' parameters to the DirectUploadToManagedDisk parameter set for upload to more robust managed disk settings.
+    - Updated progress output functions so that it works with VHD files with '&' character in its name.
+    - Updated so that uploading dynamically sized VHD files are converted to fixed size during upload.
+    - Fixed a bug in uploading a differencing disk.
+    - Automatically delete converted/resized VHD files after upload.
+    - Fixed a bug that indicates '-ResourceGroupName' parameter as optional when it is actually mandatory.
+
+#### Az.ContainerInstance
+* Supported empty directory volume and secret volume for creating container group [#17410]
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 6.0.0
+
+#### Az.EventHub
+* Deprecating older MSI related fields in New-AzEventHubNamespace and Set-AzEventHubNamespace
+
+#### Az.KeyVault
+* Supported getting random number from managed HSM by 'Get-AzKeyVaultRandomNumber'
+* Skipped subscription connection status validation for Az.KeyVault.Extension [#17712]
+* Enabled public network access setting
+
+#### Az.Kusto
+* Supported inline script resource (creation of script with content instead of sas token)
+* Added managed identity support to EventGrid
+* Added databaseRouting (Single/Multi) to all data connections
+* Added PublicIPType to cluster
+
+#### Az.Network
+* Fixed 'ArgumentNullException' in 'Add-AzureRmRouteConfig' when 'RouteTable.Routes' is null.
+
+#### Az.RecoveryServices
+* Added support for multiple backups per day (hourly) Enhanced policy for workloadType AzureVM.
+
+#### Az.Resources
+* Fixed redundant quotes in list pagination [#17667]
+* Added cmdlet 'Update-AzADGroup' [#17514]
+* Updated API version to beta for group member related cmdlet to allow service principal to be add, get and delete from group [#16698]
+* Added parameter '-OwnedApplication' for 'Get-AzADApplication' to get applications owned by current user
+* Added parameter '-Web' for 'Update-AzADApplication' [#16750]
+
+#### Az.Security
+* Added new cmdlets for security Automations API
+
+#### Az.StackHCI
+* Updated firewall rules for Attestation network to block all other traffic
+* Updated cluster to ignore Attestation network
+
+#### Az.Storage
+* Supported DaysAfterLastTierChangeGreaterThan in Management Policy
+    -  'Add-AzStorageAccountManagementPolicyAction'
+* Fixed the issue that upload blob might fail on Linux [#17743]
+    -  'Set-AzStorageBlobContent'
+* Supported AllowPermanentDelete when enable blob soft delete
+    - 'Enable-AzStorageBlobDeleteRetentionPolicy'
+* Added breaking change warning message for upcoming cmdlet breaking change
+    - 'Get-AzStorageFile'
+
+#### Az.Synapse
+* Added support for Synapse Azure Active Directory (Azure AD) only authentication
+    - Added 'Get-AzSynapseActiveDirectoryOnlyAuthentication' cmdlet
+    - Added 'Enable-AzSynapseActiveDirectoryOnlyAuthentication' cmdlet
+    - Added 'Disable-AzSynapseActiveDirectoryOnlyAuthentication' cmdlet
+
+#### Az.Websites
+* Updated 'New-AzWebAppContainerPSSession' with CmdletDeprecation Attribute [#16646]
+* Updated 'Restore-AzDeletedWebApp' to fix issue that prevents the cmdlet from working on hosts with a locale is anything different from 'en-US'
+
+### Thanks to our community contributors
+* Aleksandar Nikolić (@alexandair), Fix the UniqueName property in the examples (#17826)
+* @enevoj, Markup rendering issue? (#17732)
+* @jeremytanyz, Update Set-AzStorageFileContent.md (#17805)
+* Martin Bentancour (@mbentancour), Fix DateTime issue restoring deleted webapp  (#16308)
+* Preben Huybrechts (@pregress), Perform null check before accessing it (#16552)
+* Ryan Buckman (@ryan-buckman), update example 1 command description to match the ApiRevision arg in code sample (#17741)
+
 ## 7.4.0 - April 2022
 #### Az.Accounts
 * Added 'SshCredentialFactory' to support get ssh credential of vm from msal.

@@ -25,8 +25,8 @@ The **Unregister-AzAutomationDscNode** cmdlet removes an APS Desired State Confi
 ## EXAMPLES
 
 ### Example 1: Remove an Azure DSC node from management by an Automation account
-```
-PS C:\>Unregister-AzAutomationDscNode -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Id 064a8929-c98b-25e4-80hh-111ca86067j8
+```powershell
+Unregister-AzAutomationDscNode -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Id 064a8929-c98b-25e4-80hh-111ca86067j8
 ```
 
 This command removes the DSC node that has the specified GUID from management by the Automation account named Contoso17.

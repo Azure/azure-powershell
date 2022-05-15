@@ -106,6 +106,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath);
 
+        byte[] GetManagedHsmRandomNumber(string managedHsmName, int count);
+
         #region Key rotation
         PSKeyVaultKey RotateManagedHsmKey(string managedHsmName, string keyName);
 

@@ -31,6 +31,7 @@ Gets the details of the upgrade profile for a managed cluster with a specified r
 
 ### [Get-AzAksVersion](Get-AzAksVersion.md)
 List available version for creating managed Kubernetes cluster.
+The operation returns properties of each orchestrator including version, available upgrades and whether that version or upgrades are in preview.
 
 ### [Import-AzAksCredential](Import-AzAksCredential.md)
 Import and merge Kubectl config for a managed Kubernetes Cluster.
@@ -43,6 +44,10 @@ Run a shell command (with kubectl, helm) on your aks cluster, support attaching 
 
 ### [New-AzAksCluster](New-AzAksCluster.md)
 Create a new managed Kubernetes cluster.
+
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- POST /servicePrincipals
 
 ### [New-AzAksNodePool](New-AzAksNodePool.md)
 Create a new node pool in specified cluster.

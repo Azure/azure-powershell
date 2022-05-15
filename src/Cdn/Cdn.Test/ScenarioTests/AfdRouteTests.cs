@@ -17,28 +17,24 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class AfdRouteTests
+    public class AfdRouteTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public AfdRouteTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AfdRouteTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Test is flaky due to creation of custom domain issue which prolongs response time. Will enable once RP issue is resolved.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAfdRoute()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAfdRoute");
+            TestRunner.RunTestScript("Test-CreateAfdRoute");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAfdRoute()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAfdRoute");
+            TestRunner.RunTestScript("Test-GetAfdRoute");
         }
     }
 }

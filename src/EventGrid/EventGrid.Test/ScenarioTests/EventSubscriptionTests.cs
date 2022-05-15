@@ -13,86 +13,80 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
 {
-    public class EventSubscriptionTests : RMTestBase
+    public class EventSubscriptionTests : EventGridTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public EventSubscriptionTests(ITestOutputHelper output)
+        public EventSubscriptionTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_CustomTopics()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_CustomTopic");
+            TestRunner.RunTestScript("EventSubscriptionTests_CustomTopic");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_CustomTopics_InputMapping()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_CustomTopic_InputMapping");
+            TestRunner.RunTestScript("EventSubscriptionTests_CustomTopic_InputMapping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_CustomTopics_WebhookBatching()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_CustomTopic_Webhook_Batching");
+            TestRunner.RunTestScript("EventSubscriptionTests_CustomTopic_Webhook_Batching");
         }
 
-        [Fact]
+        /* not applicable [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_CustomTopics_WebhookAad()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_CustomTopic_Webhook_AAD");
-        }
+            TestRunner.RunTestScript("EventSubscriptionTests_CustomTopic_Webhook_AAD");
+        }*/
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_AzureSubscription()
         {
             // NOTE: Uncomment when testing in live mode.
-            // EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Subscription");
+            // TestRunner.RunTestScript("EventSubscriptionTests_Subscription");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_AzureSubscription2()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Subscription2");
+            TestRunner.RunTestScript("EventSubscriptionTests_Subscription2");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_ResourceGroup()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_ResourceGroup");
+            TestRunner.RunTestScript("EventSubscriptionTests_ResourceGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_ResourceGroup2()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_ResourceGroup2");
+            TestRunner.RunTestScript("EventSubscriptionTests_ResourceGroup2");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_ResourceCRUD()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Resource");
+            TestRunner.RunTestScript("EventSubscriptionTests_Resource");
         }
 
         [Fact]
@@ -100,21 +94,21 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
         public void EventGrid_EventSubscription_Deadletter()
         {
             // NOTE: Uncomment when testing in live mode.
-            // EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Deadletter");
+            // TestRunner.RunTestScript("EventSubscriptionTests_Deadletter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_Domains()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Domains");
+            TestRunner.RunTestScript("EventSubscriptionTests_Domains");
         }
 
-        [Fact]
+        /* no longer applicable[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_DomainTopics()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_DomainTopics");
-        }
+            TestRunner.RunTestScript("EventSubscriptionTests_DomainTopics");
+        }*/
     }
 }
