@@ -244,7 +244,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IClusterPrincipalAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IClusterPrincipalAssignment
 
 ## NOTES
 

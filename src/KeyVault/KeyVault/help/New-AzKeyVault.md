@@ -16,9 +16,10 @@ Creates a key vault.
 ```
 New-AzKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <String> [-EnabledForDeployment]
  [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-EnablePurgeProtection]
- [-EnableRbacAuthorization] [-SoftDeleteRetentionInDays <Int32>] [-Sku <String>] [-Tag <Hashtable>]
- [-NetworkRuleSet <PSKeyVaultNetworkRuleSet>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-EnableRbacAuthorization] [-SoftDeleteRetentionInDays <Int32>] [-PublicNetworkAccess <String>]
+ [-Sku <String>] [-Tag <Hashtable>] [-NetworkRuleSet <PSKeyVaultNetworkRuleSet>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -268,6 +269,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicNetworkAccess
+Specifies whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules. By default, we will enable public network access.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of an existing resource group in which to create the key vault.
 
@@ -385,8 +401,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### System.Management.Automation.SwitchParameter
-
-### Microsoft.Azure.Management.KeyVault.Models.SkuName
 
 ### System.Collections.Hashtable
 

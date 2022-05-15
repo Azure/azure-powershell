@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.NetApp" Version="1.15.0" />
+    <PackageReference Include="Microsoft.Azure.Management.NetApp" Version="1.16.0" />
   </ItemGroup>
 
   <ItemGroup>

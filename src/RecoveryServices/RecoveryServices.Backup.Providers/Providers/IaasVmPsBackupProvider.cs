@@ -1147,7 +1147,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     defaultSchedule.WeeklySchedule.ScheduleRunDays = new List<System.DayOfWeek>();
                     defaultSchedule.WeeklySchedule.ScheduleRunDays.Add(System.DayOfWeek.Sunday);
                 }
-                /*else if (scheduleRunFrequency == CmdletModel.ScheduleRunType.Hourly) // this shouldn't be supported as of now
+                else if (scheduleRunFrequency == CmdletModel.ScheduleRunType.Hourly) 
                 {
                     int hour = 07, minute = 30;
                     scheduleTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month,
@@ -1157,7 +1157,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     defaultSchedule.HourlySchedule.WindowStartTime = scheduleTime;
                     defaultSchedule.HourlySchedule.Interval = 4;
                     defaultSchedule.HourlySchedule.WindowDuration = 24;                    
-                }*/
+                }
 
                 defaultSchedule.ScheduleRunTimeZone = DateTimeKind.Utc.ToString().ToUpper();
 

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Sql</PsModuleName>
@@ -13,13 +13,13 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.26.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="4.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="21.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="22.0.0" />
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.2.0-preview" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="4.0.0-preview.1" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.24.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="2.1.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="3.0.0-preview" />
   </ItemGroup>
 
   <ItemGroup>

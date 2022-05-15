@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
                 cfg.CreateMap<ManagedClusterAgentPoolProfile,PSContainerServiceAgentPoolProfile>().ReverseMap();
                 cfg.CreateMap<ManagedClusterAPIServerAccessProfile, PSManagedClusterAPIServerAccessProfile>().ReverseMap();
                 cfg.CreateMap<ManagedClusterIdentity,PSManagedClusterIdentity>().ReverseMap();
+                cfg.CreateMap<ManagedClusterIdentityUserAssignedIdentitiesValue, PSManagedClusterIdentityUserAssignedIdentitiesValue>().ReverseMap();
                 cfg.CreateMap<ManagedClusterLoadBalancerProfile, PSManagedClusterLoadBalancerProfile>().ReverseMap();
                 cfg.CreateMap<ManagedClusterLoadBalancerProfileManagedOutboundIPs,PSManagedClusterLoadBalancerProfileManagedOutboundIPs>().ReverseMap();
                 cfg.CreateMap<ManagedClusterLoadBalancerProfileOutboundIPPrefixes, PSManagedClusterLoadBalancerProfileOutboundIPPrefixes>().ReverseMap();

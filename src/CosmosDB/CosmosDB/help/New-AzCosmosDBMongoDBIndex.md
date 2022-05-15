@@ -24,7 +24,7 @@ The **New-AzCosmosDBMongoDBIndex** creates a new CosmosDB MongoDB Index.
 
 ### Example 1
 ```powershell
-New-AzCosmosDBMongoDBIndex -TtlInSeconds {val} -Unique 1 -Key "key1"
+New-AzCosmosDBMongoDBIndex -TtlInSeconds 604800 -Unique 1 -Key "key1"
 ```
 
 ```output

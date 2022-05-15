@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="7.0.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="8.0.0-preview" />
   </ItemGroup>
 
   <ItemGroup>

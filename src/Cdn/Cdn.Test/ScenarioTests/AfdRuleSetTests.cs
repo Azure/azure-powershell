@@ -17,28 +17,24 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class AfdRuleSetTests
+    public class AfdRuleSetTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public AfdRuleSetTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AfdRuleSetTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAfdRuleSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAfdRuleSet");
+            TestRunner.RunTestScript("Test-CreateAfdRuleSet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAfdRuleSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveAfdRuleSet");
+            TestRunner.RunTestScript("Test-RemoveAfdRuleSet");
         }
     }
 }

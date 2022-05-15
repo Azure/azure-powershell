@@ -37,7 +37,7 @@ The **New-AzSearchQueryKey** cmdlet creates a new query key for the Azure Cognit
 
 ### Example 1
 ```powershell
-New-AzSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -Name "NewQueryKey1" -Force
+New-AzSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -Name "NewQueryKey1"
 ```
 ```output
 Name         Key                             

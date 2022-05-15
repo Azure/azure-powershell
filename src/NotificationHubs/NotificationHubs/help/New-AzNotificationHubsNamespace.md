@@ -41,7 +41,7 @@ The namespace will be located in the West US datacenter and be assigned to the C
 
 ### Example 2: Create a notification hub with tags
 ```powershell
-New-AzNotificationHubsNamespace -ResourceGroup "ContosoNotificationsGroup" -Location "West US" -Namespace "ContosoPartners" -Tags @{Name="Audience";Value="PartnerOrganizations"}
+New-AzNotificationHubsNamespace -ResourceGroup "ContosoNotificationsGroup" -Location "West US" -Namespace "ContosoPartners" -Tag @{Name="Audience";Value="PartnerOrganizations"}
 ```
 
 This command creates a notification hub named ContosoPartners.

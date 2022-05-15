@@ -17,42 +17,38 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class AfdOriginGroupTests
+    public class AfdOriginGroupTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public AfdOriginGroupTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AfdOriginGroupTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAfdOriginGroup()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAfdOriginGroup");
+            TestRunner.RunTestScript("Test-CreateAfdOriginGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAfdOriginGroup()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAfdOriginGroup");
+            TestRunner.RunTestScript("Test-GetAfdOriginGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAfdOriginGroup()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetAfdOriginGroup");
+            TestRunner.RunTestScript("Test-SetAfdOriginGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAfdOriginGroup()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveAfdOriginGroup");
+            TestRunner.RunTestScript("Test-RemoveAfdOriginGroup");
         }
     }
 }

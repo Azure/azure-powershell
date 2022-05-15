@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         private static IDictionary<string, Version> NetFxPreloadAssemblies =
             new Dictionary<string, Version>(StringComparer.InvariantCultureIgnoreCase)
             {
-                {"Azure.Core", new Version("1.22.0.0")},
+                {"Azure.Core", new Version("1.24.0.0")},
                 {"Microsoft.Bcl.AsyncInterfaces", new Version("1.1.1.0")},
-                {"Microsoft.Identity.Client", new Version("4.30.1.0") },
-                {"Microsoft.Identity.Client.Extensions.Msal", new Version("2.18.4.0") },
+                {"Microsoft.Identity.Client", new Version("4.39.0.0") },
+                {"Microsoft.Identity.Client.Extensions.Msal", new Version("2.19.3.0") },
                 {"Microsoft.IdentityModel.Clients.ActiveDirectory", new Version("3.19.2.6005")},
                 {"Microsoft.IdentityModel.Clients.ActiveDirectory.Platform", new Version("3.19.2.6005")},
                 {"Newtonsoft.Json", new Version("10.0.0.0")},
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {"System.Net.Http.WinHttpHandler", new Version("4.0.2.0")},
                 {"System.Numerics.Vectors", new Version("4.1.4.0")},
                 {"System.Private.ServiceModel", new Version("4.7.0.0")}, //used by Compute
-                {"System.Reflection.DispatchProxy", new Version("4.0.3.0")},
+                {"System.Reflection.DispatchProxy", new Version("4.0.4.0")},
                 {"System.Runtime.CompilerServices.Unsafe", new Version("4.0.6.0")},
                 {"System.Security.AccessControl", new Version("4.1.1.0")},
                 {"System.Security.Cryptography.Cng", new Version("4.3.0.0")},

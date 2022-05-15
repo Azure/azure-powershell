@@ -17,21 +17,17 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class AfdSecurityPolicyTests
+    public class AfdSecurityPolicyTests : CdnTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public AfdSecurityPolicyTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AfdSecurityPolicyTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAfdSecurityPolicy()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAfdSecurityPolicy");
+            TestRunner.RunTestScript("Test-GetAfdSecurityPolicy");
         }
     }
 }

@@ -102,21 +102,21 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
-        /// Log a telemtry event
+        /// Log a telemetry event
         /// </summary>
-        /// <param name="qosEvent">The event to log</param>
-        public virtual void LogEvent(string key)
+        /// <param name="qosEventKey">The event to log</param>
+        public virtual void LogEvent(string qosEventKey)
         {
             var dataCollection = _dataCollectionProfile.EnableAzureDataCollection;
             var enabled = dataCollection.HasValue ? dataCollection.Value : true;
 
-            AzurePSQoSEvent qos;
-            if (this.TryGetValue(key, out qos))
+            AzurePSQoSEvent qosEvent;
+            if (this.TryGetValue(qosEventKey, out qosEvent))
             {
-                qos.FinishQosEvent();
-                _helper.LogQoSEvent(qos, enabled, enabled);
+                qosEvent.FinishQosEvent();
+                _helper.LogQoSEvent(qosEvent, enabled, enabled);
                 _helper.FlushMetric();
-                this.Remove(key);
+                this.Remove(qosEventKey);
             }
         }
 

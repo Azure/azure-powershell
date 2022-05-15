@@ -29,8 +29,7 @@ Creates a new MySQL flexible server.
 
 ### Example 1: Create a new MySql flexible server with arguments
 ```powershell
-New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
--Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_D2ds_v4 -SkuTier Burstable -Version 12 -StorageInMb 20480 -PublicAccess none -Zone 1 -BackupRetentionDay 10 -StorageAutogrow Enabled -Iops 500 -HighAvailability ZoneRedundant
+New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_D2ds_v4 -SkuTier Burstable -Version 12 -StorageInMb 20480 -PublicAccess none -Zone 1 -BackupRetentionDay 10 -StorageAutogrow Enabled -Iops 500 -HighAvailability ZoneRedundant
 ```
 
 ```output

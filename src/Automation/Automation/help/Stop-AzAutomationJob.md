@@ -25,8 +25,8 @@ Specify a running Automation job.
 ## EXAMPLES
 
 ### Example 1: Stop a job
-```
-PS C:\>Stop-AzAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64 -ResourceGroupName "ResourceGroup01"
+```powershell
+Stop-AzAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64 -ResourceGroupName "ResourceGroup01"
 ```
 
 This command stops the job that has the specified ID.

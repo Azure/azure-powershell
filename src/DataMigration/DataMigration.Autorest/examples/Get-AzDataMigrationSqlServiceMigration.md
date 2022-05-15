@@ -1,7 +1,9 @@
 ### Example 1: Get the list of database migrations attached to a given Sql Migration Service
 ```powershell
-PS C:\> Get-AzDataMigrationSqlServiceMigration -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
+Get-AzDataMigrationSqlServiceMigration -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
+```
 
+```output
 Name                                   Type                                       Kind  ProvisioningState MigrationStatus
 ----                                   ----                                       ----  ----------------- ---------------
 MyDatabase                             Microsoft.DataMigration/databaseMigrations SqlMi Succeeded         InProgress

@@ -27,7 +27,7 @@ The **Disable-AzSqlServerAdvancedDataSecurity** cmdlet disables Advanced Data Se
 ```powershell
 Disable-AzSqlServerAdvancedDataSecurity `
             -ResourceGroupName "ResourceGroup01" `
-            -ServerName "Server01" 
+            -ServerName "Server01"
 ```
 
 ```output

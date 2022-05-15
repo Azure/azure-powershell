@@ -16,7 +16,7 @@ Creates an instance of PsApiManagementRegion.
 ```
 New-AzApiManagementRegion -Location <String> [-Capacity <Int32>]
  [-VirtualNetwork <PsApiManagementVirtualNetwork>] [-Zone <String[]>] [-DisableGateway <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PublicIpAddressId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,6 +109,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicIpAddressId
+Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
