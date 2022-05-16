@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.Common
             }
 
             warningLogger(Resources.DataCollectionEnabledWarning);
-            return new AzurePSDataCollectionProfile(true);
+            return new AzurePSDataCollectionProfile();
         }
 
         public void Dispose()

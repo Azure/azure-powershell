@@ -23,11 +23,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         {
             switch (id)
             {
-                case Constants.ConfigProviderIds.MachineEnvironment:
-                case Constants.ConfigProviderIds.UserEnvironment:
+                case Constants.ConfigProviderIds.EnvironmentVariable:
+                    return ConfigScope.Environment;
                 case Constants.ConfigProviderIds.UserConfig:
                     return ConfigScope.CurrentUser;
-                case Constants.ConfigProviderIds.ProcessEnvironment:
                 case Constants.ConfigProviderIds.ProcessConfig:
                     return ConfigScope.Process;
                 case Constants.ConfigProviderIds.None:

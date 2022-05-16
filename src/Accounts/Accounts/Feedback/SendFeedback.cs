@@ -80,11 +80,6 @@ namespace Microsoft.Azure.Commands.Profile
                     interactive = false;
                 }
             }
-
-            if (!interactive && _dataCollectionProfile != null && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
-            {
-                _dataCollectionProfile.EnableAzureDataCollection = false;
-            }
             return interactive;
         }
 

@@ -12,9 +12,9 @@ Clears the values of configs that are set by the user.
 
 ## SYNTAX
 
-### ClearAll
+### ClearAll (Default)
 ```
-Clear-AzConfig [-All] [-Force] [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
+Clear-AzConfig [-Force] [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -22,41 +22,29 @@ Clear-AzConfig [-All] [-Force] [-PassThru] [-AppliesTo <String>] [-Scope <Config
 ```
 Clear-AzConfig [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-DefaultSubscriptionForLogin]
- [-EnableDataCollection] [-EnableInterceptSurvey] [-SuppressWarningMessage] [<CommonParameters>]
+ [-DisplayBreakingChangeWarning] [-EnableDataCollection] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Clears the values of configs that are set by the user. By default all the configs will be cleared. You can also specify keys of configs to clear.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Clear-AzConfig -Todo
+Clear-AzConfig -Force
 ```
 
-```output
-Todo
+Clear all the configs. `-Force` suppresses the prompt for confirmation.
+
+### Example 2
+```powershell
+Clear-AzConfig -EnableDataCollection
 ```
 
-Todo
+Clear the "EnableDataCollection" config.
 
 ## PARAMETERS
-
-### -All
-Clear all configs.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ClearAll
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AppliesTo
 Specifies what part of Azure PowerShell the config applies to.
@@ -66,7 +54,7 @@ Possible values are:
 For example, "Az.Storage".
 - Cmdlet name: the config applies to a certain cmdlet of Azure PowerShell.
 For example, "Get-AzKeyVault".
-If not specified, when getting configs, output will be all of the above; when updating or clearing configs, it defaults to "Az"
+If not specified, when getting or clearing configs, it defaults to all the above; when updating, it defaults to "Az".
 
 ```yaml
 Type: System.String
@@ -97,7 +85,22 @@ Accept wildcard characters: False
 
 ### -DefaultSubscriptionForLogin
 Subscription name or GUID.
-If defined, when logging in Azure PowerShell without specifying the subscription, this one will be used to select the default context.
+Sets the default context for Azure PowerShell when logging in without specifying a subscription.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayBreakingChangeWarning
+Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -112,22 +115,8 @@ Accept wildcard characters: False
 ```
 
 ### -EnableDataCollection
-todo
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ClearByKey
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableInterceptSurvey
-When enabled, a message of taking part in the survey about the user experience of Azure PowerShell will prompt at low frequency.
+When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience.
+For more information, see our privacy statement: https://aka.ms/privacy
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -180,22 +169,6 @@ Type: Microsoft.Azure.PowerShell.Common.Config.ConfigScope
 Parameter Sets: (All)
 Aliases:
 Accepted values: CurrentUser, Process, Default
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SuppressWarningMessage
-Controls if the warning messages of upcoming breaking changes are enabled or suppressed.
-The messages are typically displayed when a cmdlet that will have breaking change in the future is executed.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ClearByKey
-Aliases:
 
 Required: False
 Position: Named

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         private IConfigurationRoot _root;
         private readonly ConcurrentDictionary<string, ConfigDefinition> _configDefinitionMap = new ConcurrentDictionary<string, ConfigDefinition>(StringComparer.OrdinalIgnoreCase);
         private IOrderedEnumerable<KeyValuePair<string, ConfigDefinition>> OrderedConfigDefinitionMap => _configDefinitionMap.OrderBy(x => x.Key);
-        private readonly ConcurrentDictionary<string, string> EnvironmentVariableToKeyMap = new ConcurrentDictionary<string, string>();
+        private readonly ConcurrentDictionary<string, EnvironmentVariableConfigurationParser> EnvironmentVariableParsers = new ConcurrentDictionary<string, EnvironmentVariableConfigurationParser>();
         private readonly IEnvironmentVariableProvider _environmentVariableProvider;
         private readonly IDataStore _dataStore;
         private readonly JsonConfigWriter _jsonConfigWriter;
@@ -71,28 +71,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         {
             var builder = new ConfigurationBuilder();
 
-            if (SharedUtilities.IsWindowsPlatform())
-            {
-                // User and machine level environment variables are only on Windows
-                builder.AddEnvironmentVariables(Constants.ConfigProviderIds.MachineEnvironment, new EnvironmentVariablesConfigurationOptions()
-                {
-                    EnvironmentVariableProvider = _environmentVariableProvider,
-                    EnvironmentVariableTarget = EnvironmentVariableTarget.Machine,
-                    EnvironmentVariableToKeyMap = EnvironmentVariableToKeyMap
-                })
-                    .AddEnvironmentVariables(Constants.ConfigProviderIds.UserEnvironment, new EnvironmentVariablesConfigurationOptions()
-                    {
-                        EnvironmentVariableProvider = _environmentVariableProvider,
-                        EnvironmentVariableTarget = EnvironmentVariableTarget.User,
-                        EnvironmentVariableToKeyMap = EnvironmentVariableToKeyMap
-                    });
-            }
             builder.AddJsonStream(Constants.ConfigProviderIds.UserConfig, _dataStore.ReadFileAsStream(ConfigFilePath))
-                .AddEnvironmentVariables(Constants.ConfigProviderIds.ProcessEnvironment, new EnvironmentVariablesConfigurationOptions()
+                .AddEnvironmentVariables(Constants.ConfigProviderIds.EnvironmentVariable, new EnvironmentVariablesConfigurationOptions()
                 {
                     EnvironmentVariableProvider = _environmentVariableProvider,
                     EnvironmentVariableTarget = EnvironmentVariableTarget.Process,
-                    EnvironmentVariableToKeyMap = EnvironmentVariableToKeyMap
+                    EnvironmentVariableParsers = EnvironmentVariableParsers
                 })
                 .AddUnsettableInMemoryCollection(Constants.ConfigProviderIds.ProcessConfig);
 
@@ -123,11 +107,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 }
                 return;
             }
-            // configure environment variable providers
-            if (!string.IsNullOrEmpty(config.EnvironmentVariableName))
-            {
-                EnvironmentVariableToKeyMap[config.EnvironmentVariableName] = ConfigPathHelper.GetPathOfConfig(config.Key);
-            }
+            // configure environment variable provider
+            EnvironmentVariableParsers[config.Key] = config.ParseFromEnvironmentVariables;
             _configDefinitionMap[config.Key] = config;
         }
 
@@ -240,8 +221,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             {
                 results = results.Where(x => string.Equals(appliesTo, x.AppliesTo, StringComparison.OrdinalIgnoreCase)).ToList();
             }
-
-            return results;
+            return results.OrderBy(configData => configData.Definition.Key);
         }
 
         /// <summary>
@@ -431,32 +411,65 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 
         private void ClearConfigByKey(ClearConfigOptions options)
         {
-            if (!_configDefinitionMap.TryGetValue(options.Key, out ConfigDefinition definition))
+            if (!_configDefinitionMap.TryGetValue(options.Key, out _))
             {
                 throw new AzPSArgumentException($"Config with key [{options.Key}] was not registered.", nameof(options.Key));
             }
 
-            string path = ConfigPathHelper.GetPathOfConfig(definition.Key, options.AppliesTo);
-
             switch (options.Scope)
             {
                 case ConfigScope.Process:
-                    GetProcessLevelConfigProvider().Unset(path);
+                    ClearProcessLevelConfigByKey(options);
                     break;
                 case ConfigScope.CurrentUser:
-                    ClearUserLevelConfigByKey(path);
+                    ClearUserLevelConfigByKey(options);
                     break;
             }
 
             WriteDebug($"[ConfigManager] Cleared [{options.Key}]. Scope = [{options.Scope}], AppliesTo = [{options.AppliesTo}]");
         }
 
-        private void ClearUserLevelConfigByKey(string key)
+        private void ClearProcessLevelConfigByKey(ClearConfigOptions options)
+        {
+            var configProvider = GetProcessLevelConfigProvider();
+            if (string.IsNullOrEmpty(options.AppliesTo))
+            {
+                // find config by key with any possible AppliesTo value
+                var match = configProvider.Where(pair => ConfigPathHelper.ArePathAndKeyMatch(pair.Key, options.Key))
+                    .Select(pair => pair.Key)
+                    .ToList();
+                match.ForEach(key => configProvider.Unset(key));
+            }
+            else
+            {
+                configProvider.Unset(ConfigPathHelper.GetPathOfConfig(options.Key, options.AppliesTo));
+            }
+        }
+
+        private void ClearUserLevelConfigByKey(ClearConfigOptions options)
         {
             _lock.EnterWriteLock();
             try
             {
-                _jsonConfigWriter.Clear(key);
+                if (string.IsNullOrEmpty(options.AppliesTo))
+                {
+                    IList<string> keysToClear = new List<string>();
+                    foreach (var appliesToSection in _root.GetChildren())
+                    {
+                        if (appliesToSection.GetSection(options.Key).Exists())
+                        {
+                            keysToClear.Add(ConfigPathHelper.GetPathOfConfig(options.Key, appliesToSection.Key));
+                        }
+                    }
+                    foreach (var key in keysToClear)
+                    {
+                        _jsonConfigWriter.Clear(key);
+                    }
+                }
+                else
+                {
+                    _jsonConfigWriter.Clear(ConfigPathHelper.GetPathOfConfig(options.Key, options.AppliesTo));
+                }
             }
             finally
             {

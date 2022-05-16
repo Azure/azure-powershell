@@ -35,8 +35,10 @@ using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.PowerShell.Authenticators;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
+using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
@@ -316,11 +318,27 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
             }
+            else if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager))
+            {
+                string subscriptionFromConfig = configManager.GetConfigValue<string>(ConfigKeys.DefaultSubscriptionForLogin);
+                if (!string.IsNullOrEmpty(subscriptionFromConfig))
+                {
+                    // user doesn't specify subscript; but DefaultSubscriptionForLogin is found in config
+                    WriteDebugWithTimestamp($"[ConnectAzureRmAccountCommand] Using default subscription \"{subscriptionFromConfig}\" from config.");
+                    if (Guid.TryParse(subscriptionFromConfig, out subscriptionIdGuid))
+                    {
+                        subscriptionId = subscriptionFromConfig;
+                    }
+                    else
+                    {
+                        subscriptionName = subscriptionFromConfig;
+                    }
+                }
+            }
 
             if(ClientAssertionParameterSet.Equals(ParameterSetName, StringComparison.OrdinalIgnoreCase))
             {
-                string suppressWarningOrErrorValue = System.Environment.GetEnvironmentVariable(BreakingChangeAttributeHelper.SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME);
-                bool.TryParse(suppressWarningOrErrorValue, out bool suppressWarningOrError);
+                bool suppressWarningOrError = AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager) && configManager.GetConfigValue<bool>(ConfigKeys.DisplayBreakingChangeWarning);
                 if (!suppressWarningOrError)
                 {
                     WriteWarning("The feature related to parameter name 'FederatedToken' is under preview.");
@@ -416,16 +434,8 @@ namespace Microsoft.Azure.Commands.Profile
                 && SendCertificateChain)
             {
                 azureAccount.SetProperty(AzureAccount.Property.SendCertificateChain, SendCertificateChain.ToString());
-                bool supressWarningOrError = false;
-                try
-                {
-                    supressWarningOrError = bool.Parse(System.Environment.GetEnvironmentVariable(BreakingChangeAttributeHelper.SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
-                }
-                catch
-                {
-                    //if value of env variable is invalid, use default value of supressWarningOrError
-                }
-                if (!supressWarningOrError)
+                bool suppressWarningOrError = AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager) && configManager.GetConfigValue<bool>(ConfigKeys.DisplayBreakingChangeWarning);
+                if (!suppressWarningOrError)
                 {
                     WriteWarning(Resources.PreviewFunctionMessage);
                 }
