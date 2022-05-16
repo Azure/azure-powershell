@@ -53,7 +53,7 @@ namespace Commands.StorageSync.Interop.DataObjects
         /// <summary>
         /// When overridden in a derived class, executes the code required to free the handle.
         /// </summary>
-        /// <returns>true if the handle is released successfully; otherwise, in the event of a catastrophic failure, false. In this case, it generates a <see cref="~/docs/framework/debug-trace-profile/releasehandlefailed-mda.md">releaseHandleFailed</see> Managed Debugging Assistant.</returns>
+        /// <returns>true if the handle is released successfully; otherwise, in the event of a catastrophic failure, false. In this case, it generates a ~/docs/framework/debug-trace-profile/releasehandlefailed-mda.md releaseHandleFailed Managed Debugging Assistant.</returns>
         protected override bool ReleaseHandle()
         {
             int newRefCount = Marshal.Release(handle);
