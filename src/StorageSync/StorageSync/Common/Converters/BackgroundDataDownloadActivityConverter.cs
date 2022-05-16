@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     /// <summary>
     /// Class BackgroundDataDownloadActivityConverter.
     /// Implements the <see cref="Converters.ConverterBase{PSBackgroundDataDownloadActivity, ServerEndpointBackgroundDataDownloadActivity}"
-    /// /// </summary>
+    /// </summary>
     /// <seealso cref="Converters.ConverterBase{PSBackgroundDataDownloadActivity, ServerEndpointBackgroundDataDownloadActivity}" />
     public class BackgroundDataDownloadActivityConverter : ConverterBase<PSBackgroundDataDownloadActivity, StorageSyncModels.ServerEndpointBackgroundDataDownloadActivity>
     {
