@@ -126,6 +126,7 @@ Security                              | `Az.Security`                           
 Sentinel (SecurityInsights)           | `Az.SecurityInsights`                   | [![SecurityInsights]][SecurityInsightsGallery]
 Service Bus                           | `Az.ServiceBus`                         | [![ServiceBus]][ServiceBusGallery]
 Service Fabric                        | `Az.ServiceFabric`                      | [![ServiceFabric]][ServiceFabricGallery]
+Service Linker                        | `Az.ServiceLinker`                      | [![ServiceLinker]][ServiceLinkerGallery]
 SignalR                               | `Az.SignalR`                            | [![SignalR]][SignalRGallery]
 SpringCloud                           | `Az.SpringCloud`                        | [![SpringCloud]][SpringCloudGallery]
 SQL                                   | `Az.Sql`                                | [![Sql]][SqlGallery]
@@ -264,6 +265,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [SecurityInsights]:           https://img.shields.io/powershellgallery/v/Az.SecurityInsights.svg?style=flat-square&label=Az.SecurityInsights
 [ServiceBus]:                 https://img.shields.io/powershellgallery/v/Az.ServiceBus.svg?style=flat-square&label=Az.ServiceBus
 [ServiceFabric]:              https://img.shields.io/powershellgallery/v/Az.ServiceFabric.svg?style=flat-square&label=Az.ServiceFabric
+[ServiceLinker]:              https://img.shields.io/powershellgallery/v/Az.ServiceLinker.svg?style=flat-square&label=Az.ServiceLinker
 [SignalR]:                    https://img.shields.io/powershellgallery/v/Az.SignalR.svg?style=flat-square&label=Az.SignalR
 [SpringCloud]:                https://img.shields.io/powershellgallery/v/Az.SpringCloud.svg?style=flat-square&label=Az.SpringCloud
 [Sql]:                        https://img.shields.io/powershellgallery/v/Az.Sql.svg?style=flat-square&label=Az.Sql
@@ -400,6 +402,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [SecurityInsightsGallery]:           https://www.powershellgallery.com/packages/Az.SecurityInsights/
 [ServiceBusGallery]:                 https://www.powershellgallery.com/packages/Az.ServiceBus/
 [ServiceFabricGallery]:              https://www.powershellgallery.com/packages/Az.ServiceFabric/
+[ServiceLinkerGallery]:              https://www.powershellgallery.com/packages/Az.ServiceLinker/
 [SignalRGallery]:                    https://www.powershellgallery.com/packages/Az.SignalR/
 [SpringCloudGallery]:                https://www.powershellgallery.com/packages/Az.SpringCloud/
 [SqlGallery]:                        https://www.powershellgallery.com/packages/Az.Sql/
