@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 
         private IConfigurationRoot _root;
         private readonly ConcurrentDictionary<string, ConfigDefinition> _configDefinitionMap = new ConcurrentDictionary<string, ConfigDefinition>(StringComparer.OrdinalIgnoreCase);
-        private IOrderedEnumerable<KeyValuePair<string, ConfigDefinition>> OrderedConfigDefinitionMap => _configDefinitionMap.OrderBy(x => x.Key);
         private readonly ConcurrentDictionary<string, EnvironmentVariableConfigurationParser> EnvironmentVariableParsers = new ConcurrentDictionary<string, EnvironmentVariableConfigurationParser>();
         private readonly IEnvironmentVariableProvider _environmentVariableProvider;
         private readonly IDataStore _dataStore;
@@ -176,47 +175,74 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         /// <inheritdoc/>
         public IEnumerable<ConfigDefinition> ListConfigDefinitions()
         {
-            return OrderedConfigDefinitionMap.Select(x => x.Value);
+            return _configDefinitionMap.OrderBy(x => x.Key).Select(x => x.Value);
         }
 
         /// <inheritdoc/>
         public IEnumerable<ConfigData> ListConfigs(ConfigFilter filter = null)
         {
-            IList<ConfigData> results = new List<ConfigData>();
-
-            // include all values
-            ISet<string> noNeedForDefault = new HashSet<string>();
-            foreach (var appliesToSection in _root.GetChildren())
+            string filterProviderId = null;
+            bool filterByScope = filter != null && filter.Scope.HasValue;
+            if (filterByScope)
             {
-                foreach (var configSection in appliesToSection.GetChildren())
+                filterProviderId = ConfigScopeHelper.GetProviderIdByScope(filter.Scope.Value);
+            }
+
+            IList<ConfigData> results = new List<ConfigData>();
+            ISet<string> noNeedForDefault = new HashSet<string>();
+
+            // if not filtering by default scope, include all values
+            if (filterProviderId != Constants.ConfigProviderIds.None)
+            {
+                foreach (var appliesToSection in _root.GetChildren())
                 {
-                    string key = configSection.Key;
-                    if (_configDefinitionMap.TryGetValue(key, out var configDefinition))
+                    foreach (var configSection in appliesToSection.GetChildren())
                     {
-                        (object value, string providerId) = GetConfigValueOrDefault(configSection, configDefinition);
-                        ConfigScope scope = ConfigScopeHelper.GetScopeByProviderId(providerId);
-                        results.Add(new ConfigData(configDefinition, value, scope, appliesToSection.Key));
-                        // if a config is already set at global level, there's no need to return its default value
-                        if (string.Equals(ConfigFilter.GlobalAppliesTo, appliesToSection.Key, StringComparison.OrdinalIgnoreCase))
+                        string key = configSection.Key;
+                        if (_configDefinitionMap.TryGetValue(key, out var configDefinition))
                         {
-                            noNeedForDefault.Add(configDefinition.Key);
+                            if (filterByScope)
+                            {
+                                // try getting the config by the specific provider ID
+                                object value = GetConfigValueOrDefault(configSection, configDefinition, filterProviderId);
+                                if (value != null)
+                                {
+                                    results.Add(new ConfigData(configDefinition, value, filter.Scope.Value, appliesToSection.Key));
+                                }
+                            }
+                            else
+                            {
+                                (object value, string providerId) = GetConfigValueOrDefault(configSection, configDefinition);
+                                ConfigScope scope = ConfigScopeHelper.GetScopeByProviderId(providerId);
+                                results.Add(new ConfigData(configDefinition, value, scope, appliesToSection.Key));
+                                // if a config is already set at global level, there's no need to return its default value
+                                if (string.Equals(ConfigFilter.GlobalAppliesTo, appliesToSection.Key, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    noNeedForDefault.Add(configDefinition.Key);
+                                }
+                            }
                         }
                     }
                 }
             }
 
-            // include default values
             IEnumerable<string> keys = filter?.Keys ?? Enumerable.Empty<string>();
-            bool isRegisteredKey(string key) => _configDefinitionMap.Keys.Contains(key, StringComparer.OrdinalIgnoreCase);
-            IEnumerable<ConfigDefinition> configDefinitions = keys.Any() ? keys.Where(isRegisteredKey).Select(key => _configDefinitionMap[key]) : OrderedConfigDefinitionMap.Select(x => x.Value);
-            configDefinitions.Where(x => !noNeedForDefault.Contains(x.Key)).Select(x => GetDefaultConfigData(x)).ForEach(x => results.Add(x));
+            
+            // include default values
+            if (filterByScope && filter.Scope.Value == ConfigScope.Default || !filterByScope)
+            {
+                bool isRegisteredKey(string key) => _configDefinitionMap.Keys.Contains(key, StringComparer.OrdinalIgnoreCase);
+                IEnumerable<ConfigDefinition> configDefinitions = keys.Any() ? keys.Where(isRegisteredKey).Select(key => _configDefinitionMap[key]) : _configDefinitionMap.Select(x => x.Value);
+                configDefinitions.Where(x => !noNeedForDefault.Contains(x.Key)).Select(x => GetDefaultConfigData(x)).ForEach(x => results.Add(x));
+            }
 
-
+            // filter by keys
             if (keys.Any())
             {
                 results = results.Where(x => keys.Contains(x.Definition.Key, StringComparer.OrdinalIgnoreCase)).ToList();
             }
 
+            // filter by appliesTo
             string appliesTo = filter?.AppliesTo;
             if (!string.IsNullOrEmpty(appliesTo))
             {
@@ -243,6 +269,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 WriteWarning($"[ConfigManager] Failed to get value for [{definition.Key}]. Using the default value [{definition.DefaultValue}] instead. Error: {ex.Message}. {ex.InnerException?.Message}");
                 WriteDebug($"[ConfigManager] Exception: {ex.Message}, stack trace: \n{ex.StackTrace}");
                 return (definition.DefaultValue, Constants.ConfigProviderIds.None);
+            }
+        }
+
+        /// <summary>
+        /// Gets the value of a config from only the specified provider.
+        /// </summary>
+        /// <param name="section"></param>
+        /// <param name="definition"></param>
+        /// <param name="providerId"></param>
+        /// <returns></returns>
+        private object GetConfigValueOrDefault(IConfigurationSection section, ConfigDefinition definition, string providerId)
+        {
+            try
+            {
+                return section.Get(definition.ValueType, providerId);
+            }
+            catch (InvalidOperationException ex)
+            {
+                WriteWarning($"[ConfigManager] Failed to get value for [{definition.Key}]. Using the default value [{definition.DefaultValue}] instead. Error: {ex.Message}. {ex.InnerException?.Message}");
+                WriteDebug($"[ConfigManager] Exception: {ex.Message}, stack trace: \n{ex.StackTrace}");
+                return definition.DefaultValue;
             }
         }
 

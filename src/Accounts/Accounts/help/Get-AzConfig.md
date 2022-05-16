@@ -21,6 +21,10 @@ Get-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzu
 Gets the configs of Azure PowerShell.
 By default it lists all the configs. You can filter the result using various parameters.
 
+> [!NOTE]
+> Configs have priorities. Generally speaking, Process scope has higher priority than CurrentUser scope; a config that applies to a certain cmdlet has higher priority than that applies to a module, again higher than Az.
+> To reduce confusion, the result of `Get-AzConfig` shows those configs that are taking effect. It is a combination of all the configs, but not literally all the configs. However, you could always view them by applying different filter parameters, such as `-Scope`.
+
 ## EXAMPLES
 
 ### Example 1
@@ -56,7 +60,7 @@ Gets the "EnableDataCollection" config.
 ### -AppliesTo
 Specifies what part of Azure PowerShell the config applies to.
 Possible values are:
-- "Az": the config applies to all modules and cmdlets of Azure PowerShell. 
+- "Az": the config applies to all modules and cmdlets of Azure PowerShell.
 - Module name: the config applies to a certain module of Azure PowerShell.
 For example, "Az.Storage".
 - Cmdlet name: the config applies to a certain cmdlet of Azure PowerShell.

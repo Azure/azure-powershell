@@ -241,6 +241,29 @@ namespace Microsoft.Azure.Authentication.Test.Config
 
         [Fact]
         [Trait(TestTraits.AcceptanceType, TestTraits.CheckIn)]
+        public void CanFilterByScope()
+        {
+            const string key1 = "key";
+            var config1 = new SimpleTypedConfig<bool>(key1, "", true);
+            const string key2 = "key2";
+            var config2 = new SimpleTypedConfig<bool>(key2, "", true);
+            var icm = GetConfigManager(config1, config2);
+
+            icm.UpdateConfig(new UpdateConfigOptions(key1, false, ConfigScope.CurrentUser));
+            icm.UpdateConfig(new UpdateConfigOptions(key1, true, ConfigScope.Process));
+
+            var listResults = icm.ListConfigs(new ConfigFilter() { Scope = ConfigScope.Default });
+            Assert.Equal(2, listResults.Count());
+            listResults = icm.ListConfigs(new ConfigFilter() { Scope = ConfigScope.CurrentUser });
+            Assert.Single(listResults);
+            listResults = icm.ListConfigs(new ConfigFilter() { Scope = ConfigScope.Process });
+            Assert.Single(listResults);
+            listResults = icm.ListConfigs(new ConfigFilter() { Scope = ConfigScope.Environment });
+            Assert.Empty(listResults);
+        }
+
+        [Fact]
+        [Trait(TestTraits.AcceptanceType, TestTraits.CheckIn)]
         public void CanFilterByNoFilter()
         {
             const string key1 = "key";

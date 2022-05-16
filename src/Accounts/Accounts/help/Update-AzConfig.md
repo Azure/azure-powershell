@@ -22,6 +22,9 @@ Update-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <I
 Updates the configs of Azure PowerShell.
 Depending on which config to update, you may specify the scope where the config is persisted and to which module or cmdlet it applies to.
 
+> [!NOTE]
+> It is discouraged to update configs in multiple PowerShell processes. Either do it in one process, or make sure the updates are at Process scope (`-Scope Process`) to avoid unexpected side-effects.
+
 ## EXAMPLES
 
 ### Example 1
@@ -62,7 +65,7 @@ EnableDataCollection True  Az         CurrentUser When enabled, Azure PowerShell
 ```
 
 Sets the "EnableDataCollection" config as "$true". This enables sending the telemetry data.
-Setting this config is equivalent to `Enable-AzDataCollection` and `Disable-AzDataCollection`. 
+Setting this config is equivalent to `Enable-AzDataCollection` and `Disable-AzDataCollection`.
 
 ## PARAMETERS
 
