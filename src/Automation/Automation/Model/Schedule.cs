@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// The day of week occurrence.
         /// </param>
         /// <returns>
-        /// The <see cref="int"/>
+        /// The <see cref="int">int?</see>
         /// </returns>
         private int? GetDayOfWeekOccurrence(string dayOfWeekOccurrence)
         {
