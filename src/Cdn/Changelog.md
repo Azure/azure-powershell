@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Migrated the cmdlets from SDK based to autorest generated.
 
 ## Version 1.8.3
 * Added breaking change messages for all cmdlets in Az.CDN module
