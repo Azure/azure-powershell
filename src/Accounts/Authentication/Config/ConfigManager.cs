@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         private readonly IDataStore _dataStore;
         private readonly JsonConfigWriter _jsonConfigWriter;
         private readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
+        private IDictionary<string, string> _processLevelConfigs = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Creates an instance of <see cref="ConfigManager"/>.
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                     EnvironmentVariableTarget = EnvironmentVariableTarget.Process,
                     EnvironmentVariableParsers = EnvironmentVariableParsers
                 })
-                .AddUnsettableInMemoryCollection(Constants.ConfigProviderIds.ProcessConfig);
+                .AddUnsettableInMemoryCollection(Constants.ConfigProviderIds.ProcessConfig, _processLevelConfigs);
 
             _lock.EnterReadLock();
             try
@@ -311,6 +312,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 
         private void SetProcessLevelConfig(string path, object value)
         {
+            _processLevelConfigs[path] = value.ToString();
             GetProcessLevelConfigProvider().Set(path, value.ToString());
         }
 
@@ -375,12 +377,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             if (string.IsNullOrEmpty(options.AppliesTo))
             {
                 configProvider.UnsetAll();
+                _processLevelConfigs.Clear();
             }
             else
             {
                 foreach (var key in _configDefinitionMap.Keys)
                 {
-                    configProvider.Unset(ConfigPathHelper.GetPathOfConfig(key, options.AppliesTo));
+                    string path = ConfigPathHelper.GetPathOfConfig(key, options.AppliesTo);
+                    configProvider.Unset(path);
+                    _processLevelConfigs.Remove(path);
                 }
             }
         }
@@ -438,11 +443,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 var match = configProvider.Where(pair => ConfigPathHelper.ArePathAndKeyMatch(pair.Key, options.Key))
                     .Select(pair => pair.Key)
                     .ToList();
-                match.ForEach(key => configProvider.Unset(key));
+                match.ForEach(key =>
+                {
+                    configProvider.Unset(key);
+                    _processLevelConfigs.Remove(key);
+                });
             }
             else
             {
-                configProvider.Unset(ConfigPathHelper.GetPathOfConfig(options.Key, options.AppliesTo));
+                string path = ConfigPathHelper.GetPathOfConfig(options.Key, options.AppliesTo);
+                configProvider.Unset(path);
+                _processLevelConfigs.Remove(path);
             }
         }
 
