@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         public string DiskName { get; set; }
 
         [Parameter(
-            Mandatory = true, 
+            Mandatory = true,
             Position = 1,
             ParameterSetName = DirectUploadToManagedDiskSet,
             ValueFromPipelineByPropertyName = true,
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             try
             {
                 bool resizeNeeded = false;
-                long resizeTo=0;
+                long resizeTo = 0;
                 using (VirtualDiskStream vds = new VirtualDiskStream(filePath.FullName))
                 {
                     if (vds.Length < 20971520 || vds.Length > 4396972769280)

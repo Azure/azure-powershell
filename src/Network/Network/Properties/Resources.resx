@@ -735,4 +735,10 @@
   <data name="VirtualNetworkGatewayNatRuleNotFound" xml:space="preserve">
     <value>The VirtualNetworkGatewayNatRule could not be found</value>
   </data>
+  <data name="UnsupportPrivateEndpointConnectionType" xml:space="preserve">
+    <value>{0} doesn't support private endpoint connection.</value>
+  </data>
+  <data name="UnsupportPrivateLinkResourceType" xml:space="preserve">
+    <value>{0} doesn't support private link resource.</value>
+  </data>
 </root>

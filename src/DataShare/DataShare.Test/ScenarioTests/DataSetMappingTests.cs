@@ -17,28 +17,24 @@ namespace Microsoft.Azure.Commands.DataShare.Test.ScenarioTests.ScenarioTest
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class DataSetMappingTests
+    public class DataSetMappingTests : DataShareTestRunner
     {
-        private readonly ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
-        public DataSetMappingTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataSetMappingTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobDataSetMappingCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-BlobDataSetMappingCrud");
+            TestRunner.RunTestScript("Test-BlobDataSetMappingCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsGen2DataSetMappingCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-AdlsGen2DataSetMappingCrud");
+            TestRunner.RunTestScript("Test-AdlsGen2DataSetMappingCrud");
         }
     }
 }

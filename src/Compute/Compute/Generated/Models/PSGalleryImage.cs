@@ -59,6 +59,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Location { get; set; }
         public IDictionary<string, string> Tags { get; set; }
         public IList<GalleryImageFeature> Features { get; set; }
+        public string Architecture { get; set; }
 
     }
 }

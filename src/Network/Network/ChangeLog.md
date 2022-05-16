@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Supported `Microsoft.Network/privateLinkServices` in `Get-AzPrivateEndpointConnection` [#16984].
+* Provided friendly message if resource type is not supported for private endpoint connection features [#17091].
 * Added `DisableIPsecProtection` to `Virtual Network Gateway`.
 * Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
     - `Add-AzExpressRoutePortAuthorization`
@@ -44,6 +46,8 @@
 
 ## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
+* Updated `New-AzFirewallPolicyIntrusionDetection` cmdlet:
+    - Added parameter -PrivateRange
 
 ## Version 4.16.0
 * Added support for retrieving the state of packet capture even when the provisioning state of the packet capture was failure

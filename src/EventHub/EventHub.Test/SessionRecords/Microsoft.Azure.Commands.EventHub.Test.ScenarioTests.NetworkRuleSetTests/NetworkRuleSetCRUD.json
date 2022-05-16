@@ -528,7 +528,7 @@
           "Thu, 12 May 2022 10:48:16 GMT"
         ],
         "Content-Length": [
-          "734"
+          "730"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -592,7 +592,7 @@
           "Thu, 12 May 2022 10:48:47 GMT"
         ],
         "Content-Length": [
-          "734"
+          "730"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -966,10 +966,10 @@
           "a9da1226-c6dd-42c8-94e8-cd721d121f03_M7CH3_M7CH3"
         ],
         "Server-SB": [
-          "Service-Bus-Resource-Provider/CH3"
+          "Service-Bus-Resource-Provider/SN1"
         ],
         "Server": [
-          "Service-Bus-Resource-Provider/CH3",
+          "Service-Bus-Resource-Provider/SN1",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
@@ -1442,7 +1442,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
           "69e0ebcb-e324-4452-9b9e-c281bb1dc767"
@@ -1727,10 +1727,10 @@
           "405cae9f-b160-4ea3-b850-9a17a0f35d16_M7CH3_M7CH3"
         ],
         "Server-SB": [
-          "Service-Bus-Resource-Provider/CH3"
+          "Service-Bus-Resource-Provider/SN1"
         ],
         "Server": [
-          "Service-Bus-Resource-Provider/CH3",
+          "Service-Bus-Resource-Provider/SN1",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
@@ -2026,7 +2026,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
           "7cf74b38-2084-4705-aab3-a1f72f385613"
@@ -2165,10 +2165,10 @@
           "547bb984-63e1-49d0-a148-b8961b084361_M2SN1_M2SN1"
         ],
         "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
+          "Service-Bus-Resource-Provider/CH3"
         ],
         "Server": [
-          "Service-Bus-Resource-Provider/SN1",
+          "Service-Bus-Resource-Provider/CH3",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
@@ -2190,7 +2190,7 @@
           "Thu, 12 May 2022 10:51:02 GMT"
         ],
         "Content-Length": [
-          "1169"
+          "1168"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2263,7 +2263,7 @@
           "Thu, 12 May 2022 10:51:13 GMT"
         ],
         "Content-Length": [
-          "1096"
+          "1095"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2310,6 +2310,57 @@
         "x-ms-request-id": [
           "047db33d-c601-489b-8cc9-eacd7f2856c9_M6CH3_M6CH3"
         ],
+        "Date": [
+          "Thu, 12 May 2022 07:17:00 GMT"
+        ],
+        "Content-Length": [
+          "1168"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RSG5610/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace2-983/networkRuleSets/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/NetworkRuleSets\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"defaultAction\": \"Allow\",\r\n    \"virtualNetworkRules\": [\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      },\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      },\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      }\r\n    ],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipMask\": \"1.1.1.1\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"2.2.2.2\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"3.3.3.3\",\r\n        \"action\": \"Allow\"\r\n      }\r\n    ],\r\n    \"trustedServiceAccessEnabled\": true\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RSG5610/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace2-983/networkRuleSets/default?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JTRzU2MTAvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZTItOTgzL25ldHdvcmtSdWxlU2V0cy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjEtMTEtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"trustedServiceAccessEnabled\": true,\r\n    \"defaultAction\": \"Allow\",\r\n    \"virtualNetworkRules\": [\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      },\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      },\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      }\r\n    ],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipMask\": \"1.1.1.1\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"2.2.2.2\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"3.3.3.3\",\r\n        \"action\": \"Allow\"\r\n      }\r\n    ],\r\n    \"publicNetworkAccess\": \"Disabled\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a812d5c6-8717-4c2b-9b31-9c0fe125fec6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/4.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1261"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "8a663a17-4993-4a83-96a7-0c1bd143194b_M11CH3_M11CH3"
+        ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/CH3"
         ],
@@ -2336,7 +2387,7 @@
           "Thu, 12 May 2022 10:51:26 GMT"
         ],
         "Content-Length": [
-          "1135"
+          "1169"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2352,7 +2403,7 @@
       "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RSG5663/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace2-5683/networkRuleSets/default?api-version=2021-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JTRzU2NjMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZTItNTY4My9uZXR3b3JrUnVsZVNldHMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIxLTExLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"defaultAction\": \"Allow\",\r\n    \"virtualNetworkRules\": [\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      },\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      },\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      }\r\n    ],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipMask\": \"1.1.1.1\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"2.2.2.2\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"3.3.3.3\",\r\n        \"action\": \"Allow\"\r\n      }\r\n    ],\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"trustedServiceAccessEnabled\": true,\r\n    \"defaultAction\": \"Allow\",\r\n    \"virtualNetworkRules\": [\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      },\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      },\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      }\r\n    ],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipMask\": \"1.1.1.1\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"2.2.2.2\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"3.3.3.3\",\r\n        \"action\": \"Allow\"\r\n      }\r\n    ],\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "eeedc294-45bc-4fe3-944d-3bdde64a1f42"
@@ -2370,7 +2421,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "1218"
+          "1260"
         ]
       },
       "ResponseHeaders": {
@@ -2409,7 +2460,7 @@
           "Thu, 12 May 2022 10:51:42 GMT"
         ],
         "Content-Length": [
-          "1134"
+          "1168"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2482,7 +2533,7 @@
           "Thu, 12 May 2022 10:51:56 GMT"
         ],
         "Content-Length": [
-          "1169"
+          "1095"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2511,12 +2562,140 @@
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.EventHub.EventHubManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "568034ab-e564-465a-bc28-958d1033eec5_M5SN1_M5SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "d51b805e-950e-416a-a02b-f43e837bb577"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220512T071632Z:d51b805e-950e-416a-a02b-f43e837bb577"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:16:31 GMT"
+        ],
+        "Content-Length": [
+          "1095"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RSG5610/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace2-983/networkRuleSets/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/NetworkRuleSets\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"defaultAction\": \"Allow\",\r\n    \"virtualNetworkRules\": [\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      },\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      },\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      }\r\n    ],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipMask\": \"1.1.1.1\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"2.2.2.2\",\r\n        \"action\": \"Allow\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RSG5610/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace2-983/networkRuleSets/default?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JTRzU2MTAvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZTItOTgzL25ldHdvcmtSdWxlU2V0cy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjEtMTEtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5fbeed79-8d83-4173-bd9b-45a7a1814db4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "89eba1c8-331d-492f-a4a9-9e23157faeea_M11CH3_M11CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "f09b309d-3e65-4740-bd72-399051142284"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220512T071642Z:f09b309d-3e65-4740-bd72-399051142284"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:16:41 GMT"
+        ],
         "Content-Length": [
-          "1184"
+          "1134"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RSG5610/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace2-983/networkRuleSets/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/NetworkRuleSets\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Disabled\",\r\n    \"defaultAction\": \"Allow\",\r\n    \"virtualNetworkRules\": [\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      },\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      },\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01\"\r\n        },\r\n        \"ignoreMissingVnetServiceEndpoint\": false\r\n      }\r\n    ],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipMask\": \"1.1.1.1\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"2.2.2.2\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"3.3.3.3\",\r\n        \"action\": \"Allow\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RSG5610/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace2-983/networkRuleSets/default?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JTRzU2MTAvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZTItOTgzL25ldHdvcmtSdWxlU2V0cy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMjEtMTEtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7339544e-8743-44c3-9452-726cfe5f8ed7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2555,7 +2734,7 @@
           "Thu, 12 May 2022 10:52:07 GMT"
         ],
         "Content-Length": [
-          "1131"
+          "1133"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2622,7 +2801,7 @@
           "Thu, 12 May 2022 10:51:17 GMT"
         ],
         "Content-Length": [
-          "1096"
+          "1168"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2689,7 +2868,7 @@
           "Thu, 12 May 2022 10:51:31 GMT"
         ],
         "Content-Length": [
-          "1135"
+          "1169"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2756,7 +2935,7 @@
           "Thu, 12 May 2022 10:51:48 GMT"
         ],
         "Content-Length": [
-          "1134"
+          "1168"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2823,7 +3002,7 @@
           "Thu, 12 May 2022 10:51:58 GMT"
         ],
         "Content-Length": [
-          "1169"
+          "1133"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"

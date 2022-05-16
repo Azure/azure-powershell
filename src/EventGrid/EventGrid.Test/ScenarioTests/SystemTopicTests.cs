@@ -12,37 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
 {
-    public class SystemTopicTests : RMTestBase
+    public class SystemTopicTests : EventGridTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public SystemTopicTests(ITestOutputHelper output)
+        public SystemTopicTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_SystemTopicsCRUD()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "SystemTopicTests");
+            TestRunner.RunTestScript("SystemTopicTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_SystemTopicsIdentityTests()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "SystemTopicIdentityTests");
+            TestRunner.RunTestScript("SystemTopicIdentityTests");
         }
     }
 }
