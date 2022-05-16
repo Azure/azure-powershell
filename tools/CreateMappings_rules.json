@@ -730,5 +730,9 @@
   {
     "alias": "ConnectedNetwork",
     "module": "ConnectedNetwork"
+  },
+  {
+    "alias": "ServiceLinker",
+    "module": "ServiceLinker"
   }
 ]
