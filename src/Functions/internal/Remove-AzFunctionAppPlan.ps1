@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Delete an App Service plan.
+Delete an App Service plan.
 .Description
-Description for Delete an App Service plan.
+Delete an App Service plan.
 .Example
 Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionAppPlan -Force
 .Example
@@ -186,6 +186,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzFunctionAppPlan_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzFunctionAppPlan_DeleteViaIdentity';
@@ -199,6 +200,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -207,15 +209,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzWebAppSyncStatus
 
 ## SYNOPSIS
-Description for This is to allow calling via powershell and ARM template.
+This is to allow calling via powershell and ARM template.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzWebAppSyncStatus -Name <String> -ResourceGroupName <String> [-Subscription
 ```
 
 ## DESCRIPTION
-Description for This is to allow calling via powershell and ARM template.
+This is to allow calling via powershell and ARM template.
 
 ## EXAMPLES
 

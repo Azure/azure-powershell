@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzWebAppFunctionKeySlot
 
 ## SYNOPSIS
-Description for Get function keys for a function in a web site, or a deployment slot.
+Get function keys for a function in a web site, or a deployment slot.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzWebAppFunctionKeySlot -FunctionName <String> -Name <String> -ResourceGroup
 ```
 
 ## DESCRIPTION
-Description for Get function keys for a function in a web site, or a deployment slot.
+Get function keys for a function in a web site, or a deployment slot.
 
 ## EXAMPLES
 

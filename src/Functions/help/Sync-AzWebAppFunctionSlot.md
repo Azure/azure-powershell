@@ -8,7 +8,7 @@ schema: 2.0.0
 # Sync-AzWebAppFunctionSlot
 
 ## SYNOPSIS
-Description for Syncs function trigger metadata to the management database
+Syncs function trigger metadata to the management database
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Sync-AzWebAppFunctionSlot -InputObject <IFunctionsIdentity> [-DefaultProfile <PS
 ```
 
 ## DESCRIPTION
-Description for Syncs function trigger metadata to the management database
+Syncs function trigger metadata to the management database
 
 ## EXAMPLES
 

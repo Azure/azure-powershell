@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-Az
 
 ## SYNOPSIS
-Description for Validate if a resource can be created.
+Validate if a resource can be created.
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ Test-Az -InputObject <IFunctionsIdentity> -Location <String> -Name <String> -Typ
 ```
 
 ## DESCRIPTION
-Description for Validate if a resource can be created.
+Validate if a resource can be created.
 
 ## EXAMPLES
 

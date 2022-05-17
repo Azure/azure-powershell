@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzWebAppSyncStatusSlot
 
 ## SYNOPSIS
-Description for This is to allow calling via powershell and ARM template.
+This is to allow calling via powershell and ARM template.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzWebAppSyncStatusSlot -Name <String> -ResourceGroupName <String> -Slot <Str
 ```
 
 ## DESCRIPTION
-Description for This is to allow calling via powershell and ARM template.
+This is to allow calling via powershell and ARM template.
 
 ## EXAMPLES
 

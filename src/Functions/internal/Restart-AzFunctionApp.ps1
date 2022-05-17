@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Restarts an app (or deployment slot, if specified).
+Restarts an app (or deployment slot, if specified).
 .Description
-Description for Restarts an app (or deployment slot, if specified).
+Restarts an app (or deployment slot, if specified).
 .Example
 Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Restart-AzFunctionApp -Force
 .Example
@@ -200,6 +200,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Restart = 'Az.Functions.private\Restart-AzFunctionApp_Restart';
             RestartViaIdentity = 'Az.Functions.private\Restart-AzFunctionApp_RestartViaIdentity';
@@ -213,6 +214,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -221,15 +223,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

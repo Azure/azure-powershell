@@ -8,7 +8,7 @@ schema: 2.0.0
 # Move-Az
 
 ## SYNOPSIS
-Description for Move resources between resource groups.
+Move resources between resource groups.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Move-Az -InputObject <IFunctionsIdentity> [-Resource <String[]>] [-TargetResourc
 ```
 
 ## DESCRIPTION
-Description for Move resources between resource groups.
+Move resources between resource groups.
 
 ## EXAMPLES
 

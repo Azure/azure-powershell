@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzWebAppSettingKeyVaultReference
 
 ## SYNOPSIS
-Description for Gets the config reference app settings and status of an app
+Gets the config reference app settings and status of an app
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Get-AzWebAppSettingKeyVaultReference -InputObject <IFunctionsIdentity> [-Default
 ```
 
 ## DESCRIPTION
-Description for Gets the config reference app settings and status of an app
+Gets the config reference app settings and status of an app
 
 ## EXAMPLES
 
