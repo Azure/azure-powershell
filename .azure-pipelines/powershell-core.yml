@@ -12,6 +12,7 @@ variables:
   IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
+  TestTimeoutInMinutes: 180
 
 trigger: none
 
@@ -32,12 +33,6 @@ jobs:
       windows:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
-      macOS:
-        OSName: ${{ variables.MacOSName }}
-        ImageName: ${{ variables.MacOSImage }}
   pool:
     vmImage: $(ImageName)
 
@@ -45,8 +40,8 @@ jobs:
   - template: util/build-steps.yml
     parameters:
       osName: $(OSName)
-      testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
+      testFramework: ${{ variables.TestFramework }}
 
 - job: Analyze
   displayName: Analyze
@@ -58,12 +53,6 @@ jobs:
       windows:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
-      macOS:
-        OSName: ${{ variables.MacOSName }}
-        ImageName: ${{ variables.MacOSImage }}
   pool:
     vmImage: $(ImageName)
 
@@ -72,12 +61,13 @@ jobs:
     parameters:
       osName: $(OSName)
       configuration: ${{ variables.Configuration }}
+      testFramework: ${{ variables.TestFramework }}
 
 - job: Test
   displayName: Test
   dependsOn: Build
   condition: succeeded()
-  timeoutInMinutes: 180
+  timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   strategy:
     matrix:
       windows:
