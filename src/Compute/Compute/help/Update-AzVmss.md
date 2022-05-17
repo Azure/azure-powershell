@@ -724,7 +724,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScaleInPolicyForceDeletion
-{{ Fill ScaleInPolicyForceDeletion Description }}
+Applying Force Deletion when using ScaleIn Policy.
 
 ```yaml
 Type: System.Boolean
