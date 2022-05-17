@@ -65,7 +65,7 @@ directive:
 ```
 
 ``` yaml
-branch: powershell-function
+branch: main
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
