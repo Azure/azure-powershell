@@ -50,6 +50,7 @@ function Register-AzDataMigrationIntegrationRuntime
         # Entry point
         $OSPlatform = Get-OSName
 
+        # Validate if OS is windows, as currently SHIR is only supported in Windows
         if(-not $OSPlatform.Contains("Windows"))
         {
             throw "This command cannot be run in non-windows environment"
@@ -63,9 +64,10 @@ function Register-AzDataMigrationIntegrationRuntime
             throw "Failed: You do not have Administrator rights to run this command!`nPlease re-run this command as an Administrator!"
             Break
         }
-
+        
+        # Validate if given authKey is not empty
         $null = Validate-Input $PSBoundParameters.AuthKey
-
+        # If SHIR MSI path is provided Perform installation of SHIR
         if($PSBoundParameters.ContainsKey("IntegrationRuntimePath"))
         {
             $path = $PSBoundParameters.IntegrationRuntimePath
@@ -87,6 +89,7 @@ function Register-AzDataMigrationIntegrationRuntime
             
         }
 
+         # Check if SHIR is Installed or not
         if(-Not (Check-WhetherGatewayInstalled("Microsoft Integration Runtime")))
         {
             throw "Failed: No installed Integration Runtime found!"
@@ -94,8 +97,9 @@ function Register-AzDataMigrationIntegrationRuntime
 
         if($PSCmdlet.ShouldProcess('Microsoft Integration Runtime','Register AuthKey'))
         {
+            # Register authkeys on SHIR
             $result = Register-IR $PSBoundParameters.AuthKey
-
+            # Returns True, if command ran successfully and -PassThru parameter is specified
             if($PSBoundParameters.ContainsKey("PassThru"))
             {
                 return $result;
