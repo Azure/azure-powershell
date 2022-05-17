@@ -20,7 +20,7 @@
 ## Upcoming Release
 * Supported generae Sas token for DataLakeGen2
     -  `New-AzDataLakeGen2SasToken`
-* Show OAuth token in debug log in debug build only
+* Showed OAuth token in debug log in debug build only
     -  `New-AzStorageContext`
 * Supported return more file properties when list Azure file
     -  `Get-AzStorageFile`
