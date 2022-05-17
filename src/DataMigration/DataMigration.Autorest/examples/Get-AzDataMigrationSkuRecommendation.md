@@ -1,7 +1,9 @@
 ### Example 1: Run SKU Recommendation on given SQL Server using connection string
 ```powershell
 PS C:\> Get-AzDataMigrationSkuRecommendation -DisplayResult
+```
 
+```output
 Starting SKU recommendation...
 
 Performing aggregation for instance AALAB03-2K8...
@@ -29,7 +31,9 @@ This command runs Run SKU Recommendation on given SQL Server using the connectio
 ### Example 2: Run Run SKU Recommendation on given SQL Server using assessment config file
 ```powershell
 PS C:\> Get-AzDataMigrationSkuRecommendation -ConfigFilePath "C:\Users\user\document\config.json"
+```
 
+```output
 Starting SKU recommendation...
 
 Performing aggregation for instance AALAB03-2K8...

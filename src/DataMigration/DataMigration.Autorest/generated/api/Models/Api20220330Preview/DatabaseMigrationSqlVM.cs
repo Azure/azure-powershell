@@ -312,7 +312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Pre
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive validation
         /// events.</param>
         /// <returns>
-        /// A < see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
         {
