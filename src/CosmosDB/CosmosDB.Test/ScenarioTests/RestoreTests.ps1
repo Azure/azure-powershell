@@ -249,9 +249,9 @@ function Test-RestoreFailuresAccountCmdlets {
 }
 
 function Test-SqlContainerBackupInformationCmdLets {
-  $rgName = "CosmosDBResourceGroup14"
+  $rgName = "CosmosDBResourceGroup52"
   $location = "Central US"
-  $cosmosDBAccountName = "cosmosdb-1214"
+  $cosmosDBAccountName = "cosmosdb-1252"
   $databaseName = "TestDB1";
   $collectionName = "TestCollectionInDB1";
   $apiKind = "Sql"
