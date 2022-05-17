@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Storage;
 using System.Management.Automation;
+using Azure;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -56,9 +56,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 if (this.Force || ShouldContinue(string.Format("Remove Storage Account '{0}' and all content in it", this.Name), ""))
                 {
-                    this.StorageClient.StorageAccounts.Delete(
-                    this.ResourceGroupName,
-                    this.Name);
+                    this.StorageClientTrack2.GetStorageAccount(this.ResourceGroupName, this.Name).Delete(WaitUntil.Completed);
                 }
             }
         }

@@ -12,12 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure;
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Rest.Azure;
 using System.Management.Automation;
+
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -88,45 +90,36 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                IPage<Microsoft.Azure.Management.Storage.Models.StorageAccount> storageAccounts = this.StorageClient.StorageAccounts.List();
-                WriteStorageAccountList(storageAccounts);
-
-                while (storageAccounts.NextPageLink != null)
+                Pageable<Track2.StorageAccountResource> accounts = this.StorageClientTrack2.ListStorageAccounts();
+                foreach (Track2.StorageAccountResource account in accounts)
                 {
-                    storageAccounts = this.StorageClient.StorageAccounts.ListNext(storageAccounts.NextPageLink);
-                    WriteStorageAccountList(storageAccounts);
+                    WriteStorageAccount(account);
                 }
             }
             else if (string.IsNullOrEmpty(this.Name))
             {
-                IPage<Microsoft.Azure.Management.Storage.Models.StorageAccount> storageAccounts = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
-                WriteStorageAccountList(storageAccounts);
-
-                while (storageAccounts.NextPageLink != null)
+                Pageable<Track2.StorageAccountResource> accounts = this.StorageClientTrack2.ListStorageAccounts(this.ResourceGroupName);
+                foreach (Track2.StorageAccountResource account in accounts)
                 {
-                    storageAccounts = this.StorageClient.StorageAccounts.ListByResourceGroupNext(storageAccounts.NextPageLink);
-                    WriteStorageAccountList(storageAccounts);
+                    WriteStorageAccount(account);
                 }
             }
             else
             {
                 // ParameterSet ensure can only set one of the following 2 parameters
-                StorageAccountExpand? expandproperties = null;
+                Track2Models.StorageAccountExpand? expandProperties = null;
                 if (this.IncludeGeoReplicationStats)
                 {
-                    expandproperties = StorageAccountExpand.GeoReplicationStats;
+                    expandProperties = Track2Models.StorageAccountExpand.GeoReplicationStats;
                 }
                 if (this.IncludeBlobRestoreStatus)
                 {
-                    expandproperties = StorageAccountExpand.BlobRestoreStatus;
+                    expandProperties = Track2Models.StorageAccountExpand.BlobRestoreStatus;
                 }
+                Track2.StorageAccountResource account = this.StorageClientTrack2.GetSingleStorageAccount(
+                this.ResourceGroupName, this.Name, expandProperties);
 
-                var storageAccount = this.StorageClient.StorageAccounts.GetProperties(
-                    this.ResourceGroupName,
-                    this.Name,
-                    expandproperties);
-
-                WriteStorageAccount(storageAccount);
+                WriteStorageAccount(account);
             }
         }
     }

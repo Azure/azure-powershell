@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System;
 using System.Collections.Generic;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
@@ -37,40 +38,32 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EndRange = endRange;
         }
 
-        public PSBlobRestoreRange(BlobRestoreRange range)
+        public PSBlobRestoreRange(Track2Models.BlobRestoreRange range)
         {
             this.StartRange = range.StartRange;
             this.EndRange = range.EndRange;
         }
 
-        public static IList<BlobRestoreRange> ParseBlobRestoreRanges(PSBlobRestoreRange[] ranges)
+        public static IList<Track2Models.BlobRestoreRange> ParseBlobRestoreRanges(PSBlobRestoreRange[] ranges)
         {
-            IList<BlobRestoreRange> re = new List<BlobRestoreRange>();
+            IList<Track2Models.BlobRestoreRange> re = new List<Track2Models.BlobRestoreRange>();
             if (ranges == null)
             {
                 re.Add(
-                    new BlobRestoreRange
-                    {
-                        StartRange = "",
-                        EndRange = ""
-                    });
+                    new Track2Models.BlobRestoreRange("", ""));
             }
             else
             {
                 foreach (PSBlobRestoreRange range in ranges)
                 {
                     re.Add(
-                        new BlobRestoreRange
-                        {
-                            StartRange = range.StartRange,
-                            EndRange = range.EndRange
-                        });
+                        new Track2Models.BlobRestoreRange(range.EndRange, range.StartRange));
                 }
             }
             return re;
         }
 
-        public static PSBlobRestoreRange[] ParsePSBlobRestoreRanges(IList<BlobRestoreRange> ranges)
+        public static PSBlobRestoreRange[] ParsePSBlobRestoreRanges(IList<Track2Models.BlobRestoreRange> ranges)
         {
             if (ranges == null)
             {
@@ -78,7 +71,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             }
 
             List<PSBlobRestoreRange> re = new List<PSBlobRestoreRange>();
-            foreach (BlobRestoreRange range in ranges)
+            foreach (Track2Models.BlobRestoreRange range in ranges)
             {
                 re.Add(
                     new PSBlobRestoreRange
@@ -109,11 +102,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSBlobRestoreStatus()
         { }
 
-        public PSBlobRestoreStatus(BlobRestoreStatus status)
+        public PSBlobRestoreStatus(Track2Models.BlobRestoreStatus status)
         {
             if (status != null)
             {
-                this.Status = status.Status;
+                this.Status = status.Status != null ? status.Status.ToString() : null;
                 this.FailureReason = status.FailureReason;
                 this.RestoreId = status.RestoreId;
                 this.Parameters = status.Parameters is null ? null : new PSBlobRestoreParameters(status.Parameters);
@@ -126,13 +119,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     /// </summary>
     public class PSBlobRestoreParameters
     {
-        public DateTime TimeToRestore { get; set; }
+        public DateTimeOffset TimeToRestore { get; set; }
         public PSBlobRestoreRange[] BlobRanges { get; set; }
 
         public PSBlobRestoreParameters()
         { }
 
-        public PSBlobRestoreParameters(BlobRestoreParameters parameters)
+        public PSBlobRestoreParameters(Track2Models.BlobRestoreContent parameters)
         {
             this.TimeToRestore = parameters.TimeToRestore;
             this.BlobRanges = PSBlobRestoreRange.ParsePSBlobRestoreRanges(parameters.BlobRanges);

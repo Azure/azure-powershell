@@ -12,32 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Storage.Models;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
     public class PSGeoReplicationStats
     {
-        //Parse GeoReplicationStats  in SDK to wrapped property PSGeoReplicationStats
-        public static PSGeoReplicationStats ParsePSGeoReplicationStats(GeoReplicationStats geoReplicationStats)
+        //Parse GeoReplicationStats in SDK to wrapped property PSGeoReplicationStats
+        public static PSGeoReplicationStats ParsePSGeoReplicationStats(Track2Models.GeoReplicationStats geoReplicationStats)
         {
             if (geoReplicationStats == null)
             {
                 return null;
             }
 
-            PSGeoReplicationStats pSGeoReplicationStats = new PSGeoReplicationStats();
-
-            pSGeoReplicationStats.Status = geoReplicationStats.Status;
-            pSGeoReplicationStats.LastSyncTime = geoReplicationStats.LastSyncTime;
-            pSGeoReplicationStats.CanFailover = geoReplicationStats.CanFailover;
-
+            PSGeoReplicationStats pSGeoReplicationStats = new PSGeoReplicationStats
+            {
+                Status = geoReplicationStats.Status != null ? geoReplicationStats.Status.ToString() : null,
+                LastSyncTime = geoReplicationStats.LastSyncOn,
+                CanFailover = geoReplicationStats.CanFailover != null ? geoReplicationStats.CanFailover : null
+            };
             return pSGeoReplicationStats;
         }
 
         public string Status { get; set; }
-        public DateTime? LastSyncTime { get; set; }
+        public DateTimeOffset? LastSyncTime { get; set; }
         public bool? CanFailover { get; set; }
     }
 }
