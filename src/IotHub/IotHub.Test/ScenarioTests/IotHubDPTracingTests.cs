@@ -12,29 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 {
-    public class IotHubDPTracingTests : RMTestBase
+    public class IotHubDPTracingTests : IotHubTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public IotHubDPTracingTests(ITestOutputHelper output)
+        public IotHubDPTracingTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestAzureIotHubTracing()
         {
-            IotHubController.NewInstance.RunPsTest(_logger, "Test-AzureRmIotHubTracing");
+            TestRunner.RunTestScript("Test-AzureRmIotHubTracing");
         }
     }
 }
