@@ -34,6 +34,8 @@
     - `New-AzSnapshotUpdateConfig`
     - `New-AzGalleryImageDefinition`
 * Added `-InstanceView` parameter to `Get-AzRestorePoint`
+* New Parameters -ScriptEncoding and -ScriptString for Invoke-AzvmRunCommand and Invoke-AzvmssRunCommand
+* New Parameter -ScaleInPolicyForceDeletion added to Update-Azvmss
 
 ## Version 4.26.0
 * Added `-ImageReferenceId` parameter to following cmdlets: `New-AzVm`, `New-AzVmConfig`, `New-AzVmss`, `Set-AzVmssStorageProfile`
