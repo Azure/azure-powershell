@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Storage.Models;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
     public class PSAzureFilesIdentityBasedAuthentication
     {
-        public PSAzureFilesIdentityBasedAuthentication(AzureFilesIdentityBasedAuthentication auth)
+        public PSAzureFilesIdentityBasedAuthentication(Track2Models.AzureFilesIdentityBasedAuthentication auth)
         {
             if (auth != null)
             {
-                this.DirectoryServiceOptions = auth.DirectoryServiceOptions;
+                this.DirectoryServiceOptions = auth.DirectoryServiceOptions.ToString();
                 this.ActiveDirectoryProperties = auth.ActiveDirectoryProperties != null ? new PSActiveDirectoryProperties(auth.ActiveDirectoryProperties) : null;
-                this.DefaultSharePermission = auth.DefaultSharePermission;
+                this.DefaultSharePermission = auth.DefaultSharePermission.ToString();
             }
         }
         // Gets or sets indicates the directory service used. Possible values include: 'None','AADDS', 'AD'
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
     public class PSActiveDirectoryProperties
     {
-        public PSActiveDirectoryProperties(ActiveDirectoryProperties properties)
+        public PSActiveDirectoryProperties(Track2Models.ActiveDirectoryProperties properties)
         {
             if (properties != null)
             {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 this.DomainSid = properties.DomainSid;
                 this.AzureStorageSid = properties.AzureStorageSid;
                 this.SamAccountName = properties.SamAccountName;
-                this.AccountType = properties.AccountType;
+                this.AccountType = properties.AccountType != null ? properties.AccountType.ToString() : null;
             }
         }
         public string DomainName { get; set; }

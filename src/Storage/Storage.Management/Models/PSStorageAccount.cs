@@ -20,62 +20,71 @@ using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
+using Azure.ResourceManager.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Auth;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
     public class PSStorageAccount : IStorageContextProvider
     {
-        public PSStorageAccount(StorageModels.StorageAccount storageAccount)
+
+        public PSStorageAccount(Track2.StorageAccountResource storageAccountResource)
         {
-            this.ResourceGroupName = new ResourceIdentifier(storageAccount.Id).ResourceGroupName;
-            this.StorageAccountName = storageAccount.Name;
-            this.Id = storageAccount.Id;
-            this.Location = storageAccount.Location;
-            this.Sku = new PSSku(storageAccount.Sku);
-            this.Encryption = storageAccount.Encryption;
-            this.Kind = storageAccount.Kind;
-            this.AccessTier = storageAccount.AccessTier;
-            this.CreationTime = storageAccount.CreationTime;
-            this.CustomDomain = storageAccount.CustomDomain is null ? null : new PSCustomDomain(storageAccount.CustomDomain);
-            this.Identity = storageAccount.Identity;
-            this.LastGeoFailoverTime = storageAccount.LastGeoFailoverTime;
-            this.PrimaryEndpoints = storageAccount.PrimaryEndpoints;
-            this.PrimaryLocation = storageAccount.PrimaryLocation;
-            this.ProvisioningState = storageAccount.ProvisioningState;
-            this.SecondaryEndpoints = storageAccount.SecondaryEndpoints;
-            this.SecondaryLocation = storageAccount.SecondaryLocation;
-            this.StatusOfPrimary = storageAccount.StatusOfPrimary;
-            this.StatusOfSecondary = storageAccount.StatusOfSecondary;
-            this.Tags = storageAccount.Tags;
-            this.EnableHttpsTrafficOnly = storageAccount.EnableHttpsTrafficOnly;
-            this.NetworkRuleSet = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet);
-            this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled;
-            this.FailoverInProgress = storageAccount.FailoverInProgress;
-            this.LargeFileSharesState = storageAccount.LargeFileSharesState;
-            this.AzureFilesIdentityBasedAuth = storageAccount.AzureFilesIdentityBasedAuthentication is null ? null : new PSAzureFilesIdentityBasedAuthentication(storageAccount.AzureFilesIdentityBasedAuthentication);
-            this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccount.GeoReplicationStats);
-            this.AllowBlobPublicAccess = storageAccount.AllowBlobPublicAccess;
-            this.MinimumTlsVersion = storageAccount.MinimumTlsVersion;
-            this.RoutingPreference = PSRoutingPreference.ParsePSRoutingPreference(storageAccount.RoutingPreference);
-            this.BlobRestoreStatus = storageAccount.BlobRestoreStatus is null ? null : new PSBlobRestoreStatus(storageAccount.BlobRestoreStatus);
-            this.EnableNfsV3 = storageAccount.EnableNfsV3;
-            this.ExtendedLocation = storageAccount.ExtendedLocation is null ? null : new PSExtendedLocation(storageAccount.ExtendedLocation);
-            this.AllowSharedKeyAccess = storageAccount.AllowSharedKeyAccess;
-            this.KeyCreationTime = storageAccount.KeyCreationTime is null ? null : new PSKeyCreationTime(storageAccount.KeyCreationTime);
-            this.KeyPolicy = storageAccount.KeyPolicy;
-            this.SasPolicy = storageAccount.SasPolicy;
-            this.AllowCrossTenantReplication = storageAccount.AllowCrossTenantReplication;
-            this.PublicNetworkAccess = storageAccount.PublicNetworkAccess;
-            this.ImmutableStorageWithVersioning = storageAccount.ImmutableStorageWithVersioning is null ? null : new PSImmutableStorageAccount(storageAccount.ImmutableStorageWithVersioning);
-            this.StorageAccountSkuConversionStatus = storageAccount.StorageAccountSkuConversionStatus is null ? null : new PSStorageAccountSkuConversionStatus(storageAccount.StorageAccountSkuConversionStatus);
+            this.ResourceGroupName = new ResourceIdentifier(storageAccountResource.Id).ResourceGroupName;
+            this.StorageAccountName = storageAccountResource.Data.Name;
+            this.Id = storageAccountResource.Id;
+            this.Location = storageAccountResource.Data.Location;
+            this.Sku = new PSSku(storageAccountResource.Data.Sku);
+            this.Encryption = storageAccountResource.Data.Encryption;
+            this.Kind = storageAccountResource.Data.Kind.ToString();
+            this.AccessTier = storageAccountResource.Data.AccessTier;
+            this.CreationTime = storageAccountResource.Data.CreationOn;
+            this.CustomDomain = storageAccountResource.Data.CustomDomain is null ? null : new PSCustomDomain(storageAccountResource.Data.CustomDomain);
+            this.Identity = storageAccountResource.Data.Identity != null ? new PSIdentity(storageAccountResource.Data.Identity) : null;
+            this.LastGeoFailoverTime = storageAccountResource.Data.LastGeoFailoverOn;
+            this.PrimaryEndpoints = storageAccountResource.Data.PrimaryEndpoints;
+            this.PrimaryLocation = storageAccountResource.Data.PrimaryLocation;
+            this.ProvisioningState = storageAccountResource.Data.ProvisioningState;
+            this.SecondaryEndpoints = storageAccountResource.Data.SecondaryEndpoints;
+            this.SecondaryLocation = storageAccountResource.Data.SecondaryLocation;
+            this.StatusOfPrimary = storageAccountResource.Data.StatusOfPrimary;
+            this.StatusOfSecondary = storageAccountResource.Data.StatusOfSecondary;
+            this.Tags = storageAccountResource.Data.Tags;
+            this.EnableHttpsTrafficOnly = storageAccountResource.Data.EnableHttpsTrafficOnly;
+
+            this.NetworkRuleSet = PSNetworkRuleSet.ParsePSNetworkRule(storageAccountResource.Data.NetworkRuleSet);
+
+            this.EnableHierarchicalNamespace = storageAccountResource.Data.IsHnsEnabled;
+            this.FailoverInProgress = storageAccountResource.Data.FailoverInProgress;
+            this.LargeFileSharesState = storageAccountResource.Data.LargeFileSharesState.ToString();
+            this.AzureFilesIdentityBasedAuth =
+                storageAccountResource.Data.AzureFilesIdentityBasedAuthentication is null ? null : new PSAzureFilesIdentityBasedAuthentication(storageAccountResource.Data.AzureFilesIdentityBasedAuthentication);
+            this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccountResource.Data.GeoReplicationStats);
+            this.AllowBlobPublicAccess = storageAccountResource.Data.AllowBlobPublicAccess;
+            this.MinimumTlsVersion = storageAccountResource.Data.MinimumTlsVersion is null ? null : storageAccountResource.Data.MinimumTlsVersion.ToString();
+            this.RoutingPreference = PSRoutingPreference.ParsePSRoutingPreference(storageAccountResource.Data.RoutingPreference);
+            this.BlobRestoreStatus = storageAccountResource.Data.BlobRestoreStatus is null ? null : new PSBlobRestoreStatus(storageAccountResource.Data.BlobRestoreStatus);
+            this.EnableNfsV3 = storageAccountResource.Data.EnableNfsV3;
+            this.ExtendedLocation = storageAccountResource.Data.ExtendedLocation is null ? null : new PSExtendedLocation(storageAccountResource.Data.ExtendedLocation);
+            this.AllowSharedKeyAccess = storageAccountResource.Data.AllowSharedKeyAccess;
+            this.KeyCreationTime = storageAccountResource.Data.KeyCreationTime is null ? null : new PSKeyCreationTime(storageAccountResource.Data.KeyCreationTime);
+            this.KeyPolicy = storageAccountResource.Data.KeyExpirationPeriodInDays != null ? new PSKeyPolicy((int)(storageAccountResource.Data.KeyExpirationPeriodInDays)) : null;
+            this.SasPolicy = storageAccountResource.Data.SasPolicy != null ? new PSSasPolicy(storageAccountResource.Data.SasPolicy.SasExpirationPeriod, storageAccountResource.Data.SasPolicy.ExpirationAction.ToString()) : null;
+            this.AllowCrossTenantReplication = storageAccountResource.Data.AllowCrossTenantReplication;
+            this.PublicNetworkAccess = storageAccountResource.Data.PublicNetworkAccess != null ? storageAccountResource.Data.PublicNetworkAccess.ToString() : null;
+            this.ImmutableStorageWithVersioning = storageAccountResource.Data.ImmutableStorageWithVersioning is null ? null : new PSImmutableStorageAccount(storageAccountResource.Data.ImmutableStorageWithVersioning);
         }
+
         public bool? AllowCrossTenantReplication { get; set; }
 
         public PSKeyCreationTime KeyCreationTime { get; set; }
-        public KeyPolicy KeyPolicy { get; }
-        public SasPolicy SasPolicy { get; }
+        public PSKeyPolicy KeyPolicy { get; }
+        public PSSasPolicy SasPolicy { get; }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
         public string ResourceGroupName { get; set; }
@@ -93,35 +102,35 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         [Ps1Xml(Label = "Kind", Target = ViewControl.Table, Position = 4)]
         public string Kind { get; set; }
-        public Encryption Encryption { get; set; }
+        public Track2Models.Encryption Encryption { get; set; }
 
         [Ps1Xml(Label = "AccessTier", Target = ViewControl.Table, Position = 5)]
-        public AccessTier? AccessTier { get; set; }
+        public Track2Models.AccessTier? AccessTier { get; set; }
 
         [Ps1Xml(Label = "CreationTime", Target = ViewControl.Table, Position = 6)]
-        public DateTime? CreationTime { get; set; }
+        public DateTimeOffset? CreationTime { get; set; }
 
         public PSCustomDomain CustomDomain { get; set; }
 
-        public Identity Identity { get; set; }
+        public PSIdentity Identity { get; set; }
 
-        public DateTime? LastGeoFailoverTime { get; set; }
+        public DateTimeOffset? LastGeoFailoverTime { get; set; }
 
-        public Endpoints PrimaryEndpoints { get; set; }
+        public Track2Models.Endpoints PrimaryEndpoints { get; set; }
 
         [Ps1Xml(Label = "PrimaryLocation", Target = ViewControl.Table, Position = 2)]
         public string PrimaryLocation { get; set; }
 
         [Ps1Xml(Label = "ProvisioningState", Target = ViewControl.Table, Position = 7)]
-        public ProvisioningState? ProvisioningState { get; set; }
+        public Track2Models.ProvisioningState? ProvisioningState { get; set; }
 
-        public Endpoints SecondaryEndpoints { get; set; }
+        public Track2Models.Endpoints SecondaryEndpoints { get; set; }
 
         public string SecondaryLocation { get; set; }
 
-        public AccountStatus? StatusOfPrimary { get; set; }
+        public Track2Models.AccountStatus? StatusOfPrimary { get; set; }
 
-        public AccountStatus? StatusOfSecondary { get; set; }
+        public Track2Models.AccountStatus? StatusOfSecondary { get; set; }
 
         public IDictionary<string, string> Tags { get; set; }
 
@@ -157,18 +166,35 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string PublicNetworkAccess { get; set; }
 
         public PSImmutableStorageAccount ImmutableStorageWithVersioning { get; set; }
-        public PSStorageAccountSkuConversionStatus StorageAccountSkuConversionStatus { get; set; }
 
-
-        public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
+        public static PSStorageAccount Create(Track2.StorageAccountResource storageAccountResource, Track2StorageManagementClient client)
         {
-            var result = new PSStorageAccount(storageAccount);
+            var result = new PSStorageAccount(storageAccountResource);
+
             result.Context = new LazyAzureStorageContext((s) =>
             {
-                return (new ARMStorageProvider(client)).GetCloudStorageAccount(s, result.ResourceGroupName);
+                return GetCloudStorageAccount(storageAccountResource);
             }, result.StorageAccountName) as AzureStorageContext;
 
             return result;
+        }
+
+        public static CloudStorageAccount GetCloudStorageAccount(Track2.StorageAccountResource storageAccountResource)
+        {
+            Uri blobEndpoint = storageAccountResource.Data.PrimaryEndpoints.Blob != null ? new Uri(storageAccountResource.Data.PrimaryEndpoints.Blob) : null;
+            Uri queueEndpoint = storageAccountResource.Data.PrimaryEndpoints.Queue != null ? new Uri(storageAccountResource.Data.PrimaryEndpoints.Queue) : null;
+            Uri tableEndpoint = storageAccountResource.Data.PrimaryEndpoints.Table != null ? new Uri(storageAccountResource.Data.PrimaryEndpoints.Table) : null;
+            Uri fileEndpoint = storageAccountResource.Data.PrimaryEndpoints.File != null ? new Uri(storageAccountResource.Data.PrimaryEndpoints.File) : null;
+            string key = storageAccountResource.GetKeys().Value.Keys[0].Value;
+            StorageCredentials storageCredentials = new Azure.Storage.Auth.StorageCredentials(storageAccountResource.Data.Name, key);
+            CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(
+                storageCredentials,
+                new StorageUri(blobEndpoint),
+                new StorageUri(queueEndpoint),
+                new StorageUri(tableEndpoint),
+                new StorageUri(fileEndpoint));
+
+            return cloudStorageAccount;
         }
 
         public IStorageContext Context { get; private set; }
@@ -186,45 +212,139 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         }
     }
 
+    public class PSKeyPolicy
+    {
+        public string KeyExpirationPeriodInDays { get; set; }
+
+        public PSKeyPolicy(int keyExpirationPeriodInDays)
+
+        {
+            this.KeyExpirationPeriodInDays = keyExpirationPeriodInDays.ToString();
+        }
+    }
+
+    public class PSSasPolicy
+    {
+        public string SasExpirationPeriod { get; set; }
+
+        public static string ExpirationAction { get; set; }
+
+        public PSSasPolicy(string sasExpirationPeriod, string expirationAction)
+        {
+            if (sasExpirationPeriod != null)
+            {
+                this.SasExpirationPeriod = sasExpirationPeriod;
+            }
+            if (expirationAction != null)
+            {
+                PSSasPolicy.ExpirationAction = expirationAction;
+            }
+
+        }
+
+        public PSSasPolicy() { }
+    }
+
     public class PSCustomDomain
     {
         public string Name { get; set; }
         public bool? UseSubDomain { get; set; }
 
-        public PSCustomDomain(CustomDomain input)
+        public PSCustomDomain(Track2Models.CustomDomain input)
         {
             this.Name = input.Name;
             this.UseSubDomain = input.UseSubDomainName;
         }
 
-        public CustomDomain ParseCustomDomain()
+        public Track2Models.CustomDomain ParseCustomDomain()
         {
-            return new CustomDomain(this.Name, this.UseSubDomain);
+            Track2Models.CustomDomain customDomain =
+                new Track2Models.CustomDomain(this.Name);
+            customDomain.UseSubDomainName = this.UseSubDomain;
+            return customDomain;
         }
+    }
+
+
+
+
+    public class PSIdentity
+    {
+        public string PrincipalId { get; set; }
+        public string TenantId { get; set; }
+
+        public string Type { get; set; }
+
+        public IDictionary<string, PSUserAssignedIdentity> UserAssignedIdentities = new Dictionary<string, PSUserAssignedIdentity>();
+
+        public PSIdentity(ManagedServiceIdentity identity)
+        {
+            if (identity.PrincipalId != null)
+            {
+                this.PrincipalId = identity.PrincipalId.Value.ToString();
+            }
+
+            if (identity.TenantId != null)
+            {
+                this.TenantId = identity.TenantId.Value.ToString();
+            }
+            if (identity != null)
+            {
+                this.Type = identity.ManagedServiceIdentityType.ToString();
+            }
+
+            identity.UserAssignedIdentities
+                .ForEach(x => this.UserAssignedIdentities.Add(x.Key, new PSUserAssignedIdentity(x.Value)));
+        }
+
+    }
+
+    public class PSUserAssignedIdentity
+    {
+        public string PrincipalId { get; set; }
+
+        public string ClientId { get; set; }
+
+        public PSUserAssignedIdentity(global::Azure.ResourceManager.Models.UserAssignedIdentity userAssignedIdentity)
+        {
+            if (userAssignedIdentity.PrincipalId != null)
+            {
+                this.PrincipalId = userAssignedIdentity.PrincipalId.Value.ToString();
+            }
+
+            if (userAssignedIdentity.ClientId != null)
+            {
+                this.ClientId = userAssignedIdentity.ClientId.Value.ToString();
+            }
+        }
+
     }
 
     public class PSSku
     {
         public string Name { get; set; }
-        public SkuTier? Tier { get; set; }
+        public Track2Models.StorageSkuTier? Tier { get; set; }
         public string ResourceType { get; set; }
         public string Kind { get; set; }
         public IList<string> Locations { get; set; }
         public IList<SKUCapability> Capabilities { get; set; }
         public IList<Restriction> Restrictions { get; set; }
 
-        public PSSku(Sku sku)
+        public PSSku(Track2Models.StorageSku sku)
         {
             if (sku != null)
             {
-                this.Name = sku.Name;
+                this.Name = sku.Name.ToString();
                 this.Tier = sku.Tier;
+
             }
         }
 
-        public Sku ParseSku()
+
+        public Track2Models.StorageSku ParseSku()
         {
-            return new Sku(Name, Tier);
+            Track2Models.StorageSku sku = new Track2Models.StorageSku(Name);
+            return sku;
         }
     }
 
@@ -233,10 +353,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSExtendedLocation()
         { }
 
-        public PSExtendedLocation(ExtendedLocation extendedLocation)
+        public PSExtendedLocation(Track2Models.ExtendedLocation extendedLocation)
         {
             this.Name = extendedLocation.Name;
-            this.Type = extendedLocation.Type;
+            this.Type = extendedLocation.ExtendedLocationType != null ? extendedLocation.ExtendedLocationType.ToString() : null;
         }
 
         public string Name { get; set; }
@@ -248,7 +368,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSKeyCreationTime()
         { }
 
-        public PSKeyCreationTime(KeyCreationTime keyCreationTime)
+        public PSKeyCreationTime(Track2Models.KeyCreationTime keyCreationTime)
         {
             if (keyCreationTime != null)
             {
@@ -256,8 +376,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 this.Key2 = keyCreationTime.Key2;
             }
         }
-        public System.DateTime? Key1 { get; set; }
-        public System.DateTime? Key2 { get; set; }
+        public System.DateTimeOffset? Key1 { get; set; }
+        public System.DateTimeOffset? Key2 { get; set; }
     }
 
     /// <summary>
@@ -268,7 +388,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSImmutableStorageAccount()
         { }
 
-        public PSImmutableStorageAccount(ImmutableStorageAccount immutableStorageAccount)
+        public PSImmutableStorageAccount(Track2Models.ImmutableStorageAccount immutableStorageAccount)
         {
             if (immutableStorageAccount != null)
             {
@@ -288,37 +408,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSAccountImmutabilityPolicyProperties()
         { }
 
-        public PSAccountImmutabilityPolicyProperties(AccountImmutabilityPolicyProperties accountImmutabilityPolicyProperties)
+        public PSAccountImmutabilityPolicyProperties(Track2Models.AccountImmutabilityPolicyProperties accountImmutabilityPolicyProperties)
         {
             if (accountImmutabilityPolicyProperties != null)
             {
                 this.ImmutabilityPeriodSinceCreationInDays = accountImmutabilityPolicyProperties.ImmutabilityPeriodSinceCreationInDays;
-                this.State = accountImmutabilityPolicyProperties.State;
+                this.State = accountImmutabilityPolicyProperties.State != null ? accountImmutabilityPolicyProperties.State.ToString() : null;
             }
         }
         public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
         public string State { get; set; }
-    }
-
-    /// <summary>
-    ///  wrapper class of StorageAccountSkuConversionStatus
-    /// </summary>
-    public class PSStorageAccountSkuConversionStatus
-    {
-        public string SkuConversionStatus { get; set; }
-        public string TargetSkuName { get; set; }
-        public string StartTime { get; set; }
-        public string EndTime { get; set; }
-
-        public PSStorageAccountSkuConversionStatus(StorageAccountSkuConversionStatus status)
-        {
-            if (status != null)
-            {
-                this.SkuConversionStatus = status.SkuConversionStatus;
-                this.TargetSkuName = status.TargetSkuName;
-                this.StartTime = status.StartTime;
-                this.EndTime = status.EndTime;
-            }
-        }
     }
 }
