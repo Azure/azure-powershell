@@ -27,7 +27,7 @@ This is a helper cmdlet that you can use to create a support contact profile obj
 	• PrimaryEmailAddress
 	• PreferredContactMethod
 	• Country
-    • PreferredSupportLanguage
+	• PreferredSupportLanguage
 	• PreferredTimeZone
 
 ## EXAMPLES
