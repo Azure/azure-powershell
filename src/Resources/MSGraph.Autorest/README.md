@@ -167,7 +167,7 @@ directive:
   - where:
       subject: ^applicationfederatedidentitycredentials$
     set: 
-      subject: applicationfederatedidentitycredential
+      subject: AppFederatedIdentityCredential
 
   - where:
       subject: ^applicationfederatedidentitycredential$|GroupGraphRefMember$|grouprefmember$|groupmember$
