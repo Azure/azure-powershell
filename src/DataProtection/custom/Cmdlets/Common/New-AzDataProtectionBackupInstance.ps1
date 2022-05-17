@@ -20,8 +20,12 @@ function New-AzDataProtectionBackupInstance {
         ${VaultName},
 
         [Parameter(Mandatory, HelpMessage='Backup instance request object which will be used to configure backup')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupInstanceResource]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupInstanceResource]
         ${BackupInstance},
+
+        [Parameter(Mandatory=$false, HelpMessage='Resource tags')]        
+        [Hashtable]
+        ${Tag},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -73,19 +77,24 @@ function New-AzDataProtectionBackupInstance {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
 
+        
     )
 
     process {
-        
-
         $name = $BackupInstance.BackupInstanceName
         $null = $PSBoundParameters.Remove("BackupInstance")
-        $null = $PSBoundParameters.Add("BackupInstance", $BackupInstance.Property)
-        $null = Az.DataProtection.Internal\Test-AzDataProtectionBackupInstance @PSBoundParameters
-        $null = $PSBoundParameters.Remove("BackupInstance")
-        $null = $PSBoundParameters.Add("Name", $name)
-        $null = $PSBoundParameters.Add("Parameter", $BackupInstance)
+        
+        if($Tag -ne $null)
+        {
+            $null = $PSBoundParameters.Remove("Tag")
+            $BackupInstance.Tag = $Tag
+        }
 
+        $null = $PSBoundParameters.Add("BackupInstance", $BackupInstance.Property)
+        $null = Test-AzDataProtectionBackupInstanceReadiness @PSBoundParameters
+        $null = $PSBoundParameters.Remove("BackupInstance")
+        $null = $PSBoundParameters.Add("Name", $name)        
+        $null = $PSBoundParameters.Add("Parameter", $BackupInstance)
         Az.DataProtection.Internal\New-AzDataProtectionBackupInstance @PSBoundParameters
     }
 

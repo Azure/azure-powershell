@@ -30,6 +30,79 @@
 	}
 }
 
+function GetResourceGroupIdFromArmId {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+	param(
+		[Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Id
+	)
+	
+	process{
+
+        $ResourceArray = $Id.Split("/")
+        $ResourceRG = "/subscriptions/" + $ResourceArray[2] + "/resourceGroups/" + $ResourceArray[4]
+
+		return $ResourceRG
+	}
+}
+
+function GetSubscriptionNameFromArmId {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+	param(
+		[Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Id
+	)
+	
+	process{
+
+        $ResourceArray = $Id.Split("/")
+        $SubscriptionName = "/subscriptions/" + $ResourceArray[2]
+        
+		return $SubscriptionName
+	}
+}
+
+
+function GetResourceNameFromArmId {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+	param(
+		[Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Id
+	)
+	
+	process{
+
+        $ResourceArray = $Id.Split("/")
+        $ResourceName = $ResourceArray[8]
+        
+		return $ResourceName
+	}
+}
+
+function GetResourceGroupNameFromArmId {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+	param(
+		[Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Id
+	)
+	
+	process{
+
+        $ResourceArray = $Id.Split("/")
+        $ResourceRG = $ResourceArray[4]
+        
+		return $ResourceRG
+	}
+}
+
 function CheckResourceGraphModuleDependency
 {
 	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
@@ -42,6 +115,135 @@ function CheckResourceGraphModuleDependency
 		{
 			$message = "Az.ResourceGraph Module must be installed to run this command. Please run 'Install-Module -Name Az.ResourceGraph' to install and continue."
 			throw $message
+		}
+	}
+}
+
+function CheckResourcesModuleDependency
+{
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+	param() 
+
+	process
+	{
+		$module = Get-InstalledModule | Where-Object {$_.Name -eq "Az.Resources"}
+		if($module -eq $null)
+		{
+			$message = "Az.Resources Module must be installed to run this command. Please run 'Install-Module -Name Az.Resources' to install and continue."
+			throw $message
+		}
+	}
+}
+
+function CheckPostgreSqlModuleDependency
+{
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+	param() 
+
+	process
+	{
+		$module = Get-InstalledModule | Where-Object {$_.Name -eq "Az.PostgreSql"}
+		if($module -eq $null)
+		{
+			$message = "Az.PostgreSql Module must be installed to run this command. Please run 'Install-Module -Name Az.PostgreSql' to install and continue."
+			throw $message
+		}
+	}
+}
+
+function CheckKeyVaultModuleDependency
+{
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+	param() 
+
+	process
+	{
+		$module = Get-InstalledModule | Where-Object {$_.Name -eq "Az.KeyVault"}
+		if($module -eq $null)
+		{
+			$message = "Az.KeyVault Module must be installed to run this command. Please run 'Install-Module -Name Az.KeyVault' to install and continue."
+			throw $message
+		}
+	}
+}
+
+function AssignMissingRolesHelper
+{
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+	param(
+		[Parameter(Mandatory)]
+        [System.String]
+        ${ObjectId},
+
+		[Parameter(Mandatory)]
+        [System.String]
+        ${Permission},
+
+		[Parameter(Mandatory)]
+        [System.String]
+        ${ResourceScope}
+	)
+
+	process{
+		try{New-AzRoleAssignment -ObjectId $ObjectId -RoleDefinitionName $Permission -Scope $ResourceScope | Out-Null}
+         
+        catch
+        {
+             $err = $_
+			 if($err.Exception.Message -eq "Operation returned an invalid status code 'Forbidden'")
+			 {
+				 $err = "User doesn't have sufficient privileges for performing Grant permissions."
+			 }
+             throw $err 
+        }
+	}
+}
+
+
+function AssignMissingRoles
+{
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+	param(
+		[Parameter(Mandatory)]
+        [System.String]
+        ${ObjectId},
+
+		[Parameter(Mandatory)]
+        [System.String]
+        ${Permission},
+
+		[Parameter(Mandatory)]
+        [System.String]
+        ${PermissionsScope},
+
+		[Parameter(Mandatory)]
+        [System.String]
+        ${Resource},
+
+		[Parameter(Mandatory)]
+        [System.String]
+        ${ResourceGroup},
+
+		[Parameter(Mandatory)]
+        [System.String]
+        ${Subscription}
+	)
+
+	process{
+
+		if($PermissionsScope -eq "Resource")
+		{
+			AssignMissingRolesHelper -ObjectId $ObjectId -Permission $Permission -ResourceScope $Resource
+		}
+
+		elseif($PermissionsScope -eq "ResourceGroup")
+		{
+			AssignMissingRolesHelper -ObjectId $ObjectId -Permission $Permission -ResourceScope $ResourceGroup
+		}
+
+		else
+		{
+			AssignMissingRolesHelper -ObjectId $ObjectId -Permission $Permission -ResourceScope $Subscription
 		}
 	}
 }

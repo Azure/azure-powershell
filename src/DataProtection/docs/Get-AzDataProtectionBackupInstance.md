@@ -45,7 +45,6 @@ Name                                                         Type               
 ----                                                         ----                                                  ------------------
 sarathdisk-sarathdisk-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   Microsoft.DataProtection/backupVaults/backupInstances sarathdisk-sarathdisk-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 sarathdisk2-sarathdisk2-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxcc Microsoft.DataProtection/backupVaults/backupInstances sarathdisk2-sarathdisk2-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-
 ```
 
 This command gets all the backup instances in a vault.
@@ -165,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupInstanceResource
 
 ## NOTES
 
