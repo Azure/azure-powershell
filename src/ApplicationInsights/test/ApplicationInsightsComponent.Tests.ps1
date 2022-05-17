@@ -27,15 +27,8 @@ Describe 'ApplicationInsightsComponent' {
         $component.Name | Should -Be $env.component1
         $component.Kind | Should -Be $kind
         $component.InstrumentationKey | Should -Not -BeNullOrEmpty
-        "Enabled" | Should -Be $component.PublicNetworkAccessForIngestion
-        "Enabled" | Should -Be $component.PublicNetworkAccessForQuery
-
-        $component = Update-AzApplicationInsights -ResourceGroupName $env.resourceGroup -Name $env.component1 -Tag $tag -PublicNetworkAccessForIngestion "Disabled" -PublicNetworkAccessForQuery "Disabled"
-
-        "Disabled" | Should -Be $component.PublicNetworkAccessForIngestion
-        "Disabled" | Should -Be $component.PublicNetworkAccessForQuery
-        $val | Should -Be $component.Tag[$key]
-
+        $component.PublicNetworkAccessForIngestion | Should -Be "Enabled"
+        $component.PublicNetworkAccessForQuery | Should -Be "Enabled"
         Remove-AzApplicationInsights -ResourceGroupName $env.resourceGroup -Name $env.component1
     }
 }
