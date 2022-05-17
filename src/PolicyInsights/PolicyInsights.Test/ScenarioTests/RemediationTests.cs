@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -27,71 +25,66 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
     /// TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId=f67cc918-f64f-4c3f-aa24-a855465f9d41;ServicePrincipal=20f84e2b-2ca6-4035-a118-6105027fce93;ServicePrincipalSecret=****;AADTenant=72f988bf-86f1-41af-91ab-2d7cd011db47;Environment=Prod;
     /// See ../EnvSetup/RemediationSetup.ps1 for a helper script to get the appropriate policies and resources created in your subscription
     /// </remarks>
-    public class RemediationTests
+    public class RemediationTests : PolicyInsightsTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public RemediationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public RemediationTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionScopeCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-SubscriptionScope-Crud");
+            TestRunner.RunTestScript("Remediation-SubscriptionScope-Crud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResourceGroupScopeCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-ResourceGroupScope-Crud");
+            TestRunner.RunTestScript("Remediation-ResourceGroupScope-Crud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResourceScopeCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-ResourceScope-Crud");
+            TestRunner.RunTestScript("Remediation-ResourceScope-Crud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagementGroupScopeCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-ManagementGroupScope-Crud");
+            TestRunner.RunTestScript("Remediation-ManagementGroupScope-Crud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void BackgroundJobs()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-BackgroundJobs");
+            TestRunner.RunTestScript("Remediation-BackgroundJobs");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReEvaluateCompliance()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-ReEvaluateCompliance");
+            TestRunner.RunTestScript("Remediation-ReEvaluateCompliance");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void LargeRemediation()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-LargeRemediation");
+            TestRunner.RunTestScript("Remediation-LargeRemediation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ErrorHandling()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-ErrorHandling");
+            TestRunner.RunTestScript("Remediation-ErrorHandling");
         }
     }
 }
