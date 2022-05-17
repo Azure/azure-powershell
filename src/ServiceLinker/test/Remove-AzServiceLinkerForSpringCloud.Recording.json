@@ -1,0 +1,160 @@
+{
+  "Remove-AzServiceLinkerForSpringCloud+[NoContext]+Delete+$DELETE+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "51" ],
+        "x-ms-client-request-id": [ "4d14a9fc-1122-464f-9ec7-e0098c35f9d6" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Remove-AzServiceLinker" ],
+        "FullCommandName": [ "Remove-AzServiceLinker_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"f5006fd6-0000-0200-0000-627616b10000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/aac76862-44fc-41c0-b9cd-c191c5c2e733*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "33d577d5-6432-40fb-beec-10563de19caf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/aac76862-44fc-41c0-b9cd-c191c5c2e733*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01" ],
+        "x-ms-request-id": [ "aac76862-44fc-41c0-b9cd-c191c5c2e733" ],
+        "x-ms-correlation-request-id": [ "9b58290b-06cb-424d-b363-54493c2463a6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T065025Z:9b58290b-06cb-424d-b363-54493c2463a6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:50:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA=="
+    }
+  },
+  "Remove-AzServiceLinkerForSpringCloud+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/aac76862-44fc-41c0-b9cd-c191c5c2e733*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/aac76862-44fc-41c0-b9cd-c191c5c2e733*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "52" ],
+        "x-ms-client-request-id": [ "4d14a9fc-1122-464f-9ec7-e0098c35f9d6" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Remove-AzServiceLinker" ],
+        "FullCommandName": [ "Remove-AzServiceLinker_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0300e913-0000-0100-0000-627616b30000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11962" ],
+        "x-ms-request-id": [ "0a0e4643-baac-4121-bc9b-f2ce6d9e0c19" ],
+        "x-ms-correlation-request-id": [ "ee09d7fe-fe52-4f33-b31b-ddda5e279a9b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T065055Z:ee09d7fe-fe52-4f33-b31b-ddda5e279a9b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:50:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "728" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/aac76862-44fc-41c0-b9cd-c191c5c2e733*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C\",\"name\":\"aac76862-44fc-41c0-b9cd-c191c5c2e733*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C\",\"resourceId\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker\",\"status\":\"Succeeded\",\"startTime\":\"2022-05-07T06:50:24.9822529Z\",\"endTime\":\"2022-05-07T06:50:27.7001969Z\",\"properties\":null}"
+    }
+  },
+  "Remove-AzServiceLinkerForSpringCloud+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/aac76862-44fc-41c0-b9cd-c191c5c2e733*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/aac76862-44fc-41c0-b9cd-c191c5c2e733*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "53" ],
+        "x-ms-client-request-id": [ "4d14a9fc-1122-464f-9ec7-e0098c35f9d6" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Remove-AzServiceLinker" ],
+        "FullCommandName": [ "Remove-AzServiceLinker_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0300e913-0000-0100-0000-627616b30000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11961" ],
+        "x-ms-request-id": [ "6419afc2-12db-4754-ab70-b6575f610017" ],
+        "x-ms-correlation-request-id": [ "c5da3490-5ced-4c93-ae61-ffc29e966db4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T065056Z:c5da3490-5ced-4c93-ae61-ffc29e966db4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:50:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "728" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/aac76862-44fc-41c0-b9cd-c191c5c2e733*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C\",\"name\":\"aac76862-44fc-41c0-b9cd-c191c5c2e733*FF9853222A32BCC2A8434BCA00837B5104E7175F34B3F417895F59A43CD06D0C\",\"resourceId\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker\",\"status\":\"Succeeded\",\"startTime\":\"2022-05-07T06:50:24.9822529Z\",\"endTime\":\"2022-05-07T06:50:27.7001969Z\",\"properties\":null}"
+    }
+  },
+  "Remove-AzServiceLinkerForSpringCloud+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/ps_linker?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "57d81ece-3fd3-41ae-8360-adbb3182a692" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Remove-AzServiceLinker" ],
+        "FullCommandName": [ "Remove-AzServiceLinker_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
+        "x-ms-correlation-request-id": [ "8df934ba-55af-4b7e-b3c3-d09190a8a7f6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T065056Z:8df934ba-55af-4b7e-b3c3-d09190a8a7f6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:50:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  }
+}
