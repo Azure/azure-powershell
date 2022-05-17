@@ -20,11 +20,11 @@ Adds member to group.
 ### [Get-AzADAppCredential](Get-AzADAppCredential.md)
 Lists key credentials and password credentials for an application.
 
+### [Get-AzADAppFederatedIdentityCredential](Get-AzADAppFederatedIdentityCredential.md)
+Get federatedIdentityCredentials by Id from applications.
+
 ### [Get-AzADApplication](Get-AzADApplication.md)
 Lists entities from applications or get entity from applications by key
-
-### [Get-AzADApplicationFederatedIdentityCredential](Get-AzADApplicationFederatedIdentityCredential.md)
-Get federatedIdentityCredentials by Id from applications.
 
 ### [Get-AzADAppPermission](Get-AzADAppPermission.md)
 Lists API permissions the application has requested.
@@ -47,11 +47,11 @@ Lists entities from users or get entity from users by key
 ### [New-AzADAppCredential](New-AzADAppCredential.md)
 Creates key credentials or password credentials for an application.
 
+### [New-AzADAppFederatedIdentityCredential](New-AzADAppFederatedIdentityCredential.md)
+Create federatedIdentityCredential for applications.
+
 ### [New-AzADApplication](New-AzADApplication.md)
 Adds new entity to applications
-
-### [New-AzADapplicationfederatedidentitycredential](New-AzADapplicationfederatedidentitycredential.md)
-Create federatedIdentityCredential for applications.
 
 ### [New-AzADGroup](New-AzADGroup.md)
 Adds new entity to groups
@@ -68,11 +68,11 @@ Adds new entity to users
 ### [Remove-AzADAppCredential](Remove-AzADAppCredential.md)
 Removes key credentials or password credentials for an application.
 
+### [Remove-AzADAppFederatedIdentityCredential](Remove-AzADAppFederatedIdentityCredential.md)
+Delete federatedIdentityCredentials for applications.
+
 ### [Remove-AzADApplication](Remove-AzADApplication.md)
 Deletes entity from applications
-
-### [Remove-AzADapplicationfederatedidentitycredential](Remove-AzADapplicationfederatedidentitycredential.md)
-Delete federatedIdentityCredentials for applications.
 
 ### [Remove-AzADAppPermission](Remove-AzADAppPermission.md)
 Removes an API permission.
@@ -96,11 +96,11 @@ Removes key credentials or password credentials for an service principal.
 ### [Remove-AzADUser](Remove-AzADUser.md)
 Deletes entity from users.
 
+### [Update-AzADAppFederatedIdentityCredential](Update-AzADAppFederatedIdentityCredential.md)
+Update the federatedIdentityCredentials in applications.
+
 ### [Update-AzADApplication](Update-AzADApplication.md)
 Updates entity in applications
-
-### [Update-AzADapplicationfederatedidentitycredential](Update-AzADapplicationfederatedidentitycredential.md)
-Update the federatedIdentityCredentials in applications.
 
 ### [Update-AzADGroup](Update-AzADGroup.md)
 Update entity in groups

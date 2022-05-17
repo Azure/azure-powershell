@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadapplicationfederatedidentitycredentials
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadappfederatedidentitycredentials
 schema: 2.0.0
 ---
 
-# Get-AzADApplicationFederatedIdentityCredential
+# Get-AzADAppFederatedIdentityCredential
 
 ## SYNOPSIS
 Get federatedIdentityCredentials by Id from applications.
@@ -14,26 +14,26 @@ Get federatedIdentityCredentials by Id from applications.
 
 ### ListByApplicationObjectId (Default)
 ```
-Get-AzADApplicationFederatedIdentityCredential -ApplicationObjectId <String> [-Count] [-Expand <String[]>]
+Get-AzADAppFederatedIdentityCredential -ApplicationObjectId <String> [-Count] [-Expand <String[]>]
  [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-First <UInt64>]
  [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByApplicationObject
 ```
-Get-AzADApplicationFederatedIdentityCredential -ApplicationObject <MicrosoftGraphApplication> -Id <String>
+Get-AzADAppFederatedIdentityCredential -ApplicationObject <MicrosoftGraphApplication> -Id <String>
  [-Expand <String[]>] [-Select <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByApplicationObjectId
 ```
-Get-AzADApplicationFederatedIdentityCredential -ApplicationObjectId <String> -Id <String> [-Expand <String[]>]
+Get-AzADAppFederatedIdentityCredential -ApplicationObjectId <String> -Id <String> [-Expand <String[]>]
  [-Select <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByApplicationObject
 ```
-Get-AzADApplicationFederatedIdentityCredential -ApplicationObject <MicrosoftGraphApplication> [-Count]
+Get-AzADAppFederatedIdentityCredential -ApplicationObject <MicrosoftGraphApplication> [-Count]
  [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
  [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -45,14 +45,14 @@ Get federatedIdentityCredentials by Id from applications.
 
 ### Example 1: List federated identity credentials for application
 ```powershell
-Get-AzADApplication -ObjectId $app | Get-AzADApplicationFederatedCredential
+Get-AzADApplication -ObjectId $app | Get-AzADAppFederatedCredential
 ```
 
 List federated identity credentials for application
 
 ### Example 2: Get federated identity credential by id
 ```powershell
-Get-AzADApplicationFederatedCredential -ApplicationObjectId $appObjectId -Id $credentialId
+Get-AzADAppFederatedCredential -ApplicationObjectId $appObjectId -Id $credentialId
 ```
 
 Get federated identity credential by id

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadapplicationfederatedidentitycredential
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadappfederatedidentitycredential
 schema: 2.0.0
 ---
 
-# Remove-AzADapplicationfederatedidentitycredential
+# Remove-AzADAppFederatedIdentityCredential
 
 ## SYNOPSIS
 Delete federatedIdentityCredentials for applications.
@@ -13,8 +13,8 @@ Delete federatedIdentityCredentials for applications.
 ## SYNTAX
 
 ```
-Remove-AzADapplicationfederatedidentitycredential -ApplicationObjectId <String> -Id <String>
- [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzADAppFederatedIdentityCredential -ApplicationObjectId <String> -Id <String> [-IfMatch <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Delete federatedIdentityCredentials for applications.
 
 ### Example 1: Delete federated identity credential for application
 ```powershell
-Remove-AzADapplicationfederatedidentitycredential -ApplicationObjectId $appObjectId -Id $credentialId
+Remove-AzADappfederatedidentitycredential -ApplicationObjectId $appObjectId -Id $credentialId
 ```
 
 Delete federated identity credential for application

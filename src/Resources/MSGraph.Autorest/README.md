@@ -165,14 +165,14 @@ directive:
     hide: true
 
   - where:
-      subject: ^applicationfederatedidentitycredentials$
-    set: 
-      subject: AppFederatedIdentityCredential
-
-  - where:
       subject: ^applicationfederatedidentitycredential$|GroupGraphRefMember$|grouprefmember$|groupmember$
     set:
       preview-message: This cmdlet is using API version beta which is under preview.
+
+  - where:
+      subject: ^applicationfederatedidentitycredentials$
+    set: 
+      subject: AppFederatedIdentityCredential
 
   - where:
       subject: ^application$|^serviceprincipal$|^group$

@@ -20,9 +20,9 @@ Create federatedIdentityCredential for applications.
 .Description
 Create federatedIdentityCredential for applications.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadapplicationfederatedidentitycredential
+https://docs.microsoft.com/powershell/module/az.resources/new-azadappfederatedidentitycredential
 #>
-function New-AzADapplicationfederatedidentitycredential {
+function New-AzADAppFederatedIdentityCredential {
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PreviewMessageAttribute("This cmdlet is using API version beta which is under preview.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IMicrosoftGraphFederatedIdentityCredential])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
@@ -135,7 +135,7 @@ function New-AzADapplicationfederatedidentitycredential {
     )
     
     process {
-        . Az.MSGraph.internal\New-AzADApplicationFederatedIdentityCredential @PSBoundParameters
+        . Az.MSGraph.internal\New-AzADAppFederatedIdentityCredential @PSBoundParameters
     }
 }
     
