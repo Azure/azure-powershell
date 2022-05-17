@@ -12,20 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces
+namespace Microsoft.Azure.Commands.Shared.Config
 {
     /// <summary>
-    /// An abstraction of the ability to get and set environment variable on various targets.
+    /// This class stores keys of all the pre-defined configs.
     /// </summary>
-    internal interface IEnvironmentVariableProvider
+    /// <remarks>
+    /// All keys should be defined here.
+    /// If the key is used in Azure/azure-powershell-common repo, duplicate it in ConfigKeysForCommon class.
+    /// Keys defined here should NEVER be removed or changed to prevent breaking change.
+    /// </remarks>
+    internal static class ConfigKeys
     {
-        string Get(string variableName, EnvironmentVariableTarget target = EnvironmentVariableTarget.Process);
-
-        void Set(string variableName, string value, EnvironmentVariableTarget target = EnvironmentVariableTarget.Process);
-
-        IReadOnlyDictionary<string, string> List(EnvironmentVariableTarget target = EnvironmentVariableTarget.Process);
+        public const string EnableInterceptSurvey = "EnableInterceptSurvey";
+        public const string DisplayBreakingChangeWarning = "DisplayBreakingChangeWarning";
+        public const string DefaultSubscriptionForLogin = "DefaultSubscriptionForLogin";
+        public const string EnableDataCollection = "EnableDataCollection";
     }
 }

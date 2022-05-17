@@ -21,25 +21,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Provide
     internal class EnvironmentVariablesConfigurationProvider : ConfigurationProvider
     {
         private EnvironmentVariableTarget _environmentVariableTarget;
-        private IDictionary<string, string> _environmentVariableNameToKeyMapping;
+        private IDictionary<string, EnvironmentVariableConfigurationParser> _environmentVariableParsers;
         private IEnvironmentVariableProvider _environmentVariableProvider;
 
         public EnvironmentVariablesConfigurationProvider(string id, EnvironmentVariablesConfigurationOptions options) : base(id)
         {
             _environmentVariableTarget = options.EnvironmentVariableTarget;
-            _environmentVariableNameToKeyMapping = options.EnvironmentVariableToKeyMap ?? new Dictionary<string, string>();
+            _environmentVariableParsers = options.EnvironmentVariableParsers ?? new Dictionary<string, EnvironmentVariableConfigurationParser>();
             _environmentVariableProvider = options.EnvironmentVariableProvider;
         }
 
         public override void Load()
         {
             var data = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            foreach (var i in _environmentVariableNameToKeyMapping)
+            var environmentVariables = _environmentVariableProvider.List(_environmentVariableTarget);
+            foreach (var i in _environmentVariableParsers)
             {
-                string value = _environmentVariableProvider.Get(i.Key, _environmentVariableTarget);
+                string value = i.Value(environmentVariables);
                 if (!string.IsNullOrEmpty(value))
                 {
-                    data[i.Value] = value;
+                    string key = ConfigPathHelper.GetPathOfConfig(i.Key);
+                    data[key] = value;
                 }
             }
 

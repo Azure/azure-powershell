@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
         /// <returns>The connection string.</returns>
         public static string GetConnectionString(this IConfiguration configuration, string name)
         {
-            return configuration?.GetSection("ConnectionStrings")?[name];
+            return configuration?.GetSection("ConnectionStrings")?[name].value;
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
                 // Don't include the sections value if we are removing paths, since it will be an empty key
                 if (config is IConfigurationSection section && (!makePathsRelative || config != configuration))
                 {
-                    yield return new KeyValuePair<string, string>(section.Path.Substring(prefixLength), section.Value);
+                    yield return new KeyValuePair<string, string>(section.Path.Substring(prefixLength), section.Value.Item1);
                 }
                 foreach (IConfigurationSection child in config.GetChildren())
                 {
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
             {
                 return false;
             }
-            return section.Value != null || section.GetChildren().Any();
+            return section.Value.Item1 != null || section.GetChildren().Any();
         }
     }
 }
