@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// Creates a new instance of <see cref="StorageAccountUpdateParameters" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="StorageAccountUpdateParameters" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParameters FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -190,6 +190,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             if (content.Contains("LargeFileSharesState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).LargeFileSharesState = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LargeFileSharesState?) content.GetValueForProperty("LargeFileSharesState",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).LargeFileSharesState, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LargeFileSharesState.CreateFrom);
+            }
+            if (content.Contains("AllowBlobPublicAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).AllowBlobPublicAccess = (bool?) content.GetValueForProperty("AllowBlobPublicAccess",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).AllowBlobPublicAccess, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("MinimumTlsVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).MinimumTlsVersion = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MinimumTlsVersion?) content.GetValueForProperty("MinimumTlsVersion",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).MinimumTlsVersion, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MinimumTlsVersion.CreateFrom);
+            }
+            if (content.Contains("AllowSharedKeyAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).AllowSharedKeyAccess = (bool?) content.GetValueForProperty("AllowSharedKeyAccess",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).AllowSharedKeyAccess, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("CustomDomainName"))
             {
@@ -423,6 +435,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             if (content.Contains("LargeFileSharesState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).LargeFileSharesState = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LargeFileSharesState?) content.GetValueForProperty("LargeFileSharesState",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).LargeFileSharesState, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LargeFileSharesState.CreateFrom);
+            }
+            if (content.Contains("AllowBlobPublicAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).AllowBlobPublicAccess = (bool?) content.GetValueForProperty("AllowBlobPublicAccess",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).AllowBlobPublicAccess, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("MinimumTlsVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).MinimumTlsVersion = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MinimumTlsVersion?) content.GetValueForProperty("MinimumTlsVersion",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).MinimumTlsVersion, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MinimumTlsVersion.CreateFrom);
+            }
+            if (content.Contains("AllowSharedKeyAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).AllowSharedKeyAccess = (bool?) content.GetValueForProperty("AllowSharedKeyAccess",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountUpdateParametersInternal)this).AllowSharedKeyAccess, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("CustomDomainName"))
             {

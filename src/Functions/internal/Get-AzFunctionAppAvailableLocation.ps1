@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Get a list of available geographical regions.
+Get a list of available geographical regions.
 .Description
-Description for Get a list of available geographical regions.
+Get a list of available geographical regions.
 .Example
 Get-AzFunctionAppAvailableLocation
 .Example
@@ -124,6 +124,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzFunctionAppAvailableLocation_List';
         }
@@ -136,6 +137,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -144,15 +146,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
