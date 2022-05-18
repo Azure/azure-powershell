@@ -1,48 +1,35 @@
 ---
-external help file:
-Module Name: Az.Functions
-online version: https://docs.microsoft.com/powershell/module/az.functions/get-azwebappsyncstatus
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
+Module Name: Az.RecoveryServices
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzWebAppSyncStatus
+# Remove-AzRecoveryServicesResourceGuardMapping
 
 ## SYNOPSIS
-Description for This is to allow calling via powershell and ARM template.
+Deletes the resource guard mapping added to the recovery services vault.
 
 ## SYNTAX
 
 ```
-Get-AzWebAppSyncStatus -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzRecoveryServicesResourceGuardMapping [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-Token <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Description for This is to allow calling via powershell and ARM template.
+This cmdlet deletes the mapping between the RS vault and resource guard
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1 Delete the resource guard mapping in a cross tenant scenario
+
 ```powershell
-{{ Add code here }}
+PS C:\> $token = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
+PS C:\> Remove-AzRecoveryServicesResourceGuardMapping -VaultId $vault.ID  -Token $token
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The first command fetches the access token for the resource guard tenant where the resource guard is present. The second command deletes the mapping between the RSVault $vault and the resource guard. Please note that token parameter is optional and only needed to authenticate cross tenant protected opeartions.
 
 ## PARAMETERS
 
@@ -50,9 +37,9 @@ Description for This is to allow calling via powershell and ARM template.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -61,29 +48,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the app.
+### -Token
+Auxiliary access token for authenticating critical operation to resource guard subscription
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
 Required: False
 Position: Named
 Default value: None
@@ -91,35 +63,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of the resource group to which the resource belongs.
+### -VaultId
+ARM ID of the Recovery Services Vault.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Your Azure subscription ID.
-This is a GUID-formatted string (e.g.
-00000000-0000-0000-0000-000000000000).
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -159,13 +114,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ## OUTPUTS
 
-### System.Boolean
+### System.Object
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

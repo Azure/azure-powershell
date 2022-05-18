@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Deletes a web, mobile, or API app, or one of the deployment slots.
+Deletes a web, mobile, or API app, or one of the deployment slots.
 .Description
-Description for Deletes a web, mobile, or API app, or one of the deployment slots.
+Deletes a web, mobile, or API app, or one of the deployment slots.
 .Example
 Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -Force
 .Example
@@ -199,6 +199,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzFunctionApp_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzFunctionApp_DeleteViaIdentity';
@@ -212,6 +213,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -220,15 +222,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

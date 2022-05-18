@@ -98,6 +98,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public ItemBase Item { get; set; }
 
         /// <summary>
+        /// Item whose protection needs to be modified.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken, ValueFromPipeline = false)]
+        [ValidateNotNullOrEmpty]
+        public string Token;
+
+        /// <summary>
         /// List of Disk LUNs to include in backup
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureVMClassicComputeParameterSet,
@@ -148,9 +155,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
                 string shouldProcessName = Name;
+                bool isMUAOperation = false;
+
                 if (ParameterSetName.Contains("Modify"))
                 {
                     shouldProcessName = Item.Name;
+                    isMUAOperation = true;
                 }
 
                 if (ShouldProcess(shouldProcessName, VerbsLifecycle.Enable))
@@ -242,7 +252,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { ItemParams.InclusionDisksList, InclusionDisksList },
                                 { ItemParams.ExclusionDisksList, ExclusionDisksList },
                                 { ItemParams.ResetExclusionSettings, ResetExclusionSettings },
-                                { ItemParams.ExcludeAllDataDisks, ExcludeAllDataDisks.IsPresent }
+                                { ItemParams.ExcludeAllDataDisks, ExcludeAllDataDisks.IsPresent },
+                                { ResourceGuardParams.Token, Token },
+                                { ResourceGuardParams.IsMUAOperation, isMUAOperation },
                             }, ServiceClientAdapter);
 
                         IPsBackupProvider psBackupProvider = (Item != null) ?
