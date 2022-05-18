@@ -48,10 +48,9 @@ Please note some properties can be set only during cloud service creation.
 ## EXAMPLES
 
 ### Example 1: Create new cloud service with single role
-
 ```powershell
 # Create role profile object
-$role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 $roleProfile = @{role = @($role)}
 
 # Create network profile object
@@ -79,10 +78,9 @@ $cloudService = New-AzCloudService                                              
 Above set of commands creates a cloud service with single role
 
 ### Example 2: Create new cloud service with single role and RDP extension
-
 ```powershell
 # Create role profile object
-$role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 $roleProfile = @{role = @($role)}
 
 # Create network profile object
@@ -117,10 +115,9 @@ $cloudService = New-AzCloudService                                              
 Above set of commands creates a cloud service with single role and RDP extension
 
 ### Example 3: Create new cloud service with single role and certificate from key vault
-
 ```powershell
 # Create role profile object
-$role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 $roleProfile = @{role = @($role)}
 
 # Create OS profile object
@@ -155,11 +152,10 @@ $cloudService = New-AzCloudService                                              
 Above set of commands creates a cloud service with single role and certificate from key vault.
 
 ### Example 4: Create new cloud service with multiple roles and extensions
-
 ```powershell
 # Create role profile object
-$role1 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
-$role2 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role1 = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role2 = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 $roleProfile = @{role = @($role1, $role2)}
 
 # Create network profile object
@@ -201,7 +197,6 @@ $cloudService = New-AzCloudService                                              
 Above set of commands creates a cloud service with single role and certificate from key vault.
 
 ### Example 5: Create new cloud service with CsCfg, CsDef, and Cspkg files using 'quickCreateParameterSetWithStorage' parameter set.
-
 ```powershell
 # Set up a storage account if you have not
 $storageAccount = New-AzStorageAccount -ResourceGroupName ContosoOrg -Name ContosoStorAcc -Location "East US" -SkuName "Standard_RAGRS" -Kind "StorageV2"
@@ -219,11 +214,12 @@ $cloudService = New-AzCloudService                                              
 
 ```
 
-Above set of commands creates a cloud service by extracting NetworkProfile and RoleProfile information from the .CsCfg and .CsDef files. 
-Those files will also provide OSProfile information along with the Certificates from the keyvault provided in the '-KeyVaultName' parameter. This parameter set also uploads the .CsPkg file to the provided StorageAccount.
+Above set of commands creates a cloud service by extracting NetworkProfile and RoleProfile information from the .CsCfg and .CsDef files.
+
+Those files will also provide OSProfile information along with the Certificates from the keyvault provided in the '-KeyVaultName' parameter.
+This parameter set also uploads the .CsPkg file to the provided StorageAccount.
 
 ### Example 6: Create new cloud service with CsCfg, CsDef, and Cspkg files using 'quickCreateParameterSetWithoutStorage' parameter set.
-
 ```powershell
 # getting Package URL
 $tokenStartTime = Get-Date 
@@ -244,7 +240,8 @@ $cloudService = New-AzCloudService                                              
 
 ```
 
-Above set of commands creates a cloud service by extracting NetworkProfile and RoleProfile information from the .CsCfg and .CsDef files. 
+Above set of commands creates a cloud service by extracting NetworkProfile and RoleProfile information from the .CsCfg and .CsDef files.
+
 Those files will also provide OSProfile information along with the Certificates from the keyvault provided in the '-KeyVaultName' parameter.
 
 ## PARAMETERS

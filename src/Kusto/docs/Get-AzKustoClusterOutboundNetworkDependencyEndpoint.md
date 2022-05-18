@@ -24,8 +24,10 @@ Gets the network endpoints of all outbound dependencies of a Kusto cluster
 
 ### Example 1: List all Kusto ManagedPrivateEndpoint in a cluster
 ```powershell
-PS C:\> Get-AzKustoClusterOutboundNetworkDependencyEndpoint -ClusterName "mycluster" -ResourceGroupName "testrg"
+Get-AzKustoClusterOutboundNetworkDependencyEndpoint -ClusterName "mycluster" -ResourceGroupName "testrg"
+```
 
+```output
 Name                                     Type                                                          Etag
 ----                                     ----                                                          ----
 mycluster/AzureActiveDirectory           Microsoft.Kusto/Clusters/OutboundNetworkDependenciesEndpoints
@@ -106,7 +108,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IOutboundNetworkDependenciesEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IOutboundNetworkDependenciesEndpoint
 
 ## NOTES
 

@@ -1,7 +1,9 @@
 ### Example 1: Create a spring cloud service.
 ```powershell
-PS C:\> New-AzSpringCloud -ResourceGroupName spring-cloud-rp -name spring-cloud-service -Location eastus
+New-AzSpringCloud -ResourceGroupName spring-cloud-rp -name spring-cloud-service -Location eastus
+```
 
+```output
 ConfigServerPropertiesErrorCode                  :
 ConfigServerPropertiesErrorMessage               :
 ConfigServerPropertyState                        : Succeeded

@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.DataFactory","Microsoft.Azure.Commands.DataFactoryV2.InvokeAzureDataFactoryPipelineCommand","Invoke-AzDataFactoryV2Pipeline","0","1020","The cmdlet 'Invoke-AzDataFactoryV2Pipeline' no longer has output type 'Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline'.","Make cmdlet 'Invoke-AzDataFactoryV2Pipeline' return type 'Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline'."

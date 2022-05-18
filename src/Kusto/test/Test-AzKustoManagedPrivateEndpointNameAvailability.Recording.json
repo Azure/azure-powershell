@@ -1,8 +1,8 @@
 {
-  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/managedPrivateEndpointsCheckNameAvailability?api-version=2021-08-27+1": {
+  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork3/managedPrivateEndpointsCheckNameAvailability?api-version=2022-02-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/managedPrivateEndpointsCheckNameAvailability?api-version=2021-08-27",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork3/managedPrivateEndpointsCheckNameAvailability?api-version=2022-02-01",
       "Content": "{\r\n  \"name\": \"testmanagedprivateendpoint\",\r\n  \"type\": \"Microsoft.Kusto/Clusters/managedPrivateEndpoints\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -15,52 +15,16 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a760d80d-1c6c-4ab8-b986-473debdda7d4" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "59df3596-e769-48a5-b7fe-0b32e6ee420d" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20211010T122335Z:59df3596-e769-48a5-b7fe-0b32e6ee420d" ],
+        "x-ms-request-id": [ "b35c4a40-378a-4d1d-add9-c211afc7aa8d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "4d02b547-4c89-415c-b0b7-a35588de8098" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220322T113425Z:4d02b547-4c89-415c-b0b7-a35588de8098" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Sun, 10 Oct 2021 12:23:34 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "71" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"name\":\"testmanagedprivateendpoint\",\"nameAvailable\":true,\"message\":\"\"}",
-      "isContentBase64": false
-    }
-  },
-  "Test-AzKustoManagedPrivateEndpointNameAvailability+[NoContext]+[NoScenario]+$POST+https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/managedPrivateEndpointsCheckNameAvailability?api-version=2021-08-27+1": {
-    "Request": {
-      "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/managedPrivateEndpointsCheckNameAvailability?api-version=2021-08-27",
-      "Content": "{\r\n  \"name\": \"testmanagedprivateendpoint\",\r\n  \"type\": \"Microsoft.Kusto/Clusters/managedPrivateEndpoints\"\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "107" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "6d8fe201-7121-410b-aaab-fd8454537c84" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
-        "x-ms-correlation-request-id": [ "5d0154de-7386-4e45-8977-99e82a23a88d" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20211010T122356Z:5d0154de-7386-4e45-8977-99e82a23a88d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Sun, 10 Oct 2021 12:23:56 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+        "Date": [ "Tue, 22 Mar 2022 11:34:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "71" ],

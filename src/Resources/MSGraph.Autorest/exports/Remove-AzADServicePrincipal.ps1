@@ -20,9 +20,9 @@ Deletes entity from service principal.
 .Description
 Deletes entity from service principal.
 .Example
-PS C:\> Remove-AzADServicePrincipal -DisplayName $name
+Remove-AzADServicePrincipal -DisplayName $name
 .Example
-PS C:\> Get-AzADServicePrincipal -Application $id | Remove-AzADServicePrincipal
+Get-AzADServicePrincipal -ApplicationId $id | Remove-AzADServicePrincipal
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -397,12 +397,12 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Remove-AzADServicePrincipal';
-            ApplicationIdParameterSet = 'MSGraph.custom\Remove-AzADServicePrincipal';
-            SPNParameterSet = 'MSGraph.custom\Remove-AzADServicePrincipal';
-            DisplayNameParameterSet = 'MSGraph.custom\Remove-AzADServicePrincipal';
-            InputObjectParameterSet = 'MSGraph.custom\Remove-AzADServicePrincipal';
-            ApplicationObjectParameterSet = 'MSGraph.custom\Remove-AzADServicePrincipal';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADServicePrincipal';
+            ApplicationIdParameterSet = 'Az.MSGraph.custom\Remove-AzADServicePrincipal';
+            SPNParameterSet = 'Az.MSGraph.custom\Remove-AzADServicePrincipal';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Remove-AzADServicePrincipal';
+            InputObjectParameterSet = 'Az.MSGraph.custom\Remove-AzADServicePrincipal';
+            ApplicationObjectParameterSet = 'Az.MSGraph.custom\Remove-AzADServicePrincipal';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -56,6 +56,9 @@ Gets a managed private endpoint.
 ### [Get-AzKustoOperationsResult](Get-AzKustoOperationsResult.md)
 Returns operation results.
 
+### [Get-AzKustoOperationsResultLocation](Get-AzKustoOperationsResultLocation.md)
+Returns operation results.
+
 ### [Get-AzKustoPrivateEndpointConnection](Get-AzKustoPrivateEndpointConnection.md)
 Gets a private endpoint connection.
 

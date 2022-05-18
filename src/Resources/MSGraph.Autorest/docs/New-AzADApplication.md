@@ -114,7 +114,7 @@ Adds new entity to applications
 
 ### Example 1: Create application
 ```powershell
-PS C:\> New-AzADApplication -SigninAudience AzureADandPersonalMicrosoftAccount
+New-AzADApplication -SigninAudience AzureADandPersonalMicrosoftAccount
 ```
 
 Create application with signin audience 'AzureADandPersonalMicrosoftAccount', other available options are: 'AzureADMyOrg', 'AzureADMultipleOrgs', 'PersonalMicrosoftAccount'
@@ -772,8 +772,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 
 ## OUTPUTS
 

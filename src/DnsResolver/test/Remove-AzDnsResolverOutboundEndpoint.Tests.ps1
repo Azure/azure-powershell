@@ -12,11 +12,25 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDnsResolverOutboundEndpoint' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Delete an Outbound Endpoint by name, expected Outbound Endpoint deleted' {
+         # ARRANGE
+        $dnsResolverName = "psdnsresolvername23";
+        $outboundEndpointName =  "psoutboundendpointname23";
+        $virtualNetworkName = "psvirtualnetworkname23";
+        
+        if ($TestMode -eq "Record")
+        {
+            $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
+            $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
+        }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetwork.Id -Location $LOCATION
+        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAllocationMethod Dynamic -SubnetId $subnet.id 
+
+        # ACT
+        Remove-AzDnsResolverOutboundEndpoint  -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME
+
+        # ASSERT 
+        {Get-AzDnsResolverOutboundEndpoint  -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME } | Should -Throw "not found"
     }
 }
