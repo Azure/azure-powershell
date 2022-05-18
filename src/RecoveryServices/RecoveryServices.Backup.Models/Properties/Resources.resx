@@ -739,4 +739,25 @@ Please contact Microsoft for further assistance.</value>
   <data name="InvalidPolicyForTrustedVMProtection" xml:space="preserve">
     <value>Trusted VM can only be protected using Enhanced policy. Please provide a valid AzureVM Enhanced policy</value>
   </data>
+  <data name="ProtectedItemURICantBeNull" xml:space="preserve">
+    <value>ProtectedItemURI can't be null as the operation is protected with ResourceGuard</value>
+  </data>
+  <data name="PolicyUpdateNotCritical" xml:space="preserve">
+    <value>Operation not critical, please try without the Token parameter. MUA currently only protects reducing or disabling retention times</value>
+  </data>
+  <data name="UnexpectedParameterToken" xml:space="preserve">
+    <value>{0} is not protected via MUA, either protect or try without the Token parameter</value>
+  </data>
+  <data name="BackupConfigUpdateNotCritical" xml:space="preserve">
+    <value>Operation not critical, please try without the Token parameter. MUA currently protects disabling SoftDelete or SecurityFeatures only when it was previously enabled</value>
+  </data>
+  <data name="ResourceGuardMappingNotFound" xml:space="preserve">
+    <value>ResourceGuardMapping not found</value>
+  </data>
+  <data name="DisableWithRetainBackupNotCrititcal" xml:space="preserve">
+    <value>Invalid parameter Token: Stop protection with retain backup data is not MUA protected</value>
+  </data>
+  <data name="CRRNotSupportedWIthCSR" xml:space="preserve">
+    <value>Cross region restore is not supported along with cross subscription restore, please try passing either RestoreToSecondaryRegion or TargetSubscriptionId parameter but not both</value>
+  </data>
 </root>

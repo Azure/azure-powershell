@@ -26,6 +26,9 @@ Exports a Template Spec to the local filesystem
 ### [Get-AzADAppCredential](Get-AzADAppCredential.md)
 Lists key credentials and password credentials for an application.
 
+### [Get-AzADAppFederatedIdentityCredential](Get-AzADAppFederatedIdentityCredential.md)
+Get federatedIdentityCredentials by Id from applications.
+
 ### [Get-AzADApplication](Get-AzADApplication.md)
 Lists entities from applications or get entity from applications by key
 
@@ -92,6 +95,18 @@ Get deployment operation for management group deployment
 
 ### [Get-AzManagementGroupDeploymentWhatIfResult](Get-AzManagementGroupDeploymentWhatIfResult.md)
 Gets a template What-If result for a deployment at management group scope. 
+
+### [Get-AzManagementGroupEntity](Get-AzManagementGroupEntity.md)
+Lists all Entities under the current Tenant
+
+### [Get-AzManagementGroupHierarchySetting](Get-AzManagementGroupHierarchySetting.md)
+Gets the Hierarchy Settings under the current tenant
+
+### [Get-AzManagementGroupNameAvailability](Get-AzManagementGroupNameAvailability.md)
+Checks if the Management Group name is available in the Tenant and a valid name.
+
+### [Get-AzManagementGroupSubscription](Get-AzManagementGroupSubscription.md)
+Gets the details of Subscription(s) under a Management Group.
 
 ### [Get-AzPolicyAlias](Get-AzPolicyAlias.md)
 Get-AzPolicyAlias retrieves and outputs Azure provider resource types that have aliases defined and match the
@@ -197,6 +212,9 @@ Gets predefined Azure tags | Gets the entire set of tags on a resource or subscr
 ### [Get-AzTemplateSpec](Get-AzTemplateSpec.md)
 Gets or lists Template Specs
 
+### [Get-AzTenantBackfillStatus](Get-AzTenantBackfillStatus.md)
+Get the current Tenant Backfill Subscription Status
+
 ### [Get-AzTenantDeployment](Get-AzTenantDeployment.md)
 Get deployment at tenant scope
 
@@ -214,6 +232,9 @@ Moves a resource to a different resource group or subscription.
 
 ### [New-AzADAppCredential](New-AzADAppCredential.md)
 Creates key credentials or password credentials for an application.
+
+### [New-AzADAppFederatedIdentityCredential](New-AzADAppFederatedIdentityCredential.md)
+Create federatedIdentityCredential for applications.
 
 ### [New-AzADApplication](New-AzADApplication.md)
 Adds new entity to applications
@@ -244,6 +265,9 @@ Creates a Management Group
 
 ### [New-AzManagementGroupDeployment](New-AzManagementGroupDeployment.md)
 Create a deployment at a management group
+
+### [New-AzManagementGroupHierarchySetting](New-AzManagementGroupHierarchySetting.md)
+Creates Hierarchy Settings under the current tenant
 
 ### [New-AzManagementGroupSubscription](New-AzManagementGroupSubscription.md)
 Adds a Subscription to a Management Group.
@@ -330,6 +354,9 @@ Registers a resource provider.
 ### [Remove-AzADAppCredential](Remove-AzADAppCredential.md)
 Removes key credentials or password credentials for an application.
 
+### [Remove-AzADAppFederatedIdentityCredential](Remove-AzADAppFederatedIdentityCredential.md)
+Delete federatedIdentityCredentials for applications.
+
 ### [Remove-AzADApplication](Remove-AzADApplication.md)
 Deletes entity from applications
 
@@ -372,6 +399,9 @@ Removes a Management Group
 
 ### [Remove-AzManagementGroupDeployment](Remove-AzManagementGroupDeployment.md)
 Removes a deployment at a management group and any associated operations
+
+### [Remove-AzManagementGroupHierarchySetting](Remove-AzManagementGroupHierarchySetting.md)
+Deletes all Hierarchy Settings under the current tenant
 
 ### [Remove-AzManagementGroupSubscription](Remove-AzManagementGroupSubscription.md)
 Removes a Subscription from a Management Group.
@@ -504,6 +534,9 @@ Finally, save the role definition using this command.
 ### [Set-AzTemplateSpec](Set-AzTemplateSpec.md)
 Modifies a Template Spec.
 
+### [Start-AzTenantBackfill](Start-AzTenantBackfill.md)
+Starts backfilling subscriptions for the current Tenant
+
 ### [Stop-AzDeployment](Stop-AzDeployment.md)
 Cancel a running deployment
 
@@ -543,6 +576,9 @@ Removes a feature registration from your account.
 ### [Unregister-AzResourceProvider](Unregister-AzResourceProvider.md)
 Unregisters a resource provider.
 
+### [Update-AzADAppFederatedIdentityCredential](Update-AzADAppFederatedIdentityCredential.md)
+Update the federatedIdentityCredentials in applications.
+
 ### [Update-AzADApplication](Update-AzADApplication.md)
 Updates entity in applications
 
@@ -557,6 +593,9 @@ Updates entity in users
 
 ### [Update-AzManagementGroup](Update-AzManagementGroup.md)
 Updates a Management Group
+
+### [Update-AzManagementGroupHierarchySetting](Update-AzManagementGroupHierarchySetting.md)
+Updates Hierarchy Settings under the current tenant
 
 ### [Update-AzRoleManagementPolicy](Update-AzRoleManagementPolicy.md)
 Update a role management policy

@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.3.2-preview" />
-	<PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="4.4.0-preview" />
+	<PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="5.0.0-preview" />
     <PackageReference Include="System.Security.Cryptography.Cng" Version="4.4.0" />
   </ItemGroup>
 

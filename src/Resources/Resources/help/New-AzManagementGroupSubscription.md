@@ -141,7 +141,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupSubscription
 
-
 ## NOTES
 
 ## RELATED LINKS
