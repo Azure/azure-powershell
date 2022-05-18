@@ -50,6 +50,8 @@
     - `New-AzVpnServerConfigurationPolicyGroup`
     - `Update-AzVpnServerConfigurationPolicyGroup`
     - `Remove-AzVpnServerConfigurationPolicyGroup`
+* Network Watcher Feature Change: Added new paramenter i.e. AzureVMSS as source endpoint in ConnectionMonitor.
+    - `New-AzNetworkWatcherConnectionMonitorEndpointObject`
 
 ## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
