@@ -266,7 +266,7 @@ function New-AzFunctionApp {
                 }
 
                 $FunctionsVersion = $DefaultFunctionsVersion
-                Write-Verbose "FunctionsVersion not specified. Setting default FunctionsVersion to '$FunctionsVersion'." -Verbose
+                Write-Warning "FunctionsVersion not specified. Setting default value to '$FunctionsVersion'. $SetDefaultValueParameterWarningMessage"
             }
 
             ValidateFunctionsVersion -FunctionsVersion $FunctionsVersion
@@ -284,7 +284,7 @@ function New-AzFunctionApp {
             if (-not $OSType)
             {
                 $OSType = GetDefaultOSType -Runtime $Runtime
-                Write-Verbose "OSType for $Runtime is '$OSType'." -Verbose
+                Write-Warning "OSType not specified. Setting default value to '$OSType'. $SetDefaultValueParameterWarningMessage"
             }
 
             $runtimeJsonDefintion = GetRuntimeJsonDefinition -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
