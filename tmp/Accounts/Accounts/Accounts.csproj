@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>Accounts</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)Profile</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PreLoadAssemblies Include="$(RepoSrc)lib\NetFxPreloadAssemblies\*.dll" />
+    <NetCoreAssemblies Include="$(RepoSrc)lib\NetCorePreloadAssemblies\*.dll" />
+    <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
+    <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.DataMovement.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
+  </ItemGroup>
+
+  <Target Name="CopyFiles" AfterTargets="Build">
+    <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)PreloadAssemblies" />
+    <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)AzSharedAlcAssemblies" />
+    <Copy SourceFiles="@(StorageDependencies)" DestinationFolder="$(TargetDir)" />
+    <!--To automatically lauch pwsh for debugging when hitting F5, set below and UNCOMMENT Copy:
+      Executable: pwsh
+      Application arguments: -NoExit -Command "Import-Module C:\AME\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1"-->
+    <!--<Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)" />-->
+  </Target>
+
+  <ItemGroup>
+    <None Update="StartupScripts\AzError.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="StartupScripts\InitializeAssemblyResolver.ps1" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="PostImportScripts\LoadAuthenticators.ps1" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="AzureRmAlias\Mappings.json" />
+  </ItemGroup>
+   
+  <ItemGroup>
+    <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
+    <ProjectReference Include="..\Authentication\Authentication.csproj" />
+    <ProjectReference Include="..\Authenticators\Authenticators.csproj" />  
+  </ItemGroup>
+   
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+   
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
