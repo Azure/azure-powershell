@@ -24,7 +24,7 @@ $groupid=(Get-AzADGroup -DisplayName $gname).Id
 $members=@()
 $members+=(Get-AzADUser -DisplayName $uname).Id
 $members+=(Get-AzADServicePrincipal -ApplicationId $appid).Id
-Add-AzADGroupMember -TargetGroupObjectId $groupid MemberObjectId $members
+Add-AzADGroupMember -TargetGroupObjectId $groupid -MemberObjectId $members
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup

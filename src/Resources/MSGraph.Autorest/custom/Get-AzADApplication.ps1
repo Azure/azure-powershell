@@ -18,17 +18,6 @@
 Lists entities from applications or get entity from applications by key
 .Description
 Lists entities from applications or get entity from applications by key
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/get-azadapplication
 #>
