@@ -1443,7 +1443,7 @@ function Test-ConnectionMonitor
 .SYNOPSIS
 Test ConnectionMonitor-2 APIs with VMSS as Source.
 #>
-function Test-ConnectionMonitorVMSS
+function Test-ConnectionMonitorWithVMSSAsSource
 {
     # Setup
     $resourceGroupName = Get-NrpResourceGroupName
@@ -1483,6 +1483,7 @@ function Test-ConnectionMonitorVMSS
         Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -AutoUpgradeMinorVersion $True
         Update-AzVmss -ResourceGroupName "$resourceGroupName" -Name $virtualMachineScaleSetName -VirtualMachineScaleSet $vmss
 
+        # To update existing VMs in VMSS, manually upgrade is required since VMSS is in Manual upgrade policy
         $instances = Get-AzVmssVM -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss.Name
         foreach($item in $instances) {
             Update-AzVmssInstance -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss.Name -InstanceId $item.InstanceID  # won't update simultaneously, one way is to use AsJob

@@ -116,19 +116,19 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "List of items which need to be included into endpont scope.",
+            HelpMessage = "List of items which need to be included into endpoint scope.",
              ParameterSetName = "AzureVNet")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "List of items which need to be included into endpont scope.",
+            HelpMessage = "List of items which need to be included into endpoint scope.",
              ParameterSetName = "MMAWorkspaceMachine")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "List of items which need to be included into endpont scope.",
+            HelpMessage = "List of IPs which need to be included into endpoint scope.",
             ParameterSetName = "AzureVMSS")]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "List of items which need to be included into endpont scope.",
+            HelpMessage = "List of items which need to be included into endpoint scope.",
              ParameterSetName = "MMAWorkspaceNetwork")]
         [ValidateNotNullOrEmpty]
         public PSNetworkWatcherConnectionMonitorEndpointScopeItem[] IncludeItem { get; set; }
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.Network
              ParameterSetName = "MMAWorkspaceNetwork")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "List of items which need to be excluded into endpont scope.",
+            HelpMessage = "List of IPs which need to be excluded into endpoint scope.",
             ParameterSetName = "AzureVMSS")]
         [ValidateNotNullOrEmpty]
         public PSNetworkWatcherConnectionMonitorEndpointScopeItem[] ExcludeItem { get; set; }
