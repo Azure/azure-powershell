@@ -20,7 +20,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Rest.Azure;
 using System.Management.Automation;
 
-
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccount"), OutputType(typeof(PSStorageAccount))]
