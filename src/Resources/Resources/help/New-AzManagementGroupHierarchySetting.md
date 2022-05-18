@@ -12,9 +12,17 @@ Creates Hierarchy Settings under the current tenant
 
 ## SYNTAX
 
-### CreateOperation
+### GroupOperations (Default)
 ```
-New-AzManagementGroupHierarchySetting  [-GroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-Authorization] <String> [-DefaultManagementGroup] <String> 
+New-AzManagementGroupHierarchySetting [-GroupName] <String> [-Authorization <Boolean>]
+ [-DefaultManagementGroup <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ParentGroupObject
+```
+New-AzManagementGroupHierarchySetting [-GroupName] <String> [-Authorization <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +41,7 @@ Type        : Microsoft.Management/managementGroups/settings
 Name        : default
 TenantId    : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 RequireAuthorizationForGroupCreation : true
-DefaultManagementGroup : 
+DefaultManagementGroup :
 ```
 
 ### Example 2: Create a Hierarchy Setting for the default Management Group new Groups get placed under
@@ -64,31 +72,14 @@ RequireAuthorizationForGroupCreation : true
 DefaultManagementGroup : TestGroup
 ```
 
-
-
 ## PARAMETERS
-
-### -GroupName
-Management Group Id
-
-```yaml
-Type: System.String
-Parameter Sets: GetOperation
-Aliases: GroupId
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Authorization
 Indicate whether RBAC access is required upon group creation under the root Management Group. True means user will require Microsoft.Management/managementGroups/write action on the root Management Group. Default setting is false.
 
 ```yaml
-Type: System.String
-Parameter Sets: NewOperation and UpdateOperation
+Type: System.Boolean
+Parameter Sets: (All)
 Aliases: RequireAuthorizationForGroupCreation
 
 Required: False
@@ -103,7 +94,7 @@ Expand the output to list the children of the management group
 
 ```yaml
 Type: System.String
-Parameter Sets: NewOperation and UpdateOperation
+Parameter Sets: GroupOperations
 Aliases: DefaultMG
 
 Required: False
@@ -113,6 +104,65 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GroupName
+Management Group Id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: GroupId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
@@ -128,5 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSHierarchySettings
 
 ## NOTES
+
+## RELATED LINKS
 
 ## RELATED LINKS
