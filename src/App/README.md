@@ -110,6 +110,10 @@ directive:
       subject: ManagedEnvironmentsStorage
     set:
       subject: AppManagedEnvStorage
+  - where:
+      subject: ManagedEnvironmentStorage
+    set:
+      subject: AppManagedEnvStorage
   # Re-name and custom it
   # - model-cmdlet:
   #     - EnvironmentVar

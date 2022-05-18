@@ -71,6 +71,9 @@ Create or Update a Certificate.
 ### [New-AzAppManagedEnvDapr](New-AzAppManagedEnvDapr.md)
 Creates or updates a Dapr Component in a Managed Environment.
 
+### [New-AzAppManagedEnvStorage](New-AzAppManagedEnvStorage.md)
+Create or update storage for a managedEnvironment.
+
 ### [New-AzContainer](New-AzContainer.md)
 Create an in-memory object for Container.
 
@@ -106,9 +109,6 @@ Create an in-memory object for IdentityProviders.
 
 ### [New-AzIdentityProvidersCustomOpenIdConnectProviders](New-AzIdentityProvidersCustomOpenIdConnectProviders.md)
 Create an in-memory object for IdentityProvidersCustomOpenIdConnectProviders.
-
-### [New-AzManagedEnvironmentStorage](New-AzManagedEnvironmentStorage.md)
-Create or update storage for a managedEnvironment.
 
 ### [New-AzRegistryCredentials](New-AzRegistryCredentials.md)
 Create an in-memory object for RegistryCredentials.

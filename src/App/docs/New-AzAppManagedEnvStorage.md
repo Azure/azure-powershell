@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az.app/new-azmanagedenvironmentstorage
+online version: https://docs.microsoft.com/powershell/module/az.app/new-azappmanagedenvstorage
 schema: 2.0.0
 ---
 
-# New-AzManagedEnvironmentStorage
+# New-AzAppManagedEnvStorage
 
 ## SYNOPSIS
 Create or update storage for a managedEnvironment.
@@ -13,7 +13,7 @@ Create or update storage for a managedEnvironment.
 ## SYNTAX
 
 ```
-New-AzManagedEnvironmentStorage -EnvName <String> -ResourceGroupName <String> -StorageName <String>
+New-AzAppManagedEnvStorage -EnvName <String> -ResourceGroupName <String> -StorageName <String>
  [-SubscriptionId <String>] [-AzureFileAccessMode <AccessMode>] [-AzureFileAccountKey <String>]
  [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
