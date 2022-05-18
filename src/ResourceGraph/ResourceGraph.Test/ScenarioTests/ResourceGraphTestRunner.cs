@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
                 .WithNewRmModules(helper => new[]
                 {
                     helper.RMProfileModule,
-                    helper.GetRMModulePath(@"AzureRM.ResourceGraph.psd1")
+                    helper.GetRMModulePath(@"Az.ResourceGraph.psd1")
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>(),
