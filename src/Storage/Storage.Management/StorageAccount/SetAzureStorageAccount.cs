@@ -24,6 +24,7 @@ using Track2Models = Azure.ResourceManager.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Azure.Core;
 
+
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     /// <summary>
@@ -242,7 +243,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = false, HelpMessage = "Routing Choice defines the kind of network routing opted by the user. Possible values include: 'MicrosoftRouting', 'InternetRouting'")]
         [ValidateSet(
             RoutingChoiceType.MicrosoftRouting,
-            RoutingChoiceType.InternalRouting,
+            RoutingChoiceType.InternetRouting,
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string RoutingChoice;
@@ -574,7 +575,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                     }
                                 }
                             }
-
                         }
                     }
 
@@ -753,7 +753,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (sasExpirationPeriod != null)
                     {
                         storageAccountPatch.SasPolicy = new Track2Models.SasPolicy(
-                            this.sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), null);
+                            this.sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), Track2Models.ExpirationAction.Log);
                     }
                     if (keyExpirationPeriodInDay != null)
                     {
@@ -773,11 +773,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (this.immutabilityPeriod != null || this.ImmutabilityPolicyState != null)
                     {
                         storageAccountPatch.ImmutableStorageWithVersioning = new Track2Models.ImmutableStorageAccount();
-                        storageAccountPatch.ImmutableStorageWithVersioning.ImmutabilityPolicy = new Track2Models.AccountImmutabilityPolicyProperties
+                        storageAccountPatch.ImmutableStorageWithVersioning.ImmutabilityPolicy = new Track2Models.AccountImmutabilityPolicyProperties();
+                        if (this.immutabilityPeriod != null)
                         {
-                            ImmutabilityPeriodSinceCreationInDays = this.immutabilityPeriod,
-                            State = this.ImmutabilityPolicyState,
-                        };
+                            storageAccountPatch.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays = this.immutabilityPeriod;
+                        }
+                        if (this.ImmutabilityPolicyState != null)
+                        {
+                            storageAccountPatch.ImmutableStorageWithVersioning.ImmutabilityPolicy.State = this.ImmutabilityPolicyState;
+                        }
 
                     }
 

@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = false, HelpMessage = "Routing Choice defines the kind of network routing opted by the user. Possible values include: 'MicrosoftRouting', 'InternetRouting'")]
         [ValidateSet(
             RoutingChoiceType.MicrosoftRouting,
-            RoutingChoiceType.InternalRouting,
+            RoutingChoiceType.InternetRouting,
             IgnoreCase = true)]
         public string RoutingChoice;
 
@@ -699,7 +699,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         createContent.Encryption.Services = new Track2Models.EncryptionServices();
                         createContent.Encryption.Services.Blob = new Track2Models.EncryptionService();
                     }
-
                 }
             }
             if (this.KeyVaultUri != null || this.KeyName != null || this.KeyVersion != null || this.KeyVaultUserAssignedIdentityId != null)
@@ -726,7 +725,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         Track2Models.KeySource.MicrosoftStorage);
                 }
 
-
                 if (createContent.Encryption.Services == null)
                 {
                     createContent.Encryption.Services = new Track2Models.EncryptionServices
@@ -734,7 +732,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         Blob = new Track2Models.EncryptionService()
                     };
                 }
-
 
                 if (this.KeyVaultUri != null || this.KeyName != null || this.KeyVersion != null)
                 {
@@ -792,8 +789,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             if (sasExpirationPeriod != null)
             {
-                createContent.SasPolicy = new Track2Models.SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), null);
-
+                createContent.SasPolicy = new Track2Models.SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), Track2Models.ExpirationAction.Log);
             }
             if (keyExpirationPeriodInDay != null)
             {
@@ -820,7 +816,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     Enabled = this.EnableAccountLevelImmutability.IsPresent
                 };
 
-
                 if (this.immutabilityPeriod != null || this.ImmutabilityPolicyState != null)
                 {
                     createContent.ImmutableStorageWithVersioning.ImmutabilityPolicy = new Track2Models.AccountImmutabilityPolicyProperties
@@ -828,10 +823,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         ImmutabilityPeriodSinceCreationInDays = this.ImmutabilityPeriod,
                         State = this.ImmutabilityPolicyState,
                     };
-
                 }
             }
-
             var createAccountResponse = this.StorageClientTrack2.CreateStorageAccount(this.ResourceGroupName, this.Name, createContent);
             var storageAccount = this.StorageClientTrack2.GetSingleStorageAccount(this.ResourceGroupName, this.Name);
 

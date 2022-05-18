@@ -80,14 +80,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             internal const string SystemAssigned = "SystemAssigned";
             internal const string UserAssigned = "UserAssigned";
-            internal const string SystemAssignedUserAssigned = "SystemAssignedUserAssigned";
+            internal const string SystemAssignedUserAssigned = "SystemAssigned, UserAssigned";
             internal const string None = "None";
         }
 
         protected struct RoutingChoiceType
         {
             internal const string MicrosoftRouting = "MicrosoftRouting";
-            internal const string InternalRouting = "InternalRouting";
+            internal const string InternetRouting = "InternetRouting";
         }
 
         protected struct KeyType
