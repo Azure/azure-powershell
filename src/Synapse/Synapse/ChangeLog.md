@@ -30,7 +30,7 @@
     - Added `Get-AzSynapseLinkConnectionLinkTable` cmdlet
     - Added `Get-AzSynapseLinkConnectionLinkTableStatus` cmdlet
     - Added `Update-AzSynapseLinkConnectionLandingZoneCredential` cmdlet
-* Set UploadedTimestamp when adding package to spark pool by `Update-AzSynapseSparkPool`
+* Set `UploadedTimestamp` when adding package to spark pool by `Update-AzSynapseSparkPool`
 
 ## Version 1.3.0
 * Added support for Synapse Azure Active Directory (Azure AD) only authentication
