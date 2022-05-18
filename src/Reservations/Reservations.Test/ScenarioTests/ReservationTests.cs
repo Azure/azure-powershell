@@ -12,99 +12,92 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Reservations.Test.ScenarioTests.ScenarioTest;
-using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Reservations.Test.ScenarioTests
 {
-    public class ReservationTests
+    public class ReservationTests : ReservationsTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public ReservationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ReservationTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMergeReservation()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MergeReservation");
+            TestRunner.RunTestScript("Test-MergeReservation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSplitReservation()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SplitReservation");
+            TestRunner.RunTestScript("Test-SplitReservation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetReservation()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetReservation");
+            TestRunner.RunTestScript("Test-GetReservation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateReservationToSingle()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateReservationToSingle");
+            TestRunner.RunTestScript("Test-UpdateReservationToSingle");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateReservationToShared()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateReservationToShared");
+            TestRunner.RunTestScript("Test-UpdateReservationToShared");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListReservations()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListReservations");
+            TestRunner.RunTestScript("Test-ListReservations");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListReservationHistory()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListReservationHistory");
+            TestRunner.RunTestScript("Test-ListReservationHistory");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetReservationOrderId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetReservationOrderId");
+            TestRunner.RunTestScript("Test-GetReservationOrderId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetCatalog()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetCatalog");
+            TestRunner.RunTestScript("Test-GetCatalog");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCalculatePrice()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CalculatePrice");
+            TestRunner.RunTestScript("Test-CalculatePrice");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPurchase()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-Purchase");
+            TestRunner.RunTestScript("Test-Purchase");
         }
     }
 }
