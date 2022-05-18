@@ -27,13 +27,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public class ConfigProviderIds
         {
-            public const string MachineEnvironment = "Environment (Machine)";
-            public const string UserEnvironment = "Environment (User)";
-            public const string ProcessEnvironment = "Environment (Process)";
+            public const string EnvironmentVariable = "Environment Variable";
             public const string UserConfig = "Config (User)";
             public const string ProcessConfig = "Config (Process)";
             /// <summary>
-            /// Represents that the value is not in any providers.
+            /// Represents that the config is never set by user.
             /// </summary>
             public const string None = "None";
         }

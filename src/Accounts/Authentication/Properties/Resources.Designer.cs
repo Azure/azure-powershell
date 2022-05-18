@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -273,6 +273,42 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string FilePathIsNotValid {
             get {
                 return ResourceManager.GetString("FilePathIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subscription name or GUID. Sets the default context for Azure PowerShell when logging in without specifying a subscription..
+        /// </summary>
+        public static string HelpMessageOfDefaultSubscriptionForLogin {
+            get {
+                return ResourceManager.GetString("HelpMessageOfDefaultSubscriptionForLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release..
+        /// </summary>
+        public static string HelpMessageOfDisplayBreakingChangeWarnings {
+            get {
+                return ResourceManager.GetString("HelpMessageOfDisplayBreakingChangeWarnings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience. For more information, see our privacy statement: https://aka.ms/privacy.
+        /// </summary>
+        public static string HelpMessageOfEnableDataCollection {
+            get {
+                return ResourceManager.GetString("HelpMessageOfEnableDataCollection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When enabled, you are prompted infrequently to participate in user experience surveys for Azure PowerShell..
+        /// </summary>
+        public static string HelpMessageOfEnableInterceptSurvey {
+            get {
+                return ResourceManager.GetString("HelpMessageOfEnableInterceptSurvey", resourceCulture);
             }
         }
         

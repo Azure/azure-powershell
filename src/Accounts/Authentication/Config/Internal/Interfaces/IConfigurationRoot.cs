@@ -33,6 +33,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfa
 
         IConfigurationProvider GetConfigurationProvider(string id);
 
+        /// <summary>
+        /// Get value of config by key.
+        /// </summary>
+        /// <param name="key">config key</param>
+        /// <returns>The configuration value and the ID of the provider which provides the value.</returns>
         (string, string) GetValueWithProviderId(string key);
+
+        /// <summary>
+        /// Get value of config by key and provider ID.
+        /// </summary>
+        /// <param name="key">config key</param>
+        /// <param name="providerId">expected provider ID</param>
+        /// <returns>The configuration value. Null if not found.</returns>
+        string GetValueByProviderId(string key, string providerId);
     }
 }
