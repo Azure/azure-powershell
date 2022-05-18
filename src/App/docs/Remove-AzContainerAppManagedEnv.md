@@ -1,31 +1,31 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az.app/remove-azappmanagedenvcert
+online version: https://docs.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenv
 schema: 2.0.0
 ---
 
-# Remove-AzAppManagedEnvCert
+# Remove-AzContainerAppManagedEnv
 
 ## SYNOPSIS
-Deletes the specified Certificate.
+Delete a Managed Environment if it does not have any container apps.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzAppManagedEnvCert -EnvName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzAppManagedEnvCert -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzContainerAppManagedEnv -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes the specified Certificate.
+Delete a Managed Environment if it does not have any container apps.
 
 ## EXAMPLES
 
@@ -53,6 +53,21 @@ Deletes the specified Certificate.
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -69,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnvName
-Name of the Managed Environment.
+Name of the Environment.
 
 ```yaml
 Type: System.String
@@ -99,15 +114,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the Certificate.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: CertificateName
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAppManagedEnvDapr'))
+if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzContainerAppManagedEnvStorage'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzAppManagedEnvDapr.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzContainerAppManagedEnvStorage.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,16 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAppManagedEnvDapr'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzAppManagedEnvDapr' {
-    It 'List' -skip {
+Describe 'Remove-AzContainerAppManagedEnvStorage' {
+    It 'Delete' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
+    It 'DeleteViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

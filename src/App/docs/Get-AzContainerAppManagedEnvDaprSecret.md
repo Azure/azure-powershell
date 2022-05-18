@@ -1,26 +1,24 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az.app/new-azappmanagedenvstorage
+online version: https://docs.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvdaprsecret
 schema: 2.0.0
 ---
 
-# New-AzAppManagedEnvStorage
+# Get-AzContainerAppManagedEnvDaprSecret
 
 ## SYNOPSIS
-Create or update storage for a managedEnvironment.
+List secrets for a dapr component
 
 ## SYNTAX
 
 ```
-New-AzAppManagedEnvStorage -EnvName <String> -ResourceGroupName <String> -StorageName <String>
- [-SubscriptionId <String>] [-AzureFileAccessMode <AccessMode>] [-AzureFileAccountKey <String>]
- [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzContainerAppManagedEnvDaprSecret -DaprName <String> -EnvName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update storage for a managedEnvironment.
+List secrets for a dapr component
 
 ## EXAMPLES
 
@@ -48,60 +46,15 @@ Create or update storage for a managedEnvironment.
 
 ## PARAMETERS
 
-### -AzureFileAccessMode
-Access mode for storage
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.AccessMode
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureFileAccountKey
-Storage account key for azure file.
+### -DaprName
+Name of the Dapr Component.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureFileAccountName
-Storage account name for azure file.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureFileShareName
-Azure file share name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -124,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnvName
-Name of the Environment.
+Name of the Managed Environment.
 
 ```yaml
 Type: System.String
@@ -154,26 +107,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageName
-Name of the storage.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -222,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IManagedEnvironmentStorage
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ISecret
 
 ## NOTES
 

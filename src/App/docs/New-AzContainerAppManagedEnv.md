@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az.app/new-azappmanagedenv
+online version: https://docs.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenv
 schema: 2.0.0
 ---
 
-# New-AzAppManagedEnv
+# New-AzContainerAppManagedEnv
 
 ## SYNOPSIS
 Creates or updates a Managed Environment used to host container apps.
@@ -13,7 +13,7 @@ Creates or updates a Managed Environment used to host container apps.
 ## SYNTAX
 
 ```
-New-AzAppManagedEnv -EnvName <String> -ResourceGroupName <String> -Location <String>
+New-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AppLogConfigurationDestination <String>] [-DaprAiConnectionString <String>]
  [-DaprAiInstrumentationKey <String>] [-LogAnalyticConfigurationCustomerId <String>]
  [-LogAnalyticConfigurationSharedKey <String>] [-Tag <Hashtable>]

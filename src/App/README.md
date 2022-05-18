@@ -93,27 +93,27 @@ directive:
   - where:
       subject: DaprComponent
     set:
-      subject: AppManagedEnvDapr
+      subject: ContainerAppManagedEnvDapr
   - where:
       subject: DaprComponentSecret
     set:
-      subject: AppManagedEnvDaprSecret
+      subject: ContainerAppManagedEnvDaprSecret
   - where:
       subject: Certificate
     set:
-      subject: AppManagedEnvCert
+      subject: ContainerAppManagedEnvCert
   - where:
       subject: ManagedEnvironment
     set:
-      subject: AppManagedEnv
+      subject: ContainerAppManagedEnv
   - where:
       subject: ManagedEnvironmentsStorage
     set:
-      subject: AppManagedEnvStorage
+      subject: ContainerAppManagedEnvStorage
   - where:
       subject: ManagedEnvironmentStorage
     set:
-      subject: AppManagedEnvStorage
+      subject: ContainerAppManagedEnvStorage
   # Re-name and custom it
   # - model-cmdlet:
   #     - EnvironmentVar

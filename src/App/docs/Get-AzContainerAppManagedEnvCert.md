@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az.app/get-azappmanagedenvcert
+online version: https://docs.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvcert
 schema: 2.0.0
 ---
 
-# Get-AzAppManagedEnvCert
+# Get-AzContainerAppManagedEnvCert
 
 ## SYNOPSIS
 Get the specified Certificate.
@@ -14,19 +14,19 @@ Get the specified Certificate.
 
 ### List (Default)
 ```
-Get-AzAppManagedEnvCert -EnvName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzContainerAppManagedEnvCert -EnvName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzAppManagedEnvCert -EnvName <String> -Name <String> -ResourceGroupName <String>
+Get-AzContainerAppManagedEnvCert -EnvName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzAppManagedEnvCert -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzContainerAppManagedEnvCert -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

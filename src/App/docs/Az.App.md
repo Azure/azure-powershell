@@ -17,21 +17,6 @@ Deactivates a revision for a Container App
 ### [Enable-AzContainerAppRevision](Enable-AzContainerAppRevision.md)
 Activates a revision for a Container App
 
-### [Get-AzAppManagedEnv](Get-AzAppManagedEnv.md)
-Get the properties of a Managed Environment used to host container apps.
-
-### [Get-AzAppManagedEnvCert](Get-AzAppManagedEnvCert.md)
-Get the specified Certificate.
-
-### [Get-AzAppManagedEnvDapr](Get-AzAppManagedEnvDapr.md)
-Get a dapr component.
-
-### [Get-AzAppManagedEnvDaprSecret](Get-AzAppManagedEnvDaprSecret.md)
-List secrets for a dapr component
-
-### [Get-AzAppManagedEnvStorage](Get-AzAppManagedEnvStorage.md)
-Get storage for a managedEnvironment.
-
 ### [Get-AzContainerApp](Get-AzContainerApp.md)
 Get the properties of a Container App.
 
@@ -40,6 +25,21 @@ Get the Container App AuthConfigs in a given resource group.
 
 ### [Get-AzContainerAppCustomHostName](Get-AzContainerAppCustomHostName.md)
 Analyzes a custom hostname for a Container App
+
+### [Get-AzContainerAppManagedEnv](Get-AzContainerAppManagedEnv.md)
+Get the properties of a Managed Environment used to host container apps.
+
+### [Get-AzContainerAppManagedEnvCert](Get-AzContainerAppManagedEnvCert.md)
+Get the specified Certificate.
+
+### [Get-AzContainerAppManagedEnvDapr](Get-AzContainerAppManagedEnvDapr.md)
+Get a dapr component.
+
+### [Get-AzContainerAppManagedEnvDaprSecret](Get-AzContainerAppManagedEnvDaprSecret.md)
+List secrets for a dapr component
+
+### [Get-AzContainerAppManagedEnvStorage](Get-AzContainerAppManagedEnvStorage.md)
+Get storage for a managedEnvironment.
 
 ### [Get-AzContainerAppRevision](Get-AzContainerAppRevision.md)
 Get a revision of a Container App.
@@ -59,18 +59,6 @@ Get the Container App SourceControls in a given resource group.
 ### [Get-AzContainerAppsSourceControl](Get-AzContainerAppsSourceControl.md)
 Get a SourceControl of a Container App.
 
-### [New-AzAppManagedEnv](New-AzAppManagedEnv.md)
-Creates or updates a Managed Environment used to host container apps.
-
-### [New-AzAppManagedEnvCert](New-AzAppManagedEnvCert.md)
-Create or Update a Certificate.
-
-### [New-AzAppManagedEnvDapr](New-AzAppManagedEnvDapr.md)
-Creates or updates a Dapr Component in a Managed Environment.
-
-### [New-AzAppManagedEnvStorage](New-AzAppManagedEnvStorage.md)
-Create or update storage for a managedEnvironment.
-
 ### [New-AzContainer](New-AzContainer.md)
 Create an in-memory object for Container.
 
@@ -79,6 +67,18 @@ Create or update a Container App.
 
 ### [New-AzContainerAppAuthConfig](New-AzContainerAppAuthConfig.md)
 Create or update the AuthConfig for a Container App.
+
+### [New-AzContainerAppManagedEnv](New-AzContainerAppManagedEnv.md)
+Creates or updates a Managed Environment used to host container apps.
+
+### [New-AzContainerAppManagedEnvCert](New-AzContainerAppManagedEnvCert.md)
+Create or Update a Certificate.
+
+### [New-AzContainerAppManagedEnvDapr](New-AzContainerAppManagedEnvDapr.md)
+Creates or updates a Dapr Component in a Managed Environment.
+
+### [New-AzContainerAppManagedEnvStorage](New-AzContainerAppManagedEnvStorage.md)
+Create or update storage for a managedEnvironment.
 
 ### [New-AzContainerAppProbe](New-AzContainerAppProbe.md)
 Create an in-memory object for ContainerAppProbe.
@@ -128,23 +128,23 @@ Create an in-memory object for Volume.
 ### [New-AzVolumeMount](New-AzVolumeMount.md)
 Create an in-memory object for VolumeMount.
 
-### [Remove-AzAppManagedEnv](Remove-AzAppManagedEnv.md)
-Delete a Managed Environment if it does not have any container apps.
-
-### [Remove-AzAppManagedEnvCert](Remove-AzAppManagedEnvCert.md)
-Deletes the specified Certificate.
-
-### [Remove-AzAppManagedEnvDapr](Remove-AzAppManagedEnvDapr.md)
-Delete a Dapr Component from a Managed Environment.
-
-### [Remove-AzAppManagedEnvStorage](Remove-AzAppManagedEnvStorage.md)
-Delete storage for a managedEnvironment.
-
 ### [Remove-AzContainerApp](Remove-AzContainerApp.md)
 Delete a Container App.
 
 ### [Remove-AzContainerAppAuthConfig](Remove-AzContainerAppAuthConfig.md)
 Delete a Container App AuthConfig.
+
+### [Remove-AzContainerAppManagedEnv](Remove-AzContainerAppManagedEnv.md)
+Delete a Managed Environment if it does not have any container apps.
+
+### [Remove-AzContainerAppManagedEnvCert](Remove-AzContainerAppManagedEnvCert.md)
+Deletes the specified Certificate.
+
+### [Remove-AzContainerAppManagedEnvDapr](Remove-AzContainerAppManagedEnvDapr.md)
+Delete a Dapr Component from a Managed Environment.
+
+### [Remove-AzContainerAppManagedEnvStorage](Remove-AzContainerAppManagedEnvStorage.md)
+Delete storage for a managedEnvironment.
 
 ### [Remove-AzContainerAppSourceControl](Remove-AzContainerAppSourceControl.md)
 Delete a Container App SourceControl.
@@ -152,13 +152,13 @@ Delete a Container App SourceControl.
 ### [Restart-AzContainerAppRevision](Restart-AzContainerAppRevision.md)
 Restarts a revision for a Container App
 
-### [Update-AzAppManagedEnv](Update-AzAppManagedEnv.md)
-Patches a Managed Environment using JSON Merge Patch
-
-### [Update-AzAppManagedEnvCert](Update-AzAppManagedEnvCert.md)
-Patches a certificate.
-Currently only patching of tags is supported
-
 ### [Update-AzContainerApp](Update-AzContainerApp.md)
 Patches a Container App using JSON Merge Patch
+
+### [Update-AzContainerAppManagedEnv](Update-AzContainerAppManagedEnv.md)
+Patches a Managed Environment using JSON Merge Patch
+
+### [Update-AzContainerAppManagedEnvCert](Update-AzContainerAppManagedEnvCert.md)
+Patches a certificate.
+Currently only patching of tags is supported
 

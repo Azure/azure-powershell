@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az.app/update-azappmanagedenv
+online version: https://docs.microsoft.com/powershell/module/az.app/update-azcontainerappmanagedenv
 schema: 2.0.0
 ---
 
-# Update-AzAppManagedEnv
+# Update-AzContainerAppManagedEnv
 
 ## SYNOPSIS
 Patches a Managed Environment using JSON Merge Patch
@@ -14,7 +14,7 @@ Patches a Managed Environment using JSON Merge Patch
 
 ### UpdateExpanded (Default)
 ```
-Update-AzAppManagedEnv -EnvName <String> -ResourceGroupName <String> -Location <String>
+Update-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AppLogConfigurationDestination <String>] [-DaprAiConnectionString <String>]
  [-DaprAiInstrumentationKey <String>] [-LogAnalyticConfigurationCustomerId <String>]
  [-LogAnalyticConfigurationSharedKey <String>] [-Tag <Hashtable>]
@@ -26,7 +26,7 @@ Update-AzAppManagedEnv -EnvName <String> -ResourceGroupName <String> -Location <
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAppManagedEnv -InputObject <IAppIdentity> -Location <String>
+Update-AzContainerAppManagedEnv -InputObject <IAppIdentity> -Location <String>
  [-AppLogConfigurationDestination <String>] [-DaprAiConnectionString <String>]
  [-DaprAiInstrumentationKey <String>] [-LogAnalyticConfigurationCustomerId <String>]
  [-LogAnalyticConfigurationSharedKey <String>] [-Tag <Hashtable>]
