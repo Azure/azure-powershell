@@ -8,16 +8,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Extensions;
     using System;
 
-    /// <summary>Add new entity to servicePrincipals</summary>
+    /// <summary>Update the federatedIdentityCredentials in applications.</summary>
     /// <remarks>
-    /// [OpenAPI] CreateServicePrincipal=>POST:"/servicePrincipals"
+    /// [OpenAPI] UpdateFederatedIdentityCredentials=>PATCH:"/applications/{application-id}/federatedIdentityCredentials/{federatedIdentityCredential-id}"
     /// </remarks>
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.InternalExport]
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzADServicePrincipal_Create", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Description(@"Add new entity to servicePrincipals")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzADAppFederatedIdentityCredential_UpdateExpanded", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.OutputType(typeof(bool))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Description(@"Update the federatedIdentityCredentials in applications.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Generated]
-    public partial class NewAzADServicePrincipal_Create : global::System.Management.Automation.PSCmdlet,
+    public partial class UpdateAzADAppFederatedIdentityCredential_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -29,26 +28,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
+        /// <summary>federatedIdentityCredential</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IMicrosoftGraphFederatedIdentityCredential _body = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.MicrosoftGraphFederatedIdentityCredential();
+
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>Backing field for <see cref="Body" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal _body;
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Additional Parameters")]
+        public global::System.Collections.Hashtable AdditionalProperties { get; set; }
 
-        /// <summary>
-        /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
-        /// types.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.", ValueFromPipeline = true)]
+        /// <summary>Backing field for <see cref="ApplicationObjectId" /> property.</summary>
+        private string _applicationObjectId;
+
+        /// <summary>key: id of application</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "key: id of application")]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
-        SerializedName = @"body",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal Body { get => this._body; set => this._body = value; }
+        Description = @"key: id of application",
+        SerializedName = @"application-id",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Path)]
+        public string ApplicationObjectId { get => this._applicationObjectId; set => this._applicationObjectId = value; }
+
+        /// <summary>
+        /// Lists the audiences that can appear in the external token. This field is mandatory, and defaults to 'api://AzureADTokenExchange'.
+        /// It says what Microsoft identity platform should accept in the aud claim in the incoming token. This value represents Azure
+        /// AD in your external identity provider and has no fixed value across identity providers - you may need to create a new
+        /// application registration in your identity provider to serve as the audience of this token. Required.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Lists the audiences that can appear in the external token. This field is mandatory, and defaults to 'api://AzureADTokenExchange'. It says what Microsoft identity platform should accept in the aud claim in the incoming token. This value represents Azure AD in your external identity provider and has no fixed value across identity providers - you may need to create a new application registration in your identity provider to serve as the audience of this token. Required.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Lists the audiences that can appear in the external token. This field is mandatory, and defaults to 'api://AzureADTokenExchange'. It says what Microsoft identity platform should accept in the aud claim in the incoming token. This value represents Azure AD in your external identity provider and has no fixed value across identity providers - you may need to create a new application registration in your identity provider to serve as the audience of this token. Required.",
+        SerializedName = @"audiences",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] Audience { get => _body.Audience ?? null /* arrayOf */; set => _body.Audience = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -67,6 +87,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>
+        /// The un-validated, user-provided description of the federated identity credential. Optional.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The un-validated, user-provided description of the federated identity credential. Optional.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The un-validated, user-provided description of the federated identity credential. Optional.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Description { get => _body.Description ?? null; set => _body.Description = value; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -79,16 +112,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>Backing field for <see cref="Id" /> property.</summary>
+        private string _id;
+
+        /// <summary>key: id of federatedIdentityCredential</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "key: id of federatedIdentityCredential")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"key: id of federatedIdentityCredential",
+        SerializedName = @"federatedIdentityCredential-id",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Path)]
+        public string Id { get => this._id; set => this._id = value; }
+
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// The URL of the external identity provider and must match the issuer claim of the external token being exchanged. The combination
+        /// of the values of issuer and subject must be unique on the app. Required.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The URL of the external identity provider and must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app. Required.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The URL of the external identity provider and must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app. Required.",
+        SerializedName = @"issuer",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Issuer { get => _body.Issuer ?? null; set => _body.Issuer = value; }
+
+        /// <summary>
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>
+        /// is the unique identifier for the federated identity credential, which has a character limit of 120 characters and must
+        /// be URL friendly. It is immutable once created. Required. Not nullable. Supports $filter (eq).
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "is the unique identifier for the federated identity credential, which has a character limit of 120 characters and must be URL friendly. It is immutable once created. Required. Not nullable. Supports $filter (eq).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"is the unique identifier for the federated identity credential, which has a character limit of 120 characters and must be URL friendly. It is immutable once created. Required. Not nullable. Supports $filter (eq).",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotExport]
+        public string Name { get => _body.Name ?? null; set => _body.Name = value; }
+
+        /// <summary>
+        /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns true when the command succeeds")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter PassThru { get; set; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.HttpPipeline" /> that the remote call will use.
@@ -112,16 +195,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
         /// <summary>
-        /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
-        /// happens on that response. Implement this method in a partial class to enable this behavior
+        /// Required. The identifier of the external software workload within the external identity provider. Like the audience value,
+        /// it has no fixed format, as each identity provider uses their own - sometimes a GUID, sometimes a colon delimited identifier,
+        /// sometimes arbitrary strings. The value here must match the sub claim within the token presented to Azure AD. The combination
+        /// of issuer and subject must be unique on the app. Supports $filter (eq).
         /// </summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal"
-        /// /> from the remote call</param>
-        /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
-        /// return immediately (set to true to skip further processing )</param>
-
-        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Required. The identifier of the external software workload within the external identity provider. Like the audience value, it has no fixed format, as each identity provider uses their own - sometimes a GUID, sometimes a colon delimited identifier, sometimes arbitrary strings. The value here must match the sub claim within the token presented to Azure AD. The combination of issuer and subject must be unique on the app. Supports $filter (eq).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Required. The identifier of the external software workload within the external identity provider. Like the audience value, it has no fixed format, as each identity provider uses their own - sometimes a GUID, sometimes a colon delimited identifier, sometimes arbitrary strings. The value here must match the sub claim within the token presented to Azure AD. The combination of issuer and subject must be unique on the app. Supports $filter (eq).",
+        SerializedName = @"subject",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Subject { get => _body.Subject ?? null; set => _body.Subject = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -134,6 +221,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// return immediately (set to true to skip further processing )</param>
 
         partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+
+        /// <summary>
+        /// <c>overrideOnNoContent</c> will be called before the regular onNoContent has been processed, allowing customization of
+        /// what happens on that response. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="returnNow">/// Determines if the rest of the onNoContent method should be processed, or if the method should
+        /// return immediately (set to true to skip further processing )</param>
+
+        partial void overrideOnNoContent(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -213,14 +310,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
             }
         }
 
-        /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzADServicePrincipal_Create" /> cmdlet class.
-        /// </summary>
-        public NewAzADServicePrincipal_Create()
-        {
-
-        }
-
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
@@ -229,7 +318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'ServicePrincipalsServicePrincipalCreateServicePrincipal' operation"))
+                if (ShouldProcess($"Call remote 'ApplicationsUpdateFederatedIdentityCredentials' operation"))
                 {
                     using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token) )
                     {
@@ -267,6 +356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         {
             using( NoSynchronizationContext )
             {
+                Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.DictionaryExtensions.HashTableToDictionary<global::System.Object>(AdditionalProperties,_body.AdditionalProperties);
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -281,12 +371,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ServicePrincipalsServicePrincipalCreateServicePrincipal(Body, onCreated, onDefault, this, Pipeline);
+                    await this.Client.ApplicationsUpdateFederatedIdentityCredentials(ApplicationObjectId, Id, _body, onNoContent, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=Body})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ApplicationObjectId=ApplicationObjectId,Id=Id,body=_body})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -305,28 +395,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
             base.StopProcessing();
         }
 
-        /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal"
-        /// /> from the remote call</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
-        /// </returns>
-        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal> response)
+        /// <summary>
+        /// Intializes a new instance of the <see cref="UpdateAzADAppFederatedIdentityCredential_UpdateExpanded" /> cmdlet class.
+        /// </summary>
+        public UpdateAzADAppFederatedIdentityCredential_UpdateExpanded()
         {
-            using( NoSynchronizationContext )
-            {
-                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnCreated(responseMessage, response, ref _returnNow);
-                // if overrideOnCreated has returned true, then return right away.
-                if ((null != _returnNow && await _returnNow))
-                {
-                    return ;
-                }
-                // onCreated - response for 201 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
-                WriteObject((await response));
-            }
+
         }
 
         /// <summary>
@@ -356,17 +430,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ApplicationObjectId=ApplicationObjectId, Id=Id, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ApplicationObjectId=ApplicationObjectId, Id=Id, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
+                }
+            }
+        }
+
+        /// <summary>a delegate that is called when the remote service returns 204 (NoContent).</summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
+        /// </returns>
+        private async global::System.Threading.Tasks.Task onNoContent(global::System.Net.Http.HttpResponseMessage responseMessage)
+        {
+            using( NoSynchronizationContext )
+            {
+                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
+                overrideOnNoContent(responseMessage, ref _returnNow);
+                // if overrideOnNoContent has returned true, then return right away.
+                if ((null != _returnNow && await _returnNow))
+                {
+                    return ;
+                }
+                // onNoContent - response for 204 /
+                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                {
+                    WriteObject(true);
                 }
             }
         }

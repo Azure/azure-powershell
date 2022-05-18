@@ -8,16 +8,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Extensions;
     using System;
 
-    /// <summary>Add new entity to users</summary>
+    /// <summary>Get federatedIdentityCredentials from applications.</summary>
     /// <remarks>
-    /// [OpenAPI] CreateUser=>POST:"/users"
+    /// [OpenAPI] ListFederatedIdentityCredentials=>GET:"/applications/{application-id}/federatedIdentityCredentials"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.InternalExport]
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzADUser_Create", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Description(@"Add new entity to users")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzADAppFederatedIdentityCredential_List", SupportsPaging = true)]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IMicrosoftGraphFederatedIdentityCredential))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Description(@"Get federatedIdentityCredentials from applications.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Generated]
-    public partial class NewAzADUser_Create : global::System.Management.Automation.PSCmdlet,
+    public partial class GetAzADAppFederatedIdentityCredential_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -34,18 +34,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>Backing field for <see cref="Body" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser _body;
+        /// <summary>A flag to tell whether it is the first onOK call.</summary>
+        private bool _isFirst = true;
 
-        /// <summary>Represents an Azure Active Directory user object.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Represents an Azure Active Directory user object.", ValueFromPipeline = true)]
+        /// <summary>Link to retrieve next page.</summary>
+        private string _nextLink;
+
+        /// <summary>Backing field for <see cref="ApplicationObjectId" /> property.</summary>
+        private string _applicationObjectId;
+
+        /// <summary>key: id of application</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "key: id of application")]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Represents an Azure Active Directory user object.",
-        SerializedName = @"body",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser Body { get => this._body; set => this._body = value; }
+        Description = @"key: id of application",
+        SerializedName = @"application-id",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Path)]
+        public string ApplicationObjectId { get => this._applicationObjectId; set => this._applicationObjectId = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -55,6 +62,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.MSGraph Client => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.ClientAPI;
 
+        /// <summary>Backing field for <see cref="Count" /> property.</summary>
+        private global::System.Management.Automation.SwitchParameter _count;
+
+        /// <summary>Include count of items</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Include count of items")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Include count of items",
+        SerializedName = @"$count",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Query)]
+        public global::System.Management.Automation.SwitchParameter Count { get => this._count; set => this._count = value; }
+
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
         /// </summary>
@@ -63,6 +84,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Backing field for <see cref="Expand" /> property.</summary>
+        private string[] _expand;
+
+        /// <summary>Expand related entities</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Expand related entities")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Expand related entities",
+        SerializedName = @"$expand",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Query)]
+        public string[] Expand { get => this._expand; set => this._expand = value; }
+
+        /// <summary>Backing field for <see cref="Filter" /> property.</summary>
+        private string _filter;
+
+        /// <summary>Filter items by property values</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Filter items by property values")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Filter items by property values",
+        SerializedName = @"$filter",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Query)]
+        public string Filter { get => this._filter; set => this._filter = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -80,12 +130,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>Backing field for <see cref="Orderby" /> property.</summary>
+        private string[] _orderby;
+
+        /// <summary>Order items by property values</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Order items by property values")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Order items by property values",
+        SerializedName = @"$orderby",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Query)]
+        public string[] Orderby { get => this._orderby; set => this._orderby = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.HttpPipeline" /> that the remote call will use.
@@ -108,17 +173,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>
-        /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
-        /// happens on that response. Implement this method in a partial class to enable this behavior
-        /// </summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser"
-        /// /> from the remote call</param>
-        /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
-        /// return immediately (set to true to skip further processing )</param>
+        /// <summary>Backing field for <see cref="Search" /> property.</summary>
+        private string _search;
 
-        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        /// <summary>Search items by search phrases</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Search items by search phrases")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Search items by search phrases",
+        SerializedName = @"$search",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Query)]
+        public string Search { get => this._search; set => this._search = value; }
+
+        /// <summary>Backing field for <see cref="Select" /> property.</summary>
+        private string[] _select;
+
+        /// <summary>Select properties to be returned</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Select properties to be returned")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Select properties to be returned",
+        SerializedName = @"$select",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Query)]
+        public string[] Select { get => this._select; set => this._select = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -131,6 +213,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// return immediately (set to true to skip further processing )</param>
 
         partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+
+        /// <summary>
+        /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
+        /// on that response. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.ICollectionOfFederatedIdentityCredential"
+        /// /> from the remote call</param>
+        /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
+        /// immediately (set to true to skip further processing )</param>
+
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.ICollectionOfFederatedIdentityCredential> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -152,6 +246,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
 
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
+        {
+
+        }
+
+        /// <summary>
+        /// Intializes a new instance of the <see cref="GetAzADAppFederatedIdentityCredential_List" /> cmdlet class.
+        /// </summary>
+        public GetAzADAppFederatedIdentityCredential_List()
         {
 
         }
@@ -210,14 +312,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
             }
         }
 
-        /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzADUser_Create" /> cmdlet class.
-        /// </summary>
-        public NewAzADUser_Create()
-        {
-
-        }
-
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
@@ -226,12 +320,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'UsersUserCreateUser' operation"))
+                using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token) )
                 {
-                    using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token) )
-                    {
-                        asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token);
-                    }
+                    asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token);
                 }
             }
             catch (global::System.AggregateException aggregateException)
@@ -278,12 +369,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.UsersUserCreateUser(Body, onCreated, onDefault, this, Pipeline);
+                    await this.Client.ApplicationsListFederatedIdentityCredentials(ApplicationObjectId, this.InvocationInformation.BoundParameters.ContainsKey("Search") ? Search : null, this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, this.InvocationInformation.BoundParameters.ContainsKey("Count") ? Count : default(global::System.Management.Automation.SwitchParameter?), this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null /* arrayOf */, this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */, this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* arrayOf */, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=Body})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ApplicationObjectId=ApplicationObjectId,Search=this.InvocationInformation.BoundParameters.ContainsKey("Search") ? Search : null,Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null,Count=this.InvocationInformation.BoundParameters.ContainsKey("Count") ? Count : default(global::System.Management.Automation.SwitchParameter?),Orderby=this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null /* arrayOf */,Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */,Expand=this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* arrayOf */})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -300,30 +391,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
-        }
-
-        /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser"
-        /// /> from the remote call</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
-        /// </returns>
-        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser> response)
-        {
-            using( NoSynchronizationContext )
-            {
-                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnCreated(responseMessage, response, ref _returnNow);
-                // if overrideOnCreated has returned true, then return right away.
-                if ((null != _returnNow && await _returnNow))
-                {
-                    return ;
-                }
-                // onCreated - response for 201 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
-                WriteObject((await response));
-            }
         }
 
         /// <summary>
@@ -353,17 +420,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ApplicationObjectId=ApplicationObjectId, Search=this.InvocationInformation.BoundParameters.ContainsKey("Search") ? Search : null, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, Count=this.InvocationInformation.BoundParameters.ContainsKey("Count") ? Count : default(global::System.Management.Automation.SwitchParameter?), Orderby=this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null /* arrayOf */, Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */, Expand=this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* arrayOf */ })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ApplicationObjectId=ApplicationObjectId, Search=this.InvocationInformation.BoundParameters.ContainsKey("Search") ? Search : null, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, Count=this.InvocationInformation.BoundParameters.ContainsKey("Count") ? Count : default(global::System.Management.Automation.SwitchParameter?), Orderby=this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null /* arrayOf */, Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */, Expand=this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* arrayOf */ })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
+                }
+            }
+        }
+
+        /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.ICollectionOfFederatedIdentityCredential"
+        /// /> from the remote call</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
+        /// </returns>
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.ICollectionOfFederatedIdentityCredential> response)
+        {
+            using( NoSynchronizationContext )
+            {
+                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
+                overrideOnOk(responseMessage, response, ref _returnNow);
+                // if overrideOnOk has returned true, then return right away.
+                if ((null != _returnNow && await _returnNow))
+                {
+                    return ;
+                }
+                // onOk - response for 200 / application/json
+                // clientside pagination enabled
+                // response should be returning an array of some kind. +Pageable
+                // pageable / value / @odata.nextLink
+                var result = await response;
+                if ((ulong)result.Value.Length <= this.PagingParameters.Skip)
+                {
+                    this.PagingParameters.Skip = this.PagingParameters.Skip - (ulong)result.Value.Length;
+                }
+                else
+                {
+                    ulong toRead = Math.Min(this.PagingParameters.First, (ulong)result.Value.Length - this.PagingParameters.Skip);
+                    var requiredResult = result.Value.SubArray((int)this.PagingParameters.Skip, (int)toRead);
+                    WriteObject(requiredResult, true);
+                    this.PagingParameters.Skip = 0;
+                    this.PagingParameters.First = this.PagingParameters.First <= toRead ? 0 : this.PagingParameters.First - toRead;
+                }
+                _nextLink = result.OdataNextLink;
+                if (_isFirst)
+                {
+                    _isFirst = false;
+                    while (_nextLink != null && this.PagingParameters.First > 0)
+                    {
+                        if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                        {
+                            requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get );
+                            await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                            await this.Client.ApplicationsListFederatedIdentityCredentials_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        }
+                    }
                 }
             }
         }
