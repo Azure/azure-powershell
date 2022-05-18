@@ -59,9 +59,6 @@ Get the Container App SourceControls in a given resource group.
 ### [Get-AzContainerAppsSourceControl](Get-AzContainerAppsSourceControl.md)
 Get a SourceControl of a Container App.
 
-### [New-AzAppIdentity](New-AzAppIdentity.md)
-Create an in-memory object for AppIdentity.
-
 ### [New-AzAppManagedEnv](New-AzAppManagedEnv.md)
 Creates or updates a Managed Environment used to host container apps.
 

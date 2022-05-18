@@ -122,7 +122,6 @@ directive:
   #     - ScaleRuleAuth
   #     - CustomScaleRuleMetadata
   #     - HttpScaleRuleMetadata
-  #     - AppIdentity
   #     - RegistryCredentials
   #     - DaprMetadata
   #     - Secret
