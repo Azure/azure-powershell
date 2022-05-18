@@ -11,22 +11,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.OperationalInsights.Models;
+using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.OperationalInsights.Models
+namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 {
-    public class UpdatePSTableParameters : OperationalInsightsParametersBase
+    class SetAzureOperationalInsightsRestoreTableCommand : OperationalInsightsBaseCmdlet
     {
-        public string TableName { get; set; }
-
-        public int? RetentionInDays { get; set; }
-
-        public int?  TotalRetentionInDays { get; set; }
-
-        public Table ToTableProperties()
-        {
-            return new Table(name: TableName, retentionInDays: RetentionInDays, totalRetentionInDays: TotalRetentionInDays);
-        }
-
     }
 }

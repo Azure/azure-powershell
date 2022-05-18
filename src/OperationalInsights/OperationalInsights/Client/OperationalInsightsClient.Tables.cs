@@ -47,6 +47,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
         public virtual PSTable UpdatePSTable(UpdatePSTableParameters parameters)
         {
+            PSTable existingTable = null;
+            try
+            {
+                existingTable = this.GetTable(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.TableName);
+            }
+            catch (System.Exception)
+            {
+                throw new PSArgumentException($"Workspace {parameters?.WorkspaceName} under resourceGroup {parameters?.ResourceGroupName} does not contain the table:{parameters?.TableName}, please use Create-AzOperationalInsightsTable.");
+            }
+
             var response = OperationalInsightsManagementClient.Tables.Update(
                 resourceGroupName: parameters.ResourceGroupName,
                 workspaceName: parameters.WorkspaceName,
