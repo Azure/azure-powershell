@@ -132,6 +132,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string CompositePathOrderTypeHelpMessage = " Gets or sets sort order for composite paths. Possible values include: 'Ascending', 'Descending'";
         public const string SqlContainerAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage (in Seconds).";
         public const string ClientEncryptionKeyObjectHelpMessage = "Client Encryption Key object.";
+        public const string IsPartitionMergeSimulationHelpMessage = "Boolean to indicate whether or not this is a simulated operation (true if not specified).";
 
         //SQL Client Side Encryption
         public const string ClientEncryptionKeyName = "Client Encryption Key name.";

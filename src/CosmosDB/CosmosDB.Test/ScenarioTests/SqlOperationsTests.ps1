@@ -1111,3 +1111,35 @@ function Test-ClientEncryptionKeyCmdletsUsingInputObject
     Remove-AzKeyVault -VaultName $vaultName -InRemovedState -Force -Location $location
   }
 }
+
+
+
+<#
+.SYNOPSIS
+Test SQL merge cmdlet
+#>
+function Test-SqlContainerMergeCmdlet
+{
+  $AccountName = "mergetest"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "mergedb"
+  $ContainerName = "mergecontainer"
+
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
+
+  $ContainerThroughputValue = 20000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+      Update-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue
+      Invoke-AzCosmosDBSqlContainerMerge -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName
+  }
+  Finally{
+      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerName
+      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}

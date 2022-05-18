@@ -446,3 +446,33 @@ function Test-MongoMigrateThroughputCmdlets
       Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   }
 }
+
+<#
+.SYNOPSIS
+Test mongo merge cmdlet
+#>
+function Test-MongoDBCollectionMergeCmdlet
+{
+  $AccountName = "mongomergeaccount"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "mongodbmerge"
+  $ContainerName = "mongodbcollection"
+
+  $ShardKey = "shardKeyPath"
+  $PartitionKeyKindValue = "Hash"
+
+  $ContainerThroughputValue = 20000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -Shard $ShardKey
+      Update-AzCosmosDBMongoDBCollectionThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue      
+      Invoke-AzCosmosDBMongoDBCollectionMerge -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName
+  }
+  Finally{
+      Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}

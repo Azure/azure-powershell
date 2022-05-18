@@ -23,8 +23,8 @@ using Microsoft.Azure.Management.CosmosDB;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlContainerPartitionMerge", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
-    public class InvokeAzCosmosDBSqlContainerPartitionMerge : AzureCosmosDBCmdletBase
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBCollectionMerge", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
+    public class InvokeAzCosmosDBMongoDBCollectionMerge : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -39,15 +39,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ContainerNameHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.CollectionNameHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string Name { get; set; }        
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.MongoDatabaseObjectHelpMessage)]
         [ValidateNotNull]
         public PSSqlDatabaseGetResults ParentObject { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.SqlContainerObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.MongoCollectionObjectHelpMessage)]
         [ValidateNotNull]
         public PSSqlContainerGetResults InputObject { get; set; }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
             ResourceGroupName = resourceIdentifier.ResourceGroupName;
             Name = resourceIdentifier.ResourceName;
-            DatabaseName = ResourceIdentifierExtensions.GetSqlDatabaseName(resourceIdentifier);
+            DatabaseName = ResourceIdentifierExtensions.GetMongoDBDatabaseName(resourceIdentifier);
             AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
         }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Name, "Merging partitions."))
             {
-                MergeParameters mergeParameters = new MergeParameters(isDryRun: true);
+                MergeParameters mergeParameters = new MergeParameters(isDryRun: false);
                 PhysicalPartitionStorageInfoCollection physicalPartitionStorageInfoCollection =  
                     CosmosDBManagementClient.SqlResources.ListSqlContainerPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, mergeParameters);
                 WriteObject(new PSPhysicalPartitionStorageInfoResults(physicalPartitionStorageInfoCollection));

@@ -185,8 +185,8 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Get-AzCosmosDbClientEncryptionKey', 
                'New-AzCosmosDbClientEncryptionKey', 
                'Update-AzCosmosDbClientEncryptionKey',
-               'Invoke-AzCosmosDbSqlContainerPartitionMerge',
-               'Invoke-AzCosmosDbMongoDbCollectionPartitionMerge'
+               'Invoke-AzCosmosDbSqlContainerMerge',
+               'Invoke-AzCosmosDbMongoDbCollectionMerge'
 
 # Variables to export from this module
 # VariablesToExport = @()
