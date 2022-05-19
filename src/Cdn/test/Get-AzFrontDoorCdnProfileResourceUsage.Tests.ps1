@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnProfileReso
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnProfileResourceUsage' {
+Describe 'Get-AzFrontDoorCdnProfileResourceUsage' -Tag 'LiveOnly' {
     It 'List' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
@@ -33,7 +33,7 @@ Describe 'Get-AzFrontDoorCdnProfileResourceUsage' {
                 $frontDoorCdnProfileUsage | Should -not -BeNullOrEmpty 
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

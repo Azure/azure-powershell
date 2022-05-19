@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnCustomDomai
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnCustomDomain' {
+Describe 'Get-AzFrontDoorCdnCustomDomain' -Tag 'LiveOnly' {
     It 'List' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
@@ -46,7 +46,7 @@ Describe 'Get-AzFrontDoorCdnCustomDomain' {
             $customDomains.Count | Should -Be 1
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -81,7 +81,7 @@ Describe 'Get-AzFrontDoorCdnCustomDomain' {
             $customDomain.Name | Should -Be $customDomainName
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -117,7 +117,7 @@ Describe 'Get-AzFrontDoorCdnCustomDomain' {
             $customDomain.Name | Should -Be $customDomainName
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

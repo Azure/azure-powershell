@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Start-AzCdnEndpoint' {
+Describe 'Start-AzCdnEndpoint' -Tag 'LiveOnly' {
     It 'Start' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
@@ -45,7 +45,7 @@ Describe 'Start-AzCdnEndpoint' {
                 $endpoint.ResourceState | Should -Be "Running"
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -80,7 +80,7 @@ Describe 'Start-AzCdnEndpoint' {
                 $endpoint.ResourceState | Should -Be "Running"
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

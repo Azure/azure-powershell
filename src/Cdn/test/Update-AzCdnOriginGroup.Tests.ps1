@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnOriginGroup'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzCdnOriginGroup' {
+Describe 'Update-AzCdnOriginGroup' -Tag 'LiveOnly' {
     It 'UpdateExpanded' {
         { 
             $subId = $env.SubscriptionId
@@ -78,7 +78,7 @@ Describe 'Update-AzCdnOriginGroup' {
                 $updatedOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be $probeRequestType2
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -145,7 +145,7 @@ Describe 'Update-AzCdnOriginGroup' {
                 $updatedOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be $probeRequestType2
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

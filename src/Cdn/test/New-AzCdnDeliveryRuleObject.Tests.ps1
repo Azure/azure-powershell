@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnDeliveryRuleObject')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnDeliveryRuleObject' {
+Describe 'New-AzCdnDeliveryRuleObject' -Tag 'LiveOnly' {
     It '__AllParameterSets' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
@@ -60,7 +60,7 @@ Describe 'New-AzCdnDeliveryRuleObject' {
                 $endpoint.DeliveryPolicyRule.Count | Should -Be 1
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

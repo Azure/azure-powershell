@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnRuleSet'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnRuleSet' {
+Describe 'New-AzFrontDoorCdnRuleSet' -Tag 'LiveOnly' {
     It 'Create' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
@@ -32,7 +32,7 @@ Describe 'New-AzFrontDoorCdnRuleSet' {
             New-AzFrontDoorCdnRuleSet -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $rulesetName
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

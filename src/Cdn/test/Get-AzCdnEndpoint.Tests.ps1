@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnEndpoint' {
+Describe 'Get-AzCdnEndpoint' -Tag 'LiveOnly' {
     It 'List' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
@@ -43,7 +43,7 @@ Describe 'Get-AzCdnEndpoint' {
                 $endpoints.Count | Should -BeGreaterOrEqual 1
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -79,7 +79,7 @@ Describe 'Get-AzCdnEndpoint' {
                 $endpoint.Origin.HostName | Should -Be $origin.HostName
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -116,7 +116,7 @@ Describe 'Get-AzCdnEndpoint' {
                 $endpoint.Origin.HostName | Should -Be $origin.HostName
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

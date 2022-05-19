@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnEndpoint' {
+Describe 'Get-AzFrontDoorCdnEndpoint' -Tag 'LiveOnly' {
     It 'List'  {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
@@ -36,7 +36,7 @@ Describe 'Get-AzFrontDoorCdnEndpoint' {
             $endpoints.Count | Should -Be 1
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -64,7 +64,7 @@ Describe 'Get-AzFrontDoorCdnEndpoint' {
             $endpoint.Location | Should -Be "Global"
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -93,7 +93,7 @@ Describe 'Get-AzFrontDoorCdnEndpoint' {
             $endpoint.Location | Should -Be "Global"
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

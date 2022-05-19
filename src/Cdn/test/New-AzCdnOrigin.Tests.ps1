@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnOrigin'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnOrigin' {
+Describe 'New-AzCdnOrigin' -Tag 'LiveOnly' {
     It 'CreateExpanded' {
         { 
             $subId = $env.SubscriptionId
@@ -59,7 +59,7 @@ Describe 'New-AzCdnOrigin' {
                 $origin.HostName | Should -Be "host2.hello.com"
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

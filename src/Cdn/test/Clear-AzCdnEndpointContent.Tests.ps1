@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Clear-AzCdnEndpointContent'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Clear-AzCdnEndpointContent' {
+Describe 'Clear-AzCdnEndpointContent' -Tag 'LiveOnly' {
     It 'PurgeExpanded' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
@@ -53,7 +53,7 @@ Describe 'Clear-AzCdnEndpointContent' {
                 { Clear-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -ContentPath $contentPath } | Should -Throw
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -96,7 +96,7 @@ Describe 'Clear-AzCdnEndpointContent' {
                 { Clear-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -ContentFilePath $contentPath } | Should -Throw
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -139,7 +139,7 @@ Describe 'Clear-AzCdnEndpointContent' {
                 { $endpoint | Clear-AzCdnEndpointContent -ContentPath $contentPath } | Should -Throw
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -182,7 +182,7 @@ Describe 'Clear-AzCdnEndpointContent' {
                 { $endpoint | Clear-AzCdnEndpointContent -ContentFilePath $contentPath } | Should -Throw
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

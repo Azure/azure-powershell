@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnProfile'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnProfile' {
+Describe 'Update-AzFrontDoorCdnProfile' -Tag 'LiveOnly' {
     It 'UpdateExpanded' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
@@ -43,7 +43,7 @@ Describe 'Update-AzFrontDoorCdnProfile' {
                 $updatedProfile.Tag["Tag2"] | Should -Be "22"
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -77,7 +77,7 @@ Describe 'Update-AzFrontDoorCdnProfile' {
                 $updatedProfile.Tag["Tag2"] | Should -Be "22"
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

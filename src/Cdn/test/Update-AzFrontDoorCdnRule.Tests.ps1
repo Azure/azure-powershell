@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnRule'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnRule' {
+Describe 'Update-AzFrontDoorCdnRule' -Tag 'LiveOnly' {
     It 'UpdateExpanded' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
@@ -67,7 +67,7 @@ Describe 'Update-AzFrontDoorCdnRule' {
             $updatedRule.Action.Count | Should -Be $actions.Count
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -124,7 +124,7 @@ Describe 'Update-AzFrontDoorCdnRule' {
             $updatedRule.Action.Count | Should -Be $actions.Count
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

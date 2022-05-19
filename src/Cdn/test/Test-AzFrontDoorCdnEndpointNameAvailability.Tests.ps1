@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFrontDoorCdnEndpointNa
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Test-AzFrontDoorCdnEndpointNameAvailability' {
+Describe 'Test-AzFrontDoorCdnEndpointNameAvailability' -Tag 'LiveOnly' {
     It 'CheckExpanded' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
@@ -42,7 +42,7 @@ Describe 'Test-AzFrontDoorCdnEndpointNameAvailability' {
                 $nameAvailability.NameAvailable | Should -BeFalse
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -78,7 +78,7 @@ Describe 'Test-AzFrontDoorCdnEndpointNameAvailability' {
                 $nameAvailability.NameAvailable | Should -BeFalse
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnCustomDo
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnCustomDomainValidationToken' {
+Describe 'Update-AzFrontDoorCdnCustomDomainValidationToken' -Tag 'LiveOnly' {
     It 'Refresh' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
@@ -49,7 +49,7 @@ Describe 'Update-AzFrontDoorCdnCustomDomainValidationToken' {
                 Update-AzFrontDoorCdnCustomDomainValidationToken -CustomDomainName $customDomainName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -90,7 +90,7 @@ Describe 'Update-AzFrontDoorCdnCustomDomainValidationToken' {
                 | Update-AzFrontDoorCdnCustomDomainValidationToken
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

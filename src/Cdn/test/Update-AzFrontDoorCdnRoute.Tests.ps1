@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnRoute'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnRoute' {
+Describe 'Update-AzFrontDoorCdnRoute' -Tag 'LiveOnly' {
     It 'UpdateExpanded' {
         { 
             $PSDefaultParameterValues['Disabled'] = $true
@@ -79,7 +79,7 @@ Describe 'Update-AzFrontDoorCdnRoute' {
                 -EnabledState "Disabled"
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -148,7 +148,7 @@ Describe 'Update-AzFrontDoorCdnRoute' {
                 | Update-AzFrontDoorCdnRoute -EnabledState "Disabled"
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

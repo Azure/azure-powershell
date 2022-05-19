@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFrontDoorCdnProfileHos
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability' {
+Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability' -Tag 'LiveOnly' {
     It 'CheckExpanded' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
@@ -32,7 +32,7 @@ Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability' {
             $result.NameAvailable | Should -Be $true
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -55,7 +55,7 @@ Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability' {
             $result.NameAvailable | Should -Be $true
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

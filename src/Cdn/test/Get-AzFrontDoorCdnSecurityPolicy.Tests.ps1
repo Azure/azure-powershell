@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnSecurityPol
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnSecurityPolicy' {
+Describe 'Get-AzFrontDoorCdnSecurityPolicy' -Tag 'LiveOnly' {
     It 'List' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
@@ -45,7 +45,7 @@ Describe 'Get-AzFrontDoorCdnSecurityPolicy' {
             $policies.Count | Should -Be 1
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -80,7 +80,7 @@ Describe 'Get-AzFrontDoorCdnSecurityPolicy' {
                 $policy.Name | Should -Be $policyName
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -116,7 +116,7 @@ Describe 'Get-AzFrontDoorCdnSecurityPolicy' {
             $policy.Name | Should -Be $policyName
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

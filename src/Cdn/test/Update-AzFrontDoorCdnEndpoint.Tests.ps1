@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnEndpoint
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnEndpoint' {
+Describe 'Update-AzFrontDoorCdnEndpoint' -Tag 'LiveOnly' {
     It 'UpdateExpanded'  {
         $PSDefaultParameterValues['Disabled'] = $true
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
@@ -41,7 +41,7 @@ Describe 'Update-AzFrontDoorCdnEndpoint' {
             $updatedEndpoint.EnabledState | Should -Be "Disabled"
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -68,7 +68,7 @@ Describe 'Update-AzFrontDoorCdnEndpoint' {
             $updatedEndpoint.EnabledState | Should -Be "Disabled"
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

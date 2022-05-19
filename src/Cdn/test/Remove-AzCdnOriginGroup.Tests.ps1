@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnOriginGroup'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzCdnOriginGroup' {
+Describe 'Remove-AzCdnOriginGroup' -Tag 'LiveOnly' {
     It 'Delete' {
         { 
             $subId = $env.SubscriptionId
@@ -65,7 +65,7 @@ Describe 'Remove-AzCdnOriginGroup' {
                 Remove-AzCdnOriginGroup -EndpointName $endpointName -Name $originGroupName2 -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -119,7 +119,7 @@ Describe 'Remove-AzCdnOriginGroup' {
                 Get-AzCdnOriginGroup -EndpointName $endpointName -Name $originGroupName2 -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName | Remove-AzCdnOriginGroup
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

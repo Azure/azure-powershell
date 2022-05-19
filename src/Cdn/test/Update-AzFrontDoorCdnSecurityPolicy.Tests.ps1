@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnSecurity
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnSecurityPolicy' {
+Describe 'Update-AzFrontDoorCdnSecurityPolicy' -Tag 'LiveOnly' {
     It 'PatchExpanded' {
         { 
             $PSDefaultParameterValues['Disabled'] = $true
@@ -56,7 +56,7 @@ Describe 'Update-AzFrontDoorCdnSecurityPolicy' {
                 -Parameter $updateParameter
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -102,7 +102,7 @@ Describe 'Update-AzFrontDoorCdnSecurityPolicy' {
                 | Update-AzFrontDoorCdnSecurityPolicy -Parameter $updateParameter
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
