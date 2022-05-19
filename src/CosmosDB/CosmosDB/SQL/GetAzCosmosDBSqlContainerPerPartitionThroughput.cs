@@ -25,7 +25,7 @@ using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlContainerPerPartitionThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlContainerPerPartitionThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSPhysicalPartitionThroughputInfo))]
     public class GetAzCosmosDBSqlContainerPerPartitionThroughput : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]

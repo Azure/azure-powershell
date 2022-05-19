@@ -5,50 +5,71 @@ online version:
 schema: 2.0.0
 ---
 
-# Invoke-AzCosmosDBMongoDBCollectionMerge
+# Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput
 
 ## SYNOPSIS
-Invoke Merge for the specified MongoDB collection.
+Updates the Partition Throughput for a MongoDB collection.
 
 ## SYNTAX
 
 ### ByNameParameterSet (Default)
 ```
-Invoke-AzCosmosDBMongoDBCollectionMerge -ResourceGroupName <String> [-Name <String>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName <String> -DatabaseName <String>
+ [-Name <String>] [-SourcePhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>]
+ [-TargetPhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>] [-EqualDistributionPolicy]
+ [-DefaultProfile <IAzureContextContainer>] -AccountName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Invoke-AzCosmosDBMongoDBCollectionMerge [-Name <String>] -ParentObject <PSSqlDatabaseGetResults> [-Force]
+Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput [-Name <String>]
+ -ParentObject <PSSqlDatabaseGetResults>
+ [-SourcePhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>]
+ [-TargetPhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>] [-EqualDistributionPolicy]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Invoke-AzCosmosDBMongoDBCollectionMerge [-Name <String>] -InputObject <PSSqlContainerGetResults> [-Force]
+Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput [-Name <String>]
+ -InputObject <PSSqlContainerGetResults>
+ [-SourcePhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>]
+ [-TargetPhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>] [-EqualDistributionPolicy]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet merges the partitions of a MongoDB collection.
+This cmdlet can be used to redistribute the throughput across partitions in a MongoDB collection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Invoke-AzCosmosDBMongoDBCollectionMerge -ResourceGroupName "resourceGroupName" -AccountName "accountName" -DatabaseName "databaseName" -Name "name"
+$partitions = Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -AllPartitions
+      $sources = @()
+      $targets = @()
+      Foreach($partition in $partitions)
+      {
+          if($partition.Id -lt 2)
+          {
+            $throughput = $partition.Throughput - 100
+            $sources += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partition.Id -Throughput $throughput
+          }
+          else
+          {
+              $throughput = $partition.Throughput + 100
+              $targets += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partition.Id -Throughput $throughput
+          }
+      }
+      
+      $newPartitions = Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
+      
+      $resetPartitions = Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -EqualDistributionPolicy      
+
+      $somePartitions = Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -PhysicalPartitionIds ('0', '1')
 ```
 
-```output
-Id                  StorageInKB
----                 ------------
-targetpartition0    100
-targetpartition1    100
-targetpartition2    100
-targetpartition3    100
-```
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -97,8 +118,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Skips prompt Confirmation of the command.
+### -EqualDistributionPolicy
+Set this switch to reset the throughput layout for all partitions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -113,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Mongo Collection object.
+Sql Container object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetResults
@@ -128,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Collection name.
+Container name.
 
 ```yaml
 Type: System.String
@@ -143,7 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-Mongo Database object.
+Sql Database object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
@@ -166,6 +187,36 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourcePhysicalPartitionThroughputObject
+Source physical partitions
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSPhysicalPartitionThroughputInfo[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetPhysicalPartitionThroughputObject
+Target physical partitions
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSPhysicalPartitionThroughputInfo[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -214,7 +265,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSPhysicalPartitionStorageInfo
+### Microsoft.Azure.Commands.CosmosDB.Models.PSPhysicalPartitionThroughputInfo
 
 ## NOTES
 

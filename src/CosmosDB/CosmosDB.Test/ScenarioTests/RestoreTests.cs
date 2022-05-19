@@ -69,21 +69,21 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets");
+            TestRunner.RunTestScript( "Test-UpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateCosmosDBAccountBackupPolicyToContinuous7DaysCmdLets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateCosmosDBAccountBackupPolicyToContinuous7DaysCmdLets");
+            TestRunner.RunTestScript("Test-UpdateCosmosDBAccountBackupPolicyToContinuous7DaysCmdLets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets");
+            TestRunner.RunTestScript("Test-ProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets");
         }
     }
 }

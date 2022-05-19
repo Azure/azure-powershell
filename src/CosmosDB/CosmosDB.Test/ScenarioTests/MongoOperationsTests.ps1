@@ -500,7 +500,7 @@ function Test-MongoDBCollectionAdaptiveRUCmdlets
           }
       }      
 
-      $resetPartitions = Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -ResetPartitionLayout
+      $resetPartitions = Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -EqualDistributionPolicy
       
       Assert-AreEqual $resetPartitions.Count 4
 

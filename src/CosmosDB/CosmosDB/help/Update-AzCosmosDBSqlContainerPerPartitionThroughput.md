@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCosmosDBSqlContainerPerPartitionThroughput
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the throughput of selected partitions in a CosmosDB Sql container.
 
 ## SYNTAX
 
@@ -37,24 +37,43 @@ Update-AzCosmosDBSqlContainerPerPartitionThroughput [-Name <String>] -InputObjec
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet can be used to redistribute the throughput across partitions in a CosmosDB Sql container.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$partitions = Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -AllPartitions
+      
+      $sources = @()
+      $targets = @()
+      Foreach($partition in $partitions)
+      {
+      
+          if($partition.Id -lt 2)
+          {
+            $throughput = $partition.Throughput - 100
+            $sources += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partition.Id -Throughput $throughput
+          }
+          else
+          {
+              $throughput = $partition.Throughput + 100
+              $targets += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partition.Id -Throughput $throughput
+          }
+      }
+      
+      $newPartitions = Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
+      
+      $resetPartitions = Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -EqualDistributionPolicy      
+      $somePartitions = Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -PhysicalPartitionIds ('0', '1')
 ```
-
-{{ Add example description here }}
-
 ## PARAMETERS
 
 ### -AccountName
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -69,7 +88,7 @@ Accept wildcard characters: False
 Database name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -84,7 +103,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -99,7 +118,7 @@ Accept wildcard characters: False
 Sql Container object.
 
 ```yaml
-Type: PSSqlContainerGetResults
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetResults
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -114,7 +133,7 @@ Accept wildcard characters: False
 Container name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +148,7 @@ Accept wildcard characters: False
 Sql Database object.
 
 ```yaml
-Type: PSSqlDatabaseGetResults
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -140,11 +159,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResetPartitionLayout
+### -EqualDistributionPolicy
 Set this switch to reset the throughput layout for all partitions.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +178,7 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -174,7 +193,7 @@ Accept wildcard characters: False
 Source physical partitions
 
 ```yaml
-Type: PSPhysicalPartitionThroughputInfo[]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSPhysicalPartitionThroughputInfo[]
 Parameter Sets: (All)
 Aliases:
 
@@ -189,7 +208,7 @@ Accept wildcard characters: False
 Target physical partitions
 
 ```yaml
-Type: PSPhysicalPartitionThroughputInfo[]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSPhysicalPartitionThroughputInfo[]
 Parameter Sets: (All)
 Aliases:
 
@@ -204,7 +223,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -220,7 +239,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -242,7 +261,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSThroughputSettingsGetResults
+### Microsoft.Azure.Commands.CosmosDB.Models.PSPhysicalPartitionThroughputInfo
 
 ## NOTES
 

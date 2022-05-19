@@ -5,48 +5,46 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzCosmosDBSqlContainerPerPartitionThroughput
+# Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput
 
 ## SYNOPSIS
-Gets the CosmosDB Sql Container Partition throughput.
+Gets the Partition throughput distribution for a MongoDB collection.
 
 ## SYNTAX
 
 ### ByNameParameterSet (Default)
 ```
-Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName <String> -DatabaseName <String>
+Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName <String> -DatabaseName <String>
  [-Name <String>] [-PhysicalPartitionIds <String[]>] [-AllPartitions]
  [-DefaultProfile <IAzureContextContainer>] -AccountName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBSqlContainerPerPartitionThroughput [-Name <String>] -ParentObject <PSSqlDatabaseGetResults>
+Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput [-Name <String>] -ParentObject <PSSqlDatabaseGetResults>
  [-PhysicalPartitionIds <String[]>] [-AllPartitions] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Get-AzCosmosDBSqlContainerPerPartitionThroughput [-Name <String>] -InputObject <PSSqlContainerGetResults>
+Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput [-Name <String>] -InputObject <PSSqlContainerGetResults>
  [-PhysicalPartitionIds <String[]>] [-AllPartitions] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet can be used to retrieve the throughput applied at partition level on a Sql Container.
+This cmdlet can be used to retrieve the throughput distribution on the partitions of a MongoDB collection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$partitions = Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -AllPartitions
-      
+$partitions = Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -AllPartitions
       $sources = @()
       $targets = @()
       Foreach($partition in $partitions)
       {
-      
           if($partition.Id -lt 2)
           {
             $throughput = $partition.Throughput - 100
@@ -59,12 +57,12 @@ $partitions = Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupNam
           }
       }
       
-      $newPartitions = Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
+      $newPartitions = Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
       
-      $resetPartitions = Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -EqualDistributionPolicy      
-      $somePartitions = Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -PhysicalPartitionIds ('0', '1')
-```
+      $resetPartitions = Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -EqualDistributionPolicy      
 
+      $somePartitions = Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -PhysicalPartitionIds ('0', '1')
+```
 ## PARAMETERS
 
 ### -AccountName
@@ -173,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -PhysicalPartitionIds
-Source physical partitions
+List of PhysicalPartitionId for which throughput needs to be retrieved.
 
 ```yaml
 Type: System.String[]

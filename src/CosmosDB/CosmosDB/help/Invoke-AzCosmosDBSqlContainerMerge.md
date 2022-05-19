@@ -8,40 +8,47 @@ schema: 2.0.0
 # Invoke-AzCosmosDBSqlContainerMerge
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Invoke Merge for the specified Sql Container.
 
 ## SYNTAX
 
 ### ByNameParameterSet (Default)
 ```
-Invoke-AzCosmosDBSqlContainerMerge -ResourceGroupName <String> [-Name <String>]
+Invoke-AzCosmosDBSqlContainerMerge -ResourceGroupName <String> [-Name <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Invoke-AzCosmosDBSqlContainerMerge [-Name <String>] -ParentObject <PSSqlDatabaseGetResults>
+Invoke-AzCosmosDBSqlContainerMerge [-Name <String>] -ParentObject <PSSqlDatabaseGetResults> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Invoke-AzCosmosDBSqlContainerMerge [-Name <String>] -InputObject <PSSqlContainerGetResults>
+Invoke-AzCosmosDBSqlContainerMerge [-Name <String>] -InputObject <PSSqlContainerGetResults> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Invoke-AzCosmosDBSqlContainerMerge** cmdlet merges the partitions for a given container. It is a long running operation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Invoke-AzCosmosDBSqlContainerMerge -ResourceGroupName "resourceGroupName" -AccountName "accountName" -DatabaseName "databaseName" -Name "name"
 ```
 
-{{ Add example description here }}
+```output
+Id                  StorageInKB
+---                 ------------
+targetpartition0    100
+targetpartition1    100
+targetpartition2    100
+targetpartition3    100
+```
 
 ## PARAMETERS
 
@@ -49,7 +56,7 @@ PS C:\> {{ Add example code here }}
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -64,7 +71,7 @@ Accept wildcard characters: False
 Database name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -79,9 +86,24 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Skips prompt Confirmation of the command.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -94,7 +116,7 @@ Accept wildcard characters: False
 Sql Container object.
 
 ```yaml
-Type: PSSqlContainerGetResults
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetResults
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -109,7 +131,7 @@ Accept wildcard characters: False
 Container name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +146,7 @@ Accept wildcard characters: False
 Sql Database object.
 
 ```yaml
-Type: PSSqlDatabaseGetResults
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -139,7 +161,7 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -154,7 +176,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -170,7 +192,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

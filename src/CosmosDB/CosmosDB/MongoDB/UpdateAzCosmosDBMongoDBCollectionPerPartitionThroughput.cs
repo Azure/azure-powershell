@@ -25,7 +25,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBCollectionPerPartitionThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBCollectionPerPartitionThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSPhysicalPartitionThroughputInfo))]
     public class UpdateAzCosmosDBMongoDBCollectionPerPartitionThroughput : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public PSPhysicalPartitionThroughputInfo[] TargetPhysicalPartitionThroughputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ResetPartitionThroughputLayoutHelpMessage)]
-        public SwitchParameter ResetPartitionLayout { get; set; }
+        public SwitchParameter EqualDistributionPolicy { get; set; }
 
         public void PopulateFromParentObject()
         {
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 List<PhysicalPartitionThroughputInfoResource> targetPartitionInfos =
                     new List<PhysicalPartitionThroughputInfoResource>();
 
-                if (this.ResetPartitionLayout.IsPresent)
+                if (this.EqualDistributionPolicy.IsPresent)
                 {
                     throughputPolicy = "Equal";
                 }

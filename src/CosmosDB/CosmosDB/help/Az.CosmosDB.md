@@ -54,6 +54,9 @@ Gets the CosmosDB MongoDB Collection.
 ### [Get-AzCosmosDBMongoDBCollectionBackupInformation](Get-AzCosmosDBMongoDBCollectionBackupInformation.md)
 Retrieves the latest restorable timestamp for a mongodb collection.
 
+### [Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput](Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput.md)
+{{ Fill in the Synopsis }}
+
 ### [Get-AzCosmosDBMongoDBCollectionThroughput](Get-AzCosmosDBMongoDBCollectionThroughput.md)
 Gets the CosmosDB throughput properties of MongoDB Collection.
 
@@ -80,6 +83,9 @@ Gets the CosmosDB Sql Container.
 
 ### [Get-AzCosmosDBSqlContainerBackupInformation](Get-AzCosmosDBSqlContainerBackupInformation.md)
 Retrieves the latest restorable timestamp for a sql container.
+
+### [Get-AzCosmosDBSqlContainerPerPartitionThroughput](Get-AzCosmosDBSqlContainerPerPartitionThroughput.md)
+{{ Fill in the Synopsis }}
 
 ### [Get-AzCosmosDBSqlContainerThroughput](Get-AzCosmosDBSqlContainerThroughput.md)
 Gets the throughput settings corresponding to a CosmosDB Sql Container.
@@ -138,11 +144,17 @@ Use this to migrate autoscale throughput to manual throughput and vice versa.
 ### [Invoke-AzCosmosDBGremlinGraphThroughputMigration](Invoke-AzCosmosDBGremlinGraphThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
 
+### [Invoke-AzCosmosDBMongoDBCollectionMerge](Invoke-AzCosmosDBMongoDBCollectionMerge.md)
+Invoke Merge for the specified MongoDB collection.
+
 ### [Invoke-AzCosmosDBMongoDBCollectionThroughputMigration](Invoke-AzCosmosDBMongoDBCollectionThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
 
 ### [Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration](Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
+
+### [Invoke-AzCosmosDBSqlContainerMerge](Invoke-AzCosmosDBSqlContainerMerge.md)
+Invoke Merge for the specified Sql Container.
 
 ### [Invoke-AzCosmosDBSqlContainerThroughputMigration](Invoke-AzCosmosDBSqlContainerThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
@@ -224,6 +236,9 @@ Creates a new CosmosDB MongoDB Index.
 
 ### [New-AzCosmosDBPermission](New-AzCosmosDBPermission.md)
 Creates a new CosmosDB Permission object to be used to create or update a Role Definition.
+
+### [New-AzCosmosDBPhysicalPartitionThroughputObject](New-AzCosmosDBPhysicalPartitionThroughputObject.md)
+{{ Fill in the Synopsis }}
 
 ### [New-AzCosmosDBSqlCompositePath](New-AzCosmosDBSqlCompositePath.md)
 Creates a new object of type PSCompositePath. It can be passed as a parameter value for Set-AzCosmosDBSqlContainer.
@@ -375,6 +390,9 @@ Updates the throughput value of a CosmosDB Gremlin Graph.
 ### [Update-AzCosmosDBMongoDBCollection](Update-AzCosmosDBMongoDBCollection.md)
 Updates the CosmosDB MongoDB Collection. Performs a client side patch operation by reading the existing Collection.
 
+### [Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput](Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput.md)
+{{ Fill in the Synopsis }}
+
 ### [Update-AzCosmosDBMongoDBCollectionThroughput](Update-AzCosmosDBMongoDBCollectionThroughput.md)
 Updates the throughput value of a CosmosDB MongoDB Collection.
 
@@ -386,6 +404,9 @@ Updates the throughput value of a CosmosDB MongoDB Database.
 
 ### [Update-AzCosmosDBSqlContainer](Update-AzCosmosDBSqlContainer.md)
 Updates the CosmosDB Sql Container. Performs a client side patch operation by reading the existing Container.
+
+### [Update-AzCosmosDBSqlContainerPerPartitionThroughput](Update-AzCosmosDBSqlContainerPerPartitionThroughput.md)
+{{ Fill in the Synopsis }}
 
 ### [Update-AzCosmosDBSqlContainerThroughput](Update-AzCosmosDBSqlContainerThroughput.md)
 Updates the throughput value of a CosmosDB Sql Container.

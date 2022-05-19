@@ -1202,7 +1202,7 @@ function Test-SqlContainerAdaptiveRUCmdlets
           }
       }      
 
-      $resetPartitions = Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -ResetPartitionLayout
+      $resetPartitions = Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -EqualDistributionPolicy
       
       Assert-AreEqual $resetPartitions.Count 4
 
