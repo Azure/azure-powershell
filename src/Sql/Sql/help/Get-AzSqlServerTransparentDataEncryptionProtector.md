@@ -24,7 +24,7 @@ The Get-AzSqlServerTransparentDataEncryptionProtector cmdlet gets information ab
 
 ### Example 1: Get the Transparent Data Encryption (TDE) protector
 ```powershell
-Get-AzSqlServerTransparentDataEncryptionProtector -ServerName 'ContosoServer' -ResourceGroup 'ContosoResourceGroup'
+Get-AzSqlServerTransparentDataEncryptionProtector -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
 ```
 
 ```output
@@ -32,7 +32,9 @@ ResourceGroupName       ServerName                   Type ServerKeyVaultKeyName
 -----------------       ----------                   ---- ---------------------
 ContosoResourceGroup    ContosoServer      ServiceManaged ServiceManaged
 ```
+
 This command gets the TDE protector for the server named ContosoServer in resource group named ContosoResourceGroup.
+
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -11,8 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.NetApp" Version="1.15.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="21.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.NetApp" Version="1.16.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="22.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NetAppFiles\NetAppFiles.csproj" />
   </ItemGroup>
 
 </Project>

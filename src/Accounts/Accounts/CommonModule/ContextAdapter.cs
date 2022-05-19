@@ -127,9 +127,9 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="completerName">string - the type of completer requested (Resource, Location)</param>
         /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
         /// <param name="correlationId">The <see cref="string" /> containing the correlation id for the cmdlet (if available)</param>
-        /// <param name="resourceTypes">An <see cref="System.String[]"/> containing resource (or resource types) being completed  </param >
-        /// <param name="parentResourceParameterNames"> An <see cref="System.String[]"/> containing list of parent resource parameter names (if applicable)</param >
-        /// <returns>A <see cref="System.String[]"/> containing the valid options for the completer.</returns>
+        /// <param name="resourceTypes">An <see cref="System.String"/>[] containing resource (or resource types) being completed  </param >
+        /// <param name="parentResourceParameterNames"> An <see cref="System.String"/>[] containing list of parent resource parameter names (if applicable)</param >
+        /// <returns>A <see cref="System.String"/>[] containing the valid options for the completer.</returns>
         public string[] CompleteArgument(string completerName, InvocationInfo invocationInfo, string correlationId, string[] resourceTypes, string[] parentResourceParameterNames)
         {
             var defaultValue = new string[0];
@@ -247,6 +247,9 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="context"></param>
         /// <param name="endpointResourceIdKey"></param>
         /// <param name="request"></param>
+        /// <param name="endpointSuffixKey"></param>
+        /// <param name="extensibleParamters"></param>
+        /// <param name="tokenAudienceConverter"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         internal async Task<IAccessToken> AuthorizeRequest(IAzureContext context, HttpRequestMessage request, CancellationToken cancellationToken, string endpointResourceIdKey,

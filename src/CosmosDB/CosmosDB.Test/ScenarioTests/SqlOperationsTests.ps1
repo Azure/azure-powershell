@@ -896,6 +896,8 @@ function Test-ClientEncryptionKeyCmdlets
   $DatabaseName = "dbNameCdbAE"
   $ClientEncryptionKeyName = "cek1"
   $EncryptionAlgorithm = "AEAD_AES_256_CBC_HMAC_SHA256"
+  $EncryptionType_1 = "Deterministic" 
+  $EncryptionType_2 = "Randomized"
   $keywrapmetadataName = "cmk1v1"
   $keywrapmetadataName2 = "cmk1v2"
   $keywrapmetadataType = "AZURE_KEY_VAULT"
@@ -932,6 +934,7 @@ function Test-ClientEncryptionKeyCmdlets
        Remove-AzKeyVault -VaultName $vaultName -InRemovedState -Force -Location $location
       }
       catch{}
+
       $encryptionKeyVault=New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location
 
       # add access police for key-vault
@@ -985,6 +988,37 @@ function Test-ClientEncryptionKeyCmdlets
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.keyWrapMetadata.type $keywrapmetadataType
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.keyWrapMetadata.value $encryptionKey2
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.keyWrapMetadata.algorithm $keywrapmetadataAlgo
+
+      #Test - validate client encryption policy creation.
+      $includedPath_1 = [Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionIncludedPath]::new("/path1",$ClientEncryptionKeyName,$EncryptionType_1,$EncryptionAlgorithm);
+      $includedPath_2 = [Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionIncludedPath]::new("/path2",$ClientEncryptionKeyName,$EncryptionType_2,$EncryptionAlgorithm);
+      $listofIncludedPaths = New-Object Collections.Generic.List[Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionIncludedPath]
+      $listofIncludedPaths.Add($includedPath_1)
+      $listofIncludedPaths.Add($includedPath_2)
+      $newClientEncryptionPolicy = New-Object Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionPolicy
+      $newClientEncryptionPolicy.IncludedPaths = $listofIncludedPaths
+      #verify the default policy version 1 is picked up
+      $newClientEncryptionPolicy.PolicyFormatVersion = 187
+      $newPSSqlClientEncryptionPolicy = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlClientEncryptionPolicy]::new($newClientEncryptionPolicy)
+
+      $ContainerWithEncryptionPolicy = "containerWithEncryptionPolicy"
+      #create a container with the above policy
+      New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerWithEncryptionPolicy -PartitionKeyPath "/pk" -PartitionKeyKind Hash -ClientEncryptionPolicy $newPSSqlClientEncryptionPolicy
+
+      $ContainerWithEncryptionPolicy = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerWithEncryptionPolicy
+
+      Assert-AreEqual $ContainerWithEncryptionPolicy.Resource.ClientEncryptionPolicy.IncludedPaths[0].Path "/path1"
+      Assert-AreEqual $ContainerWithEncryptionPolicy.Resource.ClientEncryptionPolicy.IncludedPaths[0].ClientEncryptionKeyId $ClientEncryptionKeyName
+      Assert-AreEqual $ContainerWithEncryptionPolicy.Resource.ClientEncryptionPolicy.IncludedPaths[0].EncryptionAlgorithm $EncryptionAlgorithm
+      Assert-AreEqual $ContainerWithEncryptionPolicy.Resource.ClientEncryptionPolicy.IncludedPaths[0].EncryptionType $EncryptionType_1
+      Assert-AreEqual $ContainerWithEncryptionPolicy.Resource.ClientEncryptionPolicy.PolicyFormatVersion 1
+
+      Assert-AreEqual $ContainerWithEncryptionPolicy.Resource.ClientEncryptionPolicy.IncludedPaths[1].Path "/path2"
+      Assert-AreEqual $ContainerWithEncryptionPolicy.Resource.ClientEncryptionPolicy.IncludedPaths[1].ClientEncryptionKeyId $ClientEncryptionKeyName
+      Assert-AreEqual $ContainerWithEncryptionPolicy.Resource.ClientEncryptionPolicy.IncludedPaths[1].EncryptionAlgorithm $EncryptionAlgorithm
+      Assert-AreEqual $ContainerWithEncryptionPolicy.Resource.ClientEncryptionPolicy.IncludedPaths[1].EncryptionType $EncryptionType_2
+      Assert-AreEqual $ContainerWithEncryptionPolicy.Resource.ClientEncryptionPolicy.PolicyFormatVersion 1
+
   }
   Finally {
     Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName

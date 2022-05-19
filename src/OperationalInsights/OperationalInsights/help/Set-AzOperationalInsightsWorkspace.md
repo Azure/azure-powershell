@@ -37,7 +37,7 @@ The **Set-AzOperationalInsightsWorkspace** cmdlet changes the configuration of a
 
 ### Example 1: Modify a workspace by name
 ```powershell
-Set-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" -Sku Standard -Tags @{ "Department" = "IT" }
+Set-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" -Sku Standard -Tag @{ "Department" = "IT" }
 ```
 
 This command modifies the SKU and tags of the workspace named MyWorkspace in the resource group named ContosoResourceGroup.

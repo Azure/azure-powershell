@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MSGraph
-Module Guid: 83719ae4-38f9-45c2-a9ca-6c45cdeffee4
+Module Guid: 9c1e9bcf-5175-4d03-99c7-a7f2f7040f46
 Download Help Link: https://docs.microsoft.com/powershell/module/az.msgraph
 Help Version: 1.0.0.0
 Locale: en-US
@@ -89,6 +89,9 @@ Deletes entity from users.
 
 ### [Update-AzADApplication](Update-AzADApplication.md)
 Updates entity in applications
+
+### [Update-AzADGroup](Update-AzADGroup.md)
+Update entity in groups
 
 ### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
 Updates entity in service principal

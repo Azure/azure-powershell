@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Migrate/assessmentProjects", "2020-05-01-preview", false, false);
             RegisterConfiguration("Microsoft.Migrate/migrateProjects", "2020-06-01-preview", false, false);
             RegisterConfiguration("Microsoft.Network/applicationgateways", "2020-05-01", true, false);
+            RegisterConfiguration("Microsoft.Network/privateLinkServices", "2020-05-01", true, false, false);
             RegisterConfiguration("Microsoft.OffAzure/masterSites", "2020-07-07", false, false);
             RegisterConfiguration("Microsoft.PowerBI/privateLinkServicesForPowerBI", "2020-06-01", false, true);
             RegisterConfiguration("Microsoft.Purview/accounts", "2020-12-01-preview", true, true);
@@ -71,15 +72,23 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Web/hostingEnvironments", "2020-10-01", true, false);
             RegisterConfiguration("Microsoft.BotService/botServices", "2021-05-01-preview", true, true);
         }
-
-        private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = false, bool hasResourceURI = false)
+        /// <summary>
+        /// Register priavte endopoint connection and private link resource configuration
+        /// </summary>
+        /// <param name="type">Resource type</param>
+        /// <param name="apiVersion">Resource api version</param>
+        /// <param name="hasConnectionsURI">True if the private endpoint connection can be list by URL <see cref="GenericProvider.BuildPrivateEndpointConnectionsURL(string, string)"/>, otherwise it can be list by URL <see cref="GenericProvider.BuildPrivateEndpointConnectionsOwnerURL(string, string)"/></param>
+        /// <param name="supportGetPrivateLinkResource">True if the private link resource can be obtained by Id, otherwise false</param>
+        /// <param name="supportListPrivateLinkResource">True if the private link resource can be listed, otherwise false</param>
+        private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = false, bool supportGetPrivateLinkResource = false, bool supportListPrivateLinkResource = true)
         {
             ProviderConfiguration configuration = new ProviderConfiguration
             {
                 Type = type,
                 ApiVersion = apiVersion,
                 HasConnectionsURI = hasConnectionsURI,
-                HasResourceURI = hasResourceURI
+                SupportGetPrivateLinkResource = supportGetPrivateLinkResource,
+                SupportListPrivateLinkResource = supportListPrivateLinkResource,
             };
             _configurations.Add(type, configuration);
         }
@@ -87,11 +96,14 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         public string Type { get; set; }
         public string ApiVersion { get; set; }
         public bool HasConnectionsURI { get; set; }
-        public bool HasResourceURI { get; set; }
+        public bool SupportGetPrivateLinkResource { get; set; }
+        public bool SupportListPrivateLinkResource { get; set; }
 
         public static ProviderConfiguration GetProviderConfiguration(string type)
         {
-            return _configurations[type];
+            ProviderConfiguration outProviderConfiguration = null;
+            _configurations.TryGetValue(type, out outProviderConfiguration);
+            return outProviderConfiguration;
         }
 
         /// <summary>
@@ -100,7 +112,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         /// <param name="name">The name of the parameter</param>
         /// <param name="runtimeParameter">The returned runtime parameter for context, with appropriate validate set</param>
         /// <returns>True if one or more contexts were found, otherwise false</returns>
-        public static bool TryGetProvideServiceParameter(string name, string parameterSetName, out RuntimeDefinedParameter runtimeParameter)
+        public static bool TryGetEndpointConnectionServiceParameter(string name, string parameterSetName, out RuntimeDefinedParameter runtimeParameter)
         {
             var result = false;
             runtimeParameter = null;
@@ -114,7 +126,37 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                     {
                     new ParameterAttribute { Mandatory = false,
                                             ValueFromPipeline = true,
-                                            HelpMessage = "The private link resource type.",
+                                            HelpMessage = "The resource provider and resource type which supports private endpoint connection.",
+                                            ParameterSetName = parameterSetName },
+                    new ValidateSetAttribute(ProvideTypeList)
+                    }
+                );
+                result = true;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Generate a runtime parameter with ValidateSet matching the current context
+        /// </summary>
+        /// <param name="name">The name of the parameter</param>
+        /// <param name="runtimeParameter">The returned runtime parameter for context, with appropriate validate set</param>
+        /// <returns>True if one or more contexts were found, otherwise false</returns>
+        public static bool TryGetLinkResourceServiceParameter(string name, string parameterSetName, out RuntimeDefinedParameter runtimeParameter)
+        {
+            var result = false;
+            runtimeParameter = null;
+            if (_configurations != null && _configurations.Values != null)
+            {
+                var ObjArray = _configurations.Values.ToArray();
+                var ProvideTypeList = ObjArray.Where(c => (c.SupportListPrivateLinkResource || c.SupportGetPrivateLinkResource)).Select(c => c.Type).ToArray();
+                runtimeParameter = new RuntimeDefinedParameter(
+                    name, typeof(string),
+                    new Collection<Attribute>()
+                    {
+                    new ParameterAttribute { Mandatory = false,
+                                            ValueFromPipeline = true,
+                                            HelpMessage = "The resource provider and resource type which supports private link resource.",
                                             ParameterSetName = parameterSetName },
                     new ValidateSetAttribute(ProvideTypeList)
                     }

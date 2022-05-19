@@ -36,8 +36,8 @@ Check the **ProvisioningState** property for a value of Succeeded.
 ## EXAMPLES
 
 ### Example 1: Update a module
-```
-PS C:\>Set-AzAutomationModule -AutomationAccountName "Contoso17" -Name "ContosoModule" -ContentLinkUri "http://contosostorage.blob.core.windows.net/modules/ContosoModule.zip" -ContentLinkVersion "1.1" -ResourceGroupName "ResourceGroup01"
+```powershell
+Set-AzAutomationModule -AutomationAccountName "Contoso17" -Name "ContosoModule" -ContentLinkUri "http://contosostorage.blob.core.windows.net/modules/ContosoModule.zip" -ContentLinkVersion "1.1" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command imports an updated version of an existing module named ContosoModule into the Automation account named Contoso17.  The module is stored in an Azure blob in a storage account named contosostorage and a container named modules.

@@ -19,6 +19,28 @@
 -->
 
 ## Upcoming Release
+* Upgraded and rivised `Get-AzLocation` cmdlet:
+    - Upgraded `subscriptionClient` for `Get-AzLocation`. Changed its apiVersion from 2016-01-01 to 2021-01-01.[#18002]
+    - Added all attributes of location info for `Get-AzLocation`, including `pairedRegion` and so on. [#18045][#17536]
+    - Support ExtendedLocations by `Get-AzLocation` [#18046]
+* Added the following cmdlets to remain in parity with 2021-04-01 API version:
+    - `New-AzHierarchySetting`
+    - `Get-AzHierarchySetting`
+    - `Update-AzHierarchySetting`
+    - `Remove-AzHierarchySetting`
+    - `Get-AzManagementGroupSubscription`
+    - `Get-AzSubscriptionUnderManagementGroup` 
+    - `Start-AzTenantBackfill`
+    - `Get-AzTenantBackfillStatus` 
+    - `Get-AzManagementGroupNameAvailability`
+    - `Get-AzEntity` 
+
+## Version 5.6.0
+* Fixed redundant quotes in list pagination [#17667]
+* Added cmdlet `Update-AzADGroup` [#17514]
+* Updated API version to beta for group member related cmdlet to allow service principal to be add, get and delete from group [#16698]
+* Added parameter '-OwnedApplication' for `Get-AzADApplication` to get applications owned by current user
+* Added parameter '-Web' for `Update-AzADApplication` [#16750]
 
 ## Version 5.5.0
 * Removed `-ApplicationId` from `New-AzADServicePrincipal` `SimpleParameterSet` [#17256]

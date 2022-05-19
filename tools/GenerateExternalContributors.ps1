@@ -71,7 +71,7 @@ Write-Debug "The valid PR count: $($validPRs.Count)"
 
 $sortPRs = $validPRs | Sort-Object -Property @{Expression = {$_.author.login}; Descending = $False}
 
-$skipContributors = @('aladdindoc')
+$skipContributors = @('aladdindoc','azure-powershell-bot')
 
 # Get team members of the azure-powershell-team.
 $teamMembers = (Invoke-WebRequest -Uri "https://api.github.com/orgs/Azure/teams/azure-powershell-team/members" -Authentication Bearer -Token $token).Content | ConvertFrom-Json

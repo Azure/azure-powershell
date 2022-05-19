@@ -527,6 +527,10 @@
                 <PropertyName>EnablePurgeProtection</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Public Network Access</Label>
+                <PropertyName>PublicNetworkAccess</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Access Policies</Label>
                 <PropertyName>AccessPoliciesText</PropertyName>
               </ListItem>
@@ -651,6 +655,10 @@
               <ListItem>
                 <Label>Soft Delete Retention Period (days)</Label>
                 <PropertyName>SoftDeleteRetentionInDays</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Public Network Access</Label>
+                <PropertyName>PublicNetworkAccess</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Provisioning State</Label>

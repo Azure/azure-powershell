@@ -56,7 +56,7 @@ the real configuration in cloud. For changes to be reflected in cloud, Set-AzFir
 ```powershell
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
 $azFw.ThreatIntelMode = "Deny"
-Set-AzFirewall -Firewall $azFw
+Set-AzFirewall -AzureFirewall $azFw
 ```
 
 This example updates the Threat Intel operation mode of Azure Firewall "AzureFirewall" in resource group "rg".

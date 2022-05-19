@@ -12,35 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public class PrivateLinkScopeTests : RMTestBase
+    public class PrivateLinkScopeTests : MonitorTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public PrivateLinkScopeTests(Xunit.Abstractions.ITestOutputHelper output)
+        public PrivateLinkScopeTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateLinkScopeCRUD()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-PrivateLinkScopeCRUD");
+            TestRunner.RunTestScript("Test-PrivateLinkScopeCRUD");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestPrivateLinkScopedResourceCRUD()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-PrivateLinkScopedResourceCRUD");
+            TestRunner.RunTestScript("Test-PrivateLinkScopedResourceCRUD");
         }
     }
 }

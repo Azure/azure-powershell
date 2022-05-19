@@ -35,11 +35,12 @@ This command gets an Automation source control named VSTSNative in the account n
 
 
 ```powershell
-PS C:\> Get-AzAutomationSourceControl -ResourceGroupName "rg1" `
+Get-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name "VSTSNative" 
 
-
+```
+```output
 Name            SourceType Branch FolderPath  AutoSync PublishRunbook RepoUrl
 ----            ---------- ------ ----------  -------- -------------- -------
 VSTSNative      VsoTfvc           /MyRunbooks False    True           https://contoso.visualstudio.com/_git/Fin...

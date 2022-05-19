@@ -32,7 +32,7 @@ The **Remove-AzCosmosDBGremlinGraph** cmdlet deletes a CosmosDB Gremlin Graph.
 
 ### Example 1
 ```powershell
-Remove-AzCosmosDBGremlinGraph -ResourceGroupName {rgName} -AccountName {accountName} -DatabaseName {dbName} -Name {graphName}
+Remove-AzCosmosDBGremlinGraph -ResourceGroupName "rgName" -AccountName "accountName" -DatabaseName "dbName" -Name "graphName"
 ```
 
 The cmdlet returns an object of type bool(when -PassThru is passed) which is true, if the delete was successful.

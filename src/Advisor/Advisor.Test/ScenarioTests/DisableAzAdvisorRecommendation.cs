@@ -12,54 +12,44 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 
 namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 {
-    public class DisableAzAdvisorRecommendation
+    public class DisableAzAdvisorRecommendation : AdvisorTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public DisableAzAdvisorRecommendation(Xunit.Abstractions.ITestOutputHelper output)
+        public DisableAzAdvisorRecommendation(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
-
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableAzAdvisorRecommendationBadUserInput()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzAdvisorRecommendationBadUserInput-Negative");
+            TestRunner.RunTestScript("Disable-AzAdvisorRecommendationBadUserInput-Negative");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableAzAdvisorRecommendationByNameParameter()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzAdvisorRecommendationByNameParameter");
+            TestRunner.RunTestScript("Disable-AzAdvisorRecommendationByNameParameter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableAzAdvisorRecommendationByIdParameter()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzAdvisorRecommendationByIdParameter");
+            TestRunner.RunTestScript("Disable-AzAdvisorRecommendationByIdParameter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableAzAdvisorRecommendationPipelineScenario()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzAdvisorRecommendationPipelineScenario");
+            TestRunner.RunTestScript("Disable-AzAdvisorRecommendationPipelineScenario");
         }
     }
 }

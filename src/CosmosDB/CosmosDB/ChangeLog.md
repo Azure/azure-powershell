@@ -22,6 +22,7 @@
 * Introduced support for CosmosDB partition Merge and ThroughputRedistribution APIs by adding the following cmdlets:
 `Get-AzCosmosDBSqlContainerPerPartitionThroughput`, `Update-AzCosmosDBSqlContainerPerPartitionThroughput`, `Invoke-AzCosmosDBSqlContainerMerge`
 `Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput`, `Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput`, `Invoke-AzCosmosDBMongoDBCollectionMerge`
+* Introduced support for creating containers with Client Encryption Policy. The current supported version of Client Encryption Policy is 1.
 
 ## Version 1.7.0
 * Introduced support for client encryption key resource management required for CosmosDB Client-Side Encryption by adding support for creating, updating and retrieving client encryption keys with following cmdlets: `Get-AzCosmosDbClientEncryptionKey`, `New-AzCosmosDbClientEncryptionKey` and `Update-AzCosmosDbClientEncryptionKey`

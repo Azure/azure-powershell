@@ -25,7 +25,7 @@ The **Stop-AzSqlSyncGroupSync** cmdlet stops a sync group synchronization.
 
 ### Example 1
 ```powershell
-Stop-AzSqlSyncGroupSync -SyncGroupName mysg [-ServerName] mysrv [-DatabaseName] mydb [-ResourceGroupName] myrg
+Stop-AzSqlSyncGroupSync -SyncGroupName mysg -ServerName mysrv -DatabaseName mydb -ResourceGroupName myrg
 ```
 
 This command stops the synchronization which is ongoing for the sync group mysg.

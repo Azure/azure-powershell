@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Web API protocols (http, https). Protocols over which API is made available. " +
+            HelpMessage = "Web API protocols (http, https, ws, wss). Protocols over which API is made available. " +
                           "This parameter is required. Default value is $null.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementSchema[] Protocols { get; set; }
@@ -155,6 +155,48 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "Api Revision of the source API. This parameter is optional.")]
         public String SourceApiRevision { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Type of API to create. This parameter is optional.")]
+        public String ApiType { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "A URL to the Terms of Service for the API. This parameter is optional.")]
+        public String TermsOfServiceUrl { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "The identifying name of the contact person/organization. This parameter is optional.")]
+        public String ContactName { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "The URL pointing to the contact information. MUST be in the format of a URL. This parameter is optional.")]
+        public String ContactUrl { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "The email address of the contact person/organization. MUST be in the format of an email address. This parameter is optional.")]
+        public String ContactEmail { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "The license name used for the API. This parameter is optional.")]
+        public String LicenseName { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "A URL to the Terms of Service for the API. This parameter is optional.")]
+        public String LicenseUrl { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
             string id = ApiId ?? Guid.NewGuid().ToString("N");
@@ -172,13 +214,21 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 ApiVersionDescription,
                 ApiVersionSetId,
                 ApiVersion,
+                ApiType,
                 Protocols.Distinct().ToArray(),
                 AuthorizationServerId,
                 AuthorizationScope,
                 SubscriptionKeyHeaderName,
                 SubscriptionKeyQueryParamName,
                 OpenIdProviderId,
-                BearerTokenSendingMethod);
+                BearerTokenSendingMethod,
+                TermsOfServiceUrl,
+                ContactName,
+                ContactUrl,
+                ContactEmail,
+                LicenseName,
+                LicenseUrl
+                );
 
             if (ProductIds != null && ProductIds.Any())
             {

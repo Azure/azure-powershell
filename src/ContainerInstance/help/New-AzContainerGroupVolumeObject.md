@@ -8,19 +8,19 @@ schema: 2.0.0
 # New-AzContainerGroupVolumeObject
 
 ## SYNOPSIS
-Create a in-memory object for Volume
+Create an in-memory object for Volume.
 
 ## SYNTAX
 
 ```
 New-AzContainerGroupVolumeObject -Name <String> [-AzureFileReadOnly] [-AzureFileShareName <String>]
  [-AzureFileStorageAccountKey <SecureString>] [-AzureFileStorageAccountName <String>]
- [-GitRepoDirectoryName <String>] [-GitRepoRepositoryUrl <String>] [-GitRepoRevision <String>]
- [<CommonParameters>]
+ [-EmptyDir <IVolumeEmptyDir>] [-GitRepoDirectoryName <String>] [-GitRepoRepositoryUrl <String>]
+ [-GitRepoRevision <String>] [-Secret <ISecretVolume>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for Volume. Currently, we support mounting Azure File share as a volume or specifying git repository as volume directory. The empty directory volume and secret volume are not supported yet.
+Create an in-memory object for Volume.
 
 ## EXAMPLES
 
@@ -30,14 +30,34 @@ New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" 
 ```
 
 ```output
-******
-
 Name
 ----
 myvolume
 ```
 
 This command creates a Azure File volume.
+
+### Example 2: Create an empty directory volume
+```powershell
+New-AzContainerGroupVolumeObject -Name "emptyvolume" -EmptyDir @{} | fl
+```
+
+```output
+AzureFileReadOnly           : 
+AzureFileShareName          : 
+AzureFileStorageAccountKey  : 
+AzureFileStorageAccountName : 
+EmptyDir                    : {
+                              }
+GitRepoDirectory            : 
+GitRepoRepository           : 
+GitRepoRevision             : 
+Name                        : emptyvolume
+Secret                      : {
+                              }
+```
+
+This command creates an empty directory volume.
 
 ## PARAMETERS
 
@@ -91,6 +111,22 @@ The name of the storage account that contains the Azure File share.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EmptyDir
+The empty directory volume.
+To construct, see NOTES section for EMPTYDIR properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeEmptyDir
 Parameter Sets: (All)
 Aliases:
 
@@ -164,6 +200,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Secret
+The secret volume.
+To construct, see NOTES section for SECRET properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ISecretVolume
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -176,6 +228,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+EMPTYDIR <IVolumeEmptyDir>: The empty directory volume.
+  - `[(Any) <Object>]`: This indicates any property can be added to this object.
+
+SECRET <ISecretVolume>: The secret volume.
+  - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 
