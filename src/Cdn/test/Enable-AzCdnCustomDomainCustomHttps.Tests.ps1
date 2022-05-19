@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzCdnCustomDomainCusto
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Enable-AzCdnCustomDomainCustomHttps' {
+Describe 'Enable-AzCdnCustomDomainCustomHttps' -Tag 'LiveOnly' {
     It 'Enable' {
         { 
             $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
@@ -22,7 +22,7 @@ Describe 'Enable-AzCdnCustomDomainCustomHttps' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -66,7 +66,7 @@ Describe 'Enable-AzCdnCustomDomainCustomHttps' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"

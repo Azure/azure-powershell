@@ -14,14 +14,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnEndpoint' {
+Describe 'New-AzCdnEndpoint' -Tag 'LiveOnly' {
     It 'CreateExpanded' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -45,7 +45,7 @@ Describe 'New-AzCdnEndpoint' {
                 $endpoint.Origin.HostName | Should -Be $origin.HostName
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

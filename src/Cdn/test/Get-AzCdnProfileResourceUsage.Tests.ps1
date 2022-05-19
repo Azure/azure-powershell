@@ -14,14 +14,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnProfileResourceUsage
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnProfileResourceUsage' {
+Describe 'Get-AzCdnProfileResourceUsage' -Tag 'LiveOnly' {
     It 'List' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -34,7 +34,7 @@ Describe 'Get-AzCdnProfileResourceUsage' {
                 Get-AzCdnProfileResourceUsage -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }    
         } | Should -Not -Throw
     }

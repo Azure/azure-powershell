@@ -14,14 +14,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzCdnProfile' {
+Describe 'Update-AzCdnProfile' -Tag 'LiveOnly' {
     It 'UpdateExpanded' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -43,7 +43,7 @@ Describe 'Update-AzCdnProfile' {
                 $updatedProfile.Tag["Tag2"] | Should -Be "22"
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -55,7 +55,7 @@ Describe 'Update-AzCdnProfile' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -77,7 +77,7 @@ Describe 'Update-AzCdnProfile' {
                 $updatedProfile.Tag["Tag2"] | Should -Be "22"
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

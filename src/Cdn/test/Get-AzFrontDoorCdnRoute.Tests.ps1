@@ -14,13 +14,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnRoute'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnRoute' {
+Describe 'Get-AzFrontDoorCdnRoute' -Tag 'LiveOnly' {
     It 'List' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -77,7 +77,7 @@ Describe 'Get-AzFrontDoorCdnRoute' {
             $routes.Count | Should -Be 1
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -86,7 +86,7 @@ Describe 'Get-AzFrontDoorCdnRoute' {
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -143,7 +143,7 @@ Describe 'Get-AzFrontDoorCdnRoute' {
             $route.Name | Should -Be $routeName
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -153,7 +153,7 @@ Describe 'Get-AzFrontDoorCdnRoute' {
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -210,7 +210,7 @@ Describe 'Get-AzFrontDoorCdnRoute' {
             $route.Name | Should -Be $routeName
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

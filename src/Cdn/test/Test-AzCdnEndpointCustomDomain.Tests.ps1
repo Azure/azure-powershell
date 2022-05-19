@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzCdnEndpointCustomDomai
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Test-AzCdnEndpointCustomDomain' {
+Describe 'Test-AzCdnEndpointCustomDomain' -Tag 'LiveOnly' {
     It 'ValidateExpanded' {
         { 
             $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
@@ -22,7 +22,7 @@ Describe 'Test-AzCdnEndpointCustomDomain' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -64,7 +64,7 @@ Describe 'Test-AzCdnEndpointCustomDomain' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"

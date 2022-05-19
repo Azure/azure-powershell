@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnOriginGroup'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnOriginGroup' {
+Describe 'Get-AzCdnOriginGroup' -Tag 'LiveOnly' {
     It 'List' {
         { 
             $subId = $env.SubscriptionId
@@ -22,7 +22,7 @@ Describe 'Get-AzCdnOriginGroup' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -55,7 +55,7 @@ Describe 'Get-AzCdnOriginGroup' {
                 $originGroups.Count | Should -Be 1
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -67,7 +67,7 @@ Describe 'Get-AzCdnOriginGroup' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -105,7 +105,7 @@ Describe 'Get-AzCdnOriginGroup' {
                 $endpointOriginGroup.Origin[0].Id | Should -Be $originGroup.Origin[0].Id
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -118,7 +118,7 @@ Describe 'Get-AzCdnOriginGroup' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -156,7 +156,7 @@ Describe 'Get-AzCdnOriginGroup' {
                 $endpointOriginGroup.Origin[0].Id | Should -Be $originGroup.Origin[0].Id
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

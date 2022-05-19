@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnOrigin'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzCdnOrigin' {
+Describe 'Remove-AzCdnOrigin' -Tag 'LiveOnly' {
     It 'Delete' {
         { 
             $subId = $env.SubscriptionId
@@ -22,7 +22,7 @@ Describe 'Remove-AzCdnOrigin' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -57,7 +57,7 @@ Describe 'Remove-AzCdnOrigin' {
                 Remove-AzCdnOrigin -Name "origin2" -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -70,7 +70,7 @@ Describe 'Remove-AzCdnOrigin' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -105,7 +105,7 @@ Describe 'Remove-AzCdnOrigin' {
                 Get-AzCdnOrigin -Name "origin2" -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName | Remove-AzCdnOrigin
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

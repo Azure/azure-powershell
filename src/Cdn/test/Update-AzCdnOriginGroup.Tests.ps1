@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnOriginGroup'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzCdnOriginGroup' {
+Describe 'Update-AzCdnOriginGroup' -Tag 'LiveOnly' {
     It 'UpdateExpanded' {
         { 
             $subId = $env.SubscriptionId
@@ -22,7 +22,7 @@ Describe 'Update-AzCdnOriginGroup' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -78,7 +78,7 @@ Describe 'Update-AzCdnOriginGroup' {
                 $updatedOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be $probeRequestType2
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -91,7 +91,7 @@ Describe 'Update-AzCdnOriginGroup' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -145,7 +145,7 @@ Describe 'Update-AzCdnOriginGroup' {
                 $updatedOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be $probeRequestType2
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

@@ -14,13 +14,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnOriginGr
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnOriginGroup' {
+Describe 'Update-AzFrontDoorCdnOriginGroup' -Tag 'LiveOnly' {
     It 'UpdateExpanded' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -49,7 +49,7 @@ Describe 'Update-AzFrontDoorCdnOriginGroup' {
             $originGroup.LoadBalancingSetting.SuccessfulSamplesRequired | Should -Be 3
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -59,7 +59,7 @@ Describe 'Update-AzFrontDoorCdnOriginGroup' {
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -85,7 +85,7 @@ Describe 'Update-AzFrontDoorCdnOriginGroup' {
             $originGroup.LoadBalancingSetting.SuccessfulSamplesRequired | Should -Be 3
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

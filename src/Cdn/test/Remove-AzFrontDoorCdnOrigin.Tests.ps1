@@ -14,13 +14,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnOrigin')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzFrontDoorCdnOrigin' {
+Describe 'Remove-AzFrontDoorCdnOrigin' -Tag 'LiveOnly' {
     It 'Delete' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -47,7 +47,7 @@ Describe 'Remove-AzFrontDoorCdnOrigin' {
             Remove-AzFrontDoorCdnOrigin -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -57,7 +57,7 @@ Describe 'Remove-AzFrontDoorCdnOrigin' {
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -84,7 +84,7 @@ Describe 'Remove-AzFrontDoorCdnOrigin' {
             Get-AzFrontDoorCdnOrigin -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName | Remove-AzFrontDoorCdnOrigin
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

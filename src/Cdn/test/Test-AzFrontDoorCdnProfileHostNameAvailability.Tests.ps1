@@ -14,13 +14,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFrontDoorCdnProfileHos
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability' {
+Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability' -Tag 'LiveOnly' {
     It 'CheckExpanded' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -32,7 +32,7 @@ Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability' {
             $result.NameAvailable | Should -Be $true
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -42,7 +42,7 @@ Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability' {
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -55,7 +55,7 @@ Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability' {
             $result.NameAvailable | Should -Be $true
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

@@ -14,14 +14,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzCdnNameAvailability'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Test-AzCdnNameAvailability' {
+Describe 'Test-AzCdnNameAvailability' -Tag 'LiveOnly' {
     It 'CheckExpanded' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -46,7 +46,7 @@ Describe 'Test-AzCdnNameAvailability' {
                 $nameAvailability.NameAvailable | Should -BeFalse
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -58,7 +58,7 @@ Describe 'Test-AzCdnNameAvailability' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -83,7 +83,7 @@ Describe 'Test-AzCdnNameAvailability' {
                 $nameAvailability.NameAvailable | Should -BeFalse
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

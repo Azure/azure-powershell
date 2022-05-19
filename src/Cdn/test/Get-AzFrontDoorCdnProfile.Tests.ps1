@@ -14,13 +14,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnProfile' {
+Describe 'Get-AzFrontDoorCdnProfile' -Tag 'LiveOnly' {
     It 'List' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -33,7 +33,7 @@ Describe 'Get-AzFrontDoorCdnProfile' {
             $frontDoorCdnProfiles.Count | Should -BeGreaterOrEqual 1
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -42,7 +42,7 @@ Describe 'Get-AzFrontDoorCdnProfile' {
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -57,7 +57,7 @@ Describe 'Get-AzFrontDoorCdnProfile' {
             $frontDoorCdnProfile.Location | Should -Be "Global"
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -66,7 +66,7 @@ Describe 'Get-AzFrontDoorCdnProfile' {
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -79,7 +79,7 @@ Describe 'Get-AzFrontDoorCdnProfile' {
             $frontDoorCdnProfiles.Count | Should -Be 1
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -90,7 +90,7 @@ Describe 'Get-AzFrontDoorCdnProfile' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -105,7 +105,7 @@ Describe 'Get-AzFrontDoorCdnProfile' {
                 $frontDoorCdnProfile.Location | Should -Be "Global"
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

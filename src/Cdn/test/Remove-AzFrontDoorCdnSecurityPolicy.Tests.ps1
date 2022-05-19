@@ -14,14 +14,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnSecurity
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzFrontDoorCdnSecurityPolicy' {
+Describe 'Remove-AzFrontDoorCdnSecurityPolicy' -Tag 'LiveOnly' {
     It 'Delete'  {
         {
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -45,7 +45,7 @@ Describe 'Remove-AzFrontDoorCdnSecurityPolicy' {
                 Remove-AzFrontDoorCdnSecurityPolicy -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $policyName
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -57,7 +57,7 @@ Describe 'Remove-AzFrontDoorCdnSecurityPolicy' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -82,7 +82,7 @@ Describe 'Remove-AzFrontDoorCdnSecurityPolicy' {
                 | Remove-AzFrontDoorCdnSecurityPolicy
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

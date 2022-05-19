@@ -14,14 +14,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Clear-AzCdnEndpointContent'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Clear-AzCdnEndpointContent' {
+Describe 'Clear-AzCdnEndpointContent' -Tag 'LiveOnly' {
     It 'PurgeExpanded' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location;
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"    
@@ -53,7 +53,7 @@ Describe 'Clear-AzCdnEndpointContent' {
                 { Clear-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -ContentPath $contentPath } | Should -Throw
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -64,7 +64,7 @@ Describe 'Clear-AzCdnEndpointContent' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location;
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)" 
@@ -96,7 +96,7 @@ Describe 'Clear-AzCdnEndpointContent' {
                 { Clear-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -ContentFilePath $contentPath } | Should -Throw
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -108,7 +108,7 @@ Describe 'Clear-AzCdnEndpointContent' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location;
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -139,7 +139,7 @@ Describe 'Clear-AzCdnEndpointContent' {
                 { $endpoint | Clear-AzCdnEndpointContent -ContentPath $contentPath } | Should -Throw
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -151,7 +151,7 @@ Describe 'Clear-AzCdnEndpointContent' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location;
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -182,7 +182,7 @@ Describe 'Clear-AzCdnEndpointContent' {
                 { $endpoint | Clear-AzCdnEndpointContent -ContentFilePath $contentPath } | Should -Throw
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

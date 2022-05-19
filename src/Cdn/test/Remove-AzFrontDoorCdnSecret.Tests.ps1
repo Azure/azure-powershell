@@ -14,14 +14,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnSecret')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzFrontDoorCdnSecret' {
+Describe 'Remove-AzFrontDoorCdnSecret' -Tag 'LiveOnly' {
     It 'Delete'  {
         {
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -40,7 +40,7 @@ Describe 'Remove-AzFrontDoorCdnSecret' {
                 Remove-AzFrontDoorCdnSecret -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $secretName
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -52,7 +52,7 @@ Describe 'Remove-AzFrontDoorCdnSecret' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
                 $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -72,7 +72,7 @@ Describe 'Remove-AzFrontDoorCdnSecret' {
                 | Remove-AzFrontDoorCdnSecret
             } Finally
             {
-                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

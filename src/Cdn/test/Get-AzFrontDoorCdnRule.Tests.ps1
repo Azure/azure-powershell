@@ -14,13 +14,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnRule'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnRule' {
+Describe 'Get-AzFrontDoorCdnRule' -Tag 'LiveOnly' {
     It 'List' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
             $profileSku = "Standard_AzureFrontDoor";
@@ -48,7 +48,7 @@ Describe 'Get-AzFrontDoorCdnRule' {
             $rules.Count | Should -Be 1
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -57,7 +57,7 @@ Describe 'Get-AzFrontDoorCdnRule' {
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
             $profileSku = "Standard_AzureFrontDoor";
@@ -85,7 +85,7 @@ Describe 'Get-AzFrontDoorCdnRule' {
             $rule.Name | Should -Be $ruleName
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -95,7 +95,7 @@ Describe 'Get-AzFrontDoorCdnRule' {
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
             $profileSku = "Standard_AzureFrontDoor";
@@ -123,7 +123,7 @@ Describe 'Get-AzFrontDoorCdnRule' {
             $rule.Name | Should -Be $ruleName
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

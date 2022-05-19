@@ -14,13 +14,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnOrigin'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnOrigin' {
+Describe 'New-AzFrontDoorCdnOrigin' -Tag 'LiveOnly' {
     It 'CreateExpanded' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
         {
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
             $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
@@ -45,7 +45,7 @@ Describe 'New-AzFrontDoorCdnOrigin' {
             -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
         } Finally
         {
-            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }
