@@ -11,14 +11,38 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 {
     [Cmdlet("Create", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsTable", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class MigrateAzureOperationalInsightsTableCommand : OperationalInsightsBaseCmdlet
     {
+        [Parameter(Position = 0, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Position = 1, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the workspace that will contain the storage insight.")]
+        [ValidateNotNullOrEmpty]
+        public string WorkspaceName { get; set; }
+
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The table name.")]
+        [ValidateNotNullOrEmpty]
+        public string TableName { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            if (ShouldProcess(TableName, $"Migrate Table: {TableName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
+            {
+                HttpStatusCode response = OperationalInsightsClient.MigratePSTable(ResourceGroupName, WorkspaceName, TableName);
+                WriteObject(true);
+            }
+        }
     }
 }

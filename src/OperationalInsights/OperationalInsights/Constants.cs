@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -45,5 +44,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public const string ComputerGroup = "AzureRmOperationalInsightsComputerGroup";
 
         public const string ColumnsExample = "@{ ColName1 = Type; ColName2 = Type; ColName3 = Type}";
+
+        public static string TableDoesNotExist = $"Workspace {{0}} under resourceGroup {{1}} does not contain the table:{{2}}, please use {CmdletName.CreateAzOperationalInsightsTable}.";
+    }
+
+    internal static class CmdletName
+    {
+        public const string CreateAzOperationalInsightsTable = "Create-AzOperationalInsightsTable";
     }
 }
