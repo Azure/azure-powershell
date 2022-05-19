@@ -80,7 +80,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             internal const string SystemAssigned = "SystemAssigned";
             internal const string UserAssigned = "UserAssigned";
-            internal const string SystemAssignedUserAssigned = "SystemAssigned, UserAssigned";
+            internal const string SystemAssignedUserAssigned = "SystemAssignedUserAssigned";
+            internal const string SystemAssignedUserAssignedTrack2 = "SystemAssigned, UserAssigned";
             internal const string None = "None";
         }
 

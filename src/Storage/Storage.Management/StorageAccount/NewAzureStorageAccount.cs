@@ -591,11 +591,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     new ManagedServiceIdentity(ManagedServiceIdentityType.SystemAssigned);
                 if (this.IdentityType != null)
                 {
-                    createContent.Identity.ManagedServiceIdentityType = new ManagedServiceIdentityType(this.IdentityType);
+                    if (this.IdentityType == AccountIdentityType.SystemAssignedUserAssigned)
+                    {
+                        createContent.Identity.ManagedServiceIdentityType = new ManagedServiceIdentityType(AccountIdentityType.SystemAssignedUserAssignedTrack2);
+                    } else
+                    {
+                        createContent.Identity.ManagedServiceIdentityType = new ManagedServiceIdentityType(this.IdentityType);
+                    }
                 }
                 if (this.UserAssignedIdentityId != null)
                 {
-                    if (createContent.Identity.ManagedServiceIdentityType != ManagedServiceIdentityType.UserAssigned && createContent.Identity.ManagedServiceIdentityType != ManagedServiceIdentityType.SystemAssignedUserAssigned)
+                    if (createContent.Identity.ManagedServiceIdentityType != AccountIdentityType.UserAssigned && createContent.Identity.ManagedServiceIdentityType != AccountIdentityType.SystemAssignedUserAssignedTrack2)
                     {
                         throw new ArgumentException("UserAssignIdentityId should only be specified when AssignIdentityType is UserAssigned or SystemAssignedUserAssigned.", "UserAssignIdentityId");
                     }

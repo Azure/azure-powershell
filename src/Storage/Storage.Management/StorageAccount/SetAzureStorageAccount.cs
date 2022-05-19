@@ -24,7 +24,6 @@ using Track2Models = Azure.ResourceManager.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Azure.Core;
 
-
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     /// <summary>
@@ -551,11 +550,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         storageAccountPatch.Identity = new Track2.ManagedServiceIdentity(Track2.ManagedServiceIdentityType.SystemAssigned);
                         if (this.IdentityType != null)
                         {
-                            storageAccountPatch.Identity.ManagedServiceIdentityType = new Track2.ManagedServiceIdentityType(this.IdentityType);
+                            if (this.IdentityType == AccountIdentityType.SystemAssignedUserAssigned)
+                            {
+                                storageAccountPatch.Identity.ManagedServiceIdentityType = new Track2.ManagedServiceIdentityType(AccountIdentityType.SystemAssignedUserAssignedTrack2);
+                            } else
+                            {
+                                storageAccountPatch.Identity.ManagedServiceIdentityType = new Track2.ManagedServiceIdentityType(this.IdentityType);
+                            }
                         }
                         if (this.UserAssignedIdentityId != null)
                         {
-                            if (storageAccountPatch.Identity.ManagedServiceIdentityType != Track2.ManagedServiceIdentityType.UserAssigned && storageAccountPatch.Identity.ManagedServiceIdentityType != Track2.ManagedServiceIdentityType.SystemAssignedUserAssigned)
+                            if (storageAccountPatch.Identity.ManagedServiceIdentityType != AccountIdentityType.UserAssigned && storageAccountPatch.Identity.ManagedServiceIdentityType != AccountIdentityType.SystemAssignedUserAssignedTrack2)
                             {
                                 throw new ArgumentException("UserAssignIdentityId should only be specified when AssignIdentityType is UserAssigned or SystemAssignedUserAssigned.", "UserAssignIdentityId");
                             }
