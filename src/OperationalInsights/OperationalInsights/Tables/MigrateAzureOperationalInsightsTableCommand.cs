@@ -17,6 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 {
+    [Cmdlet("Create", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsTable", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class MigrateAzureOperationalInsightsTableCommand : OperationalInsightsBaseCmdlet
     {
     }

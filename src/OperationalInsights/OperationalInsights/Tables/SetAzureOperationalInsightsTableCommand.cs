@@ -13,6 +13,7 @@
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Tables
@@ -46,16 +47,28 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
         [ValidateNotNullOrEmpty]
         public int? TotalRetentionInDays { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The table columns passed as @{ ColName1 = Type; ColName2 = Type; ColName3 = Type}.")]
+        public Hashtable Columns { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Table plan can be 'Basic' or 'Analytics'.")]
+        [ValidateSet("Basic", "Analytics", IgnoreCase = true)]
+        public string Plan { get; set; }
+
+        public string Description { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            var tableSetProperties = new UpdatePSTableParameters()
-            {
-                ResourceGroupName = ResourceGroupName,
-                WorkspaceName = WorkspaceName,
-                TableName = TableName,
-                RetentionInDays = RetentionInDays,
-                TotalRetentionInDays = TotalRetentionInDays,
-            };
+            var tableSetProperties = new PSTable(
+                resourceGroupName: ResourceGroupName,
+                workspaceName: WorkspaceName,
+                tableName: TableName,
+                id: null,
+                retentionInDays: RetentionInDays,
+                totalRetentionInDays: TotalRetentionInDays,
+                plan: Plan,
+                description: Description,
+                columns: Columns);
 
             if (ShouldProcess(TableName, $"Update Table: {TableName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
             {

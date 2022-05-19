@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 {
-    [Cmdlet("Create", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsSearchTable", SupportsShouldProcess = true), OutputType(typeof(PSSearchTable))]
+    [Cmdlet("Create", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsSearchTable", SupportsShouldProcess = true), OutputType(typeof(PSTable))]
     public class CreateAzureOperationalInsightsSearchTableCommand : OperationalInsightsBaseCmdlet
     {
     }

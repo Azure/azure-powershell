@@ -17,8 +17,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 {
-    [Cmdlet("Create", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsRestoreTable", SupportsShouldProcess = true), OutputType(typeof(PSRestoreTable))]
+    [Cmdlet("Create", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsRestoreTable", SupportsShouldProcess = true), OutputType(typeof(PSTable))]
     public class CreateAzureOperationalInsightsRestoreTableCommand : OperationalInsightsBaseCmdlet
     {
+
     }
 }

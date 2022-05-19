@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return tables;
         }
 
-        public virtual PSTable UpdatePSTable(UpdatePSTableParameters parameters)
+        public virtual PSTable UpdatePSTable(PSTable parameters)
         {
             PSTable existingTable = null;
             try
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 resourceGroupName: parameters.ResourceGroupName,
                 workspaceName: parameters.WorkspaceName,
                 tableName: parameters.TableName,
-                retentionInDays: parameters.RetentionInDays);
+                parameters: parameters.ToTableProperties());
 
             return new PSTable(response);
         }

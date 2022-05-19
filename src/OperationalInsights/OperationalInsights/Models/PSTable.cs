@@ -12,40 +12,85 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.OperationalInsights.Models;
+using System.Management.Automation;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSTable
+    public class PSTable : OperationalInsightsParametersBase
     {
-        public PSTable()
-        {
-
-        }
-
-        public PSTable(Table table)
-        {            
-            this.Name = table.Name;
-            this.Id = table.Id;
-            this.RetentionInDays = table.RetentionInDays;
-            //this.IsTroubleshootEnabled = table.IsTroubleshootEnabled; //in the next API version i.e 2020-10-01
-            //this.IsTroubleshootingAllowed = table.IsTroubleshootingAllowed; //in the next API version i.e 2020-10-01
-            //this.LastTroubleshootDate = table.LastTroubleshootDate; //in the next API version i.e 2020-10-01
-        }
-        public Table GetTable(PSTable psTable)
-        {
-            return new Table();
-        }
-
-        public string Name { set; get; }
+        public string TableName { get; set; }
 
         public string Id { set; get; }
 
-        public int? RetentionInDays { set; get; }
+        public int? RetentionInDays { get; set; }
 
-        //public bool IsTroubleshootEnabled { set; get; } //in the next API version i.e 2020-10-01
+        public int? TotalRetentionInDays { get; set; }
 
-        //public bool IsTroubleshootingAllowed { set; get; } //in the next API version i.e 2020-10-01
+        public string Plan { get; set; }
 
-        //public string LastTroubleshootDate { set; get; } //in the next API version i.e 2020-10-01
+        public string Description { get; set; }
+
+        public IList<Column> Columns { get; set; }
+
+        public PSTable(Table table)
+        {
+            this.TableName = table.Name;
+            this.Id = table.Id;
+            this.RetentionInDays = table.RetentionInDays;
+            this.TotalRetentionInDays = table.TotalRetentionInDays;
+            this.Plan = table.Plan;
+            this.Description = table.Schema.Description;
+            this.Columns = (List<Column>)table.Schema.Columns;// TODO dabenham check values are assertted corectly
+        }
+
+        public PSTable(
+            string resourceGroupName,
+            string workspaceName,
+            string tableName,
+            string id,
+            int? retentionInDays,
+            int? totalRetentionInDays,
+            string plan,
+            string description,
+            Hashtable columns
+            )
+        {
+            this.ResourceGroupName = resourceGroupName;
+            this.WorkspaceName = workspaceName;
+            this.TableName = tableName;
+            this.Id = id;
+            this.RetentionInDays = retentionInDays;
+            this.TotalRetentionInDays = totalRetentionInDays;
+            this.Plan = plan;
+            this.Description = description;
+
+            IList<Column> cols = new List<Column>();
+            foreach (DictionaryEntry entry in columns)
+            {
+                if (string.IsNullOrEmpty((string)entry.Key) || string.IsNullOrEmpty((string)entry.Value))
+                {
+                    throw new PSArgumentException($"Invalid values passed as Columns, please use: {Constants.ColumnsExample}.");
+                }
+
+                cols.Add(new Column(name: (string)entry.Key, type: (string)entry.Value));
+            }
+
+            this.Columns = cols;
+        }
+
+        public Table ToTableProperties()
+        {
+            Schema schem = new Schema(description: Description, columns: Columns);
+            return new Table(
+                name: TableName,
+                plan: Plan,
+                retentionInDays: RetentionInDays,
+                totalRetentionInDays: TotalRetentionInDays,
+                schema: schem);
+        }
+
     }
 }

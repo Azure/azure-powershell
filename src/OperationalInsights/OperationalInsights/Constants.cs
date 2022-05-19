@@ -43,5 +43,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public const string SearchResults = "AzureRmOperationalInsightsSearchResults";
 
         public const string ComputerGroup = "AzureRmOperationalInsightsComputerGroup";
+
+        public const string ColumnsExample = "@{ ColName1 = Type; ColName2 = Type; ColName3 = Type}";
     }
 }
