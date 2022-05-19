@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnOrigin'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzCdnOrigin' {
+Describe 'Remove-AzCdnOrigin' -Tag 'LiveOnly' {
     It 'Delete' {
         { 
             $subId = $env.SubscriptionId

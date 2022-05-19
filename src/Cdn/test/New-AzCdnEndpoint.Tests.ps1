@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnEndpoint' {
+Describe 'New-AzCdnEndpoint' -Tag 'LiveOnly' {
     It 'CreateExpanded' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)

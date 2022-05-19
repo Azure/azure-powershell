@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnCustomDomain'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnCustomDomain' {
+Describe 'New-AzCdnCustomDomain' -Tag 'LiveOnly' {
     It 'CreateExpanded' {
         { 
             $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"

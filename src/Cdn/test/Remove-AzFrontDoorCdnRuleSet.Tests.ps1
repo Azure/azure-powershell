@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnRuleSet'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzFrontDoorCdnRuleSet' {
+Describe 'Remove-AzFrontDoorCdnRuleSet' -Tag 'LiveOnly' {
     It 'Delete' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
