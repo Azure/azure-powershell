@@ -78,7 +78,7 @@ Describe 'Update-AzCdnOriginGroup' {
                 $updatedOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be $probeRequestType2
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -145,7 +145,7 @@ Describe 'Update-AzCdnOriginGroup' {
                 $updatedOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be $probeRequestType2
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

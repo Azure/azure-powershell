@@ -52,7 +52,7 @@ Describe 'Update-AzFrontDoorCdnOrigin' {
             $origin.Weight | Should -Be 999
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -95,7 +95,7 @@ Describe 'Update-AzFrontDoorCdnOrigin' {
             $origin.Weight | Should -Be 999
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

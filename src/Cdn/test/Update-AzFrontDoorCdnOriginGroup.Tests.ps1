@@ -49,7 +49,7 @@ Describe 'Update-AzFrontDoorCdnOriginGroup' {
             $originGroup.LoadBalancingSetting.SuccessfulSamplesRequired | Should -Be 3
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -85,7 +85,7 @@ Describe 'Update-AzFrontDoorCdnOriginGroup' {
             $originGroup.LoadBalancingSetting.SuccessfulSamplesRequired | Should -Be 3
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

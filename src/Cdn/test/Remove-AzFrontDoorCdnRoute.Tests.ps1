@@ -77,7 +77,7 @@ Describe 'Remove-AzFrontDoorCdnRoute' {
                 Remove-AzFrontDoorCdnRoute -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -EndpointName $endpointName -Name $routeName
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -146,7 +146,7 @@ Describe 'Remove-AzFrontDoorCdnRoute' {
                 | Remove-AzFrontDoorCdnRoute
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

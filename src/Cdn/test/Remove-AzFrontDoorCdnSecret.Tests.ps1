@@ -40,7 +40,7 @@ Describe 'Remove-AzFrontDoorCdnSecret' {
                 Remove-AzFrontDoorCdnSecret -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $secretName
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -72,7 +72,7 @@ Describe 'Remove-AzFrontDoorCdnSecret' {
                 | Remove-AzFrontDoorCdnSecret
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

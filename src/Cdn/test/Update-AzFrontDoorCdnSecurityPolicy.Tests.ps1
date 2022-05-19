@@ -56,7 +56,7 @@ Describe 'Update-AzFrontDoorCdnSecurityPolicy' {
                 -Parameter $updateParameter
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -102,7 +102,7 @@ Describe 'Update-AzFrontDoorCdnSecurityPolicy' {
                 | Update-AzFrontDoorCdnSecurityPolicy -Parameter $updateParameter
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

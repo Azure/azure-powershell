@@ -45,7 +45,7 @@ Describe 'New-AzFrontDoorCdnRule' {
             -Action $actions -Condition $conditions
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

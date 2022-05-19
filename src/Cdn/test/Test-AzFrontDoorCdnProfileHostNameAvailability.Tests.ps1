@@ -32,7 +32,7 @@ Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability' {
             $result.NameAvailable | Should -Be $true
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -55,7 +55,7 @@ Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability' {
             $result.NameAvailable | Should -Be $true
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

@@ -31,7 +31,7 @@ Describe 'Remove-AzCdnProfile' {
                 Remove-AzCdnProfile -Name $cdnProfileName -ResourceGroupName $ResourceGroupName
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -53,7 +53,7 @@ Describe 'Remove-AzCdnProfile' {
                 Get-AzCdnProfile -ResourceGroupName $ResourceGroupName -Name $cdnProfileName | Remove-AzCdnProfile
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

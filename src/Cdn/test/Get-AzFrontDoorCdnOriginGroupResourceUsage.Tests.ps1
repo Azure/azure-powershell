@@ -41,7 +41,7 @@ Describe 'Get-AzFrontDoorCdnOriginGroupResourceUsage' {
                 $originGroupUsage | Should -not -BeNullOrEmpty
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

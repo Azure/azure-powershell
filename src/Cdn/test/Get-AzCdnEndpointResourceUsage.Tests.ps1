@@ -65,7 +65,7 @@ Describe 'Get-AzCdnEndpointResourceUsage' {
                 $geofilterUsage.CurrentValue | Should -Be 2
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

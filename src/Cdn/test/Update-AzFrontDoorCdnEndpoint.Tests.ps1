@@ -41,7 +41,7 @@ Describe 'Update-AzFrontDoorCdnEndpoint' {
             $updatedEndpoint.EnabledState | Should -Be "Disabled"
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -68,7 +68,7 @@ Describe 'Update-AzFrontDoorCdnEndpoint' {
             $updatedEndpoint.EnabledState | Should -Be "Disabled"
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

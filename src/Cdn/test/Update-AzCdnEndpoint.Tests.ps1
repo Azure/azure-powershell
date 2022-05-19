@@ -53,7 +53,7 @@ Describe 'Update-AzCdnEndpoint' {
                 $updatedEndpoint.Tag["Tag2"] | Should -Be "22"
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -97,7 +97,7 @@ Describe 'Update-AzCdnEndpoint' {
                 $updatedEndpoint.Tag["Tag2"] | Should -Be "22"
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

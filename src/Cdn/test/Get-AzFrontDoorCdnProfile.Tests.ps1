@@ -33,7 +33,7 @@ Describe 'Get-AzFrontDoorCdnProfile' {
             $frontDoorCdnProfiles.Count | Should -BeGreaterOrEqual 1
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -57,7 +57,7 @@ Describe 'Get-AzFrontDoorCdnProfile' {
             $frontDoorCdnProfile.Location | Should -Be "Global"
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -79,7 +79,7 @@ Describe 'Get-AzFrontDoorCdnProfile' {
             $frontDoorCdnProfiles.Count | Should -Be 1
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -105,7 +105,7 @@ Describe 'Get-AzFrontDoorCdnProfile' {
                 $frontDoorCdnProfile.Location | Should -Be "Global"
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

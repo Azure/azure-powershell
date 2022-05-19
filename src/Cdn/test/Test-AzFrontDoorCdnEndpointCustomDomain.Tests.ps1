@@ -37,7 +37,7 @@ Describe 'Test-AzFrontDoorCdnEndpointCustomDomain' {
                 Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -HostName $hostName
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -66,7 +66,7 @@ Describe 'Test-AzFrontDoorCdnEndpointCustomDomain' {
                 | Test-AzFrontDoorCdnEndpointCustomDomain -HostName $hostName
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

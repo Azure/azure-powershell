@@ -58,7 +58,7 @@ Describe 'Update-AzCdnOrigin' {
                 $origin.HttpsPort | Should -Be 789
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -106,7 +106,7 @@ Describe 'Update-AzCdnOrigin' {
                 $origin.HttpsPort | Should -Be 789
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

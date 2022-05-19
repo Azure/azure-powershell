@@ -57,7 +57,7 @@ Describe 'Remove-AzCdnOrigin' {
                 Remove-AzCdnOrigin -Name "origin2" -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -105,7 +105,7 @@ Describe 'Remove-AzCdnOrigin' {
                 Get-AzCdnOrigin -Name "origin2" -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName | Remove-AzCdnOrigin
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

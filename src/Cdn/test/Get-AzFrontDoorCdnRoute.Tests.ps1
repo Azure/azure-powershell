@@ -77,7 +77,7 @@ Describe 'Get-AzFrontDoorCdnRoute' {
             $routes.Count | Should -Be 1
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -143,7 +143,7 @@ Describe 'Get-AzFrontDoorCdnRoute' {
             $route.Name | Should -Be $routeName
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -210,7 +210,7 @@ Describe 'Get-AzFrontDoorCdnRoute' {
             $route.Name | Should -Be $routeName
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }
