@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Added support for Multi-user authorization using Resource Guard for recovery sevrices vault.
-* Added support for cross subscription restore for recovery services vault.
+* Added support for cross subscription restore for recovery services vault, modified storage account to be fetched from target subscription.
 
 ## Version 5.3.1
 * Added support for multiple backups per day (hourly) Enhanced policy for workloadType AzureVM.

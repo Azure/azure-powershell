@@ -443,11 +443,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string targetVNetResourceGroup = (string)ProviderData[RestoreVMBackupItemParams.TargetVNetResourceGroup];
             string targetSubnetName = (string)ProviderData[RestoreVMBackupItemParams.TargetSubnetName];
             string targetSubscriptionId = (string)ProviderData[RestoreVMBackupItemParams.TargetSubscriptionId];
-
+            
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
 
-            GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(storageAccountName);
+            if (targetSubscriptionId == null || targetSubscriptionId == "") targetSubscriptionId = ServiceClientAdapter.SubscriptionId;
+
+            GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(storageAccountName, targetSubscriptionId);
 
             var useOsa = ShouldUseOsa(rp, osaOption);
 
@@ -496,7 +498,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     identityInfo = new IdentityInfo();
                     if (useSystemAssignedIdentity)
-                    {   
+                    {
                         identityInfo.IsSystemAssignedIdentity = true;
                     }
                     else
@@ -511,12 +513,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
                 else
                 {
-                    throw new NotSupportedException(Resources.MSIRestoreNotSupportedForUnmanagedVM);                    
+                    throw new NotSupportedException(Resources.MSIRestoreNotSupportedForUnmanagedVM);
                 }
             }
-            
-            string targetSubscription = (targetSubscriptionId != null && targetSubscriptionId != "") ? targetSubscriptionId : ServiceClientAdapter.SubscriptionId;
-            
+
             IaasVMRestoreRequest restoreRequest = new IaasVMRestoreRequest()
             {
                 CreateNewCloudService = false,
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Region = vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation(),
                 StorageAccountId = storageAccountResource.Id,
                 SourceResourceId = rp.SourceResourceId,
-                TargetResourceGroupId = targetResourceGroupName != null ? "/subscriptions/" + targetSubscription + "/resourceGroups/" + targetResourceGroupName : null,
+                TargetResourceGroupId = targetResourceGroupName != null ? "/subscriptions/" + targetSubscriptionId + "/resourceGroups/" + targetResourceGroupName : null,
                 OriginalStorageAccountOption = useOsa,
                 RestoreDiskLunList = restoreDiskLUNS,
                 DiskEncryptionSetId = DiskEncryptionSetId,
@@ -562,8 +562,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
 
                 restoreRequest.RecoveryType = RecoveryType.AlternateLocation;
-                restoreRequest.TargetVirtualMachineId = "/subscriptions/" + targetSubscription + "/resourceGroups/" + targetResourceGroupName + "/providers/Microsoft.Compute/virtualMachines/" + targetVMName;
-                restoreRequest.VirtualNetworkId = "/subscriptions/" + targetSubscription + "/resourceGroups/" + targetVNetResourceGroup + "/providers/Microsoft.Network/virtualNetworks/" + targetVNetName;
+                restoreRequest.TargetVirtualMachineId = "/subscriptions/" + targetSubscriptionId + "/resourceGroups/" + targetResourceGroupName + "/providers/Microsoft.Compute/virtualMachines/" + targetVMName;
+                restoreRequest.VirtualNetworkId = "/subscriptions/" + targetSubscriptionId + "/resourceGroups/" + targetVNetResourceGroup + "/providers/Microsoft.Network/virtualNetworks/" + targetVNetName;
                 restoreRequest.SubnetId = restoreRequest.VirtualNetworkId + "/subnets/" + targetSubnetName;
             }
 
