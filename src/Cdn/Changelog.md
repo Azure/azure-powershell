@@ -19,7 +19,57 @@
 -->
 
 ## Upcoming Release
-* Migrated the cmdlets from SDK based to autorest generated.
+* Bumped api version to `2021-06-01`
+* Migrated the cmdlets from SDK-based to autorest generated.
+* Deleted cmdlets
+  - Disable-AzCdnCustomDomain
+  - Enable-AzCdnCustomDomain
+  - Get-AzCdnEdgeNodes
+  - Get-AzCdnProfileSsoUrl
+  - New-AzCdnDeliveryPolicy
+  - Set-AzFrontDoorCdnSecret
+* Added cmdlets
+  - Clear-AzFrontDoorCdnEndpointContent
+  - Get-AzFrontDoorCdnEndpointResourceUsage
+  - Get-AzFrontDoorCdnOriginGroupResourceUsage
+  - Get-AzFrontDoorCdnProfileResourceUsage
+  - Get-AzFrontDoorCdnRuleSetResourceUsage
+  - Test-AzFrontDoorCdnEndpointCustomDomain
+  - Test-AzFrontDoorCdnEndpointNameAvailability
+  - Test-AzFrontDoorCdnProfileHostNameAvailability
+  - Update-AzFrontDoorCdnCustomDomainValidationToken
+  - Update-AzFrontDoorCdnRule
+* Add cmdlets to create in-memory object
+  - New-AzCdn*ParametersObject
+  - New-AzCdnResourceReferenceObject
+  - New-AzFrontDoorCdn*ParametersObject
+  - New-AzFrontDoorCdnResourceReferenceObject
+* Renamed cmdlets
+  - Set-AzCdnEndpoint -> Update-AzCdnEndpoint
+  - Set-AzCdnOrigin -> Update-AzCdnOrigin
+  - Set-AzCdnOriginGroup -> Update-AzCdnOriginGroup
+  - Set-AzCdnProfile -> Update-AzCdnProfile
+  - Set-AzFrontDoorCdnCustomDomain -> Update-AzFrontDoorCdnCustomDomain
+  - Set-AzFrontDoorCdnEndpoint -> Update-AzFrontDoorCdnEndpoint
+  - Set-AzFrontDoorCdnOrigin -> Update-AzFrontDoorCdnOrigin
+  - Set-AzFrontDoorCdnOriginGroup -> Update-AzFrontDoorCdnOriginGroup
+  - Set-AzFrontDoorCdnProfile -> Update-AzFrontDoorCdnProfile
+  - Set-AzFrontDoorCdnRoute -> Update-AzFrontDoorCdnRoute
+  - Set-AzFrontDoorCdnSecurityPolicy -> Update-AzFrontDoorCdnSecurityPolicy
+  - Validate-AzCdnCustomDomain -> Test-AzCdnEndpointCustomDomain
+  - Confirm-AzCdnEndpointProbeURL -> Test-AzCdnProbe
+  - Disable-AzCdnCustomDomainHttps -> Disable-AzCdnCustomDomainCustomHttps
+  - Enable-AzCdnCustomDomainHttps -> Enable-AzCdnCustomDomainCustomHttps
+  - Get-AzCdnEndpointNameAvailability -> Test-AzCdnNameAvailability
+  - Publish-AzCdnEndpointContent -> Import-AzCdnEndpointContent
+  - Test-AzCdnCustomDomain -> Test-AzCdnEndpointCustomDomain
+  - Unpublish-AzCdnEndpointContent -> Clear-AzCdnEndpointContent
+  - New-AzCdnDeliveryRule -> New-AzCdnDeliveryRuleObject
+  - New-AzCdnDeliveryRuleAction -> New-AzCdnDeliveryRuleActionObject
+  - New-AzCdnDeliveryRuleCondition -> New-AzCdnDeliveryRuleConditionObject
+  - New-AzFrontDoorCdnRuleAction -> New-AzFrontDoorCdnRuleActionObject
+  - New-AzFrontDoorCdnRuleCondition -> New-AzFrontDoorCdnRuleConditionObject
+
 
 ## Version 1.8.3
 * Added breaking change messages for all cmdlets in Az.CDN module
