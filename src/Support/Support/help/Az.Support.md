@@ -30,7 +30,7 @@ Gets the list of support tickets. You can get full support ticket details by tic
 Update a support ticket's severity, status or customer contact details.
 
 ### [Get-AzSupportTicketCommunication](Get-AzSupportTicketCommunication.md)
-Gets communications for a support ticket. You can also filter support ticket communications by *CreatedDate* or *CommunicationType*.
+Gets communications for a support ticket. You can also filter support ticket communications by *CreatedDate* or *CommunicationType*. 
 
 ### [New-AzSupportTicketCommunication](New-AzSupportTicketCommunication.md)
 Adds a new customer communication to an Azure support ticket. 

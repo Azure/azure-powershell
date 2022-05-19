@@ -102,10 +102,10 @@ To request for quota increase for **Compute VM Cores**, **Batch**, **SQL Databas
 
         This is required and is a list of PSQuotaChangeRequest objects. PSQuotaChangeRequest object has 2 required properties.
 
-        ○ Region
+	    ○ Region
 
-            This is the Azure location or region for which you are requesting quota increase. This is the Location property of Get-AzLocation cmdlet.
-
+            This is the Azure location or region for which you are requesting quota increase. This is the Location property of Get-AzLocation cmdlet.
+		
         ○ Payload
 
             This is where you specify the new limits for the selected quota type.
