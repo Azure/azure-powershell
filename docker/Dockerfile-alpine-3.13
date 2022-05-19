@@ -30,18 +30,18 @@ LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
     org.label-schema.docker.cmd.test="currently not available" \
     org.label-schema.docker.cmd.help="docker run --rm ${IMAGE_NAME} pwsh -c Get-Help"
 
-if (${LATEST}==TRUE){
-    # install latest azure-powershell from BLOB\
-    RUN pwsh -Command Invoke-WebRequest -uri https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-latest.tar.gz -OutFile latest.tar.gz\      
-        mkdir latest\
-        tar -zxvf ./latest.tar.gz -C ./latest\
-        pwsh -Command ./latest/InstallModule.ps1\
-} else {
-    # install old azure-powershell from PSGallery
-    RUN pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Trusted && \
+RUN if [ "${LATEST}" = True ] ; then \
+        # install latest azure-powershell from BLOB
+        pwsh -Command Invoke-WebRequest -uri https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-latest.tar.gz -OutFile latest.tar.gz && \       
+        mkdir latest  && \
+        tar -zxvf ./latest.tar.gz -C ./latest  && \
+        pwsh -Command ./latest/InstallModule.ps1 ;\
+    else \
+        # install old azure-powershell from PSGallery
+        pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Trusted && \
         pwsh -Command Install-Module -Name ${MODULE} -RequiredVersion ${VERSION} -Scope AllUsers -Repository ${REPOSITORY} && \
-        pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Untrusted
-}
+        pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Untrusted ;\
+    fi
 
 # create AzureRmContextSettings.json before it was generated
 COPY ${CONFIG}/${AZURERM_CONTEXT_SETTINGS} ${AZURE}/${AZURERM_CONTEXT_SETTINGS}
