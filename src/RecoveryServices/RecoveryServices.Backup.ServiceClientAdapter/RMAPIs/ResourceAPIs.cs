@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             // switch subscription context 
             string subscriptionContext = RMAdapter.Client.SubscriptionId;
-            RMAdapter.Client.SubscriptionId = subscriptionId;
+            RMAdapter.Client.SubscriptionId = (subscriptionId != null)? subscriptionId: RMAdapter.Client.SubscriptionId;
 
             Func<RestAzureNS.IPage<GenericResource>> listAsync =
             () => RMAdapter.Client.Resources.ListWithHttpMessagesAsync(
