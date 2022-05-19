@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Name, "Merging partitions.", String.Empty, out ShouldProcessReason shouldProcessReason))
             {
-                if (this.Force.IsPresent || ShouldContinue($"This command will merge the partitions of collection {Name} , do you want to continue?", String.Empty))
+                if (this.Force.IsPresent || ShouldContinue($"This command will merge the partitions of collection {Name} , do you want to continue?", "This operation might take a long time (potentially hours) depending on the data movement involved."))
                 {
                     physicalPartitionStorageInfoCollection =
                     CosmosDBManagementClient.MongoDBResources.ListMongoDBCollectionPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, new MergeParameters(isDryRun: false));
