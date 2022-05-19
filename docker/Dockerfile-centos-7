@@ -8,6 +8,7 @@ ARG AZURE=/root/.Azure
 ARG VCS_REF="none"
 ARG BUILD_DATE=
 ARG VERSION=
+ARG LATEST=
 ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell:${VERSION}-centos-7
 
 ENV AZUREPS_HOST_ENVIRONMENT="dockerImage/${VERSION}-centos-7"

@@ -8,6 +8,7 @@ ARG AZURE=/root/.Azure
 ARG VCS_REF="none"
 ARG BUILD_DATE=
 ARG VERSION=
+ARG LATEST=
 ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell:${VERSION}-ubuntu-22.04
 
 ENV AZUREPS_HOST_ENVIRONMENT="dockerImage/${VERSION}-ubuntu-22.04"
@@ -31,10 +32,10 @@ LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
 
 if (${LATEST}==TRUE){
     # install latest azure-powershell from BLOB
-    RUN pwsh -Command Invoke-WebRequest -uri https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-latest.tar.gz -OutFile latest.tar.gz         
-        mkdir latest
-        tar -zxvf ./latest.tar.gz -C ./latest
-        pwsh -Command ./latest/InstallModule.ps1
+    RUN pwsh -Command Invoke-WebRequest -uri https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-latest.tar.gz -OutFile latest.tar.gz \        
+        mkdir latest\
+        tar -zxvf ./latest.tar.gz -C ./latest\
+        pwsh -Command ./latest/InstallModule.ps1\
 } else {
     # install old azure-powershell from PSGallery
     RUN pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Trusted && \
