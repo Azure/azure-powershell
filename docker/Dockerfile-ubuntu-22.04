@@ -35,7 +35,7 @@ RUN if [ "${LATEST}" -eq True ] ; then \
         pwsh -Command Invoke-WebRequest -uri https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-latest.tar.gz -OutFile latest.tar.gz && \       
         mkdir latest  && \
         tar -zxvf ./latest.tar.gz -C ./latest  && \
-        pwsh -Command ./latest/InstallModule.ps1 ;
+        pwsh -Command ./latest/InstallModule.ps1 ;\
     else \
         # install old azure-powershell from PSGallery
         pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Trusted && \
