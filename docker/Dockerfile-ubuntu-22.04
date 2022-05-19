@@ -30,7 +30,7 @@ LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
       org.label-schema.docker.cmd.test="currently not available" \
       org.label-schema.docker.cmd.help="docker run --rm ${IMAGE_NAME} pwsh -c Get-Help"
 
-RUN if [ "${LATEST}" -eq True ] ; then \
+RUN if [ "${LATEST}" == True ] ; then \
         # install latest azure-powershell from BLOB
         pwsh -Command Invoke-WebRequest -uri https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-latest.tar.gz -OutFile latest.tar.gz && \       
         mkdir latest  && \
