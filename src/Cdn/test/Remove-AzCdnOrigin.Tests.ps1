@@ -22,7 +22,7 @@ Describe 'Remove-AzCdnOrigin' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+                
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
@@ -70,7 +70,7 @@ Describe 'Remove-AzCdnOrigin' {
             try
             {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+                
 
                 $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
