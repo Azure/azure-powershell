@@ -57,6 +57,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMongoDBCollectionThroughputRedistributionCmdlet()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MongoDBCollectionAdaptiveRUCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMongoDBCollectionMergeCmdlet()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-MongoDBCollectionMergeCmdlet");

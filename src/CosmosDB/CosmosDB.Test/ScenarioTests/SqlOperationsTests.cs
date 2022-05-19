@@ -82,5 +82,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-SqlContainerMergeCmdlet");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlContainerAdaptiveRUCmdlets()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SqlContainerAdaptiveRUCmdlets");
+        }
     }
 }

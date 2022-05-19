@@ -20,10 +20,12 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.CosmosDB;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBCollectionMerge", ConfirmImpact =ConfirmImpact.High, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBCollectionMerge", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
     public class InvokeAzCosmosDBMongoDBCollectionMerge : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
@@ -50,6 +52,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.MongoCollectionObjectHelpMessage)]
         [ValidateNotNull]
         public PSSqlContainerGetResults InputObject { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force { get; set; }
 
         public void PopulateFromParentObject()
         {
@@ -79,21 +84,32 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 PopulateFromInputObject();
             }
 
-            MergeParameters mergeParameters = new MergeParameters(isDryRun: false);
-
-            if (ShouldProcess(Name, "Merging partitions.", "Merging partitions.", out ShouldProcessReason shouldProcessReason))
+            PhysicalPartitionStorageInfoCollection physicalPartitionStorageInfoCollection = null;
+            
+            if (ShouldProcess(Name, "Merging partitions.", String.Empty, out ShouldProcessReason shouldProcessReason))
             {
-                
-                PhysicalPartitionStorageInfoCollection physicalPartitionStorageInfoCollection =  
-                    CosmosDBManagementClient.MongoDBResources.ListMongoDBCollectionPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, mergeParameters);
-                WriteObject(new PSPhysicalPartitionStorageInfoResults(physicalPartitionStorageInfoCollection));
+                if(this.Force.IsPresent || ShouldContinue($"This command will merge the partitions of collection {Name} , do you want to continue?",String.Empty))
+                {
+                    physicalPartitionStorageInfoCollection =
+                    CosmosDBManagementClient.MongoDBResources.ListMongoDBCollectionPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, new MergeParameters(isDryRun: false));
+                }
             }
             else if(shouldProcessReason == ShouldProcessReason.WhatIf)
             {
-                mergeParameters.IsDryRun = true;
-                PhysicalPartitionStorageInfoCollection physicalPartitionStorageInfoCollection =
-                    CosmosDBManagementClient.MongoDBResources.ListMongoDBCollectionPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, mergeParameters);
-                WriteObject(new PSPhysicalPartitionStorageInfoResults(physicalPartitionStorageInfoCollection));
+                physicalPartitionStorageInfoCollection =
+                    CosmosDBManagementClient.MongoDBResources.ListMongoDBCollectionPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, new MergeParameters(isDryRun: true));
+            }
+
+            if(physicalPartitionStorageInfoCollection != null)
+            {
+                IList<PSPhysicalPartitionStorageInfo> physicalPartitionStorageInfos = new List<PSPhysicalPartitionStorageInfo>();
+
+                foreach (PhysicalPartitionStorageInfo item in physicalPartitionStorageInfoCollection.PhysicalPartitionStorageInfoCollectionProperty)
+                {
+                    physicalPartitionStorageInfos.Add(new PSPhysicalPartitionStorageInfo(item.Id, item.StorageInKB));
+                }
+
+                WriteObject(physicalPartitionStorageInfos);
             }
         }
     }

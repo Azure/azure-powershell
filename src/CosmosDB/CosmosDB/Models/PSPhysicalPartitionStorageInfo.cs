@@ -12,23 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.CosmosDB.Models;
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
-    using Microsoft.Azure.Management.CosmosDB.Models;
-    using System.Collections.Generic;
-
-    public class PSPhysicalPartitionStorageInfoResults
+    public class PSPhysicalPartitionStorageInfo
     {
-        public PSPhysicalPartitionStorageInfoResults()
+        public PSPhysicalPartitionStorageInfo()
         {
-        }        
-        
-        public PSPhysicalPartitionStorageInfoResults(PhysicalPartitionStorageInfoCollection physicalPartitionStorageInfoCollection)
-        {
-            this.PhysicalPartitionStorageInfos = physicalPartitionStorageInfoCollection.PhysicalPartitionStorageInfoCollectionProperty;
         }
 
+        public PSPhysicalPartitionStorageInfo(string id, double? storageInKB)
+        {
+            this.Id = id;
+            this.StorageInKB = storageInKB;
+        }
 
-        public IList<PhysicalPartitionStorageInfo> PhysicalPartitionStorageInfos { get; private set; }
+        public string Id { get; set; }
+
+
+        public double? StorageInKB { get; set; }
+
+        
     }
 }

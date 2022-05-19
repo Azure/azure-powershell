@@ -12,37 +12,38 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.CosmosDB;
+using System;
 using System.Collections.Generic;
+using System.Management.Automation;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlContainerMerge", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
-    public class InvokeAzCosmosDBSqlContainerMerge : AzureCosmosDBCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBCollectionPerPartitionThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
+    public class GetAzCosmosDBMongoDBCollectionPerPartitionThroughput : AzureCosmosDBCmdletBase
     {
+        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string AccountName;
 
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.DatabaseNameHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string DatabaseName;
-
-        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string DatabaseName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ContainerNameHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }        
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
@@ -50,10 +51,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.SqlContainerObjectHelpMessage)]
         [ValidateNotNull]
-        public PSSqlContainerGetResults InputObject { get; set; }
+        public PSSqlContainerGetResults InputObject { get; set; }        
 
-        [Parameter(Mandatory = false)]
-        public SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = Constants.PhysicalPartitionIdsHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string[] PhysicalPartitionIds { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.GetAllPhysicalPartitionsThroughputHelpMessage)]        
+        public SwitchParameter AllPartitions { get; set; }
 
         public void PopulateFromParentObject()
         {
@@ -83,35 +88,50 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 PopulateFromInputObject();
             }
 
-            PhysicalPartitionStorageInfoCollection physicalPartitionStorageInfoCollection = null;
-            MergeParameters mergeParameters = new MergeParameters(isDryRun: false);
-
-            if (ShouldProcess(Name, "Merging partitions.", String.Empty, out ShouldProcessReason shouldProcessReason))
+            if (ShouldProcess(Name, "Retrieving throughput distribution."))
             {
-                if (this.Force.IsPresent || ShouldContinue($"This command will merge the partitions of collection {Name} , do you want to continue?", String.Empty))
+                List<PhysicalPartitionId> physicalPartitionIds = new List<PhysicalPartitionId>();
+                if (this.AllPartitions.IsPresent)
                 {
-                    physicalPartitionStorageInfoCollection =
-                    CosmosDBManagementClient.MongoDBResources.ListMongoDBCollectionPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, new MergeParameters(isDryRun: false));
+                    physicalPartitionIds.Add(new PhysicalPartitionId("-1"));
                 }
-            }
-            else if (shouldProcessReason == ShouldProcessReason.WhatIf)
-            {
-                mergeParameters.IsDryRun = true;
-                physicalPartitionStorageInfoCollection =
-                    CosmosDBManagementClient.MongoDBResources.ListMongoDBCollectionPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, new MergeParameters(isDryRun: true));
-            }
-
-            if (physicalPartitionStorageInfoCollection != null)
-            {
-                IList<PSPhysicalPartitionStorageInfo> physicalPartitionStorageInfos = new List<PSPhysicalPartitionStorageInfo>();
-
-                foreach (PhysicalPartitionStorageInfo item in physicalPartitionStorageInfoCollection.PhysicalPartitionStorageInfoCollectionProperty)
+                else
                 {
-                    physicalPartitionStorageInfos.Add(new PSPhysicalPartitionStorageInfo(item.Id, item.StorageInKB));
+                    if(this.PhysicalPartitionIds == null)
+                    {
+                        throw new ArgumentException("List of PhysicalPartitionId cannot be null if the 'AllPartitions' switch is not enabled.");
+                    }
+
+                    foreach (string physicalPartitionId in this.PhysicalPartitionIds)
+                    {
+                        if(string.IsNullOrEmpty(physicalPartitionId))
+                        {
+                            throw new ArgumentException("PhysicalPartitionId cannot be null or empty.");
+                        }
+
+                        physicalPartitionIds.Add(new PhysicalPartitionId(physicalPartitionId));
+                    }
                 }
 
-                WriteObject(physicalPartitionStorageInfos);
+                RetrieveThroughputParameters retrieveThroughputParameters = new RetrieveThroughputParameters();
+                retrieveThroughputParameters.Resource = new RetrieveThroughputPropertiesResource(physicalPartitionIds);
+
+                PhysicalPartitionThroughputInfoResult physicalPartitionThroughputInfoResult = 
+                    CosmosDBManagementClient.MongoDBResources.MongoDBContainerRetrieveThroughputDistribution(
+                        this.ResourceGroupName, 
+                        this.AccountName, 
+                        this.DatabaseName, 
+                        this.Name, 
+                        retrieveThroughputParameters);
+
+                List<PSPhysicalPartitionThroughputInfo> physicalPartitionThroughputInfos = new List<PSPhysicalPartitionThroughputInfo>();
+                foreach (PhysicalPartitionThroughputInfoResource item in physicalPartitionThroughputInfoResult.Resource.PhysicalPartitionThroughputInfo)
+                {
+                    physicalPartitionThroughputInfos.Add(new PSPhysicalPartitionThroughputInfo(item.Id, item.Throughput.Value));
+                }
+
+                WriteObject(physicalPartitionThroughputInfos);
             }
         }
-    }
+    }   
 }
