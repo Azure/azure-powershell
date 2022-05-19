@@ -1,5 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.Aks","Microsoft.Azure.Commands.Aks.GetAzureRmAks","Get-AzAksCluster","0","1010","The cmdlet 'Get-AzAksCluster' no longer supports the alias 'Get-AzAks'.","Add the alias 'Get-AzAks back to the cmdlet 'Get-AzAksCluster'."
-"Az.Aks","Microsoft.Azure.Commands.Aks.NewAzureRmAks","New-AzAksCluster","0","1010","The cmdlet 'New-AzAksCluster' no longer supports the alias 'New-AzAks'.","Add the alias 'New-AzAks back to the cmdlet 'New-AzAksCluster'."
-"Az.Aks","Microsoft.Azure.Commands.Aks.RemoveAzureRmAks","Remove-AzAksCluster","0","1010","The cmdlet 'Remove-AzAksCluster' no longer supports the alias 'Remove-AzAks'.","Add the alias 'Remove-AzAks back to the cmdlet 'Remove-AzAksCluster'."
-"Az.Aks","Microsoft.Azure.Commands.Aks.SetAzureRmAks","Set-AzAksCluster","0","1010","The cmdlet 'Set-AzAksCluster' no longer supports the alias 'Set-AzAks'.","Add the alias 'Set-AzAks back to the cmdlet 'Set-AzAksCluster'."

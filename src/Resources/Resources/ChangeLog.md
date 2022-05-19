@@ -19,12 +19,14 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.0.0
 * Added cmdlet for Application federated identity credential
     - `Get-AzADAppFederatedIdentityCredential` 
     - `New-AzADAppFederatedIdentityCredential` 
     - `Remove-AzADAppFederatedIdentityCredential`
     - `Update-AzADAppFederatedIdentityCredential`
-* Upgraded and rivised `Get-AzLocation` cmdlet:
+* Upgraded and revised `Get-AzLocation` cmdlet:
     - Upgraded `subscriptionClient` for `Get-AzLocation`. Changed its apiVersion from 2016-01-01 to 2021-01-01.[#18002]
     - Added all attributes of location info for `Get-AzLocation`, including `pairedRegion` and so on. [#18045][#17536]
     - Support ExtendedLocations by `Get-AzLocation` [#18046]

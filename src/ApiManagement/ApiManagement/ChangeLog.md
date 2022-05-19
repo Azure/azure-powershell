@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.0
+
 * [Breaking change] Replaced parameter `Sample` by `Examples` in `New-AzApiManagementOperation` and `Set-AzApiManagementOperation`
 * Updated APIM .Net SDK version to 8.0.0 / Api Version 2021-08-01
 
