@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.CosmosDB;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlContainerMerge", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlContainerMerge", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(PSThroughputSettingsGetResults))]
     public class InvokeAzCosmosDBSqlContainerMerge : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
@@ -79,11 +79,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 PopulateFromInputObject();
             }
 
-            if (ShouldProcess(Name, "Merging partitions."))
+            PhysicalPartitionStorageInfoCollection physicalPartitionStorageInfoCollection;
+            MergeParameters mergeParameters = new MergeParameters(isDryRun: false);
+            if (ShouldProcess(Name, "Merging partitions.", "Merging partitions.", out ShouldProcessReason shouldProcessReason))
             {
-                MergeParameters mergeParameters = new MergeParameters(isDryRun: false);
-                PhysicalPartitionStorageInfoCollection physicalPartitionStorageInfoCollection =  
-                    CosmosDBManagementClient.SqlResources.ListSqlContainerPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, mergeParameters);
+                physicalPartitionStorageInfoCollection =
+                       CosmosDBManagementClient.SqlResources.ListSqlContainerPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, mergeParameters);
+                WriteObject(new PSPhysicalPartitionStorageInfoResults(physicalPartitionStorageInfoCollection));
+            }
+            else if (shouldProcessReason == ShouldProcessReason.WhatIf)
+            {
+                mergeParameters.IsDryRun = true;
+                physicalPartitionStorageInfoCollection =
+                        CosmosDBManagementClient.SqlResources.ListSqlContainerPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, mergeParameters);
                 WriteObject(new PSPhysicalPartitionStorageInfoResults(physicalPartitionStorageInfoCollection));
             }
         }
