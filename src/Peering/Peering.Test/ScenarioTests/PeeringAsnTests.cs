@@ -21,17 +21,10 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     /// <summary>
     /// The create new peering tests.
     /// </summary>
-    public class PeeringAsnTests
+    public class PeeringAsnTests : PeeringTestRunner
     {
-        /// <summary>
-        /// The logger.
-        /// </summary>
-        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
-        public PeeringAsnTests(Xunit.Abstractions.ITestOutputHelper output)
+        public PeeringAsnTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         /// <summary>
@@ -41,7 +34,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewPeerAsn()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewPeerAsn");
+            TestRunner.RunTestScript("Test-NewPeerAsn");
         }
 
         /// <summary>
@@ -51,7 +44,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPeerAsn()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetPeerAsn");
+            TestRunner.RunTestScript("Test-GetPeerAsn");
         }
 
         /// <summary>
@@ -61,7 +54,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListPeerAsn()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ListPeerAsn");
+            TestRunner.RunTestScript("Test-ListPeerAsn");
         }
 
         /// <summary>
@@ -71,7 +64,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetPeerAsn()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetPeerAsn");
+            TestRunner.RunTestScript("Test-SetPeerAsn");
         }
 
         /// <summary>
@@ -81,7 +74,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemovePeerAsn()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-RemovePeerAsn");
+            TestRunner.RunTestScript("Test-RemovePeerAsn");
         }
     }
 }
