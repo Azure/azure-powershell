@@ -48,7 +48,7 @@ Describe 'Get-AzFrontDoorCdnOrigin' {
             $origins.Count | Should -Be 1
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -85,7 +85,7 @@ Describe 'Get-AzFrontDoorCdnOrigin' {
             $origin.Name | Should -Be $originName
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -123,7 +123,7 @@ Describe 'Get-AzFrontDoorCdnOrigin' {
             $origin.Name | Should -Be $originName
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

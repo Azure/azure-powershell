@@ -35,7 +35,7 @@ Describe 'Get-AzFrontDoorCdnRuleSetResourceUsage' {
                 $rulesetUsage | Should -not -BeNullOrEmpty 
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

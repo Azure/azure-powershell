@@ -59,7 +59,7 @@ Describe 'New-AzCdnOrigin' {
                 $origin.HostName | Should -Be "host2.hello.com"
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

@@ -53,7 +53,7 @@ Describe 'Import-AzCdnEndpointContent' {
                 { Import-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -ContentPath $contentPath } | Should -Throw
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -96,7 +96,7 @@ Describe 'Import-AzCdnEndpointContent' {
                 { Import-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -ContentFilePath $contentPath } | Should -Throw
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -139,7 +139,7 @@ Describe 'Import-AzCdnEndpointContent' {
                 { $endpoint | Import-AzCdnEndpointContent -ContentPath $contentPath } | Should -Throw
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -182,7 +182,7 @@ Describe 'Import-AzCdnEndpointContent' {
                 { $endpoint | Import-AzCdnEndpointContent -ContentFilePath $contentPath } | Should -Throw
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

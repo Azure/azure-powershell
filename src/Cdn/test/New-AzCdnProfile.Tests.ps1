@@ -33,7 +33,7 @@ Describe 'New-AzCdnProfile' {
             $frontDoorCdnProfile.Location | Should -Be "Global"
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

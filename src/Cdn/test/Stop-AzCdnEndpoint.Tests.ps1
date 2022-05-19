@@ -44,7 +44,7 @@ Describe 'Stop-AzCdnEndpoint' {
                 $endpoint.ResourceState | Should -Be "Stopped"
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -78,7 +78,7 @@ Describe 'Stop-AzCdnEndpoint' {
                 $endpoint.ResourceState | Should -Be "Stopped"
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

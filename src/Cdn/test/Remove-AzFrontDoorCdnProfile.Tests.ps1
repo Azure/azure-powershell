@@ -31,7 +31,7 @@ Describe 'Remove-AzFrontDoorCdnProfile' {
                 Remove-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -53,7 +53,7 @@ Describe 'Remove-AzFrontDoorCdnProfile' {
                 Get-AzFrontDoorCdnProfile -ResourceGroupName $ResourceGroupName -Name $frontDoorCdnProfileName | Remove-AzFrontDoorCdnProfile
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

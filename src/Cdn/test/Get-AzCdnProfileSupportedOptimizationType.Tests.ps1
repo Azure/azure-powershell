@@ -34,7 +34,7 @@ Describe 'Get-AzCdnProfileSupportedOptimizationType' {
                 Get-AzCdnProfileSupportedOptimizationType -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }    
         } | Should -Not -Throw
     }

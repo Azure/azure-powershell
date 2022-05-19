@@ -37,7 +37,7 @@ Describe 'Get-AzFrontDoorCdnEndpointResourceUsage' {
                 $endpointUsage | Should -not -BeNullOrEmpty 
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

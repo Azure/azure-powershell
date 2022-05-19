@@ -45,7 +45,7 @@ Describe 'Remove-AzFrontDoorCdnSecurityPolicy' {
                 Remove-AzFrontDoorCdnSecurityPolicy -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $policyName
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -82,7 +82,7 @@ Describe 'Remove-AzFrontDoorCdnSecurityPolicy' {
                 | Remove-AzFrontDoorCdnSecurityPolicy
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

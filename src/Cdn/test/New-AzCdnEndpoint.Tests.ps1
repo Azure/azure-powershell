@@ -45,7 +45,7 @@ Describe 'New-AzCdnEndpoint' {
                 $endpoint.Origin.HostName | Should -Be $origin.HostName
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

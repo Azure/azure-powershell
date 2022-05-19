@@ -36,7 +36,7 @@ Describe 'Get-AzFrontDoorCdnEndpoint' {
             $endpoints.Count | Should -Be 1
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -64,7 +64,7 @@ Describe 'Get-AzFrontDoorCdnEndpoint' {
             $endpoint.Location | Should -Be "Global"
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -93,7 +93,7 @@ Describe 'Get-AzFrontDoorCdnEndpoint' {
             $endpoint.Location | Should -Be "Global"
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

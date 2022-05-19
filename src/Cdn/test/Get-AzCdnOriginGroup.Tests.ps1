@@ -55,7 +55,7 @@ Describe 'Get-AzCdnOriginGroup' {
                 $originGroups.Count | Should -Be 1
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -105,7 +105,7 @@ Describe 'Get-AzCdnOriginGroup' {
                 $endpointOriginGroup.Origin[0].Id | Should -Be $originGroup.Origin[0].Id
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -156,7 +156,7 @@ Describe 'Get-AzCdnOriginGroup' {
                 $endpointOriginGroup.Origin[0].Id | Should -Be $originGroup.Origin[0].Id
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

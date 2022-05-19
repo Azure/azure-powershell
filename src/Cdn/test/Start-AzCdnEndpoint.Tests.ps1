@@ -45,7 +45,7 @@ Describe 'Start-AzCdnEndpoint' {
                 $endpoint.ResourceState | Should -Be "Running"
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -80,7 +80,7 @@ Describe 'Start-AzCdnEndpoint' {
                 $endpoint.ResourceState | Should -Be "Running"
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

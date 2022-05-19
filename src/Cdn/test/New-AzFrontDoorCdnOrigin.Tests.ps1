@@ -45,7 +45,7 @@ Describe 'New-AzFrontDoorCdnOrigin' {
             -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

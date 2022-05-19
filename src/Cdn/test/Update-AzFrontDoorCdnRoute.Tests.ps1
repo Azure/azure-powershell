@@ -79,7 +79,7 @@ Describe 'Update-AzFrontDoorCdnRoute' {
                 -EnabledState "Disabled"
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -148,7 +148,7 @@ Describe 'Update-AzFrontDoorCdnRoute' {
                 | Update-AzFrontDoorCdnRoute -EnabledState "Disabled"
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

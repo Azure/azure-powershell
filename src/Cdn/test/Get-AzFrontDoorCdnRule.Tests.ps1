@@ -48,7 +48,7 @@ Describe 'Get-AzFrontDoorCdnRule' {
             $rules.Count | Should -Be 1
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -85,7 +85,7 @@ Describe 'Get-AzFrontDoorCdnRule' {
             $rule.Name | Should -Be $ruleName
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -123,7 +123,7 @@ Describe 'Get-AzFrontDoorCdnRule' {
             $rule.Name | Should -Be $ruleName
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

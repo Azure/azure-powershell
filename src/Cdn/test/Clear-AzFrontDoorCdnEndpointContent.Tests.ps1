@@ -36,7 +36,7 @@ Describe 'Clear-AzFrontDoorCdnEndpointContent' {
             -ContentPath "/a"
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -64,7 +64,7 @@ Describe 'Clear-AzFrontDoorCdnEndpointContent' {
             -Content $afdPurgeParameters
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -90,7 +90,7 @@ Describe 'Clear-AzFrontDoorCdnEndpointContent' {
             | Clear-AzFrontDoorCdnEndpointContent -ContentPath "/a"
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -119,7 +119,7 @@ Describe 'Clear-AzFrontDoorCdnEndpointContent' {
             | Clear-AzFrontDoorCdnEndpointContent -Content $afdPurgeParameters
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

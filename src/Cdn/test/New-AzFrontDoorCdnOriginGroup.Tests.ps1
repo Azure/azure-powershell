@@ -39,7 +39,7 @@ Describe 'New-AzFrontDoorCdnOriginGroup' {
             -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

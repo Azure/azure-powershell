@@ -42,7 +42,7 @@ Describe 'Test-AzFrontDoorCdnEndpointNameAvailability' {
                 $nameAvailability.NameAvailable | Should -BeFalse
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }
@@ -78,7 +78,7 @@ Describe 'Test-AzFrontDoorCdnEndpointNameAvailability' {
                 $nameAvailability.NameAvailable | Should -BeFalse
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

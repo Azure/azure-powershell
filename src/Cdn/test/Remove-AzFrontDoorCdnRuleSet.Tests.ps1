@@ -33,7 +33,7 @@ Describe 'Remove-AzFrontDoorCdnRuleSet' {
             Remove-AzFrontDoorCdnRuleSet -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $rulesetName
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -59,7 +59,7 @@ Describe 'Remove-AzFrontDoorCdnRuleSet' {
             $rulesets.Count | Should -Be 0
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

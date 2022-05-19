@@ -45,7 +45,7 @@ Describe 'New-AzFrontDoorCdnCustomDomain' {
             -HostName $hostName -TlsSetting $tlsSetting
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

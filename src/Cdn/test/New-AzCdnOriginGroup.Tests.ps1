@@ -71,7 +71,7 @@ Describe 'New-AzCdnOriginGroup' {
                 $createdOriginGroup.Origin[0].Id | Should -Be $originId
             } Finally
             {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+                # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         } | Should -Not -Throw
     }

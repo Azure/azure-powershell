@@ -67,7 +67,7 @@ Describe 'Update-AzFrontDoorCdnRule' {
             $updatedRule.Action.Count | Should -Be $actions.Count
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -124,7 +124,7 @@ Describe 'Update-AzFrontDoorCdnRule' {
             $updatedRule.Action.Count | Should -Be $actions.Count
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

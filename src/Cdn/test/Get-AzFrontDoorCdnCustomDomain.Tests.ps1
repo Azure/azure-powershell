@@ -46,7 +46,7 @@ Describe 'Get-AzFrontDoorCdnCustomDomain' {
             $customDomains.Count | Should -Be 1
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -81,7 +81,7 @@ Describe 'Get-AzFrontDoorCdnCustomDomain' {
             $customDomain.Name | Should -Be $customDomainName
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 
@@ -117,7 +117,7 @@ Describe 'Get-AzFrontDoorCdnCustomDomain' {
             $customDomain.Name | Should -Be $customDomainName
         } Finally
         {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            # Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }
