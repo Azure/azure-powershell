@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Introduced support for CosmosDB partition Merge and ThroughputRedistribution APIs by adding the following cmdlets:
+`Get-AzCosmosDBSqlContainerPerPartitionThroughput`, `Update-AzCosmosDBSqlContainerPerPartitionThroughput`, `Invoke-AzCosmosDBSqlContainerMerge`
+`Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput`, `Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput`, `Invoke-AzCosmosDBMongoDBCollectionMerge`
 * Introduced support for creating containers with Client Encryption Policy. The current supported version of Client Encryption Policy is 1.
 
 ## Version 1.7.0
