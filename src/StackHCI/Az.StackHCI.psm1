@@ -1899,9 +1899,6 @@ enum ErrorDetail
 
     .PARAMETER ResourceGroupName
     Specifies the Azure Resource Group name. If not specified <LocalClusterName>-rg will be used as resource group name.
-	
-	.PARAMETER ArcServerResourceGroupName
-	Specifies the Arc Resource Group name. If not specified, service will generate a unique Resource Group name
 
     .PARAMETER ArmAccessToken
     Specifies the ARM access token. Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
@@ -1939,6 +1936,9 @@ enum ErrorDetail
     .PARAMETER IsWAC
     Registrations through Windows Admin Center specifies this parameter to true.
 
+    .PARAMETER ArcServerResourceGroupName
+	Specifies the Arc Resource Group name. If not specified, service will generate a unique Resource Group name
+    
     .OUTPUTS
     PSCustomObject. Returns following Properties in PSCustomObject
     Result: Success or Failed or Cancelled.
@@ -2001,10 +2001,6 @@ param(
 
     [Parameter(Mandatory = $false)]
     # [ValidateNotNullOrEmpty()]
-    [string] $ArcServerResourceGroupName,
-
-    [Parameter(Mandatory = $false)]
-    # [ValidateNotNullOrEmpty()]
     [string] $ArmAccessToken,
 
     #TODO - Remove , this needs coordination with the WAC team
@@ -2046,7 +2042,11 @@ param(
     [System.Management.Automation.PSCredential] $Credential, 
 
     [Parameter(Mandatory = $false)]
-    [Switch]$IsWAC
+    [Switch]$IsWAC,
+
+    [Parameter(Mandatory = $false)]
+    # [ValidateNotNullOrEmpty()]
+    [string] $ArcServerResourceGroupName
     )
     
     try
