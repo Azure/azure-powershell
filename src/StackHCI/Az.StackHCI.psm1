@@ -1976,52 +1976,40 @@ enum ErrorDetail
 function Register-AzStackHCI{
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateNotNullOrEmpty()]
     [string] $SubscriptionId,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $Region,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $ResourceName,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [System.Collections.Hashtable] $Tag,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $TenantId,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $ResourceGroupName,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $ArmAccessToken,
 
     #TODO - Remove , this needs coordination with the WAC team
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $GraphAccessToken,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $AccountId,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $EnvironmentName = $AzureCloud,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $ComputerName,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $CertificateThumbprint,
 
     [Parameter(Mandatory = $false)]
@@ -2034,18 +2022,15 @@ param(
     [Switch]$EnableAzureArcServer = $true,
     
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [System.Management.Automation.PSCredential] $Credential, 
 
     [Parameter(Mandatory = $false)]
     [Switch]$IsWAC,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $ArcServerResourceGroupName,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [System.Management.Automation.PSCredential] $ArcSpnCredential
     )
     
@@ -2642,43 +2627,33 @@ function Unregister-AzStackHCI{
 [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]
 param(
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $SubscriptionId,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $ResourceName,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $TenantId,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $ResourceGroupName,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $ArmAccessToken,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $GraphAccessToken,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $AccountId,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $EnvironmentName = $AzureCloud,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $Region,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [string] $ComputerName,
 
     [Parameter(Mandatory = $false)]
@@ -2688,7 +2663,6 @@ param(
     [Switch]$DisableOnlyAzureArcServer = $false,
 
     [Parameter(Mandatory = $false)]
-    [ValidateNotNullOrEmpty()]
     [System.Management.Automation.PSCredential] $Credential,
 
     [Parameter(Mandatory = $false)]
