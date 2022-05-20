@@ -41,6 +41,7 @@
     - `Get-AzTenantBackfillStatus` 
     - `Get-AzManagementGroupNameAvailability`
     - `Get-AzEntity` 
+* [Breaking Change] Renamed property `isSyncedFromOnPremis` to `isSyncedFromOnPremise` to align with API spec
 
 ## Version 5.6.0
 * Fixed redundant quotes in list pagination [#17667]
