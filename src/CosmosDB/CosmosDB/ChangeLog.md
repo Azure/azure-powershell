@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Introduced support for CosmosDB partition Merge and ThroughputRedistribution APIs by adding the following cmdlets:
+`Get-AzCosmosDBSqlContainerPerPartitionThroughput`, `Update-AzCosmosDBSqlContainerPerPartitionThroughput`, `Invoke-AzCosmosDBSqlContainerMerge`
+`Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput`, `Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput`, `Invoke-AzCosmosDBMongoDBCollectionMerge`
 
 ## Version 1.8.2
 * Added support for partition key and id paths to be part of client encryption policy.

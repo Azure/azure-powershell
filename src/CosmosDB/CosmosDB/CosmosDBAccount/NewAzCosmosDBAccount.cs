@@ -222,22 +222,45 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (!string.IsNullOrEmpty(BackupPolicyType))
             {
-                PSBackupPolicy backupPolicy = new PSBackupPolicy()
+                if (BackupPolicyType.Equals(PSBackupPolicy.PeriodicModeBackupType, StringComparison.OrdinalIgnoreCase))
                 {
-                    BackupType = BackupPolicyType,
-                    BackupIntervalInMinutes = BackupIntervalInMinutes,
-                    BackupRetentionIntervalInHours = BackupRetentionIntervalInHours,
-                    BackupStorageRedundancy = BackupStorageRedundancy
-                };
+                    if (!string.IsNullOrEmpty(ContinuousTier))
+                    {
+                        WriteWarning("Cannot accept ContinuousBackupTier parameter for PeriodicModeBackupType");
+                        return;
+                    }
 
-                if (BackupPolicyType.Equals(PSBackupPolicy.ContinuousModeBackupType, StringComparison.OrdinalIgnoreCase) &&
-                    (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue))
+                    databaseAccountCreateUpdateParameters.BackupPolicy = new PeriodicModeBackupPolicy()
+                    {
+                        PeriodicModeProperties = new PeriodicModeProperties()
+                        {
+                            BackupIntervalInMinutes = BackupIntervalInMinutes,
+                            BackupRetentionIntervalInHours = BackupRetentionIntervalInHours,
+                            BackupStorageRedundancy = BackupStorageRedundancy
+                        }
+                    };
+                }
+                else if (BackupPolicyType.Equals(PSBackupPolicy.ContinuousModeBackupType, StringComparison.OrdinalIgnoreCase))
                 {
-                    WriteWarning("Cannot accept BackupInterval or BackupRetention parameters for ContinuousModeBackupType");
+                    if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue || !string.IsNullOrEmpty(BackupStorageRedundancy))
+                    {
+                        WriteWarning("Cannot accept BackupInterval or BackupRetention or BackupStorageRedundancy parameters for ContinuousModeBackupType");
+                        return;
+                    }
+
+                    databaseAccountCreateUpdateParameters.BackupPolicy = new ContinuousModeBackupPolicy
+                    {
+                        ContinuousModeProperties = new ContinuousModeProperties()
+                        {
+                            Tier = ContinuousTier
+                        }
+                    };
+                }
+                else
+                {
+                    WriteWarning("Invalid BackupPolicyType provided");
                     return;
                 }
-
-                databaseAccountCreateUpdateParameters.BackupPolicy = backupPolicy.ToSDKModel();
             }
             else if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue || !string.IsNullOrEmpty(BackupStorageRedundancy))
             {

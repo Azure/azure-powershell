@@ -158,9 +158,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue || !string.IsNullOrEmpty(BackupStorageRedundancy))
             {
-                if (BackupPolicyType == "Continuous")
+                if (!string.IsNullOrEmpty(BackupPolicyType) &&
+                    BackupPolicyType.Equals(PSBackupPolicy.ContinuousModeBackupType, StringComparison.OrdinalIgnoreCase))
                 {
-                    WriteWarning("Cannot set BackupPolicyType along with BackupInterval or BackupRetention parameters");
+                    WriteWarning("Cannot set BackupPolicyType along with BackupInterval or BackupRetention or BackupStorageRedundancy parameters");
                     return;
                 }
 
@@ -183,10 +184,41 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            // Update backup policy to ContinuousModeBackupPolicy
-            if (BackupPolicyType == "Continuous" && readDatabase.BackupPolicy is PeriodicModeBackupPolicy)
+            if (!string.IsNullOrEmpty(ContinuousTier))
             {
-                databaseAccountUpdateParameters.BackupPolicy = new ContinuousModeBackupPolicy();
+                if (!(!string.IsNullOrEmpty(BackupPolicyType) &&
+                    BackupPolicyType.Equals(PSBackupPolicy.ContinuousModeBackupType, StringComparison.OrdinalIgnoreCase)))
+                {
+                    WriteWarning("ContinuousTier parameter need to be set together with BackupPolicyType Continuous");
+                    return;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(BackupPolicyType) && 
+                BackupPolicyType.Equals(PSBackupPolicy.ContinuousModeBackupType, StringComparison.OrdinalIgnoreCase))
+            {
+                // Update backup policy to ContinuousModeBackupPolicy
+                if (readDatabase.BackupPolicy is PeriodicModeBackupPolicy)
+                {
+                    databaseAccountUpdateParameters.BackupPolicy = new ContinuousModeBackupPolicy
+                    {
+                        ContinuousModeProperties = new ContinuousModeProperties()
+                        {
+                            Tier = ContinuousTier
+                        }
+                    };
+                }
+                else if (readDatabase.BackupPolicy is ContinuousModeBackupPolicy && !string.IsNullOrEmpty(ContinuousTier))
+                {
+                    // Update continuous tier if provided
+                    databaseAccountUpdateParameters.BackupPolicy = new ContinuousModeBackupPolicy
+                    {
+                        ContinuousModeProperties = new ContinuousModeProperties()
+                        {
+                            Tier = ContinuousTier
+                        }
+                    };
+                }
             }
 
             // Update analytical storage schema type.

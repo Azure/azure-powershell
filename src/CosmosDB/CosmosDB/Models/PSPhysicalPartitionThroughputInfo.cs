@@ -12,29 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.CosmosDB.Models;
-using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.CosmosDB
+namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlUniqueKeyPolicy"), OutputType(typeof(PSSqlUniqueKeyPolicy))]
-    public class NewAzCosmosDBSqlUniqueKeyPolicy : AzureCosmosDBCmdletBase
+    public class PSPhysicalPartitionThroughputInfo
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.SqlUniqueKeysHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public PSSqlUniqueKey[] UniqueKey { get; set; }
-
-        public override void ExecuteCmdlet()
+        public PSPhysicalPartitionThroughputInfo()
         {
-            PSSqlUniqueKeyPolicy uniqueKeyPolicy = new PSSqlUniqueKeyPolicy
-            {
-                UniqueKeys = UniqueKey
-            };
-
-            WriteObject(uniqueKeyPolicy);
-            return;
         }
+
+        public PSPhysicalPartitionThroughputInfo(string id, double throughput)
+        {
+            this.Id = id;
+            this.Throughput = throughput;
+        }
+
+        public string Id { get; set; }
+
+
+        public double? Throughput { get; set; }
+
+        
     }
 }

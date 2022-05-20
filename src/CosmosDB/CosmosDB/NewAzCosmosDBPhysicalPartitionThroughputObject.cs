@@ -15,25 +15,24 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
-using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlUniqueKeyPolicy"), OutputType(typeof(PSSqlUniqueKeyPolicy))]
-    public class NewAzCosmosDBSqlUniqueKeyPolicy : AzureCosmosDBCmdletBase
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBPhysicalPartitionThroughputObject")]
+    public class NewAzCosmosDBPhysicalPartitionThroughputObject : AzureCosmosDBCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.SqlUniqueKeysHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.PhysicalPartitionIdHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public PSSqlUniqueKey[] UniqueKey { get; set; }
+        public string Id { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = Constants.PhysicalPartitionThroughputHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public double Throughput { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            PSSqlUniqueKeyPolicy uniqueKeyPolicy = new PSSqlUniqueKeyPolicy
-            {
-                UniqueKeys = UniqueKey
-            };
-
-            WriteObject(uniqueKeyPolicy);
+            PSPhysicalPartitionThroughputInfo physicalThroughputInfo = new PSPhysicalPartitionThroughputInfo(this.Id, this.Throughput);
+            WriteObject(physicalThroughputInfo);
             return;
         }
     }

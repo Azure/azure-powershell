@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             DatabaseAccountName = restorableDatabaseAccountGetResult.AccountName;
             CreationTime = restorableDatabaseAccountGetResult.CreationTime;
             DeletionTime = restorableDatabaseAccountGetResult.DeletionTime;
+            OldestRestorableTime = restorableDatabaseAccountGetResult.OldestRestorableTime;
             ApiType = restorableDatabaseAccountGetResult.ApiType;
             RestorableLocations = restorableDatabaseAccountGetResult.RestorableLocations?.Select(restorableLocation => new PSRestorableLocationResource(restorableLocation)).ToArray();
         }
@@ -70,6 +71,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         //      Gets or sets the time at which the CosmosDB Restorable database account has
         //      been deleted (ISO-8601 format).
         public System.DateTime? DeletionTime { get; set; }
+
+        //
+        // Summary:
+        //      Gets or sets the oldest time at which the CosmosDB Restorable database account
+        //      can be restored to (ISO-8601 format).
+        public System.DateTime? OldestRestorableTime { get; set; }
 
         //
         // Summary:
