@@ -123,17 +123,19 @@ jobs:
 
   - task: PowerShell@2
     displayName: Run Smoke Test 
-    failOnStandardError: true
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
       arguments: '-RequiredPsVersion ${{ parameters.psVersion }} -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "'
+      failOnStandardError: true
+      
 
   - task: PowerShell@2
     displayName: 'Run Smoke Test Reversely'
-    failOnStandardError: true
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
       arguments: '-RequiredPsVersion ${{ parameters.psVersion }} -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse "'
+      failOnStandardError: true
+
 
   - task: PowerShell@2
     displayName: Clean Az Modules
