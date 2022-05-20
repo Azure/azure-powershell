@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
 * Upgraded API version for ApplicationInsights component to 2020-02-02
 * Supported Log Analytics workspace-based component by `New-AzApplicationInsights` and `Update-AzApplicationInsights`
 

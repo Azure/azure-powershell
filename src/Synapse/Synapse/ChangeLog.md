@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.4.0
 * Added support for Synapse Link for Azure Sql Database
     - Added `Get-AzSynapseLinkConnection` cmdlet
     - Added `Get-AzSynapseLinkConnectionDetailedStatus` cmdlet

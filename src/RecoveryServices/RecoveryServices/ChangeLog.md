@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for Multi-user authorization using Resource Guard for recovery sevrices vault.
+
+## Version 5.4.0
+* Added support for Multi-user authorization using Resource Guard for recovery services vault.
 * Added support for cross subscription restore for recovery services vault, modified storage account to be fetched from target subscription.
 
 ## Version 5.3.1

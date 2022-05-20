@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.8.0
 * Introduced support for creating containers with Client Encryption Policy. The current supported version of Client Encryption Policy is 1.
 
 ## Version 1.7.0

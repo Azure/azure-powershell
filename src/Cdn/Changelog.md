@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.1.0
 * Upgraded API version to 2021-06-01
 * Removed deprecated cmdlets
   - Disable-AzCdnCustomDomain
