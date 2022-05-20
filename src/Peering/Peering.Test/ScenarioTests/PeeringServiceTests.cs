@@ -21,65 +21,58 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     /// <summary>
     /// The get legacy tests.
     /// </summary>
-    public class PeeringServiceTests
+    public class PeeringServiceTests : PeeringTestRunner
     {
-        /// <summary>
-        /// The logger.
-        /// </summary>
-        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="GetLegacyTests"/> class.
         /// </summary>
         /// <param name="output">
         /// The output.
         /// </param>
-        public PeeringServiceTests(Xunit.Abstractions.ITestOutputHelper output)
+        public PeeringServiceTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPeeringServiceProviders()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetPeeringServiceProviders");
+            TestRunner.RunTestScript("Test-GetPeeringServiceProviders");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPeeringServiceLocations()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetPeeringServiceLocations");
+            TestRunner.RunTestScript("Test-GetPeeringServiceLocations");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPeeringServiceByResourceGroup()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetPeeringServiceByResourceGroup");
+            TestRunner.RunTestScript("Test-GetPeeringServiceByResourceGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPeeringServiceByResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetPeeringServiceByResourceId");
+            TestRunner.RunTestScript("Test-GetPeeringServiceByResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListPeeringService()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ListPeeringService");
+            TestRunner.RunTestScript("Test-ListPeeringService");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewPeeringService()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewPeeringService");
+            TestRunner.RunTestScript("Test-NewPeeringService");
         }
     }
 }
