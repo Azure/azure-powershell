@@ -16,7 +16,7 @@ Updates the throughput of selected partitions in a CosmosDB Sql container.
 ```
 Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName <String> -DatabaseName <String>
  [-Name <String>] [-SourcePhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>]
- [-TargetPhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>] [-ResetPartitionLayout]
+ [-TargetPhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>] [-EqualDistributionPolicy]
  [-DefaultProfile <IAzureContextContainer>] -AccountName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName <String> 
 ```
 Update-AzCosmosDBSqlContainerPerPartitionThroughput [-Name <String>] -ParentObject <PSSqlDatabaseGetResults>
  [-SourcePhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>]
- [-TargetPhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>] [-ResetPartitionLayout]
+ [-TargetPhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>] [-EqualDistributionPolicy]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Update-AzCosmosDBSqlContainerPerPartitionThroughput [-Name <String>] -ParentObje
 ```
 Update-AzCosmosDBSqlContainerPerPartitionThroughput [-Name <String>] -InputObject <PSSqlContainerGetResults>
  [-SourcePhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>]
- [-TargetPhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>] [-ResetPartitionLayout]
+ [-TargetPhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>] [-EqualDistributionPolicy]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

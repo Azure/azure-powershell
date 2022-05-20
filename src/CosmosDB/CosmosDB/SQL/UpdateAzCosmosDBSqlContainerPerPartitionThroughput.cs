@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public PSPhysicalPartitionThroughputInfo[] TargetPhysicalPartitionThroughputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ResetPartitionThroughputLayoutHelpMessage)]
-        public SwitchParameter ResetPartitionLayout { get; set; }
+        public SwitchParameter EqualDistributionPolicy { get; set; }
 
         public void PopulateFromParentObject()
         {
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 List<PhysicalPartitionThroughputInfoResource> targetPartitionInfos =
                     new List<PhysicalPartitionThroughputInfoResource>();
 
-                if (this.ResetPartitionLayout.IsPresent)
+                if (this.EqualDistributionPolicy.IsPresent)
                 {
                     throughputPolicy = "Equal";
                 }
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 {
                     if(this.SourcePhysicalPartitionThroughputObject == null || this.TargetPhysicalPartitionThroughputObject == null)
                     {
-                        throw new ArgumentException("SourcePhysicalPartitionThroughputObject and TargetPhysicalPartitionThroughputObject cannot be null if 'ResetPartitionLayout' is absent.");
+                        throw new ArgumentException("SourcePhysicalPartitionThroughputObject and TargetPhysicalPartitionThroughputObject cannot be null if 'EqualDistributionPolicy' is absent.");
                     }
 
                     foreach (var item in this.SourcePhysicalPartitionThroughputObject)

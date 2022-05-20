@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 {
                     if(this.SourcePhysicalPartitionThroughputObject == null || this.TargetPhysicalPartitionThroughputObject == null)
                     {
-                        throw new ArgumentException("SourcePhysicalPartitionThroughputObject and TargetPhysicalPartitionThroughputObject cannot be null if 'ResetPartitionLayout' is absent.");
+                        throw new ArgumentException("SourcePhysicalPartitionThroughputObject and TargetPhysicalPartitionThroughputObject cannot be null if 'EqualDistributionPolicy' is absent.");
                     }
 
                     foreach (var item in this.SourcePhysicalPartitionThroughputObject)
