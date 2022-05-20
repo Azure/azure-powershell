@@ -40,18 +40,31 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: 50ed15bd61ac79f2368d769df0c207a00b9e099f
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-module-version: 0.4.0
-title: ConnectedMachine
-subject-prefix: 'Connected'
 input-file:
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-03-10/HybridCompute.json
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-03-10/privateLinkScopes.json
 
+module-version: 0.5.0
+title: ConnectedMachine
+subject-prefix: 'Connected'
 
-branch: 50ed15bd61ac79f2368d769df0c207a00b9e099f
+identity-correction-for-post: true
+resourcegroup-append: true
+nested-object-to-string: true
+
 directive:
+  - from: swagger-document 
+    where: $.definitions.Machine.properties.properties
+    transform: >-
+      return {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/MachineProperties",
+          "description": "Hybrid Compute Machine properties"
+        }
+
   - from: swagger-document 
     where: $.definitions.MachineExtensionUpdateProperties.properties
     transform: >-
@@ -82,14 +95,64 @@ directive:
         },
         "settings": {
           "type": "object",
+          "additionalProperties": true,
           "description": "Json formatted public settings for the extension."
         },
         "protectedSettings": {
           "type": "object",
+          "additionalProperties": true,
           "description": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all."
         }
       }
-      
+  - from: swagger-document
+    where: $.definitions.MachineExtensionProperties.properties
+    transform: >-
+      return {
+        "forceUpdateTag": {
+          "type": "string",
+          "description": "How the extension handler should be forced to update even if the extension configuration has not changed."
+        },
+        "publisher": {
+          "type": "string",
+          "description": "The name of the extension handler publisher."
+        },
+        "type": {
+          "type": "string",
+          "description": "Specifies the type of the extension; an example is \"CustomScriptExtension\"."
+        },
+        "typeHandlerVersion": {
+          "type": "string",
+          "description": "Specifies the version of the script handler."
+        },
+        "enableAutomaticUpgrade": {
+          "type": "boolean",
+          "description": "Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available."
+        },
+        "autoUpgradeMinorVersion": {
+          "type": "boolean",
+          "description": "Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true."
+        },
+        "settings": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Json formatted public settings for the extension."
+        },
+        "protectedSettings": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The provisioning state, which only appears in the response."
+        },
+        "instanceView": {
+          "$ref": "#/definitions/MachineExtensionInstanceView",
+          "description": "The machine extension instance view."
+        }
+      }
+
   # GetViaIdentity isn't useful until Azure PowerShell supports piping of different subjects
   - where:
       verb: Get
@@ -139,9 +202,10 @@ directive:
     set:
       format-table:
         properties:
+          - ResourceGroupName
           - Name
           - Location
-          - OSName
+          - OSType
           - Status
           - ProvisioningState
   - where:
@@ -149,20 +213,22 @@ directive:
     set:
       format-table:
         properties:
+          - ResourceGroupName
           - Name
           - Location
-          - PropertiesType
+          - TypeHandlerVersion
           - ProvisioningState
+          - Publisher
   - where:
        model-name: HybridComputePrivateLinkScope
     set:
       format-table:
         properties:
+          - ResourceGroupName
           - Name
           - Location
           - PublicNetworkAccess
           - ProvisioningState
-          - Tag
 
   # Removing cmlets
   - where:

@@ -51,13 +51,14 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 ```powershell
 PS C:\> New-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Enabled" -Location $location
 
-Name        Location    PublicNetworkAccess ProvisioningState Tag
-----        --------    ------------------- ----------------- ---
-name1      eastus2euap Enabled             Succeeded         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.PrivateLinkScopesReso…
+Name        Location    PublicNetworkAccess ProvisioningState 
+----        --------    ------------------- ----------------- 
+name1      eastus2euap Enabled             Succeeded         
 
 ```
 
 PublicNetworkAccess should be either "Enabled" or "Disabled"
+
 
 ## PARAMETERS
 
