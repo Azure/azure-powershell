@@ -102,7 +102,7 @@ jobs:
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
       arguments: '-RequiredPsVersion ${{ parameters.psVersion }} -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "'
-      failOnStandardError: true
+      failOnStderr: true
 
 
   - task: PowerShell@2
@@ -110,7 +110,7 @@ jobs:
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
       arguments: '-RequiredPsVersion ${{ parameters.psVersion }} -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse"'
-      failOnStandardError: true
+      failOnStderr: true
 
 
   - task: PowerShell@2
@@ -130,7 +130,7 @@ jobs:
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
       arguments: '-RequiredPsVersion ${{ parameters.psVersion }} -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 "'
-      failOnStandardError: true
+      failOnStderr: true
       
 
   - task: PowerShell@2
@@ -138,7 +138,7 @@ jobs:
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
       arguments: '-RequiredPsVersion ${{ parameters.psVersion }} -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse "'
-      failOnStandardError: true
+      failOnStderr: true
 
 
   - task: PowerShell@2
