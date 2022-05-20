@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         public override string Key => _key;
         public override string HelpMessage => _helpMessage;
         public override object DefaultValue => _defaultValue;
-        public override string EnvironmentVariableName => _environmentVariable;
+        protected override string EnvironmentVariableName => _environmentVariable;
         public override IReadOnlyCollection<AppliesTo> CanApplyTo
         {
             get { return _canApplyTo ?? base.CanApplyTo; }

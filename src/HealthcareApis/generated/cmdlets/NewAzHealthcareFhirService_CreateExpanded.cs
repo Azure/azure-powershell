@@ -34,6 +34,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>The description of Fhir Service</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirService _fhirserviceBody = new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.FhirService();
+
         /// <summary>Fhir Service access policies.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Fhir Service access policies.")]
@@ -44,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"Fhir Service access policies.",
         SerializedName = @"accessPolicies",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirServiceAccessPolicyEntry) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirServiceAccessPolicyEntry[] AccessPolicy { get => FhirserviceBody.AccessPolicy ?? null /* arrayOf */; set => FhirserviceBody.AccessPolicy = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirServiceAccessPolicyEntry[] AccessPolicyObjectId { get => _fhirserviceBody.AccessPolicy ?? null /* arrayOf */; set => _fhirserviceBody.AccessPolicy = value; }
 
         /// <summary>The list of the Azure container registry login servers.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -56,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The list of the Azure container registry login servers.",
         SerializedName = @"loginServers",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] AcrConfigurationLoginServer { get => FhirserviceBody.AcrConfigurationLoginServer ?? null /* arrayOf */; set => FhirserviceBody.AcrConfigurationLoginServer = value; }
+        public string[] AcrConfigurationLoginServer { get => _fhirserviceBody.AcrConfigurationLoginServer ?? null /* arrayOf */; set => _fhirserviceBody.AcrConfigurationLoginServer = value; }
 
         /// <summary>The list of Open Container Initiative (OCI) artifacts.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -68,7 +71,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The list of Open Container Initiative (OCI) artifacts.",
         SerializedName = @"ociArtifacts",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceOciArtifactEntry) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceOciArtifactEntry[] AcrConfigurationOciArtifact { get => FhirserviceBody.AcrConfigurationOciArtifact ?? null /* arrayOf */; set => FhirserviceBody.AcrConfigurationOciArtifact = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceOciArtifactEntry[] AcrConfigurationOciArtifact { get => _fhirserviceBody.AcrConfigurationOciArtifact ?? null /* arrayOf */; set => _fhirserviceBody.AcrConfigurationOciArtifact = value; }
+
+        /// <summary>If credentials are allowed via CORS.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If credentials are allowed via CORS.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If credentials are allowed via CORS.",
+        SerializedName = @"allowCredentials",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter AllowCorsCredential { get => _fhirserviceBody.CorConfigurationAllowCredentials ?? default(global::System.Management.Automation.SwitchParameter); set => _fhirserviceBody.CorConfigurationAllowCredentials = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -84,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The audience url for the service",
         SerializedName = @"audience",
         PossibleTypes = new [] { typeof(string) })]
-        public string AuthenticationConfigurationAudience { get => FhirserviceBody.AuthenticationConfigurationAudience ?? null; set => FhirserviceBody.AuthenticationConfigurationAudience = value; }
+        public string Audience { get => _fhirserviceBody.AuthenticationConfigurationAudience ?? null; set => _fhirserviceBody.AuthenticationConfigurationAudience = value; }
 
         /// <summary>The authority url for the service</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The authority url for the service")]
@@ -95,18 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The authority url for the service",
         SerializedName = @"authority",
         PossibleTypes = new [] { typeof(string) })]
-        public string AuthenticationConfigurationAuthority { get => FhirserviceBody.AuthenticationConfigurationAuthority ?? null; set => FhirserviceBody.AuthenticationConfigurationAuthority = value; }
-
-        /// <summary>If the SMART on FHIR proxy is enabled</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If the SMART on FHIR proxy is enabled")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"If the SMART on FHIR proxy is enabled",
-        SerializedName = @"smartProxyEnabled",
-        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter AuthenticationConfigurationSmartProxyEnabled { get => FhirserviceBody.AuthenticationConfigurationSmartProxyEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => FhirserviceBody.AuthenticationConfigurationSmartProxyEnabled = value; }
+        public string Authority { get => _fhirserviceBody.AuthenticationConfigurationAuthority ?? null; set => _fhirserviceBody.AuthenticationConfigurationAuthority = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -115,17 +118,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.HealthcareApis Client => Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Module.Instance.ClientAPI;
-
-        /// <summary>If credentials are allowed via CORS.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If credentials are allowed via CORS.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"If credentials are allowed via CORS.",
-        SerializedName = @"allowCredentials",
-        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter CorConfigurationAllowCredentials { get => FhirserviceBody.CorConfigurationAllowCredentials ?? default(global::System.Management.Automation.SwitchParameter); set => FhirserviceBody.CorConfigurationAllowCredentials = value; }
 
         /// <summary>The headers to be allowed via CORS.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -137,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The headers to be allowed via CORS.",
         SerializedName = @"headers",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] CorConfigurationHeader { get => FhirserviceBody.CorConfigurationHeader ?? null /* arrayOf */; set => FhirserviceBody.CorConfigurationHeader = value; }
+        public string[] CorsHeader { get => _fhirserviceBody.CorConfigurationHeader ?? null /* arrayOf */; set => _fhirserviceBody.CorConfigurationHeader = value; }
 
         /// <summary>The max age to be allowed via CORS.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The max age to be allowed via CORS.")]
@@ -148,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The max age to be allowed via CORS.",
         SerializedName = @"maxAge",
         PossibleTypes = new [] { typeof(int) })]
-        public int CorConfigurationMaxAge { get => FhirserviceBody.CorConfigurationMaxAge ?? default(int); set => FhirserviceBody.CorConfigurationMaxAge = value; }
+        public int CorsMaxAge { get => _fhirserviceBody.CorConfigurationMaxAge ?? default(int); set => _fhirserviceBody.CorConfigurationMaxAge = value; }
 
         /// <summary>The methods to be allowed via CORS.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -160,7 +152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The methods to be allowed via CORS.",
         SerializedName = @"methods",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] CorConfigurationMethod { get => FhirserviceBody.CorConfigurationMethod ?? null /* arrayOf */; set => FhirserviceBody.CorConfigurationMethod = value; }
+        public string[] CorsMethod { get => _fhirserviceBody.CorConfigurationMethod ?? null /* arrayOf */; set => _fhirserviceBody.CorConfigurationMethod = value; }
 
         /// <summary>The origins to be allowed via CORS.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -172,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The origins to be allowed via CORS.",
         SerializedName = @"origins",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] CorConfigurationOrigin { get => FhirserviceBody.CorConfigurationOrigin ?? null /* arrayOf */; set => FhirserviceBody.CorConfigurationOrigin = value; }
+        public string[] CorsOrigin { get => _fhirserviceBody.CorConfigurationOrigin ?? null /* arrayOf */; set => _fhirserviceBody.CorConfigurationOrigin = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -182,6 +174,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>If the SMART on FHIR proxy is enabled</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If the SMART on FHIR proxy is enabled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If the SMART on FHIR proxy is enabled",
+        SerializedName = @"smartProxyEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter EnableSmartProxy { get => _fhirserviceBody.AuthenticationConfigurationSmartProxyEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _fhirserviceBody.AuthenticationConfigurationSmartProxyEnabled = value; }
 
         /// <summary>
         /// An etag associated with the resource, used for optimistic concurrency when editing it.
@@ -194,7 +197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"An etag associated with the resource, used for optimistic concurrency when editing it.",
         SerializedName = @"etag",
         PossibleTypes = new [] { typeof(string) })]
-        public string Etag { get => FhirserviceBody.Etag ?? null; set => FhirserviceBody.Etag = value; }
+        public string Etag { get => _fhirserviceBody.Etag ?? null; set => _fhirserviceBody.Etag = value; }
 
         /// <summary>The name of the default export storage account.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the default export storage account.")]
@@ -205,13 +208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The name of the default export storage account.",
         SerializedName = @"storageAccountName",
         PossibleTypes = new [] { typeof(string) })]
-        public string ExportConfigurationStorageAccountName { get => FhirserviceBody.ExportConfigurationStorageAccountName ?? null; set => FhirserviceBody.ExportConfigurationStorageAccountName = value; }
-
-        /// <summary>Backing field for <see cref="FhirserviceBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirService _fhirserviceBody= new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.FhirService();
-
-        /// <summary>The description of Fhir Service</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirService FhirserviceBody { get => this._fhirserviceBody; set => this._fhirserviceBody = value; }
+        public string ExportStorageAccountName { get => _fhirserviceBody.ExportConfigurationStorageAccountName ?? null; set => _fhirserviceBody.ExportConfigurationStorageAccountName = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -237,7 +234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType IdentityType { get => FhirserviceBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType)""); set => FhirserviceBody.IdentityType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType IdentityType { get => _fhirserviceBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType)""); set => _fhirserviceBody.IdentityType = value; }
 
         /// <summary>
         /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
@@ -253,7 +250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
         SerializedName = @"userAssignedIdentities",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IUserAssignedIdentities IdentityUserAssignedIdentity { get => FhirserviceBody.IdentityUserAssignedIdentity ?? null /* object */; set => FhirserviceBody.IdentityUserAssignedIdentity = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _fhirserviceBody.IdentityUserAssignedIdentity ?? null /* object */; set => _fhirserviceBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -268,7 +265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         SerializedName = @"kind",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirServiceKind) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirServiceKind))]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirServiceKind Kind { get => FhirserviceBody.Kind ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirServiceKind)""); set => FhirserviceBody.Kind = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirServiceKind Kind { get => _fhirserviceBody.Kind ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirServiceKind)""); set => _fhirserviceBody.Kind = value; }
 
         /// <summary>The resource location.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource location.")]
@@ -279,14 +276,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The resource location.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => FhirserviceBody.Location ?? null; set => FhirserviceBody.Location = value; }
+        public string Location { get => _fhirserviceBody.Location ?? null; set => _fhirserviceBody.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -345,7 +342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess))]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess PublicNetworkAccess { get => FhirserviceBody.PublicNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess)""); set => FhirserviceBody.PublicNetworkAccess = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess PublicNetworkAccess { get => _fhirserviceBody.PublicNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess)""); set => _fhirserviceBody.PublicNetworkAccess = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -371,7 +368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         SerializedName = @"default",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirResourceVersionPolicy) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirResourceVersionPolicy))]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirResourceVersionPolicy ResourceVersionPolicyConfigurationDefault { get => FhirserviceBody.ResourceVersionPolicyConfigurationDefault ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirResourceVersionPolicy)""); set => FhirserviceBody.ResourceVersionPolicyConfigurationDefault = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirResourceVersionPolicy ResourceVersionPolicyConfigurationDefault { get => _fhirserviceBody.ResourceVersionPolicyConfigurationDefault ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirResourceVersionPolicy)""); set => _fhirserviceBody.ResourceVersionPolicyConfigurationDefault = value; }
 
         /// <summary>A list of FHIR Resources and their version policy overrides.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -383,7 +380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"A list of FHIR Resources and their version policy overrides.",
         SerializedName = @"resourceTypeOverrides",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceVersionPolicyConfigurationResourceTypeOverrides) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceVersionPolicyConfigurationResourceTypeOverrides ResourceVersionPolicyConfigurationResourceTypeOverride { get => FhirserviceBody.ResourceVersionPolicyConfigurationResourceTypeOverride ?? null /* object */; set => FhirserviceBody.ResourceVersionPolicyConfigurationResourceTypeOverride = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceVersionPolicyConfigurationResourceTypeOverrides ResourceVersionPolicyConfigurationResourceTypeOverride { get => _fhirserviceBody.ResourceVersionPolicyConfigurationResourceTypeOverride ?? null /* object */; set => _fhirserviceBody.ResourceVersionPolicyConfigurationResourceTypeOverride = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -413,7 +410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"Resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceTags Tag { get => FhirserviceBody.Tag ?? null /* object */; set => FhirserviceBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceTags Tag { get => _fhirserviceBody.Tag ?? null /* object */; set => _fhirserviceBody.Tag = value; }
 
         /// <summary>Backing field for <see cref="WorkspaceName" /> property.</summary>
         private string _workspaceName;
@@ -488,7 +485,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.FhirserviceBody = this.FhirserviceBody;
+            clone._fhirserviceBody = this._fhirserviceBody;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.SubscriptionId = this.SubscriptionId;
             clone.WorkspaceName = this.WorkspaceName;
@@ -654,12 +651,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.FhirServicesCreateOrUpdate(ResourceGroupName, SubscriptionId, WorkspaceName, Name, FhirserviceBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.FhirServicesCreateOrUpdate(ResourceGroupName, SubscriptionId, WorkspaceName, Name, _fhirserviceBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,SubscriptionId=SubscriptionId,WorkspaceName=WorkspaceName,Name=Name,body=FhirserviceBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,SubscriptionId=SubscriptionId,WorkspaceName=WorkspaceName,Name=Name,body=_fhirserviceBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -705,14 +702,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IErrorDetails>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, WorkspaceName=WorkspaceName, Name=Name, body=FhirserviceBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, WorkspaceName=WorkspaceName, Name=Name, body=_fhirserviceBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, WorkspaceName=WorkspaceName, Name=Name, body=FhirserviceBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, WorkspaceName=WorkspaceName, Name=Name, body=_fhirserviceBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

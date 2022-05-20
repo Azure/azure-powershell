@@ -38,14 +38,14 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
             TestRunner.RunTestScript("NamespaceAuthTests");
         }
 
-        [Fact(Skip = "Skip as current test framework does not support recording generated cmdlets.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void MSIEncryptionTest()
         {
             TestRunner.RunTestScript("EncryptionTest");
         }
 
-        [Fact(Skip = "Skip as current test framework does not support recording generated cmdlets.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void MSITest()
         {

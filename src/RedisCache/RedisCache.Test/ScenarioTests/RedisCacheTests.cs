@@ -15,61 +15,55 @@
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
 
-    public class RedisCacheTests : RMTestBase
+    public class RedisCacheTests : RedisCacheTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public RedisCacheTests(ITestOutputHelper output)
+        public RedisCacheTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRedisCache()
         {
-            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-RedisCache");
+            TestRunner.RunTestScript("Test-RedisCache");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetNonExistingRedisCacheTest()
         {
-            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-SetNonExistingRedisCacheTest");
+            TestRunner.RunTestScript("Test-SetNonExistingRedisCacheTest");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRedisCachePipeline()
         {
-            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-RedisCachePipeline");
+            TestRunner.RunTestScript("Test-RedisCachePipeline");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRedisCacheClustering()
         {
-            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-RedisCacheClustering");
+            TestRunner.RunTestScript("Test-RedisCacheClustering");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRedisCachePatchSchedules()
         {
-            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-RedisCachePatchSchedules");
+            TestRunner.RunTestScript("Test-RedisCachePatchSchedules");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestImportExportReboot()
         {
-            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-ImportExportReboot");
+            TestRunner.RunTestScript("Test-ImportExportReboot");
         }
 
 #if NETSTANDARD
@@ -80,35 +74,35 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDiagnosticOperations()
         {
-            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-DiagnosticOperations");
+            TestRunner.RunTestScript("Test-DiagnosticOperations");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGeoReplication()
         {
-            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-GeoReplication");
+            TestRunner.RunTestScript("Test-GeoReplication");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFirewallRule()
         {
-            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-FirewallRule");
+            TestRunner.RunTestScript("Test-FirewallRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZones()
         {
-            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-Zones");
+            TestRunner.RunTestScript("Test-Zones");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedIdentity()
         {
-            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-ManagedIdentity");
+            TestRunner.RunTestScript("Test-ManagedIdentity");
         }
     }
 }

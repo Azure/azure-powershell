@@ -20,7 +20,7 @@ Creates or updates a FHIR Service resource with the specified parameters.
 .Description
 Creates or updates a FHIR Service resource with the specified parameters.
 .Example
-PS C:\> New-AzHealthcareFhirService -Name azpsfhirservice -ResourceGroupName azps_test_group -WorkspaceName azpshcws -Location eastus2 -Kind 'fhir-R4' -AuthenticationConfigurationAuthority "https://login.microsoftonline.com/{DirectoryID}" -AuthenticationConfigurationAudience "https://azpshcws-{FhirServiceName}.fhir.azurehealthcareapis.com"
+PS C:\> New-AzHealthcareFhirService -Name azpsfhirservice -ResourceGroupName azps_test_group -WorkspaceName azpshcws -Location eastus2 -Kind 'fhir-R4' -Authority "https://login.microsoftonline.com/{DirectoryID}" -Audience "https://azpshcws-{FhirServiceName}.fhir.azurehealthcareapis.com"
 
 Location Name                     Kind    ResourceGroupName
 -------- ----                     ----    -----------------
@@ -33,7 +33,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-ACCESSPOLICY <IFhirServiceAccessPolicyEntry[]>: Fhir Service access policies.
+ACCESSPOLICYOBJECTID <IFhirServiceAccessPolicyEntry[]>: Fhir Service access policies.
   ObjectId <String>: An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
 
 ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Container Initiative (OCI) artifacts.
@@ -78,8 +78,8 @@ function New-AzHealthcareFhirService {
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirServiceAccessPolicyEntry[]]
         # Fhir Service access policies.
-        # To construct, see NOTES section for ACCESSPOLICY properties and create a hash table.
-        ${AccessPolicy},
+        # To construct, see NOTES section for ACCESSPOLICYOBJECTID properties and create a hash table.
+        ${AccessPolicyObjectId},
 
         [Parameter()]
         [AllowEmptyCollection()]
@@ -98,54 +98,54 @@ function New-AzHealthcareFhirService {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # If credentials are allowed via CORS.
+        ${AllowCorsCredential},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # The audience url for the service
-        ${AuthenticationConfigurationAudience},
+        ${Audience},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # The authority url for the service
-        ${AuthenticationConfigurationAuthority},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # If the SMART on FHIR proxy is enabled
-        ${AuthenticationConfigurationSmartProxyEnabled},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # If credentials are allowed via CORS.
-        ${CorConfigurationAllowCredentials},
+        ${Authority},
 
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String[]]
         # The headers to be allowed via CORS.
-        ${CorConfigurationHeader},
+        ${CorsHeader},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.Int32]
         # The max age to be allowed via CORS.
-        ${CorConfigurationMaxAge},
+        ${CorsMaxAge},
 
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String[]]
         # The methods to be allowed via CORS.
-        ${CorConfigurationMethod},
+        ${CorsMethod},
 
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String[]]
         # The origins to be allowed via CORS.
-        ${CorConfigurationOrigin},
+        ${CorsOrigin},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # If the SMART on FHIR proxy is enabled
+        ${EnableSmartProxy},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
@@ -157,7 +157,7 @@ function New-AzHealthcareFhirService {
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # The name of the default export storage account.
-        ${ExportConfigurationStorageAccountName},
+        ${ExportStorageAccountName},
 
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType])]

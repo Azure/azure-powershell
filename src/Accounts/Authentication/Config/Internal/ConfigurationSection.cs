@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
         /// <summary>
         /// Gets or sets the section value.
         /// </summary>
-        public string Value
+        public (string, string) Value
         {
             get
             {
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
         /// </summary>
         /// <param name="key">The configuration key.</param>
         /// <returns>The configuration value.</returns>
-        public string this[string key]
+        public (string, string) this[string key]
         {
             get
             {
@@ -123,5 +123,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
         /// </summary>
         /// <returns>The configuration sub-sections.</returns>
         public IEnumerable<IConfigurationSection> GetChildren() => _root.GetChildrenImplementation(Path);
+
+        public string GetValueByProviderId(string providerId)
+        {
+            return _root.GetValueByProviderId(Path, providerId);
+        }
     }
 }
