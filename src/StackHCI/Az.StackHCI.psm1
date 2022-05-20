@@ -1909,9 +1909,6 @@ enum ErrorDetail
     .PARAMETER AccountId
     Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
 
-    .PARAMETER ArcSpnCredential
-    Specifies the credentials to be used for onboarding ARC agent. If not specified, new set of credentials will be generated.
-
     .PARAMETER EnvironmentName
     Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
 
@@ -1938,6 +1935,9 @@ enum ErrorDetail
 
     .PARAMETER ArcServerResourceGroupName
 	Specifies the Arc Resource Group name. If not specified, service will generate a unique Resource Group name
+
+     .PARAMETER ArcSpnCredential
+    Specifies the credentials to be used for onboarding ARC agent. If not specified, new set of credentials will be generated.
     
     .OUTPUTS
     PSCustomObject. Returns following Properties in PSCustomObject
@@ -2014,10 +2014,6 @@ param(
 
     [Parameter(Mandatory = $false)]
     # [ValidateNotNullOrEmpty()]
-    [System.Management.Automation.PSCredential] $ArcSpnCredential,
-
-    [Parameter(Mandatory = $false)]
-    # [ValidateNotNullOrEmpty()]
     [string] $EnvironmentName = $AzureCloud,
 
     [Parameter(Mandatory = $false)]
@@ -2046,7 +2042,11 @@ param(
 
     [Parameter(Mandatory = $false)]
     # [ValidateNotNullOrEmpty()]
-    [string] $ArcServerResourceGroupName
+    [string] $ArcServerResourceGroupName,
+
+    [Parameter(Mandatory = $false)]
+    # [ValidateNotNullOrEmpty()]
+    [System.Management.Automation.PSCredential] $ArcSpnCredential
     )
     
     try

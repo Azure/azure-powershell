@@ -15,10 +15,10 @@ Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representin
 ```
 Register-AzStackHCI [-SubscriptionId] <String> [[-Region] <String>] [[-ResourceName] <String>]
  [[-Tag] <Hashtable>] [[-TenantId] <String>] [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>]
- [[-GraphAccessToken] <String>] [[-AccountId] <String>] [[-ArcSpnCredential] <PSCredential>]
- [[-EnvironmentName] <String>] [[-ComputerName] <String>] [[-CertificateThumbprint] <String>]
- [-RepairRegistration] [-UseDeviceAuthentication] [-EnableAzureArcServer] [[-Credential] <PSCredential>]
- [-IsWAC] [[-ArcServerResourceGroupName] <String>] [<CommonParameters>]
+ [[-GraphAccessToken] <String>] [[-AccountId] <String>] [[-EnvironmentName] <String>]
+ [[-ComputerName] <String>] [[-CertificateThumbprint] <String>] [-RepairRegistration]
+ [-UseDeviceAuthentication] [-EnableAzureArcServer] [[-Credential] <PSCredential>] [-IsWAC]
+ [[-ArcServerResourceGroupName] <String>] [[-ArcSpnCredential] <PSCredential>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,7 +109,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 15
+Position: 14
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -124,7 +124,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
+Position: 15
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -155,7 +155,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 13
+Position: 12
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -170,7 +170,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 12
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -186,7 +186,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 14
+Position: 13
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -218,7 +218,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 11
+Position: 10
 Default value: $AzureCloud
 Accept pipeline input: False
 Accept wildcard characters: False
