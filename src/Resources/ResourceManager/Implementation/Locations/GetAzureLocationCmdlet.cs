@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Location"), OutputType(typeof(PSResourceProviderLocation))]
     public class GetAzureLocationCmdlet : ResourceManagerCmdletBaseWithApiVersion
     {
-        public const string ExtendedLocationsParameterSet = "ExtendedLocations";
+        public const string ExtendedLocationsParameterSet = "ExtendedLocation";
 
         [Parameter(Mandatory = false, HelpMessage = "Whether to include extended locations.", ParameterSetName = GetAzureLocationCmdlet.ExtendedLocationsParameterSet)]
-        public bool? ExtendedLocations { get; set; }
+        public bool? ExtendedLocation { get; set; }
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 throw new PSInvalidOperationException(Resources.NoSubscriptionsUnderCurrentDirectory);
             }
-            var allLocations = this.SubscriptionSdkClient.ListLocations(DefaultContext.Subscription.Id.ToString(), ExtendedLocations);
+            var allLocations = this.SubscriptionSdkClient.ListLocations(DefaultContext.Subscription.Id.ToString(), ExtendedLocation);
             var providers = this.ResourceManagerSdkClient.ListResourceProviders(providerName: null, listAvailable: true);
             var providerLocations = ConstructResourceProviderLocations(allLocations, providers);
             this.WriteObject(providerLocations, enumerateCollection: true);
