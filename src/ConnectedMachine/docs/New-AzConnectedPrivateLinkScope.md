@@ -59,7 +59,6 @@ name1      eastus2euap Enabled             Succeeded
 
 PublicNetworkAccess should be either "Enabled" or "Disabled"
 
-
 ## PARAMETERS
 
 ### -DefaultProfile

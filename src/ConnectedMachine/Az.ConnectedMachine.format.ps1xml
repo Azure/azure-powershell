@@ -790,7 +790,7 @@
             <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>OSName</Label>
+            <Label>OSType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Status</Label>
@@ -812,7 +812,7 @@
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>OSName</PropertyName>
+                <PropertyName>OSType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Status</PropertyName>

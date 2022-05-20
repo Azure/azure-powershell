@@ -44,7 +44,6 @@ name         eastus2euap Disabled            Succeeded
 
 Updates the PublicNetworkAccess to "Disable" and tags to $tags
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
