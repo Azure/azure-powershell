@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.0.2
 * Introduced support for CosmosDB partition Merge and ThroughputRedistribution APIs by adding the following cmdlets:
 `Get-AzCosmosDBSqlContainerPerPartitionThroughput`, `Update-AzCosmosDBSqlContainerPerPartitionThroughput`, `Invoke-AzCosmosDBSqlContainerMerge`
 `Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput`, `Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput`, `Invoke-AzCosmosDBMongoDBCollectionMerge`
