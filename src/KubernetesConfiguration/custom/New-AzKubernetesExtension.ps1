@@ -208,6 +208,18 @@ function New-AzKubernetesExtension {
             $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 
+        if ($Name -ieq 'flux') {
+            if ($Name -ceq 'flux') {
+                if ($IdentityType -cne 'SystemAssigned') {
+                    Write-Error "The value of the parameter -IdentityType must be 'SystemAssigned'."
+                    return
+                }
+            } else {
+                Write-Error "The value of the parameter -Name must be 'flux'."
+                return
+            }
+        }
+
         Az.KubernetesConfiguration.internal\New-AzKubernetesExtension @PSBoundParameters
     }
 }

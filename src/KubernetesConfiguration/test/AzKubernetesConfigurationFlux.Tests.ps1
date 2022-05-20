@@ -20,7 +20,7 @@ Describe 'AzKubernetesConfigurationFlux' {
             $kustomizations = @{
                 infra=@{
                     Name = "infra"
-                    Path = "./infrasructure"
+                    Path = "./infrastructure"
                     Prune = "true"
                 };
                 apps=@{
@@ -33,7 +33,7 @@ Describe 'AzKubernetesConfigurationFlux' {
             $config = New-AzKubernetesExtension -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name flux -ResourceGroupName $env.resourceGroup -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ClusterReleaseNamespace flux-system -IdentityType 'SystemAssigned'
             $config.Name | Should -Be "flux"
 
-            $config = New-AzKubernetesConfigurationFlux -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name $env.flux1 -ResourceGroupName $env.resourceGroup -Namespace namespace-t01 -Scope 'cluster' -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false -Kustomization $kustomizations
+            $config = New-AzKubernetesConfigurationFlux -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name $env.flux1 -ResourceGroupName $env.resourceGroup -Namespace namespace-t01 -Scope 'cluster' -GitRepositoryUrl https://github.com/Azure/gitops-flux2-kustomize-helm-mt -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false -Kustomization $kustomizations
             $config.Name | Should -Be $env.flux1
         } | Should -Not -Throw
     }
@@ -61,7 +61,7 @@ Describe 'AzKubernetesConfigurationFlux' {
     
     It 'UpdateExpanded' {
         {
-            $config = Update-AzKubernetesConfigurationFlux -Name $env.flux1 -ClusterName $env.clusterName -ClusterType ConnectedClusters -ResourceGroupName $env.resourceGroup -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
+            $config = Update-AzKubernetesConfigurationFlux -Name $env.flux1 -ClusterName $env.clusterName -ClusterType ConnectedClusters -ResourceGroupName $env.resourceGroup -GitRepositoryUrl https://github.com/Azure/gitops-flux2-kustomize-helm-mt -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
             $config.Name | Should -Be $env.flux1
         } | Should -Not -Throw
     }
@@ -69,7 +69,7 @@ Describe 'AzKubernetesConfigurationFlux' {
     It 'UpdateViaIdentityExpanded' {
         {
             $config = Get-AzKubernetesConfigurationFlux -Name $env.flux1 -ClusterName $env.clusterName -ClusterType ConnectedClusters -ResourceGroupName $env.resourceGroup
-            $config = Update-AzKubernetesConfigurationFlux -InputObject $config -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
+            $config = Update-AzKubernetesConfigurationFlux -InputObject $config -GitRepositoryUrl https://github.com/Azure/gitops-flux2-kustomize-helm-mt -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
             $config.Name | Should -Be $env.flux1
         } | Should -Not -Throw
     }
@@ -85,7 +85,7 @@ Describe 'AzKubernetesConfigurationFlux' {
             $kustomizations = @{
                 infra=@{
                     Name = "infra"
-                    Path = "./infrasructure"
+                    Path = "./infrastructure"
                     Prune = "true"
                 };
                 apps=@{
@@ -95,7 +95,7 @@ Describe 'AzKubernetesConfigurationFlux' {
                     DependsOn = @("infra")
                 }
             }
-            $config = New-AzK8sConfigurationFlux -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name $env.flux2 -ResourceGroupName $env.resourceGroup -Namespace namespace-t01 -Scope 'cluster' -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false -Kustomization $kustomizations
+            $config = New-AzK8sConfigurationFlux -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name $env.flux2 -ResourceGroupName $env.resourceGroup -Namespace namespace-t01 -Scope 'cluster' -GitRepositoryUrl https://github.com/Azure/gitops-flux2-kustomize-helm-mt -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false -Kustomization $kustomizations
             $config.Name | Should -Be $env.flux2
         } | Should -Not -Throw
     }
@@ -123,7 +123,7 @@ Describe 'AzKubernetesConfigurationFlux' {
     
     It 'K8sUpdateExpanded' {
         {
-            $config = Update-AzK8sConfigurationFlux -Name $env.flux2 -ClusterName $env.clusterName -ClusterType ConnectedClusters -ResourceGroupName $env.resourceGroup -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
+            $config = Update-AzK8sConfigurationFlux -Name $env.flux2 -ClusterName $env.clusterName -ClusterType ConnectedClusters -ResourceGroupName $env.resourceGroup -GitRepositoryUrl https://github.com/Azure/gitops-flux2-kustomize-helm-mt -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
             $config.Name | Should -Be $env.flux2
         } | Should -Not -Throw
     }
@@ -131,7 +131,7 @@ Describe 'AzKubernetesConfigurationFlux' {
     It 'K8sUpdateViaIdentityExpanded' {
         {
             $config = Get-AzK8sConfigurationFlux -Name $env.flux2 -ClusterName $env.clusterName -ClusterType ConnectedClusters -ResourceGroupName $env.resourceGroup
-            $config = Update-AzK8sConfigurationFlux -InputObject $config -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
+            $config = Update-AzK8sConfigurationFlux -InputObject $config -GitRepositoryUrl https://github.com/Azure/gitops-flux2-kustomize-helm-mt -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
             $config.Name | Should -Be $env.flux2
         } | Should -Not -Throw
     }
