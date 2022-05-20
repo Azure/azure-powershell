@@ -313,6 +313,7 @@ Az.Resources
     - ''Get-AzTenantBackfillStatus'' 
     - ''Get-AzManagementGroupNameAvailability''
     - ''Get-AzEntity'' 
+* [Breaking Change] Renamed property ''isSyncedFromOnPremis'' to ''isSyncedFromOnPremise'' to align with API spec
 
 Az.Security
 * Added new cmdlet: ''Get-AzSecuritySolution''

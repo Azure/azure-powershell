@@ -255,7 +255,8 @@ PrivateData = @{
     - ''Start-AzTenantBackfill''
     - ''Get-AzTenantBackfillStatus'' 
     - ''Get-AzManagementGroupNameAvailability''
-    - ''Get-AzEntity'' '
+    - ''Get-AzEntity'' 
+* [Breaking Change] Renamed property ''isSyncedFromOnPremis'' to ''isSyncedFromOnPremise'' to align with API spec '
 
         # Prerelease string of this module
         # Prerelease = ''
