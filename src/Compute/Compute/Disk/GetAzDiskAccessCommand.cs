@@ -6,9 +6,10 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Azure;
+using Azure.ResourceManager.Compute;
+using Azure.ResourceManager.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -66,9 +67,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 if (ShouldGetByName(resourceGroupName, diskAccessName))
                 {
-                    var result = DiskAccessesClient.Get(resourceGroupName, diskAccessName);
+                    //var result = DiskAccessesClient.Get(resourceGroupName, diskAccessName);
+                    var result = this.ComputeClientTrack2.GetDiskAccess(resourceGroupName, diskAccessName);
                     var psObject = new PSDiskAccess();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<DiskAccess, PSDiskAccess>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<DiskAccessResource, PSDiskAccess>(result, psObject);
                     WriteObject(psObject);
                 }
                 else if (ShouldListByResourceGroup(resourceGroupName, diskAccessName))

@@ -22,6 +22,7 @@
 using AutoMapper;
 using FROM = Microsoft.Azure.Management.Compute.Models;
 using TO = Microsoft.Azure.Commands.Compute.Automation.Models;
+using FROM2 = Azure.ResourceManager.Compute;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
@@ -177,6 +178,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                     .ForMember(c => c.Type1, o => o.MapFrom(r => r.Type));
 
                 cfg.CreateMap<FROM.DiskAccess, TO.PSDiskAccess>();
+                cfg.CreateMap<FROM2.DiskAccessResource, TO.PSDiskAccess>();
                 cfg.CreateMap<TO.PSDiskAccess, FROM.DiskAccess>();
                 cfg.CreateMap<FROM.DiskAccess, TO.PSDiskAccessList>();
                 cfg.CreateMap<TO.PSDiskAccessList, TO.PSDiskAccess>();

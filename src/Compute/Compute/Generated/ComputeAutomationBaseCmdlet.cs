@@ -19,6 +19,12 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+
+using Azure.Core;
+using Azure.ResourceManager;
+using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Compute;
+using Azure.ResourceManager.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,6 +37,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Compute.Track2Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -39,6 +46,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+        }
+
+        private Track2ComputeClient _track2ComputeClient;
+        public Track2ComputeClient ComputeClientTrack2
+        {
+            get
+            {
+                return _track2ComputeClient ?? (_track2ComputeClient = new Track2ComputeClient(
+                    Microsoft.Azure.Commands.Common.Authentication.AzureSession.Instance.ClientFactory,
+                    DefaultContext));
+            }
+            set { _track2ComputeClient = value; }
         }
 
         protected static PSArgument[] ConvertFromObjectsToArguments(string[] names, object[] objects)

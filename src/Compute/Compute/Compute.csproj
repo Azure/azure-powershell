@@ -19,6 +19,8 @@
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
     <PackageReference Include="System.Management" Version="4.5.0" />
+    <PackageReference Include="Azure.ResourceManager.Compute" Version="1.0.0-beta.8" />
+    <PackageReference Include="Azure.ResourceManager" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
