@@ -53,9 +53,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tags of the vault
+        /// </summary>
         [Parameter(Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
+
+        /// <summary>
+        /// Enables or disables classic alerts for RS vault.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool? DisableClassicAlerts { get; set; }
+
+        /// <summary>
+        /// Enables or disables monitor alerts for RS vault.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool? DisableAzureMonitorAlertsForJobFailure { get; set; }
 
         #endregion
 
@@ -84,6 +99,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     vaultCreateArgs.Properties = new VaultProperties();
                     vaultCreateArgs.Sku = new Sku();
                     vaultCreateArgs.Sku.Name = SkuName.Standard;
+
+                    if (DisableAzureMonitorAlertsForJobFailure != null || DisableClassicAlerts != null)
+                    {   
+                        if(DisableAzureMonitorAlertsForJobFailure != null && DisableClassicAlerts != null)
+                        {
+                            MonitoringSettings alerts = new MonitoringSettings();
+
+                            if (DisableAzureMonitorAlertsForJobFailure != null)
+                            {
+                                alerts.AzureMonitorAlertSettings = new AzureMonitorAlertSettings();
+                                alerts.AzureMonitorAlertSettings.AlertsForAllJobFailures = (DisableAzureMonitorAlertsForJobFailure == true) ? "Disabled" : "Enabled";
+                            }
+
+                            if (DisableClassicAlerts != null)
+                            {
+                                alerts.ClassicAlertSettings = new ClassicAlertSettings();
+                                alerts.ClassicAlertSettings.AlertsForCriticalOperations = (DisableClassicAlerts == true) ? "Disabled" : "Enabled";
+                            }
+
+                            vaultCreateArgs.Properties.MonitoringSettings = alerts;
+                        }
+                        else
+                        {
+                            // resx
+                            throw new ArgumentException("Please provide the value for DisableAzureMonitorAlertsForJobFailure and DisableClassicAlerts parameters to configure alerts");
+                        }
+                    }
+                    
 
                     Vault response = RecoveryServicesClient.CreateVault(this.ResourceGroupName, this.Name, vaultCreateArgs);
 

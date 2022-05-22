@@ -196,8 +196,8 @@ function Test-AzureVMRestoreWithMSI
 function Test-AzureVMCrossRegionRestore
 {
 	$location = "centraluseuap"
-	$resourceGroupName = Create-ResourceGroup $location 24
-
+	$resourceGroupName = Create-ResourceGroup $location 24			
+	
 	try
 	{
 		# Setup
@@ -313,21 +313,29 @@ function Test-AzureBackupDataMove
 
 function Test-AzureVMGetItems
 {
-	$location = "southeastasia"
-	$resourceGroupName = Create-ResourceGroup $location
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiaga-adhoc-vault"
+	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm"
+	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;hiaganewvm3"	
+	$vmFriendlyName1 = "hiaga-adhoc-vm"
+	$vmFriendlyName2 = "hiaganewvm3"
+	$protectionState = "IRPending"
+	#$location = "southeastasia"
+	#$resourceGroupName = Create-ResourceGroup $location
 	
 	try
 	{
 		# Setup
-		$vm = Create-VM $resourceGroupName $location 1
-		$vm2 = Create-VM $resourceGroupName $location 12
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmFriendlyName1
+		$vm2 = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmFriendlyName2
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName 
 
 		# disable soft delete for successful cleanup
 		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 
-		Enable-Protection $vault $vm
-		Enable-Protection $vault $vm2
+		# Enable-Protection $vault $vm
+		# Enable-Protection $vault $vm2
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-Name "DefaultPolicy"
@@ -369,7 +377,7 @@ function Test-AzureVMGetItems
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureVM `
-			-ProtectionState IRPending;
+			-ProtectionState Protected;
 		Assert-True { $items.VirtualMachineId -contains $vm.Id }
 
 		# VARIATION-5: Get items for container with friendly name and ProtectionStatus filters
@@ -387,7 +395,7 @@ function Test-AzureVMGetItems
 			-Container $container `
 			-WorkloadType AzureVM `
 			-Name $vm.Name `
-			-ProtectionState IRPending;
+			-ProtectionState Protected;
 		Assert-True { $items.VirtualMachineId -contains $vm.Id }
 
 		# VARIATION-7: Get items for container with Status and ProtectionStatus filters
@@ -395,7 +403,7 @@ function Test-AzureVMGetItems
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureVM `
-			-ProtectionState IRPending `
+			-ProtectionState Protected `
 			-ProtectionStatus Healthy;
 		Assert-True { $items.VirtualMachineId -contains $vm.Id }
 
@@ -405,7 +413,7 @@ function Test-AzureVMGetItems
 			-Container $container `
 			-WorkloadType AzureVM `
 			-Name $vm.Name `
-			-ProtectionState IRPending `
+			-ProtectionState Protected `
 			-ProtectionStatus Healthy;
 		Assert-True { $items.VirtualMachineId -contains $vm.Id }
 
@@ -417,30 +425,48 @@ function Test-AzureVMGetItems
 	}
 	finally
 	{
-		# Cleanup
-		Cleanup-ResourceGroup $resourceGroupName		
+		# Cleanup				
 	}
 }
 
 function Test-AzureVMProtection
 {
-	$location = "southeastasia"
-	$resourceGroupName = Create-ResourceGroup $location
+	# $location = "southeastasia"
+	# $resourceGroupName = Create-ResourceGroup $location
+
+	$location = "centraluseuap"
+	$resourceGroupName = "iaasvm-pstest-rg"
+	$vaultName = "iaasvm-pstest-vault"
+	$vmName = "iaasvm-pstest-vm"
 
 	try
 	{
 		# Setup
-		$vm = Create-VM $resourceGroupName $location
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		
 		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
-		# Sleep to give the service time to add the default policy to the vault
-        Start-TestSleep 5000
 
-		# Get default policy
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID
+
+		Disable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Item $item `
+			-RemoveRecoveryPoints `
+			-Force;
+
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-Name "DefaultPolicy";
-	
+
+		Assert-True {$policy.ProtectedItemsCount -eq 0};
+
+		# $vm = Create-VM $resourceGroupName $location
+		# $vault = Create-RecoveryServicesVault $resourceGroupName $location
+		
+		# Sleep to give the service time to add the default policy to the vault
+        Start-TestSleep 5000
+
 		# Enable protection
 		Enable-AzRecoveryServicesBackupProtection `
 			-VaultId $vault.ID `
@@ -454,49 +480,36 @@ function Test-AzureVMProtection
 
 		Assert-True {$policy.ProtectedItemsCount -eq 1};
 
-		$container = Get-AzRecoveryServicesBackupContainer `
-			-VaultId $vault.ID `
-			-ContainerType AzureVM `
-			-Status Registered;
-
-		$item = Get-AzRecoveryServicesBackupItem `
-			-VaultId $vault.ID `
-			-Container $container `
-			-WorkloadType AzureVM
-
-		# Disable protection
-		Disable-AzRecoveryServicesBackupProtection `
-			-VaultId $vault.ID `
-			-Item $item `
-			-RemoveRecoveryPoints `
-			-Force;
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID
 		
-		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
-			-VaultId $vault.ID `
-			-Name "DefaultPolicy";
-
-		Assert-True {$policy.ProtectedItemsCount -eq 0};
-
+		Assert-True { $item.SourceResourceId -match $vm.Name };
 	}
 	finally
 	{
 		# Cleanup
-		Cleanup-ResourceGroup $resourceGroupName
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Enable"
 	}
 }
 
 function Test-AzureVMGetRPs
-{
-	$location = "southeastasia"
-	$resourceGroupName = Create-ResourceGroup $location
+{	
+	$location = "centraluseuap"
+	$resourceGroupName = "iaasvm-pstest-rg"
+	$vaultName = "iaasvm-pstest-vault"
+	$vmName = "iaasvm-pstest-vm"
+
+	# $location = "southeastasia"
+	# $resourceGroupName = Create-ResourceGroup $location
 
 	try
 	{
   		# Setup
-		$vm = Create-VM $resourceGroupName $location
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName #Create-VM $resourceGroupName $location
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName # Create-RecoveryServicesVault $resourceGroupName $location
+		
 		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
-		$item = Enable-Protection $vault $vm
+
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID # Enable-Protection $vault $vm
 		$backupJob = Backup-Item $vault $item
 
 		# Test 1: Get latest recovery point; should be only one
@@ -547,24 +560,41 @@ function Test-AzureVMGetRPs
 	finally
 	{
 		# Cleanup
-		Cleanup-ResourceGroup $resourceGroupName
+		# Cleanup-ResourceGroup $resourceGroupName
+		
+		# disable protection with RemoveRecoveryPoints
+		# Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints -VaultId $vault.ID -Force
+
+		# enable soft delete 
+		Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState Enable -VaultId $vault.ID
 	}
 }
 
 function Test-AzureVMFullRestore
 {
-	$location = "southeastasia"
-	$resourceGroupName = Create-ResourceGroup $location
-	$targetResourceGroupName = Create-ResourceGroup $location 1
+	# $location = "southeastasia"
+	# $resourceGroupName = Create-ResourceGroup $location
+	# $targetResourceGroupName = Create-ResourceGroup $location 1
+
+	$location = "centraluseuap"
+	$resourceGroupName = "iaasvm-pstest-rg"
+	$targetResourceGroupName = "hiagarg"
+
+	$vaultName = "iaasvm-pstest-vault"
+	$vmName = "iaasvm-pstest-vm"
+
+	$saName = "pstestsa2"
 
 	try
 	{
 		# Setup
-		$saName = Create-SA $resourceGroupName $location
-		$vm = Create-VM $resourceGroupName $location
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		# $saName = Create-SA $resourceGroupName $location
+
+		$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName # Create-VM $resourceGroupName $location
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName # Create-RecoveryServicesVault $resourceGroupName $location
 		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
-		$item = Enable-Protection $vault $vm
+
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID # Enable-Protection $vault $vm
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
 
@@ -602,8 +632,8 @@ function Test-AzureVMFullRestore
 	finally
 	{
 		# Cleanup
-		Cleanup-ResourceGroup $resourceGroupName
-		Cleanup-ResourceGroup $targetResourceGroupName
+		# Cleanup-ResourceGroup $resourceGroupName
+		# Cleanup-ResourceGroup $targetResourceGroupName
 	}
 }
 
@@ -699,7 +729,7 @@ function Test-AzureVMBackup
 	try
 	{
 		# Setup
-		$vault = $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 				
 		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 		
@@ -720,14 +750,19 @@ function Test-AzureVMBackup
 
 function Test-AzureVMSetVaultContext
 {
-	$location = "southeastasia"
-	$resourceGroupName = Create-ResourceGroup $location
+	# $location = "eastasia"
+	# $resourceGroupName = Create-ResourceGroup $location
+
+	$location = "centraluseuap"
+	$resourceGroupName = "iaasvm-pstest-rg"
+	$vaultName = "iaasvm-pstest-vault"
+	$vmName = "iaasvm-pstest-vm"
 
 	try
 	{
 		# Setup
-		$vm = Create-VM $resourceGroupName $location
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName # Create-VM $resourceGroupName $location
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName # Create-RecoveryServicesVault $resourceGroupName $location
 
 		# disable soft delete for successful cleanup
 		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
@@ -736,6 +771,10 @@ function Test-AzureVMSetVaultContext
         Start-TestSleep 5000
 
 		Set-AzRecoveryServicesVaultContext -Vault $vault | Out-Null
+
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID
+
+		Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints -Force
 
 		# Get default policy
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
@@ -747,24 +786,26 @@ function Test-AzureVMSetVaultContext
 			-Name $vm.Name `
 			-ResourceGroupName $vm.ResourceGroupName;
 
-		$container = Get-AzRecoveryServicesBackupContainer `
-			-ContainerType AzureVM `
-			-Status Registered;
+		# $container = Get-AzRecoveryServicesBackupContainer `
+		# 	-ContainerType AzureVM `
+		# 	-Status Registered;
+		# 
+		# $item = Get-AzRecoveryServicesBackupItem `
+		# 	-Container $container `
+		# 	-WorkloadType AzureVM
 
-		$item = Get-AzRecoveryServicesBackupItem `
-			-Container $container `
-			-WorkloadType AzureVM
+		# $item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID
 
 		# Disable protection
-		Disable-AzRecoveryServicesBackupProtection `
-			-Item $item `
-			-RemoveRecoveryPoints `
-			-Force;
+		# Disable-AzRecoveryServicesBackupProtection `
+		# 	-Item $item `
+		# 	-RemoveRecoveryPoints `
+		# 	-Force;
 	}
 	finally
 	{
 		# Cleanup
-		Cleanup-ResourceGroup $resourceGroupName
+		# Cleanup-ResourceGroup $resourceGroupName
 	}
 }
 

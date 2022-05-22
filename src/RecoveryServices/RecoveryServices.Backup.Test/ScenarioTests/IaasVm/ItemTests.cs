@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             );
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMRestoreWithMSI()

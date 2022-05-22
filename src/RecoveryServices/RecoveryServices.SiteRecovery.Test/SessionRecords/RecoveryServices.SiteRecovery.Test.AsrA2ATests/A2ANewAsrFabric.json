@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 00:21:20 GMT"
+          "Thu, 04 Aug 2022 10:22:32 GMT"
         ],
         "Content-Length": [
           "202"
@@ -67,8 +67,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTA5MDk5YjItOWQyYy00NjM2LWI0M2UtYmQ1Y2FmYjZiZTY5L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35?api-version=2022-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTA5MDk5YjItOWQyYy00NjM2LWI0M2UtYmQ1Y2FmYjZiZTY5L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzU/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"location\": \"WestCentralUS\"\r\n}",
       "RequestHeaders": {
@@ -123,7 +123,7 @@
           "CENTRALUSEUAP:20210417T204904Z:c2620901-3503-4da6-8240-0e4c15daaade"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 00:21:20 GMT"
+          "Thu, 04 Aug 2022 10:22:32 GMT"
         ],
         "Content-Length": [
           "475"
@@ -139,8 +139,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTA5MDk5YjItOWQyYy00NjM2LWI0M2UtYmQ1Y2FmYjZiZTY5L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35?api-version=2022-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTA5MDk5YjItOWQyYy00NjM2LWI0M2UtYmQ1Y2FmYjZiZTY5L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzU/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -189,7 +189,7 @@
           "CENTRALUSEUAP:20210417T204924Z:c0ec54fe-5d58-4ece-94cf-ac62c943e8e4"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 00:21:20 GMT"
+          "Thu, 04 Aug 2022 10:22:32 GMT"
         ],
         "Content-Length": [
           "475"
@@ -205,8 +205,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/extendedInformation/vaultExtendedInfo?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTA5MDk5YjItOWQyYy00NjM2LWI0M2UtYmQ1Y2FmYjZiZTY5L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestUri": "/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/extendedInformation/vaultExtendedInfo?api-version=2022-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTA5MDk5YjItOWQyYy00NjM2LWI0M2UtYmQ1Y2FmYjZiZTY5L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDIyLTA0LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -258,7 +258,7 @@
           "CENTRALUSEUAP:20210417T204925Z:5475aa8d-6be1-4cfc-899b-c99970396aca"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 00:21:20 GMT"
+          "Thu, 04 Aug 2022 10:22:32 GMT"
         ],
         "Content-Length": [
           "86"
@@ -274,8 +274,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/extendedInformation/vaultExtendedInfo?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTA5MDk5YjItOWQyYy00NjM2LWI0M2UtYmQ1Y2FmYjZiZTY5L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestUri": "/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/extendedInformation/vaultExtendedInfo?api-version=2022-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTA5MDk5YjItOWQyYy00NjM2LWI0M2UtYmQ1Y2FmYjZiZTY5L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDIyLTA0LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"integrityKey\": \"/l1jtaV/ZUxstoWjxvo6vg==\",\r\n    \"algorithm\": \"None\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -333,7 +333,7 @@
           "CENTRALUSEUAP:20210417T204926Z:88be984c-7b34-4a2f-81ec-6d1224afe8a3"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 00:21:20 GMT"
+          "Thu, 04 Aug 2022 10:22:32 GMT"
         ],
         "Content-Length": [
           "410"
@@ -349,8 +349,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTA5MDk5YjItOWQyYy00NjM2LWI0M2UtYmQ1Y2FmYjZiZTY5L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
+      "RequestUri": "/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults?api-version=2022-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTA5MDk5YjItOWQyYy00NjM2LWI0M2UtYmQ1Y2FmYjZiZTY5L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMjItMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -399,7 +399,7 @@
           "CENTRALUSEUAP:20210417T204926Z:666e8f76-18c1-41dc-86f2-dc77b2ee54a8"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 00:21:20 GMT"
+          "Thu, 04 Aug 2022 10:22:32 GMT"
         ],
         "Content-Length": [
           "487"
@@ -481,7 +481,7 @@
           "CENTRALUSEUAP:20210417T204928Z:aa63f8cc-75b4-4d7b-a008-720a02ff1f7b"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 00:21:20 GMT"
+          "Thu, 04 Aug 2022 10:22:32 GMT"
         ],
         "Expires": [
           "-1"
@@ -548,7 +548,7 @@
           "CENTRALUSEUAP:20210417T204929Z:9947877c-cc34-4234-839b-889c0ad2cef7"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 00:21:20 GMT"
+          "Thu, 04 Aug 2022 10:22:32 GMT"
         ],
         "Content-Length": [
           "1315"
@@ -618,7 +618,7 @@
           "CENTRALUSEUAP:20210417T204930Z:d5c90a64-c3dc-451a-a3c8-13259a14475a"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 00:21:20 GMT"
+          "Thu, 04 Aug 2022 10:22:32 GMT"
         ],
         "Content-Length": [
           "1315"
@@ -688,7 +688,7 @@
           "CENTRALUSEUAP:20210417T204950Z:000e355d-998d-4885-8fb3-1989b6d18e44"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 00:21:20 GMT"
+          "Thu, 04 Aug 2022 10:22:32 GMT"
         ],
         "Content-Length": [
           "1315"
@@ -758,7 +758,7 @@
           "CENTRALUSEUAP:20210417T205010Z:e423cd63-07a8-432e-abe2-c8bee220d9fd"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 00:21:20 GMT"
+          "Thu, 04 Aug 2022 10:22:32 GMT"
         ],
         "Content-Length": [
           "1315"
@@ -828,7 +828,7 @@
           "CENTRALUSEUAP:20210417T205031Z:c62d5ce8-7f6a-471b-89ed-b7a63b246171"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 00:21:20 GMT"
+          "Thu, 04 Aug 2022 10:22:32 GMT"
         ],
         "Content-Length": [
           "1315"
@@ -898,7 +898,7 @@
           "CENTRALUSEUAP:20210417T205051Z:3676d68a-2c68-4b7a-902c-15a73afd8597"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 00:21:20 GMT"
+          "Thu, 04 Aug 2022 10:22:32 GMT"
         ],
         "Content-Length": [
           "1353"
@@ -968,7 +968,7 @@
           "CENTRALUSEUAP:20210417T205052Z:ba48ae57-35fa-4a7b-aa74-bdb579eb2ce6"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 00:21:20 GMT"
+          "Thu, 04 Aug 2022 10:22:32 GMT"
         ],
         "Content-Length": [
           "679"
