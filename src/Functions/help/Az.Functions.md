@@ -23,27 +23,6 @@ Get function apps plans in a subscription.
 ### [Get-AzFunctionAppSetting](Get-AzFunctionAppSetting.md)
 Gets app settings for a function app.
 
-### [Get-AzSystemAssignedIdentity](Get-AzSystemAssignedIdentity.md)
-Gets the systemAssignedIdentity available under the specified RP scope.
-
-### [Get-AzWebAppFunctionKey](Get-AzWebAppFunctionKey.md)
-Description for Get function keys for a function in a web site, or a deployment slot.
-
-### [Get-AzWebAppFunctionKeySlot](Get-AzWebAppFunctionKeySlot.md)
-Description for Get function keys for a function in a web site, or a deployment slot.
-
-### [Get-AzWebAppSettingKeyVaultReference](Get-AzWebAppSettingKeyVaultReference.md)
-Description for Gets the config reference app settings and status of an app
-
-### [Get-AzWebAppSyncStatus](Get-AzWebAppSyncStatus.md)
-Description for This is to allow calling via powershell and ARM template.
-
-### [Get-AzWebAppSyncStatusSlot](Get-AzWebAppSyncStatusSlot.md)
-Description for This is to allow calling via powershell and ARM template.
-
-### [Move-Az](Move-Az.md)
-Description for Move resources between resource groups.
-
 ### [New-AzFunctionApp](New-AzFunctionApp.md)
 Creates a function app.
 
@@ -67,12 +46,6 @@ Starts a function app.
 
 ### [Stop-AzFunctionApp](Stop-AzFunctionApp.md)
 Stops a function app.
-
-### [Sync-AzWebAppFunctionSlot](Sync-AzWebAppFunctionSlot.md)
-Description for Syncs function trigger metadata to the management database
-
-### [Test-Az](Test-Az.md)
-Description for Validate if a resource can be created.
 
 ### [Update-AzFunctionApp](Update-AzFunctionApp.md)
 Updates a function app.

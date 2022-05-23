@@ -8,16 +8,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
     using System;
 
-    /// <summary>
-    /// Description for Restores a specific backup to another app (or deployment slot, if specified).
-    /// </summary>
+    /// <summary>Restores a specific backup to another app (or deployment slot, if specified).</summary>
     /// <remarks>
     /// [OpenAPI] Restore=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/restore"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Restore, @"AzFunctionApp_RestoreViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Description for Restores a specific backup to another app (or deployment slot, if specified).")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Restores a specific backup to another app (or deployment slot, if specified).")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Generated]
     public partial class RestoreAzFunctionApp_RestoreViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener
@@ -36,6 +34,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Description of a restore request.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRestoreRequest _requestBody = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.RestoreRequest();
+
         /// <summary>
         /// <code>true</code> if SiteConfig.ConnectionStrings should be set in new app; otherwise, <code>false</code>.
         /// </summary>
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> if SiteConfig.ConnectionStrings should be set in new app; otherwise, <code>false</code>.",
         SerializedName = @"adjustConnectionStrings",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter AdjustConnectionString { get => RequestBody.AdjustConnectionString ?? default(global::System.Management.Automation.SwitchParameter); set => RequestBody.AdjustConnectionString = value; }
+        public global::System.Management.Automation.SwitchParameter AdjustConnectionString { get => _requestBody.AdjustConnectionString ?? default(global::System.Management.Automation.SwitchParameter); set => _requestBody.AdjustConnectionString = value; }
 
         /// <summary>Specify app service plan that will own restored site.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specify app service plan that will own restored site.")]
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Specify app service plan that will own restored site.",
         SerializedName = @"appServicePlan",
         PossibleTypes = new [] { typeof(string) })]
-        public string AppServicePlan { get => RequestBody.AppServicePlan ?? null; set => RequestBody.AppServicePlan = value; }
+        public string AppServicePlan { get => _requestBody.AppServicePlan ?? null; set => _requestBody.AppServicePlan = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Name of a blob which contains the backup.",
         SerializedName = @"blobName",
         PossibleTypes = new [] { typeof(string) })]
-        public string BlobName { get => RequestBody.BlobName ?? null; set => RequestBody.BlobName = value; }
+        public string BlobName { get => _requestBody.BlobName ?? null; set => _requestBody.BlobName = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -96,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Collection of databases which should be restored. This list has to match the list of databases included in the backup.",
         SerializedName = @"databases",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDatabaseBackupSetting) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDatabaseBackupSetting[] Database { get => RequestBody.Database ?? null /* arrayOf */; set => RequestBody.Database = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDatabaseBackupSetting[] Database { get => _requestBody.Database ?? null /* arrayOf */; set => _requestBody.Database = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -118,7 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"App Service Environment name, if needed (only when restoring an app to an App Service Environment).",
         SerializedName = @"hostingEnvironment",
         PossibleTypes = new [] { typeof(string) })]
-        public string HostingEnvironment { get => RequestBody.HostingEnvironment ?? null; set => RequestBody.HostingEnvironment = value; }
+        public string HostingEnvironment { get => _requestBody.HostingEnvironment ?? null; set => _requestBody.HostingEnvironment = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -145,7 +146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Changes a logic when restoring an app with custom domains. <code>true</code> to remove custom domains automatically. If <code>false</code>, custom domains are added to the app's object when it is being restored, but that might fail due to conflicts during the operation.",
         SerializedName = @"ignoreConflictingHostNames",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter IgnoreConflictingHostName { get => RequestBody.IgnoreConflictingHostName ?? default(global::System.Management.Automation.SwitchParameter); set => RequestBody.IgnoreConflictingHostName = value; }
+        public global::System.Management.Automation.SwitchParameter IgnoreConflictingHostName { get => _requestBody.IgnoreConflictingHostName ?? default(global::System.Management.Automation.SwitchParameter); set => _requestBody.IgnoreConflictingHostName = value; }
 
         /// <summary>Ignore the databases and only restore the site content</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Ignore the databases and only restore the site content")]
@@ -156,7 +157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Ignore the databases and only restore the site content",
         SerializedName = @"ignoreDatabases",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter IgnoreDatabase { get => RequestBody.IgnoreDatabase ?? default(global::System.Management.Automation.SwitchParameter); set => RequestBody.IgnoreDatabase = value; }
+        public global::System.Management.Automation.SwitchParameter IgnoreDatabase { get => _requestBody.IgnoreDatabase ?? default(global::System.Management.Automation.SwitchParameter); set => _requestBody.IgnoreDatabase = value; }
 
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity _inputObject;
@@ -178,14 +179,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Kind of resource.",
         SerializedName = @"kind",
         PossibleTypes = new [] { typeof(string) })]
-        public string Kind { get => RequestBody.Kind ?? null; set => RequestBody.Kind = value; }
+        public string Kind { get => _requestBody.Kind ?? null; set => _requestBody.Kind = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -206,7 +207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"operationType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BackupRestoreOperationType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BackupRestoreOperationType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BackupRestoreOperationType OperationType { get => RequestBody.OperationType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BackupRestoreOperationType)""); set => RequestBody.OperationType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BackupRestoreOperationType OperationType { get => _requestBody.OperationType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BackupRestoreOperationType)""); set => _requestBody.OperationType = value; }
 
         /// <summary>
         /// <code>true</code> if the restore operation can overwrite target app; otherwise, <code>false</code>. <code>true</code>
@@ -220,7 +221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> if the restore operation can overwrite target app; otherwise, <code>false</code>. <code>true</code> is needed if trying to restore over an existing app.",
         SerializedName = @"overwrite",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter Overwrite { get => RequestBody.Overwrite ?? default(global::System.Management.Automation.SwitchParameter); set => RequestBody.Overwrite = value; }
+        public global::System.Management.Automation.SwitchParameter Overwrite { get => _requestBody.Overwrite ?? default(global::System.Management.Automation.SwitchParameter); set => _requestBody.Overwrite = value; }
 
         /// <summary>
         /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
@@ -250,12 +251,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Backing field for <see cref="RequestBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRestoreRequest _requestBody= new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.RestoreRequest();
-
-        /// <summary>Description of a restore request.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRestoreRequest RequestBody { get => this._requestBody; set => this._requestBody = value; }
-
         /// <summary>Name of an app.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of an app.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
@@ -265,7 +260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Name of an app.",
         SerializedName = @"siteName",
         PossibleTypes = new [] { typeof(string) })]
-        public string SiteName { get => RequestBody.SiteName ?? null; set => RequestBody.SiteName = value; }
+        public string SiteName { get => _requestBody.SiteName ?? null; set => _requestBody.SiteName = value; }
 
         /// <summary>SAS URL to the container.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SAS URL to the container.")]
@@ -276,7 +271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"SAS URL to the container.",
         SerializedName = @"storageAccountUrl",
         PossibleTypes = new [] { typeof(string) })]
-        public string StorageAccountUrl { get => RequestBody.StorageAccountUrl ?? null; set => RequestBody.StorageAccountUrl = value; }
+        public string StorageAccountUrl { get => _requestBody.StorageAccountUrl ?? null; set => _requestBody.StorageAccountUrl = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -305,6 +300,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -330,14 +330,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.RequestBody = this.RequestBody;
+            clone._requestBody = this._requestBody;
             return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -470,7 +470,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -487,7 +486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.WebAppsRestoreViaIdentity(InputObject.Id, RequestBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.WebAppsRestoreViaIdentity(InputObject.Id, _requestBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -508,13 +507,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.WebAppsRestore(InputObject.ResourceGroupName ?? null, InputObject.Name ?? null, InputObject.BackupId ?? null, InputObject.SubscriptionId ?? null, RequestBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.WebAppsRestore(InputObject.ResourceGroupName ?? null, InputObject.Name ?? null, InputObject.BackupId ?? null, InputObject.SubscriptionId ?? null, _requestBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=RequestBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_requestBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -568,14 +567,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=RequestBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_requestBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=RequestBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_requestBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.5.0
 * Added `Rotate` into the list of permissions to keys [#17970]
 
 ## Version 4.4.0

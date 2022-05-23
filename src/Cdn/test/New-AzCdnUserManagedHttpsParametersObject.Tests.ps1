@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnUserManagedHttpsPara
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnUserManagedHttpsParametersObject' {
+Describe 'New-AzCdnUserManagedHttpsParametersObject' -Tag 'LiveOnly' {
     It '__AllParameterSets' {
         { 
             # ignore 

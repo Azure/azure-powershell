@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.8.0
 * Added a preview feature allowing user to control the following configurations by using `Get-AzConfig`, `Update-AzConfig` and `Clear-AzConfig`:
     - `DefaultSubscriptionForLogin`: Subscription name or GUID. Sets the default context for Azure PowerShell when logging in without specifying a subscription.
     - `DisplayBreakingChangeWarning`: Controls if warning messages for breaking changes are displayed or suppressed.

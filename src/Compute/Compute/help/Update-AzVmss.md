@@ -25,11 +25,11 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-ImageUri <String>] [-LicenseType <String>] [-ManagedDiskStorageAccountType <String>]
  [-MaxBatchInstancePercent <Int32>] [-MaxPrice <Double>] [-MaxUnhealthyInstancePercent <Int32>]
  [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-OsDiskCaching <CachingTypes>]
- [-OsDiskWriteAccelerator <Boolean>] [-Overprovision <Boolean>] [-PauseTimeBetweenBatches <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-ProvisionVMAgent <Boolean>] [-ProximityPlacementGroupId <String>] [-ScaleInPolicy <String[]>]
- [-SinglePlacementGroup <Boolean>] [-SkipExtensionsOnOverprovisionedVMs <Boolean>] [-SkuCapacity <Int32>]
- [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
+ [-OsDiskWriteAccelerator <Boolean>] [-Overprovision <Boolean>] [-ScaleInPolicyForceDeletion <Boolean>]
+ [-PauseTimeBetweenBatches <String>] [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
+ [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>] [-ProximityPlacementGroupId <String>]
+ [-ScaleInPolicy <String[]>] [-SinglePlacementGroup <Boolean>] [-SkipExtensionsOnOverprovisionedVMs <Boolean>]
+ [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
  [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-TerminateScheduledEvents <Boolean>]
  [-TimeZone <String>] [-UltraSSDEnabled <Boolean>] [-UpgradePolicyMode <UpgradeMode>]
  [-CapacityReservationGroupId <String>] [-VhdContainer <String[]>] [-AsJob] [-EncryptionAtHost <Boolean>]
@@ -50,15 +50,15 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-ManagedDiskStorageAccountType <String>] [-MaxBatchInstancePercent <Int32>] [-MaxPrice <Double>]
  [-MaxUnhealthyInstancePercent <Int32>] [-MaxUnhealthyUpgradedInstancePercent <Int32>]
  [-OsDiskCaching <CachingTypes>] [-OsDiskWriteAccelerator <Boolean>] [-Overprovision <Boolean>]
- [-PauseTimeBetweenBatches <String>] [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>] [-ProximityPlacementGroupId <String>]
- [-ScaleInPolicy <String[]>] [-SinglePlacementGroup <Boolean>] [-SkipExtensionsOnOverprovisionedVMs <Boolean>]
- [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
- [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-TerminateScheduledEvents <Boolean>]
- [-TimeZone <String>] [-UltraSSDEnabled <Boolean>] [-UpgradePolicyMode <UpgradeMode>]
- [-CapacityReservationGroupId <String>] [-VhdContainer <String[]>] [-AsJob] [-EncryptionAtHost <Boolean>]
- [-UserData <String>] [-AutomaticRepairAction <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ScaleInPolicyForceDeletion <Boolean>] [-PauseTimeBetweenBatches <String>] [-PlanName <String>]
+ [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>]
+ [-ProximityPlacementGroupId <String>] [-ScaleInPolicy <String[]>] [-SinglePlacementGroup <Boolean>]
+ [-SkipExtensionsOnOverprovisionedVMs <Boolean>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>]
+ [-TerminateScheduledEvents <Boolean>] [-TimeZone <String>] [-UltraSSDEnabled <Boolean>]
+ [-UpgradePolicyMode <UpgradeMode>] [-CapacityReservationGroupId <String>] [-VhdContainer <String[]>] [-AsJob]
+ [-EncryptionAtHost <Boolean>] [-UserData <String>] [-AutomaticRepairAction <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -713,6 +713,21 @@ The rules to be followed when scaling-in a virtual machine scale set.  Possible 
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScaleInPolicyForceDeletion
+Applying Force Deletion when using ScaleIn Policy.
+
+```yaml
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 

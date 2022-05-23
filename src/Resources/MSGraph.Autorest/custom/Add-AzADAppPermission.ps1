@@ -24,18 +24,6 @@ For instance, to get available permissions for Graph API:
 Application permissions under the `appRoles` property correspond to `Role` in `-Type`. Delegated permissions under the `oauth2Permissions` property correspond to `Scope` in `-Type`.
 
 User needs to grant consent via Azure Portal if the permission requires admin consent because Azure PowerShell doesn't support it yet.
-
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Outputs
-System.Boolean
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/add-azadapppermission
 #>

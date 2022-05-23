@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnSecret'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnSecret' {
+Describe 'New-AzFrontDoorCdnSecret' -Tag 'LiveOnly' {
     It 'CreateExpanded' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try

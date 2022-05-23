@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFrontDoorCdnEndpointCu
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Test-AzFrontDoorCdnEndpointCustomDomain' {
+Describe 'Test-AzFrontDoorCdnEndpointCustomDomain' -Tag 'LiveOnly' {
     It 'ValidateExpanded' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
