@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
                HelpMessage = "List of SSL protocols to be disabled")]
-        [ValidateSet("TLSv1_0", "TLSv1_1", "TLSv1_2", IgnoreCase = true)]
+        [ValidateSet("TLSv1_0", "TLSv1_1", "TLSv1_2", "TLSv1_3", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string[] DisabledSslProtocols { get; set; }
 
         [Parameter(
                HelpMessage = "Type of Ssl Policy")]
-        [ValidateSet("Predefined", "Custom", IgnoreCase = true)]
+        [ValidateSet("Predefined", "Custom", "CustomV2", IgnoreCase = true)]
         public string PolicyType { get; set; }
 
         [Parameter(
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
                HelpMessage = "Minimum version of Ssl protocol to be supported on application gateway")]
-        [ValidateSet("TLSv1_0", "TLSv1_1", "TLSv1_2", IgnoreCase = true)]
+        [ValidateSet("TLSv1_0", "TLSv1_1", "TLSv1_2", "TLSv1_3", IgnoreCase = true)]
         public string MinProtocolVersion { get; set; }
 
         public override void ExecuteCmdlet()
