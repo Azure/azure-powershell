@@ -32,7 +32,7 @@ LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
 
 RUN if [ "${LATEST}" = True ] ; then \
         # install latest azure-powershell from BLOB
-        pwsh -Command Invoke-WebRequest -uri https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-latest.tar.gz -OutFile latest.tar.gz && \       
+        pwsh -Command Invoke-WebRequest -uri ${BLOB_URL} -OutFile latest.tar.gz && \       
         mkdir latest  && \
         tar -zxvf ./latest.tar.gz -C ./latest  && \
         pwsh -Command ./latest/InstallModule.ps1 ;\
