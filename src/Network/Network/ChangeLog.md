@@ -40,6 +40,10 @@
     - `New-AzVpnServerConfigurationPolicyGroup`
     - `Update-AzVpnServerConfigurationPolicyGroup`
     - `Remove-AzVpnServerConfigurationPolicyGroup`
+* Application Gateway CustomV2 Ssl Policies: Added support for CustomV2 ssl policies for Application Gateway.
+    - Added `CustomV2` to the validation set of `PolicyType`
+    - Added `TLSv1_3` to the validation set of `MinProtocolVersion`
+    - Removed validation for null or empty cipher suites list since there can be empty cipher suites list for min protocol version of tls1.3
 
 ## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
