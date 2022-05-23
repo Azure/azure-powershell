@@ -12,6 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Core;
+using Azure.ResourceManager;
+using Azure.ResourceManager.Resources;
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Storage;
@@ -73,11 +78,53 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected struct AccountIdentityType
         {
-            internal const string systemAssigned = "SystemAssigned";
-            internal const string userAssigned = "UserAssigned";
-            internal const string systemAssignedUserAssigned = "SystemAssignedUserAssigned";
-            internal const string none = "None";
+            internal const string SystemAssigned = "SystemAssigned";
+            internal const string UserAssigned = "UserAssigned";
+            internal const string SystemAssignedUserAssigned = "SystemAssignedUserAssigned";
+            internal const string SystemAssignedUserAssignedTrack2 = "SystemAssigned, UserAssigned";
+            internal const string None = "None";
         }
+
+        protected struct RoutingChoiceType
+        {
+            internal const string MicrosoftRouting = "MicrosoftRouting";
+            internal const string InternetRouting = "InternetRouting";
+        }
+
+        protected struct KeyType
+        {
+            internal const string Service = "Service";
+            internal const string Account = "Account";
+        }
+
+        protected struct SkuNameType
+        {
+            internal const string StandardLRS = "Standard_LRS";
+            internal const string StandardGRS = "Standard_GRS";
+            internal const string StandardRagrs = "Standard_RAGRS";
+            internal const string StandardZRS = "Standard_ZRS";
+            internal const string PremiumLRS = "Premium_LRS";
+            internal const string PremiumZRS = "Premium_ZRS";
+            internal const string StandardGzrs = "Standard_GZRS";
+            internal const string StandardRagzrs = "Standard_RAGZRS";
+        }
+
+        protected struct StorageKindType
+        {
+            internal const string Storage = "Storage";
+            internal const string StorageV2 = "StorageV2";
+            internal const string BlobStorage = "BlobStorage";
+            internal const string FileStorage = "FileStorage";
+            internal const string BlockBlobStorage = "BlockBlobStorage";
+        }
+
+        protected struct MinimumTlsVersionType
+        {
+            internal const string TLS10 = "TLS1_0";
+            internal const string TLS11 = "TLS1_1";
+            internal const string TLS12 = "TLS1_2";
+        }
+
 
         [Flags]
         public enum EncryptionSupportServiceEnum
@@ -113,6 +160,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
             set { storageClientWrapper = new StorageManagementClientWrapper(value); }
         }
 
+        private Track2StorageManagementClient _track2StorageManagementClient;
+        public Track2StorageManagementClient StorageClientTrack2
+        {
+            get
+            {
+                return _track2StorageManagementClient ?? (_track2StorageManagementClient = new Track2StorageManagementClient(
+                    Microsoft.Azure.Commands.Common.Authentication.AzureSession.Instance.ClientFactory,
+                    DefaultContext));
+            }
+
+            set { _track2StorageManagementClient = value; }
+        }
+
         public string SubscriptionId
         {
             get
@@ -121,42 +181,40 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
 
-        protected static AccessTier ParseAccessTier(string accessTier)
+
+        protected static Track2Models.AccessTier ParseAccessTier(string accessTier)
         {
-            AccessTier returnAccessTier;
-            if (!Enum.TryParse<AccessTier>(accessTier, true, out returnAccessTier))
+            Track2Models.AccessTier returnAccessTier;
+            if (!Enum.TryParse<Track2Models.AccessTier>(accessTier, true, out returnAccessTier))
             {
                 throw new ArgumentOutOfRangeException("AccessTier");
             }
             return returnAccessTier;
         }
 
-        protected static Encryption ParseEncryption(bool storageEncryption = false, bool keyVaultEncryption = false, string keyName = null, string keyVersion = null, string keyVaultUri = null)
+        protected static Track2Models.Encryption ParseEncryption(bool storageEncryption = false, bool keyVaultEncryption = false, string keyName = null, string keyVersion = null, string keyVaultUri = null)
         {
-            Encryption accountEncryption = new Encryption();
+            Track2Models.Encryption accountEncryption =
+                new Track2Models.Encryption(Track2Models.KeySource.MicrosoftKeyvault);
 
             if (storageEncryption)
             {
-                accountEncryption.KeySource = "Microsoft.Storage";
+                accountEncryption.KeySource = Track2Models.KeySource.MicrosoftStorage;
             }
             if (keyVaultEncryption)
             {
-                accountEncryption.KeySource = "Microsoft.Keyvault";
-                accountEncryption.KeyVaultProperties = new KeyVaultProperties(keyName, keyVersion, keyVaultUri);
+                accountEncryption.KeySource = Track2Models.KeySource.MicrosoftKeyvault;
+                accountEncryption.KeyVaultProperties = new Track2Models.KeyVaultProperties();
+                accountEncryption.KeyVaultProperties.KeyName = keyName;
+                accountEncryption.KeyVaultProperties.KeyVersion = keyVersion;
+                accountEncryption.KeyVaultProperties.KeyVaultUri = new Uri(keyVaultUri);
             }
             return accountEncryption;
         }
 
-        protected void WriteStorageAccount(StorageModels.StorageAccount storageAccount)
+        protected void WriteStorageAccount(Track2.StorageAccountResource storageAccountResource)
         {
-            WriteObject(PSStorageAccount.Create(storageAccount, this.StorageClient));
-        }
-
-        protected void WriteStorageAccountList(IEnumerable<StorageModels.StorageAccount> storageAccounts)
-        {
-            List<PSStorageAccount> output = new List<PSStorageAccount>();
-            storageAccounts.ForEach(storageAccount => output.Add(PSStorageAccount.Create(storageAccount, this.StorageClient)));
-            WriteObject(output, true);
+            WriteObject(PSStorageAccount.Create(storageAccountResource, this.StorageClientTrack2));
         }
 
         public static string GetIdentityTypeString(string inputIdentityType)
@@ -167,21 +225,21 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
 
             // The parameter validate set make sure the value must be systemAssigned or userAssigned or systemAssignedUserAssigned or None
-            if (inputIdentityType.ToLower() == AccountIdentityType.systemAssigned.ToLower())
+            if (inputIdentityType.ToLower() == AccountIdentityType.SystemAssigned.ToLower())
             {
-                return IdentityType.SystemAssigned;
+                return AccountIdentityType.SystemAssigned;
             }
-            if (inputIdentityType.ToLower() == AccountIdentityType.userAssigned.ToLower())
+            if (inputIdentityType.ToLower() == AccountIdentityType.UserAssigned.ToLower())
             {
-                return IdentityType.UserAssigned;
+                return AccountIdentityType.UserAssigned;
             }
-            if (inputIdentityType.ToLower() == AccountIdentityType.systemAssignedUserAssigned.ToLower())
+            if (inputIdentityType.ToLower() == AccountIdentityType.SystemAssignedUserAssigned.ToLower())
             {
-                return IdentityType.SystemAssignedUserAssigned;
+                return AccountIdentityType.SystemAssignedUserAssigned;
             }
-            if (inputIdentityType.ToLower() == AccountIdentityType.none.ToLower())
+            if (inputIdentityType.ToLower() == AccountIdentityType.None.ToLower())
             {
-                return IdentityType.None;
+                return AccountIdentityType.None;
             }
             throw new ArgumentException("The value for AssignIdentityType is not valid, the valid value are: \"None\", \"SystemAssigned\", \"UserAssigned\", or \"SystemAssignedUserAssigned\"", "AssignIdentityType");
         }

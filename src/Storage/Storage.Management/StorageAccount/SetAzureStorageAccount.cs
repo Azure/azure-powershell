@@ -16,12 +16,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
-using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
+using Track2 = Azure.ResourceManager.Models;
+using Track2Models = Azure.ResourceManager.Storage.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Azure.Core;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -78,13 +79,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Sku Name.")]
         [Alias(StorageAccountTypeAlias, AccountTypeAlias, Account_TypeAlias)]
-        [ValidateSet(StorageModels.SkuName.StandardLRS,
-            StorageModels.SkuName.StandardZRS,
-            StorageModels.SkuName.StandardGRS,
-            StorageModels.SkuName.StandardRAGRS,
-            StorageModels.SkuName.PremiumLRS,
-            StorageModels.SkuName.StandardGZRS,
-            StorageModels.SkuName.StandardRAGZRS,
+        [ValidateSet(
+            SkuNameType.StandardLRS,
+            SkuNameType.StandardZRS,
+            SkuNameType.StandardGRS,
+            SkuNameType.StandardRagrs,
+            SkuNameType.PremiumLRS,
+            SkuNameType.StandardGzrs,
+            SkuNameType.StandardRagzrs,
             IgnoreCase = true)]
         public string SkuName { get; set; }
 
@@ -192,10 +194,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Mandatory = false,
             HelpMessage = "Set the new Storage Account Identity type, the idenetity is for use with key management services like Azure KeyVault.")]
-        [ValidateSet(AccountIdentityType.systemAssigned,
-            AccountIdentityType.userAssigned,
-            AccountIdentityType.systemAssignedUserAssigned,
-            AccountIdentityType.none,
+        [ValidateSet(AccountIdentityType.SystemAssigned,
+            AccountIdentityType.UserAssigned,
+            AccountIdentityType.SystemAssignedUserAssigned,
+            AccountIdentityType.None,
             IgnoreCase = true)]
         public string IdentityType { get; set; }
 
@@ -239,8 +241,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(Mandatory = false, HelpMessage = "Routing Choice defines the kind of network routing opted by the user. Possible values include: 'MicrosoftRouting', 'InternetRouting'")]
         [ValidateSet(
-            Microsoft.Azure.Management.Storage.Models.RoutingChoice.MicrosoftRouting,
-            Microsoft.Azure.Management.Storage.Models.RoutingChoice.InternetRouting,
+            RoutingChoiceType.MicrosoftRouting,
+            RoutingChoiceType.InternetRouting,
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string RoutingChoice;
@@ -261,7 +263,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
         private bool? publishMicrosoftEndpoint = null;
-        
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "Indicates whether internet  routing storage endpoints are to be published")]
@@ -278,7 +280,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
         private bool? publishInternetEndpoint = null;
-        
+
         [Parameter(
             Mandatory = true,
             HelpMessage = "Enable Azure Files Active Directory Domain Service Authentication for the storage account.",
@@ -374,9 +376,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Mandatory = false,
             HelpMessage = "The minimum TLS version to be permitted on requests to storage.")]
-        [ValidateSet(StorageModels.MinimumTlsVersion.TLS10,
-            StorageModels.MinimumTlsVersion.TLS11,
-            StorageModels.MinimumTlsVersion.TLS12,
+        [ValidateSet(
+            MinimumTlsVersionType.TLS10,
+            MinimumTlsVersionType.TLS11,
+            MinimumTlsVersionType.TLS12,
             IgnoreCase = true)]
         public string MinimumTlsVersion
         {
@@ -389,7 +392,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 minimumTlsVersion = value;
             }
         }
-        private string minimumTlsVersion = null;    
+        private string minimumTlsVersion = null;
 
         [Parameter(
             Mandatory = false,
@@ -508,25 +511,25 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 if (this.force || this.AccessTier == null || ShouldContinue("Changing the access tier may result in additional charges. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more.", ""))
                 {
-                    StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
+
+                    Track2Models.StorageAccountPatch storageAccountPatch = new Track2Models.StorageAccountPatch();
+
                     if (this.SkuName != null)
                     {
-                        updateParameters.Sku = new Sku(this.SkuName);
+                        storageAccountPatch.Sku = new Track2Models.StorageSku(new Track2Models.StorageSkuName(this.SkuName));
                     }
 
                     if (this.Tag != null)
                     {
                         Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-                        updateParameters.Tags = tagDictionary ?? new Dictionary<string, string>();
+                        tagDictionary.ForEach(kv => storageAccountPatch.Tags.Add(kv.Key, kv.Value));
                     }
 
                     if (this.CustomDomainName != null)
                     {
-                        updateParameters.CustomDomain = new CustomDomain()
-                        {
-                            Name = CustomDomainName,
-                            UseSubDomainName = UseSubDomain
-                        };
+                        storageAccountPatch.CustomDomain = new Track2Models.CustomDomain(this.CustomDomainName);
+                        storageAccountPatch.CustomDomain.UseSubDomainName = this.UseSubDomain;
+
                     }
                     else if (UseSubDomain != null)
                     {
@@ -535,37 +538,45 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                     if (this.AccessTier != null)
                     {
-                        updateParameters.AccessTier = ParseAccessTier(AccessTier);
+                        storageAccountPatch.AccessTier = ParseAccessTier(this.AccessTier);
                     }
                     if (enableHttpsTrafficOnly != null)
                     {
-                        updateParameters.EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
+                        storageAccountPatch.EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
                     }
 
                     if (AssignIdentity.IsPresent || this.UserAssignedIdentityId != null || this.IdentityType != null)
                     {
-                        updateParameters.Identity = new Identity() { Type = StorageModels.IdentityType.SystemAssigned };
+                        storageAccountPatch.Identity = new Track2.ManagedServiceIdentity(Track2.ManagedServiceIdentityType.SystemAssigned);
                         if (this.IdentityType != null)
                         {
-                            updateParameters.Identity.Type = GetIdentityTypeString(this.IdentityType);
+                            if (this.IdentityType == AccountIdentityType.SystemAssignedUserAssigned)
+                            {
+                                storageAccountPatch.Identity.ManagedServiceIdentityType = new Track2.ManagedServiceIdentityType(AccountIdentityType.SystemAssignedUserAssignedTrack2);
+                            } else
+                            {
+                                storageAccountPatch.Identity.ManagedServiceIdentityType = new Track2.ManagedServiceIdentityType(this.IdentityType);
+                            }
                         }
                         if (this.UserAssignedIdentityId != null)
                         {
-                            if (updateParameters.Identity.Type != StorageModels.IdentityType.UserAssigned && updateParameters.Identity.Type != StorageModels.IdentityType.SystemAssignedUserAssigned)
+                            if (storageAccountPatch.Identity.ManagedServiceIdentityType != AccountIdentityType.UserAssigned && storageAccountPatch.Identity.ManagedServiceIdentityType != AccountIdentityType.SystemAssignedUserAssignedTrack2)
                             {
                                 throw new ArgumentException("UserAssignIdentityId should only be specified when AssignIdentityType is UserAssigned or SystemAssignedUserAssigned.", "UserAssignIdentityId");
                             }
-                            updateParameters.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
-                            updateParameters.Identity.UserAssignedIdentities.Add(this.UserAssignedIdentityId, new UserAssignedIdentity());
 
-                            var accountProperties = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (accountProperties.Identity != null && accountProperties.Identity.UserAssignedIdentities != null && accountProperties.Identity.UserAssignedIdentities.Count > 0)
+                            storageAccountPatch.Identity.UserAssignedIdentities.Add(new ResourceIdentifier(this.UserAssignedIdentityId), new global::Azure.ResourceManager.Models.UserAssignedIdentity());
+
+                            var accountProperties = this.StorageClientTrack2.GetSingleStorageAccount(this.ResourceGroupName, this.Name);
+
+
+                            if (accountProperties.Data.Identity != null && accountProperties.Data.Identity.UserAssignedIdentities != null && accountProperties.Data.Identity.UserAssignedIdentities.Count > 0)
                             {
-                                foreach (var uid in accountProperties.Identity.UserAssignedIdentities)
+                                foreach (var uid in accountProperties.Data.Identity.UserAssignedIdentities)
                                 {
-                                    if (!uid.Key.Equals(this.UserAssignedIdentityId, StringComparison.OrdinalIgnoreCase))
+                                    if (!uid.Key.ToString().Equals(this.UserAssignedIdentityId, StringComparison.OrdinalIgnoreCase))
                                     {
-                                        updateParameters.Identity.UserAssignedIdentities.Add(uid.Key, null);
+                                        storageAccountPatch.Identity.UserAssignedIdentities.Add(uid.Key, null);
                                     }
                                 }
                             }
@@ -578,50 +589,61 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         {
                             keyvaultEncryption = true;
                         }
-                        updateParameters.Encryption = ParseEncryption(StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
+
+                        storageAccountPatch.Encryption = ParseEncryption(StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
+
                         if (this.KeyVaultUserAssignedIdentityId != null)
                         {
-                            updateParameters.Encryption.EncryptionIdentity = new EncryptionIdentity();
-                            updateParameters.Encryption.EncryptionIdentity.EncryptionUserAssignedIdentity = this.KeyVaultUserAssignedIdentityId;
+                            storageAccountPatch.Encryption.EncryptionIdentity = new Track2Models.EncryptionIdentity
+                            {
+                                EncryptionUserAssignedIdentity = this.KeyVaultUserAssignedIdentityId
+                            };
                         }
                     }
-                      
+
                     if (NetworkRuleSet != null)
                     {
-                        updateParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
+                        storageAccountPatch.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
                     }
 
                     if (UpgradeToStorageV2.IsPresent)
                     {
-                        updateParameters.Kind = Kind.StorageV2;
+                        storageAccountPatch.Kind = Track2Models.StorageKind.StorageV2;
                     }
                     if (enableAzureActiveDirectoryDomainServicesForFile != null)
                     {
                         if (enableAzureActiveDirectoryDomainServicesForFile.Value) // enable AADDS
                         {
                             //if user want to enable AADDS, must first disable AD
-                            var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication != null 
-                                && originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AD)
+
+                            var originStorageAccount = this.StorageClientTrack2.GetSingleStorageAccount(this.ResourceGroupName, this.Name);
+
+                            if (originStorageAccount.Data.AzureFilesIdentityBasedAuthentication != null
+                                && originStorageAccount.Data.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == Track2Models.DirectoryServiceOptions.AD)
                             {
                                 throw new System.ArgumentException("The Storage account already enabled ActiveDirectoryDomainServicesForFile, please disable it by run this cmdlets with \"-EnableActiveDirectoryDomainServicesForFile $false\" before enable AzureActiveDirectoryDomainServicesForFile.");
                             }
-                            updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
-                            updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADDS;
+
+                            storageAccountPatch.AzureFilesIdentityBasedAuthentication =
+                                new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOptions.Aadds);
+
                         }
                         else //Disable AADDS
                         {
                             // Only disable AADDS; else keep unchanged
-                            var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication == null
-                                || originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AADDS)
+
+                            var originStorageAccount = this.StorageClientTrack2.GetSingleStorageAccount(this.ResourceGroupName, this.Name);
+
+                            if (originStorageAccount.Data.AzureFilesIdentityBasedAuthentication == null
+                                || originStorageAccount.Data.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == Track2Models.DirectoryServiceOptions.Aadds)
                             {
-                                updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
-                                updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
+                                storageAccountPatch.AzureFilesIdentityBasedAuthentication =
+                                    new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOptions.None);
                             }
                             else
                             {
-                                updateParameters.AzureFilesIdentityBasedAuthentication = originStorageAccount.AzureFilesIdentityBasedAuthentication;
+                                storageAccountPatch.AzureFilesIdentityBasedAuthentication = originStorageAccount.Data.AzureFilesIdentityBasedAuthentication;
+
                             }
                         }
                     }
@@ -643,26 +665,26 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             }
 
                             //if user want to enable AD, must first disable AADDS
-                            var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication != null
-                                && originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AADDS)
+
+                            var originStorageAccount = this.StorageClientTrack2.GetSingleStorageAccount(this.ResourceGroupName, this.Name);
+
+
+
+                            if (originStorageAccount.Data.AzureFilesIdentityBasedAuthentication != null
+                                && originStorageAccount.Data.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == Track2Models.DirectoryServiceOptions.Aadds)
                             {
                                 throw new System.ArgumentException("The Storage account already enabled AzureActiveDirectoryDomainServicesForFile, please disable it by run this cmdlets with \"-EnableAzureActiveDirectoryDomainServicesForFile $false\" before enable ActiveDirectoryDomainServicesForFile.");
                             }
 
-                            updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
-                            updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AD;
-                            updateParameters.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties = new ActiveDirectoryProperties()
-                            {
-                                DomainName = this.ActiveDirectoryDomainName,
-                                NetBiosDomainName = this.ActiveDirectoryNetBiosDomainName,
-                                ForestName = this.ActiveDirectoryForestName,
-                                DomainGuid = this.ActiveDirectoryDomainGuid,
-                                DomainSid = this.ActiveDirectoryDomainSid,
-                                AzureStorageSid = this.ActiveDirectoryAzureStorageSid,
-                                SamAccountName = this.ActiveDirectorySamAccountName,
-                                AccountType = this.ActiveDirectoryAccountType
-                            };
+                            storageAccountPatch.AzureFilesIdentityBasedAuthentication =
+                                new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOptions.AD);
+
+                            storageAccountPatch.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties =
+                                new Track2Models.ActiveDirectoryProperties(this.ActiveDirectoryDomainName, this.ActiveDirectoryNetBiosDomainName,
+                                this.ActiveDirectoryForestName, this.ActiveDirectoryDomainGuid, this.ActiveDirectoryDomainSid, this.ActiveDirectoryAzureStorageSid);
+                            storageAccountPatch.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties.SamAccountName = this.ActiveDirectorySamAccountName;
+                            storageAccountPatch.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties.AccountType = this.ActiveDirectoryAccountType;
+
                         }
                         else // Disable AD
                         {
@@ -680,77 +702,97 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             }
 
                             // Only disable AD; else keep unchanged
-                            var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication == null
-                                || originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AD)
+                            var originStorageAccount = this.StorageClientTrack2.GetSingleStorageAccount(this.ResourceGroupName, this.Name);
+
+                            if (originStorageAccount.Data.AzureFilesIdentityBasedAuthentication == null
+                                || originStorageAccount.Data.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == Track2Models.DirectoryServiceOptions.AD)
                             {
-                                updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
-                                updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
+                                storageAccountPatch.AzureFilesIdentityBasedAuthentication =
+                                    new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOptions.AD);
+
                             }
                             else
                             {
-                                updateParameters.AzureFilesIdentityBasedAuthentication = originStorageAccount.AzureFilesIdentityBasedAuthentication;
+                                storageAccountPatch.AzureFilesIdentityBasedAuthentication = originStorageAccount.Data.AzureFilesIdentityBasedAuthentication;
+
                             }
                         }
                     }
                     if (this.DefaultSharePermission != null)
                     {
-                        if (updateParameters.AzureFilesIdentityBasedAuthentication == null)
+                        if (storageAccountPatch.AzureFilesIdentityBasedAuthentication == null)
                         {
-                            updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                            storageAccountPatch.AzureFilesIdentityBasedAuthentication =
+                                new Track2Models.AzureFilesIdentityBasedAuthentication(
+                                    Track2Models.DirectoryServiceOptions.None);
                         }
-                        updateParameters.AzureFilesIdentityBasedAuthentication.DefaultSharePermission = this.DefaultSharePermission;
+
+                        storageAccountPatch.AzureFilesIdentityBasedAuthentication.DefaultSharePermission = this.DefaultSharePermission;
                     }
                     if (this.EnableLargeFileShare.IsPresent)
                     {
-                        updateParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
+                        storageAccountPatch.LargeFileSharesState = Track2Models.LargeFileSharesState.Enabled;
                     }
                     if (this.minimumTlsVersion != null)
                     {
-                        updateParameters.MinimumTlsVersion = this.minimumTlsVersion;
+                        storageAccountPatch.MinimumTlsVersion = this.minimumTlsVersion;
                     }
                     if (this.allowBlobPublicAccess != null)
                     {
-                        updateParameters.AllowBlobPublicAccess = this.allowBlobPublicAccess;
+                        storageAccountPatch.AllowBlobPublicAccess = this.allowBlobPublicAccess;
                     }
                     if (this.RoutingChoice != null || this.publishMicrosoftEndpoint != null || this.publishInternetEndpoint != null)
-                    { 
-                        updateParameters.RoutingPreference = new RoutingPreference(this.RoutingChoice, this.publishMicrosoftEndpoint, this.publishInternetEndpoint);
+                    {
+                        storageAccountPatch.RoutingPreference = new Track2Models.RoutingPreference
+                        {
+                            RoutingChoice = this.RoutingChoice,
+                            PublishInternetEndpoints = this.publishInternetEndpoint,
+                            PublishMicrosoftEndpoints = this.publishMicrosoftEndpoint,
+
+                        };
                     }
                     if (allowSharedKeyAccess != null)
                     {
-                        updateParameters.AllowSharedKeyAccess = allowSharedKeyAccess;
+                        storageAccountPatch.AllowSharedKeyAccess = this.allowSharedKeyAccess;
                     }
                     if (sasExpirationPeriod != null)
                     {
-                        updateParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"));
+                        storageAccountPatch.SasPolicy = new Track2Models.SasPolicy(
+                            this.sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), Track2Models.ExpirationAction.Log);
                     }
                     if (keyExpirationPeriodInDay != null)
                     {
-                        updateParameters.KeyPolicy = new KeyPolicy(keyExpirationPeriodInDay.Value);
+
+                        storageAccountPatch.KeyExpirationPeriodInDays = keyExpirationPeriodInDay.Value;
+
+
                     }
                     if (allowCrossTenantReplication != null)
                     {
-                        updateParameters.AllowCrossTenantReplication = allowCrossTenantReplication;
+                        storageAccountPatch.AllowCrossTenantReplication = this.allowCrossTenantReplication;
                     }
                     if (this.PublicNetworkAccess != null)
                     {
-                        updateParameters.PublicNetworkAccess = this.PublicNetworkAccess;
+                        storageAccountPatch.PublicNetworkAccess = this.PublicNetworkAccess;
                     }
-                    if(this.immutabilityPeriod !=null ||  this.ImmutabilityPolicyState != null)
+                    if (this.immutabilityPeriod != null || this.ImmutabilityPolicyState != null)
                     {
-                        updateParameters.ImmutableStorageWithVersioning = new ImmutableStorageAccount();
-                        updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy = new AccountImmutabilityPolicyProperties();
-                        updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays = this.immutabilityPeriod;
-                        updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.State = this.ImmutabilityPolicyState;
+                        storageAccountPatch.ImmutableStorageWithVersioning = new Track2Models.ImmutableStorageAccount();
+                        storageAccountPatch.ImmutableStorageWithVersioning.ImmutabilityPolicy = new Track2Models.AccountImmutabilityPolicyProperties();
+                        if (this.immutabilityPeriod != null)
+                        {
+                            storageAccountPatch.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays = this.immutabilityPeriod;
+                        }
+                        if (this.ImmutabilityPolicyState != null)
+                        {
+                            storageAccountPatch.ImmutableStorageWithVersioning.ImmutabilityPolicy.State = this.ImmutabilityPolicyState;
+                        }
+
                     }
 
-                    var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
-                        this.ResourceGroupName,
-                        this.Name,
-                        updateParameters);
 
-                    var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+                    var updatedAccountResponse = this.StorageClientTrack2.UpdateStorageAccount(this.ResourceGroupName, this.Name, storageAccountPatch);
+                    var storageAccount = this.StorageClientTrack2.GetSingleStorageAccount(this.ResourceGroupName, this.Name, null);
 
                     WriteStorageAccount(storageAccount);
                 }
