@@ -37,68 +37,92 @@ Gets the specified routing intent that is associated with the specified virtual 
 ```powershell
 New-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan" -Location "westcentralus" -VirtualWANType "Standard" -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
 $virtualWan = Get-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan"
+
 New-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub" -Location "westcentralus" -AddressPrefix "10.0.0.0/16" -VirtualWan $virtualWan
 $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
+
 $fwIp = New-AzFirewallHubPublicIpAddress -Count 1
 $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwIp
+
 New-AzFirewall -Name "testFirewall" -ResourceGroupName "testRg" -Location "westcentralus" -Sku AZFW_Hub -VirtualHubId $virtualHub.Id -HubIPAddress $hubIpAddresses
 $firewall = Get-AzFirewall -Name "testFirewall" -ResourceGroupName "testRg"
-$route1 = New-AzVHubRoute -Name "private-traffic" -Destination @("10.30.0.0/16", "10.40.0.0/16") -DestinationType "CIDR" -NextHop $firewall.Id -NextHopType "ResourceId"
-New-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingIntent" -Route @($route1) -Label @("testLabel")
+
+$policy1 = New-AzRoutingPolicy -Name "PrivateTraffic" -Destination @("PrivateTraffic") -NextHop $firewall.Id
+$policy2 = New-AzRoutingPolicy -Name "PublicTraffic" -Destination @("Internet") -NextHop $firewall.Id
+
+New-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingIntent" -RoutingPolicy @($policy1, $policy2)
 Get-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingIntent"
 ```
 
 ```output
-Name                   : testRoutingIntent
-Id                     : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/testRoutingIntent
-ProvisioningState      : Succeeded
-Labels                 : {testLabel}
-Routes                 : [
-                           {
-                             "Name": "private-traffic",
-                             "DestinationType": "CIDR",
-                             "Destinations": [
-                               "10.30.0.0/16",
-                               "10.40.0.0/16"
-                             ],
-                             "NextHopType": "ResourceId",
-                             "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
-                           }
-                         ]
-AssociatedConnections  : []
-PropagatingConnections : []
+ProvisioningState   : Succeeded
+RoutingPolicies     : {PrivateTraffic, PublicTraffic}
+RoutingPoliciesText : [
+                        {
+                          "Name": "PrivateTraffic",
+                          "DestinationType": "TrafficType",
+                          "Destinations": [
+                            "PrivateTraffic"
+                          ],
+                          "NextHopType": "ResourceId",
+                          "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
+                        },
+                        {
+                          "Name": "PublicTraffic",
+                          "DestinationType": "TrafficType",
+                          "Destinations": [
+                            "Internet"
+                          ],
+                          "NextHopType": "ResourceId",
+                          "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
+                        }
+                      ]
+Name                : testRoutingIntent
+Etag                : W/"etag"
+Id                  : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/routingIntent/testRoutingIntent
+
 ```
 
-This command gets the hub route table of the virtual hub.
+This command gets the routing intent of the virtual hub.
 
 ### Example 2
 
 ```powershell
 $rgName = "testRg"
 $virtualHubName = "testHub"
-Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName
+Get-AzRoutingIntent -Name $riName -VirtualHub $virtualHub
 ```
 
 ```output
-Name                   : defaultRouteTable
-Id                     : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/defaultRouteTable
-ProvisioningState      : Succeeded
-Labels                 : {testLabel}
-Routes                 : []
-AssociatedConnections  : []
-PropagatingConnections : []
+ProvisioningState   : Succeeded
+RoutingPolicies     : {PrivateTraffic, PublicTraffic}
+RoutingPoliciesText : [
+                        {
+                          "Name": "PrivateTraffic",
+                          "DestinationType": "TrafficType",
+                          "Destinations": [
+                            "PrivateTraffic"
+                          ],
+                          "NextHopType": "ResourceId",
+                          "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
+                        },
+                        {
+                          "Name": "PublicTraffic",
+                          "DestinationType": "TrafficType",
+                          "Destinations": [
+                            "Internet"
+                          ],
+                          "NextHopType": "ResourceId",
+                          "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
+                        }
+                      ]
+Name                : testRoutingIntent
+Etag                : W/"etag"
+Id                  : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/routingIntent/testRoutingIntent
 
-
-Name                   : noneRouteTable
-Id                     : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/noneRouteTable
-ProvisioningState      : Succeeded
-Labels                 : {testLabel}
-Routes                 : []
-AssociatedConnections  : []
-PropagatingConnections : []
 ```
 
-This command lists all the hub route tables in the specified VirtualHub.
+This command get the routing intent in the specified VirtualHub.
 
 ## PARAMETERS
 

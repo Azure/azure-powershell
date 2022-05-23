@@ -47,36 +47,35 @@ $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
 
 $fwIp = New-AzFirewallHubPublicIpAddress -Count 1
 $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwIp
+
 New-AzFirewall -Name "testFirewall" -ResourceGroupName "testRg" -Location "westcentralus" -Sku AZFW_Hub -VirtualHubId $virtualHub.Id -HubIPAddress $hubIpAddresses
 $firewall = Get-AzFirewall -Name "testFirewall" -ResourceGroupName "testRg"
 
-$RoutingPolicy1 = New-AzVHubRoutingPolicy -Name "private-traffic-policy" -Destination @("10.30.0.0/16", "10.40.0.0/16") -NextHop $firewall.Id
-New-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingPolicyTable" -RoutingPolicy @($RoutingPolicy1)
-Get-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingPolicyTable"
+$policy1 = New-AzRoutingPolicy -Name "PrivateTraffic" -Destination @("PrivateTraffic") -NextHop $firewall.Id
+New-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingIntent" -RoutingPolicy @($policy1)
 
-$RoutingPolicy2 = New-AzVHubRoutingPolicy -Name "internet-traffic-policy" -Destination @("0.0.0.0/0") -NextHop $firewall.Id
-Set-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingPolicyTable" -RoutingPolicy @($RoutingPolicy2)
-Get-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingPolicyTable"
+$policy2 = New-AzRoutingPolicy -Name "PublicTraffic" -Destination @("Internet") -NextHop $firewall.Id
+Set-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingIntent" -RoutingPolicy @($policy2) 
 ```
 
 ```output
-Name                   : testRoutingPolicyTable
-Id                     : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRoutingPolicyTables/testRoutingPolicyTable
-ProvisioningState      : Succeeded
-Labels                 : {testLabel}
-RoutingPolicys                 : [
-                           {
-                             "Name": "internet-traffic",
-                             "DestinationType": "CIDR",
-                             "Destinations": [
-                               "0.0.0.0/0"
-                             ],
-                             "NextHopType": "ResourceId",
-                             "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
-                           }
-                         ]
-AssociatedConnections  : []
-PropagatingConnections : []
+ProvisioningState   : Succeeded
+RoutingPolicies     : {PublicTraffic}
+RoutingPoliciesText : [
+                        {
+                          "Name": "PublicTraffic",
+                          "DestinationType": "TrafficType",
+                          "Destinations": [
+                            "Internet"
+                          ],
+                          "NextHopType": "ResourceId",
+                          "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
+                        }
+                      ]
+Name                : testRoutingIntent
+Etag                : W/"etag"
+Id                  : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/routingIntent/testRoutingIntent
+
 ```
 
 This command deletes the hub RoutingPolicy table of the virtual hub.

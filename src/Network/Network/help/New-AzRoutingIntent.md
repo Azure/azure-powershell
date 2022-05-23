@@ -46,33 +46,43 @@ $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
 
 $fwIp = New-AzFirewallHubPublicIpAddress -Count 1
 $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwIp
+
 New-AzFirewall -Name "testFirewall" -ResourceGroupName "testRg" -Location "westcentralus" -Sku AZFW_Hub -VirtualHubId $virtualHub.Id -HubIPAddress $hubIpAddresses
 $firewall = Get-AzFirewall -Name "testFirewall" -ResourceGroupName "testRg"
 
-$routingPolicy1 = New-AzRoutingPolicy -Name "private-traffic-policy" -Destination @("10.30.0.0/16", "10.40.0.0/16") -NextHop $firewall.Id
-$routingPolicy2 = New-AzRoutingPolicy -Name "internet-traffic-policy" -Destination @("0.0.0.0/0") -NextHop $firewall.Id
-New-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingIntent" -RoutingPolicy @($routingPolicy1, $routingPolicy2)
+$policy1 = New-AzRoutingPolicy -Name "PrivateTraffic" -Destination @("PrivateTraffic") -NextHop $firewall.Id
+$policy2 = New-AzRoutingPolicy -Name "PublicTraffic" -Destination @("Internet") -NextHop $firewall.Id
+
+New-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingIntent" -RoutingPolicy @($policy1, $policy2)
 ```
 
 ```output
-Name                   : testRoutingIntent
-Id                     : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/testRoutingIntent
-ProvisioningState      : Succeeded
-Labels                 : {testLabel}
-Routes                 : [
-                           {
-                             "Name": "private-traffic",
-                             "DestinationType": "CIDR",
-                             "Destinations": [
-                               "10.30.0.0/16",
-                               "10.40.0.0/16"
-                             ],
-                             "NextHopType": "ResourceId",
-                             "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
-                           }
-                         ]
-AssociatedConnections  : []
-PropagatingConnections : []
+ProvisioningState   : Succeeded
+RoutingPolicies     : {PrivateTraffic, PublicTraffic}
+RoutingPoliciesText : [
+                        {
+                          "Name": "PrivateTraffic",
+                          "DestinationType": "TrafficType",
+                          "Destinations": [
+                            "PrivateTraffic"
+                          ],
+                          "NextHopType": "ResourceId",
+                          "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
+                        },
+                        {
+                          "Name": "PublicTraffic",
+                          "DestinationType": "TrafficType",
+                          "Destinations": [
+                            "Internet"
+                          ],
+                          "NextHopType": "ResourceId",
+                          "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
+                        }
+                      ]
+Name                : testRoutingIntent
+Etag                : W/"etag"
+Id                  : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/routingIntent/testRoutingIntent
+
 ```
 
 This command creates a routing intent of the virtual hub.

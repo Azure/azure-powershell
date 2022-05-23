@@ -27,25 +27,44 @@ Removes the specified routing Policy that is associated with the specified routi
 ```powershell
 New-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan" -Location "westcentralus" -VirtualWANType "Standard" -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
 $virtualWan = Get-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan"
+
 New-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub" -Location "westcentralus" -AddressPrefix "10.0.0.0/16" -VirtualWan $virtualWan
 $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
+
 $fwIp = New-AzFirewallHubPublicIpAddress -Count 1
 $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwIp
+
 New-AzFirewall -Name "testFirewall" -ResourceGroupName "testRg" -Location "westcentralus" -Sku AZFW_Hub -VirtualHubId $virtualHub.Id -HubIPAddress $hubIpAddresses
 $firewall = Get-AzFirewall -Name "testFirewall" -ResourceGroupName "testRg"
-$policy1 = New-AzRoutingPolicy -Name "private-traffic-policy" -Destination @("10.30.0.0/16", "10.40.0.0/16") -NextHop $firewall.Id 
-New-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingIntent" -RoutingPolicy @($policy1) 
+
+$policy1 = New-AzRoutingPolicy -Name "PrivateTraffic" -Destination @("PrivateTraffic") -NextHop $firewall.Id
+$policy2 = New-AzRoutingPolicy -Name "PublicTraffic" -Destination @("Internet") -NextHop $firewall.Id
+
+New-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingIntent" -RoutingPolicy @($policy1, $policy2)
 $routingIntent = Get-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingIntent"
-Remove-AzRoutingPolicy -RoutingIntent $routingIntent -Name "private-traffic-policy"
+
+Remove-AzRoutingPolicy -Name "PrivateTraffic" -RoutingIntent $routingIntent
+Set-AzRoutingIntent -InputObject $routingIntent
 ```
 
 ```output
-Name                   : private-traffic-policy
-Destinations           : [
-                            "10.30.0.0/16",
-                            "10.40.0.0/16"
-                         ]
-NextHop                : "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
+ProvisioningState   : Succeeded
+RoutingPolicies     : {PublicTraffic}
+RoutingPoliciesText : [
+                        {
+                          "Name": "PublicTraffic",
+                          "DestinationType": "TrafficType",
+                          "Destinations": [
+                            "Internet"
+                          ],
+                          "NextHopType": "ResourceId",
+                          "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
+                        }
+                      ]
+Name                : routingIntent1
+Etag                : W/"etag"
+Id                  : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/hub1/routingIntent/routingIntent1
+
 ```
 
 ## PARAMETERS

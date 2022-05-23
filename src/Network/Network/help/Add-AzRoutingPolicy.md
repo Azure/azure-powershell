@@ -29,9 +29,28 @@ $rgName = "testRg"
 $firewallName = "testFirewall"
 $firewall = Get-AzFirewall -Name $firewallName -ResourceGroupName $rgName
 $routingIntent = Get-AzRoutingIntent -Name "routingIntent1" -HubName "hub1" -ResourceGroupName $rgName
-Add-AzRoutingPolicy -Name "privateTrafficPolicy" -RoutingIntent $routingIntent -Destination @("10.0.0.0/8", "192.168.0.0/16") -NextHop $firewall.Id 
+Add-AzRoutingPolicy -Name "PublicTraffic" -RoutingIntent $routingIntent -Destination @("Internet") -NextHop $firewall.Id 
+Set-AzRoutingIntent -InputObject $routingIntent
 ```
+```output
+ProvisioningState   : Succeeded
+RoutingPolicies     : {PublicTraffic}
+RoutingPoliciesText : [
+                        {
+                          "Name": "PublicTraffic",
+                          "DestinationType": "TrafficType",
+                          "Destinations": [
+                            "Internet"
+                          ],
+                          "NextHopType": "ResourceId",
+                          "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
+                        }
+                      ]
+Name                : routingIntent1
+Etag                : W/"etag"
+Id                  : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/hub1/routingIntent/routingIntent1
 
+```
 ## PARAMETERS
 
 ### -AsJob

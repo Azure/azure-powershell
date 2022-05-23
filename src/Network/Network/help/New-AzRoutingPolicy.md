@@ -28,17 +28,16 @@ The **New-AzRoutingPolicy** cmdlet creates a routing policy object. This can be 
 $rgName = "testRg"
 $firewallName = "testFirewall"
 $firewall = Get-AzFirewall -Name $firewallName -ResourceGroupName $rgName
-$policy1 = New-AzRoutingPolicy -Name "privateTrafficPolicy" -Destination @("10.0.0.0/8", "192.168.0.0/16") -NextHop $firewall.Id 
-$policy1
+New-AzRoutingPolicy -Name "PrivateTraffic" -Destination @("PrivateTraffic") -NextHop $firewall.Id 
 ```
 
 ```output
-Name                   : private-traffic-policy
-Destinations           : [
-                            "10.30.0.0/16",
-                            "10.40.0.0/16"
-                         ]
-NextHop                : "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
+Name            : PrivateTraffic
+DestinationType : TrafficType
+Destinations    : {PrivateTraffic}
+NextHopType     : ResourceId
+NextHop         : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall
+
 ```
 
 ## PARAMETERS
