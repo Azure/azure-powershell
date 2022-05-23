@@ -592,10 +592,6 @@
     "alias": "Monitor"
   },
   {
-    "regex": "StackEdge",
-    "alias": "Stack Edge"
-  },
-  {
     "regex": "ConnectedKubernetes",
     "alias": "Connected Kubernetes"
   },
@@ -734,5 +730,9 @@
   {
     "alias": "ConnectedNetwork",
     "module": "ConnectedNetwork"
+  },
+  {
+    "alias": "ServiceLinker",
+    "module": "ServiceLinker"
   }
 ]
