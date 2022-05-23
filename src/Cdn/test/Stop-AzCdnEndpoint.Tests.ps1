@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Stop-AzCdnEndpoint' {
+Describe 'Stop-AzCdnEndpoint' -Tag 'LiveOnly' {
     It 'Stop' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)

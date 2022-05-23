@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnProfileSupportedOpti
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnProfileSupportedOptimizationType' {
+Describe 'Get-AzCdnProfileSupportedOptimizationType' -Tag 'LiveOnly' {
     It 'List' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)

@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnOriginGroup'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnOriginGroup' {
+Describe 'New-AzCdnOriginGroup' -Tag 'LiveOnly' {
     It 'CreateExpanded' {
         { 
             $subId = $env.SubscriptionId

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
 * Migrated module to generated codebase.
 * Added cmdlets:
     - New/Get/Update/Remove-AzHealthcareApisService

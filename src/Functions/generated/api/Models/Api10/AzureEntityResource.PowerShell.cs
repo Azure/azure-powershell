@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10
     using Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell;
 
     /// <summary>
-    /// The resource model definition for a Azure Resource Manager resource with an etag.
+    /// The resource model definition for an Azure Resource Manager resource with an etag.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(AzureEntityResourceTypeConverter))]
     public partial class AzureEntityResource
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10
         /// Creates a new instance of <see cref="AzureEntityResource" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="AzureEntityResource" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10.IAzureEntityResource FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
-    /// The resource model definition for a Azure Resource Manager resource with an etag.
+    /// The resource model definition for an Azure Resource Manager resource with an etag.
     [System.ComponentModel.TypeConverter(typeof(AzureEntityResourceTypeConverter))]
     public partial interface IAzureEntityResource
 

@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Disable-AzCdnCustomDomainCust
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Disable-AzCdnCustomDomainCustomHttps' {
+Describe 'Disable-AzCdnCustomDomainCustomHttps' -Tag 'LiveOnly' {
     It 'Disable' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
