@@ -36,59 +36,59 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the kubernetes cluster.
-  [ClusterResourceName <String>]: The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
-  [ClusterRp <String>]: The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
+  [ClusterResourceName <String>]: The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
+  [ClusterRp <String>]: The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
   [ExtensionName <String>]: Name of the Extension.
+  [FluxConfigurationName <String>]: Name of the Flux Configuration.
   [Id <String>]: Resource identity path
   [OperationId <String>]: operation Id
-  [ResourceGroupName <String>]: The name of the resource group.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
-  [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesextension
 #>
 function Remove-AzKubernetesExtension {
     [Alias('Remove-AzK8sExtension')]
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName = 'Delete', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName = 'Delete', Mandatory)]
+        [Parameter(ParameterSetName='Delete', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the kubernetes cluster.
         ${ClusterName},
 
-        [Parameter(ParameterSetName = 'Delete', Mandatory)]
+        [Parameter(ParameterSetName='Delete', Mandatory)]
         [ValidateSet('ConnectedClusters', 'ManagedClusters')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
-        # The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
+        # The Kubernetes cluster resource name - i.e.
+        # managedClusters, connectedClusters, provisionedClusters.
         ${ClusterType},
 
-        [Parameter(ParameterSetName = 'Delete', Mandatory)]
+        [Parameter(ParameterSetName='Delete', Mandatory)]
         [Alias('ExtensionName')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # Name of the Extension.
         ${Name},
 
-        [Parameter(ParameterSetName = 'Delete', Mandatory)]
+        [Parameter(ParameterSetName='Delete', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'Delete')]
+        [Parameter(ParameterSetName='Delete')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
-        # The Azure subscription ID.
-        # This is a GUID-formatted string (e.g.
-        # 00000000-0000-0000-0000-000000000000)
+        # The ID of the target subscription.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName = 'DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity]
         # Identity Parameter

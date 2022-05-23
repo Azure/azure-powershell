@@ -16,20 +16,22 @@
 
 <#
 .Synopsis
-Patch an existing Kubernetes Cluster Extension.
+This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 .Description
-Patch an existing Kubernetes Cluster Extension.
+This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 .Example
-PS C:\>  Update-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group -ConfigurationProtectedSetting @{"aa"="bb"}
+PS C:\> {{ Add code here }}
 
-Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ReleaseTrain ResourceGroupName
-----                -------------             -------      ----------------- ----------------------- ------------ -----------------
-azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    Stable       azps_test_group
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,20 +49,20 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azkubernetesextension
+https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfigurationflux
 #>
-function Update-AzKubernetesExtension {
-    [Alias('Update-AzK8sExtension')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension])]
-    [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Remove-AzKubernetesConfigurationFlux {
+    [Alias('Remove-AzK8sConfigurationFlux')]
+    [OutputType([System.Boolean])]
+    [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='Delete', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the kubernetes cluster.
         ${ClusterName},
 
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='Delete', Mandatory)]
         [ValidateSet('ConnectedClusters', 'ManagedClusters')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
@@ -68,28 +70,28 @@ function Update-AzKubernetesExtension {
         # managedClusters, connectedClusters, provisionedClusters.
         ${ClusterType},
 
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-        [Alias('ExtensionName')]
+        [Parameter(ParameterSetName='Delete', Mandatory)]
+        [Alias('FluxConfigurationName')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
-        # Name of the Extension.
+        # Name of the Flux Configuration.
         ${Name},
 
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='Delete', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='Delete')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity]
         # Identity Parameter
@@ -97,38 +99,10 @@ function Update-AzKubernetesExtension {
         ${InputObject},
 
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Query')]
         [System.Management.Automation.SwitchParameter]
-        # Flag to note if this extension participates in auto upgrade of minor version, or not.
-        ${AutoUpgradeMinorVersion},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IPatchExtensionPropertiesConfigurationProtectedSettings]))]
-        [System.Collections.Hashtable]
-        # Configuration settings that are sensitive, as name-value pairs for configuring this extension.
-        ${ConfigurationProtectedSetting},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IPatchExtensionPropertiesConfigurationSettings]))]
-        [System.Collections.Hashtable]
-        # Configuration settings, as name-value pairs for configuring this extension.
-        ${ConfigurationSetting},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.String]
-        # ReleaseTrain this extension participates in for auto-upgrade (e.g.
-        # Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
-        ${ReleaseTrain},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.String]
-        # Version of the extension for this extension, if it is 'pinned' to a specific version.
-        # autoUpgradeMinorVersion must be 'false'.
-        ${Version},
+        # Delete the extension resource in Azure - not the normal asynchronous delete.
+        ${ForceDelete},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -170,6 +144,12 @@ function Update-AzKubernetesExtension {
         # Run the command asynchronously
         ${NoWait},
 
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
         [System.Uri]
@@ -188,7 +168,7 @@ function Update-AzKubernetesExtension {
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
-    )
+)
 
     process {
         if ($ClusterType -eq 'ManagedClusters') {
@@ -198,6 +178,6 @@ function Update-AzKubernetesExtension {
             $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 
-        Az.KubernetesConfiguration.internal\Update-AzKubernetesExtension @PSBoundParameters
+        Az.KubernetesConfiguration.internal\Remove-AzKubernetesConfigurationFlux @PSBoundParameters
     }
 }

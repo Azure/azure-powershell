@@ -1,62 +1,45 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfigfluxoperationstatus
 schema: 2.0.0
 ---
 
-# Get-AzKubernetesConfiguration
+# Get-AzKubernetesConfigFluxOperationStatus
 
 ## SYNOPSIS
-Gets details of the Source Control Configuration.
+Get Async Operation status
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
-Get-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -ResourceGroupName <String>
+Get-AzKubernetesConfigFluxOperationStatus -ClusterName <String> -ClusterType <String>
+ -FluxConfigurationName <String> -OperationId <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzKubernetesConfiguration -InputObject <IKubernetesConfigurationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzKubernetesConfigFluxOperationStatus -InputObject <IKubernetesConfigurationIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets details of the Source Control Configuration.
+Get Async Operation status
 
 ## EXAMPLES
 
-### Example 1: List details of the Source Control Configuration.
+### Example 1: Get Async Operation status
 ```powershell
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters
+PS C:\> Get-AzKubernetesConfigFluxOperationStatus -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -FluxConfigurationName azpstestflux-k8s -ResourceGroupName azpstest_gp -OperationId e9871335-7ba8-4100-8cb4-73b3464eb863
 
-Name                 RepositoryUrl          ResourceGroupName
-----                 -------------          -----------------
-azpstestk8s          http://github.com/xxxx azpstest_gp
-azpstestk8s-operator http://github.com/xxxx azpstest_gp
+Name                                 ResourceGroupName Status
+----                                 ----------------- ------
+e9871335-7ba8-4100-8cb4-73b3464eb863 azpstest_gp       Succeeded
 ```
 
-List details of the Source Control Configuration.
-
-### Example 2: Gets details of the Source Control Configuration.
-```powershell
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestk8s
-
-Name        RepositoryUrl          ResourceGroupName
-----        -------------          -----------------
-azpstestk8s http://github.com/xxxx azpstest_gp
-```
-
-Gets details of the Source Control Configuration.
+Get Async Operation status
 
 ## PARAMETERS
 
@@ -65,7 +48,7 @@ The name of the kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -81,7 +64,7 @@ managedClusters, connectedClusters, provisionedClusters.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -106,6 +89,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FluxConfigurationName
+Name of the Flux Configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -122,13 +120,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the Source Control Configuration.
+### -OperationId
+operation Id
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: SourceControlConfigurationName
+Aliases:
 
 Required: True
 Position: Named
@@ -143,7 +141,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -158,7 +156,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -177,13 +175,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IOperationStatusResult
 
 ## NOTES
 
 ALIASES
 
-Get-AzK8sConfiguration
+Get-AzK8sConfigFluxOperationStatus
 
 COMPLEX PARAMETER PROPERTIES
 

@@ -1,47 +1,50 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azkubernetesextension
+online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfigurationflux
 schema: 2.0.0
 ---
 
-# Update-AzKubernetesExtension
+# Remove-AzKubernetesConfigurationFlux
 
 ## SYNOPSIS
-Patch an existing Kubernetes Cluster Extension.
+This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Delete (Default)
 ```
-Update-AzKubernetesExtension -ClusterName <String> -ClusterType <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion]
- [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>] [-ReleaseTrain <String>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ForceDelete] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### DeleteViaIdentity
 ```
-Update-AzKubernetesExtension -InputObject <IKubernetesConfigurationIdentity> [-AutoUpgradeMinorVersion]
- [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>] [-ReleaseTrain <String>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzKubernetesConfigurationFlux -InputObject <IKubernetesConfigurationIdentity> [-ForceDelete]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Patch an existing Kubernetes Cluster Extension.
+This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 
 ## EXAMPLES
 
-### Example 1: Update an existing Kubernetes Cluster Extension.
+### Example 1: This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 ```powershell
-PS C:\> Update-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp -ConfigurationProtectedSetting @{"aa"="bb"}
+PS C:\> Remove-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp
 
-Name               ExtensionType           Version ProvisioningState AutoUpgradeMinorVersion ReleaseTrain
-----               -------------           ------- ----------------- ----------------------- ------------
-azpstest-extension azuremonitor-containers 2.9.2   Succeeded         True                    Stable
 ```
 
-Update an existing Kubernetes Cluster Extension.
+This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
+
+### Example 2: This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
+```powershell
+PS C:\> Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp | Remove-AzKubernetesConfigurationFlux
+
+```
+
+This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 
 ## PARAMETERS
 
@@ -60,27 +63,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutoUpgradeMinorVersion
-Flag to note if this extension participates in auto upgrade of minor version, or not.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ClusterName
 The name of the kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -96,40 +84,10 @@ managedClusters, connectedClusters, provisionedClusters.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigurationProtectedSetting
-Configuration settings that are sensitive, as name-value pairs for configuring this extension.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigurationSetting
-Configuration settings, as name-value pairs for configuring this extension.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,13 +109,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ForceDelete
+Delete the extension resource in Azure - not the normal asynchronous delete.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -168,12 +141,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Extension.
+Name of the Flux Configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: ExtensionName
+Parameter Sets: Delete
+Aliases: FluxConfigurationName
 
 Required: True
 Position: Named
@@ -197,12 +170,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReleaseTrain
-ReleaseTrain this extension participates in for auto-upgrade (e.g.
-Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -219,7 +191,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -234,28 +206,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Version
-Version of the extension for this extension, if it is 'pinned' to a specific version.
-autoUpgradeMinorVersion must be 'false'.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -300,13 +256,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
+### System.Boolean
 
 ## NOTES
 
 ALIASES
 
-Update-AzK8sExtension
+Remove-AzK8sConfigurationFlux
 
 COMPLEX PARAMETER PROPERTIES
 

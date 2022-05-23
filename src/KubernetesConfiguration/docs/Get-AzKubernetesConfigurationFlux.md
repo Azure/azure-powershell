@@ -1,62 +1,61 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfigurationflux
 schema: 2.0.0
 ---
 
-# Get-AzKubernetesConfiguration
+# Get-AzKubernetesConfigurationFlux
 
 ## SYNOPSIS
-Gets details of the Source Control Configuration.
+Gets details of the Flux Configuration.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -ResourceGroupName <String>
+Get-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name <String>
+Get-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzKubernetesConfiguration -InputObject <IKubernetesConfigurationIdentity> [-DefaultProfile <PSObject>]
+Get-AzKubernetesConfigurationFlux -InputObject <IKubernetesConfigurationIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets details of the Source Control Configuration.
+Gets details of the Flux Configuration.
 
 ## EXAMPLES
 
-### Example 1: List details of the Source Control Configuration.
+### Example 1: List details of the Flux Configuration.
 ```powershell
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters
+PS C:\> Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azpstest_gp
 
-Name                 RepositoryUrl          ResourceGroupName
-----                 -------------          -----------------
-azpstestk8s          http://github.com/xxxx azpstest_gp
-azpstestk8s-operator http://github.com/xxxx azpstest_gp
+Name             ResourceGroupName
+----             -----------------
+azpstestflux-k8s azpstest_gp
 ```
 
-List details of the Source Control Configuration.
+List details of the Flux Configuration.
 
-### Example 2: Gets details of the Source Control Configuration.
+### Example 2: Gets details of the Flux Configuration.
 ```powershell
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestk8s
+PS C:\> Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp
 
-Name        RepositoryUrl          ResourceGroupName
-----        -------------          -----------------
-azpstestk8s http://github.com/xxxx azpstest_gp
+Name             ResourceGroupName
+----             -----------------
+azpstestflux-k8s azpstest_gp
 ```
 
-Gets details of the Source Control Configuration.
+Gets details of the Flux Configuration.
 
 ## PARAMETERS
 
@@ -123,12 +122,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Source Control Configuration.
+Name of the Flux Configuration.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: SourceControlConfigurationName
+Aliases: FluxConfigurationName
 
 Required: True
 Position: Named
@@ -177,13 +176,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration
 
 ## NOTES
 
 ALIASES
 
-Get-AzK8sConfiguration
+Get-AzK8sConfigurationFlux
 
 COMPLEX PARAMETER PROPERTIES
 

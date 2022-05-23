@@ -16,20 +16,22 @@
 
 <#
 .Synopsis
-Patch an existing Kubernetes Cluster Extension.
+Gets details of the Flux Configuration.
 .Description
-Patch an existing Kubernetes Cluster Extension.
+Gets details of the Flux Configuration.
 .Example
-PS C:\>  Update-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group -ConfigurationProtectedSetting @{"aa"="bb"}
+PS C:\> {{ Add code here }}
 
-Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ReleaseTrain ResourceGroupName
-----                -------------             -------      ----------------- ----------------------- ------------ -----------------
-azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    Stable       azps_test_group
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,20 +49,22 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azkubernetesextension
+https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfigurationflux
 #>
-function Update-AzKubernetesExtension {
-    [Alias('Update-AzK8sExtension')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension])]
-    [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Get-AzKubernetesConfigurationFlux {
+    [Alias('Get-AzK8sConfigurationFlux')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration])]
+    [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName='List', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the kubernetes cluster.
         ${ClusterName},
 
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName='List', Mandatory)]
         [ValidateSet('ConnectedClusters', 'ManagedClusters')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
@@ -68,67 +72,35 @@ function Update-AzKubernetesExtension {
         # managedClusters, connectedClusters, provisionedClusters.
         ${ClusterType},
 
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-        [Alias('ExtensionName')]
+        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Alias('FluxConfigurationName')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
-        # Name of the Extension.
+        # Name of the Flux Configuration.
         ${Name},
 
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName='List', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='Get')]
+        [Parameter(ParameterSetName='List')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-        [System.String]
+        [System.String[]]
         # The ID of the target subscription.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # Flag to note if this extension participates in auto upgrade of minor version, or not.
-        ${AutoUpgradeMinorVersion},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IPatchExtensionPropertiesConfigurationProtectedSettings]))]
-        [System.Collections.Hashtable]
-        # Configuration settings that are sensitive, as name-value pairs for configuring this extension.
-        ${ConfigurationProtectedSetting},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IPatchExtensionPropertiesConfigurationSettings]))]
-        [System.Collections.Hashtable]
-        # Configuration settings, as name-value pairs for configuring this extension.
-        ${ConfigurationSetting},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.String]
-        # ReleaseTrain this extension participates in for auto-upgrade (e.g.
-        # Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
-        ${ReleaseTrain},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.String]
-        # Version of the extension for this extension, if it is 'pinned' to a specific version.
-        # autoUpgradeMinorVersion must be 'false'.
-        ${Version},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -137,12 +109,6 @@ function Update-AzKubernetesExtension {
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
@@ -164,12 +130,6 @@ function Update-AzKubernetesExtension {
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
-
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
         [System.Uri]
@@ -188,7 +148,7 @@ function Update-AzKubernetesExtension {
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
-    )
+)
 
     process {
         if ($ClusterType -eq 'ManagedClusters') {
@@ -198,6 +158,6 @@ function Update-AzKubernetesExtension {
             $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 
-        Az.KubernetesConfiguration.internal\Update-AzKubernetesExtension @PSBoundParameters
+        Az.KubernetesConfiguration.internal\Get-AzKubernetesConfigurationFlux @PSBoundParameters
     }
 }

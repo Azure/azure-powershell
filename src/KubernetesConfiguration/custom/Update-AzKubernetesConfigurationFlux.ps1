@@ -16,20 +16,22 @@
 
 <#
 .Synopsis
-Patch an existing Kubernetes Cluster Extension.
+Update an existing Kubernetes Flux Configuration.
 .Description
-Patch an existing Kubernetes Cluster Extension.
+Update an existing Kubernetes Flux Configuration.
 .Example
-PS C:\>  Update-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group -ConfigurationProtectedSetting @{"aa"="bb"}
+PS C:\> {{ Add code here }}
 
-Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ReleaseTrain ResourceGroupName
-----                -------------             -------      ----------------- ----------------------- ------------ -----------------
-azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    Stable       azps_test_group
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,11 +49,11 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azkubernetesextension
+https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azkubernetesconfigurationflux
 #>
-function Update-AzKubernetesExtension {
-    [Alias('Update-AzK8sExtension')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension])]
+function Update-AzKubernetesConfigurationFlux {
+    [Alias('Update-AzK8sConfigurationFlux')]
+    [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -69,10 +71,10 @@ function Update-AzKubernetesExtension {
         ${ClusterType},
 
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-        [Alias('ExtensionName')]
+        [Alias('FluxConfigurationName')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
-        # Name of the Extension.
+        # Name of the Flux Configuration.
         ${Name},
 
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -98,37 +100,142 @@ function Update-AzKubernetesExtension {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # Flag to note if this extension participates in auto upgrade of minor version, or not.
-        ${AutoUpgradeMinorVersion},
+        [System.Security.SecureString]
+        # Plaintext access key used to securely access the S3 bucket
+        ${BucketAccessKey},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IPatchExtensionPropertiesConfigurationProtectedSettings]))]
+        [System.Management.Automation.SwitchParameter]
+        # Specify whether to use insecure communication when puling data from the S3 bucket.
+        ${BucketInsecure},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.
+        ${BucketLocalAuthRef},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # The bucket name to sync from the url endpoint for the flux configuration.
+        ${BucketName},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.Int64]
+        # The interval at which to re-reconcile the cluster git repository source with the remote.
+        ${BucketSyncIntervalInSecond},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.Int64]
+        # The maximum time to attempt to reconcile the cluster git repository source with the remote.
+        ${BucketTimeoutInSecond},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # The URL to sync for the flux configuration S3 bucket.
+        ${BucketUrl},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPatchPropertiesConfigurationProtectedSettings]))]
         [System.Collections.Hashtable]
-        # Configuration settings that are sensitive, as name-value pairs for configuring this extension.
+        # Key-value pairs of protected configuration settings for the configuration
         ${ConfigurationProtectedSetting},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IPatchExtensionPropertiesConfigurationSettings]))]
+        [System.String]
+        # Base64-encoded HTTPS certificate authority contents used to access git private git repositories over HTTPS
+        ${GitRepositoryHttpsCaCert},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # Plaintext HTTPS username used to access private git repositories over HTTPS
+        ${GitRepositoryHttpsUser},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.
+        ${GitRepositoryLocalAuthRef},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # Base64-encoded known_hosts value containing public SSH keys required to access private git repositories over SSH
+        ${GitRepositorySshKnownHost},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.Int64]
+        # The interval at which to re-reconcile the cluster git repository source with the remote.
+        ${GitRepositorySyncIntervalInSecond},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.Int64]
+        # The maximum time to attempt to reconcile the cluster git repository source with the remote.
+        ${GitRepositoryTimeoutInSecond},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # The URL to sync for the flux configuration git repository.
+        ${GitRepositoryUrl},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPatchPropertiesKustomizations]))]
         [System.Collections.Hashtable]
-        # Configuration settings, as name-value pairs for configuring this extension.
-        ${ConfigurationSetting},
+        # Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
+        ${Kustomization},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.String]
-        # ReleaseTrain this extension participates in for auto-upgrade (e.g.
-        # Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
-        ${ReleaseTrain},
+        # The git repository branch name to checkout.
+        ${RepositoryRefBranch},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.String]
-        # Version of the extension for this extension, if it is 'pinned' to a specific version.
-        # autoUpgradeMinorVersion must be 'false'.
-        ${Version},
+        # The commit SHA to checkout.
+        # This value must be combined with the branch name to be valid.
+        # This takes precedence over semver.
+        ${RepositoryRefCommit},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # The semver range used to match against git repository tags.
+        # This takes precedence over tag.
+        ${RepositoryRefSemver},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # The git repository tag name to checkout.
+        # This takes precedence over branch.
+        ${RepositoryRefTag},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType]
+        # Source Kind to pull the configuration data from.
+        ${SourceKind},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Whether this configuration should suspend its reconciliation of its kustomizations and sources.
+        ${Suspend},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -188,7 +295,7 @@ function Update-AzKubernetesExtension {
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
-    )
+)
 
     process {
         if ($ClusterType -eq 'ManagedClusters') {
@@ -198,6 +305,6 @@ function Update-AzKubernetesExtension {
             $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 
-        Az.KubernetesConfiguration.internal\Update-AzKubernetesExtension @PSBoundParameters
+        Az.KubernetesConfiguration.internal\Update-AzKubernetesConfigurationFlux @PSBoundParameters
     }
 }
