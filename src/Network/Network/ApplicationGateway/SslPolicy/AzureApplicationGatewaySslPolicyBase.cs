@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
                HelpMessage = "Ssl cipher suites to be enabled in the specified order to application gateway")]
-        [ValidateNotNullOrEmpty]
         public string[] CipherSuite { get; set; }
 
         [Parameter(
