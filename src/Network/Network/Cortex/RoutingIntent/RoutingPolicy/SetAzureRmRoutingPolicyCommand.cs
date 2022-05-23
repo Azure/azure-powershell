@@ -54,6 +54,11 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+            if (this.RoutingIntent == null || this.RoutingIntent.RoutingPolicies == null)
+            {
+                throw new ArgumentException("The given routing intent does not exist nor routing policies.");
+            }
+
             var routingPolicyIndex = this.RoutingIntent.RoutingPolicies.IndexOf(
                 this.RoutingIntent.RoutingPolicies.SingleOrDefault(
                     policy => string.Equals(policy.Name, this.Name, StringComparison.CurrentCultureIgnoreCase)));

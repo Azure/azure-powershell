@@ -42,7 +42,12 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            if(!string.IsNullOrWhiteSpace(this.Name))
+            if (this.RoutingIntent == null || this.RoutingIntent.RoutingPolicies == null)
+            {
+                throw new ArgumentException("The given routing intent does not exist nor routing policies.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.Name))
             {
 
                 var routingPolicy = this.RoutingIntent.RoutingPolicies.SingleOrDefault(

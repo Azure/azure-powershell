@@ -70,9 +70,9 @@ namespace Microsoft.Azure.Commands.Network
             return ToPsRoutingIntent(routingIntentCreated);
         }
 
-        public bool IsRoutingIntentPresent(string resourceGroupName, string parentHubName, string name)
+        public bool IsRoutingIntentPresent(string resourceGroupName, string parentHubName)
         {
-            return IsResourcePresent(() => { GetRoutingIntent(resourceGroupName, parentHubName, name); });
+            return ListRoutingIntents(resourceGroupName, parentHubName).Count > 0;
         }
 
         public void IsParentVirtualHubPresent(string resourceGroupName, string parentHubName)

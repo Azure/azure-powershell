@@ -54,16 +54,23 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            var existingRoutingPolicy = this.RoutingIntent.RoutingPolicies.SingleOrDefault(
-                policy => string.Equals(policy.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
-            if (existingRoutingPolicy != null)
+            if (this.RoutingIntent == null)
             {
-                throw new ArgumentException("RoutingPolicy with specified name already exists");
+                throw new ArgumentException("The given routing intent does not exist.");
             }
 
             if (this.RoutingIntent.RoutingPolicies == null)
             {
                 this.RoutingIntent.RoutingPolicies = new List<PSRoutingPolicy>();
+            }
+            else
+            {
+                var existingRoutingPolicy = this.RoutingIntent.RoutingPolicies.SingleOrDefault(
+                policy => string.Equals(policy.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
+                if (existingRoutingPolicy != null)
+                {
+                    throw new ArgumentException("RoutingPolicy with specified name already exists");
+                }
             }
 
             var routingPolicy = new PSRoutingPolicy

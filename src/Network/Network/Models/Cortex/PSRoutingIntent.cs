@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
+        [Ps1Xml(Label = "Routing Policies", Target = ViewControl.Table)]
         public List<PSRoutingPolicy> RoutingPolicies { get; set; }
 
         [JsonIgnore]
@@ -37,8 +38,24 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Name", Target = ViewControl.Table)]
         public string Name { get; set; }
 
+        public string DestinationType
+        {
+            get
+            {
+                return "TrafficType";
+            }
+        }
+
         [Ps1Xml(Label = "Destinations", Target = ViewControl.Table)]
         public List<string> Destinations { get; set; }
+
+        public string NextHopType
+        {
+            get
+            {
+                return "ResourceId";
+            }
+        }
 
         [Ps1Xml(Label = "Next Hop", Target = ViewControl.Table)]
         public string NextHop { get; set; }

@@ -41,6 +41,11 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            if (this.RoutingIntent == null)
+            {
+                throw new ArgumentException("The given routing intent does not exist.");
+            }
+
             if (this.RoutingIntent.RoutingPolicies == null || !this.RoutingIntent.RoutingPolicies.Any())
             {
                 WriteObject(this.RoutingIntent);

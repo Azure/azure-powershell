@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
         public string ParentResourceId { get; set; }
 
-        [Alias("ResourceName", "RoutingIntentName", "RoutingIntentName")]
+        [Alias("ResourceName", "RoutingIntentName")]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Name of the routing intent resource.")]
@@ -92,9 +92,9 @@ namespace Microsoft.Azure.Commands.Network
                 this.ParentResourceName = parsedResourceId.ResourceName;
             }
 
-            if (this.IsRoutingIntentPresent(this.ResourceGroupName, this.ParentResourceName, this.Name))
+            if (this.IsRoutingIntentPresent(this.ResourceGroupName, this.ParentResourceName))
             {
-                throw new PSArgumentException(string.Format(Properties.Resources.ChildResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName, this.ParentResourceName));
+                throw new PSArgumentException(string.Format(Properties.Resources.SameTypeChildResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName, this.ParentResourceName));
             }
 
             // this will thorw if hub does not exist.
