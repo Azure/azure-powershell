@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+ * Create Some cmdlets:
+    * {Get}-AzKubernetesConfigFluxOperationStatus/AzK8sConfigFluxOperationStatus
+    * {Get/New/Update/Remove}-AzKubernetesConfigurationFlux/AzK8sConfigurationFlux
 
 ## Version 0.5.0
 * Onboarded cmdlets `New/Update/Get/Remove-AzKubernetesExtension` and `New/Get/Remove-AzKubernetesConfiguration`
