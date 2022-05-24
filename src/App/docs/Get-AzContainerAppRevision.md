@@ -34,27 +34,31 @@ Get a revision of a Container App.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List revisions by Resource Group.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppRevision -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
 ```
 
 ```output
-{{ Add output here }}
+Name                       Active TrafficWeight ProvisioningState ResourceGroupName
+----                       ------ ------------- ----------------- -----------------
+azps-containerapp--ksjb6f1 True   100           Provisioned       azpstest_gp
 ```
 
-{{ Add description here }}
+List revisions by Resource Group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a revision of a Container App.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppRevision -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp -RevisionName azps-containerapp--ksjb6f1
 ```
 
 ```output
-{{ Add output here }}
+Name                       Active TrafficWeight ProvisioningState ResourceGroupName
+----                       ------ ------------- ----------------- -----------------
+azps-containerapp--ksjb6f1 True   100           Provisioned       azpstest_gp
 ```
 
-{{ Add description here }}
+Get a revision of a Container App.
 
 ## PARAMETERS
 

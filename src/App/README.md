@@ -58,6 +58,52 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}"].patch.responses
+    transform: >-
+      return {
+          "200": {
+            "description": "Container App updated successfully.",
+            "schema": {
+              "$ref": "#/definitions/ContainerApp"
+            }
+          },
+          "202": {
+            "description": "Patch operation is in progress.",
+            "schema": {
+              "$ref": "#/definitions/ContainerApp"
+            }
+          },
+          "default": {
+            "description": "Common error response.",
+            "schema": {
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/eb2b882ef0a4aa5956ca38cfa566fc4d7cfb3fb0/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
+            }
+          }
+      }
+  # - from: swagger-document 
+  #   where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}"].patch.responses
+  #   transform: >-
+  #     return {
+  #         "200": {
+  #           "description": "Container App updated successfully.",
+  #           "schema": {
+  #             "$ref": "#/definitions/ManagedEnvironment"
+  #           }
+  #         },
+  #         "202": {
+  #           "description": "Patch operation is in progress.",
+  #           "schema": {
+  #             "$ref": "#/definitions/ManagedEnvironment"
+  #           }
+  #         },
+  #         "default": {
+  #           "description": "Common error response.",
+  #           "schema": {
+  #             "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/eb2b882ef0a4aa5956ca38cfa566fc4d7cfb3fb0/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
+  #           }
+  #         }
+  #     }
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
@@ -120,8 +166,6 @@ directive:
   #     - ContainerAppProbe
   #     - VolumeMount
   #     - ScaleRuleAuth
-  #     - CustomScaleRuleMetadata
-  #     - HttpScaleRuleMetadata
   #     - RegistryCredentials
   #     - DaprMetadata
   #     - Secret
@@ -131,7 +175,7 @@ directive:
   #     - Container
   #     - Volume
   #     - IdentityProviders
-  #     - IdentityProvidersCustomOpenIdConnectProviders
+  #     - ContainerAppProbeHttpGetHttpHeadersItem
   - where:
       parameter-name: ComponentName
     set:
@@ -140,4 +184,51 @@ directive:
       parameter-name: EnvironmentName
     set:
       parameter-name: EnvName
+  - where:
+      model-name: ManagedEnvironment
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+  - where:
+      model-name: ContainerApp
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+  - where:
+      model-name: Revision
+    set:
+      format-table:
+        properties:
+          - Name
+          - Active
+          - TrafficWeight
+          - ProvisioningState
+          - ResourceGroupName
+  - where:
+      model-name: DaprComponent
+    set:
+      format-table:
+        properties:
+          - Name
+          - ComponentType
+          - IgnoreError
+          - InitTimeout
+          - ResourceGroupName
+          - Version
+  - where:
+      model-name: ManagedEnvironmentStorage
+    set:
+      format-table:
+        properties:
+          - Name
+          - AzureFileAccessMode
+          - AzureFileAccountName
+          - AzureFileShareName
+          - ResourceGroupName
 ```

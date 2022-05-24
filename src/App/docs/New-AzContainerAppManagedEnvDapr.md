@@ -24,27 +24,22 @@ Creates or updates a Dapr Component in a Managed Environment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Creates or updates a Dapr Component in a Managed Environment.
 ```powershell
-{{ Add code here }}
+$scope = @("container-app-1","container-app-2")
+$secretObject = New-AzSecret -Name "masterkey" -Value "keyvalue"
+$daprMetaData = New-AzDaprMetadata -Name "masterkey" -Value "masterkey"
+
+New-AzContainerAppManagedEnvDapr -DaprName azps-dapr -EnvName azps-env -ResourceGroupName azpstest_gp -componentType state.azure.cosmosdb -Version v1 -IgnoreError:$false -InitTimeout 50s -Scope $scope -Secret $secretObject -Metadata $daprMetaData
 ```
 
 ```output
-{{ Add output here }}
+Name      ComponentType        IgnoreError InitTimeout ResourceGroupName Version
+----      -------------        ----------- ----------- ----------------- -------
+azps-dapr state.azure.cosmosdb False       50s         azpstest_gp       v1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates or updates a Dapr Component in a Managed Environment.
 
 ## PARAMETERS
 

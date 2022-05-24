@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a RegistryCredentials object for ContainerApp.
 ```powershell
-{{ Add code here }}
+New-AzRegistryCredentials -Identity system -PasswordSecretRef "myloginpassword" -Server azps-containerapp -Username azps-container-user
 ```
 
 ```output
-{{ Add output here }}
+Identity PasswordSecretRef Server            Username
+-------- ----------------- ------            --------
+system   myloginpassword   azps-containerapp azps-container-user
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create a RegistryCredentials object for ContainerApp.

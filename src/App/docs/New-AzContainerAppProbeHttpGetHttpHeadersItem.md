@@ -1,50 +1,50 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az./new-AzSecret
+online version: https://docs.microsoft.com/powershell/module/az./new-AzContainerAppProbeHttpGetHttpHeadersItem
 schema: 2.0.0
 ---
 
-# New-AzSecret
+# New-AzContainerAppProbeHttpGetHttpHeadersItem
 
 ## SYNOPSIS
-Create an in-memory object for Secret.
+Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
 
 ## SYNTAX
 
 ```
-New-AzSecret [-Name <String>] [-Value <String>] [<CommonParameters>]
+New-AzContainerAppProbeHttpGetHttpHeadersItem -Name <String> -Value <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for Secret.
+Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
 
 ## EXAMPLES
 
-### Example 1: Create a Secret object for ManagedEnvDaprSecret.
+### Example 1: Create a ContainerAppProbeHttpGetHttpHeadersItem object for ContainerApp.
 ```powershell
-New-AzSecret -Name "masterkey" -Value "keyvalue"
+New-AzContainerAppProbeHttpGetHttpHeadersItem -Name Custom-Header -Value Awesome
 ```
 
 ```output
-Name      Value
-----      -----
-masterkey keyvalue
+Name          Value
+----          -----
+Custom-Header Awesome
 ```
 
-Create a Secret object for ManagedEnvDaprSecret.
+Create a ContainerAppProbeHttpGetHttpHeadersItem object for ContainerApp.
 
 ## PARAMETERS
 
 ### -Name
-Secret Name.
+The header field name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -52,14 +52,14 @@ Accept wildcard characters: False
 ```
 
 ### -Value
-Secret Value.
+The header field value.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -73,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Secret
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem
 
 ## NOTES
 

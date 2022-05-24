@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Managed Environment.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerAppManagedEnv -EnvName azps-env -ResourceGroupName azpstest_gp
 ```
 
-```output
-{{ Add output here }}
-```
+Delete a Managed Environment.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Managed Environment.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnv -EnvName azps-env -ResourceGroupName azpstest_gp | Remove-AzContainerAppManagedEnv
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Delete a Managed Environment.

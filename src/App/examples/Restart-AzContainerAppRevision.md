@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Restarts a revision for a Container App
 ```powershell
-{{ Add code here }}
+Restart-AzContainerAppRevision -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp -RevisionName azps-containerapp--ksjb6f1
+
+Get-AzContainerAppRevision -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
 ```
 
 ```output
-{{ Add output here }}
+Name                       Active TrafficWeight ProvisioningState ResourceGroupName
+----                       ------ ------------- ----------------- -----------------
+azps-containerapp--ksjb6f1 True   100           Provisioned       azpstest_gp
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Restarts a revision for a Container App

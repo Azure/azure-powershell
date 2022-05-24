@@ -1,22 +1,12 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+New-AzContainer -Name azps-containerapp -Image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest -Probe $probe -ResourceCpu 2.0 -ResourceMemory 4.0Gi
 ```
 
 ```output
-{{ Add output here }}
+Arg Command Image                                                       Name
+--- ------- -----                                                       ----
+            mcr.microsoft.com/azuredocs/containerapps-helloworld:latest azps-containerapp
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create an image object for Container.

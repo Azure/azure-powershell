@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Container App.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp
 ```
 
-```output
-{{ Add output here }}
-```
+Delete a Container App.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Container App.
 ```powershell
-{{ Add code here }}
+Get-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp | Remove-AzContainerApp
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Delete a Container App.

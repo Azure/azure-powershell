@@ -45,27 +45,18 @@ Patches a Container App using JSON Merge Patch
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a Container App.
 ```powershell
-{{ Add code here }}
+Update-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -DaprEnabled
 ```
 
 ```output
-{{ Add output here }}
+Location       Name              ResourceGroupName
+--------       ----              -----------------
+Canada Central azps-containerapp azpstest_gp
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update a Container App.
 
 ## PARAMETERS
 
@@ -593,7 +584,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp
 
 ## NOTES
 

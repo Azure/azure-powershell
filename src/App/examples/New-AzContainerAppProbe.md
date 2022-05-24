@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a ContainerAppProb object for ContainerApp.
 ```powershell
-{{ Add code here }}
+New-AzContainerAppProbe -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness
 ```
 
 ```output
-{{ Add output here }}
+FailureThreshold InitialDelaySecond PeriodSecond SuccessThreshold TerminationGracePeriodSecond TimeoutSecond
+---------------- ------------------ ------------ ---------------- ---------------------------- -------------
+                 3                  3
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create a ContainerAppProb object for ContainerApp.

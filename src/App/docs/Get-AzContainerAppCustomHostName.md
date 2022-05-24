@@ -25,7 +25,7 @@ Analyzes a custom hostname for a Container App
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppCustomHostName -ResourceGroupName azpstest_gp -ContainerAppName azps-containerapp
 ```
 
 ```output

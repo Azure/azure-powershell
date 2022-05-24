@@ -39,27 +39,45 @@ Get the properties of a Managed Environment used to host container apps.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the properties of ManagedEnvironments.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnv
 ```
 
 ```output
-{{ Add output here }}
+Location      Name      ResourceGroupName
+--------      ----      -----------------
+canadacentral azcli-env azcli_gp
+canadacentral azps-env  azpstest_gp
 ```
 
-{{ Add description here }}
+List the properties of ManagedEnvironments.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the properties of ManagedEnvironments by Resource Group.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnv -ResourceGroupName azpstest_gp
 ```
 
 ```output
-{{ Add output here }}
+Location      Name     ResourceGroupName
+--------      ----     -----------------
+canadacentral azps-env azpstest_gp
 ```
 
-{{ Add description here }}
+Get the properties of ManagedEnvironments by Resource Group.
+
+### Example 3: Get the properties of a ManagedEnvironment by name.
+```powershell
+Get-AzContainerAppManagedEnv -ResourceGroupName azpstest_gp -EnvName azps-env
+```
+
+```output
+Location      Name     ResourceGroupName
+--------      ----     -----------------
+canadacentral azps-env azpstest_gp
+```
+
+Get the properties of a ManagedEnvironment by name.
 
 ## PARAMETERS
 

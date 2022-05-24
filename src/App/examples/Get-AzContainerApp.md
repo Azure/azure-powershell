@@ -1,22 +1,39 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the properties of a Container App.
 ```powershell
-{{ Add code here }}
+Get-AzContainerApp
 ```
 
 ```output
-{{ Add output here }}
+Location       Name               ResourceGroupName
+--------       ----               -----------------
+Canada Central azcli-containerapp azcli_gp
+Canada Central azps-containerapp  azpstest_gp
 ```
 
-{{ Add description here }}
+List the properties of a Container App.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the properties of a Container App by Resource Group.
 ```powershell
-{{ Add code here }}
+Get-AzContainerApp -ResourceGroupName azpstest_gp
 ```
 
 ```output
-{{ Add output here }}
+Location       Name              ResourceGroupName
+--------       ----              -----------------
+Canada Central azps-containerapp azpstest_gp
 ```
 
-{{ Add description here }}
+Get the properties of a Container App by Resource Group.
 
+### Example 3: Get the properties of a Container App by name.
+```powershell
+Get-AzContainerApp -ResourceGroupName azpstest_gp -Name azps-containerapp
+```
+
+```output
+Location       Name              ResourceGroupName
+--------       ----              -----------------
+Canada Central azps-containerapp azpstest_gp
+```
+
+Get the properties of a Container App by name.

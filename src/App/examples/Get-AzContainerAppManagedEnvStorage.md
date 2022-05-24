@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get storage for a managedEnvironment.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azpstest_gp
 ```
 
 ```output
-{{ Add output here }}
+Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
+----       ------------------- -------------------- ------------------ -----------------
+azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azpstest_gp
 ```
 
-{{ Add description here }}
+Get storage for a managedEnvironment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get storage for a managedEnvironment by StorageName.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azpstest_gp -StorageName azpstestsa
 ```
 
 ```output
-{{ Add output here }}
+Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
+----       ------------------- -------------------- ------------------ -----------------
+azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azpstest_gp
 ```
 
-{{ Add description here }}
-
+Get storage for a managedEnvironment by StorageName.

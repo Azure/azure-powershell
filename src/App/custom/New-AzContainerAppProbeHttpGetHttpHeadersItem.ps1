@@ -16,25 +16,37 @@
 
 <#
 .Synopsis
-Create an in-memory object for IdentityProvidersCustomOpenIdConnectProviders.
+Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
 .Description
-Create an in-memory object for IdentityProvidersCustomOpenIdConnectProviders.
+Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IdentityProvidersCustomOpenIdConnectProviders
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem
 .Link
-https://docs.microsoft.com/powershell/module/az./new-AzIdentityProvidersCustomOpenIdConnectProviders
+https://docs.microsoft.com/powershell/module/az./new-AzContainerAppProbeHttpGetHttpHeadersItem
 #>
-function New-AzIdentityProvidersCustomOpenIdConnectProviders {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IdentityProvidersCustomOpenIdConnectProviders')]
+function New-AzContainerAppProbeHttpGetHttpHeadersItem {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
+        [Parameter(Mandatory, HelpMessage="The header field name.")]
+        [string]
+        $Name,
+        [Parameter(Mandatory, HelpMessage="The header field value.")]
+        [string]
+        $Value
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IdentityProvidersCustomOpenIdConnectProviders]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem]::New()
 
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            $Object.Name = $Name
+        }
+        if ($PSBoundParameters.ContainsKey('Value')) {
+            $Object.Value = $Value
+        }
         return $Object
     }
 }

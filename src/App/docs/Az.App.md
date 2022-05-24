@@ -83,14 +83,14 @@ Create or update storage for a managedEnvironment.
 ### [New-AzContainerAppProbe](New-AzContainerAppProbe.md)
 Create an in-memory object for ContainerAppProbe.
 
+### [New-AzContainerAppProbeHttpGetHttpHeadersItem](New-AzContainerAppProbeHttpGetHttpHeadersItem.md)
+Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
+
 ### [New-AzContainerAppSourceControl](New-AzContainerAppSourceControl.md)
 Create or update the SourceControl for a Container App.
 
 ### [New-AzCustomDomain](New-AzCustomDomain.md)
 Create an in-memory object for CustomDomain.
-
-### [New-AzCustomScaleRuleMetadata](New-AzCustomScaleRuleMetadata.md)
-Create an in-memory object for CustomScaleRuleMetadata.
 
 ### [New-AzDaprMetadata](New-AzDaprMetadata.md)
 Create an in-memory object for DaprMetadata.
@@ -98,14 +98,8 @@ Create an in-memory object for DaprMetadata.
 ### [New-AzEnvironmentVar](New-AzEnvironmentVar.md)
 Create an in-memory object for EnvironmentVar.
 
-### [New-AzHttpScaleRuleMetadata](New-AzHttpScaleRuleMetadata.md)
-Create an in-memory object for HttpScaleRuleMetadata.
-
 ### [New-AzIdentityProviders](New-AzIdentityProviders.md)
 Create an in-memory object for IdentityProviders.
-
-### [New-AzIdentityProvidersCustomOpenIdConnectProviders](New-AzIdentityProvidersCustomOpenIdConnectProviders.md)
-Create an in-memory object for IdentityProvidersCustomOpenIdConnectProviders.
 
 ### [New-AzRegistryCredentials](New-AzRegistryCredentials.md)
 Create an in-memory object for RegistryCredentials.

@@ -29,27 +29,19 @@ Delete storage for a managedEnvironment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete storage for a managedEnvironment.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azpstest_gp -StorageName azpstestsa
 ```
 
-```output
-{{ Add output here }}
-```
+Delete storage for a managedEnvironment.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete storage for a managedEnvironment.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azpstest_gp -StorageName azpstestsa | Remove-AzContainerAppManagedEnvStorage
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete storage for a managedEnvironment.
 
 ## PARAMETERS
 

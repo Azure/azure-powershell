@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a CustomDomain object for ContainerApp.
 ```powershell
-{{ Add code here }}
+$CertificateId = "/subscriptions/{subscriptionid}/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube/certificates/my-certificate-for-my-other-name-dot-com"
+
+New-AzCustomDomain -CertificateId $CertificateId -Name www.my-name.com -BindingType SniEnabled
 ```
 
 ```output
-{{ Add output here }}
+BindingType CertificateId                                                                                                                                                Name
+----------- -------------                                                                                                                                                ----
+SniEnabled  /subscriptions/{subscriptionid}/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube/certificates/my-certificate-for-my-other-name-dot-com www.my-name.com
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create a CustomDomain object for ContainerApp.
