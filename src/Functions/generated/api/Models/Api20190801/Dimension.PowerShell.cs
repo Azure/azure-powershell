@@ -95,10 +95,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).DisplayName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).InternalName = (string) content.GetValueForProperty("InternalName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).InternalName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).ToBeExportedForShoebox = (bool?) content.GetValueForProperty("ToBeExportedForShoebox",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).ToBeExportedForShoebox, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("InternalName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).InternalName = (string) content.GetValueForProperty("InternalName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).InternalName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ToBeExportedForShoebox"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).ToBeExportedForShoebox = (bool?) content.GetValueForProperty("ToBeExportedForShoebox",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).ToBeExportedForShoebox, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -116,10 +128,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).DisplayName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).InternalName = (string) content.GetValueForProperty("InternalName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).InternalName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).ToBeExportedForShoebox = (bool?) content.GetValueForProperty("ToBeExportedForShoebox",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).ToBeExportedForShoebox, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("InternalName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).InternalName = (string) content.GetValueForProperty("InternalName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).InternalName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ToBeExportedForShoebox"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).ToBeExportedForShoebox = (bool?) content.GetValueForProperty("ToBeExportedForShoebox",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal)this).ToBeExportedForShoebox, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -127,7 +151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="Dimension" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="Dimension" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimension FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

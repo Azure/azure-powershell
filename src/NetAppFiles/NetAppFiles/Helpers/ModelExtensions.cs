@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 SecurityOperators = psActiveDirectory.SecurityOperators,
                 LdapOverTLS = psActiveDirectory.LdapOverTLS,
                 AllowLocalNfsUsersWithLdap = psActiveDirectory.AllowLocalNfsUsersWithLdap,
-                Administrators = psActiveDirectory.Administrators
-
+                Administrators = psActiveDirectory.Administrators,
+                EncryptDCConnections = psActiveDirectory.EncryptDCConnections
             }).ToList();
         }
 
@@ -77,7 +77,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 LdapSigning = activeDirectory.LdapSigning,
                 SecurityOperators = activeDirectory.SecurityOperators,
                 LdapOverTLS = activeDirectory.LdapOverTLS,
-                AllowLocalNfsUsersWithLdap = activeDirectory.AllowLocalNfsUsersWithLdap
+                AllowLocalNfsUsersWithLdap = activeDirectory.AllowLocalNfsUsersWithLdap,
+                Administrators = activeDirectory.Administrators,
+                EncryptDCConnections = activeDirectory.EncryptDCConnections
             };
             return psActiveDirectory;
         }
@@ -95,7 +97,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Tags = netAppAccount.Tags,
                 Etag = netAppAccount.Etag,
                 ActiveDirectories = (netAppAccount.ActiveDirectories != null) ? netAppAccount.ActiveDirectories.ConvertToPs(resourceGroupName, netAppAccount.Name) : null,
-                ProvisioningState = netAppAccount.ProvisioningState
+                ProvisioningState = netAppAccount.ProvisioningState,
+                SystemData =  netAppAccount.SystemData?.ToPsSystemData()
             };
         }
 
@@ -117,7 +120,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 QosType = capacityPool.QosType,
                 TotalThroughputMibps = capacityPool.TotalThroughputMibps,
                 UtilizedThroughputMibps = capacityPool.UtilizedThroughputMibps,
-                CoolAccess = capacityPool.CoolAccess
+                CoolAccess = capacityPool.CoolAccess,
+                SystemData = capacityPool.SystemData?.ToPsSystemData()
             };
         }
 
@@ -343,8 +347,25 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 DefaultGroupQuotaInKiBs = volume.DefaultGroupQuotaInKiBs,
                 NetworkFeatures = volume.NetworkFeatures,
                 NetworkSiblingSetId = volume.NetworkSiblingSetId,
-                StorageToNetworkProximity = volume.StorageToNetworkProximity
+                StorageToNetworkProximity = volume.StorageToNetworkProximity,
+                VolumeGroupName = volume.VolumeGroupName,
+                CapacityPoolResourceId = volume.CapacityPoolResourceId,
+                T2Network = volume.T2Network,
+                ProximityPlacementGroup = volume.ProximityPlacementGroup,
+                PlacementRules = volume.PlacementRules?.ToPPSKeyValuePairs(),
+                SystemData = volume.SystemData?.ToPsSystemData(),
+                MaximumNumberOfFiles = volume.MaximumNumberOfFiles,
+                EnableSubvolumes = volume.EnableSubvolumes,
             };
+        }
+
+        public static IList<PSKeyValuePairs> ToPPSKeyValuePairs(this IList<PlacementKeyValuePairs> placementKeysValuePair)
+        {
+            return placementKeysValuePair?.Select(e => new PSKeyValuePairs() { Key = e.Key, Value = e.Value } ).ToList();            
+        }
+        public static IList<PlacementKeyValuePairs> ToPlacementKeyValuePairs(this IList<PSKeyValuePairs> psKeysValuePair)
+        {
+            return psKeysValuePair?.Select(e => new PlacementKeyValuePairs() { Key = e.Key, Value = e.Value }).ToList();
         }
 
         public static PSNetAppFilesSnapshot ToPsNetAppFilesSnapshot(this Management.NetApp.Models.Snapshot snapshot)
@@ -371,6 +392,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 MirrorState = replicationStatus.MirrorState,
                 TotalProgress = replicationStatus.TotalProgress,
                 ErrorMessage = replicationStatus.ErrorMessage
+            };
+        }
+
+        public static PSSystemData ToPsSystemData(this SystemData systemData)
+        {
+            return new PSSystemData
+            {
+                CreatedAt = systemData.CreatedAt,
+                CreatedBy = systemData.CreatedBy,
+                CreatedByType = systemData.CreatedByType,
+                LastModifiedAt = systemData.LastModifiedAt,
+                LastModifiedBy = systemData.LastModifiedBy,
+                LastModifiedByType = systemData.LastModifiedByType
             };
         }
     }

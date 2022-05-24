@@ -113,7 +113,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 },
                 LicenseType = model.LicenseType,
                 MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.MaintenanceConfigurationId, Context.Subscription.Id),
-            });
+                HighAvailabilityReplicaCount = model.HighAvailabilityReplicaCount
+            }); ;
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
         }
@@ -147,6 +148,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 },
                 LicenseType = model.LicenseType,
                 MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.MaintenanceConfigurationId, Context.Subscription.Id),
+                HighAvailabilityReplicaCount = model.HighAvailabilityReplicaCount
             });
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -416,6 +418,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 Family = pool.Sku.Family,
                 LicenseType = pool.LicenseType,
                 MaintenanceConfigurationId = pool.MaintenanceConfigurationId,
+                HighAvailabilityReplicaCount = pool.HighAvailabilityReplicaCount
             };
 
             return model;

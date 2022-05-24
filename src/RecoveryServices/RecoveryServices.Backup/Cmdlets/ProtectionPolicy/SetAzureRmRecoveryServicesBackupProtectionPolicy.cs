@@ -25,7 +25,7 @@ using Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
-{
+{          
     /// <summary>
     /// Update existing protection policy in the recovery services vault
     /// </summary>
@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         public const string ModifyPolicyParamSet = "ModifyPolicyParamSet";
         public const string FixInconsistentPolicyParamSet = "FixPolicyParamSet";
+
         /// <summary>
         /// Policy object to be modified
         /// </summary>
@@ -41,6 +42,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = false, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken, ParameterSetName = ModifyPolicyParamSet)]
+        [ValidateNotNullOrEmpty]
+        public string Token;
 
         /// <summary>
         /// Retention policy object to be modified
@@ -75,6 +80,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
+                bool isMUAOperation = false;
+                if (ParameterSetName == ModifyPolicyParamSet)
+                {
+                    isMUAOperation = true;
+                }
+
                 WriteDebug(string.Format("Input params - Policy: {0}" +
                           "RetentionPolicy:{1}, SchedulePolicy:{2}",
                           Policy == null ? "NULL" : Policy.ToString(),
@@ -90,6 +101,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     ServiceClientAdapter,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
+
                 if (servicePolicy == null)
                 {
                     throw new ArgumentException(string.Format(Resources.PolicyNotFoundException,
@@ -104,20 +116,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { PolicyParams.ProtectionPolicy, Policy },
                         { PolicyParams.RetentionPolicy, RetentionPolicy },
                         { PolicyParams.SchedulePolicy, SchedulePolicy },
-                        { PolicyParams.FixForInconsistentItems, FixForInconsistentItems.IsPresent }
+                        { PolicyParams.FixForInconsistentItems, FixForInconsistentItems.IsPresent },
+                        { ResourceGuardParams.Token, Token },
+                        { ResourceGuardParams.IsMUAOperation, isMUAOperation },
+                        { PolicyParams.ExistingPolicy, servicePolicy}
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
                     Policy.WorkloadType, Policy.BackupManagementType);
-                AzureOperationResponse<ProtectionPolicyResource> policyResponse =
-                    psBackupProvider.ModifyPolicy();
-                WriteDebug("ModifyPolicy http response from service: " +
-                    policyResponse.Response.StatusCode.ToString());
+
+                AzureOperationResponse<ProtectionPolicyResource> policyResponse = psBackupProvider.ModifyPolicy();
+
+                WriteDebug("ModifyPolicy http response from service: " + policyResponse.Response.StatusCode.ToString());
 
                 if (policyResponse.Response.StatusCode == System.Net.HttpStatusCode.Accepted)
                 {
                     // Track OperationStatus URL for operation completion
-
                     string policyName = Policy.Name;
 
                     ServiceClientModel.OperationStatus operationStatus =

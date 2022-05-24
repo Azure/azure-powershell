@@ -40,8 +40,11 @@ Specify the *Filter* parameter to get the compute nodes that match an Open Data 
 ## EXAMPLES
 
 ### Example 1: Get a compute node by ID
+```powershell
+Get-AzBatchComputeNode -PoolId "Pool06" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context
 ```
-PS C:\>Get-AzBatchComputeNode -PoolId "Pool06" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context
+
+```output
 Id                    : tvm-2316545714_1-20150725t213220z
 Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
 State                 : Idle
@@ -63,8 +66,11 @@ This command gets the compute node that has the ID tvm-2316545714_1-20150725t213
 Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Get all idle compute nodes from a pool
+```powershell
+Get-AzBatchComputeNode -PoolId "Pool06" -Filter "state eq 'idle'" -BatchContext $Context
 ```
-PS C:\>Get-AzBatchComputeNode -PoolId "Pool06" -Filter "state eq 'idle'" -BatchContext $Context
+
+```output
 Id                    : tvm-2316545714_1-20150725t213220z
 Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
 State                 : Idle
@@ -102,8 +108,11 @@ This command gets all idle compute nodes that are contained in the pool that has
 The command specifies the idle state by using the *Filter* parameter.
 
 ### Example 3: Get all compute nodes in a specified pool
+```powershell
+Get-AzBatchPool -Id "Pool07" -BatchContext $Context | Get-AzBatchComputeNode -BatchContext $Context
 ```
-PS C:\>Get-AzBatchPool -Id "Pool07" -BatchContext $Context | Get-AzBatchComputeNode -BatchContext $Context
+
+```output
 Id                    : tvm-2316545714_1-20150725t213220z
 Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
 State                 : Idle

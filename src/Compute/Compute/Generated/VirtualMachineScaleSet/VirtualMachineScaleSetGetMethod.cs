@@ -36,6 +36,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class GetAzureRmVmss : ComputeAutomationBaseCmdlet
     {
+        protected const string DefaultParameter = "DefaultParameter";
+        protected const string FriendMethod = "FriendMethod";
+        protected const string OSUpgradeHistoryMethodParameter = "OSUpgradeHistoryMethodParameter";
+        private string UserDataExpand = ExpandTypesForGetVMScaleSets.UserData;
+        
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -46,14 +51,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 if (ShouldGetByName(resourceGroupName, vmScaleSetName))
                 {
-                    if (this.ParameterSetName.Equals("FriendMethod"))
+                    if (this.ParameterSetName.Equals(FriendMethod))
                     {
-                        var result = VirtualMachineScaleSetsClient.GetInstanceView(resourceGroupName, vmScaleSetName);
-                        var psObject = new PSVirtualMachineScaleSetInstanceView();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetInstanceView, PSVirtualMachineScaleSetInstanceView>(result, psObject);
-                        WriteObject(psObject);
+                        if (this.UserData == true)
+                        {
+                            var result = VirtualMachineScaleSetsClient.Get(resourceGroupName, vmScaleSetName, UserDataExpand);
+                            var psObject = new PSVirtualMachineScaleSet();
+                            ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
+                            WriteObject(psObject);
+                        }
+                        else
+                        {
+                            var result = VirtualMachineScaleSetsClient.GetInstanceView(resourceGroupName, vmScaleSetName);
+                            var psObject = new PSVirtualMachineScaleSetInstanceView();
+                            ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetInstanceView, PSVirtualMachineScaleSetInstanceView>(result, psObject);
+                            WriteObject(psObject);
+                        }
                     }
-                    else if (this.ParameterSetName.Equals("OSUpgradeHistoryMethodParameter"))
+                    else if (this.ParameterSetName.Equals(OSUpgradeHistoryMethodParameter))
                     {
                         var result = VirtualMachineScaleSetsClient.GetOSUpgradeHistory(resourceGroupName, vmScaleSetName);
                         var resultList = result.ToList();
@@ -143,13 +158,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string VMScaleSetName { get; set; }
 
         [Parameter(
-            ParameterSetName = "FriendMethod",
+            ParameterSetName = FriendMethod,
             Mandatory = true)]
         public SwitchParameter InstanceView { get; set; }
 
         [Parameter(
-            ParameterSetName = "OSUpgradeHistoryMethodParameter",
+            ParameterSetName = OSUpgradeHistoryMethodParameter,
             Mandatory = true)]
         public SwitchParameter OSUpgradeHistory { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = FriendMethod,
+            HelpMessage = "UserData for the Vmss, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter UserData { get; set; }
     }
 }

@@ -15,14 +15,14 @@ Gets the properties of a VMSS virtual machine.
 
 ### DefaultParameter (Default)
 ```
-Get-AzVmssVM [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [[-InstanceId] <String>]
+Get-AzVmssVM [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [[-InstanceId] <String>] [-UserData]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FriendMethod
 ```
 Get-AzVmssVM [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [[-InstanceId] <String>]
- [-InstanceView] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-InstanceView] [-UserData] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,24 +34,24 @@ Specify the *Status* parameter to get only the instance view of a virtual machin
 ## EXAMPLES
 
 ### Example 1: Get the properties of a VMSS virtual machine
-```
-PS C:\> Get-AzVmssVM -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+```powershell
+Get-AzVmssVM -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 This command gets the properties of the VMSS virtual machine named VMSS001 that belongs to the resource group named Group001.
 Since the command does not specify the *InstanceView* switch parameter, the cmdlet gets the model view of the virtual machine.
 
 ### Example 2: Get the model view properties of a VMSS virtual machine
-```
-PS C:\> Get-AzVmssVM -ResourceGroupName "Group002" -VMScaleSetName "VMSS004" -InstanceId $ID
+```powershell
+Get-AzVmssVM -ResourceGroupName "Group002" -VMScaleSetName "VMSS004" -InstanceId $ID
 ```
 
 This command gets the properties of the VMSS virtual machine named VMSS004 that belongs to the resource group named Group002.
 The command gets the instance ID stored in the variable $ID for which to get the model view.
 
 ### Example 3: Get the instance view properties of a VMSS virtual machine
-```
-PS C:\> Get-AzVmssVM -InstanceView  -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $ID
+```powershell
+Get-AzVmssVM -InstanceView  -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $ID
 ```
 
 This command gets the properties of the VMSS virtual machine named VMSS004 that belongs to the resource group named Group002.
@@ -115,6 +115,21 @@ Aliases:
 
 Required: False
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserData
+UserData for the Vmss, which will be base-64 encoded. Customer should not pass any secrets in here.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -48,9 +48,10 @@ The **Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy** cmdlet sets the l
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName test -WeeklyRetention "P1W"
+Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName test -WeeklyRetention "P1W"
+```
 
-
+```output
 ResourceGroupName   : testResourceGroup
 ManagedInstanceName : testInstance
 DatabaseName        : test
@@ -65,9 +66,10 @@ Configures the database's long term retention weekly policy to one week.
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName target1 -RemovePolicy
+Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName target1 -RemovePolicy
+```
 
-
+```output
 ResourceGroupName   : testResourceGroup
 ManagedInstanceName : testInstance
 DatabaseName        : target1

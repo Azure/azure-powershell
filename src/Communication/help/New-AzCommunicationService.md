@@ -25,8 +25,10 @@ Create a new CommunicationService or update an existing CommunicationService.
 
 ### Example 1: Create a ACS resource
 ```powershell
-PS C:\> New-AzCommunicationService -ResourceGroupName ContosoResourceProvider1 -Name ContosoAcsResource1 -DataLocation UnitedStates -Location Global
+New-AzCommunicationService -ResourceGroupName ContosoResourceProvider1 -Name ContosoAcsResource1 -DataLocation UnitedStates -Location Global
+```
 
+```output
 Location Name           Type                                          AzureAsyncOperation
 -------- ----           ----                                          -------------------
 Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
@@ -127,8 +129,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -143,8 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription ID which uniquely identifies the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -211,7 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
 
 ## NOTES
 

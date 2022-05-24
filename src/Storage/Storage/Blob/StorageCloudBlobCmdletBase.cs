@@ -24,6 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
     using global::Azure.Storage.Files.DataLake.Models;
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.Blob;
+    using Microsoft.Azure.Storage.Shared.Protocol;
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
@@ -72,6 +73,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 return (BlobRequestOptions)GetRequestOptions(StorageServiceType.Blob);
             }
         }
+
+        public DataLakeClientOptions DataLakeClientOptions
+        {
+            get
+            {
+                if (dataLakeClientOptions == null)
+                {
+                    dataLakeClientOptions = new DataLakeClientOptions();
+                    dataLakeClientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+                    return dataLakeClientOptions;
+                }
+                else
+                {
+                    return dataLakeClientOptions;
+                }
+            }
+        }
+        private DataLakeClientOptions dataLakeClientOptions = null;
 
         public BlobClientOptions ClientOptions
         {
@@ -663,20 +682,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage
 
             if (localChannel.StorageContext.StorageAccount.Credentials.IsToken) //Oauth
             {
-                fileSystem = new DataLakeFileSystemClient(fileSystemUri, localChannel.StorageContext.Track2OauthToken);
+                fileSystem = new DataLakeFileSystemClient(fileSystemUri, localChannel.StorageContext.Track2OauthToken, this.DataLakeClientOptions);
             }
             else if (localChannel.StorageContext.StorageAccount.Credentials.IsSAS) //SAS
             {
-                fileSystem = new DataLakeFileSystemClient(new Uri (fileSystemUri.ToString() + "?" + Util.GetSASStringWithoutQuestionMark(localChannel.StorageContext.StorageAccount.Credentials.SASToken)));
+                fileSystem = new DataLakeFileSystemClient(new Uri (fileSystemUri.ToString() + "?" + Util.GetSASStringWithoutQuestionMark(localChannel.StorageContext.StorageAccount.Credentials.SASToken)), this.DataLakeClientOptions);
             }
             else if (localChannel.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
             {
                 fileSystem = new DataLakeFileSystemClient(fileSystemUri,
-                     new StorageSharedKeyCredential(localChannel.StorageContext.StorageAccountName, localChannel.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey()));
+                     new StorageSharedKeyCredential(localChannel.StorageContext.StorageAccountName, localChannel.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey()), this.DataLakeClientOptions);
             }
             else //Anonymous
             {
-                fileSystem = new DataLakeFileSystemClient(fileSystemUri);
+                fileSystem = new DataLakeFileSystemClient(fileSystemUri, this.DataLakeClientOptions);
             }
 
             return fileSystem;
@@ -964,6 +983,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 return true;
             }
             return false;
+        }
+
+        protected void ThrowIfPremium(string exMsgFormat)
+        {
+            AccountProperties accountProperties = Channel.GetAccountProperties();
+            if (accountProperties.SkuName.Contains("Premium"))
+            {
+                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, exMsgFormat, Channel.StorageContext.StorageAccountName));
+            }
         }
     }
 }

@@ -23,6 +23,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Rest.Azure.OData;
+using System;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -54,6 +55,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
 
         /// <summary>
+        /// Auxiliary access token for authenticating critical operation to resource guard subscription
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken, ValueFromPipeline = false)]
+        [ValidateNotNullOrEmpty]
+        public string Token;
+
+        /// <summary>
         /// Prevents the confirmation dialog when specified.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.ForceOption)]
@@ -77,6 +85,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         string vaultName = resourceIdentifier.ResourceName;
                         string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
+                        if (Token != "" && Token != null && !this.DeleteBackupData)
+                        {
+                            throw new ArgumentException(String.Format(Resources.DisableWithRetainBackupNotCrititcal));
+                        }
+
                         PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                             {
@@ -84,6 +97,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { VaultParams.ResourceGroupName, resourceGroupName },
                                 { ItemParams.Item, Item },
                                 { ItemParams.DeleteBackupData, this.DeleteBackupData },
+                                { ResourceGuardParams.Token, Token },
                             }, ServiceClientAdapter);
 
                         IPsBackupProvider psBackupProvider =
@@ -92,7 +106,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         if(DeleteBackupData)
                         {
-                            #region Archived RPS 
+                            #region Archived RPs 
                             // Fetch RecoveryPoints in Archive Tier, if yes throw warning and confirmation prompt
                             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(Item.Id);
                             string containerUri = HelperUtils.GetContainerUri(uriDict, Item.Id);
@@ -118,8 +132,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                queryFilter,
                                vaultName: vaultName,
                                resourceGroupName: resourceGroupName);
-                            
-                            var recoveryPointList = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, Item);                            
+
+                            var recoveryPointList = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, Item);
+
                             recoveryPointList = RecoveryPointConversions.FilterRPsBasedOnTier(recoveryPointList, RecoveryPointTier.VaultArchive);
 
                             #endregion
@@ -143,7 +158,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             else
                             {
                                 var itemResponse = psBackupProvider.DisableProtectionWithDeleteData();
-                                Logger.Instance.WriteDebug("item Response " + JsonConvert.SerializeObject(itemResponse));
+                             
                                 // Track Response and display job details
                                 HandleCreatedJob(
                                         itemResponse,

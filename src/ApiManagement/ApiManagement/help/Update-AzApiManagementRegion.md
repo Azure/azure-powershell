@@ -16,7 +16,8 @@ Updates existing deployment region in PsApiManagement instance.
 ```
 Update-AzApiManagementRegion -ApiManagement <PsApiManagement> -Location <String> -Sku <PsApiManagementSku>
  -Capacity <Int32> [-VirtualNetwork <PsApiManagementVirtualNetwork>] [-Zone <String[]>]
- [-DisableGateway <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DisableGateway <Boolean>] [-PublicIpAddressId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,9 +29,9 @@ To update a deployment of an API Management use the modified **PsApiManagementIn
 
 ### Example 1: Increases capacity of Additional Region in a PsApiManagement instance
 ```powershell
-PS C:\>$apimService = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
-PS C:\>$apimService = Update-AzApiManagementRegion -ApiManagement $apimService -Location "North Central US" -Capacity 2 -Sku Premium
-PS C:\>$apimService = Set-AzApiManagement -InputObject $apimService -PassThru
+$apimService = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+$apimService = Update-AzApiManagementRegion -ApiManagement $apimService -Location "North Central US" -Capacity 2 -Sku Premium
+$apimService = Set-AzApiManagement -InputObject $apimService -PassThru
 ```
 
 This command gets the API Management Premium SKU service, having regions in South Central US and North Central US. It then increases the Capacity of the North Central US region to 2 using the **Set-AzApiManagement**. The next cmdlet **Set-AzApiManagement** applies the configuration change to the Api Management service.
@@ -121,6 +122,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublicIpAddressId
+Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

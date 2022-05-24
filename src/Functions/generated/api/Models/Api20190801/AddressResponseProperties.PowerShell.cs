@@ -66,10 +66,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).ServiceIPAddress = (string) content.GetValueForProperty("ServiceIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).ServiceIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).InternalIPAddress = (string) content.GetValueForProperty("InternalIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).InternalIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).OutboundIPAddress = (string[]) content.GetValueForProperty("OutboundIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).OutboundIPAddress, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).VipMapping = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMapping[]) content.GetValueForProperty("VipMapping",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).VipMapping, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMapping>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VirtualIPMappingTypeConverter.ConvertFrom));
+            if (content.Contains("ServiceIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).ServiceIPAddress = (string) content.GetValueForProperty("ServiceIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).ServiceIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("InternalIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).InternalIPAddress = (string) content.GetValueForProperty("InternalIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).InternalIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("OutboundIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).OutboundIPAddress = (string[]) content.GetValueForProperty("OutboundIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).OutboundIPAddress, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("VipMapping"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).VipMapping = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMapping[]) content.GetValueForProperty("VipMapping",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).VipMapping, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMapping>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VirtualIPMappingTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -87,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).ServiceIPAddress = (string) content.GetValueForProperty("ServiceIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).ServiceIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).InternalIPAddress = (string) content.GetValueForProperty("InternalIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).InternalIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).OutboundIPAddress = (string[]) content.GetValueForProperty("OutboundIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).OutboundIPAddress, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).VipMapping = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMapping[]) content.GetValueForProperty("VipMapping",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).VipMapping, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMapping>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VirtualIPMappingTypeConverter.ConvertFrom));
+            if (content.Contains("ServiceIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).ServiceIPAddress = (string) content.GetValueForProperty("ServiceIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).ServiceIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("InternalIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).InternalIPAddress = (string) content.GetValueForProperty("InternalIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).InternalIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("OutboundIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).OutboundIPAddress = (string[]) content.GetValueForProperty("OutboundIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).OutboundIPAddress, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("VipMapping"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).VipMapping = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMapping[]) content.GetValueForProperty("VipMapping",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponsePropertiesInternal)this).VipMapping, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMapping>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VirtualIPMappingTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -126,7 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="AddressResponseProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="AddressResponseProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressResponseProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

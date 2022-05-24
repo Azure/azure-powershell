@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Fixed the issue of `Get-AzCloudServiceNetworkInterface` and `Get-AzCloudServicePublicIPAddress`.
+
+## Version 1.0.0
+* General availability of 'Az.CloudService' module
+
 ## Version 0.5.0
 * Fixed the issue that RemoteDesktopExtension password is wrong setted.
 

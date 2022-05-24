@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PublicNetworkAccess = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerPublicNetworkAccessState?) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerPublicNetworkAccessState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).DelegatedSubnetResourceId = (string) content.GetValueForProperty("DelegatedSubnetResourceId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).DelegatedSubnetResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PrivateDnsZoneArmResourceId = (string) content.GetValueForProperty("PrivateDnsZoneArmResourceId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PrivateDnsZoneArmResourceId, global::System.Convert.ToString);
+            if (content.Contains("PublicNetworkAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PublicNetworkAccess = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerPublicNetworkAccessState?) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerPublicNetworkAccessState.CreateFrom);
+            }
+            if (content.Contains("DelegatedSubnetResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).DelegatedSubnetResourceId = (string) content.GetValueForProperty("DelegatedSubnetResourceId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).DelegatedSubnetResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateDnsZoneArmResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PrivateDnsZoneArmResourceId = (string) content.GetValueForProperty("PrivateDnsZoneArmResourceId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PrivateDnsZoneArmResourceId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PublicNetworkAccess = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerPublicNetworkAccessState?) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerPublicNetworkAccessState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).DelegatedSubnetResourceId = (string) content.GetValueForProperty("DelegatedSubnetResourceId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).DelegatedSubnetResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PrivateDnsZoneArmResourceId = (string) content.GetValueForProperty("PrivateDnsZoneArmResourceId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PrivateDnsZoneArmResourceId, global::System.Convert.ToString);
+            if (content.Contains("PublicNetworkAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PublicNetworkAccess = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerPublicNetworkAccessState?) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerPublicNetworkAccessState.CreateFrom);
+            }
+            if (content.Contains("DelegatedSubnetResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).DelegatedSubnetResourceId = (string) content.GetValueForProperty("DelegatedSubnetResourceId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).DelegatedSubnetResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateDnsZoneArmResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PrivateDnsZoneArmResourceId = (string) content.GetValueForProperty("PrivateDnsZoneArmResourceId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INetworkInternal)this).PrivateDnsZoneArmResourceId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

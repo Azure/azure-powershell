@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="UsageProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="UsageProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsageProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -104,14 +104,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).DisplayName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ResourceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Unit = (string) content.GetValueForProperty("Unit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Unit, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).CurrentValue = (long?) content.GetValueForProperty("CurrentValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).CurrentValue, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Limit = (long?) content.GetValueForProperty("Limit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Limit, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).NextResetTime = (global::System.DateTime?) content.GetValueForProperty("NextResetTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).NextResetTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ComputeMode = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions?) content.GetValueForProperty("ComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ComputeMode, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).SiteMode = (string) content.GetValueForProperty("SiteMode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).SiteMode, global::System.Convert.ToString);
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Unit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Unit = (string) content.GetValueForProperty("Unit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Unit, global::System.Convert.ToString);
+            }
+            if (content.Contains("CurrentValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).CurrentValue = (long?) content.GetValueForProperty("CurrentValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).CurrentValue, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("Limit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Limit = (long?) content.GetValueForProperty("Limit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Limit, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("NextResetTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).NextResetTime = (global::System.DateTime?) content.GetValueForProperty("NextResetTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).NextResetTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ComputeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ComputeMode = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions?) content.GetValueForProperty("ComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ComputeMode, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions.CreateFrom);
+            }
+            if (content.Contains("SiteMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).SiteMode = (string) content.GetValueForProperty("SiteMode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).SiteMode, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -129,14 +153,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).DisplayName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ResourceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Unit = (string) content.GetValueForProperty("Unit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Unit, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).CurrentValue = (long?) content.GetValueForProperty("CurrentValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).CurrentValue, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Limit = (long?) content.GetValueForProperty("Limit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Limit, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).NextResetTime = (global::System.DateTime?) content.GetValueForProperty("NextResetTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).NextResetTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ComputeMode = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions?) content.GetValueForProperty("ComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ComputeMode, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).SiteMode = (string) content.GetValueForProperty("SiteMode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).SiteMode, global::System.Convert.ToString);
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Unit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Unit = (string) content.GetValueForProperty("Unit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Unit, global::System.Convert.ToString);
+            }
+            if (content.Contains("CurrentValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).CurrentValue = (long?) content.GetValueForProperty("CurrentValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).CurrentValue, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("Limit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Limit = (long?) content.GetValueForProperty("Limit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).Limit, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("NextResetTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).NextResetTime = (global::System.DateTime?) content.GetValueForProperty("NextResetTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).NextResetTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ComputeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ComputeMode = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions?) content.GetValueForProperty("ComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).ComputeMode, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions.CreateFrom);
+            }
+            if (content.Contains("SiteMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).SiteMode = (string) content.GetValueForProperty("SiteMode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUsagePropertiesInternal)this).SiteMode, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).DatastoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes?) content.GetValueForProperty("DatastoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).DatastoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingTypes?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingTypes.CreateFrom);
+            if (content.Contains("DatastoreType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).DatastoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes?) content.GetValueForProperty("DatastoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).DatastoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes.CreateFrom);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingTypes?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingTypes.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).DatastoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes?) content.GetValueForProperty("DatastoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).DatastoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingTypes?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingTypes.CreateFrom);
+            if (content.Contains("DatastoreType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).DatastoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes?) content.GetValueForProperty("DatastoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).DatastoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes.CreateFrom);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingTypes?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSettingInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingTypes.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

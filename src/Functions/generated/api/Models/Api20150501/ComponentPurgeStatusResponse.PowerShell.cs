@@ -66,7 +66,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeStatusResponseInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PurgeState) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeStatusResponseInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PurgeState.CreateFrom);
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeStatusResponseInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PurgeState) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeStatusResponseInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PurgeState.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -84,7 +87,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeStatusResponseInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PurgeState) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeStatusResponseInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PurgeState.CreateFrom);
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeStatusResponseInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PurgeState) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeStatusResponseInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PurgeState.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -120,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         /// Creates a new instance of <see cref="ComponentPurgeStatusResponse" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ComponentPurgeStatusResponse" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeStatusResponse FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

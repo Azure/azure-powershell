@@ -83,6 +83,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.EndOfLifeDate = this.EndOfLifeDate;
                     }
 
+                    if (this.IsParameterBound(c => c.Architecture))
+                    {
+                        galleryImage.Architecture = this.Architecture;
+                    }
+
                     if (this.IsParameterBound(c => c.Tag))
                     {
                         galleryImage.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
@@ -174,6 +179,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             galleryImage.PurchasePlan = new ImagePurchasePlan();
                         }
                         galleryImage.PurchasePlan.Product = this.PurchasePlanProduct;
+                    }
+
+                    if (this.IsParameterBound(c => c.Feature))
+                    {
+                        galleryImage.Features = this.Feature;
                     }
 
                     var result = GalleryImagesClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImage);
@@ -317,6 +327,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public GalleryImageFeature[] Feature { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "CPU architecture supported by an OS disk. Possible values are \"X64\" and \"Arm64\".")]
+        [PSArgumentCompleter("X64", "Arm64")]
+        public string Architecture { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryImageDefinition", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]

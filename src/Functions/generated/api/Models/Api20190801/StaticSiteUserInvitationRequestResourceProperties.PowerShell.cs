@@ -85,7 +85,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="StaticSiteUserInvitationRequestResourceProperties" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourceProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -102,11 +104,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Domain = (string) content.GetValueForProperty("Domain",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Domain, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Provider, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).UserDetail = (string) content.GetValueForProperty("UserDetail",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).UserDetail, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Role = (string) content.GetValueForProperty("Role",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Role, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).NumHoursToExpiration = (int?) content.GetValueForProperty("NumHoursToExpiration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).NumHoursToExpiration, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("Domain"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Domain = (string) content.GetValueForProperty("Domain",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Domain, global::System.Convert.ToString);
+            }
+            if (content.Contains("Provider"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Provider, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).UserDetail = (string) content.GetValueForProperty("UserDetail",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).UserDetail, global::System.Convert.ToString);
+            }
+            if (content.Contains("Role"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Role = (string) content.GetValueForProperty("Role",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Role, global::System.Convert.ToString);
+            }
+            if (content.Contains("NumHoursToExpiration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).NumHoursToExpiration = (int?) content.GetValueForProperty("NumHoursToExpiration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).NumHoursToExpiration, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,11 +141,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Domain = (string) content.GetValueForProperty("Domain",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Domain, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Provider, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).UserDetail = (string) content.GetValueForProperty("UserDetail",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).UserDetail, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Role = (string) content.GetValueForProperty("Role",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Role, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).NumHoursToExpiration = (int?) content.GetValueForProperty("NumHoursToExpiration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).NumHoursToExpiration, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("Domain"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Domain = (string) content.GetValueForProperty("Domain",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Domain, global::System.Convert.ToString);
+            }
+            if (content.Contains("Provider"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Provider, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).UserDetail = (string) content.GetValueForProperty("UserDetail",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).UserDetail, global::System.Convert.ToString);
+            }
+            if (content.Contains("Role"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Role = (string) content.GetValueForProperty("Role",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).Role, global::System.Convert.ToString);
+            }
+            if (content.Contains("NumHoursToExpiration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).NumHoursToExpiration = (int?) content.GetValueForProperty("NumHoursToExpiration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationRequestResourcePropertiesInternal)this).NumHoursToExpiration, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializePSObject(content);
         }
 

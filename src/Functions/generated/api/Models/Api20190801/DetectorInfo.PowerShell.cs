@@ -92,10 +92,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory = (string) content.GetValueForProperty("SubCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId = (string) content.GetValueForProperty("SupportTopicId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId, global::System.Convert.ToString);
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("Category"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory = (string) content.GetValueForProperty("SubCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportTopicId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId = (string) content.GetValueForProperty("SupportTopicId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -113,10 +125,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory = (string) content.GetValueForProperty("SubCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId = (string) content.GetValueForProperty("SupportTopicId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId, global::System.Convert.ToString);
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("Category"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory = (string) content.GetValueForProperty("SubCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportTopicId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId = (string) content.GetValueForProperty("SupportTopicId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -124,7 +148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="DetectorInfo" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="DetectorInfo" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfo FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

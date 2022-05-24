@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="SlotSwapStatus" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="SlotSwapStatus" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatus FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).TimestampUtc = (global::System.DateTime?) content.GetValueForProperty("TimestampUtc",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).TimestampUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).SourceSlotName = (string) content.GetValueForProperty("SourceSlotName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).SourceSlotName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).DestinationSlotName = (string) content.GetValueForProperty("DestinationSlotName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).DestinationSlotName, global::System.Convert.ToString);
+            if (content.Contains("TimestampUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).TimestampUtc = (global::System.DateTime?) content.GetValueForProperty("TimestampUtc",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).TimestampUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SourceSlotName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).SourceSlotName = (string) content.GetValueForProperty("SourceSlotName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).SourceSlotName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DestinationSlotName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).DestinationSlotName = (string) content.GetValueForProperty("DestinationSlotName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).DestinationSlotName, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).TimestampUtc = (global::System.DateTime?) content.GetValueForProperty("TimestampUtc",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).TimestampUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).SourceSlotName = (string) content.GetValueForProperty("SourceSlotName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).SourceSlotName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).DestinationSlotName = (string) content.GetValueForProperty("DestinationSlotName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).DestinationSlotName, global::System.Convert.ToString);
+            if (content.Contains("TimestampUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).TimestampUtc = (global::System.DateTime?) content.GetValueForProperty("TimestampUtc",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).TimestampUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SourceSlotName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).SourceSlotName = (string) content.GetValueForProperty("SourceSlotName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).SourceSlotName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DestinationSlotName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).DestinationSlotName = (string) content.GetValueForProperty("DestinationSlotName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotSwapStatusInternal)this).DestinationSlotName, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

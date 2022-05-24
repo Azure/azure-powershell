@@ -99,12 +99,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequest = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequest) content.GetValueForProperty("ScheduleAvailabilityRequest",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequest, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ScheduleAvailabilityRequestTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequest = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityRequest) content.GetValueForProperty("TransportAvailabilityRequest",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequest, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportAvailabilityRequestTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestStorageLocation = (string) content.GetValueForProperty("ScheduleAvailabilityRequestStorageLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestStorageLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestSkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("ScheduleAvailabilityRequestSkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestSkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestCountry = (string) content.GetValueForProperty("ScheduleAvailabilityRequestCountry",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestCountry, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequestSkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName?) content.GetValueForProperty("TransportAvailabilityRequestSkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequestSkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            if (content.Contains("ScheduleAvailabilityRequest"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequest = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequest) content.GetValueForProperty("ScheduleAvailabilityRequest",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequest, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ScheduleAvailabilityRequestTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TransportAvailabilityRequest"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequest = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityRequest) content.GetValueForProperty("TransportAvailabilityRequest",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequest, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportAvailabilityRequestTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ScheduleAvailabilityRequestStorageLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestStorageLocation = (string) content.GetValueForProperty("ScheduleAvailabilityRequestStorageLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestStorageLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScheduleAvailabilityRequestSkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestSkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("ScheduleAvailabilityRequestSkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestSkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            }
+            if (content.Contains("ScheduleAvailabilityRequestCountry"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestCountry = (string) content.GetValueForProperty("ScheduleAvailabilityRequestCountry",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestCountry, global::System.Convert.ToString);
+            }
+            if (content.Contains("TransportAvailabilityRequestSkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequestSkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName?) content.GetValueForProperty("TransportAvailabilityRequestSkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequestSkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,12 +140,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequest = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequest) content.GetValueForProperty("ScheduleAvailabilityRequest",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequest, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ScheduleAvailabilityRequestTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequest = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityRequest) content.GetValueForProperty("TransportAvailabilityRequest",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequest, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportAvailabilityRequestTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestStorageLocation = (string) content.GetValueForProperty("ScheduleAvailabilityRequestStorageLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestStorageLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestSkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("ScheduleAvailabilityRequestSkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestSkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestCountry = (string) content.GetValueForProperty("ScheduleAvailabilityRequestCountry",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestCountry, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequestSkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName?) content.GetValueForProperty("TransportAvailabilityRequestSkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequestSkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            if (content.Contains("ScheduleAvailabilityRequest"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequest = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequest) content.GetValueForProperty("ScheduleAvailabilityRequest",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequest, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ScheduleAvailabilityRequestTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TransportAvailabilityRequest"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequest = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityRequest) content.GetValueForProperty("TransportAvailabilityRequest",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequest, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportAvailabilityRequestTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ScheduleAvailabilityRequestStorageLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestStorageLocation = (string) content.GetValueForProperty("ScheduleAvailabilityRequestStorageLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestStorageLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScheduleAvailabilityRequestSkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestSkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("ScheduleAvailabilityRequestSkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestSkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            }
+            if (content.Contains("ScheduleAvailabilityRequestCountry"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestCountry = (string) content.GetValueForProperty("ScheduleAvailabilityRequestCountry",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).ScheduleAvailabilityRequestCountry, global::System.Convert.ToString);
+            }
+            if (content.Contains("TransportAvailabilityRequestSkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequestSkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName?) content.GetValueForProperty("TransportAvailabilityRequestSkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IRegionConfigurationRequestInternal)this).TransportAvailabilityRequestSkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

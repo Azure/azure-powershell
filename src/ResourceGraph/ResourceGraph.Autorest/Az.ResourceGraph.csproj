@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PsModuleName>ResourceGraph</PsModuleName>
+    <PsRootModuleName>ResourceGraph</PsRootModuleName>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.autorest.hybrid.props" />

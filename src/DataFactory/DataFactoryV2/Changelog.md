@@ -18,7 +18,28 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated ADF .Net SDK version to 4.27.0
+
+## Version 1.16.7
+* Updated ADF .Net SDK version to 6.1.0
+* Fixed Set-AzDataFactoryV2 -InputObject not correct with PublicNetworkAccess Parameter
+
+## Version 1.16.6
+* Updated ADF .Net SDK version to 6.0.0
+
+## Version 1.16.5
+* Updated ADF .Net SDK version to 5.4.0
+
+## Version 1.16.4
+* Updated ADF .Net SDK version to 5.2.0
+
+## Version 1.16.3
+* Updated ADF .Net SDK version to 5.1.0
+
+## Version 1.16.2
+* Updated ADF .Net SDK version to 5.0.0
+
+## Version 1.16.1
+* Updated ADF .Net SDK version to 4.28.0
 
 ## Version 1.16.0
 * Added PublicNetworkAccess to Update_AzDataFactoryV2 Command

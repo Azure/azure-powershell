@@ -84,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="MigrateMySqlRequestProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="MigrateMySqlRequestProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,8 +101,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString = (string) content.GetValueForProperty("ConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType) content.GetValueForProperty("MigrationType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType.CreateFrom);
+            if (content.Contains("ConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString = (string) content.GetValueForProperty("ConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString, global::System.Convert.ToString);
+            }
+            if (content.Contains("MigrationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType) content.GetValueForProperty("MigrationType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,8 +126,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString = (string) content.GetValueForProperty("ConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType) content.GetValueForProperty("MigrationType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType.CreateFrom);
+            if (content.Contains("ConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString = (string) content.GetValueForProperty("ConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString, global::System.Convert.ToString);
+            }
+            if (content.Contains("MigrationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType) content.GetValueForProperty("MigrationType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

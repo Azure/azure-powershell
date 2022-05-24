@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// Creates a new instance of <see cref="KeyVaultProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="KeyVaultProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyName = (string) content.GetValueForProperty("KeyName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVersion = (string) content.GetValueForProperty("KeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVaultUri = (string) content.GetValueForProperty("KeyVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVaultUri, global::System.Convert.ToString);
+            if (content.Contains("KeyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyName = (string) content.GetValueForProperty("KeyName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVersion = (string) content.GetValueForProperty("KeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVaultUri = (string) content.GetValueForProperty("KeyVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVaultUri, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyName = (string) content.GetValueForProperty("KeyName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVersion = (string) content.GetValueForProperty("KeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVaultUri = (string) content.GetValueForProperty("KeyVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVaultUri, global::System.Convert.ToString);
+            if (content.Contains("KeyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyName = (string) content.GetValueForProperty("KeyName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVersion = (string) content.GetValueForProperty("KeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVaultUri = (string) content.GetValueForProperty("KeyVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)this).KeyVaultUri, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

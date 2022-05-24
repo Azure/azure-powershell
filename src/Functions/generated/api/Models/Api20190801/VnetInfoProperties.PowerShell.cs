@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="VnetInfoProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="VnetInfoProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -104,13 +104,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).VnetResourceId = (string) content.GetValueForProperty("VnetResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).VnetResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertThumbprint = (string) content.GetValueForProperty("CertThumbprint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertThumbprint, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertBlob = (string) content.GetValueForProperty("CertBlob",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertBlob, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).Route = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoute[]) content.GetValueForProperty("Route",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).Route, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoute>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetRouteTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).ResyncRequired = (bool?) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).ResyncRequired, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).DnsServer = (string) content.GetValueForProperty("DnsServer",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).DnsServer, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).IsSwift = (bool?) content.GetValueForProperty("IsSwift",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).IsSwift, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("VnetResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).VnetResourceId = (string) content.GetValueForProperty("VnetResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).VnetResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("CertThumbprint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertThumbprint = (string) content.GetValueForProperty("CertThumbprint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertThumbprint, global::System.Convert.ToString);
+            }
+            if (content.Contains("CertBlob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertBlob = (string) content.GetValueForProperty("CertBlob",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertBlob, global::System.Convert.ToString);
+            }
+            if (content.Contains("Route"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).Route = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoute[]) content.GetValueForProperty("Route",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).Route, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoute>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetRouteTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ResyncRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).ResyncRequired = (bool?) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).ResyncRequired, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DnsServer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).DnsServer = (string) content.GetValueForProperty("DnsServer",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).DnsServer, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsSwift"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).IsSwift = (bool?) content.GetValueForProperty("IsSwift",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).IsSwift, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -128,13 +149,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).VnetResourceId = (string) content.GetValueForProperty("VnetResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).VnetResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertThumbprint = (string) content.GetValueForProperty("CertThumbprint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertThumbprint, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertBlob = (string) content.GetValueForProperty("CertBlob",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertBlob, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).Route = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoute[]) content.GetValueForProperty("Route",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).Route, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoute>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetRouteTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).ResyncRequired = (bool?) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).ResyncRequired, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).DnsServer = (string) content.GetValueForProperty("DnsServer",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).DnsServer, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).IsSwift = (bool?) content.GetValueForProperty("IsSwift",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).IsSwift, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("VnetResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).VnetResourceId = (string) content.GetValueForProperty("VnetResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).VnetResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("CertThumbprint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertThumbprint = (string) content.GetValueForProperty("CertThumbprint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertThumbprint, global::System.Convert.ToString);
+            }
+            if (content.Contains("CertBlob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertBlob = (string) content.GetValueForProperty("CertBlob",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).CertBlob, global::System.Convert.ToString);
+            }
+            if (content.Contains("Route"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).Route = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoute[]) content.GetValueForProperty("Route",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).Route, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoute>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetRouteTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ResyncRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).ResyncRequired = (bool?) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).ResyncRequired, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DnsServer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).DnsServer = (string) content.GetValueForProperty("DnsServer",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).DnsServer, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsSwift"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).IsSwift = (bool?) content.GetValueForProperty("IsSwift",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetInfoPropertiesInternal)this).IsSwift, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
     }

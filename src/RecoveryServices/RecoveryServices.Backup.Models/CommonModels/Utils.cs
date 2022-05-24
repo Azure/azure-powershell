@@ -42,6 +42,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public const int AfsYearlyRetentionMax = 10;
         public const int AfsYearlyRetentionMin = 1;
 
+        //Hourly policy constants 
+        public const int AfsHourlyWindowDurationMin = 4;
+        public const int AfsHourlyWindowDurationMax = 23;       
+
         /// <summary>
         /// Maximum number of days in a month.
         /// </summary>
@@ -223,7 +227,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 case ServiceClientModel.BackupManagementType.AzureIaasVM:
                     return BackupManagementType.AzureVM;
                 case ServiceClientModel.BackupManagementType.MAB:
-                    return BackupManagementType.MARS;
+                    return BackupManagementType.MAB;
                 case ServiceClientModel.BackupManagementType.DPM:
                     return BackupManagementType.SCDPM;
                 case ServiceClientModel.BackupManagementType.AzureBackupServer:
@@ -303,6 +307,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             else if (workloadType == "SQL")
             {
                 return WorkloadType.MSSQL;
+            }
+            else if (workloadType == ServiceClientModel.WorkloadType.SAPHanaDatabase)
+            {
+                return WorkloadType.SAPHanaDatabase;
             }
             else if (workloadType == ServiceClientModel.WorkloadType.FileFolder)
             {

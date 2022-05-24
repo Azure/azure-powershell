@@ -94,12 +94,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Metadata = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfo) content.GetValueForProperty("Metadata",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Metadata, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DetectorInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Dataset = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDiagnosticData[]) content.GetValueForProperty("Dataset",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Dataset, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDiagnosticData>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DiagnosticDataTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataDescription = (string) content.GetValueForProperty("MetadataDescription",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataDescription, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataCategory = (string) content.GetValueForProperty("MetadataCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataCategory, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSubCategory = (string) content.GetValueForProperty("MetadataSubCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSubCategory, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSupportTopicId = (string) content.GetValueForProperty("MetadataSupportTopicId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSupportTopicId, global::System.Convert.ToString);
+            if (content.Contains("Metadata"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Metadata = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfo) content.GetValueForProperty("Metadata",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Metadata, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DetectorInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Dataset"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Dataset = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDiagnosticData[]) content.GetValueForProperty("Dataset",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Dataset, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDiagnosticData>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DiagnosticDataTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("MetadataDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataDescription = (string) content.GetValueForProperty("MetadataDescription",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataDescription, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetadataCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataCategory = (string) content.GetValueForProperty("MetadataCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataCategory, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetadataSubCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSubCategory = (string) content.GetValueForProperty("MetadataSubCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSubCategory, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetadataSupportTopicId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSupportTopicId = (string) content.GetValueForProperty("MetadataSupportTopicId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSupportTopicId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,12 +135,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Metadata = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfo) content.GetValueForProperty("Metadata",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Metadata, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DetectorInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Dataset = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDiagnosticData[]) content.GetValueForProperty("Dataset",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Dataset, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDiagnosticData>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DiagnosticDataTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataDescription = (string) content.GetValueForProperty("MetadataDescription",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataDescription, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataCategory = (string) content.GetValueForProperty("MetadataCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataCategory, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSubCategory = (string) content.GetValueForProperty("MetadataSubCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSubCategory, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSupportTopicId = (string) content.GetValueForProperty("MetadataSupportTopicId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSupportTopicId, global::System.Convert.ToString);
+            if (content.Contains("Metadata"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Metadata = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfo) content.GetValueForProperty("Metadata",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Metadata, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DetectorInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Dataset"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Dataset = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDiagnosticData[]) content.GetValueForProperty("Dataset",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).Dataset, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDiagnosticData>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DiagnosticDataTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("MetadataDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataDescription = (string) content.GetValueForProperty("MetadataDescription",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataDescription, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetadataCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataCategory = (string) content.GetValueForProperty("MetadataCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataCategory, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetadataSubCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSubCategory = (string) content.GetValueForProperty("MetadataSubCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSubCategory, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetadataSupportTopicId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSupportTopicId = (string) content.GetValueForProperty("MetadataSupportTopicId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponsePropertiesInternal)this).MetadataSupportTopicId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -130,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="DetectorResponseProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="DetectorResponseProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorResponseProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

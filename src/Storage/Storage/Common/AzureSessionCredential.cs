@@ -12,7 +12,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     public delegate void DebugLogWriter(string log);
     public class AzureSessionCredential : TokenCredential
     {
-        public AzureSessionCredential(IAzureContext DefaultContext, DebugLogWriter logWriter = null)
+        public AzureSessionCredential(IAzureContext DefaultContext, DebugLogWriter logWriter = null, string customAudience = null)
         {
             if (DefaultContext == null || DefaultContext.Account == null)
             {
@@ -23,15 +23,30 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 this.debugLogWriter = logWriter;
             }
 
-            IAccessToken accessToken1 = AzureSession.Instance.AuthenticationFactory.Authenticate(
-               DefaultContext.Account,
-               EnsureStorageOAuthAudienceSet(DefaultContext.Environment),
-               DefaultContext.Tenant.Id,
-               null,
-               ShowDialog.Never,
-               null,
-               StorageOAuthEndpointResourceKey);
-            accessToken =  accessToken1;
+            if (customAudience != null)
+            {
+                IAccessToken accessToken1 = AzureSession.Instance.AuthenticationFactory.Authenticate(
+                   DefaultContext.Account,
+                   EnsureCustomAudienceSet(DefaultContext.Environment, customAudience),
+                   DefaultContext.Tenant.Id,
+                   null,
+                   ShowDialog.Never,
+                   null,
+                   customAudience);
+                accessToken = accessToken1;
+            }
+            else 
+            { 
+                IAccessToken accessToken1 = AzureSession.Instance.AuthenticationFactory.Authenticate(
+                   DefaultContext.Account,
+                   EnsureStorageOAuthAudienceSet(DefaultContext.Environment),
+                   DefaultContext.Tenant.Id,
+                   null,
+                   ShowDialog.Never,
+                   null,
+                   StorageOAuthEndpointResourceKey);
+                accessToken = accessToken1;
+            }
         }
 
         public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
@@ -41,10 +56,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 token = new AccessToken(tokenValue, DateTimeOffset.UtcNow);
             });
+#if DEBUG 
             if (this.debugLogWriter != null)
             {
                 this.debugLogWriter("[" + DateTime.Now.ToString() + "] GetToken: " + token.Token);
             }
+#endif
             return token;
         }
 
@@ -76,6 +93,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             return environment;
         }
 
+        private IAzureEnvironment EnsureCustomAudienceSet(IAzureEnvironment environment, string customAudience)
+        {
+            if (environment != null)
+            {
+                if (!environment.IsPropertySet(customAudience))
+                {
+                    environment.SetProperty(customAudience, customAudience);
+                }
+            }
+
+            return environment;
+        }
+
         /// <summary>
         /// The extension key to use for the storage token audience value
         /// </summary>
@@ -85,7 +115,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Default resourceId for storage OAuth tokens
         /// </summary>
         public const string StorageOAuthEndpointResourceValue = "https://storage.azure.com";
-
 
         private IAccessToken accessToken;
         private DebugLogWriter debugLogWriter = null;

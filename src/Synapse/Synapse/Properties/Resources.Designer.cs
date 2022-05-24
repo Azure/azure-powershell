@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -323,6 +323,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabling Azure AD only authentication for workspace &apos;{0}&apos; ..
+        /// </summary>
+        internal static string DisablingAzureADOnlyAuthentication {
+            get {
+                return ResourceManager.GetString("DisablingAzureADOnlyAuthentication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disabling Auto-pause for spark pool &apos;{0}&apos; in resource group &apos;{1}&apos; under parent workspace &apos;{2}&apos;..
         /// </summary>
         internal static string DisablingSynapseSparkPoolAutoPause {
@@ -341,6 +350,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Editing link tables under link connection &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string EditingLinkConnectionLinkTables {
+            get {
+                return ResourceManager.GetString("EditingLinkConnectionLinkTables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to One or more of the email addresses you entered are not valid..
         /// </summary>
         internal static string EmailsAreNotValid {
@@ -355,6 +373,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string EnablingAdvancedDataSecurity {
             get {
                 return ResourceManager.GetString("EnablingAdvancedDataSecurity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabling Azure AD only authentication for workspace &apos;{0}&apos; ..
+        /// </summary>
+        internal static string EnablingAzureADOnlyAuthentication {
+            get {
+                return ResourceManager.GetString("EnablingAzureADOnlyAuthentication", resourceCulture);
             }
         }
         
@@ -928,6 +955,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove KQL script &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseKqlScript {
+            get {
+                return ResourceManager.GetString("RemoveSynapseKqlScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove link connection &apos;{0}&apos; under workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveSynapseLinkConnection {
+            get {
+                return ResourceManager.GetString("RemoveSynapseLinkConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove linked service &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSynapseLinkedService {
@@ -1149,6 +1194,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseDataset {
             get {
                 return ResourceManager.GetString("RemovingSynapseDataset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting KQL script &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseKqlScript {
+            get {
+                return ResourceManager.GetString("RemovingSynapseKqlScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing link connection &apos;{0}&apos; in workspace &apos;{1}&apos;....
+        /// </summary>
+        internal static string RemovingSynapseLinkConnection {
+            get {
+                return ResourceManager.GetString("RemovingSynapseLinkConnection", resourceCulture);
             }
         }
         
@@ -1486,6 +1549,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting KQL script &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseKqlScript {
+            get {
+                return ResourceManager.GetString("SettingSynapseKqlScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting link connection &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseLinkConnection {
+            get {
+                return ResourceManager.GetString("SettingSynapseLinkConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting linked service &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string SettingSynapseLinkedService {
@@ -1592,7 +1673,16 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("SqlPoolRestorePointDoesNotExist", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start a Data Flow debug session under workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string StartDataFlowDebugSession {
+            get {
+                return ResourceManager.GetString("StartDataFlowDebugSession", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Starting integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;.
         /// </summary>
@@ -1601,13 +1691,13 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("StartingIntegrationRuntime", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Start a Data Flow debug session under workspace &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Starting link connection &apos;{0}&apos; in workspace &apos;{1}&apos;....
         /// </summary>
-        internal static string StartDataFlowDebugSession {
+        internal static string StartingSynapseLinkConnection {
             get {
-                return ResourceManager.GetString("StartDataFlowDebugSession", resourceCulture);
+                return ResourceManager.GetString("StartingSynapseLinkConnection", resourceCulture);
             }
         }
         
@@ -1671,6 +1761,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string StoppingSparkStatement {
             get {
                 return ResourceManager.GetString("StoppingSparkStatement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping link connection &apos;{0}&apos; in workspace &apos;{1}&apos;....
+        /// </summary>
+        internal static string StoppingSynapseLinkConnection {
+            get {
+                return ResourceManager.GetString("StoppingSynapseLinkConnection", resourceCulture);
             }
         }
         
@@ -1846,6 +1945,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string UpdatingIntegrationRuntimeNode {
             get {
                 return ResourceManager.GetString("UpdatingIntegrationRuntimeNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating the landing zone credential of  link connection &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string UpdatingLinkConnectionLandingZoneCredential {
+            get {
+                return ResourceManager.GetString("UpdatingLinkConnectionLandingZoneCredential", resourceCulture);
             }
         }
         

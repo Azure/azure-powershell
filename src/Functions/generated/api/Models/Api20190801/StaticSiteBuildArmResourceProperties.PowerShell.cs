@@ -84,7 +84,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="StaticSiteBuildArmResourceProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="StaticSiteBuildArmResourceProperties" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourceProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,13 +103,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).BuildId = (string) content.GetValueForProperty("BuildId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).BuildId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).SourceBranch = (string) content.GetValueForProperty("SourceBranch",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).SourceBranch, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).PullRequestTitle = (string) content.GetValueForProperty("PullRequestTitle",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).PullRequestTitle, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Hostname = (string) content.GetValueForProperty("Hostname",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Hostname, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).CreatedTimeUtc = (global::System.DateTime?) content.GetValueForProperty("CreatedTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).CreatedTimeUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).LastUpdatedOn = (global::System.DateTime?) content.GetValueForProperty("LastUpdatedOn",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).LastUpdatedOn, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BuildStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BuildStatus.CreateFrom);
+            if (content.Contains("BuildId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).BuildId = (string) content.GetValueForProperty("BuildId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).BuildId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceBranch"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).SourceBranch = (string) content.GetValueForProperty("SourceBranch",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).SourceBranch, global::System.Convert.ToString);
+            }
+            if (content.Contains("PullRequestTitle"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).PullRequestTitle = (string) content.GetValueForProperty("PullRequestTitle",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).PullRequestTitle, global::System.Convert.ToString);
+            }
+            if (content.Contains("Hostname"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Hostname = (string) content.GetValueForProperty("Hostname",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Hostname, global::System.Convert.ToString);
+            }
+            if (content.Contains("CreatedTimeUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).CreatedTimeUtc = (global::System.DateTime?) content.GetValueForProperty("CreatedTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).CreatedTimeUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LastUpdatedOn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).LastUpdatedOn = (global::System.DateTime?) content.GetValueForProperty("LastUpdatedOn",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).LastUpdatedOn, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BuildStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BuildStatus.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -125,13 +148,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).BuildId = (string) content.GetValueForProperty("BuildId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).BuildId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).SourceBranch = (string) content.GetValueForProperty("SourceBranch",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).SourceBranch, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).PullRequestTitle = (string) content.GetValueForProperty("PullRequestTitle",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).PullRequestTitle, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Hostname = (string) content.GetValueForProperty("Hostname",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Hostname, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).CreatedTimeUtc = (global::System.DateTime?) content.GetValueForProperty("CreatedTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).CreatedTimeUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).LastUpdatedOn = (global::System.DateTime?) content.GetValueForProperty("LastUpdatedOn",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).LastUpdatedOn, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BuildStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BuildStatus.CreateFrom);
+            if (content.Contains("BuildId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).BuildId = (string) content.GetValueForProperty("BuildId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).BuildId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceBranch"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).SourceBranch = (string) content.GetValueForProperty("SourceBranch",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).SourceBranch, global::System.Convert.ToString);
+            }
+            if (content.Contains("PullRequestTitle"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).PullRequestTitle = (string) content.GetValueForProperty("PullRequestTitle",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).PullRequestTitle, global::System.Convert.ToString);
+            }
+            if (content.Contains("Hostname"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Hostname = (string) content.GetValueForProperty("Hostname",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Hostname, global::System.Convert.ToString);
+            }
+            if (content.Contains("CreatedTimeUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).CreatedTimeUtc = (global::System.DateTime?) content.GetValueForProperty("CreatedTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).CreatedTimeUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LastUpdatedOn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).LastUpdatedOn = (global::System.DateTime?) content.GetValueForProperty("LastUpdatedOn",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).LastUpdatedOn, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BuildStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildArmResourcePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BuildStatus.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

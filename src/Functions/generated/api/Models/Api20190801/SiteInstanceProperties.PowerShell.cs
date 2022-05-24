@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="SiteInstanceProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="SiteInstanceProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstanceProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,7 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName = (string) content.GetValueForProperty("SiteInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName, global::System.Convert.ToString);
+            if (content.Contains("SiteInstanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName = (string) content.GetValueForProperty("SiteInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,7 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName = (string) content.GetValueForProperty("SiteInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName, global::System.Convert.ToString);
+            if (content.Contains("SiteInstanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName = (string) content.GetValueForProperty("SiteInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

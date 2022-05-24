@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="SiteMachineKey" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="SiteMachineKey" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKey FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Validation = (string) content.GetValueForProperty("Validation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Validation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).ValidationKey = (string) content.GetValueForProperty("ValidationKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).ValidationKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Decryption = (string) content.GetValueForProperty("Decryption",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Decryption, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).DecryptionKey = (string) content.GetValueForProperty("DecryptionKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).DecryptionKey, global::System.Convert.ToString);
+            if (content.Contains("Validation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Validation = (string) content.GetValueForProperty("Validation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Validation, global::System.Convert.ToString);
+            }
+            if (content.Contains("ValidationKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).ValidationKey = (string) content.GetValueForProperty("ValidationKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).ValidationKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("Decryption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Decryption = (string) content.GetValueForProperty("Decryption",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Decryption, global::System.Convert.ToString);
+            }
+            if (content.Contains("DecryptionKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).DecryptionKey = (string) content.GetValueForProperty("DecryptionKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).DecryptionKey, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,10 +132,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Validation = (string) content.GetValueForProperty("Validation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Validation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).ValidationKey = (string) content.GetValueForProperty("ValidationKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).ValidationKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Decryption = (string) content.GetValueForProperty("Decryption",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Decryption, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).DecryptionKey = (string) content.GetValueForProperty("DecryptionKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).DecryptionKey, global::System.Convert.ToString);
+            if (content.Contains("Validation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Validation = (string) content.GetValueForProperty("Validation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Validation, global::System.Convert.ToString);
+            }
+            if (content.Contains("ValidationKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).ValidationKey = (string) content.GetValueForProperty("ValidationKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).ValidationKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("Decryption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Decryption = (string) content.GetValueForProperty("Decryption",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).Decryption, global::System.Convert.ToString);
+            }
+            if (content.Contains("DecryptionKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).DecryptionKey = (string) content.GetValueForProperty("DecryptionKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteMachineKeyInternal)this).DecryptionKey, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -66,14 +66,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryProperty = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryProperties) content.GetValueForProperty("ActiveDirectoryProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryProperty, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ActiveDirectoryPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).DirectoryServiceOption = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DirectoryServiceOptions) content.GetValueForProperty("DirectoryServiceOption",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).DirectoryServiceOption, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DirectoryServiceOptions.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainName = (string) content.GetValueForProperty("ActiveDirectoryPropertyDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyForestName = (string) content.GetValueForProperty("ActiveDirectoryPropertyForestName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyForestName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainGuid = (string) content.GetValueForProperty("ActiveDirectoryPropertyDomainGuid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainGuid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainSid = (string) content.GetValueForProperty("ActiveDirectoryPropertyDomainSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainSid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyNetBiosDomainName = (string) content.GetValueForProperty("ActiveDirectoryPropertyNetBiosDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyNetBiosDomainName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyAzureStorageSid = (string) content.GetValueForProperty("ActiveDirectoryPropertyAzureStorageSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyAzureStorageSid, global::System.Convert.ToString);
+            if (content.Contains("ActiveDirectoryProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryProperty = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryProperties) content.GetValueForProperty("ActiveDirectoryProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryProperty, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ActiveDirectoryPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DirectoryServiceOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).DirectoryServiceOption = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DirectoryServiceOptions) content.GetValueForProperty("DirectoryServiceOption",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).DirectoryServiceOption, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DirectoryServiceOptions.CreateFrom);
+            }
+            if (content.Contains("ActiveDirectoryPropertyDomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainName = (string) content.GetValueForProperty("ActiveDirectoryPropertyDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ActiveDirectoryPropertyForestName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyForestName = (string) content.GetValueForProperty("ActiveDirectoryPropertyForestName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyForestName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ActiveDirectoryPropertyDomainGuid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainGuid = (string) content.GetValueForProperty("ActiveDirectoryPropertyDomainGuid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainGuid, global::System.Convert.ToString);
+            }
+            if (content.Contains("ActiveDirectoryPropertyDomainSid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainSid = (string) content.GetValueForProperty("ActiveDirectoryPropertyDomainSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainSid, global::System.Convert.ToString);
+            }
+            if (content.Contains("ActiveDirectoryPropertyNetBiosDomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyNetBiosDomainName = (string) content.GetValueForProperty("ActiveDirectoryPropertyNetBiosDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyNetBiosDomainName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ActiveDirectoryPropertyAzureStorageSid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyAzureStorageSid = (string) content.GetValueForProperty("ActiveDirectoryPropertyAzureStorageSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyAzureStorageSid, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -91,14 +115,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryProperty = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryProperties) content.GetValueForProperty("ActiveDirectoryProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryProperty, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ActiveDirectoryPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).DirectoryServiceOption = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DirectoryServiceOptions) content.GetValueForProperty("DirectoryServiceOption",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).DirectoryServiceOption, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DirectoryServiceOptions.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainName = (string) content.GetValueForProperty("ActiveDirectoryPropertyDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyForestName = (string) content.GetValueForProperty("ActiveDirectoryPropertyForestName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyForestName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainGuid = (string) content.GetValueForProperty("ActiveDirectoryPropertyDomainGuid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainGuid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainSid = (string) content.GetValueForProperty("ActiveDirectoryPropertyDomainSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainSid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyNetBiosDomainName = (string) content.GetValueForProperty("ActiveDirectoryPropertyNetBiosDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyNetBiosDomainName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyAzureStorageSid = (string) content.GetValueForProperty("ActiveDirectoryPropertyAzureStorageSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyAzureStorageSid, global::System.Convert.ToString);
+            if (content.Contains("ActiveDirectoryProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryProperty = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryProperties) content.GetValueForProperty("ActiveDirectoryProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryProperty, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ActiveDirectoryPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DirectoryServiceOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).DirectoryServiceOption = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DirectoryServiceOptions) content.GetValueForProperty("DirectoryServiceOption",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).DirectoryServiceOption, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DirectoryServiceOptions.CreateFrom);
+            }
+            if (content.Contains("ActiveDirectoryPropertyDomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainName = (string) content.GetValueForProperty("ActiveDirectoryPropertyDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ActiveDirectoryPropertyForestName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyForestName = (string) content.GetValueForProperty("ActiveDirectoryPropertyForestName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyForestName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ActiveDirectoryPropertyDomainGuid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainGuid = (string) content.GetValueForProperty("ActiveDirectoryPropertyDomainGuid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainGuid, global::System.Convert.ToString);
+            }
+            if (content.Contains("ActiveDirectoryPropertyDomainSid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainSid = (string) content.GetValueForProperty("ActiveDirectoryPropertyDomainSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyDomainSid, global::System.Convert.ToString);
+            }
+            if (content.Contains("ActiveDirectoryPropertyNetBiosDomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyNetBiosDomainName = (string) content.GetValueForProperty("ActiveDirectoryPropertyNetBiosDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyNetBiosDomainName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ActiveDirectoryPropertyAzureStorageSid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyAzureStorageSid = (string) content.GetValueForProperty("ActiveDirectoryPropertyAzureStorageSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertyAzureStorageSid, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -135,7 +183,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="AzureFilesIdentityBasedAuthentication" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthentication FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

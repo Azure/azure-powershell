@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
+external help file:
 Module Name: Az.Aks
 online version: https://docs.microsoft.com/powershell/module/az.aks/get-azaksversion
 schema: 2.0.0
@@ -9,23 +9,40 @@ schema: 2.0.0
 
 ## SYNOPSIS
 List available version for creating managed Kubernetes cluster.
+The operation returns properties of each orchestrator including version, available upgrades and whether that version or upgrades are in preview.
 
 ## SYNTAX
 
 ```
-Get-AzAksVersion -Location <String> [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
+Get-AzAksVersion -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 List available version for creating managed Kubernetes cluster.
+The operation returns properties of each orchestrator including version, available upgrades and whether that version or upgrades are in preview.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: List available version for creating managed Kubernetes cluster.
 ```powershell
-PS C:\> Get-AzAksVersion -Location westus
+Get-AzAksVersion -location eastus
 ```
+
+```output
+Default IsPreview OrchestratorType OrchestratorVersion
+------- --------- ---------------- -------------------
+                  Kubernetes       1.19.11
+                  Kubernetes       1.19.13
+                  Kubernetes       1.20.7
+True              Kubernetes       1.20.9
+                  Kubernetes       1.21.1
+                  Kubernetes       1.21.2
+        True      Kubernetes       1.22.1
+        True      Kubernetes       1.22.2
+```
+
+List available version for creating managed Kubernetes cluster.
 
 ## PARAMETERS
 
@@ -33,9 +50,9 @@ PS C:\> Get-AzAksVersion -Location westus
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -45,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Azure location for the cluster.
+The name of a supported Azure region.
 
 ```yaml
 Type: System.String
@@ -60,19 +77,18 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the subscription.
-By default, cmdlets are executed in the subscription that is set in the current context. If the user specifies another subscription, the current cmdlet is executed in the subscription specified by the user.
-Overriding subscriptions only take effect during the lifecycle of the current cmdlet. It does not change the subscription in the context, and does not affect subsequent cmdlets.
+Subscription credentials which uniquely identify Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -81,12 +97,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Aks.Models.PSOrchestratorVersionProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult
 
 ## NOTES
 
+ALIASES
+
 ## RELATED LINKS
+

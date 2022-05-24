@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="OutboundEnvironmentEndpoint" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="OutboundEnvironmentEndpoint" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpoint FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -103,8 +103,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Category, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Endpoint = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependency[]) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Endpoint, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependency>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.EndpointDependencyTypeConverter.ConvertFrom));
+            if (content.Contains("Category"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Category, global::System.Convert.ToString);
+            }
+            if (content.Contains("Endpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Endpoint = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependency[]) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Endpoint, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependency>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.EndpointDependencyTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,8 +128,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Category, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Endpoint = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependency[]) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Endpoint, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependency>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.EndpointDependencyTypeConverter.ConvertFrom));
+            if (content.Contains("Category"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Category, global::System.Convert.ToString);
+            }
+            if (content.Contains("Endpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Endpoint = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependency[]) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IOutboundEnvironmentEndpointInternal)this).Endpoint, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependency>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.EndpointDependencyTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

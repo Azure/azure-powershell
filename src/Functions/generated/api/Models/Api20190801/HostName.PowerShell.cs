@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="HostName" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="HostName" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostName FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,12 +99,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).SiteName = (string[]) content.GetValueForProperty("SiteName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).SiteName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceName = (string) content.GetValueForProperty("AzureResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureResourceType?) content.GetValueForProperty("AzureResourceType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureResourceType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).CustomHostNameDnsRecordType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CustomHostNameDnsRecordType?) content.GetValueForProperty("CustomHostNameDnsRecordType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).CustomHostNameDnsRecordType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CustomHostNameDnsRecordType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostNameType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostNameType.CreateFrom);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("SiteName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).SiteName = (string[]) content.GetValueForProperty("SiteName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).SiteName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AzureResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceName = (string) content.GetValueForProperty("AzureResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AzureResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureResourceType?) content.GetValueForProperty("AzureResourceType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureResourceType.CreateFrom);
+            }
+            if (content.Contains("CustomHostNameDnsRecordType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).CustomHostNameDnsRecordType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CustomHostNameDnsRecordType?) content.GetValueForProperty("CustomHostNameDnsRecordType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).CustomHostNameDnsRecordType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CustomHostNameDnsRecordType.CreateFrom);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostNameType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostNameType.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,12 +140,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).SiteName = (string[]) content.GetValueForProperty("SiteName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).SiteName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceName = (string) content.GetValueForProperty("AzureResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureResourceType?) content.GetValueForProperty("AzureResourceType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureResourceType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).CustomHostNameDnsRecordType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CustomHostNameDnsRecordType?) content.GetValueForProperty("CustomHostNameDnsRecordType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).CustomHostNameDnsRecordType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CustomHostNameDnsRecordType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostNameType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostNameType.CreateFrom);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("SiteName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).SiteName = (string[]) content.GetValueForProperty("SiteName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).SiteName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AzureResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceName = (string) content.GetValueForProperty("AzureResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AzureResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureResourceType?) content.GetValueForProperty("AzureResourceType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).AzureResourceType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureResourceType.CreateFrom);
+            }
+            if (content.Contains("CustomHostNameDnsRecordType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).CustomHostNameDnsRecordType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CustomHostNameDnsRecordType?) content.GetValueForProperty("CustomHostNameDnsRecordType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).CustomHostNameDnsRecordType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CustomHostNameDnsRecordType.CreateFrom);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostNameType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostNameType.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

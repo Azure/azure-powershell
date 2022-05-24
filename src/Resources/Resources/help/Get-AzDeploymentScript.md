@@ -36,28 +36,28 @@ The **Get-AzDeploymentScript** cmdlet gets a single deployment script or a list 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDeploymentScript
+Get-AzDeploymentScript
 ```
 
 Lists deployment scripts in the subscription in current user's context.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzDeploymentScript -ResourceGroupName DS-TestRg
+Get-AzDeploymentScript -ResourceGroupName DS-TestRg
 ```
 
 Lists deployment scripts in resource group DS-TestRg.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzDeploymentScript -Name MyDeploymentScript -ResourceGroupName DS-TestRg
+Get-AzDeploymentScript -Name MyDeploymentScript -ResourceGroupName DS-TestRg
 ```
 
 Gets a deployment script with the name MyDeploymentScript in resource group DS-TestRG.
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzDeploymentScript -Id "/subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deploymentScripts/{deploymentScriptName}"
+Get-AzDeploymentScript -Id "/subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deploymentScripts/{deploymentScriptName}"
 ```
 
 Gets a deployment script with the given resource Id. 
@@ -68,7 +68,7 @@ Gets a deployment script with the given resource Id.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -84,7 +84,7 @@ The fully qualified resource Id of the deployment script.
 Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deploymentScripts/{deploymentScriptName}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetDeploymentScriptByResourceId
 Aliases: ResourceId
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 The name of the deployment script
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetDeploymentScriptByName
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListDeploymentScript
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetDeploymentScriptByName
 Aliases:
 
@@ -138,8 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

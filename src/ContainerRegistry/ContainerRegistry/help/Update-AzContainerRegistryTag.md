@@ -29,7 +29,9 @@ first.
 ### Example 1
 ```powershell
 Update-AzContainerRegistryTag -RegistryName registry -RepositoryName alpine -Name latest -DeleteEnabled $false -WriteEnabled $true -ListEnabled $true -ReadEnabled $true
+```
 
+```output
 Registry                    ImageName Attributes
 --------                    --------- ----------
 registry.azurecr.io alpine    Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute

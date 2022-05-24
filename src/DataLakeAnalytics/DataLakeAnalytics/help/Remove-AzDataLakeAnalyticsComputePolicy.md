@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 online version: https://docs.microsoft.com/powershell/module/az.datalakeanalytics/remove-azdatalakeanalyticscomputepolicy
@@ -23,8 +23,8 @@ The **Remove-AzDataLakeAnalyticsComputePolicy** removes a specified Azure Data L
 ## EXAMPLES
 
 ### Example 1: Remove a compute policy
-```
-PS C:\>Remove-AzDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name myPolicy
+```powershell
+Remove-AzDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name myPolicy
 ```
 
 This command removes the specified compute policy with name 'myPolicy' in account 'contosoadla'.

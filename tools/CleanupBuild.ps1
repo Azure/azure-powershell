@@ -25,7 +25,7 @@ foreach ($path in $outputPaths)
 
     Write-Verbose "Removing markdown help files and folders"
     Get-ChildItem -Recurse -Path $path -Include *.md | Remove-Item -Force -Confirm:$false
-    Get-ChildItem -Directory -Include help -Recurse -Path $path | Remove-Item -Force -Confirm:$false -ErrorAction "Ignore"
+    Get-ChildItem -Directory -Include help -Recurse -Path $path | Remove-Item -Force -Recurse -Confirm:$false -ErrorAction "Ignore"
 
     Write-Verbose "Removing unneeded web deployment dependencies"
     $webdependencies = @("Microsoft.Web.Hosting.dll", "Microsoft.Web.Delegation.dll", "Microsoft.Web.Administration.dll", "Microsoft.Web.Deployment.Tracing.dll")
@@ -48,7 +48,10 @@ foreach($RMPath in $resourceManagerPaths)
 
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $psd1.DirectoryName -FileName $psd1.Name
 
-        $acceptedDlls = @()
+        $acceptedDlls = @(
+            # netcoreapp, can't be in RequiredAssemblies, but we need to pack it
+            "Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext.dll"
+        )
 
         # NestedModule Assemblies may have a folder path, just getting the dll name alone
         foreach($cmdAssembly in $ModuleMetadata.NestedModules)

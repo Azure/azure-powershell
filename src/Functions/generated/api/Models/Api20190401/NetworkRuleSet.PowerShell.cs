@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// Creates a new instance of <see cref="NetworkRuleSet" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="NetworkRuleSet" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSet FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).Bypass = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass?) content.GetValueForProperty("Bypass",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).Bypass, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).VirtualNetworkRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule[]) content.GetValueForProperty("VirtualNetworkRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).VirtualNetworkRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.VirtualNetworkRuleTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).IPRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule[]) content.GetValueForProperty("IPRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).IPRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IPRuleTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).DefaultAction = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).DefaultAction, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction.CreateFrom);
+            if (content.Contains("Bypass"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).Bypass = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass?) content.GetValueForProperty("Bypass",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).Bypass, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass.CreateFrom);
+            }
+            if (content.Contains("VirtualNetworkRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).VirtualNetworkRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule[]) content.GetValueForProperty("VirtualNetworkRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).VirtualNetworkRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.VirtualNetworkRuleTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("IPRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).IPRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule[]) content.GetValueForProperty("IPRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).IPRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IPRuleTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DefaultAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).DefaultAction = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).DefaultAction, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,10 +132,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).Bypass = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass?) content.GetValueForProperty("Bypass",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).Bypass, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).VirtualNetworkRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule[]) content.GetValueForProperty("VirtualNetworkRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).VirtualNetworkRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.VirtualNetworkRuleTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).IPRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule[]) content.GetValueForProperty("IPRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).IPRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IPRuleTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).DefaultAction = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).DefaultAction, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction.CreateFrom);
+            if (content.Contains("Bypass"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).Bypass = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass?) content.GetValueForProperty("Bypass",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).Bypass, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Bypass.CreateFrom);
+            }
+            if (content.Contains("VirtualNetworkRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).VirtualNetworkRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule[]) content.GetValueForProperty("VirtualNetworkRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).VirtualNetworkRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.VirtualNetworkRuleTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("IPRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).IPRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule[]) content.GetValueForProperty("IPRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).IPRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IPRuleTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DefaultAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).DefaultAction = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSetInternal)this).DefaultAction, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

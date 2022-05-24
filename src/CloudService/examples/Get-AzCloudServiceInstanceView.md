@@ -1,14 +1,14 @@
 ### Example 1: Get cloud service instance view
 
 ```powershell
-PS C:\>$cloudServiceInstanceView = Get-AzCloudServiceInstanceView -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudServiceInstanceView = Get-AzCloudServiceInstanceView -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 
-PS C:\>$cloudServiceInstanceView
+$cloudServiceInstanceView
 RoleInstanceStatusesSummary                                   Statuses
 ---------------------------                                   --------
 {{ProvisioningState/succeeded : 4}, {PowerState/started : 4}} {Provisioning succeeded, Started, Current Upgrade Domain of cloud service is -1., Max Upgrade Domain of cloud service is 1.}
 
-PS C:\>$cloudServiceInstanceView.ToJsonString()
+$cloudServiceInstanceView.ToJsonString()
 {
   "roleInstance": {
     "statusesSummary": [

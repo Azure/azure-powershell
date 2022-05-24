@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Creates a new job with the specified parameters. Existing job cannot be updated with this API and should instead be updated

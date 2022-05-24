@@ -12,16 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
-using Microsoft.Azure.Cosmos.Table;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using global::Azure.Data.Tables;
+    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
+    using Microsoft.WindowsAzure.Commands.Storage.Test.Service;
+
     [TestClass]
     public class GetAzureStorageTableTest : StorageTableStorageTestBase
     {
@@ -30,121 +33,221 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
         [TestInitialize]
         public void InitCommand()
         {
-            command = new GetAzureStorageTableCommand(tableMock)
-                {
-                    CommandRuntime = MockCmdRunTime
-                };
+            this.command = new GetAzureStorageTableCommand(this.tableMock)
+            {
+                CommandRuntime = this.MockCmdRunTime
+            };
         }
 
         [TestCleanup]
         public void CleanCommand()
         {
-            command = null;
+            this.clearTest();
+            this.command = null;
         }
 
         [TestMethod]
-        public void ListTablesByNameWithEmptyNameTest()
+        public void ListTablesByNameWithEmptyListTest()
         {
-            List<CloudTable> tableList = command.ListTablesByName("").ToList();
-            Assert.AreEqual(0, tableList.Count);
+            // v1 test
+            IEnumerable<CloudTable> v1Tables = this.command.ListTablesByName(name: string.Empty);
+            Assert.AreEqual(0, v1Tables.Count());
 
-            AddTestTables();
-            tableList = command.ListTablesByName("").ToList();
-            Assert.AreEqual(2, tableList.Count);
+            // v2 test
+            IEnumerable<AzureStorageTable> v2Tables = this.command.ListTablesByNameV2(this.tableMock, tableName: string.Empty);
+            Assert.AreEqual(0, v2Tables.Count());
         }
 
         [TestMethod]
-        public void ListTablesByNameWithWildCardTest()
+        public void ListTablesByNameSuccessfullyTest()
         {
-            AddTestTables();
+            this.AddTestTables();
+            this.tableMock.ClearAndAddTestTableV2("test", "text");
 
-            List<CloudTable> tableList = command.ListTablesByName("te*t").ToList();
-            Assert.AreEqual(2, tableList.Count);
+            Dictionary<string, int> tables = new Dictionary<string, int>
+            {
+                { string.Empty, 2 },
+                { "te*t", 2 },
+                { "tx*t", 0 },
+                { "t?st", 1 },
+                { "test", 1 },
+            };
 
-            tableList = command.ListTablesByName("tx*t").ToList();
-            Assert.AreEqual(0, tableList.Count);
+            foreach (KeyValuePair<string, int> table in tables)
+            {
+                // v1 test
+                IEnumerable<CloudTable> v1Tables = this.command.ListTablesByName(name: table.Key);
+                Assert.AreEqual(table.Value, v1Tables.Count());
 
-            tableList = command.ListTablesByName("t?st").ToList();
-            Assert.AreEqual(1, tableList.Count);
-            Assert.AreEqual("test", tableList[0].Name);
+                if (table.Value == 1)
+                {
+                    Assert.AreEqual("test", v1Tables.ToArray()[0].Name);
+                }
+
+                // v2 test
+                IEnumerable<AzureStorageTable> v2Tables = this.command.ListTablesByNameV2(this.tableMock, tableName: table.Key);
+                Assert.AreEqual(table.Value, v2Tables.Count());
+
+                if (table.Value == 1)
+                {
+                    Assert.AreEqual("test", v2Tables.ToArray()[0].Name);
+                }
+            }
         }
 
         [TestMethod]
         public void ListTablesByNameWithInvalidNameTest()
         {
-            string invalidName = "a";
-            AssertThrows<ArgumentException>(() => command.ListTablesByName(invalidName).ToList(),
-                String.Format(Resources.InvalidTableName, invalidName));
+            string[] invalidTableNames =
+            {
+                "a",
+                "xx%%d",
+            };
 
-            invalidName = "xx%%d";
-            AssertThrows<ArgumentException>(() => command.ListTablesByName(invalidName).ToList(),
-                String.Format(Resources.InvalidTableName, invalidName));
+            foreach (string invalidTableName in invalidTableNames)
+            {
+                // v1 test
+                AssertThrows<ArgumentException>(
+                    () => this.command.ListTablesByName(invalidTableName).ToList(),
+                    String.Format(Resources.InvalidTableName, invalidTableName));
+
+                // v2 test
+                AssertThrows<ArgumentException>(
+                    () => this.command.ListTablesByNameV2(this.tableMock, invalidTableName).ToList(),
+                    String.Format(Resources.InvalidTableName, invalidTableName));
+            }
         }
 
         [TestMethod]
         public void ListTablesByNameWithNoExistsTableTest()
         {
             string notExistingName = "abcdefg";
-            AssertThrows<ResourceNotFoundException>(() => command.ListTablesByName(notExistingName).ToList(),
-                String.Format(Resources.TableNotFound, notExistingName));
-        }
 
-        [TestMethod]
-        public void ListTablesByNameSuccessfullyTest()
-        {
-            AddTestTables();
-            List<CloudTable> tableList = command.ListTablesByName("text").ToList();
-            Assert.AreEqual(1, tableList.Count);
-            Assert.AreEqual("text", tableList[0].Name);
+            // v1 test
+            AssertThrows<ResourceNotFoundException>(
+                () => this.command.ListTablesByName(notExistingName).ToList(),
+                String.Format(Resources.TableNotFound, notExistingName));
+
+            // v2 test
+            AssertThrows<ResourceNotFoundException>(
+                () => this.command.ListTablesByNameV2(this.tableMock, notExistingName).ToList(),
+                String.Format(Resources.TableNotFound, notExistingName));
         }
 
         [TestMethod]
         public void ListTablesByPrefixWithInvalidPrefixTest()
         {
-            AssertThrows<ArgumentException>(() => command.ListTablesByPrefix(String.Empty),
-                String.Format(Resources.InvalidTableName, String.Empty));
+            string[] invalidPrefixes =
+            {
+                string.Empty,
+                "?",
+            };
 
-            string prefix = "?";
-            AssertThrows<ArgumentException>(() => command.ListTablesByPrefix(prefix),
-                String.Format(Resources.InvalidTableName, prefix));
+            foreach (string invalidPrefix in invalidPrefixes)
+            {
+                // v1 test
+                AssertThrows<ArgumentException>(
+                    () => this.command.ListTablesByPrefix(invalidPrefix).ToList(),
+                    String.Format(Resources.InvalidTableName, invalidPrefix));
+
+                // v2 test
+                AssertThrows<ArgumentException>(
+                    () => this.command.ListTablesByPrefixV2(this.tableMock, invalidPrefix).ToList(),
+                    String.Format(Resources.InvalidTableName, invalidPrefix));
+            }
         }
 
         [TestMethod]
         public void ListTablesByPrefixSuccessfullyTest()
         {
-            AddTestTables();
-            MockCmdRunTime.ResetPipelines();
-            List<CloudTable> tableList = command.ListTablesByPrefix("te").ToList();
-            Assert.AreEqual(2, tableList.Count);
+            this.AddTestTables();
+            this.tableMock.ClearAndAddTestTableV2("test", "text");
 
-            tableList = command.ListTablesByPrefix("tes").ToList();
-            Assert.AreEqual(1, tableList.Count);
-            Assert.AreEqual("test", tableList[0].Name);
+            Dictionary<string, int> tables = new Dictionary<string, int>
+            {
+                { "te", 2 },
+                { "test", 1 },
+            };
 
-            tableList = command.ListTablesByPrefix("testx").ToList();
-            Assert.AreEqual(0, tableList.Count);
+            foreach (KeyValuePair<string, int> table in tables)
+            {
+                // v1 test
+                IEnumerable<CloudTable> v1Tables = this.command.ListTablesByPrefix(prefix: table.Key);
+                Assert.AreEqual(table.Value, v1Tables.Count());
+
+                if (table.Value == 1)
+                {
+                    Assert.AreEqual("test", v1Tables.ToArray()[0].Name);
+                }
+
+                // v2 test
+                IEnumerable<AzureStorageTable> v2Tables = this.command.ListTablesByPrefixV2(this.tableMock, prefix: table.Key);
+                Assert.AreEqual(table.Value, v2Tables.Count());
+
+                if (table.Value == 1)
+                {
+                    Assert.AreEqual("test", v2Tables.ToArray()[0].Name);
+                }
+            }
         }
 
         [TestMethod]
         public void WriteTablesWithStorageContextTest()
         {
-            command.WriteTablesWithStorageContext(null);
-            Assert.AreEqual(0, MockCmdRunTime.OutputPipeline.Count);
+            // v1 test
+            this.command.WriteTablesWithStorageContext((IEnumerable<CloudTable>)null);
+            Assert.AreEqual(0, this.MockCmdRunTime.OutputPipeline.Count);
 
-            MockCmdRunTime.ResetPipelines();
-            command.WriteTablesWithStorageContext(tableMock.tableList);
-            Assert.AreEqual(0, MockCmdRunTime.OutputPipeline.Count);
+            this.MockCmdRunTime.ResetPipelines();
+            this.command.WriteTablesWithStorageContext(new CloudTable[] { });
+            Assert.AreEqual(0, this.MockCmdRunTime.OutputPipeline.Count);
 
-            AddTestTables();
-            MockCmdRunTime.ResetPipelines();
-            command.WriteTablesWithStorageContext(tableMock.tableList);
-            Assert.AreEqual(2, MockCmdRunTime.OutputPipeline.Count);
+            CloudTable[] v1Tables =
+            {
+                new CloudTable(new Uri($"{MockStorageTableManagement.TableEndPoint}test")),
+                new CloudTable(new Uri($"{MockStorageTableManagement.TableEndPoint}text")),
+            };
+
+            this.MockCmdRunTime.ResetPipelines();
+            this.command.WriteTablesWithStorageContext(v1Tables);
+            Assert.AreEqual(2, this.MockCmdRunTime.OutputPipeline.Count);
+
+            // v2 test
+            this.MockCmdRunTime.ResetPipelines();
+            this.command.WriteTablesWithStorageContext((IEnumerable<AzureStorageTable>)null);
+            Assert.AreEqual(0, this.MockCmdRunTime.OutputPipeline.Count);
+
+            this.MockCmdRunTime.ResetPipelines();
+            this.command.WriteTablesWithStorageContext(new AzureStorageTable[] { });
+            Assert.AreEqual(0, this.MockCmdRunTime.OutputPipeline.Count);
+
+            TableClient[] v2Tables =
+            {
+                new TableClient(new Uri($"{MockStorageTableManagement.TableEndPoint}test")),
+                new TableClient(new Uri($"{MockStorageTableManagement.TableEndPoint}text")),
+            };
+
+            this.MockCmdRunTime.ResetPipelines();
+            this.command.WriteTablesWithStorageContext(v2Tables.Select(t => new AzureStorageTable(t)));
+            Assert.AreEqual(2, this.MockCmdRunTime.OutputPipeline.Count);
         }
 
         [TestMethod]
         public void ExecuteCommandGetTableTest()
         {
+            // v1 test
+            this.tableMock.IsTokenCredential = false;
             AddTestTables();
+
+            command.Name = "test";
+            command.ExecuteCmdlet();
+            Assert.AreEqual(1, MockCmdRunTime.OutputPipeline.Count);
+
+            // v2 test
+            this.tableMock.IsTokenCredential = true;
+            this.tableMock.ClearAndAddTestTableV2("test", "text");
+            this.MockCmdRunTime.ResetPipelines();
+
             command.Name = "test";
             command.ExecuteCmdlet();
             Assert.AreEqual(1, MockCmdRunTime.OutputPipeline.Count);

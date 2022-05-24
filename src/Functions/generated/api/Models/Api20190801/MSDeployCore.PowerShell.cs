@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="MSDeployCore" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="MSDeployCore" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCore FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,13 +99,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).PackageUri = (string) content.GetValueForProperty("PackageUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).PackageUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).ConnectionString = (string) content.GetValueForProperty("ConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).ConnectionString, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).DbType = (string) content.GetValueForProperty("DbType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).DbType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParametersXmlFileUri = (string) content.GetValueForProperty("SetParametersXmlFileUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParametersXmlFileUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParameter = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreSetParameters) content.GetValueForProperty("SetParameter",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParameter, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.MSDeployCoreSetParametersTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SkipAppData = (bool?) content.GetValueForProperty("SkipAppData",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SkipAppData, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).AppOffline = (bool?) content.GetValueForProperty("AppOffline",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).AppOffline, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("PackageUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).PackageUri = (string) content.GetValueForProperty("PackageUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).PackageUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).ConnectionString = (string) content.GetValueForProperty("ConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).ConnectionString, global::System.Convert.ToString);
+            }
+            if (content.Contains("DbType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).DbType = (string) content.GetValueForProperty("DbType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).DbType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SetParametersXmlFileUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParametersXmlFileUri = (string) content.GetValueForProperty("SetParametersXmlFileUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParametersXmlFileUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("SetParameter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParameter = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreSetParameters) content.GetValueForProperty("SetParameter",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParameter, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.MSDeployCoreSetParametersTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SkipAppData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SkipAppData = (bool?) content.GetValueForProperty("SkipAppData",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SkipAppData, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AppOffline"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).AppOffline = (bool?) content.GetValueForProperty("AppOffline",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).AppOffline, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,13 +144,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).PackageUri = (string) content.GetValueForProperty("PackageUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).PackageUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).ConnectionString = (string) content.GetValueForProperty("ConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).ConnectionString, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).DbType = (string) content.GetValueForProperty("DbType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).DbType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParametersXmlFileUri = (string) content.GetValueForProperty("SetParametersXmlFileUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParametersXmlFileUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParameter = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreSetParameters) content.GetValueForProperty("SetParameter",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParameter, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.MSDeployCoreSetParametersTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SkipAppData = (bool?) content.GetValueForProperty("SkipAppData",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SkipAppData, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).AppOffline = (bool?) content.GetValueForProperty("AppOffline",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).AppOffline, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("PackageUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).PackageUri = (string) content.GetValueForProperty("PackageUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).PackageUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).ConnectionString = (string) content.GetValueForProperty("ConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).ConnectionString, global::System.Convert.ToString);
+            }
+            if (content.Contains("DbType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).DbType = (string) content.GetValueForProperty("DbType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).DbType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SetParametersXmlFileUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParametersXmlFileUri = (string) content.GetValueForProperty("SetParametersXmlFileUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParametersXmlFileUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("SetParameter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParameter = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreSetParameters) content.GetValueForProperty("SetParameter",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SetParameter, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.MSDeployCoreSetParametersTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SkipAppData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SkipAppData = (bool?) content.GetValueForProperty("SkipAppData",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).SkipAppData, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AppOffline"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).AppOffline = (bool?) content.GetValueForProperty("AppOffline",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployCoreInternal)this).AppOffline, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
         protected const string GeoDRInputObjectParameterSet = "GeoDRConfigurationInputObjectSet";
         protected const string RuleInputObjectParameterSet = "RuleResourceIdSet";
-        protected const string NetwrokruleSetInputObjectParameterSet = "NetwrokruleSetInputObjectSet";
+        protected const string NetworkRuleSetInputObjectParameterSet = "NetworkRuleSetInputObjectSet";
         protected const string VirtualNetworkRuleInputObjectParameterSet = "VirtualNetworkRuleInputObjectParameterSet";
         protected const string IPRuleInputObjectParameterSet = "IPRuleInputObjectParameterSet";
 
@@ -100,8 +100,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string MigrationConfigurationParameterSet = "MigrationConfigurationPropertiesSet";
         protected const string RuleResourceParameterSet = "RulePropertiesSet";
         protected const string RuleResourceActionParameterSet = "RuleActionPropertiesSet";
-        protected const string NetwrokruleSetPropertiesParameterSet = "NetworkRuleSetPropertiesSet";
-        protected const string NetwrokruleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
+        protected const string NetworkRuleSetPropertiesParameterSet = "NetworkRuleSetPropertiesSet";
+        protected const string NetworkRuleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
         protected const string VirtualNetworkRulePropertiesParameterSet = "VirtualNetworkRulePropertiesParameterSet";
         protected const string IPRulePropertiesParameterSet = "IPRulePropertiesParameterSet";
 
@@ -137,6 +137,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string Manage = "Manage";
         protected const string Send = "Send";
         protected const string Listen = "Listen";
+
+        
 
         protected struct SKU
         {
@@ -193,6 +195,27 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 tspan = TimeSpan.Parse(strTimespan);
             }
             return tspan;
+        }
+
+        public string ParseIdentityType(ManagedServiceIdentityType? managedServiceIdentityType)
+        {
+            if(managedServiceIdentityType == ManagedServiceIdentityType.SystemAssigned)
+            {
+                return ServiceBusClient.SystemAssigned;
+            }
+            if (managedServiceIdentityType == ManagedServiceIdentityType.UserAssigned)
+            {
+                return ServiceBusClient.UserAssigned;
+            }
+            if (managedServiceIdentityType == ManagedServiceIdentityType.SystemAssignedUserAssigned)
+            {
+                return ServiceBusClient.SystemAssignedUserAssigned;
+            }
+            if (managedServiceIdentityType == ManagedServiceIdentityType.None)
+            {
+                return ServiceBusClient.None;
+            }
+            return "";
         }
 
         public Microsoft.Azure.Commands.ServiceBus.ServiceBusClient Client
@@ -331,6 +354,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         }
 
         #endregion
+
     }
 
 

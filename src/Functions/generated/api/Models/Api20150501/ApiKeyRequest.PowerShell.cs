@@ -66,9 +66,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty = (string[]) content.GetValueForProperty("LinkedReadProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty = (string[]) content.GetValueForProperty("LinkedWriteProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinkedReadProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty = (string[]) content.GetValueForProperty("LinkedReadProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("LinkedWriteProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty = (string[]) content.GetValueForProperty("LinkedWriteProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -86,9 +95,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty = (string[]) content.GetValueForProperty("LinkedReadProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty = (string[]) content.GetValueForProperty("LinkedWriteProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinkedReadProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty = (string[]) content.GetValueForProperty("LinkedReadProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("LinkedWriteProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty = (string[]) content.GetValueForProperty("LinkedWriteProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -122,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         /// Creates a new instance of <see cref="ApiKeyRequest" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ApiKeyRequest" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequest FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

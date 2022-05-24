@@ -292,6 +292,44 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             return subscriptionKeyParameters;
         }
 
+        public static ApiLicenseInformation ToLicenseInformation(PsApiManagementApi psApiManagementApi)
+        {
+            if (psApiManagementApi == null ||
+                (string.IsNullOrWhiteSpace(psApiManagementApi.LicenseUrl) &&
+                string.IsNullOrEmpty(psApiManagementApi.LicenseName)))
+            {
+                return null;
+            }
+
+            var licenseParameters = new ApiLicenseInformation()
+            {
+                Name = psApiManagementApi.LicenseName,
+                Url = psApiManagementApi.LicenseUrl
+            };
+
+            return licenseParameters;
+        }
+
+        public static ApiContactInformation ToContactInformation(PsApiManagementApi psApiManagementApi)
+        {
+            if (psApiManagementApi == null ||
+                (string.IsNullOrWhiteSpace(psApiManagementApi.ContactEmail) &&
+                string.IsNullOrWhiteSpace(psApiManagementApi.ContactName) &&
+                string.IsNullOrEmpty(psApiManagementApi.ContactUrl)))
+            {
+                return null;
+            }
+
+            var contactParameters = new ApiContactInformation()
+            {
+                Email = psApiManagementApi.ContactEmail,
+                Name = psApiManagementApi.ContactName,
+                Url = psApiManagementApi.ContactUrl
+            };
+
+            return contactParameters;
+        }
+
         public static string TrimApiResourceIdentifier(string armApiId)
         {
             if (string.IsNullOrEmpty(armApiId))

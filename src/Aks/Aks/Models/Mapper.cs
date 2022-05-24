@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Commands.Aks.Models
                 cfg.CreateMap<ManagedClusterServicePrincipalProfile,PSContainerServiceServicePrincipalProfile>().ReverseMap();
                 cfg.CreateMap<ContainerServiceSshConfiguration, PSContainerServiceSshConfiguration>().ReverseMap();
                 cfg.CreateMap<ContainerServiceSshPublicKey,PSContainerServiceSshPublicKey>().ReverseMap();
-                cfg.CreateMap<KeyVaultSecretRef, PSKeyVaultSecretRef>().ReverseMap();
                 cfg.CreateMap<ManagedClusterAADProfile, PSManagedClusterAadProfile>().ReverseMap();
                 cfg.CreateMap<ManagedClusterAccessProfile,PSManagedClusterAccessProfile>().ReverseMap();
                 cfg.CreateMap<ManagedClusterAddonProfile, PSManagedClusterAddonProfile>().ReverseMap();
                 cfg.CreateMap<ManagedClusterAgentPoolProfile,PSContainerServiceAgentPoolProfile>().ReverseMap();
                 cfg.CreateMap<ManagedClusterAPIServerAccessProfile, PSManagedClusterAPIServerAccessProfile>().ReverseMap();
                 cfg.CreateMap<ManagedClusterIdentity,PSManagedClusterIdentity>().ReverseMap();
+                cfg.CreateMap<ManagedClusterIdentityUserAssignedIdentitiesValue, PSManagedClusterIdentityUserAssignedIdentitiesValue>().ReverseMap();
                 cfg.CreateMap<ManagedClusterLoadBalancerProfile, PSManagedClusterLoadBalancerProfile>().ReverseMap();
                 cfg.CreateMap<ManagedClusterLoadBalancerProfileManagedOutboundIPs,PSManagedClusterLoadBalancerProfileManagedOutboundIPs>().ReverseMap();
                 cfg.CreateMap<ManagedClusterLoadBalancerProfileOutboundIPPrefixes, PSManagedClusterLoadBalancerProfileOutboundIPPrefixes>().ReverseMap();
@@ -51,8 +51,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
                 cfg.CreateMap<ResourceIdentityType, PSResourceIdentityType>().ReverseMap();
                 cfg.CreateMap<AgentPool, PSNodePool>().ReverseMap();
                 cfg.CreateMap<SubResource, PSSubResource>().ReverseMap();
-                cfg.CreateMap<OrchestratorVersionProfile, PSOrchestratorVersionProfile>().ReverseMap();
-                cfg.CreateMap<PSOrchestratorProfile, PSOrchestratorProfile>().ReverseMap();
+                cfg.CreateMap<RunCommandResult, PSRunCommandResult>().ReverseMap();
             });
             _instance = config.CreateMapper();
         }

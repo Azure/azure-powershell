@@ -69,9 +69,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).Location = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion[]) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).Location, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.GeoRegionTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironment = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceEnvironment[]) content.GetValueForProperty("HostingEnvironment",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironment, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceEnvironment>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServiceEnvironmentTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironmentDeploymentInfo = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostingEnvironmentDeploymentInfo[]) content.GetValueForProperty("HostingEnvironmentDeploymentInfo",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironmentDeploymentInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostingEnvironmentDeploymentInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostingEnvironmentDeploymentInfoTypeConverter.ConvertFrom));
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).Location = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion[]) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).Location, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.GeoRegionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("HostingEnvironment"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironment = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceEnvironment[]) content.GetValueForProperty("HostingEnvironment",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironment, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceEnvironment>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServiceEnvironmentTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("HostingEnvironmentDeploymentInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironmentDeploymentInfo = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostingEnvironmentDeploymentInfo[]) content.GetValueForProperty("HostingEnvironmentDeploymentInfo",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironmentDeploymentInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostingEnvironmentDeploymentInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostingEnvironmentDeploymentInfoTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -89,9 +98,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).Location = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion[]) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).Location, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.GeoRegionTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironment = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceEnvironment[]) content.GetValueForProperty("HostingEnvironment",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironment, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceEnvironment>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServiceEnvironmentTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironmentDeploymentInfo = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostingEnvironmentDeploymentInfo[]) content.GetValueForProperty("HostingEnvironmentDeploymentInfo",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironmentDeploymentInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostingEnvironmentDeploymentInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostingEnvironmentDeploymentInfoTypeConverter.ConvertFrom));
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).Location = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion[]) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).Location, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.GeoRegionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("HostingEnvironment"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironment = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceEnvironment[]) content.GetValueForProperty("HostingEnvironment",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironment, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceEnvironment>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServiceEnvironmentTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("HostingEnvironmentDeploymentInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironmentDeploymentInfo = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostingEnvironmentDeploymentInfo[]) content.GetValueForProperty("HostingEnvironmentDeploymentInfo",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocationsInternal)this).HostingEnvironmentDeploymentInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostingEnvironmentDeploymentInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostingEnvironmentDeploymentInfoTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -125,7 +143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="DeploymentLocations" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="DeploymentLocations" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeploymentLocations FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

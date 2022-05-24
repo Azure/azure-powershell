@@ -84,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="TopLevelDomainAgreementOption" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="TopLevelDomainAgreementOption" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOption FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -106,8 +106,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).IncludePrivacy = (bool?) content.GetValueForProperty("IncludePrivacy",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).IncludePrivacy, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer = (bool?) content.GetValueForProperty("ForTransfer",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("IncludePrivacy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).IncludePrivacy = (bool?) content.GetValueForProperty("IncludePrivacy",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).IncludePrivacy, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ForTransfer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer = (bool?) content.GetValueForProperty("ForTransfer",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -125,8 +131,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).IncludePrivacy = (bool?) content.GetValueForProperty("IncludePrivacy",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).IncludePrivacy, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer = (bool?) content.GetValueForProperty("ForTransfer",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("IncludePrivacy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).IncludePrivacy = (bool?) content.GetValueForProperty("IncludePrivacy",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).IncludePrivacy, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ForTransfer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer = (bool?) content.GetValueForProperty("ForTransfer",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITopLevelDomainAgreementOptionInternal)this).ForTransfer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
     }

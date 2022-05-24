@@ -94,10 +94,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IPAddress = (string) content.GetValueForProperty("IPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Port = (int?) content.GetValueForProperty("Port",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Port, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Latency = (double?) content.GetValueForProperty("Latency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Latency, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IsAccessible = (bool?) content.GetValueForProperty("IsAccessible",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IsAccessible, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("IPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IPAddress = (string) content.GetValueForProperty("IPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("Port"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Port = (int?) content.GetValueForProperty("Port",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Port, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Latency"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Latency = (double?) content.GetValueForProperty("Latency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Latency, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("IsAccessible"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IsAccessible = (bool?) content.GetValueForProperty("IsAccessible",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IsAccessible, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -115,10 +127,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IPAddress = (string) content.GetValueForProperty("IPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Port = (int?) content.GetValueForProperty("Port",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Port, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Latency = (double?) content.GetValueForProperty("Latency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Latency, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IsAccessible = (bool?) content.GetValueForProperty("IsAccessible",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IsAccessible, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("IPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IPAddress = (string) content.GetValueForProperty("IPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("Port"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Port = (int?) content.GetValueForProperty("Port",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Port, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Latency"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Latency = (double?) content.GetValueForProperty("Latency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).Latency, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("IsAccessible"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IsAccessible = (bool?) content.GetValueForProperty("IsAccessible",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetailInternal)this).IsAccessible, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -126,7 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="EndpointDetail" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="EndpointDetail" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetail FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

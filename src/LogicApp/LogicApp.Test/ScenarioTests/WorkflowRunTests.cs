@@ -15,21 +15,15 @@
 namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
     /// <summary>
     /// Scenario tests for the Workflow run commands
     /// </summary>
-    public class WorkflowRunTests : RMTestBase
+    public class WorkflowRunTests : LogicAppTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public WorkflowRunTests(ITestOutputHelper output)
+        public WorkflowRunTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -39,7 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRunLogicApp()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-StartLogicApp");
+            TestRunner.RunTestScript("Test-StartLogicApp");
         }
 
         /// <summary>
@@ -49,7 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzLogicAppRunHistory()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzLogicAppRunHistory");
+            TestRunner.RunTestScript("Test-GetAzLogicAppRunHistory");
         }
 
         /// <summary>
@@ -59,7 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzLogicAppRunAction()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzLogicAppRunAction");
+            TestRunner.RunTestScript("Test-GetAzLogicAppRunAction");
         }
 
         /// <summary>
@@ -69,7 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStopAzLogicAppRun()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-StopAzLogicAppRun");
+            TestRunner.RunTestScript("Test-StopAzLogicAppRun");
         }
     }
 }

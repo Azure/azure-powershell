@@ -84,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="SitePhpErrorLogFlagProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="SitePhpErrorLogFlagProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,10 +101,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogError = (string) content.GetValueForProperty("LocalLogError",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogError, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogError = (string) content.GetValueForProperty("MasterLogError",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogError, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogErrorsMaxLength = (string) content.GetValueForProperty("LocalLogErrorsMaxLength",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogErrorsMaxLength, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogErrorsMaxLength = (string) content.GetValueForProperty("MasterLogErrorsMaxLength",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogErrorsMaxLength, global::System.Convert.ToString);
+            if (content.Contains("LocalLogError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogError = (string) content.GetValueForProperty("LocalLogError",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogError, global::System.Convert.ToString);
+            }
+            if (content.Contains("MasterLogError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogError = (string) content.GetValueForProperty("MasterLogError",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogError, global::System.Convert.ToString);
+            }
+            if (content.Contains("LocalLogErrorsMaxLength"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogErrorsMaxLength = (string) content.GetValueForProperty("LocalLogErrorsMaxLength",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogErrorsMaxLength, global::System.Convert.ToString);
+            }
+            if (content.Contains("MasterLogErrorsMaxLength"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogErrorsMaxLength = (string) content.GetValueForProperty("MasterLogErrorsMaxLength",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogErrorsMaxLength, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,10 +134,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogError = (string) content.GetValueForProperty("LocalLogError",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogError, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogError = (string) content.GetValueForProperty("MasterLogError",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogError, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogErrorsMaxLength = (string) content.GetValueForProperty("LocalLogErrorsMaxLength",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogErrorsMaxLength, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogErrorsMaxLength = (string) content.GetValueForProperty("MasterLogErrorsMaxLength",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogErrorsMaxLength, global::System.Convert.ToString);
+            if (content.Contains("LocalLogError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogError = (string) content.GetValueForProperty("LocalLogError",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogError, global::System.Convert.ToString);
+            }
+            if (content.Contains("MasterLogError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogError = (string) content.GetValueForProperty("MasterLogError",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogError, global::System.Convert.ToString);
+            }
+            if (content.Contains("LocalLogErrorsMaxLength"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogErrorsMaxLength = (string) content.GetValueForProperty("LocalLogErrorsMaxLength",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).LocalLogErrorsMaxLength, global::System.Convert.ToString);
+            }
+            if (content.Contains("MasterLogErrorsMaxLength"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogErrorsMaxLength = (string) content.GetValueForProperty("MasterLogErrorsMaxLength",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)this).MasterLogErrorsMaxLength, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

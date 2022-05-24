@@ -36,12 +36,21 @@ And to specify an Azure AD application, use ApplicationId or ObjectId parameters
 The role that is being assigned must be specified using the RoleDefinitionName or RoleDefinitionId parameter.
 The scope at which access is being granted may be specified. It defaults to "/".
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzKeyVaultRoleAssignment -HsmName myHsm
+Get-AzKeyVaultRoleAssignment -HsmName myHsm
+```
 
+```output
 RoleDefinitionName         DisplayName                      ObjectType Scope
 ------------------         -----------                      ---------- -----
 Managed HSM Administrator  User 1 (user1@microsoft.com)     User       /
@@ -54,8 +63,10 @@ This example lists all role assignments of "myHsm" on all the scope.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzKeyVaultRoleAssignment -HsmName myHsm -SignInName user1@microsoft.com -Scope "/keys"
+Get-AzKeyVaultRoleAssignment -HsmName myHsm -SignInName user1@microsoft.com -Scope "/keys"
+```
 
+```output
 RoleDefinitionName         DisplayName                      ObjectType Scope
 ------------------         -----------                      ---------- -----
 Managed HSM Crypto Auditor User 1 (user1@microsoft.com)     User       /keys

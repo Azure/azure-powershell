@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Common.Strategies;
 using System.Collections.Generic;
 using System;
 using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
+using Microsoft.Azure.Commands.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 getOperations: client => client.VirtualMachines,
                 getAsync: (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
-                createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
+                createOrUpdateAsync: (o, p) => o.CreateOrUpdateWithCustomHeaderAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
                 createTime: c =>
                     c != null && c.OsProfile != null && c.OsProfile.WindowsConfiguration != null
@@ -51,7 +52,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             VirtualMachineIdentity identity,
             IEnumerable<int> dataDisks,
             IList<string> zones,
-            bool ultraSSDEnabled,
             Func<IEngine, SubResource> proximityPlacementGroup,
             string hostId,
             string hostGroupId,
@@ -62,59 +62,84 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             double? maxPrice,
             bool encryptionAtHostPresent,
             List<SshPublicKey> sshPublicKeys,
+            int? platformFaultDomain = null,
             string networkInterfaceDeleteOption = null,
             string osDiskDeleteOption = null,
-            string dataDiskDeleteOption = null)
+            string dataDiskDeleteOption = null,
+            string userData = null,
+            AdditionalCapabilities additionalCapabilities = null,
+            int? vCPUsAvailable = null,
+            int? vCPUsPerCore = null,
+            string imageReferenceId = null,
+            Dictionary<string, List<string>> auxAuthHeader = null
+            )
 
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: engine => new VirtualMachine
-                {
-                    OsProfile = new OSProfile
+                createModel: engine => {
+                    var vm = new VirtualMachine
                     {
-                        ComputerName = name,
-                        WindowsConfiguration = imageAndOsType?.CreateWindowsConfiguration(),
-                        LinuxConfiguration = (imageAndOsType?.OsType != OperatingSystemTypes.Linux) ? null : new LinuxConfiguration
+                        OsProfile = new OSProfile
                         {
-                            Ssh = new SshConfiguration(sshPublicKeys)
+                            ComputerName = name,
+                            WindowsConfiguration = imageAndOsType?.CreateWindowsConfiguration(),
+                            LinuxConfiguration = (imageAndOsType?.OsType != OperatingSystemTypes.Linux) ? null : new LinuxConfiguration
+                            {
+                                Ssh = new SshConfiguration(sshPublicKeys)
+                            },
+                            AdminUsername = adminUsername,
+                            AdminPassword = adminPassword,
                         },
-                        AdminUsername = adminUsername,
-                        AdminPassword = adminPassword,
-                    },
-                    Identity = identity,
-                    NetworkProfile = new Azure.Management.Compute.Models.NetworkProfile
-                    {
-                        NetworkInterfaces = new[]
+                        Identity = identity,
+                        NetworkProfile = new Azure.Management.Compute.Models.NetworkProfile
                         {
+                            NetworkInterfaces = new[]
+                            {
                             engine.GetReference(networkInterface, networkInterfaceDeleteOption)
-                        }
-                    },
-                    HardwareProfile = new HardwareProfile
+                            }
+                        },
+                        HardwareProfile = new HardwareProfile
+                        {
+                            VmSize = size,
+                            VmSizeProperties = (vCPUsPerCore == null && vCPUsAvailable == null) ? null : new VMSizeProperties
+                            {
+                                VCPUsPerCore = vCPUsPerCore,
+                                VCPUsAvailable = vCPUsAvailable
+                            }
+                        },
+                        StorageProfile = new StorageProfile
+                        {
+                            ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : new ImageReference
+                            {
+                                Id = imageReferenceId
+                            },
+                            DataDisks = DataDiskStrategy.CreateDataDisks(
+                                imageAndOsType?.DataDiskLuns, dataDisks, dataDiskDeleteOption)
+                        },
+                        AvailabilitySet = engine.GetReference(availabilitySet),
+                        Zones = zones,
+                        AdditionalCapabilities = additionalCapabilities,
+                        ProximityPlacementGroup = proximityPlacementGroup(engine),
+                        Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId),
+                        VirtualMachineScaleSet = string.IsNullOrEmpty(VmssId) ? null : new SubResource(VmssId),
+                        HostGroup = string.IsNullOrEmpty(hostGroupId) ? null : new SubResource(hostGroupId),
+                        Priority = priority,
+                        EvictionPolicy = evictionPolicy,
+                        BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
+                        SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null,
+                        CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
+                        {
+                            CapacityReservationGroup = new SubResource(capacityReservationGroupId)
+                        },
+                        UserData = userData,
+                        PlatformFaultDomain = platformFaultDomain
+                    };
+                    if(auxAuthHeader != null)
                     {
-                        VmSize = size
-                    },
-                    StorageProfile = new StorageProfile
-                    {
-                        ImageReference = imageAndOsType?.Image,
-                        DataDisks = DataDiskStrategy.CreateDataDisks(
-                            imageAndOsType?.DataDiskLuns, dataDisks, dataDiskDeleteOption)
-                    },
-                    AvailabilitySet = engine.GetReference(availabilitySet),
-                    Zones = zones,
-                    AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
-                    ProximityPlacementGroup = proximityPlacementGroup(engine),
-                    Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId),
-                    VirtualMachineScaleSet = string.IsNullOrEmpty(VmssId) ? null : new SubResource(VmssId),
-                    HostGroup = string.IsNullOrEmpty(hostGroupId) ? null : new SubResource(hostGroupId),
-                    Priority = priority,
-                    EvictionPolicy = evictionPolicy,
-                    BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null,
-                    CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
-                    {
-                        CapacityReservationGroup = new SubResource(capacityReservationGroupId)
+                        vm.SetAuxAuthHeader(auxAuthHeader);
                     }
+                    return vm;
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -138,9 +163,14 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string evictionPolicy,
             double? maxPrice,
             bool encryptionAtHostPresent,
+            int? platformFaultDomain,
             string networkInterfaceDeleteOption = null,
             string osDiskDeleteOption = null,
-            string dataDiskDeleteOption = null
+            string dataDiskDeleteOption = null,
+            string userData = null,
+            AdditionalCapabilities additionalCapabilities = null,
+            int? vCPUsAvailable = null,
+            int? vCPUsPerCore = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -156,7 +186,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     HardwareProfile = new HardwareProfile
                     {
-                        VmSize = size
+                        VmSize = size,
+                        VmSizeProperties = (vCPUsPerCore == null && vCPUsAvailable == null) ? null : new VMSizeProperties
+                        {
+                            VCPUsPerCore = vCPUsPerCore,
+                            VCPUsAvailable = vCPUsAvailable
+                        }
                     },
                     StorageProfile = new StorageProfile
                     {
@@ -173,7 +208,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Identity = identity,
                     AvailabilitySet = engine.GetReference(availabilitySet),
                     Zones = zones,
-                    AdditionalCapabilities = ultraSSDEnabled ?  new AdditionalCapabilities(true)  : null,
+                    AdditionalCapabilities = additionalCapabilities,
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
                     Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId),
                     VirtualMachineScaleSet = string.IsNullOrEmpty(VmssId) ? null : new SubResource(VmssId),
@@ -185,7 +220,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                     {
                         CapacityReservationGroup = new SubResource(capacityReservationGroupId)
-                    }
+                    },
+                    UserData = userData,
+                    PlatformFaultDomain = platformFaultDomain
                 });
     }
 }

@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                   !string.IsNullOrEmpty(aliasMatch) && providerResourceType.Aliases.Coalesce().Any(a => this.IsStringMatch(a.Name, aliasMatch)) ||
 
                   // if alias path match was provided, includes those with matching path
-                  !string.IsNullOrEmpty(pathMatch) && providerResourceType.Aliases.Coalesce().Any(a => a.Paths.Any(p => this.IsStringMatch(p.Path, pathMatch))) ||
+                  !string.IsNullOrEmpty(pathMatch) && providerResourceType.Aliases.Coalesce().Any(a => a.Paths.Coalesce().Any(p => this.IsStringMatch(p.Path, pathMatch))) ||
 
                   // if API version match was provided, also include those with matching alias API version
                   !string.IsNullOrEmpty(apiVersionMatch) && providerResourceType.Aliases.Coalesce().Any(a => a.Paths.Coalesce().Any(p => p.ApiVersions.Coalesce().Any(v => this.IsStringMatch(v, apiVersionMatch))))));
@@ -180,7 +180,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         private IEnumerable<PsResourceProviderAlias> GetProviderResourceTypes(bool listAvailable, string namespaceMatch, string resourceTypeMatch, string aliasMatch, string pathMatch, string apiVersionMatch, string locationMatch)
         {
-            var providers = this.GetProvider(namespaceMatch);
+            IEnumerable<Provider> providers = Enumerable.Empty<Provider>();
+            if (!string.IsNullOrEmpty(NamespaceMatch))
+            {
+                providers = this.GetProvider(namespaceMatch);
+            }
             if (!providers.Any())
             {
                 providers = this.GetAllProviders();

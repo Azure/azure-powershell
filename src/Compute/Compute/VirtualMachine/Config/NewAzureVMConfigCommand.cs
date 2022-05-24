@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMConfig", DefaultParameterSetName = "DefaultParameterSet"), OutputType(typeof(PSVirtualMachine))]
     public class NewAzureVMConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
+        private const string DefaultParameterSetName = "DefaultParameterSet", ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet";
+	
         [Alias("ResourceName", "Name")]
         [Parameter(
             Mandatory = true,
@@ -59,14 +61,14 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Position = 4,
             Mandatory = true,
-            ParameterSetName = "ExplicitIdentityParameterSet",
+            ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "ExplicitIdentityParameterSet",
+            ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = true)]
         public string[] IdentityId { get; set; }
 
@@ -130,10 +132,52 @@ namespace Microsoft.Azure.Commands.Compute
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specified the gallery image unique id for vm deployment. This can be fetched from gallery image GET call.")]
+        [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
+        public string ImageReferenceId { get; set; }
+
         protected override bool IsUsageMetricEnabled
         {
             get { return true; }
         }
+	
+	    [Parameter(
+            Mandatory = false,
+            ParameterSetName = ExplicitIdentityParameterSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DefaultParameterSetName,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        public string UserData { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the fault domain of the virtual machine.")]
+        public int PlatformFaultDomain { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
+        public SwitchParameter HibernationEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).")]
+        public int vCPUCountAvailable { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
+        public int vCPUCountPerCore { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -178,9 +222,48 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.HardwareProfile.VmSize = this.VMSize;
             }
 
+            if (this.IsParameterBound(c => c.vCPUCountAvailable))
+            {
+                if (vm.HardwareProfile == null)
+                {
+                    vm.HardwareProfile = new HardwareProfile();
+                }
+                if (vm.HardwareProfile.VmSizeProperties == null)
+                {
+                    vm.HardwareProfile.VmSizeProperties = new VMSizeProperties();
+                }
+                vm.HardwareProfile.VmSizeProperties.VCPUsAvailable = this.vCPUCountAvailable;
+            }
+
+            if (this.IsParameterBound(c => c.vCPUCountPerCore))
+            {
+                if (vm.HardwareProfile == null)
+                {
+                    vm.HardwareProfile = new HardwareProfile();
+                }
+                if (vm.HardwareProfile.VmSizeProperties == null)
+                {
+                    vm.HardwareProfile.VmSizeProperties = new VMSizeProperties();
+                }
+                vm.HardwareProfile.VmSizeProperties.VCPUsPerCore = this.vCPUCountPerCore;
+            }
+
             if (this.EnableUltraSSD.IsPresent)
             {
-                vm.AdditionalCapabilities = new AdditionalCapabilities(true);
+                if (vm.AdditionalCapabilities == null)
+                {
+                    vm.AdditionalCapabilities = new AdditionalCapabilities();
+                }
+                vm.AdditionalCapabilities.UltraSSDEnabled = this.EnableUltraSSD;
+            }
+
+            if (this.HibernationEnabled.IsPresent)
+            {
+                if (vm.AdditionalCapabilities == null)
+                {
+                    vm.AdditionalCapabilities = new AdditionalCapabilities();
+                }
+                vm.AdditionalCapabilities.HibernationEnabled = this.HibernationEnabled;
             }
 
             if (this.IsParameterBound(c => c.ProximityPlacementGroupId))
@@ -215,6 +298,34 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 vm.CapacityReservation = new CapacityReservationProfile();
                 vm.CapacityReservation.CapacityReservationGroup = new SubResource(this.CapacityReservationGroupId);
+            }
+	    
+	        if (this.IsParameterBound(c => c.UserData))
+            {
+                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
+                {
+                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
+                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
+                }
+                vm.UserData = this.UserData;
+            }
+
+            if (this.IsParameterBound(c => c.ImageReferenceId))
+            {
+                if (vm.StorageProfile == null)
+                {
+                    vm.StorageProfile = new StorageProfile();
+                }
+                if (vm.StorageProfile.ImageReference == null)
+                {
+                    vm.StorageProfile.ImageReference = new ImageReference();
+                }
+                vm.StorageProfile.ImageReference.Id = this.ImageReferenceId;
+            }
+            
+            if (this.IsParameterBound(c => c.PlatformFaultDomain))
+            {
+                vm.PlatformFaultDomain = this.PlatformFaultDomain;
             }
 
             WriteObject(vm);

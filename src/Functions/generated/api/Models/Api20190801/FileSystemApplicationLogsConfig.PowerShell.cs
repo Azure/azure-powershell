@@ -94,7 +94,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFileSystemApplicationLogsConfigInternal)this).Level = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LogLevel?) content.GetValueForProperty("Level",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFileSystemApplicationLogsConfigInternal)this).Level, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LogLevel.CreateFrom);
+            if (content.Contains("Level"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFileSystemApplicationLogsConfigInternal)this).Level = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LogLevel?) content.GetValueForProperty("Level",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFileSystemApplicationLogsConfigInternal)this).Level, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LogLevel.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -112,7 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFileSystemApplicationLogsConfigInternal)this).Level = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LogLevel?) content.GetValueForProperty("Level",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFileSystemApplicationLogsConfigInternal)this).Level, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LogLevel.CreateFrom);
+            if (content.Contains("Level"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFileSystemApplicationLogsConfigInternal)this).Level = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LogLevel?) content.GetValueForProperty("Level",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFileSystemApplicationLogsConfigInternal)this).Level, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LogLevel.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -120,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="FileSystemApplicationLogsConfig" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="FileSystemApplicationLogsConfig" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFileSystemApplicationLogsConfig FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

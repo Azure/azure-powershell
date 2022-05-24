@@ -66,12 +66,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).NetBiosDomainName = (string) content.GetValueForProperty("NetBiosDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).NetBiosDomainName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).ForestName = (string) content.GetValueForProperty("ForestName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).ForestName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainGuid = (string) content.GetValueForProperty("DomainGuid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainGuid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainSid = (string) content.GetValueForProperty("DomainSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainSid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).AzureStorageSid = (string) content.GetValueForProperty("AzureStorageSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).AzureStorageSid, global::System.Convert.ToString);
+            if (content.Contains("DomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetBiosDomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).NetBiosDomainName = (string) content.GetValueForProperty("NetBiosDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).NetBiosDomainName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ForestName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).ForestName = (string) content.GetValueForProperty("ForestName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).ForestName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DomainGuid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainGuid = (string) content.GetValueForProperty("DomainGuid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainGuid, global::System.Convert.ToString);
+            }
+            if (content.Contains("DomainSid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainSid = (string) content.GetValueForProperty("DomainSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainSid, global::System.Convert.ToString);
+            }
+            if (content.Contains("AzureStorageSid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).AzureStorageSid = (string) content.GetValueForProperty("AzureStorageSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).AzureStorageSid, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -89,12 +107,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).NetBiosDomainName = (string) content.GetValueForProperty("NetBiosDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).NetBiosDomainName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).ForestName = (string) content.GetValueForProperty("ForestName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).ForestName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainGuid = (string) content.GetValueForProperty("DomainGuid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainGuid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainSid = (string) content.GetValueForProperty("DomainSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainSid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).AzureStorageSid = (string) content.GetValueForProperty("AzureStorageSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).AzureStorageSid, global::System.Convert.ToString);
+            if (content.Contains("DomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetBiosDomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).NetBiosDomainName = (string) content.GetValueForProperty("NetBiosDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).NetBiosDomainName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ForestName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).ForestName = (string) content.GetValueForProperty("ForestName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).ForestName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DomainGuid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainGuid = (string) content.GetValueForProperty("DomainGuid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainGuid, global::System.Convert.ToString);
+            }
+            if (content.Contains("DomainSid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainSid = (string) content.GetValueForProperty("DomainSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).DomainSid, global::System.Convert.ToString);
+            }
+            if (content.Contains("AzureStorageSid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).AzureStorageSid = (string) content.GetValueForProperty("AzureStorageSid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)this).AzureStorageSid, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -130,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// Creates a new instance of <see cref="ActiveDirectoryProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ActiveDirectoryProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

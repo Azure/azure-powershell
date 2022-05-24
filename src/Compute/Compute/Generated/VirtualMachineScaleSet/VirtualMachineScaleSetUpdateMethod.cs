@@ -31,6 +31,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -38,8 +39,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class UpdateAzureRmVmss : ComputeAutomationBaseCmdlet
     {
+        protected const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet";
+    
         public override void ExecuteCmdlet()
         {
+            
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
@@ -150,13 +154,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public bool EnableAutomaticUpdate { get; set; }
 
         [Parameter(
-            ParameterSetName = "ExplicitIdentityParameterSet",
+            ParameterSetName = ExplicitIdentityParameterSet,
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string[] IdentityId { get; set; }
 
         [Parameter(
-            ParameterSetName = "ExplicitIdentityParameterSet",
+            ParameterSetName = ExplicitIdentityParameterSet,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ResourceIdentityType? IdentityType { get; set; }
@@ -229,6 +233,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         public bool Overprovision { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public bool ScaleInPolicyForceDeletion { get; set; }
 
         [Parameter(
             Mandatory = false)]
@@ -334,10 +342,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-
         [Parameter(
             Mandatory = false)]
         public bool EncryptionAtHost { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "UserData for the Vmss, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        public string UserData { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Type of repair action (replace, restart, reimage) that will be used for repairing unhealthy virtual machines in the scale set. Default value is replace.",
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Replace", "Restart", "Reimage")]
+        public string AutomaticRepairAction { get; set; }
 
         private void BuildPatchObject()
         {
@@ -940,6 +960,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.ScaleInPolicy.Rules = this.ScaleInPolicy;
             }
 
+            if (this.IsParameterBound(c => c.ScaleInPolicyForceDeletion))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.ScaleInPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ScaleInPolicy = new ScaleInPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.ScaleInPolicy.ForceDeletion = this.ScaleInPolicyForceDeletion;
+            }
+
             if (this.IsParameterBound(c => c.SinglePlacementGroup))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -1139,6 +1172,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.VirtualMachineScaleSetUpdate.ProximityPlacementGroup.Id = null;
             }
+            
+            if (this.IsParameterBound(c => c.UserData))
+            {
+                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
+                {
+                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
+                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
+                }
+
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.UserData = this.UserData;
+            }
 
             if (this.VirtualMachineScaleSetUpdate != null
                 && this.VirtualMachineScaleSetUpdate.VirtualMachineProfile != null
@@ -1276,6 +1324,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSet.AutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair;
             }
+
+            if (this.IsParameterBound(c => c.AutomaticRepairAction))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy.RepairAction = this.AutomaticRepairAction;
+            }
+
 
             if (this.IsParameterBound(c => c.EnableAutomaticUpdate))
             {
@@ -1632,6 +1694,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.ScaleInPolicy.Rules = this.ScaleInPolicy;
             }
 
+            if (this.IsParameterBound(c => c.ScaleInPolicyForceDeletion))
+            {
+                if (this.VirtualMachineScaleSet.ScaleInPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ScaleInPolicy = new ScaleInPolicy();
+                }
+                this.VirtualMachineScaleSet.ScaleInPolicy.ForceDeletion = this.ScaleInPolicyForceDeletion;
+            }
+
             if (this.IsParameterBound(c => c.SinglePlacementGroup))
             {
                 this.VirtualMachineScaleSet.SinglePlacementGroup = this.SinglePlacementGroup;
@@ -1778,6 +1849,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 && string.IsNullOrEmpty(this.VirtualMachineScaleSet.ProximityPlacementGroup.Id))
             {
                 this.VirtualMachineScaleSet.ProximityPlacementGroup.Id = null;
+            }
+            
+            if (this.IsParameterBound(c => c.UserData))
+            {
+                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
+                {
+                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
+                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
+                }
+
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.UserData = this.UserData;
             }
 
             if (this.VirtualMachineScaleSet != null

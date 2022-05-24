@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 26B1921E-6052-471B-B5B6-F2853536A425
@@ -29,6 +29,22 @@ Enable-AzOperationalInsightsIISLogCollection [-Workspace] <PSWorkspace>
 The **Enable-AzOperationalInsightsIISLogCollection** cmdlet starts collection of Internet Information Services (IIS) logs from connected computers in a workspace.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+Enable-AzOperationalInsightsIISLogCollection -ResourceGroupName test-rg -WorkspaceName OperationalInsight
+```
+
+```output
+Name              : DataSource_IISLogs
+ResourceGroupName : test-rg
+WorkspaceName     : OperationalInsight
+ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/wo
+                    rkspaces/OperationalInsight/datasources/DataSource_IISLogs
+Kind              : IISLogs
+Properties        : {"state":"OnPremiseEnabled"} 
+```
+Starts collection of Internet Information Services (IIS) logs from connected computers in a workspace.
 
 ## PARAMETERS
 
@@ -124,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

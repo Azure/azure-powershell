@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="VirtualDirectory" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="VirtualDirectory" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -104,8 +104,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath = (string) content.GetValueForProperty("VirtualPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath = (string) content.GetValueForProperty("PhysicalPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath, global::System.Convert.ToString);
+            if (content.Contains("VirtualPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath = (string) content.GetValueForProperty("VirtualPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("PhysicalPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath = (string) content.GetValueForProperty("PhysicalPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,8 +129,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath = (string) content.GetValueForProperty("VirtualPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath = (string) content.GetValueForProperty("PhysicalPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath, global::System.Convert.ToString);
+            if (content.Contains("VirtualPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath = (string) content.GetValueForProperty("VirtualPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("PhysicalPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath = (string) content.GetValueForProperty("PhysicalPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

@@ -17,7 +17,34 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+
+## Version 3.1.0
+* Removed capacity validation in new and update cluster cmdlets as validation exists on server side.
+* Extended error message on base class for extended information.
+* Bug fix - prevent exceptions while using StorageInsight cmdlets.
+* Bug fix - when updating a cluster, it's SKU was set even if no value was passed.
+
+## Version 3.0.1
+* Added logic to prevent exceptions while using `StorageInsight` cmdlets.
+
+## Version 3.0.0
+* Expanded DataSourceType with values `Query`, `Alerts` for LinkedStorageAccount cmdlets
+* [Breaking Change] rename `StorageAccountId` to `StorageAccountIds`
+  - `New-AzOperationalInsightsLinkedStorageAccount`
+* [Breaking Change] Returns `PSSavedSearch` instead of `HttpStatusCode` by `New-AzOperationalInsightsComputerGroup`
+* [Breaking Change] Returns `PSCluster` instead of `PSLinkedService` by `Update-AzOperationalInsightsCluster`
+* Expanded Sku with values `capacityreservation`, `lacluster` for Workspace
+* Added new properties:`SkuCapacity`, `ForceCmkForQuery`, `DisableLocalAuth` for Workspace
+* Added new property: `DailyQuotaGb`on`Set-AzOperationalInsightsWorkspace`
+* Added new properties: `ETag`, `Tag` for StorageInsight cmdlets
+* Added new property `StorageAccountResourceId` to cmdlet:
+  - `Set-AzOperationalInsightsStorageInsight`
+* Added SupportsShouldProcess attribute to cmdlet:
+  - `Set-AzOperationalInsightsStorageInsight`
+* Added new cmdlets to support Table, DataExport, WorkspaceShareKey, PurgeWorkspace, and AvailableServiceTier
+* Added `Error` property in the result of the `Invoke-AzOperationalInsightsQuery` to retrieve partial error when running a query [#16378]
 
 ## Version 2.3.1
 * Fixed a bug in `Set-AzOperationalInsightsLinkedService: when linked service does not exist, perform create(update) instead of failing`

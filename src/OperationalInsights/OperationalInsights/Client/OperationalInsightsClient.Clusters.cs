@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             IPage<Cluster> list = string.IsNullOrWhiteSpace(resourceGroupName)
                 ? this.OperationalInsightsManagementClient.Clusters.List()
                 : this.OperationalInsightsManagementClient.Clusters.ListByResourceGroup(resourceGroupName);
-            
+
             return list.Select(item => new PSCluster(item)).ToList();
         }
 
@@ -62,7 +61,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 existingCluster = GetPSCluster(resourceGroupName, clusterName);
             }
-            catch(RestException)
+            catch (RestException)
             {
                 existingCluster = null;
             }
@@ -82,14 +81,18 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 existingCluster = GetPSCluster(resourceGroupName, clusterName);
             }
-            catch(RestException)
+            catch (RestException)
             {
-                throw new System.ArgumentException($"Cluster {clusterName} under {resourceGroupName} is not existed");
+                throw new PSArgumentException($"Cluster {clusterName} under {resourceGroupName} is not existed");
             }
 
-            parameters.Tags = parameters.Tags == null 
-                ? existingCluster.Tags 
-                : parameters.Tags;
+            parameters.Tags = parameters.Tags ?? existingCluster.Tags;
+
+            parameters.BillingType = string.IsNullOrEmpty(parameters.BillingType)
+                ? existingCluster.BillingType
+                : parameters.BillingType;
+
+            parameters.Sku = parameters.Sku != null ? parameters.Sku : existingCluster.Sku;
 
             if (parameters.KeyVaultProperties != null)
             {
@@ -106,19 +109,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                     : parameters.KeyVaultProperties.KeyVersion;
             }
 
-            if (parameters.Sku != null)
-            {
-                parameters.Sku.Name = string.IsNullOrEmpty(parameters.Sku?.Name)
-                    ? existingCluster.Sku?.Name
-                    : parameters.Sku.Name;
+            var response = this.OperationalInsightsManagementClient.Clusters.Update(resourceGroupName, clusterName, parameters.GetClusterPatch());
 
-                parameters.Sku.Capacity = parameters.Sku?.Capacity == 0
-                    ? existingCluster.Sku?.Capacity
-                    : parameters.Sku.Capacity;
-            }
-
-            Cluster cluster = this.OperationalInsightsManagementClient.Clusters.Update(resourceGroupName, clusterName, parameters.GetClusterPatch());
-            return new PSCluster(cluster);
+            return new PSCluster(response);
         }
 
         public virtual HttpStatusCode DeletePSCluster(string resourceGroupName, string clusterName)

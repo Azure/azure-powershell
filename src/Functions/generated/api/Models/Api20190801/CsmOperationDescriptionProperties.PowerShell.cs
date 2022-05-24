@@ -66,9 +66,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecification = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IServiceSpecification) content.GetValueForProperty("ServiceSpecification",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecification, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ServiceSpecificationTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationMetricSpecification = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricSpecification[]) content.GetValueForProperty("ServiceSpecificationMetricSpecification",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationMetricSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.MetricSpecificationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationLogSpecification = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecification[]) content.GetValueForProperty("ServiceSpecificationLogSpecification",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationLogSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.LogSpecificationTypeConverter.ConvertFrom));
+            if (content.Contains("ServiceSpecification"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecification = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IServiceSpecification) content.GetValueForProperty("ServiceSpecification",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecification, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ServiceSpecificationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ServiceSpecificationMetricSpecification"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationMetricSpecification = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricSpecification[]) content.GetValueForProperty("ServiceSpecificationMetricSpecification",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationMetricSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.MetricSpecificationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ServiceSpecificationLogSpecification"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationLogSpecification = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecification[]) content.GetValueForProperty("ServiceSpecificationLogSpecification",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationLogSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.LogSpecificationTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -86,9 +95,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecification = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IServiceSpecification) content.GetValueForProperty("ServiceSpecification",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecification, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ServiceSpecificationTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationMetricSpecification = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricSpecification[]) content.GetValueForProperty("ServiceSpecificationMetricSpecification",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationMetricSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.MetricSpecificationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationLogSpecification = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecification[]) content.GetValueForProperty("ServiceSpecificationLogSpecification",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationLogSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.LogSpecificationTypeConverter.ConvertFrom));
+            if (content.Contains("ServiceSpecification"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecification = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IServiceSpecification) content.GetValueForProperty("ServiceSpecification",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecification, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ServiceSpecificationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ServiceSpecificationMetricSpecification"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationMetricSpecification = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricSpecification[]) content.GetValueForProperty("ServiceSpecificationMetricSpecification",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationMetricSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.MetricSpecificationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ServiceSpecificationLogSpecification"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationLogSpecification = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecification[]) content.GetValueForProperty("ServiceSpecificationLogSpecification",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionPropertiesInternal)this).ServiceSpecificationLogSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.LogSpecificationTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -124,7 +142,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="CsmOperationDescriptionProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="CsmOperationDescriptionProperties" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmOperationDescriptionProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

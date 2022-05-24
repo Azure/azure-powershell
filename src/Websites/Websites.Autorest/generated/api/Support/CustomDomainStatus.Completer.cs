@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RetrievingValidationToken".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RetrievingValidationToken", "RetrievingValidationToken", global::System.Management.Automation.CompletionResultType.ParameterValue, "RetrievingValidationToken");
+                yield return new global::System.Management.Automation.CompletionResult("'RetrievingValidationToken'", "RetrievingValidationToken", global::System.Management.Automation.CompletionResultType.ParameterValue, "RetrievingValidationToken");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Validating".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Validating", "Validating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Validating");
+                yield return new global::System.Management.Automation.CompletionResult("'Validating'", "Validating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Validating");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Adding".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Adding", "Adding", global::System.Management.Automation.CompletionResultType.ParameterValue, "Adding");
+                yield return new global::System.Management.Automation.CompletionResult("'Adding'", "Adding", global::System.Management.Automation.CompletionResultType.ParameterValue, "Adding");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Ready".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Ready", "Ready", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ready");
+                yield return new global::System.Management.Automation.CompletionResult("'Ready'", "Ready", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ready");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failed", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
+                yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Deleting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Deleting", "Deleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleting");
+                yield return new global::System.Management.Automation.CompletionResult("'Deleting'", "Deleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleting");
             }
         }
     }

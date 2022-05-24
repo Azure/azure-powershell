@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="VnetRouteProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="VnetRouteProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRouteProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -104,9 +104,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).StartAddress = (string) content.GetValueForProperty("StartAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).StartAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).EndAddress = (string) content.GetValueForProperty("EndAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).EndAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).RouteType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RouteType?) content.GetValueForProperty("RouteType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).RouteType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RouteType.CreateFrom);
+            if (content.Contains("StartAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).StartAddress = (string) content.GetValueForProperty("StartAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).StartAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).EndAddress = (string) content.GetValueForProperty("EndAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).EndAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("RouteType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).RouteType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RouteType?) content.GetValueForProperty("RouteType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).RouteType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RouteType.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,9 +133,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).StartAddress = (string) content.GetValueForProperty("StartAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).StartAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).EndAddress = (string) content.GetValueForProperty("EndAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).EndAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).RouteType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RouteType?) content.GetValueForProperty("RouteType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).RouteType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RouteType.CreateFrom);
+            if (content.Contains("StartAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).StartAddress = (string) content.GetValueForProperty("StartAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).StartAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).EndAddress = (string) content.GetValueForProperty("EndAddress",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).EndAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("RouteType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).RouteType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RouteType?) content.GetValueForProperty("RouteType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetRoutePropertiesInternal)this).RouteType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RouteType.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
     }

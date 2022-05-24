@@ -35,7 +35,8 @@ function Test-IotCentralAppLifecycleManagement{
 	$tagKey = "key1"
 	$tagValue = "value1"
 	$tags = @{ $tagKey = $tagValue }
-	
+	$identity = "SystemAssigned"
+
 	try
 	{
 		# Test
@@ -43,10 +44,9 @@ function Test-IotCentralAppLifecycleManagement{
 		# Create Resource Group
 		New-AzResourceGroup -Name $rgname -Location $location
 
-		# Create App
-		$created = New-AzIotCentralApp -ResourceGroupName $rgname -Name $rname -Subdomain $subdomain -Sku $st2Sku -DisplayName $displayName -Tag $tags
+		# Create and Validate App with System-Assigned Managed Identity
+		$created = New-AzIotCentralApp -ResourceGroupName $rgname -Name $rname -Subdomain $subdomain -Sku $st2Sku -DisplayName $displayName -Tag $tags -Identity $identity
 		$actual = Get-AzIotCentralApp -ResourceGroupName $rgname -Name $rname
-
 		$list = Get-AzIotCentralApp -ResourceGroupName $rgname
 	
 		# Assert
@@ -57,11 +57,15 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual 1 @($list).Count
 		Assert-AreEqual $actual.Name $list[0].Name
 		Assert-AreEqual $actual.Sku.Name $st2Sku
+		Assert-NotNull $actual.Identity
+		Assert-NotNull $actual.Identity.Type
+		Assert-AreEqual $actual.Identity.Type "SystemAssigned"
 
 		# Get App
 		$rname1 = $rname
 		$rname2 = ($rname1) + "-2"
 
+		# Create another app without Managed Identity and validate Get responses.
 		New-AzIotCentralApp $rgname $rname2 $rname2
 		$list = Get-AzIotCentralApp -ResourceGroupName $rgname
 		$app1 = $list | where {$_.Name -eq $rname1} | Select-Object -First 1
@@ -75,6 +79,8 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual $rname2 $app2.Subdomain
 		Assert-AreEqual $resourceType $app1.Type
 		Assert-AreEqual $resourceType $app2.Type
+		Assert-AreEqual $app1.Identity.Type "SystemAssigned"
+		Assert-AreEqual $app2.Identity.Type "None"
 
 		# Test getting from empty group
 		$emptyrg = ($rgname) + "empty"
@@ -108,6 +114,9 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual $actual.Subdomain $newSubdomain
 		Assert-AreEqual $actual.Name $rname
 		Assert-AreEqual $actual.Sku.Name $st1Sku
+		
+		# Ensure MI is not updated after update (when Identity is not provided as input to patch operation)
+		Assert-AreEqual $actual.Identity.Type "SystemAssigned"
 
 		# Delete
 		# $job = Find-AzResource -ResourceType $resourceType -ResourceGroupNameEquals $rgname | Get-AzIotCentralApp | Remove-AzIotCentralApp -AsJob

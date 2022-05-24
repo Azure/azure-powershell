@@ -17,35 +17,31 @@ using Xunit;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
 {
-    public class DataBoxEdgeStorageAccountTests : DataBoxEdgeScenarioTestBase
+    public class DataBoxEdgeStorageAccountTests : DataBoxEdgeTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public DataBoxEdgeStorageAccountTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataBoxEdgeStorageAccountTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingEdgeStorageAccount()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-GetEdgeStorageAccountNonExistent");
+            TestRunner.RunTestScript("Test-GetEdgeStorageAccountNonExistent");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestCreateEdgeStorageAccount()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateEdgeStorageAccount");
+            TestRunner.RunTestScript("Test-CreateEdgeStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveEdgeStorageAccount()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-RemoveEdgeStorageAccount");
+            TestRunner.RunTestScript("Test-RemoveEdgeStorageAccount");
         }
     }
 }

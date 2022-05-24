@@ -12,106 +12,99 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class IotSecuritySolutionsTests
+    public class IotSecuritySolutionsTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public IotSecuritySolutionsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IotSecuritySolutionsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmIotSecuritySolution-SubscriptionScope");
+            TestRunner.RunTestScript("Get-AzureRmIotSecuritySolution-SubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceGroupScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmIotSecuritySolution-ResourceGroupScope");
+            TestRunner.RunTestScript("Get-AzureRmIotSecuritySolution-ResourceGroupScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceGroupLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmIotSecuritySolution-ResourceGroupLevelResource");
+            TestRunner.RunTestScript("Get-AzureRmIotSecuritySolution-ResourceGroupLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmIotSecuritySolution-ResourceId");
+            TestRunner.RunTestScript("Get-AzureRmIotSecuritySolution-ResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetResourceGroupLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmIotSecuritySolution-ResourceGroupLevelResource");
+            TestRunner.RunTestScript("Set-AzureRmIotSecuritySolution-ResourceGroupLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmIotSecuritySolution-ResourceId");
+            TestRunner.RunTestScript("Set-AzureRmIotSecuritySolution-ResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetInputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmIotSecuritySolution-InputObject");
+            TestRunner.RunTestScript("Set-AzureRmIotSecuritySolution-InputObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveResourceGroupLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzureRmIotSecuritySolution-ResourceGroupLevelResource");
+            TestRunner.RunTestScript("Remove-AzureRmIotSecuritySolution-ResourceGroupLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzureRmIotSecuritySolution-ResourceId");
+            TestRunner.RunTestScript("Remove-AzureRmIotSecuritySolution-ResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateResourceGroupLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzureRmIotSecuritySolution-ResourceGroupLevelResource");
+            TestRunner.RunTestScript("Update-AzureRmIotSecuritySolution-ResourceGroupLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzureRmIotSecuritySolution-ResourceId");
+            TestRunner.RunTestScript("Update-AzureRmIotSecuritySolution-ResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateInputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzureRmIotSecuritySolution-InputObject");
+            TestRunner.RunTestScript("Update-AzureRmIotSecuritySolution-InputObject");
         }
     }
 }

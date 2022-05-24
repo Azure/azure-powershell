@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// Creates a new instance of <see cref="VirtualNetworkRule" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="VirtualNetworkRule" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -104,9 +104,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).VirtualNetworkResourceId = (string) content.GetValueForProperty("VirtualNetworkResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).VirtualNetworkResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.State?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.State.CreateFrom);
+            if (content.Contains("VirtualNetworkResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).VirtualNetworkResourceId = (string) content.GetValueForProperty("VirtualNetworkResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).VirtualNetworkResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Action"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action.CreateFrom);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.State?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.State.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,9 +133,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).VirtualNetworkResourceId = (string) content.GetValueForProperty("VirtualNetworkResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).VirtualNetworkResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.State?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.State.CreateFrom);
+            if (content.Contains("VirtualNetworkResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).VirtualNetworkResourceId = (string) content.GetValueForProperty("VirtualNetworkResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).VirtualNetworkResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Action"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action.CreateFrom);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.State?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRuleInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.State.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
     }

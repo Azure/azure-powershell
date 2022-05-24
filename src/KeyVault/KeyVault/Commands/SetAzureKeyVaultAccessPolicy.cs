@@ -15,15 +15,14 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [GenericBreakingChange(Constants.BreakingChangeMSGraphMigration)]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultAccessPolicy", SupportsShouldProcess = true, DefaultParameterSetName = ByUserPrincipalName)]
     [OutputType(typeof(PSKeyVault))]
     public class SetAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
@@ -283,7 +282,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdByEmailAddress,
             HelpMessage = "Specifies key operation permissions to grant to a user or service principal.")]
-        [ValidateSet("all", "decrypt", "encrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore", "recover", "purge")]
+        [PSArgumentCompleter("all", "decrypt", "encrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore", "recover", "purge", "rotate")]
         public string[] PermissionsToKeys { get; set; }
 
         /// <summary>
@@ -325,7 +324,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdByEmailAddress,
             HelpMessage = "Specifies secret operation permissions to grant to a user or service principal.")]
-        [ValidateSet("all", "get", "list", "set", "delete", "backup", "restore", "recover", "purge")]
+        [PSArgumentCompleter("all", "get", "list", "set", "delete", "backup", "restore", "recover", "purge")]
         public string[] PermissionsToSecrets { get; set; }
 
         /// <summary>
@@ -367,7 +366,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdByEmailAddress,
             HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
-        [ValidateSet("all", "get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "recover", "purge", "backup", "restore")]
+        [PSArgumentCompleter("all", "get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "recover", "purge", "backup", "restore")]
         public string[] PermissionsToCertificates { get; set; }
 
         /// <summary>
@@ -409,7 +408,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdByEmailAddress,
             HelpMessage = "Specifies managed storage account and sas definition  operation permissions to grant to a user or service principal.")]
-        [ValidateSet("all", "get", "list", "delete", "set", "update", "regeneratekey", "getsas", "listsas", "deletesas", "setsas", "recover", "backup", "restore", "purge")]
+        [PSArgumentCompleter("all", "get", "list", "delete", "set", "update", "regeneratekey", "getsas", "listsas", "deletesas", "setsas", "recover", "backup", "restore", "purge")]
         public string[] PermissionsToStorage { get; set; }
 
         [Parameter(Mandatory = false,
@@ -467,6 +466,8 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
+            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
+
             if (InputObject != null)
             {
                 VaultName = InputObject.VaultName;
@@ -518,11 +519,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                     || !string.IsNullOrWhiteSpace(this.EmailAddress))
                 {
                     var objId = this.ObjectId;
-                    if (!this.BypassObjectIdValidation.IsPresent && ActiveDirectoryClient != null)
+                    if (!this.BypassObjectIdValidation.IsPresent && GraphClient != null)
                     {
                         objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.EmailAddress, this.ServicePrincipalName);
                     }
-                    else if (ActiveDirectoryClient == null && objId == null)
+                    else if (GraphClient == null && objId == null)
                     {
                         throw new Exception(Resources.ActiveDirectoryClientNull);
                     }
@@ -575,7 +576,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     vault.EnableRbacAuthorization,
                     vault.SoftDeleteRetentionInDays,
                     vault.NetworkAcls,
-                    ActiveDirectoryClient);
+                    GraphClient);
 
                 if (PassThru.IsPresent)
                     WriteObject(updatedVault);

@@ -25,8 +25,8 @@ The **Remove-AzAutomationSchedule** cmdlet deletes a schedule from Azure Automat
 ## EXAMPLES
 
 ### Example 1: Remove a schedule
-```
-PS C:\>Remove-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -ResourceGroupName "ResourceGroup01"
+```powershell
+Remove-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command deletes the schedule named Schedule01 in automation account Contoso17 in resource group ResourceGroup01.

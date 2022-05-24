@@ -18,10 +18,40 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.9.0
+* Added new cmdlet `Get-AzSqlInstanceEndpointCertificate`
+* Added parameter `HighAvailabilityReplicaCount` to `New-AzSqlElasticPool` and `Set-AzSqlElasticPool`
+
+## Version 3.8.0
+* Added parameter `ServicePrincipalType` to `New-AzSqlInstance` and `Set-AzSqlInstance`
+* [Breaking change] Removed `Get-AzSqlDatabaseTransparentDataEncryptionActivity`
+* Added property `CurrentBackupStorageRedundancy` and `RequestedBackupStorageRedundancy` in  the outputs of Managed Instance CRUD commands
+* Added optional property `Tag` to `Restore-AzSqlDatabase`
+* Added new cmdlets for managing Server Trust Certificates
+    - `New-AzSqlInstanceServerTrustCertificate`
+    - `Get-AzSqlInstanceServerTrustCertificate`
+    - `Remove-AzSqlInstanceServerTrustCertificate`
+* Added new cmdlets for managing Managed Instance Link
+    - `New-AzSqlInstanceLink`
+    - `Get-AzSqlInstanceLink`
+    - `Remove-AzSqlInstanceLink`
+    - `Set-AzSqlInstanceLink`
+* Added support for DataWarehouse cross tenant and cross subscription restore operations to `Restore-AzSqlDatabase` cmdlet
+
+## Version 3.7.1
+* Deprecation of Get-AzSqlDatabaseTransparentDataEncryptionActivity cmdlet
+* Fixed cmdlets for Azure Active Directory Admin `AzureSqlServerActiveDirectoryAdministratorAdapter` and `AzureSqlInstanceActiveDirectoryAdministratorAdapter` migrate from `AzureEnvironment.Endpoint.AzureEnvironment.Endpoint.Graph` to `AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl`
+
+## Version 3.7.0
+* Added `ZoneRedundant` parameter to `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` and `Restore-AzSqlDatabase` to enable zone redundant copy, geo secondary and PITR support for hyperscale databases
+
+## Version 3.6.0
 * Fixed FirewallRuleName wildcard filtering in `Get-AzSqlServerFirewallRule` [#16199]
 
-## Version 3.5.1
+* Moved SQL Server and SQL Instance AAD from ActiveDirectoryClient to MicrosoftGraphClient 
 
+## Version 3.5.1
 * Fixed `Get-AzSqlDatabaseImportExportStatus` to report the error encountered
 
 ## Version 3.5.0

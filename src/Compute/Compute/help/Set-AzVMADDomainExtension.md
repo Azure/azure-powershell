@@ -15,7 +15,7 @@ Adds an AD domain extension to a virtual machine.
 
 ```
 Set-AzVMADDomainExtension -DomainName <String> [-OUPath <String>] [-JoinOption <UInt32>]
- [-Credential <PSCredential>] [-Restart] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
+ [-Credential <PSCredential>] [-Restart] [-ResourceGroupName] <String> [-VMName] <String> -Name <String>
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
  [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -25,6 +25,22 @@ The **Set-AzVMADDomainExtension** cmdlet adds an Azure Active Directory (AD) dom
 This extension lets your virtual machine join a domain.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+# Create a Resource Group and Virtual Machine before this.
+$extensionName = "extensionName"
+$virtualMachineName = "vmName"
+$resourceGroupName = "resourceGroupName"
+$domainName = "domain.com"
+Set-AzVMADDomainExtension -ResourceGroupName $resourceGroupName -VMName $virtualMachineName -Name $extensionName -DomainName $domainName
+```
+
+```Output
+RequestId IsSuccessStatusCode StatusCode ReasonPhrase
+--------- ------------------- ---------- ------------
+                         True         OK OK
+```
 
 ## PARAMETERS
 
@@ -108,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -JoinOption
-Specifies the join option. For join options see [fJoinOptions](https://docs.microsoft.com/windows/desktop/api/lmjoin/nf-lmjoin-netjoindomain)
+Specifies the join option. For join options see [JoinOptions](https://docs.microsoft.com/windows/desktop/api/lmjoin/nf-lmjoin-netjoindomain)
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]
@@ -145,7 +161,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

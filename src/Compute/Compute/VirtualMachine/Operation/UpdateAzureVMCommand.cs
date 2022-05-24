@@ -118,9 +118,53 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
         public SwitchParameter NoWait { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ResourceGroupNameParameterSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = IdParameterSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ExplicitIdentityParameterSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        public string UserData { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
+        public SwitchParameter HibernationEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).")]
+        public int vCPUCountAvailable { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
+        public int vCPUCountPerCore { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => c.UserData))
+            {
+                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
+                {
+                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
+                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
+                }
+            }
+
             base.ExecuteCmdlet();
 
             if (this.ParameterSetName.Equals(IdParameterSet))
@@ -132,6 +176,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 ExecuteClientAction(() =>
                 {
+                            
                     var parameters = new VirtualMachine
                     {
                         DiagnosticsProfile = this.VM.DiagnosticsProfile,
@@ -160,7 +205,10 @@ namespace Microsoft.Azure.Commands.Compute
                         EvictionPolicy = this.VM.EvictionPolicy,
                         Priority = this.VM.Priority,
                         CapacityReservation = this.VM.CapacityReservation,
-                        ApplicationProfile = ComputeAutoMapperProfile.Mapper.Map<ApplicationProfile>(this.VM.ApplicationProfile)
+                        ApplicationProfile = ComputeAutoMapperProfile.Mapper.Map<ApplicationProfile>(this.VM.ApplicationProfile),
+                        UserData = this.IsParameterBound(c => c.UserData)
+                            ? this.UserData
+                            : this.VM.UserData
                     };
 
                     if (parameters.Host != null && string.IsNullOrWhiteSpace(parameters.Host.Id))
@@ -216,6 +264,15 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
                     }
 
+                    if (this.IsParameterBound(c => c.HibernationEnabled))
+                    {
+                        if (parameters.AdditionalCapabilities == null)
+                        {
+                            parameters.AdditionalCapabilities = new AdditionalCapabilities();
+                        }
+                        parameters.AdditionalCapabilities.HibernationEnabled = this.HibernationEnabled;
+                    }
+
                     if (this.IsParameterBound(c => c.MaxPrice))
                     {
                         if (parameters.BillingProfile == null)
@@ -246,6 +303,32 @@ namespace Microsoft.Azure.Commands.Compute
                     if (parameters.StorageProfile != null && parameters.StorageProfile.ImageReference != null && parameters.StorageProfile.ImageReference.Id != null)
                     {
                         parameters.StorageProfile.ImageReference.Id = null;
+                    }
+
+                    if (this.IsParameterBound(c => c.vCPUCountPerCore))
+                    {
+                        if (parameters.HardwareProfile == null)
+                        {
+                            parameters.HardwareProfile = new HardwareProfile();
+                        }
+                        if (parameters.HardwareProfile.VmSizeProperties == null)
+                        {
+                            parameters.HardwareProfile.VmSizeProperties = new VMSizeProperties();
+                        }
+                        parameters.HardwareProfile.VmSizeProperties.VCPUsPerCore = this.vCPUCountPerCore;
+                    }
+
+                    if (this.IsParameterBound(c => c.vCPUCountAvailable))
+                    {
+                        if (parameters.HardwareProfile == null)
+                        {
+                            parameters.HardwareProfile = new HardwareProfile();
+                        }
+                        if (parameters.HardwareProfile.VmSizeProperties == null)
+                        {
+                            parameters.HardwareProfile.VmSizeProperties = new VMSizeProperties();
+                        }
+                        parameters.HardwareProfile.VmSizeProperties.VCPUsAvailable = this.vCPUCountAvailable;
                     }
 
                     if (NoWait.IsPresent)

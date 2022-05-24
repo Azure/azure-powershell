@@ -92,13 +92,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).Auth = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettings) content.GetValueForProperty("Auth",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).Auth, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.UpstreamAuthSettingsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UrlTemplate = (string) content.GetValueForProperty("UrlTemplate",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UrlTemplate, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UserEventPattern = (string) content.GetValueForProperty("UserEventPattern",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UserEventPattern, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).SystemEvent = (string[]) content.GetValueForProperty("SystemEvent",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).SystemEvent, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthManagedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettings) content.GetValueForProperty("AuthManagedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthManagedIdentity, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentitySettingsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType?) content.GetValueForProperty("AuthType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).ManagedIdentityResource = (string) content.GetValueForProperty("ManagedIdentityResource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).ManagedIdentityResource, global::System.Convert.ToString);
+            if (content.Contains("Auth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).Auth = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettings) content.GetValueForProperty("Auth",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).Auth, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.UpstreamAuthSettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("UrlTemplate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UrlTemplate = (string) content.GetValueForProperty("UrlTemplate",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UrlTemplate, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserEventPattern"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UserEventPattern = (string) content.GetValueForProperty("UserEventPattern",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UserEventPattern, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemEvent"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).SystemEvent = (string[]) content.GetValueForProperty("SystemEvent",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).SystemEvent, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AuthManagedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthManagedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettings) content.GetValueForProperty("AuthManagedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthManagedIdentity, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentitySettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AuthType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType?) content.GetValueForProperty("AuthType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType.CreateFrom);
+            }
+            if (content.Contains("ManagedIdentityResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).ManagedIdentityResource = (string) content.GetValueForProperty("ManagedIdentityResource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).ManagedIdentityResource, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -116,13 +137,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).Auth = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettings) content.GetValueForProperty("Auth",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).Auth, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.UpstreamAuthSettingsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UrlTemplate = (string) content.GetValueForProperty("UrlTemplate",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UrlTemplate, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UserEventPattern = (string) content.GetValueForProperty("UserEventPattern",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UserEventPattern, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).SystemEvent = (string[]) content.GetValueForProperty("SystemEvent",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).SystemEvent, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthManagedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettings) content.GetValueForProperty("AuthManagedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthManagedIdentity, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentitySettingsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType?) content.GetValueForProperty("AuthType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).ManagedIdentityResource = (string) content.GetValueForProperty("ManagedIdentityResource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).ManagedIdentityResource, global::System.Convert.ToString);
+            if (content.Contains("Auth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).Auth = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettings) content.GetValueForProperty("Auth",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).Auth, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.UpstreamAuthSettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("UrlTemplate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UrlTemplate = (string) content.GetValueForProperty("UrlTemplate",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UrlTemplate, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserEventPattern"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UserEventPattern = (string) content.GetValueForProperty("UserEventPattern",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).UserEventPattern, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemEvent"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).SystemEvent = (string[]) content.GetValueForProperty("SystemEvent",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).SystemEvent, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AuthManagedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthManagedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettings) content.GetValueForProperty("AuthManagedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthManagedIdentity, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentitySettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AuthType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType?) content.GetValueForProperty("AuthType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).AuthType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType.CreateFrom);
+            }
+            if (content.Contains("ManagedIdentityResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).ManagedIdentityResource = (string) content.GetValueForProperty("ManagedIdentityResource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandlerInternal)this).ManagedIdentityResource, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

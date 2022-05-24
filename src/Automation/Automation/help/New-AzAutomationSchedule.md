@@ -66,19 +66,29 @@ The **New-AzAutomationSchedule** cmdlet creates a schedule in Azure Automation.
 ## EXAMPLES
 
 ### Example 1: Create a one-time schedule in local time
-```
-PS C:\> $TimeZone = ([System.TimeZoneInfo]::Local).Id
-PS C:\> New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
+```powershell
+$TimeZone = ([System.TimeZoneInfo]::Local).Id
+New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
 ```
 
 The first command gets the time zone ID from the system and stores it in the $TimeZone variable.
-The second command creates a schedule that runs one time on the current date at 11:00 PM in the specified time zone..
+The second command creates a schedule that runs one time on the current date at 11:00 PM in the specified time zone.
 
-### Example 2: Create a recurring schedule
+### Example 2: Create a one-time schedule in another time zone
+```powershell
+$TimeZone = "Europe/Paris"
+New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00Z" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
 ```
-PS C:\> $StartTime = Get-Date "13:00:00"
-PS C:\> $EndTime = $StartTime.AddYears(1)
-PS C:\> New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule02" -StartTime $StartTime -ExpiryTime $EndTime -DayInterval 1 -ResourceGroupName "ResourceGroup01"
+
+The first command initializes a $TimeZone variable with value `Europe/Paris`
+The second command creates a schedule that runs one time on the current date at 23:00 UTC in the specified time zone.
+> Note: Schedule *StartTime* is calculated by adding the *TimeZone* Offset to provided *StartTime*
+
+### Example 3: Create a recurring schedule
+```powershell
+$StartTime = Get-Date "13:00:00"
+$EndTime = $StartTime.AddYears(1)
+New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule02" -StartTime $StartTime -ExpiryTime $EndTime -DayInterval 1 -ResourceGroupName "ResourceGroup01"
 ```
 
 The first command creates a date object by using the **Get-Date** cmdlet, and then stores the object in the $StartDate variable.
@@ -87,7 +97,7 @@ The second command creates a date object by using the **Get-Date** cmdlet, and t
 The command specifies a future time.
 The final command creates a daily schedule named Schedule02 to begin at the time stored in $StartDate and expire at the time stored in $EndDate.
 
-### Example 3: Create a weekly recurring schedule
+### Example 4: Create a weekly recurring schedule
 ```
 PS C:\> $StartTime = (Get-Date "13:00:00").AddDays(1)
 PS C:\> [System.DayOfWeek[]]$WeekDays = @([System.DayOfWeek]::Monday..[System.DayOfWeek]::Friday)
@@ -345,7 +355,7 @@ Accept wildcard characters: False
 ### -StartTime
 Specifies the start time of a schedule as a **DateTimeOffset** object.
 You can specify a string that can be converted to a valid **DateTimeOffset**.
-If the *TimeZone* parameter is specified, the offset will be ignored and the time zone specified is used.
+If the *TimeZone* is provided, *StartTime* is calculated by adding the Offset of Input *TimeZone*.
 
 ```yaml
 Type: System.DateTimeOffset

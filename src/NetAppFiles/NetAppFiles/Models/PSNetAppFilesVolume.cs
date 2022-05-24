@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets Resource location
         /// </summary>
         public string Location { get; set; }
-        
+
         /// <summary>
         /// Gets resource Id
         /// </summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <remarks>
         /// Mount targets associated with the volume
         /// </remarks>
-        public object MountTargets { get; set;  }
+        public object MountTargets { get; set; }
 
         /// <summary>
         /// Gets or sets snapshot ID
@@ -318,5 +318,70 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// T2: Standard T2 storage to network connectivity.
         /// </value>
         public string StorageToNetworkProximity { get; set; }
+
+        /// <summary>
+        /// Gets or sets VolumeGroupName
+        /// </summary>
+        /// <value>
+        /// Volume Group Name
+        /// </value>
+        public string VolumeGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets CapacityPoolResourceId
+        /// </summary>
+        /// <value>
+        /// Pool Resource Id used in case of creating a volume through volume group
+        /// </value>
+        public string CapacityPoolResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets ProximityPlacementGroup
+        /// </summary>
+        /// <value>
+        /// Proximity placement group associated with the volume
+        /// </value>
+        public string ProximityPlacementGroup { get; set; }
+
+        /// <summary>
+        /// Gets or sets T2Network
+        /// </summary>
+        /// <value>
+        /// T2 network information
+        /// </value>
+        public string T2Network { get; set; }
+
+        /// <summary>
+        /// Gets or sets PlacementRules
+        /// </summary>
+        /// <value>
+        /// Application specific placement rules for the particular volume.
+        /// </value>
+        public IList<PSKeyValuePairs> PlacementRules { get; set; }
+
+        /// <summary>
+        /// Gets or sets SystemData
+        /// </summary>
+        public PSSystemData SystemData { get; set; }
+
+        /// <summary>
+        /// Gets or sets MaximumNumberOfFiles
+        /// </summary>
+        /// <value>
+        /// Gets maximum number of files allowed. Needs a service request in
+        /// order to be changed. Only allowed to be changed if volume quota is
+        /// more than 4TiB.
+        /// </value>
+        public long? MaximumNumberOfFiles {get; set;}
+
+        /// <summary>
+        /// Gets or sets EnableSubvolumes
+        /// </summary>
+        /// <value>
+        /// Gets or sets flag indicating whether subvolume operations are
+        /// enabled on the volume. Possible values include: 'Enabled',
+        /// 'Disabled'
+        /// </value>
+        public string EnableSubvolumes { get; set; }
     }
 }

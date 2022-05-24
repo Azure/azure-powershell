@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="SlotDifferenceProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="SlotDifferenceProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferenceProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,13 +99,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Level = (string) content.GetValueForProperty("Level",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Level, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingType = (string) content.GetValueForProperty("SettingType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).DiffRule = (string) content.GetValueForProperty("DiffRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).DiffRule, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingName = (string) content.GetValueForProperty("SettingName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInCurrentSlot = (string) content.GetValueForProperty("ValueInCurrentSlot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInCurrentSlot, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInTargetSlot = (string) content.GetValueForProperty("ValueInTargetSlot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInTargetSlot, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Description, global::System.Convert.ToString);
+            if (content.Contains("Level"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Level = (string) content.GetValueForProperty("Level",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Level, global::System.Convert.ToString);
+            }
+            if (content.Contains("SettingType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingType = (string) content.GetValueForProperty("SettingType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiffRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).DiffRule = (string) content.GetValueForProperty("DiffRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).DiffRule, global::System.Convert.ToString);
+            }
+            if (content.Contains("SettingName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingName = (string) content.GetValueForProperty("SettingName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ValueInCurrentSlot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInCurrentSlot = (string) content.GetValueForProperty("ValueInCurrentSlot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInCurrentSlot, global::System.Convert.ToString);
+            }
+            if (content.Contains("ValueInTargetSlot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInTargetSlot = (string) content.GetValueForProperty("ValueInTargetSlot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInTargetSlot, global::System.Convert.ToString);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Description, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,13 +144,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Level = (string) content.GetValueForProperty("Level",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Level, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingType = (string) content.GetValueForProperty("SettingType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).DiffRule = (string) content.GetValueForProperty("DiffRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).DiffRule, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingName = (string) content.GetValueForProperty("SettingName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInCurrentSlot = (string) content.GetValueForProperty("ValueInCurrentSlot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInCurrentSlot, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInTargetSlot = (string) content.GetValueForProperty("ValueInTargetSlot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInTargetSlot, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Description, global::System.Convert.ToString);
+            if (content.Contains("Level"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Level = (string) content.GetValueForProperty("Level",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Level, global::System.Convert.ToString);
+            }
+            if (content.Contains("SettingType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingType = (string) content.GetValueForProperty("SettingType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiffRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).DiffRule = (string) content.GetValueForProperty("DiffRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).DiffRule, global::System.Convert.ToString);
+            }
+            if (content.Contains("SettingName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingName = (string) content.GetValueForProperty("SettingName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).SettingName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ValueInCurrentSlot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInCurrentSlot = (string) content.GetValueForProperty("ValueInCurrentSlot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInCurrentSlot, global::System.Convert.ToString);
+            }
+            if (content.Contains("ValueInTargetSlot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInTargetSlot = (string) content.GetValueForProperty("ValueInTargetSlot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).ValueInTargetSlot, global::System.Convert.ToString);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotDifferencePropertiesInternal)this).Description, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

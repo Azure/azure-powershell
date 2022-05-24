@@ -24,8 +24,8 @@ The **New-AzApplicationGatewayAutoscaleConfiguration** cmdlet creates Autoscale 
 
 ### Example 1
 ```powershell
-PS C:\> $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
-PS C:\> $gw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname ..  -AutoscaleConfiguration $autoscaleConfig
+$AutoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
+$Gateway = New-AzApplicationGateway -Name "AppGateway01" -ResourceGroupName "ResourceGroup01" -Location "West US" -BackendAddressPools $Pool -BackendHttpSettingsCollection $PoolSetting -FrontendIpConfigurations $FrontEndIpConfig -GatewayIpConfigurations $GatewayIpConfig -FrontendPorts $FrontEndPort -HttpListeners $Listener -RequestRoutingRules $Rule -Sku $Sku -AutoscaleConfiguration $AutoscaleConfig
 ```
 
 The first command creates an autoscale configuration with minimum capacity 3.
@@ -34,10 +34,10 @@ The second command creates an application gateway with the autoscale configurati
 ### Example 2
 
 ```powershell
-PS C:\> $gw = Get-AzApplicationGateway -Name <Name> -ResourceGroupName <ResourceGroupName>
-PS C:\> $gw.Sku.Capacity = $null
-PS C:\> $gw.AutoscaleConfiguration = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 2 -MaxCapacity 4
-PS C:\> $gw = Set-AzApplicationGateway -ApplicationGateway $gw
+$gw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$gw.Sku.Capacity = $null
+$gw.AutoscaleConfiguration = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 2 -MaxCapacity 4
+$gw = Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
 The first command gets the configuration of the Application Gateway into a variable.

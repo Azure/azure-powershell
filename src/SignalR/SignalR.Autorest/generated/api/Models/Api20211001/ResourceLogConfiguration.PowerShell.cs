@@ -99,7 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogConfigurationInternal)this).Category = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogConfigurationInternal)this).Category, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceLogCategoryTypeConverter.ConvertFrom));
+            if (content.Contains("Category"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogConfigurationInternal)this).Category = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogConfigurationInternal)this).Category, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceLogCategoryTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,7 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogConfigurationInternal)this).Category = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogConfigurationInternal)this).Category, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceLogCategoryTypeConverter.ConvertFrom));
+            if (content.Contains("Category"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogConfigurationInternal)this).Category = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogConfigurationInternal)this).Category, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceLogCategoryTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

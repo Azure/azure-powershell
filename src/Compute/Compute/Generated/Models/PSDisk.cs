@@ -67,7 +67,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Location { get; set; }
         public ExtendedLocation ExtendedLocation { get; set; }
         public IDictionary<string, string> Tags { get; set; }
-        //     Gets or sets possible values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
         public string NetworkAccessPolicy { get; set; }
         public string DiskAccessId { get; set; }
         public string Tier { get; set; }
@@ -75,5 +74,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public PSPurchasePlan PurchasePlan { get; set; }
         public bool? SupportsHibernation { get; set; }
         public DiskSecurityProfile SecurityProfile { get; set; }
+        public string PublicNetworkAccess { get; set; }
+        public SupportedCapabilities SupportedCapabilities { get; set; }
+        public string DataAccessAuthMode { get; set; }
     }
 }

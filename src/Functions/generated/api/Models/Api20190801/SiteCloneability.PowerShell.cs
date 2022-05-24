@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="SiteCloneability" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="SiteCloneability" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneability FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).Result = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CloneAbilityResult?) content.GetValueForProperty("Result",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).Result, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CloneAbilityResult.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingFeature = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]) content.GetValueForProperty("BlockingFeature",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingFeature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterionTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).UnsupportedFeature = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]) content.GetValueForProperty("UnsupportedFeature",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).UnsupportedFeature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterionTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingCharacteristic = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]) content.GetValueForProperty("BlockingCharacteristic",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingCharacteristic, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterionTypeConverter.ConvertFrom));
+            if (content.Contains("Result"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).Result = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CloneAbilityResult?) content.GetValueForProperty("Result",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).Result, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CloneAbilityResult.CreateFrom);
+            }
+            if (content.Contains("BlockingFeature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingFeature = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]) content.GetValueForProperty("BlockingFeature",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingFeature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("UnsupportedFeature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).UnsupportedFeature = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]) content.GetValueForProperty("UnsupportedFeature",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).UnsupportedFeature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("BlockingCharacteristic"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingCharacteristic = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]) content.GetValueForProperty("BlockingCharacteristic",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingCharacteristic, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterionTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,10 +132,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).Result = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CloneAbilityResult?) content.GetValueForProperty("Result",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).Result, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CloneAbilityResult.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingFeature = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]) content.GetValueForProperty("BlockingFeature",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingFeature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterionTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).UnsupportedFeature = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]) content.GetValueForProperty("UnsupportedFeature",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).UnsupportedFeature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterionTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingCharacteristic = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]) content.GetValueForProperty("BlockingCharacteristic",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingCharacteristic, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterionTypeConverter.ConvertFrom));
+            if (content.Contains("Result"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).Result = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CloneAbilityResult?) content.GetValueForProperty("Result",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).Result, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CloneAbilityResult.CreateFrom);
+            }
+            if (content.Contains("BlockingFeature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingFeature = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]) content.GetValueForProperty("BlockingFeature",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingFeature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("UnsupportedFeature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).UnsupportedFeature = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]) content.GetValueForProperty("UnsupportedFeature",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).UnsupportedFeature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("BlockingCharacteristic"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingCharacteristic = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion[]) content.GetValueForProperty("BlockingCharacteristic",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityInternal)this).BlockingCharacteristic, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteCloneabilityCriterion>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteCloneabilityCriterionTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

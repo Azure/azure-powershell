@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support
 {
 
-    /// <summary>TypeConverter implementation for StatusTypes.</summary>
+    /// <summary>The status of the hybrid machine agent.</summary>
     public partial class StatusTypesTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

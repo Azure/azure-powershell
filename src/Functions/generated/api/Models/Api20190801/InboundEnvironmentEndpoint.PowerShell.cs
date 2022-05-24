@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="InboundEnvironmentEndpoint" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="InboundEnvironmentEndpoint" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpoint FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -103,9 +103,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Endpoint = (string[]) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Endpoint, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Port = (string[]) content.GetValueForProperty("Port",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Port, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("Endpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Endpoint = (string[]) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Endpoint, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Port"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Port = (string[]) content.GetValueForProperty("Port",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Port, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,9 +132,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Endpoint = (string[]) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Endpoint, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Port = (string[]) content.GetValueForProperty("Port",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Port, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("Endpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Endpoint = (string[]) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Endpoint, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Port"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Port = (string[]) content.GetValueForProperty("Port",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IInboundEnvironmentEndpointInternal)this).Port, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// Creates a new instance of <see cref="LeaseContainerRequest" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="LeaseContainerRequest" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequest FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,11 +99,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).Action = (string) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).Action, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseId = (string) content.GetValueForProperty("LeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).BreakPeriod = (int?) content.GetValueForProperty("BreakPeriod",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).BreakPeriod, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseDuration = (int?) content.GetValueForProperty("LeaseDuration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseDuration, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).ProposedLeaseId = (string) content.GetValueForProperty("ProposedLeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).ProposedLeaseId, global::System.Convert.ToString);
+            if (content.Contains("Action"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).Action = (string) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).Action, global::System.Convert.ToString);
+            }
+            if (content.Contains("LeaseId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseId = (string) content.GetValueForProperty("LeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseId, global::System.Convert.ToString);
+            }
+            if (content.Contains("BreakPeriod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).BreakPeriod = (int?) content.GetValueForProperty("BreakPeriod",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).BreakPeriod, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("LeaseDuration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseDuration = (int?) content.GetValueForProperty("LeaseDuration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseDuration, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ProposedLeaseId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).ProposedLeaseId = (string) content.GetValueForProperty("ProposedLeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).ProposedLeaseId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,11 +136,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).Action = (string) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).Action, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseId = (string) content.GetValueForProperty("LeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).BreakPeriod = (int?) content.GetValueForProperty("BreakPeriod",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).BreakPeriod, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseDuration = (int?) content.GetValueForProperty("LeaseDuration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseDuration, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).ProposedLeaseId = (string) content.GetValueForProperty("ProposedLeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).ProposedLeaseId, global::System.Convert.ToString);
+            if (content.Contains("Action"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).Action = (string) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).Action, global::System.Convert.ToString);
+            }
+            if (content.Contains("LeaseId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseId = (string) content.GetValueForProperty("LeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseId, global::System.Convert.ToString);
+            }
+            if (content.Contains("BreakPeriod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).BreakPeriod = (int?) content.GetValueForProperty("BreakPeriod",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).BreakPeriod, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("LeaseDuration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseDuration = (int?) content.GetValueForProperty("LeaseDuration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).LeaseDuration, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ProposedLeaseId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).ProposedLeaseId = (string) content.GetValueForProperty("ProposedLeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerRequestInternal)this).ProposedLeaseId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

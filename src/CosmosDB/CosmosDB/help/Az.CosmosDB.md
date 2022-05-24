@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.CosmosDB Module
 ## Description
-The topics in this section document the Azure PowerShell cmdlets for Azure CosmosDB in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.CosmosDB namespace.
+The topics in this section document the Azure PowerShell cmdlets for Azure Cosmos DB and Azure Managed Instance for Apache Cassandra in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.CosmosDB namespace.
 
 ## Az.CosmosDB Cmdlets
 ### [Get-AzCosmosDBAccount](Get-AzCosmosDBAccount.md)
@@ -29,6 +29,9 @@ Gets a CosmosDB Cassandra Table.
 ### [Get-AzCosmosDBCassandraTableThroughput](Get-AzCosmosDBCassandraTableThroughput.md)
 Gets the throughput value of the Cassandra Table.
 
+### [Get-AzCosmosDbClientEncryptionKey](Get-AzCosmosDbClientEncryptionKey.md)
+Gets the CosmosDB Client Encryption Key.
+
 ### [Get-AzCosmosDBGremlinDatabase](Get-AzCosmosDBGremlinDatabase.md)
 Gets the CosmosDB Gremlin Database.
 
@@ -42,7 +45,8 @@ Gets the CosmosDB Gremlin Graph.
 Gets the throughput of a CosmosDB Gremlin Graph.
 
 ### [Get-AzCosmosDBLocation](Get-AzCosmosDBLocation.md)
-List Azure CosmosDB locations and their properties. Get Azure CosmosDB location properties for a specific location.
+List Azure Cosmos DB locations and their properties.
+Get Azure Cosmos DB location properties for a specific location.
 
 ### [Get-AzCosmosDBMongoDBCollection](Get-AzCosmosDBMongoDBCollection.md)
 Gets the CosmosDB MongoDB Collection.
@@ -116,6 +120,12 @@ Gets a CosmosDB Table.
 ### [Get-AzCosmosDBTableThroughput](Get-AzCosmosDBTableThroughput.md)
 Gets the throughput of a CosmosDB Table.
 
+### [Get-AzManagedCassandraCluster](Get-AzManagedCassandraCluster.md)
+Gets a Azure Managed Instances for Apache Cassandra cluster.
+
+### [Get-AzManagedCassandraDatacenter](Get-AzManagedCassandraDatacenter.md)
+Gets a Azure Managed Instances for Apache Cassandra data center.
+
 ### [Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration](Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
 
@@ -163,6 +173,9 @@ Creates a new CosmosDB Cassandra Schema.
 
 ### [New-AzCosmosDBCassandraTable](New-AzCosmosDBCassandraTable.md)
 Creates a new CosmosDB Cassandra Table.
+
+### [New-AzCosmosDbClientEncryptionKey](New-AzCosmosDbClientEncryptionKey.md)
+Creates a new CosmosDB Client Encryption Key.
 
 ### [New-AzCosmosDBDatabaseToRestore](New-AzCosmosDBDatabaseToRestore.md)
 Creates a new CosmosDB Database to Restore object(PSDatabaseToRestore)
@@ -263,6 +276,12 @@ Creates a new CosmosDB Table.
 ### [New-AzCosmosDBVirtualNetworkRule](New-AzCosmosDBVirtualNetworkRule.md)
 Create a new CosmosDB VirtualNetworkRule Object(PSVirtualNetworkRule).
 
+### [New-AzManagedCassandraCluster](New-AzManagedCassandraCluster.md)
+Creates a new Azure Managed Instances for Apache Cassandra cluster.
+
+### [New-AzManagedCassandraDatacenter](New-AzManagedCassandraDatacenter.md)
+Create a new Azure Managed Instances for Apache Cassandra data center.
+
 ### [Remove-AzCosmosDBAccount](Remove-AzCosmosDBAccount.md)
 Remove a CosmosDB Account.
 
@@ -308,6 +327,12 @@ Deletes the CosmosDB Sql UserDefinedFunction.
 ### [Remove-AzCosmosDBTable](Remove-AzCosmosDBTable.md)
 Deletes the CosmosDB Table.
 
+### [Remove-AzManagedCassandraCluster](Remove-AzManagedCassandraCluster.md)
+Deletes a Azure Managed Instances for Apache Cassandra cluster.
+
+### [Remove-AzManagedCassandraDatacenter](Remove-AzManagedCassandraDatacenter.md)
+Deletes a Azure Managed Instances for Apache Cassandra data center.
+
 ### [Restore-AzCosmosDBAccount](Restore-AzCosmosDBAccount.md)
 Restores an existing CosmosDB account (live or deleted) to a given timestamp to a new account
 
@@ -315,7 +340,7 @@ Restores an existing CosmosDB account (live or deleted) to a given timestamp to 
 Update a CosmosDB account attributes.
 
 ### [Update-AzCosmosDBAccountFailoverPriority](Update-AzCosmosDBAccountFailoverPriority.md)
-{{ Fill in the Synopsis }}
+Update Failover Region Priority of a CosmosDB Account.
 
 ### [Update-AzCosmosDBAccountRegion](Update-AzCosmosDBAccountRegion.md)
 Update Regions of a CosmosDB Account.
@@ -331,6 +356,9 @@ Updates the CosmosDB Cassandra Table. Performs a client side patch operation by 
 
 ### [Update-AzCosmosDBCassandraTableThroughput](Update-AzCosmosDBCassandraTableThroughput.md)
 Updates the throughput value of a CosmosDB Cassandra Table.
+
+### [Update-AzCosmosDbClientEncryptionKey](Update-AzCosmosDbClientEncryptionKey.md)
+Updates the CosmosDB Client Encryption Key. Performs a client side patch operation by reading the existing Client Encryption Key.
 
 ### [Update-AzCosmosDBGremlinDatabase](Update-AzCosmosDBGremlinDatabase.md)
 Updates the CosmosDB Gremlin Database. Performs a client side patch operation by reading the existing Database.
@@ -388,4 +416,10 @@ Updates the CosmosDB Table. Performs a client side patch operation by reading th
 
 ### [Update-AzCosmosDBTableThroughput](Update-AzCosmosDBTableThroughput.md)
 Updates the throughput value of a CosmosDB Table.
+
+### [Update-AzManagedCassandraCluster](Update-AzManagedCassandraCluster.md)
+Update an existing Azure Managed Instances for Apache Cassandra cluster.
+
+### [Update-AzManagedCassandraDatacenter](Update-AzManagedCassandraDatacenter.md)
+Update an existing Azure Managed Instances for Apache Cassandra data center.
 

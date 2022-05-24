@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Usable = (string) content.GetValueForProperty("Usable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Usable, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Maximum = (string) content.GetValueForProperty("Maximum",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Maximum, global::System.Convert.ToString);
+            if (content.Contains("Usable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Usable = (string) content.GetValueForProperty("Usable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Usable, global::System.Convert.ToString);
+            }
+            if (content.Contains("Maximum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Maximum = (string) content.GetValueForProperty("Maximum",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Maximum, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Usable = (string) content.GetValueForProperty("Usable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Usable, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Maximum = (string) content.GetValueForProperty("Maximum",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Maximum, global::System.Convert.ToString);
+            if (content.Contains("Usable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Usable = (string) content.GetValueForProperty("Usable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Usable, global::System.Convert.ToString);
+            }
+            if (content.Contains("Maximum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Maximum = (string) content.GetValueForProperty("Maximum",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal)this).Maximum, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

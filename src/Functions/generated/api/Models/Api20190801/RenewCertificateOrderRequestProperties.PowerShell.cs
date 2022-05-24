@@ -85,7 +85,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="RenewCertificateOrderRequestProperties" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -102,9 +104,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).KeySize = (int?) content.GetValueForProperty("KeySize",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).KeySize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).Csr = (string) content.GetValueForProperty("Csr",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).Csr, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal = (bool?) content.GetValueForProperty("IsPrivateKeyExternal",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("KeySize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).KeySize = (int?) content.GetValueForProperty("KeySize",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).KeySize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Csr"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).Csr = (string) content.GetValueForProperty("Csr",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).Csr, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsPrivateKeyExternal"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal = (bool?) content.GetValueForProperty("IsPrivateKeyExternal",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,9 +133,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).KeySize = (int?) content.GetValueForProperty("KeySize",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).KeySize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).Csr = (string) content.GetValueForProperty("Csr",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).Csr, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal = (bool?) content.GetValueForProperty("IsPrivateKeyExternal",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("KeySize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).KeySize = (int?) content.GetValueForProperty("KeySize",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).KeySize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Csr"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).Csr = (string) content.GetValueForProperty("Csr",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).Csr, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsPrivateKeyExternal"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal = (bool?) content.GetValueForProperty("IsPrivateKeyExternal",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenewCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
 

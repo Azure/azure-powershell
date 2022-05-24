@@ -51,25 +51,42 @@ Specify the name of a runbook or a schedule or both to see specific runbook sche
 ## EXAMPLES
 
 ### Example 1: Get all scheduled runbooks
-```
-PS C:\>Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01"
+```powershell
+Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command gets all scheduled runbooks in the Azure Automation account named Contoso17.
 
 ### Example 2: Get all schedules associated with a runbook
-```
-PS C:\>Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -RunbookName "Runbk01"
+```powershell
+Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -RunbookName "Runbk01"
 ```
 
 This command gets all scheduled runbooks for the runbook Runbk01 in the Azure Automation account named Contoso17.
 
 ### Example 3: Get all runbooks associated with a schedule
-```
-PS C:\>Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -ScheduleName "Schedule01"
+```powershell
+Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -ScheduleName "Schedule01"
 ```
 
 This command gets all scheduled runbooks for the schedule Schedule01 in the Azure Automation account named Contoso17.
+
+### Example 4: Get Parameters given to a Scheduled Runbook
+
+The output of below command provides JobScheduleId associated with the runbook Runbk01.
+
+```powershell
+Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -RunbookName "Runbk01"
+```
+
+### Example 5: Use the JobScheduleId obtained above to get parameters of the scheduled runbook Runbk01.
+
+```powershell
+$x = Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -JobScheduleId “2b1d7738-093d-4ff7-b87b-e4b2321319e5”
+$x.Parameters
+```
+
+This method is currently not supported for jobs created with complex parameters (for example - array) through Azure portal.
 
 ## PARAMETERS
 

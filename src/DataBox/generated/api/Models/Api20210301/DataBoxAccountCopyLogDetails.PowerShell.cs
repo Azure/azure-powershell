@@ -66,10 +66,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).AccountName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyLogLink = (string) content.GetValueForProperty("CopyLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyLogLink, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyVerboseLogLink = (string) content.GetValueForProperty("CopyVerboseLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyVerboseLogLink, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
+            if (content.Contains("AccountName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).AccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CopyLogLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyLogLink = (string) content.GetValueForProperty("CopyLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyLogLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("CopyVerboseLogLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyVerboseLogLink = (string) content.GetValueForProperty("CopyVerboseLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyVerboseLogLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -87,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).AccountName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyLogLink = (string) content.GetValueForProperty("CopyLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyLogLink, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyVerboseLogLink = (string) content.GetValueForProperty("CopyVerboseLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyVerboseLogLink, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
+            if (content.Contains("AccountName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).AccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CopyLogLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyLogLink = (string) content.GetValueForProperty("CopyLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyLogLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("CopyVerboseLogLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyVerboseLogLink = (string) content.GetValueForProperty("CopyVerboseLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxAccountCopyLogDetailsInternal)this).CopyVerboseLogLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

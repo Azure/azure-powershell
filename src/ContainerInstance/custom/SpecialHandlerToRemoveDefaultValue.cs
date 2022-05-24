@@ -1,4 +1,4 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301
+namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Extensions;
 /// <summary>The GPU resource.</summary>
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
     {        
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject container, ref bool returnNow)
         {
-            if(string.Empty.Equals(this._httpHeader?.Name)|| string.Empty.Equals(this._httpHeader?.Value))
+            if(string.Empty.Equals(this._httpHeader[0]?.Name)|| string.Empty.Equals(this._httpHeader[0]?.Value))
             {
                 this._httpHeader = null;
             }
@@ -243,10 +243,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
                 this._gitRepo = null;
             }
             
-            this._emptyDir = null;
-
-            this._secret = null;
         } 
+
+        partial void AfterToJson(ref Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject container)
+        {
+            if (this._emptyDir != null && this._emptyDir.Count == 0) {
+                container.Add("emptyDir", new Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject());
+            }
+        }
+
     
     }
 }

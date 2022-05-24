@@ -66,8 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).ActionType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CertificateOrderActionType?) content.GetValueForProperty("ActionType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).ActionType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CertificateOrderActionType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).CreatedAt = (global::System.DateTime?) content.GetValueForProperty("CreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).CreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("ActionType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).ActionType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CertificateOrderActionType?) content.GetValueForProperty("ActionType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).ActionType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CertificateOrderActionType.CreateFrom);
+            }
+            if (content.Contains("CreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).CreatedAt = (global::System.DateTime?) content.GetValueForProperty("CreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).CreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,8 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).ActionType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CertificateOrderActionType?) content.GetValueForProperty("ActionType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).ActionType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CertificateOrderActionType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).CreatedAt = (global::System.DateTime?) content.GetValueForProperty("CreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).CreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("ActionType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).ActionType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CertificateOrderActionType?) content.GetValueForProperty("ActionType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).ActionType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CertificateOrderActionType.CreateFrom);
+            }
+            if (content.Contains("CreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).CreatedAt = (global::System.DateTime?) content.GetValueForProperty("CreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionPropertiesInternal)this).CreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -122,7 +134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="CertificateOrderActionProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="CertificateOrderActionProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateOrderActionProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

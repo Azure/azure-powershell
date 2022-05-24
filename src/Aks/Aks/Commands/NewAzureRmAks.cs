@@ -38,9 +38,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [CmdletDeprecation(ReplacementCmdletName = "New-AzAksCluster")]
+    [GenericBreakingChange("New-AzAks will be removed in the next major release. Please use New-AzAksCluster instead of New-AzAks")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
-    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks")]
     [OutputType(typeof(PSKubernetesCluster))]
     public class NewAzureRmAks : CreateOrUpdateKubeBase
     {
@@ -132,6 +131,13 @@ namespace Microsoft.Azure.Commands.Aks
             Mandatory = false,
             HelpMessage = "Generate ssh key file to folder {HOME}/.ssh/ using pre-installed ssh-keygen.")]
         public SwitchParameter GenerateSshKey { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes.")]
+        public SwitchParameter EnableNodePublicIp { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The resource Id of public IP prefix for node pool.")]
+        public string NodePublicIPPrefixID { get; set; }
+
 
         private AcsServicePrincipal acsServicePrincipal;
 
@@ -288,7 +294,7 @@ namespace Microsoft.Azure.Commands.Aks
                         throw new AzPSInvalidOperationException(errorMessage, ErrorKind.InternalError);
                     }
                 }
-                catch(Win32Exception exception)
+                catch (Win32Exception exception)
                 {
                     var message = string.Format(Resources.FailedToRunSshKeyGen, exception.Message);
                     throw new AzPSInvalidOperationException(message, ErrorKind.InternalError);
@@ -329,6 +335,8 @@ namespace Microsoft.Azure.Commands.Aks
 
             var networkProfile = GetNetworkProfile();
 
+            var apiServerAccessProfile = CreateOrUpdateApiServerAccessProfile(null);
+
             var addonProfiles = CreateAddonsProfiles();
 
             WriteVerbose(string.Format(Resources.DeployingYourManagedKubeCluster, AcsSpFilePath));
@@ -345,11 +353,16 @@ namespace Microsoft.Azure.Commands.Aks
                 servicePrincipalProfile: spProfile,
                 aadProfile: aadProfile,
                 addonProfiles: addonProfiles,
-                networkProfile: networkProfile);
+                networkProfile: networkProfile,
+                apiServerAccessProfile: apiServerAccessProfile);
 
             if (EnableRbac.IsPresent)
             {
                 managedCluster.EnableRBAC = EnableRbac;
+            }
+            if (this.IsParameterBound(c => c.FqdnSubdomain))
+            {
+                managedCluster.FqdnSubdomain = FqdnSubdomain;
             }
             //if(EnablePodSecurityPolicy.IsPresent)
             //{
@@ -366,7 +379,7 @@ namespace Microsoft.Azure.Commands.Aks
                 NetworkPlugin = NetworkPlugin,
                 LoadBalancerSku = LoadBalancerSku
             };
-            if (this.IsParameterBound(c => c.NodeMinCount))
+            if (this.IsParameterBound(c => c.NetworkPolicy))
             {
                 networkProfile.NetworkPolicy = NetworkPolicy;
             }
@@ -386,6 +399,8 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 networkProfile.DockerBridgeCidr = DockerBridgeCidr;
             }
+            networkProfile.LoadBalancerProfile = CreateOrUpdateLoadBalancerProfile(null);
+
             return networkProfile;
         }
 
@@ -428,10 +443,14 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 defaultAgentPoolProfile.EnableAutoScaling = EnableNodeAutoScaling.ToBool();
             }
-            //if (EnableNodePublicIp.IsPresent)
-            //{
-            //    defaultAgentPoolProfile.EnableNodePublicIP = EnableNodePublicIp.ToBool();
-            //}
+            if (EnableNodePublicIp.IsPresent)
+            {
+                defaultAgentPoolProfile.EnableNodePublicIP = EnableNodePublicIp.ToBool();
+            }
+            if (this.IsParameterBound(c => c.NodePublicIPPrefixID))
+            {
+                defaultAgentPoolProfile.NodePublicIPPrefixID = NodePublicIPPrefixID;
+            }
             if (this.IsParameterBound(c => c.NodeScaleSetEvictionPolicy))
             {
                 defaultAgentPoolProfile.ScaleSetEvictionPolicy = NodeScaleSetEvictionPolicy;

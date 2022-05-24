@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Maximum throughput in Mibps that can be achieved by this volume")]
+            HelpMessage = "Maximum throughput in Mibps that can be achieved by this volume, this will be accepted as input only for manual qosType volume")]
         public double? ThroughputMibps { get; set; }
 
         [Parameter(
@@ -144,6 +144,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.")]
+        public string UnixPermission { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -230,7 +235,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 DataProtection = (dataProtection != null) ? dataProtection.ConvertToPatchFromPs() : null,
                 IsDefaultQuotaEnabled = IsDefaultQuotaEnabled,
                 DefaultUserQuotaInKiBs = DefaultUserQuotaInKiB,
-                DefaultGroupQuotaInKiBs = DefaultGroupQuotaInKiB
+                DefaultGroupQuotaInKiBs = DefaultGroupQuotaInKiB,
+                UnixPermissions = UnixPermission
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))

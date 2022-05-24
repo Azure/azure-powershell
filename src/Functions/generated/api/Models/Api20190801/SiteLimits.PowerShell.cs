@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="SiteLimits" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="SiteLimits" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimits FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxPercentageCpu = (double?) content.GetValueForProperty("MaxPercentageCpu",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxPercentageCpu, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxMemoryInMb = (long?) content.GetValueForProperty("MaxMemoryInMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxMemoryInMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxDiskSizeInMb = (long?) content.GetValueForProperty("MaxDiskSizeInMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxDiskSizeInMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            if (content.Contains("MaxPercentageCpu"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxPercentageCpu = (double?) content.GetValueForProperty("MaxPercentageCpu",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxPercentageCpu, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("MaxMemoryInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxMemoryInMb = (long?) content.GetValueForProperty("MaxMemoryInMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxMemoryInMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("MaxDiskSizeInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxDiskSizeInMb = (long?) content.GetValueForProperty("MaxDiskSizeInMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxDiskSizeInMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxPercentageCpu = (double?) content.GetValueForProperty("MaxPercentageCpu",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxPercentageCpu, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxMemoryInMb = (long?) content.GetValueForProperty("MaxMemoryInMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxMemoryInMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxDiskSizeInMb = (long?) content.GetValueForProperty("MaxDiskSizeInMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxDiskSizeInMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            if (content.Contains("MaxPercentageCpu"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxPercentageCpu = (double?) content.GetValueForProperty("MaxPercentageCpu",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxPercentageCpu, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("MaxMemoryInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxMemoryInMb = (long?) content.GetValueForProperty("MaxMemoryInMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxMemoryInMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("MaxDiskSizeInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxDiskSizeInMb = (long?) content.GetValueForProperty("MaxDiskSizeInMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteLimitsInternal)this).MaxDiskSizeInMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             AfterDeserializePSObject(content);
         }
 

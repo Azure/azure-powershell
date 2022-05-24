@@ -12,11 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users;
+using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
@@ -99,6 +101,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
         public override void ExecuteCmdlet()
         {
+            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
+
             switch (ParameterSetName)
             {
                 case ParameterSet.InputObject:
@@ -149,25 +153,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             if (ParameterSetName == ParameterSet.DefinitionIdSignInName
                 || ParameterSetName == ParameterSet.DefinitionNameSignInName)
             {
-                var filter = new ADObjectFilterOptions() { UPN = SignInName };
-                var user = ActiveDirectoryClient.FilterUsers(filter).FirstOrDefault();
+                var user = GraphClient.Users.GetUser(SignInName);
                 if (user == null)
                 {
                     throw new ArgumentException(string.Format(Resources.UserNotFoundBy, SignInName));
                 }
-                ObjectId = user.Id.ToString();
+                ObjectId = user.Id;
             }
             // convert service principal app id to object id
             if (ParameterSetName == ParameterSet.DefinitionIdApplicationId
                 || ParameterSetName == ParameterSet.DefinitionNameApplicationId)
             {
-                var odataQuery = new Rest.Azure.OData.ODataQuery<Application>(s => string.Equals(s.AppId, ApplicationId, StringComparison.OrdinalIgnoreCase));
-                var app = ActiveDirectoryClient.GetApplicationWithFilters(odataQuery).FirstOrDefault();
-                if (app == null)
+                string filter = ODataHelper.FormatFilterString<MicrosoftGraphServicePrincipal>(s => s.AppId == ApplicationId);
+                var servicePrincipal = GraphClient.ServicePrincipals.ListServicePrincipal(filter: filter).Value.SingleOrDefault();
+                if (servicePrincipal == null)
                 {
                     throw new ArgumentException(string.Format(Resources.ApplicationNotFoundBy, ApplicationId));
                 }
-                ObjectId = app.ObjectId.ToString();
+                ObjectId = servicePrincipal.Id;
             }
 
             var roleAssignment = Track2DataClient.GetHsmRoleAssignments(HsmName, Scope)

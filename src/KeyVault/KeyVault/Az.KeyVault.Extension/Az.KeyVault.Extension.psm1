@@ -4,12 +4,22 @@
 function Check-SubscriptionLogIn
 {
     param (
-        [string] $SubscriptionId,
-        [string] $AzKVaultName
+        [object] $SubscriptionId,
+        [object] $AzKVaultName
     )
 
+    if("string" -ne $SubscriptionId.GetType().Name)
+    {
+        throw "The type of SubscriptionId should be string, current is " + $SubscriptionId.GetType().Name + ". Please check registration information by 'Get-SecretVault | fl'"
+    }
+
+    if("string" -ne $AzKVaultName.GetType().Name)
+    {
+        throw "The type of AzKVaultName should be string, current is " + $AzKVaultName.GetType().Name + ". Please check registration information by 'Get-SecretVault | fl'"
+    }
+
     $azContext = Az.Accounts\Get-AzContext
-    if (($azContext -eq $null) -or ($azContext.Subscription.Id -ne $SubscriptionId))
+    if (($null -eq $azContext) -or ($azContext.Subscription.Id -ne $SubscriptionId))
     {
         try
         {
@@ -17,7 +27,7 @@ function Check-SubscriptionLogIn
         }
         catch
         {
-            throw "To use ${AzKVaultName} Azure vault, the current user must be logged into Azure account subscription ${SubscriptionId}. Run 'Connect-AzAccount -SubscriptionId ${SubscriptionId}'."
+            throw $_.ToString() + "To use Azure vault named '${AzKVaultName}', please try 'Connect-AzAccount -SubscriptionId {SubscriptionId}' to log into Azure account subscription '${SubscriptionId}'." 
         }
     }
 }
@@ -30,10 +40,8 @@ function Get-Secret
         [hashtable] $AdditionalParameters
     )
 
-    Check-SubscriptionLogIn $AdditionalParameters.SubscriptionId $AdditionalParameters.AZKVaultName
-
     $secret = Az.KeyVault\Get-AzKeyVaultSecret -Name $Name -VaultName $AdditionalParameters.AZKVaultName
-    if ($secret -ne $null)
+    if ($null -ne $secret)
     {
         switch ($secret.ContentType) {
             'ByteArray' 
@@ -129,8 +137,6 @@ function Set-Secret
         [string] $VaultName,
         [hashtable] $AdditionalParameters
     )
-
-    Check-SubscriptionLogIn $AdditionalParameters.SubscriptionId $AdditionalParameters.AZKVaultName
 
     switch ($Secret.GetType().Name) {
         'Byte[]' 
@@ -232,8 +238,6 @@ function Remove-Secret
         [hashtable] $AdditionalParameters
     )
 
-    Check-SubscriptionLogIn $AdditionalParameters.SubscriptionId $AdditionalParameters.AZKVaultName
-
     $null = Az.KeyVault\Remove-AzKeyVaultSecret -Name $Name -VaultName $AdditionalParameters.AZKVaultName -Force
     return $?
 }
@@ -246,9 +250,7 @@ function Get-SecretInfo
         [hashtable] $AdditionalParameters
     )
    
-    Check-SubscriptionLogIn $AdditionalParameters.SubscriptionId $AdditionalParameters.AZKVaultName
-
-       if ([string]::IsNullOrEmpty($Filter))
+    if ([string]::IsNullOrEmpty($Filter))
     {
         $Filter = "*"
     }

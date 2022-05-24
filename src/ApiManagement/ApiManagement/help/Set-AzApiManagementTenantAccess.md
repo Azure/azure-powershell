@@ -24,9 +24,9 @@ The **Set-AzApiManagementTenantAccess** cmdlet enables or disables tenant access
 ## EXAMPLES
 
 ### Example 1: Enable tenant access
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzApiManagementTenantAccess -Context $apimContext -Enabled $True
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Set-AzApiManagementTenantAccess -Context $apimContext -Enabled $True
 ```
 
 This command enables tenant access in the specified context.

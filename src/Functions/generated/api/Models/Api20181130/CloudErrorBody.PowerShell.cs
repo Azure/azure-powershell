@@ -66,10 +66,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBody[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBody>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.CloudErrorBodyTypeConverter.ConvertFrom));
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBody[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBody>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.CloudErrorBodyTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -87,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBody[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBody>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.CloudErrorBodyTypeConverter.ConvertFrom));
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBody[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBodyInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBody>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.CloudErrorBodyTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -124,7 +148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130
         /// Creates a new instance of <see cref="CloudErrorBody" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="CloudErrorBody" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ICloudErrorBody FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

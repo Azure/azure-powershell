@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="PrivateAccessProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="PrivateAccessProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).Enabled = (bool?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).VirtualNetwork = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetwork[]) content.GetValueForProperty("VirtualNetwork",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).VirtualNetwork, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetwork>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.PrivateAccessVirtualNetworkTypeConverter.ConvertFrom));
+            if (content.Contains("Enabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).Enabled = (bool?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("VirtualNetwork"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).VirtualNetwork = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetwork[]) content.GetValueForProperty("VirtualNetwork",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).VirtualNetwork, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetwork>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.PrivateAccessVirtualNetworkTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).Enabled = (bool?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).VirtualNetwork = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetwork[]) content.GetValueForProperty("VirtualNetwork",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).VirtualNetwork, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetwork>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.PrivateAccessVirtualNetworkTypeConverter.ConvertFrom));
+            if (content.Contains("Enabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).Enabled = (bool?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("VirtualNetwork"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).VirtualNetwork = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetwork[]) content.GetValueForProperty("VirtualNetwork",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessPropertiesInternal)this).VirtualNetwork, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetwork>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.PrivateAccessVirtualNetworkTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

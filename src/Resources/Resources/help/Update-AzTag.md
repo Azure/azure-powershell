@@ -14,16 +14,9 @@ Selectively updates the set of tags on a resource or subscription.
 
 ## SYNTAX
 
-```powershell
-Update-AzTag
-   -ResourceId <String>
-   -Operation <TagPatchOperation>
-   -Tag <Hashtable>
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
-
+```
+Update-AzTag [-ResourceId] <String> [-Tag] <Hashtable> [-Operation] <TagPatchOperation>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,9 +29,11 @@ This operation allows replacing, merging or selectively deleting tags on the spe
 ### Example 1: Selectively updates the set of tags on a subscription with "Merge" Operation
 
 ```powershell
-PS C:\>$mergedTags = @{"key1"="value1"; "key3"="value3";}
-PS C:\>Update-AzTag -ResourceId /subscriptions/{subId} -Tag $mergedTags -Operation Merge
+$mergedTags = @{"key1"="value1"; "key3"="value3";}
+Update-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Tag $mergedTags -Operation Merge
+```
 
+```output
 Id         : {Id}
 Name       : {Name}
 Type       : {Type}
@@ -50,14 +45,16 @@ Properties :
              key3     value3
 ```
 
-This command Merges the set of tags on the subscription with {subId}.
+This command Merges the set of tags on the subscription with "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx".
 
 ### Example 2: Selectively updates the set of tags on a subscription with "Replace" Operation
 
 ```powershell
-PS C:\>$replacedTags = @{"key1"="value1"; "key3"="value3";}
-PS C:\>Update-AzTag -ResourceId /subscriptions/{subId} -Tag $replacedTags -Operation Replace
+$replacedTags = @{"key1"="value1"; "key3"="value3";}
+Update-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Tag $replacedTags -Operation Replace
+```
 
+```output
 Id         : {Id}
 Name       : {Name}
 Type       : {Type}
@@ -68,14 +65,16 @@ Properties :
              key3     value3
 ```
 
-This command Repalces the set of tags on the subscription with {subId}.
+This command Replaces the set of tags on the subscription with "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx".
 
 ### Example 3: Selectively updates the set of tags on a subscription with "Delete" Operation
 
 ```powershell
-PS C:\>$deletedTags = @{"key1"="value1"}
-PS C:\>Update-AzTag -ResourceId /subscriptions/{subId} -Tag $deletedTags -Operation Delete
+$deletedTags = @{"key1"="value1"}
+Update-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Tag $deletedTags -Operation Delete
+```
 
+```output
 Id         : {Id}
 Name       : {Name}
 Type       : {Type}
@@ -85,7 +84,7 @@ Properties :
              key3     value3
 ```
 
-This command Deletes the set of tags on the subscription with {subId}.
+This command Deletes the set of tags on the subscription with "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx".
 
 ## PARAMETERS
 
@@ -104,6 +103,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Operation
+The update operation. Options are Merge, Replace and Delete.
+
+```yaml
+Type: Microsoft.Azure.Commands.Tags.Model.TagPatchOperation
+Parameter Sets: (All)
+Aliases:
+Accepted values: Merge, Replace, Delete
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 The resource identifier for the tagged entity. A resource, a resource group or a subscription may be tagged.
 
@@ -111,7 +126,6 @@ The resource identifier for the tagged entity. A resource, a resource group or a
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Merge, Replace, Delete
 
 Required: True
 Position: 0
@@ -130,22 +144,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Operation
-The update operation. Options are Merge, Replace and Delete.
-
-```yaml
-Type: Microsoft.Azure.Commands.Tags.Model.TagPatchOperation
-Parameter Sets: (All)
-Aliases:
-Accepted values: Merge, Replace, Delete
-
-Required: True
-Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

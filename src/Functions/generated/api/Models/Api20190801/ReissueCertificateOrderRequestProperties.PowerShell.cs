@@ -85,7 +85,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="ReissueCertificateOrderRequestProperties" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -102,10 +104,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).KeySize = (int?) content.GetValueForProperty("KeySize",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).KeySize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).DelayExistingRevokeInHour = (int?) content.GetValueForProperty("DelayExistingRevokeInHour",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).DelayExistingRevokeInHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).Csr = (string) content.GetValueForProperty("Csr",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).Csr, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal = (bool?) content.GetValueForProperty("IsPrivateKeyExternal",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("KeySize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).KeySize = (int?) content.GetValueForProperty("KeySize",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).KeySize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("DelayExistingRevokeInHour"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).DelayExistingRevokeInHour = (int?) content.GetValueForProperty("DelayExistingRevokeInHour",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).DelayExistingRevokeInHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Csr"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).Csr = (string) content.GetValueForProperty("Csr",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).Csr, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsPrivateKeyExternal"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal = (bool?) content.GetValueForProperty("IsPrivateKeyExternal",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,10 +137,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).KeySize = (int?) content.GetValueForProperty("KeySize",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).KeySize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).DelayExistingRevokeInHour = (int?) content.GetValueForProperty("DelayExistingRevokeInHour",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).DelayExistingRevokeInHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).Csr = (string) content.GetValueForProperty("Csr",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).Csr, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal = (bool?) content.GetValueForProperty("IsPrivateKeyExternal",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("KeySize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).KeySize = (int?) content.GetValueForProperty("KeySize",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).KeySize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("DelayExistingRevokeInHour"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).DelayExistingRevokeInHour = (int?) content.GetValueForProperty("DelayExistingRevokeInHour",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).DelayExistingRevokeInHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Csr"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).Csr = (string) content.GetValueForProperty("Csr",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).Csr, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsPrivateKeyExternal"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal = (bool?) content.GetValueForProperty("IsPrivateKeyExternal",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IReissueCertificateOrderRequestPropertiesInternal)this).IsPrivateKeyExternal, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
 

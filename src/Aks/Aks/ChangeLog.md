@@ -18,6 +18,31 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.1.0
+* Removed these aliases:
+  * `Get-AzAks`
+  * `New-AzAks`
+  * `Set-AzAks`
+  * `Remove-AzAks`
+
+## Version 3.1.3
+* Updated the description of `Force` in `Invoke-AzAksRunCommand` [#17756]
+* Fixed the issue that `identity` cannot be piped into `Set-AzAksCluster` [#17376]
+
+## Version 3.1.2
+* Updated the breaking change warning messages [#16805]
+
+## Version 3.1.1
+* Fixed the typo in `New-AzAksCluster` [#16733]
+
+## Version 3.1.0
+* Added support of `load balancer` and `api server access` in `New-AzAksCluster` and `Set-AzAksCluster`. [#16575]
+
+## Version 3.0.0
+* [Breaking Change] Updated parameter alias and output type of `Get-AzAksVersion`
+* Added `Invoke-AzAksRunCommand` to support running a shell command (with kubectl, helm) on aks cluster. [#16104]
+* Added support of `EnableNodePublicIp` and `NodePublicIPPrefixID` for `New-AzAksCluster` and `New-AzAksNodePool`. [#15656]
 * Migrated the logic of creating service principal in `New-AzAksCluster` from `Azure Active Directory Graph` to `Microsoft Graph`.
 * Fixed the issue that `Set-AzAksCluster` can't upgrade cluster when node pool version doesn't match cluster version. [#14583]
 * Added `ResourceGroupName` in `PSKubernetesCluster`. [#15802]

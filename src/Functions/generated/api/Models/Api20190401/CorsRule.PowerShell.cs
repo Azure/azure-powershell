@@ -66,11 +66,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedOrigin = (string[]) content.GetValueForProperty("AllowedOrigin",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedOrigin, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedMethod = (string[]) content.GetValueForProperty("AllowedMethod",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedMethod, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).MaxAgeInSecond = (int) content.GetValueForProperty("MaxAgeInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).MaxAgeInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).ExposedHeader = (string[]) content.GetValueForProperty("ExposedHeader",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).ExposedHeader, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedHeader = (string[]) content.GetValueForProperty("AllowedHeader",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedHeader, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("AllowedOrigin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedOrigin = (string[]) content.GetValueForProperty("AllowedOrigin",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedOrigin, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AllowedMethod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedMethod = (string[]) content.GetValueForProperty("AllowedMethod",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedMethod, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("MaxAgeInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).MaxAgeInSecond = (int) content.GetValueForProperty("MaxAgeInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).MaxAgeInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ExposedHeader"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).ExposedHeader = (string[]) content.GetValueForProperty("ExposedHeader",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).ExposedHeader, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AllowedHeader"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedHeader = (string[]) content.GetValueForProperty("AllowedHeader",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedHeader, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -88,11 +103,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedOrigin = (string[]) content.GetValueForProperty("AllowedOrigin",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedOrigin, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedMethod = (string[]) content.GetValueForProperty("AllowedMethod",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedMethod, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).MaxAgeInSecond = (int) content.GetValueForProperty("MaxAgeInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).MaxAgeInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).ExposedHeader = (string[]) content.GetValueForProperty("ExposedHeader",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).ExposedHeader, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedHeader = (string[]) content.GetValueForProperty("AllowedHeader",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedHeader, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("AllowedOrigin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedOrigin = (string[]) content.GetValueForProperty("AllowedOrigin",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedOrigin, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AllowedMethod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedMethod = (string[]) content.GetValueForProperty("AllowedMethod",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedMethod, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("MaxAgeInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).MaxAgeInSecond = (int) content.GetValueForProperty("MaxAgeInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).MaxAgeInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ExposedHeader"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).ExposedHeader = (string[]) content.GetValueForProperty("ExposedHeader",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).ExposedHeader, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AllowedHeader"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedHeader = (string[]) content.GetValueForProperty("AllowedHeader",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRuleInternal)this).AllowedHeader, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -126,7 +156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// Creates a new instance of <see cref="CorsRule" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="CorsRule" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRule FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

@@ -33,7 +33,8 @@ Update-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                       -AutomationAccountName "devAccount" `
                                       -Name "VSTSNative" `
                                       -PublishRunbook $false 
-
+```
+```output
 Name            SourceType Branch FolderPath  AutoSync PublishRunbook RepoUrl
 ----            ---------- ------ ----------  -------- -------------- -------
 VSTSNative      VsoTfvc           /MyRunbooks False    False          https://contoso.visualstudio.com/_git/Fin...

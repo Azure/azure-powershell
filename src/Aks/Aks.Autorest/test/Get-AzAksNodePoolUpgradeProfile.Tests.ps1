@@ -12,8 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzAksNodePoolUpgradeProfile' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $NodePoolUpgradeProfile = Get-AzAksNodePoolUpgradeProfile -ResourceGroupName $env.ResourceGroupName -ClusterName $env.AksName -NodePoolName default
+        $NodePoolUpgradeProfile.Name | Should -Be 'default'
     }
 
     It 'GetViaIdentity' -skip {

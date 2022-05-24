@@ -99,11 +99,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Minimum = (int?) content.GetValueForProperty("Minimum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Minimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Maximum = (int?) content.GetValueForProperty("Maximum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Maximum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Default = (int?) content.GetValueForProperty("Default",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Default, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).AllowedValue = (int[]) content.GetValueForProperty("AllowedValue",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).AllowedValue, __y => TypeConverterExtensions.SelectToArray<int>(__y, (__w)=> (int) global::System.Convert.ChangeType(__w, typeof(int))));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).ScaleType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType?) content.GetValueForProperty("ScaleType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).ScaleType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType.CreateFrom);
+            if (content.Contains("Minimum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Minimum = (int?) content.GetValueForProperty("Minimum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Minimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Maximum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Maximum = (int?) content.GetValueForProperty("Maximum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Maximum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Default"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Default = (int?) content.GetValueForProperty("Default",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Default, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AllowedValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).AllowedValue = (int[]) content.GetValueForProperty("AllowedValue",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).AllowedValue, __y => TypeConverterExtensions.SelectToArray<int>(__y, (__w)=> (int) global::System.Convert.ChangeType(__w, typeof(int))));
+            }
+            if (content.Contains("ScaleType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).ScaleType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType?) content.GetValueForProperty("ScaleType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).ScaleType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,11 +136,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Minimum = (int?) content.GetValueForProperty("Minimum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Minimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Maximum = (int?) content.GetValueForProperty("Maximum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Maximum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Default = (int?) content.GetValueForProperty("Default",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Default, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).AllowedValue = (int[]) content.GetValueForProperty("AllowedValue",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).AllowedValue, __y => TypeConverterExtensions.SelectToArray<int>(__y, (__w)=> (int) global::System.Convert.ChangeType(__w, typeof(int))));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).ScaleType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType?) content.GetValueForProperty("ScaleType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).ScaleType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType.CreateFrom);
+            if (content.Contains("Minimum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Minimum = (int?) content.GetValueForProperty("Minimum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Minimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Maximum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Maximum = (int?) content.GetValueForProperty("Maximum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Maximum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Default"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Default = (int?) content.GetValueForProperty("Default",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).Default, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AllowedValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).AllowedValue = (int[]) content.GetValueForProperty("AllowedValue",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).AllowedValue, __y => TypeConverterExtensions.SelectToArray<int>(__y, (__w)=> (int) global::System.Convert.ChangeType(__w, typeof(int))));
+            }
+            if (content.Contains("ScaleType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).ScaleType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType?) content.GetValueForProperty("ScaleType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacityInternal)this).ScaleType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

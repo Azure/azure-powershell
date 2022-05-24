@@ -28,14 +28,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
         {
-            TestRunner.RunTestScript("Test-VirtualMachine $null");
+            TestRunner.RunTestScript("Test-VirtualMachine 'eastus2euap'");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine_Managed()
         {
-            TestRunner.RunTestScript("Test-VirtualMachine $null $true");
+            TestRunner.RunTestScript("Test-VirtualMachine 'eastus2euap' $true");
         }
 
         [Fact]
@@ -437,6 +437,68 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VMwithSSHKey");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMUserData()
+        {
+            TestRunner.RunTestScript("Test-VMUserData");
+        }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMUserDataBase64Encoded()
+        {
+            TestRunner.RunTestScript("Test-VMUserDataBase64Encoded");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMNoPublicIPAddress()
+        {
+            TestRunner.RunTestScript("Test-VMNoPublicIPAddress");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMForceDelete()
+        {
+            TestRunner.RunTestScript("Test-ForceDelete");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineDiffDiskPlacement()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineDiffDiskPlacement");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineHibernate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineHibernate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMvCPUFeatures()
+        {
+            TestRunner.RunTestScript("Test-VMvCPUFeatures");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetVirtualMachineById()
+        {
+            TestRunner.RunTestScript("Test-GetVirtualMachineById");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachinePlatformFaultDomain()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachinePlatformFaultDomain");
+        }
     }
 }

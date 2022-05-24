@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Models;
 using System;
+using System.IO;
 using System.Management.Automation;
-using System.Security.Cryptography.X509Certificates;
+using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -35,12 +35,10 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSApplicationGatewayTrustedClientCertificate NewObject()
         {
-            X509Certificate2 cert = new X509Certificate2(CertificateFile);
-
             var clientCertificate = new PSApplicationGatewayTrustedClientCertificate();
 
             clientCertificate.Name = this.Name;
-            clientCertificate.Data = Convert.ToBase64String(cert.Export(X509ContentType.Cert));
+            clientCertificate.Data = Convert.ToBase64String(File.ReadAllBytes(this.CertificateFile));
             clientCertificate.Id =
                 ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                     this.NetworkClient.NetworkManagementClient.SubscriptionId,

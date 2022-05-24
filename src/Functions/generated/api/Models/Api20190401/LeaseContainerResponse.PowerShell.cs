@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// Creates a new instance of <see cref="LeaseContainerResponse" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="LeaseContainerResponse" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponse FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId = (string) content.GetValueForProperty("LeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond = (string) content.GetValueForProperty("LeaseTimeSecond",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond, global::System.Convert.ToString);
+            if (content.Contains("LeaseId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId = (string) content.GetValueForProperty("LeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId, global::System.Convert.ToString);
+            }
+            if (content.Contains("LeaseTimeSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond = (string) content.GetValueForProperty("LeaseTimeSecond",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId = (string) content.GetValueForProperty("LeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond = (string) content.GetValueForProperty("LeaseTimeSecond",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond, global::System.Convert.ToString);
+            if (content.Contains("LeaseId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId = (string) content.GetValueForProperty("LeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId, global::System.Convert.ToString);
+            }
+            if (content.Contains("LeaseTimeSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond = (string) content.GetValueForProperty("LeaseTimeSecond",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

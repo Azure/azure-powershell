@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Enabled = (string) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Enabled, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Category = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Category, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceCategoryTypeConverter.ConvertFrom));
+            if (content.Contains("Enabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Enabled = (string) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Enabled, global::System.Convert.ToString);
+            }
+            if (content.Contains("Category"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Category = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Category, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceCategoryTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Enabled = (string) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Enabled, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Category = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Category, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceCategoryTypeConverter.ConvertFrom));
+            if (content.Contains("Enabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Enabled = (string) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Enabled, global::System.Convert.ToString);
+            }
+            if (content.Contains("Category"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Category = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfigurationInternal)this).Category, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceCategoryTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

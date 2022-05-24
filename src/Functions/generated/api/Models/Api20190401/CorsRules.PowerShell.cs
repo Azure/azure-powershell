@@ -68,7 +68,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRulesInternal)this).CorsRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRule[]) content.GetValueForProperty("CorsRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRulesInternal)this).CorsRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.CorsRuleTypeConverter.ConvertFrom));
+            if (content.Contains("CorsRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRulesInternal)this).CorsRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRule[]) content.GetValueForProperty("CorsRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRulesInternal)this).CorsRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.CorsRuleTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -86,7 +89,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRulesInternal)this).CorsRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRule[]) content.GetValueForProperty("CorsRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRulesInternal)this).CorsRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.CorsRuleTypeConverter.ConvertFrom));
+            if (content.Contains("CorsRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRulesInternal)this).CorsRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRule[]) content.GetValueForProperty("CorsRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRulesInternal)this).CorsRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.CorsRuleTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -120,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// Creates a new instance of <see cref="CorsRules" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="CorsRules" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRules FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

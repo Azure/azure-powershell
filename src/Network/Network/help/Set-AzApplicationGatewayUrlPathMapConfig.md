@@ -52,10 +52,10 @@ The **Set-AzApplicationGatewayUrlPathMapConfig** cmdlet sets configuration for a
 ## EXAMPLES
 
 ### Example 1: Update an URL path mapping
-```
-PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
-PS C:\> $appgw = Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name "map01"
-PS C:\> $appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+```powershell
+$appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
+$appgw = Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name "map01"
+$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 The first command gets the application gateway named appGwName and stores the result in the $appgw variable.

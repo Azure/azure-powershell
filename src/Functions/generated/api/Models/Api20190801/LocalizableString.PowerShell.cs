@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="LocalizableString" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="LocalizableString" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableString FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).Value, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue = (string) content.GetValueForProperty("LocalizedValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).Value, global::System.Convert.ToString);
+            }
+            if (content.Contains("LocalizedValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue = (string) content.GetValueForProperty("LocalizedValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).Value, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue = (string) content.GetValueForProperty("LocalizedValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).Value, global::System.Convert.ToString);
+            }
+            if (content.Contains("LocalizedValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue = (string) content.GetValueForProperty("LocalizedValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)this).LocalizedValue, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

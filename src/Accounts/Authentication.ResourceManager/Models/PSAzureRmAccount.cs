@@ -69,6 +69,23 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public PSAzureRmAccount(IAzureAccount other)
         {
             this.CopyFrom(other);
+            /* We remove the sceret attributes from display as they are stored in plain text.
+             * At the same time to keep the secrets in AzureRmContext.json.
+             * It only takes effect when Az.Accounts converts AzureAccount to PSAzureRmAccount.
+             * When the user stores the PSAzureRmAccount object (usually in a PSAzureContext) and sets it back as the current context,
+             * The context after setting without the secrets is stored to AzureRmContext.json.
+             * The operation above is to update the context object with the same name.
+             * However, the update we perform only adds or replaces attributes but not to remove anything (refer to ModelExtensions::UpdateProperties).
+             * And so the existing secrets in AzureRmContext.json is not removed.
+             */
+            if (this.ExtendedProperties.ContainsKey(AzureAccount.Property.ServicePrincipalSecret))
+            {
+                this.ExtendedProperties.Remove(AzureAccount.Property.ServicePrincipalSecret);
+            }
+            if (this.ExtendedProperties.ContainsKey(AzureAccount.Property.CertificatePassword))
+            {
+                this.ExtendedProperties.Remove(AzureAccount.Property.CertificatePassword);
+            }
         }
 
         /// <summary>

@@ -69,12 +69,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyInterval = (int) content.GetValueForProperty("FrequencyInterval",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyInterval, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyUnit = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit) content.GetValueForProperty("FrequencyUnit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyUnit, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).KeepAtLeastOneBackup = (bool) content.GetValueForProperty("KeepAtLeastOneBackup",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).KeepAtLeastOneBackup, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).RetentionPeriodInDay = (int) content.GetValueForProperty("RetentionPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).RetentionPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).LastExecutionTime = (global::System.DateTime?) content.GetValueForProperty("LastExecutionTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).LastExecutionTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("FrequencyInterval"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyInterval = (int) content.GetValueForProperty("FrequencyInterval",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyInterval, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("FrequencyUnit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyUnit = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit) content.GetValueForProperty("FrequencyUnit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyUnit, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit.CreateFrom);
+            }
+            if (content.Contains("KeepAtLeastOneBackup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).KeepAtLeastOneBackup = (bool) content.GetValueForProperty("KeepAtLeastOneBackup",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).KeepAtLeastOneBackup, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RetentionPeriodInDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).RetentionPeriodInDay = (int) content.GetValueForProperty("RetentionPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).RetentionPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("StartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LastExecutionTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).LastExecutionTime = (global::System.DateTime?) content.GetValueForProperty("LastExecutionTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).LastExecutionTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -92,12 +110,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyInterval = (int) content.GetValueForProperty("FrequencyInterval",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyInterval, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyUnit = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit) content.GetValueForProperty("FrequencyUnit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyUnit, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).KeepAtLeastOneBackup = (bool) content.GetValueForProperty("KeepAtLeastOneBackup",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).KeepAtLeastOneBackup, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).RetentionPeriodInDay = (int) content.GetValueForProperty("RetentionPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).RetentionPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).LastExecutionTime = (global::System.DateTime?) content.GetValueForProperty("LastExecutionTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).LastExecutionTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("FrequencyInterval"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyInterval = (int) content.GetValueForProperty("FrequencyInterval",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyInterval, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("FrequencyUnit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyUnit = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit) content.GetValueForProperty("FrequencyUnit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).FrequencyUnit, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit.CreateFrom);
+            }
+            if (content.Contains("KeepAtLeastOneBackup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).KeepAtLeastOneBackup = (bool) content.GetValueForProperty("KeepAtLeastOneBackup",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).KeepAtLeastOneBackup, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RetentionPeriodInDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).RetentionPeriodInDay = (int) content.GetValueForProperty("RetentionPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).RetentionPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("StartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LastExecutionTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).LastExecutionTime = (global::System.DateTime?) content.GetValueForProperty("LastExecutionTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupScheduleInternal)this).LastExecutionTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -131,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="BackupSchedule" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="BackupSchedule" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupSchedule FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

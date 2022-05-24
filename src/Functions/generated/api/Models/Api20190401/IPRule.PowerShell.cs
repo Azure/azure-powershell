@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// Creates a new instance of <see cref="IPRule" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="IPRule" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange = (string) content.GetValueForProperty("IPAddressOrRange",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action.CreateFrom);
+            if (content.Contains("IPAddressOrRange"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange = (string) content.GetValueForProperty("IPAddressOrRange",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange, global::System.Convert.ToString);
+            }
+            if (content.Contains("Action"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange = (string) content.GetValueForProperty("IPAddressOrRange",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action.CreateFrom);
+            if (content.Contains("IPAddressOrRange"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange = (string) content.GetValueForProperty("IPAddressOrRange",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange, global::System.Convert.ToString);
+            }
+            if (content.Contains("Action"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

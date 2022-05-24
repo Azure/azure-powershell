@@ -588,6 +588,9 @@ Gets a VpnGateway resource using ResourceGroupName and GatewayName OR lists all 
 ### [Get-AzVpnServerConfiguration](Get-AzVpnServerConfiguration.md)
 Gets an existing VpnServerConfiguration for point to site connectivity.
 
+### [Get-AzVpnServerConfigurationPolicyGroup ](Get-AzVpnServerConfigurationPolicyGroup .md)
+Gets an existing AzVpnServerConfigurationPolicyGroup of VpnServerConfiguration for point to site connectivity.
+
 ### [Get-AzVpnSite](Get-AzVpnSite.md)
 Gets an Azure VpnSite resource by name OR lists all VpnSites in a ResourceGroup or SubscriptionId. 
 
@@ -939,6 +942,9 @@ Creates a private DNS zone group in the specified private endpoint.
 ### [New-AzPrivateEndpoint](New-AzPrivateEndpoint.md)
 Creates a private endpoint.
 
+### [New-AzPrivateEndpointIpConfiguration](New-AzPrivateEndpointIpConfiguration.md)
+Creates an IpConfiguration object for private endpoint.
+
 ### [New-AzPrivateLinkService](New-AzPrivateLinkService.md)
 Creates a private link service
 
@@ -1040,6 +1046,9 @@ Creates a Scalable VPN Gateway.
 
 ### [New-AzVpnServerConfiguration](New-AzVpnServerConfiguration.md)
 Create a new VpnServerConfiguration for point to site connectivity.
+
+### [New-AzVpnServerConfigurationPolicyGroup ](New-AzVpnServerConfigurationPolicyGroup .md)
+Create a new AzVpnServerConfigurationPolicyGroup under VpnServerConfiguration for point to site connectivity.
 
 ### [New-AzVpnSite](New-AzVpnSite.md)
 Creates a new Azure VpnSite resource. This is an RM representation of customer branches that are uploaded to Azure
@@ -1332,6 +1341,9 @@ The Remove-AzVpnGateway cmdlet removes an Azure VPN gateway. This is a gateway s
 
 ### [Remove-AzVpnServerConfiguration](Remove-AzVpnServerConfiguration.md)
 Removes an existing VpnServerConfiguration.
+
+### [Remove-AzVpnServerConfigurationPolicyGroup ](Remove-AzVpnServerConfigurationPolicyGroup .md)
+Removes an existing AzVpnServerConfigurationPolicyGroup of VpnServerConfiguration.
 
 ### [Remove-AzVpnSite](Remove-AzVpnSite.md)
 Removes an Azure VpnSite resource.
@@ -1647,6 +1659,9 @@ Updates a scalable VPN gateway.
 
 ### [Update-AzVpnServerConfiguration](Update-AzVpnServerConfiguration.md)
 Updates an existing VpnServerConfiguration.
+
+### [Update-AzVpnServerConfigurationPolicyGroup ](Update-AzVpnServerConfigurationPolicyGroup .md)
+Updates an existing AzVpnServerConfigurationPolicyGroup of VpnServerConfiguration.
 
 ### [Update-AzVpnSite](Update-AzVpnSite.md)
 Updates a VPN site.

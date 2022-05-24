@@ -94,8 +94,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).Keyword = (string) content.GetValueForProperty("Keyword",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).Keyword, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).MaxDomainRecommendation = (int?) content.GetValueForProperty("MaxDomainRecommendation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).MaxDomainRecommendation, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("Keyword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).Keyword = (string) content.GetValueForProperty("Keyword",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).Keyword, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaxDomainRecommendation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).MaxDomainRecommendation = (int?) content.GetValueForProperty("MaxDomainRecommendation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).MaxDomainRecommendation, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -113,8 +119,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).Keyword = (string) content.GetValueForProperty("Keyword",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).Keyword, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).MaxDomainRecommendation = (int?) content.GetValueForProperty("MaxDomainRecommendation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).MaxDomainRecommendation, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("Keyword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).Keyword = (string) content.GetValueForProperty("Keyword",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).Keyword, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaxDomainRecommendation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).MaxDomainRecommendation = (int?) content.GetValueForProperty("MaxDomainRecommendation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParametersInternal)this).MaxDomainRecommendation, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -122,7 +134,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="DomainRecommendationSearchParameters" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="DomainRecommendationSearchParameters" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainRecommendationSearchParameters FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
