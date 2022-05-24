@@ -14,13 +14,13 @@ Update an Azure RouteServer.
 
 ### RouteServerNameParameterSet (Default)
 ```
-Update-AzRouteServer -ResourceGroupName <String> -RouteServerName <String> [-AllowBranchToBranchTraffic]
+Update-AzRouteServer -ResourceGroupName <String> -RouteServerName <String> [-AllowBranchToBranchTraffic] [-HubRoutingPreference <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RouteServerResourceIdParameterSet
 ```
-Update-AzRouteServer [-AllowBranchToBranchTraffic] -ResourceId <String>
+Update-AzRouteServer [-AllowBranchToBranchTraffic] -ResourceId <String> [-HubRoutingPreference <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,11 +35,17 @@ Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerNam
 ```
 To enable branch to branch traffic for route server.
 
-### Example 1
+### Example 2
 ```powershell
 Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
 ```
 To disable branch to branch traffic for route server.
+
+### Example 3
+```powershell
+Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -HubRoutingPreference "AsPath"
+```
+To change routing preference for route server.
 
 ## PARAMETERS
 
@@ -115,6 +121,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -HubRoutingPreference
+Routing Preference to route traffic
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: ExpressRoute, VpnGateway, ASPath
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
