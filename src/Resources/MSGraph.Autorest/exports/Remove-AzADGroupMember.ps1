@@ -28,10 +28,10 @@ HTTP Methods: GET (supported for all groups), POST (supported for security group
 Nullable.
 Supports $expand.
 .Example
-PS C:\> $members = @()
-PS C:\> $members += (Get-AzADUser -DisplayName $uname).Id
-PS C:\> $members += (Get-AzADServicePrincipal -ApplicationId $appid).Id
-PS C:\> Get-AzADGroupMember -DisplayName $gname | Remove-AzADGroupMember -MemberObjectId $member
+$members = @()
+$members += (Get-AzADUser -DisplayName $uname).Id
+$members += (Get-AzADServicePrincipal -ApplicationId $appid).Id
+Get-AzADGroupMember -GroupDisplayName $gname | Remove-AzADGroupMember -MemberObjectId $member
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
@@ -190,13 +190,13 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ExplicitParameterSet  = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberUPNWithGroupObjectIdParameterSet = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberObjectIdWithGroupObjectId = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberUPNWithGroupDisplayNameParameterSet = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberObjectIdWithGroupDisplayName = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberUPNWithGroupObjectParameterSet = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberObjectIdWithGroupObject = 'MSGraph.custom\Remove-AzADGroupMember';
+            ExplicitParameterSet  = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberUPNWithGroupObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberObjectIdWithGroupObjectId = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberUPNWithGroupDisplayNameParameterSet = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberObjectIdWithGroupDisplayName = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberUPNWithGroupObjectParameterSet = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberObjectIdWithGroupObject = 'Az.MSGraph.custom\Remove-AzADGroupMember';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -10,24 +10,12 @@
 Lists members from group.
 .Description
 Lists members from group.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
-.Outputs
-System.Boolean
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/get-azadgroupmember
 #>
 
 function Get-AzADGroupMember {
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PreviewMessageAttribute("This cmdlet is using API version beta which is under preview.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject])]
     [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false)]
     param(
@@ -148,8 +136,6 @@ function Get-AzADGroupMember {
             $PSBoundParameters['GroupId'] = (Get-AzADGroup @param).Id
             $null = $PSBoundParameters.Remove('GroupDisplayName')
         }
-
-        $PSBOundParameters['ConsistencyLevel'] = 'eventual'
 
         Az.MSGraph.internal\Get-AzADGroupMember @PSBoundParameters
     }

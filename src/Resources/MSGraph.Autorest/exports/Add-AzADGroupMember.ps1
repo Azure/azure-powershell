@@ -20,11 +20,11 @@ Adds member to group.
 .Description
 Adds member to group.
 .Example
-PS C:\> $groupid=(Get-AzADGroup -DisplayName $gname).Id
-PS C:\> $members=@()
-PS C:\> $members+=(Get-AzADUser -DisplayName $uname).Id
-PS C:\> $members+=(Get-AzADServicePrincipal -ApplicationId $appid).Id
-PS C:\> Add-AzADGroupMember -TargetGroupObjectId $groupid MemberObjectId $members
+$groupid=(Get-AzADGroup -DisplayName $gname).Id
+$members=@()
+$members+=(Get-AzADUser -DisplayName $uname).Id
+$members+=(Get-AzADServicePrincipal -ApplicationId $appid).Id
+Add-AzADGroupMember -TargetGroupObjectId $groupid -MemberObjectId $members
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
@@ -183,12 +183,12 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            MemberObjectIdWithGroupObjectIdParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberUPNWithGroupObjectIdParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberUPNWithGroupDisplayNameParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberObjectIdWithGroupDisplayNameParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberUPNWithGroupObjectParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberObjectIdWithGroupObjectParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
+            MemberObjectIdWithGroupObjectIdParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberUPNWithGroupObjectIdParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberUPNWithGroupDisplayNameParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberObjectIdWithGroupDisplayNameParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberUPNWithGroupObjectParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberObjectIdWithGroupObjectParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -11,23 +11,11 @@
 Adds member to group.
 .Description
 Adds member to group.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
-.Outputs
-System.Boolean
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/add-azadgroupmember
 #>
 function Add-AzADGroupMember {
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PreviewMessageAttribute("This cmdlet is using API version beta which is under preview.")]
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='MemberObjectIdWithGroupObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
@@ -120,7 +108,7 @@ function Add-AzADGroupMember {
     
     process {
         $baseUrl = (Get-AzContext).Environment.ExtendedProperties.MicrosoftGraphUrl
-        $apiVersion = 'V1.0'
+        $apiVersion = 'beta'
         $odataIdUriPrefix = "$($baseUrl)/$($apiVersion)/directoryObjects"
 
         if ($PSBoundParameters['TargetGroupDisplayName']) {
@@ -152,7 +140,7 @@ function Add-AzADGroupMember {
         foreach ($member in $members) {
             $additionalProperties = @{'@odata.id'="$($odataIdUriPrefix)/$($member)"}
             $PSBoundParameters['AdditionalProperties'] = $additionalProperties
-            Az.MSGraph.internal\New-AzADGroupRefMember @PSBoundParameters
+            Az.MSGraph.internal\New-AzADGroupGraphRefMember @PSBoundParameters
         }
 
         if ($PSBoundParameters['PassThru']) {

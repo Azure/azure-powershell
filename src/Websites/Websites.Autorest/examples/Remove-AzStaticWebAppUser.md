@@ -1,6 +1,6 @@
 ### Example 1: Delete a user entry from the static site
 ```powershell
-Remove-AzStaticWebAppUser -ResourceGroupName resourceGroup -Name staticweb01 -Authprovider 'all' -UseId 'xxxxxxxx'
+Remove-AzStaticWebAppUser -ResourceGroupName resourceGroup -Name staticweb01 -Authprovider 'all' -UserId 'xxxxxxxx'
 
 ```
 

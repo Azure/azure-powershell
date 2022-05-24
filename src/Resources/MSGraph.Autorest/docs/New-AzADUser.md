@@ -35,8 +35,8 @@ Adds new entity to users
 
 ### Example 1: Create user
 ```powershell
-$pp=New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile" -Property @{Password=$password}
-New-MgUser -DisplayName $uname -PasswordProfile $pp -AccountEnabled -MailNickname $nickname -UserPrincipalName $upn
+$pp = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile" -Property @{Password=$password}
+New-AzADUser -DisplayName $uname -PasswordProfile $pp -AccountEnabled -MailNickname $nickname -UserPrincipalName $upn
 ```
 
 Create user
@@ -889,8 +889,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
 
 ## OUTPUTS
 

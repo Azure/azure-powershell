@@ -27,13 +27,13 @@ Name                ExtensionType             Version      ProvisioningState Aut
 azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    Stable       azps_test_group
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
 .Link
 https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesextension
 #>
 function New-AzKubernetesExtension {
     [Alias('New-AzK8sExtension')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtension])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -46,7 +46,8 @@ function New-AzKubernetesExtension {
         [ValidateSet('ConnectedClusters', 'ManagedClusters')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
-        # The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
+        # The Kubernetes cluster resource name - i.e.
+        # managedClusters, connectedClusters, provisionedClusters.
         ${ClusterType},
 
         [Parameter(Mandatory)]
@@ -67,15 +68,13 @@ function New-AzKubernetesExtension {
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
-        # The Azure subscription ID.
-        # This is a GUID-formatted string (e.g.
-        # 00000000-0000-0000-0000-000000000000)
+        # The ID of the target subscription.
         ${SubscriptionId},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ResourceIdentityType])]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.AksIdentityType])]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ResourceIdentityType]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.AksIdentityType]
         # The identity type.
         ${AkAssignedIdentityType},
 
@@ -94,14 +93,14 @@ function New-AzKubernetesExtension {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtensionPropertiesConfigurationProtectedSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtensionPropertiesConfigurationProtectedSettings]))]
         [System.Collections.Hashtable]
         # Configuration settings that are sensitive, as name-value pairs for configuring this extension.
         ${ConfigurationProtectedSetting},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtensionPropertiesConfigurationSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtensionPropertiesConfigurationSettings]))]
         [System.Collections.Hashtable]
         # Configuration settings, as name-value pairs for configuring this extension.
         ${ConfigurationSetting},
@@ -137,8 +136,8 @@ function New-AzKubernetesExtension {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.String]
-        # Version of the extension for this extension, if it is 'pinned' to a specific version.
-        # autoUpgradeMinorVersion must be 'false'.
+        # User-specified version of the extension for this extension to 'pin'.
+        # To use 'version', autoUpgradeMinorVersion must be 'false'.
         ${Version},
 
         [Parameter()]
@@ -207,6 +206,18 @@ function New-AzKubernetesExtension {
         }
         elseif ($ClusterType -eq 'ConnectedClusters') {
             $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
+        }
+
+        if ($Name -ieq 'flux') {
+            if ($Name -ceq 'flux') {
+                if ($IdentityType -cne 'SystemAssigned') {
+                    Write-Error "The value of the parameter -IdentityType must be 'SystemAssigned'."
+                    return
+                }
+            } else {
+                Write-Error "The value of the parameter -Name must be 'flux'."
+                return
+            }
         }
 
         Az.KubernetesConfiguration.internal\New-AzKubernetesExtension @PSBoundParameters
