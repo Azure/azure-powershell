@@ -18,7 +18,7 @@ Register-AzStackHCI [-SubscriptionId] <String> [[-Region] <String>] [[-ResourceN
  [[-GraphAccessToken] <String>] [[-AccountId] <String>] [[-EnvironmentName] <String>]
  [[-ComputerName] <String>] [[-CertificateThumbprint] <String>] [-RepairRegistration]
  [-UseDeviceAuthentication] [-EnableAzureArcServer] [[-Credential] <PSCredential>] [-IsWAC]
- [<CommonParameters>]
+ [[-ArcServerResourceGroupName] <String>] [[-ArcSpnCredential] <PSCredential>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +56,7 @@ Invoking from the management node.
 
 ### EXAMPLE 3
 ```powershell
-Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG 
+Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG
 ```
 
 ```output
@@ -95,6 +95,36 @@ Aliases:
 
 Required: False
 Position: 9
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcServerResourceGroupName
+Specifies the Arc Resource Group name. If not specified, service will generate a unique Resource Group name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 14
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcSpnCredential
+Specifies the credentials to be used for onboarding ARC agent. If not specified, new set of credentials will be generated.
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 15
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
