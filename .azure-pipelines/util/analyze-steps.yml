@@ -32,6 +32,9 @@ steps:
 - pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
   displayName: 'Install platyPS'
 
+- pwsh: 'Install-Module PSScriptAnalyzer'
+  displayName: 'Install PSScriptAnalyzer'
+
 - task: DotNetCoreCLI@2
   displayName: 'Generate Help'
   inputs:
