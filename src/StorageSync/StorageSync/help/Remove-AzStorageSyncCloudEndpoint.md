@@ -38,7 +38,7 @@ This command will delete the specified cloud endpoint from a sync group. The Azu
 
 ### Example 1
 ```powershell
-Remove-AzStorageSyncCloudEndpoint -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName"
+Remove-AzStorageSyncCloudEndpoint -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "b38fc242-8100-4807-89d0-399cef5863bf"
 ```
 
 This command will remove the cloud endpoint.
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the CloudEndpoint.
+Name of the CloudEndpoint. Name of the CloudEndpoint. The name is a GUID, not the friendly name that's displayed in the portal. To get the CloudEndpointName, use the Get-AzStorageSyncCloudEndpoint cmdlet.
 
 ```yaml
 Type: System.String
