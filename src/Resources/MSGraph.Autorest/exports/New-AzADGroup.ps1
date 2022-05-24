@@ -22,8 +22,6 @@ Adds new entity to groups
 .Example
 New-AzADGroup -DisplayName $gname -MailNickname $nickname
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
 .Notes

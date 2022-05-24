@@ -18,21 +18,18 @@ using Xunit;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
 {
-    public class DataBoxEdgeTriggerTests : DataBoxEdgeScenarioTestBase
+    public class DataBoxEdgeTriggerTests : DataBoxEdgeTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
 
-        public DataBoxEdgeTriggerTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataBoxEdgeTriggerTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingTrigger()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-GetNonExistingTrigger");
+            TestRunner.RunTestScript("Test-GetNonExistingTrigger");
         }
 
 
@@ -40,14 +37,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateTrigger()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateNewTrigger");
+            TestRunner.RunTestScript("Test-CreateNewTrigger");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveTrigger()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-RemoveTrigger");
+            TestRunner.RunTestScript("Test-RemoveTrigger");
         }
     }
 }

@@ -25,13 +25,13 @@ namespace Microsoft.Azure.Commands.Common
     using GetParameterDelegate = Func<string, System.Management.Automation.InvocationInfo, string, object>;
     using SendAsyncStep = Func<HttpRequestMessage, IEventListener, ISendAsync, Task<HttpResponseMessage>>;
     using PipelineChangeDelegate = Action<EventData>;
-
-    [TypeConverter(typeof(EventDataConverter))]
+    
     ///	<remarks>
     /// In PowerShell, we add on the EventDataConverter to support sending events between modules.
     /// Obviously, this code would need to be duplcated on both modules.
     /// This is preferable to sharing a common library, as versioning makes that problematic.
     /// </remarks>
+    [TypeConverter(typeof(EventDataConverter))]
     public partial class EventData : EventArgs
     {
         /// <summary>

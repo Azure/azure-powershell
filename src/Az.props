@@ -34,6 +34,8 @@
       <AutoGen>true</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <!-- include shared source code -->
+    <Compile Include="$(MSBuildThisFileDirectory)shared\*.cs" />
   </ItemGroup>
 
   <ItemGroup>

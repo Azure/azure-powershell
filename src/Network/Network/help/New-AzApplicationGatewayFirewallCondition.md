@@ -25,7 +25,7 @@ The **New-AzApplicationGatewayFirewallCondition** creates a match condition for 
 
 ### Example 1
 ```powershell
-$condition = New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Contains -NegationCondition false -Transforms Lowercase, Trim -MatchValue abc, cde
+$condition = New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Contains -NegationCondition false -Transform Lowercase, Trim -MatchValue abc, cde
 ```
 
 The command creates a new match condition using the match variable defined in the $variable, the operator is Contains and negation condition is false, Transfroms including lowercase and trim, the match value is abc and cde. The new match condition is saved in $condition.

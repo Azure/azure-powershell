@@ -28,7 +28,7 @@ The **Enable-AzSqlInstanceAdvancedDataSecurity** cmdlet enables Advanced Data Se
 ```powershell
 Enable-AzSqlInstanceAdvancedDataSecurity `
             -ResourceGroupName "ResourceGroup01" `
-            -InstanceName "ManagedInstance01" 
+            -InstanceName "ManagedInstance01"
 ```
 
 ```output

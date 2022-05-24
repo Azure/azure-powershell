@@ -12,142 +12,134 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class SecurityAutomationTests
+    public class SecurityAutomationTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public SecurityAutomationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SecurityAutomationTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSecurityAutomationSubscriptionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSecurityAutomation-SubscriptionScope");
+            TestRunner.RunTestScript("Get-AzSecurityAutomation-SubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSecurityAutomationResourceScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSecurityAutomation-ResourceGroupScope");
+            TestRunner.RunTestScript("Get-AzSecurityAutomation-ResourceGroupScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSecurityAutomationResourceGroupLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSecurityAutomation-ResourceGroupLevelResource");
+            TestRunner.RunTestScript("Get-AzSecurityAutomation-ResourceGroupLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSecurityAutomationResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSecurityAutomation-ResourceId");
+            TestRunner.RunTestScript("Get-AzSecurityAutomation-ResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewSecurityAutomationResourceGroupLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSecurityAutomation-ResourceGroupLevelResource");
+            TestRunner.RunTestScript("New-AzSecurityAutomation-ResourceGroupLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetSecurityAutomationResourceGroupLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzSecurityAutomation-ResourceGroupLevelResource");
+            TestRunner.RunTestScript("Set-AzSecurityAutomation-ResourceGroupLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetSecurityAutomationResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzSecurityAutomation-ResourceId");
+            TestRunner.RunTestScript("Set-AzSecurityAutomation-ResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetSecurityAutomationInputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzSecurityAutomation-InputObject");
+            TestRunner.RunTestScript("Set-AzSecurityAutomation-InputObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConfirmSecurityAutomationResourceGroupLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Confirm-AzSecurityAutomation-ResourceGroupLevelResource");
+            TestRunner.RunTestScript("Confirm-AzSecurityAutomation-ResourceGroupLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConfirmSecurityAutomationResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Confirm-AzSecurityAutomation-ResourceId");
+            TestRunner.RunTestScript("Confirm-AzSecurityAutomation-ResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConfirmSecurityAutomationInputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Confirm-AzSecurityAutomation-InputObject");
+            TestRunner.RunTestScript("Confirm-AzSecurityAutomation-InputObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveSecurityAutomationResourceGroupLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzSecurityAutomation-ResourceGroupLevelResource");
+            TestRunner.RunTestScript("Remove-AzSecurityAutomation-ResourceGroupLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveSecurityAutomationResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzSecurityAutomation-ResourceId");
+            TestRunner.RunTestScript("Remove-AzSecurityAutomation-ResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveSecurityAutomationInputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzSecurityAutomation-InputObject");
+            TestRunner.RunTestScript("Remove-AzSecurityAutomation-InputObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewSecurityAutomationScopeObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSecurityAutomationScopeObject-Test");
+            TestRunner.RunTestScript("New-AzSecurityAutomationScopeObject-Test");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewSecurityAutomationSourceObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSecurityAutomationSourceObject-Test");
+            TestRunner.RunTestScript("New-AzSecurityAutomationSourceObject-Test");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewSecurityAutomationActionObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSecurityAutomationActionObject-Test");
+            TestRunner.RunTestScript("New-AzSecurityAutomationActionObject-Test");
         }
-
     }
 }

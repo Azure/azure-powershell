@@ -20,6 +20,29 @@
 
 ## Upcoming Release
 
+## Version 6.0.0
+* Added cmdlet for Application federated identity credential
+    - `Get-AzADAppFederatedIdentityCredential` 
+    - `New-AzADAppFederatedIdentityCredential` 
+    - `Remove-AzADAppFederatedIdentityCredential`
+    - `Update-AzADAppFederatedIdentityCredential`
+* Upgraded and revised `Get-AzLocation` cmdlet:
+    - Upgraded `subscriptionClient` for `Get-AzLocation`. Changed its apiVersion from 2016-01-01 to 2021-01-01.[#18002]
+    - Added all attributes of location info for `Get-AzLocation`, including `pairedRegion` and so on. [#18045][#17536]
+    - Support ExtendedLocations by `Get-AzLocation` [#18046]
+* Added the following cmdlets to remain in parity with 2021-04-01 API version:
+    - `New-AzHierarchySetting`
+    - `Get-AzHierarchySetting`
+    - `Update-AzHierarchySetting`
+    - `Remove-AzHierarchySetting`
+    - `Get-AzManagementGroupSubscription`
+    - `Get-AzSubscriptionUnderManagementGroup` 
+    - `Start-AzTenantBackfill`
+    - `Get-AzTenantBackfillStatus` 
+    - `Get-AzManagementGroupNameAvailability`
+    - `Get-AzEntity` 
+* [Breaking Change] Renamed property `isSyncedFromOnPremis` to `isSyncedFromOnPremise` to align with API spec
+
 ## Version 5.6.0
 * Fixed redundant quotes in list pagination [#17667]
 * Added cmdlet `Update-AzADGroup` [#17514]

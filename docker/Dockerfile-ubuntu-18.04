@@ -8,6 +8,7 @@ ARG AZURE=/root/.Azure
 ARG VCS_REF="none"
 ARG BUILD_DATE=
 ARG VERSION=
+ARG LATEST=
 ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell:${VERSION}-ubuntu-18.04
 
 ENV AZUREPS_HOST_ENVIRONMENT="dockerImage/${VERSION}-ubuntu-18.04"
@@ -28,11 +29,19 @@ LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
       org.label-schema.docker.cmd.devel="docker run -it --rm -e 'DebugPreference=Continue' ${IMAGE_NAME} pwsh" \
       org.label-schema.docker.cmd.test="currently not available" \
       org.label-schema.docker.cmd.help="docker run --rm ${IMAGE_NAME} pwsh -c Get-Help"
-
-# install azure-powershell from PSGallery
-RUN pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Trusted && \
-    pwsh -Command Install-Module -Name ${MODULE} -RequiredVersion ${VERSION} -Scope AllUsers -Repository ${REPOSITORY} && \
-    pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Untrusted
+      
+RUN if [ "${LATEST}" = True ] ; then \
+        # install latest azure-powershell from BLOB
+        pwsh -Command Invoke-WebRequest -uri ${BLOB_URL} -OutFile latest.tar.gz && \       
+        mkdir latest  && \
+        tar -zxvf ./latest.tar.gz -C ./latest  && \
+        pwsh -Command ./latest/InstallModule.ps1 ;\
+    else \
+        # install old azure-powershell from PSGallery
+        pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Trusted && \
+        pwsh -Command Install-Module -Name ${MODULE} -RequiredVersion ${VERSION} -Scope AllUsers -Repository ${REPOSITORY} && \
+        pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Untrusted ;\
+    fi
 
 # create AzureRmContextSettings.json before it was generated
 COPY ${CONFIG}/${AZURERM_CONTEXT_SETTINGS} ${AZURE}/${AZURERM_CONTEXT_SETTINGS}

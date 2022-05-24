@@ -15,61 +15,49 @@
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagement.Common.Models;
     using Xunit;
 
-    public class AdlaTests : AdlaTestsBase
+    public class AdlaTests : DataLakeAnalyticsTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public AdlaTests(Xunit.Abstractions.ITestOutputHelper output)
+        internal const string ResourceGroupLocation = "eastus2";
+        public AdlaTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Updated Storage client, test needs rerecorded")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlaAccount()
         {
-            AdlaTestsBase.NewInstance.RunPsTest(true,
-                _logger,
-                string.Format(
-                    "Test-DataLakeAnalyticsAccount -blobAccountKey -location '{0}'",
-                    AdlaTestsBase.ResourceGroupLocation));
+            TestRunner.RunTestScript(string.Format(
+                "Test-DataLakeAnalyticsAccount -blobAccountKey -location '{0}'",
+                ResourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlaAccountTiers()
         {
-            AdlaTestsBase.NewInstance.RunPsTest(false,
-                _logger,
-                string.Format(
-                    "Test-DataLakeAnalyticsAccountTiers -location '{0}'",
-                    AdlaTestsBase.ResourceGroupLocation));
+            TestRunner.RunTestScript(string.Format(
+                "Test-DataLakeAnalyticsAccountTiers -location '{0}'",
+                ResourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlaFirewallRules()
         {
-            AdlaTestsBase.NewInstance.RunPsTest(false,
-                _logger,
-                string.Format(
-                    "Test-DataLakeAnalyticsFirewall -location '{0}'",
-                    AdlaTestsBase.ResourceGroupLocation));
+            TestRunner.RunTestScript(string.Format(
+                "Test-DataLakeAnalyticsFirewall -location '{0}'",
+                ResourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlaComputePolicy()
         {
-            AdlaTestsBase.NewInstance.RunPsTest(false,
-                _logger,
-                string.Format(
-                    "Test-DataLakeAnalyticsComputePolicy -location '{0}'",
-                    AdlaTestsBase.ResourceGroupLocation));
+            TestRunner.RunTestScript(string.Format(
+                "Test-DataLakeAnalyticsComputePolicy -location '{0}'",
+                ResourceGroupLocation));
         }
 
 #if NETSTANDARD
@@ -80,55 +68,45 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlaCatalog()
         {
-            AdlaTestsBase.NewInstance.RunPsTest(false,
-                _logger,
-                string.Format(
-                    "Test-DataLakeAnalyticsCatalog -location '{0}'",
-                    AdlaTestsBase.ResourceGroupLocation));
+            TestRunner.RunTestScript(string.Format(
+                "Test-DataLakeAnalyticsCatalog -location '{0}'",
+                ResourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlaJob()
         {
-            AdlaTestsBase.NewInstance.RunPsTest(false,
-                _logger,
-                string.Format(
-                    "Test-DataLakeAnalyticsJob -location '{0}'",
-                    AdlaTestsBase.ResourceGroupLocation));
+            TestRunner.RunTestScript(string.Format(
+                "Test-DataLakeAnalyticsJob -location '{0}'",
+                ResourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlaJobRelationships()
         {
-            AdlaTestsBase.NewInstance.RunPsTest(false,
-                _logger,
-                string.Format(
-                    "Test-DataLakeAnalyticsJobRelationships -location '{0}'",
-                    AdlaTestsBase.ResourceGroupLocation));
+            TestRunner.RunTestScript(string.Format(
+                "Test-DataLakeAnalyticsJobRelationships -location '{0}'",
+                ResourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativeAdlaAccount()
         {
-            AdlaTestsBase.NewInstance.RunPsTest(false,
-                _logger,
-                string.Format(
-                    "Test-NegativeDataLakeAnalyticsAccount -location '{0}'",
-                    AdlaTestsBase.ResourceGroupLocation));
+            TestRunner.RunTestScript(string.Format(
+                "Test-NegativeDataLakeAnalyticsAccount -location '{0}'",
+                ResourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativeAdlaJob()
         {
-            AdlaTestsBase.NewInstance.RunPsTest(false,
-                _logger,
-                string.Format(
-                    "Test-NegativeDataLakeAnalyticsJob -location '{0}'",
-                    AdlaTestsBase.ResourceGroupLocation));
+            TestRunner.RunTestScript(string.Format(
+                "Test-NegativeDataLakeAnalyticsJob -location '{0}'",
+                ResourceGroupLocation));
         }
     }
 }

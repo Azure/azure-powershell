@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Restores a specific backup to another app (or deployment slot, if specified).
+Restores a specific backup to another app (or deployment slot, if specified).
 .Description
-Description for Restores a specific backup to another app (or deployment slot, if specified).
+Restores a specific backup to another app (or deployment slot, if specified).
 .Example
 {{ Add code here }}
 .Example
@@ -334,6 +334,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Restore = 'Az.Functions.private\Restore-AzFunctionApp_Restore';
             RestoreExpanded = 'Az.Functions.private\Restore-AzFunctionApp_RestoreExpanded';
@@ -349,6 +350,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -357,15 +359,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

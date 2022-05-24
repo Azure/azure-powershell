@@ -8,13 +8,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
     using System;
 
-    /// <summary>Description for Validate if a resource can be created.</summary>
+    /// <summary>Validate if a resource can be created.</summary>
     /// <remarks>
     /// [OpenAPI] Validate=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/validate"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsDiagnostic.Test, @"Az_ValidateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidateResponse))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Description for Validate if a resource can be created.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Validate if a resource can be created.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Generated]
     public partial class TestAz_ValidateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener
@@ -33,6 +33,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Resource validation request content.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidateRequest _validateRequestBody = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ValidateRequest();
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Runtime)]
@@ -47,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Target capacity of the App Service plan (number of VMs).",
         SerializedName = @"capacity",
         PossibleTypes = new [] { typeof(int) })]
-        public int Capacity { get => ValidateRequestBody.Capacity ?? default(int); set => ValidateRequestBody.Capacity = value; }
+        public int Capacity { get => _validateRequestBody.Capacity ?? default(int); set => _validateRequestBody.Capacity = value; }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Functions Client => Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.ClientAPI;
@@ -61,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Platform (windows or linux)",
         SerializedName = @"containerImagePlatform",
         PossibleTypes = new [] { typeof(string) })]
-        public string ContainerImagePlatform { get => ValidateRequestBody.ContainerImagePlatform ?? null; set => ValidateRequestBody.ContainerImagePlatform = value; }
+        public string ContainerImagePlatform { get => _validateRequestBody.ContainerImagePlatform ?? null; set => _validateRequestBody.ContainerImagePlatform = value; }
 
         /// <summary>Repository name (image name)</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Repository name (image name)")]
@@ -72,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Repository name (image name)",
         SerializedName = @"containerImageRepository",
         PossibleTypes = new [] { typeof(string) })]
-        public string ContainerImageRepository { get => ValidateRequestBody.ContainerImageRepository ?? null; set => ValidateRequestBody.ContainerImageRepository = value; }
+        public string ContainerImageRepository { get => _validateRequestBody.ContainerImageRepository ?? null; set => _validateRequestBody.ContainerImageRepository = value; }
 
         /// <summary>Image tag</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Image tag")]
@@ -83,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Image tag",
         SerializedName = @"containerImageTag",
         PossibleTypes = new [] { typeof(string) })]
-        public string ContainerImageTag { get => ValidateRequestBody.ContainerImageTag ?? null; set => ValidateRequestBody.ContainerImageTag = value; }
+        public string ContainerImageTag { get => _validateRequestBody.ContainerImageTag ?? null; set => _validateRequestBody.ContainerImageTag = value; }
 
         /// <summary>Base URL of the container registry</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Base URL of the container registry")]
@@ -94,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Base URL of the container registry",
         SerializedName = @"containerRegistryBaseUrl",
         PossibleTypes = new [] { typeof(string) })]
-        public string ContainerRegistryBaseUrl { get => ValidateRequestBody.ContainerRegistryBaseUrl ?? null; set => ValidateRequestBody.ContainerRegistryBaseUrl = value; }
+        public string ContainerRegistryBaseUrl { get => _validateRequestBody.ContainerRegistryBaseUrl ?? null; set => _validateRequestBody.ContainerRegistryBaseUrl = value; }
 
         /// <summary>Password for to access the container registry</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Password for to access the container registry")]
@@ -105,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Password for to access the container registry",
         SerializedName = @"containerRegistryPassword",
         PossibleTypes = new [] { typeof(string) })]
-        public string ContainerRegistryPassword { get => ValidateRequestBody.ContainerRegistryPassword ?? null; set => ValidateRequestBody.ContainerRegistryPassword = value; }
+        public string ContainerRegistryPassword { get => _validateRequestBody.ContainerRegistryPassword ?? null; set => _validateRequestBody.ContainerRegistryPassword = value; }
 
         /// <summary>Username for to access the container registry</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Username for to access the container registry")]
@@ -116,7 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Username for to access the container registry",
         SerializedName = @"containerRegistryUsername",
         PossibleTypes = new [] { typeof(string) })]
-        public string ContainerRegistryUsername { get => ValidateRequestBody.ContainerRegistryUsername ?? null; set => ValidateRequestBody.ContainerRegistryUsername = value; }
+        public string ContainerRegistryUsername { get => _validateRequestBody.ContainerRegistryUsername ?? null; set => _validateRequestBody.ContainerRegistryUsername = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -138,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Name of App Service Environment where app or App Service plan should be created.",
         SerializedName = @"hostingEnvironment",
         PossibleTypes = new [] { typeof(string) })]
-        public string HostingEnvironment { get => ValidateRequestBody.HostingEnvironment ?? null; set => ValidateRequestBody.HostingEnvironment = value; }
+        public string HostingEnvironment { get => _validateRequestBody.HostingEnvironment ?? null; set => _validateRequestBody.HostingEnvironment = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -174,7 +177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> if App Service plan is for Spot instances; otherwise, <code>false</code>.",
         SerializedName = @"isSpot",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter IsSpot { get => ValidateRequestBody.IsSpot ?? default(global::System.Management.Automation.SwitchParameter); set => ValidateRequestBody.IsSpot = value; }
+        public global::System.Management.Automation.SwitchParameter IsSpot { get => _validateRequestBody.IsSpot ?? default(global::System.Management.Automation.SwitchParameter); set => _validateRequestBody.IsSpot = value; }
 
         /// <summary><code>true</code> if App Service plan is running as a windows container</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "<code>true</code> if App Service plan is running as a windows container")]
@@ -185,7 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> if App Service plan is running as a windows container",
         SerializedName = @"isXenon",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter IsXenon { get => ValidateRequestBody.IsXenon ?? default(global::System.Management.Automation.SwitchParameter); set => ValidateRequestBody.IsXenon = value; }
+        public global::System.Management.Automation.SwitchParameter IsXenon { get => _validateRequestBody.IsXenon ?? default(global::System.Management.Automation.SwitchParameter); set => _validateRequestBody.IsXenon = value; }
 
         /// <summary>Expected location of the resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Expected location of the resource.")]
@@ -196,14 +199,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Expected location of the resource.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => ValidateRequestBody.Location ?? null; set => ValidateRequestBody.Location = value; }
+        public string Location { get => _validateRequestBody.Location ?? null; set => _validateRequestBody.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Resource name to verify.</summary>
@@ -215,7 +218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Resource name to verify.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        public string Name { get => ValidateRequestBody.Name ?? null; set => ValidateRequestBody.Name = value; }
+        public string Name { get => _validateRequestBody.Name ?? null; set => _validateRequestBody.Name = value; }
 
         /// <summary>
         /// <code>true</code> if App Service plan is for Linux workers; otherwise, <code>false</code>.
@@ -228,7 +231,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> if App Service plan is for Linux workers; otherwise, <code>false</code>.",
         SerializedName = @"needLinuxWorkers",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter NeedLinuxWorker { get => ValidateRequestBody.NeedLinuxWorker ?? default(global::System.Management.Automation.SwitchParameter); set => ValidateRequestBody.NeedLinuxWorker = value; }
+        public global::System.Management.Automation.SwitchParameter NeedLinuxWorker { get => _validateRequestBody.NeedLinuxWorker ?? default(global::System.Management.Automation.SwitchParameter); set => _validateRequestBody.NeedLinuxWorker = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.HttpPipeline" /> that the remote call will use.
@@ -260,7 +263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"ARM resource ID of an App Service plan that would host the app.",
         SerializedName = @"serverFarmId",
         PossibleTypes = new [] { typeof(string) })]
-        public string ServerFarmId { get => ValidateRequestBody.ServerFarmId ?? null; set => ValidateRequestBody.ServerFarmId = value; }
+        public string ServerFarmId { get => _validateRequestBody.ServerFarmId ?? null; set => _validateRequestBody.ServerFarmId = value; }
 
         /// <summary>Name of the target SKU for the App Service plan.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the target SKU for the App Service plan.")]
@@ -271,7 +274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Name of the target SKU for the App Service plan.",
         SerializedName = @"skuName",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuName { get => ValidateRequestBody.SkuName ?? null; set => ValidateRequestBody.SkuName = value; }
+        public string SkuName { get => _validateRequestBody.SkuName ?? null; set => _validateRequestBody.SkuName = value; }
 
         /// <summary>Resource type used for verification.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Resource type used for verification.")]
@@ -283,13 +286,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ValidateResourceTypes) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ValidateResourceTypes))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ValidateResourceTypes Type { get => ValidateRequestBody.Type; set => ValidateRequestBody.Type = value; }
-
-        /// <summary>Backing field for <see cref="ValidateRequestBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidateRequest _validateRequestBody= new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ValidateRequest();
-
-        /// <summary>Resource validation request content.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidateRequest ValidateRequestBody { get => this._validateRequestBody; set => this._validateRequestBody = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ValidateResourceTypes Type { get => _validateRequestBody.Type; set => _validateRequestBody.Type = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -320,6 +317,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -331,7 +333,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -434,7 +436,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -451,7 +452,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.ValidateViaIdentity(InputObject.Id, ValidateRequestBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.ValidateViaIdentity(InputObject.Id, _validateRequestBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -464,13 +465,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.Validate(InputObject.ResourceGroupName ?? null, InputObject.SubscriptionId ?? null, ValidateRequestBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.Validate(InputObject.ResourceGroupName ?? null, InputObject.SubscriptionId ?? null, _validateRequestBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=ValidateRequestBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_validateRequestBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -524,14 +525,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ValidateRequestBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_validateRequestBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ValidateRequestBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_validateRequestBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

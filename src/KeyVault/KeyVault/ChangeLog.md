@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 4.5.0
+* Added `Rotate` into the list of permissions to keys [#17970]
+
 ## Version 4.4.0
 * Supported getting random number from managed HSM by `Get-AzKeyVaultRandomNumber`
 * Skipped subscription connection status validation for Az.KeyVault.Extension [#17712]

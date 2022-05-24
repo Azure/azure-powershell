@@ -81,7 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         /// Creates a new instance of <see cref="FunctionsIdentity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="FunctionsIdentity" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>

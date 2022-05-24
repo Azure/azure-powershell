@@ -12,80 +12,71 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
-
 namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
 {
-    using Microsoft.Azure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-
-    public class GetVmGuestPolicyStatusTests
+    public class GetVmGuestPolicyStatusTests : GuestConfigurationTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public GetVmGuestPolicyStatusTests(Xunit.Abstractions.ITestOutputHelper output)
+        public GetVmGuestPolicyStatusTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VmNameScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-VmNameScope");
+            TestRunner.RunTestScript("Get-AzVMGuestPolicyStatus-VmNameScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VmNameScope_Custom()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-VmNameScope_Custom");
+            TestRunner.RunTestScript("Get-AzVMGuestPolicyStatus-VmNameScope_Custom");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InitiativeIdScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-InitiativeIdScope");
+            TestRunner.RunTestScript("Get-AzVMGuestPolicyStatus-InitiativeIdScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InitiativeIdScope_Custom()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-InitiativeIdScope_Custom");
+            TestRunner.RunTestScript("Get-AzVMGuestPolicyStatus-InitiativeIdScope_Custom");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InitiativeNameScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-InitiativeNameScope");
+            TestRunner.RunTestScript("Get-AzVMGuestPolicyStatus-InitiativeNameScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InitiativeNameScope_Custom()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-InitiativeNameScope_Custom");
+            TestRunner.RunTestScript("Get-AzVMGuestPolicyStatus-InitiativeNameScope_Custom");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]       
         public void ReportIdScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-ReportIdScope");
+            TestRunner.RunTestScript("Get-AzVMGuestPolicyStatus-ReportIdScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReportIdScope_Custom()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-ReportIdScope_Custom");
+            TestRunner.RunTestScript("Get-AzVMGuestPolicyStatus-ReportIdScope_Custom");
         }
     }
 }
