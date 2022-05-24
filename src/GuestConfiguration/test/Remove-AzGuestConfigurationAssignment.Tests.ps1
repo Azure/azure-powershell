@@ -15,6 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzGuestConfigurationAs
 }
 
 Describe 'Remove-AzGuestConfigurationAssignment' {
+    # Skip as all tests are added in Test-AzGuestConfigurationAssignmentBy*.Tests.ps1
     It 'Delete' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

@@ -15,7 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzGuestConfigurationAssig
 }
 
 Describe 'New-AzGuestConfigurationAssignment' {
+    # Skip as all tests are added in Test-AzGuestConfigurationAssignmentBy*.Tests.ps1
     It 'CreateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateExpanded1' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

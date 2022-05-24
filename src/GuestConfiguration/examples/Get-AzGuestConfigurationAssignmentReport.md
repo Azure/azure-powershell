@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a report by ReportId for a guest configuration assignment
 ```powershell
-{{ Add code here }}
+Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -VMName test-vm -ReportId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/test-assignment/reports/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
-```output
-{{ Add output here }}
-```
+Get a report by ReportId for a guest configuration assignment
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List reports for a guest configuration assignment
 ```powershell
-{{ Add code here }}
+Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -VMName test-vm
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+List reports for a guest configuration assignment

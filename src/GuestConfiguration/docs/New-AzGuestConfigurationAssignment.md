@@ -12,14 +12,26 @@ Creates an association between a VM and guest configuration
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName <String> -ResourceGroupName <String>
- -VMName <String> [-SubscriptionId <String>] [-Context <String>]
- [-GuestConfigurationAssignmentType <AssignmentType>] [-GuestConfigurationContentHash <String>]
- [-GuestConfigurationContentUri <String>] [-GuestConfigurationKind <Kind>] [-GuestConfigurationName <String>]
+ -VMName <String> -GuestConfigurationContentHash <String> -GuestConfigurationContentUri <String>
+ -GuestConfigurationName <String> -GuestConfigurationVersion <String> [-SubscriptionId <String>]
+ [-Context <String>] [-GuestConfigurationAssignmentType <AssignmentType>] [-GuestConfigurationKind <Kind>]
  [-GuestConfigurationParameter <IConfigurationParameter[]>]
- [-GuestConfigurationProtectedParameter <IConfigurationParameter[]>] [-GuestConfigurationVersion <String>]
- [-Location <String>] [-Name <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GuestConfigurationProtectedParameter <IConfigurationParameter[]>] [-Location <String>] [-Name <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpanded1
+```
+New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName <String> -MachineName <String>
+ -ResourceGroupName <String> -GuestConfigurationContentHash <String> -GuestConfigurationContentUri <String>
+ -GuestConfigurationName <String> -GuestConfigurationVersion <String> [-SubscriptionId <String>]
+ [-Context <String>] [-GuestConfigurationAssignmentType <AssignmentType>] [-GuestConfigurationKind <Kind>]
+ [-GuestConfigurationParameter <IConfigurationParameter[]>]
+ [-GuestConfigurationProtectedParameter <IConfigurationParameter[]>] [-Location <String>] [-Name <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,27 +39,31 @@ Creates an association between a VM and guest configuration
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an association between a VM and guest configuration
 ```powershell
-{{ Add code here }}
+New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -VMName test-vm -GuestConfigurationName test-config -GuestConfigurationVersion "1.0.0.3" -GuestConfigurationContentUri "https://thisisfake/package" -GuestConfigurationContentHash "123contenthash"
 ```
 
 ```output
-{{ Add output here }}
+Location      Name     ResourceGroupName
+--------      ----     -----------------
+westcentralus test-assignment test-rg
 ```
 
-{{ Add description here }}
+Create an association between a VM and guest configuration
 
-### Example 2: {{ Add title here }}
+### Example 2: Create an association between a ARC machine and guest configuration
 ```powershell
-{{ Add code here }}
+New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -MachineName test-machine -GuestConfigurationName test-config -GuestConfigurationVersion "1.0.0.3" -GuestConfigurationContentUri "https://thisisfake/package" -GuestConfigurationContentHash "123contenthash"
 ```
 
 ```output
-{{ Add output here }}
+Location      Name     ResourceGroupName
+--------      ----     -----------------
+westcentralus test-assignment test-rg
 ```
 
-{{ Add description here }}
+Create an association between a ARC machine and guest configuration
 
 ## PARAMETERS
 
@@ -121,7 +137,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,7 +152,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -167,7 +183,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -214,7 +230,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -230,6 +246,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MachineName
+The name of the ARC machine.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -287,7 +318,7 @@ The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True

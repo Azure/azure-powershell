@@ -46,12 +46,35 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^Create1$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
   # Remove the set-* cmdlet
   - where:
       verb: Set
     remove: true
+  # GuestConfigurationAssignmentsVMSS_{Action} -> GuestConfigurationAssignments_{Action}ByVMSS
+  - from: swagger-document
+    where: $.paths..operationId
+    transform: return $.replace(/^(GuestConfiguration)(.+)VMSS(_.+)/g, "$1$2$3ByVMSS")
+  # GuestConfigurationHCRPAssignments_{Action} -> GuestConfigurationAssignments_{Action}ByHCRP
+  # GuestConfigurationHCRPAssignmentReports_List -> GuestConfigurationAssignmentReports_ListByHCRP
+  - from: swagger-document
+    where: $.paths..operationId
+    transform: return $.replace(/^(GuestConfiguration)HCRP(.+)(_.+)/g, "$1$2$3ByHCRP")
+  # GuestConfigurationAssignments_RGList -> GuestConfigurationAssignments_ListByRg
+  # GuestConfigurationAssignments_SubscriptionList -> GuestConfigurationAssignments_ListBySubscription
+  - from: swagger-document
+    where: $.paths..operationId
+    transform: return $.replace(/^(GuestConfigurationAssignments_)(.+)(List)$/, "$1$3By$2")
+  # Remove all get/create/delete ViaIdentity operations
+  - where:
+      variant: ^GetViaIdentity.*|^CreateViaIdentity.*|^DeleteViaIdentity.*
+    remove: true
+  # Hide Remove-AzGuestConfigurationAssignment to customize InputObject case
+  - where:
+      verb: Remove
+      subject: GuestConfigurationAssignment
+    hide: true
   # The properties of VmssVMList are read-only
   - where:
       parameter-name: VmssVMList
@@ -60,4 +83,27 @@ directive:
   - where:
       parameter-name: LatestAssignmentReportResource
     hide: true
+  # Change GuestConfigurationNavigation to required
+  - from: swagger-document 
+    where: $.definitions.GuestConfigurationAssignment
+    transform: $["required"] = ["properties"]
+  # Change GuestConfigurationNavigation to required
+  - from: swagger-document 
+    where: $.definitions.GuestConfigurationAssignmentProperties
+    transform: $["required"] = ["guestConfiguration"]
+  # Change GuestConfigurationNavigation.name, 
+  # GuestConfigurationNavigation.version 
+  # GuestConfigurationNavigation.contentUri 
+  # and GuestConfigurationNavigation.contentHash to required
+  - from: swagger-document 
+    where: $.definitions.GuestConfigurationNavigation
+    transform: $["required"] = ["name", "version", "contentUri", "contentHash"]
+  # Change reports/{id} -> reports/{reportId} to avoid conflicts when piping an assignment 
+  - from: swagger-document
+    where: $
+    transform: $ = $.replace(/reports\/{id}/g, "reports/{reportId}")
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}/reports/{reportId}"].get.parameters[4]
+    transform: >-
+      $.name = "reportId"
 ```

@@ -15,14 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzGuestConfigurationAssig
 }
 
 Describe 'Get-AzGuestConfigurationAssignmentReport' {
+    # Skip as all tests are added in Test-AzGuestConfigurationAssignmentBy*.Tests.ps1
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName $env.assignmentName -ResourceGroupName $env.resourcegroupName -VMName $env.vmName} | Should -Not -Throw
     }
 
+    # Skip as no command supports creating a report to test by far
     It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    # Skip it as no command supports creating a report to test by far
     It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

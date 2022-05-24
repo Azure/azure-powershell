@@ -19,6 +19,41 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+    $guestConfigName = RandomString -allChars $false -len 6
+    $assignmentName = RandomString -allChars $false -len 6
+    $reportName = RandomString -allChars $false -len 6
+    
+    $resourcegroupName = "ps-$(RandomString -allChars $false -len 4)-rg"
+    $location = "westcentralus"
+    $rg = New-AzResourceGroup -Location $location -Name $resourcegroupName
+
+    $vmName = "ps-$(RandomString -allChars $false -len 4)-vm"
+    $vmssName = "ps-$(RandomString -allChars $false -len 4)-vmss"
+    $vmAdmin = "ps-$(RandomString -allChars $false -len 4)-admin"
+    $vmPwd = ConvertTo-SecureString "$(RandomString -allChars $false -len 4)Pw.@0" -AsPlainText -Force
+    $credential = New-Object System.Management.Automation.PSCredential ($vmAdmin, $vmPwd)
+    
+    $vm = New-AzVM -Name $vmName -Credential $credential -ResourceGroupName $resourcegroupName
+    $vmss = New-AzVmss -VMScaleSetName $vmssName -Credential $credential -ResourceGroupName $resourcegroupName
+
+    # Cache variable
+    $guestConfigName = $env.AddWithCache("guestConfigName", $guestConfigName, $UsePreviousConfigForRecord)
+    $assignmentName = $env.AddWithCache("assignmentName", $assignmentName, $UsePreviousConfigForRecord)
+    $reportName = $env.AddWithCache("reportName", $reportName, $UsePreviousConfigForRecord)
+
+    $resourcegroupName = $env.AddWithCache("resourcegroupName", $resourcegroupName, $UsePreviousConfigForRecord)
+    $location = $env.AddWithCache("location", $location, $UsePreviousConfigForRecord)
+    $rg = $env.AddWithCache("rg", $rg, $UsePreviousConfigForRecord)
+
+    $vmName = $env.AddWithCache("vmName", $vmName, $UsePreviousConfigForRecord)
+    $vmssName = $env.AddWithCache("vmssName", $vmssName, $UsePreviousConfigForRecord)
+    $vmAdmin = $env.AddWithCache("vmAdmin", $vmAdmin, $UsePreviousConfigForRecord)
+    $vmPwd = $env.AddWithCache("vmPwd", $vmPwd, $UsePreviousConfigForRecord)
+    $credential = $env.AddWithCache("credential", $credential, $UsePreviousConfigForRecord)
+
+    $vm = $env.AddWithCache("vm", $vm, $UsePreviousConfigForRecord)
+    $vmss = $env.AddWithCache("vmss", $vmss, $UsePreviousConfigForRecord)
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -27,5 +62,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourcegroupName
 }
 

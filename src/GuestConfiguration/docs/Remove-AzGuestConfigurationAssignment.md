@@ -18,6 +18,18 @@ Remove-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Delete1
+```
+Remove-AzGuestConfigurationAssignment -MachineName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Delete2
+```
+Remove-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> -VmssName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzGuestConfigurationAssignment -InputObject <IGuestConfigurationIdentity> [-DefaultProfile <PSObject>]
@@ -29,27 +41,27 @@ Delete a guest configuration assignment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a guest configuration assignment
 ```powershell
-{{ Add code here }}
+Remove-AzGuestConfigurationAssignment -ResourceGroupName test-rg -VMName test-vm -Name test-assignment -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
+Delete a guest configuration assignment named test-assignment
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a guest configuration assignment by piping
 ```powershell
-{{ Add code here }}
+Get-AzGuestConfigurationAssignment -ResourceGroupName test-rg -VMName test-vm -Name test-assignment | Remove-AzGuestConfigurationAssignment -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
+Delete a guest configuration assignment named test-assignment by piping
 
 ## PARAMETERS
 
@@ -84,12 +96,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -MachineName
+The name of the ARC machine.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the guest configuration assignment
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, Delete1, Delete2
 Aliases: GuestConfigurationAssignmentName
 
 Required: True
@@ -119,7 +146,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, Delete1, Delete2
 Aliases:
 
 Required: True
@@ -135,7 +162,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, Delete1, Delete2
 Aliases:
 
 Required: False
@@ -151,6 +178,21 @@ The name of the virtual machine.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VmssName
+The name of the virtual machine scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete2
 Aliases:
 
 Required: True
@@ -200,6 +242,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment
+
 ### System.Boolean
 
 ## NOTES
@@ -213,8 +257,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IGuestConfigurationIdentity>: Identity Parameter
   - `[GuestConfigurationAssignmentName <String>]`: Name of the guest configuration assignment.
-  - `[Id <String>]`: The GUID for the guest configuration assignment report.
-  - `[Id1 <String>]`: Resource identity path
+  - `[Id <String>]`: Resource identity path
   - `[MachineName <String>]`: The name of the ARC machine.
   - `[Name <String>]`: The guest configuration assignment name.
   - `[ReportId <String>]`: The GUID for the guest configuration assignment report.

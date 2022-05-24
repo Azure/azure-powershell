@@ -1,22 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a guest configuration assignment
 ```powershell
-{{ Add code here }}
+Remove-AzGuestConfigurationAssignment -ResourceGroupName test-rg -VMName test-vm -Name test-assignment -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
+Delete a guest configuration assignment named test-assignment
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a guest configuration assignment by piping
 ```powershell
-{{ Add code here }}
+Get-AzGuestConfigurationAssignment -ResourceGroupName test-rg -VMName test-vm -Name test-assignment | Remove-AzGuestConfigurationAssignment -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
+Delete a guest configuration assignment named test-assignment by piping

@@ -26,10 +26,29 @@ Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName <Stri
  [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### Get1
 ```
-Get-AzGuestConfigurationAssignmentReport -InputObject <IGuestConfigurationIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName <String> -MachineName <String>
+ -ReportId <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get2
+```
+Get-AzGuestConfigurationAssignmentReport -Name <String> -ReportId <String> -ResourceGroupName <String>
+ -VmssName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName <String> -MachineName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List2
+```
+Get-AzGuestConfigurationAssignmentReport -Name <String> -ResourceGroupName <String> -VmssName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,27 +56,19 @@ Get a report for the guest configuration assignment, by reportId.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a report by ReportId for a guest configuration assignment
 ```powershell
-{{ Add code here }}
+Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -VMName test-vm -ReportId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/test-assignment/reports/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
-```output
-{{ Add output here }}
-```
+Get a report by ReportId for a guest configuration assignment
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List reports for a guest configuration assignment
 ```powershell
-{{ Add code here }}
+Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -VMName test-vm
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+List reports for a guest configuration assignment
 
 ## PARAMETERS
 
@@ -81,7 +92,7 @@ The guest configuration assignment name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, Get1, List, List1
 Aliases:
 
 Required: True
@@ -91,19 +102,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -MachineName
+The name of the ARC machine.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentity
-Parameter Sets: GetViaIdentity
+Type: System.String
+Parameter Sets: Get1, List1
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The guest configuration assignment name.
+
+```yaml
+Type: System.String
+Parameter Sets: Get2, List2
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -112,7 +137,7 @@ The GUID for the guest configuration assignment report.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, Get1, Get2
 Aliases:
 
 Required: True
@@ -127,7 +152,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -143,7 +168,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -168,12 +193,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VmssName
+The name of the virtual machine scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: Get2, List2
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentity
 
 ## OUTPUTS
 
@@ -182,23 +220,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IGuestConfigurationIdentity>: Identity Parameter
-  - `[GuestConfigurationAssignmentName <String>]`: Name of the guest configuration assignment.
-  - `[Id <String>]`: The GUID for the guest configuration assignment report.
-  - `[Id1 <String>]`: Resource identity path
-  - `[MachineName <String>]`: The name of the ARC machine.
-  - `[Name <String>]`: The guest configuration assignment name.
-  - `[ReportId <String>]`: The GUID for the guest configuration assignment report.
-  - `[ResourceGroupName <String>]`: The resource group name.
-  - `[SubscriptionId <String>]`: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-  - `[VMName <String>]`: The name of the virtual machine.
-  - `[VmssName <String>]`: The name of the virtual machine scale set.
 
 ## RELATED LINKS
 
