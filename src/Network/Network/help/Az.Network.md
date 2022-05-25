@@ -918,6 +918,9 @@ This object is used to restrict the network configuration during a diagnostic se
 ### [New-AzNetworkWatcherPacketCapture](New-AzNetworkWatcherPacketCapture.md)
 Creates a new packet capture resource and starts a packet capture session on a VM.
 
+### [New-AzNetworkWatcherPacketCaptureV2](New-AzNetworkWatcherPacketCaptureV2.md)
+V2 Version of Packet Capture Cmdlet which creates a new packet capture resource and starts a packet capture session on a VM, VMSS or few instances of VMSS.
+
 ### [New-AzNetworkWatcherProtocolConfiguration](New-AzNetworkWatcherProtocolConfiguration.md)
 Creates a new protocol configuration object.
 
@@ -926,6 +929,9 @@ Create a new P2SVpnGateway under VirtualHub for point to site connectivity.
 
 ### [New-AzPacketCaptureFilterConfig](New-AzPacketCaptureFilterConfig.md)
 Creates a new packet capture filter object.
+
+### [New-AzPacketCaptureScopeConfig](New-AzPacketCaptureScopeConfig.md)
+Creates a new packet capture scope object.
 
 ### [New-AzPrivateDnsZoneConfig](New-AzPrivateDnsZoneConfig.md)
 Creates DNS zone configuration of the private dns zone group.
