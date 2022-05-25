@@ -1,7 +1,7 @@
-### Example 1: Create new ADDomainService
+### Example 1: Create a new ADDomainService
 ```powershell
-$replicaSet = New-AzADDomainServiceReplicaSet -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/yishitest/providers/Microsoft.Network/virtualNetworks/aadds-vnet/subnets/default
-New-AzADDomainService -name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet -debug
+$replicaSet = New-AzADDomainServiceReplicaSetObject -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default
+New-AzADDomainService -Name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet
 ```
 
 ```output
@@ -10,7 +10,7 @@ Name          Domain Name       Location Sku
 youriADdomain youriAddomain.com westus   Enterprise
 ```
 
-Create new ADDomainService
+Create a new ADDomainService
 
 ### Example 2: Create new ADDomainService with certificate 
 ```powershell

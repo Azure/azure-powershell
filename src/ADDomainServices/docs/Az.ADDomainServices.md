@@ -18,11 +18,11 @@ The Get Domain Service operation retrieves a json representation of the Domain S
 The Create Domain Service operation creates a new domain service with the specified parameters.
 If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged.
 
-### [New-AzADDomainServiceForestTrust](New-AzADDomainServiceForestTrust.md)
-Create a in-memory object for ForestTrust
+### [New-AzADDomainServiceForestTrustObject](New-AzADDomainServiceForestTrustObject.md)
+Create an in-memory object for ForestTrust.
 
-### [New-AzADDomainServiceReplicaSet](New-AzADDomainServiceReplicaSet.md)
-Create a in-memory object for ReplicaSet
+### [New-AzADDomainServiceReplicaSetObject](New-AzADDomainServiceReplicaSetObject.md)
+Create an in-memory object for ReplicaSet.
 
 ### [Remove-AzADDomainService](Remove-AzADDomainService.md)
 The Delete Domain Service operation deletes an existing Domain Service.
