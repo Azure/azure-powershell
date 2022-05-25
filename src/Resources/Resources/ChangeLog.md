@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed logic of `createtime` and `ChangedTime` in `Get-AzResource --ExpandProperties`. [#18206]
 
 ## Version 6.0.0
 * Added cmdlet for Application federated identity credential
