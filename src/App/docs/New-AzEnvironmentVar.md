@@ -21,27 +21,18 @@ Create an in-memory object for EnvironmentVar.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an EnvironmentVar object for Env.
 ```powershell
-{{ Add code here }}
+New-AzEnvironmentVar -Name "envVarName" -SecretRef "facebook-secret" -Value "value"
 ```
 
 ```output
-{{ Add output here }}
+Name       SecretRef       Value
+----       ---------       -----
+envVarName facebook-secret value
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an EnvironmentVar object for Env.
 
 ## PARAMETERS
 

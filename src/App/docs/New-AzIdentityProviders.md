@@ -41,27 +41,19 @@ Create an in-memory object for IdentityProviders.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an IdentityProviders object for AuthConfig.
 ```powershell
-{{ Add code here }}
+New-AzIdentityProviders -RegistrationAppId xxxxxx@xxx.com -RegistrationAppSecretSettingName facebook-secret
 ```
 
 ```output
-{{ Add output here }}
+...                              : ...
+RegistrationAppId                : xxxxxx@xxx.com
+RegistrationAppSecretSettingName : facebook-secret
+...                              : ...
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an IdentityProviders object for AuthConfig.
 
 ## PARAMETERS
 

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a ScaleRule object for ContainerApp.
 ```powershell
-{{ Add code here }}
+New-AzScaleRule -Name scaleRuleName -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+scaleRuleName
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create a ScaleRule object for ContainerApp.

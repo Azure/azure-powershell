@@ -1,0 +1,126 @@
+{
+  "AzContainerAppAuthConfig+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupwxln/providers/Microsoft.App/containerApps/containerappwxln/authConfigs/current?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupwxln/providers/Microsoft.App/containerApps/containerappwxln/authConfigs/current?api-version=2022-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"platform\": {\r\n      \"enabled\": true\r\n    },\r\n    \"globalValidation\": {\r\n      \"unauthenticatedClientAction\": \"AllowAnonymous\"\r\n    },\r\n    \"identityProviders\": {\r\n      \"facebook\": {\r\n        \"registration\": {\r\n          \"appId\": \"xxxx@xx.com\",\r\n          \"appSecretSettingName\": \"facebook-secret\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "359" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "52a6ab44-4ecf-428a-ae92-293fec5dbee2" ],
+        "x-ms-correlation-request-id": [ "52a6ab44-4ecf-428a-ae92-293fec5dbee2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220525T140221Z:52a6ab44-4ecf-428a-ae92-293fec5dbee2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 May 2022 14:02:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "456" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupwxln/providers/Microsoft.App/containerApps/containerappwxln/authConfigs/current\",\"name\":\"current\",\"type\":\"Microsoft.App/containerapps/authconfigs\",\"properties\":{\"platform\":{\"enabled\":true},\"globalValidation\":{\"unauthenticatedClientAction\":\"AllowAnonymous\"},\"identityProviders\":{\"facebook\":{\"registration\":{\"appId\":\"xxxx@xx.com\",\"appSecretSettingName\":\"facebook-secret\"}}}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzContainerAppAuthConfig+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupwxln/providers/Microsoft.App/containerApps/containerappwxln/authConfigs/current?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupwxln/providers/Microsoft.App/containerApps/containerappwxln/authConfigs/current?api-version=2022-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "e80a3602-cadf-4cc5-a1a8-7134a1249fdb" ],
+        "CommandName": [ "Get-AzContainerAppAuthConfig" ],
+        "FullCommandName": [ "Get-AzContainerAppAuthConfig_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.App/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11961" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "31d1ef80-d00a-4180-b4f5-796f3052f08a" ],
+        "x-ms-correlation-request-id": [ "31d1ef80-d00a-4180-b4f5-796f3052f08a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220525T140222Z:31d1ef80-d00a-4180-b4f5-796f3052f08a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 May 2022 14:02:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "456" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupwxln/providers/Microsoft.App/containerApps/containerappwxln/authConfigs/current\",\"name\":\"current\",\"type\":\"Microsoft.App/containerapps/authconfigs\",\"properties\":{\"platform\":{\"enabled\":true},\"globalValidation\":{\"unauthenticatedClientAction\":\"AllowAnonymous\"},\"identityProviders\":{\"facebook\":{\"registration\":{\"appId\":\"xxxx@xx.com\",\"appSecretSettingName\":\"facebook-secret\"}}}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzContainerAppAuthConfig+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupwxln/providers/Microsoft.App/containerApps/containerappwxln/authConfigs/current?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupwxln/providers/Microsoft.App/containerApps/containerappwxln/authConfigs/current?api-version=2022-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "48" ],
+        "x-ms-client-request-id": [ "079ea16e-43cf-461c-b4c0-cf3ff9769a27" ],
+        "CommandName": [ "Remove-AzContainerAppAuthConfig" ],
+        "FullCommandName": [ "Remove-AzContainerAppAuthConfig_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.App/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-request-id": [ "a5a76529-6db6-4260-a945-0c65a66f5b23" ],
+        "x-ms-correlation-request-id": [ "a5a76529-6db6-4260-a945-0c65a66f5b23" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220525T140224Z:a5a76529-6db6-4260-a945-0c65a66f5b23" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 May 2022 14:02:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

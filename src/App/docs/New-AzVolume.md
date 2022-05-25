@@ -21,27 +21,18 @@ Create an in-memory object for Volume.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a Volume object for ContainerApp.
 ```powershell
-{{ Add code here }}
+New-AzVolume -Name "volumeName" -StorageName "azpssa"
 ```
 
 ```output
-{{ Add output here }}
+Name       StorageName StorageType
+----       ----------- -----------
+volumeName azpssa
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a Volume object for ContainerApp.
 
 ## PARAMETERS
 

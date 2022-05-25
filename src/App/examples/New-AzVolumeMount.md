@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a VolumeMount object for ContainerApp.
 ```powershell
-{{ Add code here }}
+New-AzVolumeMount -MountPath "/mountPath" -VolumeName "VolumeName"
 ```
 
 ```output
-{{ Add output here }}
+MountPath  VolumeName
+---------  ----------
+/mountPath VolumeName
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create a VolumeMount object for ContainerApp.
