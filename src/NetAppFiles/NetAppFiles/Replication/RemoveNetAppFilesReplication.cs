@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
                 Name = NameParts[2];
             }
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveVolumeReplicationMessage, ResourceGroupName)))
             {
                 AzureNetAppFilesManagementClient.Volumes.DeleteReplication(ResourceGroupName, AccountName, PoolName, Name);
                 success = true;

@@ -12,50 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class SecurityPricingTests
+    public class SecurityPricingTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public SecurityPricingTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SecurityPricingTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityPricing-SubscriptionScope");
+            TestRunner.RunTestScript("Get-AzureRmSecurityPricing-SubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityPricing-SubscriptionLevelResource");
+            TestRunner.RunTestScript("Get-AzureRmSecurityPricing-SubscriptionLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityPricing-ResourceId");
+            TestRunner.RunTestScript("Get-AzureRmSecurityPricing-ResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetSubscriptionLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecurityPricing-SubscriptionLevelResource");
+            TestRunner.RunTestScript("Set-AzureRmSecurityPricing-SubscriptionLevelResource");
         }
     }
 }

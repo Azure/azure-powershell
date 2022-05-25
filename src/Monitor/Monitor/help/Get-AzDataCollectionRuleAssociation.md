@@ -75,7 +75,7 @@ This command lists all the data collection rules for the given target resource I
 
 ### Example 2: Get data collection rules associations by rule (DCR)
 ```powershell
-Get-AzDataCollectionRuleAssociation -ResourceGroup $rg -RuleName $dcrName
+Get-AzDataCollectionRuleAssociation -ResourceGroupName $rg -RuleName $dcrName
 ```
 
 ```output

@@ -268,15 +268,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Get cloud storage account 
         /// </summary>
+        /// <param name="outputErrorMessage">If fail, set true will output error message, set false will throw exception.</param>
         /// <returns>Storage account</returns>
-        internal AzureStorageContext GetCmdletStorageContext()
+        internal AzureStorageContext GetCmdletStorageContext(bool outputErrorMessage = true)
         {
-            var context = GetCmdletStorageContext(Context);
+            var context = GetCmdletStorageContext(Context, outputErrorMessage);
             Context = context;
             return context;
         }
 
-        internal AzureStorageContext GetCmdletStorageContext(IStorageContext inContext)
+        internal AzureStorageContext GetCmdletStorageContext(IStorageContext inContext, bool outputErrorMessage = true)
         {
             var context = inContext as AzureStorageContext;
             if (context == null && inContext != null)
@@ -308,8 +309,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 }
                 catch (Exception e)
                 {
-                    //stop the pipeline if storage account is missed.
-                    WriteTerminatingError(e);
+                    if (outputErrorMessage)
+                    {
+                        //stop the pipeline if storage account is missed.
+                        WriteTerminatingError(e);
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
 
                 //Set the storage context and use it in pipeline

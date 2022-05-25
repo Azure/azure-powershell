@@ -74,6 +74,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             }
         }
 
+        public DataLakeClientOptions DataLakeClientOptions
+        {
+            get
+            {
+                if (dataLakeClientOptions == null)
+                {
+                    dataLakeClientOptions = new DataLakeClientOptions();
+                    dataLakeClientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+                    return dataLakeClientOptions;
+                }
+                else
+                {
+                    return dataLakeClientOptions;
+                }
+            }
+        }
+        private DataLakeClientOptions dataLakeClientOptions = null;
+
         public BlobClientOptions ClientOptions
         {
             get
@@ -664,20 +682,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage
 
             if (localChannel.StorageContext.StorageAccount.Credentials.IsToken) //Oauth
             {
-                fileSystem = new DataLakeFileSystemClient(fileSystemUri, localChannel.StorageContext.Track2OauthToken);
+                fileSystem = new DataLakeFileSystemClient(fileSystemUri, localChannel.StorageContext.Track2OauthToken, this.DataLakeClientOptions);
             }
             else if (localChannel.StorageContext.StorageAccount.Credentials.IsSAS) //SAS
             {
-                fileSystem = new DataLakeFileSystemClient(new Uri (fileSystemUri.ToString() + "?" + Util.GetSASStringWithoutQuestionMark(localChannel.StorageContext.StorageAccount.Credentials.SASToken)));
+                fileSystem = new DataLakeFileSystemClient(new Uri (fileSystemUri.ToString() + "?" + Util.GetSASStringWithoutQuestionMark(localChannel.StorageContext.StorageAccount.Credentials.SASToken)), this.DataLakeClientOptions);
             }
             else if (localChannel.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
             {
                 fileSystem = new DataLakeFileSystemClient(fileSystemUri,
-                     new StorageSharedKeyCredential(localChannel.StorageContext.StorageAccountName, localChannel.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey()));
+                     new StorageSharedKeyCredential(localChannel.StorageContext.StorageAccountName, localChannel.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey()), this.DataLakeClientOptions);
             }
             else //Anonymous
             {
-                fileSystem = new DataLakeFileSystemClient(fileSystemUri);
+                fileSystem = new DataLakeFileSystemClient(fileSystemUri, this.DataLakeClientOptions);
             }
 
             return fileSystem;

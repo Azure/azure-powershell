@@ -29,6 +29,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
+        /// <summary>Represents an Azure Active Directory user object.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser _body = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphUser();
+
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
@@ -46,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter (eq, ne, NOT, and in).",
         SerializedName = @"accountEnabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter AccountEnabled { get => Body.AccountEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => Body.AccountEnabled = value; }
+        public global::System.Management.Automation.SwitchParameter AccountEnabled { get => _body.AccountEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _body.AccountEnabled = value; }
 
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Additional Parameters")]
         public global::System.Collections.Hashtable AdditionalProperties { get; set; }
@@ -63,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Sets the age group of the user. Allowed values: null, minor, notAdult and adult. Refer to the legal age group property definitions for further information. Supports $filter (eq, ne, NOT, and in).",
         SerializedName = @"ageGroup",
         PossibleTypes = new [] { typeof(string) })]
-        public string AgeGroup { get => Body.AgeGroup ?? null; set => Body.AgeGroup = value; }
+        public string AgeGroup { get => _body.AgeGroup ?? null; set => _body.AgeGroup = value; }
 
         /// <summary>
         /// The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example,
@@ -78,13 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.",
         SerializedName = @"approximateLastSignInDateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime ApproximateLastSignInDateTime { get => Body.ApproximateLastSignInDateTime ?? default(global::System.DateTime); set => Body.ApproximateLastSignInDateTime = value; }
-
-        /// <summary>Backing field for <see cref="Body" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser _body= new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphUser();
-
-        /// <summary>Represents an Azure Active Directory user object.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser Body { get => this._body; set => this._body = value; }
+        public global::System.DateTime ApproximateLastSignInDateTime { get => _body.ApproximateLastSignInDateTime ?? default(global::System.DateTime); set => _body.ApproximateLastSignInDateTime = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -102,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The city in which the user is located. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
         SerializedName = @"city",
         PossibleTypes = new [] { typeof(string) })]
-        public string City { get => Body.City ?? null; set => Body.City = value; }
+        public string City { get => _body.City ?? null; set => _body.City = value; }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.MSGraph Client => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.ClientAPI;
@@ -119,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The company name which the user is associated. This property can be useful for describing the company that an external user comes from. The maximum length of the company name is 64 characters.Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
         SerializedName = @"companyName",
         PossibleTypes = new [] { typeof(string) })]
-        public string CompanyName { get => Body.CompanyName ?? null; set => Body.CompanyName = value; }
+        public string CompanyName { get => _body.CompanyName ?? null; set => _body.CompanyName = value; }
 
         /// <summary>
         /// The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using
@@ -133,7 +130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.",
         SerializedName = @"complianceExpirationDateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime ComplianceExpirationDateTime { get => Body.ComplianceExpirationDateTime ?? default(global::System.DateTime); set => Body.ComplianceExpirationDateTime = value; }
+        public global::System.DateTime ComplianceExpirationDateTime { get => _body.ComplianceExpirationDateTime ?? default(global::System.DateTime); set => _body.ComplianceExpirationDateTime = value; }
 
         /// <summary>
         /// Sets whether consent has been obtained for minors. Allowed values: null, granted, denied and notRequired. Refer to the
@@ -147,7 +144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Sets whether consent has been obtained for minors. Allowed values: null, granted, denied and notRequired. Refer to the legal age group property definitions for further information. Supports $filter (eq, ne, NOT, and in).",
         SerializedName = @"consentProvidedForMinor",
         PossibleTypes = new [] { typeof(string) })]
-        public string ConsentProvidedForMinor { get => Body.ConsentProvidedForMinor ?? null; set => Body.ConsentProvidedForMinor = value; }
+        public string ConsentProvidedForMinor { get => _body.ConsentProvidedForMinor ?? null; set => _body.ConsentProvidedForMinor = value; }
 
         /// <summary>
         /// The country/region in which the user is located; for example, US or UK. Maximum length is 128 characters. Supports $filter
@@ -161,7 +158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The country/region in which the user is located; for example, US or UK. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
         SerializedName = @"country",
         PossibleTypes = new [] { typeof(string) })]
-        public string Country { get => Body.Country ?? null; set => Body.Country = value; }
+        public string Country { get => _body.Country ?? null; set => _body.Country = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -181,7 +178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @".",
         SerializedName = @"deletedDateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime DeletedDateTime { get => Body.DeletedDateTime ?? default(global::System.DateTime); set => Body.DeletedDateTime = value; }
+        public global::System.DateTime DeletedDateTime { get => _body.DeletedDateTime ?? default(global::System.DateTime); set => _body.DeletedDateTime = value; }
 
         /// <summary>
         /// The name for the department in which the user works. Maximum length is 64 characters.Supports $filter (eq, ne, NOT , ge,
@@ -195,7 +192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The name for the department in which the user works. Maximum length is 64 characters.Supports $filter (eq, ne, NOT , ge, le, and in operators).",
         SerializedName = @"department",
         PossibleTypes = new [] { typeof(string) })]
-        public string Department { get => Body.Department ?? null; set => Body.Department = value; }
+        public string Department { get => _body.Department ?? null; set => _body.Department = value; }
 
         /// <summary>For internal use only.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "For internal use only.")]
@@ -206,7 +203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"For internal use only.",
         SerializedName = @"deviceVersion",
         PossibleTypes = new [] { typeof(int) })]
-        public int DeviceVersion { get => Body.DeviceVersion ?? default(int); set => Body.DeviceVersion = value; }
+        public int DeviceVersion { get => _body.DeviceVersion ?? default(int); set => _body.DeviceVersion = value; }
 
         /// <summary>The name displayed in directory</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name displayed in directory")]
@@ -217,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The name displayed in directory",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
-        public string DisplayName { get => Body.DisplayName ?? null; set => Body.DisplayName = value; }
+        public string DisplayName { get => _body.DisplayName ?? null; set => _body.DisplayName = value; }
 
         /// <summary>
         /// The date and time when the user was hired or will start work in case of a future hire. Supports $filter (eq, ne, NOT ,
@@ -231,7 +228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The date and time when the user was hired or will start work in case of a future hire. Supports $filter (eq, ne, NOT , ge, le, in).",
         SerializedName = @"employeeHireDate",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime EmployeeHireDate { get => Body.EmployeeHireDate ?? default(global::System.DateTime); set => Body.EmployeeHireDate = value; }
+        public global::System.DateTime EmployeeHireDate { get => _body.EmployeeHireDate ?? default(global::System.DateTime); set => _body.EmployeeHireDate = value; }
 
         /// <summary>
         /// The employee identifier assigned to the user by the organization. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
@@ -244,7 +241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The employee identifier assigned to the user by the organization. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).",
         SerializedName = @"employeeId",
         PossibleTypes = new [] { typeof(string) })]
-        public string EmployeeId { get => Body.EmployeeId ?? null; set => Body.EmployeeId = value; }
+        public string EmployeeId { get => _body.EmployeeId ?? null; set => _body.EmployeeId = value; }
 
         /// <summary>
         /// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor. Supports $filter (eq, ne, NOT
@@ -258,7 +255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).",
         SerializedName = @"employeeType",
         PossibleTypes = new [] { typeof(string) })]
-        public string EmployeeType { get => Body.EmployeeType ?? null; set => Body.EmployeeType = value; }
+        public string EmployeeType { get => _body.EmployeeType ?? null; set => _body.EmployeeType = value; }
 
         /// <summary>
         /// For an external user invited to the tenant using the invitation API, this property represents the invited user's invitation
@@ -273,7 +270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"For an external user invited to the tenant using the invitation API, this property represents the invited user's invitation status. For invited users, the state can be PendingAcceptance or Accepted, or null for all other users. Supports $filter (eq, ne, NOT , in).",
         SerializedName = @"externalUserState",
         PossibleTypes = new [] { typeof(string) })]
-        public string ExternalUserState { get => Body.ExternalUserState ?? null; set => Body.ExternalUserState = value; }
+        public string ExternalUserState { get => _body.ExternalUserState ?? null; set => _body.ExternalUserState = value; }
 
         /// <summary>
         /// Shows the timestamp for the latest change to the externalUserState property. Supports $filter (eq, ne, NOT , in).
@@ -286,7 +283,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Shows the timestamp for the latest change to the externalUserState property. Supports $filter (eq, ne, NOT , in).",
         SerializedName = @"externalUserStateChangeDateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime ExternalUserStateChangeDateTime { get => Body.ExternalUserStateChangeDateTime ?? default(global::System.DateTime); set => Body.ExternalUserStateChangeDateTime = value; }
+        public global::System.DateTime ExternalUserStateChangeDateTime { get => _body.ExternalUserStateChangeDateTime ?? default(global::System.DateTime); set => _body.ExternalUserStateChangeDateTime = value; }
 
         /// <summary>
         /// The fax number of the user. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
@@ -299,7 +296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The fax number of the user. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).",
         SerializedName = @"faxNumber",
         PossibleTypes = new [] { typeof(string) })]
-        public string FaxNumber { get => Body.FaxNumber ?? null; set => Body.FaxNumber = value; }
+        public string FaxNumber { get => _body.FaxNumber ?? null; set => _body.FaxNumber = value; }
 
         /// <summary>
         /// The given name (first name) of the user. Maximum length is 64 characters. Supports $filter (eq, ne, NOT , ge, le, in,
@@ -313,7 +310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The given name (first name) of the user. Maximum length is 64 characters. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).",
         SerializedName = @"givenName",
         PossibleTypes = new [] { typeof(string) })]
-        public string GivenName { get => Body.GivenName ?? null; set => Body.GivenName = value; }
+        public string GivenName { get => _body.GivenName ?? null; set => _body.GivenName = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -342,7 +339,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Represents the identities that can be used to sign in to this user account. An identity can be provided by Microsoft (also known as a local account), by organizations, or by social identity providers such as Facebook, Google, and Microsoft, and tied to a user account. May contain multiple items with the same signInType value. Supports $filter (eq) only where the signInType is not userPrincipalName.",
         SerializedName = @"identities",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphObjectIdentity) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphObjectIdentity[] Identity { get => Body.Identity ?? null /* arrayOf */; set => Body.Identity = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphObjectIdentity[] Identity { get => _body.Identity ?? null /* arrayOf */; set => _body.Identity = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -356,7 +353,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Do not use – reserved for future use.",
         SerializedName = @"isResourceAccount",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter IsResourceAccount { get => Body.IsResourceAccount ?? default(global::System.Management.Automation.SwitchParameter); set => Body.IsResourceAccount = value; }
+        public global::System.Management.Automation.SwitchParameter IsResourceAccount { get => _body.IsResourceAccount ?? default(global::System.Management.Automation.SwitchParameter); set => _body.IsResourceAccount = value; }
 
         /// <summary>
         /// The user's job title. Maximum length is 128 characters. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
@@ -369,7 +366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The user's job title. Maximum length is 128 characters. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).",
         SerializedName = @"jobTitle",
         PossibleTypes = new [] { typeof(string) })]
-        public string JobTitle { get => Body.JobTitle ?? null; set => Body.JobTitle = value; }
+        public string JobTitle { get => _body.JobTitle ?? null; set => _body.JobTitle = value; }
 
         /// <summary>
         /// The SMTP address for the user, for example, admin@contoso.com. Changes to this property will also update the user's proxyAddresses
@@ -385,7 +382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The SMTP address for the user, for example, admin@contoso.com. Changes to this property will also update the user's proxyAddresses collection to include the value as an SMTP address. While this property can contain accent characters, using them can cause access issues with other Microsoft applications for the user. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith).",
         SerializedName = @"mail",
         PossibleTypes = new [] { typeof(string) })]
-        public string Mail { get => Body.Mail ?? null; set => Body.Mail = value; }
+        public string Mail { get => _body.Mail ?? null; set => _body.Mail = value; }
 
         /// <summary>
         /// The mail alias for the user. This property must be specified when a user is created. Maximum length is 64 characters.
@@ -399,14 +396,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The mail alias for the user. This property must be specified when a user is created. Maximum length is 64 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
         SerializedName = @"mailNickname",
         PossibleTypes = new [] { typeof(string) })]
-        public string MailNickname { get => Body.MailNickname ?? null; set => Body.MailNickname = value; }
+        public string MailNickname { get => _body.MailNickname ?? null; set => _body.MailNickname = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -421,7 +418,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The office location in the user's place of business. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
         SerializedName = @"officeLocation",
         PossibleTypes = new [] { typeof(string) })]
-        public string OfficeLocation { get => Body.OfficeLocation ?? null; set => Body.OfficeLocation = value; }
+        public string OfficeLocation { get => _body.OfficeLocation ?? null; set => _body.OfficeLocation = value; }
 
         /// <summary>
         /// This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property
@@ -437,7 +434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property. NOTE: The $ and _ characters cannot be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, NOT, ge, le, in)..",
         SerializedName = @"onPremisesImmutableId",
         PossibleTypes = new [] { typeof(string) })]
-        public string OnPremisesImmutableId { get => Body.OnPremisesImmutableId ?? null; set => Body.OnPremisesImmutableId = value; }
+        public string OnPremisesImmutableId { get => _body.OnPremisesImmutableId ?? null; set => _body.OnPremisesImmutableId = value; }
 
         /// <summary>
         /// The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time
@@ -452,7 +449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).",
         SerializedName = @"onPremisesLastSyncDateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime OnPremisesLastSyncDateTime { get => Body.OnPremisesLastSyncDateTime ?? default(global::System.DateTime); set => Body.OnPremisesLastSyncDateTime = value; }
+        public global::System.DateTime OnPremisesLastSyncDateTime { get => _body.OnPremisesLastSyncDateTime ?? default(global::System.DateTime); set => _body.OnPremisesLastSyncDateTime = value; }
 
         /// <summary>
         /// true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises
@@ -467,7 +464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, not, in, and eq on null values).",
         SerializedName = @"onPremisesSyncEnabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter OnPremisesSyncEnabled { get => Body.OnPremisesSyncEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => Body.OnPremisesSyncEnabled = value; }
+        public global::System.Management.Automation.SwitchParameter OnPremisesSyncEnabled { get => _body.OnPremisesSyncEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _body.OnPremisesSyncEnabled = value; }
 
         /// <summary>Operating system of the device. Windows, iOS, etc. This property is read-only.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Operating system of the device. Windows, iOS, etc. This property is read-only.")]
@@ -478,7 +475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Operating system of the device. Windows, iOS, etc. This property is read-only.",
         SerializedName = @"operatingSystem",
         PossibleTypes = new [] { typeof(string) })]
-        public string OperatingSystem { get => Body.OperatingSystem ?? null; set => Body.OperatingSystem = value; }
+        public string OperatingSystem { get => _body.OperatingSystem ?? null; set => _body.OperatingSystem = value; }
 
         /// <summary>
         /// Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
@@ -491,7 +488,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).",
         SerializedName = @"operatingSystemVersion",
         PossibleTypes = new [] { typeof(string) })]
-        public string OperatingSystemVersion { get => Body.OperatingSystemVersion ?? null; set => Body.OperatingSystemVersion = value; }
+        public string OperatingSystemVersion { get => _body.OperatingSystemVersion ?? null; set => _body.OperatingSystemVersion = value; }
 
         /// <summary>
         /// A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com'].NOTE: While
@@ -507,7 +504,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com'].NOTE: While this property can contain accent characters, they can cause access issues to first-party applications for the user.Supports $filter (eq, NOT, ge, le, in, startsWith).",
         SerializedName = @"otherMails",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] OtherMail { get => Body.OtherMail ?? null /* arrayOf */; set => Body.OtherMail = value; }
+        public string[] OtherMail { get => _body.OtherMail ?? null /* arrayOf */; set => _body.OtherMail = value; }
 
         /// <summary>
         /// Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword,
@@ -523,7 +520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.Supports $filter (ne, NOT).",
         SerializedName = @"passwordPolicies",
         PossibleTypes = new [] { typeof(string) })]
-        public string PasswordPolicy { get => Body.PasswordPolicy ?? null; set => Body.PasswordPolicy = value; }
+        public string PasswordPolicy { get => _body.PasswordPolicy ?? null; set => _body.PasswordPolicy = value; }
 
         /// <summary>passwordProfile</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "passwordProfile")]
@@ -534,7 +531,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"passwordProfile",
         SerializedName = @"passwordProfile",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile PasswordProfile { get => Body.PasswordProfile ?? null /* object */; set => Body.PasswordProfile = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile PasswordProfile { get => _body.PasswordProfile ?? null /* object */; set => _body.PasswordProfile = value; }
 
         /// <summary>
         /// For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith).
@@ -548,7 +545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith).",
         SerializedName = @"physicalIds",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] PhysicalId { get => Body.PhysicalId ?? null /* arrayOf */; set => Body.PhysicalId = value; }
+        public string[] PhysicalId { get => _body.PhysicalId ?? null /* arrayOf */; set => _body.PhysicalId = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.HttpPipeline" /> that the remote call will use.
@@ -568,7 +565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code. Maximum length is 40 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
         SerializedName = @"postalCode",
         PossibleTypes = new [] { typeof(string) })]
-        public string PostalCode { get => Body.PostalCode ?? null; set => Body.PostalCode = value; }
+        public string PostalCode { get => _body.PostalCode ?? null; set => _body.PostalCode = value; }
 
         /// <summary>
         /// The preferred language for the user. Should follow ISO 639-1 Code; for example en-US. Supports $filter (eq, ne, NOT, ge,
@@ -582,7 +579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The preferred language for the user. Should follow ISO 639-1 Code; for example en-US. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
         SerializedName = @"preferredLanguage",
         PossibleTypes = new [] { typeof(string) })]
-        public string PreferredLanguage { get => Body.PreferredLanguage ?? null; set => Body.PreferredLanguage = value; }
+        public string PreferredLanguage { get => _body.PreferredLanguage ?? null; set => _body.PreferredLanguage = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -613,7 +610,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"true if the Outlook global address list should contain this user, otherwise false. If not set, this will be treated as true. For users invited through the invitation manager, this property will be set to false. Supports $filter (eq, ne, NOT, in).",
         SerializedName = @"showInAddressList",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter ShowInAddressList { get => Body.ShowInAddressList ?? default(global::System.Management.Automation.SwitchParameter); set => Body.ShowInAddressList = value; }
+        public global::System.Management.Automation.SwitchParameter ShowInAddressList { get => _body.ShowInAddressList ?? default(global::System.Management.Automation.SwitchParameter); set => _body.ShowInAddressList = value; }
 
         /// <summary>
         /// The state or province in the user's address. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le,
@@ -627,7 +624,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The state or province in the user's address. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
         SerializedName = @"state",
         PossibleTypes = new [] { typeof(string) })]
-        public string State { get => Body.State ?? null; set => Body.State = value; }
+        public string State { get => _body.State ?? null; set => _body.State = value; }
 
         /// <summary>
         /// The street address of the user's place of business. Maximum length is 1024 characters. Supports $filter (eq, ne, NOT,
@@ -641,7 +638,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The street address of the user's place of business. Maximum length is 1024 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
         SerializedName = @"streetAddress",
         PossibleTypes = new [] { typeof(string) })]
-        public string StreetAddress { get => Body.StreetAddress ?? null; set => Body.StreetAddress = value; }
+        public string StreetAddress { get => _body.StreetAddress ?? null; set => _body.StreetAddress = value; }
 
         /// <summary>
         /// The user's surname (family name or last name). Maximum length is 64 characters. Supports $filter (eq, ne, NOT, ge, le,
@@ -655,7 +652,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The user's surname (family name or last name). Maximum length is 64 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
         SerializedName = @"surname",
         PossibleTypes = new [] { typeof(string) })]
-        public string Surname { get => Body.Surname ?? null; set => Body.Surname = value; }
+        public string Surname { get => _body.Surname ?? null; set => _body.Surname = value; }
 
         /// <summary>
         /// Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices),
@@ -670,7 +667,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory",
         SerializedName = @"trustType",
         PossibleTypes = new [] { typeof(string) })]
-        public string TrustType { get => Body.TrustType ?? null; set => Body.TrustType = value; }
+        public string TrustType { get => _body.TrustType ?? null; set => _body.TrustType = value; }
 
         /// <summary>
         /// A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement
@@ -685,7 +682,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. Examples include: US, JP, and GB. Not nullable. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
         SerializedName = @"usageLocation",
         PossibleTypes = new [] { typeof(string) })]
-        public string UsageLocation { get => Body.UsageLocation ?? null; set => Body.UsageLocation = value; }
+        public string UsageLocation { get => _body.UsageLocation ?? null; set => _body.UsageLocation = value; }
 
         /// <summary>
         /// The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet
@@ -703,7 +700,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization.NOTE: While this property can contain accent characters, they can cause access issues to first-party applications for the user. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith) and $orderBy.",
         SerializedName = @"userPrincipalName",
         PossibleTypes = new [] { typeof(string) })]
-        public string UserPrincipalName { get => Body.UserPrincipalName ?? null; set => Body.UserPrincipalName = value; }
+        public string UserPrincipalName { get => _body.UserPrincipalName ?? null; set => _body.UserPrincipalName = value; }
 
         /// <summary>
         /// A string value that can be used to classify user types in your directory, such as Member and Guest. Supports $filter (eq,
@@ -717,7 +714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"A string value that can be used to classify user types in your directory, such as Member and Guest. Supports $filter (eq, ne, NOT, in,).",
         SerializedName = @"userType",
         PossibleTypes = new [] { typeof(string) })]
-        public string UserType { get => Body.UserType ?? null; set => Body.UserType = value; }
+        public string UserType { get => _body.UserType ?? null; set => _body.UserType = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
@@ -875,7 +872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.DictionaryExtensions.HashTableToDictionary<global::System.Object>(AdditionalProperties,Body.AdditionalProperties);
+                Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.DictionaryExtensions.HashTableToDictionary<global::System.Object>(AdditionalProperties,_body.AdditionalProperties);
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -890,12 +887,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.UsersUserCreateUser(Body, onCreated, onDefault, this, Pipeline);
+                    await this.Client.UsersUserCreateUser(_body, onCreated, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=Body})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_body})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -965,14 +962,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

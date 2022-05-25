@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.OperationalInsights","Microsoft.Azure.Commands.OperationalInsights.Clusters.UpdateAzureOperationalInsightsClusterCommand","Update-AzOperationalInsightsCluster","0","2020","The cmdlet 'Update-AzOperationalInsightsCluster' no longer supports the type 'System.Int64' for parameter 'SkuCapacity'.","Change the type for parameter 'SkuCapacity' back to 'System.Int64'."

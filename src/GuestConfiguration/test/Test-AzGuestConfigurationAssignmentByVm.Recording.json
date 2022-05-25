@@ -1,0 +1,164 @@
+{
+  "Test-AzGuestConfigurationAssignmentByVm+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps-wlgx-rg/providers/Microsoft.Compute/virtualMachines/ps-bg6w-vm/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/19spay?api-version=2022-01-25+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps-wlgx-rg/providers/Microsoft.Compute/virtualMachines/ps-bg6w-vm/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/19spay?api-version=2022-01-25",
+      "Content": "{\r\n  \"properties\": {\r\n    \"guestConfiguration\": {\r\n      \"name\": \"5hk9ri\",\r\n      \"version\": \"1.0.0.3\",\r\n      \"contentUri\": \"https://thisisfake/package\",\r\n      \"contentHash\": \"123contenthash\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "208" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "f2ba5842-422b-42e7-9f4a-4915384f9cc2" ],
+        "x-ms-correlation-request-id": [ "f2ba5842-422b-42e7-9f4a-4915384f9cc2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220524T034102Z:f2ba5842-422b-42e7-9f4a-4915384f9cc2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 24 May 2022 03:41:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "775" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"westcentralus\",\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps-wlgx-rg/providers/Microsoft.Compute/virtualMachines/ps-bg6w-vm/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/19spay\",\"name\":\"19spay\",\"properties\":{\"complianceStatus\":\"Pending\",\"assignmentHash\":null,\"parameterHash\":null,\"latestReportId\":null,\"lastComplianceStatusChecked\":null,\"context\":null,\"guestConfiguration\":{\"kind\":null,\"name\":\"5hk9ri\",\"version\":\"1.0.0.3\",\"contentUri\":\"https://thisisfake/package\",\"contentHash\":\"123contenthash\",\"contentType\":\"Custom\",\"assignmentType\":null,\"configurationParameter\":null,\"configurationProtectedParameter\":null,\"configurationSetting\":null},\"provisioningState\":\"Succeeded\",\"resourceType\":null,\"vmssVMList\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzGuestConfigurationAssignmentByVm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps-wlgx-rg/providers/Microsoft.Compute/virtualMachines/ps-bg6w-vm/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments?api-version=2022-01-25+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps-wlgx-rg/providers/Microsoft.Compute/virtualMachines/ps-bg6w-vm/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments?api-version=2022-01-25",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "bb686cb6-d702-4799-b61f-ee519a25c057" ],
+        "CommandName": [ "Get-AzGuestConfigurationAssignment" ],
+        "FullCommandName": [ "Get-AzGuestConfigurationAssignment_List2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.2", "Az.GuestConfiguration/0.10.8" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "45d699b7-6783-4aed-afb2-ba5852f739a9" ],
+        "x-ms-correlation-request-id": [ "45d699b7-6783-4aed-afb2-ba5852f739a9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220524T034103Z:45d699b7-6783-4aed-afb2-ba5852f739a9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 24 May 2022 03:41:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1013" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"location\":\"westcentralus\",\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps-wlgx-rg/providers/Microsoft.Compute/virtualMachines/ps-bg6w-vm/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/19spay\",\"name\":\"19spay\",\"properties\":{\"complianceStatus\":\"Pending\",\"assignmentHash\":\"123contenthash.E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\",\"parameterHash\":\"\",\"latestReportId\":null,\"lastComplianceStatusChecked\":null,\"context\":null,\"guestConfiguration\":{\"kind\":null,\"name\":\"5hk9ri\",\"version\":\"1.0.0.3\",\"contentUri\":\"https://thisisfake/package\",\"contentHash\":\"123contenthash\",\"contentType\":null,\"assignmentType\":null,\"configurationParameter\":[],\"configurationProtectedParameter\":[],\"configurationSetting\":{\"configurationMode\":\"MonitorOnly\",\"allowModuleOverwrite\":false,\"actionAfterReboot\":\"\",\"refreshFrequencyMins\":5,\"rebootIfNeeded\":true,\"configurationModeFrequencyMins\":15}},\"provisioningState\":null,\"resourceType\":null,\"vmssVMList\":null}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzGuestConfigurationAssignmentByVm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps-wlgx-rg/providers/Microsoft.Compute/virtualMachines/ps-bg6w-vm/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/19spay/reports?api-version=2022-01-25+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps-wlgx-rg/providers/Microsoft.Compute/virtualMachines/ps-bg6w-vm/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/19spay/reports?api-version=2022-01-25",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "e9f249ab-baaf-46d9-a777-17bc0c1ecf54" ],
+        "CommandName": [ "Get-AzGuestConfigurationAssignmentReport" ],
+        "FullCommandName": [ "Get-AzGuestConfigurationAssignmentReport_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.2", "Az.GuestConfiguration/0.10.8" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "05e464d5-35d3-4430-997d-fb65dd88da76" ],
+        "x-ms-correlation-request-id": [ "05e464d5-35d3-4430-997d-fb65dd88da76" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220524T034105Z:05e464d5-35d3-4430-997d-fb65dd88da76" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 24 May 2022 03:41:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzGuestConfigurationAssignmentByVm+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps-wlgx-rg/providers/Microsoft.Compute/virtualMachines/ps-bg6w-vm/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/19spay?api-version=2022-01-25+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps-wlgx-rg/providers/Microsoft.Compute/virtualMachines/ps-bg6w-vm/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/19spay?api-version=2022-01-25",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "8fcfdfd6-55e3-4df6-b089-490487d5fee4" ],
+        "CommandName": [ "Az.GuestConfiguration.internal\\Remove-AzGuestConfigurationAssignment" ],
+        "FullCommandName": [ "Remove-AzGuestConfigurationAssignment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.2", "Az.GuestConfiguration/0.10.8" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "1d71ac18-0be9-408e-b944-7d5dc759924a" ],
+        "x-ms-correlation-request-id": [ "1d71ac18-0be9-408e-b944-7d5dc759924a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220524T034109Z:1d71ac18-0be9-408e-b944-7d5dc759924a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 24 May 2022 03:41:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

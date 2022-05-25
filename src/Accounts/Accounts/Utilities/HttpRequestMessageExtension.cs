@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Commands.Common.Utilities
         /// Clones an HttpRequestMessage (without the content)
         /// </summary>
         /// <param name="original">Original HttpRequestMessage (Will be diposed before returning)</param>
+        /// <param name="requestUri"></param>
+        /// <param name="method"></param>
         /// <returns>A clone of the HttpRequestMessage</returns>
         internal static HttpRequestMessage Clone(this HttpRequestMessage original, System.Uri requestUri = null, System.Net.Http.HttpMethod method = null)
         {
@@ -74,6 +76,8 @@ namespace Microsoft.Azure.Commands.Common.Utilities
         /// Clones an HttpRequestMessage (including the content stream and content headers) 
         /// </summary>
         /// <param name="original">Original HttpRequestMessage (Will be diposed before returning)</param>
+        /// <param name="requestUri"></param>
+        /// <param name="method"></param>
         /// <returns>A clone of the HttpRequestMessage</returns>
         internal static async Task<HttpRequestMessage> CloneWithContent(this HttpRequestMessage original, System.Uri requestUri = null, System.Net.Http.HttpMethod method = null)
         {

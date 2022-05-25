@@ -14,80 +14,80 @@ while(-not $mockingPath) {
 Describe 'AzKubernetesConfiguration' {
     It 'CreateExpanded' {
         {
-            $config = New-AzKubernetesConfiguration -Name $env.kubernetesConfigurationNameCUS1 -ClusterName $env.clusterNameCUS -ResourceGroupName $env.resourceGroupCUS -RepositoryUrl http://github.com/xxxx
+            $config = New-AzKubernetesConfiguration -Name $env.kubernetesConfigurationName1 -ClusterName $env.clusterName -ResourceGroupName $env.resourceGroup -RepositoryUrl http://github.com/xxxx -ClusterType ConnectedClusters
             $config.ProvisioningState | Should -Be 'Succeeded'
 
-            $config = New-AzKubernetesConfiguration -Name $env.kubernetesConfigurationNameCUS2 -ClusterName $env.clusterNameCUS -ResourceGroupName $env.resourceGroupCUS -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01
+            $config = New-AzKubernetesConfiguration -Name $env.kubernetesConfigurationName2 -ClusterName $env.clusterName -ResourceGroupName $env.resourceGroup -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01 -ClusterType ConnectedClusters
             $config.ProvisioningState | Should -Be 'Succeeded'
         } | Should -Not -Throw
     }
         
     It 'List' {
         {
-            $config = Get-AzKubernetesConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters
+            $config = Get-AzKubernetesConfiguration -ResourceGroupName $env.resourceGroup -ClusterName $env.clusterName -ClusterType ConnectedClusters
             $config.Count | Should -Be 2
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            $config = Get-AzKubernetesConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationNameCUS1
-            $config.Name | Should -Be $env.kubernetesConfigurationNameCUS1
+            $config = Get-AzKubernetesConfiguration -ResourceGroupName $env.resourceGroup -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationName1
+            $config.Name | Should -Be $env.kubernetesConfigurationName1
         } | Should -Not -Throw
     }
 
     It 'Delete' {
         {
-            Remove-AzKubernetesConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationNameCUS1
+            Remove-AzKubernetesConfiguration -ResourceGroupName $env.resourceGroup -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationName1
         } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         {
-            $config = Get-AzKubernetesConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationNameCUS2
+            $config = Get-AzKubernetesConfiguration -ResourceGroupName $env.resourceGroup -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationName2
             Remove-AzKubernetesConfiguration -InputObject $config
             
-            $config = Get-AzKubernetesConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters
+            $config = Get-AzKubernetesConfiguration -ResourceGroupName $env.resourceGroup -ClusterName $env.clusterName -ClusterType ConnectedClusters
             $config.Count | Should -Be 0
         } | Should -Not -Throw
     }
 
     It 'K8sCreateExpanded' {
         {
-            $config = New-AzK8sConfiguration -Name $env.kubernetesConfigurationNameCUS1 -ClusterName $env.clusterNameCUS -ResourceGroupName $env.resourceGroupCUS -RepositoryUrl http://github.com/xxxx
+            $config = New-AzK8sConfiguration -Name $env.kubernetesConfigurationName1 -ClusterName $env.clusterName -ResourceGroupName $env.resourceGroup -RepositoryUrl http://github.com/xxxx -ClusterType ConnectedClusters
             $config.ProvisioningState | Should -Be 'Succeeded'
 
-            $config = New-AzK8sConfiguration -Name $env.kubernetesConfigurationNameCUS2 -ClusterName $env.clusterNameCUS -ResourceGroupName $env.resourceGroupCUS -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01
+            $config = New-AzK8sConfiguration -Name $env.kubernetesConfigurationName2 -ClusterName $env.clusterName -ResourceGroupName $env.resourceGroup -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01 -ClusterType ConnectedClusters
             $config.ProvisioningState | Should -Be 'Succeeded'
         } | Should -Not -Throw
     }
         
     It 'K8sList' {
         {
-            $config = Get-AzK8sConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters
+            $config = Get-AzK8sConfiguration -ResourceGroupName $env.resourceGroup -ClusterName $env.clusterName -ClusterType ConnectedClusters
             $config.Count | Should -Be 2
         } | Should -Not -Throw
     }
 
     It 'K8sGet' {
         {
-            $config = Get-AzK8sConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationNameCUS1
-            $config.Name | Should -Be $env.kubernetesConfigurationNameCUS1
+            $config = Get-AzK8sConfiguration -ResourceGroupName $env.resourceGroup -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationName1
+            $config.Name | Should -Be $env.kubernetesConfigurationName1
         } | Should -Not -Throw
     }
 
     It 'K8sDelete' {
         {
-            Remove-AzK8sConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationNameCUS1
+            Remove-AzK8sConfiguration -ResourceGroupName $env.resourceGroup -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationName1
         } | Should -Not -Throw
     }
 
     It 'K8sDeleteViaIdentity' {
         {
-            $config = Get-AzK8sConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationNameCUS2
+            $config = Get-AzK8sConfiguration -ResourceGroupName $env.resourceGroup -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationName2
             Remove-AzK8sConfiguration -InputObject $config
             
-            $config = Get-AzK8sConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters
+            $config = Get-AzK8sConfiguration -ResourceGroupName $env.resourceGroup -ClusterName $env.clusterName -ClusterType ConnectedClusters
             $config.Count | Should -Be 0
         } | Should -Not -Throw
     }

@@ -38,7 +38,7 @@ This command gets the sync schema for the hub database in the sync group syncGro
 
 ### Example 2: Get the sync schema for a hub database, and expand Tables
 ```powershell
-Get-AzSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"  | select -ExpandProperty Tables
+Get-AzSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"  | Select-Object -ExpandProperty Tables
 ```
 
 ```output

@@ -12,31 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.HDInsight.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Commands.HDInsight.Test.ScenarioTests
 {
-    public class HDInsightMonitoringTests
+    public class HDInsightMonitoringTests : HDInsightTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public HDInsightMonitoringTests(ITestOutputHelper output)
+        public HDInsightMonitoringTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "test case cannot be re-recorded properly, need help from service team")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMonitoringRelatedCommands()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MonitoringRelatedCommands");
+            TestRunner.RunTestScript("Test-MonitoringRelatedCommands");
         }
     }
 }

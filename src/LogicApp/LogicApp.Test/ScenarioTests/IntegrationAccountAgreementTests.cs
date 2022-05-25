@@ -15,21 +15,15 @@
 namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
 
     /// <summary>
     /// Scenario tests for integration account agreement commands.
     /// </summary>
-    public class IntegrationAccountAgreementTests : RMTestBase
+    public class IntegrationAccountAgreementTests : LogicAppTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public IntegrationAccountAgreementTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IntegrationAccountAgreementTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -39,7 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAgreementX12()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountAgreementX12");
+            TestRunner.RunTestScript("Test-CreateIntegrationAccountAgreementX12");
         }
 
         /// <summary>
@@ -49,7 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAgreementWithFailure()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountAgreementWithFailure");
+            TestRunner.RunTestScript("Test-CreateIntegrationAccountAgreementWithFailure");
         }
 
         /// <summary>
@@ -59,7 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAgreementAs2()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountAgreementAS2");
+            TestRunner.RunTestScript("Test-CreateIntegrationAccountAgreementAS2");
         }
 
         /// <summary>
@@ -69,7 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAgreementEdifact()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountAgreementEdifact");
+            TestRunner.RunTestScript("Test-CreateIntegrationAccountAgreementEdifact");
         }
 
         /// <summary>
@@ -79,7 +73,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAgreement()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountAgreement");
+            TestRunner.RunTestScript("Test-GetIntegrationAccountAgreement");
         }
 
         /// <summary>
@@ -89,7 +83,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAgreement()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountAgreement");
+            TestRunner.RunTestScript("Test-RemoveIntegrationAccountAgreement");
         }
 
         /// <summary>
@@ -99,7 +93,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateAgreement()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountAgreement");
+            TestRunner.RunTestScript("Test-UpdateIntegrationAccountAgreement");
         }
 
         /// <summary>
@@ -109,7 +103,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAgreement()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ListIntegrationAccountAgreement");
+            TestRunner.RunTestScript("Test-ListIntegrationAccountAgreement");
         }
     }
 }

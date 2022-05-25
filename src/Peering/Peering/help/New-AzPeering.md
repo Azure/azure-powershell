@@ -43,7 +43,7 @@ Creates an ARM Peering for the subscription. See [New-AzPeeringDirectConnectionO
 ### Create New Direct Peering
 ```powershell
 #Gets the ASN
-$asn = Get-AzPeerAsn -PeerName Contoso
+$asn = Get-AzPeerAsn -Name Contoso
 #Gets the Direct Peering Location
 $location = Get-AzPeeringLocation Direct -PeeringLocation Seattle
 #Creates the ARM Resource
@@ -70,7 +70,7 @@ Create a new Direct Peering with a single connection at the Seattle facility usi
 ### Create New Exchange Peering
 ```powershell
 #Gets the ASN
-$asn = Get-AzPeerAsn -PeerName Contoso
+$asn = Get-AzPeerAsn -Name Contoso
 #Gets the Exchange Peering Location
 $location = Get-AzPeeringLocation Exchange -PeeringLocation Seattle
 #Creates the ARM Resource
@@ -96,7 +96,7 @@ Create a new exchange peering
 ### Convert Legacy Peering to ARM Peering
 ```powershell
 #Gets the ASN
-$asn = Get-AzPeerAsn -PeerName Contoso
+$asn = Get-AzPeerAsn -Name Contoso
 #Gets the legacy Peering
 $legacy = Get-AzLegacyPeering -PeeringLocation Amsterdam -Kind Direct | New-AzPeering -Name ContosoAmsterdamPeering -ResourceGroupName testCarrier -PeeringLocation $location.PeeringLocation -PeerAsnResourceId $asn.Id
 ```
