@@ -18,88 +18,76 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDnsResolver' {
-    It 'Create DNS resolver with new virtual network' -skip {
-        $resolver = New-AzDnsResolver -Name $env.DnsResolverName0 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId0 -Location $env.ResourceLocation
+    It 'Create DNS resolver with new virtual network' {
+        # ARRANGE
+        $dnsResolverName = "psdnsresolvername0j0cdzg";
+        $resourceGroupName = "powershell-test-rg-debug";
+        $virtualNetworkId = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname0879evh";
+        $location = "westus2";
+
+        # ACT
+        $resolver = New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $virtualNetworkId -Location $location
+
+        # ASSERT
         $resolver | Should -BeSuccessfullyCreated
-        $resolver.VirtualNetworkId | Should -Be $env.VirtualNetworkId0 
+        $resolver.VirtualNetworkId | Should -Be $virtualNetworkId 
     }
 
-    It 'Create DNS resolver with a malformed virtual network arm id'-skip{
-        $malformedVirtualNetworkArmId = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/powershelldnsresolvertestrglocaltest/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname1dkijv7"
-         {New-AzDnsResolver -Name $env.DnsResolverName1 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $malformedVirtualNetworkArmId -Location $env.ResourceLocation }| Should -Throw 'Unparseable resource ID'
+    It 'Create DNS resolver with a malformed virtual network ARM ID' {
+        # ARRANGE
+        $dnsResolverName = "psdnsresolvername1uerapj";
+        $resourceGroupName = "powershell-test-rg-debug";
+        $malformedVirtualNetworkArmId = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/powershelldnsresolvertestrglocaltest/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname1dkijv7";
+        $location = "westus2";
+        
+        # ACT,ASSERT
+        {New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $malformedVirtualNetworkArmId -Location $location }| Should -Throw 'Unparseable resource ID'
     }
 
-    It 'Create DNS resolver with a new virtual network' -skip {
+    It 'Create DNS resolver with a new virtual network' {
+        # ARRANGE
+        $dnsResolverName = "psdnsresolvername2zpuk2x";
+        $resourceGroupName = "powershell-test-rg-debug";
+        $virtualNetworkId = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname28oq6tl";
+        $location = "westus2";
         $tag = GetRandomHashtable -size 2
-        $resolver = New-AzDnsResolver -Name $env.DnsResolverName2 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId2 -Location $env.ResourceLocation -Tag $tag
-        $resolver.ProvisioningState | Should -Be $env.SuccessProvisioningState
-        $resolver.VirtualNetworkId | Should -Be $env.VirtualNetworkId2
+
+        # ACT
+         $resolver = New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $virtualNetworkId -Location $location -Tag $tag
+
+        # ASSERT
+        $resolver.ProvisioningState | Should -Be "Succeeded"
+        $resolver.VirtualNetworkId | Should -Be $virtualNetworkId
         $resolver.Tag.Count | Should -Be $tag.Count
     }
 
-    It 'Create DNS resolver with a non-existant virtual network' -skip {
-        $nonExistantVirtualNetwork = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershelldnsresolvertestrglocaltest/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname9aywbo511111"
-        {New-AzDnsResolver -Name $env.DnsResolverName3 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $nonExistantVirtualNetwork -Location $env.ResourceLocation }| Should -Throw 'DNS resolver not found in database'
+    It 'Create DNS resolver with a non-existent virtual network' {
+        # ARRANGE
+        $dnsResolverName = "psdnsresolvername3142sgr";
+        $resourceGroupName = "powershell-test-rg-debug";
+        $virtualNetworkId = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname28oq6tl";
+        $location = "westus2";
+        $nonExistentVirtualNetwork = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershelldnsresolvertestrglocaltest/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname9aywbo511111"
+
+        # ACT, ASSERT
+        {New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $nonExistentVirtualNetwork -Location $location }| Should -Throw 'DNS resolver not found in database'
     }
 
-    It 'Update DNS Resolver with new tags.' -skip {
-        $resolver = New-AzDnsResolver -Name $env.DnsResolverName4 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId4 -Location $env.ResourceLocation
-        $resolver.ProvisioningState  | Should -Be $env.SuccessProvisioningState
+    It 'Update DNS Resolver with new tags.' {
+        # ARRANGE
+        $dnsResolverName = "psdnsresolvername4c7glpm";
+        $resourceGroupName = "powershell-test-rg-debug";
+        $virtualNetworkId = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname4mox6wf";
+        $location = "westus2";
+
+        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $virtualNetworkId -Location $location
         $tag = GetRandomHashtable -size 2
-        $resolver = New-AzDnsResolver -Name $env.DnsResolverName4 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId4 -Location $env.ResourceLocation -Tag $tag
-        $resolver.ProvisioningState  | Should -Be $env.SuccessProvisioningState
+
+        # ACT
+        $resolver = New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $virtualNetworkId -Location $location -Tag $tag
+
+        # ASSERT
+        $resolver.ProvisioningState  | Should -Be "Succeeded"
         $resolver.Tag.Count | Should -Be $tag.Count
-    }
-
-    It 'Update DNS Resolver with new tags IfMatch wildcard success' -skip{
-        $resolver = New-AzDnsResolver -Name $env.DnsResolverName5 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId5 -Location $env.ResourceLocation
-        $tag = GetRandomHashtable -size 2
-        $resolver = New-AzDnsResolver -Name $env.DnsResolverName5 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId5 -Location $env.ResourceLocation -Tag $tag -IfMatch * 
-        $resolver.ProvisioningState  | Should -Be $env.SuccessProvisioningState
-        $resolver.Tag.Count | Should -Be $tag.Count
-    }
-
-    It 'Update a non-existant DNS Resolver with new tags IfMatch wildcard success' -skip{
-        $nonExistantResolverName = RandomString -allChars $false -len 6
-        {New-AzDnsResolver -Name $nonExistantResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId5 -Location $env.ResourceLocation -IfMatch *} | Should -Throw 'DNS resolver not found in database'
-    }
-
-    It 'Update DNS Resolver with new tags and IfMatch wildcard failure, expect DNS Resolver not updated' -skip{
-        $resolver = New-AzDnsResolver -Name $env.DnsResolverName6 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId6 -Location $env.ResourceLocation
-        $tag = GetRandomHashtable -size 2
-        Write-Host $resolver.Etag
-        $ifMatchString = RandomGUID
-        {New-AzDnsResolver -Name $env.DnsResolverName6 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId6 -Location $env.ResourceLocation -Tag $tag -IfMatch $ifMatchString} | Should -Throw "The format of value"
-    }
-
-    It 'Update DNS Resolver with new tags and IfMatch success, expect DNS Resolver updated' -skip{
-        $resolver = New-AzDnsResolver -Name $env.DnsResolverName7 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId7 -Location $env.ResourceLocation
-        $tag = GetRandomHashtable -size 2
-        $resolver = New-AzDnsResolver -Name $env.DnsResolverName7 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId7 -Location $env.ResourceLocation -Tag $tag -IfMatch $resolver.Etag
-        $resolver.ProvisioningState  | Should -Be $env.SuccessProvisioningState
-        $resolver.Tag.Count | Should -Be $tag.Count
-    }
-
-    It 'Update DNS Resolver with no change, expect DNS Resolver not updated.' -skip{
-        $resolver = New-AzDnsResolver -Name $env.DnsResolverName8 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId8 -Location $env.ResourceLocation
-        $resolver = New-AzDnsResolver -Name $env.DnsResolverName8 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId8 -Location $env.ResourceLocation
-        $resolver.VirtualNetworkId | Should -Be $env.VirtualNetworkId8
-        $resolver.Tag.Count | Should -Be 0
-    }
-
-    It 'Update DNS Resolver by removing tags and IfMatch success, expect DNS Resolver updated' -skip{
-        $tag = GetRandomHashtable -size 5
-        $resolver = New-AzDnsResolver -Name $env.DnsResolverName9 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId9 -Location $env.ResourceLocation -Tag $tag
-        $expectedTagCount = 0
-        $resolver = New-AzDnsResolver -Name $env.DnsResolverName9 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId9 -Location $env.ResourceLocation -IfMatch $resolver.Etag
-        $resolver.ProvisioningState  | Should -Be $env.SuccessProvisioningState
-        $resolver.Tag.Count | Should -Be $expectedTagCount
-    }
-
-    It 'Create DNS Resolver IfNoneMatch wildcard, expect DNS Resolver created' -skip{
-        $tag = GetRandomHashtable -size 5
-        $resolver = New-AzDnsResolver -Name $env.DnsResolverName10 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId10 -Location $env.ResourceLocation -Tag $tag -IfNoneMatch *
-        $resolver.ProvisioningState | Should -Be $env.SuccessProvisioningState
-        $resolver.VirtualNetworkId | Should -Be $env.VirtualNetworkId10 
     }
 }

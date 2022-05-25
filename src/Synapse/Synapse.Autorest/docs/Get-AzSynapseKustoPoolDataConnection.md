@@ -39,8 +39,10 @@ Returns a data connection.
 
 ### Example 1:  List all data connections in a specific database
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
+Get-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
+```
 
+```output
 Kind     Location  Name                                                                                                              
 ----     --------  ----                                             
 EventHub East US 2 testws/testkustopool/mykustodatabase/eventhubdc
@@ -50,8 +52,10 @@ The above command returns all Kusto connections in the workspace "testws" found 
 
 ### Example 2: Get a specific data connection by name
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase -DataConnectionName mykustodataconnection
+Get-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase -DataConnectionName mykustodataconnection
+```
 
+```output
 Kind     Location  Name                                                                                                             
 ----     --------  ----                                             
 EventHub East US 2 testws/testkustopool/mykustodatabase/mykustodataconnection

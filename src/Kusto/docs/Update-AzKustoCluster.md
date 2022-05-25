@@ -22,9 +22,10 @@ Update-AzKustoCluster -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
  [-KeyVaultPropertyUserIdentity <String>] [-Location <String>] [-OptimizedAutoscaleIsEnabled]
  [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
- [-OptimizedAutoscaleVersion <Int32>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-RestrictOutboundNetworkAccess <ClusterNetworkAccessFlag>] [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>]
- [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
+ [-OptimizedAutoscaleVersion <Int32>] [-PublicIPType <PublicIPType>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-RestrictOutboundNetworkAccess <ClusterNetworkAccessFlag>]
+ [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>] [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>]
+ [-TrustedExternalTenant <ITrustedExternalTenant[]>] [-VirtualClusterGraduationProperty <String>]
  [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
  [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationSubnetId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -39,9 +40,10 @@ Update-AzKustoCluster -InputObject <IKustoIdentity> [-IfMatch <String>]
  [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
  [-KeyVaultPropertyKeyVersion <String>] [-KeyVaultPropertyUserIdentity <String>] [-Location <String>]
  [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
- [-OptimizedAutoscaleVersion <Int32>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-RestrictOutboundNetworkAccess <ClusterNetworkAccessFlag>] [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>]
- [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
+ [-OptimizedAutoscaleVersion <Int32>] [-PublicIPType <PublicIPType>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-RestrictOutboundNetworkAccess <ClusterNetworkAccessFlag>]
+ [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>] [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>]
+ [-TrustedExternalTenant <ITrustedExternalTenant[]>] [-VirtualClusterGraduationProperty <String>]
  [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
  [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationSubnetId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -54,8 +56,10 @@ Update a Kusto cluster.
 
 ### Example 1: Update an existing cluster by name
 ```powershell
-PS C:\> Update-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -SkuName Standard_D12_v2 -SkuTier Standard -EngineType 'V2'
+Update-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -SkuName Standard_D12_v2 -SkuTier Standard -EngineType 'V2'
+```
 
+```output
 Location Name                Type                     Zone
 -------- ----                ----                     ----
 East US  testnewkustocluster Microsoft.Kusto/Clusters
@@ -65,8 +69,10 @@ The above command updates the sku of the Kusto cluster "testnewkustocluster" fou
 
 ### Example 2: Update an existing cluster by name
 ```powershell
-PS C:\> Update-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -KeyVaultPropertyKeyName "TestKey" -KeyVaultPropertyKeyVaultUri "https://testpskeyvault.vault.azure.net" -KeyVaultPropertyKeyVersion "4bd66f0e0d7c403fac80305e0355d982"
+Update-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -KeyVaultPropertyKeyName "TestKey" -KeyVaultPropertyKeyVaultUri "https://testpskeyvault.vault.azure.net" -KeyVaultPropertyKeyVersion "4bd66f0e0d7c403fac80305e0355d982"
+```
 
+```output
 Location Name                Type                     Zone
 -------- ----                ----                     ----
 East US  testnewkustocluster Microsoft.Kusto/Clusters
@@ -81,7 +87,7 @@ The cluster's accepted audiences.
 To construct, see NOTES section for ACCEPTEDAUDIENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IAcceptedAudiences[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAcceptedAudiences[]
 Parameter Sets: (All)
 Aliases:
 
@@ -473,6 +479,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicIPType
+Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6)
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicIPType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Public network access to the cluster is enabled by default.
 When disabled, only private endpoint connection to the cluster is allowed
@@ -601,7 +622,22 @@ The cluster's external tenants.
 To construct, see NOTES section for TRUSTEDEXTERNALTENANT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.ITrustedExternalTenant[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ITrustedExternalTenant[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualClusterGraduationProperty
+Virtual Cluster graduation properties
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -697,7 +733,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster
 
 ## NOTES
 

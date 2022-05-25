@@ -16,14 +16,16 @@ Create or update container groups with specified configurations.
 New-AzContainerGroup -Name <String> -ResourceGroupName <String> -Container <IContainer[]> -Location <String>
  [-SubscriptionId <String>] [-DnsConfigNameServer <String[]>] [-DnsConfigOption <String>]
  [-DnsConfigSearchDomain <String>] [-EncryptionPropertyKeyName <String>]
- [-EncryptionPropertyKeyVersion <String>] [-EncryptionPropertyVaultBaseUrl <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <String[]>] [-ImageRegistryCredential <IImageRegistryCredential[]>]
- [-InitContainer <IInitContainerDefinition[]>] [-IPAddressDnsNameLabel <String>] [-IPAddressIP <String>]
- [-IPAddressPort <IPort[]>] [-IPAddressType <String>] [-LogAnalyticLogType <String>]
+ [-EncryptionPropertyKeyVersion <String>] [-EncryptionPropertyVaultBaseUrl <String>]
+ [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-ImageRegistryCredential <IImageRegistryCredential[]>] [-InitContainer <IInitContainerDefinition[]>]
+ [-IPAddressDnsNameLabel <String>] [-IPAddressIP <String>] [-IPAddressPort <IPort[]>]
+ [-IPAddressType <ContainerGroupIPAddressType>] [-LogAnalyticLogType <LogAnalyticsLogType>]
  [-LogAnalyticMetadata <Hashtable>] [-LogAnalyticWorkspaceId <String>] [-LogAnalyticWorkspaceKey <String>]
- [-LogAnalyticWorkspaceResourceId <String>] [-OSType <String>] [-RestartPolicy <String>] [-Sku <String>]
- [-Subnet <String>] [-Tag <Hashtable>] [-Volume <IVolume[]>] [-Zone <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LogAnalyticWorkspaceResourceId <String>] [-OSType <OperatingSystemTypes>]
+ [-RestartPolicy <ContainerGroupRestartPolicy>] [-Sku <ContainerGroupSku>]
+ [-SubnetId <IContainerGroupSubnetId[]>] [-Tag <Hashtable>] [-Volume <IVolume[]>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,91 +35,105 @@ Create or update container groups with specified configurations.
 
 ### Example 1: Create a container group with a container instance and request a public IP address with opening ports
 ```powershell
-PS C:\> $port1 = New-AzContainerInstancePortObject -Port 8000 -Protocol TCP
-PS C:\> $port2 = New-AzContainerInstancePortObject -Port 8001 -Protocol TCP
-PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx -RequestCpu 1 -RequestMemoryInGb 1.5 -Port @($port1, $port2)
-PS C:\> $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType Public
+$port1 = New-AzContainerInstancePortObject -Port 8000 -Protocol TCP
+$port2 = New-AzContainerInstancePortObject -Port 8001 -Protocol TCP
+$container = New-AzContainerInstanceObject -Name test-container -Image nginx -RequestCpu 1 -RequestMemoryInGb 1.5 -Port @($port1, $port2)
+$containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType Public
+```
 
-Location Name    Type
--------- ----    ----
-eastus   test-cg Microsoft.ContainerInstance/containerGroups
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg      test-rg
 ```
 
 This commands creates a container group with a container instance, whose image is latest nginx, and requests a public IP address with opening port 8000 and 8001.
 
 ### Example 2: Create container group and runs a custom script inside the container.
 ```powershell
-PS C:\>  $env1 = New-AzContainerInstanceEnvironmentVariableObject -Name "env1" -Value "value1"
-PS C:\>  $env2 = New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue (ConvertTo-SecureString -String "value2" -AsPlainText -Force)
-PS C:\>  $container = New-AzContainerInstanceObject -Name test-container -Image alpine -Command "/bin/sh -c myscript.sh" -EnvironmentVariable @($env1, $env2)
-PS C:\>  $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux
+$env1 = New-AzContainerInstanceEnvironmentVariableObject -Name "env1" -Value "value1"
+$env2 = New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue (ConvertTo-SecureString -String "value2" -AsPlainText -Force)
+$container = New-AzContainerInstanceObject -Name test-container -Image alpine -Command "/bin/sh -c myscript.sh" -EnvironmentVariable @($env1, $env2)
+$containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux
+```
 
-Location Name    Type
--------- ----    ----
-eastus   test-cg Microsoft.ContainerInstance/containerGroups
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg      test-rg
 ```
 
 This commands creates a container group and runs a custom script inside the container.
 
 ### Example 3: Create a run-to-completion container group
 ```powershell
-PS C:\>  $container = New-AzContainerInstanceObject -Name test-container -Image alpine -Command "echo hello" 
-PS C:\>  $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux
+$container = New-AzContainerInstanceObject -Name test-container -Image alpine -Command "echo hello" 
+$containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux
+```
 
-Location Name    Type
--------- ----    ----
-eastus   test-cg Microsoft.ContainerInstance/containerGroups
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg      test-rg
 ```
 
 This commands creates a container group which prints out 'hello' and stops.
 
 ### Example 4: Create a container group with a container instance using image nginx in Azure Container Registry
 ```powershell
-PS C:\>  $container = New-AzContainerInstanceObject -Name test-container -Image myacr.azurecr.io/nginx:latest
-PS C:\>  $imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myacr.azurecr.io" -Username "username" -Password (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force) 
-PS C:\>  $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -ImageRegistryCredential $imageRegistryCredential
+$container = New-AzContainerInstanceObject -Name test-container -Image myacr.azurecr.io/nginx:latest
+$imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myacr.azurecr.io" -Username "username" -Password (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force) 
+$containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -ImageRegistryCredential $imageRegistryCredential
+```
 
-Location Name    Type
--------- ----    ----
-eastus   test-cg Microsoft.ContainerInstance/containerGroups
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg      test-rg
 ```
 
 This commands creates a container group with a container instance, whose image is nginx in Azure Container Registry.
 
 ### Example 5: Create a container group with a container instance using image nginx in custom container image Registry
 ```powershell
-PS C:\>  $container = New-AzContainerInstanceObject -Name test-container -Image myserver.com/nginx:latest
-PS C:\>  $imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force) 
-PS C:\>  $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -ImageRegistryCredential $imageRegistryCredential
+$container = New-AzContainerInstanceObject -Name test-container -Image myserver.com/nginx:latest
+$imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force) 
+$containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -ImageRegistryCredential $imageRegistryCredential
+```
 
-Location Name    Type
--------- ----    ----
-eastus   test-cg Microsoft.ContainerInstance/containerGroups
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg      test-rg
 ```
 
 This commands creates a container group with a container instance, whose image is a custom image from a custom container image registry.
 
 ### Example 6: Create a container group that mounts Azure File volume
 ```powershell
-PS C:\>  $volume = New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force)
-PS C:\>  $container = New-AzContainerInstanceObject -Name test-container -Image alpine
-PS C:\>  $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -Volume $volume
+$volume = New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force)
+$container = New-AzContainerInstanceObject -Name test-container -Image alpine
+$containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -Volume $volume
+```
 
-Location Name    Type
--------- ----    ----
-eastus   test-cg Microsoft.ContainerInstance/containerGroups
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg      test-rg
 ```
 
 This commands creates a container group with a container instance, whose image is a custom image from a custom container image registry.
 
 ### Example 7: Create a container group with system assigned and user assigned identity
 ```powershell
-PS C:\>  $container = New-AzContainerInstanceObject -Name test-container -Image alpine
-PS C:\>  $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -IdentityType "SystemAssigned, UserAssigned" -IdentityUserAssignedIdentity /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UserIdentityName>
+$container = New-AzContainerInstanceObject -Name test-container -Image alpine
+$containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -IdentityType "SystemAssigned, UserAssigned" -IdentityUserAssignedIdentity /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UserIdentityName>
+```
 
-Location Name    Type
--------- ----    ----
-eastus   test-cg Microsoft.ContainerInstance/containerGroups
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg      test-rg
 ```
 
 This commands creates a container group with system assigned and user assigned identity.
@@ -266,7 +282,7 @@ The type 'SystemAssigned, UserAssigned' includes both an implicitly created iden
 The type 'None' will remove any identities from the container group.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ResourceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -282,7 +298,7 @@ The list of user identities associated with the container group.
 The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -295,7 +311,6 @@ Accept wildcard characters: False
 
 ### -ImageRegistryCredential
 The image registry credentials by which the container group is created from.
-To construct, see NOTES section for IMAGEREGISTRYCREDENTIALS properties and create a hash table.
 To construct, see NOTES section for IMAGEREGISTRYCREDENTIAL properties and create a hash table.
 
 ```yaml
@@ -376,7 +391,7 @@ Accept wildcard characters: False
 Specifies if the IP is exposed to the public internet or private VNET.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupIPAddressType
 Parameter Sets: (All)
 Aliases:
 
@@ -406,7 +421,7 @@ Accept wildcard characters: False
 The log type to be used.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.LogAnalyticsLogType
 Parameter Sets: (All)
 Aliases:
 
@@ -511,13 +526,13 @@ Accept wildcard characters: False
 The operating system type required by the containers in the container group.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "Linux"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -542,7 +557,7 @@ Restart policy for all containers within the container group.
 - `Always` Always restart- `OnFailure` Restart on failure- `Never` Never restart
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupRestartPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -557,7 +572,7 @@ Accept wildcard characters: False
 The SKU for a container group.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupSku
 Parameter Sets: (All)
 Aliases:
 
@@ -568,11 +583,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Subnet
-The subnet for the container group.
+### -SubnetId
+The subnet resource IDs for a container group.
+To construct, see NOTES section for SUBNETID properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroupSubnetId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -631,10 +647,10 @@ Accept wildcard characters: False
 ```
 
 ### -Zone
-The Availability Zone for the container group.
+The zones for the container group.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -740,7 +756,7 @@ CONTAINER <IContainer[]>: The containers within the container group.
     - `Name <String>`: The name of the volume mount.
     - `[ReadOnly <Boolean?>]`: The flag indicating whether the volume mount is read-only.
 
-IMAGEREGISTRYCREDENTIAL <IImageRegistryCredential[]>: The image registry credentials by which the container group is created from. To construct, see NOTES section for IMAGEREGISTRYCREDENTIALS properties and create a hash table.
+IMAGEREGISTRYCREDENTIAL <IImageRegistryCredential[]>: The image registry credentials by which the container group is created from.
   - `Server <String>`: The Docker image registry server without a protocol such as "http" and "https".
   - `Username <String>`: The username for the private registry.
   - `[Identity <String>]`: The identity for the private registry.
@@ -764,13 +780,18 @@ IPADDRESSPORT <IPort[]>: The list of ports exposed on the container group.
   - `Port1 <Int32>`: The port number.
   - `[Protocol <ContainerGroupNetworkProtocol?>]`: The protocol associated with the port.
 
+SUBNETID <IContainerGroupSubnetId[]>: The subnet resource IDs for a container group.
+  - `Id <String>`: Resource ID of virtual network and subnet.
+  - `[Name <String>]`: Friendly name for the subnet.
+
 VOLUME <IVolume[]>: The list of volumes that can be mounted by containers in this container group.
   - `Name <String>`: The name of the volume.
   - `[AzureFileReadOnly <Boolean?>]`: The flag indicating whether the Azure File shared mounted as a volume is read-only.
   - `[AzureFileShareName <String>]`: The name of the Azure File share to be mounted as a volume.
   - `[AzureFileStorageAccountKey <String>]`: The storage account access key used to access the Azure File share.
   - `[AzureFileStorageAccountName <String>]`: The name of the storage account that contains the Azure File share.
-  - `[EmptyDir <IAny>]`: The empty directory volume.
+  - `[EmptyDir <IVolumeEmptyDir>]`: The empty directory volume.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[GitRepoDirectory <String>]`: Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
   - `[GitRepoRepository <String>]`: Repository URL
   - `[GitRepoRevision <String>]`: Commit hash for the specified revision.

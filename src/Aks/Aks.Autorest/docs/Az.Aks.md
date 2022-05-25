@@ -17,6 +17,10 @@ Gets the details of the upgrade profile for an agent pool with a specified resou
 ### [Get-AzAksUpgradeProfile](Get-AzAksUpgradeProfile.md)
 Gets the details of the upgrade profile for a managed cluster with a specified resource group and name.
 
+### [Get-AzAksVersion](Get-AzAksVersion.md)
+List available version for creating managed Kubernetes cluster.
+The operation returns properties of each orchestrator including version, available upgrades and whether that version or upgrades are in preview.
+
 ### [Start-AzAksCluster](Start-AzAksCluster.md)
 Starts a Stopped Managed Cluster
 

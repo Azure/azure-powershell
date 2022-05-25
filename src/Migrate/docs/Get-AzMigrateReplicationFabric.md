@@ -31,8 +31,10 @@ Gets the details of an Azure Site Recovery fabric.
 
 ### Example 1: Get all fabrics by resource group and vault name
 ```powershell
-PS C:\> PS Get-AzMigrateReplicationFabric -ResourceGroupName azmigratepwshtestasr13072020 -ResourceName AzMigrateTestProjectPWSH02aarsvault -FabricName AzMigratePWSHTc8d1replicationfabric
+Get-AzMigrateReplicationFabric -ResourceGroupName azmigratepwshtestasr13072020 -ResourceName AzMigrateTestProjectPWSH02aarsvault -FabricName AzMigratePWSHTc8d1replicationfabric
+```
 
+```output
 BcdrState                                 : Valid
 CustomDetailInstanceType                  : VMwareV2
 EncryptionDetailKekCertExpiryDate         :
@@ -57,8 +59,10 @@ Get all fabrics in resource group and vault
 
 ### Example 2: Get fabric by resource group, vault name and fabric name
 ```powershell
-PS C:\> Get-AzMigrateReplicationFabric -ResourceGroupName azmigratepwshtestasr13072020 -ResourceName AzMigrateTestProjectPWSH02aarsvault
+Get-AzMigrateReplicationFabric -ResourceGroupName azmigratepwshtestasr13072020 -ResourceName AzMigrateTestProjectPWSH02aarsvault
+```
 
+```output
 BcdrState                                 : Valid
 CustomDetailInstanceType                  : VMwareV2
 EncryptionDetailKekCertExpiryDate         :

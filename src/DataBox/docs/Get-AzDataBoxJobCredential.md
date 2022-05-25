@@ -22,11 +22,12 @@ This method gets the unencrypted secrets related to the job.
 
 ## EXAMPLES
 
-### Example 1:  Get databoxHeavy job credential 
+### Example 1: Get databoxHeavy job credential
 ```powershell
+Get-AzDataBoxJobCredential -Name "DtbxPowershell" -ResourceGroupName "resourceGroupName"
 
-PS C:\> $obj = Get-AzDataBoxJobCredential -Name DtbxPowershell -ResourceGroupName "resourceGroupName"
-PS C:\> $obj | Format-List
+$obj = Get-AzDataBoxJobCredential -Name TJy-637522091284252285 -ResourceGroupName bvttoolrg12-Wednesday
+$obj | Format-List
 
 AdditionalInfo                          :
 Code                                    :
@@ -40,7 +41,7 @@ Message                                 :
 Target                                  :
 
 
-PS C:\> $obj.JobSecret | Format-List
+$obj.JobSecret | Format-List
 
 AdditionalInfo                          :
 CabinetPodSecret                        : {, }
@@ -54,10 +55,10 @@ Message                                 :
 Target                                  :
 Type                                    : DataBoxHeavy
 
-PS C:\> $cabinetJobSecret = $obj.JobSecret.CabinetPodSecret | Format-List
+$cabinetJobSecret = $obj.JobSecret.CabinetPodSecret | Format-List
 ```
 
- Get databoxHeavy job credential 
+Get databoxHeavy job credential
 
 ## PARAMETERS
 

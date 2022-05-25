@@ -106,11 +106,12 @@ process {
         # Get all labs by name across RGs        
         if ($PSBoundParameters.ContainsKey('ResourceGroupName')) {
             return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters
-        } else {            
+        } else {           
             $currentLab = $PSBoundParameters.Name
             $PSBoundParameters.Remove('Name') > $null
-            $PSBoundParameters.Add('Filter', "Name eq '$currentLab'")
-            return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters
+   
+            return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters |  Where-Object { $_.Name -eq $currentLab }
+
         }
     }
     

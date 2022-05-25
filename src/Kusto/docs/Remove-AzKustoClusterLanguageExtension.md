@@ -32,7 +32,7 @@ Remove a list of language extensions that can run within KQL queries.
 
 ### Example 1: Remove a list of language extensions from cluster
 ```powershell
-PS C:\> Remove-AzKustoClusterLanguageExtension -ResourceGroupName testrg -ClusterName testnewkustocluster -Value (@{Name="R"})
+Remove-AzKustoClusterLanguageExtension -ResourceGroupName testrg -ClusterName testnewkustocluster -Value (@{Name="R"})
 ```
 
 The above command removes a list of language extensions that can run within KQL queries.
@@ -166,7 +166,7 @@ The list of language extensions.
 To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.ILanguageExtension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ILanguageExtension[]
 Parameter Sets: (All)
 Aliases:
 

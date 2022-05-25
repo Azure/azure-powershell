@@ -37,8 +37,10 @@ Returns an attached database configuration.
 
 ### Example 1: List all the AttachedDatabaseConfigurations in a cluster
 ```powershell
-PS C:\> Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterName "testnewkustoclusterf"
+Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterName "testnewkustoclusterf"
+```
 
+```output
 Name                                 Type                                                    Location
 ----                                 ----                                                    --------
 testnewkustoclusterf/myfollowerconfiguration Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations East US
@@ -48,8 +50,10 @@ The above command lists all the AttachedDatabaseConfigurations in the cluster "t
 
 ### Example 2: Get a specific AttachedDatabaseConfiguration in a cluster
 ```powershell
-PS C:\>  Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterName "testnewkustoclusterf" -Name "myfollowerconfiguration" 
+ Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterName "testnewkustoclusterf" -Name "myfollowerconfiguration" 
+```
 
+```output
 Name                                 Type                                                    Location
 ----                                 ----                                                    --------
 testnewkustoclusterf/myfollowerconfiguration Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations East US
@@ -160,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IAttachedDatabaseConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAttachedDatabaseConfiguration
 
 ## NOTES
 

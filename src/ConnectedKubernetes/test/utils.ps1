@@ -6,30 +6,42 @@ function RandomString([bool]$allChars, [int32]$len) {
     }
 }
 $env = @{}
+if ($UsePreviousConfigForRecord) {
+    $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
+    $previousEnv.psobject.properties | Foreach-Object { $env[$_.Name] = $_.Value }
+}
+# Add script method called AddWithCache to $env, when useCache is set true, it will try to get the value from the $env first.
+# example: $val = $env.AddWithCache('key', $val, $true)
+$env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     Write-Host -ForegroundColor Yellow "WARNING: Expected that the user has kubeconfig and cluster-admin access as well helm3 installed, please check if installed Helm3 and Kubectl."
+    
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    # For any resources you created for test, you should add it to $env here.
-    $env.resourceGroup = 'connaks-rg-' + (RandomString -allChars $false -len 6)
-    $env.location = 'eastus'
-    New-AzResourceGroup -Name $env.resourceGroup -Location $env.Location
 
-    $connaksName00 = 'connaks-' + (RandomString -allChars $false -len 6)
-    $connaksName01 = 'connaks-' + (RandomString -allChars $false -len 6)
-    $connaksName02 = 'connaks-' + (RandomString -allChars $false -len 6)
-    $connaksName03 = 'connaks-' + (RandomString -allChars $false -len 6)
-    $env.Add('connaksName00', $connaksName00)
-    $env.Add('connaksName01', $connaksName01)
-    $env.Add('connaksName02', $connaksName02)
-    $env.Add('connaksName03', $connaksName03)
+    $clusterNameEUS1 = RandomString -allChars $false -len 6
+    $clusterNameEUS2 = RandomString -allChars $false -len 6
+    $env.Add("clusterNameEUS1", $clusterNameEUS1)
+    $env.Add("clusterNameEUS2", $clusterNameEUS2)
 
+    $K8sName = RandomString -allChars $false -len 6
+    $env.Add("K8sName", $K8sName)
+
+    $env.Add("locationEUS","eastus")
+
+    $resourceGroupEUS = "testgroup" + $env.locationEUS
+    $env.Add("resourceGroupEUS", $resourceGroupEUS)
+    
     $kubeContext = 'youriKubtest'
     $env.Add('kubeContext', $kubeContext)
-    New-AzConnectedKubernetes -ClusterName $env.connaksName00 -ResourceGroupName $env.resourceGroup -Location $env.location
-    New-AzConnectedKubernetes -ClusterName $env.connaksName01 -ResourceGroupName $env.resourceGroup -Location $env.location -KubeConfig $HOME\.kube\config -KubeContext $kubeContext
+
+    write-host "1. start to create test group..."
+    New-AzResourceGroup -Name $env.resourceGroupEUS -Location "eastus"
+
+    write-host "1. Create a Connected Kubernetes..."
+    New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS2 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS -KubeConfig $HOME\.kube\config -KubeContext $env.kubeContext
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -39,6 +51,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.ResourceGroup
+    Remove-AzResourceGroup -Name $env.resourceGroupEUS
 }
 

@@ -1,20 +1,23 @@
 ### Example 1: List all container groups in the current subscription
 ```powershell
-PS C:\> Get-AzContainerGroup
+Get-AzContainerGroup
+```
 
-Location Name           Type
--------- ----           ----
-eastus   bez-cg1         Microsoft.ContainerInstance/containerGroups
-eastus   bez-cg2        Microsoft.ContainerInstance/containerGroups
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg1      test-rg
+eastus   test-cg2      test-rg
 ```
 
 This command gets all container groups in the current subscription.
 
 ### Example 2: Get a specific container group
 ```powershell
-PS C:\> Get-AzContainerGroup -Name test-cg1 -ResourceGroupName test-rg | fl
+Get-AzContainerGroup -Name test-cg1 -ResourceGroupName test-rg | Format-List
+```
 
-
+```output
 Container                      : {test-container1}
 DnsConfigNameServer            :
 DnsConfigOption                :
@@ -56,6 +59,7 @@ Name                           : test-cg1
 NetworkProfileId               :
 OSType                         : Linux
 ProvisioningState              : Succeeded
+ResourceGroupName              : test-rg
 RestartPolicy                  : Never
 Sku                            : Standard
 Tag                            : Microsoft.Azure.PowerShell.Cmdlets.ContainerInstan 
@@ -68,23 +72,27 @@ The command gets the specified container group.
 
 ### Example 3: Get container groups in a resource group
 ```powershell
-PS C:\> Get-AzContainerGroup -ResourceGroupName test-rg
+Get-AzContainerGroup -ResourceGroupName test-rg
+```
 
-Location Name           Type
--------- ----           ----
-eastus   bez-cg1         Microsoft.ContainerInstance/containerGroups
-eastus   bez-cg2        Microsoft.ContainerInstance/containerGroups
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg1      test-rg
+eastus   test-cg2      test-rg
 ```
 
 The command gets the container groups in the resource group `test-rg`.
 
 ### Example 4: Get a container group by piping
 ```powershell
-PS C:\> Update-AzContainerGroup -Name test-cg1 -ResourceGroupName test-rg -Tag @{"test"="value"} | Get-AzContainerGroup
+Update-AzContainerGroup -Name test-cg1 -ResourceGroupName test-rg -Tag @{"test"="value"} | Get-AzContainerGroup
+```
 
-Location Name   Type
--------- ----   ----
-eastus   test-cg1 Microsoft.ContainerInstance/containerGroups
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg1      test-rg
 ```
 
 The command gets the updated container group by piping.

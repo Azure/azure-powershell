@@ -32,8 +32,10 @@ Checks that the managed private endpoints resource name is valid and is not alre
 
 ### Example 1: Checks whether the ManagedPrivateEndpoint name is available in the given cluster
 ```powershell
-PS C:\> Test-AzKustoManagedPrivateEndpointNameAvailability -ClusterName "mycluster" -ResourceGroupName "testrg" -Name "testmanagedprivateendpoint"
+Test-AzKustoManagedPrivateEndpointNameAvailability -ClusterName "mycluster" -ResourceGroupName "testrg" -Name "testmanagedprivateendpoint"
+```
 
+```output
 Message Name                       NameAvailable Reason
 ------- ----                       ------------- ------
         testmanagedprivateendpoint True
@@ -175,7 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.ICheckNameResult
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICheckNameResult
 
 ## NOTES
 

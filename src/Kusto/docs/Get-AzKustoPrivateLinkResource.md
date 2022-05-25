@@ -36,22 +36,26 @@ Gets a private link resource.
 
 ### Example 1: List all PrivateLinkResource in a cluster
 ```powershell
-PS C:\> Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "testrg"
+Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "testrg"
+```
 
+```output
 Name                                                       Type
 ----                                                       ----
-mycluster/cluster                                		       Microsoft.Kusto/Clusters/PrivateLinkResources
+mycluster/cluster                                		   Microsoft.Kusto/Clusters/PrivateLinkResources
 ```
 
 The above command returns all PrivateLinkResource in the cluster "mycluster" found in the resource group "testrg".
 
 ### Example 2: Get a specific PrivateLinkResource by name
 ```powershell
-PS C:\> Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "testrg" -Name "ManagedPrivateEndpointName"
+Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "testrg" -Name "ManagedPrivateEndpointName"
+```
 
+```output
 Name                                                       Type
 ----                                                       ----
-mycluster/cluster                                		       Microsoft.Kusto/Clusters/PrivateLinkResources
+mycluster/cluster                                		   Microsoft.Kusto/Clusters/PrivateLinkResources
 ```
 
 The above command returns the PrivateLinkResource named "mycluster/cluster" in the cluster "mycluster" found in the resource group "testrg".
@@ -159,7 +163,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IPrivateLinkResource
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IPrivateLinkResource
 
 ## NOTES
 

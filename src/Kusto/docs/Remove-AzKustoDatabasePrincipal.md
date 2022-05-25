@@ -32,8 +32,10 @@ Remove Database principals permissions.
 
 ### Example 1: Remove Database principals permissions
 ```powershell
-PS C:\> Remove-AzKustoDatabasePrincipal -ResourceGroupName testrg -ClusterName testnewkustocluster -DatabaseName mykustodatabase -Value (@{Name="Some User"; Role="Admin"; Type="User"; Email="someuser@microsoft.com"})
+Remove-AzKustoDatabasePrincipal -ResourceGroupName testrg -ClusterName testnewkustocluster -DatabaseName mykustodatabase -Value (@{Name="Some User"; Role="Admin"; Type="User"; Email="someuser@microsoft.com"})
+```
 
+```output
 AppId Email                   Fqn                                                                               Name        Role  TenantName Type
 ----- -----                   ---                                                                               ----        ----  ---------- ----
       otheruser@microsoft.com aaduser=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Other User  Admin Microsoft  User
@@ -140,7 +142,7 @@ The list of Kusto database principals.
 To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IDatabasePrincipal[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipal[]
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +193,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IDatabasePrincipal
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipal
 
 ## NOTES
 
