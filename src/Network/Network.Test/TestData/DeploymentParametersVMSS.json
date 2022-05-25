@@ -1,0 +1,29 @@
+{
+            "vmSku": {
+            "value": "Standard_D4s_v3"
+            },
+            "windowsOSVersion": {
+            "value": "2019-Datacenter"
+            },
+            "vmssName": {
+            "value": "PSVMSS"
+            },
+            "instanceCount": {
+            "value": 3
+            },
+            "singlePlacementGroup": {
+            "value": true
+            },
+            "adminUsername": {
+            "value": "netanaytics12"
+            },
+            "adminPassword": {
+            "value": "netanalytics-32Piyush-OMS-Test"
+            },
+            "location": {
+            "value": "centraluseuap"
+            },
+            "platformFaultDomainCount": {
+            "value": 1
+            }
+}
