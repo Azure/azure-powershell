@@ -1731,3 +1731,45 @@ function Test-AzureFirewallVirtualHubAllocateDeallocated {
         Clean-ResourceGroup $rgname
     }
 }
+<#
+.SYNOPSIS
+Tests AzureFirewall Basic Sku
+#>
+function Test-AzureFirewallBasicSku {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+   
+    $skuName = "AZFW_VNet"
+    $skuTier = "Basic"
+    
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create public ip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+        # Create AzureFirewall
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -SkuName $skuName -SkuTier $skuTier 
+
+        # Verify
+       $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+       Assert-NotNull $getAzureFirewall.Sku
+       Assert-AreEqual $skuTier $getAzureFirewall.Sku.Tier
+
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
