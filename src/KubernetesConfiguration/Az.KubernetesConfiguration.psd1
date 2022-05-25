@@ -121,7 +121,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = ' * Added cmdlets: * ''Get-AzKubernetesConfigFluxOperationStatus'' * ''Get-AzKubernetesConfigurationFlux'' * ''New-AzKubernetesConfigurationFlux'' * ''Update-AzKubernetesConfigurationFlux'' * ''Remove-AzKubernetesConfigurationFlux'''
+        # ReleaseNotes = ''
 
         # Prerelease string of this module
         # Prerelease = ''
