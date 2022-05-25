@@ -256,16 +256,17 @@
     <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers signature -u -m '%(FilterTaskResult.signature)'" />
   </Target>
   
-  <Target Name="StaticAnalysisHelp" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build" AfterTargets="StaticAnalysisExample">
+  <Target Name="StaticAnalysisHelp" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
     <Message Importance="high" Text="Running static analysis for help..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
     
     <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers help -u -m '%(FilterTaskResult.help)'" />
   </Target>
 
-  <Target Name="StaticAnalysisExample">
+  <Target Name="StaticAnalysisExample" DependsOnTargets="Build" AfterTargets="StaticAnalysisHelp">
     <Message Importance="high" Text="Running static analysis for example..." />
-    <Exec Command="Write-Information 'Testing for StaticAnalysisExample'"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;import-module (Get-ChildItem -Path $(RepoArtifacts)/$(Configuration)).FullName &quot;"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/ScriptAnalyzer/Measure-MarkdownOrScript.ps1 -MarkdownPaths $(RepoTools)/ScriptAnalyzer/DemoMarkdowns -RulePaths $(RepoTools)/ScriptAnalyzer/AnalyzeRules -Recurse -AnalyzeScriptsInFile -OutputScriptsInFile -OutputResultsByModule &quot;"/>
   </Target>
 
   <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisBreakingChange;StaticAnalysisDependency;StaticAnalysisSignature;StaticAnalysisHelp;StaticAnalysisExample">
