@@ -149,8 +149,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             TagsHelper.GetTagsDictionary(TagsHelper.GetTagsHashtable(resource.Tags))
         )
         {
-            this.CreatedTime = resource.CreatedTime;
-            this.ChangedTime = resource.ChangedTime;
+            this.CreatedTime = Convert.ToDateTime(resource.Properties["lastModifiedTime"]?.ToString());
+            this.ChangedTime = Convert.ToDateTime(resource.Properties["lastModifiedTime"]?.ToString());
 
             this.SubscriptionId = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id);
             this.ResourceGroupName = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceGroupName(resource.Id);
