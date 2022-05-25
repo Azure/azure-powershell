@@ -1145,3 +1145,80 @@ function Test-ClientEncryptionKeyCmdletsUsingInputObject
     Remove-AzKeyVault -VaultName $vaultName -InRemovedState -Force -Location $location
   }
 }
+
+<#
+.SYNOPSIS
+Test Hierarchical partitioning container operations
+#>
+function Test-SqlHierarchicalPartitioningContainerOperations
+{
+  $AccountName = "dbaccount68"
+  $rgName = "CosmosDBResourceGroup68"
+  $DatabaseName = "dbName"
+  $ContainerName = "hierarchicalContainer"
+  $StoredProcedureName = "storedProcedure"
+  $UDFName = "udf"
+  $TriggerName = "trigger"
+
+  $PartitionKeyPathValue = @()
+  $PartitionKeyPathValue += "/pk1"
+  $PartitionKeyPathValue += "/pk2"
+  $PartitionKeyKindValue = "MultiHash"
+
+  $Body = "function () { var context = getContext(); " +
+                        "var response = context.getResponse();" +
+                        "response.setBody('Hello, World');" +
+                        "}"
+  $Body2 = "function () { var x = 10;" +
+                        "}"
+
+  $TriggerOperation = "All"
+  $TriggerType = "Pre"
+  $location = "East US"
+  $apiKind = "Sql"
+  $consistencyLevel = "BoundedStaleness"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
+
+  Try{
+      
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+
+      # get the database account object
+      $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
+
+      # create a new database
+      $NewDatabase =  New-AzCosmosDBSqlDatabase -ParentObject $cosmosDBAccount -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Name $DatabaseName
+
+      # create a new container
+      $NewContainer = New-AzCosmosDBSqlContainer -ParentObject $NewDatabase -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600 -PartitionKeyVersion 2
+      Assert-AreEqual $NewContainer.Name $ContainerName
+
+      # get a database
+      $Database = Get-AzCosmosDBSqlDatabase -ParentObject $cosmosDBAccount -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Id $Database.Id
+      Assert-AreEqual $NewDatabase.Name $Database.Name
+
+      # get a container
+      $Container = Get-AzCosmosDBSqlContainer -ParentObject $NewDatabase -Name $ContainerName
+      Assert-AreEqual $NewContainer.Id $Container.Id
+      Assert-AreEqual $NewContainer.Name $Container.Name
+
+      Remove-AzCosmosDBSqlStoredProcedure -InputObject $NewStoredProcedure
+
+      Remove-AzCosmosDBSqlTrigger -InputObject $NewTrigger
+
+      Remove-AzCosmosDBSqlUserDefinedFunction -InputObject $NewUDF
+
+      Remove-AzCosmosDBSqlContainer -InputObject $NewContainer
+
+      Remove-AzCosmosDBSqlDatabase -InputObject $NewDatabase
+  }
+  Finally {
+
+    Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+    Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}

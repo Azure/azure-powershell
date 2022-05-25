@@ -71,5 +71,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-ClientEncryptionKeyCmdletsUsingInputObject");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlHierarchicalPartitioningContainerOperations()
+        {
+            TestRunner.RunTestScript("Test-SqlHierarchicalPartitioningContainerOperations");
+        }
     }
 }
