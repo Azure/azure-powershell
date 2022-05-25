@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the specified Certificate.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp
 ```
 
 ```output
-{{ Add output here }}
+Name             Location      Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
+----             --------      ------              ----------------- -----------         ----------                               -----------------
+azps-env-cert    canadacentral CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com 684DFA8457230B8A04675FBCB7251FA88AE10D80 azpstest_gp
+azps-env-cert-02 canadacentral CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com 684DFA8457230B8A04675FBCB7251FA88AE10D80 azpstest_gp
 ```
 
-{{ Add description here }}
+List the specified Certificate.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the specified Certificate.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp -Name azps-env-cert
 ```
 
 ```output
-{{ Add output here }}
+Name          Location      Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
+----          --------      ------              ----------------- -----------         ----------                               -----------------
+azps-env-cert canadacentral CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com 684DFA8457230B8A04675FBCB7251FA88AE10D80 azpstest_gp
 ```
 
-{{ Add description here }}
-
+Get the specified Certificate.

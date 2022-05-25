@@ -104,11 +104,27 @@ directive:
   #           }
   #         }
   #     }
+  - from: swagger-document 
+    where: $.definitions.Certificate.properties.properties.properties.password
+    transform: >-
+      return {
+        "description": "Certificate password.",
+        "type": "string",
+        "x-ms-mutability": [
+          "create"
+        ],
+        "format": "password",
+        "x-ms-secret": true
+      }
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
   - where:
       verb: Set|Test
+    remove: true
+  - where:
+      verb: Get
+      subject: ContainerAppAuthConfig
     remove: true
   - where:
       subject: ContainerAppCustomHostnameAnalysis
@@ -126,6 +142,11 @@ directive:
     set:
       verb: Disable
       subject: ContainerAppRevision
+  - where:
+      verb: Get
+      subject: ContainerAppsAuthConfig
+    set:
+      subject: ContainerAppAuthConfig
   - where:
       verb: Remove
       subject: ContainerAppsAuthConfig
@@ -230,5 +251,25 @@ directive:
           - AzureFileAccessMode
           - AzureFileAccountName
           - AzureFileShareName
+          - ResourceGroupName
+  - where:
+      model-name: Certificate
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - Issuer
+          - ProvisioningState
+          - SubjectName
+          - Thumbprint
+          - ResourceGroupName
+  - where:
+      model-name: AuthConfig
+    set:
+      format-table:
+        properties:
+          - Name
+          - PlatformEnabled
           - ResourceGroupName
 ```

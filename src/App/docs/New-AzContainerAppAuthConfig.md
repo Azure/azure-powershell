@@ -30,27 +30,20 @@ Create or update the AuthConfig for a Container App.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create or update the AuthConfig for a Container App.
 ```powershell
-{{ Add code here }}
+$identity = New-AzIdentityProviders -RegistrationAppId xxxxxx@xxx.com -RegistrationAppSecretSettingName facebook-secret
+
+New-AzContainerAppAuthConfig -AuthConfigName current -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp -PlatformEnabled -GlobalValidationUnauthenticatedClientAction 'AllowAnonymous' -IdentityProvider $identity
 ```
 
 ```output
-{{ Add output here }}
+Name    PlatformEnabled ResourceGroupName
+----    --------------- -----------------
+current True            azpstest_gp
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create or update the AuthConfig for a Container App.
 
 ## PARAMETERS
 

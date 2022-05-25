@@ -5,7 +5,6 @@ $CustomId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName azpstest_gp -
 $SharedKey = (Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName azpstest_gp -Name workspace-azpstestgp).PrimarySharedKey
 
 New-AzContainerAppManagedEnv -EnvName azps-env -ResourceGroupName azpstest_gp -Location canadacentral -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $CustomId -LogAnalyticConfigurationSharedKey $SharedKey -VnetConfigurationInternal:$false
-
 ```
 
 ```output

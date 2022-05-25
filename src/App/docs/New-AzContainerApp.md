@@ -33,7 +33,7 @@ Create or update a Container App.
 ### Example 1: {{ Add title here }}
 ```powershell
 $trafficWeight = New-AzTrafficWeight -Label production -LatestRevision:$True -Weight 100
-$secretObject = New-AzSecret -Name "containerkey" -Value "containerkeyvalue"
+$secretObject = New-AzSecret -Name "facebook-secret" -Value "facebook-password"
 
 $containerAppHttpHeader = New-AzContainerAppProbeHttpGetHttpHeadersItem -Name Custom-Header -Value Awesome
 $probe = New-AzContainerAppProbe -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
@@ -41,7 +41,7 @@ $image = New-AzContainer -Name azps-containerapp -Image mcr.microsoft.com/azured
 
 $EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName azpstest_gp -EnvName azps-env).Id
 
-New-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight
+New-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
 ```
 
 ```output

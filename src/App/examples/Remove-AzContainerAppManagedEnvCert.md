@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes the specified Certificate.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp -Name azps-env-cert-02
 ```
 
-```output
-{{ Add output here }}
-```
+Deletes the specified Certificate.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Deletes the specified Certificate.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp -Name azps-env-cert-02 | Remove-AzContainerAppManagedEnvCert
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Deletes the specified Certificate.

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the Container App AuthConfigs in a given resource group.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppAuthConfig -AuthConfigName current -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
 ```
 
 ```output
-{{ Add output here }}
+Name    PlatformEnabled ResourceGroupName
+----    --------------- -----------------
+current True            azpstest_gp
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Get the Container App AuthConfigs in a given resource group.

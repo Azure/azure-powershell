@@ -47,7 +47,7 @@ Patches a Container App using JSON Merge Patch
 
 ### Example 1: Update a Container App.
 ```powershell
-Update-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -DaprEnabled
+Update-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
 ```
 
 ```output

@@ -21,7 +21,7 @@ Activates a revision for a Container App
 Get the properties of a Container App.
 
 ### [Get-AzContainerAppAuthConfig](Get-AzContainerAppAuthConfig.md)
-Get the Container App AuthConfigs in a given resource group.
+Get a AuthConfig of a Container App.
 
 ### [Get-AzContainerAppCustomHostName](Get-AzContainerAppCustomHostName.md)
 Analyzes a custom hostname for a Container App
@@ -46,9 +46,6 @@ Get a revision of a Container App.
 
 ### [Get-AzContainerAppRevisionReplica](Get-AzContainerAppRevisionReplica.md)
 Get a replica for a Container App Revision.
-
-### [Get-AzContainerAppsAuthConfig](Get-AzContainerAppsAuthConfig.md)
-Get a AuthConfig of a Container App.
 
 ### [Get-AzContainerAppSecret](Get-AzContainerAppSecret.md)
 List secrets for a container app
