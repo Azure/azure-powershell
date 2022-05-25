@@ -57,7 +57,7 @@ input-file:
   - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/kubernetesconfiguration.json
 
 title: KubernetesConfiguration
-module-version: 0.6.0
+module-version: 0.1.0
 subject-prefix: ''
 
 identity-correction-for-post: true
