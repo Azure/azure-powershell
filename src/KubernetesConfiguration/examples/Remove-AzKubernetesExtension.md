@@ -1,6 +1,6 @@
 ### Example 1: Delete a Kubernetes Cluster Extension.
 ```powershell
-PS C:\> Remove-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group
+PS C:\> Remove-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp
 
 ```
 

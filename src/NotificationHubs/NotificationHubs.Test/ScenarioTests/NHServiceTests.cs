@@ -15,31 +15,28 @@
 namespace Commands.NotificationHubs.Test
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class NHServiceTests : TestBaseClass
-    {
-        public XunitTracingInterceptor _logger;
+    using Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests;
 
-        public NHServiceTests(Xunit.Abstractions.ITestOutputHelper output)
+    public class NHServiceTests : NotificationHubsTestRunner
+    {
+        public NHServiceTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCRUDNamespace()
         {
-            RunPowerShellTest(_logger, "Test-CRUDNamespace");
+            TestRunner.RunTestScript("Test-CRUDNamespace");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCRUDNamespaceAuth()
         {
-            RunPowerShellTest(_logger, "Test-CRUDNamespaceAuth");
+            TestRunner.RunTestScript("Test-CRUDNamespaceAuth");
         }
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
@@ -47,7 +44,7 @@ namespace Commands.NotificationHubs.Test
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestCRUDNotificationHub()
         {
-            RunPowerShellTest(_logger, "Test-CRUDNotificationHub");
+            TestRunner.RunTestScript("Test-CRUDNotificationHub");
         }
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
@@ -55,7 +52,7 @@ namespace Commands.NotificationHubs.Test
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestCRUDNHAuth()
         {
-            RunPowerShellTest(_logger, "Test-CRUDNHAuth");
+            TestRunner.RunTestScript("Test-CRUDNHAuth");
         }
     }
 }

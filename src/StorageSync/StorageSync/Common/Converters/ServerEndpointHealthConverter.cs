@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
     /// <summary>
     /// Class ServerEndpointHealthConvertor.
-    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointHealth, StorageSyncModels.ServerEndpointSyncStatus}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointHealth, ServerEndpointSyncStatus}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSServerEndpointHealth, StorageSyncModels.ServerEndpointSyncStatus}" />
+    /// <seealso cref="Converters.ConverterBase{PSServerEndpointHealth, ServerEndpointSyncStatus}" />
     public class ServerEndpointHealthConverter : ConverterBase<PSServerEndpointHealth, StorageSyncModels.ServerEndpointSyncStatus>
     {
         /// <summary>

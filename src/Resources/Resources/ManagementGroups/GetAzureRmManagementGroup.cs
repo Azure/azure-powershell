@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
                 if (!string.IsNullOrEmpty(GroupName))
                 {
                     var response = ManagementGroupsApiClient.ManagementGroups.Get(GroupName, Expand.IsPresent?"children":null, Recurse.IsPresent);
-                        WriteObject(new PSManagementGroup(response));
+                    WriteObject(new PSManagementGroup(response));
                 }
                 else
                 {

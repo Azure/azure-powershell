@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
     /// <summary>
     /// Class CloudEndpointLastChangeEnumerationStatusConverter.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpointLastChangeEnumerationStatus, Microsoft.Azure.Management.StorageSync.Models.CloudEndpointLastChangeEnumerationStatus}" />
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{PSCloudEndpointLastChangeEnumerationStatus, CloudEndpointLastChangeEnumerationStatus}" />
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpointLastChangeEnumerationStatus, Microsoft.Azure.Management.StorageSync.Models.CloudEndpointLastChangeEnumerationStatus}" />
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{PSCloudEndpointLastChangeEnumerationStatus, CloudEndpointLastChangeEnumerationStatus}" />
     public class CloudEndpointLastChangeEnumerationStatusConverter : ConverterBase<PSCloudEndpointLastChangeEnumerationStatus, StorageSyncModels.CloudEndpointLastChangeEnumerationStatus>
     {
         /// <summary>

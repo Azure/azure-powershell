@@ -20,26 +20,28 @@ Create a new Kubernetes Source Control Configuration.
 .Description
 Create a new Kubernetes Source Control Configuration.
 .Example
-PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name azpstestk8s01 -RepositoryUrl http://github.com/xxxx
+PS C:\> New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azpstest_gp -Location eastus
+PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name azpstestk8s -RepositoryUrl http://github.com/xxxx -ClusterType ConnectedClusters
 
-Name          Type
-----          ----
-azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+Name        RepositoryUrl          ResourceGroupName
+----        -------------          -----------------
+azpstestk8s http://github.com/xxxx azpstest_gp
 .Example
-PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name azpstestk8s02 -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01
+PS C:\> New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azpstest_gp -Location eastus
+PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name azpstestk8s-operator -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01 -ClusterType ConnectedClusters
 
-Name          Type
-----          ----
-azpstestk8s02 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+Name                 RepositoryUrl          ResourceGroupName
+----                 -------------          -----------------
+azpstestk8s-operator http://github.com/xxxx azpstest_gp
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration
 .Link
 https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
 #>
 function New-AzKubernetesConfiguration {
 [Alias('New-AzK8sConfiguration')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -47,6 +49,13 @@ param(
     [System.String]
     # The name of the kubernetes cluster.
     ${ClusterName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
+    [System.String]
+    # The Kubernetes cluster resource name - i.e.
+    # managedClusters, connectedClusters, provisionedClusters.
+    ${ClusterType},
 
     [Parameter(Mandatory)]
     [Alias('SourceControlConfigurationName')]
@@ -59,26 +68,22 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-    [System.String]
-    # The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
-    ${ClusterType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The Azure subscription ID.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # Url of the SourceControl Repository.
-    ${RepositoryUrl},
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IConfigurationProtectedSettings]))]
+    [System.Collections.Hashtable]
+    # Name-value pairs of protected configuration settings for the configuration
+    ${ConfigurationProtectedSetting},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -115,7 +120,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.String]
     # Any Parameters for the Operator instance in string format.
-    ${OperatorParameter},
+    ${OperatorParam},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -126,15 +131,14 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.String]
-    # If passed set the scope of the Configuration to Cluster (default is nameSpace).
-    ${SshKnownHost},
+    # Url of the SourceControl Repository.
+    ${RepositoryUrl},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IConfigurationProtectedSettings]))]
-    [System.Collections.Hashtable]
-    # Name-value pairs of protected configuration settings for the configuration
-    ${ConfigurationProtectedSetting},
+    [System.String]
+    # Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
+    ${SshKnownHost},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -191,6 +195,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             CreateExpanded = 'Az.KubernetesConfiguration.custom\New-AzKubernetesConfiguration';
         }
@@ -204,6 +226,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -212,15 +235,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

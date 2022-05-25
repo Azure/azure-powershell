@@ -26,10 +26,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
-            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SystemAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'SystemAssigned'", "SystemAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAssigned");
@@ -37,6 +33,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UserAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'UserAssigned'", "UserAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserAssigned");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SystemAssigned, UserAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SystemAssigned, UserAssigned'", "SystemAssigned, UserAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAssigned, UserAssigned");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
         }
     }

@@ -12,50 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class IotSecuritySolutionAnalyticsTests
+    public class IotSecuritySolutionAnalyticsTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public IotSecuritySolutionAnalyticsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IotSecuritySolutionAnalyticsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSolutionScopeSingle()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmIotSecurityAnalytics-SolutionScope-Single");
+            TestRunner.RunTestScript("Get-AzureRmIotSecurityAnalytics-SolutionScope-Single");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSolutionScopeList()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmIotSecurityAnalytics-SolutionScope-List");
+            TestRunner.RunTestScript("Get-AzureRmIotSecurityAnalytics-SolutionScope-List");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAggregatedAlertSolutionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmIotSecurityAnalyticsAggregatedAlert-SolutionScope");
+            TestRunner.RunTestScript("Get-AzureRmIotSecurityAnalyticsAggregatedAlert-SolutionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAggregatedRecommendationSolutionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmIotSecurityAnalyticsAggregatedRecommendation-SolutionScope");
+            TestRunner.RunTestScript("Get-AzureRmIotSecurityAnalyticsAggregatedRecommendation-SolutionScope");
         }
     }
 }

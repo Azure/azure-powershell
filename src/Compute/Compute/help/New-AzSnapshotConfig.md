@@ -21,7 +21,8 @@ New-AzSnapshotConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>] [[
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
  [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DiskAccessId <String>]
  [-NetworkAccessPolicy <String>] [-PublicNetworkAccess <String>] [-AcceleratedNetwork <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataAccessAuthMode <String>] [-Architecture <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,8 +72,38 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Architecture
+CPU architecture supported by an OS disk. Possible values are "X64" and "Arm64".
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -CreateOption
 Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DataAccessAuthMode
+Additional authentication requirements when exporting or uploading to a disk or snapshot.
 
 ```yaml
 Type: System.String

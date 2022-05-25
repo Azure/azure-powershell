@@ -21,23 +21,16 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     /// <summary>
     /// The set peering tests.
     /// </summary>
-    public class SetPeeringTests
+    public class SetPeeringTests : PeeringTestRunner
     {
-        /// <summary>
-        /// The logger.
-        /// </summary>
-        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="SetPeeringTests"/> class.
         /// </summary>
         /// <param name="output">
         /// The output.
         /// </param>
-        public SetPeeringTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SetPeeringTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
             
         }
 
@@ -48,7 +41,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetNewBandwidth()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewBandwidth");
+            TestRunner.RunTestScript("Test-SetNewBandwidth");
         }
 
         /// <summary>
@@ -58,7 +51,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetNewIP()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewIP");
+            TestRunner.RunTestScript("Test-SetNewIP");
         }
 
         /// <summary>
@@ -68,7 +61,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetNewIPv6()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewIPv6");
+            TestRunner.RunTestScript("Test-SetNewIPv6");
         }
 
         /// <summary>
@@ -78,7 +71,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetNewMd5Hash()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewMd5Hash");
+            TestRunner.RunTestScript("Test-SetNewMd5Hash");
         }
     }
 }

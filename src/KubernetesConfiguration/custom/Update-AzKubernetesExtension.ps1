@@ -20,18 +20,16 @@ Patch an existing Kubernetes Cluster Extension.
 .Description
 Patch an existing Kubernetes Cluster Extension.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\>  Update-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group -ConfigurationProtectedSetting @{"aa"="bb"}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ReleaseTrain ResourceGroupName
+----                -------------             -------      ----------------- ----------------------- ------------ -----------------
+azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    Stable       azps_test_group
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,20 +37,21 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the kubernetes cluster.
-  [ClusterResourceName <String>]: The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
-  [ClusterRp <String>]: The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
+  [ClusterResourceName <String>]: The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
+  [ClusterRp <String>]: The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
   [ExtensionName <String>]: Name of the Extension.
+  [FluxConfigurationName <String>]: Name of the Flux Configuration.
   [Id <String>]: Resource identity path
   [OperationId <String>]: operation Id
-  [ResourceGroupName <String>]: The name of the resource group.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
-  [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azkubernetesextension
 #>
 function Update-AzKubernetesExtension {
     [Alias('Update-AzK8sExtension')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtension])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -65,7 +64,8 @@ function Update-AzKubernetesExtension {
         [ValidateSet('ConnectedClusters', 'ManagedClusters')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
-        # The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
+        # The Kubernetes cluster resource name - i.e.
+        # managedClusters, connectedClusters, provisionedClusters.
         ${ClusterType},
 
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -86,9 +86,7 @@ function Update-AzKubernetesExtension {
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
-        # The Azure subscription ID.
-        # This is a GUID-formatted string (e.g.
-        # 00000000-0000-0000-0000-000000000000)
+        # The ID of the target subscription.
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -106,14 +104,14 @@ function Update-AzKubernetesExtension {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IPatchExtensionPropertiesConfigurationProtectedSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IPatchExtensionPropertiesConfigurationProtectedSettings]))]
         [System.Collections.Hashtable]
         # Configuration settings that are sensitive, as name-value pairs for configuring this extension.
         ${ConfigurationProtectedSetting},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IPatchExtensionPropertiesConfigurationSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IPatchExtensionPropertiesConfigurationSettings]))]
         [System.Collections.Hashtable]
         # Configuration settings, as name-value pairs for configuring this extension.
         ${ConfigurationSetting},

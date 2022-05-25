@@ -37,7 +37,7 @@ Get or list clusters, list clusters under resource group when "-ClusterName" was
 
 ### Example 1
 ```powershell
-Get-AzOperationalInsightsCluster -ResourceGroupName {rg-name} -ClusterName {cluster-name}
+Get-AzOperationalInsightsCluster -ResourceGroupName "rg-name" -ClusterName "cluster-name"
 ```
 
 ```output

@@ -12,59 +12,50 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
 {
-    public class MaintenanceTests : RMTestBase
+    public class MaintenanceTests : MaintenanceTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public MaintenanceTests(Xunit.Abstractions.ITestOutputHelper output)
+        public MaintenanceTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMaintenanceConfiguration()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzMaintenanceConfiguration");
+            TestRunner.RunTestScript("Test-AzMaintenanceConfiguration");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMaintenanceConfigurationInGuestPatch()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzMaintenanceConfigurationInGuestPatch");
+            TestRunner.RunTestScript("Test-AzMaintenanceConfigurationInGuestPatch");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConfigurationAssignment()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzConfigurationAssignment");
+            TestRunner.RunTestScript("Test-AzConfigurationAssignment");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMaintenanceUpdate()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzMaintenanceUpdate");
+            TestRunner.RunTestScript("Test-AzMaintenanceUpdate");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPublicMaintenanceConfiguration()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzMaintenancePublicConfiguration");
+            TestRunner.RunTestScript("Test-AzMaintenancePublicConfiguration");
         }
     }
 }
