@@ -12,19 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using System;
-using System.IO;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
 using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit.Abstractions;
 using Microsoft.Azure.Management.EventHub;
@@ -45,7 +39,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             "Microsoft.Sql/managedInstances/databases",
             "Microsoft.Sql/managedInstances/managedDatabases",
             "Microsoft.Sql/servers",
-            "Microsoft.Sql/servers/databases"
+            "Microsoft.Sql/servers/databases",
+            "Microsoft.Sql/servers/elasticPools"
         };
         private const string TenantIdKey = "TenantId";
 
