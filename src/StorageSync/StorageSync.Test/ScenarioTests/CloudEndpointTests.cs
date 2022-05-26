@@ -14,7 +14,6 @@
 
 
 using ScenarioTests;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -24,21 +23,14 @@ namespace StorageSyncTests
     /// <summary>
     /// Class CloudEndpointTests.
     /// </summary>
-    public class CloudEndpointTests
+    public class CloudEndpointTests : StorageSyncTestRunner
     {
-        /// <summary>
-        /// The logger
-        /// </summary>
-        private readonly XunitTracingInterceptor _logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CloudEndpointTests"/> class.
         /// </summary>
         /// <param name="output">The output.</param>
-        public CloudEndpointTests(ITestOutputHelper output)
+        public CloudEndpointTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -48,7 +40,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloudEndpoint()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-CloudEndpoint");
+            TestRunner.RunTestScript("Test-CloudEndpoint");
         }
 
         /// <summary>
@@ -58,7 +50,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewCloudEndpoint()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-NewCloudEndpoint");
+            TestRunner.RunTestScript("Test-NewCloudEndpoint");
         }
 
         /// <summary>
@@ -68,7 +60,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetCloudEndpoint()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetCloudEndpoint");
+            TestRunner.RunTestScript("Test-GetCloudEndpoint");
         }
 
         /// <summary>
@@ -78,7 +70,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetCloudEndpointParentObject()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetCloudEndpointParentObject");
+            TestRunner.RunTestScript("Test-GetCloudEndpointParentObject");
         }
 
         /// <summary>
@@ -88,7 +80,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetCloudEndpointParentResourceId()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetCloudEndpointParentResourceId");
+            TestRunner.RunTestScript("Test-GetCloudEndpointParentResourceId");
         }
 
 
@@ -99,7 +91,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetCloudEndpoints()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetCloudEndpoints");
+            TestRunner.RunTestScript("Test-GetCloudEndpoints");
         }
 
         /// <summary>
@@ -109,7 +101,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveCloudEndpoint()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveCloudEndpoint");
+            TestRunner.RunTestScript("Test-RemoveCloudEndpoint");
         }
 
         /// <summary>
@@ -119,7 +111,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveCloudEndpointResourceId()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveCloudEndpointResourceId");
+            TestRunner.RunTestScript("Test-RemoveCloudEndpointResourceId");
         }
 
         /// <summary>
@@ -129,7 +121,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveCloudEndpointInputObject()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveCloudEndpointInputObject");
+            TestRunner.RunTestScript("Test-RemoveCloudEndpointInputObject");
         }
 
     }
