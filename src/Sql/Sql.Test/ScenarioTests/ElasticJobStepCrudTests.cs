@@ -19,13 +19,10 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ElasticJobStepCrudTests : SqlTestsBase
+    public class ElasticJobStepCrudTests : SqlTestRunner
     {
         public ElasticJobStepCrudTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
         #region Create Tests
@@ -34,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobStepCreate()
         {
-            RunPowerShellTest("Test-CreateJobStep");
+            TestRunner.RunTestScript("Test-CreateJobStep");
         }
 
         #endregion
@@ -45,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobStepUpdate()
         {
-            RunPowerShellTest("Test-UpdateJobStep");
+            TestRunner.RunTestScript("Test-UpdateJobStep");
         }
 
         #endregion
@@ -56,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobStepGet()
         {
-            RunPowerShellTest("Test-GetJobStep");
+            TestRunner.RunTestScript("Test-GetJobStep");
         }
 
         #endregion
@@ -67,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobStepRemove()
         {
-            RunPowerShellTest("Test-RemoveJobStep");
+            TestRunner.RunTestScript("Test-RemoveJobStep");
         }
 
         #endregion

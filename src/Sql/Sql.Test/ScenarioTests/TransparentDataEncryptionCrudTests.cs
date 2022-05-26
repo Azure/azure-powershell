@@ -19,41 +19,38 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class TransparentDataEncryptionCrudTests : SqlTestsBase
+    public class TransparentDataEncryptionCrudTests : SqlTestRunner
     {
         public TransparentDataEncryptionCrudTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseTransparentDataEncryptionUpdate()
         {
-            RunPowerShellTest("Test-UpdateTransparentDataEncryption");
+            TestRunner.RunTestScript("Test-UpdateTransparentDataEncryption");
         }
 
         [Fact(Skip = "Gets empty status when expecting encrypting")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseTransparentDataEncryptionGet()
         {
-            RunPowerShellTest("Test-GetTransparentDataEncryption");
+            TestRunner.RunTestScript("Test-GetTransparentDataEncryption");
         }
 
         [Fact(Skip = "TODO: Skipping as the model got updated from Legacy Sdk")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerTransparentDataEncryptionProtectorGet()
         {
-            RunPowerShellTest("Test-GetTransparentDataEncryptionProtector");
+            TestRunner.RunTestScript("Test-GetTransparentDataEncryptionProtector");
         }
 
         [Fact(Skip = "TODO: only works for live mode. Mihymel will fix the test issue for Create-ServerKeyVaultKeyTestEnvironment")]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestServerTransparentDataEncryptionProtectorSet()
         {
-            RunPowerShellTest("Test-SetTransparentDataEncryptionProtector");
+            TestRunner.RunTestScript("Test-SetTransparentDataEncryptionProtector");
         }
     }
 }

@@ -13,64 +13,51 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit;
 using Xunit.Abstractions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ManagedDatabaseLogReplayScenarioTest : SqlTestsBase
+    public class ManagedDatabaseLogReplayScenarioTest : SqlTestRunner
     {
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            var networkClient = GetNetworkClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient);
-        }
-
         public ManagedDatabaseLogReplayScenarioTest(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/managedInstances",
-                "Microsoft.Sql/managedInstances/databases"
-            };
         }
 
         [Fact(Skip = "Depends on hardcoded resource to rerecord")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedDatabaseLogReplayService()
         {
-            RunPowerShellTest("Test-ManagedDatabaseLogReplay");
+            TestRunner.RunTestScript("Test-ManagedDatabaseLogReplay");
         }
 
         [Fact(Skip = "Depends on hardcoded resource to rerecord")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCompleteManagedDatabaseLogReplayService()
         {
-            RunPowerShellTest("Test-CompleteManagedDatabaseLogReplay");
+            TestRunner.RunTestScript("Test-CompleteManagedDatabaseLogReplay");
         }
 
         [Fact(Skip = "Depends on hardcoded resource to rerecord")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCancelManagedDatabaseLogReplayService()
         {
-            RunPowerShellTest("Test-CancelManagedDatabaseLogReplay");
+            TestRunner.RunTestScript("Test-CancelManagedDatabaseLogReplay");
         }
 
         [Fact(Skip = "Depends on hardcoded resource to rerecord")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingManagedDatabaseLogReplayService()
         {
-            RunPowerShellTest("Test-ManagedDatabaseLogReplayPiping");
+            TestRunner.RunTestScript("Test-ManagedDatabaseLogReplayPiping");
         }
 
         [Fact(Skip = "Depends on hardcoded resource to rerecord")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingCompleteCancelManagedDatabaseLogReplayService()
         {
-            RunPowerShellTest("Test-PipingCompleteCancelManagedDatabaseLogReplay");
+            TestRunner.RunTestScript("Test-PipingCompleteCancelManagedDatabaseLogReplay");
         }
     }
 }

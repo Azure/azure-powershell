@@ -16,45 +16,41 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class DatabaseCrudStretchTests : SqlTestsBase
+    public class DatabaseCrudStretchTests : SqlTestRunner
     {
         public DatabaseCrudStretchTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStretchDatabaseCreate()
         {
-            RunPowerShellTest("Test-CreateStretchDatabase");
+            TestRunner.RunTestScript("Test-CreateStretchDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStretchDatabaseUpdate()
         {
-            RunPowerShellTest("Test-UpdateStretchDatabase");
+            TestRunner.RunTestScript("Test-UpdateStretchDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStretchDatabaseGet()
         {
-            RunPowerShellTest("Test-GetStretchDatabase");
+            TestRunner.RunTestScript("Test-GetStretchDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStretchDatabaseRemove()
         {
-            RunPowerShellTest("Test-RemoveStretchDatabase");
+            TestRunner.RunTestScript("Test-RemoveStretchDatabase");
         }
     }
 }

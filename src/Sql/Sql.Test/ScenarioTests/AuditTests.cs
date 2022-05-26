@@ -16,213 +16,195 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class AuditTests : SqlTestsBase
+    public class AuditTests : SqlTestRunner
     {
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var storageV2Client = GetStorageManagementClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            var monitorManagementClient = GetMonitorManagementClient(context);
-            var commonMonitorManagementClient = GetCommonMonitorManagementClient(context);
-            var eventHubManagementClient = GetEventHubManagementClient(context);
-            var operationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, storageV2Client, storageV2Client,
-                newResourcesClient, monitorManagementClient, commonMonitorManagementClient,
-                eventHubManagementClient, operationalInsightsManagementClient);
-        }
-
         public AuditTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseUpdatePolicyWithStorage()
         {
-            RunPowerShellTest("Test-BlobAuditDatabaseUpdatePolicyWithStorage");
+            TestRunner.RunTestScript("Test-BlobAuditDatabaseUpdatePolicyWithStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditServerUpdatePolicyWithStorage()
         {
-            RunPowerShellTest("Test-BlobAuditServerUpdatePolicyWithStorage");
+            TestRunner.RunTestScript("Test-BlobAuditServerUpdatePolicyWithStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMSSupportBlobAuditServerUpdatePolicyWithStorage()
         {
-            RunPowerShellTest("Test-MSSupportBlobAuditServerUpdatePolicyWithStorage");
+            TestRunner.RunTestScript("Test-MSSupportBlobAuditServerUpdatePolicyWithStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDisableDatabaseAudit()
         {
-            RunPowerShellTest("Test-BlobAuditDisableDatabaseAudit");
+            TestRunner.RunTestScript("Test-BlobAuditDisableDatabaseAudit");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDisableServerAudit()
         {
-            RunPowerShellTest("Test-BlobAuditDisableServerAudit");
+            TestRunner.RunTestScript("Test-BlobAuditDisableServerAudit");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMSSupportBlobAuditDisableServerAudit()
         {
-            RunPowerShellTest("Test-MSSupportBlobAuditDisableServerAudit");
+            TestRunner.RunTestScript("Test-MSSupportBlobAuditDisableServerAudit");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditFailedDatabaseUpdatePolicyWithNoStorage()
         {
-            RunPowerShellTest("Test-BlobAuditFailedDatabaseUpdatePolicyWithNoStorage");
+            TestRunner.RunTestScript("Test-BlobAuditFailedDatabaseUpdatePolicyWithNoStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditFailedServerUpdatePolicyWithNoStorage()
         {
-            RunPowerShellTest("Test-BlobAuditFailedServerUpdatePolicyWithNoStorage");
+            TestRunner.RunTestScript("Test-BlobAuditFailedServerUpdatePolicyWithNoStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMSSupportBlobAuditFailedServerUpdatePolicyWithNoStorage()
         {
-            RunPowerShellTest("Test-MSSupportBlobAuditFailedServerUpdatePolicyWithNoStorage");
+            TestRunner.RunTestScript("Test-MSSupportBlobAuditFailedServerUpdatePolicyWithNoStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseUpdatePolicyKeepPreviousStorage()
         {
-            RunPowerShellTest("Test-BlobAuditDatabaseUpdatePolicyKeepPreviousStorage");
+            TestRunner.RunTestScript("Test-BlobAuditDatabaseUpdatePolicyKeepPreviousStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditServerUpdatePolicyKeepPreviousStorage()
         {
-            RunPowerShellTest("Test-BlobAuditServerUpdatePolicyKeepPreviousStorage");
+            TestRunner.RunTestScript("Test-BlobAuditServerUpdatePolicyKeepPreviousStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMSSupportBlobAuditServerUpdatePolicyKeepPreviousStorage()
         {
-            RunPowerShellTest("Test-MSSupportBlobAuditServerUpdatePolicyKeepPreviousStorage");
+            TestRunner.RunTestScript("Test-MSSupportBlobAuditServerUpdatePolicyKeepPreviousStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditFailWithBadDatabaseIndentity()
         {
-            RunPowerShellTest("Test-BlobAuditFailWithBadDatabaseIndentity");
+            TestRunner.RunTestScript("Test-BlobAuditFailWithBadDatabaseIndentity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditFailWithBadServerIndentity()
         {
-            RunPowerShellTest("Test-BlobAuditFailWithBadServerIndentity");
+            TestRunner.RunTestScript("Test-BlobAuditFailWithBadServerIndentity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMSSupportBlobAuditFailWithBadServerIndentity()
         {
-            RunPowerShellTest("Test-MSSupportBlobAuditFailWithBadServerIndentity");
+            TestRunner.RunTestScript("Test-MSSupportBlobAuditFailWithBadServerIndentity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseStorageKeyRotation()
         {
-            RunPowerShellTest("Test-BlobAuditDatabaseStorageKeyRotation");
+            TestRunner.RunTestScript("Test-BlobAuditDatabaseStorageKeyRotation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditServerStorageKeyRotation()
         {
-            RunPowerShellTest("Test-BlobAuditServerStorageKeyRotation");
+            TestRunner.RunTestScript("Test-BlobAuditServerStorageKeyRotation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditServerRetentionKeepProperties()
         {
-            RunPowerShellTest("Test-BlobAuditServerRetentionKeepProperties");
+            TestRunner.RunTestScript("Test-BlobAuditServerRetentionKeepProperties");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseRetentionKeepProperties()
         {
-            RunPowerShellTest("Test-BlobAuditDatabaseRetentionKeepProperties");
+            TestRunner.RunTestScript("Test-BlobAuditDatabaseRetentionKeepProperties");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditOnDatabase()
         {
-            RunPowerShellTest("Test-BlobAuditOnDatabase");
+            TestRunner.RunTestScript("Test-BlobAuditOnDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditOnServer()
         {
-            RunPowerShellTest("Test-BlobAuditOnServer");
+            TestRunner.RunTestScript("Test-BlobAuditOnServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMSSupportBlobAuditOnServer()
         {
-            RunPowerShellTest("Test-MSSupportBlobAuditOnServer");
+            TestRunner.RunTestScript("Test-MSSupportBlobAuditOnServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion()
         {
-            RunPowerShellTest("Test-BlobAuditDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion");
+            TestRunner.RunTestScript("Test-BlobAuditDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditWithAuditActionGroups()
         {
-            RunPowerShellTest("Test-BlobAuditWithAuditActionGroups");
+            TestRunner.RunTestScript("Test-BlobAuditWithAuditActionGroups");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExtendedAuditOnDatabase()
         {
-            RunPowerShellTest("Test-ExtendedAuditOnDatabase");
+            TestRunner.RunTestScript("Test-ExtendedAuditOnDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExtendedAuditOnServer()
         {
-            RunPowerShellTest("Test-ExtendedAuditOnServer");
+            TestRunner.RunTestScript("Test-ExtendedAuditOnServer");
         }
 
         [Fact]
@@ -230,7 +212,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnDatabase()
         {
-            RunPowerShellTest("Test-AuditOnDatabase");
+            TestRunner.RunTestScript("Test-AuditOnDatabase");
         }
 
         [Fact]
@@ -238,7 +220,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnServer()
         {
-            RunPowerShellTest("Test-AuditOnServer");
+            TestRunner.RunTestScript("Test-AuditOnServer");
         }
 
         [Fact]
@@ -246,91 +228,91 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestMSSupportAuditOnServer()
         {
-            RunPowerShellTest("Test-MSSupportAuditOnServer");
+            TestRunner.RunTestScript("Test-MSSupportAuditOnServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDatabaseAuditDiagnosticsAreCreatedOnNeed()
         {
-            RunPowerShellTest("Test-NewDatabaseAuditDiagnosticsAreCreatedOnNeed");
+            TestRunner.RunTestScript("Test-NewDatabaseAuditDiagnosticsAreCreatedOnNeed");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewServerAuditDiagnosticsAreCreatedOnNeed()
         {
-            RunPowerShellTest("Test-NewServerAuditDiagnosticsAreCreatedOnNeed");
+            TestRunner.RunTestScript("Test-NewServerAuditDiagnosticsAreCreatedOnNeed");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMSSupportNewServerAuditDiagnosticsAreCreatedOnNeed()
         {
-            RunPowerShellTest("Test-MSSupportNewServerAuditDiagnosticsAreCreatedOnNeed");
+            TestRunner.RunTestScript("Test-MSSupportNewServerAuditDiagnosticsAreCreatedOnNeed");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAuditOnServer()
         {
-            RunPowerShellTest("Test-RemoveAuditOnServer");
+            TestRunner.RunTestScript("Test-RemoveAuditOnServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMSSupportRemoveAuditOnServer()
         {
-            RunPowerShellTest("Test-MSSupportRemoveAuditOnServer");
+            TestRunner.RunTestScript("Test-MSSupportRemoveAuditOnServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAuditOnDatabase()
         {
-            RunPowerShellTest("Test-RemoveAuditOnDatabase");
+            TestRunner.RunTestScript("Test-RemoveAuditOnDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveDatabaseAuditingSettingsMultipleDiagnosticSettings()
         {
-            RunPowerShellTest("Test-RemoveDatabaseAuditingSettingsMultipleDiagnosticSettings");
+            TestRunner.RunTestScript("Test-RemoveDatabaseAuditingSettingsMultipleDiagnosticSettings");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveServerAuditingSettingsMultipleDiagnosticSettings()
         {
-            RunPowerShellTest("Test-RemoveServerAuditingSettingsMultipleDiagnosticSettings");
+            TestRunner.RunTestScript("Test-RemoveServerAuditingSettingsMultipleDiagnosticSettings");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMSSupportRemoveServerAuditingSettingsMultipleDiagnosticSettings()
         {
-            RunPowerShellTest("Test-MSSupportRemoveServerAuditingSettingsMultipleDiagnosticSettings");
+            TestRunner.RunTestScript("Test-MSSupportRemoveServerAuditingSettingsMultipleDiagnosticSettings");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerAuditingToStorageInVNet()
         {
-            RunPowerShellTest("Test-ServerAuditingToStorageInVNet");
+            TestRunner.RunTestScript("Test-ServerAuditingToStorageInVNet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMSSupportServerAuditingToStorageInVNet()
         {
-            RunPowerShellTest("Test-MSSupportServerAuditingToStorageInVNet");
+            TestRunner.RunTestScript("Test-MSSupportServerAuditingToStorageInVNet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseAuditingToStorageInVNet()
         {
-            RunPowerShellTest("Test-DatabaseAuditingToStorageInVNet");
+            TestRunner.RunTestScript("Test-DatabaseAuditingToStorageInVNet");
         }
     }
 }

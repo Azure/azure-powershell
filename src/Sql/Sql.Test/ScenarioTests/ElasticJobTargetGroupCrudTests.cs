@@ -19,13 +19,10 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ElasticJobTargetGroupCrudTests : SqlTestsBase
+    public class ElasticJobTargetGroupCrudTests : SqlTestRunner
     {
         public ElasticJobTargetGroupCrudTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
         #region Create Tests
@@ -34,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTargetGroupCreate()
         {
-            RunPowerShellTest("Test-CreateTargetGroup");
+            TestRunner.RunTestScript("Test-CreateTargetGroup");
         }
 
         #endregion
@@ -45,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTargetGroupGet()
         {
-            RunPowerShellTest("Test-GetTargetGroup");
+            TestRunner.RunTestScript("Test-GetTargetGroup");
         }
 
         #endregion
@@ -56,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTargetGroupRemove()
         {
-            RunPowerShellTest("Test-RemoveTargetGroup");
+            TestRunner.RunTestScript("Test-RemoveTargetGroup");
         }
 
         #endregion

@@ -16,50 +16,34 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ServerKeyVaultKeyTests : SqlTestsBase
+    public class ServerKeyVaultKeyTests : SqlTestRunner
     {
-
-
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            var graphClient = GetGraphClient(context);
-            var networkClient = GetNetworkClient(context);
-            var keyVaultClient = GetKeyVaultClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient, graphClient, keyVaultClient);
-        }
-
         public ServerKeyVaultKeyTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
         [Fact(Skip = "Requires hardcoded resource 'akvtdekeyvaultcl'")]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestServerKeyVaultKeyAdd()
         {
-            RunPowerShellTest("Test-AddServerKeyVaultKey");
+            TestRunner.RunTestScript("Test-AddServerKeyVaultKey");
         }
 
         [Fact(Skip = "Requires hardcoded resource 'akvtdekeyvaultcl'")]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestServerKeyVaultKeyGet()
         {
-            RunPowerShellTest("Test-GetServerKeyVaultKey");
+            TestRunner.RunTestScript("Test-GetServerKeyVaultKey");
         }
 
         [Fact(Skip = "TODO: only works for live mode. Mihymel will fix the test issue for Create-ServerKeyVaultKeyTestEnvironment")]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestServerKeyVaultKeyRemove()
         {
-            RunPowerShellTest("Test-RemoveServerKeyVaultKey");
+            TestRunner.RunTestScript("Test-RemoveServerKeyVaultKey");
         }
     }
 }

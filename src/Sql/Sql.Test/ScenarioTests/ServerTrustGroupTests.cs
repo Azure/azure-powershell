@@ -16,33 +16,20 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-	public class ServerTrustGroupTests : SqlTestsBase
+	public class ServerTrustGroupTests : SqlTestRunner
 	{
 		public ServerTrustGroupTests(ITestOutputHelper output) : base(output)
 		{
-			base.resourceTypesToIgnoreApiVersion = new string[] {
-				"Microsoft.Sql/servers"
-			};
-		}
-
-		protected override void SetupManagementClients(RestTestFramework.MockContext context)
-		{
-			var newResourcesClient = GetResourcesClient(context);
-			var sqlClient = GetSqlClient(context);
-			var networkClient = GetNetworkClient(context);
-			var graphClient = GetGraphClientVersion1_6(context);
-			Helper.SetupSomeOfManagementClients(newResourcesClient, sqlClient, networkClient, graphClient);
 		}
 
 		[Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
 		public void TestServerTrustGroup()
 		{
-			RunPowerShellTest("Test-ServerTrustGroup");
+			TestRunner.RunTestScript("Test-ServerTrustGroup");
 		}
 	}
 }

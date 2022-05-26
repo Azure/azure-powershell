@@ -16,45 +16,34 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class VirtualNetworkRuleTest : SqlTestsBase
+    public class VirtualNetworkRuleTest : SqlTestRunner
     {
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            var networkClient = GetNetworkClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient);
-        }
         public VirtualNetworkRuleTest(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkRuleCreateAndUpdate()
         {
-            RunPowerShellTest("Test-CreateAndUpdateVirtualNetworkRule");
+            TestRunner.RunTestScript("Test-CreateAndUpdateVirtualNetworkRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkRuleGet()
         {
-            RunPowerShellTest("Test-GetVirtualNetworkRule");
+            TestRunner.RunTestScript("Test-GetVirtualNetworkRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkRuleRemove()
         {
-            RunPowerShellTest("Test-RemoveVirtualNetworkRule");
+            TestRunner.RunTestScript("Test-RemoveVirtualNetworkRule");
         }
     }
 }

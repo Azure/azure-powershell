@@ -34,77 +34,80 @@ using CommonMonitor = Microsoft.Azure.Management.Monitor.Version2018_09_01;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.TestFx;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
-    public class SqlTestsBase : RMTestBase, IDisposable
+    public class SqlTestRunner
     {
-        protected EnvironmentSetupHelper Helper;
-        protected string[] resourceTypesToIgnoreApiVersion;
+        protected string[] resourceTypesToIgnoreApiVersion = new string[] {
+            "Microsoft.Sql/managedInstances",
+            "Microsoft.Sql/managedInstances/databases",
+            "Microsoft.Sql/managedInstances/managedDatabases",
+            "Microsoft.Sql/servers",
+            "Microsoft.Sql/servers/databases"
+        };
         private const string TenantIdKey = "TenantId";
 
-        protected SqlTestsBase(ITestOutputHelper output)
+        protected readonly ITestRunner TestRunner;
+
+        protected SqlTestRunner(ITestOutputHelper output)
         {
-            Helper = new EnvironmentSetupHelper();
-
-            var tracer = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(tracer);
-            Helper.TracingInterceptor = tracer;
-        }
-
-        protected virtual void SetupManagementClients(MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient);
-        }
-
-        protected void RunPowerShellTest(params string[] scripts)
-        {
-            TestExecutionHelpers.SetUpSessionAndProfile();
-            var sf = new StackTrace().GetFrame(1);
-            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
-            var mockName = sf.GetMethod().Name;
-
-            var d = new Dictionary<string, string>
-            {
-                {"Microsoft.Resources", null},
-                {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null},
-                {"Microsoft.Network", null},
-                {"Microsoft.KeyVault", null},
-                {"Microsoft.EventHub", null},
-                {"Microsoft.Insights", null},
-                {"Microsoft.OperationalInsights", null}
-            };
-
-            var providersToIgnore = new Dictionary<string, string>
-            {
-                {"Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient", "1.42-previewInternal"},
-                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
-            };
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithResourceApiExclusion(true, d, providersToIgnore, resourceTypesToIgnoreApiVersion);
-            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-
-            // Enable undo functionality as well as mock recording
-            using (var context = MockContext.Start(callingClassType, mockName))
-            {
-                Helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                SetupManagementClients(context);
-                Helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + GetType().Name + ".ps1",
-                    Helper.RMProfileModule,
-                    Helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
-                    Helper.RMNetworkModule,
-                    "AzureRM.Storage.ps1",
-                    "AzureRM.Resources.ps1",
-                    Helper.RMOperationalInsightsModule,
-                    Helper.RMEventHubModule,
-                    Helper.RMMonitorModule,
-                    Helper.RMKeyVaultModule);
-                Helper.RunPowerShellTest(scripts);
-            }
+            TestRunner = TestManager.CreateInstance(output)
+                .WithNewPsScriptFilename($"{GetType().Name}.ps1")
+                .WithProjectSubfolderForTests("ScenarioTests")
+                .WithCommonPsScripts(new[]
+                {
+                    @"Common.ps1",
+                    @"../AzureRM.Storage.ps1",
+                    @"../AzureRM.Resources.ps1"
+                })
+                .WithNewRmModules(helper => new[]
+                {
+                    helper.RMProfileModule,
+                    helper.RMStorageModule,
+                    helper.GetRMModulePath("Az.Sql.psd1"),
+                    helper.RMNetworkModule,
+                    helper.RMOperationalInsightsModule,
+                    helper.RMEventHubModule,
+                    helper.RMMonitorModule,
+                    helper.RMKeyVaultModule
+                })
+                .WithRecordMatcher(
+                    (bool ignoreResourcesClient, Dictionary<string, string> providers, Dictionary<string, string> userAgents) =>
+                        new PermissiveRecordMatcherWithResourceApiExclusion(ignoreResourcesClient, providers, userAgents, resourceTypesToIgnoreApiVersion)
+                )
+                .WithNewRecordMatcherArguments(
+                    userAgentsToIgnore: new Dictionary<string, string>
+                    {
+                        {"Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient", "1.42-previewInternal"},
+                        {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+                    },
+                    resourceProviders: new Dictionary<string, string>
+                    {
+                        {"Microsoft.Resources", null},
+                        {"Microsoft.Features", null},
+                        {"Microsoft.Authorization", null},
+                        {"Microsoft.Network", null},
+                        {"Microsoft.KeyVault", null},
+                        {"Microsoft.EventHub", null},
+                        {"Microsoft.Insights", null},
+                        {"Microsoft.OperationalInsights", null}
+                    }
+                ).WithManagementClients(
+                    GetSqlClient,
+                    GetMonitorManagementClient,
+                    GetCommonMonitorManagementClient,
+                    GetEventHubManagementClient,
+                    GetOperationalInsightsManagementClient,
+                    GetResourcesClient,
+                    GetGraphClient,
+                    GetGraphClientVersion1_6,
+                    GetKeyVaultClient,
+                    GetNetworkClient,
+                    GetStorageManagementClient
+                )
+                .Build();
         }
 
         protected SqlManagementClient GetSqlClient(MockContext context)
@@ -187,13 +190,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected static CommonStorage.StorageManagementClient GetStorageManagementClient(MockContext context)
         {
             return context.GetServiceClient<CommonStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        public void Dispose()
-        {
-            XunitTracingInterceptor.RemoveFromContext(Helper.TracingInterceptor);
-            Helper.TracingInterceptor = null;
-            Helper = null;
         }
     }
 }
