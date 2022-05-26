@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed relative path failure in -AsJob scenerio [#18084]
 * Fixed logic of `createtime` and `ChangedTime` in `Get-AzResource --ExpandProperties`. [#18206]
 
 ## Version 6.0.0
