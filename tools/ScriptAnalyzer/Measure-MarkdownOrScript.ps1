@@ -5,8 +5,6 @@
         File Name: Measure-MarkdownOrScript.ps1
 #>
 
-#Requires -Modules PSScriptAnalyzer
-
 [CmdletBinding(DefaultParameterSetName = "Markdown")]
 param (
     [Parameter(Mandatory, HelpMessage = "Markdown searching paths. Empty for current path. Supports wildcard.", ParameterSetName = "Markdown")]
@@ -19,7 +17,7 @@ param (
     [string[]]$RulePaths,
     [switch]$Recurse,
     [switch]$IncludeDefaultRules,
-    [string]$OutputFolder = "output",
+    [string]$OutputFolder = "./artifacts/StaticAnalysisResults/ExampleAnalysis",
     [Parameter(ParameterSetName = "Markdown")]
     [switch]$AnalyzeScriptsInFile,
     [Parameter(ParameterSetName = "Markdown")]
