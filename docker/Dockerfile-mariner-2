@@ -35,6 +35,8 @@ RUN if [ "${LATEST}" = True ] ; then \
         # install latest azure-powershell from BLOB
         pwsh -Command Invoke-WebRequest -uri ${BLOB_URL} -OutFile latest.tar.gz && \       
         mkdir latest  && \
+        tdnf install -y tar gzip \
+        tdnf clean all \ 
         tar -zxvf ./latest.tar.gz -C ./latest  && \
         pwsh -Command ./latest/InstallModule.ps1 ;\
     else \
