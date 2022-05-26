@@ -13,31 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.ResourceManager.Version2021_01_01;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
-using Microsoft.Azure.Management.StorageSync;
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using StorageSync.Test.Common;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using Microsoft.Azure.Commands.TestFx;
-using Microsoft.Azure.Internal.Common;
-using Microsoft.Azure.KeyVault;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Rest;
 using Xunit.Abstractions;
 
 namespace ScenarioTests
@@ -47,19 +29,6 @@ namespace ScenarioTests
     /// </summary>
     public class StorageSyncTestRunner
     {
-        /// <summary>
-        /// The tenant identifier key
-        /// </summary>
-        private const string TenantIdKey = StorageSyncConstants.TenantId;
-        /// <summary>
-        /// The domain key
-        /// </summary>
-        private const string DomainKey = "Domain";
-        /// <summary>
-        /// The subscription identifier key
-        /// </summary>
-        private const string SubscriptionIdKey = "SubscriptionId";
-
         /// <summary>
         /// Gets the user domain.
         /// </summary>
@@ -121,102 +90,6 @@ namespace ScenarioTests
         private void RegisterComponents(MockContext context, string testName)
         {
             AzureSession.Instance.RegisterComponent<IStorageSyncResourceManager>(StorageSyncConstants.StorageSyncResourceManager, () => new MockStorageSyncResourceManager(testName), overwrite: true);
-        }
-
-        /// <summary>
-        /// Gets the resource management client.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <returns>ResourceManagementClient.</returns>
-        private ResourceManagementClient GetRMClient(MockContext context)
-        {
-            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        /// <summary>
-        /// Gets the subscription client.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <returns>SubscriptionClient.</returns>
-        private SubscriptionClient GetSubClient(MockContext context)
-        {
-            return context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        /// <summary>
-        /// Gets the storage sync management client.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <returns>StorageSyncManagementClient.</returns>
-        private StorageSyncManagementClient GetStorageSyncClient(MockContext context)
-        {
-            return context.GetServiceClient<StorageSyncManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        /// <summary>
-        /// Gets the storage management client.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <returns>StorageManagementClient.</returns>
-        private StorageManagementClient GetStorageClient(MockContext context)
-        {
-            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        /// <summary>
-        /// Gets the graph client.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <returns>MicrosoftGraphClient.</returns>
-        private MicrosoftGraphClient GetGraphClient(MockContext context)
-        {
-            var environment = TestEnvironmentFactory.GetTestEnvironment();
-            string tenantId = null;
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                tenantId = environment.Tenant;
-                UserDomain = String.IsNullOrEmpty(environment.UserName) ? String.Empty : environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
-
-                HttpMockServer.Variables[TenantIdKey] = tenantId;
-                HttpMockServer.Variables[DomainKey] = UserDomain;
-            }
-            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
-                {
-                    tenantId = HttpMockServer.Variables[TenantIdKey];
-                }
-                if (HttpMockServer.Variables.ContainsKey(DomainKey))
-                {
-                    UserDomain = HttpMockServer.Variables[DomainKey];
-                }
-                if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
-                {
-                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Id = HttpMockServer.Variables[SubscriptionIdKey];
-                }
-            }
-
-            var client = context.GetGraphServiceClient<MicrosoftGraphClient>(environment, true);
-            client.TenantID = tenantId;
-            if (AzureRmProfileProvider.Instance != null &&
-                AzureRmProfileProvider.Instance.Profile != null &&
-                AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
-                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant != null)
-            {
-                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = client.TenantID;
-            }
-            return client;
-        }
-
-        /// <summary>
-        /// Gets the authorization management client.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <returns>AuthorizationManagementClient.</returns>
-        private AuthorizationManagementClient GetAuthClient(MockContext context)
-        {
-            return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
