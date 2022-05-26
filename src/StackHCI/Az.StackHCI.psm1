@@ -154,7 +154,7 @@ $GraphServiceApiScopeAzureChinaCloud = "https://microsoftgraph.chinacloudapi.cn/
 $ServiceEndpointAzureUSGovernment = "https://dp.azurestackhci.azure.us"
 $AuthorityAzureUSGovernment = "https://login.microsoftonline.us"
 $BillingServiceApiScopeAzureUSGovernment = "https://dp.azurestackhci.azure.us/.default"
-$GraphServiceApiScopeAzureUSGovernment = "https://graph.windows.net/.default"
+$GraphServiceApiScopeAzureUSGovernment =  "https://graph.microsoft.us/.default"
 
 $ServiceEndpointAzureGermanCloud = "https://azurestackhci-usage.trafficmanager.de"
 $AuthorityAzureGermanCloud = "https://login.microsoftonline.de"
