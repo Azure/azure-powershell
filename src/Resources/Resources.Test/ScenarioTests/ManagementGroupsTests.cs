@@ -107,5 +107,110 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewRemoveManagementGroupSubscription");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetEntities()
+        {
+            TestRunner.RunTestScript("Test-GetEntities");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCheckNameAvailabilityTrue()
+        {
+            TestRunner.RunTestScript("Test-CheckNameAvailabilityTrue");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCheckNameAvailabilityFalse()
+        {
+            TestRunner.RunTestScript("Test-CheckNameAvailabilityFalse");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCheckNameWithInvalidCharacters()
+        {
+            TestRunner.RunTestScript("Test-CheckNameWithInvalidCharacters");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetTenantBackfillStatus()
+        {
+            TestRunner.RunTestScript("Test-GetTenantBackfillStatus");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStartTenantBackfill()
+        {
+            TestRunner.RunTestScript("Test-StartTenantBackfill");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetManagementGroupSubscription()
+        {
+            TestRunner.RunTestScript("Test-GetManagementGroupSubscription");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetsubscriptionsUnderManagementGroup()
+        {
+            TestRunner.RunTestScript("Test-GetSubscriptionsUnderManagementGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAuthorizationHierarcySetting()
+        {
+            TestRunner.RunTestScript("Test-NewAuthHierarchySetting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDefaultMGHierarcySetting()
+        {
+            TestRunner.RunTestScript("Test-NewDefaultMGHierarcySetting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewHierarchySettings()
+        {
+            TestRunner.RunTestScript("Test-NewHierarchySettings");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveHierarcySetting()
+        {
+            TestRunner.RunTestScript("Test-RemoveHierarchySetting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateHierarchySettingsAuth()
+        {
+            TestRunner.RunTestScript("Test-UpdateAuthHierarchySetting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateHierarchySettingsDefaultMG()
+        {
+            TestRunner.RunTestScript("Test-UpdateAuthHierarchySetting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateBothHierarchySettings()
+        {
+            TestRunner.RunTestScript("Test-UpdateBothHierarchySettings");
+        }
     }
 }

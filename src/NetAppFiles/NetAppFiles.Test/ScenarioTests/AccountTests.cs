@@ -17,35 +17,31 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 {
-    public class AccountTests
+    public class AccountTests : NetAppFilesTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public AccountTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AccountTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAccountCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AccountCrud");
+            TestRunner.RunTestScript("Test-AccountCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAccountActiveDirectory()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AccountActiveDirectory");
+            TestRunner.RunTestScript("Test-AccountActiveDirectory");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAccountPipelines()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AccountPipelines");
+            TestRunner.RunTestScript("Test-AccountPipelines");
         }
     }
 }

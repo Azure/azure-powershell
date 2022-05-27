@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
                 Name = AccountBackupName;
             }
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
             {                
                 if (accountBackup)
                 {

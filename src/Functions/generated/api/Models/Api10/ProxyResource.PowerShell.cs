@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10
     using Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell;
 
     /// <summary>
-    /// The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ProxyResourceTypeConverter))]
     public partial class ProxyResource
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10
         /// Creates a new instance of <see cref="ProxyResource" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ProxyResource" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10.IProxyResource FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
-    /// The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
     [System.ComponentModel.TypeConverter(typeof(ProxyResourceTypeConverter))]
     public partial interface IProxyResource
 

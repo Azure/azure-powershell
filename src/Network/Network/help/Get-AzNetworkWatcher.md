@@ -30,7 +30,7 @@ The Get-AzNetworkWatcher cmdlet gets one or more Azure Network Watcher resources
 
 ### Example 1: Get a Network Watcher
 ```powershell
-Get-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
+Get-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroupName NetworkWatcherRG
 ```
 
 ```output

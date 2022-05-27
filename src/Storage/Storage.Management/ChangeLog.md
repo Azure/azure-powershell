@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 4.6.0
+* Supported generate Sas token for DataLakeGen2
+    -  `New-AzDataLakeGen2SasToken`
+* Showed OAuth token in debug log in debug build only
+    -  `New-AzStorageContext`
+* Supported return more file properties when list Azure file
+    -  `Get-AzStorageFile`
+
 ## Version 4.5.0
 * Supported DaysAfterLastTierChangeGreaterThan in Management Policy
     -  `Add-AzStorageAccountManagementPolicyAction`

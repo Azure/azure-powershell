@@ -12,52 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 {
-    public class GetAzAdvisorRecommendation
+    public class GetAzAdvisorRecommendation : AdvisorTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public GetAzAdvisorRecommendation(Xunit.Abstractions.ITestOutputHelper output)
+        public GetAzAdvisorRecommendation(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzAdvisorRecommendationNoParameter()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzAdvisorRecommendationNoParameter");
+            TestRunner.RunTestScript("Get-AzAdvisorRecommendationNoParameter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzAdvisorRecommendationByCategory()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzAdvisorRecommendationByCategory");
+            TestRunner.RunTestScript("Get-AzAdvisorRecommendationByCategory");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzAdvisorRecommendationByNameParameterSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzAdvisorRecommendationByNameParameterSet");
+            TestRunner.RunTestScript("Get-AzAdvisorRecommendationByNameParameterSet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzAdvisorRecommendationByIdParameterSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzAdvisorRecommendationByIdParameterSet");
+            TestRunner.RunTestScript("Get-AzAdvisorRecommendationByIdParameterSet");
         }
     }
 }

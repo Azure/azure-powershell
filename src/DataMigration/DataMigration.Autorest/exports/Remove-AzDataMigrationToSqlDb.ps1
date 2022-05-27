@@ -20,9 +20,9 @@ Remove the specified database migration for a given SQL Db.
 .Description
 Remove the specified database migration for a given SQL Db.
 .Example
-Remove-AzDataMigrationToSqlDb -ResourceGroupName tsum38RG -SqlDbInstanceName dmstestsqldb -TargetDbName at_sqldbtrgtps1
+Remove-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName sqldb -TargetDbName myDB
 .Example
-Remove-AzDataMigrationToSqlDb -ResourceGroupName tsum38RG -SqlDbInstanceName dmstestsqldb -TargetDbName at_sqldbtrgtps1 -Force
+Remove-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName sqldb -TargetDbName myDB -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity

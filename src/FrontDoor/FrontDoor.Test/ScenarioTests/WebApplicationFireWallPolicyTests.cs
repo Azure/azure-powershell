@@ -12,48 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
 {
-    public class WebApplicationFireWallPolicyTests
+    public class WebApplicationFireWallPolicyTests : FrontDoorTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public WebApplicationFireWallPolicyTests(Xunit.Abstractions.ITestOutputHelper output)
+        public WebApplicationFireWallPolicyTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-PolicyCrud");
+            TestRunner.RunTestScript("Test-PolicyCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyCrudWithPiping()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-PolicyCrudWithPiping");
+            TestRunner.RunTestScript("Test-PolicyCrudWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedRuleSetDefinitions()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ManagedRuleSetDefinition");
+            TestRunner.RunTestScript("Test-ManagedRuleSetDefinition");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyAction()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-PolicyAction");
+            TestRunner.RunTestScript("Test-PolicyAction");
         }
     }
 }

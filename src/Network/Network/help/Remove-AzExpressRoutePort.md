@@ -44,14 +44,14 @@ Removes $PortName ExpressRoutePort resource in $rg resource group in your subscr
 
 ### Example 2
 ```powershell
-Remove-AzExpressRoutePort -InputObject $erPort
+Remove-AzExpressRoutePort -InputObject $Port
 ```
 
 Removes the ExpressRoutePort resource in InputObject.
 
 ### Example 3
 ```powershell
-Remove-AzExpressRoutePort -Name $ResourceId $id
+Remove-AzExpressRoutePort -ResourceId $id
 ```
 
 Removes the ExpressRoutePort resource with ResourceId $id.

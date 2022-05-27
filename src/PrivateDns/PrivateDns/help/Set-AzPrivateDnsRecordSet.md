@@ -24,14 +24,14 @@ The Set-AzPrivateDnsRecordSet cmdlet updates a record set in the Azure Private D
 
 ### Example 1: Update a record set
 ```powershell
- $RecordSet = Get-AzPrivateDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A
- Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.16.0.0
- Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.31.255.255
- Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+$RecordSet = Get-AzPrivateDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A
+Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.16.0.0
+Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.31.255.255
+Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
 
 # These cmdlets can also be piped:
 
- Get-AzPrivateDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A | Add-AzPrivateDnsRecordConfig -Ipv4Address 172.16.0.0 | Add-AzPrivateDnsRecordConfig -Ipv4Address 172.31.255.255 | Set-AzPrivateDnsRecordSet
+Get-AzPrivateDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A | Add-AzPrivateDnsRecordConfig -Ipv4Address 172.16.0.0 | Add-AzPrivateDnsRecordConfig -Ipv4Address 172.31.255.255 | Set-AzPrivateDnsRecordSet
 ```
 
 ```output
@@ -52,9 +52,9 @@ The first command uses the Get-AzPrivateDnsRecordSet cmdlet to get the specified
 
 ### Example 2: Update an SOA record
 ```powershell
- $RecordSet = Get-AzPrivateDnsRecordSet -Name "@" -RecordType SOA -Zone $Zone
- $RecordSet.Records[0].Email = "admin.myzone.com"
- Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+$RecordSet = Get-AzPrivateDnsRecordSet -Name "@" -RecordType SOA -Zone $Zone
+$RecordSet.Records[0].Email = "admin.myzone.com"
+Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
 ```
 
 ```output

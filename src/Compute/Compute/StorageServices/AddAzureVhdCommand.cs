@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         public string DiskName { get; set; }
 
         [Parameter(
-            Mandatory = true, 
+            Mandatory = true,
             Position = 1,
             ParameterSetName = DirectUploadToManagedDiskSet,
             ValueFromPipelineByPropertyName = true,

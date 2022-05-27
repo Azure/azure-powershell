@@ -52,7 +52,7 @@ function Retry-AzCommand {
     $loopLimit = 0
     do {
         try {
-            $script = "`$ErrorActionPreference='Stop' `n"
+            $script = "`$ErrorActionPreference='Continue' `n"
             $script += $Command.ToString()
             &([ScriptBlock]::Create($script))
             break
@@ -80,7 +80,7 @@ $resourceSetUpCommands=@(
 )
 
 $resourceCleanUpCommands = @(
-    @{Name = "Az.Storage [Cleanup]";          Command = {Remove-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -Force}; Retry=30; Sleep=30},
+    @{Name = "Az.Storage [Cleanup]";          Command = {Remove-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -Force}},
     @{Name = "Az.Resources [Cleanup]";        Command = {Remove-AzResourceGroup -Name $resourceGroupName -Force}}
 )
 
@@ -131,7 +131,7 @@ $resourceTestCommands = @(
     @{Name = "Az.Kusto";                      Command = {Get-AzKustoCluster}},
     @{Name = "Az.LogicApp";                   Command = {Get-AzIntegrationAccount}},
     @{Name = "Az.MachineLearning";            Command = {Get-AzMlWebService}},
-    @{Name = "Az.Maintenance";                Command = {Get-AzMaintenanceConfiguration}; Retry=30; Sleep=30},
+    @{Name = "Az.Maintenance";                Command = {Get-AzMaintenanceConfiguration}},
     @{Name = "Az.ManagedServices";            Command = {Get-AzManagedServicesAssignment}},
     @{Name = "Az.Media";                      Command = {Get-AzMediaService -ResourceGroupName $resourceGroupName}},
     @{Name = "Az.Monitor";                    Command = {Get-AzLogProfile}},
@@ -156,7 +156,7 @@ $resourceTestCommands = @(
     @{Name = "Az.StorageSync";                Command = {Get-AzStorageSyncService}},
     @{Name = "Az.Support";                    Command = {Get-AzSupportTicket}},
     @{Name = "Az.Resources [Tags]";           Command = {Get-AzTag}},
-    @{Name = "Az.Resources [MSGraph]";        Command = {Get-AzAdGroup -First 1}},
+    @{Name = "Az.Resources [MSGraph]";        Command = {Get-AzADUser -First 1 -Select Id}},
     @{Name = "Az.TrafficManager";             Command = {Get-AzTrafficManagerProfile}},
     @{Name = "Az.Billing [UsageAggregates]";  Command = {Get-UsageAggregates -ReportedStartTime '1/1/2018' -ReportedEndTime '1/2/2018'}},
     @{Name = "Az.Websites";                   Command = {Get-AzWebApp -ResourceGroupName $resourceGroupName}}
@@ -172,8 +172,8 @@ $startTime = Get-Date
 $resourceCommands | ForEach-Object {
     $testName = $_.Name
     $script = $_.Command
-    $retry = if($null -eq $_.retry) {0} Else {$_.retry}
-    $sleep = if($null -eq $_.sleep) {30} Else {$_.sleep}
+    $retry = if($null -eq $_.Retry) {3} Else {$_.Retry}
+    $sleep = if($null -eq $_.Sleep) {30} Else {$_.Sleep}
     if($null -ne $_.Since -and "Core" -eq $PSVersionTable.PSEdition -and $PSVersionTable.PSVersion -lt [System.Version]$_.Since) {
         Write-Output "Skip test $testName"
         $testInfo.SkippedCount += 1

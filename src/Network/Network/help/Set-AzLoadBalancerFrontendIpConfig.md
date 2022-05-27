@@ -83,7 +83,7 @@ The fourth command passes the load balancer in $slb to **Set-AzLoadBalancerFront
 ### Example 2: Modify the front-end IP configuration of a load balancer with Gateway Load Balancer
 ```powershell
 $slb1 = Get-AzLoadBalancer -Name "MyLoadBalancer1" -ResourceGroupName "MyResourceGroup"
-$feip = $Get-AzLoadBalancerFrontendIpConfig -Name "MyFrontEnd" -LoadBalancer $slb1
+$feip = Get-AzLoadBalancerFrontendIpConfig -Name "MyFrontEnd" -LoadBalancer $slb1
 $slb2 = Get-AzLoadBalancer -Name "MyLoadBalancer1" -ResourceGroupName "MyResourceGroup"
 $slb2 | Set-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -PublicIpAddress $publicIp -GatewayLoadBalancerId $feip.Id
 $slb2 | Set-AzLoadBalancer

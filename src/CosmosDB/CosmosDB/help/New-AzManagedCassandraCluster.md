@@ -29,11 +29,11 @@ The **New-AzManagedCassandraCluster** cmdlet creates a new managed Cassandra clu
 ### Example 1
 ```powershell
 New-AzManagedCassandraCluster `
- -ResourceGroupName {resourceGroupName} `
- -ClusterName {clusterName} `
- -DelegatedManagementSubnetId {resourceId} `
- -Location {location} `
- -InitialCassandraAdminPassword {password}
+ -ResourceGroupName "resourceGroupName" `
+ -ClusterName "clusterName" `
+ -DelegatedManagementSubnetId "resourceId" `
+ -Location "location" `
+ -InitialCassandraAdminPassword "password"
 ```
 
 ## PARAMETERS

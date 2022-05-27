@@ -17,7 +17,7 @@ Updates properties of a Vault.
 ```
 Set-AzRecoveryServicesVaultProperty [-SoftDeleteFeatureState <String>]
  [-DisableHybridBackupSecurityFeature <Boolean>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Token <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureRSVaultCMKParameterSet
@@ -162,6 +162,21 @@ Type: System.String
 Parameter Sets: AzureRSVaultSoftDelteParameterSet
 Aliases:
 Accepted values: Enable, Disable
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Token
+Auxiliary access token for authenticating critical operation to resource guard subscription
+
+```yaml
+Type: System.String
+Parameter Sets: AzureRSVaultSoftDelteParameterSet
+Aliases:
 
 Required: False
 Position: Named

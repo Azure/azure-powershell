@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             return resourceList;
         }
 
-        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isAutoInflateEnabled, int? maximumThroughputUnits, bool isKafkaEnabled, string clusterARMId, bool isZoneRedundant, bool isDisableLocalAuth, bool isIdentity
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isAutoInflateEnabled, int? maximumThroughputUnits, bool isKafkaEnabled, string clusterARMId, bool isZoneRedundant, bool isDisableLocalAuth
             , string identityType, string[] identityId, PSEncryptionConfigAttributes[] encryptionConfigs)
         {
             EHNamespace parameter = new EHNamespace();
@@ -117,9 +117,6 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             if (isDisableLocalAuth)
                 parameter.DisableLocalAuth = isDisableLocalAuth;
-
-            if (isIdentity)
-                parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned};
 
             if (identityType != null)
             {
@@ -182,7 +179,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSNamespaceAttributes(response);
         }
 
-        // Update Namespace                                                     (ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ZoneRedundant.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperties));                    
+        // Update Namespace (ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ZoneRedundant.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperties));                    
         public PSNamespaceAttributes BeginUpdateNamespace(string resourceGroupName,
             string namespaceName,
             string location,
@@ -191,17 +188,11 @@ namespace Microsoft.Azure.Commands.Eventhub
             Dictionary<string, string> tags,
             bool isAutoInflateEnabled,
             int? maximumThroughputUnits,
-            bool isKafkaEnabled, bool isIdentity, string identityUserDefined, string keySource, List<string []> KeyProperties, bool isDisableLocalAuth, 
+            bool isKafkaEnabled, bool isDisableLocalAuth, 
             string[] identityId, string identityType, PSEncryptionConfigAttributes[] encryptionConfigs)
         {          
 
             EHNamespace parameter = Client.Namespaces.Get(resourceGroupName, namespaceName);
-
-            if (parameter.Identity != null && parameter.Encryption != null && KeyProperties != null)
-            {
-                parameter.Encryption = new Encryption();
-                parameter.Encryption.KeyVaultProperties = new List<KeyVaultProperties>();
-            }
 
             if(location != null)
             {
@@ -237,104 +228,9 @@ namespace Microsoft.Azure.Commands.Eventhub
             if (isKafkaEnabled)
                 parameter.KafkaEnabled = isKafkaEnabled;
 
-            if (isIdentity) { 
-                if(parameter.Identity == null)
-                {
-                    parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned };
-                }
-                else
-                {
-                    if(parameter.Identity.Type == ManagedServiceIdentityType.None)
-                    {
-                        parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned };
-                    }
-                    if (parameter.Identity.Type == ManagedServiceIdentityType.UserAssigned)
-                    {
-                        parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssignedUserAssigned };
-                    }
-                }
-            }
-
             if (isDisableLocalAuth)
                 parameter.DisableLocalAuth = isDisableLocalAuth;
 
-
-            //IdentityUserDefined, KeySource, KeyProperties
-            if (!String.IsNullOrEmpty(identityUserDefined) && identityUserDefined.ToLower() == "none")
-            {
-                parameter.Identity = new Identity() { Type = null};
-            }
-
-            if (!String.IsNullOrEmpty(keySource))
-            {
-                if (parameter.Encryption == null)
-                {
-                    parameter.Encryption = new Encryption()
-                    {
-                        KeySource = KeySource.MicrosoftKeyVault
-                    };
-                }
-                else
-                {
-                    parameter.Encryption.KeySource = KeySource.MicrosoftKeyVault;
-                }
-            }
-
-            if (KeyProperties != null)
-            {
-                parameter.Encryption.KeyVaultProperties = new List<KeyVaultProperties>();
-
-                if (KeyProperties.Count > 2)
-                {
-                    if (KeyProperties[0].Length == 1)
-                    {
-                        KeyVaultProperties item = new KeyVaultProperties();
-
-                        switch (KeyProperties.Count)
-                        {
-                            case 2:
-                                {
-                                    item.KeyName = KeyProperties[0].ToString();
-                                    item.KeyVaultUri = KeyProperties[0].ToString();
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    item.KeyName = KeyProperties[0].GetValue(0).ToString();
-                                    item.KeyVaultUri = KeyProperties[1].GetValue(0).ToString();
-                                    item.KeyVersion = KeyProperties[2].GetValue(0).ToString();
-                                    break;
-                                }
-                        }
-                        parameter.Encryption.KeyVaultProperties.Add(item);
-                    }
-                    else
-                    {
-                        foreach (string[] item in KeyProperties)
-                        {
-                            KeyVaultProperties singleItem = new KeyVaultProperties();
-                            switch (item.Length)
-                            {
-                                case 2:
-                                    {
-                                        singleItem.KeyName = item[0];
-                                        singleItem.KeyVaultUri = item[1];
-                                        break;
-                                    }
-                                case 3:
-                                    {
-                                        singleItem.KeyName = item[0];
-                                        singleItem.KeyVaultUri = item[1];
-                                        singleItem.KeyVersion = item[2];
-                                        break;
-                                    }
-                            }
-
-                            parameter.Encryption.KeyVaultProperties.Add(singleItem);
-                        }
-                    }
-                }                
-            }
             if (identityType != null)
             {
                 if(parameter.Identity == null)
@@ -344,10 +240,10 @@ namespace Microsoft.Azure.Commands.Eventhub
 
                 parameter.Identity.Type = FindIdentity(identityType);
 
-                if(parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
+                /*if(parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
                 {
                     parameter.Identity.UserAssignedIdentities = null;
-                }
+                }*/
             }
 
             if (identityId != null)
@@ -364,7 +260,12 @@ namespace Microsoft.Azure.Commands.Eventhub
                 {
                     parameter.Identity.UserAssignedIdentities = UserAssignedIdentities;
                 }
-                if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
+
+                if (identityId.Length == 0)
+                {
+                    parameter.Identity.UserAssignedIdentities = null;
+                }
+                else if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
                 {
                     throw new Exception("Please change -IdentityType to UserAssigned or 'SystemAssigned, UserAssigned' if you want to add User Assigned Identities");
                 }
@@ -860,6 +761,55 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             var response = Client.Namespaces.CreateOrUpdateNetworkRuleSet(resourceGroupName, namespaceName, networkRuleSet);
             return new PSNetworkRuleSetAttributes(response);
+        }
+
+        public PSNetworkRuleSetAttributes UpdateNetworkRuleSet(string resourceGroupName, string namespaceName, string publicNetworkAccess, bool? trustedServiceAccessEnabled, string defaultAction, PSNWRuleSetIpRulesAttributes[] iPRule, PSNWRuleSetVirtualNetworkRulesAttributes[] virtualNetworkRule)
+        {
+            NetworkRuleSet networkRuleSet = Client.Namespaces.GetNetworkRuleSet(resourceGroupName, namespaceName);
+
+            if (networkRuleSet == null)
+            {
+                networkRuleSet = new NetworkRuleSet();
+            }
+
+            if (defaultAction != null)
+            {
+                networkRuleSet.DefaultAction = defaultAction;
+            }
+
+            if (publicNetworkAccess != null)
+            {
+                networkRuleSet.PublicNetworkAccess = publicNetworkAccess;
+            }
+
+            if (trustedServiceAccessEnabled != null)
+            {
+                networkRuleSet.TrustedServiceAccessEnabled = trustedServiceAccessEnabled;
+            }
+
+            if (iPRule != null)
+            {
+                networkRuleSet.IpRules = new List<NWRuleSetIpRules>();
+
+                foreach (PSNWRuleSetIpRulesAttributes psiprules in iPRule)
+                {
+                    networkRuleSet.IpRules.Add(new NWRuleSetIpRules { Action = psiprules.Action, IpMask = psiprules.IpMask });
+                }
+            }
+
+            if (virtualNetworkRule != null)
+            {
+                networkRuleSet.VirtualNetworkRules = new List<NWRuleSetVirtualNetworkRules>();
+
+                foreach (PSNWRuleSetVirtualNetworkRulesAttributes psvisrtualnetworkrules in virtualNetworkRule)
+                {
+                    networkRuleSet.VirtualNetworkRules.Add(new NWRuleSetVirtualNetworkRules { Subnet = new Subnet { Id = psvisrtualnetworkrules.Subnet.Id }, IgnoreMissingVnetServiceEndpoint = psvisrtualnetworkrules.IgnoreMissingVnetServiceEndpoint });
+                }
+            }
+
+            var response = Client.Namespaces.CreateOrUpdateNetworkRuleSet(resourceGroupName, namespaceName, networkRuleSet);
+            return new PSNetworkRuleSetAttributes(response);
+
         }
 
         #endregion

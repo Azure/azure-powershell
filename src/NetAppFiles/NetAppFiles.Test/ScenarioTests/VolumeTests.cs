@@ -17,21 +17,17 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 {
-    public class VolumeTests
+    public class VolumeTests : NetAppFilesTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public VolumeTests(Xunit.Abstractions.ITestOutputHelper output)
+        public VolumeTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumeCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-VolumeCrud");
+            TestRunner.RunTestScript("Test-VolumeCrud");
         }
 
         //---Note This test will be added to the next (2019-11-01) version ---
@@ -39,21 +35,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumeReplication()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-VolumeReplication");
+            TestRunner.RunTestScript("Test-VolumeReplication");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetVolumePool()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetVolumePool");
+            TestRunner.RunTestScript("Test-SetVolumePool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumePipelines()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-VolumePipelines");
+            TestRunner.RunTestScript("Test-VolumePipelines");
         }
     }
 }

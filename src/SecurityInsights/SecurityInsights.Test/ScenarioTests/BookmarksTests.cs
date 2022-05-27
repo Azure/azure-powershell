@@ -12,64 +12,57 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
 {
-    public class BookmarksTests
+    public class BookmarksTests : SecurityInsightsTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public BookmarksTests(Xunit.Abstractions.ITestOutputHelper output)
+        public BookmarksTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void List()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSentinelBookmark-List");
+            TestRunner.RunTestScript("Get-AzSentinelBookmark-List");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Get()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSentinelBookmark-Get");
+            TestRunner.RunTestScript("Get-AzSentinelBookmark-Get");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Create()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSentinelBookmark-Create");
+            TestRunner.RunTestScript("New-AzSentinelBookmark-Create");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Update()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSentinelBookmark-Update");
+            TestRunner.RunTestScript("Update-AzSentinelBookmark-Update");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSentinelBookmark-InputObject");
+            TestRunner.RunTestScript("Update-AzSentinelBookmark-InputObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Remove()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzSentinelBookmark-Remove");
+            TestRunner.RunTestScript("Remove-AzSentinelBookmark-Remove");
         }
     }
 }
