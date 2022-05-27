@@ -35,35 +35,15 @@ using SDKMonitor = Microsoft.Azure.Management.Monitor;
 using CommonMonitor = Microsoft.Azure.Management.Monitor.Version2018_09_01;
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Management.EventHub;
+using Microsoft.Azure.Commands.TestFx;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 {
-    public class SynapseTestBase : RMTestBase
+    public class SynapseTestRunner
     {
         internal string ResourceGroupName { get; set; }
         internal const string ResourceGroupLocation = "northeurope";
-
-        protected readonly EnvironmentSetupHelper _helper;
-
-        public NewResourceManagementClient NewResourceManagementClient { get; private set; }
-
-        public SynapseManagementClient SynapseManagementClient { get; private set; }
-
-        public SynapseSqlV3ManagementClient SynapseSqlV3ManagementClient { get; private set; }
-
-        public SynapseClient SynapseClient { get; private set; }
-
-        public StorageManagementClient StorageManagementClient { get; private set; }
-
-        public CommonMonitor.MonitorManagementClient CommonMonitorManagementClient { get; private set; }
-
-        public SDKMonitor.MonitorManagementClient SDKMonitorManagementClient { get; private set; }
-
-        public OperationalInsightsManagementClient OperationalInsightsManagementClient { get; private set; }
-
-        public EventHubManagementClient EventHubManagementClient { get; private set; }
-
-        public static SynapseTestBase NewInstance => new SynapseTestBase();
 
         protected static string TestResourceGroupName;
 
@@ -71,115 +51,55 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 
         protected static string TestSparkPoolName;
 
-        protected SynapseTestBase()
+        protected readonly ITestRunner TestRunner;
+
+        protected SynapseTestRunner(ITestOutputHelper output)
         {
-            _helper = new EnvironmentSetupHelper();
-        }
-
-        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
-        {
-            _helper.TracingInterceptor = logger;
-            var sf = new StackTrace().GetFrame(1);
-            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
-            var mockName = sf.GetMethod().Name;
-
-            RunPsTestWorkflow(
-                () => scripts,
-                // no custom cleanup
-                null,
-                callingClassType,
-                mockName);
-        }
-
-
-        public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder,
-            Action cleanup,
-            string callingClassType,
-            string mockName)
-        {
-            var d = new Dictionary<string, string>
-            {
-                {"Microsoft.Resources", null},
-                {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null},
-                {"Microsoft.EventHub", null},
-                {"Microsoft.Insights", null},
-                {"Microsoft.OperationalInsights", null}
-            };
-            var providersToIgnore = new Dictionary<string, string>
-            {
-                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
-                {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10"}
-            };
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
-            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            using (var context = MockContext.Start(callingClassType, mockName))
-            {
-                SetupManagementClients(context);
-
-                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
-                _helper.SetupModules(
-                    AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1",
-                    _helper.RMProfileModule,
-                    _helper.GetRMModulePath(@"Az.Synapse.psd1"),
-                    "AzureRM.Resources.ps1",
-                    _helper.GetRMModulePath(@"Az.Storage.psd1"),
-                    _helper.RMOperationalInsightsModule,
-                    _helper.RMEventHubModule,
-                    _helper.RMMonitorModule);
-
-                try
+            TestRunner = TestManager.CreateInstance(output)
+                .WithNewPsScriptFilename($"{GetType().Name}.ps1")
+                .WithProjectSubfolderForTests("ScenarioTests")
+                .WithCommonPsScripts(new[]
                 {
-                    var psScripts = scriptBuilder?.Invoke();
-
-                    if (psScripts == null) return;
-                    _helper.RunPowerShellTest(psScripts);
-                }
-                finally
+                    @"Common.ps1",
+                    @"../AzureRM.Resources.ps1"
+                })
+                .WithNewRmModules(helper => new[]
                 {
-                    cleanup?.Invoke();
-                }
-            }
-        }
-
-        protected void SetupManagementClients(MockContext context)
-        {
-            SynapseManagementClient = GetSynapseManagementClient(context);
-            SynapseSqlV3ManagementClient = GetSynapseSqlV3ManagementClient(context);
-            SynapseClient = GetSynapseClient(context);
-            StorageManagementClient = GetStorageManagementClient(context);
-            NewResourceManagementClient = GetResourceManagementClient(context);
-            CommonMonitorManagementClient = GetCommonMonitorManagementClient(context);
-            SDKMonitorManagementClient = GetMonitorManagementClient(context);
-            OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
-            EventHubManagementClient = GetEventHubManagementClient(context);
-            _helper.SetupManagementClients(
-                SynapseManagementClient,
-                SynapseSqlV3ManagementClient,
-                SynapseClient,
-                StorageManagementClient,
-                NewResourceManagementClient,
-                CommonMonitorManagementClient,
-                SDKMonitorManagementClient,
-                OperationalInsightsManagementClient,
-                EventHubManagementClient,
-                GetNewSynapseManagementClient(context)
-            );
-
-            // register the namespace.
-            _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-        }
-
-        private void SetupDataPlaneClient(MockContext context)
-        {
-            _helper.SetupManagementClients(
-                GetResourceManagementClient(context), 
-                GetSynapseManagementClient(context), 
-                GetSynapseClient(context)
-            );
+                    helper.RMProfileModule,
+                    helper.GetRMModulePath("Az.Synapse.psd1"),
+                    helper.GetRMModulePath("Az.Storage.psd1"),
+                    helper.RMOperationalInsightsModule,
+                    helper.RMEventHubModule,
+                    helper.RMMonitorModule
+                })
+                .WithNewRecordMatcherArguments(
+                    userAgentsToIgnore: new Dictionary<string, string>
+                    {
+                        {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
+                        {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10"}
+                    },
+                    resourceProviders: new Dictionary<string, string>
+                    {
+                        {"Microsoft.Resources", null},
+                        {"Microsoft.Features", null},
+                        {"Microsoft.Authorization", null},
+                        {"Microsoft.EventHub", null},
+                        {"Microsoft.Insights", null},
+                        {"Microsoft.OperationalInsights", null}
+                    }
+                ).WithManagementClients(
+                    GetResourceManagementClient,
+                    GetStorageManagementClient,
+                    GetNewSynapseManagementClient,
+                    GetSynapseManagementClient,
+                    GetSynapseSqlV3ManagementClient,
+                    GetCommonMonitorManagementClient,
+                    GetMonitorManagementClient,
+                    GetOperationalInsightsManagementClient,
+                    GetEventHubManagementClient,
+                    GetSynapseClient
+                )
+                .Build();
         }
 
         #region client creation helpers

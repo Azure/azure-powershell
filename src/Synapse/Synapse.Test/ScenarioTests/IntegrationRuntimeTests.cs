@@ -15,68 +15,57 @@
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagement.Common.Models;
     using Xunit;
 
-    public class IntegrationRuntimeTests : SynapseTestBase
+    public class IntegrationRuntimeTests : SynapseTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public IntegrationRuntimeTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IntegrationRuntimeTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSelfHostedIntegrationRuntime()
         {
-            SynapseTestBase.NewInstance.RunPsTest(
-                _logger,
-                "Test-SelfHosted-IntegrationRuntime");
+            TestRunner.RunTestScript("Test-SelfHosted-IntegrationRuntime");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureIntegrationRuntime()
         {
-            string testResourceGroupName = SynapseTestBase.TestResourceGroupName;
+            string testResourceGroupName = SynapseTestRunner.TestResourceGroupName;
             if (string.IsNullOrEmpty(testResourceGroupName))
             {
                 testResourceGroupName = nameof(TestResourceGroupName);
             }
 
-            string testWorkspaceName = SynapseTestBase.TestWorkspaceName;
+            string testWorkspaceName = SynapseTestRunner.TestWorkspaceName;
             if (string.IsNullOrEmpty(testWorkspaceName))
             {
                 testWorkspaceName = nameof(TestWorkspaceName);
             }
 
-            SynapseTestBase.NewInstance.RunPsTest(
-                _logger,
-                "Test-Azure-IntegrationRuntime");
+            TestRunner.RunTestScript("Test-Azure-IntegrationRuntime");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestIntegrationRuntimePiping()
         {
-            string testResourceGroupName = SynapseTestBase.TestResourceGroupName;
+            string testResourceGroupName = SynapseTestRunner.TestResourceGroupName;
             if (string.IsNullOrEmpty(testResourceGroupName))
             {
                 testResourceGroupName = nameof(TestResourceGroupName);
             }
 
-            string testWorkspaceName = SynapseTestBase.TestWorkspaceName;
+            string testWorkspaceName = SynapseTestRunner.TestWorkspaceName;
             if (string.IsNullOrEmpty(testWorkspaceName))
             {
                 testWorkspaceName = nameof(TestWorkspaceName);
             }
 
-            SynapseTestBase.NewInstance.RunPsTest(
-                _logger,
-                string.Format(
+            TestRunner.RunTestScript(string.Format(
                 "Test-IntegrationRuntime-Piping -resourceGroupName '{0}' -workspaceName '{1}'",
                 testResourceGroupName,
                 testWorkspaceName));
@@ -86,21 +75,19 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureSSISIntegrationRuntime()
         {
-            string testResourceGroupName = SynapseTestBase.TestResourceGroupName;
+            string testResourceGroupName = SynapseTestRunner.TestResourceGroupName;
             if (string.IsNullOrEmpty(testResourceGroupName))
             {
                 testResourceGroupName = nameof(TestResourceGroupName);
             }
 
-            string testWorkspaceName = SynapseTestBase.TestWorkspaceName;
+            string testWorkspaceName = SynapseTestRunner.TestWorkspaceName;
             if (string.IsNullOrEmpty(testWorkspaceName))
             {
                 testWorkspaceName = nameof(TestWorkspaceName);
             }
 
-            SynapseTestBase.NewInstance.RunPsTest(
-                _logger,
-                "Test-AzureSSIS-IntegrationRuntime");
+            TestRunner.RunTestScript("Test-AzureSSIS-IntegrationRuntime");
         }
     }
 }
