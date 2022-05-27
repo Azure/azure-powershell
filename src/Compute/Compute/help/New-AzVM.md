@@ -171,7 +171,7 @@ $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdmi
 $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
-$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2012-R2-Datacenter' -Version latest
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2022-datacenter-azure-edition-core' -Version latest
 
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
@@ -218,7 +218,7 @@ $NIC = New-AzNetworkInterface -Name NICname -ResourceGroupName ResourceGroup2 -L
 $VirtualMachine = New-AzVMConfig -VMName VirtualMachineName -VMSize Standard_D4s_v3
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName computerName -Credential $psCred -ProvisionVMAgent -EnableAutoUpdate
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
-$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2012-R2-Datacenter' -Version latest
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2022-datacenter-azure-edition-core' -Version latest
 New-AzVm -ResourceGroupName ResourceGroup1 -Location SouthCentralUS -VM $VirtualMachine
 ```
 
@@ -547,7 +547,7 @@ Accept wildcard characters: False
 ```
 
 ### -Image
-The friendly image name upon which the VM will be built.  These include: Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Win2008R2SP1, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
+The friendly image name upon which the VM will be built.  These include: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Win2008R2SP1, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
 
 ```yaml
 Type: System.String
