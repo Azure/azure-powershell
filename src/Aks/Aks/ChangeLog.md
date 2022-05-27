@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the logic of `Set-AzAksCluster` for parameter `NodeImageOnly`.
+* Added parameter `NodeImageOnly` for `Update-AzAksNodePool`.
 
 ## Version 4.1.0
 * Removed these aliases:

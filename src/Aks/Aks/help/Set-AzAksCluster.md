@@ -437,7 +437,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeImageOnly
-Will only upgrade node pool version to align control plane.
+Will only upgrade the node image of agent pools.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
