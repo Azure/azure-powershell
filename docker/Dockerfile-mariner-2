@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell:centos-7
+FROM mcr.microsoft.com/powershell:mariner-2.0
 
 ARG REPOSITORY=PSGallery
 ARG MODULE=Az
@@ -10,9 +10,9 @@ ARG BUILD_DATE=
 ARG VERSION=
 ARG LATEST=
 ARG BLOB_URL=
-ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell:${VERSION}-centos-7
+ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell:${VERSION}-mariner-2.0
 
-ENV AZUREPS_HOST_ENVIRONMENT="dockerImage/${VERSION}-centos-7"
+ENV AZUREPS_HOST_ENVIRONMENT="dockerImage/${VERSION}-mariner-2.0"
 
 LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
       readme.md="http://aka.ms/azpsdockerreadme" \
@@ -35,6 +35,8 @@ RUN if [ "${LATEST}" = True ] ; then \
         # install latest azure-powershell from BLOB
         pwsh -Command Invoke-WebRequest -uri ${BLOB_URL} -OutFile latest.tar.gz && \       
         mkdir latest  && \
+        tdnf install -y tar gzip && \
+        tdnf clean all && \ 
         tar -zxvf ./latest.tar.gz -C ./latest  && \
         pwsh -Command ./latest/InstallModule.ps1 ;\
     else \
@@ -43,6 +45,7 @@ RUN if [ "${LATEST}" = True ] ; then \
         pwsh -Command Install-Module -Name ${MODULE} -RequiredVersion ${VERSION} -Scope AllUsers -Repository ${REPOSITORY} && \
         pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Untrusted ;\
     fi
+
 # create AzureRmContextSettings.json before it was generated
 COPY ${CONFIG}/${AZURERM_CONTEXT_SETTINGS} ${AZURE}/${AZURERM_CONTEXT_SETTINGS}
 
