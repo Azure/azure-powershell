@@ -15,18 +15,11 @@
 
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using NewResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using System.IO;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Management.Synapse;
 using Microsoft.Azure.Synapse;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using NewStorageManagementClient = Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient;
