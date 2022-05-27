@@ -5,6 +5,8 @@
         File Name: Measure-MarkdownOrScript.ps1
 #>
 
+#Requires -Modules PSScriptAnalyzer
+
 [CmdletBinding(DefaultParameterSetName = "Markdown")]
 param (
     [Parameter(Mandatory, HelpMessage = "Markdown searching paths. Empty for current path. Supports wildcard.", ParameterSetName = "Markdown")]
