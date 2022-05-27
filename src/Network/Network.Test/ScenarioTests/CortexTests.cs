@@ -37,6 +37,14 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
+        public void TestRoutingIntentCRUD()
+        {
+            TestRunner.RunTestScript("Test-RoutingIntentCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
         public void TestVpnSiteIsSecurity()
         {

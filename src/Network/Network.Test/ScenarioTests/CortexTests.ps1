@@ -34,9 +34,6 @@ function Test-CortexCRUD
 	$vpnConnection2Name = Get-ResourceName
 	$vpnLink1ConnectionName = Get-ResourceName
 	$vpnLink2ConnectionName = Get-ResourceName
-	$riName = "testRoutingIntent1"
-	$privatePolicyName = "PrivateTraffic"
-	$internetPolicyName = "PublicTraffic"
 
 	$storeName = 'blob' + $rgName
     
@@ -80,56 +77,18 @@ function Test-CortexCRUD
 		$virtualHubs = Get-AzVirtualHub -ResourceGroupName $rgName
 		Assert-NotNull $virtualHubs
 
-		# Create a firewall in the Virtual hub
-		$fwIp = New-AzFirewallHubPublicIpAddress -Count 1
-		$hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwIp
-		New-AzFirewall -Name $firewallName -ResourceGroupName $rgName -Location $rglocation -Sku AZFW_Hub -VirtualHubId $virtualHub.Id -HubIPAddress $hubIpAddresses
-		$firewall = Get-AzFirewall -Name $firewallName -ResourceGroupName $rgName
+		#$virtualHubsAll = Get-AzVirtualHub
+		#Assert-NotNull $virtualHubsAll
+		#Assert-NotNull $virtualHubsAll[0].ResourceGroupName
 
-		$policy1 = New-AzRoutingPolicy -Name $privatePolicyName -Destination @("PrivateTraffic") -NextHop $firewall.Id
-		$policy2 = New-AzRoutingPolicy -Name $internetPolicyName -Destination @("Internet") -NextHop $firewall.Id
-		New-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName -RoutingPolicy @($policy1, $policy2)
-		$routingIntent = Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName
-		Assert-AreEqual $routingIntent.RoutingPolicies.Count 2
-		Assert-AreEqual $routingIntent.Name $riName
+		#$virtualHubsAll = Get-AzVirtualHub -ResourceGroupName "*"
+		#Assert-NotNull $virtualHubsAll
 
-		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
-		Assert-AreEqual $riPolicy.Destinations.Count 1
-		Assert-AreEqual $riPolicy.NextHop $firewall.Id
+		#$virtualHubsAll = Get-AzVirtualHub -Name "*"
+		#Assert-NotNull $virtualHubsAll
 
-		$policy3 = New-AzRoutingPolicy -Name $privatePolicyName -Destination @("PrivateTraffic") -NextHop $firewall.Id
-		$routingIntent = Set-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName -RoutingPolicy @($policy3)
-		Assert-AreEqual $routingIntent.RoutingPolicies.Count 1
-		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
-		Assert-AreEqual $riPolicy.Destinations.Count 1
-
-		$routingIntent = Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName
-		Add-AzRoutingPolicy -Name $internetPolicyName -RoutingIntent $routingIntent -Destination @("Internet") -NextHop $firewall.Id
-		Set-AzRoutingIntent -InputObject $routingIntent
-		$routingIntent = Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName
-		Assert-AreEqual $routingIntent.RoutingPolicies.Count 2
-		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $internetPolicyName
-		Assert-AreEqual $riPolicy.Destinations.Count 1
-
-		Remove-AzRoutingPolicy -Name $internetPolicyName -RoutingIntent $routingIntent
-		Set-AzRoutingIntent -InputObject $routingIntent
-		$routingIntent = Get-AzRoutingIntent -Name $riName -VirtualHub $virtualHub
-		Assert-AreEqual $routingIntent.RoutingPolicies.Count 1
-		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
-		Assert-AreEqual $riPolicy.Destinations.Count 1
-
-		Set-AzRoutingPolicy -Name $privatePolicyName -RoutingIntent $routingIntent -Destination @("Internet", "PrivateTraffic") -NextHop $firewall.Id
-		Set-AzRoutingIntent -InputObject $routingIntent
-		$routingIntent = Get-AzRoutingIntent -Name $riName -VirtualHub $virtualHub
-		Assert-AreEqual $routingIntent.RoutingPolicies.Count 1
-		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
-		Assert-AreEqual $riPolicy.Destinations.Count 2
-
-		$delete = Remove-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzFirewall -Name $firewallName -ResourceGroupName $rgName -Force -PassThru
-		Assert-AreEqual $True $delete
+		#$virtualHubsAll = Get-AzVirtualHub -ResourceGroupName "*" -Name "*"
+		#Assert-NotNull $virtualHubsAll
 
 		# Update the Virtual Hub
 		$route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.0.0/16", "11.0.0.0/16") -NextHopIpAddress "12.0.0.5"
@@ -368,6 +327,101 @@ function Test-CortexCRUD
 		Assert-AreEqual $True $delete
 
 		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+		Assert-AreEqual $True $delete
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+function Test-RoutingIntentCRUD
+{
+ # Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "West Central US"
+	$virtualWanName = Get-ResourceName
+	$virtualHubName = Get-ResourceName
+	$firewallName = "testFirewall1"
+	$riName = "testRoutingIntent1"
+	$privatePolicyName = "PrivateTraffic"
+	$internetPolicyName = "PublicTraffic"
+
+	$storeName = 'blob' + $rgName
+    
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+
+		# Create the Virtual Hub
+		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan -HubRoutingPreference "ASPath"
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		Assert-AreEqual "192.168.1.0/24" $virtualHub.AddressPrefix
+
+		# Create a firewall in the Virtual hub
+		$fwIp = New-AzFirewallHubPublicIpAddress -Count 1
+		$hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwIp
+		New-AzFirewall -Name $firewallName -ResourceGroupName $rgName -Location $rglocation -Sku AZFW_Hub -VirtualHubId $virtualHub.Id -HubIPAddress $hubIpAddresses
+		$firewall = Get-AzFirewall -Name $firewallName -ResourceGroupName $rgName
+
+		$policy1 = New-AzRoutingPolicy -Name $privatePolicyName -Destination @("PrivateTraffic") -NextHop $firewall.Id
+		$policy2 = New-AzRoutingPolicy -Name $internetPolicyName -Destination @("Internet") -NextHop $firewall.Id
+		New-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName -RoutingPolicy @($policy1, $policy2)
+		$routingIntent = Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 2
+		Assert-AreEqual $routingIntent.Name $riName
+
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 1
+		Assert-AreEqual $riPolicy.NextHop $firewall.Id
+
+		$policy3 = New-AzRoutingPolicy -Name $privatePolicyName -Destination @("PrivateTraffic") -NextHop $firewall.Id
+		$routingIntent = Set-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName -RoutingPolicy @($policy3)
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 1
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 1
+
+		$routingIntent = Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName
+		Add-AzRoutingPolicy -Name $internetPolicyName -RoutingIntent $routingIntent -Destination @("Internet") -NextHop $firewall.Id
+		Set-AzRoutingIntent -InputObject $routingIntent
+		$routingIntent = Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 2
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $internetPolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 1
+
+		Remove-AzRoutingPolicy -Name $internetPolicyName -RoutingIntent $routingIntent
+		Set-AzRoutingIntent -InputObject $routingIntent
+		$routingIntent = Get-AzRoutingIntent -Name $riName -VirtualHub $virtualHub
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 1
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 1
+
+		Set-AzRoutingPolicy -Name $privatePolicyName -RoutingIntent $routingIntent -Destination @("Internet", "PrivateTraffic") -NextHop $firewall.Id
+		Set-AzRoutingIntent -InputObject $routingIntent
+		$routingIntent = Get-AzRoutingIntent -Name $riName -VirtualHub $virtualHub
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 1
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 2
+
+		$delete = Remove-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzFirewall -Name $firewallName -ResourceGroupName $rgName -Force -PassThru
 		Assert-AreEqual $True $delete
 
 		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
