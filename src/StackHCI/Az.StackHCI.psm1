@@ -154,7 +154,7 @@ $GraphServiceApiScopeAzureChinaCloud = "https://microsoftgraph.chinacloudapi.cn/
 $ServiceEndpointAzureUSGovernment = "https://dp.azurestackhci.azure.us"
 $AuthorityAzureUSGovernment = "https://login.microsoftonline.us"
 $BillingServiceApiScopeAzureUSGovernment = "https://dp.azurestackhci.azure.us/.default"
-$GraphServiceApiScopeAzureUSGovernment = "https://graph.windows.net/.default"
+$GraphServiceApiScopeAzureUSGovernment =  "https://graph.microsoft.us/.default"
 
 $ServiceEndpointAzureGermanCloud = "https://azurestackhci-usage.trafficmanager.de"
 $AuthorityAzureGermanCloud = "https://login.microsoftonline.de"
@@ -4771,7 +4771,7 @@ function New-Directory{
 #>
 function Invoke-DeploymentModuleDownload{
     # Remote Support
-    New-Variable -Name RemoteSupportPackageUri -Value "https://srsqldatasa.blob.core.windows.net/packages" -Option Constant -Scope Script
+    New-Variable -Name RemoteSupportPackageUri -Value "https://remotesupportpackages.blob.core.windows.net/packages" -Option Constant -Scope Script
     $DownloadCacheDirectory = Join-Path $env:Temp "RemoteSupportPkgCache"
 
     $BlobLocation = "$script:RemoteSupportPackageUri/Microsoft.AzureStack.Deployment.RemoteSupport.psm1"
