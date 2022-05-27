@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to add basic sku support on Azure Firewall and Azure Firewall Policy:
+    - `New-AzFirewall`
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
 * Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
     - `Add-AzExpressRoutePortAuthorization`
     - `Get-AzExpressRoutePortAuthorization`
