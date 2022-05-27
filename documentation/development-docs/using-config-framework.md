@@ -10,15 +10,17 @@
 
 ## Overview
 
-The config framework was introduced in Az 8, May 2022 to set up a standard of how to define a config, get or update the value of a config, etc.
+The config framework was introduced in Az 8, May 2022 to set up a standard of how configs are used by both developers and end users of Azure PowerShell.
 
-This document will go over 2 most common scenarios for developers.
+This document will go over 2 most common scenarios for developers. As for how to set configs please refer to [Update-AzConfig](https://docs.microsoft.com/powershell/module/az.accounts/update-azconfig).
 
 ## Guide: How to Add a New Config
 
 ### Step 1: Define the Config
 
-To define a config, add a new class inheriting `TypedConfig` under src/Accounts/Authentication/Config/Definitions/
+To define a config, create a class inheriting [`TypedConfig<TValue>`](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Authentication/Config/Models/TypedConfig.cs) and place it at [`src/Accounts/Authentication/Config/Definitions/`](https://github.com/Azure/azure-powershell/tree/main/src/Accounts/Authentication/Config/Definitions), where you can also find examples of other configs.
+
+You will find 
 
 Simple config
 Customized config
