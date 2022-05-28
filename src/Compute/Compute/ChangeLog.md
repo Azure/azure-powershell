@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Add `-DataAccessAuthMode` parameter to Add-AzVhd DirectUploadToManagedDisk parameter set. 
 * Edited `New-AzVm` cmdlet internal logic to use the `PlatformFaultDomain` value in the `PSVirtualMachine` object passed to it in the new virtual machine.
 * Add `-DataAccessAuthMode` parameter to the following cmdlets:
     - New-AzDiskConfig

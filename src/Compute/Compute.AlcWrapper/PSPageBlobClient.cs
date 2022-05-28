@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Text;
 using Azure.Storage.Blobs.Specialized;
 using System.IO;
+using Azure.Core;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -28,9 +29,9 @@ namespace Microsoft.Azure.Commands.Compute
         {
             _pageBlobClient = pageblobclient;
         }
-        public PSPageBlobClient(Uri blobUri)
+        public PSPageBlobClient(Uri blobUri, TokenCredential token = null )
         {
-            _pageBlobClient = new PageBlobClient(blobUri, null);
+            _pageBlobClient = token == null ? new PageBlobClient(blobUri, null) : new PageBlobClient(blobUri, token);
         }
 
         public Uri Uri { get { return _pageBlobClient.Uri; } }
