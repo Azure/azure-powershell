@@ -12,42 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public class AzureRmLogProfileTests : RMTestBase
+    public class AzureRmLogProfileTests : MonitorTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public AzureRmLogProfileTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AzureRmLogProfileTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmLogProfile()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureRmLogProfile");
+            TestRunner.RunTestScript("Test-GetAzureRmLogProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmLogProfile()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmLogProfile");
+            TestRunner.RunTestScript("Test-AddAzureRmLogProfile");
         }
 
         [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmLogProfileWithRetention()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmLogProfileWithRetention");
+            TestRunner.RunTestScript("Test-AddAzureRmLogProfileWithRetention");
         }
     }
 }

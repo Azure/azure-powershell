@@ -12,22 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 {
-    public class IotHubTests : RMTestBase
+    public class IotHubTests : IotHubTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public IotHubTests(ITestOutputHelper output)
+        public IotHubTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -35,7 +29,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestAzureIotHubLifeCycle()
         {
-            IotHubController.NewInstance.RunPsTest(_logger, "Test-AzureRmIotHubLifecycle");
+            TestRunner.RunTestScript("Test-AzureRmIotHubLifecycle");
         }
 
 #if NETSTANDARD
@@ -49,7 +43,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         [Trait("Requires", "Elevated Privileges")]
         public void TestAzureIotHubCertificateLifeCycle()
         {
-            IotHubController.NewInstance.RunPsTest(_logger, "Test-AzureRmIotHubCertificateLifecycle");
+            TestRunner.RunTestScript("Test-AzureRmIotHubCertificateLifecycle");
         }
     }
 }

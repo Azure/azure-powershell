@@ -15,30 +15,18 @@ Updates the specified Event Hubs namespace.
 ### NamespaceParameterSet (Default)
 ```
 Set-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String>]
- [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>] [-EnableKafka]
- [-DisableLocalAuth] [-IdentityType <String>] [-IdentityId <String[]>]
- [-EncryptionConfig <PSEncryptionConfigAttributes[]>] [-Identity] [-IdentityUserDefined <String>]
- [-KeySource <String>] [-KeyProperty <System.Collections.Generic.List`1[System.String[]]>]
+ [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-EnableKafka] [-DisableLocalAuth]
+ [-IdentityType <String>] [-IdentityId <String[]>] [-EncryptionConfig <PSEncryptionConfigAttributes[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AutoInflateParameterSet
 ```
 Set-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String>]
- [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>]
- [-EnableAutoInflate] [-MaximumThroughputUnits <Int32>] [-EnableKafka] [-DisableLocalAuth]
- [-IdentityType <String>] [-IdentityId <String[]>] [-EncryptionConfig <PSEncryptionConfigAttributes[]>]
- [-Identity] [-IdentityUserDefined <String>] [-KeySource <String>]
- [-KeyProperty <System.Collections.Generic.List`1[System.String[]]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### IdentityUpdateParameterSet
-```
-Set-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String>]
  [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-EnableAutoInflate]
- [-MaximumThroughputUnits <Int32>] [-EnableKafka] [-Identity] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MaximumThroughputUnits <Int32>] [-EnableKafka] [-DisableLocalAuth] [-IdentityType <String>]
+ [-IdentityId <String[]>] [-EncryptionConfig <PSEncryptionConfigAttributes[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -241,7 +229,7 @@ enabling or disabling  SAS authentication for namespace
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: NamespaceParameterSet, AutoInflateParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -260,18 +248,6 @@ Parameter Sets: AutoInflateParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: IdentityUpdateParameterSet
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -298,7 +274,7 @@ Key Property
 
 ```yaml
 Type: Microsoft.Azure.Commands.EventHub.Models.PSEncryptionConfigAttributes[]
-Parameter Sets: NamespaceParameterSet, AutoInflateParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -308,39 +284,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Identity
-enabling or disabling Identity for namespace
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: NamespaceParameterSet, AutoInflateParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: IdentityUpdateParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IdentityId
 List of user assigned Identity Ids
 
 ```yaml
 Type: System.String[]
-Parameter Sets: NamespaceParameterSet, AutoInflateParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -355,7 +304,7 @@ Identity Type ('SystemAssigned', 'UserAssigned', 'SystemAssigned', 'UserAssigned
 
 ```yaml
 Type: System.String
-Parameter Sets: NamespaceParameterSet, AutoInflateParameterSet
+Parameter Sets: (All)
 Aliases:
 Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
 
@@ -363,51 +312,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IdentityUserDefined
-User defined Identity or None
-
-```yaml
-Type: System.String
-Parameter Sets: NamespaceParameterSet, AutoInflateParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyProperty
-List of Key Properties, @(@(KeyName,KeyVaultUri,Keyversion),@(KeyName,KeyVaultUri,Keyversion))
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String[]]
-Parameter Sets: NamespaceParameterSet, AutoInflateParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeySource
-Key Source
-
-```yaml
-Type: System.String
-Parameter Sets: NamespaceParameterSet, AutoInflateParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -431,7 +335,7 @@ Upper limit of throughput units when AutoInflate is enabled, value should be wit
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: AutoInflateParameterSet, IdentityUpdateParameterSet
+Parameter Sets: AutoInflateParameterSet
 Aliases:
 
 Required: False
@@ -502,22 +406,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -State
-Disable/Enable Namespace.
-
-```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]
-Parameter Sets: NamespaceParameterSet, AutoInflateParameterSet
-Aliases:
-Accepted values: Unknown, Active, Disabled
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Tag
 Hashtables which represents resource Tag.
 
@@ -572,8 +460,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-
-### System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.9.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ### System.Collections.Hashtable
 

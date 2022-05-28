@@ -43,6 +43,9 @@ subject-prefix: $(service-name)
 resourcegroup-append: true
 identity-correction-for-post: true
 
+metadata: 
+  tags: Azure ResourceManager ARM PSModule $(service-name) HealthCare FhirService
+
 directive:
   - where:
       subject-prefix: (^HealthcareApis)(.*)
@@ -75,16 +78,64 @@ directive:
   - where:
       subject: Workspace
     set:
-      subject: APIsWorkspace
+      subject: ApisWorkspace
   - where:
       subject: Service
     set:
-      subject: APIsService
+      subject: ApisService
   - where:
-      subject: ^APIsService$
+      subject: ^ApisService$
       parameter-name: ResourceName
     set:
       parameter-name: Name
+  - where:
+      parameter-name: AccessPolicy
+    set:
+      parameter-name: AccessPolicyObjectId
+  - where:
+      parameter-name: CorConfigurationAllowCredentials
+    set:
+      parameter-name: AllowCorsCredential
+  - where:
+      parameter-name: AuthenticationConfigurationAudience
+    set:
+      parameter-name: Audience
+  - where:
+      parameter-name: AuthenticationConfigurationAuthority
+    set:
+      parameter-name: Authority
+  - where:
+      parameter-name: CorConfigurationHeader
+    set:
+      parameter-name: CorsHeader
+  - where:
+      parameter-name: CorConfigurationMaxAge
+    set:
+      parameter-name: CorsMaxAge
+  - where:
+      parameter-name: CorConfigurationMethod
+    set:
+      parameter-name: CorsMethod
+  - where:
+      parameter-name: CorConfigurationOrigin
+    set:
+      parameter-name: CorsOrigin
+  - where:
+      parameter-name: CosmoDbConfigurationOfferThroughput
+    set:
+      parameter-name: CosmosOfferThroughput
+  - where:
+      parameter-name: CosmoDbConfigurationKeyVaultKeyUri
+    set:
+      parameter-name: CosmosKeyVaultKeyUri
+  - where:
+      parameter-name: AuthenticationConfigurationSmartProxyEnabled
+    set:
+      parameter-name: EnableSmartProxy
+  - where:
+      parameter-name: ExportConfigurationStorageAccountName
+    set:
+      parameter-name: ExportStorageAccountName
   - where:
       model-name: Workspace
     set:
@@ -165,11 +216,11 @@ directive:
       }
   - where:
       verb: New
-      subject: APIsService
+      subject: ApisService
     hide: true
   - where:
       verb: New
-      subject: APIsWorkspace
+      subject: ApisWorkspace
     hide: true
   - where:
       verb: New

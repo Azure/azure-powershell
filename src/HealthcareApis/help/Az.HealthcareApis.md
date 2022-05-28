@@ -1,6 +1,6 @@
 ---
 Module Name: Az.HealthcareApis
-Module Guid: 36cc732b-665f-4db7-bdfa-70d09e08f7b1
+Module Guid: de3f478d-0227-4782-85cf-62fb649b685a
 Download Help Link: https://docs.microsoft.com/powershell/module/az.healthcareapis
 Help Version: 1.0.0.0
 Locale: en-US
@@ -11,10 +11,10 @@ Locale: en-US
 Microsoft Azure PowerShell: HealthcareApis cmdlets
 
 ## Az.HealthcareApis Cmdlets
-### [Get-AzHealthcareAPIsService](Get-AzHealthcareAPIsService.md)
+### [Get-AzHealthcareApisService](Get-AzHealthcareApisService.md)
 Get the metadata of a service instance.
 
-### [Get-AzHealthcareAPIsWorkspace](Get-AzHealthcareAPIsWorkspace.md)
+### [Get-AzHealthcareApisWorkspace](Get-AzHealthcareApisWorkspace.md)
 Gets the properties of the specified workspace.
 
 ### [Get-AzHealthcareDicomService](Get-AzHealthcareDicomService.md)
@@ -32,10 +32,10 @@ Gets the properties of the specified IoT Connector.
 ### [Get-AzHealthcareIotConnectorFhirDestination](Get-AzHealthcareIotConnectorFhirDestination.md)
 Gets the properties of the specified Iot Connector FHIR destination.
 
-### [New-AzHealthcareAPIsService](New-AzHealthcareAPIsService.md)
+### [New-AzHealthcareApisService](New-AzHealthcareApisService.md)
 Create or update the metadata of a service instance.
 
-### [New-AzHealthcareAPIsWorkspace](New-AzHealthcareAPIsWorkspace.md)
+### [New-AzHealthcareApisWorkspace](New-AzHealthcareApisWorkspace.md)
 Creates or updates a workspace resource with the specified parameters.
 
 ### [New-AzHealthcareDicomService](New-AzHealthcareDicomService.md)
@@ -50,10 +50,10 @@ Creates or updates an IoT Connector resource with the specified parameters.
 ### [New-AzHealthcareIotConnectorFhirDestination](New-AzHealthcareIotConnectorFhirDestination.md)
 Creates or updates an IoT Connector FHIR destination resource with the specified parameters.
 
-### [Remove-AzHealthcareAPIsService](Remove-AzHealthcareAPIsService.md)
+### [Remove-AzHealthcareApisService](Remove-AzHealthcareApisService.md)
 Delete a service instance.
 
-### [Remove-AzHealthcareAPIsWorkspace](Remove-AzHealthcareAPIsWorkspace.md)
+### [Remove-AzHealthcareApisWorkspace](Remove-AzHealthcareApisWorkspace.md)
 Deletes a specified workspace.
 
 ### [Remove-AzHealthcareDicomService](Remove-AzHealthcareDicomService.md)
@@ -71,10 +71,10 @@ Deletes an IoT Connector FHIR destination.
 ### [Test-AzHealthcareServiceNameAvailability](Test-AzHealthcareServiceNameAvailability.md)
 Check if a service instance name is available.
 
-### [Update-AzHealthcareAPIsService](Update-AzHealthcareAPIsService.md)
+### [Update-AzHealthcareApisService](Update-AzHealthcareApisService.md)
 Update the metadata of a service instance.
 
-### [Update-AzHealthcareAPIsWorkspace](Update-AzHealthcareAPIsWorkspace.md)
+### [Update-AzHealthcareApisWorkspace](Update-AzHealthcareApisWorkspace.md)
 Patch workspace details.
 
 ### [Update-AzHealthcareDicomService](Update-AzHealthcareDicomService.md)

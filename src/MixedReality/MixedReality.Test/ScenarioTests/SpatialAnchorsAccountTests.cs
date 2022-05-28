@@ -17,35 +17,31 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.MixedReality.Test
 {
-    public class SpatialAnchorsAccountTests
+    public class SpatialAnchorsAccountTests : MixedRealityTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public SpatialAnchorsAccountTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SpatialAnchorsAccountTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSpatialAnchorsAccountOperations()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SpatialAnchorsAccountOperations");
+            TestRunner.RunTestScript("Test-SpatialAnchorsAccountOperations");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSpatialAnchorsAccountOperationsWithPiping()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SpatialAnchorsAccountOperationsWithPiping");
+            TestRunner.RunTestScript("Test-SpatialAnchorsAccountOperationsWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListSpatialAnchorsAccounts()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListSpatialAnchorsAccounts");
+            TestRunner.RunTestScript("Test-ListSpatialAnchorsAccounts");
         }
     }
 }

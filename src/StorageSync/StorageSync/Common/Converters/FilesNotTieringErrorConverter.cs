@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
     /// <summary>
     /// Class CloudTieringCachePerformanceConverter.
-    /// Implements the <see cref="Converters.ConverterBase{PSFilesNotTieringError, StorageSyncModels.FilesNotTieringError}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSFilesNotTieringError, FilesNotTieringError}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSFilesNotTieringError, StorageSyncModels.FilesNotTieringError}" />
+    /// <seealso cref="Converters.ConverterBase{PSFilesNotTieringError, FilesNotTieringError}" />
     public class FilesNotTieringErrorConverter : ConverterBase<PSFilesNotTieringError, StorageSyncModels.FilesNotTieringError>
     {
         /// <summary>

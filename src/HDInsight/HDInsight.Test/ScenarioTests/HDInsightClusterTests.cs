@@ -12,105 +12,101 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.HDInsight.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Commands.HDInsight.Test.ScenarioTests
 {
-    public class HDInsightClusterTests : TestController
+    public class HDInsightClusterTests : HDInsightTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public HDInsightClusterTests(ITestOutputHelper output)
+        public HDInsightClusterTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestClusterRelatedCommands()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ClusterRelatedCommands");
+            TestRunner.RunTestScript("Test-ClusterRelatedCommands");
         }
 
         [Fact(Skip = "Sikp this")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCmkClusterRelatedCommands()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CmkClusterRelatedCommands");
+            TestRunner.RunTestScript("Test-CmkClusterRelatedCommands");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithEncryptionInTransit()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithEncryptionInTransit");
+            TestRunner.RunTestScript("Test-CreateClusterWithEncryptionInTransit");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithEncryptionAtHost()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithEncryptionAtHost");
+            TestRunner.RunTestScript("Test-CreateClusterWithEncryptionAtHost");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithLoadBasedAutoscale()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithLoadBasedAutoscale");
+            TestRunner.RunTestScript("Test-CreateClusterWithLoadBasedAutoscale");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithScheduleBasedAutoscale()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithScheduleBasedAutoscale");
+            TestRunner.RunTestScript("Test-CreateClusterWithScheduleBasedAutoscale");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithKafkaRestProxy()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithKafkaRestProxy");
+            TestRunner.RunTestScript("Test-CreateClusterWithKafkaRestProxy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithRelayOutoundAndPrivateLink()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithRelayOutoundAndPrivateLink");
+            TestRunner.RunTestScript("Test-CreateClusterWithRelayOutoundAndPrivateLink");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithCustomAmbariDatabase()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithCustomAmbariDatabase");
+            TestRunner.RunTestScript("Test-CreateClusterWithCustomAmbariDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithComputeIsolation()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithComputeIsolation");
+            TestRunner.RunTestScript("Test-CreateClusterWithComputeIsolation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithAvailabilityZones()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithAvailabilityZones");
+            TestRunner.RunTestScript("Test-CreateClusterWithAvailabilityZones");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithPrivateLinkConfiguration()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithPrivateLinkConfiguration");
+            TestRunner.RunTestScript("Test-CreateClusterWithPrivateLinkConfiguration");
         }
     }
 }

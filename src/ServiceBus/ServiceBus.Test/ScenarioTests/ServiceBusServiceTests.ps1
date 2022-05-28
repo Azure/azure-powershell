@@ -274,7 +274,7 @@ function MSITest{
         Assert-AreEqual $namespace.IdentityType "SystemAssignedUserAssigned"
         Assert-True { $namespace.IdentityId.Count -eq 2 }
 
-        $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "None"
+        $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "None" -IdentityId @()
         Assert-AreEqual $namespace.Name $namespace1
         Assert-AreEqual $namespace.Sku.Name "Standard"
         Assert-Null $namespace.Identity

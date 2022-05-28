@@ -171,193 +171,197 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inhericdoc />
-        public void OnCommandLineAccepted(PredictionClient client, IReadOnlyList<string> history)
-        {
-            _commandLineExecutedCompletion = new TaskCompletionSource();
-
-            SharedVariable.PredictorCorrelationId = _telemetryClient.CommandId;
-
-            if (history.Count > 0)
+        public void OnCommandLineAccepted(PredictionClient client, IReadOnlyList<string> history) =>
+            ExceptionUtilities.RecordExceptionWrapper(_telemetryClient, () =>
             {
-                // We try to find the commands to request predictions for.
-                // We should only have "start_of_snippet" when there are no enough Az commands for prediction.
-                // We only send the requests when Az commands are changed. So we'll never add "start_of_snippet" again
-                // once we have enough Az commands.
-                // This is the scenario.
-                // 1. New-AzResourceGroup -Name ****
-                // 2. $resourceName="Test"
-                // 3. $resourceLocation="westus2"
-                // 4. New-AzVM -Name $resourceName -Location $resourceLocation
-                //
-                // If the history only contains 1, we'll add "start_of_snippet" to the request.
-                // We'll replace 2 and 3 with "start_of_snippet". But if we request prediction using 2 and 3, that'll reset the
-                // workflow. We want to predict only by Az commands. So we don't send the request until the command 4.
-                // That's to use commands 1 and 4 to request prediction.
 
-                bool shouldRequestPrediction = false;
+                _commandLineExecutedCompletion = new TaskCompletionSource();
 
-                if (_lastTwoMaskedCommands.Count == 0)
+                SharedVariable.PredictorCorrelationId = _telemetryClient.CommandId;
+
+                if (history.Count > 0)
                 {
-                    // This is the first time we populate our record. Push the second to last command in history to the
-                    // queue. If there is only one command in history, push the command placeholder.
+                    // We try to find the commands to request predictions for.
+                    // We should only have "start_of_snippet" when there are no enough Az commands for prediction.
+                    // We only send the requests when Az commands are changed. So we'll never add "start_of_snippet" again
+                    // once we have enough Az commands.
+                    // This is the scenario.
+                    // 1. New-AzResourceGroup -Name ****
+                    // 2. $resourceName="Test"
+                    // 3. $resourceLocation="westus2"
+                    // 4. New-AzVM -Name $resourceName -Location $resourceLocation
+                    //
+                    // If the history only contains 1, we'll add "start_of_snippet" to the request.
+                    // We'll replace 2 and 3 with "start_of_snippet". But if we request prediction using 2 and 3, that'll reset the
+                    // workflow. We want to predict only by Az commands. So we don't send the request until the command 4.
+                    // That's to use commands 1 and 4 to request prediction.
 
-                    if (history.Count() > 1)
+                    bool shouldRequestPrediction = false;
+
+                    if (_lastTwoMaskedCommands.Count == 0)
                     {
-                        string secondToLastLine = history.TakeLast(AzPredictorConstants.CommandHistoryCountToProcess).First();
-                        var secondToLastCommand = GetAstAndMaskedCommandLine(secondToLastLine);
-                        _lastTwoMaskedCommands.Enqueue(secondToLastCommand.IsSupported ? secondToLastCommand.MaskedCommandLine : AzPredictorConstants.CommandPlaceholder);
+                        // This is the first time we populate our record. Push the second to last command in history to the
+                        // queue. If there is only one command in history, push the command placeholder.
 
-                        if (secondToLastCommand.IsSupported)
+                        if (history.Count() > 1)
                         {
-                            _service.RecordHistory(secondToLastCommand.Ast);
+                            string secondToLastLine = history.TakeLast(AzPredictorConstants.CommandHistoryCountToProcess).First();
+                            var secondToLastCommand = GetAstAndMaskedCommandLine(secondToLastLine);
+                            _lastTwoMaskedCommands.Enqueue(secondToLastCommand.IsSupported ? secondToLastCommand.MaskedCommandLine : AzPredictorConstants.CommandPlaceholder);
+
+                            if (secondToLastCommand.IsSupported)
+                            {
+                                _service.RecordHistory(secondToLastCommand.Ast);
+                            }
                         }
+                        else
+                        {
+                            _lastTwoMaskedCommands.Enqueue(AzPredictorConstants.CommandPlaceholder);
+                            // We only extract parameter values from the command line in _service.RecordHistory.
+                            // So we don't need to do that for a placeholder.
+                        }
+
+                        shouldRequestPrediction = true;
                     }
-                    else
+
+                    string lastLine = history.Last();
+                    var lastCommand = GetAstAndMaskedCommandLine(lastLine);
+                    bool isLastCommandSupported = lastCommand.IsSupported;
+
+                    _parsedCommandLineHistory.TryAdd(lastLine, lastCommand);
+
+                    if (isLastCommandSupported)
                     {
+                        if (_lastTwoMaskedCommands.Count == 2)
+                        {
+                            // There are already two commands, dequeue the oldest one.
+                            _lastTwoMaskedCommands.Dequeue();
+                        }
+
+                        _lastTwoMaskedCommands.Enqueue(lastCommand.MaskedCommandLine);
+                        shouldRequestPrediction = true;
+
+                        _service.RecordHistory(lastCommand.Ast);
+                    }
+                    else if (_lastTwoMaskedCommands.Count == 1)
+                    {
+                        shouldRequestPrediction = true;
+                        var existingInQueue = _lastTwoMaskedCommands.Dequeue();
                         _lastTwoMaskedCommands.Enqueue(AzPredictorConstants.CommandPlaceholder);
-                        // We only extract parameter values from the command line in _service.RecordHistory.
-                        // So we don't need to do that for a placeholder.
+                        _lastTwoMaskedCommands.Enqueue(existingInQueue);
                     }
 
-                    shouldRequestPrediction = true;
-                }
 
-                string lastLine = history.Last();
-                var lastCommand = GetAstAndMaskedCommandLine(lastLine);
-                bool isLastCommandSupported = lastCommand.IsSupported;
-
-                _parsedCommandLineHistory.TryAdd(lastLine, lastCommand);
-
-                if (isLastCommandSupported)
-                {
-                    if (_lastTwoMaskedCommands.Count == 2)
+                    if (shouldRequestPrediction)
                     {
-                        // There are already two commands, dequeue the oldest one.
-                        _lastTwoMaskedCommands.Dequeue();
+                        // When it's called multiple times, we only need to keep the one for the latest command.
+
+                        _predictionRequestCancellationSource?.Cancel();
+                        _predictionRequestCancellationSource = new CancellationTokenSource();
+                        // Need to create a new object to hold the string. They're used in a seperate thread the the contents in
+                        // _lastTwoMaskedCommands may change when the method is called again.
+                        var lastTwoMaskedCommands = new List<string>(_lastTwoMaskedCommands);
+
+                        // We don't need to block on the task. It sends the HTTP request and update prediction list. That can run at the background.
+                        var _ = AzPredictorUtilities.RequestPredictionAndCollectTelemetryAync(_service, _telemetryClient, client, lastTwoMaskedCommands, _commandLineExecutedCompletion, _predictionRequestCancellationSource.Token);
                     }
-
-                    _lastTwoMaskedCommands.Enqueue(lastCommand.MaskedCommandLine);
-                    shouldRequestPrediction = true;
-
-                    _service.RecordHistory(lastCommand.Ast);
                 }
-                else if (_lastTwoMaskedCommands.Count == 1)
+            });
+
+        public void OnCommandLineExecuted(PredictionClient client, string commandLine, bool success) =>
+            ExceptionUtilities.RecordExceptionWrapper(_telemetryClient, () =>
+            {
+                if (success && AzPredictor._azAccountCommands.Contains(commandLine.Trim().Split().FirstOrDefault()))
                 {
-                    shouldRequestPrediction = true;
-                    var existingInQueue = _lastTwoMaskedCommands.Dequeue();
-                    _lastTwoMaskedCommands.Enqueue(AzPredictorConstants.CommandPlaceholder);
-                    _lastTwoMaskedCommands.Enqueue(existingInQueue);
+                    // The context only changes when the user executes the corresponding command successfully.
+                    _azContext?.UpdateContext();
                 }
 
-
-                if (shouldRequestPrediction)
+                if (!_parsedCommandLineHistory.TryRemove(commandLine, out var parsedResult))
                 {
-                    // When it's called multiple times, we only need to keep the one for the latest command.
-
-                    _predictionRequestCancellationSource?.Cancel();
-                    _predictionRequestCancellationSource = new CancellationTokenSource();
-                    // Need to create a new object to hold the string. They're used in a seperate thread the the contents in
-                    // _lastTwoMaskedCommands may change when the method is called again.
-                    var lastTwoMaskedCommands = new List<string>(_lastTwoMaskedCommands);
-
-                    // We don't need to block on the task. It sends the HTTP request and update prediction list. That can run at the background.
-                    var _ = AzPredictorUtilities.RequestPredictionAndCollectTelemetryAync(_service, _telemetryClient, client, lastTwoMaskedCommands, _commandLineExecutedCompletion, _predictionRequestCancellationSource.Token);
+                    // We should already parsed the last command in OnCommandLineAccepted which we don't need to do again now.
+                    // Just in case that wasn't correct or that's missing, we clear the _parsedCommandLineHistory and parse it now.
+                    // On possible reason it's missing is because we're still initializing in the task and don't handle
+                    // OnCommandLineAccepted.
+                    _parsedCommandLineHistory.Clear();
+                    parsedResult = GetAstAndMaskedCommandLine(commandLine);
                 }
-            }
-        }
 
-        public void OnCommandLineExecuted(PredictionClient client, string commandLine, bool success)
-        {
-            if (success && AzPredictor._azAccountCommands.Contains(commandLine.Trim().Split().FirstOrDefault()))
-            {
-                // The context only changes when the user executes the corresponding command successfully.
-                _azContext?.UpdateContext();
-            }
+                if (parsedResult.IsSupported && _surveyHelper?.ShouldPromptSurvey() == true)
+                {
+                    _surveyHelper.PromptSurvey();
+                }
 
-            if (!_parsedCommandLineHistory.TryRemove(commandLine, out var parsedResult))
-            {
-                // We should already parsed the last command in OnCommandLineAccepted which we don't need to do again now.
-                // Just in case that wasn't correct or that's missing, we clear the _parsedCommandLineHistory and parse it now.
-                // On possible reason it's missing is because we're still initializing in the task and don't handle
-                // OnCommandLineAccepted.
-                _parsedCommandLineHistory.Clear();
-                parsedResult = GetAstAndMaskedCommandLine(commandLine);
-            }
-
-            if (parsedResult.IsSupported && _surveyHelper?.ShouldPromptSurvey() == true)
-            {
-                _surveyHelper.PromptSurvey();
-            }
-
-            _telemetryClient.OnHistory(new HistoryTelemetryData(client, parsedResult.MaskedCommandLine ?? AzPredictorConstants.CommandPlaceholder, success));
-            _commandLineExecutedCompletion?.SetResult();
-        }
+                _telemetryClient.OnHistory(new HistoryTelemetryData(client, parsedResult.MaskedCommandLine ?? AzPredictorConstants.CommandPlaceholder, success));
+                _commandLineExecutedCompletion?.SetResult();
+            });
 
         /// <inhericdoc />
         public SuggestionPackage GetSuggestion(PredictionClient client, PredictionContext context, CancellationToken cancellationToken)
         {
+            List<PredictiveSuggestion> result = null;
             var localSuggestionSessionId = _suggestionSessionId++;
 
-            if (!_isInitialized || _settings.SuggestionCount.Value <= 0)
-            {
-                return CreateResult(null);
-            }
-
-            Exception exception = null;
-            CommandLineSuggestion suggestions = null;
-
-            try
-            {
-                var localCancellationToken = Settings.ContinueOnTimeout ? CancellationToken.None : cancellationToken;
-
-                suggestions = _service.GetSuggestion(context, _settings.SuggestionCount.Value, _settings.MaxAllowedCommandDuplicate.Value, localCancellationToken);
-
-                var returnedValue = suggestions?.PredictiveSuggestions?.ToList();
-                return CreateResult(returnedValue);
-            }
-            catch (Exception e) when (!(e is OperationCanceledException))
-            {
-                exception = e;
-                return CreateResult(null);
-            }
-            finally
+            ExceptionUtilities.RecordExceptionWrapper(_telemetryClient, () =>
             {
 
-                _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(client, localSuggestionSessionId, context.InputAst,
-                        suggestions,
-                        cancellationToken.IsCancellationRequested,
-                        exception));
-            }
-
-            SuggestionPackage CreateResult(List<PredictiveSuggestion> suggestions)
-            {
-                if ((suggestions == null) || (suggestions.Count == 0))
+                if (!_isInitialized || _settings.SuggestionCount.Value <= 0)
                 {
-                    return default(SuggestionPackage);
+                    return;
                 }
 
-                return new SuggestionPackage(localSuggestionSessionId, suggestions);
+                Exception exception = null;
+                CommandLineSuggestion suggestions = null;
+
+                try
+                {
+                    var localCancellationToken = Settings.ContinueOnTimeout ? CancellationToken.None : cancellationToken;
+
+                    suggestions = _service.GetSuggestion(context, _settings.SuggestionCount.Value, _settings.MaxAllowedCommandDuplicate.Value, localCancellationToken);
+
+                    result = suggestions?.PredictiveSuggestions?.ToList();
+                }
+                catch (Exception e) when (!(e is OperationCanceledException))
+                {
+                    exception = e;
+                    result = null;
+                }
+                finally
+                {
+                    _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(client, localSuggestionSessionId, context.InputAst,
+                            suggestions,
+                            cancellationToken.IsCancellationRequested,
+                            exception));
+                }
+            });
+
+            if ((result == null) || (result.Count == 0))
+            {
+                return default(SuggestionPackage);
             }
+
+            return new SuggestionPackage(localSuggestionSessionId, result);
         }
 
         /// <inhericdoc />
-        public void OnSuggestionDisplayed(PredictionClient client, uint session, int countOrIndex)
-        {
-            if (countOrIndex > 0)
+        public void OnSuggestionDisplayed(PredictionClient client, uint session, int countOrIndex) =>
+            ExceptionUtilities.RecordExceptionWrapper(_telemetryClient, () =>
             {
-                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForListView(client, session, countOrIndex));
-            }
-            else
-            {
-                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForInlineView(client, session, -countOrIndex));
-            }
-        }
+                if (countOrIndex > 0)
+                {
+                    _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForListView(client, session, countOrIndex));
+                }
+                else
+                {
+                    _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForInlineView(client, session, -countOrIndex));
+                }
+            });
 
         /// <inhericdoc />
-        public void OnSuggestionAccepted(PredictionClient client, uint session, string acceptedSuggestion)
-        {
-            _telemetryClient.OnSuggestionAccepted(new SuggestionAcceptedTelemetryData(client, session, acceptedSuggestion));
-        }
+        public void OnSuggestionAccepted(PredictionClient client, uint session, string acceptedSuggestion) =>
+            ExceptionUtilities.RecordExceptionWrapper(_telemetryClient,
+                    () => _telemetryClient.OnSuggestionAccepted(new SuggestionAcceptedTelemetryData(client, session, acceptedSuggestion))
+            );
 
         /// <summary>
         /// Addds an object that's not created by <see cref="AzPredictor"/> to the list to be disposed in

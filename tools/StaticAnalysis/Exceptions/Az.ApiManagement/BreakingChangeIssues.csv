@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.ApiManagement","Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands.GetAzureApiManagementOperation","Get-AzApiManagementOperation","0","3010","The property 'Sample' of type 'Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation' has been removed.","Add the property 'Sample' back to type 'Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation'."

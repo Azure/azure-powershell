@@ -1096,6 +1096,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If a subscription is not specified, please check the configs by `Get-AzConfig`..
+        /// </summary>
+        internal static string SubscriptionNotFouldPleaseCheckConfig {
+            get {
+                return ResourceManager.GetString("SubscriptionNotFouldPleaseCheckConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subscription {0} was not found in tenant {1}. Please verify that the subscription exists in this tenant..
         /// </summary>
         internal static string SubscriptionNotFoundError {
