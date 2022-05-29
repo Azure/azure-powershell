@@ -345,7 +345,7 @@ function Test-RoutingIntentCRUD
 {
  # Setup
     $rgName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement "West Central US"
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
 	$virtualWanName = Get-ResourceName
 	$virtualHubName = Get-ResourceName
 	$firewallName = "testFirewall1"
