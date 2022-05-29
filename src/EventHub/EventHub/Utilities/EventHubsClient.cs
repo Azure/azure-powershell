@@ -188,13 +188,13 @@ namespace Microsoft.Azure.Commands.Eventhub
             Dictionary<string, string> tags,
             bool isAutoInflateEnabled,
             int? maximumThroughputUnits,
-            bool isKafkaEnabled, bool isDisableLocalAuth, 
+            bool isKafkaEnabled, bool isDisableLocalAuth,
             string[] identityId, string identityType, PSEncryptionConfigAttributes[] encryptionConfigs)
-        {          
+        {
 
             EHNamespace parameter = Client.Namespaces.Get(resourceGroupName, namespaceName);
 
-            if(location != null)
+            if (location != null)
             {
                 parameter.Location = location;
             }
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             if (identityType != null)
             {
-                if(parameter.Identity == null)
+                if (parameter.Identity == null)
                 {
                     parameter.Identity = new Identity();
                 }
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSListKeysAttributes(listKeys);
         }
 
-        public PSListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys, string keyValue=null)
+        public PSListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys, string keyValue = null)
         {
             AccessKeys regenerateKeyslistKeys;
             RegenerateAccessKeyParameters regenParam = new RegenerateAccessKeyParameters();
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             var resourceList = response.Select(resource => new PSSharedAccessAuthorizationRuleAttributes(resource));
             return resourceList;
         }
-                
+
         public PSSharedAccessAuthorizationRuleAttributes CreateOrUpdateEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, PSSharedAccessAuthorizationRuleAttributes parameters)
         {
             var parameter1 = new AuthorizationRule()
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             if (!string.IsNullOrEmpty(parameter.AlternateName))
                 Parameter1.AlternateName = parameter.AlternateName;
 
-            var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias,Parameter1.PartnerNamespace, Parameter1.AlternateName);
+            var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias, Parameter1.PartnerNamespace, Parameter1.AlternateName);
 
             return new PSEventHubDRConfigurationAttributes(response);
         }
@@ -719,7 +719,7 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public PSCheckNameAvailabilityResultAttributes GetAliasCheckNameAvailability(string resourceGroup, string namespaceName, string aliasName)
         {
-            var response = Client.DisasterRecoveryConfigs.CheckNameAvailability(resourceGroup,namespaceName, aliasName);
+            var response = Client.DisasterRecoveryConfigs.CheckNameAvailability(resourceGroup, namespaceName, aliasName);
             return new PSCheckNameAvailabilityResultAttributes(response);
         }
 
@@ -873,6 +873,61 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         #endregion
 
+        #region PrivateEndpoints
+
+        public PSEventHubPrivateEndpointAttributes UpdatePrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName, string connectionState, string description = null)
+        {
+            var privateEndpointConnection = Client.PrivateEndpointConnections.Get(resourceGroupName, namespaceName, privateEndpointName);
+
+            if(connectionState != null)
+            {
+                privateEndpointConnection.PrivateLinkServiceConnectionState.Status = connectionState;
+            }
+
+            if(description != null)
+            {
+                privateEndpointConnection.PrivateLinkServiceConnectionState.Description = description;
+            }
+            
+            privateEndpointConnection = Client.PrivateEndpointConnections.CreateOrUpdate(resourceGroupName, namespaceName, privateEndpointName, privateEndpointConnection);
+
+            return new PSEventHubPrivateEndpointAttributes(privateEndpointConnection);
+
+        }
+
+        public PSEventHubPrivateEndpointAttributes GetPrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName)
+        {
+
+            var privateEndpointConnection = Client.PrivateEndpointConnections.Get(resourceGroupName, namespaceName, privateEndpointName);
+
+            return new PSEventHubPrivateEndpointAttributes(privateEndpointConnection);
+
+        }
+
+        public IEnumerable<PSEventHubPrivateEndpointAttributes> ListPrivateEndpointConnection(string resourceGroupName, string namespaceName)
+        {
+            var privateEndpointConnection = Client.PrivateEndpointConnections.List(resourceGroupName, namespaceName);
+
+            var resourceList = privateEndpointConnection.Select(resource => new PSEventHubPrivateEndpointAttributes(resource));
+
+            return resourceList;
+        }
+
+        public void DeletePrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName)
+        {
+            Client.PrivateEndpointConnections.Delete(resourceGroupName, namespaceName, privateEndpointName);
+        }
+
+        public IEnumerable<PSEventHubPrivateLinkResourceAttributes> GetPrivateLinkResource(string resourceGroupName, string namespaceName)
+        {
+            var privateLinks = Client.PrivateLinkResources.Get(resourceGroupName, namespaceName).Value.ToList();
+
+            var resourceList = privateLinks.Select(resource => new PSEventHubPrivateLinkResourceAttributes(resource));
+
+            return resourceList;
+        } 
+
+        #endregion
 
         public static int ReturnmaxCountvalueForSwtich(int? maxcount)
         {

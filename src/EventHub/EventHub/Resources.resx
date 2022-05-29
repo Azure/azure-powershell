@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApproveNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Approve PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2} </value>
+  </data>
   <data name="CreateConsumerGroup" xml:space="preserve">
     <value>Adding a new Consumer Group {0} under Eventhub {1}</value>
   </data>
@@ -156,11 +159,23 @@
   <data name="GetEventhubCluster" xml:space="preserve">
     <value>Get Eventhub Cluster details from ResourceGroup {0} with NAme {1}</value>
   </data>
+  <data name="GetNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Get PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2}</value>
+  </data>
+  <data name="GetNamespacePrivateLinks" xml:space="preserve">
+    <value>Get all PrivateLinks for Namespace: {0} of ResourceGroup: {1}</value>
+  </data>
+  <data name="ListNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Get all PrivateEndpoints for Namespace: {1} of ResourceGroup: {2}</value>
+  </data>
   <data name="RegenerateKeyEventHub" xml:space="preserve">
     <value>Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of EventHub: {1}</value>
   </data>
   <data name="RegenerateKeyNamesapce" xml:space="preserve">
     <value>Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of Namespace:{1}</value>
+  </data>
+  <data name="RejectNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Reject PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2}</value>
   </data>
   <data name="RemoveConsumerGroup" xml:space="preserve">
     <value>Deleting ConsumerGrop:{0} from Eventhub:{1}</value>
@@ -176,6 +191,9 @@
   </data>
   <data name="RemoveNamespaceAuthorizationRule" xml:space="preserve">
     <value>Removing AtuhorizationRule:{0} of Namespace: {1}</value>
+  </data>
+  <data name="RemoveNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Remove PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2}</value>
   </data>
   <data name="RemoveNamespaces" xml:space="preserve">
     <value>Delete NameSpace:{0} from ResourceGroup:{1}</value>
