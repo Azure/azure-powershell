@@ -105,7 +105,9 @@ CmdletsToExport = 'New-AzServiceBusNamespace', 'Get-AzServiceBusNamespace',
                'Set-AzServiceBusNetworkRuleSet', 
                'New-AzServiceBusAuthorizationRuleSASToken', 
                'Test-AzServiceBusNameAvailability', 
-               'New-AzServiceBusEncryptionConfig'
+               'New-AzServiceBusEncryptionConfig', 'Approve-AzServiceBusPrivateEndpointConnection', 'Deny-AzServiceBusPrivateEndpointConnection',
+               'Get-AzServiceBusPrivateEndpointConnection', 'Remove-AzServiceBusPrivateEndpointConnection',
+               'Get-AzServiceBusPrivateLink'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -90,6 +90,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string SubscriptionResourceIdParameterSet = "SubscriptionResourceIdSet";
         protected const string RuleResourceIdParameterSet = "RuleResourceIdSet";
         protected const string NetworkRuleSetResourceIdParameterSet = "NetworkRuleSetResourceIdParameterSet";
+        protected const string PrivateEndpointResourceIdParameterSet = "PrivateEndpointResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -104,6 +105,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string NetworkRuleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
         protected const string VirtualNetworkRulePropertiesParameterSet = "VirtualNetworkRulePropertiesParameterSet";
         protected const string IPRulePropertiesParameterSet = "IPRulePropertiesParameterSet";
+        protected const string PrivateEndpointPropertiesParameterSet = "PrivateEndpointPropertiesSet";
+        protected const string PrivateLinkPropertiesParameterSet = "PrivateLinkPropertiesSet";
 
         //Alias - used in Cmdlets
         protected const string AliasResourceGroupname = "ResourceGroupName";
@@ -138,7 +141,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string Send = "Send";
         protected const string Listen = "Listen";
 
-        
+        protected const string PrivateEndpointURL = "Microsoft.ServiceBus/namespaces/privateEndpointConnections";
+        protected const string NamespaceURL = "Microsoft.ServiceBus/namespaces";
+
 
         protected struct SKU
         {
