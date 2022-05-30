@@ -5,9 +5,6 @@
     File: ParameterNameAndValue.psm1
 #>
 
-# Import-Module AzPreview
-# Import-Module AzureRM
-
 enum RuleNames {
     Unknown_Parameter_Set
     Invalid_Parameter_Name

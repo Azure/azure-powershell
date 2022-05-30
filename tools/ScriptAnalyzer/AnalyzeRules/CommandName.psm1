@@ -5,14 +5,7 @@
     File: CommandName.psm1
 #>
 
-
-# Import-Module AzPreview
-# Import-Module AzureRM
-Import-Module -Name ./artifacts/Debug/Az.Accounts -Scope Global 
-Import-Module -Name ./artifacts/Debug/Az.ADDomainServices -Scope Global 
-Import-Module -Name ./artifacts/Debug/Az.Aks -Scope Global 
-Import-Module -Name ./artifacts/Debug/Az.ApiManagement -Scope Global
-
+Import-Module (Get-ChildItem -Path ./Debug).FullName -Scope Global
 
 enum RuleNames {
     Invalid_Cmdlet

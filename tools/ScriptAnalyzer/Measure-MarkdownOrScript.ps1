@@ -43,8 +43,10 @@ if ($OutputScriptsInFile.IsPresent) {
     Remove-Item $OutputFolder\$ScriptsByExampleFolder -Recurse -ErrorAction SilentlyContinue
 }
 Remove-Item $OutputFolder\*.csv -Recurse -ErrorAction SilentlyContinue
+
 # find examples in ".md", output ".ps1"
 if ($PSCmdlet.ParameterSetName -eq "Markdown") {
+    $null = New-Item -ItemType Directory -Path $OutputFolder\$ScriptsByExampleFolder -ErrorAction SilentlyContinue
     $MarkdownPath = Get-Content $MarkdownPaths
     (Get-ChildItem $MarkdownPath) | foreach{
         if ($_ -cmatch ".*\.md" -and $_.BaseName -cmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
@@ -62,7 +64,6 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
         $ScriptPaths = "$OutputFolder\$ScriptsByExampleFolder"
     }
     # Summarize searching results
-    $null = New-Item -ItemType Directory -Path $OutputFolder -ErrorAction SilentlyContinue
     $scaleTable | Export-Csv "$OutputFolder\Scale.csv" -NoTypeInformation
     $missingTable | where {$_ -ne $null} | Export-Csv "$OutputFolder\Missing.csv" -NoTypeInformation
     $deletePromptAndSeparateOutputTable | where {$_ -ne $null} | Export-Csv "$OutputFolder\DeletingSeparating.csv" -NoTypeInformation
