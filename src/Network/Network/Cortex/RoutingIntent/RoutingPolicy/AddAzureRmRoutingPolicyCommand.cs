@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(
         VerbsCommon.Add,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoutingPolicy",
-        SupportsShouldProcess = false),
+        SupportsShouldProcess = true),
         OutputType(typeof(PSRoutingIntent))]
     public class AddAzureRmRoutingPolicyCommand : NetworkBaseCmdlet
     {
