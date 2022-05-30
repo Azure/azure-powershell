@@ -12,13 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.OperationalInsights;
-using Microsoft.Azure.Test.HttpRecorder;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.OperationalInsights;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Commands.TestFx;
 using Xunit.Abstractions;
 
@@ -55,34 +49,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null}
                     }
-                ).WithManagementClients(
-                    GetOperationalInsightsDataClient,
-                    GetOperationalInsightsManagementClient,
-                    GetResourceManagementClient,
-                    GetStorageManagementClient
                 )
                 .Build();
-        }
-
-        protected OperationalInsightsDataClient GetOperationalInsightsDataClient(RestTestFramework.MockContext context)
-        {
-            var credentials = new ApiKeyClientCredentials("DEMO_KEY");
-            return new OperationalInsightsDataClient(credentials, HttpMockServer.CreateInstance());
-        }
-
-        protected OperationalInsightsManagementClient GetOperationalInsightsManagementClient(RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<OperationalInsightsManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected ResourceManagementClient GetResourceManagementClient(RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected StorageManagementClient GetStorageManagementClient(RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
