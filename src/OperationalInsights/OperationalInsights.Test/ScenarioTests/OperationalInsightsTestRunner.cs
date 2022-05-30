@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
 
         protected OperationalInsightsTestRunner(ITestOutputHelper output)
         {
-            TestRunner = TestFx.TestManager.CreateInstance(output)
+            TestRunner = TestManager.CreateInstance(output)
                 .WithNewPsScriptFilename($"{GetType().Name}.ps1")
                 .WithProjectSubfolderForTests("ScenarioTests")
                 .WithCommonPsScripts(new[]
