@@ -19,10 +19,13 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ElasticJobExecutionCrudTests : SqlTestRunner
+    public class ElasticJobExecutionCrudTests : SqlTestsBase
     {
         public ElasticJobExecutionCrudTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
         }
 
         #region Start Job Tests
@@ -31,14 +34,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobStart()
         {
-            TestRunner.RunTestScript("Test-StartJob");
+            RunPowerShellTest("Test-StartJob");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobStartWait()
         {
-            TestRunner.RunTestScript("Test-StartJobWait");
+            RunPowerShellTest("Test-StartJobWait");
         }
 
         #endregion
@@ -49,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobStop()
         {
-            TestRunner.RunTestScript("Test-StopJob");
+            RunPowerShellTest("Test-StopJob");
         }
 
         #endregion
@@ -60,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobExecutionGet()
         {
-            TestRunner.RunTestScript("Test-GetJobExecution");
+            RunPowerShellTest("Test-GetJobExecution");
         }
 
         #endregion
@@ -72,7 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestJobStepExecutionGet()
 
         {
-            TestRunner.RunTestScript("Test-GetJobStepExecution");
+            RunPowerShellTest("Test-GetJobStepExecution");
         }
 
         #endregion
@@ -83,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobTargetExecutionGet()
         {
-            TestRunner.RunTestScript("Test-GetJobTargetExecution");
+            RunPowerShellTest("Test-GetJobTargetExecution");
         }
 
         #endregion

@@ -19,31 +19,34 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ServerCommunicationLinkCrudTests : SqlTestRunner
+    public class ServerCommunicationLinkCrudTests : SqlTestsBase
     {
         public ServerCommunicationLinkCrudTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerCommunicationLinkCreate()
         {
-            TestRunner.RunTestScript("Test-CreateServerCommunicationLink");
+            RunPowerShellTest("Test-CreateServerCommunicationLink");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerCommunicationLinkGet()
         {
-            TestRunner.RunTestScript("Test-GetServerCommunicationLink");
+            RunPowerShellTest("Test-GetServerCommunicationLink");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerCommunicationLinkRemove()
         {
-            TestRunner.RunTestScript("Test-RemoveServerCommunicationLink");
+            RunPowerShellTest("Test-RemoveServerCommunicationLink");
         }
     }
 }

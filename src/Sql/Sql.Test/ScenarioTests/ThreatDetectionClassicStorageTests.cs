@@ -16,11 +16,20 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ThreatDetectionClassicStorageTests : SqlTestRunner
+    public class ThreatDetectionClassicStorageTests : SqlTestsBase
     {
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
+        {
+            var sqlClient = GetSqlClient(context);
+            var storageV2Client = GetStorageManagementClient(context);
+            var newResourcesClient = GetResourcesClient(context);
+            Helper.SetupSomeOfManagementClients(sqlClient, storageV2Client, newResourcesClient);
+        }
+
         public ThreatDetectionClassicStorageTests(ITestOutputHelper output) : base(output)
         {
         }
@@ -31,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         // See issue https://github.com/Azure/azure-powershell/issues/6601
         public void ThreatDetectionUpdatePolicyWithClassicStorage()
         {
-            TestRunner.RunTestScript("Test-ThreatDetectionUpdatePolicyWithClassicStorage");
+            RunPowerShellTest("Test-ThreatDetectionUpdatePolicyWithClassicStorage");
         }
     }
 }

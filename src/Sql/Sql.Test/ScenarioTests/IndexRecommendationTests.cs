@@ -20,7 +20,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class IndexRecommendationTests : SqlTestRunner
+    public class IndexRecommendationTests : SqlTestsBase
     {
         public IndexRecommendationTests(ITestOutputHelper output) : base(output)
         {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             // TODO https://github.com/Azure/azure-powershell/issues/4156
             if (TestMockSupport.RunningMocked)
             {
-                TestRunner.RunTestScript("Test-GetIndexRecommendations");
+                RunPowerShellTest("Test-GetIndexRecommendations");
             }
         }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             // TODO https://github.com/Azure/azure-powershell/issues/4156
             if (TestMockSupport.RunningMocked)
             {
-                TestRunner.RunTestScript("Test-CreateIndex");
+                RunPowerShellTest("Test-CreateIndex");
             }
         }
     }

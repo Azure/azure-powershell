@@ -19,7 +19,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ServerDisasterRecoveryConfigurationTests : SqlTestRunner
+    public class ServerDisasterRecoveryConfigurationTests : SqlTestsBase
     {
         public ServerDisasterRecoveryConfigurationTests(ITestOutputHelper output) : base(output)
         {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerDisasterRecoveryConfiguration()
         {
-            TestRunner.RunTestScript("Test-ServerDisasterRecoveryConfiguration");
+            RunPowerShellTest("Test-ServerDisasterRecoveryConfiguration");
         }
     }
 }

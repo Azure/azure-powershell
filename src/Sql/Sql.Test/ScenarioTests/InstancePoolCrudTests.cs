@@ -16,13 +16,22 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class InstancePoolCrudTests : SqlTestRunner
+    public class InstancePoolCrudTests : SqlTestsBase
     {
         public InstancePoolCrudTests(ITestOutputHelper output) : base(output)
         {
+        }
+
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
+        {
+            var sqlClient = GetSqlClient(context);
+            var newResourcesClient = GetResourcesClient(context);
+            var networkClient = GetNetworkClient(context);
+            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient);
         }
 
         #region Instance pool
@@ -34,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateInstancePool()
         {
-            TestRunner.RunTestScript("Test-CreateInstancePool");
+            RunPowerShellTest("Test-CreateInstancePool");
         }
 
         /// <summary>
@@ -44,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateInstancePool()
         {
-            TestRunner.RunTestScript("Test-UpdateInstancePool");
+            RunPowerShellTest("Test-UpdateInstancePool");
         }
 
         /// <summary>
@@ -54,14 +63,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetInstancePool()
         {
-            TestRunner.RunTestScript("Test-GetInstancePool");
+            RunPowerShellTest("Test-GetInstancePool");
         }
 
         [Fact(Skip = "Skip due to long setup time for managed instance pool")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveInstancePool()
         {
-            TestRunner.RunTestScript("Test-RemoveInstancePool");
+            RunPowerShellTest("Test-RemoveInstancePool");
         }
 
         #endregion
@@ -75,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateManagedInstanceInInstancePool()
         {
-            TestRunner.RunTestScript("Test-CreateManagedInstanceInInstancePool");
+            RunPowerShellTest("Test-CreateManagedInstanceInInstancePool");
         }
 
         /// <summary>
@@ -85,7 +94,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedInstanceInInstancePool()
         {
-            TestRunner.RunTestScript("Test-GetManagedInstanceInInstancePool");
+            RunPowerShellTest("Test-GetManagedInstanceInInstancePool");
         }
 
         /// <summary>
@@ -95,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateManagedInstanceInInstancePool()
         {
-            TestRunner.RunTestScript("Test-UpdateManagedInstanceInInstancePool");
+            RunPowerShellTest("Test-UpdateManagedInstanceInInstancePool");
         }
 
         /// <summary>
@@ -105,7 +114,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteManagedInstanceInInstancePool()
         {
-            TestRunner.RunTestScript("Test-DeleteManagedInstanceInInstancePool");
+            RunPowerShellTest("Test-DeleteManagedInstanceInInstancePool");
         }
 
         #endregion
@@ -119,7 +128,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetInstancePoolUsage()
         {
-            TestRunner.RunTestScript("Test-GetInstancePoolUsage");
+            RunPowerShellTest("Test-GetInstancePoolUsage");
         }
 
         #endregion

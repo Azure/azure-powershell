@@ -16,55 +16,66 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class DataMaskingTests : SqlTestRunner
+    public class DataMaskingTests : SqlTestsBase
     {
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
+        {
+            var sqlClient = GetSqlClient(context);
+            var newResourcesClient = GetResourcesClient(context);
+            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient);
+        }
+
         public DataMaskingTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingPrivilegedUsersChanges()
         {
-            TestRunner.RunTestScript("Test-DatabaseDataMaskingPrivilegedUsersChanges");
+            RunPowerShellTest("Test-DatabaseDataMaskingPrivilegedUsersChanges");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingBasicRuleLifecycle()
         {
-            TestRunner.RunTestScript("Test-DatabaseDataMaskingBasicRuleLifecycle");
+            RunPowerShellTest("Test-DatabaseDataMaskingBasicRuleLifecycle");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingNumberRuleLifecycle()
         {
-            TestRunner.RunTestScript("Test-DatabaseDataMaskingNumberRuleLifecycle");
+            RunPowerShellTest("Test-DatabaseDataMaskingNumberRuleLifecycle");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingTextRuleLifecycle()
         {
-            TestRunner.RunTestScript("Test-DatabaseDataMaskingTextRuleLifecycle");
+            RunPowerShellTest("Test-DatabaseDataMaskingTextRuleLifecycle");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingRuleCreationFailures()
         {
-            TestRunner.RunTestScript("Test-DatabaseDataMaskingRuleCreationFailures");
+            RunPowerShellTest("Test-DatabaseDataMaskingRuleCreationFailures");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingRuleCreationWithoutPolicy()
         {
-            TestRunner.RunTestScript("Test-DatabaseDataMaskingRuleCreationWithoutPolicy");
+            RunPowerShellTest("Test-DatabaseDataMaskingRuleCreationWithoutPolicy");
         }
     }
 }

@@ -19,7 +19,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ServerActiveDirectoryAdministratorTest : SqlTestRunner
+    public class ServerActiveDirectoryAdministratorTest : SqlTestsBase
     {
         public ServerActiveDirectoryAdministratorTest(ITestOutputHelper output) : base(output)
         {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerActiveDirectoryAdministratorCRUD()
         {
-            TestRunner.RunTestScript("Test-ServerActiveDirectoryAdministrator");
+            RunPowerShellTest("Test-ServerActiveDirectoryAdministrator");
         }
     }
 }

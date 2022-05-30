@@ -16,20 +16,32 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ManagedInstanceActiveDirectoryAdministratorTests : SqlTestRunner
+    public class ManagedInstanceActiveDirectoryAdministratorTests : SqlTestsBase
     {
         public ManagedInstanceActiveDirectoryAdministratorTests(ITestOutputHelper output) : base(output)
         {
+        }
+    
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
+        {
+            var newResourcesClient = GetResourcesClient(context);
+            var sqlClient = GetSqlClient(context);
+            var networkClient = GetNetworkClient(context);
+            var graphClient = GetGraphClientVersion1_6(context);
+            Helper.SetupSomeOfManagementClients(newResourcesClient,sqlClient, networkClient, graphClient);
         }
 
         [Fact(Skip = "MDCS Customer Experience team should re-record this test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceActiveDirectoryAdministrator()
         {
-            TestRunner.RunTestScript("Test-ManagedInstanceActiveDirectoryAdministrator");
+            RunPowerShellTest("Test-ManagedInstanceActiveDirectoryAdministrator");
         }
     }
 }
+
+

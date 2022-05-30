@@ -19,24 +19,27 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ElasticJobTargetCrudTests : SqlTestRunner
+    public class ElasticJobTargetCrudTests : SqlTestsBase
     {
         public ElasticJobTargetCrudTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTargetAdd()
         {
-            TestRunner.RunTestScript("Test-AddTarget");
+            RunPowerShellTest("Test-AddTarget");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTargetRemove()
         {
-            TestRunner.RunTestScript("Test-RemoveTarget");
+            RunPowerShellTest("Test-RemoveTarget");
         }
     }
 }

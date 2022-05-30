@@ -19,24 +19,27 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ImportExportTests : SqlTestRunner
+    public class ImportExportTests : SqlTestsBase
     {
         public ImportExportTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
         }
 
         [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportDatabase()
         {
-            TestRunner.RunTestScript("Test-ExportDatabase");
+            RunPowerShellTest("Test-ExportDatabase");
         }
 
         [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportDatabase_NetworkIsolation()
         {
-            TestRunner.RunTestScript("Test-ExportDatabaseNetworkIsolation");
+            RunPowerShellTest("Test-ExportDatabaseNetworkIsolation");
         }
 
         [Fact(Skip = "Cannot re-record.")]
@@ -44,7 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.Sql, "Needs to be re-recorded")]
         public void TestImportNewDatabase()
         {
-            TestRunner.RunTestScript("Test-ImportNewDatabase");
+            RunPowerShellTest("Test-ImportNewDatabase");
         }
 
         [Fact(Skip = "Cannot re-record.")]
@@ -52,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.Sql, "Needs to be re-recorded")]
         public void TestImportNewDatabase_NetworkIsolation()
         {
-            TestRunner.RunTestScript("Test-ImportNewDatabaseNetworkIsolation");
+            RunPowerShellTest("Test-ImportNewDatabaseNetworkIsolation");
         }
     }
 }

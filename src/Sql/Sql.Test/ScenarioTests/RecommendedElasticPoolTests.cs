@@ -19,7 +19,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class RecommendedElasticPoolTests : SqlTestRunner
+    public class RecommendedElasticPoolTests : SqlTestsBase
     {
         public RecommendedElasticPoolTests(ITestOutputHelper output) : base(output)
         {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListRecommendedElasticPools()
         {
-            TestRunner.RunTestScript("Test-ElasticPoolRecommendation");
+            RunPowerShellTest("Test-ElasticPoolRecommendation");
         }
     }
 }

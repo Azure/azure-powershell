@@ -19,10 +19,14 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class AdvisorTests : SqlTestRunner
+    public class AdvisorTests : SqlTestsBase
     {
         public AdvisorTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers",
+                "Microsoft.Sql/servers/databases"
+            };
         }
 
         #region Server Advisor Tests
@@ -31,28 +35,28 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListServerAdvisors()
         {
-            TestRunner.RunTestScript("Test-ListServerAdvisors");
+            RunPowerShellTest("Test-ListServerAdvisors");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListServerAdvisorsExpanded()
         {
-            TestRunner.RunTestScript("Test-ListServerAdvisorsExpanded");
+            RunPowerShellTest("Test-ListServerAdvisorsExpanded");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetServerAdvisor()
         {
-            TestRunner.RunTestScript("Test-GetServerAdvisor");
+            RunPowerShellTest("Test-GetServerAdvisor");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateServerAdvisor()
         {
-            TestRunner.RunTestScript("Test-UpdateServerAdvisor");
+            RunPowerShellTest("Test-UpdateServerAdvisor");
         }
 
         #endregion
@@ -63,27 +67,27 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListDatabaseAdvisors()
         {
-            TestRunner.RunTestScript("Test-ListDatabaseAdvisors");
+            RunPowerShellTest("Test-ListDatabaseAdvisors");
         }
 
         [Fact(Skip = "unable to re-record")]
         public void TestListDatabaseAdvisorsExpanded()
         {
-            TestRunner.RunTestScript("Test-ListDatabaseAdvisorsExpanded");
+            RunPowerShellTest("Test-ListDatabaseAdvisorsExpanded");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDatabaseAdvisor()
         {
-            TestRunner.RunTestScript("Test-GetDatabaseAdvisor");
+            RunPowerShellTest("Test-GetDatabaseAdvisor");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateDatabaseAdvisor()
         {
-            TestRunner.RunTestScript("Test-UpdateDatabaseAdvisor");
+            RunPowerShellTest("Test-UpdateDatabaseAdvisor");
         }
 
         #endregion
@@ -94,21 +98,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListElasticPoolAdvisors()
         {
-            TestRunner.RunTestScript("Test-ListElasticPoolAdvisors");
+            RunPowerShellTest("Test-ListElasticPoolAdvisors");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListElasticPoolAdvisorsExpanded()
         {
-            TestRunner.RunTestScript("Test-ListElasticPoolAdvisorsExpanded");
+            RunPowerShellTest("Test-ListElasticPoolAdvisorsExpanded");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetElasticPoolAdvisor()
         {
-            TestRunner.RunTestScript("Test-GetElasticPoolAdvisor");
+            RunPowerShellTest("Test-GetElasticPoolAdvisor");
         }
 
         #endregion

@@ -19,143 +19,146 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class FailoverGroupTests : SqlTestRunner
+    public class FailoverGroupTests : SqlTestsBase
     {
         public FailoverGroupTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverGroup()
         {
-            TestRunner.RunTestScript("Test-FailoverGroup");
+            RunPowerShellTest("Test-FailoverGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateFailoverGroup_Named()
         {
-            TestRunner.RunTestScript("Test-CreateFailoverGroup-Named");
+            RunPowerShellTest("Test-CreateFailoverGroup-Named");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateFailoverGroup_Positional()
         {
-            TestRunner.RunTestScript("Test-CreateFailoverGroup-Positional");
+            RunPowerShellTest("Test-CreateFailoverGroup-Positional");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateFailoverGroup_AutomaticPolicy()
         {
-            TestRunner.RunTestScript("Test-CreateFailoverGroup-AutomaticPolicy");
+            RunPowerShellTest("Test-CreateFailoverGroup-AutomaticPolicy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateFailoverGroup_AutomaticPolicyGracePeriodReadOnlyFailover()
         {
-            TestRunner.RunTestScript("Test-CreateFailoverGroup-AutomaticPolicyGracePeriodReadOnlyFailover");
+            RunPowerShellTest("Test-CreateFailoverGroup-AutomaticPolicyGracePeriodReadOnlyFailover");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateFailoverGroup_ZeroGracePeriod()
         {
-            TestRunner.RunTestScript("Test-CreateFailoverGroup-ZeroGracePeriod");
+            RunPowerShellTest("Test-CreateFailoverGroup-ZeroGracePeriod");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateFailoverGroup_ManualPolicy()
         {
-            TestRunner.RunTestScript("Test-CreateFailoverGroup-ManualPolicy");
+            RunPowerShellTest("Test-CreateFailoverGroup-ManualPolicy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateFailoverGroup_Overflow()
         {
-            TestRunner.RunTestScript("Test-CreateFailoverGroup-Overflow");
+            RunPowerShellTest("Test-CreateFailoverGroup-Overflow");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetFailoverGroup_Named()
         {
-            TestRunner.RunTestScript("Test-SetFailoverGroup-Named");
+            RunPowerShellTest("Test-SetFailoverGroup-Named");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetFailoverGroup_Positional()
         {
-            TestRunner.RunTestScript("Test-SetFailoverGroup-Positional");
+            RunPowerShellTest("Test-SetFailoverGroup-Positional");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetFailoverGroup_PipeServer()
         {
-            TestRunner.RunTestScript("Test-SetFailoverGroup-PipeServer");
+            RunPowerShellTest("Test-SetFailoverGroup-PipeServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetFailoverGroup_AutomaticWithGracePeriodReadOnlyFailover()
         {
-            TestRunner.RunTestScript("Test-SetFailoverGroup-AutomaticWithGracePeriodReadOnlyFailover");
+            RunPowerShellTest("Test-SetFailoverGroup-AutomaticWithGracePeriodReadOnlyFailover");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetFailoverGroup_AutomaticWithGracePeriodZero()
         {
-            TestRunner.RunTestScript("Test-SetFailoverGroup-AutomaticWithGracePeriodZero");
+            RunPowerShellTest("Test-SetFailoverGroup-AutomaticWithGracePeriodZero");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetFailoverGroup_AutomaticToManual()
         {
-            TestRunner.RunTestScript("Test-SetFailoverGroup-AutomaticToManual");
+            RunPowerShellTest("Test-SetFailoverGroup-AutomaticToManual");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetFailoverGroup_ManualToAutomaticNoGracePeriod()
         {
-            TestRunner.RunTestScript("Test-SetFailoverGroup-ManualToAutomaticNoGracePeriod");
+            RunPowerShellTest("Test-SetFailoverGroup-ManualToAutomaticNoGracePeriod");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetFailoverGroup_Overflow()
         {
-            TestRunner.RunTestScript("Test-SetFailoverGroup-Overflow");
+            RunPowerShellTest("Test-SetFailoverGroup-Overflow");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Test_AddRemoveDatabasesToFromFailoverGroup()
         {
-            TestRunner.RunTestScript("Test-AddRemoveDatabasesToFromFailoverGroup");
+            RunPowerShellTest("Test-AddRemoveDatabasesToFromFailoverGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSwitchFailoverGroup()
         {
-            TestRunner.RunTestScript("Test-SwitchFailoverGroup");
+            RunPowerShellTest("Test-SwitchFailoverGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSwitchFailoverGroupAllowDataLoss()
         {
-            TestRunner.RunTestScript("Test-SwitchFailoverGroupAllowDataLoss");
+            RunPowerShellTest("Test-SwitchFailoverGroupAllowDataLoss");
         }
     }
 }

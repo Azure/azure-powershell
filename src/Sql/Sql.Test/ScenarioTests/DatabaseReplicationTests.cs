@@ -19,108 +19,111 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class DatabaseReplicationTests : SqlTestRunner
+    public class DatabaseReplicationTests : SqlTestsBase
     {
         public DatabaseReplicationTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDatabaseCopy()
         {
-            TestRunner.RunTestScript("Test-CreateDatabaseCopy");
+            RunPowerShellTest("Test-CreateDatabaseCopy");
         }
 
         [Fact(Skip = "Taking too long - try again before PR merge")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateVcoreDatabaseCopy()
         {
-            TestRunner.RunTestScript("Test-CreateVcoreDatabaseCopy");
+            RunPowerShellTest("Test-CreateVcoreDatabaseCopy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateSecondaryDatabase()
         {
-            TestRunner.RunTestScript("Test-CreateSecondaryDatabase");
+            RunPowerShellTest("Test-CreateSecondaryDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNamedSecondaryDatabase()
         {
-            TestRunner.RunTestScript("Test-CreateNamedSecondaryDatabase");
+            RunPowerShellTest("Test-CreateNamedSecondaryDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNamedSecondaryDatabaseNegative()
         {
-            TestRunner.RunTestScript("Test-CreateNamedSecondaryDatabaseNegative");
+            RunPowerShellTest("Test-CreateNamedSecondaryDatabaseNegative");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetReplicationLink()
         {
-            TestRunner.RunTestScript("Test-GetReplicationLink");
+            RunPowerShellTest("Test-GetReplicationLink");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveSecondaryDatabase()
         {
-            TestRunner.RunTestScript("Test-RemoveSecondaryDatabase");
+            RunPowerShellTest("Test-RemoveSecondaryDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverSecondaryDatabase()
         {
-            TestRunner.RunTestScript("Test-FailoverSecondaryDatabase");
+            RunPowerShellTest("Test-FailoverSecondaryDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDatabaseCopyWithBackupStorageRedundancy()
         {
-            TestRunner.RunTestScript("Test-CreateDatabaseCopyWithBackupStorageRedundancy");
+            RunPowerShellTest("Test-CreateDatabaseCopyWithBackupStorageRedundancy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateSecondaryDatabaseWithBackupStorageRedundancy()
         {
-            TestRunner.RunTestScript("Test-CreateSecondaryDatabaseWithBackupStorageRedundancy");
+            RunPowerShellTest("Test-CreateSecondaryDatabaseWithBackupStorageRedundancy");
         }
 
         [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateCopyRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
         {
-            TestRunner.RunTestScript("Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
+            RunPowerShellTest("Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
         }
 
         [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateCopyRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
         {
-            TestRunner.RunTestScript("Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
+            RunPowerShellTest("Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
         }
 
         [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
         {
-            TestRunner.RunTestScript("Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
+            RunPowerShellTest("Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
         }
 
         [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
         {
-            TestRunner.RunTestScript("Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
+            RunPowerShellTest("Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
         }
     }
 }

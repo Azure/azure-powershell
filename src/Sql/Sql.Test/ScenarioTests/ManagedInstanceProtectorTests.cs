@@ -16,83 +16,97 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ManagedInstanceProtectorTests : SqlTestRunner
+    public class ManagedInstanceProtectorTests : SqlTestsBase
     {
         public ManagedInstanceProtectorTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/managedInstances"
+            };
+        }
+
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
+        {
+            var sqlClient = GetSqlClient(context);
+            var newResourcesClient = GetResourcesClient(context);
+            var graphClient = GetGraphClient(context);
+            var networkClient = GetNetworkClient(context);
+            var keyVaultClient = GetKeyVaultClient(context);
+            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient, graphClient, keyVaultClient);
         }
 
         [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorCI()
         {
-            TestRunner.RunTestScript("Test-SetGetManagedInstanceEncryptionProtectorCI");
+            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorCI");
         }
 
         [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorByokFailsWithoutKeyId()
         {
-            TestRunner.RunTestScript("Test-SetGetManagedInstanceEncryptionProtectorByokFailsWithoutKeyId");
+            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokFailsWithoutKeyId");
         }
 
         [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorServiceManaged()
         {
-            TestRunner.RunTestScript("Test-SetGetManagedInstanceEncryptionProtectorServiceManaged");
+            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManaged");
         }
 
         [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorServiceManagedInputObject()
         {
-            TestRunner.RunTestScript("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedInputObject");
+            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedInputObject");
         }
 
         [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorServiceManagedResourceId()
         {
-            TestRunner.RunTestScript("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedResourceId");
+            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedResourceId");
         }
 
         [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorServiceManagedPiping()
         {
-            TestRunner.RunTestScript("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedPiping");
+            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedPiping");
         }
 
         [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorByok()
         {
-            TestRunner.RunTestScript("Test-SetGetManagedInstanceEncryptionProtectorByok");
+            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByok");
         }
 
         [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorByokInputObject()
         {
-            TestRunner.RunTestScript("Test-SetGetManagedInstanceEncryptionProtectorByokInputObject");
+            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokInputObject");
         }
 
         [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorByokResourceId()
         {
-            TestRunner.RunTestScript("Test-SetGetManagedInstanceEncryptionProtectorByokResourceId");
+            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokResourceId");
         }
 
         [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorByokPiping()
         {
-            TestRunner.RunTestScript("Test-SetGetManagedInstanceEncryptionProtectorByokPiping");
+            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokPiping");
         }
     }
 }

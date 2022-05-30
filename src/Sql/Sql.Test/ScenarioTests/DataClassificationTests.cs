@@ -15,41 +15,54 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class DataClassificationTests : SqlTestRunner
+    public class DataClassificationTests : SqlTestsBase
     {
         public DataClassificationTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/managedInstances",
+                "Microsoft.Sql/servers",
+                "Microsoft.Sql/managedInstances/databases"
+            };
         }
 
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
+        {
+            var sqlClient = GetSqlClient(context);
+            var newResourcesClient = GetResourcesClient(context);
+            var networkClient = GetNetworkClient(context);
+            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient);
+        }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataClassificationOnSqlDatabase()
         {
-            TestRunner.RunTestScript("Test-DataClassificationOnSqlDatabase");
+            RunPowerShellTest("Test-DataClassificationOnSqlDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorIsThrownWhenInvalidClassificationIsSet()
         {
-            TestRunner.RunTestScript("Test-ErrorIsThrownWhenInvalidClassificationIsSet");
+            RunPowerShellTest("Test-ErrorIsThrownWhenInvalidClassificationIsSet");
         }
 
         [Fact(Skip = "not able to re - record because 'Managed Instance is not accepting creation of instances with General Purpose edition and Generation 4 hardware in this region.'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBasicDataClassificationOnSqlManagedDatabase()
         {
-            TestRunner.RunTestScript("Test-BasicDataClassificationOnSqlManagedDatabase");
+            RunPowerShellTest("Test-BasicDataClassificationOnSqlManagedDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableDisableRecommendationsOnSqlDatabase()
         {
-            TestRunner.RunTestScript("Test-EnableDisableRecommendationsOnSqlDatabase");
+            RunPowerShellTest("Test-EnableDisableRecommendationsOnSqlDatabase");
         }
     }
 }
