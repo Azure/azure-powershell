@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.Profile
         public string MicrosoftGraphEndpointResourceId { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Microsoft Graph Url")]
+            HelpMessage = "Microsoft Graph Url ")]
         public string MicrosoftGraphUrl { get; set; }
 
 

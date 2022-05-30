@@ -11,6 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+//test for script analyzer
 
 using System;
 using System.Collections.Concurrent;
@@ -341,7 +342,7 @@ namespace Microsoft.Azure.Commands.Profile
                 bool suppressWarningOrError = AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager) && configManager.GetConfigValue<bool>(ConfigKeys.DisplayBreakingChangeWarning);
                 if (!suppressWarningOrError)
                 {
-                    WriteWarning("The feature related to parameter name 'FederatedToken' is under preview.");
+                    WriteWarning("The feature related to parameter name 'FederatedToken' is under preview. ");
                 }
             }
 
