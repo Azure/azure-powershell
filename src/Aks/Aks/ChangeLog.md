@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added oroperty `PowerState` for the output of `Get-AzAksCluster`[#18271]
 
 ## Version 4.1.0
 * Removed these aliases:
