@@ -1,4 +1,5 @@
 // ----------------------------------------------------------------------------------
+//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,23 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-
-namespace Microsoft.Azure.Commands.OperationalInsights.Test.ScenarioTests
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
 {
-    public class TableTests : OperationalInsightsTestRunner
+    /// <summary>
+    /// A utilities class to provide functions around exceptions.
+    /// </summary>
+    internal static class ExceptionUtilities
     {
-        public TableTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
+        /// <summary>
+        /// Handles all exceptions and record it in the telemetry.
+        /// </summary>
+        public static void RecordExceptionWrapper(ITelemetryClient telemetryClient, Action action)
         {
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestTableCRUD()
-        {
-            TestRunner.RunTestScript("Test-TableCRUD");
+            try
+            {
+                action();
+            }
+            catch (Exception e)
+            {
+                telemetryClient.OnGeneralException(new GeneralExceptionTelemetryData(e));
+            }
         }
     }
 }
