@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using Xunit.Abstractions;
 using Microsoft.Azure.Commands.TestFx;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests
 {
@@ -22,6 +23,9 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests
     {
         protected readonly ITestRunner TestRunner;
 
+        protected string[] resourceTypesToIgnoreApiVersion = new string[] {
+            "Microsoft.SqlVirtualMachine/sqlVirtualMachines"
+        };
         protected SqlVirtualMachineTestRunner(ITestOutputHelper output)
         {
             TestRunner = TestManager.CreateInstance(output)
@@ -40,6 +44,10 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests
                     helper.GetRMModulePath("Az.Compute.psd1"),
                     helper.GetRMModulePath("Az.Network.psd1")
                 })
+                .WithRecordMatcher(
+                    (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
+                        new PermissiveRecordMatcherWithResourceApiExclusion(ignoreResourcesClient, resourceProviders, userAgentsToIgnore, resourceTypesToIgnoreApiVersion)
+                )
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>(),
                     resourceProviders: new Dictionary<string, string>
