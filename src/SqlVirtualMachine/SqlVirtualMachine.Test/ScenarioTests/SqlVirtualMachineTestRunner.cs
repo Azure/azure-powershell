@@ -23,9 +23,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests
     {
         protected readonly ITestRunner TestRunner;
 
-        protected string[] resourceTypesToIgnoreApiVersion = new string[] {
-            "Microsoft.SqlVirtualMachine/sqlVirtualMachines"
-        };
         protected SqlVirtualMachineTestRunner(ITestOutputHelper output)
         {
             TestRunner = TestManager.CreateInstance(output)
@@ -46,7 +43,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests
                 })
                 .WithRecordMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
-                        new PermissiveRecordMatcherWithResourceApiExclusion(ignoreResourcesClient, resourceProviders, userAgentsToIgnore, resourceTypesToIgnoreApiVersion)
+                        new PermissiveRecordMatcherWithResourceApiExclusion(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
                 )
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>(),
