@@ -11,7 +11,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-//test for script analyzer
 
 using System;
 using System.Collections.Concurrent;
@@ -255,7 +254,7 @@ namespace Microsoft.Azure.Commands.Profile
             }
             else
             {
-                WriteWarning($"Default environment {EnvironmentName.AzureCloud} cannot be found from PublicEnvironment list. ");
+                WriteWarning($"Default environment {EnvironmentName.AzureCloud} cannot be found from PublicEnvironment list.");
                 WriteWarning("You can get current list via [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments");
             }
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Environment)))

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Name of resource group under which API Management service exists.")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string ResourceGroupNameTest { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             }
 
             ExecuteCmdLetWrap(
-                () => Client.DeleteApiManagement(ResourceGroupName, Name),
+                () => Client.DeleteApiManagement(ResourceGroupNameTest, Name),
                 PassThru.IsPresent);
         }
     }
