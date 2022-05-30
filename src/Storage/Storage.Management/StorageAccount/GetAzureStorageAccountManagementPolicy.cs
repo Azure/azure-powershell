@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.ResourceManager.Storage;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
@@ -95,11 +94,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     break;
             }
 
-            ManagementPolicy managementPolicy = this.StorageClient.ManagementPolicies.Get(
-                 this.ResourceGroupName,
-                 this.StorageAccountName);
+            ManagementPolicyResource policy = this.StorageClientTrack2.GetManagementPolicyResource(
+                this.ResourceGroupName, this.StorageAccountName, "default").Get();
 
-            WriteObject(new PSManagementPolicy(managementPolicy, this.ResourceGroupName, this.StorageAccountName), true);
+            var result = new PSManagementPolicy(policy, this.ResourceGroupName, this.StorageAccountName);
+            WriteObject(result, true);
         }
     }
 }
