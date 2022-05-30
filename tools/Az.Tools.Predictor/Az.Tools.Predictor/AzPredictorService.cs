@@ -314,12 +314,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public virtual void RecordHistory(CommandAst history)
-        {
-            Validation.CheckArgument(history, $"{nameof(history)} cannot be null.");
+        public virtual void RecordHistory(CommandAst history) =>
+            ExceptionUtilities.RecordExceptionWrapper(_telemetryClient, () =>
+            {
+                Validation.CheckArgument(history, $"{nameof(history)} cannot be null.");
 
-            _parameterValuePredictor.ProcessHistoryCommand(history);
-        }
+                _parameterValuePredictor.ProcessHistoryCommand(history);
+            });
 
         /// <inheritdoc/>
         public bool IsSupportedCommand(string cmd) => IsRecognizedCommand(cmd)
