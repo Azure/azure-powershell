@@ -18,8 +18,8 @@ Describe 'AzContainerAppManagedEnvDapr' {
     It 'CreateExpanded' {
         {
             $scope = @("container-app-1","container-app-2","container-app-3")
-            $secretObject = New-AzSecret -Name "masterkey" -Value "keyvalue"
-            $daprMetaData = New-AzDaprMetadata -Name "masterkey" -Value "masterkey"
+            $secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
+            $daprMetaData = New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"
 
             $config = New-AzContainerAppManagedEnvDapr -DaprName $env.envDaprName -EnvName $env.envName -ResourceGroupName $env.resourceGroup -componentType state.azure.cosmosdb -Version v1 -IgnoreError:$false -InitTimeout 50s -Scope $scope -Secret $secretObject -Metadata $daprMetaData
             $config.Name | Should -Be $env.envDaprName

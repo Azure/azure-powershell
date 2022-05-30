@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzContainerAppAuthConfig'))
 Describe 'AzContainerAppAuthConfig' {
     It 'CreateExpanded' {
         {
-            $identity = New-AzIdentityProviders -RegistrationAppId "xxxx@xx.com" -RegistrationAppSecretSettingName "facebook-secret"
+            $identity = New-AzContainerAppIdentityProviderObject -RegistrationAppId "xxxx@xx.com" -RegistrationAppSecretSettingName "facebook-secret"
             $config = New-AzContainerAppAuthConfig -AuthConfigName current -ContainerAppName $env.containerAppName -ResourceGroupName $env.resourceGroup -PlatformEnabled -GlobalValidationUnauthenticatedClientAction 'AllowAnonymous' -IdentityProvider $identity
             $config.Name | Should -Be "current"
         } | Should -Not -Throw

@@ -15,28 +15,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzContainerAppManagedEnv'))
 }
 
 Describe 'AzContainerAppManagedEnv' {
-    It 'CreateExpanded' {
+
+    # Contains confidential information, please run it locally
+
+    It 'CreateExpanded' -skip {
         {
             $config = New-AzContainerAppManagedEnv -EnvName $env.envName2 -ResourceGroupName $env.resourceGroup -Location $env.location -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $env.customId -LogAnalyticConfigurationSharedKey $env.sharedKey -VnetConfigurationInternal:$false
             $config.Name | Should -Be $env.envName2
         } | Should -Not -Throw
     }
 
-    It 'List' {
+    It 'List' -skip {
         {
             $config = Get-AzContainerAppManagedEnv
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
-    It 'Get' {
+    It 'Get' -skip {
         {
             $config = Get-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroup -EnvName $env.envName2
             $config.Name | Should -Be $env.envName2
         } | Should -Not -Throw
     }
 
-    It 'List1' {
+    It 'List1' -skip {
         {
             $config = Get-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroup
             $config.Count | Should -BeGreaterThan 0
@@ -45,11 +48,11 @@ Describe 'AzContainerAppManagedEnv' {
 
     It 'UpdateExpanded' -skip {
         {
-            Update-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp -Name azps-env-cert -Tag @{"123"="abc"}
+            Update-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroup -EnvName $env.envName2 -Tag @{"123"="abc"}
         } | Should -Not -Throw
     }
 
-    It 'Delete' {
+    It 'Delete' -skip {
         {
             Remove-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroup -EnvName $env.envName2
         } | Should -Not -Throw

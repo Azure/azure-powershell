@@ -17,20 +17,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzContainerAppSourceControl')
 Describe 'AzContainerAppSourceControl' {
     It 'CreateExpanded' -skip {
         {
-            $mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-            New-AzContainerAppSourceControl -ContainerAppName $env.containerAppName -ResourceGroupName $env.resourceGroup -SourceControlName current -RepoUrl https://github.com/lijinpei2008/ghatest -Branch master -RegistryInfoRegistryUrl $env.registryUrl -RegistryInfoRegistryUserName $env.acrName -RegistryInfoRegistryPassword $env.containerRegistryCredential -GithubActionConfigurationContextPath "./Dockerfile" -GithubActionConfigurationImage "image/tag" -AzureCredentialsClientId $env.Tenant -AzureCredentialsClientSecret $mypwd -AzureCredentialsTenantId $env.Tenant -GithubActionConfigurationOS Linux
+            # Contains confidential information, please run it locally
+            # $mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+            # $registryUrl = (Get-AzContainerRegistry -ResourceGroupName $env.resourceGroup -Name $env.acrName).LoginServer
+            # $containerRegistryCredential = (Get-AzContainerRegistryCredential -ResourceGroupName $env.resourceGroup -Name $env.acrName).Password
+            # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroup -AccountName $env.storageAccount).Value[0]
+
+            # New-AzContainerAppSourceControl -ContainerAppName $env.containerAppName -ResourceGroupName $env.resourceGroup -SourceControlName current -RepoUrl https://github.com/yourgithub -Branch master -RegistryInfoRegistryUrl $registryUrl -RegistryInfoRegistryUserName $env.acrName -RegistryInfoRegistryPassword $containerRegistryCredential -GithubActionConfigurationContextPath "./Dockerfile" -GithubActionConfigurationImage "image/tag" -AzureCredentialsClientId $env.Tenant -AzureCredentialsClientSecret $mypwd -AzureCredentialsTenantId $env.Tenant -GithubActionConfigurationOS Linux
         } | Should -Not -Throw
-    }
-
-    It 'List' -skip {
-        {} | Should -Not -Throw
-    }
-
-    It 'Delete' -skip {
-        {} | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        {} | Should -Not -Throw
     }
 }

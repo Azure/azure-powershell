@@ -8,17 +8,23 @@ schema: 2.0.0
 # Get-AzContainerAppSourceControl
 
 ## SYNOPSIS
-Get the Container App SourceControls in a given resource group.
+Get a SourceControl of a Container App.
 
 ## SYNTAX
 
+### Get (Default)
 ```
 Get-AzContainerAppSourceControl -ContainerAppName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -SourceControlName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzContainerAppSourceControl -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the Container App SourceControls in a given resource group.
+Get a SourceControl of a Container App.
 
 ## EXAMPLES
 
@@ -51,7 +57,7 @@ Name of the Container App.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -76,13 +82,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceControlName
+Name of the Container App SourceControl.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -97,7 +134,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -112,6 +149,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ISourceControl
@@ -119,6 +158,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IAppIdentity>: Identity Parameter
+  - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
+  - `[CertificateName <String>]`: Name of the Certificate.
+  - `[ComponentName <String>]`: Name of the Dapr Component.
+  - `[ContainerAppName <String>]`: Name of the Container App.
+  - `[EnvironmentName <String>]`: Name of the Managed Environment.
+  - `[Id <String>]`: Resource identity path
+  - `[ReplicaName <String>]`: Name of the Container App Revision Replica.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RevisionName <String>]`: Name of the Container App Revision.
+  - `[SourceControlName <String>]`: Name of the Container App SourceControl.
+  - `[StorageName <String>]`: Name of the storage.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

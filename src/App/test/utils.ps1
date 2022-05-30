@@ -62,48 +62,27 @@ function setupEnv() {
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
     New-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroup -Name $env.workSpace -Sku PerGB2018 -Location $env.location -PublicNetworkAccessForIngestion "Enabled" -PublicNetworkAccessForQuery "Enabled"
-    
     $customId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroup -Name $env.workSpace).CustomerId
-    $env.Add("customId", $customId)
-    
     $sharedKey = (Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName $env.resourceGroup -Name $env.workSpace).PrimarySharedKey
-    $env.Add("sharedKey", $sharedKey)
-
-    New-AzContainerAppManagedEnv -EnvName $env.envName -ResourceGroupName $env.resourceGroup -Location $env.location -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $env.customId -LogAnalyticConfigurationSharedKey $env.sharedKey -VnetConfigurationInternal:$false
+    New-AzContainerAppManagedEnv -EnvName $env.envName -ResourceGroupName $env.resourceGroup -Location $env.location -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $customId -LogAnalyticConfigurationSharedKey $sharedKey -VnetConfigurationInternal:$false
 
     New-SelfSignedCertificate -DnsName "www.fabrikam.com" -CertStoreLocation "cert:\LocalMachine\My"
-
     $mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
     Get-ChildItem -Path cert:\localMachine\my\4FCA2F8CA8A95F87F7CDC7B69DA441C3E1A178FF | Export-PfxCertificate -FilePath "C:\mypfx.pfx" -Password $mypwd
-
     New-AzContainerAppManagedEnvCert -EnvName $env.envName -Name $env.envCertName -ResourceGroupName $env.resourceGroup -Location $env.location -InputFile "C:\mypfx.pfx" -Password $mypwd
 
     $certificateId = (Get-AzContainerAppManagedEnvCert -EnvName $env.EnvName -ResourceGroupName $env.resourceGroup -Name $env.envCertName).Id
-    $customDomain = New-AzCustomDomain -CertificateId $certificateId -Name "www.fabrikam.com" -BindingType SniEnabled
-
-    $trafficWeight = New-AzTrafficWeight -Label production -LatestRevision:$True -Weight 100
-    $secretObject = New-AzSecret -Name "facebook-secret" -Value "facebook-password"
-
-    $containerAppHttpHeader = New-AzContainerAppProbeHttpGetHttpHeadersItem -Name Custom-Header -Value Awesome
-    $probe = New-AzContainerAppProbe -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
-    $image = New-AzContainer -Name $env.containerAppName -Image "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest" -Probe $probe -ResourceCpu 2.0 -ResourceMemory 4.0Gi
-
+    $customDomain = New-AzContainerAppCustomDomainObject -CertificateId $certificateId -Name "www.fabrikam.com" -BindingType SniEnabled
+    $trafficWeight = New-AzContainerAppTrafficWeightObject -Label production -LatestRevision:$True -Weight 100
+    $secretObject = New-AzContainerAppSecretObject -Name "facebook-secret" -Value "facebook-password"
+    $containerAppHttpHeader = New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
+    $probe = New-AzContainerAppProbeObject -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
+    $image = New-AzContainerAppTemplateObject -Name $env.containerAppName -Image "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest" -Probe $probe -ResourceCpu 2.0 -ResourceMemory 4.0Gi
     $envId = (Get-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroup -EnvName $env.envName).Id
-
     New-AzContainerApp -Name $env.containerAppName -ResourceGroupName $env.resourceGroup -Location $env.location -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $envId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080 -IngressCustomDomain $customDomain
 
     New-AzStorageAccount -ResourceGroupName $env.resourceGroup -AccountName $env.storageAccount -Location $env.location -SkuName Standard_GRS
-    
-    $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroup -AccountName $env.storageAccount).Value[0]
-    $env.Add("storageAccountKey", $storageAccountKey)
-    
     New-AzContainerRegistry -ResourceGroupName $env.resourceGroup -Name $env.acrName -Sku "Premium" -EnableAdminUser
-    
-    $registryUrl = (Get-AzContainerRegistry -ResourceGroupName $env.resourceGroup -Name $env.acrName).LoginServer
-    $env.Add("registryUrl", $registryUrl)
-    
-    $containerRegistryCredential = (Get-AzContainerRegistryCredential -ResourceGroupName $env.resourceGroup -Name $env.acrName).Password
-    $env.Add("containerRegistryCredential", $containerRegistryCredential)
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

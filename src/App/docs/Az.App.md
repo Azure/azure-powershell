@@ -51,19 +51,25 @@ Get a replica for a Container App Revision.
 List secrets for a container app
 
 ### [Get-AzContainerAppSourceControl](Get-AzContainerAppSourceControl.md)
-Get the Container App SourceControls in a given resource group.
-
-### [Get-AzContainerAppsSourceControl](Get-AzContainerAppsSourceControl.md)
 Get a SourceControl of a Container App.
-
-### [New-AzContainer](New-AzContainer.md)
-Create an in-memory object for Container.
 
 ### [New-AzContainerApp](New-AzContainerApp.md)
 Create or update a Container App.
 
 ### [New-AzContainerAppAuthConfig](New-AzContainerAppAuthConfig.md)
 Create or update the AuthConfig for a Container App.
+
+### [New-AzContainerAppCustomDomainObject](New-AzContainerAppCustomDomainObject.md)
+Create an in-memory object for CustomDomain.
+
+### [New-AzContainerAppDaprMetadataObject](New-AzContainerAppDaprMetadataObject.md)
+Create an in-memory object for DaprMetadata.
+
+### [New-AzContainerAppEnvironmentVarObject](New-AzContainerAppEnvironmentVarObject.md)
+Create an in-memory object for EnvironmentVar.
+
+### [New-AzContainerAppIdentityProviderObject](New-AzContainerAppIdentityProviderObject.md)
+Create an in-memory object for IdentityProviders.
 
 ### [New-AzContainerAppManagedEnv](New-AzContainerAppManagedEnv.md)
 Creates or updates a Managed Environment used to host container apps.
@@ -77,47 +83,38 @@ Creates or updates a Dapr Component in a Managed Environment.
 ### [New-AzContainerAppManagedEnvStorage](New-AzContainerAppManagedEnvStorage.md)
 Create or update storage for a managedEnvironment.
 
-### [New-AzContainerAppProbe](New-AzContainerAppProbe.md)
+### [New-AzContainerAppProbeHeaderObject](New-AzContainerAppProbeHeaderObject.md)
+Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
+
+### [New-AzContainerAppProbeObject](New-AzContainerAppProbeObject.md)
 Create an in-memory object for ContainerAppProbe.
 
-### [New-AzContainerAppProbeHttpGetHttpHeadersItem](New-AzContainerAppProbeHttpGetHttpHeadersItem.md)
-Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
+### [New-AzContainerAppRegistryCredentialObject](New-AzContainerAppRegistryCredentialObject.md)
+Create an in-memory object for RegistryCredentials.
+
+### [New-AzContainerAppScaleRuleAuthObject](New-AzContainerAppScaleRuleAuthObject.md)
+Create an in-memory object for ScaleRuleAuth.
+
+### [New-AzContainerAppScaleRuleObject](New-AzContainerAppScaleRuleObject.md)
+Create an in-memory object for ScaleRule.
+
+### [New-AzContainerAppSecretObject](New-AzContainerAppSecretObject.md)
+Create an in-memory object for Secret.
 
 ### [New-AzContainerAppSourceControl](New-AzContainerAppSourceControl.md)
 Create or update the SourceControl for a Container App.
 
-### [New-AzCustomDomain](New-AzCustomDomain.md)
-Create an in-memory object for CustomDomain.
+### [New-AzContainerAppTemplateObject](New-AzContainerAppTemplateObject.md)
+Create an in-memory object for Container.
 
-### [New-AzDaprMetadata](New-AzDaprMetadata.md)
-Create an in-memory object for DaprMetadata.
-
-### [New-AzEnvironmentVar](New-AzEnvironmentVar.md)
-Create an in-memory object for EnvironmentVar.
-
-### [New-AzIdentityProviders](New-AzIdentityProviders.md)
-Create an in-memory object for IdentityProviders.
-
-### [New-AzRegistryCredentials](New-AzRegistryCredentials.md)
-Create an in-memory object for RegistryCredentials.
-
-### [New-AzScaleRule](New-AzScaleRule.md)
-Create an in-memory object for ScaleRule.
-
-### [New-AzScaleRuleAuth](New-AzScaleRuleAuth.md)
-Create an in-memory object for ScaleRuleAuth.
-
-### [New-AzSecret](New-AzSecret.md)
-Create an in-memory object for Secret.
-
-### [New-AzTrafficWeight](New-AzTrafficWeight.md)
+### [New-AzContainerAppTrafficWeightObject](New-AzContainerAppTrafficWeightObject.md)
 Create an in-memory object for TrafficWeight.
 
-### [New-AzVolume](New-AzVolume.md)
-Create an in-memory object for Volume.
-
-### [New-AzVolumeMount](New-AzVolumeMount.md)
+### [New-AzContainerAppVolumeMountObject](New-AzContainerAppVolumeMountObject.md)
 Create an in-memory object for VolumeMount.
+
+### [New-AzContainerAppVolumeObject](New-AzContainerAppVolumeObject.md)
+Create an in-memory object for Volume.
 
 ### [Remove-AzContainerApp](Remove-AzContainerApp.md)
 Delete a Container App.

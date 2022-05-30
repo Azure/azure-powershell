@@ -1,11 +1,11 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-$trafficWeight = New-AzTrafficWeight -Label production -LatestRevision:$True -Weight 100
-$secretObject = New-AzSecret -Name "facebook-secret" -Value "facebook-password"
+$trafficWeight = New-AzContainerAppTrafficWeightObject -Label production -LatestRevision:$True -Weight 100
+$secretObject = New-AzContainerAppSecretObject -Name "facebook-secret" -Value "facebook-password"
 
-$containerAppHttpHeader = New-AzContainerAppProbeHttpGetHttpHeadersItem -Name Custom-Header -Value Awesome
-$probe = New-AzContainerAppProbe -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
-$image = New-AzContainer -Name azps-containerapp -Image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest -Probe $probe -ResourceCpu 2.0 -ResourceMemory 4.0Gi
+$containerAppHttpHeader = New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
+$probe = New-AzContainerAppProbeObject -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
+$image = New-AzContainerAppTemplateObject -Name azps-containerapp -Image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest -Probe $probe -ResourceCpu 2.0 -ResourceMemory 4.0Gi
 
 $EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName azpstest_gp -EnvName azps-env).Id
 

@@ -127,6 +127,10 @@ directive:
       subject: ContainerAppAuthConfig
     remove: true
   - where:
+      verb: Get
+      subject: ContainerAppSourceControl
+    remove: true
+  - where:
       subject: ContainerAppCustomHostnameAnalysis
     set:
       subject: ContainerAppCustomHostName
@@ -152,6 +156,11 @@ directive:
       subject: ContainerAppsAuthConfig
     set:
       subject: ContainerAppAuthConfig
+  - where:
+      verb: Get
+      subject: ContainerAppsSourceControl
+    set:
+      subject: ContainerAppSourceControl
   - where:
       verb: Remove
       subject: ContainerAppsSourceControl
@@ -181,6 +190,10 @@ directive:
       subject: ManagedEnvironmentStorage
     set:
       subject: ContainerAppManagedEnvStorage
+  - where:
+      subject: Volume
+    set:
+      subject: ContainerAppVolumeObject
   # Re-name and custom it
   # - model-cmdlet:
   #     - EnvironmentVar

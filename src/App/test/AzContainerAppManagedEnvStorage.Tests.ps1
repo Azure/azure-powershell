@@ -15,28 +15,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzContainerAppManagedEnvStora
 }
 
 Describe 'AzContainerAppManagedEnvStorage' {
-    It 'CreateExpanded' {
+
+    # Contains confidential information, please run it locally
+
+    It 'CreateExpanded' -skip {
         {
-            $config = New-AzContainerAppManagedEnvStorage -EnvName $env.envName -ResourceGroupName $env.resourceGroup -StorageName $env.storageAccount -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $env.storageAccountKey -AzureFileAccountName $env.storageAccount -AzureFileShareName azps-rw-sharename
+            $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroup -AccountName $env.storageAccount).Value[0]
+            $config = New-AzContainerAppManagedEnvStorage -EnvName $env.envName -ResourceGroupName $env.resourceGroup -StorageName $env.storageAccount -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName $env.storageAccount -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
         } | Should -Not -Throw
     }
 
-    It 'List' {
+    It 'List' -skip {
         {
             $config = Get-AzContainerAppManagedEnvStorage -EnvName $env.envName -ResourceGroupName $env.resourceGroup
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
-    It 'Get' {
+    It 'Get' -skip {
         {
             $config = Get-AzContainerAppManagedEnvStorage -EnvName $env.envName -ResourceGroupName $env.resourceGroup -StorageName $env.storageAccount
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
         } | Should -Not -Throw
     }
 
-    It 'Delete' {
+    It 'Delete' -skip {
         {
             Remove-AzContainerAppManagedEnvStorage -EnvName $env.envName -ResourceGroupName $env.resourceGroup -StorageName $env.storageAccount
         } | Should -Not -Throw
