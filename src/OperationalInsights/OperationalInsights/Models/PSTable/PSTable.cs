@@ -35,6 +35,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public IList<Column> Columns { get; set; }
 
+        public PSTable()
+        {
+
+        }
+
         public PSTable(Table table)
         {
             this.TableName = table.Name;
@@ -81,15 +86,18 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Columns = cols;
         }
 
-        public Table ToTableProperties()
+        /// <summary>
+        /// Creates a Table object for create or update flow
+        /// </summary>
+        /// <returns>The payload for Create or Update table</returns>
+        public virtual Table ToTableProperties()
         {
-            Schema schem = new Schema(description: Description, columns: Columns);
             return new Table(
                 name: TableName,
                 plan: Plan,
                 retentionInDays: RetentionInDays,
                 totalRetentionInDays: TotalRetentionInDays,
-                schema: schem);
+                schema: new Schema(description: Description, columns: Columns));
         }
 
     }

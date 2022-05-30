@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added new cmdlets for Table api: 'Create-AzOperationalInsightsRestoreTable', 'Create-AzOperationalInsightsSearchTable', 'Create-AzOperationalInsightsTable','Delete-AzOperationalInsightsTable','Update-AzOperationalInsightsTable', 'Migrate-AzOperationalInsightsTable'
+* update Operational Insights Nuget from version '0.24.0-preview' to version '0.25.0-preview'
 
 ## Version 3.1.0
 * Removed capacity validation in new and update cluster cmdlets as validation exists on server side.

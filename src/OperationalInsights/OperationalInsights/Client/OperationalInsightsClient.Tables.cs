@@ -54,15 +54,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         /// <exception cref="PSArgumentException">Thrown if table does not exist</exception>
         public virtual PSTable UpdatePSTable(PSTable parameters)
         {
-            PSTable existingTable = null;
-            try
-            {
-                existingTable = this.GetTable(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.TableName);
-            }
-            catch (System.Exception)
-            {
-                throw new PSArgumentException(string.Format(Constants.TableDoesNotExist, parameters?.WorkspaceName, parameters?.ResourceGroupName, parameters?.TableName));
-            }
+            PSTable existingTable = this.GetTable(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.TableName);
 
             var response = OperationalInsightsManagementClient.Tables.Update(
                 resourceGroupName: parameters.ResourceGroupName,
@@ -101,7 +93,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         /// <returns>Table object</returns>
         public virtual PSTable GetTable(string resourceGroupName, string workspaceName, string tableName)
         {
-            return new PSTable(OperationalInsightsManagementClient.Tables.Get(resourceGroupName, workspaceName, tableName));
+            try
+            {
+                return new PSTable(OperationalInsightsManagementClient.Tables.Get(resourceGroupName, workspaceName, tableName));
+            }
+            catch (System.Exception)
+            {
+                throw new PSArgumentException(string.Format(Constants.TableDoesNotExist, workspaceName, resourceGroupName, tableName));
+            }
         }
 
         /// <summary>
@@ -114,17 +113,63 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         /// <exception cref="PSArgumentException">Thrown if table does not exist</exception>
         public virtual HttpStatusCode MigratePSTable(string resourceGroupName, string workspaceName, string tableName)
         {
+            PSTable existingTable = this.GetTable(resourceGroupName, workspaceName, tableName);
+
+            return OperationalInsightsManagementClient.Tables.MigrateWithHttpMessagesAsync(resourceGroupName, workspaceName, tableName).Result.Response.StatusCode;
+        }
+
+        public virtual HttpStatusCode DeletePSTable(string resourceGroupName, string workspaceName, string tableName)
+        {
+            PSTable existingTable = this.GetTable(resourceGroupName, workspaceName, tableName);
+
+            return OperationalInsightsManagementClient.Tables.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, tableName).Result.Response.StatusCode;
+        }
+
+        public virtual PSTable CreateRestoreTable(PSRestoreTable properties)
+        {
+            ValidateTableNotExist(properties, TableConsts.RestoredLogsSuffix);
+            var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.TableName, properties.ToTableProperties());
+
+            return new PSTable(response);
+        }
+
+        public virtual PSTable CreateSearchTable(PSSearchTable properties)
+        {
+            ValidateTableNotExist(properties, TableConsts.SearchResultsSuffix);
+            var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.TableName, properties.ToTableProperties());
+
+            return new PSTable(response);
+        }
+
+        public virtual PSTable CreatePSTable(PSTable properties)
+        {
+            ValidateTableNotExist(properties, TableConsts.RestoredLogsSuffix);
+            var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.TableName, properties.ToTableProperties());
+
+            return new PSTable(response);
+        }
+
+        private void ValidateTableNotExist(PSTable properties, string suffix)
+        {
             PSTable existingTable = null;
             try
             {
-                existingTable = this.GetTable(resourceGroupName, workspaceName, tableName);
+                existingTable = this.GetTable(properties.ResourceGroupName, properties.WorkspaceName, properties.TableName);
             }
-            catch (System.Exception)
+            catch (PSArgumentException)
             {
-                throw new PSArgumentException(string.Format(Constants.TableDoesNotExist, workspaceName, resourceGroupName, tableName));
+                // Do nothing as GetTable should throw an exception
             }
 
-            return OperationalInsightsManagementClient.Tables.MigrateWithHttpMessagesAsync(resourceGroupName, workspaceName, tableName).Result.Response.StatusCode;
+            if (existingTable != null)
+            {
+                throw new PSArgumentException(string.Format(Constants.TableAlreadyExist, properties.TableName, properties.ResourceGroupName, properties.WorkspaceName));
+            }
+
+            if (!properties.TableName.Substring(properties.TableName.Length - suffix.Length).ToUpperInvariant().Equals(suffix))
+            {
+                throw new PSArgumentException(string.Format(Constants.CustomLogTable, properties.TableName, suffix));
+            }
         }
     }
 }

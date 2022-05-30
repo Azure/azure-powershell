@@ -11,14 +11,38 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 {
     [Cmdlet("Delete", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsTable", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class DeleteAzureOperationalInsightsTableCommand : OperationalInsightsBaseCmdlet
     {
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the workspace that will contain the storage insight.")]
+        [ValidateNotNullOrEmpty]
+        public string WorkspaceName { get; set; }
+
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The table name.")]
+        [ValidateNotNullOrEmpty]
+        public string TableName { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            if (ShouldProcess(TableName, $"Removing Table: {TableName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
+            {
+                HttpStatusCode response = this.OperationalInsightsClient.DeletePSTable(ResourceGroupName, WorkspaceName, TableName);
+                WriteObject(true);
+            }
+        }
     }
 }

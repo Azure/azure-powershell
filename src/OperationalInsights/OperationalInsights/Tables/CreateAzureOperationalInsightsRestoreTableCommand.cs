@@ -20,6 +20,48 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
     [Cmdlet("Create", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsRestoreTable", SupportsShouldProcess = true), OutputType(typeof(PSTable))]
     public class CreateAzureOperationalInsightsRestoreTableCommand : OperationalInsightsBaseCmdlet
     {
+        [Parameter(Position = 0, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
 
+        [Parameter(Position = 1, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the workspace that will contain the storage insight.")]
+        [ValidateNotNullOrEmpty]
+        public string WorkspaceName { get; set; }
+
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The table name.")]
+        [ValidateNotNullOrEmpty]
+        public string TableName { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The timestamp to start the restore from (UTC).")]
+        [ValidateNotNullOrEmpty]
+        public string StartRestoreTime { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The timestamp to end the restore by (UTC).")]
+        [ValidateNotNullOrEmpty]
+        public string EndRestoreTime { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The table to restore data from.")]
+        [ValidateNotNullOrEmpty]
+        public string RestoreSourceTable { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            var tableSetProperties = new PSRestoreTable(
+                resourceGroupName: ResourceGroupName,
+                workspaceName: WorkspaceName,
+                tableName: TableName,
+                startRestoreTime: StartRestoreTime,
+                endRestoreTime: EndRestoreTime,
+                restoreSourceTable: RestoreSourceTable);
+
+            if (ShouldProcess(TableName, $"Update Table: {TableName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
+            {
+                WriteObject(OperationalInsightsClient.CreateRestoreTable(tableSetProperties), true);
+            }
+        }
     }
 }

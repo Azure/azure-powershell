@@ -46,10 +46,28 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public const string ColumnsExample = "@{ ColName1 = Type; ColName2 = Type; ColName3 = Type}";
 
         public static string TableDoesNotExist = $"Workspace {{0}} under resourceGroup {{1}} does not contain the table:{{2}}, please use {CmdletName.CreateAzOperationalInsightsTable}.";
+
+        public static string TableAlreadyExist = $"Table: {{0}} under resourceGroup {{1}} and workspace {{2}} already exists, please use {CmdletName.UpdateAzOperationalInsightsTable}.";
+
+        public static string CustomLogTable = "Table name {0} should start with {1}";
     }
 
     internal static class CmdletName
     {
         public const string CreateAzOperationalInsightsTable = "Create-AzOperationalInsightsTable";
+        public const string UpdateAzOperationalInsightsTable = "Update-AzOperationalInsightsTable";
+    }
+
+    internal static class TableConsts
+    {
+        public const string CustomLogSuffix = "_CL";
+        public const string SearchResultsSuffix = "_SRCH";
+        public const string RestoredLogsSuffix = "_RST";
+        public const string DateTimeExample = "Sat, 28 Aug 2021 05:29:18 GMT";
+    }
+
+    internal static class Errors
+    {
+        public static string BadDateTimeFormat = $"Input DateTime: {{0}} value for variable {{1}}, failed to parse into DateTime, please use a string in the format of: \"{TableConsts.DateTimeExample}\"";
     }
 }

@@ -14,11 +14,66 @@
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 {
     [Cmdlet("Create", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsTable", SupportsShouldProcess = true), OutputType(typeof(PSTable))]
     public class CreateAzureOperationalInsightsTableCommand : OperationalInsightsBaseCmdlet
     {
+        [Parameter(Position = 0, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Position = 1, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the workspace that will contain the storage insight.")]
+        [ValidateNotNullOrEmpty]
+        public string WorkspaceName { get; set; }
+
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The table name.")]
+        [ValidateNotNullOrEmpty]
+        public string TableName { get; set; }
+
+        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention")]
+        [ValidateNotNullOrEmpty]
+        public int? RetentionInDays { get; set; }
+
+        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The table total retention in days, between 4 and 2555. Setting this property to -1 will default to table retention.")]
+        [ValidateNotNullOrEmpty]
+        public int? TotalRetentionInDays { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The table columns passed as @{ ColName1 = Type; ColName2 = Type; ColName3 = Type}.")]
+        public Hashtable Columns { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Table plan can be 'Basic' or 'Analytics'.")]
+        [ValidateSet("Basic", "Analytics", IgnoreCase = true)]
+        public string Plan { get; set; }
+
+        public string Description { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            var tableSetProperties = new PSTable(
+                resourceGroupName: ResourceGroupName,
+                workspaceName: WorkspaceName,
+                tableName: TableName,
+                id: null,
+                retentionInDays: RetentionInDays,
+                totalRetentionInDays: TotalRetentionInDays,
+                plan: Plan,
+                description: Description,
+                columns: Columns);
+
+            if (ShouldProcess(TableName, $"Update Table: {TableName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
+            {
+                WriteObject(OperationalInsightsClient.CreatePSTable(tableSetProperties), true);
+            }
+        }
     }
 }
