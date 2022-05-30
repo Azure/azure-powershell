@@ -12,29 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test.ScenarioTests
 {
-    public class LinkedServiceTests : OperationalInsightsScenarioTestBase
+    public class LinkedServiceTests : OperationalInsightsTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public LinkedServiceTests(Xunit.Abstractions.ITestOutputHelper output)
+        public LinkedServiceTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestLinkedServiceCRD()
         {
-            RunPowerShellTest(_logger, "Test-LinkedServiceCRD");
+            TestRunner.RunTestScript("Test-LinkedServiceCRD");
         }
     }
 }

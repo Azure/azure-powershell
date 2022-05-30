@@ -13,55 +13,50 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
-    public class QueryTests : OperationalInsightsScenarioTestBase
+    public class QueryTests : OperationalInsightsTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public QueryTests(Xunit.Abstractions.ITestOutputHelper output)
+        public QueryTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleQuery()
         {
-            RunDataPowerShellTest(_logger, "Test-SimpleQuery");
+            TestRunner.RunTestScript("Test-SimpleQuery");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleQueryWithTimespan()
         {
-            RunDataPowerShellTest(_logger, "Test-SimpleQueryWithTimespan");
+            TestRunner.RunTestScript("Test-SimpleQueryWithTimespan");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExceptionWithSyntaxError()
         {
-            RunDataPowerShellTest(_logger, "Test-ExceptionWithSyntaxError");
+            TestRunner.RunTestScript("Test-ExceptionWithSyntaxError");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExceptionWithShortWait()
         {
-            RunDataPowerShellTest(_logger, "Test-ExceptionWithShortWait");
+            TestRunner.RunTestScript("Test-ExceptionWithShortWait");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAsJob()
         {
-            RunDataPowerShellTest(_logger, "Test-AsJob");
+            TestRunner.RunTestScript("Test-AsJob");
         }
     }
 }
