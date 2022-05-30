@@ -117,9 +117,7 @@ function Set-AzApplicationInsightsPricingPlan {
     )
     
     process {
-        $PSBoundParameters['ResourceName'] = $PSBoundParameters['Name']
-        $null = $PSBoundParameters.Remove('Name')
-        $feature = (. Az.ApplicationInsights.internal\Get-AzApplicationInsightsComponentCurrentBillingFeature -ResourceGroupName $PSBoundParameters['ResourceGroupName'] -SubscriptionId $PSBoundParameters['SubscriptionId'] -ResourceName $PSBoundParameters['ResourceName'])
+        $feature = (. Az.ApplicationInsights.internal\Get-AzApplicationInsightsComponentCurrentBillingFeature -ResourceGroupName $PSBoundParameters['ResourceGroupName'] -SubscriptionId $PSBoundParameters['SubscriptionId'] -Name $PSBoundParameters['Name'])
         if ($PSBoundParameters['PricingPlan']) {
             $PSBoundParameters['CurrentBillingFeature'] = @($PSBoundParameters['PricingPlan'])
             $null = $PSBoundParameters.Remove('PricingPlan')
