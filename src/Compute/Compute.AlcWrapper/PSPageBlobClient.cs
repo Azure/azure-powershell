@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.Compute
         {
             _pageBlobClient = pageblobclient;
         }
-        public PSPageBlobClient(Uri blobUri, TokenCredential token = null )
+        public PSPageBlobClient(Uri blobUri, TokenCredential tokenCredential = null )
         {
-            _pageBlobClient = token == null ? new PageBlobClient(blobUri, null) : new PageBlobClient(blobUri, token);
+            _pageBlobClient = tokenCredential == null ? new PageBlobClient(blobUri, null) : new PageBlobClient(blobUri, tokenCredential);
         }
 
         public Uri Uri { get { return _pageBlobClient.Uri; } }

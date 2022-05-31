@@ -238,19 +238,19 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
                         // 3-4: UPLOAD                  
                         WriteVerbose("Preparing for Upload");
-                        ComputeTokenCredential token = null;
+                        ComputeTokenCredential tokenCredential = null;
                         if (this.DataAccessAuthMode == "AzureActiveDirectory")
                         {
                             // get token 
-                            token = new ComputeTokenCredential(DefaultContext, "https://disk.compute.azure.com/");
+                            tokenCredential = new ComputeTokenCredential(DefaultContext, "https://disk.compute.azure.com/");
                         }
-                        PSPageBlobClient managedDisk = new PSPageBlobClient(sasUri, token);
+                        PSPageBlobClient managedDisk = new PSPageBlobClient(sasUri, tokenCredential);
                         DiskUploadCreator diskUploadCreator = new DiskUploadCreator();
                         var uploadContext = diskUploadCreator.Create(this.LocalFilePath, managedDisk, false);
                         var synchronizer = new DiskSynchronizer(uploadContext, this.NumberOfUploaderThreads ?? DefaultNumberOfUploaderThreads);
 
                         WriteVerbose("Uploading");
-                        if (synchronizer.Synchronize(token))
+                        if (synchronizer.Synchronize(tokenCredential))
                         {
                             var result = new VhdUploadContext { LocalFilePath = this.LocalFilePath, DestinationUri = sasUri };
                             WriteObject(result);

@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
             this.maxParallelism = maxParallelism;
         }
 
-        public bool Synchronize(ComputeTokenCredential token)
+        public bool Synchronize(ComputeTokenCredential tokenCredential)
         {
             var uploadStatus = new ProgressStatus(alreadyUploadedData, alreadyUploadedData + dataToUpload, new ComputeStats());
 
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
                 Task<LoopResult> task = Task<LoopResult>.Factory.StartNew(() =>
                 {
                     return Threading.Parallel.ForEach(dataWithRanges,
-                                                  () => new PSPageBlobClient(pageBlob.Uri, token),
+                                                  () => new PSPageBlobClient(pageBlob.Uri, tokenCredential),
                                                   (dwr, b) =>
                                                   {
                                                       using (dwr)
