@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public static string TableAlreadyExist = $"Table: {{0}} under resourceGroup {{1}} and workspace {{2}} already exists, please use {CmdletName.UpdateAzOperationalInsightsTable}.";
 
-        public static string CustomLogTable = "Table name {0} should start with {1}";
+        public static string CustomLogTable = "Table name {0} should end with {1}";
     }
 
     internal static class CmdletName

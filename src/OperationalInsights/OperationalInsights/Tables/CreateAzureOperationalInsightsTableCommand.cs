@@ -55,7 +55,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
         [ValidateSet("Basic", "Analytics", IgnoreCase = true)]
         public string Plan { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Search job Description.")]
         public string Description { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {

@@ -62,12 +62,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
         [ValidateNotNullOrEmpty]
         public int? Limit { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var tableSetProperties = new PSSearchTable(
                 resourceGroupName: ResourceGroupName,
                 workspaceName: WorkspaceName,
                 tableName: TableName,
+                query: SearchQuery,
                 startSearchTime: StartSearchTime,
                 endSearchTime: EndSearchTime,
                 limit: Limit);

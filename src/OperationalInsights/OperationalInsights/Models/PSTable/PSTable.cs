@@ -16,6 +16,7 @@ using System.Management.Automation;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
@@ -33,14 +34,20 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public string Description { get; set; }
 
-        public IList<Column> Columns { get; set; }
+        public Schema Schema { get; set; }
+
+        public string ProvisioningState { get; set; }
 
         public PSTable()
         {
 
         }
 
-        public PSTable(Table table)
+        /// <summary>
+        /// Creates a PS Table object that is same as response contract
+        /// </summary>
+        /// <param name="table"></param>
+        public PSTable(Table table, string resourceGroupName, string workspaceName)
         {
             this.TableName = table.Name;
             this.Id = table.Id;
@@ -48,7 +55,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.TotalRetentionInDays = table.TotalRetentionInDays;
             this.Plan = table.Plan;
             this.Description = table.Schema.Description;
-            this.Columns = (List<Column>)table.Schema.Columns;// TODO dabenham check values are assertted corectly
+            this.Schema = table.Schema;
+            this.ProvisioningState = table.ProvisioningState;
+            this.ResourceGroupName = resourceGroupName;
+            this.WorkspaceName = workspaceName;
         }
 
         public PSTable(
@@ -83,7 +93,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 cols.Add(new Column(name: (string)entry.Key, type: (string)entry.Value));
             }
 
-            this.Columns = cols;
+            this.Schema = new Schema(columns: cols);
         }
 
         /// <summary>
@@ -93,11 +103,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public virtual Table ToTableProperties()
         {
             return new Table(
-                name: TableName,
-                plan: Plan,
-                retentionInDays: RetentionInDays,
-                totalRetentionInDays: TotalRetentionInDays,
-                schema: new Schema(description: Description, columns: Columns));
+                name: this.TableName,
+                plan: this.Plan,
+                retentionInDays: this.RetentionInDays,
+                totalRetentionInDays: this.TotalRetentionInDays,
+                schema: new Schema(name: this.TableName, description: this.Description, columns: this.Schema.Columns));
         }
 
     }

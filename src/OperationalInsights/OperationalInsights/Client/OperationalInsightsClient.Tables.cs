@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 tableName: parameters.TableName,
                 parameters: parameters.ToTableProperties());
 
-            return new PSTable(response);
+            return new PSTable(response, parameters.ResourceGroupName, parameters.WorkspaceName);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             if (responseTables != null)
             {
-                tables.AddRange(from Table tbl in responseTables select new PSTable(tbl));
+                tables.AddRange(from Table tbl in responseTables select new PSTable(tbl, resourceGroupName, workspaceName));
             }
 
             return tables;
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             try
             {
-                return new PSTable(OperationalInsightsManagementClient.Tables.Get(resourceGroupName, workspaceName, tableName));
+                return new PSTable(OperationalInsightsManagementClient.Tables.Get(resourceGroupName, workspaceName, tableName), resourceGroupName, workspaceName);
             }
             catch (System.Exception)
             {
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             ValidateTableNotExist(properties, TableConsts.RestoredLogsSuffix);
             var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.TableName, properties.ToTableProperties());
 
-            return new PSTable(response);
+            return new PSTable(response, properties.ResourceGroupName, properties.WorkspaceName);
         }
 
         public virtual PSTable CreateSearchTable(PSSearchTable properties)
@@ -138,15 +138,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             ValidateTableNotExist(properties, TableConsts.SearchResultsSuffix);
             var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.TableName, properties.ToTableProperties());
 
-            return new PSTable(response);
+            return new PSTable(response, properties.ResourceGroupName, properties.WorkspaceName);
         }
 
         public virtual PSTable CreatePSTable(PSTable properties)
         {
-            ValidateTableNotExist(properties, TableConsts.RestoredLogsSuffix);
+            ValidateTableNotExist(properties, TableConsts.CustomLogSuffix);
             var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.TableName, properties.ToTableProperties());
 
-            return new PSTable(response);
+            return new PSTable(response, properties.ResourceGroupName, properties.WorkspaceName);
         }
 
         private void ValidateTableNotExist(PSTable properties, string suffix)

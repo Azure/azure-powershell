@@ -36,6 +36,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
         [ValidateNotNullOrEmpty]
         public string TableName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(TableName, $"Removing Table: {TableName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
