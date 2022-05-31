@@ -125,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights
         /// <summary>Creates the module instance.</summary>
         private Module()
         {
-            /// constructor
+            // constructor
             ClientAPI = new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ApplicationInsightsManagementClient();
             _handler.Proxy = _webProxy;
             _pipeline = new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.HttpPipeline(new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.HttpClientFactory(new global::System.Net.Http.HttpClient()));
