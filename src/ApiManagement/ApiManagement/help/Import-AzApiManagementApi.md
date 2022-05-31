@@ -58,7 +58,7 @@ $ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-Wes
 Import-AzApiManagementApi -Context $ApiMgmtContext -ApiId "26591405e27d4ff3a8d8478d7e60c7b0" -SpecificationFormat "Swagger" -SpecificationPath "C:\contoso\specifications\echoapi.swagger" -Path "apis"
 ```
 
-This command imports an API from the specified Swagger file and updates and an existing API.
+This command imports an API from the specified Swagger file and updates an existing API.
 
 ### Example 4: Import an API from a WADL link
 ```powershell
