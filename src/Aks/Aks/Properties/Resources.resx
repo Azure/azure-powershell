@@ -453,4 +453,7 @@
   <data name="ExecutingCommandOnCluster" xml:space="preserve">
     <value>Executing command on cluster {0}.</value>
   </data>
+  <data name="NeedEnableManagedIdentity" xml:space="preserve">
+    <value>Please set '-EnableManagedIdentity' first if you want to set 'AssignIdentity'.</value>
+  </data>
 </root>

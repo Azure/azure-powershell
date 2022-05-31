@@ -306,3 +306,44 @@ function Test-ApiServiceAccess
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+
+
+function Test-ManagedIdentity
+{
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $userAssignedkubeClusterName = Get-RandomClusterName
+    $systemAssignedkubeClusterName = Get-RandomClusterName
+    $setUserAssignedkubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xde7Q~bVRBoBzggfXn3Zw1uCqzRuLduEFPJXw")
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $userAssignedkubeClusterName -ServicePrincipalIdAndSecret $credObject -EnableManagedIdentity -AssignIdentity '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/wyunchi/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity'
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $userAssignedkubeClusterName
+        Assert-NotNull $cluster.identity
+        Assert-AreEqual 'UserAssigned' $cluster.identity.Type
+
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $setUserAssignedkubeClusterName -ServicePrincipalIdAndSecret $credObject  
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $setUserAssignedkubeClusterName
+        Assert-Null $cluster.identity
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $setUserAssignedkubeClusterName -EnableManagedIdentity -AssignIdentity '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/wyunchi/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity'
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $setUserAssignedkubeClusterName
+        Assert-NotNull $cluster.identity
+        Assert-AreEqual 'UserAssigned' $cluster.identity.Type
+        
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $systemAssignedkubeClusterName -ServicePrincipalIdAndSecret $credObject -EnableManagedIdentity
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $systemAssignedkubeClusterName
+        Assert-NotNull $cluster.identity
+        Assert-AreEqual 'SystemAssigned' $cluster.identity.Type
+    }
+    finally
+    {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}

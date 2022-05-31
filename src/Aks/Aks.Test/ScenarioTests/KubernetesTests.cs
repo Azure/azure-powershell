@@ -72,5 +72,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ApiServiceAccess");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedIdentity()
+        {
+            TestRunner.RunTestScript("Test-ManagedIdentity");
+        }
     }
 }
