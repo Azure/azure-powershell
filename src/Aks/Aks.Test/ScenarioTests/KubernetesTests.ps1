@@ -229,20 +229,19 @@ function Test-UpgradeKubernetesVersion
     $kubeClusterName = Get-RandomClusterName
     $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
     $nodeVmSize = "Standard_D2_v2"
-    $kubeVersion = "1.21.2"
+    $kubeVersion = "1.23.3"
 
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
         
-        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "uJa7Q~pyzJpxnv7it0f0Co~SL8qQWFL2t45DW")
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xde7Q~bVRBoBzggfXn3Zw1uCqzRuLduEFPJXw")
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject -NodeVmSetType VirtualMachineScaleSets
         #New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -VmSetType VirtualMachineScaleSets
         Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -KubernetesVersion $kubeVersion -ControlPlaneOnly
         Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeImageOnly
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-AreEqual $kubeVersion $cluster.KubernetesVersion
-        Assert-AreEqual $kubeVersion $cluster.AgentPoolProfiles[0].OrchestratorVersion
     }
     finally
     {

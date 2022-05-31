@@ -67,6 +67,11 @@ namespace Microsoft.Azure.Commands.Aks.Models
         }
 
         /// <summary>
+        /// Gets the Power State of the cluster.
+        /// </summary>
+        public PSPowerState PowerState { get; private set; }
+
+        /// <summary>
         /// Gets the current deployment or provisioning state, which only
         /// appears in the response.
         /// </summary>

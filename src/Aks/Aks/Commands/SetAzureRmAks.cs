@@ -36,7 +36,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [GenericBreakingChange("Set-AzAks will be removed in the next major release. Please use Set-AzAksCluster instead of Set-AzAks")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSKubernetesCluster))]
     public class SetAzureRmAks : CreateOrUpdateKubeBase
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Commands.Aks
         public string AcrNameToDetach { get; set; }
 
 
-        [Parameter(Mandatory = false, HelpMessage = "Will only upgrade node pool version to align control plane.")]
+        [Parameter(Mandatory = false, HelpMessage = "Will only upgrade the node image of agent pools.")]
         public SwitchParameter NodeImageOnly { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Will only upgrade control plane to target version.")]
@@ -290,17 +289,7 @@ namespace Microsoft.Azure.Commands.Aks
                                     throw new AzPSApplicationException(Resources.NotUsingVirtualMachineScaleSets);
                                 }
                                 var agentPoolClient = Client.AgentPools.Get(ResourceGroupName, Name, agentPoolProfile.Name);
-                                AgentPool parameter = new AgentPool
-                                {
-                                    Count = agentPoolClient.Count,
-                                    VmSize = agentPoolClient.VmSize,
-                                    OsDiskSizeGB = agentPoolClient.OsDiskSizeGB,
-                                    MaxPods = agentPoolClient.MaxPods,
-                                    Mode = agentPoolClient.Mode,
-                                    OsType = agentPoolClient.OsType,
-                                    OrchestratorVersion = cluster.KubernetesVersion,
-                                };
-                                Client.AgentPools.CreateOrUpdate(ResourceGroupName, Name, agentPoolProfile.Name, parameter);
+                                Client.AgentPools.UpgradeNodeImageVersion(ResourceGroupName, Name, agentPoolProfile.Name);
                             }
                             cluster = Client.ManagedClusters.Get(ResourceGroupName, Name);
                             WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(cluster));
