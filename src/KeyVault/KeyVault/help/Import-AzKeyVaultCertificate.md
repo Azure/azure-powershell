@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateString
-Specifies a certificate string.
+Base64 encoded representation of the certificate object to import. This certificate needs to contain the private key.
 
 ```yaml
 Type: System.String
