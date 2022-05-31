@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public string SourceBlobName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = True,
             HelpMessage = "The type of access to be used for the storage account. The default value is AccessKey.")]
         [PSArgumentCompleter(SdkModels.AccessType.AccessKey, SdkModels.AccessType.SystemAssignedManagedIdentity, SdkModels.AccessType.UserAssignedManagedIdentity)]
         public string AccessType { get; set; }
