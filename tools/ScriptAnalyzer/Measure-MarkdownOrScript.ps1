@@ -43,11 +43,13 @@ if ($OutputScriptsInFile.IsPresent) {
     Remove-Item $OutputFolder\$ScriptsByExampleFolder -Recurse -ErrorAction SilentlyContinue
 }
 Remove-Item $OutputFolder\*.csv -Recurse -ErrorAction SilentlyContinue
-# find examples in ".md", output ".ps1"
+
+# find examples in "help\*.md", output ".ps1"
 if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     $null = New-Item -ItemType Directory -Path $OutputFolder\$ScriptsByExampleFolder -ErrorAction SilentlyContinue
     $MarkdownPath = Get-Content $MarkdownPaths
-    (Get-ChildItem $MarkdownPath) | foreach{
+    (Get-Item $MarkdownPath) | foreach{
+        # Filter the .md of overview in /help
         if ($_ -cmatch ".*/help.*\.md" -and $_.BaseName -cmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
             Write-Output "Searching in file $($_.FullName) ..."
             $module = ($_ -split "/")[-3]

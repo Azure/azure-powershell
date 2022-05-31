@@ -5,7 +5,6 @@
     File: ParameterNameAndValue.psm1
 #>
 
-
 enum RuleNames {
     Unknown_Parameter_Set
     Invalid_Parameter_Name
