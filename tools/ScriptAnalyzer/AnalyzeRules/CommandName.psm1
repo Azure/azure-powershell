@@ -5,7 +5,7 @@
     File: CommandName.psm1
 #>
 
-Import-Module (Get-ChildItem -Path ./Debug).FullName -Scope Global
+Import-Module (Get-ChildItem -Path ./artifacts/Debug).FullName -Scope Global
 
 enum RuleNames {
     Invalid_Cmdlet
