@@ -26,7 +26,7 @@ The **Remove-AzApiManagementApi** cmdlet removes an existing API.
 ### Example 1: Remove an API
 ```powershell
 $apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-Remove-AzApiManagementApi -Context $apimContext -ApiId "0123456789"
+Remove-AzApiManagementApiTest -Context $apimContext -ApiId "0123456789"
 ```
 
 This command removes the API with the specified ID.
