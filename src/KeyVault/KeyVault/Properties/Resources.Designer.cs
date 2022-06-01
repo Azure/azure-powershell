@@ -433,6 +433,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fetch default CVM Policy failed, {0}.
+        /// </summary>
+        internal static string FetchDefaultCVMPolicyFailed {
+            get {
+                return ResourceManager.GetString("FetchDefaultCVMPolicyFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can not find file &apos;{0}&apos;..
+        /// </summary>
+        internal static string FileNotFound {
+            get {
+                return ResourceManager.GetString("FileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overwrite File ?.
         /// </summary>
         internal static string FileOverwriteCaption {
@@ -789,15 +807,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string KEKMustBeHSM {
             get {
                 return ResourceManager.GetString("KEKMustBeHSM", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Can not find key file &apos;{0}&apos;..
-        /// </summary>
-        internal static string KeyFileNotFound {
-            get {
-                return ResourceManager.GetString("KeyFileNotFound", resourceCulture);
             }
         }
         

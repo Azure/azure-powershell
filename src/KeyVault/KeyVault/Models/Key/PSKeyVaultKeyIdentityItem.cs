@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Track1Sdk = Microsoft.Azure.KeyVault.Models;
 using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -45,6 +46,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             IsHsm = isHsm;
         }
 
+        protected PSKeyVaultKeyIdentityItem(Track1Sdk.KeyBundle keyBundle, bool isHsm = false)
+        {
+            if (keyBundle == null)
+                throw new ArgumentNullException("keyBundle");
+            if (keyBundle.Attributes == null)
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidKeyAttributes);
+
+            Enabled = keyBundle.Attributes.Enabled;
+            Expires = keyBundle.Attributes.Expires;
+            NotBefore = keyBundle.Attributes.NotBefore;
+            Created = keyBundle.Attributes.Created;
+            Updated = keyBundle.Attributes.Updated;
+            RecoveryLevel = keyBundle.Attributes.RecoveryLevel;
+            Tags = (keyBundle.Tags == null) ? null : keyBundle.Tags.ConvertToHashtable();;
+            IsHsm = isHsm;
+
+        }
+
         internal PSKeyVaultKeyIdentityItem(PSKeyVaultKey keyBundle, bool isHsm = false)
         {
             if (keyBundle == null)
@@ -64,6 +83,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             IsHsm = isHsm;
         }
+
         internal PSKeyVaultKeyIdentityItem(Track2Sdk.KeyProperties keyProperties, VaultUriHelper vaultUriHelper, bool isHsm = false)
         {
             if (keyProperties == null)
@@ -71,7 +91,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (keyProperties.Id == null || keyProperties.Name == null)
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidKeyProperties);
 
-            SetObjectIdentifier(vaultUriHelper, new Microsoft.Azure.KeyVault.KeyIdentifier(keyProperties.Id.ToString()));
+            if(null != vaultUriHelper)
+            {
+                SetObjectIdentifier(vaultUriHelper, new Microsoft.Azure.KeyVault.KeyIdentifier(keyProperties.Id.ToString()));
+            }
 
             Enabled = keyProperties.Enabled;
             Expires = keyProperties.ExpiresOn?.UtcDateTime;

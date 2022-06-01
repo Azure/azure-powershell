@@ -8,6 +8,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
 using System.Collections;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 {
@@ -58,6 +59,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             options.NotBefore = keyAttributes.NotBefore;
             options.ExpiresOn = keyAttributes.Expires;
             options.Enabled = keyAttributes.Enabled;
+            options.Exportable = keyAttributes.Exportable;
+            options.ReleasePolicy = keyAttributes.ReleasePolicy?.ToKeyReleasePolicy(); ;
+
             if (keyAttributes.KeyOps != null)
             {
                 foreach (var keyOp in keyAttributes.KeyOps)
@@ -75,11 +79,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
             if (keyAttributes.KeyType == KeyType.Rsa || keyAttributes.KeyType == KeyType.RsaHsm)
             {
-                return new PSKeyVaultKey(client.CreateRsaKey(options as CreateRsaKeyOptions).Value, _vaultUriHelper);
+                return new PSKeyVaultKey(client.CreateRsaKey(options as CreateRsaKeyOptions).Value, _vaultUriHelper, false);
             }
             else if (keyAttributes.KeyType == KeyType.Ec || keyAttributes.KeyType == KeyType.EcHsm)
             {
-                return new PSKeyVaultKey(client.CreateEcKey(options as CreateEcKeyOptions).Value, _vaultUriHelper);
+                return new PSKeyVaultKey(client.CreateEcKey(options as CreateEcKeyOptions).Value, _vaultUriHelper, false);
             }
             else
             {
@@ -121,7 +125,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         private PSKeyVaultKey GetKey(KeyClient client, string keyName, string keyVersion)
         {
-            return new PSKeyVaultKey(client.GetKey(keyName, keyVersion).Value, _vaultUriHelper);
+            return new PSKeyVaultKey(client.GetKey(keyName, keyVersion).Value, _vaultUriHelper, false);
         }
 
         internal PSKeyOperationResult UnwrapKey(string vaultName, string keyName, string keyVersion, string wrapAlgorithm, byte[] value)
@@ -162,7 +166,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         private PSKeyVaultKey RotateKey(KeyClient client, string keyName)
         {
-            return new PSKeyVaultKey(client.RotateKey(keyName), _vaultUriHelper);
+            return new PSKeyVaultKey(client.RotateKey(keyName), _vaultUriHelper, false);
         }
 
         internal PSKeyRotationPolicy GetKeyRotationPolicy(string vaultName, string keyName)
@@ -181,7 +185,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             var client = CreateKeyClient(psKeyRotationPolicy.VaultName);
             var policy = new KeyRotationPolicy()
             {
-                ExpiresIn = psKeyRotationPolicy.ExpiresIn,
+                ExpiresIn = psKeyRotationPolicy.ExpiresIn.HasValue ? XmlConvert.ToString(psKeyRotationPolicy.ExpiresIn.Value) : null,
                 LifetimeActions = {}
             };
 
@@ -190,8 +194,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                     new KeyRotationLifetimeAction()
                     {
                         Action = psKeyRotationLifetimeAction.Action,
-                        TimeAfterCreate = psKeyRotationLifetimeAction.TimeAfterCreate,
-                        TimeBeforeExpiry = psKeyRotationLifetimeAction.TimeBeforeExpiry
+                        TimeAfterCreate = psKeyRotationLifetimeAction.TimeAfterCreate.HasValue ? XmlConvert.ToString(psKeyRotationLifetimeAction.TimeAfterCreate.Value) : null,
+                        TimeBeforeExpiry = psKeyRotationLifetimeAction.TimeBeforeExpiry.HasValue ? XmlConvert.ToString(psKeyRotationLifetimeAction.TimeBeforeExpiry.Value) : null
                     }
                 ));
 

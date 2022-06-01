@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -29,8 +30,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyRotationLifetimeAction(KeyRotationLifetimeAction keyRotationLifetimeAction) 
         {
             Action = keyRotationLifetimeAction.Action.ToString();
-            TimeAfterCreate = keyRotationLifetimeAction.TimeAfterCreate;
-            TimeBeforeExpiry = keyRotationLifetimeAction.TimeBeforeExpiry;
+            if (!string.IsNullOrEmpty(keyRotationLifetimeAction.TimeAfterCreate))
+            {
+                TimeAfterCreate = XmlConvert.ToTimeSpan(keyRotationLifetimeAction.TimeAfterCreate);
+            }
+            if (!string.IsNullOrEmpty(keyRotationLifetimeAction.TimeBeforeExpiry))
+            {
+                TimeBeforeExpiry = XmlConvert.ToTimeSpan(keyRotationLifetimeAction.TimeBeforeExpiry);
+            }
         }
         
         public override string ToString()
