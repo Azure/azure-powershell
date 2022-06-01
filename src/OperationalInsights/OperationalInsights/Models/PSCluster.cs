@@ -67,7 +67,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.IsAvailabilityZonesEnabled = cluster.IsAvailabilityZonesEnabled;
             this.BillingType = cluster.BillingType;
 
-            if (cluster.KeyVaultProperties != null)
+            if (cluster.KeyVaultProperties == null || PSKeyVaultProperties.CreateProperties(cluster.KeyVaultProperties.KeyVaultUri, cluster.KeyVaultProperties.KeyName, cluster.KeyVaultProperties.KeyVersion) == null)
+            {
+                this.KeyVaultProperties = null;
+            }
+            else
             {
                 this.KeyVaultProperties = new PSKeyVaultProperties(cluster.KeyVaultProperties);
             }
@@ -122,7 +126,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 location: Location,
                 tags: getTags(),
                 identity: Identity?.getIdentity(),
-                sku: Sku?.getClusterSku(), 
+                sku: Sku?.getClusterSku(),
                 isDoubleEncryptionEnabled: IsDoubleEncryptionEnabled,
                 isAvailabilityZonesEnabled: IsAvailabilityZonesEnabled,
                 billingType: BillingType,
