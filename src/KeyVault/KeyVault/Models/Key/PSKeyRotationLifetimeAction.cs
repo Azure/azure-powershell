@@ -30,14 +30,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyRotationLifetimeAction(KeyRotationLifetimeAction keyRotationLifetimeAction) 
         {
             Action = keyRotationLifetimeAction.Action.ToString();
-            if (!string.IsNullOrEmpty(keyRotationLifetimeAction.TimeAfterCreate))
-            {
-                TimeAfterCreate = XmlConvert.ToTimeSpan(keyRotationLifetimeAction.TimeAfterCreate);
-            }
-            if (!string.IsNullOrEmpty(keyRotationLifetimeAction.TimeBeforeExpiry))
-            {
-                TimeBeforeExpiry = XmlConvert.ToTimeSpan(keyRotationLifetimeAction.TimeBeforeExpiry);
-            }
+            TimeAfterCreate = string.IsNullOrEmpty(keyRotationLifetimeAction.TimeAfterCreate) ? null : XmlConvert.ToTimeSpan(keyRotationLifetimeAction.TimeAfterCreate) as TimeSpan?;
+            TimeBeforeExpiry = string.IsNullOrEmpty(keyRotationLifetimeAction.TimeBeforeExpiry) ? null : XmlConvert.ToTimeSpan(keyRotationLifetimeAction.TimeBeforeExpiry) as TimeSpan?;
         }
         
         public override string ToString()

@@ -64,10 +64,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 LifetimeActions.Add(new PSKeyRotationLifetimeAction(action));
             }
-            if (!string.IsNullOrEmpty(keyRotationPolicy.ExpiresIn))
-            {
-                ExpiresIn = XmlConvert.ToTimeSpan(keyRotationPolicy.ExpiresIn);
-            }            
+
+            ExpiresIn = string.IsNullOrEmpty(keyRotationPolicy.ExpiresIn) ? null : XmlConvert.ToTimeSpan(keyRotationPolicy.ExpiresIn) as TimeSpan?;
             CreatedOn = keyRotationPolicy.CreatedOn;
             UpdatedOn = keyRotationPolicy.UpdatedOn;
         }

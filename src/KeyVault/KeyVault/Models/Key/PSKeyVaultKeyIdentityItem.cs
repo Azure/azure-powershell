@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyVaultKeyIdentityItem()
         { }
 
-        internal PSKeyVaultKeyIdentityItem(Azure.KeyVault.Models.KeyItem keyItem, VaultUriHelper vaultUriHelper, bool isHsm = false)
+        internal PSKeyVaultKeyIdentityItem(Azure.KeyVault.Models.KeyItem keyItem, VaultUriHelper vaultUriHelper, bool isHsm)
         {
             if (keyItem == null)
                 throw new ArgumentNullException("keyItem");
