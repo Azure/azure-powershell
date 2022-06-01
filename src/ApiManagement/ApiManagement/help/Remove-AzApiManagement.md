@@ -4,7 +4,7 @@ Module Name: Az.ApiManagement
 ms.assetid: CD582654-1B0C-4960-9E18-454F857B56E7
 online version: https://docs.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagement
 schema: 2.0.0
----
+--- 
 
 # Remove-AzApiManagement
 
