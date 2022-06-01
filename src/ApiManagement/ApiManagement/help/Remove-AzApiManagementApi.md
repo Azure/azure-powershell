@@ -4,7 +4,7 @@ Module Name: Az.ApiManagement
 ms.assetid: F23D9274-63B9-4654-897B-6E84757774D2
 online version: https://docs.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementapi
 schema: 2.0.0
---- 
+---
 
 # Remove-AzApiManagementApi
 
@@ -26,7 +26,7 @@ The **Remove-AzApiManagementApi** cmdlet removes an existing API.
 ### Example 1: Remove an API
 ```powershell
 $apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-Remove-AzApiManagementApiTest -Context $apimContext -ApiId "0123456789"
+Remove-AzApiManagementApi -Context $apimContext -ApiId "0123456789"
 ```
 
 This command removes the API with the specified ID.
