@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 
             if (this.IsParameterBound(c => c.InputCluster))
             {
-                parameters.KeyVaultProperties = InputCluster.KeyVaultProperties;
+                parameters.KeyVaultProperties = PSKeyVaultProperties.CreateProperties(InputCluster.KeyVaultProperties?.KeyVaultUri, InputCluster.KeyVaultProperties?.KeyName, InputCluster.KeyVaultProperties?.KeyVersion);
                 parameters.Sku = InputCluster.Sku;
                 parameters.Tags = InputCluster.Tags;
                 parameters.Identity = InputCluster.Identity;
