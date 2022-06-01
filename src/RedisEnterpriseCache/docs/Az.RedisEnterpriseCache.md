@@ -29,8 +29,11 @@ Gets the status of operation.
 ### [Import-AzRedisEnterpriseCache](Import-AzRedisEnterpriseCache.md)
 Imports a database file to target database.
 
+### [Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink](Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink.md)
+Forcibly removes the link to the specified database resource.
+
 ### [New-AzRedisEnterpriseCache](New-AzRedisEnterpriseCache.md)
-Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with an associated database.
+Creates a Redis Enterprise cache.
 
 ### [New-AzRedisEnterpriseCacheDatabase](New-AzRedisEnterpriseCacheDatabase.md)
 Creates a database for a Redis Enterprise cache.
@@ -39,14 +42,14 @@ Creates a database for a Redis Enterprise cache.
 Regenerates an access key for a Redis Enterprise database.
 
 ### [Remove-AzRedisEnterpriseCache](Remove-AzRedisEnterpriseCache.md)
-Deletes a Redis Enterprise cache.
+Deletes a RedisEnterprise cache cluster.
 
 ### [Remove-AzRedisEnterpriseCacheDatabase](Remove-AzRedisEnterpriseCacheDatabase.md)
 Deletes a single database in a Redis Enterprise cache.
 
 ### [Update-AzRedisEnterpriseCache](Update-AzRedisEnterpriseCache.md)
-Updates an existing Redis Enterprise cluster.
+Updates an existing RedisEnterprise cluster
 
 ### [Update-AzRedisEnterpriseCacheDatabase](Update-AzRedisEnterpriseCacheDatabase.md)
-Updates an existing Redis Enterprise database.
+Updates an existing Redis Enterprise database
 

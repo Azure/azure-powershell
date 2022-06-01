@@ -309,7 +309,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IDatabase
 
 ## NOTES
 
@@ -321,7 +321,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
-  - `[ClusterName <String>]`: The name of the Redis Enterprise cluster.
+  - `[ClusterName <String>]`: The name of the RedisEnterprise cluster.
   - `[DatabaseName <String>]`: The name of the database.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The region the operation is in.
