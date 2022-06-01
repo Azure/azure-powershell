@@ -15,8 +15,6 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 using System.Management.Automation;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
@@ -24,7 +22,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
     {
         public string TableName { get; set; }
 
-        public string Id { set; get; }
+        public string ResourceId { set; get; }
 
         public int? RetentionInDays { get; set; }
 
@@ -49,16 +47,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// <param name="table"></param>
         public PSTable(Table table, string resourceGroupName, string workspaceName)
         {
+            this.ResourceGroupName = resourceGroupName;
+            this.WorkspaceName = workspaceName;
             this.TableName = table.Name;
-            this.Id = table.Id;
+            this.ResourceId = table.Id;
+            this.ProvisioningState = table.ProvisioningState;
             this.RetentionInDays = table.RetentionInDays;
             this.TotalRetentionInDays = table.TotalRetentionInDays;
             this.Plan = table.Plan;
-            this.Description = table.Schema.Description;
             this.Schema = table.Schema;
-            this.ProvisioningState = table.ProvisioningState;
-            this.ResourceGroupName = resourceGroupName;
-            this.WorkspaceName = workspaceName;
+            this.Description = table.Schema?.Description;
         }
 
         public PSTable(
@@ -76,7 +74,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.ResourceGroupName = resourceGroupName;
             this.WorkspaceName = workspaceName;
             this.TableName = tableName;
-            this.Id = id;
+            this.ResourceId = id;
             this.RetentionInDays = retentionInDays;
             this.TotalRetentionInDays = totalRetentionInDays;
             this.Plan = plan;

@@ -122,7 +122,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             PSTable existingTable = this.GetTable(resourceGroupName, workspaceName, tableName);
 
-            return OperationalInsightsManagementClient.Tables.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, tableName).Result.Response.StatusCode;
+            var res = OperationalInsightsManagementClient.Tables.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, tableName).Result;
+
+            return res.Response.StatusCode;
         }
 
         public virtual PSTable CreateRestoreTable(PSRestoreTable properties)
