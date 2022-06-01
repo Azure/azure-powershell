@@ -340,84 +340,6 @@ function Measure-SectionMissingAndOutputScript {
     }
 }
 
-
-<#
-    .SYNOPSIS
-    Tests whether the script invokes other scripts and whether it is vaild.
-#>
-function Measure-ScriptFile {
-    param (
-        [Parameter(Mandatory)]
-        [string]$ScriptPath
-    )
-
-    $assignmentLeftAndRight = @{}
-    $importSucceededScriptPaths = @()
-    $importFailedScriptPaths = @()
-    $assignmentLeftAndRight += @{
-        '$PSScriptRoot' = [IO.Path]::GetDirectoryName($ScriptPath)
-    }
-
-    # parseFile method returns ScriptBlockAst
-    [System.Management.Automation.Language.Parser]::ParseFile($ScriptPath, [ref]$null, [ref]$null).FindAll({$args[0] -is [System.Management.Automation.Language.Ast]}, $true) | foreach {
-        if ($_ -is [System.Management.Automation.Language.CommandAst]) {
-            [System.Management.Automation.Language.CommandAst]$commandAst = $_
-            # if invocate the command by ".", then get into the scriptPath
-            if ($commandAst.InvocationOperator -eq "Dot") {
-                $importedScriptPath = $commandAst.CommandElements[0].Extent.Text
-                while ($importedScriptPath -ne $importedScriptPath_Before) {
-                    $importedScriptPath_Before = $importedScriptPath
-                    $assignmentLeftAndRight.Keys.ForEach({
-                        $importedScriptPath = $importedScriptPath.Replace($_, $assignmentLeftAndRight.$_)
-                    })
-                }
-                $importedScriptPath = Invoke-Expression "Write-Output $importedScriptPath"
-                if (Test-Path $importedScriptPath -PathType Leaf) {
-                    $importSucceededScriptPaths += $importedScriptPath
-                }
-                else {
-                    $importFailedScriptPaths += $commandAst.CommandElements[0].Extent.Text
-                }
-            }
-        }
-        if ($_ -is [System.Management.Automation.Language.AssignmentStatementAst]) {
-            # Variable assignment, if variable exists, replace its value, or add the pair <left,right> to $assignmentLeftAndRight
-            [System.Management.Automation.Language.AssignmentStatementAst]$assignmentStatementAst = $_
-            if ($assignmentLeftAndRight.ContainsKey($assignmentStatementAst.Left.Extent.Text)) {
-                $assignmentLeftAndRight.($assignmentStatementAst.Left.Extent.Text) = $assignmentStatementAst.Right.Extent.Text
-            }
-            else {
-                $assignmentLeftAndRight += @{
-                    $assignmentStatementAst.Left.Extent.Text = $assignmentStatementAst.Right.Extent.Text
-                }
-            }
-        }
-    }
-    return @{
-        SucceededResults = $importSucceededScriptPaths
-        FailedResults = $importFailedScriptPaths
-    }
-}
-
-<#
-    .SYNOPSIS
-    Adds the script invoked other scripts and the rules into one script.
-#>
-function Add-ContentToHeadOfRule {
-    param (
-        [string[]]$SrcFilePaths,
-        [string]$DstFolderPath,
-        [string]$ImportContent
-    )
-
-    # add content of the script invoked by "." and rules.psm1 to tempFolder
-    $null = New-Item -ItemType Directory -Path $DstFolderPath -ErrorAction SilentlyContinue
-    # filter *.psm1 files
-    Get-ChildItem $SrcFilePaths -Filter *.psm1 | foreach {
-        ($ImportContent + (Get-Content $_ -Raw)) | Out-File "$DstFolderPath\$($_.Name)" -Encoding utf8
-    }
-}
-
 <#
     .SYNOPSIS
     Invoke PSScriptAnalyzer with custom rules, return the error set.
@@ -447,25 +369,7 @@ function Get-ScriptAnalyzerResult {
         $cmdlet = $scriptName
         $example = ""
     }
-    $importFailedResults = @()
-    $importContent = ""
 
-    $importResults = Measure-ScriptFile $ScriptPath
-    foreach ($path in $importResults.FailedResults) {
-        $importFailedResults += [PSCustomObject]@{
-            Module = $module
-            Cmdlet = $cmdlet
-            Example = $example
-            RuleName = "Imported_Script_Not_Exist"
-            Message = "Imported Script $path doesn't exist."
-            Extent = ". $path"
-        }
-    }
-    $importResults.SucceededResults | foreach {
-        $importContent += ". $_`n"
-    }
-    $tempFolderPath = "TempPSSARules"
-    Add-ContentToHeadOfRule $RulePaths $tempFolderPath $importContent
     # Invoke PSScriptAnalyzer : input scriptblock, output error set in $result with property: RuleName, Message, Extent
     if ($RulePath -eq $null) {
         $results = Invoke-ScriptAnalyzer -Path $ScriptPath -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
@@ -473,12 +377,11 @@ function Get-ScriptAnalyzerResult {
     else {
         $results = Invoke-ScriptAnalyzer -Path $ScriptPath -CustomRulePath $RulePath -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
     }
-    Remove-Item $tempFolderPath -Recurse
 
-    return $importFailedResults + $results | Select-Object -Property @{Name = "Module"; Expression = {$Module}},
+    return $results | Select-Object -Property @{Name = "Module"; Expression = {$Module}},
         @{Name = "Cmdlet";Expression={$Cmdlet}},
         @{Name ="Example";Expression={$Example}},
-        RuleName, Message, Extent
+        RuleName, Severity, @{Name ="Description";Expression={$results.Message}}, Extent
 }
 
 
