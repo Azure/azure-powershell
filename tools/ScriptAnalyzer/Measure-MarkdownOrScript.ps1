@@ -48,6 +48,7 @@ Remove-Item $OutputFolder\*.csv -Recurse -ErrorAction SilentlyContinue
 if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     $null = New-Item -ItemType Directory -Path $OutputFolder\$ScriptsByExampleFolder -ErrorAction SilentlyContinue
     $MarkdownPath = Get-Content $MarkdownPaths
+    Write-Output $MarkdownPaths
     Write-Output $MarkdownPath
     (Get-ChildItem $MarkdownPath) | foreach{
         Write-Output $_
