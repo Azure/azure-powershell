@@ -82,15 +82,15 @@ function Measure-CommandName {
             [System.Management.Automation.Language.Ast[]]$Asts = $ScriptBlockAst.FindAll($Predicate, $false)
             for ($i = 0; $i -lt $Asts.Count; $i++) {
                 if ($global:CommandParameterPair[$i].ParameterName -eq "<is not valid>") {
-                    $Message = "`"$($CommandParameterPair[$i].CommandName)`" is not a valid command name."
+                    $Message = "$($CommandParameterPair[$i].CommandName) is not a valid command name."
                     $RuleName = [RuleNames]::Invalid_Cmdlet
                 }
                 if ($global:CommandParameterPair[$i].ParameterName -eq "<is an alias>") {
-                    $Message = "`"$($CommandParameterPair[$i].CommandName)`" is an alias of `"$((Get-Alias $CommandParameterPair[$i].CommandName)[0].ResolvedCommandName)`"."
+                    $Message = "$($CommandParameterPair[$i].CommandName) is an alias of `"$((Get-Alias $CommandParameterPair[$i].CommandName)[0].ResolvedCommandName)`"."
                     $RuleName = [RuleNames]::Is_Alias
                 }
                 if ($global:CommandParameterPair[$i].ParameterName -eq "<doesn't follow the Capitalization Conventions>") {
-                    $Message = "`"$($CommandParameterPair[$i].CommandName)`" doesn't follow the Capitalization Conventions."
+                    $Message = "$($CommandParameterPair[$i].CommandName) doesn't follow the Capitalization Conventions."
                     $RuleName = [RuleNames]::Capitalization_Conventions_Violated
                 }
                 $Result = [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{

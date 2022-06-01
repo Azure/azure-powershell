@@ -48,11 +48,12 @@ Remove-Item $OutputFolder\*.csv -Recurse -ErrorAction SilentlyContinue
 if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     $null = New-Item -ItemType Directory -Path $OutputFolder\$ScriptsByExampleFolder -ErrorAction SilentlyContinue
     $MarkdownPath = Get-Content $MarkdownPaths
-    (Get-Item $MarkdownPath) | foreach{
-        # Filter the .md of overview in /help
-        if ($_ -cmatch ".*/help.*\.md" -and $_.BaseName -cmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
+    (Get-ChildItem $MarkdownPath) | foreach{
+        # Filter the .md of overview in \help\
+        if ($_.FullName -cmatch ".*help.*\.md" -and $_.BaseName -cmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
             Write-Output "Searching in file $($_.FullName) ..."
-            $module = ($_ -split "/")[-3]
+            $module = ($_.FullName -split "\")[-3]#/|\
+            Write-Output $module
             $cmdlet = $_.BaseName
             $result = Measure-SectionMissingAndOutputScript $module $cmdlet $_.FullName `
                 -OutputScriptsInFile:$OutputScriptsInFile.IsPresent `
@@ -89,7 +90,7 @@ if ($PSCmdlet.ParameterSetName -eq "Script" -or $AnalyzeScriptsInFile.IsPresent)
         $analysisResultsTable += $analysisResults
     }
     # Summarize analysis results, output in Result.csv
-    $analysisResultsTable | where {$_ -ne $null} | Export-Csv "$OutputFolder\Results-$(Get-Date -UFormat %s).csv" -NoTypeInformation
+    $analysisResultsTable | where {$_ -ne $null} | Export-Csv ".\artifacts\StaticAnalysisResults\ExampleIssues.csv" -NoTypeInformation
 }
 
 # Clean caches

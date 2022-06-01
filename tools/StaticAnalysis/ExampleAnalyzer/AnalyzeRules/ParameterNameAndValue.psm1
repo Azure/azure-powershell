@@ -442,37 +442,37 @@ function Measure-ParameterNameAndValue {
             [System.Management.Automation.Language.Ast[]]$Asts = $ScriptBlockAst.FindAll($Predicate, $false)
             for ($i = 0; $i -lt $Asts.Count; $i++) {
                 if ($global:CommandParameterPair[$i].ParameterName -eq "" -and $global:CommandParameterPair[$i].ExpressionToParameter -eq "") {
-                    $Message = "`"$($CommandParameterPair[$i].CommandName)`" has a parameter not in the same ParameterSet as others."
+                    $Message = "$($CommandParameterPair[$i].CommandName) has a parameter not in the same ParameterSet as others."
                     $RuleName = [RuleNames]::Unknown_Parameter_Set
                     $Severity = "Error"
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter -eq "") {
-                    $Message = "`"$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName)`" is not a valid parameter name."
+                    $Message = "$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) is not a valid parameter name."
                     $RuleName = [RuleNames]::Invalid_Parameter_Name
                     $Severity = "Error"
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter -eq "<2>") {
-                    $Message = "`"$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName)`" appeared more than once."
+                    $Message = "$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) appeared more than once."
                     $RuleName = [RuleNames]::Duplicate_Parameter_Name
                     $Severity = "Error"
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter -eq $null) {
-                    $Message = "`"$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName)`" must be assigned with a value."
+                    $Message = "$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) must be assigned with a value."
                     $RuleName = [RuleNames]::Unassigned_Parameter
                     $Severity = "Error"
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter.EndsWith(" is a null-valued parameter value.")) {
-                    $Message = "`"$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ParameterName) $($CommandParameterPair[$i].ExpressionToParameter)`""
+                    $Message = "$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ParameterName) $($CommandParameterPair[$i].ExpressionToParameter)"
                     $RuleName = [RuleNames]::Unassigned_Variable
                     $Severity = "Warning"
                 }
                 elseif ($global:CommandParameterPair[$i].ParameterName -eq "<non-existant>") {
-                    $Message = "`"$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ExpressionToParameter)`" is not explicitly assigned to a parameter."
+                    $Message = "$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ExpressionToParameter) is not explicitly assigned to a parameter."
                     $RuleName = [RuleNames]::Unbinded_Parameter_Name
                     $Severity = "Warning"
                 }
                 else {
-                    $Message = "`"$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ParameterName) $($CommandParameterPair[$i].ExpressionToParameter)`" is not an expected parameter value type."
+                    $Message = "$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ParameterName) $($CommandParameterPair[$i].ExpressionToParameter) is not an expected parameter value type."
                     $RuleName = [RuleNames]::Mismatched_Parameter_Value_Type
                     $Severity = "Warning"
                 }
