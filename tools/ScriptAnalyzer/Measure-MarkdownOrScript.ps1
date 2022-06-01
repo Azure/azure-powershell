@@ -51,9 +51,9 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     Write-Output $MarkdownPaths
     Write-Output $MarkdownPath
     (Get-ChildItem $MarkdownPath) | foreach{
-        Write-Output $_
+        Write-Output $_.FullName
         # Filter the .md of overview in /help
-        if ($_ -cmatch ".*/help.*\.md" -and $_.BaseName -cmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
+        if ($_.FullName -cmatch ".*/help.*\.md" -and $_.BaseName -cmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
             Write-Output "Searching in file $($_.FullName) ..."
             $module = ($_ -split "/")[-3]
             $cmdlet = $_.BaseName
