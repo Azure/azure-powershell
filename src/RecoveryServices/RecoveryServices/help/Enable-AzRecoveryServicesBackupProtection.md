@@ -74,7 +74,7 @@ The third cmdlet sets the Backup protection policy for the ARM virtual machine n
 ### Example 2
 
 Enables backup for an item with a specified Backup protection policy or resumes backup for an item that has data retained when backup was stopped.
-
+<!-- Aladdin Generated Example --> 
 ```powershell
 Enable-AzRecoveryServicesBackupProtection -Item $Item -Policy $Pol -VaultId $vault
 ```
