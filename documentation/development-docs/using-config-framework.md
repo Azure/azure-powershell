@@ -25,18 +25,23 @@ To define a config, create a class inheriting [`TypedConfig<TValue>`](https://gi
 You will need to override the following key properties when defining your own config class.
 
 - `object DefaultValue`
-  - The default value of the config.
+  - The default value of the config. Used for basic type validation when setting the config.
 - `string Key`
-  - The unique key of the config.
-  - The key is also used as a parameter name of cmdlets that operate on configs, for example `Get-AzConfig`, so it must follow the naming conventions. See [Parameter Best Practices](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/design-guidelines/parameter-best-practices.md#parameter-best-practices).
+  - The unique key of the config. Used when user gets or sets the config.
+  - The key is reused as a parameter name of cmdlets that operate on configs, for example `Get-AzConfig`, so it must follow the naming conventions. See [Parameter Best Practices](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/design-guidelines/parameter-best-practices.md#parameter-best-practices).
 - `string HelpMessage`
-  - The help message or description of the config.
-  - It will also be used as the help message of the corresponding PowerShell parameter in documents.
-
-public override string EnvironmentVariableName => "AZURE_PS_DISPLAY_BREAKING_CHANGE_WARNINGS";
-```
+  - The help message or description of the config. 
+  - It is reused as the help message of the corresponding PowerShell parameter in documents.
 
 #### Simple Config Definition
+
+If the following circumstances are met, you may simpify the code by creating an instance of [`SimpleTypedConfig<TValue>`](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Authentication/Config/Models/SimpleTypedConfig.cs) instead of defining your own type:
+- The config does not support environment variables. Or it supports only one environment variable and it does not require special logic to parse the value.
+- No special validation logic.
+
+
+
+
 
 ### Step 2: Register the Config
 
