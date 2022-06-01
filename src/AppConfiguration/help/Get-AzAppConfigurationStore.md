@@ -42,7 +42,7 @@ Get or list app configuration stores.
 
 ### Example 1: List all app configuration stores under a subscription
 ```powershell
-Get-AzAppConfigurationStore
+Get-AzAppConfigurationStoreTest
 ```
 
 ```output
