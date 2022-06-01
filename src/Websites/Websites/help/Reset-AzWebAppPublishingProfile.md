@@ -33,8 +33,8 @@ The **Reset-AzWebAppPublishingProfile** cmdlet resets the publishing profile for
 
 The following example resets the publishing profile for the Web App IpRule associated with the resource group MyResourceGroup.
 
+<!-- Aladdin Generated Example -->
 ```powershell
-<!-- Aladdin Generated Example --> 
 Reset-AzWebAppPublishingProfile -Name IpRule -ResourceGroupName MyResourceGroup
 ```
 
