@@ -253,7 +253,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzNetAppFilesSnapshot](./Get-AzNetAppFilesSnapshot.md)
 [New-AzNetAppFilesSnapshot](./New-AzNetAppFilesSnapshot.md)
-[Update-AzNetAppFilesSnapshot](./Update-AzNetAppFilesSnapshot.md)
 [Get-AzNetAppFilesSnapshotPolicy](./Get-AzNetAppFilesSnapshotPolicy.md)
 [New-AzNetAppFilesSnapshotPolicy](./New-AzNetAppFilesSnapshotPolicy.md)
 [Update-AzNetAppFilesSnapshotPolicy](./Update-AzNetAppFilesSnapshotPolicy.md)
