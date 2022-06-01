@@ -22,8 +22,9 @@ Update-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [[-Version] <String>
 ### HsmInteractive
 ```
 Update-AzKeyVaultKey -HsmName <String> [-Name] <String> [[-Version] <String>] [-Enable <Boolean>]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-KeyOps <String[]>] [-Tag <Hashtable>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-KeyOps <String[]>] [-Immutable] [-ReleasePolicyPath <String>]
+ [-Tag <Hashtable>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObject
@@ -153,6 +154,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Immutable
+Sets the release policy as immutable state. Once marked immutable, this flag cannot be reset and the policy cannot be changed under any circumstances.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: HsmInteractive
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Key object
 
@@ -223,6 +239,21 @@ If this switch is specified, returns the updated key bundle object.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReleasePolicyPath
+A path to a file containing JSON policy definition. The policy rules under which a key can be exported.
+
+```yaml
+Type: System.String
+Parameter Sets: HsmInteractive
 Aliases:
 
 Required: False
