@@ -72,9 +72,8 @@ The second cmdlet specifies the disk LUNs which are to be backed up and stores i
 The third cmdlet sets the Backup protection policy for the ARM virtual machine named V2VM using the policy in $Pol.
 
 ### Example 2
-
-Enables backup for an item with a specified Backup protection policy or resumes backup for an item that has data retained when backup was stopped.
 <!-- Aladdin Generated Example --> 
+Enables backup for an item with a specified Backup protection policy or resumes backup for an item that has data retained when backup was stopped.
 ```powershell
 Enable-AzRecoveryServicesBackupProtection -Item $Item -Policy $Pol -VaultId $vault
 ```
