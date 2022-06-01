@@ -37,7 +37,7 @@ Remove-AzAlertProcessingRule -InputObject <PSActionRule> [-DefaultProfile <IAzur
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AlertProcessingRuleName"
+Remove-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AlertProcessingRuleName"
 ```
 
 This cmdlet deletes the alert processing rule with name AlertProcessingRuleName in resource group test-rg
