@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Get function information by its ID for web site, or a deployment slot.
+Get function information by its ID for web site, or a deployment slot.
 .Description
-Description for Get function information by its ID for web site, or a deployment slot.
+Get function information by its ID for web site, or a deployment slot.
 .Example
 {{ Add code here }}
 .Example
@@ -195,6 +195,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzFunction_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzFunction_GetViaIdentity';
@@ -209,6 +210,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -217,15 +219,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

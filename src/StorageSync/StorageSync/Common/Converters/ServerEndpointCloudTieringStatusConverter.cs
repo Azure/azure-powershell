@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
     /// <summary>
     /// Class ServerEndpointCloudTieringStatusConverter.
-    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointCloudTieringStatus, StorageSyncModels.ServerEndpointCloudTieringStatus}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointCloudTieringStatus, ServerEndpointCloudTieringStatus}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSServerEndpointCloudTieringStatus, StorageSyncModels.ServerEndpointHealth}" />
+    /// <seealso cref="Converters.ConverterBase{PSServerEndpointCloudTieringStatus, ServerEndpointHealth}" />
     public class ServerEndpointCloudTieringStatusConverter : ConverterBase<PSServerEndpointCloudTieringStatus, StorageSyncModels.ServerEndpointCloudTieringStatus>
     {
         /// <summary>

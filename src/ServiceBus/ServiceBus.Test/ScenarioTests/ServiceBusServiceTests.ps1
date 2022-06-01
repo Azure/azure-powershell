@@ -249,9 +249,9 @@ function MSITest{
     $namespace2 = getAssetName "Namespace2-"
     try{
 
-        $uad1 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi1
-        $uad2 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi2
-        $uad3 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi3
+        $uad1 = "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1"
+        $uad2 = "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2"
+        $uad3 = "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI3"
 
         $namespace = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -SkuName Standard -Location northeurope
         Assert-AreEqual $namespace.Name $namespace1
@@ -262,19 +262,19 @@ function MSITest{
         Assert-AreEqual $namespace.Sku.Name "Standard"
         Assert-AreEqual $namespace.IdentityType "SystemAssigned"
 
-        $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "UserAssigned" -IdentityId $uad1.Id,$uad2.Id
+        $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "UserAssigned" -IdentityId $uad1,$uad2
         Assert-AreEqual $namespace.Name $namespace1
         Assert-AreEqual $namespace.Sku.Name "Standard"
         Assert-AreEqual $namespace.IdentityType "UserAssigned"
         Assert-True { $namespace.IdentityId.Count -eq 2 }
 
-        $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "SystemAssigned, UserAssigned" -IdentityId $uad1.Id,$uad2.Id
+        $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "SystemAssigned, UserAssigned"
         Assert-AreEqual $namespace.Name $namespace1
         Assert-AreEqual $namespace.Sku.Name "Standard"
         Assert-AreEqual $namespace.IdentityType "SystemAssignedUserAssigned"
         Assert-True { $namespace.IdentityId.Count -eq 2 }
 
-        $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "None"
+        $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "None" -IdentityId @()
         Assert-AreEqual $namespace.Name $namespace1
         Assert-AreEqual $namespace.Sku.Name "Standard"
         Assert-Null $namespace.Identity
@@ -290,16 +290,16 @@ function EncryptionTest{
         $msi1 = "PS-Testing-MSI1"
         $msi2 = "PS-Testing-MSI2"
         $msi3 = "PS-Testing-MSI3"
-        $kv1 = "PS-Testing-kv1"
-        $kv2 = "PS-Testing-kv2"
-        $kv1uri = "https://ps-testing-kv1.vault.azure.net/"
-        $kv2uri = "https://ps-testing-kv2.vault.azure.net"
+        $kv1 = "PS-Test-kv1"
+        $kv2 = "PS-Test-kv2"
+        $kv1uri = "https://ps-test-kv1.vault.azure.net/"
+        $kv2uri = "https://ps-test-kv2.vault.azure.net"
         $namespace1 = getAssetName "Namespace1-"
         $namespace2 = getAssetName "Namespace2-"
 
-        $uad1 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi1
-        $uad2 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi2
-        $uad3 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi3
+        $uad1 = "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1"
+        $uad2 = "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2"
+        $uad3 = "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI3"
 
         $namespace = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace2 -SkuName Premium -Location northeurope -IdentityType SystemAssigned
         Assert-AreEqual $namespace.Name $namespace2
@@ -318,17 +318,17 @@ function EncryptionTest{
         Assert-True { $namespace.EncryptionConfig.Count -eq 2 }
 
 
-        $ec1 = New-AzServiceBusEncryptionConfig -KeyName key1 -KeyVaultUri $kv1uri -UserAssignedIdentity $uad1.Id
-        $ec2 = New-AzServiceBusEncryptionConfig -KeyName key2 -KeyVaultUri $kv1uri -UserAssignedIdentity $uad1.Id
+        $ec1 = New-AzServiceBusEncryptionConfig -KeyName key1 -KeyVaultUri $kv1uri -UserAssignedIdentity $uad1
+        $ec2 = New-AzServiceBusEncryptionConfig -KeyName key2 -KeyVaultUri $kv1uri -UserAssignedIdentity $uad1
 
-        $namespace = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -SkuName Premium -Location northeurope -IdentityType UserAssigned -IdentityId $uad1.Id,$uad2.Id -EncryptionConfig $ec1,$ec2
+        $namespace = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -SkuName Premium -Location northeurope -IdentityType UserAssigned -IdentityId $uad1,$uad2 -EncryptionConfig $ec1,$ec2
         Assert-AreEqual $namespace.Name $namespace1
         Assert-AreEqual $namespace.Sku.Name "Premium"
         Assert-AreEqual $namespace.IdentityType "UserAssigned"
         Assert-True { $namespace.IdentityId.Count -eq 2 }
         Assert-True { $namespace.EncryptionConfig.Count -eq 2 }
 
-        $ec3 = New-AzServiceBusEncryptionConfig -KeyName key1 -KeyVaultUri $kv2uri -UserAssignedIdentity $uad1.id
+        $ec3 = New-AzServiceBusEncryptionConfig -KeyName key1 -KeyVaultUri $kv2uri -UserAssignedIdentity $uad1
         $namespace.EncryptionConfig += $ec3
 
         $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -EncryptionConfig $namespace.EncryptionConfig -Location northeurope

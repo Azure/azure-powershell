@@ -21,37 +21,30 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     /// <summary>
     /// The get legacy tests.
     /// </summary>
-    public class RegisteredPrefix
+    public class RegisteredPrefix : PeeringTestRunner
     {
-        /// <summary>
-        /// The logger.
-        /// </summary>
-        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="GetLegacyTests"/> class.
         /// </summary>
         /// <param name="output">
         /// The output.
         /// </param>
-        public RegisteredPrefix(Xunit.Abstractions.ITestOutputHelper output)
+        public RegisteredPrefix(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRegisteredPrefix()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetRegisteredPrefix");
+            TestRunner.RunTestScript("Test-GetRegisteredPrefix");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateRegisteredPrefix()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-CreateRegisteredPrefix");
+            TestRunner.RunTestScript("Test-CreateRegisteredPrefix");
         }
     }
 }

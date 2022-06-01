@@ -2060,6 +2060,12 @@
             <Label>AccessTier</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>AllowBlobPublicAccess</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AllowSharedKeyAccess</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>CreationTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -2076,6 +2082,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LastGeoFailoverTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinimumTlsVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PrimaryLocation</Label>
@@ -2100,6 +2109,12 @@
                 <PropertyName>AccessTier</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>AllowBlobPublicAccess</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AllowSharedKeyAccess</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>CreationTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2116,6 +2131,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LastGeoFailoverTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinimumTlsVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PrimaryLocation</PropertyName>
@@ -2148,6 +2166,12 @@
             <Label>AccessTier</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>AllowBlobPublicAccess</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AllowSharedKeyAccess</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EnableHttpsTrafficOnly</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -2155,6 +2179,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LargeFileSharesState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinimumTlsVersion</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2164,6 +2191,12 @@
                 <PropertyName>AccessTier</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>AllowBlobPublicAccess</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AllowSharedKeyAccess</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EnableHttpsTrafficOnly</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2171,6 +2204,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LargeFileSharesState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinimumTlsVersion</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2188,10 +2224,19 @@
             <Label>AccessTier</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>AllowBlobPublicAccess</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AllowSharedKeyAccess</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EnableHttpsTrafficOnly</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LargeFileSharesState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinimumTlsVersion</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2201,10 +2246,19 @@
                 <PropertyName>AccessTier</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>AllowBlobPublicAccess</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AllowSharedKeyAccess</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EnableHttpsTrafficOnly</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LargeFileSharesState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinimumTlsVersion</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -6689,6 +6743,84 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Resource</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.CsmPublishingCredentialsPoliciesCollection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.CsmPublishingCredentialsPoliciesCollection</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Kind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Kind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.CsmPublishingCredentialsPoliciesEntity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.CsmPublishingCredentialsPoliciesEntity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Kind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Kind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.CsmPublishingCredentialsPoliciesEntityProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.CsmPublishingCredentialsPoliciesEntityProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Allow</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Allow</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -13565,6 +13697,12 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>AcrUseManagedIdentityCred</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AcrUserManagedIdentityId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>AlwaysOn</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -13691,6 +13829,12 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AcrUseManagedIdentityCred</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AcrUserManagedIdentityId</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>AlwaysOn</PropertyName>
               </TableColumnItem>

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Gets the details of a web, mobile, or API app.
+Gets the details of a web, mobile, or API app.
 .Description
-Description for Gets the details of a web, mobile, or API app.
+Gets the details of a web, mobile, or API app.
 .Example
 Get-AzFunctionApp
 .Example
@@ -203,6 +203,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzFunctionApp_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzFunctionApp_GetViaIdentity';
@@ -218,6 +219,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -226,15 +228,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

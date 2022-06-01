@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
@@ -37,8 +38,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string protectedItemName,
             ProtectedItemResource request,
             string vaultName = null,
-            string resourceGroupName = null)
+            string resourceGroupName = null,
+            string auxiliaryAccessToken = null,
+            bool isMUAProtected = false)
         {
+            Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
+            if (isMUAProtected)
+            {
+                List<ResourceGuardProxyBaseResource> resourceGuardMapping = ListResourceGuardMapping(vaultName, resourceGroupName);
+                string operationRequest = null;
+
+                if (resourceGuardMapping != null && resourceGuardMapping.Count != 0)
+                {
+                    foreach (ResourceGuardOperationDetail operationDetail in resourceGuardMapping[0].Properties.ResourceGuardOperationDetails)
+                    {
+                        if (operationDetail.VaultCriticalOperation == "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write") operationRequest = operationDetail.DefaultResourceRequest;
+                    }
+
+                    if (operationRequest != null)
+                    {
+                        request.Properties.ResourceGuardOperationRequests = new List<string>();
+                        request.Properties.ResourceGuardOperationRequests.Add(operationRequest);
+                    }
+                }
+
+                if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
+                {
+                    if (operationRequest != null)
+                    {
+                        customHeaders.Add("x-ms-authorization-auxiliary", new List<string> { "Bearer " + auxiliaryAccessToken });
+                    }
+                    else
+                    {                        
+                        throw new ArgumentException(String.Format(Resources.UnexpectedParameterToken, "ModifyProtection"));
+                    }
+                }
+            }
+
             return BmsAdapter.Client.ProtectedItems.CreateOrUpdateWithHttpMessagesAsync(
                  vaultName ?? BmsAdapter.GetResourceName(),
                  resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
@@ -46,6 +82,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                  containerName,
                  protectedItemName,
                  request,
+                 customHeaders,
                  cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 
@@ -59,14 +96,59 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string containerName,
             string protectedItemName,
             string vaultName = null,
-            string resourceGroupName = null)
+            string resourceGroupName = null,
+            string auxiliaryAccessToken = null,
+            string protectedItemUri = null)
         {
+            Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
+            if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
+            {
+                customHeaders.Add("x-ms-authorization-auxiliary", new List<string> { "Bearer " + auxiliaryAccessToken });
+            }
+
+            string operationRequest = null;
+
+            // unlock 
+            UnlockDeleteRequest unlockDeleteRequest = new UnlockDeleteRequest();                       
+
+            List<ResourceGuardProxyBaseResource> resourceGuardMapping = ListResourceGuardMapping(vaultName, resourceGroupName);
+
+            if (resourceGuardMapping != null && resourceGuardMapping.Count != 0)
+            {                
+                foreach (ResourceGuardOperationDetail operationDetail in resourceGuardMapping[0].Properties.ResourceGuardOperationDetails)
+                {
+                    if (operationDetail.VaultCriticalOperation == "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete") operationRequest = operationDetail.DefaultResourceRequest;
+                }
+                               
+                if(operationRequest != null)
+                {
+                    unlockDeleteRequest.ResourceGuardOperationRequests = new List<string>();
+                    unlockDeleteRequest.ResourceGuardOperationRequests.Add(operationRequest);
+
+                    if(protectedItemUri == null)
+                    {                        
+                        throw new ArgumentException(String.Format(Resources.ProtectedItemURICantBeNull));
+                    }
+
+                    unlockDeleteRequest.ResourceToBeDeleted = protectedItemUri;
+                    UnlockDeleteResponse unlockDeleteResponse = BmsAdapter.Client.ResourceGuardProxy.UnlockDeleteWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), resourceGuardMapping[0].Name, unlockDeleteRequest, customHeaders).Result.Body;
+                }
+                else if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
+                {   
+                    throw new ArgumentException(String.Format(Resources.UnexpectedParameterToken, "Delete protection with DeleteBackupData"));
+                }
+            }
+            else if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
+            {
+                throw new ArgumentException(String.Format(Resources.UnexpectedParameterToken, "Delete protection with DeleteBackupData"));
+            }
+
             return BmsAdapter.Client.ProtectedItems.DeleteWithHttpMessagesAsync(
                 vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName,
                 containerName,
-                protectedItemName,
+                protectedItemName,                
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 

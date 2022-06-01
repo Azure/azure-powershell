@@ -12,64 +12,57 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Support.Test.ScenarioTests
 {
-    public class ProblemClassificationTests
+    public class ProblemClassificationTests : SupportTestRunner
     {
-        private XunitTracingInterceptor _logger;
-
-        public ProblemClassificationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ProblemClassificationTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportProblemClassificationServiceName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportProblemClassificationServiceName");
+            TestRunner.RunTestScript("Get-AzSupportProblemClassificationServiceName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportProblemClassificationAllParametersNameAlias()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportProblemClassificationAllParametersNameAlias");
+            TestRunner.RunTestScript("Get-AzSupportProblemClassificationAllParametersNameAlias");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportProblemClassificationAllParametersId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportProblemClassificationAllParametersId");
+            TestRunner.RunTestScript("Get-AzSupportProblemClassificationAllParametersId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportProblemClassificationAllParametersResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportProblemClassificationAllParametersResourceId");
+            TestRunner.RunTestScript("Get-AzSupportProblemClassificationAllParametersResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportProblemClassificationParentObjectServiceName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportProblemClassificationParentObjectServiceName");
+            TestRunner.RunTestScript("Get-AzSupportProblemClassificationParentObjectServiceName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportProblemClassificationParentObjectAllParameters()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportProblemClassificationParentObjectAllParameters");
+            TestRunner.RunTestScript("Get-AzSupportProblemClassificationParentObjectAllParameters");
         }
     }
 }

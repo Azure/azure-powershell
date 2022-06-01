@@ -16,28 +16,24 @@ namespace Microsoft.Azure.Commands.DataShare.Test.ScenarioTests.ScenarioTest
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class ProviderShareSubscriptionTests
+    public class ProviderShareSubscriptionTests : DataShareTestRunner
     {
-        private readonly ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
-        public ProviderShareSubscriptionTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ProviderShareSubscriptionTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProviderShareSubscriptionGrantAndRevoke()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ProviderShareSubscriptionGrantAndRevoke");
+            TestRunner.RunTestScript("Test-ProviderShareSubscriptionGrantAndRevoke");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProviderShareSubscriptionGet()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ProviderShareSubscriptionGet");
+            TestRunner.RunTestScript("Test-ProviderShareSubscriptionGet");
         }
     }
 }

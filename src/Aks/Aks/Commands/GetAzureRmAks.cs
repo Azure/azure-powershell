@@ -27,7 +27,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [GenericBreakingChange("Get-AzAks will be removed in the next major release. Please use Get-AzAksCluster instead of Get-AzAks")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSKubernetesCluster))]
     public class GetAzureRmAks : KubeCmdletBase

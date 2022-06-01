@@ -12,64 +12,57 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Support.Test.ScenarioTests
 {
-    public class CommunicationTests
+    public class CommunicationTests : SupportTestRunner
     {
-        private XunitTracingInterceptor _logger;
-
-        public CommunicationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public CommunicationTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzSupportTicketCommunicationNameParameterSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSupportTicketCommunicationNameParameterSet");
+            TestRunner.RunTestScript("New-AzSupportTicketCommunicationNameParameterSet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzSupportTicketCommunicationParentObjectParameterSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSupportTicketCommunicationParentObjectParameterSet");
+            TestRunner.RunTestScript("New-AzSupportTicketCommunicationParentObjectParameterSet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportTicketCommunicationByNameParameterSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportTicketCommunicationByNameParameterSet");
+            TestRunner.RunTestScript("Get-AzSupportTicketCommunicationByNameParameterSet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportTicketCommunicationFilterByCommunicationType()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportTicketCommunicationFilterByCommunicationType");
+            TestRunner.RunTestScript("Get-AzSupportTicketCommunicationFilterByCommunicationType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportTicketCommunicationPagingParameters()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportTicketCommunicationPagingParameters");
+            TestRunner.RunTestScript("Get-AzSupportTicketCommunicationPagingParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportTicketCommunicationByParentObjectParameterSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportTicketCommunicationByParentObjectParameterSet");
+            TestRunner.RunTestScript("Get-AzSupportTicketCommunicationByParentObjectParameterSet");
         }
     }
 }

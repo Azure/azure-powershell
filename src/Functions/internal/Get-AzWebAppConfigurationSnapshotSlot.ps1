@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Gets a snapshot of the configuration of an app at a previous point in time.
+Gets a snapshot of the configuration of an app at a previous point in time.
 .Description
-Description for Gets a snapshot of the configuration of an app at a previous point in time.
+Gets a snapshot of the configuration of an app at a previous point in time.
 .Example
 {{ Add code here }}
 .Example
@@ -193,6 +193,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotSlot_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotSlot_GetViaIdentity';
@@ -206,6 +207,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -214,15 +216,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

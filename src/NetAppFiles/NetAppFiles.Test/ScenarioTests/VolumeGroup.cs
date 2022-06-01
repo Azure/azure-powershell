@@ -16,20 +16,17 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 {
-    public class VolumeGroupTests
+    public class VolumeGroupTests : NetAppFilesTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-        public VolumeGroupTests(Xunit.Abstractions.ITestOutputHelper output)
+        public VolumeGroupTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumeGroupCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-VolumeGroupCrud");
+            TestRunner.RunTestScript("Test-VolumeGroupCrud");
         }
 
 

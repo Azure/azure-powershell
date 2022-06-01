@@ -77,8 +77,9 @@ namespace Commands.Aks.Test.ScenarioTests
                         AzureSession.Instance.DataStore = new MemoryDataStore();
                         var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
                         var dir = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
-                        var subscription = HttpMockServer.Variables["SubscriptionId"];
+                        
                         var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
+                        var subscription = currentEnvironment.ConnectionString.KeyValuePairs["SubscriptionId"];
                         string spn = null;
                         string spnSecret = null;
                         if (currentEnvironment.ConnectionString.KeyValuePairs.ContainsKey("ServicePrincipal"))

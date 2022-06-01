@@ -12,48 +12,41 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.SignalR.Test.ScenarioTests
 {
-    public class AzureRmSignalRTests : RMTestBase
+    public class AzureRmSignalRTests : SignalRTestRunner
     {
-        private readonly ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public AzureRmSignalRTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AzureRmSignalRTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmSignalR() =>
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalR");
+            TestRunner.RunTestScript("Test-AzureRmSignalR");
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmSignalRWithDefaultArgs() =>
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRWithDefaultArgs");
+            TestRunner.RunTestScript("Test-AzureRmSignalRWithDefaultArgs");
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmSignalRUpdateNetworkAcl() =>
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRUpdateNetworkAcl");
+            TestRunner.RunTestScript("Test-AzureRmSignalRUpdateNetworkAcl");
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmSignalRSetUpstream() =>
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRSetUpstream");
+            TestRunner.RunTestScript("Test-AzureRmSignalRSetUpstream");
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmSignalRUpdate() =>
-    TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRUpdate");
+        TestRunner.RunTestScript("Test-AzureRmSignalRUpdate");
 
     }
 }

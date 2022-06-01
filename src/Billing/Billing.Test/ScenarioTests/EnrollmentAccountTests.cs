@@ -13,35 +13,29 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Billing.Test.ScenarioTests.ScenarioTest;
-using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
 {
-    public class EnrollmentAccountTests
+    public class EnrollmentAccountTests : BillingTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public EnrollmentAccountTests(Xunit.Abstractions.ITestOutputHelper output)
+        public EnrollmentAccountTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListEnrollmentAccounts()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListEnrollmentAccounts");
+            TestRunner.RunTestScript("Test-ListEnrollmentAccounts");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetEnrollmentAccountWithName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetEnrollmentAccountWithName");
+            TestRunner.RunTestScript("Test-GetEnrollmentAccountWithName");
         }
     }
 }

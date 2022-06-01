@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 2.11.2
+* Updated `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VirtualNetworkSubnetId` property [#18042]
 ## Version 2.11.1
 * Updated 'New-AzWebAppContainerPSSession' with CmdletDeprecation Attribute [#16646]
 * Updated `Restore-AzDeletedWebApp` to fix issue that prevents the cmdlet from working on hosts with a locale is anything different from `en-US`

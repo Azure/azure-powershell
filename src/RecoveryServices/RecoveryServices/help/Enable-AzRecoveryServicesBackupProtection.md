@@ -45,8 +45,8 @@ Enable-AzRecoveryServicesBackupProtection [[-Policy] <PolicyBase>] [-Protectable
 ```
 Enable-AzRecoveryServicesBackupProtection [[-Policy] <PolicyBase>] [-Item] <ItemBase>
  [-InclusionDisksList <String[]>] [-ExclusionDisksList <String[]>] [-ResetExclusionSettings]
- [-ExcludeAllDataDisks] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ExcludeAllDataDisks] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-Token <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,8 +73,9 @@ The third cmdlet sets the Backup protection policy for the ARM virtual machine n
 
 ### Example 2
 Enables backup for an item with a specified Backup protection policy or resumes backup for an item that has data retained when backup was stopped.
+
+<!-- Aladdin Generated Example -->
 ```powershell
-<!-- Aladdin Generated Example --> 
 Enable-AzRecoveryServicesBackupProtection -Item $Item -Policy $Pol -VaultId $vault
 ```
 
@@ -263,6 +264,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Token
+Auxiliary access token for authenticating critical operation to resource guard subscription
+
+```yaml
+Type: System.String
+Parameter Sets: ModifyProtection
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultId
 ARM ID of the Recovery Services Vault.
 
@@ -294,7 +310,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. 
+Shows what would happen if the cmdlet runs.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -26,8 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api2
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="destinationType" />
-        /// parameter.
+        /// Determines if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="CloudError" type/>.
         /// </summary>
         /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="CloudError"
         /// /> type.</param>
