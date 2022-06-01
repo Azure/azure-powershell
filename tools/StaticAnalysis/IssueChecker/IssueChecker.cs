@@ -58,7 +58,6 @@ namespace StaticAnalysis.IssueChecker
 
         public void Analyze(IEnumerable<string> scopes, IEnumerable<string> modulesToAnalyze)
         {
-            Console.WriteLine("bp 4");
             foreach (string scope in scopes)
             {
                 Console.WriteLine(scope);
@@ -69,17 +68,17 @@ namespace StaticAnalysis.IssueChecker
             }
             string reportsDirectory = scopes.First();
 
-            Console.WriteLine("bp 3");
             bool hasCriticalIssue = false;
             foreach ((string, string) item in exceptionLogInfoList)
             {
-                Console.WriteLine("bp 1");
                 string exceptionFileName = item.Item1;
                 string recordTypeName = item.Item2;
 
                 string exceptionFilePath = Path.Combine(reportsDirectory, exceptionFileName);
+                Console.WriteLine(exceptionFilePath);
                 if (!File.Exists(exceptionFilePath))
                 {
+                    Console.WriteLine("bp1");
                     continue;
                 }
                 if (IsSingleExceptionFileHasCriticalIssue(exceptionFilePath, recordTypeName))
@@ -114,7 +113,6 @@ namespace StaticAnalysis.IssueChecker
                 {
                     if (record.Severity < 2)
                     {
-                        Console.WriteLine("bp 2");
                         hasError = true;
                         errorText.AppendLine(record.FormatRecord());
                     }
