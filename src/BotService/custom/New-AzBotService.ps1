@@ -78,7 +78,7 @@ function New-AzBotService {
         [System.String]
         ${ExistingServerFarmId},
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
         [System.String]
         ${Location} = 'global',
