@@ -35,8 +35,10 @@ You will need to override the following key properties when defining your own co
 
 #### Simple Config Definition
 
+To reduce scaffolding, [`SimpleTypedConfig<TValue>`](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Authentication/Config/Models/SimpleTypedConfig.cs) was introduced
+
 If the following circumstances are met, you may simpify the code by creating an instance of [`SimpleTypedConfig<TValue>`](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Authentication/Config/Models/SimpleTypedConfig.cs) instead of defining your own type:
-- The config does not support environment variables. Or it supports only one environment variable and it does not require special logic to parse the value.
+- The config does not support environment variables, or it is connected to **one single** environment variable and it does not require special logic to parse the value.
 - No special validation logic.
 
 
