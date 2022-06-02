@@ -50,10 +50,9 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     $MarkdownPath = Get-Content $MarkdownPaths
     (Get-ChildItem $MarkdownPath) | foreach{
         # Filter the .md of overview in \help\
-        if ($_.FullName -cmatch ".*help.*\.md" -and $_.BaseName -cmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
+        if ((Get-Item -Path $_.FullName).Directory.Name -eq "help" -and $_.FullName -cmatch ".*\.md" -and $_.BaseName -cmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
             Write-Output "Searching in file $($_.FullName) ..."
-            $module = ($_.FullName -split "\")[-3]#/|\
-            Write-Output $module
+            $module = (Get-Item -Path $_.FullName).Directory.Parent.Parent.Name
             $cmdlet = $_.BaseName
             $result = Measure-SectionMissingAndOutputScript $module $cmdlet $_.FullName `
                 -OutputScriptsInFile:$OutputScriptsInFile.IsPresent `

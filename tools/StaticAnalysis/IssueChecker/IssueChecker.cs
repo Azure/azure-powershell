@@ -75,10 +75,8 @@ namespace StaticAnalysis.IssueChecker
                 string recordTypeName = item.Item2;
 
                 string exceptionFilePath = Path.Combine(reportsDirectory, exceptionFileName);
-                Console.WriteLine(exceptionFilePath);
                 if (!File.Exists(exceptionFilePath))
                 {
-                    Console.WriteLine("bp1");
                     continue;
                 }
                 if (IsSingleExceptionFileHasCriticalIssue(exceptionFilePath, recordTypeName))
