@@ -34,8 +34,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         /// <summary>
         /// Construct a BlueprintClient BlueprintManagementClient.
         /// </summary>
-        /// <param name="subscription"></param>
-        /// <param name="blueprintManagementClient"></param>
+        /// <param name="context"></param>
         public BlueprintClient(IAzureContext context)
         {
             //Remove our custom api handler if it's in the current session's custom handlers list
