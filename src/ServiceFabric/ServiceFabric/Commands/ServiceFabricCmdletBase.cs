@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         if (!correlationPrinted && beginRequestResponse != null)
                         {
                             WriteVerboseWithTimestamp(string.Format(
-                                "Beging request ARM correlationId: '{0}' response: '{1}'",
+                                "Begin request ARM correlationId: '{0}' response: '{1}'",
                                 beginRequestResponse.RequestId,
                                 beginRequestResponse.Response.StatusCode));
                             correlationPrinted = true;

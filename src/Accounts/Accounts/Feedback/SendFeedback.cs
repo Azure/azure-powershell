@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected override void BeginProcessing()
         {
-            //cmdlet is failing due to _metrichelper being null, since we skipped beging processing. 
+            //cmdlet is failing due to _metrichelper being null, since we skipped begin processing. 
             base.BeginProcessing(); 
 
             if (!this.CheckIfInteractive())
