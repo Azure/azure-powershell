@@ -78,10 +78,10 @@ function New-AzBotService {
         [System.String]
         ${ExistingServerFarmId},
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
         [System.String]
-        ${Location},
+        ${Location} = 'global',
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
@@ -205,7 +205,7 @@ function New-AzBotService {
                 {
                     $DisplayName = $Name
                 }
-                return Az.BotService.internal\New-AzBotService -Location 'global' -Sku $Sku -Kind $Kind -DisplayName $Name -MsaAppId $ApplicationId `
+                return Az.BotService.internal\New-AzBotService -Location $Location -Sku $Sku -Kind $Kind -DisplayName $Name -MsaAppId $ApplicationId `
                     -ResourceGroupName $ResourceGroupName -Name $Name -Endpoint $Endpoint @EnvPSBoundParameters
             }
             else
@@ -239,7 +239,7 @@ function New-AzBotService {
                     'botId' = $Name;
                     'description' = $Description
                 }
-                $Null = New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Location $Location -TemplateParameterObject $Parameter `
+                $Null = New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateParameterObject $Parameter `
                             -TemplateFile $TemplateFile @EnvPSBoundParameters
                 
                 return Get-AzBotService -ResourceGroupName $ResourceGroupName -Name $Name @EnvPSBoundParameters
