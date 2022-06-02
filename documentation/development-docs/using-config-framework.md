@@ -18,6 +18,36 @@ This document will go over 2 most common scenarios for developers. As for how to
 
 ### Step 1: Define the Config
 
+#### Simple Config Definition
+
+For most cases, creating an instance of [`SimpleTypedConfig<TValue>`](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Authentication/Config/Models/SimpleTypedConfig.cs) is the easist way to define a config. The syntax is:
+
+```csharp
+SimpleTypedConfig<TValue>.SimpleTypedConfig(string key, string helpMessage, TValue defaultValue, [string environmentVariable = null], [IReadOnlyCollection<AppliesTo> canApplyTo = null])
+```
+where
+- `TValue` is the type of the value of the config, for example `int` or `bool`.
+- `key` is the unique key of the config. It is used when user gets or sets the config.
+  - It must be defined in [src/shared/ConfigKeys.cs](https://github.com/Azure/azure-powershell/blob/main/src/shared/ConfigKeys.cs) so that it can be referenced in any project.
+  - It is reused as a parameter name of cmdlets that operate on configs, for example `Get-AzConfig`, so it must follow the naming conventions. See [Parameter Best Practices](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/design-guidelines/parameter-best-practices.md#parameter-best-practices).
+- `helpMessage` is the help message or description of the config. 
+  - It is reused as the help message of the corresponding PowerShell parameter in documents.
+- `defaultValue` is the default value of the config. Used for basic type validation when setting the config.
+- (Optional) `environmentVariable` sets to which environment variable the config is connected. Once set, the config framework will pick up the variable automatically.
+  - Note: the config must correspond to **one single** environment variable and it must not require special logic to parse the value. Otherwise please check out [todo].
+- (Optional) `canApplyTo` 
+
+A sample definition:
+
+```csharp
+new SimpleTypedConfig<string>(
+    ConfigKeys.DefaultSubscriptionForLogin,
+    Resources.HelpMessageOfDefaultSubscriptionForLogin,
+    string.Empty,
+    "AZURE_ENV_VAR_FOR_SUBSCRIPTION",
+    new[] { AppliesTo.Az });
+```
+
 #### Standard Config Definition
 
 To define a config, create a class inheriting [`TypedConfig<TValue>`](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Authentication/Config/Models/TypedConfig.cs) and place it at [`src/Accounts/Authentication/Config/Definitions/`](https://github.com/Azure/azure-powershell/tree/main/src/Accounts/Authentication/Config/Definitions), where you can also find other examples of configs.
@@ -33,13 +63,6 @@ You will need to override the following key properties when defining your own co
   - The help message or description of the config. 
   - It is reused as the help message of the corresponding PowerShell parameter in documents.
 
-#### Simple Config Definition
-
-To reduce scaffolding, [`SimpleTypedConfig<TValue>`](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Authentication/Config/Models/SimpleTypedConfig.cs) was introduced
-
-If the following circumstances are met, you may simpify the code by creating an instance of [`SimpleTypedConfig<TValue>`](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Authentication/Config/Models/SimpleTypedConfig.cs) instead of defining your own type:
-- The config does not support environment variables, or it is connected to **one single** environment variable and it does not require special logic to parse the value.
-- No special validation logic.
 
 
 
