@@ -35,9 +35,9 @@ where
 - `defaultValue` is the default value of the config. Used for basic type validation when setting the config.
 - (Optional) `environmentVariable` sets to which environment variable the config is connected. Once set, the config framework will pick up the variable automatically.
   - Note: the config must correspond to **one single** environment variable and it must not require special logic to parse the value. Otherwise please check out [todo].
-- (Optional) `canApplyTo` 
+- (Optional) `canApplyTo` defines at which levels the config can apply to. There are three levels in total: `AppliesTo.Az`, `AppliesTo.Module`, `AppliesTo.Cmdlet`. By default all of them are included. For more details, see [todo].
 
-A sample definition:
+Here is a sample definition:
 
 ```csharp
 new SimpleTypedConfig<string>(
@@ -50,27 +50,34 @@ new SimpleTypedConfig<string>(
 
 #### Standard Config Definition
 
-To define a config, create a class inheriting [`TypedConfig<TValue>`](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Authentication/Config/Models/TypedConfig.cs) and place it at [`src/Accounts/Authentication/Config/Definitions/`](https://github.com/Azure/azure-powershell/tree/main/src/Accounts/Authentication/Config/Definitions), where you can also find other examples of configs.
+The more standard way to define a config is to create a class inheriting [`TypedConfig<TValue>`](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Authentication/Config/Models/TypedConfig.cs). It should be placed at [`src/Accounts/Authentication/Config/Definitions/`](https://github.com/Azure/azure-powershell/tree/main/src/Accounts/Authentication/Config/Definitions), where you can also find other examples of configs.
 
-You will need to override the following key properties when defining your own config class.
+Like simple definition, you will need to override some key properties, which will not be repeated here.
 
-- `object DefaultValue`
-  - The default value of the config. Used for basic type validation when setting the config.
-- `string Key`
-  - The unique key of the config. Used when user gets or sets the config.
-  - The key is reused as a parameter name of cmdlets that operate on configs, for example `Get-AzConfig`, so it must follow the naming conventions. See [Parameter Best Practices](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/design-guidelines/parameter-best-practices.md#parameter-best-practices).
-- `string HelpMessage`
-  - The help message or description of the config. 
-  - It is reused as the help message of the corresponding PowerShell parameter in documents.
+Here is a sample definition:
 
+```csharp
+internal class DisplayBreakingChangeWarningsConfig : TypedConfig<bool>
+{
+    public override object DefaultValue => true;
 
+    public override string Key => ConfigKeys.DisplayBreakingChangeWarning;
 
-
-
+    public override string HelpMessage => Resources.HelpMessageOfDisplayBreakingChangeWarnings;
+}
+```
 
 ### Step 2: Register the Config
 
+Either way the config is defined, instanciate it and call [`IConfigManager.RegisterConfig(ConfigDefinition config)`](https://github.com/Azure/azure-powershell-common/blob/8d70507d41a3698b5b131df61f14e329d7a6eb41/src/Authentication.Abstractions/Interfaces/IConfigManager.cs#L30) in [`ConfigInitializer.RegisterConfigs(IConfigManager configManager)`](https://github.com/Azure/azure-powershell/blob/304e15c84071fee02622734c4e5f12c05baa77d2/src/Accounts/Authentication/Config/ConfigInitializer.cs#L192). For example:
+
+```csharp
+configManager.RegisterConfig(new DisplayBreakingChangeWarningsConfig());
+```
+
 ### Step 3: Regenerate Help Documents
+
+As mentioned in Step 1, the key 
 
 ## Guide: How to Get the Value of a Config
 
