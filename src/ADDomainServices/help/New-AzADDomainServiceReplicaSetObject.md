@@ -1,38 +1,39 @@
 ---
 external help file:
 Module Name: Az.ADDomainServices
-online version: https://docs.microsoft.com/powershell/module/az.ADDomainServices/new-AzADDomainServiceReplicaSet
+online version: https://docs.microsoft.com/powershell/module/az.ADDomainService/new-AzADDomainServiceReplicaSetObject
 schema: 2.0.0
 ---
 
-# New-AzADDomainServiceReplicaSet
+# New-AzADDomainServiceReplicaSetObject
 
 ## SYNOPSIS
-Create a in-memory object for ReplicaSet
+Create an in-memory object for ReplicaSet.
 
 ## SYNTAX
 
 ```
-New-AzADDomainServiceReplicaSet [-Location <String>] [-SubnetId <String>] [<CommonParameters>]
+New-AzADDomainServiceReplicaSetObject [-Location <String>] [-SubnetId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for ReplicaSet
+Create an in-memory object for ReplicaSet.
 
 ## EXAMPLES
 
 ### Example 1: Create ReplicaSet for AdDomain
 ```powershell
-New-AzADDomainServiceReplicaSet -Location eastus -SubnetId /subscriptions/**********-****-****-****-****-**********/resourceGroups/youriADDomain-rg-test/providers/Microsoft.Network/virtualNetworks/yourinttest/subnets/default
+New-AzADDomainServiceReplicaSetObject -Location westus -SubnetId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vm/subnets/test-subnets
 ```
 
 ```output
 DomainControllerIPAddress ExternalAccessIPAddress HealthLastEvaluated Location ServiceStatus SubnetId
 ------------------------- ----------------------- ------------------- -------- ------------- --------
-                                                                      eastus                 /subscriptions/********-****-****-****-**********/resourceGroups/youriADDomain-rg-test/providers/M…
+                                                                      westus                 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resource… 
 ```
 
-Create ReplicaSet for AdDomain
+Create an in-memory object for ReplicaSet.
+This object can be used to create or update a domain service.
 
 ## PARAMETERS
 
