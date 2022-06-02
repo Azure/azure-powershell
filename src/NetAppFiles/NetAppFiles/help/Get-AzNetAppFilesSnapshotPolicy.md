@@ -37,7 +37,7 @@ The **Get-AzNetAppFilesSnapshotPolicy** cmdlet gets details of an ANF snapshot p
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MySnapshotPolicy"
+Get-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MySnapshotPolicy"
 ```
 
 This command gets the backup policy named "MyBackupPolicy" for account "MyAnfAccount".
@@ -181,3 +181,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetAppFilesSnapshotPolicy](./New-AzNetAppFilesSnapshotPolicy.md)
+[Update-AzNetAppFilesSnapshotPolicy](./Update-AzNetAppFilesSnapshotPolicy.md)
+[Remove-AzNetAppFilesSnapshotPolicy](./Remove-AzNetAppFilesSnapshotPolicy.md)
+[Set-AzNetAppFilesSnapshotPolicy](./Set-AzNetAppFilesSnapshotPolicy.md)
+[Get-AzNetAppFilesSnapshot](./Get-AzNetAppFilesSnapshot.md)
+[New-AzNetAppFilesSnapshot](./New-AzNetAppFilesSnapshot.md)
+[Remove-AzNetAppFilesSnapshot](./Remove-AzNetAppFilesSnapshot.md)
+[Update-AzNetAppFilesSnapshot](./Update-AzNetAppFilesSnapshot.md)
+[Get-AzNetAppFilesVolume](./Get-AzNetAppFilessVolume.md)
+[New-AzNetAppFilesVolume](./New-AzNetAppFilessVolume.md)
+[Update-AzNetAppFilesVolume](./Update-AzNetAppFilessVolume.md)
+[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilessVolume.md)

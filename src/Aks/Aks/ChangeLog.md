@@ -18,6 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added property `PowerState` for the output of `Get-AzAksCluster`[#18271]
+* Updated the logic of `Set-AzAksCluster` for parameter `NodeImageOnly`.
+* Added parameter `NodeImageOnly` for `Update-AzAksNodePool`.
+
+## Version 4.1.0
+* Removed these aliases:
+  * `Get-AzAks`
+  * `New-AzAks`
+  * `Set-AzAks`
+  * `Remove-AzAks`
+
+## Version 3.1.3
+* Updated the description of `Force` in `Invoke-AzAksRunCommand` [#17756]
+* Fixed the issue that `identity` cannot be piped into `Set-AzAksCluster` [#17376]
+
+## Version 3.1.2
+* Updated the breaking change warning messages [#16805]
+
+## Version 3.1.1
+* Fixed the typo in `New-AzAksCluster` [#16733]
 
 ## Version 3.1.0
 * Added support of `load balancer` and `api server access` in `New-AzAksCluster` and `Set-AzAksCluster`. [#16575]

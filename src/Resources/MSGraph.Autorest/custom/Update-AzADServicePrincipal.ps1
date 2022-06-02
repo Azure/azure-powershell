@@ -18,17 +18,6 @@
 Updates entity in service principal
 .Description
 Updates entity in service principal
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Outputs
-System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -638,6 +627,8 @@ function Update-AzADServicePrincipal {
     if ($pc -or $kc) {
       $null = New-AzADAppCredential @param
     }
+
+    $sp=Az.MSGraph.internal\Update-AzADServicePrincipal @PSBoundParameters
 
     if ($shouldPassThru) {
       $PSCmdlet.WriteObject($true)

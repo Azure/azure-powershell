@@ -37,8 +37,10 @@ The **Get-AzCognitiveServicesAccountUsage** cmdlet gets current usages for a Cog
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCognitiveServicesAccountUsage -ResourceGroupName TestUsages -Name TestCVUsages_Prediction
+Get-AzCognitiveServicesAccountUsage -ResourceGroupName TestUsages -Name TestCVUsages_Prediction
+```
 
+```output
 CurrentValue  : 0
 Name          : CustomVision.Prediction.Transactions
 Limit         : 10000
@@ -50,11 +52,12 @@ NextResetTime : 0001-01-01T00:00:00Z
 
 ### Example 2
 ```powershell
-PS C:\GitHub> $acc = Get-AzCognitiveServicesAccount -ResourceGroupName TestUsages -Name TestCVUsages_Prediction
+$acc = Get-AzCognitiveServicesAccount -ResourceGroupName TestUsages -Name TestCVUsages_Prediction
 
-PS C:\GitHub> Get-AzCognitiveServicesAccountUsage -InputObject $acc
+Get-AzCognitiveServicesAccountUsage -InputObject $acc
+```
 
-
+```output
 CurrentValue  : 0
 Name          : CustomVision.Prediction.Transactions
 Limit         : 10000
@@ -66,11 +69,12 @@ NextResetTime : 0001-01-01T00:00:00Z
 
 ### Example 3
 ```powershell
-PS C:\GitHub> $acc = Get-AzCognitiveServicesAccount -ResourceGroupName TestUsages -Name TestCVUsages_Prediction
+$acc = Get-AzCognitiveServicesAccount -ResourceGroupName TestUsages -Name TestCVUsages_Prediction
 
-PS C:\GitHub> Get-AzCognitiveServicesAccountUsage -ResourceId $acc.Id
+Get-AzCognitiveServicesAccountUsage -ResourceId $acc.Id
+```
 
-
+```output
 CurrentValue  : 0
 Name          : CustomVision.Prediction.Transactions
 Limit         : 10000

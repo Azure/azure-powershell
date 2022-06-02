@@ -35,21 +35,21 @@ Creates a new Server Trust Group with specified location, members, trust scope, 
 
 ### Example 1
 ```powershell
-PS C:\> $managedInstanceList = @()
-PS C:\> $mi = Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $managedInstanceList += $mi
-PS C:\> $mi = Get-AzSqlInstance -Name "ManagedInstance02" -ResourceGroupName "ResourceGroup02"
-PS C:\> $managedInstanceList += $mi
-PS C:\> New-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup03" -Location "West Europe" -Name "ServerTrustGroup01" -GroupMember $managedInstanceList -TrustScope "GlobalTransactions"
+$managedInstanceList = @()
+$mi = Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01"
+$managedInstanceList += $mi
+$mi = Get-AzSqlInstance -Name "ManagedInstance02" -ResourceGroupName "ResourceGroup02"
+$managedInstanceList += $mi
+New-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup03" -Location "West Europe" -Name "ServerTrustGroup01" -GroupMember $managedInstanceList -TrustScope "GlobalTransactions"
 ```
 
 Creates a new Server Trust Group in location West Europe with name ServerTrustGroup01. Its members are AzureSQL Managed Instances ManagedInstance01 and ManagedInstance02. Its trust scope is GlobalTransactions and its resource group is ResourceGroup03.
 
 ### Example 2
 ```powershell
-PS C:\> $mi1 = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01"
-PS C:\> $mi2 = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup02/providers/Microsoft.Sql/managedInstances/ManagedInstance02"
-PS C:\> New-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup03" -Location "West Europe" -Name "ServerTrustGroup01" -GroupMemberResourceId $mi1,$mi2 -TrustScope "GlobalTransactions"
+$mi1 = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01"
+$mi2 = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup02/providers/Microsoft.Sql/managedInstances/ManagedInstance02"
+New-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup03" -Location "West Europe" -Name "ServerTrustGroup01" -GroupMemberResourceId $mi1,$mi2 -TrustScope "GlobalTransactions"
 ```
 
 Creates a new Server Trust Group in location West Europe with name ServerTrustGroup01. Its members are AzureSQL Managed Instances ManagedInstance01 and ManagedInstance02, given by its Resource ids. Its trust scope is GlobalTransactions and its resource group is ResourceGroup03.

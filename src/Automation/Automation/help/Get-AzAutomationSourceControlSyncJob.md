@@ -27,10 +27,11 @@ This command gets all the Automation source control sync jobs for the source con
 
 
 ```powershell
-PS C:\> Get-AzAutomationSourceControlSyncJob -ResourceGroupName "rg1" `
+Get-AzAutomationSourceControlSyncJob -ResourceGroupName "rg1" `
                                                   -AutomationAccountName "devAccount" `
                                                   -Name "VSTSNative"
-
+```
+```output
 SourceControlSyncJobId               SyncType Status StartTime           EndTime
 ----------------------               -------- ------ ---------           -------
 08d6d266-27b6-463c-beea-bc48a67ace15 FullSync Failed 08/15/2018 09:17 AM 08/15/2018 09:18 AM
@@ -43,11 +44,12 @@ for the source control VSTSNative.
 
 
 ```powershell
-PS C:\> Get-AzAutomationSourceControlSyncJob -ResourceGroupName "rg1" `
+Get-AzAutomationSourceControlSyncJob -ResourceGroupName "rg1" `
                                                   -AutomationAccountName "devAccount" `
                                                   -Name "VSTSNative" `
                                                   -JobId "08d6d266-27b6-463c-beea-bc48a67ace15"
-
+```
+```output
 Status SyncType Exception
 ------ -------- ---------
 Failed FullSync There were errors while syncing the user runbooks. Please see error streams for more information. (T...

@@ -193,14 +193,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateRestoreRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
         {
             RunPowerShellTest("Test-CreateRestoreRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
         }
 
-        [Fact]
+        [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateRestoreRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
         {

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 ms.assetid: E0E2617F-F6F1-434E-AD7C-27D309C2C3DA
@@ -33,8 +33,8 @@ The **Remove-AzDataLakeAnalyticsDataSource** cmdlet removes a data source from a
 ## EXAMPLES
 
 ### Example 1: Remove a data source
-```
-PS C:\>Remove-AzDataLakeAnalyticsDataSource -Account "ContosoAdlAccount" -Blob "AzureStorage01"
+```powershell
+Remove-AzDataLakeAnalyticsDataSource -Account "ContosoAdlAccount" -Blob "AzureStorage01"
 ```
 
 This command removes the data source named AzureStorage01 from the account named ContosoAdlAccount.

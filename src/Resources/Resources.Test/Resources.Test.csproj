@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.13.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="2.0.0-beta" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ResourceManager\ResourceManager.csproj" />
     <ProjectReference Include="..\Resources\Resources.csproj" />
+    <ProjectReference Include="..\..\ManagedServiceIdentity\Az.ManagedServiceIdentity.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="3.15.1-preview" />
+    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.9.0" />

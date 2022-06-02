@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
 online version: https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryv2integrationruntimekey
@@ -37,9 +37,11 @@ The cmdlet **New-AzDataFactoryV2IntegrationRuntimeKey** regenerates the integrat
 ## EXAMPLES
 
 ### Example 1: Generate a new key for an integration runtime
+```powershell
+New-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' -KeyName authKey2
 ```
-PS C:\> New-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' -KeyName authKey2
 
+```output
 AuthKey1 AuthKey2
 -------- --------
          IR@89895504-f647-48fd-8dd3-42fa556d67e3@***

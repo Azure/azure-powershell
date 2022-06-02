@@ -29,6 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using System.Threading;
     using global::Azure.Storage.Blobs;
     using global::Azure.Storage;
+    using global::Azure.Storage.Files.DataLake;
 
     internal class SasTokenHelper
     {
@@ -261,7 +262,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? StartTime = null,
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
-            SharedAccessProtocol? Protocol = null)
+            SharedAccessProtocol? Protocol = null,
+            string EncryptionScope = null)
         {
             BlobSasBuilder sasBuilder = SetBlobSasBuilder(blobClient.BlobContainerName,
                 blobClient.Name,
@@ -270,7 +272,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 StartTime,
                 ExpiryTime,
                 iPAddressOrRange,
-                Protocol);
+                Protocol,
+                EncryptionScope);
             if (Util.GetVersionIdFromBlobUri(blobClient.Uri) != null)
             {
                 sasBuilder.BlobVersionId = Util.GetVersionIdFromBlobUri(blobClient.Uri);
@@ -291,7 +294,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? StartTime = null,
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
-            SharedAccessProtocol? Protocol = null)
+            SharedAccessProtocol? Protocol = null,
+            string EncryptionScope = null)
         {
             BlobSasBuilder sasBuilder = SetBlobSasBuilder(container.Name,
                 null,
@@ -300,7 +304,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 StartTime,
                 ExpiryTime,
                 iPAddressOrRange,
-                Protocol);
+                Protocol,
+                EncryptionScope);
             return sasBuilder;
         }
 
@@ -314,7 +319,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? StartTime = null,
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
-            SharedAccessProtocol? Protocol = null)
+            SharedAccessProtocol? Protocol = null,
+            string EncryptionScope = null)
         {
             BlobSasBuilder sasBuilder;
             if (signedIdentifier != null) // Use save access policy
@@ -416,6 +422,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     sasBuilder.Protocol = SasProtocol.Https;
                 }
             }
+            if (EncryptionScope != null)
+            {
+                sasBuilder.EncryptionScope = EncryptionScope;
+            }
             return sasBuilder;
         }
 
@@ -496,6 +506,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
+        /// Get SAS string for DatalakeGen2
+        /// </summary>
+        public static string GetDatalakeGen2SharedAccessSignature(AzureStorageContext context, DataLakeSasBuilder sasBuilder, bool generateUserDelegationSas, DataLakeClientOptions clientOptions, CancellationToken cancelToken)
+        {
+            if (context != null && context.StorageAccount.Credentials.IsSharedKey)
+            {
+                return sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
+            }
+            if (generateUserDelegationSas)
+            {
+                global::Azure.Storage.Files.DataLake.Models.UserDelegationKey userDelegationKey = null;
+                DataLakeServiceClient oauthService = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, clientOptions);
+
+                Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
+
+                userDelegationKey = oauthService.GetUserDelegationKey(
+                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
+                    cancellationToken: cancelToken);
+
+                return sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
+            }
+            else
+            {
+                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credentail.");
+            }
+        }
+
+        /// <summary>
         /// Create a blob SAS build from Blob Object
         /// </summary>
         public static AccountSasBuilder SetAccountSasBuilder(SharedAccessAccountServices Service,
@@ -504,7 +543,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? StartTime = null,
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
-            SharedAccessProtocol? Protocol = null)
+            SharedAccessProtocol? Protocol = null,
+            string EncryptionScope = null)
         {
             AccountSasBuilder sasBuilder = new AccountSasBuilder();
             sasBuilder.ResourceTypes = GetAccountSasResourceTypes(type);
@@ -544,6 +584,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 {
                     sasBuilder.Protocol = SasProtocol.Https;
                 }
+            }
+            if (EncryptionScope != null)
+            {
+                sasBuilder.EncryptionScope = EncryptionScope;
             }
             return sasBuilder;
         }
@@ -639,6 +683,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                         break;
                     case 'i':
                         permission = permission | AccountSasPermissions.SetImmutabilityPolicy;
+                        break;
+                    case 'y':
+                        permission = permission | AccountSasPermissions.PermanentDelete;
                         break;
                     default:
                         // Can't convert to permission supported by XSCL, so use raw permission string

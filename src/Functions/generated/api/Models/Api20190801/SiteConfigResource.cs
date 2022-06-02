@@ -19,6 +19,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResource __proxyOnlyResource = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ProxyOnlyResource();
 
+        /// <summary>Flag to use Managed Identity Creds for ACR pull</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
+        public bool? AcrUseManagedIdentityCred { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigInternal)Property).AcrUseManagedIdentityCred; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigInternal)Property).AcrUseManagedIdentityCred = value ?? default(bool); }
+
+        /// <summary>If using user managed identity, the user managed identity ClientId</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
+        public string AcrUserManagedIdentityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigInternal)Property).AcrUserManagedIdentityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigInternal)Property).AcrUserManagedIdentityId = value ?? null; }
+
         /// <summary>
         /// Minimum time the process must execute
         /// before taking the action
@@ -455,7 +463,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> instance that will receive validation
         /// events.</param>
         /// <returns>
-        /// A < see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener eventListener)
         {
@@ -468,6 +476,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResource
     {
+        /// <summary>Flag to use Managed Identity Creds for ACR pull</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Flag to use Managed Identity Creds for ACR pull",
+        SerializedName = @"acrUseManagedIdentityCreds",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? AcrUseManagedIdentityCred { get; set; }
+        /// <summary>If using user managed identity, the user managed identity ClientId</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If using user managed identity, the user managed identity ClientId",
+        SerializedName = @"acrUserManagedIdentityID",
+        PossibleTypes = new [] { typeof(string) })]
+        string AcrUserManagedIdentityId { get; set; }
         /// <summary>
         /// Minimum time the process must execute
         /// before taking the action
@@ -1134,6 +1158,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
     internal partial interface ISiteConfigResourceInternal :
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal
     {
+        /// <summary>Flag to use Managed Identity Creds for ACR pull</summary>
+        bool? AcrUseManagedIdentityCred { get; set; }
+        /// <summary>If using user managed identity, the user managed identity ClientId</summary>
+        string AcrUserManagedIdentityId { get; set; }
         /// <summary>Custom action to be taken.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomAction ActionCustomAction { get; set; }
         /// <summary>

@@ -33,6 +33,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         private string __processRecordId;
 
         /// <summary>
+        /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
+        /// types.
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal _body = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphServicePrincipal();
+
+        /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
@@ -48,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"true if the service principal account is enabled; otherwise, false. Supports $filter (eq, ne, NOT, in).",
         SerializedName = @"accountEnabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter AccountEnabled { get => Body.AccountEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => Body.AccountEnabled = value; }
+        public global::System.Management.Automation.SwitchParameter AccountEnabled { get => _body.AccountEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _body.AccountEnabled = value; }
 
         /// <summary>
         /// Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications
@@ -64,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Microsoft 365 call the application in the context of a document the user is working on.",
         SerializedName = @"addIns",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAddIn) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAddIn[] AddIn { get => Body.AddIn ?? null /* arrayOf */; set => Body.AddIn = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAddIn[] AddIn { get => _body.AddIn ?? null /* arrayOf */; set => _body.AddIn = value; }
 
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Additional Parameters")]
         public global::System.Collections.Hashtable AdditionalProperties { get; set; }
@@ -82,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities. Supports $filter (eq, NOT, ge, le, startsWith).",
         SerializedName = @"alternativeNames",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] AlternativeName { get => Body.AlternativeName ?? null /* arrayOf */; set => Body.AlternativeName = value; }
+        public string[] AlternativeName { get => _body.AlternativeName ?? null /* arrayOf */; set => _body.AlternativeName = value; }
 
         /// <summary>The description exposed by the associated application.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The description exposed by the associated application.")]
@@ -93,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The description exposed by the associated application.",
         SerializedName = @"appDescription",
         PossibleTypes = new [] { typeof(string) })]
-        public string AppDescription { get => Body.AppDescription ?? null; set => Body.AppDescription = value; }
+        public string AppDescription { get => _body.AppDescription ?? null; set => _body.AppDescription = value; }
 
         /// <summary>The display name exposed by the associated application.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The display name exposed by the associated application.")]
@@ -104,7 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The display name exposed by the associated application.",
         SerializedName = @"appDisplayName",
         PossibleTypes = new [] { typeof(string) })]
-        public string AppDisplayName { get => Body.AppDisplayName ?? null; set => Body.AppDisplayName = value; }
+        public string AppDisplayName { get => _body.AppDisplayName ?? null; set => _body.AppDisplayName = value; }
 
         /// <summary>The unique identifier for the associated application (its appId property).</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The unique identifier for the associated application (its appId property).")]
@@ -115,7 +121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The unique identifier for the associated application (its appId property).",
         SerializedName = @"appId",
         PossibleTypes = new [] { typeof(string) })]
-        public string AppId { get => Body.AppId ?? null; set => Body.AppId = value; }
+        public string AppId { get => _body.AppId ?? null; set => _body.AppId = value; }
 
         /// <summary>
         /// Contains the tenant id where the application is registered. This is applicable only to service principals backed by applications.Supports
@@ -129,7 +135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Contains the tenant id where the application is registered. This is applicable only to service principals backed by applications.Supports $filter (eq, ne, NOT, ge, le).",
         SerializedName = @"appOwnerOrganizationId",
         PossibleTypes = new [] { typeof(string) })]
-        public string AppOwnerOrganizationId { get => Body.AppOwnerOrganizationId ?? null; set => Body.AppOwnerOrganizationId = value; }
+        public string AppOwnerOrganizationId { get => _body.AppOwnerOrganizationId ?? null; set => _body.AppOwnerOrganizationId = value; }
 
         /// <summary>
         /// The roles exposed by the application which this service principal represents. For more information see the appRoles property
@@ -144,7 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The roles exposed by the application which this service principal represents. For more information see the appRoles property definition on the application entity. Not nullable.",
         SerializedName = @"appRoles",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRole) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRole[] AppRole { get => Body.AppRole ?? null /* arrayOf */; set => Body.AppRole = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRole[] AppRole { get => _body.AppRole ?? null /* arrayOf */; set => _body.AppRole = value; }
 
         /// <summary>
         /// App role assignments for this app or service, granted to users, groups, and other service principals.Supports $expand.
@@ -158,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"App role assignments for this app or service, granted to users, groups, and other service principals.Supports $expand.",
         SerializedName = @"appRoleAssignedTo",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[] AppRoleAssignedTo { get => Body.AppRoleAssignedTo ?? null /* arrayOf */; set => Body.AppRoleAssignedTo = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[] AppRoleAssignedTo { get => _body.AppRoleAssignedTo ?? null /* arrayOf */; set => _body.AppRoleAssignedTo = value; }
 
         /// <summary>
         /// App role assignment for another app or service, granted to this service principal. Supports $expand.
@@ -172,7 +178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"App role assignment for another app or service, granted to this service principal. Supports $expand.",
         SerializedName = @"appRoleAssignments",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[] AppRoleAssignment { get => Body.AppRoleAssignment ?? null /* arrayOf */; set => Body.AppRoleAssignment = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[] AppRoleAssignment { get => _body.AppRoleAssignment ?? null /* arrayOf */; set => _body.AppRoleAssignment = value; }
 
         /// <summary>
         /// Specifies whether users or other service principals need to be granted an app role assignment for this service principal
@@ -186,16 +192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Specifies whether users or other service principals need to be granted an app role assignment for this service principal before users can sign in or apps can get tokens. The default value is false. Not nullable. Supports $filter (eq, ne, NOT).",
         SerializedName = @"appRoleAssignmentRequired",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter AppRoleAssignmentRequired { get => Body.AppRoleAssignmentRequired ?? default(global::System.Management.Automation.SwitchParameter); set => Body.AppRoleAssignmentRequired = value; }
-
-        /// <summary>Backing field for <see cref="Body" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal _body= new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphServicePrincipal();
-
-        /// <summary>
-        /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
-        /// types.
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal Body { get => this._body; set => this._body = value; }
+        public global::System.Management.Automation.SwitchParameter AppRoleAssignmentRequired { get => _body.AppRoleAssignmentRequired ?? default(global::System.Management.Automation.SwitchParameter); set => _body.AppRoleAssignmentRequired = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -212,7 +209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The claimsMappingPolicies assigned to this service principal. Supports $expand.",
         SerializedName = @"claimsMappingPolicies",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphClaimsMappingPolicy) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphClaimsMappingPolicy[] ClaimsMappingPolicy { get => Body.ClaimsMappingPolicy ?? null /* arrayOf */; set => Body.ClaimsMappingPolicy = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphClaimsMappingPolicy[] ClaimsMappingPolicy { get => _body.ClaimsMappingPolicy ?? null /* arrayOf */; set => _body.ClaimsMappingPolicy = value; }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.MSGraph Client => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.ClientAPI;
@@ -239,7 +236,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The permission classifications for delegated permissions exposed by the app that this service principal represents. Supports $expand.",
         SerializedName = @"delegatedPermissionClassifications",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDelegatedPermissionClassification) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDelegatedPermissionClassification[] DelegatedPermissionClassification { get => Body.DelegatedPermissionClassification ?? null /* arrayOf */; set => Body.DelegatedPermissionClassification = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDelegatedPermissionClassification[] DelegatedPermissionClassification { get => _body.DelegatedPermissionClassification ?? null /* arrayOf */; set => _body.DelegatedPermissionClassification = value; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
@@ -250,7 +247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @".",
         SerializedName = @"deletedDateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime DeletedDateTime { get => Body.DeletedDateTime ?? default(global::System.DateTime); set => Body.DeletedDateTime = value; }
+        public global::System.DateTime DeletedDateTime { get => _body.DeletedDateTime ?? default(global::System.DateTime); set => _body.DeletedDateTime = value; }
 
         /// <summary>
         /// Free text field to provide an internal end-user facing description of the service principal. End-user portals such MyApps
@@ -265,7 +262,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Free text field to provide an internal end-user facing description of the service principal. End-user portals such MyApps will display the application description in this field. The maximum allowed size is 1024 characters. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.",
         SerializedName = @"description",
         PossibleTypes = new [] { typeof(string) })]
-        public string Description { get => Body.Description ?? null; set => Body.Description = value; }
+        public string Description { get => _body.Description ?? null; set => _body.Description = value; }
 
         /// <summary>
         /// Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled,
@@ -280,7 +277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement). Supports $filter (eq, ne, NOT).",
         SerializedName = @"disabledByMicrosoftStatus",
         PossibleTypes = new [] { typeof(string) })]
-        public string DisabledByMicrosoftStatus { get => Body.DisabledByMicrosoftStatus ?? null; set => Body.DisabledByMicrosoftStatus = value; }
+        public string DisabledByMicrosoftStatus { get => _body.DisabledByMicrosoftStatus ?? null; set => _body.DisabledByMicrosoftStatus = value; }
 
         /// <summary>The name displayed in directory</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name displayed in directory")]
@@ -291,7 +288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The name displayed in directory",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
-        public string DisplayName { get => Body.DisplayName ?? null; set => Body.DisplayName = value; }
+        public string DisplayName { get => _body.DisplayName ?? null; set => _body.DisplayName = value; }
 
         /// <summary>
         /// Endpoints available for discovery. Services like Sharepoint populate this property with a tenant specific SharePoint endpoints
@@ -306,7 +303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Endpoints available for discovery. Services like Sharepoint populate this property with a tenant specific SharePoint endpoints that other applications can discover and use in their experiences.",
         SerializedName = @"endpoints",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEndpoint) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEndpoint[] Endpoint { get => Body.Endpoint ?? null /* arrayOf */; set => Body.Endpoint = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEndpoint[] Endpoint { get => _body.Endpoint ?? null /* arrayOf */; set => _body.Endpoint = value; }
 
         /// <summary>
         /// The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.
@@ -320,7 +317,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.",
         SerializedName = @"homeRealmDiscoveryPolicies",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[] HomeRealmDiscoveryPolicy { get => Body.HomeRealmDiscoveryPolicy ?? null /* arrayOf */; set => Body.HomeRealmDiscoveryPolicy = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[] HomeRealmDiscoveryPolicy { get => _body.HomeRealmDiscoveryPolicy ?? null /* arrayOf */; set => _body.HomeRealmDiscoveryPolicy = value; }
 
         /// <summary>Home page or landing page of the application.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Home page or landing page of the application.")]
@@ -331,7 +328,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Home page or landing page of the application.",
         SerializedName = @"homepage",
         PossibleTypes = new [] { typeof(string) })]
-        public string Homepage { get => Body.Homepage ?? null; set => Body.Homepage = value; }
+        public string Homepage { get => _body.Homepage ?? null; set => _body.Homepage = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -369,7 +366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"informationalUrl",
         SerializedName = @"info",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl Info { get => Body.Info ?? null /* object */; set => Body.Info = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl Info { get => _body.Info ?? null /* object */; set => _body.Info = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -387,7 +384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The collection of key credentials associated with the service principal. Not nullable. Supports $filter (eq, NOT, ge, le).",
         SerializedName = @"keyCredentials",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[] KeyCredentials { get => Body.KeyCredentials ?? null /* arrayOf */; set => Body.KeyCredentials = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[] KeyCredentials { get => _body.KeyCredentials ?? null /* arrayOf */; set => _body.KeyCredentials = value; }
 
         /// <summary>
         /// Specifies the URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to
@@ -403,7 +400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Specifies the URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on. The user launches the application from Microsoft 365, the Azure AD My Apps, or the Azure AD SSO URL.",
         SerializedName = @"loginUrl",
         PossibleTypes = new [] { typeof(string) })]
-        public string LoginUrl { get => Body.LoginUrl ?? null; set => Body.LoginUrl = value; }
+        public string LoginUrl { get => _body.LoginUrl ?? null; set => _body.LoginUrl = value; }
 
         /// <summary>
         /// Specifies the URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel,
@@ -417,14 +414,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Specifies the URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols.",
         SerializedName = @"logoutUrl",
         PossibleTypes = new [] { typeof(string) })]
-        public string LogoutUrl { get => Body.LogoutUrl ?? null; set => Body.LogoutUrl = value; }
+        public string LogoutUrl { get => _body.LogoutUrl ?? null; set => _body.LogoutUrl = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -439,7 +436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Free text field to capture information about the service principal, typically used for operational purposes. Maximum allowed size is 1024 characters.",
         SerializedName = @"notes",
         PossibleTypes = new [] { typeof(string) })]
-        public string Note { get => Body.Note ?? null; set => Body.Note = value; }
+        public string Note { get => _body.Note ?? null; set => _body.Note = value; }
 
         /// <summary>
         /// Specifies the list of email addresses where Azure AD sends a notification when the active certificate is near the expiration
@@ -454,7 +451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Specifies the list of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.",
         SerializedName = @"notificationEmailAddresses",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] NotificationEmailAddress { get => Body.NotificationEmailAddress ?? null /* arrayOf */; set => Body.NotificationEmailAddress = value; }
+        public string[] NotificationEmailAddress { get => _body.NotificationEmailAddress ?? null /* arrayOf */; set => _body.NotificationEmailAddress = value; }
 
         /// <summary>
         /// The delegated permissions exposed by the application. For more information see the oauth2PermissionScopes property on
@@ -469,7 +466,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The delegated permissions exposed by the application. For more information see the oauth2PermissionScopes property on the application entity's api property. Not nullable.",
         SerializedName = @"oauth2PermissionScopes",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPermissionScope) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPermissionScope[] Oauth2PermissionScope { get => Body.Oauth2PermissionScope ?? null /* arrayOf */; set => Body.Oauth2PermissionScope = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPermissionScope[] Oauth2PermissionScope { get => _body.Oauth2PermissionScope ?? null /* arrayOf */; set => _body.Oauth2PermissionScope = value; }
 
         /// <summary>
         /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
@@ -490,7 +487,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The collection of password credentials associated with the service principal. Not nullable.",
         SerializedName = @"passwordCredentials",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[] PasswordCredentials { get => Body.PasswordCredentials ?? null /* arrayOf */; set => Body.PasswordCredentials = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[] PasswordCredentials { get => _body.PasswordCredentials ?? null /* arrayOf */; set => _body.PasswordCredentials = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.HttpPipeline" /> that the remote call will use.
@@ -510,7 +507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Specifies the single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. The supported values are password, saml, notSupported, and oidc.",
         SerializedName = @"preferredSingleSignOnMode",
         PossibleTypes = new [] { typeof(string) })]
-        public string PreferredSingleSignOnMode { get => Body.PreferredSingleSignOnMode ?? null; set => Body.PreferredSingleSignOnMode = value; }
+        public string PreferredSingleSignOnMode { get => _body.PreferredSingleSignOnMode ?? null; set => _body.PreferredSingleSignOnMode = value; }
 
         /// <summary>
         /// Reserved for internal use only. Do not write or otherwise rely on this property. May be removed in future versions.
@@ -523,7 +520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Reserved for internal use only. Do not write or otherwise rely on this property. May be removed in future versions.",
         SerializedName = @"preferredTokenSigningKeyThumbprint",
         PossibleTypes = new [] { typeof(string) })]
-        public string PreferredTokenSigningKeyThumbprint { get => Body.PreferredTokenSigningKeyThumbprint ?? null; set => Body.PreferredTokenSigningKeyThumbprint = value; }
+        public string PreferredTokenSigningKeyThumbprint { get => _body.PreferredTokenSigningKeyThumbprint ?? null; set => _body.PreferredTokenSigningKeyThumbprint = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -554,7 +551,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The URLs that user tokens are sent to for sign in with the associated application, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to for the associated application. Not nullable.",
         SerializedName = @"replyUrls",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] ReplyUrl { get => Body.ReplyUrl ?? null /* arrayOf */; set => Body.ReplyUrl = value; }
+        public string[] ReplyUrl { get => _body.ReplyUrl ?? null /* arrayOf */; set => _body.ReplyUrl = value; }
 
         /// <summary>samlSingleSignOnSettings</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "samlSingleSignOnSettings")]
@@ -565,7 +562,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"samlSingleSignOnSettings",
         SerializedName = @"samlSingleSignOnSettings",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSamlSingleSignOnSettings) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSamlSingleSignOnSettings SamlSingleSignOnSetting { get => Body.SamlSingleSignOnSetting ?? null /* object */; set => Body.SamlSingleSignOnSetting = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSamlSingleSignOnSettings SamlSingleSignOnSetting { get => _body.SamlSingleSignOnSetting ?? null /* object */; set => _body.SamlSingleSignOnSetting = value; }
 
         /// <summary>
         /// Contains the list of identifiersUris, copied over from the associated application. Additional values can be added to hybrid
@@ -583,7 +580,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Contains the list of identifiersUris, copied over from the associated application. Additional values can be added to hybrid applications. These values can be used to identify the permissions exposed by this app within Azure AD. For example,Client apps can specify a resource URI which is based on the values of this property to acquire an access token, which is the URI returned in the 'aud' claim.The any operator is required for filter expressions on multi-valued properties. Not nullable. Supports $filter (eq, NOT, ge, le, startsWith).",
         SerializedName = @"servicePrincipalNames",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] ServicePrincipalName { get => Body.ServicePrincipalName ?? null /* arrayOf */; set => Body.ServicePrincipalName = value; }
+        public string[] ServicePrincipalName { get => _body.ServicePrincipalName ?? null /* arrayOf */; set => _body.ServicePrincipalName = value; }
 
         /// <summary>
         /// Identifies if the service principal represents an application or a managed identity. This is set by Azure AD internally.
@@ -598,7 +595,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Identifies if the service principal represents an application or a managed identity. This is set by Azure AD internally. For a service principal that represents an application this is set as Application. For a service principal that represent a managed identity this is set as ManagedIdentity.",
         SerializedName = @"servicePrincipalType",
         PossibleTypes = new [] { typeof(string) })]
-        public string ServicePrincipalType { get => Body.ServicePrincipalType ?? null; set => Body.ServicePrincipalType = value; }
+        public string ServicePrincipalType { get => _body.ServicePrincipalType ?? null; set => _body.ServicePrincipalType = value; }
 
         /// <summary>
         /// Custom strings that can be used to categorize and identify the service principal. Not nullable. Supports $filter (eq,
@@ -613,7 +610,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Custom strings that can be used to categorize and identify the service principal. Not nullable. Supports $filter (eq, NOT, ge, le, startsWith).",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] Tag { get => Body.Tag ?? null /* arrayOf */; set => Body.Tag = value; }
+        public string[] Tag { get => _body.Tag ?? null /* arrayOf */; set => _body.Tag = value; }
 
         /// <summary>
         /// Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD issues tokens for this
@@ -628,7 +625,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD issues tokens for this application encrypted using the key specified by this property. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.",
         SerializedName = @"tokenEncryptionKeyId",
         PossibleTypes = new [] { typeof(string) })]
-        public string TokenEncryptionKeyId { get => Body.TokenEncryptionKeyId ?? null; set => Body.TokenEncryptionKeyId = value; }
+        public string TokenEncryptionKeyId { get => _body.TokenEncryptionKeyId ?? null; set => _body.TokenEncryptionKeyId = value; }
 
         /// <summary>The tokenIssuancePolicies assigned to this service principal. Supports $expand.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -640,7 +637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The tokenIssuancePolicies assigned to this service principal. Supports $expand.",
         SerializedName = @"tokenIssuancePolicies",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy[] TokenIssuancePolicy { get => Body.TokenIssuancePolicy ?? null /* arrayOf */; set => Body.TokenIssuancePolicy = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy[] TokenIssuancePolicy { get => _body.TokenIssuancePolicy ?? null /* arrayOf */; set => _body.TokenIssuancePolicy = value; }
 
         /// <summary>The tokenLifetimePolicies assigned to this service principal. Supports $expand.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -652,7 +649,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The tokenLifetimePolicies assigned to this service principal. Supports $expand.",
         SerializedName = @"tokenLifetimePolicies",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy[] TokenLifetimePolicy { get => Body.TokenLifetimePolicy ?? null /* arrayOf */; set => Body.TokenLifetimePolicy = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy[] TokenLifetimePolicy { get => _body.TokenLifetimePolicy ?? null /* arrayOf */; set => _body.TokenLifetimePolicy = value; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -664,19 +661,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @".",
         SerializedName = @"transitiveMemberOf",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject[] TransitiveMemberOf { get => Body.TransitiveMemberOf ?? null /* arrayOf */; set => Body.TransitiveMemberOf = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject[] TransitiveMemberOf { get => _body.TransitiveMemberOf ?? null /* arrayOf */; set => _body.TransitiveMemberOf = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnNoContent</c> will be called before the regular onNoContent has been processed, allowing customization of
@@ -693,6 +690,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -704,7 +706,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -807,8 +809,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.DictionaryExtensions.HashTableToDictionary<global::System.Object>(AdditionalProperties,Body.AdditionalProperties);
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.DictionaryExtensions.HashTableToDictionary<global::System.Object>(AdditionalProperties,_body.AdditionalProperties);
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -823,12 +824,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ServicePrincipalsServicePrincipalUpdateServicePrincipal(Id, Body, onNoContent, onDefault, this, Pipeline);
+                    await this.Client.ServicePrincipalsServicePrincipalUpdateServicePrincipal(Id, _body, onNoContent, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Id=Id,body=Body})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Id=Id,body=_body})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -859,12 +860,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -881,15 +882,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Id=Id, body=Body })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Id=Id, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Id=Id, body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Id=Id, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

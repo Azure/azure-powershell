@@ -23,14 +23,14 @@ Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on 
 
 ### EXAMPLE 1
 ```powershell
-C:\PS\>Get-AzStackHCIVMAttestation
+Get-AzStackHCIVMAttestation
 ```
 
 Get all guests on cluster.
 
 ### EXAMPLE 2
 ```powershell
-C:\PS\>Get-AzStackHCIVMAttestation -Local
+Get-AzStackHCIVMAttestation -Local
 ```
 
 ## PARAMETERS

@@ -37,9 +37,10 @@ The **Get-AzFrontDoorFrontendEndpoint** cmdlet gets all existing frontend endpoi
 
 ### Example 1: Get all frontend endpoints in Front Door "frontdoor1" which is part of resource group "rg1".
 ```powershell
-PS C:\> Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "rg1" -FrontDoorName "frontdoor1"
+Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "rg1" -FrontDoorName "frontdoor1"
+```
 
-
+```output
 HostName                         : frontdoor1.azurefd.net
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
@@ -83,9 +84,10 @@ Get all frontend endpoints in Front Door "frontdoor1" which is part of resource 
 
 ### Example 2: Get frontend endpoint with name "frontdoor1-azurefd-net" in Front Door "frontdoor1" which is part of resource group "rg1"
 ```powershell
-PS C:\> Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "rg1" -FrontDoorName "frontdoor1" -Name "frontdoor1-azurefd-net"
+Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "rg1" -FrontDoorName "frontdoor1" -Name "frontdoor1-azurefd-net"
+```
 
-
+```output
 HostName                         : frontdoor1.azurefd.net
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0

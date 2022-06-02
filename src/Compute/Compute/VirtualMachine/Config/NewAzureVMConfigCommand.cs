@@ -132,12 +132,18 @@ namespace Microsoft.Azure.Commands.Compute
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specified the gallery image unique id for vm deployment. This can be fetched from gallery image GET call.")]
+        [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
+        public string ImageReferenceId { get; set; }
+
         protected override bool IsUsageMetricEnabled
         {
             get { return true; }
         }
 	
-	[Parameter(
+	    [Parameter(
             Mandatory = false,
             ParameterSetName = ExplicitIdentityParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
@@ -160,6 +166,18 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
         public SwitchParameter HibernationEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).")]
+        public int vCPUCountAvailable { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
+        public int vCPUCountPerCore { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -202,6 +220,32 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 vm.HardwareProfile = new HardwareProfile();
                 vm.HardwareProfile.VmSize = this.VMSize;
+            }
+
+            if (this.IsParameterBound(c => c.vCPUCountAvailable))
+            {
+                if (vm.HardwareProfile == null)
+                {
+                    vm.HardwareProfile = new HardwareProfile();
+                }
+                if (vm.HardwareProfile.VmSizeProperties == null)
+                {
+                    vm.HardwareProfile.VmSizeProperties = new VMSizeProperties();
+                }
+                vm.HardwareProfile.VmSizeProperties.VCPUsAvailable = this.vCPUCountAvailable;
+            }
+
+            if (this.IsParameterBound(c => c.vCPUCountPerCore))
+            {
+                if (vm.HardwareProfile == null)
+                {
+                    vm.HardwareProfile = new HardwareProfile();
+                }
+                if (vm.HardwareProfile.VmSizeProperties == null)
+                {
+                    vm.HardwareProfile.VmSizeProperties = new VMSizeProperties();
+                }
+                vm.HardwareProfile.VmSizeProperties.VCPUsPerCore = this.vCPUCountPerCore;
             }
 
             if (this.EnableUltraSSD.IsPresent)
@@ -266,6 +310,19 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.UserData = this.UserData;
             }
 
+            if (this.IsParameterBound(c => c.ImageReferenceId))
+            {
+                if (vm.StorageProfile == null)
+                {
+                    vm.StorageProfile = new StorageProfile();
+                }
+                if (vm.StorageProfile.ImageReference == null)
+                {
+                    vm.StorageProfile.ImageReference = new ImageReference();
+                }
+                vm.StorageProfile.ImageReference.Id = this.ImageReferenceId;
+            }
+            
             if (this.IsParameterBound(c => c.PlatformFaultDomain))
             {
                 vm.PlatformFaultDomain = this.PlatformFaultDomain;

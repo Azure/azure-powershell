@@ -34,8 +34,10 @@ Only a subset of the parameters may be updated after creation, such as Sku, Tags
 
 ### Example 1: Updates a Maps Account
 ```powershell
-PS C:\> Update-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount03 -Tag @{'key1'='value1'; 'key2'='value2'}
+Update-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount03 -Tag @{'key1'='value1'; 'key2'='value2'}
+```
 
+```output
 Location Name               Type                    Kind
 -------- ----               ----                    ----
 eastus   pwsh-mapsAccount03 Microsoft.Maps/accounts Gen1
@@ -46,8 +48,10 @@ Only a subset of the parameters may be updated after creation, such as Sku, Tags
 
 ### Example 2: Updates a Maps Account by pipeline
 ```powershell
-PS C:\> Get-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount03 | Update-AzMapsAccount -Tag @{'key1'='value1'; 'key2'='value2'}
+Get-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount03 | Update-AzMapsAccount -Tag @{'key1'='value1'; 'key2'='value2'}
+```
 
+```output
 Location Name               Type                    Kind
 -------- ----               ----                    ----
 eastus   pwsh-mapsAccount03 Microsoft.Maps/accounts Gen1

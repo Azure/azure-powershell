@@ -1,59 +1,116 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/ea841058-b4bc-4534-b5f0-f5eb5286de2f/resourceGroups/WIRunnersProd/providers/Microsoft.Sql/servers/wi-runner-australia-east/databases/WIRunner/advisors/CreateIndex/recommendedActions/IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWE4NDEwNTgtYjRiYy00NTM0LWI1ZjAtZjVlYjUyODZkZTJmL3Jlc291cmNlR3JvdXBzL1dJUnVubmVyc1Byb2QvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy93aS1ydW5uZXItYXVzdHJhbGlhLWVhc3QvZGF0YWJhc2VzL1dJUnVubmVyL2Fkdmlzb3JzL0NyZWF0ZUluZGV4L3JlY29tbWVuZGVkQWN0aW9ucy9JUl8lNUJ0ZXN0X3NjaGVtYSU1RF8lNUJ0ZXN0X3RhYmxlXzAuMDM2MTU1MSU1RF82QzdBRThDQzlDODdFN0ZENTg5Mz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/741fd0f5-9cb8-442c-91c3-3ef4ca231c2a/resourceGroups/WiPowershellTestRg/providers/Microsoft.Sql/servers/wipowershelltestserver/databases/WiPowershellTestDb/advisors/CreateIndex/recommendedActions?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzQxZmQwZjUtOWNiOC00NDJjLTkxYzMtM2VmNGNhMjMxYzJhL3Jlc291cmNlR3JvdXBzL1dpUG93ZXJzaGVsbFRlc3RSZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL3dpcG93ZXJzaGVsbHRlc3RzZXJ2ZXIvZGF0YWJhc2VzL1dpUG93ZXJzaGVsbFRlc3REYi9hZHZpc29ycy9DcmVhdGVJbmRleC9yZWNvbW1lbmRlZEFjdGlvbnM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.Sql.SqlManagementClientV2/0.9.0.0"
+          "Microsoft.Azure.Management.Sql.LegacySdk.SqlManagementClient/3.7.1.0"
         ]
       },
-      "ResponseBody": "{\r\n    \"id\": \"/subscriptions/ea841058-b4bc-4534-b5f0-f5eb5286de2f/resourceGroups/WIRunnersProd/providers/Microsoft.Sql/servers/wi-runner-australia-east/databases/WIRunner/advisors/CreateIndex/recommendedActions/IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893\",\r\n    \"name\": \"IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893\",\r\n    \"type\": \"Microsoft.Sql/servers/databases/advisors/recommendedActions\",\r\n    \"location\": \"Australia East\",\r\n    \"kind\": \"\",\r\n    \"properties\": {\r\n      \"recommendationReason\": \"\",\r\n      \"validSince\": \"2016-04-21T15:24:47Z\",\r\n      \"lastRefresh\": \"2016-04-21T15:24:47Z\",\r\n      \"state\": {\r\n        \"currentValue\": \"Success\",\r\n        \"actionInitiatedBy\": \"User\",\r\n        \"lastModified\": \"2016-04-21T15:24:47Z\"\r\n      },\r\n      \"isExecutableAction\": true,\r\n      \"isRevertableAction\": true,\r\n      \"isArchivedAction\": false,\r\n      \"executeActionStartTime\": \"2016-04-21T15:24:47Z\",\r\n      \"executeActionDuration\": \"PT1M\",\r\n      \"executeActionInitiatedBy\": \"User\",\r\n      \"executeActionInitiatedTime\": \"2016-04-21T15:24:47Z\",\r\n      \"score\": 2,\r\n      \"implementationDetails\": {\r\n        \"method\": \"TSql\",\r\n        \"script\": \"CREATE NONCLUSTERED INDEX [nci_wi_test_table_0.0361551_6C7AE8CC9C87E7FD5893] ON [test_schema].[test_table_0.0361551] ([index_1],[index_2],[index_3]) INCLUDE ([included_1]) WITH (ONLINE = ON)\"\r\n      },\r\n      \"errorDetails\": {},\r\n      \"estimatedImpact\": [\r\n        {\r\n          \"dimensionName\": \"ActionDuration\",\r\n          \"unit\": \"Seconds\",\r\n          \"absoluteValue\": 343.0\r\n        },\r\n        {\r\n          \"dimensionName\": \"SpaceChange\",\r\n          \"unit\": \"Megabytes\",\r\n          \"absoluteValue\": 0.055789001245945449\r\n        }\r\n      ],\r\n      \"observedImpact\": [\r\n        {\r\n          \"dimensionName\": \"CpuUtilization\",\r\n          \"unit\": \"CpuCores\",\r\n          \"changeValueAbsolute\": 0.5,\r\n          \"changeValueRelative\": 0.1\r\n        } ],\r\n      \"timeSeries\": [],\r\n      \"details\": {\r\n        \"indexName\": \"nci_wi_test_table_0.0361551_6C7AE8CC9C87E7FD5893\",\r\n        \"indexType\": \"NONCLUSTERED\",\r\n        \"schema\": \"[test_schema]\",\r\n        \"table\": \"[test_table_0.0361551]\",\r\n        \"indexColumns\": \"[index_1],[index_2],[index_3]\",\r\n        \"benefit\": 2,\r\n        \"includedColumns\": \"[included_1]\",\r\n        \"indexActionStartTime\": \"2016-04-21T15:24:47.583\",\r\n        \"indexActionDuration\": \"00:01:00\"\r\n      }\r\n    }\r\n  } ",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4d6867d1-0ea0-4d13-adbc-fd3eddad2189"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "e63cf0ee-31d6-4588-8678-ff193668893c"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20220310T151848Z:e63cf0ee-31d6-4588-8678-ff193668893c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 10 Mar 2022 15:18:47 GMT"
+        ],
         "Content-Length": [
-          "2305"
+          "4270"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
+        ]
+      },
+      "ResponseBody": "[\r\n  {\r\n    \"kind\": \"\",\r\n    \"properties\": {\r\n      \"recommendationReason\": \"\",\r\n      \"validSince\": \"2022-03-10T13:10:21Z\",\r\n      \"lastRefresh\": \"2022-03-10T13:10:21Z\",\r\n      \"state\": {\r\n        \"currentValue\": \"Active\",\r\n        \"lastModified\": \"2022-03-10T15:15:08Z\"\r\n      },\r\n      \"isExecutableAction\": true,\r\n      \"isRevertableAction\": true,\r\n      \"isArchivedAction\": false,\r\n      \"score\": 1,\r\n      \"implementationDetails\": {\r\n        \"method\": \"TSql\",\r\n        \"script\": \"CREATE NONCLUSTERED INDEX [nci_wi_CreateIndex_auto_test_table_1_885B72B3C86C4406D3D8D6C35BA87FD5] ON [test_schema].[CreateIndex_auto_test_table_1] ([index_1],[index_2],[index_3]) INCLUDE ([included_1],[included_2]) WITH (ONLINE = ON)\"\r\n      },\r\n      \"errorDetails\": {},\r\n      \"estimatedImpact\": [\r\n        {\r\n          \"dimensionName\": \"ActionDuration\",\r\n          \"unit\": \"Seconds\",\r\n          \"absoluteValue\": 60.0\r\n        },\r\n        {\r\n          \"dimensionName\": \"SpaceChange\",\r\n          \"unit\": \"Megabytes\",\r\n          \"absoluteValue\": 0.09765625\r\n        }\r\n      ],\r\n      \"observedImpact\": [],\r\n      \"timeSeries\": [],\r\n      \"details\": {\r\n        \"indexName\": \"nci_wi_CreateIndex_auto_test_table_1_885B72B3C86C4406D3D8D6C35BA87FD5\",\r\n        \"indexType\": \"NONCLUSTERED\",\r\n        \"schema\": \"[test_schema]\",\r\n        \"table\": \"[CreateIndex_auto_test_table_1]\",\r\n        \"indexColumns\": \"[index_1],[index_2],[index_3]\",\r\n        \"includedColumns\": \"[included_1],[included_2]\"\r\n      }\r\n    },\r\n    \"id\": \"/subscriptions/741fd0f5-9cb8-442c-91c3-3ef4ca231c2a/resourceGroups/WiPowershellTestRg/providers/Microsoft.Sql/servers/wipowershelltestserver/databases/WiPowershellTestDb/advisors/CreateIndex/recommendedActions/IR_[test_schema]_[CreateIndex_auto_test_table_1]_6C7AE8CC9C87E7FD5893\",\r\n    \"name\": \"IR_[test_schema]_[CreateIndex_auto_test_table_1]_6C7AE8CC9C87E7FD5893\",\r\n    \"type\": \"Microsoft.Sql/servers/databases/advisors/recommendedActions\"\r\n  },\r\n  {\r\n    \"kind\": \"\",\r\n    \"properties\": {\r\n      \"recommendationReason\": \"\",\r\n      \"validSince\": \"2022-03-10T13:10:21Z\",\r\n      \"lastRefresh\": \"2022-03-10T13:10:21Z\",\r\n      \"state\": {\r\n        \"currentValue\": \"Success\",\r\n        \"lastModified\": \"2022-03-10T14:12:21Z\"\r\n      },\r\n      \"isExecutableAction\": true,\r\n      \"isRevertableAction\": true,\r\n      \"isArchivedAction\": false,\r\n      \"executeActionStartTime\": \"2022-03-10T14:25:16Z\",\r\n      \"executeActionDuration\": \"PT0.109S\",\r\n      \"score\": 2,\r\n      \"implementationDetails\": {\r\n        \"method\": \"TSql\",\r\n        \"script\": \"CREATE NONCLUSTERED INDEX [nci_wi_CreateIndex_auto_test_table_2_83996C6D57E5D2E06A7362B342C4CCFA] ON [test_schema].[CreateIndex_auto_test_table_2] ([index_1],[index_2],[index_3]) WITH (ONLINE = ON)\"\r\n      },\r\n      \"errorDetails\": {},\r\n      \"estimatedImpact\": [],\r\n      \"observedImpact\": [],\r\n      \"timeSeries\": [],\r\n      \"details\": {\r\n        \"indexName\": \"nci_wi_CreateIndex_auto_test_table_2_83996C6D57E5D2E06A7362B342C4CCFA\",\r\n        \"indexType\": \"NONCLUSTERED\",\r\n        \"schema\": \"[test_schema]\",\r\n        \"table\": \"[CreateIndex_auto_test_table_2]\",\r\n        \"indexColumns\": \"[index_1],[index_2],[index_3]\",\r\n        \"includedColumns\": \"\"\r\n      }\r\n    },\r\n    \"id\": \"/subscriptions/741fd0f5-9cb8-442c-91c3-3ef4ca231c2a/resourceGroups/WiPowershellTestRg/providers/Microsoft.Sql/servers/wipowershelltestserver/databases/WiPowershellTestDb/advisors/CreateIndex/recommendedActions/IR_[test_schema]_[CreateIndex_auto_test_table_2]_6C7AE8CC9C87E7FD5893\",\r\n    \"name\": \"IR_[test_schema]_[CreateIndex_auto_test_table_2]_6C7AE8CC9C87E7FD5893\",\r\n    \"type\": \"Microsoft.Sql/servers/databases/advisors/recommendedActions\"\r\n  },\r\n  {\r\n    \"kind\": \"\",\r\n    \"properties\": {\r\n      \"recommendationReason\": \"\",\r\n      \"validSince\": \"2022-03-10T13:10:21Z\",\r\n      \"lastRefresh\": \"2022-03-10T13:10:21Z\",\r\n      \"state\": {\r\n        \"currentValue\": \"Ignored\",\r\n        \"lastModified\": \"2022-03-10T13:10:21Z\"\r\n      },\r\n      \"isExecutableAction\": true,\r\n      \"isRevertableAction\": true,\r\n      \"isArchivedAction\": false,\r\n      \"score\": 3,\r\n      \"implementationDetails\": {\r\n        \"method\": \"TSql\",\r\n        \"script\": \"CREATE NONCLUSTERED INDEX [nci_wi_CreateIndex_auto_test_table_3_885B72B3C86C4406D3D8D6C35BA87FD5] ON [test_schema].[CreateIndex_auto_test_table_3] ([index_1],[index_2],[index_3]) INCLUDE ([included_1],[included_2]) WITH (ONLINE = ON)\"\r\n      },\r\n      \"errorDetails\": {},\r\n      \"estimatedImpact\": [],\r\n      \"observedImpact\": [],\r\n      \"timeSeries\": [],\r\n      \"details\": {\r\n        \"indexName\": \"nci_wi_CreateIndex_auto_test_table_3_885B72B3C86C4406D3D8D6C35BA87FD5\",\r\n        \"indexType\": \"NONCLUSTERED\",\r\n        \"schema\": \"[test_schema]\",\r\n        \"table\": \"[CreateIndex_auto_test_table_3]\",\r\n        \"indexColumns\": \"[index_1],[index_2],[index_3]\",\r\n        \"includedColumns\": \"[included_1],[included_2]\"\r\n      }\r\n    },\r\n    \"id\": \"/subscriptions/741fd0f5-9cb8-442c-91c3-3ef4ca231c2a/resourceGroups/WiPowershellTestRg/providers/Microsoft.Sql/servers/wipowershelltestserver/databases/WiPowershellTestDb/advisors/CreateIndex/recommendedActions/IR_[test_schema]_[CreateIndex_auto_test_table_3]_6C7AE8CC9C87E7FD5893\",\r\n    \"name\": \"IR_[test_schema]_[CreateIndex_auto_test_table_3]_6C7AE8CC9C87E7FD5893\",\r\n    \"type\": \"Microsoft.Sql/servers/databases/advisors/recommendedActions\"\r\n  }\r\n]",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/741fd0f5-9cb8-442c-91c3-3ef4ca231c2a/resourceGroups/WiPowershellTestRg/providers/Microsoft.Sql/servers/wipowershelltestserver/databases/WiPowershellTestDb/advisors/CreateIndex/recommendedActions/IR_%5Btest_schema%5D_%5BCreateIndex_auto_test_table_1%5D_6C7AE8CC9C87E7FD5893?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzQxZmQwZjUtOWNiOC00NDJjLTkxYzMtM2VmNGNhMjMxYzJhL3Jlc291cmNlR3JvdXBzL1dpUG93ZXJzaGVsbFRlc3RSZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL3dpcG93ZXJzaGVsbHRlc3RzZXJ2ZXIvZGF0YWJhc2VzL1dpUG93ZXJzaGVsbFRlc3REYi9hZHZpc29ycy9DcmVhdGVJbmRleC9yZWNvbW1lbmRlZEFjdGlvbnMvSVJfJTVCdGVzdF9zY2hlbWElNURfJTVCQ3JlYXRlSW5kZXhfYXV0b190ZXN0X3RhYmxlXzElNURfNkM3QUU4Q0M5Qzg3RTdGRDU4OTM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.LegacySdk.SqlManagementClient/3.7.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1f4852d1-5c27-4a6d-bdb5-1abf395258f9"
+          "624ca378-9724-4349-99a8-60ead48f83dd"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14981"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "cab4dc1b-388e-4199-8e2a-980744e06278"
+          "e07f669a-030f-47be-8a71-506a60e9b605"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20160623T115853Z:cab4dc1b-388e-4199-8e2a-980744e06278"
+          "UKSOUTH:20220310T151848Z:e07f669a-030f-47be-8a71-506a60e9b605"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Cache-Control": [
-          "no-cache"
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Date": [
-          "Thu, 23 Jun 2016 11:58:53 GMT"
+          "Thu, 10 Mar 2022 15:18:48 GMT"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+        "Content-Length": [
+          "2787"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
         ]
       },
+      "ResponseBody": "{\r\n  \"kind\": \"\",\r\n  \"properties\": {\r\n    \"recommendationReason\": \"\",\r\n    \"validSince\": \"2022-03-10T13:10:21Z\",\r\n    \"lastRefresh\": \"2022-03-10T13:10:21Z\",\r\n    \"state\": {\r\n      \"currentValue\": \"Active\",\r\n      \"lastModified\": \"2022-03-10T15:15:08Z\"\r\n    },\r\n    \"isExecutableAction\": true,\r\n    \"isRevertableAction\": true,\r\n    \"isArchivedAction\": false,\r\n    \"score\": 1,\r\n    \"implementationDetails\": {\r\n      \"method\": \"TSql\",\r\n      \"script\": \"CREATE NONCLUSTERED INDEX [nci_wi_CreateIndex_auto_test_table_1_885B72B3C86C4406D3D8D6C35BA87FD5] ON [test_schema].[CreateIndex_auto_test_table_1] ([index_1],[index_2],[index_3]) INCLUDE ([included_1],[included_2]) WITH (ONLINE = ON)\"\r\n    },\r\n    \"errorDetails\": {},\r\n    \"estimatedImpact\": [\r\n      {\r\n        \"dimensionName\": \"ActionDuration\",\r\n        \"unit\": \"Seconds\",\r\n        \"absoluteValue\": 60.0\r\n      },\r\n      {\r\n        \"dimensionName\": \"SpaceChange\",\r\n        \"unit\": \"Megabytes\",\r\n        \"absoluteValue\": 0.09765625\r\n      }\r\n    ],\r\n    \"observedImpact\": [],\r\n    \"timeSeries\": [],\r\n    \"details\": {\r\n      \"indexName\": \"nci_wi_CreateIndex_auto_test_table_1_885B72B3C86C4406D3D8D6C35BA87FD5\",\r\n      \"indexType\": \"NONCLUSTERED\",\r\n      \"schema\": \"[test_schema]\",\r\n      \"table\": \"[CreateIndex_auto_test_table_1]\",\r\n      \"indexColumns\": \"[index_1],[index_2],[index_3]\",\r\n      \"includedColumns\": \"[included_1],[included_2]\",\r\n      \"estimatedQueryLevelImpact\": \"[{\\\"QueryHashes\\\":[\\\"0x972B98B93423DE35\\\"],\\\"RepresentativeStatementSqlHandle\\\":\\\"0x09000BEDB21634B85929591AE601A984056E00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\\\",\\\"AvgNumberOfExecutionsPerHourBeforeAction\\\":11.2,\\\"Impact\\\":[{\\\"AvgCostPerExecutionBeforeAction\\\":5.12,\\\"AvgCostPerExecutionAfterAction\\\":0.79,\\\"CostMetric\\\":\\\"QO cost\\\"}]},{\\\"QueryHashes\\\":[\\\"0xA981410BBB961123\\\",\\\"0x94F9B30756E75A4F\\\",\\\"0xCDC2F53616878F90\\\"],\\\"RepresentativeStatementSqlHandle\\\":\\\"0x0900C736B9701B6493993F3F51FD64E772D100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\\\",\\\"AvgNumberOfExecutionsPerHourBeforeAction\\\":1891,\\\"Impact\\\":[{\\\"AvgCostPerExecutionBeforeAction\\\":3.12,\\\"AvgCostPerExecutionAfterAction\\\":0.66,\\\"CostMetric\\\":\\\"QO cost\\\"}]},{\\\"QueryHashes\\\":[\\\"0xD7B42725E1E9C8C2\\\"],\\\"RepresentativeStatementSqlHandle\\\":\\\"0x090036513E2D633EBD39B616C59EA89ECCAE00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\\\",\\\"AvgNumberOfExecutionsPerHourBeforeAction\\\":198,\\\"Impact\\\":[{\\\"AvgCostPerExecutionBeforeAction\\\":0.56,\\\"AvgCostPerExecutionAfterAction\\\":0.79,\\\"CostMetric\\\":\\\"QO cost\\\"}]}]\",\r\n      \"observedQueryLevelImpact\": \"[]\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/741fd0f5-9cb8-442c-91c3-3ef4ca231c2a/resourceGroups/WiPowershellTestRg/providers/Microsoft.Sql/servers/wipowershelltestserver/databases/WiPowershellTestDb/advisors/CreateIndex/recommendedActions/IR_[test_schema]_[CreateIndex_auto_test_table_1]_6C7AE8CC9C87E7FD5893\",\r\n  \"name\": \"IR_[test_schema]_[CreateIndex_auto_test_table_1]_6C7AE8CC9C87E7FD5893\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/advisors/recommendedActions\"\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "ea841058-b4bc-4534-b5f0-f5eb5286de2f"
+    "SubscriptionId": "741fd0f5-9cb8-442c-91c3-3ef4ca231c2a"
   }
 }

@@ -19,6 +19,20 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.1
+* Added support for 24-hour clock in `Set-AzAlertProcessingRule` [#17762]
+
+## Version 
+* Fixed bug for `Get-AzAlertProcessingRule` does not fetch more than 50 Alert Processing Rules
+* Fixed bug for `Get-AzAlert` rounds down the number of alerts to multiple of 100
+
+## Version 0.4.0
+* Substitute cmdlets:
+  - `Get-AzActionRule` with `Get-AzAlertProcessingRule`
+  - `Set-AzActionRule` with `Set-AzAlertProcessingRule`
+  - `Update-AzActionRule` with `Update-AzAlertProcessingRule`
+  - `Remove-AzActionRule` with `Remove-AzAlertProcessingRule`
+
 ## Version 0.3.0
 * Fixed bug for `Set-AzActionRule` when RecurrenceType is "Once" and no "ReccurentValue" provided [#14476]
 

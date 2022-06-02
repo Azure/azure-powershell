@@ -35,7 +35,7 @@ The **New-AzNetAppFilesActiveDirectory** cmdlet creates a new backup policy for 
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAccount" -Name "MyBackupPolicy" -Tag @{"tag1" = "tagValue"} -Enabled -DailyBackupsToKeep 1 -WeeklyBackupsToKeep 2 -MonthlyBackupsToKeep 2
+New-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAccount" -Name "MyBackupPolicy" -Tag @{"tag1" = "tagValue"} -Enabled -DailyBackupsToKeep 1 -WeeklyBackupsToKeep 2 -MonthlyBackupsToKeep 2
 ```
 
 This command creates the new ANF backup policy for ANF account named account "MyAccount".
@@ -267,3 +267,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetAppFilesBackupPolicy](./Get-AzNetAppFilesBackupPolicy.md)
+[Update-AzNetAppFilesBackupPolicy](./Update-AzNetAppFilesBackupPolicy.md)
+[Remove-AzNetAppFilesBackupPolicy](./Remove-AzNetAppFilesBackupPolicy.md)
+[Set-AzNetAppFilesBackupPolicy](./Set-AzNetAppFilesBackupPolicy.md)
+[Get-AzNetAppFilesBackup](./Get-AzNetAppFilesBackup.md)
+[New-AzNetAppFilesBackup](./New-AzNetAppFilesBackup.md)
+[Remove-AzNetAppFilesBackup](./Remove-AzNetAppFilesBackup.md)
+[Update-AzNetAppFilesBackup](./Update-AzNetAppFilesBackup.md)
+[Get-AzNetAppFilesVolume](./Get-AzNetAppFilessVolume.md)
+[New-AzNetAppFilesVolume](./New-AzNetAppFilessVolume.md)
+[Update-AzNetAppFilesVolume](./Update-AzNetAppFilessVolume.md)
+[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilessVolume.md)

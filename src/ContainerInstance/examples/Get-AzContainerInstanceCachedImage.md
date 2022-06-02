@@ -1,7 +1,9 @@
 ### Example 1: Get the list of cached images for the current subscription in a region.
 ```powershell
-PS C:\> Get-AzContainerInstanceCachedImage -Location eastus
+Get-AzContainerInstanceCachedImage -Location eastus
+```
 
+```output
 Image                                                                                OSType
 -----                                                                                ------
 microsoft/dotnet-framework:4.7.2-runtime-20181211-windowsservercore-ltsc2016         Windows

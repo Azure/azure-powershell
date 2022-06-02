@@ -31,8 +31,9 @@ Always use the service and problem classification GUIDs obtained programmaticall
 
 ### Example 1: Get all services available for support
 ```powershell
-PS C:\> Get-AzSupportService
-
+Get-AzSupportService
+```
+```output
 Name                                 DisplayName
 ----                                 -----------
 484e2236-bc6d-b1bb-76d2-7d09278cf9ea Activity Logs
@@ -53,8 +54,9 @@ b7d2f8b7-7d20-cf2f-ddd5-5543ada54bd2 App Service Domains
 
 ### Example 2: Get details of a single service by id available for support
 ```powershell
-PS C:\> Get-AzSupportService -Id "484e2236-bc6d-b1bb-76d2-7d09278cf9ea"
-
+Get-AzSupportService -Id "484e2236-bc6d-b1bb-76d2-7d09278cf9ea"
+```
+```output
 Name                                 DisplayName
 ----                                 -----------
 484e2236-bc6d-b1bb-76d2-7d09278cf9ea Activity Logs

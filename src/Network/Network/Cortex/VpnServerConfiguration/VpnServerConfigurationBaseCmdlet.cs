@@ -110,7 +110,8 @@ namespace Microsoft.Azure.Commands.Network
             string aadTenant,
             string aadAudience,
             string aadIssuer,
-            PSIpsecPolicy[] vpnClientIpsecPolicy)
+            PSIpsecPolicy[] vpnClientIpsecPolicy,
+            PSVpnServerConfigurationPolicyGroup[] configurationPolicyGroups)
         {
             if (vpnProtocol != null)
             {
@@ -125,6 +126,13 @@ namespace Microsoft.Azure.Commands.Network
             if (vpnClientIpsecPolicy != null && vpnClientIpsecPolicy.Length != 0)
             {
                 vpnServerConfiguration.VpnClientIpsecPolicies = new List<PSIpsecPolicy>(vpnClientIpsecPolicy);
+            }
+
+            // VpnServerConfigurationPolicyGroups, if specified
+            vpnServerConfiguration.ConfigurationPolicyGroups = new List<PSVpnServerConfigurationPolicyGroup>();
+            if (configurationPolicyGroups != null && configurationPolicyGroups.Any())
+            {
+                vpnServerConfiguration.ConfigurationPolicyGroups.AddRange(configurationPolicyGroups);
             }
 
             // VpnAuthenticationType = Certificate related validations.

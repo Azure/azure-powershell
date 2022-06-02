@@ -11,17 +11,6 @@
 Updates entity in users
 .Description
 Updates entity in users
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Outputs
-System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -450,6 +439,15 @@ function Update-AzADUser {
               $null = $PSBoundParameters.Remove('UserPrincipalName')
               break
           }
+      }
+      if ($PSBoundParameters.ContainsKey('Password')) {
+        $passwordProfile = [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordProfile]::New()
+        $passwordProfile.ForceChangePasswordNextSignIn = $ForceChangePasswordNextLogin
+        $passwordProfile.Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['Password']
+        $null = $PSBoundParameters.Remove('Password')
+        $null = $PSBoundParameters.Remove('ForceChangePasswordNextLogin')
+        $PSBoundParameters['AccountEnabled'] = $true
+        $PSBoundParameters['PasswordProfile'] = $passwordProfile
       }
       $PSBoundParameters['Id'] = $id
 

@@ -12,29 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test.ScenarioTests
 {
-    public class ClusterTests : OperationalInsightsScenarioTestBase
+    public class ClusterTests : OperationalInsightsTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ClusterTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ClusterTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestClusterCRUD()
         {
-            RunPowerShellTest(_logger, "Test-ClusterCRUD");
+            TestRunner.RunTestScript("Test-ClusterCRUD");
         }
     }
 }

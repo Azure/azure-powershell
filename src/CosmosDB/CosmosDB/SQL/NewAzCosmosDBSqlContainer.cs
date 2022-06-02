@@ -91,6 +91,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSSqlConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.SqlClientEncryptionPolicyHelpMessage)]
+        [ValidateNotNull]
+        public PSSqlClientEncryptionPolicy ClientEncryptionPolicy { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.SqlContainerAnalyticalStorageTtlHelpMessage)]
         public int? AnalyticalStorageTtl { get; set; }
 
@@ -154,6 +158,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if(ConflictResolutionPolicy != null)
             {
                 sqlContainerResource.ConflictResolutionPolicy = PSConflictResolutionPolicy.ToSDKModel(ConflictResolutionPolicy);
+            }
+
+            if (ClientEncryptionPolicy != null)
+            {
+                sqlContainerResource.ClientEncryptionPolicy = PSClientEncryptionPolicy.ToSDKModel(ClientEncryptionPolicy, Paths);
             }
 
             if (ConflictResolutionPolicyMode != null)

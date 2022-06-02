@@ -43,7 +43,7 @@ The **Get-AzSynapseIntegrationRuntimeMetric** cmdlet gets metric data about inte
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseIntegrationRuntimeMetric -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
+Get-AzSynapseIntegrationRuntimeMetric -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
 ```
 
 This command displays metric data about the integration runtime named 'test-selfhost-ir' in the workspace named ContosoWorkspace.

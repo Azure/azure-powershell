@@ -24,11 +24,11 @@ The **Set-AzPublicIpPrefix** cmdlet sets the Tags for a public IP prefix.
 
 ### Set the tags for public ip prefix
 ```powershell
-PS C:\> $publicIpPrefix = Get-AzPublicIpPrefix -Name $prefixName -ResourceGroupName $rgName
+$publicIpPrefix = Get-AzPublicIpPrefix -Name $prefixName -ResourceGroupName $rgName
 
-PS C:\> $publicIpPrefix.Tags = "TestTag"
+$publicIpPrefix.Tags = "TestTag"
 
-PS C:\> Set-AzPublicIpPrefix -PublicIpPrefix $publicIpPrefix
+Set-AzPublicIpPrefix -PublicIpPrefix $publicIpPrefix
 ```
 
 The first command gets an existing public IP Prefix, the second command sets the Tags Property and the third command updates the existing object.

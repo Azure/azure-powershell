@@ -26,8 +26,8 @@ The **Add-AzVmssDiagnosticsExtension** cmdlet adds a diagnostics extension to th
 ## EXAMPLES
 
 ### Example 1: Add a diagnostics extension to the VMSS
-```
-PS C:\> Add-AzVmssDiagnosticsExtension -VirtualMachineScaleSet $VMSS -SettingFilePath $publicConfigPath -ProtectedSettingFilePath $privateConfigPath -Name $extName -TypeHandlerVersion $typeVersion -AutoUpgradeMinorVersion $True -Force
+```powershell
+Add-AzVmssDiagnosticsExtension -VirtualMachineScaleSet $VMSS -SettingFilePath $publicConfigPath -ProtectedSettingFilePath $privateConfigPath -Name $extName -TypeHandlerVersion $typeVersion -AutoUpgradeMinorVersion $True -Force
 ```
 
 This command adds a diagnostics extension to the VMSS.

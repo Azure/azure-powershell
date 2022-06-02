@@ -46,6 +46,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
         public string ActiveDirectoryPropertyNetBiosDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)AzureFilesIdentityBasedAuthentication).ActiveDirectoryPropertyNetBiosDomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)AzureFilesIdentityBasedAuthentication).ActiveDirectoryPropertyNetBiosDomainName = value ?? null; }
 
+        /// <summary>Backing field for <see cref="AllowBlobPublicAccess" /> property.</summary>
+        private bool? _allowBlobPublicAccess;
+
+        /// <summary>
+        /// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is true
+        /// for this property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public bool? AllowBlobPublicAccess { get => this._allowBlobPublicAccess; set => this._allowBlobPublicAccess = value; }
+
+        /// <summary>Backing field for <see cref="AllowSharedKeyAccess" /> property.</summary>
+        private bool? _allowSharedKeyAccess;
+
+        /// <summary>
+        /// Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If
+        /// false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD).
+        /// The default value is null, which is equivalent to true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public bool? AllowSharedKeyAccess { get => this._allowSharedKeyAccess; set => this._allowSharedKeyAccess = value; }
+
         /// <summary>Indicates the directory service used.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DirectoryServiceOptions? AzureFileIdentityBasedAuthenticationDirectoryServiceOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)AzureFilesIdentityBasedAuthentication).DirectoryServiceOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IAzureFilesIdentityBasedAuthenticationInternal)AzureFilesIdentityBasedAuthentication).DirectoryServiceOption = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DirectoryServiceOptions)""); }
@@ -206,6 +227,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// <summary>Internal Acessors for TableLastEnabledTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountPropertiesCreateParametersInternal.TableLastEnabledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).TableLastEnabledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal)Encryption).TableLastEnabledTime = value; }
 
+        /// <summary>Backing field for <see cref="MinimumTlsVersion" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MinimumTlsVersion? _minimumTlsVersion;
+
+        /// <summary>
+        /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MinimumTlsVersion? MinimumTlsVersion { get => this._minimumTlsVersion; set => this._minimumTlsVersion = value; }
+
         /// <summary>Backing field for <see cref="NetworkRuleSet" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSet _networkRuleSet;
 
@@ -328,6 +358,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         SerializedName = @"netBiosDomainName",
         PossibleTypes = new [] { typeof(string) })]
         string ActiveDirectoryPropertyNetBiosDomainName { get; set; }
+        /// <summary>
+        /// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is true
+        /// for this property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is true for this property.",
+        SerializedName = @"allowBlobPublicAccess",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? AllowBlobPublicAccess { get; set; }
+        /// <summary>
+        /// Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If
+        /// false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD).
+        /// The default value is null, which is equivalent to true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true.",
+        SerializedName = @"allowSharedKeyAccess",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? AllowSharedKeyAccess { get; set; }
         /// <summary>Indicates the directory service used.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -461,6 +514,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LargeFileSharesState) })]
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LargeFileSharesState? LargeFileSharesState { get; set; }
         /// <summary>
+        /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.",
+        SerializedName = @"minimumTlsVersion",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MinimumTlsVersion) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MinimumTlsVersion? MinimumTlsVersion { get; set; }
+        /// <summary>
         /// Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices
         /// (For example, "Logging, Metrics"), or None to bypass none of those traffics.
         /// </summary>
@@ -559,6 +622,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         string ActiveDirectoryPropertyForestName { get; set; }
         /// <summary>Specifies the NetBIOS domain name.</summary>
         string ActiveDirectoryPropertyNetBiosDomainName { get; set; }
+        /// <summary>
+        /// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is true
+        /// for this property.
+        /// </summary>
+        bool? AllowBlobPublicAccess { get; set; }
+        /// <summary>
+        /// Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If
+        /// false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD).
+        /// The default value is null, which is equivalent to true.
+        /// </summary>
+        bool? AllowSharedKeyAccess { get; set; }
         /// <summary>Required if choose AD.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryProperties AzureFileIdentityBasedAuthenticationActiveDirectoryProperty { get; set; }
         /// <summary>Indicates the directory service used.</summary>
@@ -624,6 +698,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LargeFileSharesState? LargeFileSharesState { get; set; }
+        /// <summary>
+        /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MinimumTlsVersion? MinimumTlsVersion { get; set; }
         /// <summary>Network rule set</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.INetworkRuleSet NetworkRuleSet { get; set; }
         /// <summary>

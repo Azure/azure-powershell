@@ -44,9 +44,11 @@ You can create the certificate to import by using one of the following methods:
 
 ### Example 1: Import a key vault certificate
 ```powershell
-PS C:\> $Password = ConvertTo-SecureString -String "123" -AsPlainText -Force
-PS C:\> Import-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "ImportCert01" -FilePath "C:\Users\contosoUser\Desktop\import.pfx" -Password $Password
+$Password = ConvertTo-SecureString -String "123" -AsPlainText -Force
+Import-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "ImportCert01" -FilePath "C:\Users\contosoUser\Desktop\import.pfx" -Password $Password
+```
 
+```output
 Name        : importCert01
 Certificate : [Subject]
                 CN=contoso.com
@@ -95,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateString
-Specifies a certificate string.
+Base64 encoded representation of the certificate object to import. This certificate needs to contain the private key.
 
 ```yaml
 Type: System.String

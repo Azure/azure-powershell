@@ -15,22 +15,22 @@ Sets the properties of an Event Grid topic.
 ### TopicNameParameterSet (Default)
 ```
 Set-AzEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-Tag] <Hashtable>
- [-InboundIpRule] <Hashtable> [-PublicNetworkAccess] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InboundIpRule] <Hashtable> [-IdentityType <String>] [-IdentityId <String[]>] [-PublicNetworkAccess] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
 Set-AzEventGridTopic [-ResourceId] <String> [-Tag] <Hashtable> [-InboundIpRule] <Hashtable>
- [-PublicNetworkAccess] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IdentityType <String>] [-IdentityId <String[]>] [-PublicNetworkAccess] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TopicInputObjectParameterSet
 ```
 Set-AzEventGridTopic [-InputObject] <PSTopic> [[-Tag] <Hashtable>] [[-InboundIpRule] <Hashtable>]
- [[-PublicNetworkAccess] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IdentityType <String>] [-IdentityId <String[]>] [[-PublicNetworkAccess] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ Sets the properties of an Event Grid topic. This can be used to replace the tags
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic1 -Tag @{ Department="Finance"; Environment="Test" }
+Set-AzEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic1 -Tag @{ Department="Finance"; Environment="Test" }
 ```
 
 Sets the properties of the Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\` to replace the tags with the specified tags "Department" and "Environment".
@@ -59,6 +59,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityId
+The list of user assigned identities
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Different identity types. Could be either  of following 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -126,7 +156,7 @@ This determines if traffic is allowed over public network. By default it is enab
 Type: System.String
 Parameter Sets: TopicNameParameterSet, ResourceIdEventSubscriptionParameterSet
 Aliases:
-Accepted values: enabled, disabled
+Accepted values: enabled, disabled, enabled, disabled
 
 Required: True
 Position: 4
@@ -139,7 +169,7 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: TopicInputObjectParameterSet
 Aliases:
-Accepted values: enabled, disabled
+Accepted values: enabled, disabled, enabled, disabled
 
 Required: False
 Position: 4

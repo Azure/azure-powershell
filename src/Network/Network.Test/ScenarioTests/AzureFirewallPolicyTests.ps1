@@ -398,6 +398,68 @@ function Test-AzureFirewallPolicyWithDNSSettings {
 
 <#
 .SYNOPSIS
+Tests AzureFirewallPolicyWithSQLSettings
+#>
+function Test-AzureFirewallPolicyWithSQLSetting {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $azureFirewallPolicyName2 = Get-ResourceName
+    $location = "eastus2euap"
+
+    try {
+
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # test new AzureFirewallPolicy with sql redirect
+        $allowSql = New-AzFirewallPolicySqlSetting -AllowSqlRedirect
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SqlSetting $allowSql
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        # verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
+
+        # check sql setting
+        Assert-NotNull $getAzureFirewallPolicy.SqlSetting
+        Assert-AreEqual true $getAzureFirewallPolicy.SqlSetting.AllowSqlRedirect
+
+        # test set AzureFirewallPolicy without sql redirect
+        $disallowSql = New-AzFirewallPolicySqlSetting
+        $azureFirewallPolicy = Set-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SqlSetting $disallowSql
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+        Assert-Null $getAzureFirewallPolicy.SqlSetting.AllowSqlRedirect
+
+        # test set AzureFirewallPolicy with sql redirect
+        $azureFirewallPolicy = Set-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SqlSetting $allowSql
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+        Assert-NotNull $getAzureFirewallPolicy.SqlSetting
+        Assert-AreEqual true $getAzureFirewallPolicy.SqlSetting.AllowSqlRedirect
+
+        # test new AzureFirewallPolicy without sql redirect
+        $azureFirewallPolicy2 = New-AzFirewallPolicy -Name $azureFirewallPolicyName2 -ResourceGroupName $rgname -Location $location
+        $getAzureFirewallPolicy2 = Get-AzFirewallPolicy -Name $azureFirewallPolicyName2 -ResourceGroupName $rgname
+
+        # verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy2.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName2 $getAzureFirewallPolicy2.Name
+        Assert-NotNull $getAzureFirewallPolicy2.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy2.Location
+
+        # check sql setting
+        Assert-Null $getAzureFirewallPolicy2.SqlSetting
+        
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests function Test-AzureFirewallPolicyCRUDWithNetworkRuleDestinationFQDNs.
 #>
 function Test-AzureFirewallPolicyCRUDWithNetworkRuleDestinationFQDNs {
@@ -1369,12 +1431,12 @@ function Test-AzureFirewallPolicyPremiumFeatures {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
         
         # Create Managed Identity
-		$identity = New-AzUserAssignedIdentity -Name $identityName -Location $location -ResourceGroup $rgname
+        $identity = New-AzUserAssignedIdentity -Name $identityName -Location $location -ResourceGroup $rgname
 
         # Intrusion Detection Settings
         $bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name $bypassTestName -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "10.0.0.0"
         $sigOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
-        $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $sigOverride -BypassTraffic $bypass
+        $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $sigOverride -BypassTraffic $bypass -PrivateRange @("10.0.0.0/8", "172.16.0.0/12")
 
         # Create AzureFirewallPolicy (with Intrusion Detection, TransportSecurity and Identity parameters)
         $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier $tier -IntrusionDetection $intrusionDetection  -UserAssignedIdentityId $identity.Id
@@ -1393,8 +1455,11 @@ function Test-AzureFirewallPolicyPremiumFeatures {
         Assert-AreEqual "Alert" $getAzureFirewallPolicy.IntrusionDetection.Mode
         Assert-NotNull $getAzureFirewallPolicy.IntrusionDetection.Configuration.SignatureOverrides
         Assert-NotNull $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings
+        Write-Host $getAzureFirewallPolicy.IntrusionDetection.Configuration
+        Assert-NotNull $getAzureFirewallPolicy.IntrusionDetection.Configuration.PrivateRanges
         Assert-AreEqual "123456798" $getAzureFirewallPolicy.IntrusionDetection.Configuration.SignatureOverrides[0].Id
         Assert-AreEqual "Deny" $getAzureFirewallPolicy.IntrusionDetection.Configuration.SignatureOverrides[0].Mode
+        Assert-AreEqual "10.0.0.0/8" $getAzureFirewallPolicy.IntrusionDetection.Configuration.PrivateRanges[0]
         Assert-AreEqual $bypassTestName $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings[0].Name
         Assert-AreEqual "TCP" $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings[0].Protocol
         Assert-AreEqual "80" $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings[0].DestinationPorts[0]

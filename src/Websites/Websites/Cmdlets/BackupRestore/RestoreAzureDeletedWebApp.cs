@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                     {
                         throw new Exception("Deleted app not found");
                     }
-                    DeletedSite lastDeleted = deletedSites.OrderBy(ds => DateTime.Parse(ds.DeletedTimestamp)).Last();
+                    DeletedSite lastDeleted = deletedSites.OrderBy(ds => DateTime.Parse(ds.DeletedTimestamp, new System.Globalization.CultureInfo("en-US"))).Last();
                     if (deletedSites.Count() > 1)
                     {
                         WriteWarning("Found multiple matching deleted apps. Restoring the most recently deleted app, deleted at " + lastDeleted.DeletedTimestamp);

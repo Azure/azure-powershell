@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 
+## Version 3.1.0
+* Supported empty directory volume and secret volume for creating container group [#17410]
+
+## Version 3.0.1
+* Fixed Identity Bug in ImageRegistryCredential
+
 ## Version 3.0.0
 * Upgraded API version to 2021-09-01
   - [Breaking Change] Changed the type of parameter `LogAnalyticWorkspaceResourceId` in `New-AzContainerGroup` from Hashtable to String

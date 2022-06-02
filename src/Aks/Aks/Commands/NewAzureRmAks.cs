@@ -38,9 +38,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [CmdletDeprecation(ReplacementCmdletName = "New-AzAksCluster")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
-    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks")]
     [OutputType(typeof(PSKubernetesCluster))]
     public class NewAzureRmAks : CreateOrUpdateKubeBase
     {
@@ -380,7 +378,7 @@ namespace Microsoft.Azure.Commands.Aks
                 NetworkPlugin = NetworkPlugin,
                 LoadBalancerSku = LoadBalancerSku
             };
-            if (this.IsParameterBound(c => c.NodeMinCount))
+            if (this.IsParameterBound(c => c.NetworkPolicy))
             {
                 networkProfile.NetworkPolicy = NetworkPolicy;
             }
@@ -399,10 +397,6 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.DockerBridgeCidr))
             {
                 networkProfile.DockerBridgeCidr = DockerBridgeCidr;
-            }
-            if (this.IsParameterBound(c => c.NodeVnetSubnetID))
-            {
-
             }
             networkProfile.LoadBalancerProfile = CreateOrUpdateLoadBalancerProfile(null);
 

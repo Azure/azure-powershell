@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 this.DomainGuid = properties.DomainGuid;
                 this.DomainSid = properties.DomainSid;
                 this.AzureStorageSid = properties.AzureStorageSid;
+                this.SamAccountName = properties.SamAccountName;
+                this.AccountType = properties.AccountType;
             }
         }
         public string DomainName { get; set; }
@@ -53,5 +55,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string DomainGuid { get; set; }
         public string DomainSid { get; set; }
         public string AzureStorageSid { get; set; }
+        public string SamAccountName { get; set; }
+        public string AccountType { get; set; }
     }
 }

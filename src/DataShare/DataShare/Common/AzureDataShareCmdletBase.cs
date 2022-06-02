@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 namespace Microsoft.Azure.Commands.DataShare.Common
 {
     using Microsoft.Azure.Management.DataShare;
@@ -21,11 +20,12 @@ namespace Microsoft.Azure.Commands.DataShare.Common
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
-
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     /// <summary>
     /// Base class of azure data share cmdlet.
     /// </summary>
+    [GenericBreakingChange("DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.")]
     public class AzureDataShareCmdletBase : AzureRMCmdlet
     {
         private IDataShareManagementClient dataShareManagementClient;

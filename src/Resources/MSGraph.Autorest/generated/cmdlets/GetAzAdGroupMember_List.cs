@@ -9,9 +9,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
     using System;
 
     /// <summary>
-    /// Users, contacts, and groups that are members of this group. HTTP Methods: GET (supported for all groups), POST (supported
-    /// for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only. Nullable.
-    /// Supports $expand.
+    /// UMembers of this group, who can be users, devices, other groups, or service principals. Supports the List members, Add
+    /// member, and Remove member operations. Nullable. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=members($select=id,userPrincipalName,displayName).
     /// </summary>
     /// <remarks>
     /// [OpenAPI] ListMembers=>GET:"/groups/{group-id}/members"
@@ -19,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzADGroupMember_List", SupportsPaging = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Description(@"Users, contacts, and groups that are members of this group. HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only. Nullable. Supports $expand.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Description(@"UMembers of this group, who can be users, devices, other groups, or service principals. Supports the List members, Add member, and Remove member operations. Nullable. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=members($select=id,userPrincipalName,displayName).")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Generated]
     public partial class GetAzADGroupMember_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener
@@ -51,22 +50,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.MSGraph Client => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.ClientAPI;
-
-        /// <summary>Backing field for <see cref="ConsistencyLevel" /> property.</summary>
-        private string _consistencyLevel;
-
-        /// <summary>
-        /// Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/",
-        SerializedName = @"ConsistencyLevel",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Header)]
-        public string ConsistencyLevel { get => this._consistencyLevel; set => this._consistencyLevel = value; }
 
         /// <summary>Backing field for <see cref="Count" /> property.</summary>
         private global::System.Management.Automation.SwitchParameter _count;
@@ -150,11 +133,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Orderby" /> property.</summary>
@@ -227,30 +210,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObject"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.ICollectionOfDirectoryObjectAutoGenerated"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObject> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.ICollectionOfDirectoryObjectAutoGenerated> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -262,7 +250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>
@@ -370,7 +358,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -385,12 +372,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.GroupsListMembers(this.InvocationInformation.BoundParameters.ContainsKey("ConsistencyLevel") ? ConsistencyLevel : null, GroupId, this.InvocationInformation.BoundParameters.ContainsKey("Search") ? Search : null, this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, this.InvocationInformation.BoundParameters.ContainsKey("Count") ? Count : default(global::System.Management.Automation.SwitchParameter?), this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null /* arrayOf */, this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */, this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* arrayOf */, onOk, onDefault, this, Pipeline);
+                    await this.Client.GroupsListMembers(GroupId, this.InvocationInformation.BoundParameters.ContainsKey("Search") ? Search : null, this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, this.InvocationInformation.BoundParameters.ContainsKey("Count") ? Count : default(global::System.Management.Automation.SwitchParameter?), this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null /* arrayOf */, this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */, this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* arrayOf */, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ConsistencyLevel=this.InvocationInformation.BoundParameters.ContainsKey("ConsistencyLevel") ? ConsistencyLevel : null,GroupId=GroupId,Search=this.InvocationInformation.BoundParameters.ContainsKey("Search") ? Search : null,Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null,Count=this.InvocationInformation.BoundParameters.ContainsKey("Count") ? Count : default(global::System.Management.Automation.SwitchParameter?),Orderby=this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null /* arrayOf */,Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */,Expand=this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* arrayOf */})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  GroupId=GroupId,Search=this.InvocationInformation.BoundParameters.ContainsKey("Search") ? Search : null,Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null,Count=this.InvocationInformation.BoundParameters.ContainsKey("Count") ? Count : default(global::System.Management.Automation.SwitchParameter?),Orderby=this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null /* arrayOf */,Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */,Expand=this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* arrayOf */})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -413,12 +400,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -435,15 +422,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ConsistencyLevel=this.InvocationInformation.BoundParameters.ContainsKey("ConsistencyLevel") ? ConsistencyLevel : null, GroupId=GroupId, Search=this.InvocationInformation.BoundParameters.ContainsKey("Search") ? Search : null, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, Count=this.InvocationInformation.BoundParameters.ContainsKey("Count") ? Count : default(global::System.Management.Automation.SwitchParameter?), Orderby=this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null /* arrayOf */, Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */, Expand=this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* arrayOf */ })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { GroupId=GroupId, Search=this.InvocationInformation.BoundParameters.ContainsKey("Search") ? Search : null, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, Count=this.InvocationInformation.BoundParameters.ContainsKey("Count") ? Count : default(global::System.Management.Automation.SwitchParameter?), Orderby=this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null /* arrayOf */, Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */, Expand=this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* arrayOf */ })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ConsistencyLevel=this.InvocationInformation.BoundParameters.ContainsKey("ConsistencyLevel") ? ConsistencyLevel : null, GroupId=GroupId, Search=this.InvocationInformation.BoundParameters.ContainsKey("Search") ? Search : null, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, Count=this.InvocationInformation.BoundParameters.ContainsKey("Count") ? Count : default(global::System.Management.Automation.SwitchParameter?), Orderby=this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null /* arrayOf */, Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */, Expand=this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* arrayOf */ })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { GroupId=GroupId, Search=this.InvocationInformation.BoundParameters.ContainsKey("Search") ? Search : null, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, Count=this.InvocationInformation.BoundParameters.ContainsKey("Count") ? Count : default(global::System.Management.Automation.SwitchParameter?), Orderby=this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null /* arrayOf */, Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */, Expand=this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* arrayOf */ })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -453,12 +440,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObject"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.ICollectionOfDirectoryObjectAutoGenerated"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObject> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.ICollectionOfDirectoryObjectAutoGenerated> response)
         {
             using( NoSynchronizationContext )
             {

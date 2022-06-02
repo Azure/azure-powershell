@@ -25,8 +25,8 @@ The **Set-AzAutomationConnectionFieldValue** cmdlet modifies the value of a fiel
 ## EXAMPLES
 
 ### Example 1: Change a field value in a connection
-```
-PS C:\>Set-AzAutomationConnectionFieldValue -Name "ContosoConnection" -ConnectionFieldName "SubscriptionID" -Value "b53ec456-3494-4847-8f2b-180901c51050" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
+```powershell
+Set-AzAutomationConnectionFieldValue -Name "ContosoConnection" -ConnectionFieldName "SubscriptionID" -Value "b53ec456-3494-4847-8f2b-180901c51050" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 This command changes the subscription ID for the Azure connection named ContosoConnection in the Automation account named AutomationAccount01.

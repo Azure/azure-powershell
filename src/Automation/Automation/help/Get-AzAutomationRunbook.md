@@ -32,8 +32,8 @@ To get a specific runbook, specify its name.
 ## EXAMPLES
 
 ### Example 1: Get all runbooks
-```
-PS C:\>Get-AzAutomationRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01"
+```powershell
+Get-AzAutomationRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command gets all runbooks in the Azure Automation account named Contoso17.

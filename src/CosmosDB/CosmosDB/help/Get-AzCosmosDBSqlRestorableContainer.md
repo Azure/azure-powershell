@@ -34,10 +34,12 @@ For example, if user wants to restore the database account to a timestamp when a
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBSqlRestorableContainer -Location {location} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId} -DatabaseRId {DatabaseRId}
+Get-AzCosmosDBSqlRestorableContainer -Location "location" -DatabaseAccountInstanceId "DatabaseAccountInstanceId" -DatabaseRId "DatabaseRId"
+```
 
+```output
 Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts
-                    /{DatabaseAccountInstanceIdInstanceId}/restorableSqlContainers/6a0cb3e4-7d2b-4363-b585-04a3b14ada8c
+                    /{DatabaseAccountInstanceId}/restorableSqlContainers/6a0cb3e4-7d2b-4363-b585-04a3b14ada8c
 Name            : 6a0cb3e4-7d2b-4363-b585-04a3b14ada8c
 Type            : Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableSqlContainers
 _rid            : qsLuzwAAAA==
@@ -48,7 +50,7 @@ OwnerResourceId : Ts0YAPGKTvw=
 Container       : Microsoft.Azure.Management.CosmosDB.Models.PSRestorableSqlContainerPropertiesResourceContainer
 
 Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts
-                    /{DatabaseAccountInstanceIdInstanceId}/restorableSqlContainers/ff36d1d3-f9dc-40a0-a003-60fe349abcfb
+                    /{DatabaseAccountInstanceId}/restorableSqlContainers/ff36d1d3-f9dc-40a0-a003-60fe349abcfb
 Name            : ff36d1d3-f9dc-40a0-a003-60fe349abcfb
 Type            : Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableSqlContainers
 _rid            : Ngu72QAAAA==
@@ -59,7 +61,7 @@ OwnerResourceId : Ts0YAP+RbG0=
 Container       : Microsoft.Azure.Management.CosmosDB.Models.PSRestorableSqlContainerPropertiesResourceContainer
 
 Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts
-                    /{DatabaseAccountInstanceIdInstanceId}/restorableSqlContainers/2afb35ba-1755-4fbc-85be-ae175dd0668f
+                    /{DatabaseAccountInstanceId}/restorableSqlContainers/2afb35ba-1755-4fbc-85be-ae175dd0668f
 Name            : 2afb35ba-1755-4fbc-85be-ae175dd0668f
 Type            : Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableSqlContainers
 _rid            : lSuf5gAAAA==
@@ -90,21 +92,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DatabaseRId
 ResourceId of the database.
 
@@ -114,6 +101,21 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -25,7 +25,7 @@ The **New-AzApplicationGatewayPrivateLinkIpConfiguration** cmdlet creates an Ip 
 
 ### Example 1: PrivateLink Ip Configuration
 ```powershell
-PS C:\> $PrivateLinkIpConfiguration = New-AzApplicationGatewayPrivateLinkIpConfiguration -Name "ipConfig01" -Subnet $subnet -Primary
+$PrivateLinkIpConfiguration = New-AzApplicationGatewayPrivateLinkIpConfiguration -Name "ipConfig01" -Subnet $subnet -Primary
 ```
 
 This command creates an PrivateLink IP Configuration named 'ipConfig01' stores the result in the variable named $PrivateLinkIpConfiguration. 

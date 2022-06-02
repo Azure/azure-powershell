@@ -12,53 +12,44 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 
 namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 {
-    public class SetAzAdvisorConfiguration
+    public class SetAzAdvisorConfiguration : AdvisorTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public SetAzAdvisorConfiguration(Xunit.Abstractions.ITestOutputHelper output)
+        public SetAzAdvisorConfiguration(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzAdvisorConfigurationBadUserInputLowCpu()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzAdvisorConfigurationBadUserInputLowCpu-Negative");
+            TestRunner.RunTestScript("Set-AzAdvisorConfigurationBadUserInputLowCpu-Negative");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzAdvisorConfigurationByLowCpu()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzAdvisorConfigurationWithLowCpu");
+            TestRunner.RunTestScript("Set-AzAdvisorConfigurationWithLowCpu");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzAdvisorConfigurationByLowCpuExclude()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzAdvisorConfigurationByLowCpuExclude");
+            TestRunner.RunTestScript("Set-AzAdvisorConfigurationByLowCpuExclude");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzAdvisorConfigurationPipelineByLowCpuExclude()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzAdvisorConfigurationPipelineByLowCpuExclude");
+            TestRunner.RunTestScript("Set-AzAdvisorConfigurationPipelineByLowCpuExclude");
         }
 
         // ResourceGroupParameterSets
@@ -66,14 +57,14 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzAdvisorConfigurationByRg()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzAdvisorConfigurationWithRg");
+            TestRunner.RunTestScript("Set-AzAdvisorConfigurationWithRg");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzAdvisorConfigurationByRgExclude()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzAdvisorConfigurationByRgExclude");
+            TestRunner.RunTestScript("Set-AzAdvisorConfigurationByRgExclude");
         }
 
     }

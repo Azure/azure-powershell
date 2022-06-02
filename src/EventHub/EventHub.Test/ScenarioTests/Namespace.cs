@@ -39,6 +39,20 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void MSIEncryptionTest()
+        {
+            TestRunner.RunTestScript("EncryptionTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void MSITest()
+        {
+            TestRunner.RunTestScript("MSITest");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SchemaRegistry()
         {

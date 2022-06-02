@@ -112,6 +112,12 @@ function Update-AzPostgreSqlServer {
         [System.Collections.Hashtable]
         ${Tag},
 
+        [Parameter(HelpMessage='Enable or disable public network access')]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.PublicNetworkAccessEnum])]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.PublicNetworkAccessEnum]
+        ${PublicNetworkAccess},
+
         [Parameter(HelpMessage = 'The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]

@@ -21,23 +21,16 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     /// <summary>
     /// The get location tests.
     /// </summary>
-    public class GetLocationTests
+    public class GetLocationTests : PeeringTestRunner
     {
-        /// <summary>
-        /// The logger.
-        /// </summary>
-        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="GetLocationTests"/> class.
         /// </summary>
         /// <param name="output">
         /// The output.
         /// </param>
-        public GetLocationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public GetLocationTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         /// <summary>
@@ -47,7 +40,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLocationKindDirect()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindDirect");
+            TestRunner.RunTestScript("Test-GetLocationKindDirect");
         }
 
         /// <summary>
@@ -57,7 +50,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLocationKindExchange()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindExchange");
+            TestRunner.RunTestScript("Test-GetLocationKindExchange");
         }
 
         /// <summary>
@@ -67,7 +60,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLocationKindExchangeSeattle()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindExchangeSeattle");
+            TestRunner.RunTestScript("Test-GetLocationKindExchangeSeattle");
         }
 
         /// <summary>
@@ -77,7 +70,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLocationKindDirectSeattle()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindDirectSeattle");
+            TestRunner.RunTestScript("Test-GetLocationKindDirectSeattle");
         }
 
         /// <summary>
@@ -87,7 +80,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLocationKindDirectSeattle99999WithLocation()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindDirectSeattle99999WithLocation");
+            TestRunner.RunTestScript("Test-GetLocationKindDirectSeattle99999WithLocation");
         }
 
         /// <summary>
@@ -97,7 +90,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLocationKindDirectSeattle99999()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindDirectSeattle99999");
+            TestRunner.RunTestScript("Test-GetLocationKindDirectSeattle99999");
         }
 
         /// <summary>
@@ -107,7 +100,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLocationKindDirectAmsterdam()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindDirectAmsterdam");
+            TestRunner.RunTestScript("Test-GetLocationKindDirectAmsterdam");
         }
     }
 }

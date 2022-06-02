@@ -100,17 +100,21 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
 ## DESCRIPTION
 The New-AzHDInsightCluster creates an Azure HDInsight cluster by using the specified parameters or by using a configuration object that is created by using the New-AzHDInsightClusterConfig cmdlet.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /servicePrincipals/{id}
+
 ## EXAMPLES
 
 ### Example 1: Create an Azure HDInsight cluster
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -139,14 +143,14 @@ PS C:\&gt; # Primary storage account info
 This command creates a cluster in the current subscription.
 
 ### Example 2: Create cluster with customer-managed key disk encryption
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -183,14 +187,14 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 3: Create an Azure HDInsight cluster which enables encryption in transit
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -218,14 +222,14 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 4: Create an Azure HDInsight cluster with relay outbound and private link feature
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -258,14 +262,14 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 5: Create an Azure HDInsight cluster which enables encryption at host
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -293,14 +297,14 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 6: Create an Azure HDInsight cluster which enables autoscale.
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -332,14 +336,14 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 7: Create an Azure HDInsight cluster with Kafka Rest Proxy.
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -374,13 +378,13 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 8: Create an Azure HDInsight cluster with Azure Data Lake Gen2 storage.
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageManagedIdentity = "yourstorageusermanagedidentity"
         $storageFileSystem = "filesystem01"
-        $storageAccountType=AzureDataLakeStorageGen2
+        $storageAccountType = "AzureDataLakeStorageGen2"
 
         # Cluster configuration info
         $location = "East US 2"
@@ -407,8 +411,8 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 9: Create an Azure HDInsight cluster with Enterprise Security Package(ESP) and Enable HDInsight ID Broker.
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountKey = "yourstorageaccountaccesskey"
@@ -432,7 +436,7 @@ PS C:\&gt; # Primary storage account info
         $clusterUserGroupDns = "dominusergroup"
         $ldapUrls = "ldaps://{your domain name}:636"
 
-        $clusterTier = Premium
+        $clusterTier = "Premium"
         $vnetId = "yourvnetid"
         $subnetName = "yoursubnetname"
         $assignedIdentity = "your user managed assigned identity resourcee id"
@@ -442,7 +446,7 @@ PS C:\&gt; # Primary storage account info
 
         # Create the cluster
         New-AzHDInsightCluster `
-            -ClusteTier $clusterTier `
+            -ClusterTier $clusterTier `
             -ClusterType Hadoop `
             -ClusterSizeInNodes 3 `
             -ResourceGroupName $clusterResourceGroupName `
@@ -459,14 +463,14 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 10: Create an Azure HDInsight cluster which enables compute isolation.
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -500,14 +504,14 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 11: Create an Azure HDInsight cluster with private link configuration feature
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -551,14 +555,14 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 12: Create an Azure HDInsight cluster availability feature
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info

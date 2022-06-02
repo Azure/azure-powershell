@@ -12,71 +12,64 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
 {
-    public class ResourceGraphQueryTests
+    public class ResourceGraphQueryTests : ResourceGraphTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public ResourceGraphQueryTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ResourceGraphQueryTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Query()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-Query");
+            TestRunner.RunTestScript("Search-AzureRmGraph-Query");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PagedQuery()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-PagedQuery");
+            TestRunner.RunTestScript("Search-AzureRmGraph-PagedQuery");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Subscriptions()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-Subscriptions");
+            TestRunner.RunTestScript("Search-AzureRmGraph-Subscriptions");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagementGroups()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-ManagementGroups");
+            TestRunner.RunTestScript("Search-AzureRmGraph-ManagementGroups");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SkipTokenQuery()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-SkipTokenQuery");
+            TestRunner.RunTestScript("Search-AzureRmGraph-SkipTokenQuery");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void QueryError()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-QueryError");
+            TestRunner.RunTestScript("Search-AzureRmGraph-QueryError");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionAndManagementGroupQueryError()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-SubscriptionAndManagementGroupQueryError");
+            TestRunner.RunTestScript("Search-AzureRmGraph-SubscriptionAndManagementGroupQueryError");
         }
     }
 }

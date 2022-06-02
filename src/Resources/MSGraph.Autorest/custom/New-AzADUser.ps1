@@ -18,19 +18,6 @@
 Adds new entity to users
 .Description
 Adds new entity to users
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
 .Notes
 
 .Link
@@ -48,11 +35,9 @@ param(
     ${AboutMe},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # true if the account is enabled; otherwise, false.
-    # This property is required when a user is created.
-    # Supports $filter (eq, ne, NOT, and in).
+    [System.Boolean]
+    [Alias('EnableAccount')]
+    # true for enabling the account; otherwise, false.
     ${AccountEnabled},
 
     [Parameter()]
@@ -476,7 +461,7 @@ param(
       $passwordProfile.Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['Password']
       $null = $PSBoundParameters.Remove('Password')
       $null = $PSBoundParameters.Remove('ForceChangePasswordNextLogin')
-      $PSBoundParameters['accountEnabled'] = $true
+      $PSBoundParameters['AccountEnabled'] = $true
       $PSBoundParameters['PasswordProfile'] = $passwordProfile
     }
 

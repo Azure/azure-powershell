@@ -78,7 +78,7 @@ JSON string (using **UpdateVersionByNameFromJsonParameterSet** parameter set) or
 
 ### Example 1
 ```powershell
-PS C:\> $templateJson = @"
+$templateJson = @"
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -86,7 +86,7 @@ PS C:\> $templateJson = @"
     "resources": []
 }
 "@
-PS C:\> Set-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v1.0' -Location 'West US' -TemplateJson $templateJson
+Set-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v1.0' -Location 'West US' -TemplateJson $templateJson
 ```
 
 Modifies version "v1.0" of a Template Spec named "myTemplateSpec". The specified version 
@@ -101,7 +101,7 @@ do not already exist they will be created.
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v2.0' -Location 'West US' -TemplateFile 'myTemplateContent.json'
+Set-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v2.0' -Location 'West US' -TemplateFile 'myTemplateContent.json'
 ```
 
 Modifies version "v2.0" of a Template Spec named "myTemplateSpec". The specified version 
@@ -112,7 +112,7 @@ root Template Spec and/or version do not already exist they will be created.
 
 ### Example 3
 ```powershell
-PS C:\> Set-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec'  -Location 'West US' -Description 'My updated Template Spec'
+Set-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec'  -Location 'West US' -Description 'My updated Template Spec'
 ```
 
 Modifies the description of the Template Spec named "myTemplateSpec" in resource group "myRG". If the 

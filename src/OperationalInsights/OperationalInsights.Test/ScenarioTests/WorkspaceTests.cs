@@ -12,42 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
-    public class WorkspaceTests : OperationalInsightsScenarioTestBase
+    public class WorkspaceTests : OperationalInsightsTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public WorkspaceTests(ITestOutputHelper output)
+        public WorkspaceTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWorkspaceCreateUpdateDelete()
         {
-            RunPowerShellTest(_logger, "Test-WorkspaceCreateUpdateDelete");
+            TestRunner.RunTestScript("Test-WorkspaceCreateUpdateDelete");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWorkspaceActions()
         {
-            RunPowerShellTest(_logger, "Test-WorkspaceActions");
+            TestRunner.RunTestScript("Test-WorkspaceActions");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWorkspaceEnableDisableListIntelligencePacks()
         {
-            RunPowerShellTest(_logger, "Test-WorkspaceEnableDisableListIntelligencePacks");
+            TestRunner.RunTestScript("Test-WorkspaceEnableDisableListIntelligencePacks");
         }
     }
 }

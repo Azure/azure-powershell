@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Location = vault.Properties.Location;
             DeletionDate = vault.Properties.DeletionDate;
             ScheduledPurgeDate = vault.Properties.ScheduledPurgeDate;
+            EnablePurgeProtection = vault.Properties.PurgeProtectionEnabled;
             Tags = vault.Properties.Tags?.ConvertToHashtable();
         }
         public string Id { get; private set; }
