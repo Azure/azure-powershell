@@ -85,6 +85,15 @@ As mentioned in Step 1, each config maps to a parameter of `Get-AzConfig`, `Upda
 
 ## Guide: How to Get the Value of a Config
 
+Now that you have defined and registered the config, it is time to get its value. First you need to get the singleton of `IConfigManager`, then use `T GetConfigValue<T>(string key, object invocation = null);`. For example:
+
+```csharp
+AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager);
+string subscriptionFromConfig = configManager.GetConfigValue<string>(ConfigKeys.DefaultSubscriptionForLogin, MyInvocation);
+```
+
+Note that although `invocation` is optional, if the config can apply to either `AppliesTo.Module` or `AppliesTo.Cmdlet` (see [todo]), it must be `MyInvocation`. 
+
 ## Special Cases
 
 ### Limit the Possibility of AppliesTo
