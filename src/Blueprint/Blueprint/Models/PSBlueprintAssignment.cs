@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
         /// Create a PSBluprintAssignment object from an Assignment model.
         /// </summary>
         /// <param name="assignment">Assignment object from which to create the PSBlueprintAssignment.</param>
-        /// <param name="subscriptionId">ID of the subscription the assignment is associated with.</param>
         /// <returns>A new PSBlueprintAssignment object.</returns>
         internal static PSBlueprintAssignment FromAssignment(Assignment assignment)
         {
