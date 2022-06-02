@@ -92,11 +92,18 @@ AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), ou
 string subscriptionFromConfig = configManager.GetConfigValue<string>(ConfigKeys.DefaultSubscriptionForLogin, MyInvocation);
 ```
 
-Note that although `invocation` is optional, if the config can apply to either `AppliesTo.Module` or `AppliesTo.Cmdlet` (see [todo]), it must be `MyInvocation`. 
+Note that although `invocation` is optional, if the config can apply to either `AppliesTo.Module` or `AppliesTo.Cmdlet` (see [todo]), it must be `MyInvocation`. Alternatively, it could be a good idea to always pass in `MyInvocation`.
 
-## Special Cases
+## Lesser Topics
 
-### Limit the Possibility of AppliesTo
+### About AppliesTo
+
+Configs cannot only be set globally, but also be set for a certain cmdlet or module. For example, the following script disables breaking change warning messages for `Az.KeyVault` module.
+
+```powershell
+Update-AzConfig -DisplayBreakingChangeWarning $false -AppliesTo Az.KeyVault
+```
+
 
 ### Validation of Config Value
 
