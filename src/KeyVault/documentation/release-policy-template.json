@@ -1,0 +1,14 @@
+{
+  "anyOf": [
+    {
+      "allOf": [
+        {
+          "claim": "<claim name>",
+          "equals": "<value to match>"
+        }
+      ],
+      "authority": "<issuer>"
+    }
+  ],
+  "version": "1.0.0"
+}
