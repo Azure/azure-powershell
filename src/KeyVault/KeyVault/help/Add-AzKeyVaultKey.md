@@ -332,6 +332,54 @@ $key = Add-AzKeyVaultKey -VaultName $vaultName -Name $keyName -Destination HSM -
 Generates a key (referred to as a Key Exchange Key (KEK)). The KEK must be an RSA-HSM key that has only the import key operation. Only Key Vault Premium SKU supports RSA-HSM keys.
 For more details please refer to https://docs.microsoft.com/azure/key-vault/keys/hsm-protected-keys
 
+### Example 9: Create a secure key in managed hsm
+
+```powershell
+<# release_policy_template.json
+{
+  "anyOf": [
+    {
+      "allOf": [
+        {
+          "claim": "<claim name>",
+          "equals": "<value to match>"
+        }
+      ],
+      "authority": "<issuer>"
+    }
+  ],
+  "version": "1.0.0"
+}
+#>
+Add-AzKeyVaultKey -HsmName testmhsm -Name test-key -KeyType RSA -Exportable -ReleasePolicyPath release_policy.json
+```
+
+```output
+Vault/HSM Name : testmhsm
+Name           : test-key
+Key Type       : RSA
+Key Size       : 2048
+Curve Name     : 
+Version        : ed6b026bf0a605042006635713d33ef6
+Id             : https://testmhsm.managedhsm.azure.net:443/keys/test-key/ed6b026bf0a605042006635713d33ef6
+Enabled        : True
+Expires        : 
+Not Before     : 
+Created        : 6/2/2022 7:14:37 AM
+Updated        : 6/2/2022 7:14:37 AM
+Recovery Level : Recoverable+Purgeable
+Release Policy : 
+                 Content Type   : application/json; charset=utf-8
+                 Policy Content : {"anyOf":[{"allOf":[{"claim":"x-ms-sgx-is-debuggable","equals":"true"}],"authority":"htt 
+                 ps://sharedeus.eus.attest.azure.net/"}],"version":"1.0.0"}
+                 Immutable      : False
+
+
+Tags           : 
+```
+
+Create a secure key in managed hsm named testmhsm. Its name is test-key and type is RSA. 
+
 ## PARAMETERS
 
 ### -CurveName
@@ -783,6 +831,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+
+### Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm
 
 ### System.String
 
