@@ -3,7 +3,7 @@ external help file:
 Module Name: Az.AppConfiguration
 online version: https://docs.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstorekey
 schema: 2.0.0
----
+--- 
 
 # Get-AzAppConfigurationStoreKey
 
