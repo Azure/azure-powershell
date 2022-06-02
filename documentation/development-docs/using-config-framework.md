@@ -67,6 +67,8 @@ internal class DisplayBreakingChangeWarningsConfig : TypedConfig<bool>
 }
 ```
 
+Definining configs in the standard way is more customizable than the simple way, for example when it comes to validating values and parsing enviroment variables. For more, see [todo].
+
 ### Step 2: Register the Config
 
 Either way the config is defined, instanciate it and call [`IConfigManager.RegisterConfig(ConfigDefinition config)`](https://github.com/Azure/azure-powershell-common/blob/8d70507d41a3698b5b131df61f14e329d7a6eb41/src/Authentication.Abstractions/Interfaces/IConfigManager.cs#L30) in [`ConfigInitializer.RegisterConfigs(IConfigManager configManager)`](https://github.com/Azure/azure-powershell/blob/304e15c84071fee02622734c4e5f12c05baa77d2/src/Accounts/Authentication/Config/ConfigInitializer.cs#L192). For example:
@@ -75,9 +77,11 @@ Either way the config is defined, instanciate it and call [`IConfigManager.Regis
 configManager.RegisterConfig(new DisplayBreakingChangeWarningsConfig());
 ```
 
+Up until now, you are able to test this new config with `Get-AzConfig`, `Update-AzConfig` and `Clear-AzConfig`. For more, run `Get-Help Get-AzConfig`.
+
 ### Step 3: Regenerate Help Documents
 
-As mentioned in Step 1, the key 
+As mentioned in Step 1, each config maps to a parameter of `Get-AzConfig`, `Update-AzConfig`, and `Clear-AzConfig`, so it is important to regenerate help documents after introducing new configs. Here are [the instructions](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/help-generation.md#updating-help-after-making-cmdlet-changes).
 
 ## Guide: How to Get the Value of a Config
 
