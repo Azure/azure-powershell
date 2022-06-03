@@ -16,11 +16,15 @@ using Microsoft.Azure.Commands.IotCentral.Common;
 using Microsoft.Azure.Commands.IotCentral.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.IotCentral;
-using Microsoft.Azure.Management.IotCentral.Models;
+using Azure.ResourceManager.IotCentral;
+using Azure.ResourceManager.IotCentral.Models;
+using Azure.Core;
+//using Microsoft.Azure.Management.IotCentral;
+//using Microsoft.Azure.Management.IotCentral.Models;
 using System.Collections;
 using System.Management.Automation;
 using ResourceProperties = Microsoft.Azure.Commands.Management.IotCentral.Properties;
+using Azure;
 
 namespace Microsoft.Azure.Commands.Management.IotCentral
 {
@@ -64,13 +68,13 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
             this.SetNameAndResourceGroup();
             if (ShouldProcess(Name, ResourceProperties.Resources.SetIotCentralApp))
             {
-                AppPatch applicationPatch = CreateApplicationPatch();
-                App updatedIotCentralApplication = this.IotCentralClient.Apps.Update(this.ResourceGroupName, this.Name, applicationPatch);
+                IotCentralAppPatch applicationPatch = CreateApplicationPatch();
+                IotCentralAppResource updatedIotCentralApplication = this.IotCentralClient.Update(WaitUntil.Completed, applicationPatch);
                 this.WriteObject(IotCentralUtils.ToPSIotCentralApp(updatedIotCentralApplication));
             }
         }
 
-        private AppPatch CreateApplicationPatch()
+        private IotCentralAppPatch CreateApplicationPatch()
         {
             var appPatch = new AppPatch(
                 tags: TagsConversionHelper.CreateTagDictionary(this.Tag, true),

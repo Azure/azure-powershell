@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.IotCentral.Common;
-using Microsoft.Azure.Management.IotCentral;
+using Azure.ResourceManager.IotCentral;
+
+//using Microsoft.Azure.Management.IotCentral;
 using System.Management.Automation;
 using ResourceProperties = Microsoft.Azure.Commands.Management.IotCentral.Properties;
 

@@ -17,8 +17,11 @@ using Microsoft.Azure.Commands.IotCentral.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.IotCentral;
-using Microsoft.Azure.Management.IotCentral.Models;
+using Azure.ResourceManager.IotCentral;
+using Azure.ResourceManager.IotCentral.Models;
+
+//using Microsoft.Azure.Management.IotCentral;
+//using Microsoft.Azure.Management.IotCentral.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;

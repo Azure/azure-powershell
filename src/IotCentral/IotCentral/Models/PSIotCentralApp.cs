@@ -13,9 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.IotCentral.Models;
+using Azure.ResourceManager.IotCentral.Models;
+
+//using Microsoft.Azure.Management.IotCentral.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System.Collections.Generic;
+using Azure.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.IotCentral.Models
 {

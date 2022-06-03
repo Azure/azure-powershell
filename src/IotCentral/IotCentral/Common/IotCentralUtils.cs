@@ -13,7 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.IotCentral.Models;
-using Microsoft.Azure.Management.IotCentral.Models;
+using Azure.ResourceManager.IotCentral.Models;
+//using Microsoft.Azure.Management.IotCentral.Models;
 using System.Collections.Generic;
 using System.Linq;
 

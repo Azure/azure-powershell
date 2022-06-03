@@ -17,7 +17,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.IotCentral;
+using Azure.ResourceManager.IotCentral;
+//using Microsoft.Azure.Management.IotCentral;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.IotCentral.Common
