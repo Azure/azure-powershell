@@ -88,45 +88,54 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             ExecutionBlock(() =>
             {
+                base.ExecuteCmdlet();
+
                 string containerName = Container != null ? Container.Name : ResourceId.Split('/')[8];
-                ConfirmAction(
+
+                bool yesToAll = Force.IsPresent;
+                bool noToAll = false;
+                if (ShouldContinue(string.Format(Resources.RegisterContainerWarning, containerName), "", ref yesToAll, ref noToAll))
+                {
+                    //ConfirmAction();
+
+                    /*ConfirmAction(
                     Force.IsPresent,
                     string.Format(Resources.RegisterContainerWarning, containerName),
                     Resources.RegisterContainerMessage,
                     containerName, () =>
-                    {
-                        base.ExecuteCmdlet();
+                    {*/
 
-                        ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                    ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
                         string vaultName = resourceIdentifier.ResourceName;
                         string vaultResourceGroupName = resourceIdentifier.ResourceGroupName;
 
                         PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<Enum, object>()
                             {
-                                { VaultParams.VaultName, vaultName },
-                                { VaultParams.ResourceGroupName, vaultResourceGroupName },
-                                { ContainerParams.Name, containerName },
-                                { ContainerParams.ContainerType, ServiceClientHelpers.GetServiceClientWorkloadType(WorkloadType).ToString() },
-                                { ContainerParams.BackupManagementType, BackupManagementType.ToString() },
-                                { ContainerParams.Container, Container}
+                                        { VaultParams.VaultName, vaultName },
+                                        { VaultParams.ResourceGroupName, vaultResourceGroupName },
+                                        { ContainerParams.Name, containerName },
+                                        { ContainerParams.ContainerType, ServiceClientHelpers.GetServiceClientWorkloadType(WorkloadType).ToString() },
+                                        { ContainerParams.BackupManagementType, BackupManagementType.ToString() },
+                                        { ContainerParams.Container, Container}
                             }, ServiceClientAdapter);
 
-                        IPsBackupProvider psBackupProvider =
-                        providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
-                        psBackupProvider.RegisterContainer();
+                    IPsBackupProvider psBackupProvider =
+                    providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+                    psBackupProvider.RegisterContainer();
 
-                        // List containers
-                        string backupManagementType = BackupManagementType.ToString();
-                        ODataQuery<BMSContainerQueryObject> queryParams = new ODataQuery<BMSContainerQueryObject>(
-                        q => q.FriendlyName == containerName &&
-                        q.BackupManagementType == backupManagementType);
+                    // List containers
+                    string backupManagementType = BackupManagementType.ToString();
+                    ODataQuery<BMSContainerQueryObject> queryParams = new ODataQuery<BMSContainerQueryObject>(
+                    q => q.FriendlyName == containerName &&
+                    q.BackupManagementType == backupManagementType);
 
-                        var listResponse = ServiceClientAdapter.ListContainers(queryParams,
-                            vaultName: vaultName, resourceGroupName: vaultResourceGroupName);
-                        var containerModels = ConversionHelpers.GetContainerModelList(listResponse);
-                        WriteObject(containerModels, enumerateCollection: true);
-                    });
+                    var listResponse = ServiceClientAdapter.ListContainers(queryParams,
+                        vaultName: vaultName, resourceGroupName: vaultResourceGroupName);
+                    var containerModels = ConversionHelpers.GetContainerModelList(listResponse);
+                    WriteObject(containerModels, enumerateCollection: true);
+                    // });
+                }
             }, ShouldProcess(ResourceId, VerbsLifecycle.Register));
         }
     }
