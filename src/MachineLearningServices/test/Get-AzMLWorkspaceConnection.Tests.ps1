@@ -20,6 +20,6 @@ Describe 'Get-AzMLWorkspaceConnection' {
     }
 
     It 'Get' {
-        { Get-AzMLWorkspaceConnection -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-portal01 -ConnectionName test } | Should -Not -Throw
+        { Get-AzMLWorkspaceConnection -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-portal01 -Name test } | Should -Not -Throw
     }
 }

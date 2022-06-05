@@ -17,8 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceConnection')
 Describe 'New-AzMLWorkspaceConnection' {
     It 'CreateExpanded' {
         { 
-            New-AzMLWorkspaceConnection -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -ConnectionName test01 -AuthType 'None' -Category 'ContainerRegistry' -Target "www.facebook.com"
-            Remove-AzMLWorkspaceConnection -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -ConnectionName test01
+            New-AzMLWorkspaceConnection -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name test01 -AuthType 'None' -Category 'ContainerRegistry' -Target "www.facebook.com"
+            Remove-AzMLWorkspaceConnection -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name test01
         } | Should -Not -Throw
     }
 }

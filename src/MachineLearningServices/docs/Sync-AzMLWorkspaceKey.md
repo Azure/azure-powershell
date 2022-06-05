@@ -15,7 +15,7 @@ This includes keys for the storage account, app insights and password for contai
 
 ### Resync (Default)
 ```
-Sync-AzMLWorkspaceKey -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
+Sync-AzMLWorkspaceKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -94,6 +94,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of Azure Machine Learning workspace.
+
+```yaml
+Type: System.String
+Parameter Sets: Resync
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -151,21 +166,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkspaceName
-Name of Azure Machine Learning workspace.
-
-```yaml
-Type: System.String
-Parameter Sets: Resync
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

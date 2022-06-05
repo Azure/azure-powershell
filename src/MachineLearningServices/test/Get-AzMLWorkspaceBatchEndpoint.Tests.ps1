@@ -22,8 +22,4 @@ Describe 'Get-AzMLWorkspaceBatchEndpoint' {
     It 'Get' {
         { Get-AzMLWorkspaceBatchEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name batch-pwsh03 } | Should -Not -Throw
     }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

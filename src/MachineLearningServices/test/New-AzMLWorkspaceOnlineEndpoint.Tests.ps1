@@ -17,9 +17,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceOnlineEndpoi
 Describe 'New-AzMLWorkspaceOnlineEndpoint' {
     It 'CreateExpanded' {
         { 
-            New-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-pwsh02 -Location eastus -AuthMode 'Key' -IdentityType 'SystemAssigned'
-            Update-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-pwsh02 -Tag @{'key'='value'}
-            Remove-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-pwsh02
+            New-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-pwsh03 -Location eastus -AuthMode 'Key' -IdentityType 'SystemAssigned'
+            Update-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-pwsh03 -Tag @{'key'='value'}
+            Remove-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-pwsh03
         } | Should -Not -Throw
     }
 }

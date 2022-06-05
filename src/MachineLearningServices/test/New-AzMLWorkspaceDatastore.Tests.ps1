@@ -17,10 +17,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceDatastore'))
 Describe 'New-AzMLWorkspaceDatastore' {
     It 'CreateExpanded' {
         { 
-            $accountKey = New-AzMLWorkspaceDatastoreKeyCredentialObject -Key "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-            $datastoreBlob = New-AzMLWorkspaceDatastoreBlobObject -AccountName 'mmstorageeastus' -ContainerName "globaldatasets" -Endpoint "core.windows.net" -Protocol "https" -ServiceDataAccessAuthIdentity 'None' -Credentials $accountKey
-            New-AzMLWorkspaceDatastore -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-demo -Name blobdatastore -Datastore $datastoreBlob
-            Remove-AzMLWorkspaceDatastore -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-demo -Name blobdatastore
+            $accountKey = New-AzMLWorkspaceDatastoreKeyCredentialObject -Key "xxxxxxxxxxxxxxxxxxxxxxxx"
+            $datastoreBlob = New-AzMLWorkspaceDatastoreBlobObject -AccountName 'mlworkspacekee7404291888' -ContainerName "globaldatasets" -Endpoint "core.windows.net" -Protocol "https" -ServiceDataAccessAuthIdentity 'None' -Credentials $accountKey
+            New-AzMLWorkspaceDatastore -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name blobdatastore -Datastore $datastoreBlob
+            Remove-AzMLWorkspaceDatastore -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name blobdatastore
          } | Should -Not -Throw
     }
 }

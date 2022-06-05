@@ -53,6 +53,59 @@ directive:
           "additionalProperties": true,
           "description": "Defines Component definition details.\r\n<see href=\"https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command\" />"
       }
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/start"].post.responses
+    transform: >-
+      return {
+            "200": {
+              "description": "Success."
+            },
+            "202": {
+              "description": "Success."
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+              }
+            }
+          }
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/stop"].post.responses
+    transform: >-
+      return {
+            "200": {
+              "description": "Success."
+            },
+            "202": {
+              "description": "Success."
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+              }
+            }
+          }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/restart"].post.responses
+    transform: >-
+      return {
+            "200": {
+              "description": "Success."
+            },
+            "202": {
+              "description": "Success."
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+              }
+            }
+          }
   # Fix the parameter 'Name' has multiple parameter types [String, String[]] defined, which is not supported.
   - where:
       verb: Get
@@ -411,7 +464,7 @@ directive:
       parameter-name: SecondaryKey
 
   - where:
-      subject: ^WorkspaceKey$|^WorkspaceFeature$|^Diagnose$|^WorkspaceStorageAccountKey$
+      subject: ^WorkspaceKey$|^WorkspaceFeature$|^Diagnose$|^WorkspaceStorageAccountKey$|^Key$
       parameter-name: WorkspaceName
     set:
       parameter-name: Name

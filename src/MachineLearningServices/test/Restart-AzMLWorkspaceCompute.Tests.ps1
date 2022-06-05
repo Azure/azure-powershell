@@ -15,14 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Restart-AzMLWorkspaceCompute'
 }
 
 Describe 'Restart-AzMLWorkspaceCompute' {
-    It 'AmlCompute' {
+    It 'AmlCompute' -skip {
         { 
             throw [System.NotImplementedException] 
         } | Should -Not -Throw
     }
 
-    It 'ComputeInstance' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ComputeInstance' {
+        { 
+            Start-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name v-diya1
+            Restart-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name v-diya1 
+        } | Should -Not -Throw
     }
 
     It 'Kubernetes' -skip {

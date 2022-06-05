@@ -15,15 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceBatchDeploym
 }
 
 Describe 'New-AzMLWorkspaceBatchDeployment' {
+    # New-AzMLWorkspaceBatchEndpoint InternalServerError
     It 'CreateExpanded' -skip {
         { 
-            New-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -EndpointName batch-pwsh03 -Name nonmlflowdp -Location "eastus" `
-            -CodeId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/bd430754-fba7-4a63-a6b8-8ea8635767f3/versions/1" -CodeScoringScript "digit_identification.py" `
-            -EnvironmentId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/environments/CliV2AnonymousEnvironment/versions/5d230430f302e7876f9b64710733f68e" `
-            -Compute "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/batch-cluster" `
+            New-AzMLWorkspaceBatchEndpoint -ResourceGroupName bml-rg-test0101 -WorkspaceName mlworkspacekeep -Name batchenpoint01 -AuthMode 'Key' -Location 'eastus'
+            New-AzMLWorkspaceBatchDeployment -ResourceGroupName bml-rg-test01 -WorkspaceName mlworkspacekeep -EndpointName batchenpoint01 -Name debploy01 -Location "eastus" `
+            -CodeId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/bml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/codes/bd430754-fba7-4a63-a6b8-8ea8635767f3/versions/1" -CodeScoringScript "digit_identification.py" `
+            -EnvironmentId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/bml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/environments/CliV2AnonymousEnvironment/versions/5d230430f302e7876f9b64710733f68e" `
+            -Compute "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/bml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/computes/batch-cluster" `
             -ModelReferenceType 'Id' 
-            Update-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -EndpointName batch-pwsh03 -Name nonmlflowdp -Tag @{'key'='value'}
-            Remove-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -EndpointName batch-pwsh03 -Name nonmlflowdp
+            Update-AzMLWorkspaceBatchDeployment -ResourceGroupName bml-rg-test01 -WorkspaceName mlworkspacekeep -EndpointName batch-pwsh03 -Name nonmlflowdp -Tag @{'key'='value'}
+            Remove-AzMLWorkspaceBatchDeployment -ResourceGroupName bml-rg-test01 -WorkspaceName mlworkspacekeep -EndpointName batch-pwsh03 -Name nonmlflowdp
         } | Should -Not -Throw
     }
 }

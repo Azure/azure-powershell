@@ -1,0 +1,92 @@
+{
+  "Get-AzMLWorkspaceModelContainer+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "f69d4639-f692-46de-bc26-23d6b3fe6c16" ],
+        "CommandName": [ "Get-AzMLWorkspaceModelContainer" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceModelContainer_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "76bdaafa-239b-4aa5-9653-90599afebd5e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.096" ],
+        "x-ms-correlation-request-id": [ "76bdaafa-239b-4aa5-9653-90599afebd5e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094055Z:76bdaafa-239b-4aa5-9653-90599afebd5e" ],
+        "Date": [ "Sun, 05 Jun 2022 09:40:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "7852" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/azureml_plucky_collar_5x0ds0fgb3_output_mlflow_log_model\",\n      \"name\": \"azureml_plucky_collar_5x0ds0fgb3_output_mlflow_log_model\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/models\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": {},\n        \"properties\": {},\n        \"isArchived\": false,\n        \"latestVersion\": null,\n        \"nextVersion\": \"1\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-18T07:47:43.4107429Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-05-18T07:47:43.4107429Z\",\n        \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedByType\": \"User\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/sklearn-iris-example\",\n      \"name\": \"sklearn-iris-example\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/models\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": {},\n        \"properties\": {},\n        \"isArchived\": false,\n        \"latestVersion\": \"1\",\n        \"nextVersion\": \"2\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-18T07:57:36.4814572Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-05-18T07:57:36.4814572Z\",\n        \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedByType\": \"User\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/azureml_ivory_beard_fsbkdw8n77_output_mlflow_log_model\",\n      \"name\": \"azureml_ivory_beard_fsbkdw8n77_output_mlflow_log_model\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/models\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": {},\n        \"properties\": {},\n        \"isArchived\": false,\n        \"latestVersion\": null,\n        \"nextVersion\": \"1\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-18T08:06:06.0408795Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-05-18T08:06:06.0408795Z\",\n        \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedByType\": \"User\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/sklearn-iris-cli\",\n      \"name\": \"sklearn-iris-cli\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/models\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": {},\n        \"properties\": {},\n        \"isArchived\": false,\n        \"latestVersion\": \"1\",\n        \"nextVersion\": \"2\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-18T08:35:26.8457455Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-05-18T08:35:26.8457455Z\",\n        \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedByType\": \"User\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/a99089c5-23a6-4431-9ecd-37c70f01c9bc\",\n      \"name\": \"a99089c5-23a6-4431-9ecd-37c70f01c9bc\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/models\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": {},\n        \"properties\": {},\n        \"isArchived\": false,\n        \"latestVersion\": \"1\",\n        \"nextVersion\": \"2\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-19T02:51:55.1429249Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-05-19T02:51:55.1429249Z\",\n        \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedByType\": \"User\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/87ec6e92-9253-4e3a-99f2-415dc3301102\",\n      \"name\": \"87ec6e92-9253-4e3a-99f2-415dc3301102\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/models\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": {},\n        \"properties\": {},\n        \"isArchived\": false,\n        \"latestVersion\": \"1\",\n        \"nextVersion\": \"2\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-20T07:35:06.2009748Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-05-20T07:35:06.2009748Z\",\n        \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedByType\": \"User\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/modelcontaonerpwsh01\",\n      \"name\": \"modelcontaonerpwsh01\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/models\",\n      \"properties\": {\n        \"description\": \"test\",\n        \"tags\": {},\n        \"properties\": {},\n        \"isArchived\": false,\n        \"latestVersion\": null,\n        \"nextVersion\": \"1\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-24T09:21:21.0389365Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-05-24T09:21:21.0389365Z\",\n        \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedByType\": \"User\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/c9436a28-a25c-4e36-ab9d-43be313629fc\",\n      \"name\": \"c9436a28-a25c-4e36-ab9d-43be313629fc\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/models\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": {},\n        \"properties\": {},\n        \"isArchived\": false,\n        \"latestVersion\": \"1\",\n        \"nextVersion\": \"2\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-06-01T06:18:34.2244574Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-06-01T06:18:34.2244574Z\",\n        \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedByType\": \"User\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/modelcontainerpwsh01\",\n      \"name\": \"modelcontainerpwsh01\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/models\",\n      \"properties\": {\n        \"description\": \"code container for test.\",\n        \"tags\": {},\n        \"properties\": {},\n        \"isArchived\": false,\n        \"latestVersion\": \"1\",\n        \"nextVersion\": \"2\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-06-01T16:04:12.2858724Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-06-01T16:04:12.2858724Z\",\n        \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedByType\": \"User\"\n      }\n    }\n  ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMLWorkspaceModelContainer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/azureml_plucky_collar_5x0ds0fgb3_output_mlflow_log_model?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/azureml_plucky_collar_5x0ds0fgb3_output_mlflow_log_model?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "aff46a20-af99-4224-85d3-361119dd99dd" ],
+        "CommandName": [ "Get-AzMLWorkspaceModelContainer" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceModelContainer_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "c493dbcd-18d9-4645-bd43-b258648171e6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.110" ],
+        "x-ms-correlation-request-id": [ "c493dbcd-18d9-4645-bd43-b258648171e6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094056Z:c493dbcd-18d9-4645-bd43-b258648171e6" ],
+        "Date": [ "Sun, 05 Jun 2022 09:40:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "829" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/azureml_plucky_collar_5x0ds0fgb3_output_mlflow_log_model\",\n  \"name\": \"azureml_plucky_collar_5x0ds0fgb3_output_mlflow_log_model\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/models\",\n  \"properties\": {\n    \"description\": null,\n    \"tags\": {},\n    \"properties\": {},\n    \"isArchived\": false,\n    \"latestVersion\": null,\n    \"nextVersion\": \"1\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-05-18T07:47:43.4107429Z\",\n    \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2022-05-18T07:47:43.4107429Z\",\n    \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"lastModifiedByType\": \"User\"\n  }\n}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "Get-AzMLWorkspaceOnlineEndpoint+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "35071cc8-351d-4dbd-b375-8b35dc523b7c" ],
+        "CommandName": [ "Get-AzMLWorkspaceOnlineEndpoint" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceOnlineEndpoint_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "e9e404c4-2875-4fd5-962b-709bcb60c395" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11958" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.644" ],
+        "x-ms-correlation-request-id": [ "e9e404c4-2875-4fd5-962b-709bcb60c395" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094113Z:e9e404c4-2875-4fd5-962b-709bcb60c395" ],
+        "Date": [ "Sun, 05 Jun 2022 09:41:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "8419" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints/online-pwsh02\",\n      \"name\": \"online-pwsh02\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/onlineEndpoints\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"azureml.onlineendpointid\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.machinelearningservices/workspaces/mlworkspace-cli01/onlineendpoints/online-pwsh02\",\n          \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/oe:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:215f6918-f041-49be-8508-3f039340c160?api-version=2022-05-01\"\n        },\n        \"scoringUri\": \"https://online-pwsh02.eastus.inference.ml.azure.com/score\",\n        \"swaggerUri\": \"https://online-pwsh02.eastus.inference.ml.azure.com/swagger.json\",\n        \"authMode\": \"Key\",\n        \"provisioningState\": \"Succeeded\",\n        \"compute\": null,\n        \"traffic\": {}\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-06-01T16:34:43.4044538Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedAt\": \"2022-06-01T16:35:05.8716627Z\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\",\n      \"kind\": \"Managed\",\n      \"identity\": {\n        \"type\": \"SystemAssigned\",\n        \"principalId\": \"08741a55-ad8d-44af-8ec2-5675878ebd18\",\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints/online-portal91\",\n      \"name\": \"online-portal91\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/onlineEndpoints\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"azureml.onlineendpointid\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.machinelearningservices/workspaces/mlworkspace-cli01/onlineendpoints/online-portal91\",\n          \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/oe:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:7466e009-f52c-4038-a138-f791f30d6007?api-version=2022-05-01\"\n        },\n        \"scoringUri\": \"https://online-portal91.eastus.inference.ml.azure.com/score\",\n        \"swaggerUri\": \"https://online-portal91.eastus.inference.ml.azure.com/swagger.json\",\n        \"authMode\": \"AMLToken\",\n        \"provisioningState\": \"Succeeded\",\n        \"compute\": null,\n        \"traffic\": {}\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-06-01T09:20:17.9085972Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedAt\": \"2022-06-01T09:20:38.7354844Z\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\",\n      \"kind\": \"Managed\",\n      \"identity\": {\n        \"type\": \"SystemAssigned\",\n        \"principalId\": \"d0502138-6ccf-4bf6-9097-d8a243f97583\",\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints/online-cli02\",\n      \"name\": \"online-cli02\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/onlineEndpoints\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"azureml.onlineendpointid\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.machinelearningservices/workspaces/mlworkspace-cli01/onlineendpoints/online-cli02\",\n          \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/oe:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:fd54ae18-df31-4714-904c-964e95db6acb?api-version=2022-05-01\"\n        },\n        \"scoringUri\": \"https://online-cli02.eastus.inference.ml.azure.com/score\",\n        \"swaggerUri\": \"https://online-cli02.eastus.inference.ml.azure.com/swagger.json\",\n        \"authMode\": \"Key\",\n        \"provisioningState\": \"Succeeded\",\n        \"compute\": null,\n        \"traffic\": {}\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-19T02:49:44.8859635Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedAt\": \"2022-05-19T02:50:27.0763218Z\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\",\n      \"kind\": \"Managed\",\n      \"identity\": {\n        \"type\": \"SystemAssigned\",\n        \"principalId\": \"e2f19872-0118-4a8c-b5c3-a38527daca53\",\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints/online-cli01\",\n      \"name\": \"online-cli01\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/onlineEndpoints\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"azureml.onlineendpointid\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.machinelearningservices/workspaces/mlworkspace-cli01/onlineendpoints/online-cli01\",\n          \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/oe:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:12cbae7d-c4e3-4e4a-893c-e4f48aba725e?api-version=2022-05-01\"\n        },\n        \"scoringUri\": \"https://online-cli01.eastus.inference.ml.azure.com/score\",\n        \"swaggerUri\": \"https://online-cli01.eastus.inference.ml.azure.com/swagger.json\",\n        \"authMode\": \"Key\",\n        \"provisioningState\": \"Succeeded\",\n        \"compute\": null,\n        \"traffic\": {}\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-19T02:47:34.7095007Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedAt\": \"2022-05-19T02:48:26.7764681Z\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\",\n      \"kind\": \"Managed\",\n      \"identity\": {\n        \"type\": \"SystemAssigned\",\n        \"principalId\": \"fe866747-be21-43ca-9f5a-9b2fbdd33fd8\",\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints/online-pwsh01\",\n      \"name\": \"online-pwsh01\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/onlineEndpoints\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"azureml.onlineendpointid\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.machinelearningservices/workspaces/mlworkspace-cli01/onlineendpoints/online-pwsh01\",\n          \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/oe:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:0139e97c-e6fa-42b2-b4b0-946ab4507aaa?api-version=2022-05-01\"\n        },\n        \"scoringUri\": \"https://online-pwsh01.eastus.inference.ml.azure.com/score\",\n        \"swaggerUri\": \"https://online-pwsh01.eastus.inference.ml.azure.com/swagger.json\",\n        \"authMode\": \"Key\",\n        \"provisioningState\": \"Succeeded\",\n        \"compute\": null,\n        \"traffic\": {}\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-18T09:44:06.3984358Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedAt\": \"2022-05-18T09:44:48.0987389Z\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\",\n      \"kind\": \"Managed\",\n      \"identity\": {\n        \"type\": \"SystemAssigned\",\n        \"principalId\": \"3d689cd5-9b46-49aa-baf8-9925a5aa7db0\",\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\n      }\n    }\n  ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMLWorkspaceOnlineEndpoint+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints?api-version=2022-05-01\u0026name=online-cli01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints?api-version=2022-05-01\u0026name=online-cli01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "48" ],
+        "x-ms-client-request-id": [ "d853b99e-e138-4921-b22b-f1c4cb3fe723" ],
+        "CommandName": [ "Get-AzMLWorkspaceOnlineEndpoint" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceOnlineEndpoint_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "3c64426a-2792-4859-9b02-d51b16eff530" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11957" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.127" ],
+        "x-ms-correlation-request-id": [ "3c64426a-2792-4859-9b02-d51b16eff530" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094115Z:3c64426a-2792-4859-9b02-d51b16eff530" ],
+        "Date": [ "Sun, 05 Jun 2022 09:41:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1711" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints/online-cli01\",\n      \"name\": \"online-cli01\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/onlineEndpoints\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"azureml.onlineendpointid\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.machinelearningservices/workspaces/mlworkspace-cli01/onlineendpoints/online-cli01\",\n          \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/oe:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:12cbae7d-c4e3-4e4a-893c-e4f48aba725e?api-version=2022-05-01\u0026name=online-cli01\"\n        },\n        \"scoringUri\": \"https://online-cli01.eastus.inference.ml.azure.com/score\",\n        \"swaggerUri\": \"https://online-cli01.eastus.inference.ml.azure.com/swagger.json\",\n        \"authMode\": \"Key\",\n        \"provisioningState\": \"Succeeded\",\n        \"compute\": null,\n        \"traffic\": {}\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-19T02:47:34.7095007Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedAt\": \"2022-05-19T02:48:26.7764681Z\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\",\n      \"kind\": \"Managed\",\n      \"identity\": {\n        \"type\": \"SystemAssigned\",\n        \"principalId\": \"fe866747-be21-43ca-9f5a-9b2fbdd33fd8\",\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\n      }\n    }\n  ]\n}",
+      "isContentBase64": false
+    }
+  }
+}

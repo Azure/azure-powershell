@@ -17,8 +17,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceDataContaine
 Describe 'New-AzMLWorkspaceDataContainer' {
     It 'CreateExpanded' {
         { 
-            New-AzMLWorkspaceDataContainer -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -Name datacontainer-pwsh01 -DataType 'uri_file' 
-            Remove-AzMLWorkspaceDataContainer -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -Name datacontainer-pwsh01
+            New-AzMLWorkspaceDataContainer -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name datacontainer-pwsh01 -DataType 'uri_file' 
+            # InternalServerError
+            # Remove-AzMLWorkspaceDataContainer -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name datacontainer-pwsh01
         } | Should -Not -Throw
     }
 }

@@ -15,11 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Sync-AzMLWorkspaceKey'))
 }
 
 Describe 'Sync-AzMLWorkspaceKey' {
-    It 'Resync' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ResyncViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Resync' {
+        { Sync-AzMLWorkspaceKey -ResourceGroupName ml-rg-test -Name mlworkspace-test01 } | Should -Not -Throw
     }
 }

@@ -17,9 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceCodeVersion'
 Describe 'New-AzMLWorkspaceCodeVersion' {
     It 'CreateExpanded' {
         { 
-            New-AzMLWorkspaceCodeVersion -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-portal01 -Name 'test01' -Version 1`
-            -CodeUri "https://mlworkspacepor8056718628.blob.core.windows.net/azureml-blobstore-dc0f7f2b-686d-417b-a456-6c09def791f5/LocalUpload/a8da6e3978c9f8b1cb03501595a9142f/src" 
-            Remove-AzMLWorkspaceCodeVersion -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-portal01 -Name 'test01' -Version 1
+            New-AzMLWorkspaceCodeVersion -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name 'test01' -Version 1 -CodeUri "https://mlworkspacekee7404291888.blob.core.windows.net/azureml-blobstore-179c53d8-ae09-4516-ac03-85af16e8848c/LocalUpload/a8da6e3978c9f8b1cb03501595a9142f/src"
+            Remove-AzMLWorkspaceCodeVersion -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name 'test01' -Version 1
         } | Should -Not -Throw
     }
 }

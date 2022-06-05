@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceComputeKey')
 }
 
 Describe 'Get-AzMLWorkspaceComputeKey' {
+    # Specify compute type support get key. Aml compute unsupport.
     It 'List' -skip {
-        { Get-AzMLWorkspaceComputeKey -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name cpu-cluster } | Should -Not -Throw
+        { Get-AzMLWorkspaceComputeKey -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name v-diya1 } | Should -Not -Throw
     }
 }

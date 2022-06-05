@@ -1,0 +1,222 @@
+{
+  "Start-AzMLWorkspaceCompute+[NoContext]+ComputeInstance+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/v-diya1/start?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/v-diya1/start?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "705b3ba6-0799-4329-bb58-172d96eb663d" ],
+        "CommandName": [ "Start-AzMLWorkspaceCompute" ],
+        "FullCommandName": [ "Start-AzMLWorkspaceCompute_Start" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/f5c0d68a-12ce-4d07-aed5-48d25133332d?api-version=2022-05-01\u0026service=new" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.219" ],
+        "x-ms-request-id": [ "f9bf75d0-ae4c-4de5-b2bd-ab360f04fd65" ],
+        "x-ms-correlation-request-id": [ "f9bf75d0-ae4c-4de5-b2bd-ab360f04fd65" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T110444Z:f9bf75d0-ae4c-4de5-b2bd-ab360f04fd65" ],
+        "Date": [ "Sun, 05 Jun 2022 11:04:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Start-AzMLWorkspaceCompute+[NoContext]+ComputeInstance+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/f5c0d68a-12ce-4d07-aed5-48d25133332d?api-version=2022-05-01\u0026service=new+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/f5c0d68a-12ce-4d07-aed5-48d25133332d?api-version=2022-05-01\u0026service=new",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "705b3ba6-0799-4329-bb58-172d96eb663d" ],
+        "CommandName": [ "Start-AzMLWorkspaceCompute" ],
+        "FullCommandName": [ "Start-AzMLWorkspaceCompute_Start" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.016" ],
+        "x-ms-request-id": [ "956a0b57-8cc8-41a9-988c-cef07446dc32" ],
+        "x-ms-correlation-request-id": [ "956a0b57-8cc8-41a9-988c-cef07446dc32" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T110515Z:956a0b57-8cc8-41a9-988c-cef07446dc32" ],
+        "Date": [ "Sun, 05 Jun 2022 11:05:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "28" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"status\": \"InProgress\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzMLWorkspaceCompute+[NoContext]+ComputeInstance+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/f5c0d68a-12ce-4d07-aed5-48d25133332d?api-version=2022-05-01\u0026service=new+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/f5c0d68a-12ce-4d07-aed5-48d25133332d?api-version=2022-05-01\u0026service=new",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "705b3ba6-0799-4329-bb58-172d96eb663d" ],
+        "CommandName": [ "Start-AzMLWorkspaceCompute" ],
+        "FullCommandName": [ "Start-AzMLWorkspaceCompute_Start" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.016" ],
+        "x-ms-request-id": [ "b7c2369b-bce9-4e44-8307-3934579ba551" ],
+        "x-ms-correlation-request-id": [ "b7c2369b-bce9-4e44-8307-3934579ba551" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T110545Z:b7c2369b-bce9-4e44-8307-3934579ba551" ],
+        "Date": [ "Sun, 05 Jun 2022 11:05:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "28" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"status\": \"InProgress\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzMLWorkspaceCompute+[NoContext]+ComputeInstance+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/f5c0d68a-12ce-4d07-aed5-48d25133332d?api-version=2022-05-01\u0026service=new+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/f5c0d68a-12ce-4d07-aed5-48d25133332d?api-version=2022-05-01\u0026service=new",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "705b3ba6-0799-4329-bb58-172d96eb663d" ],
+        "CommandName": [ "Start-AzMLWorkspaceCompute" ],
+        "FullCommandName": [ "Start-AzMLWorkspaceCompute_Start" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.014" ],
+        "x-ms-request-id": [ "4b7de340-efc1-4e3c-99c8-32f5e5b5d5bf" ],
+        "x-ms-correlation-request-id": [ "4b7de340-efc1-4e3c-99c8-32f5e5b5d5bf" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T110616Z:4b7de340-efc1-4e3c-99c8-32f5e5b5d5bf" ],
+        "Date": [ "Sun, 05 Jun 2022 11:06:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "28" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"status\": \"InProgress\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzMLWorkspaceCompute+[NoContext]+ComputeInstance+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/f5c0d68a-12ce-4d07-aed5-48d25133332d?api-version=2022-05-01\u0026service=new+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/f5c0d68a-12ce-4d07-aed5-48d25133332d?api-version=2022-05-01\u0026service=new",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "705b3ba6-0799-4329-bb58-172d96eb663d" ],
+        "CommandName": [ "Start-AzMLWorkspaceCompute" ],
+        "FullCommandName": [ "Start-AzMLWorkspaceCompute_Start" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.010" ],
+        "x-ms-request-id": [ "8a8e9621-2e18-48a6-8978-dd84acbcc787" ],
+        "x-ms-correlation-request-id": [ "8a8e9621-2e18-48a6-8978-dd84acbcc787" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T110646Z:8a8e9621-2e18-48a6-8978-dd84acbcc787" ],
+        "Date": [ "Sun, 05 Jun 2022 11:06:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "55" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"status\": \"Succeeded\",\n  \"percentComplete\": 100.0\n}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "Get-AzMLWorkspaceComputeKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/cpu-cluster/listKeys?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/cpu-cluster/listKeys?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "fcdc24ec-8d71-4852-a29b-e6207c140883" ],
+        "CommandName": [ "Get-AzMLWorkspaceComputeKey" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceComputeKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "error" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.059" ],
+        "x-ms-request-id": [ "796026b5-8f7b-44e4-ba61-4e010e72e2bd" ],
+        "x-ms-correlation-request-id": [ "796026b5-8f7b-44e4-ba61-4e010e72e2bd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094024Z:796026b5-8f7b-44e4-ba61-4e010e72e2bd" ],
+        "Date": [ "Sun, 05 Jun 2022 09:40:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "660" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"error\": {\n    \"code\": \"UserError\",\n    \"severity\": null,\n    \"message\": \"AmlCompute computes do not have any secrets associated with them. This operation is not supported.\",\n    \"messageFormat\": null,\n    \"messageParameters\": null,\n    \"referenceCode\": null,\n    \"detailsUri\": null,\n    \"target\": null,\n    \"details\": [],\n    \"innerError\": null,\n    \"debugInfo\": null,\n    \"additionalInfo\": null\n  },\n  \"correlation\": {\n    \"operation\": \"11abe4c1bf44364088ff71f446df71a9\",\n    \"request\": \"9c369c17f32cbd16\"\n  },\n  \"environment\": \"eastus\",\n  \"location\": \"eastus\",\n  \"time\": \"2022-06-05T09:40:24.4935943+00:00\",\n  \"componentName\": \"machinelearningcompute\"\n}",
+      "isContentBase64": false
+    }
+  }
+}

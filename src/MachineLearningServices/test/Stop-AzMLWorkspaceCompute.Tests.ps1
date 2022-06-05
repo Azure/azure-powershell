@@ -15,11 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzMLWorkspaceCompute'))
 }
 
 Describe 'Stop-AzMLWorkspaceCompute' {
-    It 'Stop' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'StopViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ComputeInstance' {
+        { Stop-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name v-diya1 } | Should -Not -Throw
     }
 }

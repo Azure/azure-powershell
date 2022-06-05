@@ -17,8 +17,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceComponentCon
 Describe 'New-AzMLWorkspaceComponentContainer' {
     It 'CreateExpanded' {
         { 
-            New-AzMLWorkspaceComponentContainer -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name component-pwsh01 -IsArchived
-            Remove-AzMLWorkspaceComponentContainer -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name component-pwsh01
+            New-AzMLWorkspaceComponentContainer -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name component-pwsh01 -IsArchived
+            # Operation DeleteComponentContainer Not Allowed
+            # Remove-AzMLWorkspaceComponentContainer -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name component-pwsh01
         } | Should -Not -Throw
     }
 }

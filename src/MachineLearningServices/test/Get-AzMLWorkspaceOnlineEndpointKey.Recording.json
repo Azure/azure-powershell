@@ -1,0 +1,46 @@
+{
+  "Get-AzMLWorkspaceOnlineEndpointKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints/online-cli01/listKeys?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints/online-cli01/listKeys?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "49" ],
+        "x-ms-client-request-id": [ "72ade8ab-c4b3-478b-b68b-2925fe501495" ],
+        "CommandName": [ "Get-AzMLWorkspaceOnlineEndpointKey" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceOnlineEndpointKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.486" ],
+        "x-ms-request-id": [ "df45e91d-a5e7-484b-9970-c1c5dcf471bb" ],
+        "x-ms-correlation-request-id": [ "df45e91d-a5e7-484b-9970-c1c5dcf471bb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094117Z:df45e91d-a5e7-484b-9970-c1c5dcf471bb" ],
+        "Date": [ "Sun, 05 Jun 2022 09:41:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"primaryKey\": \"5uicYaZ223M8aM5n20PRInVtWj9Ng8QZ\",\n  \"secondaryKey\": \"wZR09qFuOUrkrCYYA4rZicIMGW1suOqE\"\n}",
+      "isContentBase64": false
+    }
+  }
+}

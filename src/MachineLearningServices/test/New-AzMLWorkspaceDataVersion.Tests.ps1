@@ -17,8 +17,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceDataVersion'
 Describe 'New-AzMLWorkspaceDataVersion' {
     It 'CreateExpanded' {
         { 
-            New-AzMLWorkspaceDataVersion -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-portal01 -Name iris-data -Version 2 -DataType 'uri_file' -DataUri "https://azuremlexamples.blob.core.windows.net/datasets/iris.csv" 
-            Remove-AzMLWorkspaceDataVersion -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-portal01 -Name iris-data -Version 2
+            New-AzMLWorkspaceDataVersion -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name iris-data -Version 2 -DataType 'uri_file' -DataUri "https://azuremlexamples.blob.core.windows.net/datasets/iris.csv" 
+            # Remove Method not supported
+            # Remove-AzMLWorkspaceDataVersion -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name iris-data -Version 2
         } | Should -Not -Throw
     }
 }

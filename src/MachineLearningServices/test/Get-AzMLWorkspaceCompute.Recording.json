@@ -1,0 +1,92 @@
+{
+  "Get-AzMLWorkspaceCompute+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "b4becf50-1bbf-4a30-b1e2-317867cd14be" ],
+        "CommandName": [ "Get-AzMLWorkspaceCompute" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceCompute_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "94efc19d-ed04-40b4-b741-1c2c7b81691a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.068" ],
+        "x-ms-correlation-request-id": [ "94efc19d-ed04-40b4-b741-1c2c7b81691a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094021Z:94efc19d-ed04-40b4-b741-1c2c7b81691a" ],
+        "Date": [ "Sun, 05 Jun 2022 09:40:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5259" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/cpu-cluster\",\n      \"name\": \"cpu-cluster\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/computes\",\n      \"location\": \"eastus\",\n      \"tags\": {},\n      \"properties\": {\n        \"createdOn\": \"2022-05-18T06:36:19.4702579+00:00\",\n        \"modifiedOn\": \"2022-05-18T06:36:23.0884488+00:00\",\n        \"disableLocalAuth\": false,\n        \"description\": null,\n        \"resourceId\": null,\n        \"computeType\": \"AmlCompute\",\n        \"computeLocation\": \"eastus\",\n        \"provisioningState\": \"Succeeded\",\n        \"provisioningErrors\": null,\n        \"isAttachedCompute\": false,\n        \"properties\": {\n          \"vmSize\": \"STANDARD_DS3_V2\",\n          \"vmPriority\": \"Dedicated\",\n          \"scaleSettings\": {\n            \"maxNodeCount\": 10,\n            \"minNodeCount\": 0,\n            \"nodeIdleTimeBeforeScaleDown\": \"PT2M\"\n          },\n          \"subnet\": null,\n          \"currentNodeCount\": 0,\n          \"targetNodeCount\": 0,\n          \"nodeStateCounts\": {\n            \"preparingNodeCount\": 0,\n            \"runningNodeCount\": 0,\n            \"idleNodeCount\": 0,\n            \"unusableNodeCount\": 0,\n            \"leavingNodeCount\": 0,\n            \"preemptedNodeCount\": 0\n          },\n          \"allocationState\": \"Steady\",\n          \"allocationStateTransitionTime\": \"2022-05-31T08:06:27.516+00:00\",\n          \"errors\": null,\n          \"remoteLoginPortPublicAccess\": \"Enabled\",\n          \"osType\": \"Linux\",\n          \"virtualMachineImage\": null,\n          \"isolatedNetwork\": false,\n          \"enableNodePublicIp\": true,\n          \"propertyBag\": {}\n        }\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/gpu-cluster\",\n      \"name\": \"gpu-cluster\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/computes\",\n      \"location\": \"eastus\",\n      \"tags\": {},\n      \"properties\": {\n        \"createdOn\": \"2022-05-18T06:38:25.4755965+00:00\",\n        \"modifiedOn\": \"2022-05-18T06:38:32.2176899+00:00\",\n        \"disableLocalAuth\": false,\n        \"description\": null,\n        \"resourceId\": null,\n        \"computeType\": \"AmlCompute\",\n        \"computeLocation\": \"eastus\",\n        \"provisioningState\": \"Succeeded\",\n        \"provisioningErrors\": null,\n        \"isAttachedCompute\": false,\n        \"properties\": {\n          \"vmSize\": \"STANDARD_NC12\",\n          \"vmPriority\": \"Dedicated\",\n          \"scaleSettings\": {\n            \"maxNodeCount\": 4,\n            \"minNodeCount\": 0,\n            \"nodeIdleTimeBeforeScaleDown\": \"PT2M\"\n          },\n          \"subnet\": null,\n          \"currentNodeCount\": 0,\n          \"targetNodeCount\": 0,\n          \"nodeStateCounts\": {\n            \"preparingNodeCount\": 0,\n            \"runningNodeCount\": 0,\n            \"idleNodeCount\": 0,\n            \"unusableNodeCount\": 0,\n            \"leavingNodeCount\": 0,\n            \"preemptedNodeCount\": 0\n          },\n          \"allocationState\": \"Steady\",\n          \"allocationStateTransitionTime\": \"2022-05-18T06:38:29.933+00:00\",\n          \"errors\": null,\n          \"remoteLoginPortPublicAccess\": \"Enabled\",\n          \"osType\": \"Linux\",\n          \"virtualMachineImage\": null,\n          \"isolatedNetwork\": false,\n          \"enableNodePublicIp\": true,\n          \"propertyBag\": {}\n        }\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/batch-cluster\",\n      \"name\": \"batch-cluster\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/computes\",\n      \"location\": \"eastus\",\n      \"tags\": {},\n      \"properties\": {\n        \"createdOn\": \"2022-06-01T03:01:57.9448332+00:00\",\n        \"modifiedOn\": \"2022-06-01T03:02:05.1458824+00:00\",\n        \"disableLocalAuth\": false,\n        \"description\": null,\n        \"resourceId\": null,\n        \"computeType\": \"AmlCompute\",\n        \"computeLocation\": \"eastus\",\n        \"provisioningState\": \"Succeeded\",\n        \"provisioningErrors\": null,\n        \"isAttachedCompute\": false,\n        \"properties\": {\n          \"vmSize\": \"STANDARD_DS3_V2\",\n          \"vmPriority\": \"Dedicated\",\n          \"scaleSettings\": {\n            \"maxNodeCount\": 5,\n            \"minNodeCount\": 0,\n            \"nodeIdleTimeBeforeScaleDown\": \"PT2M\"\n          },\n          \"subnet\": null,\n          \"currentNodeCount\": 0,\n          \"targetNodeCount\": 0,\n          \"nodeStateCounts\": {\n            \"preparingNodeCount\": 0,\n            \"runningNodeCount\": 0,\n            \"idleNodeCount\": 0,\n            \"unusableNodeCount\": 0,\n            \"leavingNodeCount\": 0,\n            \"preemptedNodeCount\": 0\n          },\n          \"allocationState\": \"Steady\",\n          \"allocationStateTransitionTime\": \"2022-06-01T03:02:04.16+00:00\",\n          \"errors\": null,\n          \"remoteLoginPortPublicAccess\": \"Enabled\",\n          \"osType\": \"Linux\",\n          \"virtualMachineImage\": null,\n          \"isolatedNetwork\": false,\n          \"enableNodePublicIp\": true,\n          \"propertyBag\": {}\n        }\n      }\n    }\n  ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMLWorkspaceCompute+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/cpu-cluster?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/cpu-cluster?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "fd3e2949-ad5d-46a7-9ba2-d60e6e933d06" ],
+        "CommandName": [ "Get-AzMLWorkspaceCompute" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceCompute_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "a84ec6a3-105c-4986-97d0-258ad8fa6507" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.066" ],
+        "x-ms-correlation-request-id": [ "a84ec6a3-105c-4986-97d0-258ad8fa6507" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094022Z:a84ec6a3-105c-4986-97d0-258ad8fa6507" ],
+        "Date": [ "Sun, 05 Jun 2022 09:40:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1553" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/cpu-cluster\",\n  \"name\": \"cpu-cluster\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/computes\",\n  \"location\": \"eastus\",\n  \"tags\": {},\n  \"properties\": {\n    \"createdOn\": \"2022-05-18T06:36:19.4702579+00:00\",\n    \"modifiedOn\": \"2022-05-18T06:36:23.0884488+00:00\",\n    \"disableLocalAuth\": false,\n    \"description\": null,\n    \"resourceId\": null,\n    \"computeType\": \"AmlCompute\",\n    \"computeLocation\": \"eastus\",\n    \"provisioningState\": \"Succeeded\",\n    \"provisioningErrors\": null,\n    \"isAttachedCompute\": false,\n    \"properties\": {\n      \"vmSize\": \"STANDARD_DS3_V2\",\n      \"vmPriority\": \"Dedicated\",\n      \"scaleSettings\": {\n        \"maxNodeCount\": 10,\n        \"minNodeCount\": 0,\n        \"nodeIdleTimeBeforeScaleDown\": \"PT2M\"\n      },\n      \"subnet\": null,\n      \"currentNodeCount\": 0,\n      \"targetNodeCount\": 0,\n      \"nodeStateCounts\": {\n        \"preparingNodeCount\": 0,\n        \"runningNodeCount\": 0,\n        \"idleNodeCount\": 0,\n        \"unusableNodeCount\": 0,\n        \"leavingNodeCount\": 0,\n        \"preemptedNodeCount\": 0\n      },\n      \"allocationState\": \"Steady\",\n      \"allocationStateTransitionTime\": \"2022-05-31T08:06:27.516+00:00\",\n      \"errors\": null,\n      \"remoteLoginPortPublicAccess\": \"Enabled\",\n      \"osType\": \"Linux\",\n      \"virtualMachineImage\": null,\n      \"isolatedNetwork\": false,\n      \"enableNodePublicIp\": true,\n      \"propertyBag\": {}\n    }\n  }\n}",
+      "isContentBase64": false
+    }
+  }
+}

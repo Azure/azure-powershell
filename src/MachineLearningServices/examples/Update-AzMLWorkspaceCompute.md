@@ -1,6 +1,6 @@
 ### Example 1: Updates properties of a compute
 ```powershell
-Update-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -Name aml02 -Tag @{'key'='value'}
+Update-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -Name aml02 -MaxNodeCount 8
 ```
 
 ```output
@@ -13,7 +13,7 @@ Updates properties of a compute
 
 ### Example 2: Updates properties of a compute by pipeline
 ```powershell
-Get-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -Name aml02 | Update-AzMLWorkspaceCompute -Tag @{'key'='value'}
+Get-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -Name aml02 | Update-AzMLWorkspaceCompute -MaxNodeCount 8
 ```
 
 ```output
