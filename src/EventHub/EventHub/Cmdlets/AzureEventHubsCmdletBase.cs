@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string IPRuleInputObjectParameterSet = "IPRuleInputObjectParameterSet";
         protected const string ClusterInputObjectParameterSet = "ClusterInputObjectSet";
         protected const string SchemaGroupInputObjectParameterSet = "SchemaGroupInputObjectParameterSet";
+        protected const string ApplicationGroupInputObjectParameterSet = "ApplicationGroupInputObjectParameterSet";
 
         //Parameter sets for ResourceID
         protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
@@ -82,6 +83,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string NetworkRuleSetResourceIdParameterSet = "NetworkRuleSetResourceIdParameterSet";
         protected const string ClusterResourceIdParameterSet = "ClusterResourceIdParameterSet";
         protected const string SchemaGroupResourceIdParameterSet = "SchemaGroupResourceIdParameterSet";
+        protected const string ApplicationGroupResourceIdParameterSet = "ApplicationGroupResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -92,6 +94,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string NetwrokruleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
         protected const string VirtualNetworkRulePropertiesParameterSet = "VirtualNetworkRulePropertiesParameterSet";
         protected const string IPRulePropertiesParameterSet = "IPRulePropertiesParameterSet";
+        protected const string ApplicationGroupPropertiesParameterSet = "ApplicationGroupPropertiesParameterSet";
 
         protected const string EventhubDefaultParameterSet = "EventhubDefaultSet";
 
@@ -136,7 +139,16 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             internal const string Basic = "Basic";
             internal const string Standard = "Standard";
             internal const string Premium = "Premium";
-        }        
+        }
+
+        protected struct MetricIdValues
+        {
+            internal const string IncomingBytes = "IncomingBytes";
+            internal const string OutgoingBytes = "OutgoingBytes";
+            internal const string IncomingMessages = "IncomingMessages";
+            internal const string OutgoingMessages = "OutgoingMessages";
+        }
+
         protected struct RegeneKeys
         {
             internal const string PrimaryKey = "PrimaryKey";
@@ -145,6 +157,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
         protected const string NamespaceURL = "Microsoft.EventHub/namespaces";
         protected const string SchemaGroupURL = "Microsoft.EventHub/namespaces/schemagroups";
+        protected const string ApplicationGroupURL = "Microsoft.EventHub/namespaces/applicationgroups";
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
         private EventHubsClient  _client;
