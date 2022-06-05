@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceNotebookAcce
 }
 
 Describe 'Get-AzMLWorkspaceNotebookAccessToken' {
-    It 'List' {
+    # Include secrets 
+    It 'List' -skip {
         { Get-AzMLWorkspaceNotebookAccessToken -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 } | Should -Not -Throw
     }
 }
