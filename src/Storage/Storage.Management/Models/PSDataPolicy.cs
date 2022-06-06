@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             Track2.Models.ManagementPolicyRule rule = new Track2.Models.ManagementPolicyRule(
                 this.Name,
                 RuleType.Lifecycle,
-                this.Definition is null ? null : this.Definition.ParseManagementPolicyDefination()
+                this.Definition?.ParseManagementPolicyDefination()
                 );
             rule.Enabled = this.Enabled;
             return rule;
@@ -133,9 +133,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         }
         public Track2.Models.ManagementPolicyDefinition ParseManagementPolicyDefination()
         {
-            Track2.Models.ManagementPolicyAction actions = this.Actions is null ? null : this.Actions.ParseManagementPolicyAction();
+            Track2.Models.ManagementPolicyAction actions = this.Actions?.ParseManagementPolicyAction();
             Track2.Models.ManagementPolicyDefinition policyDefinition = new Track2.Models.ManagementPolicyDefinition(actions);
-            policyDefinition.Filters = this.Filters is null ? null : this.Filters.ParseManagementPolicyFilter();
+            policyDefinition.Filters = this.Filters?.ParseManagementPolicyFilter();
 
             return policyDefinition;
         }
@@ -219,9 +219,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             return new Track2.Models.ManagementPolicyAction()
             {
-                BaseBlob = this.BaseBlob is null ? null : this.BaseBlob.ParseManagementPolicyBaseBlob(),
-                Snapshot = this.Snapshot is null ? null : this.Snapshot.ParseManagementPolicySnapShot(),
-                Version = this.Version is null ? null : this.Version.ParseManagementPolicyVersion(),
+                BaseBlob = this.BaseBlob?.ParseManagementPolicyBaseBlob(),
+                Snapshot = this.Snapshot?.ParseManagementPolicySnapShot(),
+                Version = this.Version?.ParseManagementPolicyVersion(),
             };
         }
     }
@@ -250,9 +250,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             return new Track2.Models.ManagementPolicyBaseBlob()
             {
-                TierToCool = this.TierToCool is null ? null : this.TierToCool.ParseDateAfterModification(),
-                TierToArchive = this.TierToArchive is null ? null : this.TierToArchive.ParseDateAfterModification(),
-                Delete = this.Delete is null ? null : this.Delete.ParseDateAfterModification(),
+                TierToCool = this.TierToCool?.ParseDateAfterModification(),
+                TierToArchive = this.TierToArchive?.ParseDateAfterModification(),
+                Delete = this.Delete?.ParseDateAfterModification(),
                 EnableAutoTierToHotFromCool = this.EnableAutoTierToHotFromCool
             };
         }
@@ -345,6 +345,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public int? DaysAfterModificationGreaterThan { get; set; }
         public int? DaysAfterLastAccessTimeGreaterThan { get; set; }
 
+        // TODO: DaysAfterLastTierChangeGreaterThan it not supported by SDK yet. Will add later.
         public int? DaysAfterLastTierChangeGreaterThan { get; set; }
 
         public PSDateAfterModification()

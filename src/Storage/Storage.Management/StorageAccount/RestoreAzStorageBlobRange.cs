@@ -131,6 +131,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             PSBlobRestoreRange.ParseBlobRestoreRanges(this.BlobRestoreRange))
                         );
 
+                    // This is a temporary workaround of SDK issue https://github.com/Azure/azure-sdk-for-net/issues/29060
+                    // The workaround is to get the raw response and parse it into the output desired
+                    // The Blob restore status should be got from SDK directly once the issue is fixed
                     Dictionary<string, object> temp = restoreLro.GetRawResponse().Content.ToObjectFromJson() as Dictionary<string, object>;
                     object restoreId;
 
@@ -175,12 +178,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         WriteWarning(string.Format("Could not fetch the status."));
                     }
 
+                    if (temp == null)
+                    {
+                        throw new InvalidJobStateException("Could not fetch the Blob restore response.");
+                    }
+
                     temp.TryGetValue("restoreId", out object restoreId);
                     temp.TryGetValue("parameters", out object parameters);
 
                     PSBlobRestoreParameters blobRestoreParameters = new PSBlobRestoreParameters();
                     Dictionary<string, object> paramMap = parameters as Dictionary<string, object>;
-    
+
                     paramMap.TryGetValue("timetoRestore", out object timeToRestore);
                     DateTimeOffset.TryParse(timeToRestore.ToString(), out DateTimeOffset parseDate);
                     blobRestoreParameters.TimeToRestore = parseDate;
@@ -198,8 +206,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                         PSBlobRestoreRange blobRestoreRange = new PSBlobRestoreRange
                         {
-                            StartRange = startRange == null ? null : startRange.ToString(),
-                            EndRange = endRange == null ? null : endRange.ToString()
+                            StartRange = startRange?.ToString(),
+                            EndRange = endRange?.ToString()
                         };
 
                         blobRestoreRanges.Add(blobRestoreRange);
@@ -207,9 +215,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     blobRestoreParameters.BlobRanges = blobRestoreRanges.ToArray();
 
                     WriteObject(new PSBlobRestoreStatus(
-                        status: jobStatus == null ? null : jobStatus.ToString(),
+                        status: jobStatus?.ToString(),
                         failureReason: null,
-                        restoreId: restoreId == null ? null : restoreId.ToString(),
+                        restoreId: restoreId?.ToString(),
                         blobRestoreParameters));
                 }
             }
