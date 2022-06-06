@@ -13,16 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
+using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
-using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services

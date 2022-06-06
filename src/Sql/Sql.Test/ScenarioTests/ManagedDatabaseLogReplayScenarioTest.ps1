@@ -375,6 +375,36 @@ function Test-PipingCompleteCancelManagedDatabaseLogReplay
 	}
 }
 
+<#
+.SYNOPSIS
+Tests Managed Database Log Replay cancel on a wrong database
+#>
+function Test-CancelManagedDatabaseLogReplayFailForWrongDatabase
+{
+    # Setup
+    $rg = Create-ResourceGroupForTest
+    $managedInstance = Create-ManagedInstanceForTest $rg
+
+    $rgName = $rg.ResourceGroupName
+    $managedInstance = $managedInstance.ManagedInstanceName
+
+    try
+    {
+        # Start log replay
+        $managedDatabaseName = Get-ManagedDatabaseName
+        $db = New-AzSqlInstanceDatabase -ResourceGroupName $rgName -InstanceName $managedInstance -Name $managedDatabaseName
+
+        # Stop log replay on a DB that's not created with log replay should fail
+        Assert-ThrowsContains { $db | Stop-AzSqlInstanceDatabaseLogReplay -Force } "error"
+        $notDeletedDB = Get-AzSqlInstanceDatabase -ResourceGroupName $rgName -InstanceName $managedInstance -Name $managedDatabaseName
+        Assert-NotNull $notDeletedDB
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
+}
+
 function Generate-SasToken ($rgname)
 {
 	$key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
