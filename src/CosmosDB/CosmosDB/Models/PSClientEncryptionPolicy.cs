@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// <summary>
         /// Ensures that partition key paths are not specified in the client encryption policy for encryption.
         /// </summary>
-        /// <param name="clientEncryptionIncludedPath">Tokens corresponding to validated partition key.</param>
+        /// <param name="clientEncryptionIncludedPath"></param>
         /// <param name="partitionKeyPathTokens">Tokens corresponding to validated partition key.</param>
         private static void ValidatePartitionKeyPathsAreNotEncrypted(IEnumerable<ClientEncryptionIncludedPath> clientEncryptionIncludedPath, List<string> partitionKeyPathTokens)
         {
