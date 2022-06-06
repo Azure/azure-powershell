@@ -733,4 +733,7 @@
   <data name="SetAzureSqlInstanceLinkWarning" xml:space="preserve">
     <value>Are you sure you want to update instance link named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
   </data>
+  <data name="StopLogReplayErrorDatabaseOrigin" xml:space="preserve">
+    <value>Can't perform stop log replay, database {0} on the instance {1} in the resource group {2} was not created by log replay migration.</value>
+  </data>
 </root>
