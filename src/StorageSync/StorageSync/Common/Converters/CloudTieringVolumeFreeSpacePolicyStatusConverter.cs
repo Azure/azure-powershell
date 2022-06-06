@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
     /// <summary>
     /// Class CloudTieringVolumeFreeSpacePolicyStatusConverter.
-    /// Implements the <see cref="Converters.ConverterBase{PSCloudTieringVolumeFreeSpacePolicyStatus, StorageSyncModels.CloudTieringVolumeFreeSpacePolicyStatus}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSCloudTieringVolumeFreeSpacePolicyStatus, CloudTieringVolumeFreeSpacePolicyStatus}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSCloudTieringVolumeFreeSpacePolicyStatus, StorageSyncModels.CloudTieringVolumeFreeSpacePolicyStatus}" />
+    /// <seealso cref="Converters.ConverterBase{PSCloudTieringVolumeFreeSpacePolicyStatus, CloudTieringVolumeFreeSpacePolicyStatus}" />
     public class CloudTieringVolumeFreeSpacePolicyStatusConverter : ConverterBase<PSCloudTieringVolumeFreeSpacePolicyStatus, StorageSyncModels.CloudTieringVolumeFreeSpacePolicyStatus>
     {
         /// <summary>

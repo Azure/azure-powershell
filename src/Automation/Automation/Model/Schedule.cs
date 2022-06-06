@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// The day of week occurrence.
         /// </param>
         /// <returns>
-        /// The <see cref="int?"/>.
+        /// The <see cref="int">int?</see>
         /// </returns>
         private int? GetDayOfWeekOccurrence(string dayOfWeekOccurrence)
         {
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// The schedule.
         /// </param>
         /// <returns>
-        /// The <see cref="WeeklyScheduleOptions"/>.
+        /// The <see cref="WeeklyScheduleOptions"/>
         /// </returns>
         private WeeklyScheduleOptions CreateWeeklyScheduleOptions(Microsoft.Azure.Management.Automation.Models.Schedule schedule)
         {

@@ -21,6 +21,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         VaultLocation,
     }
 
+    public enum ResourceGuardParams
+    {
+        Token,
+        IsMUAOperation,
+    }
+
     public enum ContainerParams
     {
         Vault,
@@ -77,7 +83,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         TargetVMName,
         TargetVNetName,
         TargetVNetResourceGroup,
-        TargetSubnetName
+        TargetSubnetName,
+        TargetSubscriptionId
     }
 
     public enum RestoreFSBackupItemParams
@@ -123,7 +130,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         ResourceName,
         FixForInconsistentItems,
         ScheduleRunFrequency,
-        PolicySubType
+        PolicySubType,
+        ExistingPolicy
     }
 
     public enum ItemParams

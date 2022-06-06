@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
     /// <summary>
     /// Class PrivateLinkServiceConnectionStateConverter.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSPrivateLinkServiceConnectionState, Microsoft.Azure.Management.StorageSync.Models.PrivateLinkServiceConnectionState}" />
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{PSPrivateLinkServiceConnectionState, PrivateLinkServiceConnectionState}" />
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSPrivateLinkServiceConnectionState, Microsoft.Azure.Management.StorageSync.Models.PrivateLinkServiceConnectionState}" />
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{PSPrivateLinkServiceConnectionState, PrivateLinkServiceConnectionState}" />
     public class PrivateLinkServiceConnectionStateConverter : ConverterBase<PSPrivateLinkServiceConnectionState, StorageSyncModels.PrivateLinkServiceConnectionState>
     {
 

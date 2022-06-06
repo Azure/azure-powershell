@@ -144,7 +144,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <summary>Backing field for <see cref="Reserved" /> property.</summary>
         private bool? _reserved;
 
-        /// <summary>If Linux app service plan <code>true</code>, <code>false</code> otherwise.</summary>
+        /// <summary>
+        /// This needs to set to <code>true</code> when creating a Linux App Service Plan, along with <code>kind</code> set to <code>Linux</code>.
+        /// It should be <code>false</code> otherwise.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public bool? Reserved { get => this._reserved; set => this._reserved = value; }
 
@@ -321,11 +324,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState) })]
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState? ProvisioningState { get;  }
-        /// <summary>If Linux app service plan <code>true</code>, <code>false</code> otherwise.</summary>
+        /// <summary>
+        /// This needs to set to <code>true</code> when creating a Linux App Service Plan, along with <code>kind</code> set to <code>Linux</code>.
+        /// It should be <code>false</code> otherwise.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"If Linux app service plan <code>true</code>, <code>false</code> otherwise.",
+        Description = @"This needs to set to <code>true</code> when creating a Linux App Service Plan, along with <code>kind</code> set to <code>Linux</code>. It should be <code>false</code> otherwise.",
         SerializedName = @"reserved",
         PossibleTypes = new [] { typeof(bool) })]
         bool? Reserved { get; set; }
@@ -428,7 +434,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         bool? PerSiteScaling { get; set; }
         /// <summary>Provisioning state of the App Service Environment.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningState? ProvisioningState { get; set; }
-        /// <summary>If Linux app service plan <code>true</code>, <code>false</code> otherwise.</summary>
+        /// <summary>
+        /// This needs to set to <code>true</code> when creating a Linux App Service Plan, along with <code>kind</code> set to <code>Linux</code>.
+        /// It should be <code>false</code> otherwise.
+        /// </summary>
         bool? Reserved { get; set; }
         /// <summary>Resource group of the App Service plan.</summary>
         string ResourceGroup { get; set; }

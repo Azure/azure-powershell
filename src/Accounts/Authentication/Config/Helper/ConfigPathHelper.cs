@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Config.Internal;
 using Microsoft.Azure.PowerShell.Common.Config;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config
@@ -54,6 +55,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 appliesTo = ConfigFilter.GlobalAppliesTo;
             }
             return appliesTo + ConfigurationPath.KeyDelimiter + key;
+        }
+
+        /// <summary>
+        /// Returns if a path (full key) of a config matches the given key.
+        /// </summary>
+        public static bool ArePathAndKeyMatch(string path, string key)
+        {
+            if (string.IsNullOrEmpty(path) || string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException();
+            }
+            int index = path.IndexOf(ConfigurationPath.KeyDelimiter);
+            return index != -1 && path.Substring(index + 1).Equals(key, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

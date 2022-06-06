@@ -14,25 +14,58 @@ Updates the configs of Azure PowerShell.
 
 ```
 Update-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-DefaultSubscriptionForLogin <String>] [-EnableDataCollection <Boolean>]
- [-EnableInterceptSurvey <Boolean>] [-SuppressWarningMessage <Boolean>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-DefaultSubscriptionForLogin <String>] [-DisplayBreakingChangeWarning <Boolean>]
+ [-EnableDataCollection <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates the configs of Azure PowerShell.
+Depending on which config to update, you may specify the scope where the config is persisted and to which module or cmdlet it applies to.
+
+> [!NOTE]
+> It is discouraged to update configs in multiple PowerShell processes. Either do it in one process, or make sure the updates are at Process scope (`-Scope Process`) to avoid unexpected side-effects.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Update-AzConfig -Todo $true
+Update-AzConfig -DefaultSubscriptionForLogin "Name of subscription"
 ```
 
 ```output
-Todo
+Key                         Value                Applies To Scope       Help Message
+---                         -----                ---------- -----       ------------
+DefaultSubscriptionForLogin Name of subscription Az         CurrentUser Subscription name or GUID. Sets the default context for Azure PowerShell when lo…
 ```
 
-Todo
+Sets the "DefaultSubscriptionForLogin" config as "Name of subscription". When `Connect-AzAccount` the specified subscription will be selected as the default subscription.
+
+### Example 2
+```powershell
+Update-AzConfig -DisplayBreakingChangeWarning $false -AppliesTo "Az.KeyVault"
+```
+
+```output
+Key                          Value Applies To  Scope       Help Message
+---                          ----- ----------  -----       ------------
+DisplayBreakingChangeWarning False Az.KeyVault CurrentUser Controls if warning messages for breaking changes are displayed or suppressed. When enabled,…
+```
+
+Sets the "DisplayBreakingChangeWarnings" config as "$false" for "Az.KeyVault" module. This prevents all the warning messages for upcoming breaking changes in Az.KeyVault module from prompting.
+
+### Example 3
+```powershell
+Update-AzConfig -EnableDataCollection $true
+```
+
+```output
+Key                  Value Applies To Scope       Help Message
+---                  ----- ---------- -----       ------------
+EnableDataCollection True  Az         CurrentUser When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experi…
+```
+
+Sets the "EnableDataCollection" config as "$true". This enables sending the telemetry data.
+Setting this config is equivalent to `Enable-AzDataCollection` and `Disable-AzDataCollection`.
 
 ## PARAMETERS
 
@@ -44,7 +77,7 @@ Possible values are:
 For example, "Az.Storage".
 - Cmdlet name: the config applies to a certain cmdlet of Azure PowerShell.
 For example, "Get-AzKeyVault".
-If not specified, when getting configs, output will be all of the above; when updating or clearing configs, it defaults to "Az"
+If not specified, when getting or clearing configs, it defaults to all the above; when updating, it defaults to "Az".
 
 ```yaml
 Type: System.String
@@ -75,7 +108,7 @@ Accept wildcard characters: False
 
 ### -DefaultSubscriptionForLogin
 Subscription name or GUID.
-If defined, when logging in Azure PowerShell without specifying the subscription, this one will be used to select the default context.
+Sets the default context for Azure PowerShell when logging in without specifying a subscription.
 
 ```yaml
 Type: System.String
@@ -89,8 +122,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EnableDataCollection
-todo
+### -DisplayBreakingChangeWarning
+Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release.
 
 ```yaml
 Type: System.Boolean
@@ -104,8 +137,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EnableInterceptSurvey
-When enabled, a message of taking part in the survey about the user experience of Azure PowerShell will prompt at low frequency.
+### -EnableDataCollection
+When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience.
+For more information, see our privacy statement: https://aka.ms/privacy
 
 ```yaml
 Type: System.Boolean
@@ -133,22 +167,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SuppressWarningMessage
-Controls if the warning messages of upcoming breaking changes are enabled or suppressed.
-The messages are typically displayed when a cmdlet that will have breaking change in the future is executed.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -188,11 +206,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+
+### System.Boolean
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Common.Authentication.Config.PSConfig
+### Microsoft.Azure.Commands.Profile.Models.PSConfig
 
 ## NOTES
 

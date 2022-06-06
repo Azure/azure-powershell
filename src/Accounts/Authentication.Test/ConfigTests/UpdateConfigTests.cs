@@ -86,6 +86,25 @@ namespace Microsoft.Azure.Authentication.Test.Config
 
         [Fact]
         [Trait(TestTraits.AcceptanceType, TestTraits.CheckIn)]
+        public void EachUpdateShouldBeIndependent()
+        {
+            const string key1 = "key";
+            var config1 = new SimpleTypedConfig<bool>(key1, "", true);
+            const string key2 = "key2";
+            var config2 = new SimpleTypedConfig<bool>(key2, "", true);
+            var icm = GetConfigManager(config1, config2);
+
+            icm.UpdateConfig(key1, false, ConfigScope.Process);
+            Assert.False(icm.GetConfigValue<bool>(key1));
+            Assert.True(icm.GetConfigValue<bool>(key2));
+
+            icm.UpdateConfig(key2, false, ConfigScope.CurrentUser);
+            Assert.False(icm.GetConfigValue<bool>(key1));
+            Assert.False(icm.GetConfigValue<bool>(key2));
+        }
+
+        [Fact]
+        [Trait(TestTraits.AcceptanceType, TestTraits.CheckIn)]
         public void ThrowWhenOptionIsInvalid()
         {
             const string key1 = "key";

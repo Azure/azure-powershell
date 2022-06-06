@@ -39,7 +39,7 @@ Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on 
 Installs Remote Support.
 
 ### [Register-AzStackHCI](Register-AzStackHCI.md)
-Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and registers the on-premise cluster with Azure.
+Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and registers the on-premises cluster with Azure.
 
 ### [Remove-AzStackHCIRemoteSupport](Remove-AzStackHCIRemoteSupport.md)
 Removes Remote Support.

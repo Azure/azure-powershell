@@ -33,6 +33,7 @@ EndpointTested: https://azurestackhci-df.azurefd.net/health
 IsRequired: True
 Result: Succeeded
 ```
+
 Invoking on one of the cluster node. Success case.
 
 ### EXAMPLE 2
@@ -47,6 +48,7 @@ IsRequired: True
 Result: Failed
 FailedNodes: Node1inClus2, Node2inClus3
 ```
+
 Invoking on one of the cluster node. Failed case.
 
 ## PARAMETERS

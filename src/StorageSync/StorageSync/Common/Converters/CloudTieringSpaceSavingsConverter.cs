@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
     /// <summary>
     /// Class CloudTieringSpaceSavingsConverter.
-    /// Implements the <see cref="Converters.ConverterBase{PSCloudTieringSpaceSavings, StorageSyncModels.CloudTieringSpaceSavings}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSCloudTieringSpaceSavings, CloudTieringSpaceSavings}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSCloudTieringSpaceSavings, StorageSyncModels.CloudTieringSpaceSavings}" />
+    /// <seealso cref="Converters.ConverterBase{PSCloudTieringSpaceSavings, CloudTieringSpaceSavings}" />
     public class CloudTieringSpaceSavingsConverter : ConverterBase<PSCloudTieringSpaceSavings, StorageSyncModels.CloudTieringSpaceSavings>
     {
         /// <summary>

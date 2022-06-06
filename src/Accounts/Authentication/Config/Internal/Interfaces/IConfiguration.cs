@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfa
         /// Gets or sets a configuration value.
         /// </summary>
         /// <param name="key">The configuration key.</param>
-        /// <returns>The configuration value.</returns>
-        string this[string key] { get; set; }
+        /// <returns>The configuration value and the ID of the provider which provides the value.</returns>
+        (string value, string providerId) this[string key] { get; set; }
 
         /// <summary>
         /// Gets a configuration sub-section with the specified key.

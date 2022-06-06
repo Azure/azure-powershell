@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.0
 * Updated parameter types from bool to bool? for `Update-AzContainerRegistryRepository` [#17857]
     - `ReadEnabled`
     - `ListEnabled`

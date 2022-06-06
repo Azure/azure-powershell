@@ -78,11 +78,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string FilePath { get; set; }
 
         /// <summary>
-        /// Certificate as a string
+        /// Base64 encoded representation of the certificate object to import
         /// </summary>
         [Parameter(Mandatory = true,
                    ParameterSetName = ImportWithPrivateKeyFromStringParameterSet,
-                   HelpMessage = "The certificate and private key to add to key vault as a string.")]
+                   HelpMessage = "Base64 encoded representation of the certificate object to import. This certificate needs to contain the private key.")]
         public string CertificateString { get; set; }
 
         /// <summary>

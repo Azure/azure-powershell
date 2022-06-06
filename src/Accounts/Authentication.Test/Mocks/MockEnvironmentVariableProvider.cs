@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces;
 
 namespace Microsoft.Azure.PowerShell.Authentication.Test.Mocks
@@ -48,6 +49,26 @@ namespace Microsoft.Azure.PowerShell.Authentication.Test.Mocks
         public void Set(string variableName, string value, EnvironmentVariableTarget target = EnvironmentVariableTarget.Process)
         {
             GetVariablesByTarget(target)[variableName] = value;
+        }
+
+        public IReadOnlyDictionary<string, string> List(EnvironmentVariableTarget target = EnvironmentVariableTarget.Process)
+        {
+            IDictionary<string, string> variables;
+            switch (target)
+            {
+                case EnvironmentVariableTarget.Process:
+                    variables = _processVariables;
+                    break;
+                case EnvironmentVariableTarget.User:
+                    variables = _userVariables;
+                    break;
+                case EnvironmentVariableTarget.Machine:
+                    variables = _systemVariables;
+                    break;
+                default:
+                    throw new ArgumentException(nameof(target));
+            }
+            return new ReadOnlyDictionary<string, string>(variables);
         }
     }
 }

@@ -18,19 +18,6 @@
 Removes key credentials or password credentials for an application.
 .Description
 Removes key credentials or password credentials for an application.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
-.Outputs
-System.Boolean
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/Remove-azadappcredential
 #>
