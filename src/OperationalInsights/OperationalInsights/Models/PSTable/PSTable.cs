@@ -79,19 +79,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.TotalRetentionInDays = totalRetentionInDays;
             this.Plan = plan;
             this.Description = description;
-
-            IList<Column> cols = new List<Column>();
-            foreach (DictionaryEntry entry in columns)
-            {
-                if (string.IsNullOrEmpty((string)entry.Key) || string.IsNullOrEmpty((string)entry.Value))
-                {
-                    throw new PSArgumentException($"Invalid values passed as Columns, please use: {Constants.ColumnsExample}.");
-                }
-
-                cols.Add(new Column(name: (string)entry.Key, type: (string)entry.Value));
-            }
-
-            this.Schema = new Schema(columns: cols);
+            this.Schema = columns == null ? null : new Schema(columns: HashToColumns(columns));
         }
 
         /// <summary>
@@ -105,7 +93,29 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 plan: this.Plan,
                 retentionInDays: this.RetentionInDays,
                 totalRetentionInDays: this.TotalRetentionInDays,
-                schema: new Schema(name: this.TableName, description: this.Description, columns: this.Schema.Columns));
+                schema: this.Schema == null ? null : new Schema(name: this.TableName, description: this.Description, columns: this.Schema?.Columns));
+        }
+
+        private IList<Column> HashToColumns(Hashtable columns)
+        {
+            IList<Column> cols = new List<Column>();
+
+            if (columns == null)
+            {
+                return null;
+            }
+
+            foreach (DictionaryEntry entry in columns)
+            {
+                if (string.IsNullOrEmpty((string)entry.Key) || string.IsNullOrEmpty((string)entry.Value))
+                {
+                    throw new PSArgumentException($"Invalid values passed as Columns, please use: {Constants.ColumnsExample}.");
+                }
+
+                cols.Add(new Column(name: (string)entry.Key, type: (string)entry.Value));
+            }
+
+            return cols;
         }
 
     }

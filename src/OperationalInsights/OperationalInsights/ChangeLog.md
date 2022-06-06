@@ -19,7 +19,8 @@
 -->
 
 ## Upcoming Release
-* Added new cmdlets for Table api: 'Create-AzOperationalInsightsRestoreTable', 'Create-AzOperationalInsightsSearchTable', 'Create-AzOperationalInsightsTable','Delete-AzOperationalInsightsTable','Update-AzOperationalInsightsTable', 'Migrate-AzOperationalInsightsTable'
+* Added new cmdlets for Table resource: 'Create-AzOperationalInsightsRestoreTable', 'Create-AzOperationalInsightsSearchTable', 'Create-AzOperationalInsightsTable','Delete-AzOperationalInsightsTable','Update-AzOperationalInsightsTable', 'Migrate-AzOperationalInsightsTable'
+* Add new property 'DefaultDataCollectionRuleResourceId' to 'Set-AzOperationalInsightsWorkspace' and to 'New-AzOperationalInsightsWorkspace' cmdlets
 * update Operational Insights Nuget from version '0.24.0-preview' to version '0.25.0-preview'
 
 ## Version 3.1.0
