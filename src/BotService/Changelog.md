@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue of `-Location` in `New-AzBotService`[#17185]
 
 ## Version 0.3.2
 * Fixed issue where New-AzBotService fails to convert ApplicationSecret to plain text on Windows PowerShell [#16131]
