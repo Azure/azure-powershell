@@ -35,6 +35,9 @@ Starts collection of performance counters from Linux computers.
 ### [Enable-AzOperationalInsightsLinuxSyslogCollection](Enable-AzOperationalInsightsLinuxSyslogCollection.md)
 Starts collection of syslog data from Linux computers.
 
+### [Get-AzOperationalInsightsAvailableServiceTier](Get-AzOperationalInsightsAvailableServiceTier.md)
+This command gets all available service tiers for a given worksapce.
+
 ### [Get-AzOperationalInsightsCluster](Get-AzOperationalInsightsCluster.md)
 Get or list clusters
 
@@ -49,6 +52,9 @@ List deleted workspaces.
 
 ### [Get-AzOperationalInsightsIntelligencePack](Get-AzOperationalInsightsIntelligencePack.md)
 Gets the available Intelligence Packs.
+
+> [!NOTE]
+> Solutions is being deprecated, please use [az monitor log-analytics solution](https://docs.microsoft.com/en-us/cli/azure/monitor/log-analytics/solution?view=azure-cli-latest) and [Get-AzMonitorLogAnalyticsSolution](https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution?view=azps-5.9.0) instead if this command.
 
 ### [Get-AzOperationalInsightsLinkedService](Get-AzOperationalInsightsLinkedService.md)
 Get or list linked service for workspace
@@ -76,6 +82,24 @@ Gets information about a Storage Insight.
 
 ### [Get-AzOperationalInsightsTable](Get-AzOperationalInsightsTable.md)
 Get or list tables for workspace.
+
+### [Create-AzOperationalInsightsRestoreTable](Create-AzOperationalInsightsRestoreTable.md)
+Create a Restore table.
+
+### [Create-AzOperationalInsightsSearchTable](Create-AzOperationalInsightsSearchTable.md)
+Create a Search table.
+
+### [Create-AzOperationalInsightsTable](Create-AzOperationalInsightsTable.md)
+Creates a custom log table.
+
+### [Update-AzOperationalInsightsTable](Update-AzOperationalInsightsTable.md)
+Update a Log Analytics workspace table.
+
+### [Migrate-AzOperationalInsightsTable](Migrate-AzOperationalInsightsTable.md)
+Migrate a Log Analytics table from support of the Data Collector API and Custom Fields features to support of Data Collection Rule-based Custom Logs.
+
+### [Delete-AzOperationalInsightsTable](Delete-AzOperationalInsightsTable.md)
+Delete a Log Analytics workspace table.
 
 ### [Get-AzOperationalInsightsWorkspace](Get-AzOperationalInsightsWorkspace.md)
 Gets information about a workspace.
@@ -169,6 +193,8 @@ Updates a data source.
 
 ### [Set-AzOperationalInsightsIntelligencePack](Set-AzOperationalInsightsIntelligencePack.md)
 Enables or disables the specified Intelligence Pack.
+> [!NOTE]
+> Solutions is being deprecated, please use [az monitor log-analytics solution](https://docs.microsoft.com/en-us/cli/azure/monitor/log-analytics/solution?view=azure-cli-latest) and [Get-AzMonitorLogAnalyticsSolution](https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution?view=azps-5.9.0) instead if this command.
 
 ### [Set-AzOperationalInsightsLinkedService](Set-AzOperationalInsightsLinkedService.md)
 link service for workspace
