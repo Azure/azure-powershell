@@ -661,6 +661,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
         /// </summary>
         /// <param name="publicConfigPath">Public configuration file path</param>
         /// <param name="privateConfigPath">Private configuration file path, can be empty</param>
+        /// <param name="resourceId"></param>
+        /// <param name="cmdlet"></param>
         /// <param name="storageClient">Storage client</param>
         /// <returns>A tuple with public configuration as first element and private configuration as second element</returns>
         public static Tuple<Hashtable, Hashtable> GetConfigurationsFromFiles(string publicConfigPath, string privateConfigPath, string resourceId, Cmdlet cmdlet, IStorageManagementClient storageClient)
