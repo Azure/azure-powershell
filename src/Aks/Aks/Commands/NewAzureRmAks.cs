@@ -355,6 +355,8 @@ namespace Microsoft.Azure.Commands.Aks
                 networkProfile: networkProfile,
                 apiServerAccessProfile: apiServerAccessProfile);
 
+            SetIdentity(managedCluster);
+
             if (EnableRbac.IsPresent)
             {
                 managedCluster.EnableRBAC = EnableRbac;
