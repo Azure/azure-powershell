@@ -124,7 +124,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             bool? forceCmkForQuery = null,
             int? dailyQuotaGb = null,
             Guid? customerId = null,
-            PSWorkspaceFeatures features = null)
+            PSWorkspaceFeatures features = null,
+            string defaultDataCollectionRuleResourceId = null)
         {
             Workspace properties = new Workspace(
                 name: workspaceName,
@@ -135,6 +136,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 publicNetworkAccessForQuery: publicNetworkAccessForQuery,
                 forceCmkForQuery: forceCmkForQuery,
                 sku: sku?.getWorkspaceSku(),
+                defaultDataCollectionRuleResourceId: defaultDataCollectionRuleResourceId,
                 features: features?.GetWorkspaceFeatures());
 
 
@@ -176,6 +178,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 forceCmkForQuery: parameters.ForceCmkForQuery,
                 dailyQuotaGb: parameters.DailyQuotaGb,
                 customerId: workspace.CustomerId,
+                defaultDataCollectionRuleResourceId: parameters.DefaultDataCollectionRuleResourceId,
                 features: parameters.WsFeatures);
 
             return new PSWorkspace(updatedWorkspace, parameters.ResourceGroupName);
@@ -204,6 +207,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                             parameters.PublicNetworkAccessForQuery,
                             retentionInDays: parameters.RetentionInDays,
                             forceCmkForQuery: parameters.ForceCmkForQuery,
+                            defaultDataCollectionRuleResourceId: parameters.DefaultDataCollectionRuleResourceId,
                             features: parameters.WsFeatures),
                         parameters.ResourceGroupName);
                 if (!string.Equals(workspace.ProvisioningState, Azure.OperationStatus.Succeeded.ToString(), StringComparison.OrdinalIgnoreCase))
