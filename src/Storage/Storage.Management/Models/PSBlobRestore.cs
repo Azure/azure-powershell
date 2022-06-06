@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 foreach (PSBlobRestoreRange range in ranges)
                 {
                     re.Add(
-                        new Track2Models.BlobRestoreRange(range.EndRange, range.StartRange));
+                        new Track2Models.BlobRestoreRange(range.StartRange, range.EndRange));
                 }
             }
             return re;
@@ -111,6 +111,14 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 this.RestoreId = status.RestoreId;
                 this.Parameters = status.Parameters is null ? null : new PSBlobRestoreParameters(status.Parameters);
             }
+        }
+
+        public PSBlobRestoreStatus(string status, string failureReason, string restoreId, PSBlobRestoreParameters parameters)
+        {
+            Status = status;
+            FailureReason = failureReason;
+            RestoreId = restoreId;
+            Parameters = parameters;
         }
     }
 
