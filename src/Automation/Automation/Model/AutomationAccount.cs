@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
         /// <summary>
         /// Get or set indicate whether traffic on the non-ARM endpoint (Webhook/Agent)
-        //     is allowed from the public internet
+        /// is allowed from the public internet
         /// </summary>
         public bool? PublicNetworkAccess { get; set; }
     }

@@ -18,20 +18,19 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="HybridRunbookWorkerGroup"/> class. 
         /// </summary>
+        public  HybridRunbookWorkerGroup()
+        {
+
+        }
         /// <param name="resourceGroupName">
         ///  The resource group name.
         /// </param>
         /// <param name="accountName">
         /// The account name.
         /// </param>
-        /// <exception cref="System.ArgumentException"
+        /// <param name="hybridRunbookWorkerGroup"></param>
+        /// <exception cref="ArgumentException">
         /// </exception>
-        
-        public  HybridRunbookWorkerGroup()
-        {
-
-        }
-
         public HybridRunbookWorkerGroup(string resourceGroupName, string accountName, Azure.Management.Automation.Models.HybridRunbookWorkerGroup hybridRunbookWorkerGroup)
         {
 

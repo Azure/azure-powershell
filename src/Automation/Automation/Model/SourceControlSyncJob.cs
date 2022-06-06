@@ -31,14 +31,14 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <param name="resourceGroupName">
         /// The resource group name.
         /// </param>
-        /// <param name="automationAccoutName">
+        /// <param name="automationAccountName">
         /// The automation account name.
         /// </param>
         /// <param name="sourceControlName">
         /// The sourceControl name.
         /// </param>
-        /// <param name="SourceControlSyncJob">
-        /// The SourceControlSyncJob object.
+        /// <param name="syncJob">
+        /// The syncJob object.
         /// </param>
         public SourceControlSyncJob(
             string resourceGroupName,

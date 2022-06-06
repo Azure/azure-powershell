@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// The validate.
         /// </summary>
         /// <returns>
-        /// The <see cref="Schedule"/>.
+        /// The <see cref="Models.Schedule"/>.
         /// </returns>
         /// <exception cref="Exception">
         /// throws exception
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// The create weekly schedule model.
         /// </summary>
         /// <returns>
-        /// The <see cref="Schedule"/>.
+        /// The <see cref="CreateWeeklyScheduleModel"/>.
         /// </returns>
         private Models.Schedule CreateWeeklyScheduleModel()
         {
