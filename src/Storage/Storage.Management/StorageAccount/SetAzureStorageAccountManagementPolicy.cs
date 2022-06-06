@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.ResourceManager.Storage;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Management.Automation;
-using Newtonsoft.Json.Linq;
-using System.Globalization;
-using System.Collections.Generic;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Management.Automation;
 using Track2 = Azure.ResourceManager.Storage;
-using Azure.ResourceManager.Storage;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {

@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             Track2.Models.DateAfterModification dateAfterModification = new Track2.Models.DateAfterModification();
             dateAfterModification.DaysAfterLastAccessTimeGreaterThan = this.DaysAfterLastAccessTimeGreaterThan;
             dateAfterModification.DaysAfterModificationGreaterThan = this.DaysAfterModificationGreaterThan;
-
+            // TODO: Add DaysAfterLastTierChangeGreaterThan once supported by Track2 SDK
             return dateAfterModification;
 
         }

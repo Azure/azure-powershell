@@ -221,7 +221,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Uri queueEndpoint = storageAccountResource.Data.PrimaryEndpoints.Queue != null ? new Uri(storageAccountResource.Data.PrimaryEndpoints.Queue) : null;
             Uri tableEndpoint = storageAccountResource.Data.PrimaryEndpoints.Table != null ? new Uri(storageAccountResource.Data.PrimaryEndpoints.Table) : null;
             Uri fileEndpoint = storageAccountResource.Data.PrimaryEndpoints.File != null ? new Uri(storageAccountResource.Data.PrimaryEndpoints.File) : null;
-            string key = storageAccountResource.GetKeys().Value.Keys[0].Value;
+            string key = null;
+            if (storageAccountResource.GetKeys()?.Value?.Keys != null && storageAccountResource.GetKeys().Value.Keys.Count > 0)
+            {
+                key = storageAccountResource.GetKeys().Value.Keys[0].Value;
+            }
             StorageCredentials storageCredentials = new Azure.Storage.Auth.StorageCredentials(storageAccountResource.Data.Name, key);
             CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(
                 storageCredentials,

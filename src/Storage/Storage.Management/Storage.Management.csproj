@@ -14,15 +14,6 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="StorageAccount\AddAzureStorageAccountNetworkRule.cs" />
-    <Compile Remove="StorageAccount\GetAzureStorageAccountNetworkRuleSet.cs" />
-    <Compile Remove="StorageAccount\InvokeAzureStorageAccountFailover.cs" />
-    <Compile Remove="StorageAccount\InvokeAzureStorageAccountHierarchicalNamespaceUpgrade.cs" />
-    <Compile Remove="StorageAccount\RemoveAzureStorageAccountNetworkRule.cs" />
-    <Compile Remove="StorageAccount\RestoreAzStorageBlobRange.cs" />
-    <Compile Remove="StorageAccount\UpdateAzureStorageAccountNetworkRuleSet.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <!-- <PackageReference Include="Azure.Core" Version="1.24.0" /> -->
     <PackageReference Include="Azure.ResourceManager" Version="1.0.0" />
     <PackageReference Include="Azure.ResourceManager.Storage" Version="1.0.0-beta.9" />
