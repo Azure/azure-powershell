@@ -34,6 +34,8 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
+using ResourceIdentityType = Microsoft.Azure.Management.ContainerService.Models.ResourceIdentityType;
+
 namespace Microsoft.Azure.Commands.Aks
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
@@ -378,6 +380,7 @@ namespace Microsoft.Azure.Commands.Aks
                     {
                         cluster.FqdnSubdomain = FqdnSubdomain;
                     }
+                    SetIdentity(cluster);
 
                     var kubeCluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, cluster);
 
@@ -385,6 +388,7 @@ namespace Microsoft.Azure.Commands.Aks
                 });
             }
         }
+
         private void RemoveAcrRoleAssignment(string acrName, string acrParameterName, AcsServicePrincipal acsServicePrincipal)
         {
             string acrResourceId = null;
