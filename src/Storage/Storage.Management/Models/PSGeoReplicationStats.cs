@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
             PSGeoReplicationStats pSGeoReplicationStats = new PSGeoReplicationStats
             {
-                Status = geoReplicationStats.Status != null ? geoReplicationStats.Status.ToString() : null,
+                Status = geoReplicationStats.Status?.ToString(),
                 LastSyncTime = geoReplicationStats.LastSyncOn,
                 CanFailover = geoReplicationStats.CanFailover != null ? geoReplicationStats.CanFailover : null
             };
