@@ -260,7 +260,5 @@ directive:
 
   # These APIs are used by the agent so they do not need to be in the cmdlets.
   - remove-operation:
-    - Machines_Reconnect
     - Machines_CreateOrUpdate
-    - Machines_Update
 ```

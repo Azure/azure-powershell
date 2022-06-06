@@ -38,6 +38,7 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 Set-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $location
 ```
 
+```output
 Name         Location    PublicNetworkAccess ProvisioningState
 ----         --------    ------------------- -----------------
 name         eastus2euap Disabled            Succeeded         

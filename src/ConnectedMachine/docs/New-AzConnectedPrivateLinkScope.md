@@ -52,6 +52,7 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 New-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Enabled" -Location $location
 ```
 
+```output
 Name        Location    PublicNetworkAccess ProvisioningState 
 ----        --------    ------------------- ----------------- 
 name1      eastus2euap Enabled             Succeeded         
