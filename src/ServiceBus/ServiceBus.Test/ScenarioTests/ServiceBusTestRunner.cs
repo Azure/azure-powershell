@@ -30,36 +30,25 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                 .WithProjectSubfolderForTests("ScenarioTests")
                 .WithCommonPsScripts(new[]
                 {
-                    @"../AzureRM.Resources.ps1",
-                    @"../AzureRM.Storage.ps1"
+                    @"../AzureRM.Resources.ps1"
                 })
                 .WithNewRmModules(helper => new[]
-               {
+                {
                     helper.RMProfileModule,
-                    helper.GetRMModulePath("AzureRM.ServiceBus.psd1"),
-                    helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
-                    helper.GetRMModulePath("AzureRM.ManagedServiceIdentity.psd1"),
-
+                    helper.GetRMModulePath("Az.ServiceBus.psd1"),
+                    helper.GetRMModulePath("Az.KeyVault.psd1")
                 })
-                .WithRecordMatcher(
-                    (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
-                        new PermissiveRecordMatcherWithApiExclusion(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
-                )
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
                     {
-                        {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
-                        {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10"},
-                        {"Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-09-01"},
+                        {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
                     },
                     resourceProviders: new Dictionary<string, string>
                     {
                         {"Microsoft.Resources", null},
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null},
-                        {"Microsoft.ServiceBus", null},
-                        {"Microsoft.KeyVault", null},
-                        {"Microsoft.ManagedServiceIdentity", null},
+                        {"Microsoft.KeyVault", null}
                     }
                 )
                 .Build();
