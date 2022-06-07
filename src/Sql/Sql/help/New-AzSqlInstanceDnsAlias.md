@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSqlInstanceDnsAlias
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an Azure SQL Managed Instance DNS alias.
 
 ## SYNTAX
 

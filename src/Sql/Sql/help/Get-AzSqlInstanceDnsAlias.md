@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSqlInstanceDnsAlias
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets one or more Azure SQL Managed Instance DNS aliases.
 
 ## SYNTAX
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-Name of Azure SQL Managed Instance.
+Name of the managed instance.
 
 ```yaml
 Type: System.String
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceObject
-Instance input object.
+Input object of the managed instance.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The Azure Sql Managed Instance DNS Alias name.
+Name of the managed instance DNS alias.
 
 ```yaml
 Type: System.String
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The instance DNS alias resource ID.
+Resource ID of the managed instance DNS alias.
 
 ```yaml
 Type: System.String

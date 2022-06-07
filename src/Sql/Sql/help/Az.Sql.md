@@ -290,6 +290,9 @@ Gets all vulnerability assessment scan record(s) associated with a given managed
 ### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a managed database.
 
+### [Get-AzSqlInstanceDnsAlias](Get-AzSqlInstanceDnsAlias.md)
+Gets one or more Azure SQL Managed Instance DNS aliases.
+
 ### [Get-AzSqlInstanceKeyVaultKey](Get-AzSqlInstanceKeyVaultKey.md)
 Gets a SQL managed instance's Key Vault keys.
 
@@ -410,6 +413,9 @@ Failovers an elastic pool.
 ### [Invoke-AzSqlInstanceFailover](Invoke-AzSqlInstanceFailover.md)
 Failovers an Azure SQL Managed Instance.
 
+### [Move-AzSqlInstanceDnsAlias](Move-AzSqlInstanceDnsAlias.md)
+Modifies the managed instance to which Azure SQL Managed Instance DNS Alias is pointing.
+
 ### [New-AzSqlDatabase](New-AzSqlDatabase.md)
 Creates a database or an elastic database.
 
@@ -457,6 +463,9 @@ Creates an Azure SQL Database Managed Instance.
 
 ### [New-AzSqlInstanceDatabase](New-AzSqlInstanceDatabase.md)
 Creates an Azure SQL Managed Instance database.
+
+### [New-AzSqlInstanceDnsAlias](New-AzSqlInstanceDnsAlias.md)
+Creates an Azure SQL Managed Instance DNS alias.
 
 ### [New-AzSqlInstanceLink](New-AzSqlInstanceLink.md)
 Creates a new instance link.
@@ -568,6 +577,9 @@ Deletes a long term retention backup.
 
 ### [Remove-AzSqlInstanceDatabaseSensitivityClassification](Remove-AzSqlInstanceDatabaseSensitivityClassification.md)
 Removes the information types and sensitivity labels of columns in the Azure SQL Managed Instance database.
+
+### [Remove-AzSqlInstanceDnsAlias](Remove-AzSqlInstanceDnsAlias.md)
+Removes an Azure SQL Managed Instance DNS alias.
 
 ### [Remove-AzSqlInstanceKeyVaultKey](Remove-AzSqlInstanceKeyVaultKey.md)
 Removes a Key Vault key from a SQL managed instance
@@ -721,6 +733,9 @@ Sets the information types and sensitivity labels of columns in the Azure SQL Ma
 
 ### [Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
+
+### [Set-AzSqlInstanceDnsAlias](Set-AzSqlInstanceDnsAlias.md)
+Sets properties for an Azure SQL Managed Instance DNS alias.
 
 ### [Set-AzSqlInstancePool](Set-AzSqlInstancePool.md)
 Sets properties for an Azure SQL Instance pool.

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Move-AzSqlInstanceDnsAlias
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Modifies the managed instance to which Azure SQL Managed Instance DNS Alias is pointing.
 
 ## SYNTAX
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-Name of the managed instance.
+Name of the target managed instance.
 
 ```yaml
 Type: System.String
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Name of the target resource group.
 
 ```yaml
 Type: System.String
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceInputObject
-Input object of the target managed instance dns alias.
+Input object of the source managed instance DNS alias.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Model.AzureSqlManagedInstanceDnsAliasModel
@@ -198,7 +198,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceInstanceObject
-Input object of the target managed instance.
+Input object of the source managed instance.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
@@ -225,7 +225,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceName
-Name of source the dns alias.
+Name of the source DNS alias.
 
 ```yaml
 Type: System.String
@@ -255,7 +255,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceResourceId
-Resource ID of the target managed instance.
+Resource ID of the source managed instance DNS alias.
 
 ```yaml
 Type: System.String
