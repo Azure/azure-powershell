@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Free".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Free", "Free", global::System.Management.Automation.CompletionResultType.ParameterValue, "Free");
+                yield return new global::System.Management.Automation.CompletionResult("'Free'", "Free", global::System.Management.Automation.CompletionResultType.ParameterValue, "Free");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Standard", "Standard", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard");
+                yield return new global::System.Management.Automation.CompletionResult("'Standard'", "Standard", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard");
             }
         }
     }
