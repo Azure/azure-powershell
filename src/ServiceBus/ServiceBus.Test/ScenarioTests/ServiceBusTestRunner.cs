@@ -40,10 +40,6 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                     helper.GetRMModulePath("Az.ManagedServiceIdentity.psd1"),
 
                 })
-                .WithRecordMatcher(
-                    (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
-                        new PermissiveRecordMatcherWithApiExclusion(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
-                )
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
                     {
