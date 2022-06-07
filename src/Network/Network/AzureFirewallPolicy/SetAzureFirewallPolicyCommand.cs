@@ -161,6 +161,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The Private IP Range")]
         public string[] PrivateRange { get; set; }
 
+       [Parameter(
+            Mandatory = false,
+            HelpMessage = "Explicit Proxy Settings in Firewall Policy.")]
+        public PSAzureFirewallPolicyExplicitProxy ExplicitProxySettings { get; set; }
+
+
         private void AddPremiumProperties(PSAzureFirewallPolicy firewallPolicy)
         {
             firewallPolicy.Sku = new PSAzureFirewallPolicySku
@@ -244,6 +250,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.UserAssignedIdentityId = this.IsParameterBound(c => c.UserAssignedIdentityId) ? UserAssignedIdentityId : (InputObject.Identity?.UserAssignedIdentities != null ? InputObject.Identity.UserAssignedIdentities?.First().Key : null);
                 this.SkuTier = this.IsParameterBound(c => c.SkuTier) ? SkuTier : (InputObject.Sku?.Tier != null ? InputObject.Sku.Tier : null);
                 this.PrivateRange = this.IsParameterBound(c => c.PrivateRange) ? PrivateRange : InputObject.PrivateRange;
+                this.ExplicitProxySettings = this.IsParameterBound(c => c.ExplicitProxySettings) ? ExplicitProxySettings : InputObject.ExplicitProxySettings;
 
                 var firewallPolicy = new PSAzureFirewallPolicy()
                 {
@@ -255,7 +262,8 @@ namespace Microsoft.Azure.Commands.Network
                     BasePolicy = this.BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(this.BasePolicy) : null,
                     DnsSettings = this.DnsSetting,
                     SqlSetting = this.SqlSetting,
-                    PrivateRange = this.PrivateRange
+                    PrivateRange = this.PrivateRange,
+                    ExplicitProxySettings = this.ExplicitProxySettings
                 };
 
                 AddPremiumProperties(firewallPolicy);
@@ -279,7 +287,8 @@ namespace Microsoft.Azure.Commands.Network
                     BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null,
                     DnsSettings = this.DnsSetting,
                     SqlSetting = this.SqlSetting,
-                    PrivateRange = this.PrivateRange
+                    PrivateRange = this.PrivateRange,
+                    ExplicitProxySettings = this.ExplicitProxySettings
                 };
 
                 AddPremiumProperties(firewallPolicy);
