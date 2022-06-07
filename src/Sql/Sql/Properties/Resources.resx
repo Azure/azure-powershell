@@ -733,4 +733,25 @@
   <data name="SetAzureSqlInstanceLinkWarning" xml:space="preserve">
     <value>Are you sure you want to update instance link named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
   </data>
+  <data name="CreateAzureSqlInstanceDnsAliasDescription" xml:space="preserve">
+    <value>Creating a new dns alias named '{2}' on managed instance '{1}' located in resource group '{0}'.</value>
+  </data>
+  <data name="CreateAzureSqlInstanceDnsAliasWarning" xml:space="preserve">
+    <value>Are you sure you want to create a new dns alias named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
+  <data name="ManagedInstanceDnsAliasExists" xml:space="preserve">
+    <value>Dns alias with name '{0}' already exists.</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceDnsAliasDescription" xml:space="preserve">
+    <value>Permanently removing instance DNS alias named '{2}' from managed instance '{1}' in resource group '{0}'.</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceDnsAliasWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the instance DNS alias named '{2}' from managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
+  <data name="SetAzureSqlInstanceDnsAliasDescription" xml:space="preserve">
+    <value>Setting dns alias named '{2}' on managed instance '{1}' located in resource group '{0}'.</value>
+  </data>
+  <data name="SetAzureSqlInstanceDnsAliasWarning" xml:space="preserve">
+    <value>Are you sure you want to set dns alias named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
 </root>

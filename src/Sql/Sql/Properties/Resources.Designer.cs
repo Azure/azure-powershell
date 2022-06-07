@@ -349,7 +349,25 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating a new Managed Instance Hybrid Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Creating a new dns alias named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
+        /// </summary>
+        internal static string CreateAzureSqlInstanceDnsAliasDescription {
+            get {
+                return ResourceManager.GetString("CreateAzureSqlInstanceDnsAliasDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to create a new dns alias named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
+        /// </summary>
+        internal static string CreateAzureSqlInstanceDnsAliasWarning {
+            get {
+                return ResourceManager.GetString("CreateAzureSqlInstanceDnsAliasWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating a new instance link named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
         /// </summary>
         internal static string CreateAzureSqlInstanceLinkDescription {
             get {
@@ -358,7 +376,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to create a new Managed Instance Hybrid Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to create a new instance link named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
         /// </summary>
         internal static string CreateAzureSqlInstanceLinkWarning {
             get {
@@ -367,7 +385,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating a new Server Trust Certificate in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Creating a new SQL Server trust certificate named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
         /// </summary>
         internal static string CreateAzureSqlInstanceServerTrustCertificateDescription {
             get {
@@ -376,7 +394,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to create a new Server Trust Certificate in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to create a new SQL Server trust certificate named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
         /// </summary>
         internal static string CreateAzureSqlInstanceServerTrustCertificateWarning {
             get {
@@ -756,7 +774,16 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Managed instance link with name &apos;{0}&apos; already exists on Azure Sql Managed Instance &apos;{1}&apos;.
+        ///   Looks up a localized string similar to Dns alias with name &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string ManagedInstanceDnsAliasExists {
+            get {
+                return ResourceManager.GetString("ManagedInstanceDnsAliasExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instance link with name &apos;{0}&apos; already exists on managed instance &apos;{1}&apos;.
         /// </summary>
         internal static string ManagedInstanceLinkAlreadyExists {
             get {
@@ -999,7 +1026,25 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?.
+        ///   Looks up a localized string similar to Permanently removing instance DNS alias named &apos;{2}&apos; from managed instance &apos;{1}&apos; in resource group &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceDnsAliasDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceDnsAliasDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the instance DNS alias named &apos;{2}&apos; from managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceDnsAliasWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceDnsAliasWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This operation may cause data loss if replica&apos;s last hardened LSN is not in sync with the primary. Are you sure you want to proceed?.
         /// </summary>
         internal static string RemoveAzureSqlInstanceLinkAllowDataLoss {
             get {
@@ -1008,7 +1053,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permanently removing Azure Sql Managed Instance Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Permanently removing instance link named &apos;{2}&apos; from managed instance &apos;{1}&apos; in resource group &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlInstanceLinkDescription {
             get {
@@ -1017,7 +1062,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Instance Managed Instance Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove the instance link named &apos;{2}&apos; from managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveAzureSqlInstanceLinkWarning {
             get {
@@ -1026,7 +1071,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permanently removing Azure Sql Instance Server Trust Certificate in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Permanently removing SQL Server trust certificate named &apos;{2}&apos; from managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlInstanceServerTrustCertificateDescription {
             get {
@@ -1035,7 +1080,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Instance Server Trust Certificate in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove SQL Server trust certificate named &apos;{2}&apos; from managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveAzureSqlInstanceServerTrustCertificateWarning {
             get {
@@ -1476,7 +1521,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Certificate with name &apos;{0}&apos; already exists on Azure Sql Managed Instance &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Certificate with name &apos;{0}&apos; already exists on managed instance &apos;{1}&apos;..
         /// </summary>
         internal static string ServerTrustCertificateAlreadyExists {
             get {
@@ -1539,7 +1584,25 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating Managed Instance Hybrid Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Setting dns alias named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
+        /// </summary>
+        internal static string SetAzureSqlInstanceDnsAliasDescription {
+            get {
+                return ResourceManager.GetString("SetAzureSqlInstanceDnsAliasDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to set dns alias named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
+        /// </summary>
+        internal static string SetAzureSqlInstanceDnsAliasWarning {
+            get {
+                return ResourceManager.GetString("SetAzureSqlInstanceDnsAliasWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating instance link named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
         /// </summary>
         internal static string SetAzureSqlInstanceLinkDescription {
             get {
@@ -1548,7 +1611,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to update Managed Instance Hybrid Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to update instance link named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
         /// </summary>
         internal static string SetAzureSqlInstanceLinkWarning {
             get {

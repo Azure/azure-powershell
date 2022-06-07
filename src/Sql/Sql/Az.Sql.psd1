@@ -286,7 +286,12 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Remove-AzSqlInstanceServerTrustCertificate', 
                'New-AzSqlInstanceLink', 'Get-AzSqlInstanceLink', 
                'Remove-AzSqlInstanceLink', 'Update-AzSqlInstanceLink', 
-               'Get-AzSqlInstanceEndpointCertificate'
+               'Get-AzSqlInstanceEndpointCertificate',
+               'Get-AzSqlInstanceDnsAlias',
+               'Set-AzSqlInstanceDnsAlias',
+               'New-AzSqlInstanceDnsAlias',
+               'Remove-AzSqlInstanceDnsAlias',
+               'Move-AzSqlInstanceDnsAlias'
 
 # Variables to export from this module
 # VariablesToExport = @()
