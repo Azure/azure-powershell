@@ -33,12 +33,10 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                     @"../AzureRM.Resources.ps1"
                 })
                 .WithNewRmModules(helper => new[]
-               {
+                {
                     helper.RMProfileModule,
                     helper.GetRMModulePath("Az.ServiceBus.psd1"),
-                    helper.GetRMModulePath("Az.KeyVault.psd1"),
-                    helper.GetRMModulePath("Az.ManagedServiceIdentity.psd1"),
-
+                    helper.GetRMModulePath("Az.KeyVault.psd1")
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
