@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed incorrect access token [#18105]
 
 ## Version 2.8.0
 * Added a preview feature allowing user to control the following configurations by using `Get-AzConfig`, `Update-AzConfig` and `Clear-AzConfig`:

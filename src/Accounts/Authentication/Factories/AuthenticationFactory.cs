@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 case AzureAccount.AccountType.Certificate:
                     throw new NotSupportedException(AzureAccount.AccountType.Certificate.ToString());
                 case AzureAccount.AccountType.AccessToken:
-                    return new RenewingTokenCredential(new ExternalAccessToken(GetEndpointToken(context.Account, targetEndpoint), () => GetEndpointToken(context.Account, targetEndpoint)));
+                    return new RenewingTokenCredential(new ExternalAccessToken(GetEndpointToken(context.Account, resourceId), () => GetEndpointToken(context.Account, resourceId)));
             }
 
 
