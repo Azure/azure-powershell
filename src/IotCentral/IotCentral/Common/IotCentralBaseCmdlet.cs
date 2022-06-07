@@ -19,13 +19,15 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources;
 using Azure.ResourceManager.IotCentral;
 //using Microsoft.Azure.Management.IotCentral;
+using Azure.Identity;
 using System.Management.Automation;
+using Azure.ResourceManager;
 
 namespace Microsoft.Azure.Commands.IotCentral.Common
 {
     public abstract class IotCentralBaseCmdlet : AzureRMCmdlet
     {
-        private IotCentralAppCollection iotCentralClient;
+        private ArmClient iotCentralClient; 
 
         private IResourceManagementClient resourceManagementClient;
 
@@ -52,13 +54,15 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        protected IotCentralAppCollection IotCentralClient
+        protected ArmClient IotCentralClient
         {
             get
             {
-                if (this.iotCentralClient == null) // Not sure what to change below to -HM
+                if (this.iotCentralClient == null) 
                 {
-                    this.iotCentralClient = AzureSession.Instance.ClientFactory.CreateArmClient<IotCentralClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                    //this.iotCentralClient = AzureSession.Instance.ClientFactory.CreateArmClient<ArmClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                    var cred = new DefaultAzureCredential();
+                    this.iotCentralClient = new ArmClient(cred);
                 }
                 return this.iotCentralClient;
             }

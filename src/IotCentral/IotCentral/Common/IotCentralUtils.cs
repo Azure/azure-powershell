@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
             return new PSIotCentralApp(iotCentralApp);
         }
 
-        public static IEnumerable<PSIotCentralApp> ToPSIotCentralApps(IEnumerable<App> iotCentralApps)
+        public static IEnumerable<PSIotCentralApp> ToPSIotCentralApps(IEnumerable<IotCentralAppResource> iotCentralApps)
         {
             return iotCentralApps.Select(app => ToPSIotCentralApp(app));
         }
