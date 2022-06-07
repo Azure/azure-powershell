@@ -34,16 +34,6 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureIntegrationRuntime()
         {
-            if (string.IsNullOrEmpty(TestResourceGroupName))
-            {
-                TestResourceGroupName = nameof(TestResourceGroupName);
-            }
-
-            if (string.IsNullOrEmpty(TestWorkspaceName))
-            {
-                TestWorkspaceName = nameof(TestWorkspaceName);
-            }
-
             TestRunner.RunTestScript("Test-Azure-IntegrationRuntime");
         }
 
@@ -51,16 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestIntegrationRuntimePiping()
         {
-            if (string.IsNullOrEmpty(TestResourceGroupName))
-            {
-                TestResourceGroupName = nameof(TestResourceGroupName);
-            }
-
-            if (string.IsNullOrEmpty(TestWorkspaceName))
-            {
-                TestWorkspaceName = nameof(TestWorkspaceName);
-            }
-
             TestRunner.RunTestScript(string.Format(
                 "Test-IntegrationRuntime-Piping -resourceGroupName '{0}' -workspaceName '{1}'",
                 TestResourceGroupName,
@@ -71,16 +51,6 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureSSISIntegrationRuntime()
         {
-            if (string.IsNullOrEmpty(TestResourceGroupName))
-            {
-                TestResourceGroupName = nameof(TestResourceGroupName);
-            }
-
-            if (string.IsNullOrEmpty(TestWorkspaceName))
-            {
-                TestWorkspaceName = nameof(TestWorkspaceName);
-            }
-
             TestRunner.RunTestScript("Test-AzureSSIS-IntegrationRuntime");
         }
     }
