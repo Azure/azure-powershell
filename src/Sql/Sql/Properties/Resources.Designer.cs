@@ -1737,7 +1737,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t perform stop log replay, database {0} on the instance {1} in the resource group {2} was not created by log replay migration..
+        ///   Looks up a localized string similar to Cannot stop the log replay as database {0} on the instance {1} in the resource group {2} was not created with log replay service..
         /// </summary>
         internal static string StopLogReplayErrorDatabaseOrigin {
             get {
