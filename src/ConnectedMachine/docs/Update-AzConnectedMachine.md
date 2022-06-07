@@ -79,7 +79,6 @@ rg               surface eastus2euap windows Connected Updating
 
 Update a machine to clean a field
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
