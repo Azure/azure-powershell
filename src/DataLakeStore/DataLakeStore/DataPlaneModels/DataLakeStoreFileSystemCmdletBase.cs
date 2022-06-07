@@ -74,11 +74,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// Converts the stream type string into an Encoding
         /// </summary>
         /// <param name="content">The content.</param>
-        /// <param name="type">
-        /// This is a string representation of the encoding. It can be
-        /// "string", "unicode", "bigendianunicode", "ascii", "utf7", or "utf8"
-        /// Note, a ToLowerInvariant is done to the type before comparison is made.
-        /// </param>
+        /// <param name="encoding"></param>
         /// <returns>
         /// The encoding that was represented by the string
         /// </returns>

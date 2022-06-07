@@ -30,9 +30,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="DataLakeStoreItem" /> class.
         /// </summary>
-        /// <param name="property">The property.</param>
-        /// <param name="optionalName">The optional name of the file or folder</param>
-        /// <param name="optionalPath">The optional full path to the file or folder, excluding the file or folder name itself.</param>
         public DataLakeStoreFirewallRule(FirewallRule baseRule)
         {
             Name = baseRule.Name;
