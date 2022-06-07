@@ -60,7 +60,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 .WithNewRmModules(helper => new[]
                 {
                     helper.RMProfileModule,
-                    helper.RMStorageModule,
                     helper.GetRMModulePath("Az.Sql.psd1"),
                     helper.RMNetworkModule,
                     helper.RMOperationalInsightsModule,
