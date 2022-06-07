@@ -50,13 +50,8 @@ $schedule = New-AzAutomationSchedule -ResourceGroupName "mygroup" `
                                                   -WeekInterval 1 `
                                                   -ForUpdateConfiguration
 
-New-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" `
-                                                 -AutomationAccountName "myaccount" `
-                                                 -Schedule $schedule `
-                                                 -Windows `                                                 
-                                                 -AzureQuery $AzureQueries `
-                                                 -IncludedUpdateClassification Critical `
-                                                 -Duration $duration
+New-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" -AutomationAccountName "myaccount" -Schedule $schedule -Windows -AzureQuery $AzureQueries `
+                                            -IncludedUpdateClassification Critical -Duration $duration
 ```
 ```output
 UpdateConfiguration   : Microsoft.Azure.Commands.Automation.Model.UpdateManagement.UpdateConfiguration

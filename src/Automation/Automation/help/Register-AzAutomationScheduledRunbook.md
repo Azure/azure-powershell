@@ -34,7 +34,7 @@ The runbook starts based on the schedule you specify using the *ScheduleName* pa
 
 ### Example 1: Associate a runbook with a schedule
 ```powershell
-Register-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -Name "Runbk01" -ScheduleName "Sched01" -ResourceGroupName "ResourceGroup01"
+Register-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -RunbookName "Runbk01" -ScheduleName "Sched01" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command associates the runbook named Runbk01 with the schedule named Sched01 in the Azure Automation account named Contoso17.
