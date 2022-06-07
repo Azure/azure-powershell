@@ -52,7 +52,15 @@ Import-AzApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "Swagger
 
 This command imports an API from the specified Swagger file.
 
-### Example 3: Import an API from a WADL link
+### Example 3: Import an API from a Swagger file and update an existing API
+```powershell
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Import-AzApiManagementApi -Context $ApiMgmtContext -ApiId "26591405e27d4ff3a8d8478d7e60c7b0" -SpecificationFormat "Swagger" -SpecificationPath "C:\contoso\specifications\echoapi.swagger" -Path "apis"
+```
+
+This command imports an API from the specified Swagger file and updates an existing API.
+
+### Example 4: Import an API from a WADL link
 ```powershell
 $ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 Import-AzApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "Wadl" -SpecificationUrl "http://contoso.com/specifications/wadl/echoapi" -Path "apis"
@@ -60,7 +68,7 @@ Import-AzApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "Wadl" -
 
 This command imports an API from the specified WADL link.
 
-### Example 4: Import an API from a Open Api Link
+### Example 5: Import an API from a Open Api Link
 ```powershell
 $context = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 Import-AzApiManagementApi -Context $context -SpecificationFormat OpenApi -SpecificationUrl https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.yaml -Path "petstore30"
@@ -95,7 +103,7 @@ ServiceName                   : contoso
 
 This command imports an API from the specified Open 3.0 specification link.
 
-### Example 5:  Import an API from a Open Api Link into a ApiVersion Set
+### Example 6:  Import an API from a Open Api Link into a ApiVersion Set
 
 ```powershell
 $context = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"

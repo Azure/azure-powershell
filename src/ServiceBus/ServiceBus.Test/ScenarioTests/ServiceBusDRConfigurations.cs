@@ -14,27 +14,21 @@
 
 namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 {
+    using Microsoft.Azure.Commands.EventHub.Test.ScenarioTests;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceBus;
-    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class ServiceBusDRConfigurationTests : RMTestBase
+    public class ServiceBusDRConfigurationTests : ServiceBusTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ServiceBusDRConfigurationTests(ITestOutputHelper output)
+        public ServiceBusDRConfigurationTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceBusDRConfigurationsCURD()
         {
-            ServiceBusController.NewInstance.RunPsTest(_logger, "ServiceBusDRConfigurationTests");
+            TestRunner.RunTestScript("ServiceBusDRConfigurationTests");
         }
     }
 }

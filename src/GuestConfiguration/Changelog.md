@@ -15,6 +15,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.11.0
 * Converted Az.GuestConfiguration to generated module
 
 ## Version 0.10.8
