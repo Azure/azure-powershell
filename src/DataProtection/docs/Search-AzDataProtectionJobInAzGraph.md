@@ -25,9 +25,9 @@ Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entr
 
 ### Example 1: Get all jobs in a certain time range
 ```powershell
-$endtime = Get-Date
-$starttime = $endtime.AddHours(-5)
-Search-AzDataProtectionJobInAzGraph -Subscription "xxx-xxx-xxx" -ResourceGroup sarath-rg -Vault sarath-vault -DatasourceType AzureDisk -StartTime $starttime -EndTime $endtime
+PS C:\> $endtime = Get-Date
+PS C:\> $starttime = $endtime.AddHours(-5)
+PS C:\> Search-AzDataProtectionJobInAzGraph -Subscription "xxx-xxx-xxx" -ResourceGroup sarath-rg -Vault sarath-vault -DatasourceType AzureDisk -StartTime $starttime -EndTime $endtime
 ```
 
 ```output
@@ -42,7 +42,7 @@ This command gets all jobs in a vault in last 5 hours.
 
 ### Example 2: Get all jobs of a certain operation type
 ```powershell
-Search-AzDataProtectionJobInAzGraph -Subscription "xxxx-xxx-xxx" -ResourceGroup sarath-rg -Vault sarath-vault -DatasourceType AzureDisk -Operation OnDemandBackup
+PS C:\> Search-AzDataProtectionJobInAzGraph -Subscription "xxxx-xxx-xxx" -ResourceGroup sarath-rg -Vault sarath-vault -DatasourceType AzureDisk -Operation OnDemandBackup
 ```
 
 ```output

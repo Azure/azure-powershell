@@ -24,7 +24,7 @@ Searches for Backup instances in Azure Resource Graph and retrieves the expected
 
 ### Example 1: Get all protected azure disk backup instance in a given subscription
 ```powershell
-Search-AzDataProtectionBackupInstanceInAzGraph -Subscription "xxxx-xxx-xxx" -DatasourceType AzureDisk
+PS C:\> Search-AzDataProtectionBackupInstanceInAzGraph -Subscription "xxxx-xxx-xxx" -DatasourceType AzureDisk
 ```
 
 ```output
@@ -44,7 +44,7 @@ This command gets all protected azure disk backup instance in a given subscripti
 
 ### Example 2: Get all protected azure disk backup instance in a given resource group list
 ```powershell
-Search-AzDataProtectionBackupInstanceInAzGraph -Subscription "xxxx-xxx-xxx" -DatasourceType AzureDisk -ResourceGroup @("sarath-rg", "sarath-rg2")
+PS C:\> Search-AzDataProtectionBackupInstanceInAzGraph -Subscription "xxxx-xxx-xxx" -DatasourceType AzureDisk -ResourceGroup @("sarath-rg", "sarath-rg2")
 ```
 
 ```output
@@ -59,7 +59,7 @@ This commands gets all protected azure disk backup instance in a given set of re
 
 ### Example 3: Get all protected azure disk backup instance in a given resource group list with protection state 'ProtectionConfigured'
 ```powershell
-Search-AzDataProtectionBackupInstanceInAzGraph -Subscription "xxxx-xxx-xxx" -DatasourceType AzureDisk -ResourceGroup @("sarath-rg", "sarath-rg2") -ProtectionStatus  ProtectionConfigured
+PS C:\> Search-AzDataProtectionBackupInstanceInAzGraph -Subscription "xxxx-xxx-xxx" -DatasourceType AzureDisk -ResourceGroup @("sarath-rg", "sarath-rg2") -ProtectionStatus  ProtectionConfigured
 ```
 
 ```output
