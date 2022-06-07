@@ -13,49 +13,45 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
-    public class RoutingRuleTests: RMTestBase
+    public class RoutingRuleTests: WebsitesTestRunner
     {
-        public XunitTracingInterceptor _logger;
         public RoutingRuleTests(ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddWebAppTrafficRoutingRule()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-AddWebAppTrafficRoutingRule");
+            TestRunner.RunTestScript("Test-AddWebAppTrafficRoutingRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveWebAppTrafficRoutingRule()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveWebAppTrafficRoutingRule");
+            TestRunner.RunTestScript("Test-RemoveWebAppTrafficRoutingRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppTrafficRoutingRule()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppTrafficRoutingRule");
+            TestRunner.RunTestScript("Test-GetWebAppTrafficRoutingRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateWebAppTrafficRoutingRule()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-UpdateWebAppTrafficRoutingRule");
+            TestRunner.RunTestScript("Test-UpdateWebAppTrafficRoutingRule");
         }
     }
 }

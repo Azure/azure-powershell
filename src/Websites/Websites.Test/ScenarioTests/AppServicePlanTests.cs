@@ -13,71 +13,66 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
-    public class AppServicePlanTests : RMTestBase
+    public class AppServicePlanTests : WebsitesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public AppServicePlanTests(ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewAppServicePlan()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewAppServicePlan");
+            TestRunner.RunTestScript("Test-CreateNewAppServicePlan");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewAppServicePlanHyperV()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewAppServicePlanHyperV");
+            TestRunner.RunTestScript("Test-CreateNewAppServicePlanHyperV");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewAppServicePlanLinux()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewAppServicePlanLinux");
+            TestRunner.RunTestScript("Test-CreateNewAppServicePlanLinux");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAppServicePlan()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-SetAppServicePlan");
+            TestRunner.RunTestScript("Test-SetAppServicePlan");
         }
 
         [Fact(Skip = "Needs investigation. Fails running playback")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAppServicePlan()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetAppServicePlan");
+            TestRunner.RunTestScript("Test-GetAppServicePlan");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAppServicePlan()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveAppServicePlan");
+            TestRunner.RunTestScript("Test-RemoveAppServicePlan");
         }
 
         [Fact(Skip = "TODO #5594: This test requires a pre-set AppService Environment with specific settings.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewAppServicePlanInAse()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewAppServicePlanInAse");
+            TestRunner.RunTestScript("Test-CreateNewAppServicePlanInAse");
         }
     }
 }

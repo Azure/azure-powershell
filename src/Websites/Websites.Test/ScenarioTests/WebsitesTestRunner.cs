@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Commands.TestFx;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.TestFx;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Collections.Generic;
 using Xunit.Abstractions;
@@ -11,7 +25,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         protected WebsitesTestRunner(ITestOutputHelper output)
         {
-            TestRunner = TestFx.TestManager.CreateInstance(output)
+            TestRunner = TestManager.CreateInstance(output)
                 .WithNewPsScriptFilename($"{GetType().Name}.ps1")
                 .WithProjectSubfolderForTests("ScenarioTests")
                 .WithCommonPsScripts(new[]
@@ -25,8 +39,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                     helper.RMProfileModule,
                     helper.GetRMModulePath("AzureRM.Websites.psd1"),
                     helper.GetRMModulePath("AzureRM.Network.psd1"),
-                    helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
-
+                    helper.GetRMModulePath("AzureRM.KeyVault.psd1")
                 })
                 .WithRecordMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
@@ -37,7 +50,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                     {
                         {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
                         {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10"},
-                        {"Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-09-01"},
+                        {"Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-09-01"}
                     },
                     resourceProviders: new Dictionary<string, string>
                     {
@@ -47,7 +60,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                         {"Microsoft.Websites", null},
                         {"Microsoft.Network", null},
                         {"Microsoft.KeyVault", null},
-                        {"Microsoft.Storage", null},
+                        {"Microsoft.Storage", null}
                     }
                 )
                 .Build();

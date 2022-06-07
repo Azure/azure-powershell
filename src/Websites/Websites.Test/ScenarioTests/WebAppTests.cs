@@ -13,113 +13,108 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
-    public class WebAppTests : RMTestBase
+    public class WebAppTests : WebsitesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public WebAppTests(ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebApp");
+            TestRunner.RunTestScript("Test-CreateNewWebApp");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppHyperV()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppHyperV");
+            TestRunner.RunTestScript("Test-CreateNewWebAppHyperV");
         }
 
         [Fact(Skip = "Needs investigation. Fails pulling container image from public registry.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetWebAppHyperVCredentials()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-SetWebAppHyperVCredentials");
+            TestRunner.RunTestScript("Test-SetWebAppHyperVCredentials");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableContainerContinuousDeploymentAndGetUrl()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-EnableContainerContinuousDeploymentAndGetUrl");
+            TestRunner.RunTestScript("Test-EnableContainerContinuousDeploymentAndGetUrl");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureStorageWebAppHyperV()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-SetAzureStorageWebAppHyperV");
+            TestRunner.RunTestScript("Test-SetAzureStorageWebAppHyperV");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewAppOnAse()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppOnAse");
+            TestRunner.RunTestScript("Test-CreateNewWebAppOnAse");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppSimple()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppSimple");
+            TestRunner.RunTestScript("Test-CreateNewWebAppSimple");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebApp");
+            TestRunner.RunTestScript("Test-GetWebApp");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWebAppPublishingProfile()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WebAppPublishingProfile");
+            TestRunner.RunTestScript("Test-WebAppPublishingProfile");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestPublishWebAppFromZip()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-PublishAzureWebAppFromZip");
+            TestRunner.RunTestScript("Test-PublishAzureWebAppFromZip");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestPublishWebAppFromWar()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-PublishAzureWebAppFromWar");
+            TestRunner.RunTestScript("Test-PublishAzureWebAppFromWar");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CloneNewWebApp");
+            TestRunner.RunTestScript("Test-CloneNewWebApp");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebAppAndDeploymentSlots()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CloneNewWebAppAndDeploymentSlots");
+            TestRunner.RunTestScript("Test-CloneNewWebAppAndDeploymentSlots");
         }
 
         // This test is failing with an HTTP 500 due to a bug in the clone service.
@@ -127,49 +122,49 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebAppWithNewTrafficManager()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CloneNewWebAppWithTrafficManager");
+            TestRunner.RunTestScript("Test-CloneNewWebAppWithTrafficManager");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStartStopRestartWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-StartStopRestartWebApp");
+            TestRunner.RunTestScript("Test-StartStopRestartWebApp");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-SetWebApp");
+            TestRunner.RunTestScript("Test-SetWebApp");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveWebApp");
+            TestRunner.RunTestScript("Test-RemoveWebApp");
         }
 
         [Fact(Skip = "Test is being skipped until issue with HttpMockserver unable to load error is resolved.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWindowsContainerWebAppCanIssuePSSession()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WindowsContainerCanIssueWebAppPSSession");
+            TestRunner.RunTestScript("Test-WindowsContainerCanIssueWebAppPSSession");
         }
 
         [Fact(Skip = "Expected to fail during playback because it validates that a PsSession into a real container web app can be established")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWindowsContainerWebAppPSSessionOpened()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WindowsContainerWebAppPSSessionOpened");
+            TestRunner.RunTestScript("Test-WindowsContainerWebAppPSSessionOpened");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTagsNotRemovedBySetWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-TagsNotRemovedBySetWebApp");
+            TestRunner.RunTestScript("Test-TagsNotRemovedBySetWebApp");
         }
     }
 }

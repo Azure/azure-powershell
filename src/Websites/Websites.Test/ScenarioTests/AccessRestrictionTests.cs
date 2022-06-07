@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
     {
         public AccessRestrictionTests(ITestOutputHelper output)
             : base(output)
-        { }
-        
+        {
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
