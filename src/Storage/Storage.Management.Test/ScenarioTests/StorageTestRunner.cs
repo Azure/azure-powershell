@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test
                 .WithProjectSubfolderForTests("ScenarioTests")
                 .WithCommonPsScripts(new[]
                 {
-                    @"Common.ps1", @"../AzureRM.Resources.ps1"
+                    @"Common.ps1",
+                    @"../AzureRM.Resources.ps1"
                 })
                 .WithNewRmModules(helper => new[]
                 {
