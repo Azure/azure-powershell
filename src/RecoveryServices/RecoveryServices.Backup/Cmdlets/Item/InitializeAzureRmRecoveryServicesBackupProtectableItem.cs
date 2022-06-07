@@ -58,52 +58,63 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.ProtectableItem.ItemContainer)]
         public SwitchParameter PassThru { get; set; }
 
+        /// <summary>
+        /// Prevents the confirmation dialog when specified.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.ProtectableItem.ForceOption)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
 
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
-                string vaultName = resourceIdentifier.ResourceName;
-                string vaultResourceGroupName = resourceIdentifier.ResourceGroupName;
-                string workloadType = ConversionUtils.GetServiceClientWorkloadType(WorkloadType.ToString());
-                string backupManagementType = Container.BackupManagementType.ToString();
-                ODataQuery<BMSContainersInquiryQueryObject> queryParams = new ODataQuery<BMSContainersInquiryQueryObject>(
-                    q => q.WorkloadType == workloadType && q.BackupManagementType == backupManagementType);
-                string errorMessage = string.Empty;
-                var inquiryResponse = ServiceClientAdapter.InquireContainer(
-                Container.Name,
-                queryParams,
-                vaultName,
-                vaultResourceGroupName);
-
-                var operationStatus = TrackingHelpers.GetOperationResult(
-               inquiryResponse,
-               operationId =>
-                   ServiceClientAdapter.GetRegisterContainerOperationResult(
-                       operationId,
-                       Container.Name,
-                       vaultName: vaultName,
-                       resourceGroupName: vaultResourceGroupName));
-
-                if (inquiryResponse.Response.StatusCode
-                       == SystemNet.HttpStatusCode.OK)
+                bool yesToAll = Force.IsPresent;
+                bool noToAll = false;
+                if (ShouldContinue("Do you want to trigger discovery on " + Container.Name, "", ref yesToAll, ref noToAll))
                 {
-                    Logger.Instance.WriteDebug(errorMessage);
-                }
+                    ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                    string vaultName = resourceIdentifier.ResourceName;
+                    string vaultResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    string workloadType = ConversionUtils.GetServiceClientWorkloadType(WorkloadType.ToString());
+                    string backupManagementType = Container.BackupManagementType.ToString();
+                    ODataQuery<BMSContainersInquiryQueryObject> queryParams = new ODataQuery<BMSContainersInquiryQueryObject>(
+                        q => q.WorkloadType == workloadType && q.BackupManagementType == backupManagementType);
+                    string errorMessage = string.Empty;
+                    var inquiryResponse = ServiceClientAdapter.InquireContainer(
+                    Container.Name,
+                    queryParams,
+                    vaultName,
+                    vaultResourceGroupName);
 
-                //Now wait for the operation to Complete
-                if (inquiryResponse.Response.StatusCode
-                        != SystemNet.HttpStatusCode.NoContent)
-                {
-                    errorMessage = string.Format(Resources.TriggerEnquiryFailureErrorCode,
-                        inquiryResponse.Response.StatusCode);
-                    Logger.Instance.WriteDebug(errorMessage);
-                }
-                if (PassThru.IsPresent)
-                {
-                    WriteObject(Container);
+                    var operationStatus = TrackingHelpers.GetOperationResult(
+                   inquiryResponse,
+                   operationId =>
+                       ServiceClientAdapter.GetRegisterContainerOperationResult(
+                           operationId,
+                           Container.Name,
+                           vaultName: vaultName,
+                           resourceGroupName: vaultResourceGroupName));
+
+                    if (inquiryResponse.Response.StatusCode
+                           == SystemNet.HttpStatusCode.OK)
+                    {
+                        Logger.Instance.WriteDebug(errorMessage);
+                    }
+
+                    //Now wait for the operation to Complete
+                    if (inquiryResponse.Response.StatusCode
+                            != SystemNet.HttpStatusCode.NoContent)
+                    {
+                        errorMessage = string.Format(Resources.TriggerEnquiryFailureErrorCode,
+                            inquiryResponse.Response.StatusCode);
+                        Logger.Instance.WriteDebug(errorMessage);
+                    }
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(Container);
+                    }
                 }
             }, ShouldProcess(Container.Name, VerbsLifecycle.Invoke));
         }

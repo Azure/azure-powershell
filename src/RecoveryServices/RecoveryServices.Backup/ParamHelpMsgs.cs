@@ -122,6 +122,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string Name = "Specifies the name of the Database, Instance or AvailabilityGroup.";
             public const string ServerName = "Specifies the name of the server to which the item belongs.";
             public const string ItemContainer = "Returns the container where the discovery is being triggered.";
+            public const string ForceOption = "Forces the command to run without prompting for any confirmation message";
         }
 
         internal static class RecoveryPoint
