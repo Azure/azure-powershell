@@ -37,7 +37,7 @@ The Add-AzAnalysisServicesAccount cmdlet is used to login to an instance of Azur
 
 ### Example 1
 ```powershell
-Add-AzAnalysisServicesAccount
+Add-AzAnalysisServicesAccount -Test
 ```
 
 ```output
