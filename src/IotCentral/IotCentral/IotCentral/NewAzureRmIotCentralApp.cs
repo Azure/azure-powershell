@@ -19,10 +19,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources;
 using Azure.ResourceManager.IotCentral;
 using Azure.ResourceManager.IotCentral.Models;
-
+using Azure.ResourceManager.Models;
+using Azure.Core;
+using Azure;
 //using Microsoft.Azure.Management.IotCentral;
 //using Microsoft.Azure.Management.IotCentral.Models;
-using System;
+using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -89,24 +91,32 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         [ValidateNotNullOrEmpty]
         public string Identity { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override async void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, ResourceProperties.Resources.NewIotCentralApp))
             {
-                var iotCentralApp = new App()
+                var appsCollection = this.IotCentralClient;
+                var Location = this.GetLocation();
+                var Sku = new AppSkuInfo(this.GetAppSkuName());
+                var tags = this.GetTags();
+                var iotCentralAppData = new IotCentralAppData(Location, Sku)
                 {
                     DisplayName = this.GetDisplayName(),
                     Subdomain = this.Subdomain,
                     Template = this.Template,
-                    Sku = new AppSkuInfo() { Name = this.GetAppSkuName() },
-                    Location = this.GetLocation(),
-                    Tags = this.GetTags(),
+                    //Tags = this.GetTags(),
                     Identity = new SystemAssignedServiceIdentity(this.GetIdentity()),
                 };
+                await appsCollection.CreateOrUpdateAsync(WaitUntil.Completed, this.GetDisplayName(), iotCentralAppData, CancellationToken.None);
+                var iotCentralAppResponse = await appsCollection.GetAsync(this.GetDisplayName());
+                var iotCentralApp = iotCentralAppResponse.Value;
 
-                this.IotCentralClient.Apps.CreateOrUpdate(this.ResourceGroupName, this.Name, iotCentralApp);
-                App createdIotCentralApp = this.IotCentralClient.Apps.Get(this.ResourceGroupName, this.Name);
-                this.WriteObject(IotCentralUtils.ToPSIotCentralApp(createdIotCentralApp), false);
+                // GetTags() returns a dictionary, byt the method below add tag async only adds 1 key value pair
+                foreach (KeyValuePair<string, string> tag in tags) {
+                    await iotCentralApp.AddTagAsync(tag.Key, tag.Value, CancellationToken.None);
+                }
+                // var tag1IotCentralAppResponse = await iotCentralApp.AddTagAsync("key", "value");
+                this.WriteObject(IotCentralUtils.ToPSIotCentralApp(iotCentralApp), false);
             }
         }
 
@@ -144,7 +154,7 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         private string GetIdentity()
         {
-            return this.Identity ?? SystemAssignedServiceIdentityType.None;
+            return (this.Identity ?? SystemAssignedServiceIdentityType.None).ToString();
         }
     }
 }

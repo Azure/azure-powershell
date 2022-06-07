@@ -17,12 +17,13 @@ using Azure.ResourceManager.IotCentral.Models;
 //using Microsoft.Azure.Management.IotCentral.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Azure.ResourceManager.IotCentral;
 
 namespace Microsoft.Azure.Commands.IotCentral.Common
 {
     public static class IotCentralUtils
     {
-        public static PSIotCentralApp ToPSIotCentralApp(App iotCentralApp)
+        public static PSIotCentralApp ToPSIotCentralApp(IotCentralAppResource iotCentralApp)
         {
             return new PSIotCentralApp(iotCentralApp);
         }

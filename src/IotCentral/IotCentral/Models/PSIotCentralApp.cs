@@ -13,12 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Azure.ResourceManager.IotCentral.Models;
+//using Azure.ResourceManager.IotCentral.Models;
 
 //using Microsoft.Azure.Management.IotCentral.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System.Collections.Generic;
 using Azure.ResourceManager.Models;
+using Azure.ResourceManager.IotCentral;
 
 namespace Microsoft.Azure.Commands.IotCentral.Models
 {
@@ -42,18 +43,19 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
             }
         }
 
-        public PSIotCentralApp(App iotCentralApp){
-            this.ResourceId = iotCentralApp.Id;
-            this.Name = iotCentralApp.Name;
-            this.Type = iotCentralApp.Type;
-            this.Location = iotCentralApp.Location;
-            this.Tag = iotCentralApp.Tags; 
-            this.Sku = new PSIotCentralAppSkuInfo() { Name = iotCentralApp.Sku.Name };
-            this.ApplicationId = iotCentralApp.ApplicationId;
-            this.DisplayName = iotCentralApp.DisplayName;
-            this.Subdomain = iotCentralApp.Subdomain;
-            this.Template = iotCentralApp.Template;
-            this.Identity = iotCentralApp.Identity;
+        public PSIotCentralApp(IotCentralAppResource iotCentralApp){
+            var iotCentralAppData = iotCentralApp.Data;
+            this.ResourceId = iotCentralAppData.Id;
+            this.Name = iotCentralAppData.Name;
+            //this.Type = iotCentralAppData.Type;
+            this.Location = iotCentralAppData.Location;
+            this.Tag = iotCentralAppData.Tags; 
+            this.Sku = new PSIotCentralAppSkuInfo() { Name = iotCentralAppData.SkuName.ToString()};
+            this.ApplicationId = iotCentralAppData.ApplicationId;
+            this.DisplayName = iotCentralAppData.DisplayName;
+            this.Subdomain = iotCentralAppData.Subdomain;
+            this.Template = iotCentralAppData.Template;
+            this.Identity = iotCentralAppData.Identity;
         }
         
         /// <summary>

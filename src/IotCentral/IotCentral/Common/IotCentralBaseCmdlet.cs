@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
 {
     public abstract class IotCentralBaseCmdlet : AzureRMCmdlet
     {
-        private IIotCentralClient iotCentralClient;
+        private IotCentralAppCollection iotCentralClient;
 
         private IResourceManagementClient resourceManagementClient;
 
@@ -52,11 +52,11 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        protected IIotCentralClient IotCentralClient
+        protected IotCentralAppCollection IotCentralClient
         {
             get
             {
-                if (this.iotCentralClient == null)
+                if (this.iotCentralClient == null) // Not sure what to change below to -HM
                 {
                     this.iotCentralClient = AzureSession.Instance.ClientFactory.CreateArmClient<IotCentralClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 }
