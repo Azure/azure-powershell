@@ -1,52 +1,55 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciextension
+online version: https://docs.microsoft.com/powershell/module/az.stackhci/new-azstackhciarcsettingpassword
 schema: 2.0.0
 ---
 
-# Get-AzStackHciExtension
+# New-AzStackHciArcSettingPassword
 
 ## SYNOPSIS
-Get particular Arc Extension of HCI Cluster.
+Generate password for arc settings.
 
 ## SYNTAX
 
-### List (Default)
+### Generate (Default)
 ```
-Get-AzStackHciExtension -ArcSettingName <String> -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzStackHciExtension -ArcSettingName <String> -ClusterName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzStackHciArcSettingPassword -ArcSettingName <String> -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### GenerateViaIdentity
 ```
-Get-AzStackHciExtension -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzStackHciArcSettingPassword -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get particular Arc Extension of HCI Cluster.
+Generate password for arc settings.
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzStackHciExtension -ResourceGroupName test-rg -ClusterName myCluster -ArcSettingName "default"
+{{ Add code here }}
 ```
 
 ```output
-Name                     ResourceGroupName
-----                     -----------------
-MicrosoftMonitoringAgent test-rg
+{{ Add output here }}
 ```
 
-Gets extensions in an arcSetting of a cluster.
-To see the details use : "Write-Host( $extension | Format-List | Out-String)"
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -55,7 +58,7 @@ The name of the proxy resource holding details of HCI ArcSetting information.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Generate
 Aliases:
 
 Required: True
@@ -70,7 +73,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Generate
 Aliases:
 
 Required: True
@@ -101,7 +104,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GenerateViaIdentity
 Aliases:
 
 Required: True
@@ -111,28 +114,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the machine extension.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: ExtensionName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Generate
 Aliases:
 
 Required: True
@@ -146,13 +134,44 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: Generate
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -166,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPasswordCredential
 
 ## NOTES
 

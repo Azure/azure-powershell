@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the StackHci service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,14 +47,14 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 0105ac02e25089e55a7d4126f8fd303f9415b115
+branch: ad5110c7ba2113d5f77946338231f45ac4d09c82
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2021-09-01/arcSettings.json
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2021-09-01/clusters.json
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2021-09-01/extensions.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/arcSettings.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/clusters.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/extensions.json
 
 module-version: 1.1.0
 title: StackHCI

@@ -1,59 +1,78 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/update-azstackhcicluster
+online version: https://docs.microsoft.com/powershell/module/az.stackhci/invoke-azstackhciuploadclustercertificate
 schema: 2.0.0
 ---
 
-# Update-AzStackHciCluster
+# Invoke-AzStackHciUploadClusterCertificate
 
 ## SYNOPSIS
-Update an HCI cluster.
+Upload certificate.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### UploadExpanded (Default)
 ```
-Update-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AadTenantId <String>] [-CloudManagementEndpoint <String>]
- [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
- [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzStackHciUploadClusterCertificate -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Certificate <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Upload
 ```
-Update-AzStackHciCluster -InputObject <IStackHciIdentity> [-AadTenantId <String>]
- [-CloudManagementEndpoint <String>] [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
- [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzStackHciUploadClusterCertificate -ClusterName <String> -ResourceGroupName <String>
+ -UploadCertificateRequest <IUploadCertificateRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UploadViaIdentity
+```
+Invoke-AzStackHciUploadClusterCertificate -InputObject <IStackHciIdentity>
+ -UploadCertificateRequest <IUploadCertificateRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UploadViaIdentityExpanded
+```
+Invoke-AzStackHciUploadClusterCertificate -InputObject <IStackHciIdentity> [-Certificate <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update an HCI cluster.
+Upload certificate.
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzStackHciCluster -ResourceGroupName test-rg -Name myCluster3 -DesiredPropertyDiagnosticLevel Enhanced -DesiredPropertyWindowsServerSubscription Disabled
+{{ Add code here }}
 ```
 
 ```output
-Location Name       ResourceGroupName
--------- ----       -----------------
-eastus   myCluster3 test-rg
+{{ Add output here }}
 ```
 
-Updating DiagnosticLevel and WindowsServerSubscription values for a cluster.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -AadTenantId
-Tenant id of cluster AAD identity.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -64,15 +83,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CloudManagementEndpoint
-Endpoint configured for management from the Azure portal
+### -Certificate
+.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: UploadExpanded, UploadViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterName
+The name of the cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: Upload, UploadExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -94,43 +128,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DesiredPropertyDiagnosticLevel
-Desired level of diagnostic data emitted by the cluster.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DesiredPropertyWindowsServerSubscription
-Desired state of Windows Server Subscription.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UploadViaIdentity, UploadViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -140,15 +144,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the cluster.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: ClusterName
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -161,7 +165,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Upload, UploadExpanded
 Aliases:
 
 Required: True
@@ -176,7 +180,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Upload, UploadExpanded
 Aliases:
 
 Required: False
@@ -186,18 +190,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Resource tags.
+### -UploadCertificateRequest
+.
+To construct, see NOTES section for UPLOADCERTIFICATEREQUEST properties and create a hash table.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IUploadCertificateRequest
+Parameter Sets: Upload, UploadViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -237,11 +242,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IUploadCertificateRequest
+
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster
+### System.Boolean
 
 ## NOTES
 
@@ -259,6 +266,9 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
+
+UPLOADCERTIFICATEREQUEST <IUploadCertificateRequest>: .
+  - `[Certificate <String[]>]`: 
 
 ## RELATED LINKS
 

@@ -14,7 +14,8 @@ Create an HCI cluster.
 
 ```
 New-AzStackHciCluster -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-AadClientId <String>] [-AadTenantId <String>] [-CloudManagementEndpoint <String>]
+ [-AadApplicationObjectId <String>] [-AadClientId <String>] [-AadServicePrincipalObjectId <String>]
+ [-AadTenantId <String>] [-CloudManagementEndpoint <String>]
  [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
  [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -54,8 +55,38 @@ By default, these values are set to "Basic" and "Disabled" respectively.
 
 ## PARAMETERS
 
+### -AadApplicationObjectId
+Object id of cluster AAD identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AadClientId
 App id of cluster AAD identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AadServicePrincipalObjectId
+Id of cluster identity service principal.
 
 ```yaml
 Type: System.String
@@ -258,7 +289,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20210901.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster
 
 ## NOTES
 

@@ -29,8 +29,7 @@ Get-AzStackHCIRemoteSupportAccess -Cluster
 ```output
 Microsoft.AzureStack.Deployment.RemoteSupport is loaded already ...
 Getting RemoteSupport Access on this node
-Retrieving Remote Support access.
-IncludeExpired is set to 'False'
+Retrieving Remote Support access. IncludeExpired is set to 'False'
 
 
 State         : Active
@@ -52,8 +51,7 @@ Get-AzStackHCIRemoteSupportAccess -Cluster -IncludeExpired
 ```output
 Microsoft.AzureStack.Deployment.RemoteSupport is loaded already ...
 Getting RemoteSupport Access on this node
-Retrieving Remote Support access.
-IncludeExpired is set to 'True'
+Retrieving Remote Support access. IncludeExpired is set to 'True'
 
 
 State         : Active

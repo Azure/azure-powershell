@@ -1,61 +1,65 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciextension
+online version: https://docs.microsoft.com/powershell/module/az.stackhci/update-azstackhciarcsetting
 schema: 2.0.0
 ---
 
-# Get-AzStackHciExtension
+# Update-AzStackHciArcSetting
 
 ## SYNOPSIS
-Get particular Arc Extension of HCI Cluster.
+Update ArcSettings for HCI cluster.
 
 ## SYNTAX
 
-### List (Default)
+### UpdateExpanded (Default)
 ```
-Get-AzStackHciExtension -ArcSettingName <String> -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzStackHciExtension -ArcSettingName <String> -ClusterName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzStackHciArcSetting -ClusterName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-ConnectivityProperty <IAny>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Get-AzStackHciExtension -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzStackHciArcSetting -InputObject <IStackHciIdentity> [-ConnectivityProperty <IAny>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get particular Arc Extension of HCI Cluster.
+Update ArcSettings for HCI cluster.
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzStackHciExtension -ResourceGroupName test-rg -ClusterName myCluster -ArcSettingName "default"
+{{ Add code here }}
 ```
 
 ```output
-Name                     ResourceGroupName
-----                     -----------------
-MicrosoftMonitoringAgent test-rg
+{{ Add output here }}
 ```
 
-Gets extensions in an arcSetting of a cluster.
-To see the details use : "Write-Host( $extension | Format-List | Out-String)"
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -ArcSettingName
-The name of the proxy resource holding details of HCI ArcSetting information.
+### -ClusterName
+The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -65,15 +69,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterName
-The name of the cluster.
+### -ConnectivityProperty
+contains connectivity related configuration for ARC resources
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -101,7 +105,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -112,12 +116,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the machine extension.
+The name of the proxy resource holding details of HCI ArcSetting information.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: ExtensionName
+Parameter Sets: UpdateExpanded
+Aliases: ArcSettingName
 
 Required: True
 Position: Named
@@ -132,7 +136,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -146,13 +150,59 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -166,7 +216,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting
 
 ## NOTES
 

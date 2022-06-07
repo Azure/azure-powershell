@@ -13,8 +13,10 @@ Create ArcSetting for HCI cluster.
 ## SYNTAX
 
 ```
-New-AzStackHciArcSetting -ClusterName <String> -ResourceGroupName <String> [-Name <String>]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStackHciArcSetting -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ArcApplicationClientId <String>] [-ArcApplicationObjectId <String>] [-ArcApplicationTenantId <String>]
+ [-ArcInstanceResourceGroup <String>] [-ArcServicePrincipalObjectId <String>] [-ConnectivityProperty <IAny>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +40,82 @@ The only arcSetting name allowed is "default" and that is provided by default.
 
 ## PARAMETERS
 
+### -ArcApplicationClientId
+App id of arc AAD identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcApplicationObjectId
+Object id of arc AAD identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcApplicationTenantId
+Tenant id of arc AAD identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcInstanceResourceGroup
+The resource group that hosts the Arc agents, ie.
+Hybrid Compute Machine resources.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcServicePrincipalObjectId
+Object id of arc AAD service principal.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the cluster.
 
@@ -47,6 +125,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectivityProperty
+contains connectivity related configuration for ARC resources
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -64,21 +157,6 @@ Aliases: AzureRMContext, AzureCredential
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the proxy resource holding details of HCI ArcSetting information.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ArcSettingName
-
-Required: False
-Position: Named
-Default value: "default"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -152,7 +230,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20210901.IArcSetting
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting
 
 ## NOTES
 

@@ -18,14 +18,13 @@ Add-AzStackHCIVMAttestation configures guests for AzureStack HCI IMDS Attestatio
 Disable-AzStackHCIAttestation disables IMDS Attestation on the host
 
 ### [Disable-AzStackHCIRemoteSupport](Disable-AzStackHCIRemoteSupport.md)
-Disable Remote Support revokes all access levels previously granted.
-Any existing support sessions will be terminated, and new sessions can no longer be established.
+Disables Remote Support.
 
 ### [Enable-AzStackHCIAttestation](Enable-AzStackHCIAttestation.md)
 Enable-AzStackHCIAttestation configures the host and enables specified guests for IMDS attestation.
 
 ### [Enable-AzStackHCIRemoteSupport](Enable-AzStackHCIRemoteSupport.md)
-Enables Remote Support allows authorized Microsoft Support users to remotely access the device for diagnostics or repair depending on the access level granted.
+Enables Remote Support.
 
 ### [Get-AzStackHciArcSetting](Get-AzStackHciArcSetting.md)
 Get ArcSetting resource details of HCI Cluster.
@@ -37,19 +36,25 @@ Get HCI cluster.
 Get particular Arc Extension of HCI Cluster.
 
 ### [Get-AzStackHCIRemoteSupportAccess](Get-AzStackHCIRemoteSupportAccess.md)
-Gets remote support access.
+Gets Remote Support Access.
 
 ### [Get-AzStackHCIRemoteSupportSessionHistory](Get-AzStackHCIRemoteSupportSessionHistory.md)
-Session history represents all remote accesses made by Microsoft Support for either Diagnostics or DiagnosticsRepair based on the Access Level granted.
+Gets Remote Support Session History Details.
 
 ### [Get-AzStackHCIVMAttestation](Get-AzStackHCIVMAttestation.md)
 Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on a node.
 
 ### [Install-AzStackHCIRemoteSupport](Install-AzStackHCIRemoteSupport.md)
-Install-AzStackHCIRemoteSupport installs Remote Support Deployment module.
+Installs Remote Support.
+
+### [Invoke-AzStackHciUploadClusterCertificate](Invoke-AzStackHciUploadClusterCertificate.md)
+Upload certificate.
 
 ### [New-AzStackHciArcSetting](New-AzStackHciArcSetting.md)
 Create ArcSetting for HCI cluster.
+
+### [New-AzStackHciArcSettingPassword](New-AzStackHciArcSettingPassword.md)
+Generate password for arc settings.
 
 ### [New-AzStackHciCluster](New-AzStackHciCluster.md)
 Create an HCI cluster.
@@ -70,7 +75,7 @@ Delete an HCI cluster.
 Delete particular Arc Extension of HCI Cluster.
 
 ### [Remove-AzStackHCIRemoteSupport](Remove-AzStackHCIRemoteSupport.md)
-Remove-AzStackHCIRemoteSupport uninstalls Remote Support Deployment module.
+Removes Remote Support.
 
 ### [Remove-AzStackHCIVMAttestation](Remove-AzStackHCIVMAttestation.md)
 Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestation.
@@ -84,6 +89,9 @@ Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes
 ### [Unregister-AzStackHCI](Unregister-AzStackHCI.md)
 Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and unregisters the on-premises cluster with Azure.
 The registered information available on the cluster is used to unregister the cluster if no parameters are passed.
+
+### [Update-AzStackHciArcSetting](Update-AzStackHciArcSetting.md)
+Update ArcSettings for HCI cluster.
 
 ### [Update-AzStackHciCluster](Update-AzStackHciCluster.md)
 Update an HCI cluster.

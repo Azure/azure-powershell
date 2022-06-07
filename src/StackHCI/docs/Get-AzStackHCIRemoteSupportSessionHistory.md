@@ -27,7 +27,7 @@ Session history represents all remote accesses made by Microsoft Support for eit
 Get-AzStackHCIRemoteSupportSessionHistory 
 ```
 
-```output 
+```output
 Microsoft.AzureStack.Deployment.RemoteSupport is loaded already ...
 Listing Session History for last '7' days.
 No remote support session exists.
