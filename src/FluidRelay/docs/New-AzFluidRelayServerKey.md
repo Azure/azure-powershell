@@ -18,19 +18,6 @@ New-AzFluidRelayServerKey -FluidRelayServerName <String> -ResourceGroup <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Regenerate
-```
-New-AzFluidRelayServerKey -FluidRelayServerName <String> -ResourceGroup <String>
- -Parameter <IRegenerateKeyRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### RegenerateViaIdentity
-```
-New-AzFluidRelayServerKey -InputObject <IFluidRelayIdentity> -Parameter <IRegenerateKeyRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### RegenerateViaIdentityExpanded
 ```
 New-AzFluidRelayServerKey -InputObject <IFluidRelayIdentity> -KeyName <KeyName> [-DefaultProfile <PSObject>]
@@ -45,20 +32,6 @@ Regenerate the primary or secondary key for this server.
 ### Example 1: Regenerate the primary or secondary key for this server.
 ```powershell
 New-AzFluidRelayServerKey -FluidRelayServerName azps-fluidrelay -ResourceGroup azpstest-gp -KeyName 'key2'
-```
-
-```output
-                        Key1                         Key2
-                        ----                         ----
-System.Security.SecureString System.Security.SecureString
-```
-
-Regenerate the primary or secondary key for this server.
-
-### Example 2: Regenerate the primary or secondary key for this server.
-```powershell
-$keyName = New-AzFluidRelayRegenerateKeyRequestObject -KeyName 'key1'
-New-AzFluidRelayServerKey -FluidRelayServerName azps-fluidrelay -ResourceGroup azpstest-gp -Parameter $keyName
 ```
 
 ```output
@@ -91,7 +64,7 @@ The Fluid Relay server resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Regenerate, RegenerateExpanded
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True
@@ -107,7 +80,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
-Parameter Sets: RegenerateViaIdentity, RegenerateViaIdentityExpanded
+Parameter Sets: RegenerateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -122,7 +95,7 @@ The key to regenerate.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.KeyName
-Parameter Sets: RegenerateExpanded, RegenerateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -132,28 +105,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Specifies which key should be generated.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220421.IRegenerateKeyRequest
-Parameter Sets: Regenerate, RegenerateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroup
 The resource group containing the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Regenerate, RegenerateExpanded
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True
@@ -168,7 +125,7 @@ The subscription id (GUID) for this resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Regenerate, RegenerateExpanded
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: False
@@ -214,8 +171,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220421.IRegenerateKeyRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
 
 ## OUTPUTS
@@ -237,9 +192,6 @@ INPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroup <String>]`: The resource group containing the resource.
   - `[SubscriptionId <String>]`: The subscription id (GUID) for this resource.
-
-PARAMETER <IRegenerateKeyRequest>: Specifies which key should be generated.
-  - `KeyName <KeyName>`: The key to regenerate.
 
 ## RELATED LINKS
 

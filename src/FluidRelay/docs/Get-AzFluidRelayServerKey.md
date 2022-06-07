@@ -12,7 +12,7 @@ Get primary and secondary key for this server.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
 Get-AzFluidRelayServerKey -FluidRelayServerName <String> -ResourceGroup <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,12 +22,6 @@ Get-AzFluidRelayServerKey -FluidRelayServerName <String> -ResourceGroup <String>
 ```
 Get-AzFluidRelayServerKey -InputObject <IFluidRelayIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### List
-```
-Get-AzFluidRelayServerKey -FluidRelayServerName <String> -ResourceGroup <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +64,7 @@ The Fluid Relay server resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -101,7 +95,7 @@ The resource group containing the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -116,7 +110,7 @@ The subscription id (GUID) for this resource.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: False

@@ -20,8 +20,7 @@ Describe 'AzFluidRelayServerKey' {
             $config = New-AzFluidRelayServer -Name $env.fluidRelayServer2 -ResourceGroup $env.resourceGroup -Location $env.location
             $config.Name | Should -Be $env.fluidRelayServer2
 
-            $keyName = New-AzFluidRelayRegenerateKeyRequestObject -KeyName 'key1'
-            $config = New-AzFluidRelayServerKey -FluidRelayServerName $env.fluidRelayServer2 -ResourceGroup $env.resourceGroup -Parameter $keyName
+            $config = New-AzFluidRelayServerKey -FluidRelayServerName $env.fluidRelayServer2 -ResourceGroup $env.resourceGroup -KeyName 'key1'
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

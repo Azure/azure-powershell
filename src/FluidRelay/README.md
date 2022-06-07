@@ -46,7 +46,11 @@ nested-object-to-string: true
 
 directive:
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Regenerate$|^RegenerateViaIdentity$
+    remove: true
+  - where:
+      subject: FluidRelayServerKey
+      variant: Get
     remove: true
   - where:
       verb: Set
@@ -54,7 +58,4 @@ directive:
   - where:
       subject: FluidRelayOperation
     hide: true
-  # Re-name and custom it
-  # - model-cmdlet:
-  #     - RegenerateKeyRequest
 ```

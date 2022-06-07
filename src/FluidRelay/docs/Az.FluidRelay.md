@@ -20,9 +20,6 @@ Get a Fluid Relay server.
 ### [Get-AzFluidRelayServerKey](Get-AzFluidRelayServerKey.md)
 Get primary and secondary key for this server.
 
-### [New-AzFluidRelayRegenerateKeyRequestObject](New-AzFluidRelayRegenerateKeyRequestObject.md)
-Create an in-memory object for RegenerateKeyRequest.
-
 ### [New-AzFluidRelayServer](New-AzFluidRelayServer.md)
 Create or Update a Fluid Relay server.
 
