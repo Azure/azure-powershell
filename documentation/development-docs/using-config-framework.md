@@ -104,6 +104,9 @@ Configs cannot only be set globally, but also be set for a certain cmdlet or mod
 Update-AzConfig -DisplayBreakingChangeWarning $false -AppliesTo Az.KeyVault
 ```
 
+The `IReadOnlyCollection<AppliesTo> ConfigDefinition.CanApplyTo { get; }` property controls how a config can be applied.!
+
+
 
 ### Validation of Config Value
 
