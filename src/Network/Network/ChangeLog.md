@@ -40,9 +40,6 @@
     - `New-AzVpnServerConfigurationPolicyGroup`
     - `Update-AzVpnServerConfigurationPolicyGroup`
     - `Remove-AzVpnServerConfigurationPolicyGroup`
-
-## Version 4.16.1
-* Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
 * Added new cmdlets for RoutingIntent child resource of VirtualHub.
     -`Add-AzRoutingPolicy`
     -`Get-AzRoutingPolicy`
@@ -53,6 +50,9 @@
     -`New-AzRoutingIntent`
     -`Remove-AzRoutingIntent`
     -`Set-AzRoutingIntent`
+
+## Version 4.16.1
+* Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
 
 ## Version 4.16.0
 * Added support for retrieving the state of packet capture even when the provisioning state of the packet capture was failure
