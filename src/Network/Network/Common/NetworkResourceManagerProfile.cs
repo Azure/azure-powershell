@@ -354,6 +354,9 @@ namespace Microsoft.Azure.Commands.Network
                     ).ForMember(
                         dest => dest.PeeredLocalAddressSpace,
                         opt => opt.MapFrom(src => src.LocalAddressSpace)
+                    ).ForMember(
+                        dest => dest.LocalVirtualNetworkAddressSpace,
+                        opt => opt.MapFrom(src => src.LocalVirtualNetworkAddressSpace)
                     );
                 /*
                 // CNM to MNM
