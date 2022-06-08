@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             var progress = new ProgressRecord(0, "Request in progress", "Getting Status...");
             WriteProgress(progress);
-            WriteVerboseWithTimestamp(string.Format("Beging request ARM correlationId: '{0}' response: '{1}'",
+            WriteVerboseWithTimestamp(string.Format("Begin request ARM correlationId: '{0}' response: '{1}'",
                                         beginRequestResponse.RequestId,
                                         beginRequestResponse.Response.StatusCode));
 
