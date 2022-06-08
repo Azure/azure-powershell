@@ -199,7 +199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.PowerShel
             {
                 return $@"
 {Indent}{Indent}if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {{
-{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
 {Indent}{Indent}}}         
 {Indent}{Indent}$preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
 {Indent}{Indent}if ($preTelemetryId -eq '') {{
