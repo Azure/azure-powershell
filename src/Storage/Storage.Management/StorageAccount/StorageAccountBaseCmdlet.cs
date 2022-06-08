@@ -15,18 +15,19 @@
 using Azure.Core;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Track2 = Azure.ResourceManager.Storage;
-using Track2Models = Azure.ResourceManager.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Auth;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
+using System.Management.Automation;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
-using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.Auth;
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -225,6 +226,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (storageAccountResource.GetKeys()?.Value?.Keys != null && storageAccountResource.GetKeys().Value.Keys.Count > 0)
             {
                 key = storageAccountResource.GetKeys().Value.Keys[0].Value;
+            } else
+            {
+                throw new InvalidJobStateException("Could not fetch keys.");
             }
             StorageCredentials storageCredentials = new Azure.Storage.Auth.StorageCredentials(storageAccountResource.Data.Name, key);
             CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(

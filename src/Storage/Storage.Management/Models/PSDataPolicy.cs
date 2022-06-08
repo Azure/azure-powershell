@@ -412,6 +412,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public int DaysAfterCreationGreaterThan { get; set; }
         public int? DaysAfterLastTierChangeGreaterThan { get; set; }
 
+        // TODO: DaysAfterLastTierChangeGreaterThan is still not supported by SDK, will add later.
+
         public PSDateAfterCreation()
         {
             this.DaysAfterCreationGreaterThan = 0;
