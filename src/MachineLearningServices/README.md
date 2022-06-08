@@ -469,6 +469,12 @@ directive:
       parameter-name: WorkspaceName
     set:
       parameter-name: Name
+
+  - where:
+      subject: ^Diagnose$
+      parameter-name: Others
+    set:
+      parameter-name: Other
   # Bug: https://github.com/Azure/autorest.powershell/issues/952
   - from: source-file-csharp
     where: $

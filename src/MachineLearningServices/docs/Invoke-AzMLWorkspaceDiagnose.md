@@ -16,7 +16,7 @@ Diagnose workspace setup issue.
 ```
 Invoke-AzMLWorkspaceDiagnose -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ApplicationInsightId <Hashtable>] [-ContainerRegistryId <Hashtable>] [-DnsResolution <Hashtable>]
- [-KeyVaultId <Hashtable>] [-Nsg <Hashtable>] [-Others <Hashtable>] [-ResourceLock <Hashtable>]
+ [-KeyVaultId <Hashtable>] [-Nsg <Hashtable>] [-Other <Hashtable>] [-ResourceLock <Hashtable>]
  [-StorageAccount <Hashtable>] [-Udr <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Invoke-AzMLWorkspaceDiagnose -Name <String> -ResourceGroupName <String> [-Subscr
 ```
 Invoke-AzMLWorkspaceDiagnose -InputObject <IMachineLearningServicesIdentity>
  [-ApplicationInsightId <Hashtable>] [-ContainerRegistryId <Hashtable>] [-DnsResolution <Hashtable>]
- [-KeyVaultId <Hashtable>] [-Nsg <Hashtable>] [-Others <Hashtable>] [-ResourceLock <Hashtable>]
+ [-KeyVaultId <Hashtable>] [-Nsg <Hashtable>] [-Other <Hashtable>] [-ResourceLock <Hashtable>]
  [-StorageAccount <Hashtable>] [-Udr <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -227,7 +227,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Others
+### -Other
 Setting for diagnosing unclassified category of problems
 
 ```yaml
