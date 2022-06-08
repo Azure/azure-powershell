@@ -32,6 +32,13 @@ Name    Type
 ----    ----
 default Microsoft.Cache/redisEnterprise/databases
 
+.Example
+PS C:\> New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Plaintext" -EvictionPolicy "Encrypted" -ClusteringPolicy "EnterpriseCluster" -EvictionPolicy "NoEviction" -Port 10000 -GroupNickname "GroupName" -LinkedDatabases "/subscriptions/subid1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default" -LinkedDatabases "/subscriptions/subid1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default"
+
+Name    Type
+----    ----
+default Microsoft.Cache/redisEnterprise/databases
+
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IDatabase
 .Notes
@@ -93,6 +100,22 @@ function New-AzRedisEnterpriseCacheDatabase {
         # Redis eviction policy - default is VolatileLRU
         # Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
         ${EvictionPolicy},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.GroupNickname])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.GroupNickname]
+        [System.String]
+        # Name for the group of linked database resources
+        ${GroupNickname},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.LinkedDatabases])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.LinkedDatabases]
+        [System.String[]]
+        # List of database resources to link with this database
+        ${LinkedDatabases},
 
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy])]
