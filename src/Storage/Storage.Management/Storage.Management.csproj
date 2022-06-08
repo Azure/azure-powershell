@@ -19,6 +19,7 @@
     <Compile Remove="StorageAccount\InvokeAzureStorageAccountHierarchicalNamespaceUpgrade.cs" />
     <Compile Remove="StorageAccount\RemoveAzureStorageAccountNetworkRule.cs" />
     <Compile Remove="StorageAccount\UpdateAzureStorageAccountNetworkRuleSet.cs" />
+    <Compile Remove="StorageAccount\InvokeAzureStorageAccountFailover.cs" />
   </ItemGroup>
   <ItemGroup>
     <!-- <PackageReference Include="Azure.Core" Version="1.24.0" /> -->

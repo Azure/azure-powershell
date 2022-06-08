@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 key = storageAccountResource.GetKeys().Value.Keys[0].Value;
             } else
             {
-                throw new InvalidJobStateException("Could not fetch keys.");
+                throw new InvalidJobStateException("Could not fetch storage account keys to build storage account context.");
             }
             StorageCredentials storageCredentials = new Azure.Storage.Auth.StorageCredentials(storageAccountResource.Data.Name, key);
             CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(
