@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestStorageBlobServiceProperties()
         {
             TestRunner.RunTestScript("Test-StorageBlobServiceProperties");
-        }    
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
