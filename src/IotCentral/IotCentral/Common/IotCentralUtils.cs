@@ -18,6 +18,8 @@ using Azure.ResourceManager.IotCentral.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Azure.ResourceManager.IotCentral;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.IotCentral.Common
 {
@@ -33,14 +35,15 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
             return iotCentralApps.Select(app => ToPSIotCentralApp(app));
         }
 
-        public static AppPatch CreateAppPatch(App iotCentralApp)
+        public static async Task<IotCentralAppPatch> CreateAppPatchAsync(IotCentralAppResource iotCentralApp)
         {
-            var copiedIotCentralApp = new AppPatch()
+            var data = iotCentralApp.Data;
+            var copiedIotCentralApp = new IotCentralAppPatch()
             {
-                DisplayName = iotCentralApp.DisplayName,
-                Tags = iotCentralApp.Tags,
-                Subdomain = iotCentralApp.Subdomain
+                DisplayName = data.Name,
+                Subdomain = data.Subdomain
             };
+            await iotCentralApp.SetTagsAsync(data.Tags, CancellationToken.None); //Tags = data.Tags,    Tags property not included anymore, have to use set or add method
             return copiedIotCentralApp;
         }
     }

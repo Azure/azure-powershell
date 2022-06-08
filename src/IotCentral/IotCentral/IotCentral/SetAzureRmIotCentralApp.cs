@@ -25,6 +25,8 @@ using System.Collections;
 using System.Management.Automation;
 using ResourceProperties = Microsoft.Azure.Commands.Management.IotCentral.Properties;
 using Azure;
+using Azure.ResourceManager.Models;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.Management.IotCentral
 {
@@ -63,29 +65,32 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
             HelpMessage = "Managed Identity Type. Can be None or SystemAssigned.")]
         public string Identity { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override async void ExecuteCmdlet()
         {
             this.SetNameAndResourceGroup();
             if (ShouldProcess(Name, ResourceProperties.Resources.SetIotCentralApp))
             {
+                var subscription = IotCentralClient.GetResourceGroupResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}"));
+                var iotCentralAppResponse = await subscription.GetIotCentralAppAsync(Name, CancellationToken.None);
+                var iotCentralAppResource = iotCentralAppResponse.Value;
                 IotCentralAppPatch applicationPatch = CreateApplicationPatch();
-                IotCentralAppResource updatedIotCentralApplication = this.IotCentralClient.Update(WaitUntil.Completed, applicationPatch);
-                this.WriteObject(IotCentralUtils.ToPSIotCentralApp(updatedIotCentralApplication));
+                await iotCentralAppResource.UpdateAsync(WaitUntil.Completed, applicationPatch);
+                this.WriteObject(IotCentralUtils.ToPSIotCentralApp(iotCentralAppResource));
             }
         }
 
         private IotCentralAppPatch CreateApplicationPatch()
         {
-            var appPatch = new AppPatch(
-                tags: TagsConversionHelper.CreateTagDictionary(this.Tag, true),
-                sku: new AppSkuInfo(this.Sku),
-                displayName: this.DisplayName,
-                subdomain: this.Subdomain
-            );
-
+            var appPatch = new IotCentralAppPatch() {
+                SkuName = this.Sku,
+                DisplayName = this.DisplayName,
+                Subdomain = this.Subdomain,
+                //Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true),
+            };
+     
             if (!string.IsNullOrEmpty(this.Identity))
             {
-                appPatch.Identity = new SystemAssignedServiceIdentity(type: this.Identity);
+                appPatch.Identity = new SystemAssignedServiceIdentity(this.Identity);
             }
 
             return appPatch;

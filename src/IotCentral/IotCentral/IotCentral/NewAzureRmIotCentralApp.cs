@@ -95,7 +95,8 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         {
             if (ShouldProcess(Name, ResourceProperties.Resources.NewIotCentralApp))
             {
-                var appsCollection = this.IotCentralClient;
+                var resourceGroup = this.IotCentralClient.GetResourceGroupResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}"));
+                var appCollection = resourceGroup.GetIotCentralApps();
                 var Location = this.GetLocation();
                 var Sku = new AppSkuInfo(this.GetAppSkuName());
                 var tags = this.GetTags();
@@ -107,15 +108,10 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                     //Tags = this.GetTags(),
                     Identity = new SystemAssignedServiceIdentity(this.GetIdentity()),
                 };
-                await appsCollection.CreateOrUpdateAsync(WaitUntil.Completed, this.GetDisplayName(), iotCentralAppData, CancellationToken.None);
-                var iotCentralAppResponse = await appsCollection.GetAsync(this.GetDisplayName());
+                await appCollection.CreateOrUpdateAsync(WaitUntil.Completed, this.GetDisplayName(), iotCentralAppData, CancellationToken.None);
+                var iotCentralAppResponse = await appCollection.GetAsync(this.GetDisplayName());
                 var iotCentralApp = iotCentralAppResponse.Value;
-
-                // GetTags() returns a dictionary, byt the method below add tag async only adds 1 key value pair
-                foreach (KeyValuePair<string, string> tag in tags) {
-                    await iotCentralApp.AddTagAsync(tag.Key, tag.Value, CancellationToken.None);
-                }
-                // var tag1IotCentralAppResponse = await iotCentralApp.AddTagAsync("key", "value");
+                await iotCentralApp.SetTagsAsync(this.GetTags(), CancellationToken.None); 
                 this.WriteObject(IotCentralUtils.ToPSIotCentralApp(iotCentralApp), false);
             }
         }

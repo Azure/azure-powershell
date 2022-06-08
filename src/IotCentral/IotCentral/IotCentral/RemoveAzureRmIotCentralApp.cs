@@ -15,9 +15,11 @@
 using Microsoft.Azure.Commands.IotCentral.Common;
 using Azure.ResourceManager.IotCentral;
 
-//using Microsoft.Azure.Management.IotCentral;
 using System.Management.Automation;
 using ResourceProperties = Microsoft.Azure.Commands.Management.IotCentral.Properties;
+using Azure.Core;
+using Azure;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.Management.IotCentral
 {
@@ -35,7 +37,8 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
             this.SetNameAndResourceGroup();
             if (ShouldProcess(Name, ResourceProperties.Resources.RemoveIotCentralApp))
             {
-                this.IotCentralClient.Apps.Delete(this.ResourceGroupName, this.Name);
+                var iotCentralAppResource = this.IotCentralClient.GetIotCentralAppResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}/providers/Microsoft.IoTCentral/{resourceType}/{Name}"));
+                iotCentralAppResource.DeleteAsync(WaitUntil.Completed, CancellationToken.None);
                 if (PassThru)
                 {
                     this.WriteObject(true);
