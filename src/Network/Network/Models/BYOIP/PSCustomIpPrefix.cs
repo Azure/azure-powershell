@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string AuthorizationMessage { get; set; }
 
-        public PSCustomIpPrefix CustomIpPrefixParent { get; set; }
+        public PSResourceId CustomIpPrefixParent { get; set; }
 
         public List<PSResourceId> ChildCustomIpPrefixes { get; set; }
 
