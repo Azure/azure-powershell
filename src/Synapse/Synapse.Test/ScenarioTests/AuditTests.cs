@@ -12,173 +12,134 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 {
-    public class AuditTests : SynapseTestBase
+    public class AuditTests : SynapseTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public AuditTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AuditTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditSqlPoolUpdatePolicyWithStorage()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditSqlPoolUpdatePolicyWithStorage");
+            TestRunner.RunTestScript("Test-BlobAuditSqlPoolUpdatePolicyWithStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditWorkspaceUpdatePolicyWithStorage()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditWorkspaceUpdatePolicyWithStorage");
+            TestRunner.RunTestScript("Test-BlobAuditWorkspaceUpdatePolicyWithStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDisableSqlPoolAudit()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditDisableSqlPoolAudit");
+            TestRunner.RunTestScript("Test-BlobAuditDisableSqlPoolAudit");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDisableWorkspaceAudit()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditDisableWorkspaceAudit");
+            TestRunner.RunTestScript("Test-BlobAuditDisableWorkspaceAudit");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditSqlPoolUpdatePolicyKeepPreviousStorage()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditSqlPoolUpdatePolicyKeepPreviousStorage");
+            TestRunner.RunTestScript("Test-BlobAuditSqlPoolUpdatePolicyKeepPreviousStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditWorkspaceUpdatePolicyKeepPreviousStorage()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditWorkspaceUpdatePolicyKeepPreviousStorage");
+            TestRunner.RunTestScript("Test-BlobAuditWorkspaceUpdatePolicyKeepPreviousStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditFailWithBadSqlPoolIndentity()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditFailWithBadSqlPoolIndentity");
+            TestRunner.RunTestScript("Test-BlobAuditFailWithBadSqlPoolIndentity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditFailWithBadWorkspaceIndentity()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditFailWithBadWorkspaceIndentity");
+            TestRunner.RunTestScript("Test-BlobAuditFailWithBadWorkspaceIndentity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditSqlPoolStorageKeyRotation()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditSqlPoolStorageKeyRotation");
+            TestRunner.RunTestScript("Test-BlobAuditSqlPoolStorageKeyRotation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditWorkspaceStorageKeyRotation()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditWorkspaceStorageKeyRotation");
+            TestRunner.RunTestScript("Test-BlobAuditWorkspaceStorageKeyRotation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditWorkspaceRetentionKeepProperties()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditWorkspaceRetentionKeepProperties");
+            TestRunner.RunTestScript("Test-BlobAuditWorkspaceRetentionKeepProperties");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditSqlPoolRetentionKeepProperties()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditSqlPoolRetentionKeepProperties");
+            TestRunner.RunTestScript("Test-BlobAuditSqlPoolRetentionKeepProperties");
         }
 
         [Fact(Skip = "SQL Data Warehouse audit doesn’t support audit actions.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditOnSqlPool()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditOnSqlPool");
+            TestRunner.RunTestScript("Test-BlobAuditOnSqlPool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditOnWorkspace()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditOnWorkspace");
+            TestRunner.RunTestScript("Test-BlobAuditOnWorkspace");
         }
 
         [Fact(Skip = "SQL Data Warehouse audit doesn’t support other audit groups.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditWithAuditActionGroups()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditWithAuditActionGroups");
+            TestRunner.RunTestScript("Test-BlobAuditWithAuditActionGroups");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExtendedAuditOnSqlPool()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-ExtendedAuditOnSqlPool");
+            TestRunner.RunTestScript("Test-ExtendedAuditOnSqlPool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExtendedAuditOnWorkspace()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-ExtendedAuditOnWorkspace");
+            TestRunner.RunTestScript("Test-ExtendedAuditOnWorkspace");
         }
 
         [Fact]
@@ -186,9 +147,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnSqlPool()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-AuditOnSqlPool");
+            TestRunner.RunTestScript("Test-AuditOnSqlPool");
         }
 
         [Fact]
@@ -196,63 +155,49 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnWorkspace()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-AuditOnWorkspace");
+            TestRunner.RunTestScript("Test-AuditOnWorkspace");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSqlPoolAuditDiagnosticsAreCreatedOnNeed()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-NewSqlPoolAuditDiagnosticsAreCreatedOnNeed");
+            TestRunner.RunTestScript("Test-NewSqlPoolAuditDiagnosticsAreCreatedOnNeed");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewWorkspaceAuditDiagnosticsAreCreatedOnNeed()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-NewWorkspaceAuditDiagnosticsAreCreatedOnNeed");
+            TestRunner.RunTestScript("Test-NewWorkspaceAuditDiagnosticsAreCreatedOnNeed");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAuditOnWorkspace()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-RemoveAuditOnWorkspace");
+            TestRunner.RunTestScript("Test-RemoveAuditOnWorkspace");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAuditOnSqlPool()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-RemoveAuditOnSqlPool");
+            TestRunner.RunTestScript("Test-RemoveAuditOnSqlPool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveSqlPoolAuditingSettingsMultipleDiagnosticSettings()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-RemoveSqlPoolAuditingSettingsMultipleDiagnosticSettings");
+            TestRunner.RunTestScript("Test-RemoveSqlPoolAuditingSettingsMultipleDiagnosticSettings");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveWorkspaceAuditingSettingsMultipleDiagnosticSettings()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-RemoveWorkspaceAuditingSettingsMultipleDiagnosticSettings");
+            TestRunner.RunTestScript("Test-RemoveWorkspaceAuditingSettingsMultipleDiagnosticSettings");
         }
     }
 }

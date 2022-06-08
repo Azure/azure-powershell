@@ -14,33 +14,28 @@
 
 namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 {
+    using Microsoft.Azure.Commands.EventHub.Test.ScenarioTests;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class ServiceBusQueueTests : RMTestBase
+    public class ServiceBusQueueTests : ServiceBusTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ServiceBusQueueTests(ITestOutputHelper output)
+        public ServiceBusQueueTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceBusQueue_CURD()
         {
-            ServiceBusController.NewInstance.RunPsTest(_logger, "ServiceBusQueueTests");
+            TestRunner.RunTestScript("ServiceBusQueueTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceBusQueueAuth_CURD()
         {
-            ServiceBusController.NewInstance.RunPsTest(_logger, "ServiceBusQueueAuthTests");
+            TestRunner.RunTestScript("ServiceBusQueueAuthTests");
         }
     }
 }

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Improved Registration process for Register-AzStackHCI cmdlet
     - All Azure AD related operations are now moved to HCI Cloud Services
     - Register-AzStackHCI and UnRegister-AzStackHCI cmdlets no more use AzureAD PS module
