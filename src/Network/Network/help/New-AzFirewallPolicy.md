@@ -18,7 +18,7 @@ New-AzFirewallPolicy -Name <String> -ResourceGroupName <String> -Location <Strin
  [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
  [-TransportSecurityName <String>] [-TransportSecurityKeyVaultSecretId <String>] [-SkuTier <String>]
- [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>]
+ [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>] [-ExplicitProxySettings <PSAzureFirewallPolicyExplicitProxy>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -66,6 +66,14 @@ New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -PrivateRange @("99.99.
 ```
 
 This example creates a Firewall that treats "99.99.99.0/24" and "66.66.0.0/16" as private ip ranges and won't snat traffic to those addresses
+
+### Example 6: Create an empty Firewall Policy with Explicit Proxy Settings
+```powershell
+$exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 100 -HttpsPort 101 -EnablePacFile  -PacFilePort 130 -PacFile "sampleurlfortesting.blob.core.windowsnet/nothing"
+New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ExplicitProxySettings $exProxy
+```
+
+This example creates a firewall policy with explicit proxy settings
 
 ## PARAMETERS
 
@@ -209,6 +217,22 @@ The private IP ranges to which traffic won't be SNAT'ed
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+
+### -ExplicitProxySettings
+The Explicit Proxy Settings
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyExplicitProxy
 Parameter Sets: (All)
 Aliases:
 
