@@ -21,12 +21,12 @@ Create an in-memory object for DataLakeAnalytics.
 Create an in-memory object for DataLakeAnalytics.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.DataLakeAnalytics
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.DataLakeAnalytics
 .Link
 https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDataLakeAnalyticsObject
 #>
 function New-AzMLWorkspaceDataLakeAnalyticsObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.DataLakeAnalytics')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.DataLakeAnalytics')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -45,7 +45,7 @@ function New-AzMLWorkspaceDataLakeAnalyticsObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.DataLakeAnalytics]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.DataLakeAnalytics]::New()
         $Object.Type = 'DataLakeAnalytics'
 
         if ($PSBoundParameters.ContainsKey('Description')) {

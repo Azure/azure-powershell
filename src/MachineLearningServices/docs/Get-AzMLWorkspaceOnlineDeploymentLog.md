@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningworkspaces/get-azmlworkspaceonlinedeploymentlog
+Module Name: Az.MachineLearningServices
+online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlinedeploymentlog
 schema: 2.0.0
 ---
 
@@ -52,7 +52,7 @@ Gets online deployment log
 The type of container to retrieve logs from.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ContainerType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ContainerType
 Parameter Sets: (All)
 Aliases:
 

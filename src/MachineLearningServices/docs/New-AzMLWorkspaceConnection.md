@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningworkspaces/new-azmlworkspaceconnection
+Module Name: Az.MachineLearningServices
+online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceconnection
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ Creates a workspace connection
 Authentication type of the connection target
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ConnectionAuthType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType
 Parameter Sets: (All)
 Aliases:
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 Category of the connection
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ConnectionCategory
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory
 Parameter Sets: (All)
 Aliases:
 
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 format for the workspace connection value
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ValueFormat
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ValueFormat
 Parameter Sets: (All)
 Aliases:
 
@@ -228,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IWorkspaceConnectionPropertiesV2BasicResource
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspaceConnectionPropertiesV2BasicResource
 
 ## NOTES
 

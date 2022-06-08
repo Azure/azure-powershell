@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
+Module Name: Az.MachineLearningServices
 online version: https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceComputeStartStopScheduleObject
 schema: 2.0.0
 ---
@@ -36,7 +36,7 @@ Create an in-memory object for ComputeStartStopSchedule
 The compute power action.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ComputePowerAction
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputePowerAction
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ScheduleProvisioningState
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleProvisioningState
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ScheduleStatus
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleStatus
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +99,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.ComputeStartStopSchedule
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeStartStopSchedule
 
 ## NOTES
 

@@ -21,12 +21,12 @@ Create an in-memory object for ComputeInstance.
 Create an in-memory object for ComputeInstance.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.ComputeInstance
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeInstance
 .Link
 https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceComputeInstanceObject
 #>
 function New-AzMLWorkspaceComputeInstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.ComputeInstance')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeInstance')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,8 +40,8 @@ function New-AzMLWorkspaceComputeInstanceObject {
         [string]
         $ResourceId,
         [Parameter(HelpMessage="Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ApplicationSharingPolicy])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ApplicationSharingPolicy]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ApplicationSharingPolicy])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ApplicationSharingPolicy]
         $ApplicationSharingPolicy,
         [Parameter(HelpMessage="User’s AAD Object Id.")]
         [string]
@@ -50,8 +50,8 @@ function New-AzMLWorkspaceComputeInstanceObject {
         [string]
         $AssignedUserTenantId,
         [Parameter(HelpMessage="The Compute Instance Authorization type. Available values are personal (default).")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ComputeInstanceAuthorizationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ComputeInstanceAuthorizationType]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeInstanceAuthorizationType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeInstanceAuthorizationType]
         $AuthorizationType,
         [Parameter(HelpMessage="Optional command line arguments passed to the script to run.")]
         [string]
@@ -69,29 +69,29 @@ function New-AzMLWorkspaceComputeInstanceObject {
         [bool]
         $EnableNodePublicIP,
         [Parameter(HelpMessage="Name of the last operation.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.OperationName])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.OperationName]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationName])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationName]
         $LastOperationName,
         [Parameter(HelpMessage="Operation status.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.OperationStatus])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.OperationStatus]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationStatus])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationStatus]
         $LastOperationStatus,
         [Parameter(HelpMessage="Time of the last operation.")]
         [System.DateTime]
         $LastOperationTime,
         [Parameter(HelpMessage="Trigger of operation.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.OperationTrigger])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.OperationTrigger]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationTrigger])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationTrigger]
         $LastOperationTrigger,
         [Parameter(HelpMessage="The list of compute start stop schedules to be applied.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IComputeStartStopSchedule[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeStartStopSchedule[]]
         $ScheduleComputeStartStop,
         [Parameter(HelpMessage="Specifies the SSH rsa public key file as a string. Use `"ssh-keygen -t rsa -b 2048`" to generate your SSH key pairs.")]
         [string]
         $SshSettingAdminPublicKey,
         [Parameter(HelpMessage="State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.SshPublicAccess])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.SshPublicAccess]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SshPublicAccess])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SshPublicAccess]
         $SshSettingSshPublicAccess,
         [Parameter(HelpMessage="Optional command line arguments passed to the script to run.")]
         [string]
@@ -117,7 +117,7 @@ function New-AzMLWorkspaceComputeInstanceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.ComputeInstance]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeInstance]::New()
         $Object.Type = 'ComputeInstance'
 
         if ($PSBoundParameters.ContainsKey('Description')) {

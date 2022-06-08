@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningworkspaces/new-azmlworkspacedatastore
+Module Name: Az.MachineLearningServices
+online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastore
 schema: 2.0.0
 ---
 
@@ -58,7 +58,7 @@ Create or update datastore
 To construct, see NOTES section for DATASTORE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IDatastoreProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDatastoreProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -198,7 +198,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IDatastore
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDatastore
 
 ## NOTES
 

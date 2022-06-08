@@ -1,16 +1,16 @@
 ---
-Module Name: Az.MachineLearningWorkspaces
-Module Guid: 7ae50d1f-3f70-4e9f-845e-47e85f42049c
-Download Help Link: https://docs.microsoft.com/powershell/module/az.machinelearningworkspaces
+Module Name: Az.MachineLearningServices
+Module Guid: 56293047-9014-4c88-96b7-98b69c3b687d
+Download Help Link: https://docs.microsoft.com/powershell/module/az.machinelearningservices
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.MachineLearningWorkspaces Module
+# Az.MachineLearningServices Module
 ## Description
-Microsoft Azure PowerShell: MachineLearningWorkspaces cmdlets
+Microsoft Azure PowerShell: MachineLearningServices cmdlets
 
-## Az.MachineLearningWorkspaces Cmdlets
+## Az.MachineLearningServices Cmdlets
 ### [Get-AzMLServiceQuota](Get-AzMLServiceQuota.md)
 Gets the currently assigned Workspace Quotas based on VMFamily.
 

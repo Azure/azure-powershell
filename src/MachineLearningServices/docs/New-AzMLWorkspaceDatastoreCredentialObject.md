@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
+Module Name: Az.MachineLearningServices
 online version: https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreCredentialObject
 schema: 2.0.0
 ---
@@ -128,7 +128,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.CertificateDatastoreCredentials
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CertificateDatastoreCredentials
 
 ## NOTES
 

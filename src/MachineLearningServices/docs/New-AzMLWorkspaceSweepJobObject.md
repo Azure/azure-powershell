@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
+Module Name: Az.MachineLearningServices
 online version: https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceSweepJobObject
 schema: 2.0.0
 ---
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 [Required] Specifies the type of distribution framework.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.DistributionType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DistributionType
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 [Required] Name of policy configuration.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.EarlyTerminationPolicyType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EarlyTerminationPolicyType
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +184,7 @@ Accept wildcard characters: False
 [Required] Specifies the type of identity framework.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.IdentityConfigurationType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType
 Parameter Sets: (All)
 Aliases:
 
@@ -215,7 +215,7 @@ Mapping of input data bindings used in the job.
 To construct, see NOTES section for JOBINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.ISweepJobInputs
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISweepJobInputs
 Parameter Sets: (All)
 Aliases:
 
@@ -231,7 +231,7 @@ Mapping of output data bindings used in the job.
 To construct, see NOTES section for JOBOUTPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.ISweepJobOutputs
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISweepJobOutputs
 Parameter Sets: (All)
 Aliases:
 
@@ -307,7 +307,7 @@ Accept wildcard characters: False
 [Required] Defines supported metric goals for hyperparameter tuning.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.Goal
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.Goal
 Parameter Sets: (All)
 Aliases:
 
@@ -338,7 +338,7 @@ The asset property dictionary.
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IResourceBaseProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -384,7 +384,7 @@ Additional properties bag.
 To construct, see NOTES section for RESOURCEPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IResourceConfigurationProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceConfigurationProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -399,7 +399,7 @@ Accept wildcard characters: False
 [Required] The algorithm used for generating hyperparameter values, along with configuration properties.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.SamplingAlgorithmType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SamplingAlgorithmType
 Parameter Sets: (All)
 Aliases:
 
@@ -415,7 +415,7 @@ Accept wildcard characters: False
 The dictionary key is the name of the parameter.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.IAny
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IAny
 Parameter Sets: (All)
 Aliases:
 
@@ -461,7 +461,7 @@ Additional properties to set on the endpoint.
 To construct, see NOTES section for SERVICEPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IJobServiceProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobServiceProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -493,7 +493,7 @@ Tags can be added, removed, and updated.
 To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IResourceBaseTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseTags
 Parameter Sets: (All)
 Aliases:
 
@@ -556,7 +556,7 @@ Environment variables included in the job.
 To construct, see NOTES section for TRIALENVIRONMENTVARIABLE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.ITrialComponentEnvironmentVariables
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ITrialComponentEnvironmentVariables
 Parameter Sets: (All)
 Aliases:
 
@@ -574,7 +574,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.SweepJob
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SweepJob
 
 ## NOTES
 

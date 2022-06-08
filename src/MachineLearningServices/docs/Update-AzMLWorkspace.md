@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningworkspaces/update-azmlworkspace
+Module Name: Az.MachineLearningServices
+online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspace
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ Update-AzMLWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMLWorkspace -InputObject <IMachineLearningWorkspacesIdentity> [-ApplicationInsightId <String>]
+Update-AzMLWorkspace -InputObject <IMachineLearningServicesIdentity> [-ApplicationInsightId <String>]
  [-ContainerRegistryId <String>] [-CosmoDbCollectionsThroughput <Int32>] [-Description <String>]
  [-FriendlyName <String>] [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>]
  [-ImageBuildCompute <String>] [-PrimaryUserAssignedIdentity <String>]
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -224,7 +224,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.IMachineLearningWorkspacesIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -284,7 +284,7 @@ Accept wildcard characters: False
 Whether requests from Public Network are allowed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.PublicNetworkAccess
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PublicNetworkAccess
 Parameter Sets: (All)
 Aliases:
 
@@ -379,7 +379,7 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.SkuTier
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier
 Parameter Sets: (All)
 Aliases:
 
@@ -456,11 +456,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.IMachineLearningWorkspacesIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace
 
 ## NOTES
 
@@ -471,7 +471,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMachineLearningWorkspacesIdentity>: Identity Parameter
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   - `[ComputeName <String>]`: Name of the Azure Machine Learning compute.
   - `[ConnectionName <String>]`: Friendly name of the workspace connection
   - `[DeploymentName <String>]`: Inference deployment identifier.

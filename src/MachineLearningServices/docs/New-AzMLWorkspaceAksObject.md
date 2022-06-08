@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
+Module Name: Az.MachineLearningServices
 online version: https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceAksObject
 schema: 2.0.0
 ---
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 Intended usage of the cluster.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ClusterPurpose
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ClusterPurpose
 Parameter Sets: (All)
 Aliases:
 
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 Load Balancer Type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.LoadBalancerType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.LoadBalancerType
 Parameter Sets: (All)
 Aliases:
 
@@ -313,7 +313,7 @@ Accept wildcard characters: False
 Enable or disable ssl for scoring.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.SslConfigStatus
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SslConfigStatus
 Parameter Sets: (All)
 Aliases:
 
@@ -331,7 +331,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.Aks
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Aks
 
 ## NOTES
 

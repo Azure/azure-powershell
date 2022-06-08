@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningworkspaces/new-azmlworkspaceonlineendpointkey
+Module Name: Az.MachineLearningServices
+online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlineendpointkey
 schema: 2.0.0
 ---
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 Primary or Secondary.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.KeyType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.KeyType
 Parameter Sets: (All)
 Aliases:
 

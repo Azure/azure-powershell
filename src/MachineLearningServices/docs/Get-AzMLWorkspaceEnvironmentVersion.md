@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningworkspaces/get-azmlworkspaceenvironmentversion
+Module Name: Az.MachineLearningServices
+online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceenvironmentversion
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ Get-AzMLWorkspaceEnvironmentVersion -Name <String> -ResourceGroupName <String> -
 
 ### GetViaIdentity
 ```
-Get-AzMLWorkspaceEnvironmentVersion -InputObject <IMachineLearningWorkspacesIdentity>
+Get-AzMLWorkspaceEnvironmentVersion -InputObject <IMachineLearningServicesIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -84,7 +84,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.IMachineLearningWorkspacesIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 View type for including/excluding (for example) archived entities.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ListViewType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType
 Parameter Sets: List
 Aliases:
 
@@ -238,11 +238,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.IMachineLearningWorkspacesIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IEnvironmentVersion
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEnvironmentVersion
 
 ## NOTES
 
@@ -253,7 +253,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMachineLearningWorkspacesIdentity>: Identity Parameter
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   - `[ComputeName <String>]`: Name of the Azure Machine Learning compute.
   - `[ConnectionName <String>]`: Friendly name of the workspace connection
   - `[DeploymentName <String>]`: Inference deployment identifier.

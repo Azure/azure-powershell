@@ -21,18 +21,18 @@ Create an in-memory object for NoneDatastoreCredentials.
 Create an in-memory object for NoneDatastoreCredentials.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.NoneDatastoreCredentials
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.NoneDatastoreCredentials
 .Link
 https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreNoneCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreNoneCredentialObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.NoneDatastoreCredentials')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.NoneDatastoreCredentials')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.NoneDatastoreCredentials]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.NoneDatastoreCredentials]::New()
         $Object.CredentialsType = 'None'
         return $Object
     }

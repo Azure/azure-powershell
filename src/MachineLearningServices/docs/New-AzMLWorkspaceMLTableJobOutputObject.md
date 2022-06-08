@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
+Module Name: Az.MachineLearningServices
 online version: https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceMLTableJobOutputObject
 schema: 2.0.0
 ---
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 Output Asset Delivery Mode.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.OutputDeliveryMode
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OutputDeliveryMode
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 [Required] Specifies the type of job.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.JobOutputType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobOutputType
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.MlTableJobOutput
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MlTableJobOutput
 
 ## NOTES
 

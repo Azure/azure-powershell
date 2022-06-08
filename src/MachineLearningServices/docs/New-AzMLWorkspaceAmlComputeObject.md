@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
+Module Name: Az.MachineLearningServices
 online version: https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceAmlComputeObject
 schema: 2.0.0
 ---
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 Compute OS Type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.OSType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OSType
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 A property bag containing additional properties.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.IAny
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IAny
 Parameter Sets: (All)
 Aliases:
 
@@ -181,7 +181,7 @@ NotSpecified - Indicates that the public ssh port is closed on all nodes of the 
 It can be default only during cluster creation time, after creation it will be either enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.RemoteLoginPortPublicAccess
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.RemoteLoginPortPublicAccess
 Parameter Sets: (All)
 Aliases:
 
@@ -287,7 +287,7 @@ Accept wildcard characters: False
 Virtual Machine priority.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.VMPriority
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.VMPriority
 Parameter Sets: (All)
 Aliases:
 
@@ -320,7 +320,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.AmlCompute
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AmlCompute
 
 ## NOTES
 

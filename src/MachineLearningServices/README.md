@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.MachineLearningWorkspaces
-This directory contains the PowerShell module for the MachineLearningWorkspaces service.
+# Az.MachineLearningServices
+This directory contains the PowerShell module for the MachineLearningServices service.
 
 ---
 ## Status
-[![Az.MachineLearningWorkspaces](https://img.shields.io/powershellgallery/v/Az.MachineLearningWorkspaces.svg?style=flat-square&label=Az.MachineLearningWorkspaces "Az.MachineLearningWorkspaces")](https://www.powershellgallery.com/packages/Az.MachineLearningWorkspaces/)
+[![Az.MachineLearningServices](https://img.shields.io/powershellgallery/v/Az.MachineLearningServices.svg?style=flat-square&label=Az.MachineLearningServices "Az.MachineLearningServices")](https://www.powershellgallery.com/packages/Az.MachineLearningServices/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.MachineLearningWorkspaces`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.MachineLearningServices`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ### AutoRest Configuration
@@ -39,6 +39,7 @@ input-file:
   - https://github.com/erjms/azure-rest-api-specs/blob/dev-machinelearning-Microsoft.MachineLearning-2022-05-01/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-05-01/workspaceFeatures.json
 
 subject-prefix: MLWorkspace
+title: MachineLearningServices
 inlining-threshold: 200
 resourcegroup-append: true
 nested-object-to-string: true

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningworkspaces/new-azmlworkspacebatchdeployment
+Module Name: Az.MachineLearningServices
+online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacebatchdeployment
 schema: 2.0.0
 ---
 
@@ -223,7 +223,7 @@ Accept wildcard characters: False
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -285,7 +285,7 @@ Accept wildcard characters: False
 Logging level for batch inference operation.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.BatchLoggingLevel
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.BatchLoggingLevel
 Parameter Sets: (All)
 Aliases:
 
@@ -330,7 +330,7 @@ Accept wildcard characters: False
 [Required] Specifies the type of asset reference.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ReferenceType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ReferenceType
 Parameter Sets: (All)
 Aliases:
 
@@ -375,7 +375,7 @@ Accept wildcard characters: False
 Indicates how the output will be organized.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.BatchOutputAction
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.BatchOutputAction
 Parameter Sets: (All)
 Aliases:
 
@@ -560,7 +560,7 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.SkuTier
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier
 Parameter Sets: (All)
 Aliases:
 
@@ -654,7 +654,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IBatchDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeployment
 
 ## NOTES
 

@@ -21,12 +21,12 @@ Create an in-memory object for QuotaBaseProperties.
 Create an in-memory object for QuotaBaseProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.QuotaBaseProperties
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.QuotaBaseProperties
 .Link
 https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceQuotaPropertiesObject
 #>
 function New-AzMLWorkspaceQuotaPropertiesObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.QuotaBaseProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.QuotaBaseProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,13 +40,13 @@ function New-AzMLWorkspaceQuotaPropertiesObject {
         [string]
         $Type,
         [Parameter(HelpMessage="An enum describing the unit of quota measurement.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.QuotaUnit])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.QuotaUnit]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.QuotaUnit])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.QuotaUnit]
         $Unit
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.QuotaBaseProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.QuotaBaseProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id

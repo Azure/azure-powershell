@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningworkspaces/new-azmlworkspaceonlinedeployment
+Module Name: Az.MachineLearningServices
+online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlinedeployment
 schema: 2.0.0
 ---
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 [Required] The compute type of the endpoint.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.EndpointComputeType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EndpointComputeType
 Parameter Sets: (All)
 Aliases:
 
@@ -226,7 +226,7 @@ Accept wildcard characters: False
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -575,7 +575,7 @@ Accept wildcard characters: False
 [Required] Type of deployment scaling algorithm
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ScaleType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScaleType
 Parameter Sets: (All)
 Aliases:
 
@@ -654,7 +654,7 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.SkuTier
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier
 Parameter Sets: (All)
 Aliases:
 
@@ -748,7 +748,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IOnlineDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineDeployment
 
 ## NOTES
 

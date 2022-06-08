@@ -21,12 +21,12 @@ Create an in-memory object for CommandJob.
 Create an in-memory object for CommandJob.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.CommandJob
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CommandJob
 .Link
 https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceCommandJobObject
 #>
 function New-AzMLWorkspaceCommandJobObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.CommandJob')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CommandJob')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -37,24 +37,24 @@ function New-AzMLWorkspaceCommandJobObject {
         [string]
         $Command,
         [Parameter(HelpMessage="[Required] Specifies the type of distribution framework.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.DistributionType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.DistributionType]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DistributionType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DistributionType]
         $DistributionType,
         [Parameter(Mandatory, HelpMessage="[Required] The ARM resource ID of the Environment specification for the job.")]
         [string]
         $EnvironmentId,
         [Parameter(HelpMessage="Environment variables included in the job.")]
-        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.ICommandJobEnvironmentVariables]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ICommandJobEnvironmentVariables]
         [hashtable]
         $EnvironmentVariable,
         [Parameter(HelpMessage="Mapping of input data bindings used in the job.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.ICommandJobInputs]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ICommandJobInputs]
         $JobInput,
         [Parameter(HelpMessage="The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.")]
         [System.TimeSpan]
         $LimitTimeout,
         [Parameter(HelpMessage="Mapping of output data bindings used in the job.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.ICommandJobOutputs]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ICommandJobOutputs]
         $JobOutput,
         [Parameter(HelpMessage="Optional number of instances or nodes used by the compute target.")]
         [int]
@@ -63,7 +63,7 @@ function New-AzMLWorkspaceCommandJobObject {
         [string]
         $ResourceInstanceType,
         [Parameter(HelpMessage="Additional properties bag.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IResourceConfigurationProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceConfigurationProperties]
         $ResourceProperty,
         [Parameter(HelpMessage="ARM resource ID of the compute resource.")]
         [string]
@@ -75,15 +75,15 @@ function New-AzMLWorkspaceCommandJobObject {
         [string]
         $ExperimentName,
         [Parameter(HelpMessage="[Required] Specifies the type of identity framework.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.IdentityConfigurationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.IdentityConfigurationType]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType]
         $IdentityType,
         [Parameter(HelpMessage="Is the asset archived?.")]
         [bool]
         $IsArchived,
         # [Parameter(HelpMessage="List of JobEndpoints.
         # For local jobs, a job endpoint will have an endpoint value of FileStreamObject.")]
-        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IJobBaseServices]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBaseServices]
         # $Service,
         
         [Parameter(HelpMessage="Url for endpoint.")]
@@ -93,7 +93,7 @@ function New-AzMLWorkspaceCommandJobObject {
         [int]
         $ServicePort,
         [Parameter(HelpMessage="Additional properties to set on the endpoint.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IJobServiceProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobServiceProperties]
         $ServiceProperty,
         [Parameter(HelpMessage="Endpoint type.")]
         [string]
@@ -103,18 +103,18 @@ function New-AzMLWorkspaceCommandJobObject {
         [string]
         $Description,
         [Parameter(HelpMessage="The asset property dictionary.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IResourceBaseProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseProperties]
         $Property,
         [Parameter(HelpMessage="Tag dictionary. Tags can be added, removed, and updated.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IResourceBaseTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseTags]
         $Tag
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.CommandJob]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CommandJob]::New()
         $Object.JobType = 'Command'
         $Object.LimitJobLimitsType = 'Command' # Required define in swagger.
-        $Service = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.JobBaseServices]::New()
+        $Service = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.JobBaseServices]::New()
 
         if ($PSBoundParameters.ContainsKey('CodeId')) {
             $Object.CodeId = $CodeId
@@ -129,7 +129,7 @@ function New-AzMLWorkspaceCommandJobObject {
             $Object.EnvironmentId = $EnvironmentId
         }
         if ($PSBoundParameters.ContainsKey('EnvironmentVariable')) {
-            $EnvironmentVariableObj = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.ICommandJobEnvironmentVariables]::New()
+            $EnvironmentVariableObj = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ICommandJobEnvironmentVariables]::New()
             $EnvironmentVariableObj.CopyFrom($EnvironmentVariable);
             $Object.EnvironmentVariable = $EnvironmentVariableObj
         }

@@ -21,12 +21,12 @@ Create an in-memory object for Aks.
 Create an in-memory object for Aks.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.Aks
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Aks
 .Link
 https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceAksObject
 #>
 function New-AzMLWorkspaceAksObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.Aks')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Aks')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -61,15 +61,15 @@ function New-AzMLWorkspaceAksObject {
         [string]
         $ClusterFqdn,
         [Parameter(HelpMessage="Intended usage of the cluster.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ClusterPurpose])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ClusterPurpose]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ClusterPurpose])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ClusterPurpose]
         $ClusterPurpose,
         [Parameter(HelpMessage="Load Balancer Subnet.")]
         [string]
         $LoadBalancerSubnet,
         [Parameter(HelpMessage="Load Balancer Type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.LoadBalancerType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.LoadBalancerType]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.LoadBalancerType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.LoadBalancerType]
         $LoadBalancerType,
         [Parameter(HelpMessage="Cert data.")]
         [string]
@@ -87,13 +87,13 @@ function New-AzMLWorkspaceAksObject {
         [bool]
         $SslOverwriteExistingDomain,
         [Parameter(HelpMessage="Enable or disable ssl for scoring.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.SslConfigStatus])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.SslConfigStatus]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SslConfigStatus])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SslConfigStatus]
         $SslStatus
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.Aks]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Aks]::New()
         $Object.Type = 'AKS'
 
         if ($PSBoundParameters.ContainsKey('Description')) {

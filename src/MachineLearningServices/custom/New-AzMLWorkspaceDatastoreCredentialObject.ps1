@@ -21,12 +21,12 @@ Create an in-memory object for CertificateDatastoreCredentials.
 Create an in-memory object for CertificateDatastoreCredentials.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.CertificateDatastoreCredentials
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CertificateDatastoreCredentials
 .Link
 https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreCredentialObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.CertificateDatastoreCredentials')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CertificateDatastoreCredentials')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -51,9 +51,9 @@ function New-AzMLWorkspaceDatastoreCredentialObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.CertificateDatastoreCredentials]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CertificateDatastoreCredentials]::New()
         $Object.CredentialsType = 'Certificate'
-        $Secret = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.CertificateDatastoreSecrets]::New()
+        $Secret = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CertificateDatastoreSecrets]::New()
         $Secret.SecretsType = 'Certificate'
         if ($PSBoundParameters.ContainsKey('AuthorityUrl')) {
             $Object.AuthorityUrl = $AuthorityUrl

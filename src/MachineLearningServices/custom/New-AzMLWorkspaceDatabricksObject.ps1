@@ -21,12 +21,12 @@ Create an in-memory object for Databricks.
 Create an in-memory object for Databricks.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.Databricks
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Databricks
 .Link
 https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatabricksObject
 #>
 function New-AzMLWorkspaceDatabricksObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.Databricks')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Databricks')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -48,7 +48,7 @@ function New-AzMLWorkspaceDatabricksObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.Databricks]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Databricks]::New()
         $Object.Type = 'Databricks'
 
         if ($PSBoundParameters.ContainsKey('Description')) {

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningworkspaces/new-azmlworkspaceenvironmentversion
+Module Name: Az.MachineLearningServices
+online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceenvironmentversion
 schema: 2.0.0
 ---
 
@@ -213,7 +213,7 @@ Accept wildcard characters: False
 The OS type of the environment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.OperatingSystemType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperatingSystemType
 Parameter Sets: (All)
 Aliases:
 
@@ -414,7 +414,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IEnvironmentVersion
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEnvironmentVersion
 
 ## NOTES
 

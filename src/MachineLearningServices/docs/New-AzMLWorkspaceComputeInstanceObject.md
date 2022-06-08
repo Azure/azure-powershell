@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
+Module Name: Az.MachineLearningServices
 online version: https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceComputeInstanceObject
 schema: 2.0.0
 ---
@@ -46,7 +46,7 @@ If Personal, only the creator can access applications on this compute instance.
 When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ApplicationSharingPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ApplicationSharingPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +92,7 @@ The Compute Instance Authorization type.
 Available values are personal (default).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ComputeInstanceAuthorizationType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeInstanceAuthorizationType
 Parameter Sets: (All)
 Aliases:
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 Name of the last operation.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.OperationName
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationName
 Parameter Sets: (All)
 Aliases:
 
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 Operation status.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.OperationStatus
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationStatus
 Parameter Sets: (All)
 Aliases:
 
@@ -259,7 +259,7 @@ Accept wildcard characters: False
 Trigger of operation.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.OperationTrigger
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationTrigger
 Parameter Sets: (All)
 Aliases:
 
@@ -290,7 +290,7 @@ The list of compute start stop schedules to be applied.
 To construct, see NOTES section for SCHEDULECOMPUTESTARTSTOP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IComputeStartStopSchedule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeStartStopSchedule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -323,7 +323,7 @@ Possible values are: Disabled - Indicates that the public ssh port is closed on 
 Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.SshPublicAccess
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SshPublicAccess
 Parameter Sets: (All)
 Aliases:
 
@@ -446,7 +446,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.ComputeInstance
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeInstance
 
 ## NOTES
 

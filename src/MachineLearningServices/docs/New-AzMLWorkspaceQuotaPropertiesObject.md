@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
+Module Name: Az.MachineLearningServices
 online version: https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceQuotaPropertiesObject
 schema: 2.0.0
 ---
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 An enum describing the unit of quota measurement.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.QuotaUnit
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.QuotaUnit
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.QuotaBaseProperties
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.QuotaBaseProperties
 
 ## NOTES
 

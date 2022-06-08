@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningworkspaces/new-azmlworkspaceonlineendpoint
+Module Name: Az.MachineLearningServices
+online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlineendpoint
 schema: 2.0.0
 ---
 
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 'Key' doesn't expire but 'AMLToken' does.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.EndpointAuthMode
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EndpointAuthMode
 Parameter Sets: (All)
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -340,7 +340,7 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.SkuTier
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier
 Parameter Sets: (All)
 Aliases:
 
@@ -450,7 +450,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IOnlineEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint
 
 ## NOTES
 

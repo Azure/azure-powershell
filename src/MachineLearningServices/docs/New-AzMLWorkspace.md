@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningworkspaces/new-azmlworkspace
+Module Name: Az.MachineLearningServices
+online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspace
 schema: 2.0.0
 ---
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 Indicates whether or not the encryption is enabled for the workspace.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.EncryptionStatus
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EncryptionStatus
 Parameter Sets: (All)
 Aliases:
 
@@ -231,7 +231,7 @@ Accept wildcard characters: False
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -399,7 +399,7 @@ Accept wildcard characters: False
 Whether requests from Public Network are allowed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.PublicNetworkAccess
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PublicNetworkAccess
 Parameter Sets: (All)
 Aliases:
 
@@ -431,7 +431,7 @@ The list of shared private link resources in this workspace.
 To construct, see NOTES section for SHAREDPRIVATELINKRESOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.ISharedPrivateLinkResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISharedPrivateLinkResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -510,7 +510,7 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.SkuTier
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier
 Parameter Sets: (All)
 Aliases:
 
@@ -620,7 +620,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace
 
 ## NOTES
 

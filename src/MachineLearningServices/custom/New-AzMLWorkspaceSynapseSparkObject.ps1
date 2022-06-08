@@ -21,12 +21,12 @@ Create an in-memory object for SynapseSpark.
 Create an in-memory object for SynapseSpark.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.SynapseSpark
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SynapseSpark
 .Link
 https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceSynapseSparkObject
 #>
 function New-AzMLWorkspaceSynapseSparkObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.SynapseSpark')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SynapseSpark')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -81,7 +81,7 @@ function New-AzMLWorkspaceSynapseSparkObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.SynapseSpark]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SynapseSpark]::New()
         $Object.Type = 'SynapseSpark'
 
         if ($PSBoundParameters.ContainsKey('AutoPausePropertyDelayInMinute')) {

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.MachineLearningWorkspaces
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningworkspaces/new-azmlworkspacedataversion
+Module Name: Az.MachineLearningServices
+online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedataversion
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ Create or update data version
 [Required] Specifies the type of data.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Support.DataType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DataType
 Parameter Sets: (All)
 Aliases:
 
@@ -275,7 +275,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningWorkspaces.Models.Api20220501.IDataVersionBase
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDataVersionBase
 
 ## NOTES
 
