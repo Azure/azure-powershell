@@ -37,7 +37,7 @@ Restart the dedicated host. The operation will complete successfully once the de
 
 ### Example 1
 ```powershell
-$Location = <Location>;
+$Location = 'Location';
 $ResourceGroupName = New-AzResourceGroup -Name $rgname -Location $Location -Force;
 
 $hostGroupName = $ResourceGroupName + 'hostgroup'

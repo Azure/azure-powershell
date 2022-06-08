@@ -32,7 +32,7 @@ Create a gallery.
 
 ### Example 2
 ```powershell
-PS C:\> New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location -Description $galleryDescription -Permission Groups
+New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location -Description $galleryDescription -Permission Groups
 ```
 
 Create a gallery with Direct Sharing enabled.

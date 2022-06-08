@@ -50,7 +50,7 @@ Update a gallery.
 
 ### Example 2
 ```powershell
-PS C:\> Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Permission Groups -Share -Tenant xxxxxxxx-xxx-xxxxxxx,zzzzzz-zzzzzzz-zzzzzz
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Permission Groups -Share -Tenant xxxxxxxx-xxx-xxxxxxx,zzzzzz-zzzzzzz-zzzzzz
 ```
 
 Update a gallery to be shared and add two subscriptions it is to be shared with.
