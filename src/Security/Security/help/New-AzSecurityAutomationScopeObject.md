@@ -24,7 +24,7 @@ Creates security automation scope object
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSecurityAutomationScopeObject -Description 'Security assessments that relate to the resource group myResourceGroup within the subscription a5caac9c-5c04-49af-b3d0-e204f40345d5'  -ScopePath '/subscriptions/a5caac9c-5c04-49af-b3d0-e204f40345d5/resourceGroups/myResourceGroup'
+New-AzSecurityAutomationScopeObject -Description 'Security assessments that relate to the resource group myResourceGroup within the subscription a5caac9c-5c04-49af-b3d0-e204f40345d5'  -ScopePath '/subscriptions/a5caac9c-5c04-49af-b3d0-e204f40345d5/resourceGroups/myResourceGroup'
 ```
 
 Creates security automation scope object

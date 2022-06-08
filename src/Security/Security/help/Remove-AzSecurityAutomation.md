@@ -37,7 +37,7 @@ Deletes security automation
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSecurityAutomation -ResourceGroupName 'sampleResourceGroup' -Name 'sampleAutomation'
+Remove-AzSecurityAutomation -ResourceGroupName 'sampleResourceGroup' -Name 'sampleAutomation'
 ```
 
 Deletes security automation named 'sampleAutomation' under resource group named 'sampleResourceGroup'

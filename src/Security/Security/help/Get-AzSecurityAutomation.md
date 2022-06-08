@@ -41,7 +41,7 @@ Gets security automations
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityAutomation
+Get-AzSecurityAutomation
 ```
 
 Gets all security automations under the subscription

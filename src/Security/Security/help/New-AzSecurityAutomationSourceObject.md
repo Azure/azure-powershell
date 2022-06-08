@@ -30,7 +30,7 @@ Creates security automation source object
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSecurityAutomationSourceObject -EventSource 'Assessments' -RuleSet $ruleSet
+New-AzSecurityAutomationSourceObject -EventSource 'Assessments' -RuleSet $ruleSet
 ```
 
 Creates security automation source object

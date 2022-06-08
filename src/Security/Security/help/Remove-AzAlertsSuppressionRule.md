@@ -37,7 +37,7 @@ Deletes an alerts suppression rule.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzAlertsSuppressionRule -Name "Example"
+Remove-AzAlertsSuppressionRule -Name "Example"
 ```
 
 Deleted an alerts suppression rule with the name "Example"
