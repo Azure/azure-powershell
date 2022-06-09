@@ -2,11 +2,16 @@
 
 - [Overview](#overview)
 - [Guide: How to Add a New Config](#guide-how-to-add-a-new-config)
+  - [Step 1: Define the Config](#step-1-define-the-config)
+    - [Simple Config Definition](#simple-config-definition)
+    - [Standard Config Definition](#standard-config-definition)
+  - [Step 2: Register the Config](#step-2-register-the-config)
+  - [Step 3: Regenerate Help Documents](#step-3-regenerate-help-documents)
 - [Guide: How to Get the Value of a Config](#guide-how-to-get-the-value-of-a-config)
-- [Special cases](#special-cases)
-  - [Applies to](#applies-to)
-  - [Validation](#validation)
-  - [Environment variable](#environment-variable)
+- [Customizing Config Definitions](#customizing-config-definitions)
+  - [About AppliesTo](#about-appliesto)
+  - [Validation of Config Value](#validation-of-config-value)
+  - [Parsing Environment Variables](#parsing-environment-variables)
 
 ## Overview
 
@@ -20,7 +25,7 @@ This document will go over 2 most common scenarios for developers. As for how to
 
 #### Simple Config Definition
 
-For most cases, creating an instance of [`SimpleTypedConfig<TValue>`](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Authentication/Config/Models/SimpleTypedConfig.cs) is the easist way to define a config. The syntax is:
+For most cases, creating an instance of [`SimpleTypedConfig<TValue>`](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Authentication/Config/Models/SimpleTypedConfig.cs) is the easiest way to define a config. The syntax is:
 
 ```csharp
 SimpleTypedConfig<TValue>.SimpleTypedConfig(string key, string helpMessage, TValue defaultValue, [string environmentVariable = null], [IReadOnlyCollection<AppliesTo> canApplyTo = null])
@@ -34,8 +39,8 @@ where
   - It is reused as the help message of the corresponding PowerShell parameter in documents.
 - `defaultValue` is the default value of the config. Used for basic type validation when setting the config.
 - (Optional) `environmentVariable` sets to which environment variable the config is connected. Once set, the config framework will pick up the variable automatically.
-  - Note: the config must correspond to **one single** environment variable and it must not require special logic to parse the value. Otherwise please check out [todo].
-- (Optional) `canApplyTo` defines at which levels the config can apply to. There are three levels in total: `AppliesTo.Az`, `AppliesTo.Module`, `AppliesTo.Cmdlet`. By default all of them are included. For more details, see [todo].
+  - Note: the config must correspond to **one single** environment variable and it must not require special logic to parse the value. Otherwise please check out [Parsing Environment Variables](#parsing-environment-variables).
+- (Optional) `canApplyTo` defines at which levels the config can apply to. There are three levels in total: `AppliesTo.Az`, `AppliesTo.Module`, `AppliesTo.Cmdlet`. By default all of them are included. For more details, see [About AppliesTo](#about-appliesto).
 
 Here is a sample definition:
 
@@ -67,11 +72,11 @@ internal class DisplayBreakingChangeWarningsConfig : TypedConfig<bool>
 }
 ```
 
-Definining configs in the standard way is more customizable than the simple way, for example when it comes to validating values and parsing enviroment variables. For more, see [todo].
+Defining configs in the standard way is more customizable than the simple way, for example when it comes to validating values and parsing environment variables. For more, see [Customizing Config Definitions](#customizing-config-definitions).
 
 ### Step 2: Register the Config
 
-Either way the config is defined, instanciate it and call [`IConfigManager.RegisterConfig(ConfigDefinition config)`](https://github.com/Azure/azure-powershell-common/blob/8d70507d41a3698b5b131df61f14e329d7a6eb41/src/Authentication.Abstractions/Interfaces/IConfigManager.cs#L30) in [`ConfigInitializer.RegisterConfigs(IConfigManager configManager)`](https://github.com/Azure/azure-powershell/blob/304e15c84071fee02622734c4e5f12c05baa77d2/src/Accounts/Authentication/Config/ConfigInitializer.cs#L192). For example:
+Either way the config is defined, instantiate it and call [`IConfigManager.RegisterConfig(ConfigDefinition config)`](https://github.com/Azure/azure-powershell-common/blob/8d70507d41a3698b5b131df61f14e329d7a6eb41/src/Authentication.Abstractions/Interfaces/IConfigManager.cs#L30) in [`ConfigInitializer.RegisterConfigs(IConfigManager configManager)`](https://github.com/Azure/azure-powershell/blob/304e15c84071fee02622734c4e5f12c05baa77d2/src/Accounts/Authentication/Config/ConfigInitializer.cs#L192). For example:
 
 ```csharp
 configManager.RegisterConfig(new DisplayBreakingChangeWarningsConfig());
@@ -92,9 +97,9 @@ AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), ou
 string subscriptionFromConfig = configManager.GetConfigValue<string>(ConfigKeys.DefaultSubscriptionForLogin, MyInvocation);
 ```
 
-Note that although `invocation` is optional, if the config can apply to either `AppliesTo.Module` or `AppliesTo.Cmdlet` (see [todo]), it must be `MyInvocation`. Alternatively, it could be a good idea to always pass in `MyInvocation`.
+Note that although `invocation` is optional, if the config can apply to either `AppliesTo.Module` or `AppliesTo.Cmdlet` (see [About AppliesTo](#about-appliesto)), it must be `MyInvocation`. Alternatively, it could be a good idea to always pass in `MyInvocation`.
 
-## Lesser Topics
+## Customizing Config Definitions
 
 ### About AppliesTo
 
@@ -110,7 +115,7 @@ The `IReadOnlyCollection<AppliesTo> ConfigDefinition.CanApplyTo { get; }` proper
 
 By default, when setting the value of a config, the type of the value is validated. If you want to implement your own validation, override `void TypedConfig<TValue>.Validate(object value)`, throw an exception when the value is invalid.
 
-```powershell
+```csharp
 public override void Validate(object value)
 {
     // do not forget to call `base` so type is still checked
@@ -150,5 +155,3 @@ public override string ParseFromEnvironmentVariables(IReadOnlyDictionary<string,
     return null;
 }
 ```
-
-### Use 
