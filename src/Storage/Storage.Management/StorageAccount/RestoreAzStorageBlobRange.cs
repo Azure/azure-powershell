@@ -121,21 +121,20 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (ShouldProcess(this.StorageAccountName, "Restore Blob Range"))
             {
+                Track2.StorageAccountResource account = this.StorageClientTrack2.GetStorageAccount(this.ResourceGroupName, this.StorageAccountName);
+                var restoreLro = account.RestoreBlobRanges(
+                    WaitUntil.Started,
+                    new Track2Models.BlobRestoreContent(
+                        this.TimeToRestore.ToUniversalTime(),
+                        PSBlobRestoreRange.ParseBlobRestoreRanges(this.BlobRestoreRange)));
+
+                // This is a temporary workaround of SDK issue https://github.com/Azure/azure-sdk-for-net/issues/29060
+                // The workaround is to get the raw response and parse it into the output desired
+                // The Blob restore status should be got from SDK directly once the issue is fixed
+                Dictionary<string, object> temp = restoreLro.GetRawResponse().Content.ToObjectFromJson() as Dictionary<string, object>;
+
                 if (waitForComplete)
                 {
-                    Track2.StorageAccountResource account = this.StorageClientTrack2.GetStorageAccount(this.ResourceGroupName, this.StorageAccountName);
-                    var restoreLro = account.RestoreBlobRanges(
-                        WaitUntil.Started,
-                        new Track2Models.BlobRestoreContent(
-                            this.TimeToRestore,
-                            PSBlobRestoreRange.ParseBlobRestoreRanges(this.BlobRestoreRange))
-                        );
-
-                    // This is a temporary workaround of SDK issue https://github.com/Azure/azure-sdk-for-net/issues/29060
-                    // The workaround is to get the raw response and parse it into the output desired
-                    // The Blob restore status should be got from SDK directly once the issue is fixed
-                    Dictionary<string, object> temp = restoreLro.GetRawResponse().Content.ToObjectFromJson() as Dictionary<string, object>;
-
                     if (temp == null)
                     {
                         throw new InvalidJobStateException("Could not fetch the Blob restore response.");
@@ -162,14 +161,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
                 else
                 {
-                    Track2.StorageAccountResource account = this.StorageClientTrack2.GetStorageAccount(this.ResourceGroupName, this.StorageAccountName);
-                    var restoreLro = account.RestoreBlobRanges(
-                        WaitUntil.Started,
-                        new Track2Models.BlobRestoreContent(
-                            this.TimeToRestore.ToUniversalTime(),
-                            PSBlobRestoreRange.ParseBlobRestoreRanges(this.BlobRestoreRange)));
-                    Dictionary<string, object> temp = restoreLro.GetRawResponse().Content.ToObjectFromJson() as Dictionary<string, object>;
-
                     if (temp == null)
                     {
                         throw new InvalidJobStateException("Could not fetch the Blob restore response.");
