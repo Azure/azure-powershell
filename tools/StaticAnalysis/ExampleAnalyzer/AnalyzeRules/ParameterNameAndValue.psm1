@@ -15,7 +15,6 @@ enum RuleNames {
     Mismatched_Parameter_Value_Type
 }
 
-
 <#
     .SYNOPSIS
     Gets the actual value from ast.
@@ -56,7 +55,9 @@ function Measure-ParameterNameAndValue {
         [System.Management.Automation.Language.ScriptBlockAst]
         $ScriptBlockAst
     )
-
+    begin{
+        Get-Item ./artifacts/Debug/Az.*/Az.*.psd1 | Import-Module -Global
+    }
     process {
         $Results = @()
         $global:CommandParameterPair = @()
@@ -87,6 +88,7 @@ function Measure-ParameterNameAndValue {
 
                 if ($Ast -is [System.Management.Automation.Language.CommandElementAst] -and $Ast.Parent -is [System.Management.Automation.Language.CommandAst]) {
                     [System.Management.Automation.Language.CommandElementAst]$CommandElementAst = $Ast
+                    $ModuleCmdletExNum = $CommandElementAst.Parent.Parent.Parent.Parent.Parent.Name
                     if ($global:SkipNextCommandElementAst) {
                         $global:SkipNextCommandElementAst = $false
                         return $false
@@ -144,6 +146,7 @@ function Measure-ParameterNameAndValue {
                                 CommandName = $CommandAst.Extent.Text
                                 ParameterName = ""
                                 ExpressionToParameter = ""
+                                ModuleCmdletExNum = $ModuleCmdletExNum
                             }
                             return $true
                         }
@@ -154,8 +157,6 @@ function Measure-ParameterNameAndValue {
                             for ($i = 1; $i -lt $CommandAst.CommandElements.Count;) {
                                 $CommandElement = $CommandAst.CommandElements[$i]
                                 $NextCommandElement = $CommandAst.CommandElements[$i + 1]
-                                # $PositionParameters = $global:ParameterSet.Parameters | where {$_.Position -ge 0}
-                                # $PositionParameters = $PositionParameters.Name + $PositionParameters.Aliases
 
                                 if ($CommandElement -is [System.Management.Automation.Language.CommandParameterAst]) {
                                     $CommandParameterElement = [System.Management.Automation.Language.CommandParameterAst]$CommandElement
@@ -264,6 +265,7 @@ function Measure-ParameterNameAndValue {
                                 CommandName = $CommandName
                                 ParameterName = $ParameterName
                                 ExpressionToParameter = ""
+                                ModuleCmdletExNum = $ModuleCmdletExNum
                             }
                             return $true
                         }
@@ -276,6 +278,7 @@ function Measure-ParameterNameAndValue {
                                     CommandName = $CommandName
                                     ParameterName = $ParameterNameNotAlias
                                     ExpressionToParameter = "<2>"
+                                    ModuleCmdletExNum = $ModuleCmdletExNum
                                 }
                                 return $true
                             }
@@ -292,6 +295,7 @@ function Measure-ParameterNameAndValue {
                                         CommandName = $CommandName
                                         ParameterName = $ParameterName
                                         ExpressionToParameter = $null
+                                        ModuleCmdletExNum = $ModuleCmdletExNum
                                     }
                                     return $true
                                 }
@@ -310,6 +314,7 @@ function Measure-ParameterNameAndValue {
                                                 CommandName = $CommandName
                                                 ParameterName = "-$ParameterName"
                                                 ExpressionToParameter = $NextCommandElement.Extent.Text + " is a null-valued parameter value."
+                                                ModuleCmdletExNum = $ModuleCmdletExNum
                                             }
                                             return $true
                                         }
@@ -335,6 +340,7 @@ function Measure-ParameterNameAndValue {
                                                 CommandName = $CommandName
                                                 ParameterName = "-$ParameterName"
                                                 ExpressionToParameter = $NextCommandElement.Extent.Text
+                                                ModuleCmdletExNum = $ModuleCmdletExNum
                                             }
                                             return $true
                                         }
@@ -349,6 +355,7 @@ function Measure-ParameterNameAndValue {
                                                 CommandName = $CommandName
                                                 ParameterName = "-$ParameterName"
                                                 ExpressionToParameter = $NextCommandElement.Extent.Text
+                                                ModuleCmdletExNum = $ModuleCmdletExNum
                                             }
                                             return $true
                                         }
@@ -378,6 +385,7 @@ function Measure-ParameterNameAndValue {
                                 CommandName = $CommandName
                                 ParameterName = $ImplicitParameterName
                                 ExpressionToParameter = $CommandElementAst.Extent.Text
+                                ModuleCmdletExNum = $ModuleCmdletExNum
                             }
                             return $true
                         }
@@ -392,6 +400,7 @@ function Measure-ParameterNameAndValue {
                                     CommandName = $CommandName
                                     ParameterName = "[-$ImplicitParameterName]"
                                     ExpressionToParameter = $CommandElementAst.Extent.Text + " is a null-valued parameter value."
+                                    ModuleCmdletExNum = $ModuleCmdletExNum
                                 }
                                 return $true
                             }
@@ -416,6 +425,7 @@ function Measure-ParameterNameAndValue {
                                     CommandName = $CommandName
                                     ParameterName = "[-$ImplicitParameterName]"
                                     ExpressionToParameter = $CommandElementAst.Extent.Text
+                                    ModuleCmdletExNum = $ModuleCmdletExNum
                                 }
                                 return $true
                             }
@@ -429,6 +439,7 @@ function Measure-ParameterNameAndValue {
                                     CommandName = $CommandName
                                     ParameterName = "[-$ImplicitParameterName]"
                                     ExpressionToParameter = $CommandElementAst.Extent.Text
+                                    ModuleCmdletExNum = $ModuleCmdletExNum
                                 }
                                 return $true
                             }
@@ -442,45 +453,61 @@ function Measure-ParameterNameAndValue {
             [System.Management.Automation.Language.Ast[]]$Asts = $ScriptBlockAst.FindAll($Predicate, $false)
             for ($i = 0; $i -lt $Asts.Count; $i++) {
                 if ($global:CommandParameterPair[$i].ParameterName -eq "" -and $global:CommandParameterPair[$i].ExpressionToParameter -eq "") {
-                    $Message = "$($CommandParameterPair[$i].CommandName) has a parameter not in the same ParameterSet as others."
+                    $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-@$($CommandParameterPair[$i].CommandName) has a parameter not in the same ParameterSet as others."
                     $RuleName = [RuleNames]::Unknown_Parameter_Set
                     $Severity = "Error"
+                    $RuleSuppressionID = "3010"
+                    $Remediation = "Make sure the parameters are from the same parameter set."
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter -eq "") {
-                    $Message = "$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) is not a valid parameter name."
+                    $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-@$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) is not a valid parameter name."
                     $RuleName = [RuleNames]::Invalid_Parameter_Name
                     $Severity = "Error"
+                    $RuleSuppressionID = "3011"
+                    $Remediation = "Check validity of the parameter $($CommandParameterPair[$i].ParameterName)."
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter -eq "<2>") {
-                    $Message = "$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) appeared more than once."
+                    $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-@$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) appeared more than once."
                     $RuleName = [RuleNames]::Duplicate_Parameter_Name
                     $Severity = "Error"
+                    $RuleSuppressionID = "3012"
+                    $Remediation = "Remove redundant parameter $($CommandParameterPair[$i].ParameterName)."
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter -eq $null) {
-                    $Message = "$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) must be assigned with a value."
+                    $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-@$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) must be assigned with a value."
                     $RuleName = [RuleNames]::Unassigned_Parameter
                     $Severity = "Error"
+                    $RuleSuppressionID = "3013"
+                    $Remediation = "Assign value for the parameter $($CommandParameterPair[$i].ParameterName)."
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter.EndsWith(" is a null-valued parameter value.")) {
-                    $Message = "$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ParameterName) $($CommandParameterPair[$i].ExpressionToParameter)"
+                    $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-@$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ParameterName) $($CommandParameterPair[$i].ExpressionToParameter)"
                     $RuleName = [RuleNames]::Unassigned_Variable
                     $Severity = "Warning"
+                    $RuleSuppressionID = "3110"
+                    $variable = $CommandParameterPair[$i].ExpressionToParameter -replace " is a null-valued parameter value."
+                    $Remediation = "Assign value for $variable."
                 }
                 elseif ($global:CommandParameterPair[$i].ParameterName -eq "<non-existant>") {
-                    $Message = "$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ExpressionToParameter) is not explicitly assigned to a parameter."
+                    $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-@$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ExpressionToParameter) is not explicitly assigned to a parameter."
                     $RuleName = [RuleNames]::Unbinded_Parameter_Name
-                    $Severity = "Warning"
+                    $Severity = "Error"
+                    $RuleSuppressionID = "3014"
+                    $Remediation = "Assign $($CommandParameterPair[$i].ExpressionToParameter) explicitly to the parameter."
                 }
                 else {
-                    $Message = "$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ParameterName) $($CommandParameterPair[$i].ExpressionToParameter) is not an expected parameter value type."
+                    $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-@$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ParameterName) $($CommandParameterPair[$i].ExpressionToParameter) is not an expected parameter value type."
                     $RuleName = [RuleNames]::Mismatched_Parameter_Value_Type
                     $Severity = "Warning"
+                    $RuleSuppressionID = "3111"
+                    $Remediation = "Use correct parameter value type."
                 }
                 $Result = [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
-                    Message = $Message;
+                    Message = "$Message@$Remediation";
                     Extent = $Asts[$i].Extent;
                     RuleName = $RuleName;
                     Severity = $Severity
+                    RuleSuppressionID = $RuleSuppressionID
                 }
                 $Results += $Result
             }

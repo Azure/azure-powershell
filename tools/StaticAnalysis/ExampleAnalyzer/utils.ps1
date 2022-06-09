@@ -47,6 +47,18 @@ class DeletePromptAndSeparateOutput {
     [int]$NeedSplitting
 }
 
+class AnalysisOutput{
+    [string]$Module
+    [string]$Cmdlet
+    [int]$Example
+    [string]$RuleName
+    [int]$ProblemID
+    [int]$Severity
+    [string]$Description
+    [string]$Extent
+    [String]$Remediation
+} 
+
 <#
     .SYNOPSIS
     Get examples details from ".md".
@@ -95,8 +107,6 @@ function Get-ExamplesDetailsFromMd {
             # if there is no ```output``` split codelines and outputlines
             if ($exampleOutputBlocks.Count -eq 0) {
                 foreach ($exampleCodeBlock in $exampleCodeBlocks) {
-                    #$exampleCodeLines = ($exampleCodeBlock.Value | Select-String -Pattern "((\n(([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*)*[ \t]*[A-Za-z]\w+-[A-Za-z]\w+\b(?!(-|   +\w)))|(\n(([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*)*[ \t]*((@?\(.+\) *[|.-] *\w)|(\[.+\]\$)|(@{.+})|('[^\n\r']*' *[|.-] *\w)|(`"[^\n\r`"]*`" *[|.-] *\w)|\$)))([\w-~``'`"$= \t:;<>@()\[\]{},.+*/|\\&!?%#]*[``|] *(\n|\r\n))*[\w-~``'`"$= \t:;<>@()\[\]{},.+*/|\\&!?%#]*(?=\n|\r\n|#)" -CaseSensitive -AllMatches).Matches
-                    #$exampleCodeLines = ($exampleCodeBlock.Value | Select-String -Pattern "\n(([A-Za-z \t])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*)*[ \t]*((([A-Za-z]\w+-[A-Za-z]\w+\b(?!(-|   +\w)))|((@?\(.+\) *[|.-] *\w)|(\[.+\]\$)|(@{.+})|('[^\n\r']*' *[|.-] *\w)|(`"[^\n\r`"]*`" *[|.-] *\w)|\$))([\w-~``'`"$= \t:;<>@()\[\]{},.+*/|\\&!?%#]*[``|][ \t]*(\n|\r\n)?)*([\w-~``'`"$= \t:;<>@()\[\]{},.+*/|\\&!?%#]*(?=\n|\r\n|#)))" -CaseSensitive -AllMatches).Matches
                     $codeRegex = "\n(([A-Za-z \t])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*)*[ \t]*((([A-Za-z]\w+-[A-Za-z]\w+\b(.ps1)?(?!(-|   +\w)))|(" +
                     "(@?\((?>\((?<pair>)|[^\(\)]+|\)(?<-pair>))*(?(pair)(?!))\) *[|.-] *\w)|" +
                     "(\[(?>\[(?<pair>)|[^\[\]]+|\](?<-pair>))*(?(pair)(?!))\]\$)|" +
@@ -176,6 +186,7 @@ function Get-ExamplesDetailsFromMd {
         }
 
         $examplesProperties += [PSCustomObject]@{
+            Num = $exampleNumber
             Title = $exampleTitle
             Codes = $exampleCodes
             CodeBlocks = $exampleCodeBlocks
@@ -201,6 +212,7 @@ function Measure-SectionMissingAndOutputScript {
         [switch]$OutputScriptsInFile,
         [string]$OutputFolder
     )
+    $results = @()
 
     $fileContent = Get-Content $MarkdownPath -Raw
 
@@ -232,6 +244,20 @@ function Measure-SectionMissingAndOutputScript {
     else {
         $missingSynopsis = 1
     }
+    if($missingSynopsis -ne 0){
+        $result = [AnalysisOutput]@{
+            Module = $Module
+            Cmdlet = $Cmdlet
+            Example = ""
+            Description = "Synopsis is missing."
+            RuleName = "MissingSynopsis"
+            Severity = 1
+            Extent = "$Module\help\$Cmdlet.md"
+            ProblemID = 3040
+            Remediation = "Add Synopsis. Remove any placeholders."
+        }
+        $results += $result
+    }
 
     # If Description section exists
     if ($indexOfDescription -ne -1) {
@@ -246,6 +272,20 @@ function Measure-SectionMissingAndOutputScript {
     else {
         $missingDescription = 1
     }
+    if($missingDescription -ne 0){
+        $result = [AnalysisOutput]@{
+            Module = $Module
+            Cmdlet = $Cmdlet
+            Example = ""
+            Description = "Description is missing."
+            RuleName = "MissingDescription"
+            Severity = 1
+            Extent = "$Module\help\$Cmdlet.md"
+            ProblemID = 3041
+            Remediation = "Add Description. Remove any placeholders."
+        }
+        $results += $result
+    }
 
     $examplesDetails = Get-ExamplesDetailsFromMd $MarkdownPath
     # If no examples
@@ -254,6 +294,18 @@ function Measure-SectionMissingAndOutputScript {
         $missingExampleCode++
         $missingExampleOutput++
         $missingExampleDescription++
+        $result = [AnalysisOutput]@{
+            Module = $Module
+            Cmdlet = $Cmdlet
+            Example = ""
+            Description = "Example is missing."
+            RuleName = "MissingExample"
+            Severity = 1
+            Extent = "$Module\help\$Cmdlet.md"
+            ProblemID = 3042
+            Remediation = "Add Example. Remove any placeholders."
+        }
+        $results += $result
     }
     else {
         foreach ($exampleDetails in $examplesDetails) {
@@ -262,22 +314,97 @@ function Measure-SectionMissingAndOutputScript {
             switch ($exampleDetails) {
                 {$exampleDetails.Title -eq ""} {
                     $missingExampleTitle++
+                    $result = [AnalysisOutput]@{
+                        Module = $Module
+                        Cmdlet = $Cmdlet
+                        Example = $exampleDetails.Num
+                        Description = "Title of the example is missing."
+                        RuleName = "MissingExampleTitle"
+                        Severity = 1
+                        Extent = "$Module\help\$Cmdlet.md"
+                        ProblemID = 3043
+                        Remediation = "Add title for the example. Remove any placeholders."
+                    }
+                    $results += $result
                 }
                 {$exampleDetails.Codes.Count -eq 0} {
                     $missingExampleCode++
+                    $result = [AnalysisOutput]@{
+                        Module = $Module
+                        Cmdlet = $Cmdlet
+                        Example = $exampleDetails.Num
+                        Description = "Code of the example is missing."
+                        RuleName = "MissingExampleCode"
+                        Severity = 1
+                        Extent = "$Module\help\$Cmdlet.md"
+                        ProblemID = 3044
+                        Remediation = "Add code for the example. Remove any placeholders."
+                    }
+                    $results += $result
                 }
                 {$exampleDetails.OutputBlocks.Count -ne 0 -and $exampleDetails.Outputs.Count -eq 0} {
                     $missingExampleOutput++
+                    $result = [AnalysisOutput]@{
+                        Module = $Module
+                        Cmdlet = $Cmdlet
+                        Example = $exampleDetails.Num
+                        Description = "Output of the example is missing."
+                        RuleName = "MissingExampleOutput"
+                        Severity = 1
+                        Extent = "$Module\help\$Cmdlet.md"
+                        ProblemID = 3045
+                        Remediation = "Add output for the example. Remove any placeholders."
+                    }
+                    $results += $result
                 }
                 {$exampleDetails.OutputBlocks.Count -eq 0 -and $exampleDetails.Outputs.Count -ne 0} {
                     $needSplitting++
+                    $result = [AnalysisOutput]@{
+                        Module = $Module
+                        Cmdlet = $Cmdlet
+                        Example = $exampleDetails.Num
+                        Description = "The output need to be split from example."
+                        RuleName = "NeedSplitting"
+                        Severity = 1
+                        Extent = "$Module\help\$Cmdlet.md"
+                        ProblemID = 3051
+                        Remediation = "Split output from example."
+                    }
+                    $results += $result
                 }
                 {$exampleDetails.Description -eq ""} {
                     $missingExampleDescription++
+                    $result = [AnalysisOutput]@{
+                        Module = $Module
+                        Cmdlet = $Cmdlet
+                        Example = $exampleDetails.Num
+                        Description = "Description of the example is missing."
+                        RuleName = "MissingExampleDescription"
+                        Severity = 1
+                        Extent = "$Module\help\$Cmdlet.md"
+                        ProblemID = 3046
+                        Remediation = "Add description for the example. Remove any placeholders."
+                    }
+                    $results += $result
                 }
             }
             $needDeleting = ($examplesDetails.CodeBlocks | Select-String -Pattern "\n([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*" -CaseSensitive).Count +
                 ($examplesDetails.CodeBlocks | Select-String -Pattern "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1" -CaseSensitive).Count
+            
+            if($needDeleting -ne 0){
+                $result = [AnalysisOutput]@{
+                    Module = $Module
+                    Cmdlet = $Cmdlet
+                    Example = $exampleDetails.Num
+                    Description = "The prompt of example need to be deleted."
+                    RuleName = "NeedDeleting"
+                    Severity = 1
+                    Extent = "$Module\help\$Cmdlet.md"
+                    ProblemID = 3051
+                    Remediation = "Delete the prompt of example."
+                }
+                $results += $result
+            }
 
             # Delete prompts
             $exampleCodes = $exampleDetails.Codes
@@ -286,12 +413,16 @@ function Measure-SectionMissingAndOutputScript {
                 $newCode = $newCode -replace "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1", ""
                 $exampleCodes[$i] = $newCode
             }
-
-            $cmdletExamplesScriptPath = "$OutputFolder\$module"
+            
             # Output codes by example
             if ($OutputScriptsInFile.IsPresent) {
-                $null = New-Item -ItemType Directory -Path $cmdletExamplesScriptPath -ErrorAction SilentlyContinue
-                [IO.File]::WriteAllText((New-Item -Type File  .\$cmdletExamplesScriptPath\$cmdlet-$exampleNumber.ps1).FullName, $exampleCodes -join "`n", (New-Object Text.UTF8Encoding($false)))
+                $cmdletExamplesScriptPath = "$OutputFolder\TempScript.ps1"
+                $functionHead = "function $Module-$Cmdlet-$exampleNumber{"
+                Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionHead
+                $exampleCodes = $exampleCodes -join "`n"
+                Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $exampleCodes
+                $functionTail = "}`n"
+                Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionTail
             }
         }
     }
@@ -337,6 +468,7 @@ function Measure-SectionMissingAndOutputScript {
         Scale = $scale
         Missing = $missing
         DeletePromptAndSeparateOutput = $deletePromptAndSeparateOutput
+        Errors = $results
     }
 }
 
@@ -346,7 +478,6 @@ function Measure-SectionMissingAndOutputScript {
 #>
 function Get-ScriptAnalyzerResult {
     param (
-        [string]$Module,
         [string]$ScriptPath,
         [Parameter(Mandatory, HelpMessage = "PSScriptAnalyzer custom rules path. Supports wildcard.")]
         [string[]]$RulePath,
@@ -357,31 +488,35 @@ function Get-ScriptAnalyzerResult {
     if (!(Test-Path $ScriptPath -PathType Leaf)) {
         throw "Cannot find cached script file '$ScriptPath'."
     }
-
-    # get script file name
-    $scriptName = [IO.Path]::GetFileName($ScriptPath)
-    $scriptBaseName = [IO.Path]::GetFileNameWithoutExtension($ScriptPath)
-    if ($scriptBaseName.Split("-").Count -eq 3 -and $scriptBaseName.Split("-")[2] -as [int]) {
-        $cmdlet = $scriptBaseName.Split("-")[0..1] -join "-"
-        $example = $scriptBaseName.Split("-")[2]
-    }
-    else {
-        $cmdlet = $scriptName
-        $example = ""
-    }
     
     # Invoke PSScriptAnalyzer : input scriptblock, output error set in $result with property: RuleName, Message, Extent
     if ($RulePath -eq $null) {
-        $results = Invoke-ScriptAnalyzer -Path $ScriptPath -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
+        $analysisResults = Invoke-ScriptAnalyzer -Path $ScriptPath -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
     }
     else {
-        $results = Invoke-ScriptAnalyzer -Path $ScriptPath -CustomRulePath $RulePath -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
+        $analysisResults = Invoke-ScriptAnalyzer -Path $ScriptPath -CustomRulePath $RulePath -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
+    }
+    $results = @()
+    foreach($analysisResult in $analysisResults){
+        if($analysisResult.Severity -eq "Error"){
+            $Severity = 1
+        }
+        elseif($analysisResult.Severity -eq "Warning"){
+            $Severity = 2
+        }
+        $result = [AnalysisOutput]@{
+            Module = ($analysisResult.Message -split "-")[0]
+            Cmdlet = ($analysisResult.Message -split "-")[1] + "-" + ($analysisResult.Message -split "-")[2]
+            Example = ($analysisResult.Message -split "-")[3]
+            RuleName = $analysisResult.RuleName
+            Description = ($analysisResult.Message -split "@")[1] -replace "`"","`'"
+            Severity = $Severity
+            Extent = $analysisResult.Extent -replace "`"","`'"
+            ProblemID = $analysisResult.RuleSuppressionID
+            Remediation = ($analysisResult.Message -split "@")[2] -replace "`"","`'"
+        }
+        $results += $result
     }
 
-    return $results | Select-Object -Property @{Name = "Module"; Expression = {$Module}},
-        @{Name = "Cmdlet";Expression={$Cmdlet}},
-        @{Name ="Example";Expression={$Example}},
-        RuleName, Severity, @{Name = "Description";Expression={$results.Message}}, Extent
+    return $results
 }
-
-

@@ -40,13 +40,17 @@ $analysisResultsTable = @()
 
 # Clean caches, remove files in "output" folder
 if ($OutputScriptsInFile.IsPresent) {
-    Remove-Item $OutputFolder\$ScriptsByExampleFolder -Recurse -ErrorAction SilentlyContinue
+    Remove-Item $OutputFolder\TempScript.ps1 -ErrorAction SilentlyContinue
+    Remove-Item $OutputFolder\*.csv -Recurse -ErrorAction SilentlyContinue
+    Remove-Item .\artifacts\StaticAnalysisResults\ExampleIssues.csv -ErrorAction SilentlyContinue
+    Remove-Item $OutputFolder -ErrorAction SilentlyContinue
 }
-Remove-Item $OutputFolder\*.csv -Recurse -ErrorAction SilentlyContinue
+
 
 # find examples in "help\*.md", output ".ps1"
 if ($PSCmdlet.ParameterSetName -eq "Markdown") {
-    $null = New-Item -ItemType Directory -Path $OutputFolder\$ScriptsByExampleFolder -ErrorAction SilentlyContinue
+    $null = New-Item -ItemType Directory -Path $OutputFolder -ErrorAction SilentlyContinue
+    $null = New-Item -ItemType File  $OutputFolder\TempScript.ps1
     $MarkdownPath = Get-Content $MarkdownPaths
     (Get-ChildItem $MarkdownPath) | foreach{
         # Filter the .md of overview in \help\
@@ -56,14 +60,15 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
             $cmdlet = $_.BaseName
             $result = Measure-SectionMissingAndOutputScript $module $cmdlet $_.FullName `
                 -OutputScriptsInFile:$OutputScriptsInFile.IsPresent `
-                -OutputFolder $OutputFolder\$ScriptsByExampleFolder
+                -OutputFolder $OutputFolder
             $scaleTable += $result.Scale
             $missingTable += $result.Missing
             $deletePromptAndSeparateOutputTable += $result.DeletePromptAndSeparateOutput
+            $analysisResultsTable += $result.Errors
         }
     }
     if ($AnalyzeScriptsInFile.IsPresent) {
-        $ScriptPaths = "$OutputFolder\$ScriptsByExampleFolder"
+        $ScriptPaths = "$OutputFolder\TempScript.ps1"
     }
     # Summarize searching results
     $scaleTable | Export-Csv "$OutputFolder\Scale.csv" -NoTypeInformation
@@ -74,20 +79,10 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
 
 # Analyze scripts
 if ($PSCmdlet.ParameterSetName -eq "Script" -or $AnalyzeScriptsInFile.IsPresent) {
-    $analysisResultsTable = @()
-    @() + (Get-Item $ScriptPaths) + (Get-ChildItem $ScriptPaths -Recurse:$Recurse.IsPresent -Attributes Directory) | foreach {
-        $module = (Get-Item $_).Name
-        $analysisResults = @()
-        # read and analyze ".ps1" in \ScriptsByExample
-        Get-ChildItem $_ -Attributes !Directory -Filter "*.ps1" -ErrorAction Stop | foreach {
-            Write-Output "Analyzing file $($_.FullName) ..."
-            $analysisResults += Get-ScriptAnalyzerResult $module $_.FullName $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -ErrorAction Continue
-        }
-        if ($OutputResultsByModule.IsPresent -and (Get-ChildItem $_ -Attributes !Directory -Filter "*.ps1").Count -ne 0) {
-            $analysisResults | Export-Csv "$OutputFolder\$module.csv" -NoTypeInformation
-        }
-        $analysisResultsTable += $analysisResults
-    }
+    # read and analyze ".ps1" in \ScriptsByExample
+    Write-Output "Analyzing file ..."
+    $analysisResultsTable += Get-ScriptAnalyzerResult (Get-Item -Path $ScriptPaths) $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -ErrorAction Continue
+
     # Summarize analysis results, output in Result.csv
     $analysisResultsTable | where {$_ -ne $null} | Export-Csv ".\artifacts\StaticAnalysisResults\ExampleIssues.csv" -NoTypeInformation
 }
