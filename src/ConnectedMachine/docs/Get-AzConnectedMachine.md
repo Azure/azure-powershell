@@ -46,6 +46,7 @@ winwestus2_1   westus2  windows  Connected  Succeeded
 linwestus2_1   westus2  linux    Connected  Succeeded
 winwestus2_2   westus2  windows  Connected  Succeeded
 winwestus2_3   westus2  windows  Connected  Succeeded
+
 ```
 
 Lists all connected machines in a subscription.
@@ -163,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachine
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachine
 
 ## NOTES
 
