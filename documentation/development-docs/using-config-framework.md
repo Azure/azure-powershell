@@ -98,17 +98,30 @@ Note that although `invocation` is optional, if the config can apply to either `
 
 ### About AppliesTo
 
-Configs cannot only be set globally, but also be set for a certain cmdlet or module. For example, the following script disables breaking change warning messages for `Az.KeyVault` module.
+Configs cannot only be set globally, but also be set for a certain cmdlet or module. For example, the following script disables breaking change warning messages for `Az.KeyVault` module, while other modules are not affected by it.
 
 ```powershell
 Update-AzConfig -DisplayBreakingChangeWarning $false -AppliesTo Az.KeyVault
 ```
 
-The `IReadOnlyCollection<AppliesTo> ConfigDefinition.CanApplyTo { get; }` property controls how a config can be applied.!
-
-
+The `IReadOnlyCollection<AppliesTo> ConfigDefinition.CanApplyTo { get; }` property controls to which levels a config can be applied. For example, if it does not make sense for your config to apply to a module or cmdlet, you should set the property to `new AppliesTo[] { AppliesTo.Az }`.
 
 ### Validation of Config Value
+
+By default, when setting the value of a config, the type of the value is validated. If you want to implement your own validation, override `void TypedConfig<TValue>.Validate(object value)`, throw an exception when the value is invalid.
+
+```powershell
+public override void Validate(object value)
+{
+    // do not forget to call `base` so type is still checked
+    base.Validate(value);
+    int valueInt = (int)value;
+    if (value < 0 || value > 100))
+    {
+        throw new ArgumentException($"Unexpected value [{value}]. The value of config [{Key}] should be between 0 and 100.", nameof(value));
+    }
+}
+```
 
 ### Environment Variables
 
