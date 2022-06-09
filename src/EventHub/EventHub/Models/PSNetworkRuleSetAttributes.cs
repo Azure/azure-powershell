@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// <summary>
         /// Initializes a new instance of the NetworkRuleSet class.
         /// </summary>
-        /// <param name="networkRuleSet)"></param>
-        public PSNetworkRuleSetAttributes(NetworkRuleSet networkRuleSet)           
+        /// <param name="networkRuleSet"></param>
+        public PSNetworkRuleSetAttributes(NetworkRuleSet networkRuleSet)
         {
             DefaultAction = networkRuleSet.DefaultAction;
             TrustedServiceAccessEnabled = networkRuleSet.TrustedServiceAccessEnabled;
