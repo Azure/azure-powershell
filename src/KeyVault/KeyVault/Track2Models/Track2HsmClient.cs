@@ -549,9 +549,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
             psKeyRotationPolicy.LifetimeActions?.ForEach(
                 psKeyRotationLifetimeAction => policy.LifetimeActions.Add(
-                    new KeyRotationLifetimeAction()
+                    new KeyRotationLifetimeAction(new KeyRotationPolicyAction(psKeyRotationLifetimeAction.Action))
                     {
-                        Action = psKeyRotationLifetimeAction.Action,
                         TimeAfterCreate = psKeyRotationLifetimeAction.TimeAfterCreate,
                         TimeBeforeExpiry = psKeyRotationLifetimeAction.TimeBeforeExpiry
                     }
