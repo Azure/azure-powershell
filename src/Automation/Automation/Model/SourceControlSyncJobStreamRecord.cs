@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SourceControlSyncJobStreamRecord"/> class.
         /// </summary>
-        /// <param name="syncJobStream"></param>
-        /// <param name="sourceControlSyncJobId">
+        /// <param name="syncJobStream">
         /// The source control job stream.
         /// </param>
         /// <param name="resourceGroupName">
@@ -41,7 +40,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <param name="sourceControlName">
         /// The source control name.
         /// </param>
-        /// <exception cref="ArgumentException">
+        /// <param name="sourceControlSyncJobId">
+        /// The job Id.
+        /// </param>
+        /// <exception cref="System.ArgumentException">
         /// </exception>
         public SourceControlSyncJobStreamRecord(
             AutomationManagement.Models.SourceControlSyncJobStreamById syncJobStream,

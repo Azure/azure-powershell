@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// The sourceControl name.
         /// </param>
         /// <param name="syncJob">
-        /// The syncJob object.
+        /// The SourceControlSyncJob object.
         /// </param>
         public SourceControlSyncJob(
             string resourceGroupName,

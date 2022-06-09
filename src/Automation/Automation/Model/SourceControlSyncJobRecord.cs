@@ -37,8 +37,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <param name="sourceControlName">
         /// The sourceControl name.
         /// </param>
-        /// <param name="syncJob"></param>
-        /// <exception cref="ArgumentException">
+        /// <param name="syncJob">
+        /// The SourceControlSyncJobById object.
+        /// </param>
+        /// <exception cref="System.ArgumentException">
         /// </exception>
         public SourceControlSyncJobRecord(
             string resourceGroupName,
