@@ -51,7 +51,7 @@ The **New-AzNetAppFilesVolume** cmdlet creates an ANF VolumeGroup.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetAppFilesVolumeGroup -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfVolumeGroupName" -l "westus2"  -GroupDescription "MyAnfVolumeGroup Description" -ApplicationIdentifier "SH1" -ProximityPlacementGroup "MyPPGResourceId" -Vnet "MyAnfVnet" -SystemRole "PRIMARY" -NodeMemory 100
+New-AzNetAppFilesVolumeGroup -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolumeGroupName" -Location "westus2"  -GroupDescription "MyAnfVolumeGroup Description" -ApplicationIdentifier "SH1" -ProximityPlacementGroup "MyPPGResourceId" -Vnet "MyAnfVnet" -SystemRole "PRIMARY" -NodeMemory 100
 ```
 
 This command creates the new "PRIMARY" ANF VolumeGroup "MyAnfVolumeGroup" within the Account "MyAnfAccount" using the proximityPlacementGroup "MyPPGResourceId", the vnet "MyAnfVnet", and NodeMemory of 100

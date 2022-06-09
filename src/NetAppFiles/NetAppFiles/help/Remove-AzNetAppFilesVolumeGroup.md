@@ -43,7 +43,7 @@ The **Remove-AzNetAppFilesVolume** cmdlet deletes an empty ANF VolumeGroup.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfVolumeGroup"
+Remove-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfVolumeGroup"
 ```
 
 This command deletes the ANF volume "MyAnfVolumeGroup" if it has no volumes under the group.
