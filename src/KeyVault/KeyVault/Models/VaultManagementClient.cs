@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="parameters">vault creation parameters</param>
         /// <param name="graphClient">the active directory client</param>
+        /// <param name="networkRuleSet"></param>
         /// <returns></returns>
         public PSKeyVault CreateNewVault(VaultCreationOrUpdateParameters parameters, IMicrosoftGraphClient graphClient = null, PSKeyVaultNetworkRuleSet networkRuleSet = null)
         {
@@ -220,6 +221,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="updatedEnabledForDeployment">enabled for deployment</param>
         /// <param name="updatedEnabledForTemplateDeployment">enabled for template deployment</param>
         /// <param name="updatedEnabledForDiskEncryption">enabled for disk encryption</param>
+        /// <param name="updatedSoftDeleteSwitch"></param>
+        /// <param name="updatedPurgeProtectionSwitch"></param>
+        /// <param name="updatedRbacAuthorization"></param>
+        /// <param name="softDeleteRetentionInDays"></param>
         /// <param name="updatedNetworkAcls">updated network rule set</param>
         /// <param name="graphClient">the active directory client</param>
         /// <returns>the updated vault</returns>
