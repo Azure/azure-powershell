@@ -456,35 +456,35 @@ function Measure-ParameterNameAndValue {
                     $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-@$($CommandParameterPair[$i].CommandName) has a parameter not in the same ParameterSet as others."
                     $RuleName = [RuleNames]::Unknown_Parameter_Set
                     $Severity = "Error"
-                    $RuleSuppressionID = "3010"
+                    $RuleSuppressionID = "5010"
                     $Remediation = "Make sure the parameters are from the same parameter set."
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter -eq "") {
                     $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-@$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) is not a valid parameter name."
                     $RuleName = [RuleNames]::Invalid_Parameter_Name
                     $Severity = "Error"
-                    $RuleSuppressionID = "3011"
+                    $RuleSuppressionID = "5011"
                     $Remediation = "Check validity of the parameter $($CommandParameterPair[$i].ParameterName)."
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter -eq "<2>") {
                     $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-@$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) appeared more than once."
                     $RuleName = [RuleNames]::Duplicate_Parameter_Name
                     $Severity = "Error"
-                    $RuleSuppressionID = "3012"
+                    $RuleSuppressionID = "5012"
                     $Remediation = "Remove redundant parameter $($CommandParameterPair[$i].ParameterName)."
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter -eq $null) {
                     $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-@$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) must be assigned with a value."
                     $RuleName = [RuleNames]::Unassigned_Parameter
                     $Severity = "Error"
-                    $RuleSuppressionID = "3013"
+                    $RuleSuppressionID = "5013"
                     $Remediation = "Assign value for the parameter $($CommandParameterPair[$i].ParameterName)."
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter.EndsWith(" is a null-valued parameter value.")) {
                     $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-@$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ParameterName) $($CommandParameterPair[$i].ExpressionToParameter)"
                     $RuleName = [RuleNames]::Unassigned_Variable
                     $Severity = "Warning"
-                    $RuleSuppressionID = "3110"
+                    $RuleSuppressionID = "5110"
                     $variable = $CommandParameterPair[$i].ExpressionToParameter -replace " is a null-valued parameter value."
                     $Remediation = "Assign value for $variable."
                 }
@@ -492,14 +492,14 @@ function Measure-ParameterNameAndValue {
                     $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-@$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ExpressionToParameter) is not explicitly assigned to a parameter."
                     $RuleName = [RuleNames]::Unbinded_Parameter_Name
                     $Severity = "Error"
-                    $RuleSuppressionID = "3014"
+                    $RuleSuppressionID = "5014"
                     $Remediation = "Assign $($CommandParameterPair[$i].ExpressionToParameter) explicitly to the parameter."
                 }
                 else {
                     $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-@$($CommandParameterPair[$i].CommandName) $($CommandParameterPair[$i].ParameterName) $($CommandParameterPair[$i].ExpressionToParameter) is not an expected parameter value type."
                     $RuleName = [RuleNames]::Mismatched_Parameter_Value_Type
                     $Severity = "Warning"
-                    $RuleSuppressionID = "3111"
+                    $RuleSuppressionID = "5111"
                     $Remediation = "Use correct parameter value type."
                 }
                 $Result = [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{

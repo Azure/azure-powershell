@@ -82,7 +82,7 @@ if ($PSCmdlet.ParameterSetName -eq "Script" -or $AnalyzeScriptsInFile.IsPresent)
     # read and analyze ".ps1" in \ScriptsByExample
     Write-Output "Analyzing file ..."
     $analysisResultsTable += Get-ScriptAnalyzerResult (Get-Item -Path $ScriptPaths) $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -ErrorAction Continue
-
+    
     # Summarize analysis results, output in Result.csv
     $analysisResultsTable | where {$_ -ne $null} | Export-Csv ".\artifacts\StaticAnalysisResults\ExampleIssues.csv" -NoTypeInformation
 }

@@ -54,4 +54,12 @@ Signature issues occur when your cmdlets do not follow PowerShell standards.  Pl
 Most help issues that cause StaticAnalysis to fail occur when help has not been added for a particular cmdlet.  If you have not generated help for your new cmdlets, please follow the instructions [here](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/help-generation.md). If this is not the issue, follow the steps listed under "Remediation" for each violation listed in HelpIssues.csv.
 
 ### Example Issues
-Todo
+Example Issues occur when your changed markdown files a `help` folder (_e.g.,_ `src/Accounts/Accounts/help`) do not follow the script rules. Please follow the suggestion displayed in "Remediation" entry for each violation listed in `ExampleIssues.csv`. If you have an issue with severity 0 or 1 that has been approved by the Azure PowerShell team, you can suppress them following these steps:
+
+- Download the `ExampleIssues.csv` file from the Jenkins build
+- Open the file using a text editor (such as VS Code) and copy each of the errors you'd like to suppress
+- Paste each of these errors into the `ExampleIssues.csv` file found in their respective [module folder](../tools/StaticAnalysis/Exceptions) (_e.g.,_ if an example issue is being suppressed for Accounts, then you would paste the corresponding line(s) in the `tools/StaticAnalysis/Exceptions/Az.Accounts/ExampleIssue.csv` file) using the same text editor
+- Copy each of the errors you would like to suppress directly from the ExampleIssues.csv file output in the Jenkins build
+- Push the changes to the .csv file and ensure the errors no longer show up in the `ExampleIssues.csv` file output from the Jenkins build
+
+To better standardize the writing of documents, please also check the warning issues with severity 2 by downloading the `ExampleIssues.csv` file.

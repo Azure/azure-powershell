@@ -253,7 +253,7 @@ function Measure-SectionMissingAndOutputScript {
             RuleName = "MissingSynopsis"
             Severity = 1
             Extent = "$Module\help\$Cmdlet.md"
-            ProblemID = 3040
+            ProblemID = 5040
             Remediation = "Add Synopsis. Remove any placeholders."
         }
         $results += $result
@@ -281,7 +281,7 @@ function Measure-SectionMissingAndOutputScript {
             RuleName = "MissingDescription"
             Severity = 1
             Extent = "$Module\help\$Cmdlet.md"
-            ProblemID = 3041
+            ProblemID = 5041
             Remediation = "Add Description. Remove any placeholders."
         }
         $results += $result
@@ -302,7 +302,7 @@ function Measure-SectionMissingAndOutputScript {
             RuleName = "MissingExample"
             Severity = 1
             Extent = "$Module\help\$Cmdlet.md"
-            ProblemID = 3042
+            ProblemID = 5042
             Remediation = "Add Example. Remove any placeholders."
         }
         $results += $result
@@ -322,7 +322,7 @@ function Measure-SectionMissingAndOutputScript {
                         RuleName = "MissingExampleTitle"
                         Severity = 1
                         Extent = "$Module\help\$Cmdlet.md"
-                        ProblemID = 3043
+                        ProblemID = 5043
                         Remediation = "Add title for the example. Remove any placeholders."
                     }
                     $results += $result
@@ -337,7 +337,7 @@ function Measure-SectionMissingAndOutputScript {
                         RuleName = "MissingExampleCode"
                         Severity = 1
                         Extent = "$Module\help\$Cmdlet.md"
-                        ProblemID = 3044
+                        ProblemID = 5044
                         Remediation = "Add code for the example. Remove any placeholders."
                     }
                     $results += $result
@@ -352,7 +352,7 @@ function Measure-SectionMissingAndOutputScript {
                         RuleName = "MissingExampleOutput"
                         Severity = 1
                         Extent = "$Module\help\$Cmdlet.md"
-                        ProblemID = 3045
+                        ProblemID = 5045
                         Remediation = "Add output for the example. Remove any placeholders."
                     }
                     $results += $result
@@ -367,7 +367,7 @@ function Measure-SectionMissingAndOutputScript {
                         RuleName = "NeedSplitting"
                         Severity = 1
                         Extent = "$Module\help\$Cmdlet.md"
-                        ProblemID = 3051
+                        ProblemID = 5051
                         Remediation = "Split output from example."
                     }
                     $results += $result
@@ -382,7 +382,7 @@ function Measure-SectionMissingAndOutputScript {
                         RuleName = "MissingExampleDescription"
                         Severity = 1
                         Extent = "$Module\help\$Cmdlet.md"
-                        ProblemID = 3046
+                        ProblemID = 5046
                         Remediation = "Add description for the example. Remove any placeholders."
                     }
                     $results += $result
@@ -400,7 +400,7 @@ function Measure-SectionMissingAndOutputScript {
                     RuleName = "NeedDeleting"
                     Severity = 1
                     Extent = "$Module\help\$Cmdlet.md"
-                    ProblemID = 3051
+                    ProblemID = 5051
                     Remediation = "Delete the prompt of example."
                 }
                 $results += $result

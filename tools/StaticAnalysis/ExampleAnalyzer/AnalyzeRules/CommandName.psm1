@@ -91,19 +91,19 @@ function Measure-CommandName {
                 if ($global:CommandParameterPair[$i].ParameterName -eq "<is not valid>") {
                     $Message = "$($CommandParameterPair[$i].CommandName) is not a valid command name."
                     $RuleName = [RuleNames]::Invalid_Cmdlet
-                    $RuleSuppressionID = "3000"
+                    $RuleSuppressionID = "5000"
                     $Remediation = "Check the spell of $($CommandParameterPair[$i].CommandName)."
                 }
                 if ($global:CommandParameterPair[$i].ParameterName -eq "<is an alias>") {
                     $Message = "$($CommandParameterPair[$i].CommandName) is an alias of `"$((Get-Alias $CommandParameterPair[$i].CommandName)[0].ResolvedCommandName)`"."
                     $RuleName = [RuleNames]::Is_Alias
-                    $RuleSuppressionID = "3100"
+                    $RuleSuppressionID = "5100"
                     $Remediation = "Use formal name `"$((Get-Alias $CommandParameterPair[$i].CommandName)[0].ResolvedCommandName)`" of the alias `"$($CommandParameterPair[$i].CommandName)`"."
                 }
                 if ($global:CommandParameterPair[$i].ParameterName -eq "<doesn't follow the Capitalization Conventions>") {
                     $Message = "$($CommandParameterPair[$i].CommandName) doesn't follow the Capitalization Conventions."
                     $RuleName = [RuleNames]::Capitalization_Conventions_Violated
-                    $RuleSuppressionID = "3101"
+                    $RuleSuppressionID = "5101"
                     $name = $($CommandParameterPair[$i].CommandName)
                     $textInfo = (Get-Culture).TextInfo
                     $CorrectName = $textInfo.ToTitleCase(($name -split "-")[0])
