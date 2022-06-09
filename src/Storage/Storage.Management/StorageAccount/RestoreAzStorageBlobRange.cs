@@ -135,11 +135,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     // The workaround is to get the raw response and parse it into the output desired
                     // The Blob restore status should be got from SDK directly once the issue is fixed
                     Dictionary<string, object> temp = restoreLro.GetRawResponse().Content.ToObjectFromJson() as Dictionary<string, object>;
-                    object restoreId;
 
-                    if (temp != null && temp.TryGetValue("restoreId", out restoreId))
+                    if (temp == null)
                     {
-                        WriteWarning(string.Format("Restore blob ranges with Id '{0}' started. Restore blob ranges time to complete is dependent on the size of the restore.", restoreId));
+                        throw new InvalidJobStateException("Could not fetch the Blob restore response.");
+                    }
+                    PSBlobRestoreStatus blobRestoreStatus = ParseRestoreRawResponse(temp);
+                    if (blobRestoreStatus.RestoreId != null)
+                    {
+                        WriteWarning(string.Format("Restore blob ranges with Id '{0}' started. Restore blob ranges time to complete is dependent on the size of the restore.", blobRestoreStatus.RestoreId));
                     }
                     else
                     {
@@ -165,62 +169,77 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             this.TimeToRestore.ToUniversalTime(),
                             PSBlobRestoreRange.ParseBlobRestoreRanges(this.BlobRestoreRange)));
                     Dictionary<string, object> temp = restoreLro.GetRawResponse().Content.ToObjectFromJson() as Dictionary<string, object>;
-                    object jobStatus = null;
-
-                    if (temp != null && temp.TryGetValue("status", out jobStatus))
-                    {
-                        if (jobStatus != null && jobStatus.ToString() == Track2Models.BlobRestoreProgressStatus.Failed.ToString())
-                        {
-                            throw new InvalidJobStateException("Blob ranges restore failed.");
-                        }
-                    } else
-                    {
-                        WriteWarning(string.Format("Could not fetch the status."));
-                    }
 
                     if (temp == null)
                     {
                         throw new InvalidJobStateException("Could not fetch the Blob restore response.");
                     }
 
-                    temp.TryGetValue("restoreId", out object restoreId);
-                    temp.TryGetValue("parameters", out object parameters);
+                    PSBlobRestoreStatus blobRestoreStatus = ParseRestoreRawResponse(temp);
 
-                    PSBlobRestoreParameters blobRestoreParameters = new PSBlobRestoreParameters();
-                    Dictionary<string, object> paramMap = parameters as Dictionary<string, object>;
-
-                    paramMap.TryGetValue("timetoRestore", out object timeToRestore);
-                    DateTimeOffset.TryParse(timeToRestore.ToString(), out DateTimeOffset parseDate);
-                    blobRestoreParameters.TimeToRestore = parseDate;
-
-                    paramMap.TryGetValue("blobRanges", out object ranges);
-                    List<PSBlobRestoreRange> blobRestoreRanges = new List<PSBlobRestoreRange>();
-                    
-                    object[] rangesList = ranges as object[];
-                    foreach(object range in rangesList)
+                    if (blobRestoreStatus.Status != null)
                     {
-                        Dictionary<string, object> rangeMap = range as Dictionary<string, object>;
-                        
-                        rangeMap.TryGetValue("startRange", out object startRange);
-                        rangeMap.TryGetValue("endRange", out object endRange);
-
-                        PSBlobRestoreRange blobRestoreRange = new PSBlobRestoreRange
+                        if (blobRestoreStatus.Status == Track2Models.BlobRestoreProgressStatus.Failed.ToString())
                         {
-                            StartRange = startRange?.ToString(),
-                            EndRange = endRange?.ToString()
-                        };
-
-                        blobRestoreRanges.Add(blobRestoreRange);
+                            throw new InvalidJobStateException("Blob ranges restore failed.");
+                        }
+                    } 
+                    else
+                    {
+                        WriteWarning(string.Format("Could not fetch the status."));
                     }
-                    blobRestoreParameters.BlobRanges = blobRestoreRanges.ToArray();
-
-                    WriteObject(new PSBlobRestoreStatus(
-                        status: jobStatus?.ToString(),
-                        failureReason: null,
-                        restoreId: restoreId?.ToString(),
-                        blobRestoreParameters));
+                    WriteObject(blobRestoreStatus);
                 }
             }
+        }
+
+        private PSBlobRestoreStatus ParseRestoreRawResponse(Dictionary<string, object> response)
+        {
+            response.TryGetValue("restoreId", out object restoreId);
+            response.TryGetValue("status", out object jobStatus);
+            response.TryGetValue("parameters", out object parameters);
+
+            PSBlobRestoreParameters blobRestoreParameters;
+            Dictionary<string, object> paramMap = parameters as Dictionary<string, object>;
+
+            if (paramMap == null)
+            {
+                blobRestoreParameters = null;
+            }
+            else
+            {
+                blobRestoreParameters = new PSBlobRestoreParameters();
+                paramMap.TryGetValue("timetoRestore", out object timeToRestore);
+                DateTimeOffset.TryParse(timeToRestore?.ToString(), out DateTimeOffset parseDate);
+                blobRestoreParameters.TimeToRestore = parseDate;
+
+                paramMap.TryGetValue("blobRanges", out object ranges);
+                List<PSBlobRestoreRange> blobRestoreRanges = new List<PSBlobRestoreRange>();
+
+                object[] rangesList = ranges as object[];
+                foreach (object range in rangesList)
+                {
+                    Dictionary<string, object> rangeMap = range as Dictionary<string, object>;
+
+                    rangeMap.TryGetValue("startRange", out object startRange);
+                    rangeMap.TryGetValue("endRange", out object endRange);
+
+                    PSBlobRestoreRange blobRestoreRange = new PSBlobRestoreRange
+                    {
+                        StartRange = startRange?.ToString(),
+                        EndRange = endRange?.ToString()
+                    };
+
+                    blobRestoreRanges.Add(blobRestoreRange);
+                }
+                blobRestoreParameters.BlobRanges = blobRestoreRanges.ToArray();
+            }
+
+            return new PSBlobRestoreStatus(
+                status: jobStatus?.ToString(),
+                failureReason: null,
+                restoreId: restoreId?.ToString(),
+                parameters: blobRestoreParameters);
         }
     }
 }
