@@ -43,7 +43,7 @@ Get-AzWebAppSlotTriggeredWebJobHistory -ResourceGroupName webjob-rg-test -AppNam
 ```output
 Kind Name                                                            ResourceGroupName
 ---- ----                                                            -----------------
-appService-test01/slot01/slottriggeredjob-03/202201040202032401      webjob-rg-test
+     appService-test01/slot01/slottriggeredjob-03/202201040202032401 webjob-rg-test
 ```
 
 This command list triggered web job's history for a deployment slot.
@@ -55,7 +55,7 @@ Get-AzWebAppSlotTriggeredWebJobHistory -ResourceGroupName webjob-rg-test -AppNam
 ```output
 Kind Name                                                            ResourceGroupName
 ---- ----                                                            -----------------
-appService-test01/slot01/slottriggeredjob-03/202201040202032401      webjob-rg-test
+     appService-test01/slot01/slottriggeredjob-03/202201040202032401 webjob-rg-test
 ```
 
 This command get triggered web job's history for a deployment slot.
@@ -68,7 +68,7 @@ $jobs[0].Id | Get-AzWebAppSlotTriggeredWebJobHistory
 ```output
 Kind Name                                                            ResourceGroupName
 ---- ----                                                            -----------------
-appService-test01/slot01/slottriggeredjob-03/202201040202032401      webjob-rg-test
+     appService-test01/slot01/slottriggeredjob-03/202201040202032401 webjob-rg-test
 ```
 
 This command get triggered web job's history for a deployment slot by pipeline.
