@@ -543,7 +543,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             var client = CreateKeyClient(psKeyRotationPolicy.VaultName);
             var policy = new KeyRotationPolicy()
             {
-                ExpiresIn = psKeyRotationPolicy.ExpiresIn.HasValue ? XmlConvert.ToString(psKeyRotationPolicy.ExpiresIn.Value) : null,
+                ExpiresIn = psKeyRotationPolicy.ExpiresIn,
                 LifetimeActions = { }
             };
 
@@ -552,8 +552,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                     new KeyRotationLifetimeAction()
                     {
                         Action = psKeyRotationLifetimeAction.Action,
-                        TimeAfterCreate = psKeyRotationLifetimeAction.TimeAfterCreate.HasValue ? XmlConvert.ToString(psKeyRotationLifetimeAction.TimeAfterCreate.Value) : null,
-                        TimeBeforeExpiry = psKeyRotationLifetimeAction.TimeBeforeExpiry.HasValue ? XmlConvert.ToString(psKeyRotationLifetimeAction.TimeBeforeExpiry.Value) : null
+                        TimeAfterCreate = psKeyRotationLifetimeAction.TimeAfterCreate,
+                        TimeBeforeExpiry = psKeyRotationLifetimeAction.TimeBeforeExpiry
                     }
                 ));
 
