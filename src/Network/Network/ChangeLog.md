@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to add basic sku support on Azure Firewall and Azure Firewall Policy:
+    - `New-AzFirewall`
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
 * Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
     - `Add-AzExpressRoutePortAuthorization`
     - `Get-AzExpressRoutePortAuthorization`
@@ -50,6 +54,10 @@
     -`New-AzRoutingIntent`
     -`Remove-AzRoutingIntent`
     -`Set-AzRoutingIntent`
+* Updated cmdlets to add new option of `HubRoutingPreference` in RouteServer.
+    - `New-AzRouteServer`
+    - `Update-AzRouteServer`
+* Fix bug that can't parse CustomIpPrefixParent parameter from swagger to powershell.
 
 ## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
