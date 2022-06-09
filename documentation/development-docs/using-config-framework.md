@@ -17,7 +17,7 @@
 
 The config framework was introduced in Az 8, May 2022 to set up a standard of how configs are used by both developers and end users of Azure PowerShell.
 
-This document will go over 2 most common scenarios for developers. As for how to set configs please refer to [Update-AzConfig](https://docs.microsoft.com/powershell/module/az.accounts/update-azconfig).
+This document will go over two most common scenarios for developers. As for how to use the config framework in PowerShell please refer to [Update-AzConfig](https://docs.microsoft.com/powershell/module/az.accounts/update-azconfig).
 
 ## Guide: How to Add a New Config
 
@@ -34,13 +34,14 @@ where
 - `TValue` is the type of the value of the config, for example `int` or `bool`.
 - `key` is the unique key of the config. It is used when user gets or sets the config.
   - It must be defined in [src/shared/ConfigKeys.cs](https://github.com/Azure/azure-powershell/blob/main/src/shared/ConfigKeys.cs) so that it can be referenced in any project.
-  - It is reused as a parameter name of cmdlets that operate on configs, for example `Get-AzConfig`, so it must follow the naming conventions. See [Parameter Best Practices](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/design-guidelines/parameter-best-practices.md#parameter-best-practices).
+    - If the config will be used in the [azure-powershell-common] solution, it must also be defined in [src/Authentication.Abstractions/Models/ConfigKeysForCommon.cs](https://github.com/Azure/azure-powershell-common/blob/main/src/Authentication.Abstractions/Models/ConfigKeysForCommon.cs).
+  - It is reused as a parameter name of cmdlets that operate on configs, for example `Get-AzConfig`, so it must **follow the PowerShell naming conventions**. See [Parameter Best Practices](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/design-guidelines/parameter-best-practices.md#parameter-best-practices).
 - `helpMessage` is the help message or description of the config. 
   - It is reused as the help message of the corresponding PowerShell parameter in documents.
 - `defaultValue` is the default value of the config. Used for basic type validation when setting the config.
-- (Optional) `environmentVariable` sets to which environment variable the config is connected. Once set, the config framework will pick up the variable automatically.
+- _(Optional)_ `environmentVariable` sets to which environment variable the config is connected. Once set, the config framework will pick up the variable automatically.
   - Note: the config must correspond to **one single** environment variable and it must not require special logic to parse the value. Otherwise please check out [Parsing Environment Variables](#parsing-environment-variables).
-- (Optional) `canApplyTo` defines at which levels the config can apply to. There are three levels in total: `AppliesTo.Az`, `AppliesTo.Module`, `AppliesTo.Cmdlet`. By default all of them are included. For more details, see [About AppliesTo](#about-appliesto).
+- _(Optional)_ `canApplyTo` defines at which levels the config can apply to. There are three levels in total: `AppliesTo.Az`, `AppliesTo.Module`, `AppliesTo.Cmdlet`. By default all of them are included. For more details, see [About AppliesTo](#about-appliesto).
 
 Here is a sample definition:
 
@@ -72,7 +73,7 @@ internal class DisplayBreakingChangeWarningsConfig : TypedConfig<bool>
 }
 ```
 
-Defining configs in the standard way is more customizable than the simple way, for example when it comes to validating values and parsing environment variables. For more, see [Customizing Config Definitions](#customizing-config-definitions).
+Defining configs in the standard way is more _flexible_ than the simple way, for example when it comes to validating values and parsing environment variables. For more, see [Customizing Config Definitions](#customizing-config-definitions).
 
 ### Step 2: Register the Config
 
@@ -82,7 +83,7 @@ Either way the config is defined, instantiate it and call [`IConfigManager.Regis
 configManager.RegisterConfig(new DisplayBreakingChangeWarningsConfig());
 ```
 
-Up until now, you are able to test this new config with `Get-AzConfig`, `Update-AzConfig` and `Clear-AzConfig`. For more, run `Get-Help Get-AzConfig`.
+Up until now, you are able to test this new config with PowerShell cmdlets `Get-AzConfig`, `Update-AzConfig` and `Clear-AzConfig`. For more, run `Get-Help Get-AzConfig`.
 
 ### Step 3: Regenerate Help Documents
 
@@ -97,7 +98,7 @@ AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), ou
 string subscriptionFromConfig = configManager.GetConfigValue<string>(ConfigKeys.DefaultSubscriptionForLogin, MyInvocation);
 ```
 
-Note that although `invocation` is optional, if the config can apply to either `AppliesTo.Module` or `AppliesTo.Cmdlet` (see [About AppliesTo](#about-appliesto)), it must be `MyInvocation`. Alternatively, it could be a good idea to always pass in `MyInvocation`.
+Note that although `invocation` is optional, if the config can apply to either `AppliesTo.Module` or `AppliesTo.Cmdlet` (see [About AppliesTo](#about-appliesto)), it must be `MyInvocation`. Alternatively, **it is best practice to always pass in `MyInvocation`**.
 
 ## Customizing Config Definitions
 
@@ -113,7 +114,7 @@ The `IReadOnlyCollection<AppliesTo> ConfigDefinition.CanApplyTo { get; }` proper
 
 ### Validation of Config Value
 
-By default, when setting the value of a config, the type of the value is validated. If you want to implement your own validation, override `void TypedConfig<TValue>.Validate(object value)`, throw an exception when the value is invalid.
+By default, when user sets a config, the type of the value is validated. If you want to implement your own validation, override `void TypedConfig<TValue>.Validate(object value)`, throw an exception when the value is invalid.
 
 ```csharp
 public override void Validate(object value)
