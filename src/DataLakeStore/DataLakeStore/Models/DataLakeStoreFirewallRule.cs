@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="DataLakeStoreItem" /> class.
         /// </summary>
+        /// <param name="baseRule"></param>
         public DataLakeStoreFirewallRule(FirewallRule baseRule)
         {
             Name = baseRule.Name;

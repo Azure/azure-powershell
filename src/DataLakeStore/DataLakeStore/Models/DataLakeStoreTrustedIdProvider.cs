@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="DataLakeStoreItem" /> class.
         /// </summary>
+        /// <param name="baseProvider"></param>
         public DataLakeStoreTrustedIdProvider(TrustedIdProvider baseProvider)
         {
             Name = baseProvider.Name;

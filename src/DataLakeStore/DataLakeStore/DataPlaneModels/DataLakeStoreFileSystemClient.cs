@@ -802,7 +802,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// Restore a stream or directory from trash to user space. This is a synchronous operation.
         /// Not threadsafe when Restore is called for same path from different threads. 
         /// </summary>
-        /// <param name="accountName"></param>
+        /// <param name="accountName">Account name</param>
         /// <param name="path">The trash directory path in enumeratedeleteditems response</param>
         /// <param name="destination">Path to where the entry should be restored</param>
         /// <param name="type">Type of the entry which is being restored. "file" or "folder"</param>
