@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
             else
             {
-                writeLoation = (Get-AzResourceGroup -Name ResourceGroupName).Location
+                writeLoation = (Get-AzResourceGroup -Name ResourceGroupName).Location;
             }
 
             if (string.IsNullOrEmpty(writeLocation))
