@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = DirectUploadToManagedDiskSet,
             HelpMessage = "Additional authentication requirements when exporting or uploading to a disk or snapshot. Possible options are: \"AzureActiveDirectory\" and \"None\".")]
-        [PSArgumentCompleter("AzureActiveDirectory", "None")]
+        [PSArgumentCompleter("AzureActiveDirectory")]
         public string DataAccessAuthMode { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         if (this.DataAccessAuthMode == "AzureActiveDirectory")
                         {
                             // get token 
-                            tokenCredential = new ComputeTokenCredential(DefaultContext, "https://disk.compute.azure.com/");
+                            tokenCredential = new ComputeTokenCredential(DefaultContext, "https://disk.azure.com/");
                         }
                         PSPageBlobClient managedDisk = new PSPageBlobClient(sasUri, tokenCredential);
                         DiskUploadCreator diskUploadCreator = new DiskUploadCreator();

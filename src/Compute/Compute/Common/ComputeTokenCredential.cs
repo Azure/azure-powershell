@@ -24,18 +24,18 @@ namespace Microsoft.Azure.Commands.Compute.Common
     public class ComputeTokenCredential : TokenCredential
     {
         public IAccessToken accessToken { get; set; }
-        public ComputeTokenCredential(IAzureContext DefaultContext, string customAudience)
+        public ComputeTokenCredential(IAzureContext Context, string customAudience)
         {
 
-            if (DefaultContext == null || DefaultContext.Account == null)
+            if (Context == null || Context.Account == null)
             {
                 throw new InvalidOperationException();
             }
 
             accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
-                   DefaultContext.Account,
-                   EnsureCustomAudienceSet(DefaultContext.Environment, customAudience),
-                   DefaultContext.Tenant.Id,
+                   Context.Account,
+                   EnsureCustomAudienceSet(Context.Environment, customAudience),
+                   Context.Tenant.Id,
                    null,
                    ShowDialog.Never,
                    null,
