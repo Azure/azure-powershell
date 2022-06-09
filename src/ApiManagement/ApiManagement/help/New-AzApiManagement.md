@@ -508,9 +508,12 @@ Specifies the tier of the API Management service.
 Valid values are:
 
 - Developer
+- Basic
 - Standard
 - Premium
-The default is Developer.
+- Consumption
+
+Default value is Developer.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]
