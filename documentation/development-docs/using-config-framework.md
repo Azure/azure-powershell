@@ -123,12 +123,32 @@ public override void Validate(object value)
 }
 ```
 
-### Environment Variables
+### Parsing Environment Variables 
 
+Some configs can also be set via environment variables. The config framework will try to parse the variable by the key you set for `string EnvironmentVariableName` property.
 
+However, if for any of the following situations, you need to implement your onw parsing logic:
+- Multiple environment variables control one config.
+- The value cannot be parsed directly. For example string "Y" to boolean "true".
 
-- (optional) `string EnvironmentVariableName`
-  - If the config can also be set by an environment variable, and the value of the environment variable can be parsed as the value type `TValue`, override this property.
-  - For more complicated scenarios of using environment variables, such as you need to customize the logic of parsing it, do not use this property. See [todo] below.
+In this case, instead of setting `EnvironmentVariableName`, override `string ParseFromEnvironmentVariables(IReadOnlyDictionary<string, string> environmentVariables)`. For example:
+
+```csharp
+// `environmentVariables` contains all the environment variables
+public override string ParseFromEnvironmentVariables(IReadOnlyDictionary<string, string> environmentVariables)
+{
+    if (environmentVariables.TryGetValue("Azure_PS_Intercept_Survey", out string configString))
+    {
+        if ("Disabled".Equals(configString, StringComparison.OrdinalIgnoreCase)
+            || "False".Equals(configString, StringComparison.OrdinalIgnoreCase))
+        {
+            // note the return type is string
+            return false.ToString();
+        }
+    }
+    // returning null means the variable is not set 
+    return null;
+}
+```
 
 ### Use 
