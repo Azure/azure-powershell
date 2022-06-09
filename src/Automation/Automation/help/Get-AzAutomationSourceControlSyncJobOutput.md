@@ -30,7 +30,7 @@ This command gets the output of source control sync job with id 08d6d266-27b6-46
 ```powershell
 Get-AzAutomationSourceControlSyncJobOutput -ResourceGroupName "rg1" `
                                                         -AutomationAccountName "devAccount" `
-                                                        -Name "VSTSNative" `
+                                                        -SourceControlName "VSTSNative" `
                                                         -JobId "08d6d266-27b6-463c-beea-bc48a67ace15" `
                                                         -Stream Output | ForEach-Object {$_.summary}
 ```
