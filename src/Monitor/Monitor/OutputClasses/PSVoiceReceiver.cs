@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// </summary>
     public class PSVoiceReceiver : PSActionGroupReceiverBase
     {
-        // <summary>Gets or sets the country code.</summary>
+        /// <summary>Gets or sets the country code.</summary>
         public string CountryCode { get; set; }
 
         /// <summary>Gets or sets the phone number.</summary>
