@@ -12,7 +12,7 @@ if ($UsePreviousConfigForRecord) {
 }
 # Add script method called AddWithCache to $env, when useCache is set true, it will try to get the value from the $env first.
 # example: $val = $env.AddWithCache('key', $val, $true)
-$env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
+$env | Add-Member -Name 'AddWithCache' -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } }
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
@@ -29,21 +29,7 @@ function setupEnv() {
     $clusterName = "pwsh-Cluster" + (RandomString -allChars $false -len 4)
     $arcSettingName = "default"
     $extensionName = "MicrosoftMonitoringAgent"
-
-    $cluster = New-AzStackHciCluster -Name $clusterName -ResourceGroupName $resourceGroup -AadTenantId $aadTenantId -AadClientId $aadClientId -Location $resourceLocation
-    $clusterremove = New-AzStackHciCluster -Name "$($clusterName)-remove" -ResourceGroupName $resourceGroup -AadTenantId $aadTenantId -AadClientId $aadClientId -Location $resourceLocation
-    $clusterremove2 = New-AzStackHciCluster -Name "$($clusterName)-remove2" -ResourceGroupName $resourceGroup -AadTenantId $aadTenantId -AadClientId $aadClientId -Location $resourceLocation
-    
-    $arcSetting = New-AzStackHciArcSetting -ResourceGroupName $resourceGroup -ClusterName $clusterName
-
-    $extension = New-AzStackHciExtension -ArcSettingName $arcSettingName -ClusterName $clusterName -Name $extensionName -ResourceGroupName $resourceGroup
-
-    Write-Host -ForegroundColor Green "Cluster Created" $clusterName
-    Write-Host -ForegroundColor Green "Cluster Created" "$($clusterName)-remove"
-    Write-Host -ForegroundColor Green "Cluster Created" "$($clusterName)-remove2"
-    Write-Host -ForegroundColor Green "ArcSetting Created" $arcSettingName
-    Write-Host -ForegroundColor Green "Extension Created" $extensionName
-
+    $extensionPublisher = "Microsoft.EnterpriseCloud.Monitoring"
 
     $env.Add("ResourceGroup", $resourceGroup)
     $env.Add("ClusterName", $clusterName)
@@ -52,6 +38,25 @@ function setupEnv() {
     $env.Add("Location", $resourceLocation)
     $env.Add("ArcSettingName", $arcSettingName)
     $env.Add("ExtensionName", $extensionName)
+    $env.Add("ExtensionPublisher", $extensionPublisher)
+
+    $cluster = New-AzStackHciCluster -Name $clusterName -ResourceGroupName $resourceGroup -AadTenantId $aadTenantId -AadClientId $aadClientId -Location $resourceLocation
+    Write-Host -ForegroundColor Green "Cluster Created" $cluster.Name
+
+    $clusterremove = New-AzStackHciCluster -Name "$($clusterName)-remove" -ResourceGroupName $resourceGroup -AadTenantId $aadTenantId -AadClientId $aadClientId -Location $resourceLocation
+    Write-Host -ForegroundColor Green "Cluster Created" $clusterremove.Name
+
+    $clusterremove2 = New-AzStackHciCluster -Name "$($clusterName)-remove2" -ResourceGroupName $resourceGroup -AadTenantId $aadTenantId -AadClientId $aadClientId -Location $resourceLocation
+    Write-Host -ForegroundColor Green "Cluster Created" $clusterremove2.Name
+
+    $arcSetting = New-AzStackHciArcSetting -ResourceGroupName $resourceGroup -ClusterName $clusterName
+    Write-Host -ForegroundColor Green "ArcSetting Created" $arcSetting.Name
+
+    $arcSetting2 = New-AzStackHciArcSetting -ResourceGroupName $resourceGroup -ClusterName "$($clusterName)-remove2"
+    Write-Host -ForegroundColor Green "ArcSetting Created" $arcSetting2.Name
+
+    $extension = New-AzStackHciExtension -ArcSettingName $arcSetting.Name -ClusterName $cluster.Name -Name $extensionName -ResourceGroupName $resourceGroup -ExtensionParameterPublisher $extensionPublisher
+    Write-Host -ForegroundColor Green "Extension Created" $extension.Name
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

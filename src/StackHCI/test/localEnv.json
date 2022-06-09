@@ -7,5 +7,6 @@
   "ResourceGroup": "azurestackhci-pwsh-rg-78",
   "AadClientId": "0f3bfc4e-a233-4570-9b77-2a1dd759cc9b",
   "ExtensionName": "MicrosoftMonitoringAgent",
-  "Location": "eastus"
+  "Location": "eastus",
+  "ExtensionPublisher": "Microsoft.EnterpriseCloud.Monitoring"
 }

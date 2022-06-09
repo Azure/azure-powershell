@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStackHciArcSetting')
 }
 
 Describe 'Update-AzStackHciArcSetting' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        Update-AzStackHciArcSetting -ClusterName $env.ClusterName -Name $env.ArcSettingName -ResourceGroupName $env.ResourceGroup
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $arcSetting = Get-AzStackHciArcSetting -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroup 
+        Update-AzStackHciArcSetting -InputObject $arcSetting
     }
 }

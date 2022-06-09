@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStackHciArcSetting'))
 
 Describe 'New-AzStackHciArcSetting' {
     It 'CreateExpanded' {
-        New-AzStackHciArcSetting -ResourceGroupName $env.ResourceGroup -ClusterName $env.ClusterName
+        New-AzStackHciArcSetting -ResourceGroupName $env.ResourceGroup -ClusterName "$($env.ClusterName)-remove"
     }
 }
