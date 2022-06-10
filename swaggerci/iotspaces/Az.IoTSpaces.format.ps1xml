@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-16"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.IoTSpaces.Models.IoTSpacesIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.IoTSpaces.Models.IoTSpacesIdentity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Id</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Id</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>
