@@ -19,6 +19,61 @@
 --->
 
 ## Upcoming Release
+* Onboard Azure Virtual Network Manager Cmdlets for preview
+    - `Get-AzNetworkManager` 
+    - `New-AzNetworkManager` 
+    - `Remove-AzNetworkManager` 
+    - `Get-AzNetworkManagerGroup` 
+    - `New-AzNetworkManagerGroup` 
+    - `Remove-AzNetworkManagerGroup` 
+    - `Set-AzNetworkManagerGroup` 
+    - `Get-AzNetworkManagerConnectivityConfiguration` 
+    - `New-AzNetworkManagerConnectivityConfiguration` 
+    - `Remove-AzNetworkManagerConnectivityConfiguration` 
+    - `Set-AzNetworkManagerConnectivityConfiguration` 
+    - `Get-AzNetworkManagerSecurityAdminConfiguration` 
+    - `New-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Remove-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Set-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Get-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `New-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Remove-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Set-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Get-AzNetworkManagerSecurityAdminRule` 
+    - `New-AzNetworkManagerSecurityAdminRule` 
+    - `Remove-AzNetworkManagerSecurityAdminRule` 
+    - `Set-AzNetworkManagerSecurityAdminRule` 
+    - `Get-AzNetworkManagerActiveConnectivityConfigurationList` 
+    - `Get-AzNetworkManagerActiveSecurityAdminRuleList` 
+    - `Get-AzNetworkManagerEffectiveConnectivityConfigurationList` 
+    - `Get-AzNetworkManagerEffectiveSecurityAdminRuleList` 
+    - `Get-AzNetworkManagerEffectiveSecurityAdminRuleList` 
+    - `Deploy-AzNetworkManagerCommit` 
+    - `Get-AzNetworkManagerEffectiveVirtualNetworkList` 
+    - `Get-AzNetworkManagerEffectiveVirtualNetworkByNetworkGroupList` 
+    - `Get-AzNetworkManagerDeploymentStatusList` 
+    - `New-AzNetworkManagerAddressPrefixItem` 
+    - `New-AzNetworkManagerScope` 
+    - `New-AzNetworkManagerSecurityGroupItem`
+    - `New-AzNetworkManagerHub` 
+    - `New-AzNetworkManagerConnectivityGroupItem`
+    - `Get-AzNetworkManagerStaticMember` 
+    - `New-AzNetworkManagerStaticMember` 
+    - `Remove-AzNetworkManagerStaticMember` 
+    - `Set-AzNetworkManagerStaticMember` 
+    - `Get-AzNetworkManagerScopeConnection` 
+    - `New-AzNetworkManagerScopeConnection` 
+    - `Remove-AzNetworkManagerScopeConnection` 
+    - `Set-AzNetworkManagerScopeConnection` 
+    - `Get-AzNetworkManagerSubscriptionConnection` 
+    - `New-AzNetworkManagerSubscriptionConnection` 
+    - `Remove-AzNetworkManagerSubscriptionConnection` 
+    - `Set-AzNetworkManagerSubscriptionConnection` 
+    - `Get-AzNetworkManagerManagementGroupConnection` 
+    - `New-AzNetworkManagerManagementGroupConnection` 
+    - `Remove-AzNetworkManagerManagementGroupConnection` 
+    - `Set-AzNetworkManagerManagementGroupConnection` 
+
 
 ## Version 4.17.0
 * Supported `Microsoft.Network/privateLinkServices` in `Get-AzPrivateEndpointConnection` [#16984].
