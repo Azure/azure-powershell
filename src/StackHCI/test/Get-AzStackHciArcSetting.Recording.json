@@ -1,16 +1,17 @@
 {
-  "Get-AzStackHciArcSetting+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5/arcSettings?api-version=2021-09-01+1": {
+  "Get-AzStackHciArcSetting+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-l5/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterexwl/arcSettings?api-version=2022-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5/arcSettings?api-version=2021-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-l5/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterexwl/arcSettings?api-version=2022-05-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "cbacb5f4-31a6-446b-8563-e96f1e216937" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "1053e583-06ca-48d1-b949-e336cecb6a96" ],
         "CommandName": [ "Get-AzStackHciArcSetting" ],
         "FullCommandName": [ "Get-AzStackHciArcSetting_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.0", "Az.StackHCI/1.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,23 +23,25 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "c179797f-2d54-4c08-b2e9-deecdae17661" ],
-        "x-ms-correlation-request-id": [ "b7d58fb6-f1cb-43d3-b0e0-48195f135be0" ],
+        "mise-correlation-id": [ "2426771e-88f3-446a-8eeb-1e934cb95165" ],
+        "x-ms-request-id": [ "74dd2ccd-c329-42f3-ab3d-0fe64935d88a" ],
+        "x-ms-correlation-request-id": [ "295a5e45-93f5-4dbc-8558-02ee3e2ce80f" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220331T053517Z:b7d58fb6-f1cb-43d3-b0e0-48195f135be0" ],
+        "x-ms-routing-request-id": [ "EASTUS:20220609T150623Z:295a5e45-93f5-4dbc-8558-02ee3e2ce80f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Thu, 31 Mar 2022 05:35:17 GMT" ]
+        "Date": [ "Thu, 09 Jun 2022 15:06:23 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "458" ],
+        "Content-Length": [ "501" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5/arcSettings/default\",\"name\":\"default\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings\",\"properties\":{\"provisioningState\":\"Succeeded\",\"arcInstanceResourceGroup\":\"pwsh-Clusterwsk5-ab1168ae-dca6-46d2-9985-2cd8d81ba8da-Arc-Infra-RG\",\"aggregateState\":\"NotSpecified\",\"perNodeDetails\":[]}}]}"
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-l5/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterexwl/arcSettings/default\",\"name\":\"default\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings\",\"properties\":{\"connectivityProperties\":{\"enabled\":false},\"provisioningState\":\"Succeeded\",\"arcInstanceResourceGroup\":\"pwsh-Clusterexwl-fcaf6c35-55ae-4f29-840c-2b692f8b56f3-Arc-Infra-RG\",\"aggregateState\":\"NotSpecified\",\"perNodeDetails\":[]}}]}",
+      "isContentBase64": false
     }
   }
 }
