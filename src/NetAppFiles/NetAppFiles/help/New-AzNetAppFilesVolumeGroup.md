@@ -45,7 +45,7 @@ New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescript
 ```
 
 ## DESCRIPTION
-The **New-AzNetAppFilesVolume** cmdlet creates an ANF VolumeGroup.
+The **New-AzNetAppFilesVolumeGroup** cmdlet creates an ANF VolumeGroup.
 
 ## EXAMPLES
 
