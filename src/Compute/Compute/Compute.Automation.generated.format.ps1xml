@@ -475,7 +475,7 @@
           <TableColumnHeader>
             <Label>Name</Label>
             <Alignment>Right</Alignment>
-            <Width>20</Width>
+            <Width>15</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Location</Label>
@@ -488,7 +488,7 @@
           <TableColumnHeader>
             <Label>RestrictionInfo</Label>
             <Alignment>Right</Alignment>
-            <Width>30</Width>
+            <Width>25</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Capability</Label>
@@ -496,6 +496,10 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Value</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Restrictions</Label>
             <Alignment>Right</Alignment>
           </TableColumnHeader>
         </TableHeaders>
@@ -515,13 +519,16 @@
                 <ScriptBlock>$_.LocationInfo[0].Zones</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.Restrictions[0].ReasonCode</ScriptBlock>
+                <ScriptBlock>$_.RestrictionInfo</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Capabilities[0].Name</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Capabilities[0].Value</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Restrictions[0].ReasonCode</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
