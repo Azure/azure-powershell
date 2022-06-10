@@ -15,16 +15,19 @@
 using Azure.Core;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Track2 = Azure.ResourceManager.Storage;
-using Track2Models = Azure.ResourceManager.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Auth;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
+using System.Management.Automation;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -194,6 +197,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected static Track2Models.Encryption ParseEncryption(bool storageEncryption = false, bool keyVaultEncryption = false, string keyName = null, string keyVersion = null, string keyVaultUri = null)
         {
+            // TODO: Fix the KeySource value. It should be null or empty. Input KeyVault for a placeholder.
             Track2Models.Encryption accountEncryption =
                 new Track2Models.Encryption(Track2Models.KeySource.MicrosoftKeyvault);
 
@@ -210,6 +214,31 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 accountEncryption.KeyVaultProperties.KeyVaultUri = new Uri(keyVaultUri);
             }
             return accountEncryption;
+        }
+
+        public static CloudStorageAccount GetCloudStorageAccount(Track2.StorageAccountResource storageAccountResource)
+        {
+            Uri blobEndpoint = storageAccountResource.Data.PrimaryEndpoints.Blob != null ? new Uri(storageAccountResource.Data.PrimaryEndpoints.Blob) : null;
+            Uri queueEndpoint = storageAccountResource.Data.PrimaryEndpoints.Queue != null ? new Uri(storageAccountResource.Data.PrimaryEndpoints.Queue) : null;
+            Uri tableEndpoint = storageAccountResource.Data.PrimaryEndpoints.Table != null ? new Uri(storageAccountResource.Data.PrimaryEndpoints.Table) : null;
+            Uri fileEndpoint = storageAccountResource.Data.PrimaryEndpoints.File != null ? new Uri(storageAccountResource.Data.PrimaryEndpoints.File) : null;
+            string key = null;
+            if (storageAccountResource.GetKeys()?.Value?.Keys != null && storageAccountResource.GetKeys().Value.Keys.Count > 0)
+            {
+                key = storageAccountResource.GetKeys().Value.Keys[0].Value;
+            } else
+            {
+                throw new InvalidJobStateException("Could not fetch storage account keys to build storage account context.");
+            }
+            StorageCredentials storageCredentials = new Azure.Storage.Auth.StorageCredentials(storageAccountResource.Data.Name, key);
+            CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(
+                storageCredentials,
+                new StorageUri(blobEndpoint),
+                new StorageUri(queueEndpoint),
+                new StorageUri(tableEndpoint),
+                new StorageUri(fileEndpoint));
+
+            return cloudStorageAccount;
         }
 
         protected void WriteStorageAccount(Track2.StorageAccountResource storageAccountResource)

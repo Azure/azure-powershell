@@ -16,11 +16,10 @@
   <ItemGroup>
     <Compile Remove="StorageAccount\AddAzureStorageAccountNetworkRule.cs" />
     <Compile Remove="StorageAccount\GetAzureStorageAccountNetworkRuleSet.cs" />
-    <Compile Remove="StorageAccount\InvokeAzureStorageAccountFailover.cs" />
     <Compile Remove="StorageAccount\InvokeAzureStorageAccountHierarchicalNamespaceUpgrade.cs" />
     <Compile Remove="StorageAccount\RemoveAzureStorageAccountNetworkRule.cs" />
-    <Compile Remove="StorageAccount\RestoreAzStorageBlobRange.cs" />
     <Compile Remove="StorageAccount\UpdateAzureStorageAccountNetworkRuleSet.cs" />
+    <Compile Remove="StorageAccount\InvokeAzureStorageAccountFailover.cs" />
   </ItemGroup>
   <ItemGroup>
     <!-- <PackageReference Include="Azure.Core" Version="1.24.0" /> -->

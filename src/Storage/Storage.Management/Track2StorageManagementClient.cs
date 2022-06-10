@@ -53,6 +53,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
             .GetStorageAccounts();
 
         /// <summary>
+        /// Check if a storage account name is available
+        /// </summary>
+        public CheckNameAvailabilityResult CheckNameAvailability(StorageAccountCheckNameAvailabilityContent content) =>
+            GetSubscription(_subscription).CheckStorageAccountNameAvailability(content);
+
+        /// <summary>
+        /// get Storage usages
+        /// </summary>
+        public Pageable<StorageUsage> GetStorageUsages(string location) =>
+            GetSubscription(_subscription).GetUsagesByLocation(location);
+
+        /// <summary>
         /// List accounts from Resource group
         /// </summary>
         public Pageable<Track2.StorageAccountResource> ListStorageAccounts(string resourcegroup) =>
@@ -83,6 +95,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
             GetStorageAccount(resourcegroup, storageAccountName).Update(patch);
 
         /// <summary>
+        /// Get Blob inventory policy resource
+        public Track2.BlobInventoryPolicyResource GetBlobInventoryPolicyResource(string resourceGroupName, string storageAccountName, string policyName) =>
+            _armClient.GetBlobInventoryPolicyResource(Track2.BlobInventoryPolicyResource.CreateResourceIdentifier(_subscription, resourceGroupName, storageAccountName, policyName));
+
+        /// <summary>
+        /// Get immutability policy resource
+        /// </summary>
+        public Track2.ImmutabilityPolicyResource GetImmutabilityPolicyResource(string resourceGroupName, string storageAccountName, string containerName) =>
+            _armClient.GetImmutabilityPolicyResource(Track2.ImmutabilityPolicyResource.CreateResourceIdentifier(_subscription, resourceGroupName, storageAccountName, containerName));
+
+        /// <summary>
+        /// Get management policy resource
+        /// </summary>
+        public Track2.ManagementPolicyResource GetManagementPolicyResource(string resourceGroupName, string storageAccountName, string policyName) =>
+            _armClient.GetManagementPolicyResource(Track2.ManagementPolicyResource.CreateResourceIdentifier(_subscription, resourceGroupName, storageAccountName, policyName));
+
+        /// <summary>
         /// Get BlobServiceResource with subscription, resource group name, and storage account name
         /// </summary>
         public Track2.BlobServiceResource GetBlobServiceResource(string resourceGroupName, string storageAccountName) =>
@@ -101,12 +130,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             GetBlobServiceResource(resourceGroupName, storageAccountName).GetBlobContainers();
 
         /// <summary>
-        /// Get a blob container under a resource group and storage account with container name 
-        /// </summary>
-        public Track2.BlobContainerResource GetBlobContainer(string resourceGroupName, string storageAccountName, string containerName) =>
-            GetBlobContainerResource(resourceGroupName, storageAccountName, containerName).Get();
-
-        /// <summary>
         /// Update a blob container 
         /// </summary>
         public Track2.BlobContainerResource UpdateBlobContainer(string resourceGroupName, string storageAccountName, string containerName, BlobContainerData data) =>
@@ -119,33 +142,31 @@ namespace Microsoft.Azure.Commands.Management.Storage
             GetBlobContainers(resourceGroupName, storageAccountName).CreateOrUpdate(WaitUntil.Completed, containerName, data).Value;
 
         /// <summary>
-        /// Get immutability policy of a blob container 
+        /// Get file share resource
         /// </summary>
-        public Track2.ImmutabilityPolicyResource GetImmutabilityPolicy(string resourceGroupName, string storageAccountName, string containerName, string etag) =>
-            GetBlobContainerResource(resourceGroupName, storageAccountName, containerName).GetImmutabilityPolicy().Get(etag);
+        public Track2.FileShareResource GetFileShareResource(string resourceGroupName, string storageAccountName, string shareName) =>
+            _armClient.GetFileShareResource(FileShareResource.CreateResourceIdentifier(_subscription, resourceGroupName, storageAccountName, shareName));
 
         /// <summary>
-        /// Lock immutability policy of a blob container 
+        /// Get file service resource
         /// </summary>
-        public Track2.ImmutabilityPolicyResource LockImmutabilityPolicy(string resourceGroupName, string storageAccountName, string containerName, string etag) =>
-            GetBlobContainerResource(resourceGroupName, storageAccountName, containerName).GetImmutabilityPolicy().LockImmutabilityPolicy(etag);
+        public Track2.FileServiceResource GetFileServiceResource(string resourceGroupName, string storageAccountName) =>
+            _armClient.GetFileServiceResource(FileServiceResource.CreateResourceIdentifier(_subscription, resourceGroupName, storageAccountName));
 
         /// <summary>
-        /// Create immutability policy for a blob container 
+        /// Get encryption scope resource
         /// </summary>
-        public Track2.ImmutabilityPolicyResource CreateImmutabilityPolicy(string resourceGroupName, string storageAccountName, string containerName, ImmutabilityPolicyData data, string etag) =>
-            GetBlobContainerResource(resourceGroupName, storageAccountName, containerName).GetImmutabilityPolicy().CreateOrUpdate(WaitUntil.Completed, data, etag).Value;
+        public Track2.EncryptionScopeResource GetEncryptionScopeResource(string resourceGroupName, string accountName, string encryptionScopeName) =>
+            _armClient.GetEncryptionScopeResource(EncryptionScopeResource.CreateResourceIdentifier(_subscription, resourceGroupName, accountName, encryptionScopeName));
 
         /// <summary>
-        /// Extend immutability policy for a blob container 
+        /// Get object replication policy resource
         /// </summary>
-        public Track2.ImmutabilityPolicyResource ExtendImmutabilityPolicy(string resourceGroupName, string storageAccountName, string containerName, ImmutabilityPolicyData data, string etag) =>
-            GetBlobContainerResource(resourceGroupName, storageAccountName, containerName).GetImmutabilityPolicy().ExtendImmutabilityPolicy(etag, data);
-
-        /// <summary>
-        /// Delete immutability policy for a blob container 
-        /// </summary>
-        public Track2.ImmutabilityPolicyResource DeleteImmutabilityPolicy(string resourceGroupName, string storageAccountName, string containerName, string etag) =>            
-            GetBlobContainerResource(resourceGroupName, storageAccountName, containerName).GetImmutabilityPolicy().Delete(WaitUntil.Completed, etag).Value;
+        /// <param name="resourceGroupName"></param>
+        /// <param name="storageAccountName"></param>
+        /// <param name="policyId"></param>
+        /// <returns></returns>
+        public Track2.ObjectReplicationPolicyResource GetObjectReplicationPolicyResource(string resourceGroupName, string storageAccountName, string policyId) =>
+            _armClient.GetObjectReplicationPolicyResource(ObjectReplicationPolicyResource.CreateResourceIdentifier(_subscription, resourceGroupName, storageAccountName, policyId));
     }
 }

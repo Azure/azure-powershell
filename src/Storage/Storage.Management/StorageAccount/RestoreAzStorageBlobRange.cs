@@ -12,15 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -79,7 +82,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(Mandatory = true, HelpMessage = "The Time to Restore Blob.")]
         [ValidateNotNull]
-        public DateTime TimeToRestore { get; set; }
+        public DateTimeOffset TimeToRestore { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The blob range to Restore.")]
         [ValidateNotNull]
@@ -118,50 +121,116 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (ShouldProcess(this.StorageAccountName, "Restore Blob Range"))
             {
+                Track2.StorageAccountResource account = this.StorageClientTrack2.GetStorageAccount(this.ResourceGroupName, this.StorageAccountName);
+                var restoreLro = account.RestoreBlobRanges(
+                    WaitUntil.Started,
+                    new Track2Models.BlobRestoreContent(
+                        this.TimeToRestore.ToUniversalTime(),
+                        PSBlobRestoreRange.ParseBlobRestoreRanges(this.BlobRestoreRange)));
+
+                // This is a temporary workaround of SDK issue https://github.com/Azure/azure-sdk-for-net/issues/29060
+                // The workaround is to get the raw response and parse it into the output desired
+                // The Blob restore status should be got from SDK directly once the issue is fixed
+                Dictionary<string, object> temp = restoreLro.GetRawResponse().Content.ToObjectFromJson() as Dictionary<string, object>;
+
                 if (waitForComplete)
-                {                    
-                    Task<AzureOperationResponse<BlobRestoreStatus>> beginTask = this.StorageClient.StorageAccounts.BeginRestoreBlobRangesWithHttpMessagesAsync(
-                     this.ResourceGroupName,
-                     this.StorageAccountName,
-                     this.TimeToRestore,
-                     PSBlobRestoreRange.ParseBlobRestoreRanges(this.BlobRestoreRange));
+                {
+                    if (temp == null)
+                    {
+                        throw new InvalidJobStateException("Could not fetch the Blob restore response.");
+                    }
+                    PSBlobRestoreStatus blobRestoreStatus = ParseRestoreRawResponse(temp);
+                    if (blobRestoreStatus.RestoreId != null)
+                    {
+                        WriteWarning(string.Format("Restore blob ranges with Id '{0}' started. Restore blob ranges time to complete is dependent on the size of the restore.", blobRestoreStatus.RestoreId));
+                    }
+                    else
+                    {
+                        WriteWarning(string.Format("Could not fetch the Restore Id."));
+                    }
 
-                    beginTask.Wait();
-
-                    AzureOperationResponse<BlobRestoreStatus> response = beginTask.Result;
-
-                    WriteWarning(string.Format("Restore blob ranges with Id '{0}' started. Restore blob ranges time to complete is dependent on the size of the restore.", response.Body is null ? "" : response.Body.RestoreId));
-
-                    Task<AzureOperationResponse<BlobRestoreStatus>> waitTask = ((StorageManagementClient)this.StorageClient).GetPostOrDeleteOperationResultAsync(response, null, new System.Threading.CancellationToken());
                     try
                     {
-                        waitTask.Wait();
+                        var result = restoreLro.WaitForCompletion().Value;
+                        WriteObject(new PSBlobRestoreStatus(result));
                     }
                     catch (System.AggregateException ex) when (ex.InnerException is CloudException)
                     {
-                        throw new InvalidJobStateException(string.Format("Blob ranges restore failed with information: '{0}'.", ((CloudException)ex.InnerException).Response.Content));
+                        throw new InvalidJobStateException(string.Format("Blob ranges restore failed with information: '{0}'.", ex.ToString()));
                     }
-
-                    AzureOperationResponse<BlobRestoreStatus> result = waitTask.Result;
-
-                    WriteObject(new PSBlobRestoreStatus(result.Body));
-
                 }
                 else
                 {
-                    BlobRestoreStatus status = this.StorageClient.StorageAccounts.BeginRestoreBlobRanges(
-                     this.ResourceGroupName,
-                     this.StorageAccountName,
-                     this.TimeToRestore,
-                     PSBlobRestoreRange.ParseBlobRestoreRanges(this.BlobRestoreRange));
-
-                    WriteObject(new PSBlobRestoreStatus(status));
-                    if (status != null && status.Status == BlobRestoreProgressStatus.Failed)
+                    if (temp == null)
                     {
-                        throw new InvalidJobStateException("Blob ranges restore failed.");
+                        throw new InvalidJobStateException("Could not fetch the Blob restore response.");
                     }
+
+                    PSBlobRestoreStatus blobRestoreStatus = ParseRestoreRawResponse(temp);
+
+                    if (blobRestoreStatus.Status != null)
+                    {
+                        if (blobRestoreStatus.Status == Track2Models.BlobRestoreProgressStatus.Failed.ToString())
+                        {
+                            throw new InvalidJobStateException("Blob ranges restore failed.");
+                        }
+                    } 
+                    else
+                    {
+                        WriteWarning(string.Format("Could not fetch the status."));
+                    }
+                    WriteObject(blobRestoreStatus);
                 }
             }
+        }
+
+        private PSBlobRestoreStatus ParseRestoreRawResponse(Dictionary<string, object> response)
+        {
+            response.TryGetValue("restoreId", out object restoreId);
+            response.TryGetValue("status", out object jobStatus);
+            response.TryGetValue("parameters", out object parameters);
+
+            PSBlobRestoreParameters blobRestoreParameters;
+            Dictionary<string, object> paramMap = parameters as Dictionary<string, object>;
+
+            if (paramMap == null)
+            {
+                blobRestoreParameters = null;
+            }
+            else
+            {
+                blobRestoreParameters = new PSBlobRestoreParameters();
+                paramMap.TryGetValue("timetoRestore", out object timeToRestore);
+                DateTimeOffset.TryParse(timeToRestore?.ToString(), out DateTimeOffset parseDate);
+                blobRestoreParameters.TimeToRestore = parseDate;
+
+                paramMap.TryGetValue("blobRanges", out object ranges);
+                List<PSBlobRestoreRange> blobRestoreRanges = new List<PSBlobRestoreRange>();
+
+                object[] rangesList = ranges as object[];
+                foreach (object range in rangesList)
+                {
+                    Dictionary<string, object> rangeMap = range as Dictionary<string, object>;
+
+                    rangeMap.TryGetValue("startRange", out object startRange);
+                    rangeMap.TryGetValue("endRange", out object endRange);
+
+                    PSBlobRestoreRange blobRestoreRange = new PSBlobRestoreRange
+                    {
+                        StartRange = startRange?.ToString(),
+                        EndRange = endRange?.ToString()
+                    };
+
+                    blobRestoreRanges.Add(blobRestoreRange);
+                }
+                blobRestoreParameters.BlobRanges = blobRestoreRanges.ToArray();
+            }
+
+            return new PSBlobRestoreStatus(
+                status: jobStatus?.ToString(),
+                failureReason: null,
+                restoreId: restoreId?.ToString(),
+                parameters: blobRestoreParameters);
         }
     }
 }
