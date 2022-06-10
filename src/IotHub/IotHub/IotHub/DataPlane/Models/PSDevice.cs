@@ -50,25 +50,25 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         public PSDeviceStatus Status { get; set; }
 
         /// <summary>
-        /// Reason, if any, for the Device to be in specified <see cref="StatusReason"/>
+        /// Reason, if any, for the Device to be in specified <see cref="Status"/>
         /// </summary>
         [JsonProperty(PropertyName = "statusReason")]
         public string StatusReason { get; set; }
 
         /// <summary>
-        /// Time when the <see cref="ConnectionStateUpdatedTime"/> was last updated
+        /// Time when the <see cref="ConnectionState"/> was last updated
         /// </summary>
         [JsonProperty(PropertyName = "connectionStateUpdatedTime")]
         public DateTime ConnectionStateUpdatedTime { get; set; }
 
         /// <summary>
-        /// Time when the <see cref="StatusUpdatedTime"/> was last updated
+        /// Time when the <see cref="Status"/> was last updated
         /// </summary>
         [JsonProperty(PropertyName = "statusUpdatedTime")]
         public DateTime StatusUpdatedTime { get; set; }
 
         /// <summary>
-        /// Time when the <see cref="LastActivityTime"/> was last active
+        /// Time when the <see cref="PSDevice"/> was last active
         /// </summary>
         [JsonProperty(PropertyName = "lastActivityTime")]
         public DateTime LastActivityTime { get; set; }
