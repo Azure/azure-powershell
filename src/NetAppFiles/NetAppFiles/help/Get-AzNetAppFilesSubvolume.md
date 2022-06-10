@@ -37,7 +37,7 @@ The **Get-AzNetAppFilesSubvolume** cmdlet gets details of an ANF Subvolume.
 
 ### Example 1
 ```powershell
-Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume"
+Get-AzNetAppFilesSubvolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSubvolume"
 ```
 
 ```output

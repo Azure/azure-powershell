@@ -27,7 +27,7 @@ New-AzNetAppFilesSubvolume -Name <String> -Path <String> -Size <Int64> [-ParentP
 ```
 
 ## DESCRIPTION
-The **New-AzNetAppFilesVolume** cmdlet creates an ANF subvolume.
+The **New-AzNetAppFilesSubvolume** cmdlet creates an ANF subvolume.
 
 ## EXAMPLES
 
