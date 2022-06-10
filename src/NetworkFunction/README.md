@@ -36,7 +36,7 @@ input-file:
   - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/vendorNetworkFunction.json
 
 module-version: 0.1.0
-title: ConnectedNetwork
+title: NetworkFunction
 subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
