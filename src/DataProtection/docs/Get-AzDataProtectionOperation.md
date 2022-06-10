@@ -23,7 +23,7 @@ Returns the list of available operations.
 
 ### Example 1: Get the list of of available operations
 ```powershell
-Get-AzDataProtectionOperation
+PS C:\> Get-AzDataProtectionOperation
 ```
 
 ```output
@@ -109,7 +109,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryValueForSingleApi
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IClientDiscoveryValueForSingleApi
 
 ## NOTES
 
