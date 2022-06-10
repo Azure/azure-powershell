@@ -32,10 +32,10 @@ Creates a PSScopeElementContains.
 
 ### Example 2
 ```powershell
-$scope2 = New-AzAlertsSuppressionRuleScope -Field "entities.file.name" -Anyof "FileName1","FileName2","FileName3"
+$scope2 = New-AzAlertsSuppressionRuleScope -Field "entities.file.name" -AnyOf "FileName1","FileName2","FileName3"
 ```
 
-Creates a PSScopeElementAnyof.
+Creates a PSScopeElementIn.
 
 ## PARAMETERS
 
