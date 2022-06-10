@@ -25,7 +25,8 @@
     - `Remove-AzNetworkManager` 
     - `Get-AzNetworkManagerGroup` 
     - `New-AzNetworkManagerGroup` 
-    - `Remove-AzNetworkManagerGroup` 
+    - `Remove-AzNetworkManagerGroup`
+    - `Set-AzNetworkManager` 
     - `Set-AzNetworkManagerGroup` 
     - `Get-AzNetworkManagerConnectivityConfiguration` 
     - `New-AzNetworkManagerConnectivityConfiguration` 

@@ -49,7 +49,7 @@ function Test-NetworkManagerCRUD
         Assert-AreEqual  $networkmanager.NetworkManagerScopeAccesses[0] "Connectivity";
         Assert-AreEqual  $networkmanager.NetworkManagerScopeAccesses[1] "SecurityAdmin";
 
-        $job = Remove-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -PassThru -Force -AsJob;
+        $job = Remove-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 	}
@@ -90,21 +90,20 @@ function Test-NetworkManagerGroupCRUD
         Assert-AreEqual $networkManagerName $networkManager.Name;
         Assert-AreEqual $rglocation $networkManager.Location;
 
-        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -MemberType "Microsoft.Network/VirtualNetwork" -DisplayName "DISplayName" -Description "SampleDESCRIption" 
+        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -MemberType "Microsoft.Network/VirtualNetwork" -Description "SampleDESCRIption" 
 
         $networkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName 
         Assert-NotNull $networkGroup;
         Assert-AreEqual $networkGroupName $networkGroup.Name;
-        Assert-AreEqual "DISplayName" $networkGroup.DisplayName;
 
-        $networkGroup.DisplayName = "Sample Group Name"
+        $networkGroup.Description = "A different description."
         $networkGroup.MemberType = "Microsoft.Network/VirtualNetwork"
         $newNetworkGroup = Set-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroup $networkGroup
         Assert-NotNull $newNetworkGroup;
-        Assert-AreEqual "Sample Group Name" $newNetworkGroup.DisplayName;
+        Assert-AreEqual "A different description." $newNetworkGroup.Description;
         Assert-AreEqual $networkGroupName $newNetworkGroup.Name;
 
-        $job = Remove-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -PassThru -Force -AsJob;
+        $job = Remove-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job; 
         $removeResult = $job | Receive-Job;
 
@@ -153,11 +152,10 @@ function Test-NetworkManagerStaticMemberCRUD
         Assert-AreEqual $rglocation $networkManager.Location;
 
         # Create network group
-        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -MemberType "Microsoft.Network/VirtualNetwork" -DisplayName "DISplayName" -Description "SampleDESCRIption"
+        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -MemberType "Microsoft.Network/VirtualNetwork" -Description "SampleDESCRIption"
         $networkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName 
         Assert-NotNull $networkGroup;
         Assert-AreEqual $networkGroupName $networkGroup.Name;
-        Assert-AreEqual "DISplayName" $networkGroup.DisplayName;
 
         # Create static member
         New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -ResourceId $vnetId
@@ -228,11 +226,10 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual $networkManagerName $networkManager.Name;
         Assert-AreEqual $rglocation $networkManager.Location;
 
-        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -MemberType "Microsoft.Network/VirtualNetwork" -DisplayName "DISplayName" -Description "SampleDESCRIption"
+        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -MemberType "Microsoft.Network/VirtualNetwork" -Description "SampleDESCRIption"
         $networkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName 
         Assert-NotNull $networkGroup;
         Assert-AreEqual $networkGroupName $networkGroup.Name;
-        Assert-AreEqual "DISplayName" $networkGroup.DisplayName;
 
         New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -ResourceId $vnetId
 
@@ -259,10 +256,10 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "False"  $connConfig.IsGlobal;
         Assert-AreEqual "True"  $connConfig.DeleteExistingPeering;
 
-        $connConfig.DisplayName = "Sample Config Name"
+        $connConfig.Description = "A different description.";
         $newConnConfig = Set-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkManagerConnectivityConfiguration $connConfig
         Assert-NotNull $newConnConfig;
-        Assert-AreEqual "Sample Config Name" $newConnConfig.DisplayName;
+        Assert-AreEqual "A different description." $newConnConfig.Description;
         Assert-AreEqual $connectivityConfigurationName $newConnConfig.Name;
 
 
@@ -271,7 +268,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         [System.Collections.Generic.List[String]]$regions = @()  
         $regions.Add($rglocation)
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity" 
-        #Start-Sleep -Seconds 600
+        # Start-Sleep -Seconds 600
          
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatusList -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "Connectivity"
         Assert-NotNull $deploymentStatus;
@@ -306,10 +303,8 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "False"   $effectiveConnectivityConfig.Value[0].IsGlobal;
         Assert-AreEqual "True"   $effectiveConnectivityConfig.Value[0].DeleteExistingPeering;
 
-        Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "Connectivity" 
-        #Start-Sleep -Seconds 600
-
-        $job = Remove-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $connectivityConfigurationName -PassThru -Force -AsJob;
+        $job = Remove-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $connectivityConfigurationName -ForceDelete -PassThru -Force -AsJob;
+        # Start-Sleep -Seconds 600
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
@@ -370,7 +365,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-AreEqual $networkManagerName $networkManager.Name;
         Assert-AreEqual $rglocation $networkManager.Location;
 
-        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -MemberType "Microsoft.Network/VirtualNetwork" -DisplayName "DISplayName" -Description "SampleConfigDESCRIption"
+        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -MemberType "Microsoft.Network/VirtualNetwork" -Description "SampleConfigDESCRIption"
 
         New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -ResourceId $vnetId
 
@@ -378,18 +373,18 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
 
         [System.Collections.Generic.List[string]]$ApplyOnNetworkIntentPolicyBasedServices  = @()
         $ApplyOnNetworkIntentPolicyBasedServices.Add("None")
-        New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName -DisplayName "DISplayName" -Description "DESCription" -DeleteExistingNSG -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedServices
+        New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName -Description "DESCription" -DeleteExistingNSG -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedServices
         
         $securityConfig = Get-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName
         Assert-NotNull $securityConfig;
         Assert-AreEqual $SecurityConfigurationName $securityConfig.Name;
         Assert-AreEqual $ApplyOnNetworkIntentPolicyBasedServices $securityConfig.ApplyOnNetworkIntentPolicyBasedServices;
 
-        $securityConfig.DisplayName = "sample Config DisplayName"
+        $securityConfig.Description = "A different description."
         $securityConfig = Set-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkManagerSecurityAdminConfiguration $securityConfig
         Assert-NotNull $securityConfig;
+        Assert-AreEqual "A different description." $securityConfig.Description;
         Assert-AreEqual $SecurityConfigurationName $securityConfig.Name;
-        Assert-AreEqual "sample Config DisplayName" $securityConfig.DisplayName;
 
         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem]]$configGroup  = @() 
         $groupItem = New-AzNetworkManagerSecurityGroupItem -NetworkGroupId $networkGroup.Id
@@ -402,12 +397,11 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
         Assert-AreEqual  $networkGroup.Id $ruleCollection.AppliesToGroups[0].NetworkGroupId;
 
-        $ruleCollection.DisplayName = "Sample rule Collection displayName"
         $ruleCollection.Description = "Sample rule Collection Description"
         $ruleCollection = Set-AzNetworkManagerSecurityAdminRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -NetworkManagerSecurityAdminRuleCollection $ruleCollection
         Assert-NotNull $ruleCollection;
         Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
-        Assert-AreEqual "Sample rule Collection displayName" $ruleCollection.DisplayName;
+        Assert-AreEqual "Sample rule Collection Description" $ruleCollection.Description;
  
         $sourceAddressPrefix = New-AzNetworkManagerAddressPrefixItem -AddressPrefix "Internet" -AddressPrefixType "ServiceTag"
         $destinationAddressPrefix = New-AzNetworkManagerAddressPrefixItem -AddressPrefix "10.0.0.1" -AddressPrefixType "IPPrefix" 
@@ -416,7 +410,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         $sourcePortList.Add("100")
         [System.Collections.Generic.List[String]]$destinationPortList = @()
         $destinationPortList.Add("99");
-        New-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityConfigurationName  -RuleCollectionName $RuleCollectionName -Name $RuleName -DisplayName "DISPLay" -Description "Description" -Protocol  "TCP" -Direction "Inbound" -Access "Allow" -Priority 100 -SourcePortRange $sourcePortList -DestinationPortRange $destinationPortList -Source $sourceAddressPrefix -Destination $destinationAddressPrefix 
+        New-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityConfigurationName  -RuleCollectionName $RuleCollectionName -Name $RuleName -Description "Description" -Protocol  "TCP" -Direction "Inbound" -Access "Allow" -Priority 100 -SourcePortRange $sourcePortList -DestinationPortRange $destinationPortList -Source $sourceAddressPrefix -Destination $destinationAddressPrefix 
 
         $adminRule = Get-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName
         Assert-NotNull $adminRule
@@ -431,10 +425,8 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-AreEqual "10.0.0.1" $adminRule.Destinations[0].AddressPrefix
         Assert-AreEqual "Internet" $adminRule.Sources[0].AddressPrefix
 
-        $adminRule.DisplayName = "Sample Rule Name"
         $newAdminRule = Set-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -RuleCollectionName $RuleCollectionName -SecurityAdminRule $adminRule
         Assert-NotNull $newAdminRule;
-        Assert-AreEqual "Sample Rule Name" $newAdminRule.DisplayName;
         Assert-AreEqual $RuleName $newAdminRule.Name;
 
         [System.Collections.Generic.List[string]]$configids  = @()
@@ -455,9 +447,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-AreEqual  $networkGroup.Id $activeSecurityAdminRule.Value[0].RuleGroups[0].Id;
         Assert-AreEqual  $networkGroup.Id $activeSecurityAdminRule.Value[0].RuleCollectionAppliesToGroups[0].NetworkGroupId;
         Assert-AreEqual $rglocation  $activeSecurityAdminRule.Value[0].Region;
-        Assert-AreEqual $securityConfig.DisplayName $activeSecurityAdminRule.Value[0].ConfigurationDisplayName;
         Assert-AreEqual $securityConfig.Description $activeSecurityAdminRule.Value[0].ConfigurationDescription;
-        Assert-AreEqual $ruleCollection.DisplayName $activeSecurityAdminRule.Value[0].RuleCollectionDisplayName;
         Assert-AreEqual $ruleCollection.Description $activeSecurityAdminRule.Value[0].RuleCollectionDescription;
 
         Assert-AreEqual "TCP" $activeSecurityAdminRule.Value[0].Protocol 
@@ -477,9 +467,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRule.Value[0].RuleCollectionAppliesToGroups[0].NetworkGroupId;
        
 
-        Assert-AreEqual $securityConfig.DisplayName $effectiveSecurityAdminRule.Value[0].ConfigurationDisplayName;
         Assert-AreEqual $securityConfig.Description $effectiveSecurityAdminRule.Value[0].ConfigurationDescription;
-        Assert-AreEqual $ruleCollection.DisplayName $effectiveSecurityAdminRule.Value[0].RuleCollectionDisplayName;
         Assert-AreEqual $ruleCollection.Description $effectiveSecurityAdminRule.Value[0].RuleCollectionDescription;
 
         Assert-AreEqual "TCP" $effectiveSecurityAdminRule.Value[0].Protocol 
@@ -495,20 +483,21 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "SecurityAdmin" 
         # Start-Sleep -Seconds 600
 
-        $job = Remove-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -PassThru -Force -AsJob;
+        $job = Remove-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
-        $job = Remove-AzNetworkManagerSecurityAdminRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -Name $RuleCollectionName -PassThru -Force -AsJob;
+        $job = Remove-AzNetworkManagerSecurityAdminRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -Name $RuleCollectionName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
-        $job = Remove-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName -PassThru -Force -AsJob;
+        $job = Remove-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
         $job = Remove-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -PassThru -Force -AsJob;
         $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
         $removeResult = $job | Receive-Job;
 
         $job = Remove-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -PassThru -Force -AsJob;

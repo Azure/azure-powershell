@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Network
     using WindowsAzure.Commands.Common;
     using CNM = Microsoft.Azure.Commands.Network.Models;
     using MNM = Microsoft.Azure.Management.Network.Models;
+    using ANM = Microsoft.Azure.Commands.Network.Models.NetworkManager;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Commands.Network.Models;
 
