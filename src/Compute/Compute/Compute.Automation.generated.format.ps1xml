@@ -475,6 +475,7 @@
           <TableColumnHeader>
             <Label>Name</Label>
             <Alignment>Right</Alignment>
+            <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Location</Label>
@@ -485,8 +486,9 @@
             <Alignment>Right</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Restriction</Label>
+            <Label>RestrictionInfo</Label>
             <Alignment>Right</Alignment>
+            <Width>30</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Capability</Label>
