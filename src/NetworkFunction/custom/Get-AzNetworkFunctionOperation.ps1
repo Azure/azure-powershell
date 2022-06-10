@@ -15,49 +15,49 @@ Lists all of the available NetworkFunction Rest API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IOperation
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.networkfunction/get-aznetworkfunctionoperation
 #>
 function Get-AzNetworkFunctionOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -74,7 +74,7 @@ begin {
             List = 'Az.NetworkFunction.private\Get-AzNetworkFunctionOperation_List';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

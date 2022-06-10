@@ -15,9 +15,9 @@ Gets the collector policy in a specified Traffic Collector
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITrafficCollectorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -32,79 +32,79 @@ INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.networkfunction/get-aznetworkfunctiontrafficcollectorpolicy
 #>
 function Get-AzNetworkFunctionTrafficCollectorPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [System.String]
     # Azure Traffic Collector name
     ${AzureTrafficCollectorName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [System.String]
     # Collector Policy Name
     ${CollectorPolicyName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
     [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure Subscription ID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITrafficCollectorIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -126,7 +126,7 @@ begin {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

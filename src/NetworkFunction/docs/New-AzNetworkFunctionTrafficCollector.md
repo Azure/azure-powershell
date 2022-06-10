@@ -88,7 +88,7 @@ Collector Policies for Azure Traffic Collector.
 To construct, see NOTES section for COLLECTORPOLICIES properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ICollectorPolicy[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -104,7 +104,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITrafficCollectorIdentity
 Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
@@ -165,7 +165,7 @@ Azure Traffic Collector resource.
 To construct, see NOTES section for PARAMETERS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollector
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
@@ -257,13 +257,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollector
 
-### Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITrafficCollectorIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IAzureTrafficCollector
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollector
 
 ## NOTES
 

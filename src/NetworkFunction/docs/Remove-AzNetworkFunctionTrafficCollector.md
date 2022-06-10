@@ -73,7 +73,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITrafficCollectorIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -195,7 +195,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITrafficCollectorIdentity
 
 ## OUTPUTS
 

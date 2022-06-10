@@ -52,7 +52,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.IOperation
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IOperation
 
 ## NOTES
 

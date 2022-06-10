@@ -15,7 +15,7 @@ Deletes a specified Azure Traffic Collector resource.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITrafficCollectorIdentity
 .Outputs
 System.Boolean
 .Notes
@@ -36,84 +36,84 @@ function Remove-AzNetworkFunctionTrafficCollector {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [System.String]
     # Azure Traffic Collector name
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure Subscription ID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ITrafficCollectorIdentity]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITrafficCollectorIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Returns true when the command succeeds
     ${PassThru},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -134,7 +134,7 @@ begin {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
