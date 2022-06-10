@@ -33,8 +33,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         private const string PredictionsModelZip = "PredictionsModel.zip";
         private const string PredictionsModelJson = "PredictionsModel.json";
         private const string DataDirectoryName = "Data";
-        private static readonly Version CommandsVersionToUse = new Version("5.1.0");
-        private static readonly Version PredictionsVersionToUse = new Version("5.1.0");
+        private static readonly Version CommandsVersionToUse = new Version("0.0.0");
+        private static readonly Version PredictionsVersionToUse = new Version("0.0.0");
 
         /// <summary>
         /// Gets a list of string for the commands.

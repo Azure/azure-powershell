@@ -24,6 +24,7 @@ For more information on Az Predictor, please visit the following: https://aka.ms
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.18.0" />
     <PackageReference Include="Microsoft.Azure.PowerShell.Common.Share" Version="1.3.45-preview" />
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.0">
+        <ExcludeAssets>contentFiles</ExcludeAssets>
     </PackageReference>
     <PackageReference Include="System.Management.Automation" Version="7.2.0">
       <ExcludeAssets>contentFiles</ExcludeAssets>
