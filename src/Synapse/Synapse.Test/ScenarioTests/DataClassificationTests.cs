@@ -12,38 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 {
-    public class DataClassificationTests : SynapseTestBase
+    public class DataClassificationTests : SynapseTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public DataClassificationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataClassificationTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataClassificationOnSqlPool()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-DataClassificationOnSqlPool");
+            TestRunner.RunTestScript("Test-DataClassificationOnSqlPool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableDisableRecommendationsOnSqlPool()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-EnableDisableRecommendationsOnSqlPool");
+            TestRunner.RunTestScript("Test-EnableDisableRecommendationsOnSqlPool");
         }
     }
 }

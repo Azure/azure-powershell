@@ -13,16 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
+using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
-using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
 {
@@ -231,16 +229,29 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 parameters.LastBackupName);
         }
 
+        private bool isLRSRestore(ManagedDatabaseRestoreDetailsResult restoreDetails) {
+            var restoreType = restoreDetails.GetType().GetProperty("ManagedDatabaseRestoreDetailsResultType");
+            // 1) no property => old api => it's log replay as the API only works for such dbs
+            // 2) property is there => new api => property value will tell us if its LRS
+            return (restoreType == null) || ((string)restoreType.GetValue(restoreDetails)).Equals("lrsrestore", StringComparison.OrdinalIgnoreCase);
+        }
+
         /// <summary>
         /// Removes managed database in order to stop log replay service
         /// </summary>
         /// <param name="parameters">The parameters for log replay cancel action</param>
         public void StopManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
         {
-            Communicator.Remove(
-                parameters.ResourceGroupName,
-                parameters.ManagedInstanceName,
-                parameters.Name);
+            // Check if the database provided by the caller is indeed created by Log Replay migration
+            var dbRestoreDetails = Communicator.GetLogReplayStatus(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
+            if (isLRSRestore(dbRestoreDetails))
+            {
+                Communicator.Remove(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
+            }
+            else
+            {
+                throw new PSArgumentException(string.Format(Properties.Resources.StopLogReplayErrorDatabaseOrigin, parameters.Name, parameters.ManagedInstanceName, parameters.ResourceGroupName), "InstanceDatabaseName");
+            }
         }
 
         /// <summary>

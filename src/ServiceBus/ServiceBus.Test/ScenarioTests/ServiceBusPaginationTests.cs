@@ -14,26 +14,21 @@
 
 namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 {
+    using Microsoft.Azure.Commands.EventHub.Test.ScenarioTests;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class ServiceBusPaginationTests : RMTestBase
+    public class ServiceBusPaginationTests : ServiceBusTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ServiceBusPaginationTests(ITestOutputHelper output)
+        public ServiceBusPaginationTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceBusPaginationTests_CURD()
         {
-            ServiceBusController.NewInstance.RunPsTest(_logger, "ServiceBusPaginationTests");
+            TestRunner.RunTestScript("ServiceBusPaginationTests");
         }        
     }
 }
