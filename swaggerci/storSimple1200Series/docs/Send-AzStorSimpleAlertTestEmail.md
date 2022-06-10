@@ -1,0 +1,284 @@
+---
+external help file:
+Module Name: Az.StorSimple
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storsimple/send-azstorsimplealerttestemail
+schema: 2.0.0
+---
+
+# Send-AzStorSimpleAlertTestEmail
+
+## SYNOPSIS
+Sends a test alert email.
+
+## SYNTAX
+
+### SendExpanded (Default)
+```
+Send-AzStorSimpleAlertTestEmail -DeviceName <String> -ManagerName <String> -ResourceGroupName <String>
+ -EmailList <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### Send
+```
+Send-AzStorSimpleAlertTestEmail -DeviceName <String> -ManagerName <String> -ResourceGroupName <String>
+ -Request <ISendTestAlertEmailRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SendViaIdentity
+```
+Send-AzStorSimpleAlertTestEmail -InputObject <IStorSimpleIdentity> -Request <ISendTestAlertEmailRequest>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SendViaIdentityExpanded
+```
+Send-AzStorSimpleAlertTestEmail -InputObject <IStorSimpleIdentity> -EmailList <String[]>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Sends a test alert email.
+
+## EXAMPLES
+
+### Example 1: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeviceName
+The device name.
+
+```yaml
+Type: System.String
+Parameter Sets: Send, SendExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EmailList
+List of emails to send the test alerts
+
+```yaml
+Type: System.String[]
+Parameter Sets: SendExpanded, SendViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorSimple.Models.IStorSimpleIdentity
+Parameter Sets: SendViaIdentity, SendViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagerName
+The manager name
+
+```yaml
+Type: System.String
+Parameter Sets: Send, SendExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Request
+Request for sending test alert email
+To construct, see NOTES section for REQUEST properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorSimple.Models.Api20161001.ISendTestAlertEmailRequest
+Parameter Sets: Send, SendViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name
+
+```yaml
+Type: System.String
+Parameter Sets: Send, SendExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription id
+
+```yaml
+Type: System.String
+Parameter Sets: Send, SendExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.StorSimple.Models.Api20161001.ISendTestAlertEmailRequest
+
+### Microsoft.Azure.PowerShell.Cmdlets.StorSimple.Models.IStorSimpleIdentity
+
+## OUTPUTS
+
+### System.Boolean
+
+## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IStorSimpleIdentity>: Identity Parameter
+  - `[AccessControlRecordName <String>]`: Name of access control record to be fetched.
+  - `[BackupName <String>]`: The backup name.
+  - `[CertificateName <String>]`: Certificate Name
+  - `[ChapUserName <String>]`: The user name of chap to be fetched.
+  - `[CredentialName <String>]`: The name of storage account credential to be fetched.
+  - `[DeviceName <String>]`: The device name.
+  - `[DiskName <String>]`: The disk name.
+  - `[ElementName <String>]`: The backup element name.
+  - `[FileServerName <String>]`: The file server name.
+  - `[Id <String>]`: Resource identity path
+  - `[IscsiServerName <String>]`: The iSCSI server name.
+  - `[JobName <String>]`: The job name.
+  - `[ManagerName <String>]`: The manager name
+  - `[ResourceGroupName <String>]`: The resource group name
+  - `[ScheduleGroupName <String>]`: The name of the schedule group.
+  - `[ShareName <String>]`: The file share name.
+  - `[StorageDomainName <String>]`: The storage domain name.
+  - `[SubscriptionId <String>]`: The subscription id
+
+REQUEST <ISendTestAlertEmailRequest>: Request for sending test alert email
+  - `EmailList <String[]>`: List of emails to send the test alerts
+
+## RELATED LINKS
+
