@@ -43,7 +43,9 @@ This cmdlet will create a managed cluster resource without node types. To bootst
 $rgName = "testRG"
 $clusterName = "testCluster"
 $password = ConvertTo-SecureString -AsPlainText -Force "testpass1234!@#$"
-New-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Location centraluseuap -ClusterName $clusterName -AdminPassword $password -Verbose
+$tags = @{"test"="tag"}
+
+New-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Location centraluseuap -ClusterName $clusterName -AdminPassword $password -Tag $tags -Verbose
 ```
 
 This command creates a cluster resource with default basic sku.
