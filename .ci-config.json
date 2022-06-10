@@ -145,6 +145,15 @@
     },
     {
       "patterns": [
+        "tools/StaticAnalysis/Exceptions/Az.{ModuleName}/ExampleIssues.csv"
+      ],
+      "phases": [
+        "build:module",
+        "example:module"
+      ]
+    },
+    {
+      "patterns": [
         "tools/StaticAnalysis/Exceptions/Az.{ModuleName}/SignatureIssues.csv"
       ],
       "phases": [
