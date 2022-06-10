@@ -36,11 +36,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         // Summary:
         //     Gets the actions that will be performed by Key Vault over the lifetime of a key.
         public IList<PSKeyRotationLifetimeAction> LifetimeActions { get; set; }
-        //
-        // Summary:
-        //     Gets or sets the System.TimeSpan when the Azure.Security.KeyVault.Keys.KeyRotationPolicy
-        //     will expire. It should be at least 28 days.
-        public TimeSpan? ExpiresIn { get; set; }
+
+        /// <summary>
+        /// The expiryTime will be applied on the new key version. It should be at least 28 days. 
+        /// It will be in ISO 8601 Format. Examples: 90 days: P90D, 3 months: P3M, 48 hours: PT48H, 1 year and 10 days: P1Y10D"
+        /// </summary>
+        public string ExpiresIn { get; set; }
         //
         // Summary:
         //     Gets a System.DateTimeOffset indicating when the Azure.Security.KeyVault.Keys.KeyRotationPolicy
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 LifetimeActions.Add(new PSKeyRotationLifetimeAction(action));
             }
 
-            ExpiresIn = string.IsNullOrEmpty(keyRotationPolicy.ExpiresIn) ? null : XmlConvert.ToTimeSpan(keyRotationPolicy.ExpiresIn) as TimeSpan?;
+            ExpiresIn = keyRotationPolicy.ExpiresIn;
             CreatedOn = keyRotationPolicy.CreatedOn;
             UpdatedOn = keyRotationPolicy.UpdatedOn;
         }

@@ -132,11 +132,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter Immutable { get; set; }
 
         /// <summary>
-        /// A path to a file containing JSON policy definition. The policy rules under which a key can be exported.
+        /// A path to the release policy file that contains JSON policy definition. The policy rules under which a key can be exported.
         /// </summary>
         [Parameter(Mandatory = false,
             ParameterSetName = HsmInteractiveParameterSet,
-            HelpMessage = "A path to a file containing JSON policy definition. The policy rules under which a key can be exported.")]
+            HelpMessage = "A path to the release policy file that contains JSON policy definition. The policy rules under which a key can be exported.")]
         public string ReleasePolicyPath { get; set; }
 
 
