@@ -688,6 +688,8 @@ namespace Microsoft.Azure.Commands.Network
         /// <param name='parameters'>
         /// Parameters supplied to the Begin the operation through Network resource provider.
         /// </param>
+        /// <param name="apiUrl"></param>
+        /// <param name="apiVersion"></param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>

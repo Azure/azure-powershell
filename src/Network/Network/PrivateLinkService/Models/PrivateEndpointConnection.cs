@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.Models
         /// the private endpoint connection.</param>
         /// <param name="provisioningState">State of the private endpoint
         /// connection.</param>
+        /// <param name="groupId"></param>
         public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), PrivateEndpointProperty privateEndpoint = default(PrivateEndpointProperty), PrivateLinkServiceConnectionStateProperty privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionStateProperty), string provisioningState = default(string), string groupId = default(string))
             : base(id, name, type)
         {
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Validate">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()

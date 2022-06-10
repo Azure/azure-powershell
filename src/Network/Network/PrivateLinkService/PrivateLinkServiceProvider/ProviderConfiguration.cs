@@ -110,6 +110,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         /// Generate a runtime parameter with ValidateSet matching the current context
         /// </summary>
         /// <param name="name">The name of the parameter</param>
+        /// <param name="parameterSetName"></param>
         /// <param name="runtimeParameter">The returned runtime parameter for context, with appropriate validate set</param>
         /// <returns>True if one or more contexts were found, otherwise false</returns>
         public static bool TryGetEndpointConnectionServiceParameter(string name, string parameterSetName, out RuntimeDefinedParameter runtimeParameter)
@@ -140,6 +141,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         /// Generate a runtime parameter with ValidateSet matching the current context
         /// </summary>
         /// <param name="name">The name of the parameter</param>
+        /// <param name="parameterSetName"></param>
         /// <param name="runtimeParameter">The returned runtime parameter for context, with appropriate validate set</param>
         /// <returns>True if one or more contexts were found, otherwise false</returns>
         public static bool TryGetLinkResourceServiceParameter(string name, string parameterSetName, out RuntimeDefinedParameter runtimeParameter)
