@@ -11,9 +11,6 @@ Locale: en-US
 
 
 ## Az.NetworkFunction Cmdlets
-### [Get-AzNetworkFunctionOperation](Get-AzNetworkFunctionOperation.md)
-Lists all of the available NetworkFunction Rest API operations.
-
 ### [Get-AzNetworkFunctionTrafficCollector](Get-AzNetworkFunctionTrafficCollector.md)
 Gets the specified Azure Traffic Collector in a specified resource group
 
