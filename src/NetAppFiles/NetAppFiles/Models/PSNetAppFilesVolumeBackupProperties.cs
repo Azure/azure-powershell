@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </remarks>
         public string BackupPolicyId { get; set; }
 
+        /// <summary>
         /// Gets PolicyEnforced
         /// </summary>
         /// <remarks>
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </remarks>
         public bool? PolicyEnforced { get; set; }
 
+        /// <summary>
         /// Gets PolicyEnforced
         /// </summary>
         /// <remarks>
@@ -38,9 +40,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </remarks>
         public string VaultId { get; set; }
 
-        //
-        // Summary:
-        //     Gets or sets BackupEnabled
+        /// <summary>
+        /// Gets or sets BackupEnabled
         /// Gets PolicyEnforced
         /// </summary>
         /// <remarks>
