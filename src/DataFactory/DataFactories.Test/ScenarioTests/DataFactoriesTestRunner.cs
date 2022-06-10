@@ -14,29 +14,28 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.TestFx;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.DataFactories.Test.ScenarioTests
 {
-    public class ServiceBusTestRunner
+    public class DataFactoriesTestRunner
     {
         protected readonly ITestRunner TestRunner;
 
-        protected ServiceBusTestRunner(ITestOutputHelper output)
+        protected DataFactoriesTestRunner(ITestOutputHelper output)
         {
-            TestRunner = TestFx.TestManager.CreateInstance(output)
+            TestRunner = TestManager.CreateInstance(output)
                 .WithNewPsScriptFilename($"{GetType().Name}.ps1")
                 .WithProjectSubfolderForTests("ScenarioTests")
                 .WithCommonPsScripts(new[]
                 {
+                    @"Common.ps1",
                     @"../AzureRM.Resources.ps1"
                 })
                 .WithNewRmModules(helper => new[]
                 {
                     helper.RMProfileModule,
-                    helper.GetRMModulePath("Az.ServiceBus.psd1"),
-                    helper.GetRMModulePath("Az.KeyVault.psd1")
+                    helper.GetRMModulePath("Az.DataFactory.psd1")
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
@@ -47,8 +46,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                     {
                         {"Microsoft.Resources", null},
                         {"Microsoft.Features", null},
-                        {"Microsoft.Authorization", null},
-                        {"Microsoft.KeyVault", null}
+                        {"Microsoft.Authorization", null}
                     }
                 )
                 .Build();

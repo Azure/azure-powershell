@@ -17,6 +17,7 @@ using Azure.Security.KeyVault.Keys;
 
 using System;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -63,7 +64,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 LifetimeActions.Add(new PSKeyRotationLifetimeAction(action));
             }
-            ExpiresIn = keyRotationPolicy.ExpiresIn;
+
+            ExpiresIn = string.IsNullOrEmpty(keyRotationPolicy.ExpiresIn) ? null : XmlConvert.ToTimeSpan(keyRotationPolicy.ExpiresIn) as TimeSpan?;
             CreatedOn = keyRotationPolicy.CreatedOn;
             UpdatedOn = keyRotationPolicy.UpdatedOn;
         }

@@ -12,8 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
+
 using System;
 using System.Linq;
+using System.Text;
+
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -79,6 +83,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             UriBuilder builder = new UriBuilder("https", name+ "." + ManagedHsmDnsSuffix);
 
             return builder.Uri;
+        }
+
+        public Uri CreateaMagedHsmKeyUri(Uri mhsmUri, string keyName, string version)
+        {
+            if (null == mhsmUri)
+                throw new ArgumentNullException("mhsmUri");
+            if (string.IsNullOrEmpty(keyName))
+                throw new ArgumentNullException("keyName");
+
+            string relativePath = new StringBuilder().Append("keys/").Append(keyName).Append("/").Append(version).ToString();
+            return new Uri(mhsmUri, relativePath);
         }
     }
 }

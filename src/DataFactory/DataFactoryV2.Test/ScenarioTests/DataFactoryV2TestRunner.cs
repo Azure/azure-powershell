@@ -14,41 +14,39 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.TestFx;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.DataFactoryV2.Test.ScenarioTests
 {
-    public class ServiceBusTestRunner
+    public class DataFactoryV2TestRunner
     {
         protected readonly ITestRunner TestRunner;
-
-        protected ServiceBusTestRunner(ITestOutputHelper output)
+        protected DataFactoryV2TestRunner(ITestOutputHelper output)
         {
-            TestRunner = TestFx.TestManager.CreateInstance(output)
+            TestRunner = TestManager.CreateInstance(output)
                 .WithNewPsScriptFilename($"{GetType().Name}.ps1")
                 .WithProjectSubfolderForTests("ScenarioTests")
                 .WithCommonPsScripts(new[]
                 {
+                    @"Common.ps1",
                     @"../AzureRM.Resources.ps1"
                 })
                 .WithNewRmModules(helper => new[]
                 {
                     helper.RMProfileModule,
-                    helper.GetRMModulePath("Az.ServiceBus.psd1"),
-                    helper.GetRMModulePath("Az.KeyVault.psd1")
+                    helper.GetRMModulePath("Az.DataFactory.psd1")
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
                     {
+                        {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-07-01"},
                         {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
                     },
                     resourceProviders: new Dictionary<string, string>
                     {
                         {"Microsoft.Resources", null},
                         {"Microsoft.Features", null},
-                        {"Microsoft.Authorization", null},
-                        {"Microsoft.KeyVault", null}
+                        {"Microsoft.Authorization", null}
                     }
                 )
                 .Build();
