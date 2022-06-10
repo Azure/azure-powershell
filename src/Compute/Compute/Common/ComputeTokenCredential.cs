@@ -45,11 +45,11 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
         public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
-            AccessToken token;
-            accessToken.AuthorizeRequest((tokenType, tokenValue) =>
-            {
-                token = new AccessToken(tokenValue, DateTimeOffset.UtcNow);
-            });
+            AccessToken token = new AccessToken(accessToken.AccessToken, DateTimeOffset.UtcNow);
+            //accessToken.AuthorizeRequest((tokenType, tokenValue) =>
+            //{
+            //    token = new AccessToken(tokenValue, DateTimeOffset.UtcNow);
+            //});
             return token;
         }
 
