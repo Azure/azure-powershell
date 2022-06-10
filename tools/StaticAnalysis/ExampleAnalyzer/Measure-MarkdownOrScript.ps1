@@ -71,9 +71,15 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
         $ScriptPaths = "$OutputFolder\TempScript.ps1"
     }
     # Summarize searching results
-    $scaleTable | Export-Csv "$OutputFolder\Scale.csv" -NoTypeInformation
-    $missingTable | where {$_ -ne $null} | Export-Csv "$OutputFolder\Missing.csv" -NoTypeInformation
-    $deletePromptAndSeparateOutputTable | where {$_ -ne $null} | Export-Csv "$OutputFolder\DeletingSeparating.csv" -NoTypeInformation
+    if($scaleTable -ne $null){
+        $scaleTable | Export-Csv "$OutputFolder\Scale.csv" -NoTypeInformation
+    }
+    if($missingTable -ne $null){
+        $missingTable | Export-Csv "$OutputFolder\Missing.csv" -NoTypeInformation
+    }
+    if($deletePromptAndSeparateOutputTable -ne $null){
+        $deletePromptAndSeparateOutputTable | Export-Csv "$OutputFolder\DeletingSeparating.csv" -NoTypeInformation
+    }
 }
 
 
@@ -84,7 +90,9 @@ if ($PSCmdlet.ParameterSetName -eq "Script" -or $AnalyzeScriptsInFile.IsPresent)
     $analysisResultsTable += Get-ScriptAnalyzerResult (Get-Item -Path $ScriptPaths) $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -ErrorAction Continue
     
     # Summarize analysis results, output in Result.csv
-    $analysisResultsTable | where {$_ -ne $null} | Export-Csv ".\artifacts\StaticAnalysisResults\ExampleIssues.csv" -NoTypeInformation
+    if($analysisResultsTable -ne $null){
+        $analysisResultsTable | Export-Csv ".\artifacts\StaticAnalysisResults\ExampleIssues.csv" -NoTypeInformation
+    }
 }
 
 # Clean caches
