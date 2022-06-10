@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Rest;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.PrivateLinkService.Models
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.Models
         /// the private endpoint connection.</param>
         /// <param name="provisioningState">State of the private endpoint
         /// connection.</param>
-        /// <param name="groupId"></param>
+        /// <param name="groupId">Group ID of the private endpoint.</param>
         public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), PrivateEndpointProperty privateEndpoint = default(PrivateEndpointProperty), PrivateLinkServiceConnectionStateProperty privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionStateProperty), string provisioningState = default(string), string groupId = default(string))
             : base(id, name, type)
         {
@@ -85,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Validate">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
