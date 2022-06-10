@@ -12,14 +12,20 @@ West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 
 This command creates a database named default for a Redis Enterprise cache named MyCache.
 
+```
+
 ### Example 2: Create a georeplicated database for a Redis Enterprise cache
 ```powershell
-New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Plaintext" -EvictionPolicy "Encrypted" -ClusteringPolicy "EnterpriseCluster" -EvictionPolicy "NoEviction" -Port 10000 -GroupNickname "GroupName" -LinkedDatabases "/subscriptions/subid1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default" -LinkedDatabases "/subscriptions/subid1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default"
+New-AzRedisEnterpriseCacheDatabase -Name "MyCache2" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -GroupNickname "GroupNickname" -LinkedDatabases "{id:`"/subscriptions/sub1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache1/databases/default`"}","{id:"/subscriptions/sub1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache2/databases/default`"}"
 ```
 
 ```output
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
 West US  MyCache Microsoft.Cache/redisEnterprise      {default}
+
+```
+
+This command creates a georeplicated database named default for a Redis Enterprise cache named MyCache2. This database is supposed to be linked with a database default of a preexisting cache MyCache1
 
 ```

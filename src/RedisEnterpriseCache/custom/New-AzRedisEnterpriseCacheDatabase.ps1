@@ -33,11 +33,7 @@ Name    Type
 default Microsoft.Cache/redisEnterprise/databases
 
 .Example
-PS C:\> New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Plaintext" -EvictionPolicy "Encrypted" -ClusteringPolicy "EnterpriseCluster" -EvictionPolicy "NoEviction" -Port 10000 -GroupNickname "GroupName" -LinkedDatabases "/subscriptions/subid1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default" -LinkedDatabases "/subscriptions/subid1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default"
-
-Name    Type
-----    ----
-default Microsoft.Cache/redisEnterprise/databases
+PS C:\> New-AzRedisEnterpriseCacheDatabase -Name "MyCache2" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -GroupNickname "GroupNickname" -LinkedDatabases "{id:`"/subscriptions/sub1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache1/databases/default`"}","{id:"/subscriptions/sub1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache2/databases/default`"}"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IDatabase
@@ -45,6 +41,9 @@ Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IDataba
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+GEOREPLICATIONLINKEDDATABASE <ILinkedDatabase[]>: List of database resources to link with this database
+  [Id <String>]: Resource ID of a database resource to link with this database.
 
 MODULE <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at creation time.
   Name <String>: The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
@@ -102,20 +101,18 @@ function New-AzRedisEnterpriseCacheDatabase {
         ${EvictionPolicy},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.GroupNickname])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.GroupNickname]
         [System.String]
         # Name for the group of linked database resources
         ${GroupNickname},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.LinkedDatabases])]
+        [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.LinkedDatabases]
-        [System.String[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.ILinkedDatabase[]]
         # List of database resources to link with this database
-        ${LinkedDatabases},
+        # To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
+        ${LinkedDatabase},
 
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy])]

@@ -40,15 +40,5 @@ East US  MyCache Microsoft.Cache/redisEnterprise      {}
 
 Warning: This command creates a Redis Enterprise cache cluster named MyCache without any associated database to hold data.
 
-### Example 4: Create a georeplicated Redis Enterprise cache cluster
-```powershell
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -ClientProtocol "Plaintext" -EvictionPolicy "Encrypted" -ClusteringPolicy "EnterpriseCluster" -EvictionPolicy "NoEviction" -Port 10000 -GroupNickname "GroupName" -LinkedDatabases "/subscriptions/subid1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default" -LinkedDatabases "/subscriptions/subid1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default"
-```
-
-```output
-Location Name    Type                            Zone Database
--------- ----    ----                            ---- --------
-East US  MyCache Microsoft.Cache/redisEnterprise      {default}
-
 ```
 

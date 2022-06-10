@@ -77,6 +77,8 @@ East US  MyCache Microsoft.Cache/redisEnterprise      {}
 
 Warning: This command creates a Redis Enterprise cache cluster named MyCache without any associated database to hold data.
 
+```
+
 ## PARAMETERS
 
 ### -AofPersistenceEnabled
