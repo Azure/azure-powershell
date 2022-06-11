@@ -47,4 +47,8 @@
     <Folder Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkVirtualApplianceTests\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkManagerTests\" />
+  </ItemGroup>
+
 </Project>

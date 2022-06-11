@@ -6,6 +6,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.Management.CosmosDB" Version="3.7.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="22.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="22.1.0-Beta.1" />
   </ItemGroup>
 </Project>
