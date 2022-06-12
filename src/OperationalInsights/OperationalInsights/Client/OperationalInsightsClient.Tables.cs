@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
     public partial class OperationalInsightsClient
     {
-        public virtual List<PSTable> FilterPSTables(string resourceGroupName, string workspaceName, string tableName = null)
+        public List<PSTable> FilterPSTables(string resourceGroupName, string workspaceName, string tableName = null)
         {
             List<PSTable> tables = new List<PSTable>();
 
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         /// <param name="parameters">New table parameters for update</param>
         /// <returns>Updated table object</returns>
         /// <exception cref="PSArgumentException">Thrown if table does not exist</exception>
-        public virtual PSTable UpdatePSTable(PSTable parameters)
+        public PSTable UpdatePSTable(PSTable parameters)
         {
             PSTable existingTable = this.GetTable(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.TableName);
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         /// <param name="resourceGroupName">Resource group for operation</param>
         /// <param name="workspaceName">Workspace name for operation</param>
         /// <returns>A list of tables for a given workspace</returns>
-        public virtual List<PSTable> ListPSTables(string resourceGroupName, string workspaceName)
+        public List<PSTable> ListPSTables(string resourceGroupName, string workspaceName)
         {
             List<PSTable> tables = new List<PSTable>();
             var responseTables = OperationalInsightsManagementClient.Tables.ListByWorkspace(resourceGroupName, workspaceName);
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         /// <param name="workspaceName">Workspace name for operation</param>
         /// <param name="tableName">Table name for operation</param>
         /// <returns>Table object</returns>
-        public virtual PSTable GetTable(string resourceGroupName, string workspaceName, string tableName)
+        public PSTable GetTable(string resourceGroupName, string workspaceName, string tableName)
         {
             try
             {
@@ -111,14 +111,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         /// <param name="tableName">Table name for operation</param>
         /// <returns>HttpStatusCode indicating success or failure</returns>
         /// <exception cref="PSArgumentException">Thrown if table does not exist</exception>
-        public virtual HttpStatusCode MigratePSTable(string resourceGroupName, string workspaceName, string tableName)
+        public HttpStatusCode MigratePSTable(string resourceGroupName, string workspaceName, string tableName)
         {
             PSTable existingTable = this.GetTable(resourceGroupName, workspaceName, tableName);
 
             return OperationalInsightsManagementClient.Tables.MigrateWithHttpMessagesAsync(resourceGroupName, workspaceName, tableName).Result.Response.StatusCode;
         }
 
-        public virtual HttpStatusCode DeletePSTable(string resourceGroupName, string workspaceName, string tableName)
+        public HttpStatusCode DeletePSTable(string resourceGroupName, string workspaceName, string tableName)
         {
             PSTable existingTable = this.GetTable(resourceGroupName, workspaceName, tableName);
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return res.Response.StatusCode;
         }
 
-        public virtual PSTable CreateRestoreTable(PSRestoreTable properties)
+        public PSTable CreateRestoreTable(PSRestoreTable properties)
         {
             ValidateTableNotExist(properties, TableConsts.RestoredLogsSuffix);
             var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.TableName, properties.ToTableProperties());
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return new PSTable(response, properties.ResourceGroupName, properties.WorkspaceName);
         }
 
-        public virtual PSTable CreateSearchTable(PSSearchTable properties)
+        public PSTable CreateSearchTable(PSSearchTable properties)
         {
             ValidateTableNotExist(properties, TableConsts.SearchResultsSuffix);
             var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.TableName, properties.ToTableProperties());
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return new PSTable(response, properties.ResourceGroupName, properties.WorkspaceName);
         }
 
-        public virtual PSTable CreatePSTable(PSTable properties)
+        public PSTable CreatePSTable(PSTable properties)
         {
             ValidateTableNotExist(properties, TableConsts.CustomLogSuffix);
             var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.TableName, properties.ToTableProperties());

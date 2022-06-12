@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
         public string WorkspaceName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The table name.")]
+            HelpMessage = "The table name. For Restore table the name should end with '_RST'")]
         [ValidateNotNullOrEmpty]
         public string TableName { get; set; }
 
