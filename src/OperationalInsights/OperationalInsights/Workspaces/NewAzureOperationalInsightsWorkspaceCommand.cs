@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 ForceCmkForQuery = ForceCmkForQuery,
                 ConfirmAction = ConfirmAction,
                 WsFeatures = new PSWorkspaceFeatures(DisableLocalAuth),
-                DefaultDataCollectionRuleResourceId = DefaultDataCollectionRuleResourceId,
+                DefaultDataCollectionRuleResourceId = DefaultDataCollectionRuleResourceId
             };
 
             WriteObject(OperationalInsightsClient.CreatePSWorkspace(parameters));

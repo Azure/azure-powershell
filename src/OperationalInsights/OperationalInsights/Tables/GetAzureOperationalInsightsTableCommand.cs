@@ -40,8 +40,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 
         public override void ExecuteCmdlet()
         {
-            var ans = OperationalInsightsClient.FilterPSTables(ResourceGroupName, WorkspaceName, TableName);
-            WriteObject(ans, true);
+            WriteObject(OperationalInsightsClient.FilterPSTables(ResourceGroupName, WorkspaceName, TableName), true);
         }
 
     }
