@@ -11,6 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 using System;
 using System.Management.Automation;
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             }
             catch (Exception)
             {
-                throw new PSArgumentException(string.Format(Errors.BadDateTimeFormat, startRestoreTime, nameof(startRestoreTime)));
+                throw new PSArgumentException(string.Format(Resources.BadDateTimeFormat, startRestoreTime, nameof(startRestoreTime)));
             }
 
             try
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             }
             catch (Exception)
             {
-                throw new PSArgumentException(string.Format(Errors.BadDateTimeFormat, endRestoreTime, nameof(endRestoreTime)));
+                throw new PSArgumentException(string.Format(Resources.BadDateTimeFormat, endRestoreTime, nameof(endRestoreTime)));
             }
 
             this.StartRestoreTime = start;

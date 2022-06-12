@@ -65,9 +65,4 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public const string RestoredLogsSuffix = "_RST";
         public const string DateTimeExample = "Sat, 28 Aug 2021 05:29:18 GMT";
     }
-
-    internal static class Errors
-    {
-        public static string BadDateTimeFormat = $"Input DateTime: {{0}} value for variable {{1}}, failed to parse into DateTime, please use a string in the format of: \"{TableConsts.DateTimeExample}\"";
-    }
 }
