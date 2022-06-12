@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public DateTime? EndRestoreTime { get; set; }
 
-        public string RestoreSourceTable { get; set; }
+        public string SourceTable { get; set; }
 
         public PSRestoreTable(
             string resourceGroupName,
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             string tableName,
             string startRestoreTime,
             string endRestoreTime,
-            string restoreSourceTable)
+            string SourceTable)
         {
             base.ResourceGroupName = resourceGroupName;
             base.WorkspaceName = workspaceName;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
             this.StartRestoreTime = start;
             this.EndRestoreTime = end;
-            this.RestoreSourceTable = restoreSourceTable;
+            this.SourceTable = SourceTable;
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             return new Table(
                 name: TableName,
                 plan: Plan,
-                restoredLogs: new RestoredLogs(this.StartRestoreTime, this.EndRestoreTime, this.RestoreSourceTable));
+                restoredLogs: new RestoredLogs(this.StartRestoreTime, this.EndRestoreTime, this.SourceTable));
 
         }
     }

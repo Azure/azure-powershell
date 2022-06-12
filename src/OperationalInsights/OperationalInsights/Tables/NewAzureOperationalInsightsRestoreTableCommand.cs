@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The table to restore data from.")]
         [ValidateNotNullOrEmpty]
-        public string RestoreSourceTable { get; set; }
+        public string SourceTable { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
                 tableName: TableName,
                 startRestoreTime: StartRestoreTime,
                 endRestoreTime: EndRestoreTime,
-                restoreSourceTable: RestoreSourceTable);
+                SourceTable: SourceTable);
 
             if (ShouldProcess(TableName, $"Update Table: {TableName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
             {

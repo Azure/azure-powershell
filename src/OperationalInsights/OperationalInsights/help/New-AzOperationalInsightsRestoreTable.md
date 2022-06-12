@@ -14,7 +14,7 @@ Create a new Restore table
 
 ```
 New-AzOperationalInsightsRestoreTable [-ResourceGroupName] <String> [-WorkspaceName] <String>
- [-TableName] <String> -StartRestoreTime <String> -EndRestoreTime <String> -RestoreSourceTable <String>
+ [-TableName] <String> -StartRestoreTime <String> -EndRestoreTime <String> -SourceTable <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Create a Restore table
 
 ### Example 1
 ```powershell
-PS C:\> New-AzOperationalInsightsRestoreTable -ResourceGroupName {rgName} -WorkspaceName {wsName} -TableName {tableName_RST} -StartRestoreTime "05-25-2022 12:26:36" -EndRestoreTime "05-28-2022 12:26:36" -RestoreSourceTable "Usage"
+PS C:\> New-AzOperationalInsightsRestoreTable -ResourceGroupName {rgName} -WorkspaceName {wsName} -TableName {tableName_RST} -StartRestoreTime "05-25-2022 12:26:36" -EndRestoreTime "05-28-2022 12:26:36" -SourceTable "Usage"
 
 TableName            : {tableName_RST}
 ResourceId           : /subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/{rgName}/providers/Microsoft.OperationalInsights/workspaces/{wsName}/tables/dabenhamPoc22_RST
@@ -103,7 +103,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RestoreSourceTable
+### -SourceTable
 The table to restore data from.
 
 ```yaml

@@ -110,7 +110,7 @@ function Test-RestoreTableCrud
 	$restoreTableName = "dabenhamPoc13_RST"
 
 	# Create Restore table
-	$restoreTable = New-AzOperationalInsightsRestoreTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName -StartRestoreTime "05-27-2022 12:26:36" -EndRestoreTime "05-28-2022 12:26:36" -RestoreSourceTable "Usage"
+	$restoreTable = New-AzOperationalInsightsRestoreTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName -StartRestoreTime "05-27-2022 12:26:36" -EndRestoreTime "05-28-2022 12:26:36" -SourceTable "Usage"
 
 	# Get the new Restore table
 	$getRestoreTable = Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName
