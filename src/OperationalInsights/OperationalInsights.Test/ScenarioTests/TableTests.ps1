@@ -23,20 +23,13 @@ function Test-TableCRUD
 	$wsNameExisting = "dabenham-eus"
 	$tableNameExisting = "dabenhamDev_CL"
 
-	try
-	{
-		# get all existing tables
-		$allTable = Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $workspaceName
-		Assert-NotNull $allTable
-		Assert-True {$allTable.Count -gt 1}
+	# get all existing tables
+	$allTable = Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $workspaceName
+	Assert-NotNull $allTable
+	Assert-True {$allTable.Count -gt 1}
 		
-		# get table that does not exist 
-		Assert-ThrowsContains {Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $workspaceName -tableName $tableNotFound} 'NotFound'
-	}
-	finally
-	{
-		# Cleanup
-	}
+	# get table that does not exist 
+	Assert-ThrowsContains {Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $workspaceName -tableName $tableNotFound} 'NotFound'
 }
 
 <#
@@ -50,36 +43,30 @@ function Test-ClTableCrud
 	$wsNameExisting = "dabenham-eus"
 	$clTableName = "dabenhamPoc_CL"
 
-	try
-	{
-		# Create CustomLog table
-		$columns = @{'ColName1' = 'string'; 'TimeGenerated' = 'DateTime'; 'ColName3' = 'int'}
-		$clTable = New-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName -RetentionInDays 25 -TotalRetentionInDays 30 -Columns $columns
-		Assert-NotNull $clTable
-		Assert-True { $clTable.RetentionInDays -eq 25 }
-		Assert-True { $clTable.TotalRetentionInDays -eq 30 }
+	# Create CustomLog table
+	$columns = @{'ColName1' = 'string'; 'TimeGenerated' = 'DateTime'; 'ColName3' = 'int'}
+	$clTable = New-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName -RetentionInDays 25 -TotalRetentionInDays 30 -Columns $columns
+	Assert-NotNull $clTable
+	Assert-True { $clTable.RetentionInDays -eq 25 }
+	Assert-True { $clTable.TotalRetentionInDays -eq 30 }
 
-		# Get the new CustomLog table
-		$getClTable = Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName
-		Assert-NotNull $getClTable
-		Assert-True { $getClTable.RetentionInDays -eq 25 }
-		Assert-True { $getClTable.TotalRetentionInDays -eq 30 }
+	# Get the new CustomLog table
+	$getClTable = Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName
+	Assert-NotNull $getClTable
+	Assert-True { $getClTable.RetentionInDays -eq 25 }
+	Assert-True { $getClTable.TotalRetentionInDays -eq 30 }
 
-		# Migrate
-		$migrateTable = Migrate-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName
-		Assert-True { $migrateTable }
+	# Migrate
+	$migrateTable = Migrate-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName
+	Assert-True { $migrateTable }
 
-		#Delete
-		$deleteTable = Remove-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName
-		Assert-True { $deleteTable 
+	#Delete
+	$deleteTable = Remove-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName
+	Assert-True { $deleteTable 
 
-		# get table that does was deleted - does not exist 
-		Assert-ThrowsContains {Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -tableName $clTableName} 'NotFound'
-	}
-	finally
-	{
-		# Cleanup
-	}
+	# get table that does was deleted - does not exist 
+	Assert-ThrowsContains {Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -tableName $clTableName} 'NotFound'
+}
 
 <#
 .SYNOPSIS
@@ -92,30 +79,24 @@ function Test-SearchTableCrud
 	$wsNameExisting = "dabenham-eus"
 	$searchTableName = "dabenhamPoc_SRCH"
 
-	try
-	{
-		# Create Search table
-		$searchTable = New-AzOperationalInsightsSearchTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $searchTableName -SearchQuery "Heartbeat"  -StartSearchTime "05-27-2022 12:26:36" -EndSearchTime "05-28-2022 12:26:36"
-		Assert-NotNull $searchTable
+	# Create Search table
+	$searchTable = New-AzOperationalInsightsSearchTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $searchTableName -SearchQuery "Heartbeat"  -StartSearchTime "05-27-2022 12:26:36" -EndSearchTime "05-28-2022 12:26:36"
+	Assert-NotNull $searchTable
 
-		# Get the new Search table
-		$getSearchTable = Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $searchTableName
-		Assert-NotNull $getSearchTable
-		# TODO - validate another property - check the object manually for potential properties
-		# Assert-True { $getSearchTable.RetentionInDays -eq 25 } 
-		# Assert-True { $getSearchTable.TotalRetentionInDays -eq 30 }
+	# Get the new Search table
+	$getSearchTable = Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $searchTableName
+	Assert-NotNull $getSearchTable
+	# TODO - validate another property - check the object manually for potential properties
+	# Assert-True { $getSearchTable.RetentionInDays -eq 25 } 
+	# Assert-True { $getSearchTable.TotalRetentionInDays -eq 30 }
 				
-		#Delete
-		$deleteTable = Remove-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $searchTableName
-		Assert-True { $deleteTable }
+	#Delete
+	$deleteTable = Remove-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $searchTableName
+	Assert-True { $deleteTable }
 
-		# get table that does was deleted - does not exist 
-		Assert-ThrowsContains {Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -tableName $searchTableName} 'NotFound'
-	}
-	finally
-	{
-		# Cleanup
-	}
+	# get table that does was deleted - does not exist 
+	Assert-ThrowsContains {Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -tableName $searchTableName} 'NotFound'
+}
 
 <#
 .SYNOPSIS
@@ -128,28 +109,20 @@ function Test-RestoreTableCrud
 	$wsNameExisting = "dabenham-eus"
 	$restoreTableName = "dabenhamPoc13_RST"
 
-	try
-	{
-		# Create Restore table
-		$restoreTable = New-AzOperationalInsightsRestoreTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName -StartRestoreTime "05-27-2022 12:26:36" -EndRestoreTime "05-28-2022 12:26:36" -RestoreSourceTable "Usage"
+	# Create Restore table
+	$restoreTable = New-AzOperationalInsightsRestoreTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName -StartRestoreTime "05-27-2022 12:26:36" -EndRestoreTime "05-28-2022 12:26:36" -RestoreSourceTable "Usage"
 
-		# Get the new Restore table
-		$getRestoreTable = Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName
-		Assert-NotNull $getRestoreTable
-		# TODO - validate another property - check the object manually for potential properties
-		# Assert-True { $getSearchTable.RetentionInDays -eq 25 } 
-		# Assert-True { $getSearchTable.TotalRetentionInDays -eq 30 }
+	# Get the new Restore table
+	$getRestoreTable = Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName
+	Assert-NotNull $getRestoreTable
+	# TODO - validate another property - check the object manually for potential properties
+	# Assert-True { $getSearchTable.RetentionInDays -eq 25 } 
+	# Assert-True { $getSearchTable.TotalRetentionInDays -eq 30 }
 		
-		#Delete
-		$deleteTable = Remove-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName
-		Assert-True { $deleteTable }
+	#Delete
+	$deleteTable = Remove-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName
+	Assert-True { $deleteTable }
 
-		# get table that does was deleted - does not exist 
-		Assert-ThrowsContains {Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -tableName $restoreTableName} 'NotFound'
-	}
-	finally
-	{
-		# Cleanup
-	}
-	
+	# get table that does was deleted - does not exist 
+	Assert-ThrowsContains {Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -tableName $restoreTableName} 'NotFound'
 }
