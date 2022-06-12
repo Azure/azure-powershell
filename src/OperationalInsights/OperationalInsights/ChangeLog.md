@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Added new cmdlets for Table resource: 'Create-AzOperationalInsightsRestoreTable', 'Create-AzOperationalInsightsSearchTable', 'Create-AzOperationalInsightsTable','Delete-AzOperationalInsightsTable','Update-AzOperationalInsightsTable', 'Migrate-AzOperationalInsightsTable'
+* Added new cmdlets for Table resource: 'New-AzOperationalInsightsRestoreTable', 'New-AzOperationalInsightsSearchTable', 'New-AzOperationalInsightsTable','Remove-AzOperationalInsightsTable','Update-AzOperationalInsightsTable', 'Migrate-AzOperationalInsightsTable'
 * Add new property 'DefaultDataCollectionRuleResourceId' to 'Set-AzOperationalInsightsWorkspace' and to 'New-AzOperationalInsightsWorkspace' cmdlets
 
 ## Version 3.1.0
