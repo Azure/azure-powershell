@@ -29,5 +29,26 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-TableCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestClTableCRUD()
+        {
+            TestRunner.RunTestScript("Test-ClTableCrud");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreTableCRUD()
+        {
+            TestRunner.RunTestScript("Test-RestoreTableCrud");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSearchTableCRUD()
+        {
+            TestRunner.RunTestScript("Test-SearchTableCrud");
+        }
     }
 }

@@ -54,7 +54,7 @@ function Test-ClTableCrud
 	{
 		# Create CustomLog table
 		$columns = @{'ColName1' = 'string'; 'TimeGenerated' = 'DateTime'; 'ColName3' = 'int'}
-		$clTable = Create-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName -RetentionInDays 25 -TotalRetentionInDays 30 -Columns $columns
+		$clTable = New-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName -RetentionInDays 25 -TotalRetentionInDays 30 -Columns $columns
 		Assert-NotNull $clTable
 		Assert-True { $clTable.RetentionInDays -eq 25 }
 		Assert-True { $clTable.TotalRetentionInDays -eq 30 }
@@ -70,7 +70,7 @@ function Test-ClTableCrud
 		Assert-True { $migrateTable }
 
 		#Delete
-		$deleteTable = Delete-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName
+		$deleteTable = Remove-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName
 		Assert-True { $deleteTable 
 
 		# get table that does was deleted - does not exist 
@@ -95,7 +95,7 @@ function Test-SearchTableCrud
 	try
 	{
 		# Create Search table
-		$searchTable = Create-AzOperationalInsightsSearchTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $searchTableName -SearchQuery "Heartbeat"  -StartSearchTime "05-27-2022 12:26:36" -EndSearchTime "05-28-2022 12:26:36"
+		$searchTable = New-AzOperationalInsightsSearchTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $searchTableName -SearchQuery "Heartbeat"  -StartSearchTime "05-27-2022 12:26:36" -EndSearchTime "05-28-2022 12:26:36"
 		Assert-NotNull $searchTable
 
 		# Get the new Search table
@@ -106,7 +106,7 @@ function Test-SearchTableCrud
 		# Assert-True { $getSearchTable.TotalRetentionInDays -eq 30 }
 				
 		#Delete
-		$deleteTable = Delete-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $searchTableName
+		$deleteTable = Remove-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $searchTableName
 		Assert-True { $deleteTable }
 
 		# get table that does was deleted - does not exist 
@@ -131,7 +131,7 @@ function Test-RestoreTableCrud
 	try
 	{
 		# Create Restore table
-		$restoreTable = Create-AzOperationalInsightsRestoreTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName -StartRestoreTime "05-27-2022 12:26:36" -EndRestoreTime "05-28-2022 12:26:36" -RestoreSourceTable "Usage"
+		$restoreTable = New-AzOperationalInsightsRestoreTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName -StartRestoreTime "05-27-2022 12:26:36" -EndRestoreTime "05-28-2022 12:26:36" -RestoreSourceTable "Usage"
 
 		# Get the new Restore table
 		$getRestoreTable = Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName
@@ -141,7 +141,7 @@ function Test-RestoreTableCrud
 		# Assert-True { $getSearchTable.TotalRetentionInDays -eq 30 }
 		
 		#Delete
-		$deleteTable = Delete-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName
+		$deleteTable = Remove-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName
 		Assert-True { $deleteTable }
 
 		# get table that does was deleted - does not exist 
