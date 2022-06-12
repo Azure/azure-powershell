@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 DailyQuotaGb = DailyQuotaGb,
                 ForceCmkForQuery = ForceCmkForQuery,
                 WsFeatures = new PSWorkspaceFeatures(DisableLocalAuth),
-                DefaultDataCollectionRuleResourceId = DefaultDataCollectionRuleResourceId,
+                DefaultDataCollectionRuleResourceId = DefaultDataCollectionRuleResourceId
             };
 
             WriteObject(OperationalInsightsClient.UpdatePSWorkspace(parameters));

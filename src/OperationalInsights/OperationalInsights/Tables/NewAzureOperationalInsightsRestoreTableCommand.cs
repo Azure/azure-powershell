@@ -17,8 +17,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 {
-    [Cmdlet("Create", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsRestoreTable", SupportsShouldProcess = true), OutputType(typeof(PSTable))]
-    public class CreateAzureOperationalInsightsRestoreTableCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsRestoreTable", SupportsShouldProcess = true), OutputType(typeof(PSTable))]
+    public class NewAzureOperationalInsightsRestoreTableCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]

@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.operationalinsig
 schema: 2.0.0
 ---
 
-# Create-AzOperationalInsightsSearchTable
+# New-AzOperationalInsightsSearchTable
 
 ## SYNOPSIS
 Create a Search table
@@ -13,7 +13,7 @@ Create a Search table
 ## SYNTAX
 
 ```
-Create-AzOperationalInsightsSearchTable [-ResourceGroupName] <String> [-WorkspaceName] <String>
+New-AzOperationalInsightsSearchTable [-ResourceGroupName] <String> [-WorkspaceName] <String>
  [-TableName] <String> [[-RetentionInDays] <Int32>] [[-TotalRetentionInDays] <Int32>] -SearchQuery <String>
  -StartSearchTime <String> -EndSearchTime <String> [-Limit <Int32>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -26,7 +26,7 @@ Create a Search table
 
 ### Example 1
 ```powershell
-PS C:\> Create-AzOperationalInsightsSearchTable -ResourceGroupName {rgName} -WorkspaceName {wsName} -TableName {tableName_SRCH} -SearchQuery "Heartbeat"  -StartSearchTime "05-27-2022 12:26:36" -EndSearchTime "05-28-2022 12:26:36"
+PS C:\> New-AzOperationalInsightsSearchTable -ResourceGroupName {rgName} -WorkspaceName {wsName} -TableName {tableName_SRCH} -SearchQuery "Heartbeat"  -StartSearchTime "05-27-2022 12:26:36" -EndSearchTime "05-28-2022 12:26:36"
 
 TableName            : tableName_SRCH
 ResourceId           : /subscriptions/{subscriptionID}/resourcegroups/{rgName}/providers/Microsoft.OperationalInsights/workspaces/{wsName}/tables/{tableName_SRCH}

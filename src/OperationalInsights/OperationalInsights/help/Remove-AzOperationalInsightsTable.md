@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.operationalinsig
 schema: 2.0.0
 ---
 
-# Delete-AzOperationalInsightsTable
+# Remove-AzOperationalInsightsTable
 
 ## SYNOPSIS
 Delete a Log Analytics workspace table.
@@ -13,7 +13,7 @@ Delete a Log Analytics workspace table.
 ## SYNTAX
 
 ```
-Delete-AzOperationalInsightsTable [-ResourceGroupName] <String> [-WorkspaceName] <String> [-TableName] <String>
+Remove-AzOperationalInsightsTable [-ResourceGroupName] <String> [-WorkspaceName] <String> [-TableName] <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Delete a Log Analytics workspace table.
 
 ### Example 1
 ```powershell
-PS C:\> Delete-AzOperationalInsightsTable -ResourceGroupName dabenham-dev -WorkspaceName dabenham-pshTest -TableName dabenhamPoc22_SRCH
+PS C:\> Remove-AzOperationalInsightsTable -ResourceGroupName dabenham-dev -WorkspaceName dabenham-pshTest -TableName dabenhamPoc22_SRCH
 True
 ```
 

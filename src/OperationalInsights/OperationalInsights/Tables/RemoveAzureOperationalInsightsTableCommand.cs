@@ -17,8 +17,8 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 {
-    [Cmdlet("Delete", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsTable", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class DeleteAzureOperationalInsightsTableCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsTable", SupportsShouldProcess = true), OutputType(typeof(void))]
+    public class RemoveAzureOperationalInsightsTableCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
