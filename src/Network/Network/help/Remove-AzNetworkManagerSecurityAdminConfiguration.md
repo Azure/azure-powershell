@@ -88,7 +88,8 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wil
+Accept wildcard characters: False
+```
 
 ### -Name
 The resource name.
