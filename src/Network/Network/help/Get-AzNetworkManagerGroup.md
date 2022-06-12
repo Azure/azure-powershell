@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerGroup
 
 ## SYNOPSIS
-Gets network group(s) in a network manager.
+Gets a network group in a network manager.
 
 ## SYNTAX
 
