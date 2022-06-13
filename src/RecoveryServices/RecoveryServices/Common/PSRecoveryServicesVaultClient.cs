@@ -109,8 +109,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Method to Update Azure Recovery Services Vault Backup Properties  
         /// </summary>  
         /// <param name="resouceGroupName">Name of the resouce group</param>  
-        /// <param name="vaultName">Name of the vault</param>  
-        /// <param name="vaultStorageUpdateRequest">Backup Properties Update</param>  
+        /// <param name="vaultName">Name of the vault</param>
+        /// <param name="backupStorageConfig"></param>  
         /// <returns>Azure Operation response object.</returns>  
         public void UpdateVaultStorageType(string resouceGroupName, string vaultName,
             BackupResourceConfigResource backupStorageConfig)
@@ -123,8 +123,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Method to Patch Azure Recovery Services Vault Backup Properties  
         /// </summary>  
         /// <param name="resouceGroupName">Name of the resouce group</param>  
-        /// <param name="vaultName">Name of the vault</param>  
-        /// <param name="vaultStorageUpdateRequest">Backup Properties Update</param>  
+        /// <param name="vaultName">Name of the vault</param>
+        /// <param name="backupStorageConfig"></param>  
         /// <returns>Azure Operation response object.</returns>  
         public void PatchVaultStorageConfigProperties(string resouceGroupName, string vaultName,
             BackupResourceConfigResource backupStorageConfig)
