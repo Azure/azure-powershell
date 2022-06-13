@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.TestFx;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Test
@@ -31,6 +32,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test
                     @"Common.ps1",
                     @"../AzureRM.Resources.ps1"
                 })
+                .WithRecordMatcher((ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
+                        new PermissiveRecordMatcherWithApiExclusion(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
+                )
                 .WithNewRmModules(helper => new[]
                 {
                     helper.RMProfileModule,
