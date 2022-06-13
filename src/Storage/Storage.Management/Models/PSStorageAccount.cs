@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
     public class PSStorageAccount : IStorageContextProvider
     {
-
         public PSStorageAccount(Track2.StorageAccountResource storageAccountResource)
         {
             this.ResourceGroupName = new ResourceIdentifier(storageAccountResource.Id).ResourceGroupName;
@@ -270,6 +269,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
     public class PSIdentity
     {
+        private const string SystemAssignedUserAssigned = "SystemAssigned,UserAssigned";
         public string PrincipalId { get; set; }
         public string TenantId { get; set; }
 
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             }
             if (identity.ManagedServiceIdentityType == ManagedServiceIdentityType.SystemAssignedUserAssigned)
             {
-                this.Type = "SystemAssigned,UserAssigned";
+                this.Type = SystemAssignedUserAssigned;
             } else
             {
                 this.Type = identity.ManagedServiceIdentityType.ToString();
