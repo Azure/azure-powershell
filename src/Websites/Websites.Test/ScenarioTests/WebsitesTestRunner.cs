@@ -37,14 +37,10 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                 .WithNewRmModules(helper => new[]
                 {
                     helper.RMProfileModule,
-                    helper.GetRMModulePath("AzureRM.Websites.psd1"),
-                    helper.GetRMModulePath("AzureRM.Network.psd1"),
-                    helper.GetRMModulePath("AzureRM.KeyVault.psd1")
+                    helper.GetRMModulePath("Az.Websites.psd1"),
+                    helper.GetRMModulePath("Az.Network.psd1"),
+                    helper.GetRMModulePath("Az.KeyVault.psd1")
                 })
-                .WithRecordMatcher(
-                    (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
-                        new PermissiveRecordMatcherWithApiExclusion(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
-                )
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
                     {
