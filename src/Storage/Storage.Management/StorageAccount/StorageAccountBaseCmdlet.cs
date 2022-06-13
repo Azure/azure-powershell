@@ -226,7 +226,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (storageAccountResource.GetKeys()?.Value?.Keys != null && storageAccountResource.GetKeys().Value.Keys.Count > 0)
             {
                 key = storageAccountResource.GetKeys().Value.Keys[0].Value;
-            } else
+            } 
+            else
             {
                 throw new InvalidJobStateException("Could not fetch storage account keys to build storage account context.");
             }

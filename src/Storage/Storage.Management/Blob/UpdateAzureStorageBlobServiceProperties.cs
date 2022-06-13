@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
+
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     using Microsoft.Azure.Commands.Management.Storage.Models;
-    using Microsoft.Azure.Management.Storage;
-    using Microsoft.Azure.Management.Storage.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
@@ -155,19 +156,21 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                         break;
                 }
-                BlobServiceProperties serviceProperties = new BlobServiceProperties();
+                Track2.BlobServiceData data = new Track2.BlobServiceData();
 
                 if (DefaultServiceVersion != null)
                 {
-                    serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
+                    data.DefaultServiceVersion = this.DefaultServiceVersion;
                 }
                 if (enableChangeFeed != null)
                 {
-                    serviceProperties.ChangeFeed = new ChangeFeed();
-                    serviceProperties.ChangeFeed.Enabled = enableChangeFeed;
+                    data.ChangeFeed = new Track2Models.ChangeFeed
+                    {
+                        Enabled = this.enableChangeFeed
+                    };
                     if (this.changeFeedRetentionInDays != null)
                     {
-                        serviceProperties.ChangeFeed.RetentionInDays = this.changeFeedRetentionInDays;
+                        data.ChangeFeed.RetentionInDays = this.changeFeedRetentionInDays;
                     }
                 }
                 else
@@ -179,15 +182,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
                 if (isVersioningEnabled != null)
                 {
-                    serviceProperties.IsVersioningEnabled = isVersioningEnabled;
+                    data.IsVersioningEnabled = this.isVersioningEnabled;
                 }
 
-                serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);
+                var properties = this.StorageClientTrack2.GetBlobServiceResource(this.ResourceGroupName, this.StorageAccountName)
+                    .CreateOrUpdate(global::Azure.WaitUntil.Completed, data).Value;
 
                 //Get the full service properties for output
-                serviceProperties = this.StorageClient.BlobServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);
+                properties = this.StorageClientTrack2.GetBlobServiceResource(this.ResourceGroupName, this.StorageAccountName).Get().Value;
 
-                WriteObject(new PSBlobServiceProperties(serviceProperties));
+                WriteObject(new PSBlobServiceProperties(properties));
             }
         }
     }

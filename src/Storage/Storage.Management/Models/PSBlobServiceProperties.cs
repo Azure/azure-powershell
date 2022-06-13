@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
@@ -52,35 +54,21 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSBlobServiceProperties()
         { }
 
-        public PSBlobServiceProperties(BlobServiceProperties policy)
+        public PSBlobServiceProperties(Track2.BlobServiceResource policyResource)
         {
-            this.ResourceGroupName = (new ResourceIdentifier(policy.Id)).ResourceGroupName;
-            this.StorageAccountName = GetStorageAccountNameFromResourceId(policy.Id);
-            this.Id = policy.Id;
-            this.Name = policy.Name;
-            this.Type = policy.Type;
-            this.Cors = policy.Cors is null ? null : new PSCorsRules(policy.Cors);
-            this.DefaultServiceVersion = policy.DefaultServiceVersion;
-            this.DeleteRetentionPolicy = policy.DeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.DeleteRetentionPolicy);
-            this.RestorePolicy = policy.RestorePolicy is null ? null : new PSRestorePolicy(policy.RestorePolicy);
-            this.ChangeFeed = policy.ChangeFeed is null ? null : new PSChangeFeed(policy.ChangeFeed);
-            this.IsVersioningEnabled = policy.IsVersioningEnabled;
-            this.ContainerDeleteRetentionPolicy = policy.ContainerDeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.ContainerDeleteRetentionPolicy);
-            this.LastAccessTimeTrackingPolicy = policy.LastAccessTimeTrackingPolicy is null? null : new PSLastAccessTimeTrackingPolicy(policy.LastAccessTimeTrackingPolicy);
-        }
-        public BlobServiceProperties ParseBlobServiceProperties()
-        {
-            return new BlobServiceProperties
-            {
-                Cors = this.Cors is null ? null : this.Cors.ParseCorsRules(),
-                DefaultServiceVersion = this.DefaultServiceVersion,
-                DeleteRetentionPolicy = this.DeleteRetentionPolicy is null ? null : this.DeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
-                RestorePolicy = this.RestorePolicy is null ? null : this.RestorePolicy.ParseRestorePolicy(),
-                ChangeFeed = this.ChangeFeed is null ? null : this.ChangeFeed.ParseChangeFeed(),
-                IsVersioningEnabled = this.IsVersioningEnabled,
-                ContainerDeleteRetentionPolicy = this.ContainerDeleteRetentionPolicy is null ? null : this.ContainerDeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
-                LastAccessTimeTrackingPolicy = this.LastAccessTimeTrackingPolicy is null ? null : this.LastAccessTimeTrackingPolicy.ParseLastAccessTimeTrackingPolicy()
-            };
+            this.ResourceGroupName = (new ResourceIdentifier(policyResource.Id)).ResourceGroupName;
+            this.StorageAccountName = GetStorageAccountNameFromResourceId(policyResource.Id);
+            this.Id = policyResource.Id;
+            this.Name = policyResource.Data.Name;
+            this.Type = policyResource.Data.ResourceType;
+            this.Cors = policyResource.Data.CorsRulesValue is null ? null : new PSCorsRules(policyResource.Data.CorsRulesValue);
+            this.DefaultServiceVersion = policyResource.Data.DefaultServiceVersion;
+            this.DeleteRetentionPolicy = policyResource.Data.DeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policyResource.Data.DeleteRetentionPolicy);
+            this.RestorePolicy = policyResource.Data.RestorePolicy is null ? null : new PSRestorePolicy(policyResource.Data.RestorePolicy);
+            this.ChangeFeed = policyResource.Data.ChangeFeed is null ? null : new PSChangeFeed(policyResource.Data.ChangeFeed);
+            this.IsVersioningEnabled = policyResource.Data.IsVersioningEnabled;
+            this.ContainerDeleteRetentionPolicy = policyResource.Data.ContainerDeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policyResource.Data.ContainerDeleteRetentionPolicy);
+            this.LastAccessTimeTrackingPolicy = policyResource.Data.LastAccessTimeTrackingPolicy is null ? null : new PSLastAccessTimeTrackingPolicy(policyResource.Data.LastAccessTimeTrackingPolicy);
         }
 
         /// <summary>
@@ -121,19 +109,20 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
         }
 
-        public PSChangeFeed(ChangeFeed changeFeed)
+        public PSChangeFeed(Track2Models.ChangeFeed changeFeed)
         {
             this.Enabled = changeFeed.Enabled;
             this.RetentionInDays = changeFeed.RetentionInDays;
         }
 
-        public ChangeFeed ParseChangeFeed()
+        public Track2Models.ChangeFeed ParseChangeFeed()
         {
-            return new ChangeFeed
+            Track2Models.ChangeFeed changeFeed = new Track2Models.ChangeFeed
             {
                 Enabled = this.Enabled,
-                RetentionInDays = this.RetentionInDays
+                RetentionInDays = this.RetentionInDays,
             };
+            return changeFeed;
         }
     }
 
@@ -144,26 +133,27 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public bool? Enabled { get; set; }
         public int? Days { get; set; }
-        public bool? AllowPermanentDelete { get; set; }
+
+        // TODO: AllowPermanentDelete is not supported by Track2 SDK yet. Will add later. 
 
         public PSDeleteRetentionPolicy()
         {
         }
 
-        public PSDeleteRetentionPolicy(DeleteRetentionPolicy policy)
+        public PSDeleteRetentionPolicy(Track2Models.DeleteRetentionPolicy policy)
         {
             this.Enabled = policy.Enabled;
             this.Days = policy.Days;
-            this.AllowPermanentDelete = policy.AllowPermanentDelete;
         }
-        public DeleteRetentionPolicy ParseDeleteRetentionPolicy()
+
+        public Track2Models.DeleteRetentionPolicy ParseDeleteRetentionPolicy()
         {
-            return new DeleteRetentionPolicy
+            Track2Models.DeleteRetentionPolicy ret = new Track2Models.DeleteRetentionPolicy
             {
                 Enabled = this.Enabled,
                 Days = this.Days,
-                AllowPermanentDelete = this.AllowPermanentDelete
             };
+            return ret;
         }
     }
 
@@ -174,25 +164,26 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public bool? Enabled { get; set; }
         public int? Days { get; set; }
-        public DateTime? MinRestoreTime { get; set; }
+        public DateTimeOffset? MinRestoreTime { get; set; }
 
         public PSRestorePolicy()
         {
         }
 
-        public PSRestorePolicy(RestorePolicyProperties policy)
+        public PSRestorePolicy(Track2Models.RestorePolicyProperties policy)
         {
             this.Enabled = policy.Enabled;
             this.Days = policy.Days;
-            this.MinRestoreTime = policy.MinRestoreTime;
-
+            this.MinRestoreTime = policy.MinRestoreOn;
         }
-        public RestorePolicyProperties ParseRestorePolicy()
+
+        public Track2Models.RestorePolicyProperties ParseRestorePolicy()
         {
-            return new RestorePolicyProperties
+            bool enabled = this.Enabled is null ? false : this.Enabled.Value;
+
+            return new Track2Models.RestorePolicyProperties(enabled)
             {
-                Enabled = this.Enabled is null ? false : this.Enabled.Value,
-                Days = this.Days
+                Days = this.Days,
             };
         }
     }
@@ -208,16 +199,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
         }
 
-        public PSCorsRules(CorsRules rules)
+        public PSCorsRules(IList<Track2Models.CorsRule> rules)
         {
-            if (rules.CorsRulesProperty is null)
+            if (rules is null)
             {
-                CorsRulesProperty = null;
+                this.CorsRulesProperty = null;
             }
             else
             {
                 List<PSCorsRule> ruleList = new List<PSCorsRule>();
-                foreach (CorsRule rule in rules.CorsRulesProperty)
+                foreach(Track2Models.CorsRule rule in rules)
                 {
                     ruleList.Add(new PSCorsRule(rule));
                 }
@@ -225,26 +216,20 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             }
         }
 
-        public CorsRules ParseCorsRules()
+        public IList<Track2Models.CorsRule> ParseCorsRules()
         {
             if (this.CorsRulesProperty is null)
             {
-                return new CorsRules
-                {
-                    CorsRulesProperty = null
-                };
+                return null;
             }
             else
             {
-                CorsRules returnValue = new CorsRules
+                List<Track2Models.CorsRule> corsRules = new List<Track2Models.CorsRule>();
+                foreach(PSCorsRule rule in this.CorsRulesProperty)
                 {
-                    CorsRulesProperty = new List<CorsRule>()
-                };
-                foreach (PSCorsRule rule in this.CorsRulesProperty)
-                {
-                    returnValue.CorsRulesProperty.Add(rule.ParseCorsRule());
+                    corsRules.Add(rule.ParseCorsRule());
                 }
-                return returnValue;
+                return corsRules;
             }
         }
     }
@@ -264,25 +249,49 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
         }
 
-        public PSCorsRule(CorsRule rule)
+        public PSCorsRule(Track2Models.CorsRule rule)
         {
             this.AllowedOrigins = ListToArray(rule.AllowedOrigins);
-            this.AllowedMethods = ListToArray(rule.AllowedMethods);
+
+            if (rule.AllowedMethods is null)
+            {
+                this.AllowedMethods = null;
+            } else
+            {
+                List<string> allowedMethodsList = new List<string>();
+                foreach (Track2Models.CorsRuleAllowedMethodsItem itm in rule.AllowedMethods)
+                {
+                    allowedMethodsList.Add(itm.ToString());
+                }
+                this.AllowedMethods = ListToArray(allowedMethodsList);
+            }
+
             this.MaxAgeInSeconds = rule.MaxAgeInSeconds;
             this.ExposedHeaders = ListToArray(rule.ExposedHeaders);
             this.AllowedHeaders = ListToArray(rule.AllowedHeaders);
         }
 
-        public CorsRule ParseCorsRule()
+        public Track2Models.CorsRule ParseCorsRule()
         {
-            return new CorsRule
+            List<Track2Models.CorsRuleAllowedMethodsItem> allowedMethods = new List<Track2Models.CorsRuleAllowedMethodsItem>();
+            if (this.AllowedMethods is null)
             {
-                AllowedOrigins = this.AllowedOrigins,
-                AllowedMethods = this.AllowedMethods,
-                MaxAgeInSeconds = this.MaxAgeInSeconds,
-                ExposedHeaders = this.ExposedHeaders,
-                AllowedHeaders = this.AllowedHeaders
-            };
+                allowedMethods = null;   
+            } else
+            {
+                foreach(string itm in this.AllowedMethods)
+                {
+                    allowedMethods.Add(new Track2Models.CorsRuleAllowedMethodsItem(itm));
+                }
+            }
+
+            return new Track2Models.CorsRule(
+                this.AllowedOrigins,
+                allowedMethods,
+                this.MaxAgeInSeconds,
+                this.ExposedHeaders,
+                this.AllowedHeaders
+                );
         }
 
         /// <summary>
@@ -313,25 +322,30 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public int? TrackingGranularityInDays { get; set; }
         public string[] BlobType { get; set; }
 
-
-        public PSLastAccessTimeTrackingPolicy(LastAccessTimeTrackingPolicy policy)
+        public PSLastAccessTimeTrackingPolicy(Track2Models.LastAccessTimeTrackingPolicy policy)
         {
-            this.Name = policy.Name;
+            this.Name = policy.Name?.ToString();
             this.Enable = policy.Enable;
             this.TrackingGranularityInDays = policy.TrackingGranularityInDays;
             this.BlobType = policy.BlobType is null ? null : new List<string>(policy.BlobType).ToArray();
         }
 
-        public LastAccessTimeTrackingPolicy ParseLastAccessTimeTrackingPolicy()
+        public Track2Models.LastAccessTimeTrackingPolicy ParseLastAccessTimeTrackingPolicy()
         {
-            return new LastAccessTimeTrackingPolicy()
+            Track2Models.LastAccessTimeTrackingPolicy policy = new Track2Models.LastAccessTimeTrackingPolicy(this.Enable)
             {
-
-                Name = this.Name,
-                Enable = this.Enable,
+                Name = new Track2Models.Name(this.Name),
                 TrackingGranularityInDays = this.TrackingGranularityInDays,
-                BlobType = this.BlobType is null ? null : new List<string>(this.BlobType)
             };
+
+            if (this.BlobType != null)
+            {
+                foreach(string blobType in this.BlobType)
+                {
+                    policy.BlobType.Add(blobType);
+                }
+            }
+            return policy;
         }
     }
 }

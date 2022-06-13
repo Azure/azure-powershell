@@ -288,7 +288,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 this.TenantId = identity.TenantId.Value.ToString();
             }
-            if (identity != null)
+            if (identity.ManagedServiceIdentityType == ManagedServiceIdentityType.SystemAssignedUserAssigned)
+            {
+                this.Type = "SystemAssigned,UserAssigned";
+            } else
             {
                 this.Type = identity.ManagedServiceIdentityType.ToString();
             }
