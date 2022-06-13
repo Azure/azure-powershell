@@ -22,6 +22,7 @@ using Azure.ResourceManager.IotCentral;
 using Azure.Identity;
 using System.Management.Automation;
 using Azure.ResourceManager;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.IotCentral.Common
 {
@@ -62,7 +63,11 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
                 {
                     //this.iotCentralClient = AzureSession.Instance.ClientFactory.CreateArmClient<ArmClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                     var cred = new DefaultAzureCredential();
+                    //var sub = DefaultProfile.DefaultContext.Subscription.Id;
+                    //var tenant = DefaultProfile.DefaultContext.Tenant.Id;
                     this.iotCentralClient = new ArmClient(cred);
+                    //var subTest = this.iotCentralClient.GetDefaultSubscription().Data.Id;
+                    //var tenantTest = this.iotCentralClient.GetTenants().GetAll().ToArray();
                 }
                 return this.iotCentralClient;
             }

@@ -99,16 +99,15 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                 var appCollection = resourceGroup.GetIotCentralApps();
                 var Location = this.GetLocation();
                 var Sku = new AppSkuInfo(this.GetAppSkuName());
-                var tags = this.GetTags();
+                //var tags = this.GetTags();
                 var iotCentralAppData = new IotCentralAppData(Location, Sku)
                 {
                     DisplayName = this.GetDisplayName(),
                     Subdomain = this.Subdomain,
                     Template = this.Template,
-                    //Tags = this.GetTags(),
                     Identity = new SystemAssignedServiceIdentity(this.GetIdentity()),
                 };
-                await appCollection.CreateOrUpdateAsync(WaitUntil.Completed, this.GetDisplayName(), iotCentralAppData, CancellationToken.None);
+                var test = await appCollection.CreateOrUpdateAsync(WaitUntil.Completed, Name, iotCentralAppData, CancellationToken.None);
                 var iotCentralAppResponse = await appCollection.GetAsync(this.GetDisplayName());
                 var iotCentralApp = iotCentralAppResponse.Value;
                 await iotCentralApp.SetTagsAsync(this.GetTags(), CancellationToken.None); 

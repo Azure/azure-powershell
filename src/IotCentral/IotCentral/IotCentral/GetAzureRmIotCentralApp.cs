@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                 case ListIotCentralAppsParameterSet:
                     if (string.IsNullOrEmpty(ResourceGroupName)) // list by subscription, not receiving arm client?
                     {
-                        IEnumerable<IotCentralAppResource> iotCentralAppsBySubscription = (IEnumerable<IotCentralAppResource>)IotCentralClient.GetSubscriptionResource(new ResourceIdentifier($"/subscriptions/{this.DefaultContext.Subscription.Id}"));
+                        IEnumerable<IotCentralAppResource> iotCentralAppsBySubscription = (IEnumerable<IotCentralAppResource>)IotCentralClient.GetSubscriptionResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}"));
                         this.WriteObject(IotCentralUtils.ToPSIotCentralApps(iotCentralAppsBySubscription), enumerateCollection: true);
                         break;
                     }
@@ -80,8 +80,7 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                     {
                         var resourceGroupResource = this.IotCentralClient.GetResourceGroupResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}"));
                         var iotCentralAppCollection = resourceGroupResource.GetIotCentralApps();
-                        var iotCentralAppResource = iotCentralAppCollection.GetAll();
-                        IEnumerable<IotCentralAppResource> iotCentralAppsByResourceGroup = iotCentralAppResource;
+                        IEnumerable<IotCentralAppResource> iotCentralAppsByResourceGroup = iotCentralAppCollection.GetAll();
                         this.WriteObject(IotCentralUtils.ToPSIotCentralApps(iotCentralAppsByResourceGroup), enumerateCollection: true);
                         break;
                     }
