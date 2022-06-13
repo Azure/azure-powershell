@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
+
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     using Microsoft.Azure.Commands.Management.Storage.Models;
-    using Microsoft.Azure.Management.Storage;
-    using Microsoft.Azure.Management.Storage.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
@@ -103,17 +104,20 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                         break;
                 }
-                BlobServiceProperties serviceProperties = new BlobServiceProperties();
 
-                serviceProperties.DeleteRetentionPolicy = new DeleteRetentionPolicy();
-                serviceProperties.DeleteRetentionPolicy.Enabled = false;
-                serviceProperties.DeleteRetentionPolicy.Days = null;
+                Track2.BlobServiceData data = new Track2.BlobServiceData();
+                data.DeleteRetentionPolicy = new Track2Models.DeleteRetentionPolicy
+                {
+                    Enabled = false,
+                    Days = null,
+                };
 
-                serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);
-
+                Track2.BlobServiceResource properties = this.StorageClientTrack2.GetBlobServiceResource(this.ResourceGroupName, this.StorageAccountName)
+                    .CreateOrUpdate(global::Azure.WaitUntil.Completed, data).Value;
+                    
                 if (PassThru)
                 {
-                    WriteObject(new PSDeleteRetentionPolicy(serviceProperties.DeleteRetentionPolicy));
+                    WriteObject(new PSDeleteRetentionPolicy(properties.Data.DeleteRetentionPolicy));
                 }
 
             }

@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
+
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     using Microsoft.Azure.Commands.Management.Storage.Models;
-    using Microsoft.Azure.Management.Storage;
-    using Microsoft.Azure.Management.Storage.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
@@ -108,17 +109,20 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                         break;
                 }
-                BlobServiceProperties serviceProperties = new BlobServiceProperties();
 
-                serviceProperties.RestorePolicy = new RestorePolicyProperties();
-                serviceProperties.RestorePolicy.Enabled = true;
-                serviceProperties.RestorePolicy.Days = RestoreDays;
+                Track2.BlobServiceData data = new Track2.BlobServiceData();
 
-                serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);
+                data.RestorePolicy = new Track2Models.RestorePolicyProperties(true)
+                {
+                    Days = this.RestoreDays,
+                };
+
+                Track2.BlobServiceResource properties = this.StorageClientTrack2.GetBlobServiceResource(this.ResourceGroupName, this.StorageAccountName)
+                    .CreateOrUpdate(global::Azure.WaitUntil.Completed, data).Value;
 
                 if (PassThru)
                 {
-                    WriteObject(new PSRestorePolicy(serviceProperties.RestorePolicy));
+                    WriteObject(new PSRestorePolicy(properties.Data.RestorePolicy));
                 }
 
             }
