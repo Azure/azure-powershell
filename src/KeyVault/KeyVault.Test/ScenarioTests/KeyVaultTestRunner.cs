@@ -50,14 +50,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
                     {
-                        {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
-                        {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10"}
+                        {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
                     },
                     resourceProviders: new Dictionary<string, string>
                     {
-                        {"Microsoft.Resources", null},
-                        {"Microsoft.Features", null},
-                        {"Microsoft.Authorization", null},
                         {"Microsoft.KeyVault", null},
                         {"Microsoft.Network", null}
                     }
