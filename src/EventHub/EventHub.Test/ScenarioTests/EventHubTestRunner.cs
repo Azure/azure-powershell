@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.TestFx;
+using Microsoft.Azure.Commands.TestFx.Recorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit.Abstractions;
 

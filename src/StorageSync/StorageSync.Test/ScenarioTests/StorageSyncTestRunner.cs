@@ -15,12 +15,12 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using StorageSync.Test.Common;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Azure.Commands.TestFx;
 using Xunit.Abstractions;
+using Microsoft.Azure.Test.HttpRecorder;
 
 namespace ScenarioTests
 {
@@ -29,12 +29,6 @@ namespace ScenarioTests
     /// </summary>
     public class StorageSyncTestRunner
     {
-        /// <summary>
-        /// Gets the user domain.
-        /// </summary>
-        /// <value>The user domain.</value>
-        public string UserDomain { get; private set; }
-
         protected readonly ITestRunner TestRunner;
 
         protected StorageSyncTestRunner(ITestOutputHelper output)
@@ -67,27 +61,14 @@ namespace ScenarioTests
                         {"Microsoft.Storage", null},
                         {"Microsoft.StorageSync", null}
                     }
-                ).WithMockContextAction(() =>
-                    {
-                        var sf = new StackTrace().GetFrame(2);
-                        var callingClassType = sf.GetMethod().ReflectedType?.ToString();
-                        var testName = sf.GetMethod().Name;
-
-                        using (var context = MockContext.Start(callingClassType, testName))
-                        {
-                            RegisterComponents(context, testName);
-                        }
-                    }
-                )
+                ).WithMockContextAction(mockContext =>
+                {
+                        RegisterComponents(HttpMockServer.TestIdentity);
+                })
                 .Build();
         }
 
-        /// <summary>
-        /// Registers the components.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <param name="testName">Name of the test.</param>
-        private void RegisterComponents(MockContext context, string testName)
+        private void RegisterComponents(string testName)
         {
             AzureSession.Instance.RegisterComponent<IStorageSyncResourceManager>(StorageSyncConstants.StorageSyncResourceManager, () => new MockStorageSyncResourceManager(testName), overwrite: true);
         }

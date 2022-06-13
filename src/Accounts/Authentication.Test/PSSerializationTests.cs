@@ -11,19 +11,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Models.Core;
-using Microsoft.Azure.Commands.ScenarioTest.Extensions;
+using Microsoft.Azure.Commands.TestFx;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 using Xunit;
-using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Common.Authentication.Test
 {
