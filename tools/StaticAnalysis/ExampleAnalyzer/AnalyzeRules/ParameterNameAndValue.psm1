@@ -88,7 +88,12 @@ function Measure-ParameterNameAndValue {
 
                 if ($Ast -is [System.Management.Automation.Language.CommandElementAst] -and $Ast.Parent -is [System.Management.Automation.Language.CommandAst]) {
                     [System.Management.Automation.Language.CommandElementAst]$CommandElementAst = $Ast
-                    $ModuleCmdletExNum = $CommandElementAst.Parent.Parent.Parent.Parent.Parent.Name
+                    if ($CommandElementAst.Parent.Parent.Parent -is [System.Management.Automation.Language.AssignmentStatementAst]){
+                        $ModuleCmdletExNum = $CommandElementAst.Parent.Parent.Parent.Parent.Parent.Parent.Name
+                    }
+                    else{
+                        $ModuleCmdletExNum = $CommandElementAst.Parent.Parent.Parent.Parent.Parent.Name
+                    }
                     if ($global:SkipNextCommandElementAst) {
                         $global:SkipNextCommandElementAst = $false
                         return $false
