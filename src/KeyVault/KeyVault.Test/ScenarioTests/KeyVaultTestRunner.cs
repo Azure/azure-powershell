@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         protected KeyVaultTestRunner(ITestOutputHelper output)
         {
             TestRunner = TestManager.CreateInstance(output)
-                .WithNewPsScriptFilename($"..\\Scripts\\ControlPlane\\{GetType().Name}.ps1")
+                .WithNewPsScriptFilename($"{GetType().Name}.ps1")
                 .WithProjectSubfolderForTests("ScenarioTests")
                 .WithCommonPsScripts(new[]
                 {

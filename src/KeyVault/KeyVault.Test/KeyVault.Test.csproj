@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Scripts\ControlPlane\KeyVaultManagementTests.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="ScenarioTests\KeyVaultManagementTests.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
