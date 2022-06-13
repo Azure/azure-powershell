@@ -56,6 +56,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         protected override IEnumerable<AzureSqlManagedInstanceDnsAliasModel> GetEntity()
         {
             return new List<AzureSqlManagedInstanceDnsAliasModel>(){
