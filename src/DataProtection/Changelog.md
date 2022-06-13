@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for CRUD of resource guard resource.
+* Added support for protection related commands with swagger refresh
+    - Resume-AzDataProtectionBackupInstanceProtection
+    - Stop-AzDataProtectionBackupInstanceProtection
+    - Suspend-AzDataProtectionBackupInstanceBackup
+    - Sync-AzDataProtectionBackupInstance
 
 ## Version 0.3.1
 * Fixed trigger schedule client for `New-AzDataProtectionPolicyTriggerScheduleClientObject`
