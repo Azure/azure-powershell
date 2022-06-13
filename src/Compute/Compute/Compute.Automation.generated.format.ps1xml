@@ -500,6 +500,7 @@
           <TableColumnHeader>
             <Label>RestrictionInfo</Label>
             <Alignment>Left</Alignment>
+            <Width>30</Width>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
