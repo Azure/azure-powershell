@@ -60,7 +60,7 @@ jobs:
   displayName: Test
   dependsOn: Build
   condition: and(eq(variables.IsGenerateBased, false), succeeded())
-  timeoutInMinutes: 180
+  timeoutInMinutes: 240
   strategy:
     matrix:
       windows:
