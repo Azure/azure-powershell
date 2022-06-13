@@ -473,8 +473,8 @@
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Width>15</Width>
             <Label>Name</Label>
+            <Width>20</Width>
             <Alignment>Right</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -486,7 +486,7 @@
             <Alignment>Right</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Restrictions</Label>
+            <Label>Restriction</Label>
             <Alignment>Right</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -499,8 +499,7 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RestrictionInfo</Label>
-            <Alignment>Right</Alignment>
-            <Width>30</Width>
+            <Alignment>Left</Alignment>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
