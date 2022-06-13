@@ -1,22 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: Updates a traffic collector tag
 ```powershell
-{{ Add code here }}
+Update-AzNetworkFunctionTrafficCollectorTag -azuretrafficcollectorname atc -resourcegroup rg1
 ```
 
 ```output
-{{ Add output here }}
+{
+    "name": "atc",
+    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.NetworkFunction/azureTrafficCollectors/atc",
+    "type": "Microsoft.NetworkFunction/azureTrafficCollectors",
+    "etag": "test",
+    "location": "West US",
+    "tags": {
+        "key1": "value1",
+        "key2": "value2"
+    },
+    "properties": {
+        "collectorPolicies": [],
+        "provisioningState": "Succeeded"
+    }
+}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet updates a traffic collector tag.

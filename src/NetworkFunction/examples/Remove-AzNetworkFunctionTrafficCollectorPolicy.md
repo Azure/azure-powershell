@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a new traffic collector policy
 ```powershell
-{{ Add code here }}
+Remove-AzNetworkFunctionTrafficCollectorPolicy -azuretrafficcollectorname atctestps -collectorpolicyname cp1 -resourcegroup test
 ```
 
 ```output
-{{ Add output here }}
+{
+}
 ```
 
-{{ Add description here }}
+This cmdlet deletes a traffic collector policy.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
