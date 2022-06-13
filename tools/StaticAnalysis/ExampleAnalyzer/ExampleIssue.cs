@@ -47,7 +47,11 @@ namespace StaticAnalysis.ExampleAnalyzer
             var record = other as ExampleIssue;
             if (record != null)
             {
-                result = (record.ProblemId == ProblemId);
+                result = (record.Module == Module)&&
+                (record.Cmdlet == Cmdlet)&&
+                (record.Example == Example)&&
+                (record.ProblemId == ProblemId)&&
+                (record.Description == Description);
             }
             return result;
         }

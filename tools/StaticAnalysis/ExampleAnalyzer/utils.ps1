@@ -199,6 +199,31 @@ function Get-ExamplesDetailsFromMd {
     return $examplesProperties
 }
 
+function ExceptionRecord{
+    param(
+        [AnalysisOutput[]]$records
+    )
+    $exceptionPaths = ".\tools\StaticAnalysis\Exceptions"
+    $results = @()
+    foreach($record in $records){
+        $needAdd = $true
+        $exceptionPath = Join-Path -Path $exceptionPaths -ChildPath "Az.$($record.Module)" -AdditionalChildPath "ExampleIssues.csv"
+        if(Test-Path -Path $exceptionPath){
+            $exceptionContents= Import-Csv -Path $exceptionPath
+            foreach($exceptionContent in $exceptionContents) {
+                if($exceptionContent.Module -eq $record.Module -and $exceptionContent.Cmdlet -eq $record.Cmdlet -and $exceptionContent.Example -eq $record.Example -and $exceptionContent.Description -eq $record.Description){
+                    $needAdd = $false
+                    break
+                }
+            }
+        }
+        if($needAdd){
+            $results += $record
+        }
+    }
+    return $results
+}
+
 <#
     .SYNOPSIS
     Tests whether the script is integral, outputs examples in ".md" to ".ps1" 
@@ -310,7 +335,6 @@ function Measure-SectionMissingAndOutputScript {
     else {
         foreach ($exampleDetails in $examplesDetails) {
             $exampleNumber++
-
             switch ($exampleDetails) {
                 {$exampleDetails.Title -eq ""} {
                     $missingExampleTitle++
@@ -463,6 +487,7 @@ function Measure-SectionMissingAndOutputScript {
             NeedSplitting = $needSplitting
         }
     }
+    $results = ExceptionRecord $results
 
     return @{
         Scale = $scale
@@ -504,19 +529,21 @@ function Get-ScriptAnalyzerResult {
         elseif($analysisResult.Severity -eq "Warning"){
             $Severity = 2
         }
-        $result = [AnalysisOutput]@{
-            Module = ($analysisResult.Message -split "-")[0]
-            Cmdlet = ($analysisResult.Message -split "-")[1] + "-" + ($analysisResult.Message -split "-")[2]
-            Example = ($analysisResult.Message -split "-")[3]
-            RuleName = $analysisResult.RuleName
-            Description = ($analysisResult.Message -split "@")[1] -replace "`"","`'"
-            Severity = $Severity
-            Extent = $analysisResult.Extent -replace "`"","`'"
-            ProblemID = $analysisResult.RuleSuppressionID
-            Remediation = ($analysisResult.Message -split "@")[2] -replace "`"","`'"
+        if($analysisResult.RuleSuppressionID -ge 5000 -and $analysisResult.RuleSuppressionID -le 5199){
+            $result = [AnalysisOutput]@{
+                Module = ($analysisResult.Message -split "-")[0]
+                Cmdlet = ($analysisResult.Message -split "-")[1] + "-" + ($analysisResult.Message -split "-")[2]
+                Example = ($analysisResult.Message -split "-")[3]
+                RuleName = $analysisResult.RuleName
+                Description = ($analysisResult.Message -split "@")[1] -replace "`"","`'"
+                Severity = $Severity
+                Extent = $analysisResult.Extent -replace "`"","`'"
+                ProblemID = $analysisResult.RuleSuppressionID
+                Remediation = ($analysisResult.Message -split "@")[2] -replace "`"","`'"
+            }
+            $results += $result
         }
-        $results += $result
     }
-
+    $results = ExceptionRecord $results
     return $results
 }

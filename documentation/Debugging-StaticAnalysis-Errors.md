@@ -8,6 +8,7 @@ Our StaticAnalysis tools help us ensure our modules follow PowerShell guidelines
     - [Breaking Changes](#breaking-changes)
     - [Signature Issues](#signature-issues)
     - [Help Issues](#help-issues)
+    - [Example Issues](#example-issues)
 
 ## How to know if you have a StaticAnalysis Error
 If your build is failing, click on the Jenkins job inside the PR (marked as "Default" within checks).  Then check the Console Output within the Jenkins job.  If you have this error, then you have failed StaticAnalysis:

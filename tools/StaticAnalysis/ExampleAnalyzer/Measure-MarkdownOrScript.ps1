@@ -19,7 +19,7 @@ param (
     [string[]]$RulePaths,
     [switch]$Recurse,
     [switch]$IncludeDefaultRules,
-    [string]$OutputFolder = "./artifacts/StaticAnalysisResults/ExampleAnalysis",
+    [string]$OutputFolder = ".\artifacts\StaticAnalysisResults\ExampleAnalysis",
     [Parameter(ParameterSetName = "Markdown")]
     [switch]$AnalyzeScriptsInFile,
     [Parameter(ParameterSetName = "Markdown")]
@@ -71,14 +71,14 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
         $ScriptPaths = "$OutputFolder\TempScript.ps1"
     }
     # Summarize searching results
-    if($scaleTable -ne $null){
-        $scaleTable | Export-Csv "$OutputFolder\Scale.csv" -NoTypeInformation
+    if($scaleTable){
+         $scaleTable | where {$_ -ne $null} | Export-Csv "$OutputFolder\Scale.csv" -NoTypeInformation
     }
-    if($missingTable -ne $null){
-        $missingTable | Export-Csv "$OutputFolder\Missing.csv" -NoTypeInformation
+    if($missingTable){
+        $missingTable | where {$_ -ne $null} | Export-Csv "$OutputFolder\Missing.csv" -NoTypeInformation
     }
-    if($deletePromptAndSeparateOutputTable -ne $null){
-        $deletePromptAndSeparateOutputTable | Export-Csv "$OutputFolder\DeletingSeparating.csv" -NoTypeInformation
+    if($deletePromptAndSeparateOutputTable){
+        $deletePromptAndSeparateOutputTable | where {$_ -ne $null} | Export-Csv "$OutputFolder\DeletingSeparating.csv" -NoTypeInformation
     }
 }
 
@@ -87,11 +87,11 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
 if ($PSCmdlet.ParameterSetName -eq "Script" -or $AnalyzeScriptsInFile.IsPresent) {
     # read and analyze ".ps1" in \ScriptsByExample
     Write-Output "Analyzing file ..."
-    $analysisResultsTable += Get-ScriptAnalyzerResult (Get-Item -Path $ScriptPaths) $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -ErrorAction Continue
+    $analysisResultsTable += Get-ScriptAnalyzerResult (Get-Item -Path $ScriptPaths) $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -ErrorAction SilentlyContinue
     
     # Summarize analysis results, output in Result.csv
-    if($analysisResultsTable -ne $null){
-        $analysisResultsTable | Export-Csv ".\artifacts\StaticAnalysisResults\ExampleIssues.csv" -NoTypeInformation
+    if($analysisResultsTable){
+        $analysisResultsTable| where {$_ -ne $null} | Export-Csv ".\artifacts\StaticAnalysisResults\ExampleIssues.csv" -NoTypeInformation
     }
 }
 
