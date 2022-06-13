@@ -109,9 +109,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("Tags"))
+            if (content.Contains("TagList"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Tags = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags) content.GetValueForProperty("Tags",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Tags, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).TagList = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags) content.GetValueForProperty("TagList",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).TagList, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ResourceTagsTypeConverter.ConvertFrom);
             }
             AfterDeserializeDictionary(content);
         }
@@ -146,9 +146,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("Tags"))
+            if (content.Contains("TagList"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Tags = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags) content.GetValueForProperty("Tags",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Tags, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).TagList = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags) content.GetValueForProperty("TagList",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).TagList, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ResourceTagsTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }

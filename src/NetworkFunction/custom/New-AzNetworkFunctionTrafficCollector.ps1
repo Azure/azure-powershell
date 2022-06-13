@@ -26,11 +26,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 COLLECTORPOLICIES <ICollectorPolicy[]>: Collector Policies for Azure Traffic Collector.
-  [EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
+  [EmissionPolicyList <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
     [EmissionDestinations <IEmissionPolicyDestination[]>]: Emission policy destinations.
       [DestinationType <DestinationType?>]: Emission destination type.
     [EmissionType <EmissionType?>]: Emission format type.
-  [IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
+  [IngestionPolicyIngestionSourceList <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
     [ResourceId <String>]: Resource ID.
     [SourceType <SourceType?>]: Ingestion source type.
   [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
@@ -43,14 +43,14 @@ INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
 
 PARAMETERS <IAzureTrafficCollector>: Azure Traffic Collector resource.
   [Location <String>]: Resource location.
-  [Tags <IResourceTags>]: Resource tags.
+  [TagList <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
-  [CollectorPolicies <ICollectorPolicy[]>]: Collector Policies for Azure Traffic Collector.
-    [EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
+  [CollectorPolicyList <ICollectorPolicy[]>]: Collector Policies for Azure Traffic Collector.
+    [EmissionPolicyList <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
       [EmissionDestinations <IEmissionPolicyDestination[]>]: Emission policy destinations.
         [DestinationType <DestinationType?>]: Emission destination type.
       [EmissionType <EmissionType?>]: Emission format type.
-    [IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
+    [IngestionPolicyIngestionSourceList <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
       [ResourceId <String>]: Resource ID.
       [SourceType <SourceType?>]: Ingestion source type.
     [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
@@ -97,7 +97,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollector]
     # Azure Traffic Collector resource.
     # To construct, see NOTES section for PARAMETERS properties and create a hash table.
-    ${Parameters},
+    ${ParameterList},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
@@ -113,7 +113,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[]]
     # Collector Policies for Azure Traffic Collector.
     # To construct, see NOTES section for COLLECTORPOLICIES properties and create a hash table.
-    ${CollectorPolicies},
+    ${CollectorPolicyList},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -121,7 +121,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
-    ${Tags},
+    ${TagList},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]

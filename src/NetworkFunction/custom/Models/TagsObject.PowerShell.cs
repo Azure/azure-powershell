@@ -5,7 +5,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.PowerShell;
 
-    /// <summary>Tags object for patch operations.</summary>
+    /// <summary>TagList object for patch operations.</summary>
     [System.ComponentModel.TypeConverter(typeof(TagsObjectTypeConverter))]
     public partial class TagsObject
     {
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Tags"))
+            if (content.Contains("TagList"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectInternal)this).Tags = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectTags) content.GetValueForProperty("Tags",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectInternal)this).Tags, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.TagsObjectTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectInternal)this).TagList = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectTags) content.GetValueForProperty("TagList",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectInternal)this).TagList, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.TagsObjectTagsTypeConverter.ConvertFrom);
             }
             AfterDeserializeDictionary(content);
         }
@@ -114,9 +114,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Tags"))
+            if (content.Contains("TagList"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectInternal)this).Tags = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectTags) content.GetValueForProperty("Tags",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectInternal)this).Tags, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.TagsObjectTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectInternal)this).TagList = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectTags) content.GetValueForProperty("TagList",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectInternal)this).TagList, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.TagsObjectTagsTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
-    /// Tags object for patch operations.
+    /// TagList object for patch operations.
     [System.ComponentModel.TypeConverter(typeof(TagsObjectTypeConverter))]
     public partial interface ITagsObject
 

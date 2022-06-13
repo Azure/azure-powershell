@@ -11,12 +11,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorPropertiesFormatInternal
     {
 
-        /// <summary>Backing field for <see cref="CollectorPolicies" /> property.</summary>
+        /// <summary>Backing field for <see cref="CollectorPolicyList" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[] _collectorPolicies;
 
         /// <summary>Collector Policies for Azure Traffic Collector.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[] CollectorPolicies { get => this._collectorPolicies; set => this._collectorPolicies = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[] CollectorPolicyList { get => this._collectorPolicies; set => this._collectorPolicies = value; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.ProvisioningState? _provisioningState;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         Description = @"Collector Policies for Azure Traffic Collector.",
         SerializedName = @"collectorPolicies",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy) })]
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[] CollectorPolicies { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[] CollectorPolicyList { get; set; }
         /// <summary>The provisioning state of the application rule collection resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(
         Required = false,
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
 
     {
         /// <summary>Collector Policies for Azure Traffic Collector.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[] CollectorPolicies { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[] CollectorPolicyList { get; set; }
         /// <summary>The provisioning state of the application rule collection resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.ProvisioningState? ProvisioningState { get; set; }
         /// <summary>The virtualHub to which the Azure Traffic Collector belongs.</summary>

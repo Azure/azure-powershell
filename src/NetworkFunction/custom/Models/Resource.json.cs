@@ -75,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
             {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_tags = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ResourceTags.FromJson(__jsonTags) : Tags;}
+            {_tags = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ResourceTags.FromJson(__jsonTags) : TagList;}
             AfterFromJson(json);
         }
 

@@ -31,8 +31,8 @@ INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 
-PARAMETERS <ITagsObject>: Tags object for patch operations.
-  [Tags <ITagsObjectTags>]: Resource tags.
+PARAMETERS <ITagsObject>: TagList object for patch operations.
+  [TagList <ITagsObjectTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.networkfunction/update-aznetworkfunctiontrafficcollectortag
@@ -75,9 +75,9 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObject]
-    # Tags object for patch operations.
+    # TagList object for patch operations.
     # To construct, see NOTES section for PARAMETERS properties and create a hash table.
-    ${Parameters},
+    ${ParameterList},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -85,7 +85,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
-    ${Tags},
+    ${TagList},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Runtime')]

@@ -68,9 +68,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicy = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionPolicyPropertiesFormat) content.GetValueForProperty("IngestionPolicy",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IngestionPolicyPropertiesFormatTypeConverter.ConvertFrom);
             }
-            if (content.Contains("EmissionPolicies"))
+            if (content.Contains("EmissionPolicyList"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).EmissionPolicies = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat[]) content.GetValueForProperty("EmissionPolicies",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).EmissionPolicies, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.EmissionPoliciesPropertiesFormatTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).EmissionPolicyList = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat[]) content.GetValueForProperty("EmissionPolicyList",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).EmissionPolicyList, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.EmissionPoliciesPropertiesFormatTypeConverter.ConvertFrom));
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -80,9 +80,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicyIngestionType = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.IngestionType?) content.GetValueForProperty("IngestionPolicyIngestionType",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicyIngestionType, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.IngestionType.CreateFrom);
             }
-            if (content.Contains("IngestionPolicyIngestionSources"))
+            if (content.Contains("IngestionPolicyIngestionSourceList"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicyIngestionSources = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat[]) content.GetValueForProperty("IngestionPolicyIngestionSources",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicyIngestionSources, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IngestionSourcesPropertiesFormatTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicyIngestionSourceList = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat[]) content.GetValueForProperty("IngestionPolicyIngestionSourceList",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicyIngestionSourceList, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IngestionSourcesPropertiesFormatTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -105,9 +105,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicy = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionPolicyPropertiesFormat) content.GetValueForProperty("IngestionPolicy",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IngestionPolicyPropertiesFormatTypeConverter.ConvertFrom);
             }
-            if (content.Contains("EmissionPolicies"))
+            if (content.Contains("EmissionPolicyList"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).EmissionPolicies = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat[]) content.GetValueForProperty("EmissionPolicies",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).EmissionPolicies, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.EmissionPoliciesPropertiesFormatTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).EmissionPolicyList = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat[]) content.GetValueForProperty("EmissionPolicyList",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).EmissionPolicyList, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.EmissionPoliciesPropertiesFormatTypeConverter.ConvertFrom));
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -117,9 +117,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicyIngestionType = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.IngestionType?) content.GetValueForProperty("IngestionPolicyIngestionType",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicyIngestionType, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.IngestionType.CreateFrom);
             }
-            if (content.Contains("IngestionPolicyIngestionSources"))
+            if (content.Contains("IngestionPolicyIngestionSourceList"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicyIngestionSources = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat[]) content.GetValueForProperty("IngestionPolicyIngestionSources",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicyIngestionSources, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IngestionSourcesPropertiesFormatTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicyIngestionSourceList = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat[]) content.GetValueForProperty("IngestionPolicyIngestionSourceList",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)this).IngestionPolicyIngestionSourceList, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IngestionSourcesPropertiesFormatTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

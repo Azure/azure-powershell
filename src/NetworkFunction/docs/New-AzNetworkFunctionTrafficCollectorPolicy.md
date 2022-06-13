@@ -16,8 +16,8 @@ Creates or updates a Collector Policy resource
 ```
 New-AzNetworkFunctionTrafficCollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]
- [-IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]
+ [-EmissionPolicyList <IEmissionPoliciesPropertiesFormat[]>]
+ [-IngestionPolicyIngestionSourceList <IIngestionSourcesPropertiesFormat[]>]
  [-IngestionPolicyIngestionType <IngestionType>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -37,8 +37,8 @@ New-AzNetworkFunctionTrafficCollectorPolicy -InputObject <ITrafficCollectorIdent
 ### CreateViaIdentityExpanded
 ```
 New-AzNetworkFunctionTrafficCollectorPolicy -InputObject <ITrafficCollectorIdentity>
- [-EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]
- [-IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]
+ [-EmissionPolicyList <IEmissionPoliciesPropertiesFormat[]>]
+ [-IngestionPolicyIngestionSourceList <IIngestionSourcesPropertiesFormat[]>]
  [-IngestionPolicyIngestionType <IngestionType>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -116,7 +116,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EmissionPolicies
+### -EmissionPolicyList
 Emission policies.
 To construct, see NOTES section for EMISSIONPOLICIES properties and create a hash table.
 
@@ -132,7 +132,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IngestionPolicyIngestionSources
+### -IngestionPolicyIngestionSourceList
 Ingestion Sources.
 To construct, see NOTES section for INGESTIONPOLICYINGESTIONSOURCES properties and create a hash table.
 
@@ -309,11 +309,11 @@ INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 
 PARAMETERS <ICollectorPolicy>: Collection policy resource.
-  - `[EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]`: Emission policies.
+  - `[EmissionPolicyList <IEmissionPoliciesPropertiesFormat[]>]`: Emission policies.
     - `[EmissionDestinations <IEmissionPolicyDestination[]>]`: Emission policy destinations.
       - `[DestinationType <DestinationType?>]`: Emission destination type.
     - `[EmissionType <EmissionType?>]`: Emission format type.
-  - `[IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]`: Ingestion Sources.
+  - `[IngestionPolicyIngestionSourceList <IIngestionSourcesPropertiesFormat[]>]`: Ingestion Sources.
     - `[ResourceId <String>]`: Resource ID.
     - `[SourceType <SourceType?>]`: Ingestion source type.
   - `[IngestionPolicyIngestionType <IngestionType?>]`: The ingestion type.

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
 
         /// <summary>Collector Policies for Azure Traffic Collector.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[] CollectorPolicies { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorPropertiesFormatInternal)Properties).CollectorPolicies; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorPropertiesFormatInternal)Properties).CollectorPolicies = value ?? null /* arrayOf */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[] CollectorPolicyList { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorPropertiesFormatInternal)Properties).CollectorPolicyList; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorPropertiesFormatInternal)Properties).CollectorPolicyList = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Etag" /> property.</summary>
         private string _etag;
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags Tags { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)__resource).Tags; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)__resource).Tags = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags TagList { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)__resource).TagList; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)__resource).TagList = value ?? null /* model class */; }
 
         /// <summary>Resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.PropertyOrigin.Inherited)]
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         Description = @"Collector Policies for Azure Traffic Collector.",
         SerializedName = @"collectorPolicies",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy) })]
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[] CollectorPolicies { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[] CollectorPolicyList { get; set; }
         /// <summary>A unique read-only string that changes whenever the resource is updated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(
         Required = false,
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal
     {
         /// <summary>Collector Policies for Azure Traffic Collector.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[] CollectorPolicies { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[] CollectorPolicyList { get; set; }
         /// <summary>A unique read-only string that changes whenever the resource is updated.</summary>
         string Etag { get; set; }
         /// <summary>Properties of the Azure Traffic Collector.</summary>

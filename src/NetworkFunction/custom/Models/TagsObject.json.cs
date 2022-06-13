@@ -5,7 +5,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Extensions;
 
-    /// <summary>Tags object for patch operations.</summary>
+    /// <summary>TagList object for patch operations.</summary>
     public partial class TagsObject
     {
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
             {
                 return;
             }
-            {_tags = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.TagsObjectTags.FromJson(__jsonTags) : Tags;}
+            {_tags = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.TagsObjectTags.FromJson(__jsonTags) : TagList;}
             AfterFromJson(json);
         }
 

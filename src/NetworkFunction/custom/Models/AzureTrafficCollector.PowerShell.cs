@@ -88,9 +88,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("Tags"))
+            if (content.Contains("TagList"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Tags = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags) content.GetValueForProperty("Tags",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Tags, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).TagList = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags) content.GetValueForProperty("TagList",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).TagList, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ResourceTagsTypeConverter.ConvertFrom);
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -100,9 +100,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorInternal)this).VirtualHub = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceReference) content.GetValueForProperty("VirtualHub",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorInternal)this).VirtualHub, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ResourceReferenceTypeConverter.ConvertFrom);
             }
-            if (content.Contains("CollectorPolicies"))
+            if (content.Contains("CollectorPolicyList"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorInternal)this).CollectorPolicies = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[]) content.GetValueForProperty("CollectorPolicies",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorInternal)this).CollectorPolicies, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.CollectorPolicyTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorInternal)this).CollectorPolicyList = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[]) content.GetValueForProperty("CollectorPolicyList",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorInternal)this).CollectorPolicyList, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.CollectorPolicyTypeConverter.ConvertFrom));
             }
             if (content.Contains("VirtualHubId"))
             {
@@ -149,9 +149,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("Tags"))
+            if (content.Contains("TagList"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Tags = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags) content.GetValueForProperty("Tags",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).Tags, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).TagList = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags) content.GetValueForProperty("TagList",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal)this).TagList, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ResourceTagsTypeConverter.ConvertFrom);
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -161,9 +161,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorInternal)this).VirtualHub = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceReference) content.GetValueForProperty("VirtualHub",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorInternal)this).VirtualHub, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ResourceReferenceTypeConverter.ConvertFrom);
             }
-            if (content.Contains("CollectorPolicies"))
+            if (content.Contains("CollectorPolicyList"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorInternal)this).CollectorPolicies = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[]) content.GetValueForProperty("CollectorPolicies",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorInternal)this).CollectorPolicies, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.CollectorPolicyTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorInternal)this).CollectorPolicyList = (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[]) content.GetValueForProperty("CollectorPolicyList",((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollectorInternal)this).CollectorPolicyList, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.CollectorPolicyTypeConverter.ConvertFrom));
             }
             if (content.Contains("VirtualHubId"))
             {

@@ -41,11 +41,11 @@ INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
   [SubscriptionId <String>]: Azure Subscription ID.
 
 PARAMETERS <ICollectorPolicy>: Collection policy resource.
-  [EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
+  [EmissionPolicyList <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
     [EmissionDestinations <IEmissionPolicyDestination[]>]: Emission policy destinations.
       [DestinationType <DestinationType?>]: Emission destination type.
     [EmissionType <EmissionType?>]: Emission format type.
-  [IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
+  [IngestionPolicyIngestionSourceList <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
     [ResourceId <String>]: Resource ID.
     [SourceType <SourceType?>]: Ingestion source type.
   [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
@@ -99,7 +99,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy]
     # Collection policy resource.
     # To construct, see NOTES section for PARAMETERS properties and create a hash table.
-    ${Parameters},
+    ${ParameterList},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -108,7 +108,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat[]]
     # Emission policies.
     # To construct, see NOTES section for EMISSIONPOLICIES properties and create a hash table.
-    ${EmissionPolicies},
+    ${EmissionPolicyList},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -117,7 +117,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat[]]
     # Ingestion Sources.
     # To construct, see NOTES section for INGESTIONPOLICYINGESTIONSOURCES properties and create a hash table.
-    ${IngestionPolicyIngestionSources},
+    ${IngestionPolicyIngestionSourceList},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]

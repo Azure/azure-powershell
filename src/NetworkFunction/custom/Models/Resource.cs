@@ -41,12 +41,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceInternal.Type { get => this._type; set { {_type = value;} } }
 
-        /// <summary>Backing field for <see cref="Tags" /> property.</summary>
+        /// <summary>Backing field for <see cref="TagList" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags _tags;
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags Tags { get => (this._tags = this._tags ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ResourceTags()); set => this._tags = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags TagList { get => (this._tags = this._tags ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ResourceTags()); set => this._tags = value; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         Description = @"Resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags) })]
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags Tags { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags TagList { get; set; }
         /// <summary>Resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(
         Required = false,
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         /// <summary>Resource name.</summary>
         string Name { get; set; }
         /// <summary>Resource tags.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags Tags { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceTags TagList { get; set; }
         /// <summary>Resource type.</summary>
         string Type { get; set; }
 

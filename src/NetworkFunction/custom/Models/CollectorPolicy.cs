@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
 
         /// <summary>Emission policies.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat[] EmissionPolicies { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)Properties).EmissionPolicies; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)Properties).EmissionPolicies = value ?? null /* arrayOf */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat[] EmissionPolicyList { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)Properties).EmissionPolicyList; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)Properties).EmissionPolicyList = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Etag" /> property.</summary>
         private string _etag;
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
 
         /// <summary>Ingestion Sources.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat[] IngestionPolicyIngestionSources { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)Properties).IngestionPolicyIngestionSources; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)Properties).IngestionPolicyIngestionSources = value ?? null /* arrayOf */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat[] IngestionPolicyIngestionSourceList { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)Properties).IngestionPolicyIngestionSourceList; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicyPropertiesFormatInternal)Properties).IngestionPolicyIngestionSourceList = value ?? null /* arrayOf */; }
 
         /// <summary>The ingestion type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.PropertyOrigin.Inlined)]
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         Description = @"Emission policies.",
         SerializedName = @"emissionPolicies",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat) })]
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat[] EmissionPolicies { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat[] EmissionPolicyList { get; set; }
         /// <summary>A unique read-only string that changes whenever the resource is updated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(
         Required = false,
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         Description = @"Ingestion Sources.",
         SerializedName = @"ingestionSources",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat) })]
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat[] IngestionPolicyIngestionSources { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat[] IngestionPolicyIngestionSourceList { get; set; }
         /// <summary>The ingestion type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(
         Required = false,
@@ -171,13 +171,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IResourceReferenceInternal
     {
         /// <summary>Emission policies.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat[] EmissionPolicies { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat[] EmissionPolicyList { get; set; }
         /// <summary>A unique read-only string that changes whenever the resource is updated.</summary>
         string Etag { get; set; }
         /// <summary>Ingestion policies.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionPolicyPropertiesFormat IngestionPolicy { get; set; }
         /// <summary>Ingestion Sources.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat[] IngestionPolicyIngestionSources { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat[] IngestionPolicyIngestionSourceList { get; set; }
         /// <summary>The ingestion type.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.IngestionType? IngestionPolicyIngestionType { get; set; }
         /// <summary>The name of Collection Policy in a Traffic Collector.</summary>

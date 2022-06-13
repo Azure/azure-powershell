@@ -5,18 +5,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Extensions;
 
-    /// <summary>Tags object for patch operations.</summary>
+    /// <summary>TagList object for patch operations.</summary>
     public partial class TagsObject :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObject,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectInternal
     {
 
-        /// <summary>Backing field for <see cref="Tags" /> property.</summary>
+        /// <summary>Backing field for <see cref="TagList" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectTags _tags;
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectTags Tags { get => (this._tags = this._tags ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.TagsObjectTags()); set => this._tags = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectTags TagList { get => (this._tags = this._tags ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.TagsObjectTags()); set => this._tags = value; }
 
         /// <summary>Creates an new <see cref="TagsObject" /> instance.</summary>
         public TagsObject()
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
 
         }
     }
-    /// Tags object for patch operations.
+    /// TagList object for patch operations.
     public partial interface ITagsObject :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.IJsonSerializable
     {
@@ -35,15 +35,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         Description = @"Resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectTags) })]
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectTags Tags { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectTags TagList { get; set; }
 
     }
-    /// Tags object for patch operations.
+    /// TagList object for patch operations.
     internal partial interface ITagsObjectInternal
 
     {
         /// <summary>Resource tags.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectTags Tags { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITagsObjectTags TagList { get; set; }
 
     }
 }

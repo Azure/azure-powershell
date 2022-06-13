@@ -15,7 +15,7 @@ Creates or updates a Azure Traffic Collector resource
 ### CreateExpanded (Default)
 ```
 New-AzNetworkFunctionTrafficCollector -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-CollectorPolicies <ICollectorPolicy[]>] [-Tags <Hashtable>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] [-CollectorPolicyList <ICollectorPolicy[]>] [-Tags <Hashtable>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ New-AzNetworkFunctionTrafficCollector -InputObject <ITrafficCollectorIdentity>
 ### CreateViaIdentityExpanded
 ```
 New-AzNetworkFunctionTrafficCollector -InputObject <ITrafficCollectorIdentity> -Location <String>
- [-CollectorPolicies <ICollectorPolicy[]>] [-Tags <Hashtable>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-CollectorPolicyList <ICollectorPolicy[]>] [-Tags <Hashtable>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -83,7 +83,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CollectorPolicies
+### -CollectorPolicyList
 Collector Policies for Azure Traffic Collector.
 To construct, see NOTES section for COLLECTORPOLICIES properties and create a hash table.
 
@@ -275,11 +275,11 @@ To create the parameters described below, construct a hash table containing the 
 
 
 COLLECTORPOLICIES <ICollectorPolicy[]>: Collector Policies for Azure Traffic Collector.
-  - `[EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]`: Emission policies.
+  - `[EmissionPolicyList <IEmissionPoliciesPropertiesFormat[]>]`: Emission policies.
     - `[EmissionDestinations <IEmissionPolicyDestination[]>]`: Emission policy destinations.
       - `[DestinationType <DestinationType?>]`: Emission destination type.
     - `[EmissionType <EmissionType?>]`: Emission format type.
-  - `[IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]`: Ingestion Sources.
+  - `[IngestionPolicyIngestionSourceList <IIngestionSourcesPropertiesFormat[]>]`: Ingestion Sources.
     - `[ResourceId <String>]`: Resource ID.
     - `[SourceType <SourceType?>]`: Ingestion source type.
   - `[IngestionPolicyIngestionType <IngestionType?>]`: The ingestion type.
@@ -294,12 +294,12 @@ PARAMETERS <IAzureTrafficCollector>: Azure Traffic Collector resource.
   - `[Location <String>]`: Resource location.
   - `[Tags <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[CollectorPolicies <ICollectorPolicy[]>]`: Collector Policies for Azure Traffic Collector.
-    - `[EmissionPolicies <IEmissionPoliciesPropertiesFormat[]>]`: Emission policies.
+  - `[CollectorPolicyList <ICollectorPolicy[]>]`: Collector Policies for Azure Traffic Collector.
+    - `[EmissionPolicyList <IEmissionPoliciesPropertiesFormat[]>]`: Emission policies.
       - `[EmissionDestinations <IEmissionPolicyDestination[]>]`: Emission policy destinations.
         - `[DestinationType <DestinationType?>]`: Emission destination type.
       - `[EmissionType <EmissionType?>]`: Emission format type.
-    - `[IngestionPolicyIngestionSources <IIngestionSourcesPropertiesFormat[]>]`: Ingestion Sources.
+    - `[IngestionPolicyIngestionSourceList <IIngestionSourcesPropertiesFormat[]>]`: Ingestion Sources.
       - `[ResourceId <String>]`: Resource ID.
       - `[SourceType <SourceType?>]`: Ingestion source type.
     - `[IngestionPolicyIngestionType <IngestionType?>]`: The ingestion type.
