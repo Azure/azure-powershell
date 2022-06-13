@@ -14,6 +14,17 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Blob\DisableAzureStorageBlobDeleteRetentionPolicy.cs" />
+    <Compile Remove="Blob\DisableAzureStorageBlobRestorePolicy.cs" />
+    <Compile Remove="Blob\DisableAzureStorageContainerDeleteRetentionPolicy.cs" />
+    <Compile Remove="Blob\EnableAzureStorageBlobDeleteRetentionPolicy.cs" />
+    <Compile Remove="Blob\EnableAzureStorageBlobLastAccessTimeTracking.cs" />
+    <Compile Remove="Blob\EnableAzureStorageBlobRestorePolicy.cs" />
+    <Compile Remove="Blob\EnableAzureStorageContainerDeleteRetentionPolicy.cs" />
+    <Compile Remove="Blob\GetAzureStorageContainer.cs" />
+    <Compile Remove="File\GetAzStorageFileServiceProperty.cs" />
+    <Compile Remove="File\UpdateAzAzStorageFileServiceProperty.cs" />
+    <Compile Remove="Models\PSFileServiceProperties.cs" />
     <Compile Remove="StorageAccount\AddAzureStorageAccountNetworkRule.cs" />
     <Compile Remove="StorageAccount\GetAzureStorageAccountNetworkRuleSet.cs" />
     <Compile Remove="StorageAccount\InvokeAzureStorageAccountHierarchicalNamespaceUpgrade.cs" />
