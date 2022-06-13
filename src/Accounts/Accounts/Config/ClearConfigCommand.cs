@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -23,7 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
-    [Cmdlet("Clear", "AzConfig", SupportsShouldProcess = true)]
+    [Cmdlet("Clear", "AzConfig", SupportsShouldProcess = true, DefaultParameterSetName = ClearAll)]
     [OutputType(typeof(bool))]
     [CmdletPreview(PreviewMessage)]
     public class ClearConfigCommand : ConfigCommandBase, IDynamicParameters
@@ -31,13 +32,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         private const string ClearByKey = "ClearByKey";
         private const string ClearAll = "ClearAll";
 
-        private const string ProcessMessage = "Clear the configs that apply to \"{0}\" by the following keys: {1}.";
+        private const string ProcessMessage = "Clear the configs that apply to {0} by the following keys: {1}.";
 
-        private string ContinueMessage => $"Clear all the configs that apply to \"{AppliesTo}\" in scope {Scope}?";
-        private string ProcessTarget => $"Configs in scope {Scope}";
+        private string ContinueMessageForClearAll => $"Clear all the configs that apply to {AppliesTo ?? "all the modules and cmdlets"} in scope {Scope}.";
 
-        [Parameter(ParameterSetName = ClearAll, Mandatory = true, HelpMessage = "Clear all configs.")]
-        public SwitchParameter All { get; set; }
+        private string ProcessTarget => $"{Scope} scope";
 
         [Parameter(ParameterSetName = ClearAll, HelpMessage = "Do not ask for confirmation when clearing all configs.")]
         public SwitchParameter Force { get; set; }
@@ -57,6 +56,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                             HelpMessage = config.HelpMessage
                         }
                     }));
+        }
+
+        protected override void ValidateParameters()
+        {
+            base.ValidateParameters();
+            if (Scope != ConfigScope.Process && Scope != ConfigScope.CurrentUser)
+            {
+                throw new AzPSArgumentException($"When clearing configs, {nameof(Scope)} must be either {ConfigScope.Process} or {ConfigScope.CurrentUser}", nameof(Scope));
+            }
         }
 
         public override void ExecuteCmdlet()
@@ -87,7 +95,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 return;
             }
             base.ConfirmAction(
-                string.Format(ProcessMessage, AppliesTo, string.Join(", ", configKeysFromInput)),
+                string.Format(ProcessMessage, AppliesTo ?? "all the modules and cmdlets", string.Join(", ", configKeysFromInput)),
                 ProcessTarget,
                 () => configKeysFromInput.ForEach(ClearConfigByKey));
         }
@@ -102,7 +110,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 
         private void ClearAllConfigs()
         {
-            ConfirmAction(Force, ContinueMessage, ContinueMessage, ProcessTarget, () =>
+            ConfirmAction(Force, ContinueMessageForClearAll, ContinueMessageForClearAll, ProcessTarget, () =>
             {
                 ConfigManager.ClearConfig(new ClearConfigOptions(null, Scope)
                 {

@@ -33,6 +33,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Role management policy</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleManagementPolicyAssignment();
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.ParameterCategory.Runtime)]
@@ -66,11 +69,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -88,12 +91,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
 
-        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleManagementPolicyAssignment();
-
-        /// <summary>Role management policy</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
-
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
@@ -108,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"The policy id role management policy assignment.",
         SerializedName = @"policyId",
         PossibleTypes = new [] { typeof(string) })]
-        public string PolicyId { get => ParametersBody.PolicyId ?? null; set => ParametersBody.PolicyId = value; }
+        public string PolicyId { get => _parametersBody.PolicyId ?? null; set => _parametersBody.PolicyId = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -135,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"The role definition of management policy assignment.",
         SerializedName = @"roleDefinitionId",
         PossibleTypes = new [] { typeof(string) })]
-        public string RoleDefinitionId { get => ParametersBody.RoleDefinitionId ?? null; set => ParametersBody.RoleDefinitionId = value; }
+        public string RoleDefinitionId { get => _parametersBody.RoleDefinitionId ?? null; set => _parametersBody.RoleDefinitionId = value; }
 
         /// <summary>Backing field for <see cref="Scope" /> property.</summary>
         private string _scope;
@@ -321,12 +318,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.RoleManagementPolicyAssignmentsCreate(Scope, Name, ParametersBody, onCreated, onDefault, this, Pipeline);
+                    await this.Client.RoleManagementPolicyAssignmentsCreate(Scope, Name, _parametersBody, onCreated, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Scope=Scope,Name=Name,body=ParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Scope=Scope,Name=Name,body=_parametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -396,14 +393,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

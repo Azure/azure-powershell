@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ItemTests : RMTestBase
     {
-        [Fact(Skip = "To re-record in next release")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMGetItems()
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMProtection");
         }
 
-        [Fact(Skip = "To re-record in next release")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMBackup()
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMBackup");
         }
 
-        [Fact(Skip = "To re-record in next release")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMGetRPs()
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
 
 
-        [Fact(Skip = "To re-record in next release")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMFullRestore()
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             Assert.True(AzureSession.Instance.DataStore.FileExists(mountScriptDetails.FilePath));
         }
 
-        [Fact(Skip = "To re-record in next release")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMSetVaultContext()
@@ -184,5 +184,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureManagedVMRestore");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
+        public void TestAzureVMMUA()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMMUA");
+        }        
     }
 }

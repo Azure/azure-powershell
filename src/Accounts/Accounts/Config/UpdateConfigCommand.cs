@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
@@ -46,6 +47,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             if (AppliesTo == null)
             {
                 AppliesTo = ConfigFilter.GlobalAppliesTo;
+            }
+        }
+
+        protected override void ValidateParameters()
+        {
+            base.ValidateParameters();
+            if (Scope != ConfigScope.Process && Scope != ConfigScope.CurrentUser)
+            {
+                throw new AzPSArgumentException($"When updating configs, {nameof(Scope)} must be either {ConfigScope.Process} or {ConfigScope.CurrentUser}", nameof(Scope));
             }
         }
 

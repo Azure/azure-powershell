@@ -54,23 +54,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
         /// </summary>
         /// <param name="key">The configuration key.</param>
         /// <returns>The configuration value.</returns>
-        public string this[string key]
+        public (string value, string providerId) this[string key]
         {
             get
             {
-                return GetValueWithProviderId(key).Item1;
+                return GetValueWithProviderId(key);
             }
             set
             {
-                if (!_providers.Any())
-                {
-                    throw new InvalidOperationException($"Error: none config source is registered.");
-                }
+                throw new NotSupportedException("todo");
+                //if (!_providers.Any())
+                //{
+                //    throw new InvalidOperationException($"Error: none config source is registered.");
+                //}
 
-                foreach (IConfigurationProvider provider in _providers)
-                {
-                    provider.Set(key, value);
-                }
+                //foreach (IConfigurationProvider provider in _providers)
+                //{
+                //    provider.Set(key, value);
+                //}
             }
         }
 
@@ -88,6 +89,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
 
             return (null, null);
 
+        }
+
+        public string GetValueByProviderId(string key, string providerId)
+        {
+            for (int i = _providers.Count - 1; i >= 0; i--)
+            {
+                IConfigurationProvider provider = _providers[i];
+
+                if (provider.Id == providerId && provider.TryGet(key, out string value))
+                {
+                    return value;
+                }
+            }
+            return null;
         }
 
         /// <summary>

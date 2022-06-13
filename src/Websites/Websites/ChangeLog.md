@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.11.2
 * Updated `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VirtualNetworkSubnetId` property [#18042]
 ## Version 2.11.1
 * Updated 'New-AzWebAppContainerPSSession' with CmdletDeprecation Attribute [#16646]

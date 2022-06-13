@@ -13,11 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Providers
 {
     internal class UnsettableMemoryConfigurationSource : IConfigurationSource
     {
+        /// <summary>
+        /// The initial key value configuration pairs.
+        /// </summary>
+        public IEnumerable<KeyValuePair<string, string>> InitialData { get; set; }
+
         public IConfigurationProvider Build(IConfigurationBuilder builder, string id)
         {
             return new UnsettableMemoryConfigurationProvider(this, id);

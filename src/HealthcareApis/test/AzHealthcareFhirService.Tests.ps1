@@ -17,10 +17,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzHealthcareFhirService'))
 Describe 'AzHealthcareFhirService' {
     It 'CreateExpanded' {
         {
-            $config = New-AzHealthcareFhirService -Name $env.fhirService2 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location -Kind 'fhir-R4' -AuthenticationConfigurationAuthority "https://login.microsoftonline.com/$($env.Tenant)" -AuthenticationConfigurationAudience "https://azpshcws-$($env.fhirService2).fhir.azurehealthcareapis.com"
+            $config = New-AzHealthcareFhirService -Name $env.fhirService2 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location -Kind 'fhir-R4' -Authority "https://login.microsoftonline.com/$($env.Tenant)" -Audience "https://azpshcws-$($env.fhirService2).fhir.azurehealthcareapis.com"
             $config.Name | Should -Be "$($env.apiWorkspace1)/$($env.fhirService2)"
 
-            $config = New-AzHealthcareFhirService -Name $env.fhirService3 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location -Kind 'fhir-R4' -AuthenticationConfigurationAuthority "https://login.microsoftonline.com/$($env.Tenant)" -AuthenticationConfigurationAudience "https://azpshcws-$($env.fhirService3).fhir.azurehealthcareapis.com"
+            $config = New-AzHealthcareFhirService -Name $env.fhirService3 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location -Kind 'fhir-R4' -Authority "https://login.microsoftonline.com/$($env.Tenant)" -Audience "https://azpshcws-$($env.fhirService3).fhir.azurehealthcareapis.com"
             $config.Name | Should -Be "$($env.apiWorkspace1)/$($env.fhirService3)"
         } | Should -Not -Throw
     }

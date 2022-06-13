@@ -16,7 +16,7 @@ Creates an Event Hubs namespace.
 ```
 New-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-EnableKafka] [-ZoneRedundant]
- [[-ClusterARMId] <String>] [-Identity] [-DisableLocalAuth] [-IdentityType <String>] [-IdentityId <String[]>]
+ [[-ClusterARMId] <String>] [-DisableLocalAuth] [-IdentityType <String>] [-IdentityId <String[]>]
  [-EncryptionConfig <PSEncryptionConfigAttributes[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ New-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Locatio
 ```
 New-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-EnableAutoInflate]
- [[-MaximumThroughputUnits] <Int32>] [-EnableKafka] [-ZoneRedundant] [[-ClusterARMId] <String>] [-Identity]
+ [[-MaximumThroughputUnits] <Int32>] [-EnableKafka] [-ZoneRedundant] [[-ClusterARMId] <String>]
  [-DisableLocalAuth] [-IdentityType <String>] [-IdentityId <String[]>]
  [-EncryptionConfig <PSEncryptionConfigAttributes[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -347,21 +347,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Identity
-enabling or disabling Identity for namespace
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

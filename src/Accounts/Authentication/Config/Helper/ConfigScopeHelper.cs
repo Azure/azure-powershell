@@ -23,17 +23,32 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         {
             switch (id)
             {
-                case Constants.ConfigProviderIds.MachineEnvironment:
-                case Constants.ConfigProviderIds.UserEnvironment:
+                case Constants.ConfigProviderIds.EnvironmentVariable:
+                    return ConfigScope.Environment;
                 case Constants.ConfigProviderIds.UserConfig:
                     return ConfigScope.CurrentUser;
-                case Constants.ConfigProviderIds.ProcessEnvironment:
                 case Constants.ConfigProviderIds.ProcessConfig:
                     return ConfigScope.Process;
                 case Constants.ConfigProviderIds.None:
                     return ConfigScope.Default;
                 default:
                     throw new AzPSArgumentOutOfRangeException($"Unexpected provider ID [{id}]. See {nameof(Constants.ConfigProviderIds)} class for all valid IDs.", nameof(id));
+            }
+        }
+
+        public static string GetProviderIdByScope(ConfigScope scope)
+        {
+            switch (scope)
+            {
+                case ConfigScope.CurrentUser:
+                    return Constants.ConfigProviderIds.UserConfig;
+                case ConfigScope.Environment:
+                    return Constants.ConfigProviderIds.EnvironmentVariable;
+                case ConfigScope.Process:
+                    return Constants.ConfigProviderIds.ProcessConfig;
+                case ConfigScope.Default:
+                default:
+                    return Constants.ConfigProviderIds.None;
             }
         }
     }

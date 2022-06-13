@@ -13,13 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Config.Definitions;
 using Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.PowerShell.Common.Config;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
@@ -33,12 +38,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 
         internal IEnvironmentVariableProvider EnvironmentVariableProvider { get; set; } = new DefaultEnvironmentVariableProvider();
 
-        private readonly string _pathToConfigFile;
+        public string ConfigPath
+        {
+            get
+            {
+                if (_cachedConfigPath == null)
+                {
+                    _cachedConfigPath = GetPathToConfigFile(_configPathCandidates);
+                }
+                return _cachedConfigPath;
+            }
+        }
+        private string _cachedConfigPath;
+        private readonly IEnumerable<string> _configPathCandidates;
 
         public ConfigInitializer(IEnumerable<string> paths)
         {
-            _ = paths ?? throw new ArgumentNullException(nameof(paths));
-            _pathToConfigFile = GetPathToConfigFile(paths);
+            _configPathCandidates = paths ?? throw new ArgumentNullException(nameof(paths));
         }
 
         /// <summary>
@@ -64,7 +80,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 {
                     DirectoryInfo dir = new FileInfo(path).Directory;
                     DataStore.CreateDirectory(dir.FullName); // create directory if not exists
-                    using (var _ = DataStore.OpenForExclusiveWrite(path)) { }
+                    DataStore.WriteFile(path, @"{}");
                     return path;
                 }
                 catch (Exception)
@@ -81,12 +97,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             {
                 ValidateConfigFile();
             }
-            return new ConfigManager(_pathToConfigFile, DataStore, EnvironmentVariableProvider);
+            return new ConfigManager(ConfigPath, DataStore, EnvironmentVariableProvider);
         }
 
         private void ValidateConfigFileContent()
         {
-            string json = DataStore.ReadFileAsText(_pathToConfigFile);
+            string json = DataStore.ReadFileAsText(ConfigPath);
 
             bool isValidJson = true;
             try
@@ -100,14 +116,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 
             if (string.IsNullOrEmpty(json) || !isValidJson)
             {
-                Debug.Write($"[ConfigInitializer] Failed to parse the config file at {_pathToConfigFile}. Clearing the file.");
+                Debug.Write($"[ConfigInitializer] Failed to parse the config file at {ConfigPath}. Clearing the file.");
                 ResetConfigFileToDefault();
             }
         }
 
         private void ValidateConfigFile()
         {
-            if (!DataStore.FileExists(_pathToConfigFile))
+            if (!DataStore.FileExists(ConfigPath))
             {
                 ResetConfigFileToDefault();
             }
@@ -121,7 +137,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         {
             try
             {
-                DataStore.WriteFile(_pathToConfigFile, @"{}");
+                DataStore.WriteFile(ConfigPath, @"{}");
             }
             catch (Exception ex)
             {
@@ -139,8 +155,59 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             configManager.BuildConfig();
         }
 
+        /// <summary>
+        /// Migrates independent configs to the new config framework.
+        /// </summary>
+        /// <param name="profilePath">Path of session profile where old config files are stored.</param>
+        internal void MigrateConfigs(string profilePath)
+        {
+            lock (_fsLock)
+            {
+                // Migrate data collection config
+                string dataCollectionConfigPath = Path.Combine(profilePath, AzurePSDataCollectionProfile.DefaultFileName);
+                const string legacyConfigKey = "enableAzureDataCollection";
+                // Migrate only when:
+                // 1. Old config file exists
+                // 2. New config file does not exist
+                if (DataStore.FileExists(dataCollectionConfigPath) && _configPathCandidates.All(path => !DataStore.FileExists(path)))
+                {
+                    try
+                    {
+                        string json = DataStore.ReadFileAsText(dataCollectionConfigPath);
+                        JObject root = JObject.Parse(json);
+                        if (root.TryGetValue(legacyConfigKey, out JToken jToken))
+                        {
+                            bool enabled = ((bool)jToken);
+                            new JsonConfigWriter(ConfigPath, DataStore).Update(ConfigPathHelper.GetPathOfConfig(ConfigKeys.EnableDataCollection), enabled);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // do not throw for file IO exceptions
+                    }
+                }
+            }
+        }
+
         private void RegisterConfigs(IConfigManager configManager)
         {
+            // simple configs
+            configManager.RegisterConfig(new SimpleTypedConfig<string>(
+                ConfigKeys.DefaultSubscriptionForLogin,
+                Resources.HelpMessageOfDefaultSubscriptionForLogin,
+                string.Empty,
+                null,
+                new[] { AppliesTo.Az }));
+            configManager.RegisterConfig(new SimpleTypedConfig<bool>(
+                ConfigKeys.EnableDataCollection,
+                Resources.HelpMessageOfEnableDataCollection,
+                true,
+                AzurePSDataCollectionProfile.EnvironmentVariableName,
+                new[] { AppliesTo.Az }));
+
+            // configs with their own types
+            // configManager.RegisterConfig(new EnableInterceptSurveyConfig()); // todo: uncomment after improvements are made to survey
+            configManager.RegisterConfig(new DisplayBreakingChangeWarningsConfig());
         }
     }
 }

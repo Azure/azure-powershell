@@ -38,11 +38,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// Creates an assignment object to be submitted
         /// </summary>
         /// <param name="identityType"></param>
+        /// <param name="userAssignedIdentity"></param>
         /// <param name="bpLocation"></param>
         /// <param name="blueprintId"></param>
         /// <param name="lockMode"></param>
-        /// <param name="Parameters"></param>
-        /// <param name="ResourceGroups"></param>
+        /// <param name="parameters"></param>
+        /// <param name="resourceGroups"></param>
+        /// <param name="secureStringParameters"></param>
         /// <returns></returns>
         protected Assignment CreateAssignmentObject(string identityType, string userAssignedIdentity, string bpLocation, string blueprintId, PSLockMode? lockMode, Hashtable parameters, Hashtable resourceGroups, Hashtable secureStringParameters)
         {
@@ -159,7 +161,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <summary>
         /// Assign owner role to Blueprint RP (so that we can do deployments)
         /// </summary>
-        /// <param name="subscriptionId"></param>
+        /// <param name="scope"></param>
         /// <param name="spnObjectId"></param>
         protected void AssignOwnerPermission(string scope, string spnObjectId)
         {

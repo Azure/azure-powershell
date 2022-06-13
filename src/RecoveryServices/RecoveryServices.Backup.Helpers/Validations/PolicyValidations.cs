@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         // <summary>
         /// Helper function to validate long term rentention policy and simple schedule policy.
         /// </summary>
-        public static void ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+        public static void ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
             LongTermRetentionPolicy ltrPolicy,
             SimpleSchedulePolicy schPolicy)
         {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         // <summary>
         /// Helper function to validate long term rentention policy and simple schedule policy.
         /// </summary>
-        public static void ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+        public static void ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
             LongTermRetentionPolicy ltrPolicy,
             SimpleSchedulePolicyV2 schPolicy)
         {
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
         }
 
-        public static void ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+        public static void ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
             SQLRetentionPolicy ltrPolicy,
             SQLSchedulePolicy schPolicy)
         {

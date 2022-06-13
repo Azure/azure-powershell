@@ -23,16 +23,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using global::Azure.Storage.Files.Shares;
+    using Microsoft.WindowsAzure.Commands.Common;
+    using global::Azure.Core;
+    using global::Azure;
+    using global::Azure.Storage.Files.Shares.Models;
+    using System.Linq;
+    using Microsoft.Azure.Cosmos.Table;
 
     public abstract class AzureStorageFileCmdletBase : StorageCloudCmdletBase<IStorageFileManagement>
     {
-        [Parameter(
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = Constants.ShareNameParameterSetName,
-            HelpMessage = "Azure Storage Context Object")]
-        public override IStorageContext Context { get; set; }
-
         protected FileRequestOptions RequestOptions
         {
             get
@@ -45,14 +45,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         {
             if (this.Channel == null || !this.ShareChannel)
             {
-                this.Channel = new StorageFileManagement(
-                    this.ParameterSetName == Constants.ShareNameParameterSetName ||
-                    this.ParameterSetName.StartsWith("ShareName") ||
-                    this.ParameterSetName == Constants.MatchingPrefixParameterSetName ||
-                    this.ParameterSetName == Constants.SpecificParameterSetName ?
-                        this.GetCmdletStorageContext() :
+                try
+                {
+                    this.Channel = new StorageFileManagement(
+                            this.GetCmdletStorageContext(outputErrorMessage: false)
+                    );
+                }
+                catch (InvalidOperationException)
+                {
+                    this.Channel = new StorageFileManagement(
                         AzureStorageContext.EmptyContextInstance
-                );
+                    );
+                }
             }
 
             return this.Channel;
@@ -131,6 +135,37 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             {
                 WriteCloudFileDirectoryeObject(taskId, channel, item as CloudFileDirectory);
             }
-        }    
+        }
+
+        public ShareClientOptions ClientOptions
+        {
+            get
+            {
+                if (clientOptions == null)
+                {
+                    clientOptions = new ShareClientOptions();
+                    clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+                    return clientOptions;
+                }
+                else
+                {
+                    return clientOptions;
+                }
+            }
+        }
+        private ShareClientOptions clientOptions = null;
+
+        public static AzureStorageContext GetStorageContextFromTrack1FileServiceClient(CloudFileClient fileServiceClient, IAzureContext DefaultContext = null)
+        {
+            Microsoft.Azure.Storage.CloudStorageAccount account = new Microsoft.Azure.Storage.CloudStorageAccount(
+                fileServiceClient.Credentials,
+                null, //blob Uri
+                null, //queue Uri
+                null, //talbe Uri
+                fileServiceClient.BaseUri); //file Uri
+            return new AzureStorageContext(account, 
+                fileServiceClient.Credentials.AccountName, 
+                DefaultContext);
+        }
     }
 }

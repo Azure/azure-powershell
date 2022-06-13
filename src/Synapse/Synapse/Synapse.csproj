@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.Analytics.Synapse.AccessControl" Version="1.0.0-preview.5" />
-    <PackageReference Include="Azure.Analytics.Synapse.Artifacts" Version="1.0.0-preview.14" />
+    <PackageReference Include="Azure.Analytics.Synapse.Artifacts" Version="1.0.0-preview.15" />
     <PackageReference Include="Azure.Analytics.Synapse.ManagedPrivateEndpoints" Version="1.0.0-beta.5" />
     <PackageReference Include="Azure.Analytics.Synapse.Spark" Version="1.0.0-preview.7" />
     <PackageReference Include="Microsoft.Azure.Management.Synapse" Version="2.2.0-preview" />

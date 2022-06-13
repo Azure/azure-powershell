@@ -22,6 +22,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Provide
     {
         public IEnvironmentVariableProvider EnvironmentVariableProvider { get; set; }
         public EnvironmentVariableTarget EnvironmentVariableTarget { get; set; }
-        public IDictionary<string, string> EnvironmentVariableToKeyMap { get; set; }
+        public IDictionary<string, EnvironmentVariableConfigurationParser> EnvironmentVariableParsers { get; set; }
     }
+
+    /// <summary>
+    /// Specifies how a config parses environment variables.
+    /// </summary>
+    /// <param name="environmentVariables">Name and value pairs of all the environment variables.</param>
+    /// <returns>The result of parsing, in string. Null if not set.</returns>
+    internal delegate string EnvironmentVariableConfigurationParser(IReadOnlyDictionary<string, string> environmentVariables);
 }

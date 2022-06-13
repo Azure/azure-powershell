@@ -284,11 +284,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 if (subscriptionId != null)
                 {
-                    throw new PSInvalidOperationException(String.Format(ResourceMessages.SubscriptionIdNotFound, account.Id, subscriptionId));
+                    throw new PSInvalidOperationException(String.Format(ResourceMessages.SubscriptionIdNotFound, account.Id, subscriptionId) + " " + ProfileMessages.SubscriptionNotFouldPleaseCheckConfig);
                 }
                 else if (subscriptionName != null)
                 {
-                    throw new PSInvalidOperationException(String.Format(ResourceMessages.SubscriptionNameNotFound, account.Id, subscriptionName));
+                    throw new PSInvalidOperationException(String.Format(ResourceMessages.SubscriptionNameNotFound, account.Id, subscriptionName) + " " + ProfileMessages.SubscriptionNotFouldPleaseCheckConfig);
                 }
 
                 var newContext = new AzureContext(account, environment, newTenant);

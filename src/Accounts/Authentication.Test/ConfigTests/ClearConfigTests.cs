@@ -18,6 +18,7 @@ using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Xunit;
+using System.Linq;
 
 namespace Microsoft.Azure.Authentication.Test.Config
 {
@@ -27,15 +28,24 @@ namespace Microsoft.Azure.Authentication.Test.Config
         [Trait(TestTraits.AcceptanceType, TestTraits.CheckIn)]
         public void CanClearSingleConfig()
         {
-            string key = "FalseByDefault";
-            IConfigManager icm = GetConfigManager(new SimpleTypedConfig<bool>(key, "{help message}", false));
-            Assert.False(icm.GetConfigValue<bool>(key));
+            string key = "DisableSomething";
+            var icm = GetConfigManager(new SimpleTypedConfig<bool>(key, "{help message}", false));
 
-            icm.UpdateConfig(new UpdateConfigOptions(key, true, ConfigScope.Process));
-            Assert.True(icm.GetConfigValue<bool>(key));
-
-            icm.ClearConfig(new ClearConfigOptions(key, ConfigScope.Process));
             Assert.False(icm.GetConfigValue<bool>(key));
+            icm.UpdateConfig(new UpdateConfigOptions(key, true, ConfigScope.Process)
+            {
+                AppliesTo = "Get-AzCmdlet"
+            });
+            icm.UpdateConfig(new UpdateConfigOptions(key, true, ConfigScope.Process)
+            {
+                AppliesTo = "Az.Module"
+            });
+
+            Assert.Equal(3, icm.ListConfigs(new ConfigFilter() { Keys = new[] { key } }).Count()); // applies to Get-AzCmdlet, Az.Module and Az(default)
+            icm.ClearConfig(new ClearConfigOptions(key, ConfigScope.Process) { AppliesTo = "Get-AzCmdlet" });
+            Assert.Equal(2, icm.ListConfigs(new ConfigFilter() { Keys = new[] { key } }).Count());
+            icm.ClearConfig(new ClearConfigOptions(key, ConfigScope.Process) { AppliesTo = "Az.Module" });
+            Assert.Single(icm.ListConfigs(new ConfigFilter() { Keys = new[] { key } }));
         }
 
         [Fact]
@@ -86,18 +96,24 @@ namespace Microsoft.Azure.Authentication.Test.Config
         [Trait(TestTraits.AcceptanceType, TestTraits.CheckIn)]
         public void CanClearSingleConfigInJson()
         {
-            IConfigManager icm = GetConfigManager();
             string key = "DisableSomething";
-            icm.RegisterConfig(new SimpleTypedConfig<bool>(key, "{help message}", false));
-            icm.BuildConfig();
+            var icm = GetConfigManager(new SimpleTypedConfig<bool>(key, "{help message}", false));
 
             Assert.False(icm.GetConfigValue<bool>(key));
+            icm.UpdateConfig(new UpdateConfigOptions(key, true, ConfigScope.CurrentUser)
+            {
+                AppliesTo = "Get-AzCmdlet"
+            });
+            icm.UpdateConfig(new UpdateConfigOptions(key, true, ConfigScope.CurrentUser)
+            {
+                AppliesTo = "Az.Module"
+            });
 
-            icm.UpdateConfig(new UpdateConfigOptions(key, true, ConfigScope.CurrentUser));
-            Assert.True(icm.GetConfigValue<bool>(key));
-
-            icm.ClearConfig(new ClearConfigOptions(key, ConfigScope.CurrentUser));
-            Assert.False(icm.GetConfigValue<bool>(key));
+            Assert.Equal(3, icm.ListConfigs(new ConfigFilter() { Keys = new[] { key } }).Count()); // applies to Get-AzCmdlet, Az.Module and Az(default)
+            icm.ClearConfig(new ClearConfigOptions(key, ConfigScope.CurrentUser) { AppliesTo = "Get-AzCmdlet" });
+            Assert.Equal(2, icm.ListConfigs(new ConfigFilter() { Keys = new[] { key } }).Count());
+            icm.ClearConfig(new ClearConfigOptions(key, ConfigScope.CurrentUser) { AppliesTo = "Az.Module" });
+            Assert.Single(icm.ListConfigs(new ConfigFilter() { Keys = new[] { key } }));
         }
 
         [Fact]
@@ -192,23 +208,28 @@ namespace Microsoft.Azure.Authentication.Test.Config
 
         [Fact]
         [Trait(TestTraits.AcceptanceType, TestTraits.CheckIn)]
-        public void AppliesToShouldDefaultToAz()
+        public void ShouldClearWhateverAppliesTo()
         {
             const string boolKey = "BoolKey";
             var boolConfig = new SimpleTypedConfig<bool>(boolKey, "", false);
             var icm = GetConfigManager(boolConfig);
 
-            const string appliesTo = "Az.A";
             icm.UpdateConfig(new UpdateConfigOptions(boolKey, true, ConfigScope.CurrentUser)
             {
-                AppliesTo = appliesTo
+                AppliesTo = "Az.Module"
+            });
+            icm.UpdateConfig(new UpdateConfigOptions(boolKey, true, ConfigScope.CurrentUser)
+            {
+                AppliesTo = "Get-Cmdlet"
+            });
+            icm.UpdateConfig(new UpdateConfigOptions(boolKey, true, ConfigScope.CurrentUser)
+            {
+                AppliesTo = "Az"
             });
 
             icm.ClearConfig(boolKey, ConfigScope.CurrentUser);
-            Assert.Single(icm.ListConfigs(new ConfigFilter() { Keys = new string[] { boolKey }, AppliesTo = appliesTo }));
-
-            icm.ClearConfig(new ClearConfigOptions(boolKey, ConfigScope.CurrentUser) { AppliesTo = appliesTo });
-            Assert.Empty(icm.ListConfigs(new ConfigFilter() { Keys = new string[] { boolKey }, AppliesTo = appliesTo }));
+            var results = icm.ListConfigs(new ConfigFilter() { Keys = new string[] { boolKey } });
+            Assert.Single(results);
         }
     }
 }

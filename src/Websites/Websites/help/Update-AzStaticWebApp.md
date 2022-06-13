@@ -328,7 +328,7 @@ Accept wildcard characters: False
 
 ### -RepositoryToken
 A user's github repository token.
-This is used to setup the Github Actions workflow file and API secrets.
+This is used to setup the GitHub Actions workflow file and API secrets.
 
 ```yaml
 Type: System.String

@@ -71,6 +71,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
         /// <returns>The new instance if successful, null otherwise.</returns>
         public static (object, string) Get(this IConfiguration configuration, Type type)
             => configuration.Get(type, _ => { });
+        public static object Get(this IConfiguration configuration, Type type, string providerId)
+            => configuration.Get(type, _ => { }, providerId);
 
         /// <summary>
         /// Attempts to bind the configuration instance to a new instance of type T.
@@ -90,9 +92,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
 
             var options = new BinderOptions();
             configureOptions?.Invoke(options);
-            object bound = BindInstance(type, instance: null, config: configuration, options: options);
-            string providerId = (configuration as IConfigurationSection).GetValueWithProviderId().Item2;
-            return (bound, providerId);
+            return BindInstance(type, instance: null, config: configuration, options: options);
+        }
+
+        public static object Get(this IConfiguration configuration, Type type, Action<BinderOptions> configureOptions, string providerId)
+        {
+            if (configuration == null)
+            {
+                throw new ArgumentNullException(nameof(configuration));
+            }
+
+            var options = new BinderOptions();
+            configureOptions?.Invoke(options);
+            return BindInstance(type, instance: null, config: configuration, options: options, providerId);
         }
 
         /// <summary>
@@ -140,7 +152,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
         /// <param name="configuration">The configuration.</param>
         /// <param name="key">The key of the configuration section's value to convert.</param>
         /// <returns>The converted value.</returns>
-        public static T GetValue<T>(this IConfiguration configuration, string key)
+        public static (T, string) GetValue<T>(this IConfiguration configuration, string key)
         {
             return GetValue(configuration, key, default(T));
         }
@@ -153,9 +165,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
         /// <param name="key">The key of the configuration section's value to convert.</param>
         /// <param name="defaultValue">The default value to use if no value is found.</param>
         /// <returns>The converted value.</returns>
-        public static T GetValue<T>(this IConfiguration configuration, string key, T defaultValue)
+        public static (T, string) GetValue<T>(this IConfiguration configuration, string key, T defaultValue)
         {
-            return (T)GetValue(configuration, typeof(T), key, defaultValue);
+            return ((T, string))GetValue(configuration, typeof(T), key, defaultValue);
         }
 
         /// <summary>
@@ -178,15 +190,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
         /// <param name="key">The key of the configuration section's value to convert.</param>
         /// <param name="defaultValue">The default value to use if no value is found.</param>
         /// <returns>The converted value.</returns>
-        public static object GetValue(this IConfiguration configuration, Type type, string key, object defaultValue)
+        public static (object, string) GetValue(this IConfiguration configuration, Type type, string key, object defaultValue)
         {
             IConfigurationSection section = configuration.GetSection(key);
-            string value = section.Value;
+            (string value, string providerId) = section.Value;
             if (value != null)
             {
-                return ConvertValue(type, value, section.Path);
+                return (ConvertValue(type, value, section.Path), providerId);
             }
-            return defaultValue;
+            return (defaultValue, Constants.ConfigProviderIds.None);
         }
 
         private static void BindNonScalar(this IConfiguration configuration, object instance, BinderOptions options)
@@ -294,8 +306,83 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
             return null;
         }
 
-        private static object BindInstance(Type type, object instance, IConfiguration config, BinderOptions options)
+        private static (object, string) BindInstance(Type type, object instance, IConfiguration config, BinderOptions options)
         {
+            string configValue = null;
+            string providerId = Constants.ConfigProviderIds.None;
+
+            // if binding IConfigurationSection, break early
+            if (type == typeof(IConfigurationSection))
+            {
+                return (config, providerId);
+            }
+
+            var section = config as IConfigurationSection;
+            if (section != null)
+            {
+                (configValue, providerId) = section.Value;
+            }
+            object convertedValue;
+            Exception error;
+            if (configValue != null && TryConvertValue(type, configValue, section.Path, out convertedValue, out error))
+            {
+                if (error != null)
+                {
+                    throw error;
+                }
+
+                // Leaf nodes are always reinitialized
+                return (convertedValue, providerId);
+            }
+
+            if (config != null && config.GetChildren().Any())
+            {
+                // If we don't have an instance, try to create one
+                if (instance == null)
+                {
+                    // We are already done if binding to a new collection instance worked
+                    instance = AttemptBindToCollectionInterfaces(type, config, options);
+                    if (instance != null)
+                    {
+                        return (instance, providerId);
+                    }
+
+                    instance = CreateInstance(type);
+                }
+
+                // See if its a Dictionary
+                Type collectionInterface = FindOpenGenericInterface(typeof(IDictionary<,>), type);
+                if (collectionInterface != null)
+                {
+                    BindDictionary(instance, collectionInterface, config, options);
+                }
+                else if (type.IsArray)
+                {
+                    instance = BindArray((Array)instance, config, options);
+                }
+                else
+                {
+                    // See if its an ICollection
+                    collectionInterface = FindOpenGenericInterface(typeof(ICollection<>), type);
+                    if (collectionInterface != null)
+                    {
+                        BindCollection(instance, collectionInterface, config, options);
+                    }
+                    // Something else
+                    else
+                    {
+                        BindNonScalar(config, instance, options);
+                    }
+                }
+            }
+
+            return (instance, providerId);
+        }
+
+        private static object BindInstance(Type type, object instance, IConfiguration config, BinderOptions options, string providerId)
+        {
+            string configValue = null;
+
             // if binding IConfigurationSection, break early
             if (type == typeof(IConfigurationSection))
             {
@@ -303,7 +390,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
             }
 
             var section = config as IConfigurationSection;
-            string configValue = section?.Value;
+            if (section != null)
+            {
+                configValue = section.GetValueByProviderId(providerId);
+            }
             object convertedValue;
             Exception error;
             if (configValue != null && TryConvertValue(type, configValue, section.Path, out convertedValue, out error))
@@ -483,7 +573,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
             {
                 try
                 {
-                    object item = BindInstance(
+                    (object item, string _) = BindInstance(
                         type: elementType,
                         instance: null,
                         config: children[i],

@@ -20,7 +20,7 @@ New-AzGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <Strin
  [-EndOfLifeDate <DateTime>] [-Eula <String>] [-HyperVGeneration <String>] [-MinimumMemory <Int32>]
  [-MinimumVCPU <Int32>] [-MaximumMemory <Int32>] [-MaximumVCPU <Int32>] [-PrivacyStatementUri <String>]
  [-PurchasePlanName <String>] [-PurchasePlanProduct <String>] [-PurchasePlanPublisher <String>]
- [-ReleaseNoteUri <String>] [-Tag <Hashtable>] [-Feature <GalleryImageFeature[]>]
+ [-ReleaseNoteUri <String>] [-Tag <Hashtable>] [-Feature <GalleryImageFeature[]>] [-Architecture <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -78,7 +78,7 @@ New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryNam
 
 Creates a gallery image definition to contain image versions for specialized windows images.
 
-### Example 4: Create an image definition for generalized windows images and set features. 
+### Example 4: Create an image definition for generalized windows images and set features.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -185,6 +185,21 @@ New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryNam
 Creates a gallery image definition for linux generalized images and specify either the string or path to an EULA agreement, privacy statement, and release notes tied to all image versions in the image definition.
 
 ## PARAMETERS
+
+### -Architecture
+CPU architecture supported by an OS disk. Possible values are "X64" and "Arm64".
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -AsJob
 

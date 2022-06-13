@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell;
 
-    /// <summary>The resource model definition for a ARM tracked top level resource</summary>
+    /// <summary>
+    /// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(TrackedResourceTypeConverter))]
     public partial class TrackedResource
     {
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10
         /// Creates a new instance of <see cref="TrackedResource" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="TrackedResource" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10.ITrackedResource FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -164,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10
             AfterDeserializePSObject(content);
         }
     }
-    /// The resource model definition for a ARM tracked top level resource
+    /// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
     [System.ComponentModel.TypeConverter(typeof(TrackedResourceTypeConverter))]
     public partial interface ITrackedResource
 

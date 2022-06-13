@@ -1,0 +1,127 @@
+{
+  "Get-AzServiceLinkerForContainerApp+[NoContext]+List+$GET+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "4c36a038-0a8a-4dba-835e-6ea495ca41c9" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Get-AzServiceLinker" ],
+        "FullCommandName": [ "Get-AzServiceLinker_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "823a34ca-55a8-48ae-a83d-59031f97df1a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "46a731c8-636c-4dcb-8acb-4fc459a617e1" ],
+        "x-ms-correlation-request-id": [ "0faa081e-0240-48ee-ab64-9546dae98e44" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T064319Z:0faa081e-0240-48ee-ab64-9546dae98e44" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:43:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1639" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"name\":\"preparedLinker\",\"type\":\"microsoft.servicelinker/linkers\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/xichen-postgresql/databases/testdb\",\"resourceProperties\":{\"connectAsKubernetesCsiDriver\":false,\"type\":\"KeyVault\"},\"type\":\"AzureResource\"},\"authInfo\":{\"name\":\"xichen\",\"secretInfo\":{\"value\":null,\"secretType\":\"rawValue\"},\"authType\":\"secret\"},\"clientType\":\"dotnet\",\"scope\":\"simple-hello-world-container\",\"vNetSolution\":null,\"secretStore\":null}},{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers/ps_linker\",\"name\":\"ps_linker\",\"type\":\"microsoft.servicelinker/linkers\",\"properties\":{\"provisioningState\":\"Failed\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/postgres\",\"resourceProperties\":null,\"type\":\"AzureResource\"},\"authInfo\":{\"name\":null,\"secretInfo\":{\"value\":null,\"secretType\":\"rawValue\"},\"authType\":\"secret\"},\"clientType\":\"none\",\"scope\":\"simple-hello-world-container\",\"vNetSolution\":null,\"secretStore\":null}}]}"
+    }
+  },
+  "Get-AzServiceLinkerForContainerApp+[NoContext]+Get+$GET+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "ee62df00-dd14-49e4-a5a1-b739eee661fe" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Get-AzServiceLinker" ],
+        "FullCommandName": [ "Get-AzServiceLinker_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3a00fc6d-0000-0100-0000-627614090000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "bc6f4c84-5fcc-4b78-aedf-63022bbff616" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "3f456bc3-8746-4e1b-bb98-7e6509030515" ],
+        "x-ms-correlation-request-id": [ "7c58bdeb-06ca-47a8-ab0a-e84edce9c762" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T064320Z:7c58bdeb-06ca-47a8-ab0a-e84edce9c762" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:43:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "844" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"name\":\"preparedLinker\",\"type\":\"microsoft.servicelinker/linkers\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/xichen-postgresql/databases/testdb\",\"resourceProperties\":{\"connectAsKubernetesCsiDriver\":false,\"type\":\"KeyVault\"},\"type\":\"AzureResource\"},\"authInfo\":{\"name\":\"xichen\",\"secretInfo\":{\"value\":null,\"secretType\":\"rawValue\"},\"authType\":\"secret\"},\"clientType\":\"dotnet\",\"scope\":\"simple-hello-world-container\",\"vNetSolution\":null,\"secretStore\":null}}"
+    }
+  },
+  "Get-AzServiceLinkerForContainerApp+[NoContext]+GetViaIdentity+$GET+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "b3f85fae-05bc-41e8-9edc-20fadbeaf995" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Get-AzServiceLinker" ],
+        "FullCommandName": [ "Get-AzServiceLinker_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3a00fc6d-0000-0100-0000-627614090000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "a7a2e5d5-170b-4320-bc2d-c23a9beaf8f2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9e3acb14-f428-403e-8e93-715b10440e94" ],
+        "x-ms-correlation-request-id": [ "39de76f2-7c83-4ed9-b7ac-a6364140f3a6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T064321Z:39de76f2-7c83-4ed9-b7ac-a6364140f3a6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:43:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "844" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"name\":\"preparedLinker\",\"type\":\"microsoft.servicelinker/linkers\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/xichen-postgresql/databases/testdb\",\"resourceProperties\":{\"connectAsKubernetesCsiDriver\":false,\"type\":\"KeyVault\"},\"type\":\"AzureResource\"},\"authInfo\":{\"name\":\"xichen\",\"secretInfo\":{\"value\":null,\"secretType\":\"rawValue\"},\"authType\":\"secret\"},\"clientType\":\"dotnet\",\"scope\":\"simple-hello-world-container\",\"vNetSolution\":null,\"secretStore\":null}}"
+    }
+  }
+}

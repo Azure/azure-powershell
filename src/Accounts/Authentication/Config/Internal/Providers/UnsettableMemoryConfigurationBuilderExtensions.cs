@@ -14,19 +14,20 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Providers
 {
     internal static class UnsettableMemoryConfigurationBuilderExtensions
     {
-        public static IConfigurationBuilder AddUnsettableInMemoryCollection(this IConfigurationBuilder builder, string id)
+        public static IConfigurationBuilder AddUnsettableInMemoryCollection(this IConfigurationBuilder builder, string id, IEnumerable<KeyValuePair<string, string>> initialData = null)
         {
             if (builder == null)
             {
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            builder.Add(id, new UnsettableMemoryConfigurationSource());
+            builder.Add(id, new UnsettableMemoryConfigurationSource() { InitialData = initialData });
             return builder;
         }
     }

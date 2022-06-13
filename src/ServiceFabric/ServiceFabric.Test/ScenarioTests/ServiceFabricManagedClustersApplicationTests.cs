@@ -13,23 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ServiceFabric.Commands;
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.ScenarioTest; 
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 {
-    public class ServiceFabricManagedClustersApplicationTests : RMTestBase
+    public class ServiceFabricManagedClustersApplicationTests : ServiceFabricTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ServiceFabricManagedClustersApplicationTests(ITestOutputHelper output)
+        public ServiceFabricManagedClustersApplicationTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-
             ServiceFabricCommonCmdletBase.WriteVerboseIntervalInSec = 0;
             ServiceFabricCmdletBase.RunningTest = true;
         }
@@ -38,28 +31,28 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedAppType()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-ManagedAppType");
+            TestRunner.RunTestScript("Test-ManagedAppType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedAppTypeVersion()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-ManagedAppTypeVersion");
+            TestRunner.RunTestScript("Test-ManagedAppTypeVersion");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedApp()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-ManagedApp");
+            TestRunner.RunTestScript("Test-ManagedApp");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedService()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-ManagedService");
+            TestRunner.RunTestScript("Test-ManagedService");
         }
     }
 }

@@ -460,7 +460,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public void RemoveUserAgent(string name)
         {
-            name = GetProductInfoHeaderKey(name);
             if (_userAgents != null && _userAgents.Keys != null)
             {
                 var agents = _userAgents.Keys.Where((k) => k.Product != null && string.Equals(k.Product.Name, name, StringComparison.OrdinalIgnoreCase));

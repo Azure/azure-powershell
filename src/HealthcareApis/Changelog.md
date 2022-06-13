@@ -18,15 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
 * Migrated module to generated codebase.
 * Added cmdlets:
-    - New/Get/Update/Remove-AzHealthcareAPIsService
-    - New/Get/Update/Remove-AzHealthcareAPIsWorkspace
+    - New/Get/Update/Remove-AzHealthcareApisService
+    - New/Get/Update/Remove-AzHealthcareApisWorkspace
     - New/Get/Update/Remove-AzHealthcareFhirService
     - New/Get/Update/Remove-AzHealthcareDicomService
     - New/Get/Update/Remove-AzHealthcareIoTConnector
-    - Get-AzHealthcareFhirDestination
     - New/Get/Remove-AzHealthcareIotConnectorFhirDestination
+    - Get-AzHealthcareFhirDestination
 
 ## Version 1.3.2
 * HealthcareApis cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.

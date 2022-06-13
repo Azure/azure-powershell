@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                     Name = evResource.Sku.Name,
                     Tier = evResource.Sku.Tier
                 };
+
                 if (evResource.ProvisioningState != null)
                     ProvisioningState = evResource.ProvisioningState;
 

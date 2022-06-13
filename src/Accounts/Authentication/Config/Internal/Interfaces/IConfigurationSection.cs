@@ -29,12 +29,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfa
         /// <summary>
         /// Gets or sets the section value.
         /// </summary>
-        string Value { get; set; }
+        (string, string) Value { get; set; }
 
         /// <summary>
         /// Gets the section value and the ID of the provider which provides this value.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The configuration value and the ID of the provider which provides the value.</returns>
         (string, string) GetValueWithProviderId();
+
+        /// <summary>
+        /// Get value of config by provider ID.
+        /// </summary>
+        /// <param name="providerId">expected provider ID</param>
+        /// <returns>The configuration value. Null if not found.</returns>
+        string GetValueByProviderId(string providerId);
     }
 }

@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             ConfigManager = configManager;
         }
 
-        [Parameter(HelpMessage = "Specifies what part of Azure PowerShell the config applies to. Possible values are:\n- \"" + ConfigFilter.GlobalAppliesTo + "\": the config applies to all modules and cmdlets of Azure PowerShell. \n- Module name: the config applies to a certain module of Azure PowerShell. For example, \"Az.Storage\".\n- Cmdlet name: the config applies to a certain cmdlet of Azure PowerShell. For example, \"Get-AzKeyVault\".\nIf not specified, when getting configs, output will be all of the above; when updating, it defaults to \"" + ConfigFilter.GlobalAppliesTo + "\"; when clearing, configs applying to any targets are cleared.")]
+        [Parameter(HelpMessage = "Specifies what part of Azure PowerShell the config applies to. Possible values are:\n- \"" + ConfigFilter.GlobalAppliesTo + "\": the config applies to all modules and cmdlets of Azure PowerShell.\n- Module name: the config applies to a certain module of Azure PowerShell. For example, \"Az.Storage\".\n- Cmdlet name: the config applies to a certain cmdlet of Azure PowerShell. For example, \"Get-AzKeyVault\".\nIf not specified, when getting or clearing configs, it defaults to all the above; when updating, it defaults to \"" + ConfigFilter.GlobalAppliesTo + "\".")]
         [ValidateNotNullOrEmpty]
         public string AppliesTo { get; set; }
 

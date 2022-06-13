@@ -134,6 +134,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="invocationInfo"></param>
         /// <param name="parameterSetName"></param>
         /// <param name="correlationId"></param>
+        /// <param name="processRecordId"></param>
         /// <returns></returns>
         public virtual AzurePSQoSEvent CreateQosEvent(InvocationInfo invocationInfo, string parameterSetName, string correlationId, string processRecordId)
         {
@@ -222,7 +223,7 @@ namespace Microsoft.Azure.Commands.Common
             }
 
             warningLogger(Resources.DataCollectionEnabledWarning);
-            return new AzurePSDataCollectionProfile(true);
+            return new AzurePSDataCollectionProfile();
         }
 
         public void Dispose()

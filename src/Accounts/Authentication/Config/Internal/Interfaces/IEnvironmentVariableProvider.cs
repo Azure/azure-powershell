@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces
 {
@@ -24,5 +25,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfa
         string Get(string variableName, EnvironmentVariableTarget target = EnvironmentVariableTarget.Process);
 
         void Set(string variableName, string value, EnvironmentVariableTarget target = EnvironmentVariableTarget.Process);
+
+        IReadOnlyDictionary<string, string> List(EnvironmentVariableTarget target = EnvironmentVariableTarget.Process);
     }
 }

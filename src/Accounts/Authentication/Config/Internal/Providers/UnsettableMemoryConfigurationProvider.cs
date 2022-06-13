@@ -38,6 +38,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Provide
             }
 
             _source = source;
+
+            if (_source.InitialData != null)
+            {
+                foreach (KeyValuePair<string, string> pair in _source.InitialData)
+                {
+                    Data.Add(pair.Key, pair.Value);
+                }
+            }
         }
 
         /// <summary>

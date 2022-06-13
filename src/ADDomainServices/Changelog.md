@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Changed the input method of certificate from base64 string to file path
+* Renamed `New-AzADDomainServiceForestTrust` to `New-AzADDomainServiceForestTrustObject`, and `New-AzADDomainServiceReplicaSet` to `New-AzADDomainServiceReplicaSetObject` to align with naming convention
 
 ## Version 0.1.0
 * First preview release for module Az.ADDomainServices

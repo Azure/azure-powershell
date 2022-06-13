@@ -29,13 +29,13 @@ function Install-Gateway {
     )
 
     process {
-
+        # Check if SHIR is installed or not. If yes, don't install again
         if(Check-WhetherGatewayInstalled("Microsoft Integration Runtime"))
         {
             Write-Host "Microsoft Integration Runtime is already installed."
             return
         }
-
+        # If not installed start installation
         Write-Host "Start Gateway installation"
 
         Start-Process -FilePath "msiexec.exe" -ArgumentList "/i `"$path`" /quiet /passive" -Wait
@@ -55,10 +55,12 @@ function Check-WhetherGatewayInstalled {
     )
 
     process{
-
+        
+        # Check the uninstall software path in Registry to see if SHIR is installed or not.
         $installedSoftwares = Get-ChildItem "hklm:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"
         foreach ($installedSoftware in $installedSoftwares)
-        {
+        {          
+            # DisplayName contains the name of the software
             $displayName = $installedSoftware.GetValue("DisplayName")
             if($DisplayName -eq "$name Preview" -or  $DisplayName -eq "$name")
             {
@@ -76,7 +78,7 @@ function Get-CmdFilePath {
     param()
 
     process{
-
+        # Use Registry to get the installed path of SHIR
         $filePath = Get-ItemPropertyValue "hklm:\Software\Microsoft\DataTransfer\DataManagementGateway\ConfigurationManager" "DiacmdPath" 
         if ([string]::IsNullOrEmpty($filePath))
         {
@@ -112,7 +114,7 @@ function Register-IR {
         # Open Intranet Port (Necessary for Re-Register. Service has to be running for Re-Register to work.)
         Start-Process $dmgCmdPath "-EnableRemoteAccess 8060" -Wait
 
-        # Register/ Re-register IR
+        # Register/ Re-register IR (6>&1 is used to capture the output of script)
         $result = & $regIRScriptPath -gatewayKey $key 6>&1
         if($result.ToString().Contains("successful"))
         {

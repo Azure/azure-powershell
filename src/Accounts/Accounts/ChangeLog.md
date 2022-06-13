@@ -19,10 +19,13 @@
 -->
 
 ## Upcoming Release
-* Added a preview feature allowing user to control the configurations of Azure PowerShell by using the following cmdlets:
-    - `Get-AzConfig`
-    - `Update-AzConfig`
-    - `Clear-AzConfig`
+* Fixed an issue that Az.Accounts failed to be imported if multiple environment variables, which only differ by case, are set. [#18304]
+
+## Version 2.8.0
+* Added a preview feature allowing user to control the following configurations by using `Get-AzConfig`, `Update-AzConfig` and `Clear-AzConfig`:
+    - `DefaultSubscriptionForLogin`: Subscription name or GUID. Sets the default context for Azure PowerShell when logging in without specifying a subscription.
+    - `DisplayBreakingChangeWarning`: Controls if warning messages for breaking changes are displayed or suppressed.
+    - `EnableDataCollection`: When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience.
 * Upgraded System.Reflection.DispatchProxy on Windows PowerShell [#17856]
 * Upgraded Azure.Identity to 1.6.0 and Azure.Core to 1.24.0
 
