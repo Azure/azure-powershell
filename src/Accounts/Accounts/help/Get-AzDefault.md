@@ -24,7 +24,7 @@ user has set as default in the current context.
 
 ### Example 1
 ```powershell
-Get-AzDefault
+get-aZdeFault
 ```
 
 ```Output
