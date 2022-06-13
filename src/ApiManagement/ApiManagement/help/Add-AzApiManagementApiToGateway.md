@@ -31,6 +31,17 @@ Add-AzApiManagementApiToGateway -Context $ApiMgmtContext -GatewayId "0123456789"
 
 This command adds the specified API to the specified Gateway.
 
+
+### Example 2
+```powershell
+Add-AzApiManagementApiToGateway -Context $ApiMgmtContext -GatewayId "0123456789" -ApiId "0001"
+```
+
+### Example 3
+```powershell
+Add-AzApiManagementApiToGateway -Context -GatewayId "0123456789" -ApiId "0001"
+```
+
 ## PARAMETERS
 
 ### -ApiId
