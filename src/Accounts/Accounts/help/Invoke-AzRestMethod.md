@@ -85,7 +85,7 @@ Get log analytics workspace by path. It only supports management plane API and H
 
 ### Example 2
 ```powershell
-Invoke-AzRestMethod https://graph.microsoft.com/v1.0/me
+Invoke-AzRestMethod -Url https://graph.microsoft.com/v1.0/me
 ```
 
 ```output
