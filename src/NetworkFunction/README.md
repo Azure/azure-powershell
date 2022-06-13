@@ -24,7 +24,7 @@ For information on how to develop for `Az.NetworkFunction`, see [how-to.md](how-
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 5f32b50e18ed0a91eefe39287078bf66c4d6c3a8
+branch: 2f47130d8fb333f55596ca9d149fbdceaff6f4be
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
