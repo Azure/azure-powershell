@@ -12,7 +12,7 @@
 RootModule = './Az.DataProtection.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.3.1'
+ModuleVersion = '0.4.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -142,7 +142,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Added support for CRUD of resource guard resource.
+* Added support for protection related commands with swagger refresh
+    - Resume-AzDataProtectionBackupInstanceProtection
+    - Stop-AzDataProtectionBackupInstanceProtection
+    - Suspend-AzDataProtectionBackupInstanceBackup
+    - Sync-AzDataProtectionBackupInstance'
 
         # Prerelease string of this module
         # Prerelease = ''

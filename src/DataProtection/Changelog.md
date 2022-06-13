@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Added support for CRUD of resource guard resource.
 * Added support for protection related commands with swagger refresh
     - Resume-AzDataProtectionBackupInstanceProtection
