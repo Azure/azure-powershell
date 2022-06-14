@@ -683,8 +683,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 new Track2Models.ActiveDirectoryProperties(this.ActiveDirectoryDomainName, this.ActiveDirectoryNetBiosDomainName,
                                 this.ActiveDirectoryForestName, this.ActiveDirectoryDomainGuid, this.ActiveDirectoryDomainSid, this.ActiveDirectoryAzureStorageSid);
                             storageAccountPatch.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties.SamAccountName = this.ActiveDirectorySamAccountName;
-                            storageAccountPatch.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties.AccountType = this.ActiveDirectoryAccountType;
-
+                            if (this.ActiveDirectoryAccountType != null)
+                            {
+                                storageAccountPatch.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties.AccountType = this.ActiveDirectoryAccountType;
+                            }
                         }
                         else // Disable AD
                         {
@@ -708,7 +710,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 || originStorageAccount.Data.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == Track2Models.DirectoryServiceOptions.AD)
                             {
                                 storageAccountPatch.AzureFilesIdentityBasedAuthentication =
-                                    new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOptions.AD);
+                                    new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOptions.None);
 
                             }
                             else
@@ -745,11 +747,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         storageAccountPatch.RoutingPreference = new Track2Models.RoutingPreference
                         {
-                            RoutingChoice = this.RoutingChoice,
                             PublishInternetEndpoints = this.publishInternetEndpoint,
                             PublishMicrosoftEndpoints = this.publishMicrosoftEndpoint,
 
                         };
+                        if (this.RoutingChoice != null)
+                        {
+                            storageAccountPatch.RoutingPreference.RoutingChoice = new Track2Models.RoutingChoice(this.RoutingChoice);
+                        }
                     }
                     if (allowSharedKeyAccess != null)
                     {

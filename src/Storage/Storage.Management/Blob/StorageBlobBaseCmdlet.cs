@@ -43,6 +43,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         public const string StorageAccountResourceType = "Microsoft.Storage/storageAccounts";
 
+        protected struct RootSquashType
+        {
+            internal const string NoRootSquash = "NoRootSquash";
+            internal const string RootSquash = "RootSquash";
+            internal const string AllSquash = "AllSquash";
+        }
+
         public IStorageManagementClient StorageClient
         {
             get
@@ -62,26 +69,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
             set { storageClientWrapper = new StorageManagementClientWrapper(value); }
         }
 
+        private Track2StorageManagementClient _track2StorageManagementClient;
+        public Track2StorageManagementClient StorageClientTrack2
+        {
+            get
+            {
+                return _track2StorageManagementClient ?? (_track2StorageManagementClient = new Track2StorageManagementClient(
+                    Microsoft.Azure.Commands.Common.Authentication.AzureSession.Instance.ClientFactory,
+                    DefaultContext));
+            }
+
+            set { _track2StorageManagementClient = value; }
+        }
+
         public string SubscriptionId
         {
             get
             {
                 return DefaultProfile.DefaultContext.Subscription.Id.ToString();
-            }
-        }
-
-        protected void WriteContainer(ListContainerItem container)
-        {
-            WriteObject(new PSContainer(container));
-        }
-
-        protected void WriteContainerList(IEnumerable<ListContainerItem> containers)
-        {
-            if (containers != null)
-            {
-                List<PSContainer> output = new List<PSContainer>();
-                containers.ForEach(container => output.Add(new PSContainer(container)));
-                WriteObject(output, true);
             }
         }
 

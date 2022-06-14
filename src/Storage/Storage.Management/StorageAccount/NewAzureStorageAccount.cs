@@ -644,8 +644,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         new Track2Models.ActiveDirectoryProperties(this.ActiveDirectoryDomainName, this.ActiveDirectoryNetBiosDomainName,
                         this.ActiveDirectoryForestName, this.ActiveDirectoryDomainGuid, this.ActiveDirectoryDomainSid, this.ActiveDirectoryAzureStorageSid);
                     createContent.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties.SamAccountName = this.ActiveDirectorySamAccountName;
-                    createContent.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties.AccountType = this.ActiveDirectoryAccountType;
-
+                    if (this.ActiveDirectoryAccountType != null)
+                    {
+                        createContent.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties.AccountType = this.ActiveDirectoryAccountType;
+                    }
                 }
                 else
                 {

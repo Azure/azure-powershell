@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Track2 = Azure.ResourceManager.Storage;
+
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     using Microsoft.Azure.Commands.Management.Storage.Models;
-    using Microsoft.Azure.Management.Storage;
-    using Microsoft.Azure.Management.Storage.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-
+    
     /// <summary>
     /// Modify Azure Storage service properties
     /// </summary>
@@ -99,7 +99,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                     break;
             }
-            BlobServiceProperties serviceProperties = this.StorageClient.BlobServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);
+
+            Track2.BlobServiceResource serviceProperties = this.StorageClientTrack2
+                .GetBlobServiceResource(this.ResourceGroupName, this.StorageAccountName)
+                .Get();
 
             WriteObject(new PSBlobServiceProperties(serviceProperties));
         }

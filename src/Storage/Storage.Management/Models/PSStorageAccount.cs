@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
     public class PSStorageAccount : IStorageContextProvider
     {
-
         public PSStorageAccount(Track2.StorageAccountResource storageAccountResource)
         {
             this.ResourceGroupName = new ResourceIdentifier(storageAccountResource.Id).ResourceGroupName;
@@ -167,6 +166,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public PSImmutableStorageAccount ImmutableStorageWithVersioning { get; set; }
 
+        // TODO: StorageAccountSkuConversionStatus is not supported yet. Will add later.
+
         public static PSStorageAccount Create(Track2.StorageAccountResource storageAccountResource, Track2StorageManagementClient client)
         {
             var result = new PSStorageAccount(storageAccountResource);
@@ -270,6 +271,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
     public class PSIdentity
     {
+        private const string SystemAssignedUserAssigned = "SystemAssigned,UserAssigned";
         public string PrincipalId { get; set; }
         public string TenantId { get; set; }
 
@@ -288,7 +290,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 this.TenantId = identity.TenantId.Value.ToString();
             }
-            if (identity != null)
+            if (identity.ManagedServiceIdentityType == ManagedServiceIdentityType.SystemAssignedUserAssigned)
+            {
+                this.Type = SystemAssignedUserAssigned;
+            } else
             {
                 this.Type = identity.ManagedServiceIdentityType.ToString();
             }
