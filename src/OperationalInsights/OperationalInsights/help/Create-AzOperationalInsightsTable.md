@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.operationalinsig
 schema: 2.0.0
 ---
 
-# Create-AzOperationalInsightsTable
+# New-AzOperationalInsightsTable
 
 ## SYNOPSIS
 Creates a custom log table
@@ -13,7 +13,7 @@ Creates a custom log table
 ## SYNTAX
 
 ```
-Create-AzOperationalInsightsTable [-ResourceGroupName] <String> [-WorkspaceName] <String> [-TableName] <String>
+New-AzOperationalInsightsTable [-ResourceGroupName] <String> [-WorkspaceName] <String> [-TableName] <String>
  [[-RetentionInDays] <Int32>] [[-TotalRetentionInDays] <Int32>] [-Columns <Hashtable>] [-Plan <String>]
  [-Description <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -26,7 +26,7 @@ Creates a custom log table
 
 ### Example 1
 ```powershell
-PS C:\> Create-AzOperationalInsightsTable -ResourceGroupName {rgName} -WorkspaceName {wsName} -TableName {tableName_CL} -RetentionInDays 25 -TotalRetentionInDays 30 -Columns @{'ColName1' = 'string'; 'TimeGenerated' = 'DateTime'; 'ColName3' = 'int'}
+PS C:\> New-AzOperationalInsightsTable -ResourceGroupName {rgName} -WorkspaceName {wsName} -TableName {tableName_CL} -RetentionInDays 25 -TotalRetentionInDays 30 -Columns @{'ColName1' = 'string'; 'TimeGenerated' = 'DateTime'; 'ColName3' = 'int'}
 
 TableName            : {tableName_CL}
 ResourceId           : /subscriptions/{subscriptionID}/resourcegroups/{rgName}/providers/Microsoft.OperationalInsights/workspaces/{wsName}/tables/{tableName_CL}

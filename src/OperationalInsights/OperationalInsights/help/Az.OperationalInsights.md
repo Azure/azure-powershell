@@ -83,13 +83,13 @@ Gets information about a Storage Insight.
 ### [Get-AzOperationalInsightsTable](Get-AzOperationalInsightsTable.md)
 Get or list tables for workspace.
 
-### [Create-AzOperationalInsightsRestoreTable](Create-AzOperationalInsightsRestoreTable.md)
+### [New-AzOperationalInsightsRestoreTable](New-AzOperationalInsightsRestoreTable.md)
 Create a Restore table.
 
-### [Create-AzOperationalInsightsSearchTable](Create-AzOperationalInsightsSearchTable.md)
+### [New-AzOperationalInsightsSearchTable](New-AzOperationalInsightsSearchTable.md)
 Create a Search table.
 
-### [Create-AzOperationalInsightsTable](Create-AzOperationalInsightsTable.md)
+### [New-AzOperationalInsightsTable](New-AzOperationalInsightsTable.md)
 Creates a custom log table.
 
 ### [Update-AzOperationalInsightsTable](Update-AzOperationalInsightsTable.md)
