@@ -1,3 +1,0 @@
-"Module","Cmdlet","Example","RuleName","ProblemId","Severity","Description","Extent","Remediation"
-"Accounts","Disable-AzContextAutosave","2","MissingExampleCode","5044","1","Code of the example is missing.","Accounts\help\Disable-AzContextAutosave.md","Add code for the example. Remove any placeholders."
-"Accounts","Connect-AzAccount","3","Mismatched_Parameter_Value_Type","5111","2","Connect-AzAccount -Credential $Credential is not an expected parameter value type.","-Credential","Use correct parameter value type."
