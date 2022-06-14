@@ -166,6 +166,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public PSImmutableStorageAccount ImmutableStorageWithVersioning { get; set; }
 
+        // TODO: StorageAccountSkuConversionStatus is not supported yet. Will add later.
+
         public static PSStorageAccount Create(Track2.StorageAccountResource storageAccountResource, Track2StorageManagementClient client)
         {
             var result = new PSStorageAccount(storageAccountResource);
