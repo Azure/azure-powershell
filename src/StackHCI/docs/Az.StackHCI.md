@@ -47,14 +47,8 @@ Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on 
 ### [Install-AzStackHCIRemoteSupport](Install-AzStackHCIRemoteSupport.md)
 Installs Remote Support.
 
-### [Invoke-AzStackHciUploadClusterCertificate](Invoke-AzStackHciUploadClusterCertificate.md)
-Upload certificate.
-
 ### [New-AzStackHciArcSetting](New-AzStackHciArcSetting.md)
 Create ArcSetting for HCI cluster.
-
-### [New-AzStackHciArcSettingPassword](New-AzStackHciArcSettingPassword.md)
-Generate password for arc settings.
 
 ### [New-AzStackHciCluster](New-AzStackHciCluster.md)
 Create an HCI cluster.

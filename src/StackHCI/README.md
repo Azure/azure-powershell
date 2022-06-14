@@ -79,6 +79,16 @@ directive:
       verb: Update
       subject: Extension
     remove: true
+  # Remove Invoke-AzStackHciUploadClusterCertificate
+  - where:
+      verb: Invoke
+      subject: UploadClusterCertificate
+    remove: true 
+  # Remove New-AzStackHciArcSettingPassword
+  - where:
+      verb: New
+      subject: ArcSettingPassword
+    remove: true 
   # Hide aadClientId from Update-AzStackHCICluster
   - where:
       verb: Update
