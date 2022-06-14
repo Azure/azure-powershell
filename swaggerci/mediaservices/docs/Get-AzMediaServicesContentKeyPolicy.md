@@ -1,0 +1,241 @@
+---
+external help file:
+Module Name: Az.MediaServices
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mediaservices/get-azmediaservicescontentkeypolicy
+schema: 2.0.0
+---
+
+# Get-AzMediaServicesContentKeyPolicy
+
+## SYNOPSIS
+Get the details of a Content Key Policy in the Media Services account
+
+## SYNTAX
+
+### List (Default)
+```
+Get-AzMediaServicesContentKeyPolicy -AccountName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-Filter <String>] [-Orderby <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzMediaServicesContentKeyPolicy -AccountName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzMediaServicesContentKeyPolicy -InputObject <IMediaServicesIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+## DESCRIPTION
+Get the details of a Content Key Policy in the Media Services account
+
+## EXAMPLES
+
+### Example 1: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+## PARAMETERS
+
+### -AccountName
+The Media Services account name.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Filter
+Restricts the set of items returned.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MediaServices.Models.IMediaServicesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The Content Key Policy name.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: ContentKeyPolicyName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Orderby
+Specifies the key by which the result collection should be ordered.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group within the Azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The unique identifier for a Microsoft Azure subscription.
+
+```yaml
+Type: System.String[]
+Parameter Sets: Get, List
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Top
+Specifies a non-negative integer n that limits the number of items returned from a collection.
+The service returns the number of available items up to but not greater than the specified value n.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.MediaServices.Models.IMediaServicesIdentity
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.MediaServices.Models.Api20211101.IContentKeyPolicy
+
+## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IMediaServicesIdentity>: Identity Parameter
+  - `[AccountName <String>]`: The Media Services account name.
+  - `[AssetName <String>]`: The Asset name.
+  - `[ContentKeyPolicyName <String>]`: The Content Key Policy name.
+  - `[FilterName <String>]`: The Account Filter name
+  - `[Id <String>]`: Resource identity path
+  - `[JobName <String>]`: The Job name.
+  - `[LiveEventName <String>]`: The name of the live event, maximum length is 32.
+  - `[LiveOutputName <String>]`: The name of the live output.
+  - `[LocationName <String>]`: The name of the location
+  - `[Name <String>]`: 
+  - `[OperationId <String>]`: Operation Id.
+  - `[ResourceGroupName <String>]`: The name of the resource group within the Azure subscription.
+  - `[StreamingEndpointName <String>]`: The name of the streaming endpoint, maximum length is 24.
+  - `[StreamingLocatorName <String>]`: The Streaming Locator name.
+  - `[StreamingPolicyName <String>]`: The Streaming Policy name.
+  - `[SubscriptionId <String>]`: The unique identifier for a Microsoft Azure subscription.
+  - `[TrackName <String>]`: The Asset Track name.
+  - `[TransformName <String>]`: The Transform name.
+
+## RELATED LINKS
+
