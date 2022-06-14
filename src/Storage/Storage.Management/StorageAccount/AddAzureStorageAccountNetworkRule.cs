@@ -290,7 +290,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     case NetWorkRuleStringParameterSet:
                     case NetworkRuleObjectParameterSet:
                         WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.Data.NetworkRuleSet).VirtualNetworkRules);
-                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.Data.NetworkRuleSet).VirtualNetworkRules);
                         break;
                     case IpRuleStringParameterSet:
                     case IpRuleObjectParameterSet:
