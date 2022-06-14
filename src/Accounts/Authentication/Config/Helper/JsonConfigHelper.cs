@@ -13,22 +13,27 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Config.Internal;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.PowerShell.Common.Config;
+using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
     /// <summary>
-    /// Helper for updating the config JSON file.
+    /// Utility methods to help operating the JSON config file.
     /// </summary>
-    internal class JsonConfigWriter
+    public class JsonConfigHelper
     {
         private readonly string _jsonConfigPath;
         private readonly IDataStore _dataStore;
 
-        public JsonConfigWriter(string jsonConfigPath, IDataStore dataStore)
+        public JsonConfigHelper(string jsonConfigPath, IDataStore dataStore)
         {
             _jsonConfigPath = jsonConfigPath;
             _dataStore = dataStore;
@@ -148,6 +153,68 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         internal void ClearAll()
         {
             _dataStore.WriteFile(_jsonConfigPath, @"{}");
+        }
+
+        /// <summary>
+        /// Validates if the given content is valid as a config file.
+        /// </summary>
+        /// <param name="content">Content to be validated.</param>
+        /// <param name="reason">The reason why the content is invalid. Only examine if returns false.</param>
+        internal static bool ValidateConfigFileContent(string content, out string reason)
+        {
+            bool isValidJson = true;
+            reason = string.Empty;
+            try
+            {
+                JsonUtilities.DeserializeJson(content, throwExceptionOnFailure: true);
+            }
+            catch (Exception ex)
+            {
+                reason = ex.Message;
+                isValidJson = false;
+            }
+
+            return !string.IsNullOrEmpty(content) && isValidJson;
+        }
+
+        /// <summary>
+        /// Import configs from a file.
+        /// </summary>
+        /// <param name="path">Path to the config file.</param>
+        /// <remarks>Note: this method only imports the config file. Please call <see cref="IConfigManager.BuildConfig()"/> to rebuild the config manager.</remarks>
+        public void ImportConfigFile(string path)
+        {
+            string content = _dataStore.ReadFileAsText(path);
+            if (!ValidateConfigFileContent(content, out string reason))
+            {
+                throw new AzPSArgumentException($"Failed to import configs from {path}. Incorrect format: {reason}", nameof(path));
+            }
+
+            try
+            {
+                if (_dataStore.FileExists(_jsonConfigPath))
+                {
+                    string merged = JsonUtilities.Patch(_dataStore.ReadFileAsText(_jsonConfigPath), content);
+                    _dataStore.WriteFile(_jsonConfigPath, merged);
+                }
+                else
+                {
+                    _dataStore.WriteFile(_jsonConfigPath, content);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new AzPSApplicationException($"Failed to import config file {path}. Exception: {ex.Message}", ex);
+            }
+        }
+
+        /// <summary>
+        /// Exports the config file to a given path. Overwrites if the file exists.
+        /// </summary>
+        /// <param name="path">Where to export the file.</param>
+        public void ExportConfigFile(string path)
+        {
+            _dataStore.CopyFile(_jsonConfigPath, path);
         }
     }
 }

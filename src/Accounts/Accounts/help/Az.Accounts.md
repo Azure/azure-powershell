@@ -56,6 +56,9 @@ machine. Data is collected by default unless you explicitly opt out.
 ### [Enable-AzureRmAlias](Enable-AzureRmAlias.md)
 Enables AzureRm prefix aliases for Az modules.
 
+### [Export-AzConfig](Export-AzConfig.md)
+Exports all the configs into a file so that it can be imported on another machine.
+
 ### [Get-AzAccessToken](Get-AzAccessToken.md)
 Get raw access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
 
@@ -80,6 +83,9 @@ Get subscriptions that the current account can access.
 
 ### [Get-AzTenant](Get-AzTenant.md)
 Gets tenants that are authorized for the current user.
+
+### [Import-AzConfig](Import-AzConfig.md)
+Imports configs from a file that was previously exported by `Export-AzConfig`.
 
 ### [Import-AzContext](Import-AzContext.md)
 Loads Azure authentication information from a file.
