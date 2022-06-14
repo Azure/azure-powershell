@@ -17,10 +17,11 @@ The operation to create or update the extension.
 New-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
  -Location <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade]
  [-ExtensionType <String>] [-ForceRerun <String>] [-InstanceViewName <String>] [-InstanceViewType <String>]
- [-InstanceViewTypeHandlerVersion <String>] [-ProtectedSetting <IAny>] [-Publisher <String>] [-Setting <IAny>]
- [-StatusCode <String>] [-StatusDisplayStatus <String>] [-StatusLevel <StatusLevelTypes>]
- [-StatusMessage <String>] [-StatusTime <DateTime>] [-Tag <Hashtable>] [-TypeHandlerVersion <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-InstanceViewTypeHandlerVersion <String>] [-ProtectedSetting <Hashtable>] [-Publisher <String>]
+ [-Setting <Hashtable>] [-StatusCode <String>] [-StatusDisplayStatus <String>]
+ [-StatusLevel <StatusLevelTypes>] [-StatusMessage <String>] [-StatusTime <DateTime>] [-Tag <Hashtable>]
+ [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
@@ -42,7 +43,7 @@ New-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity>
 New-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> -Location <String>
  [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ExtensionType <String>] [-ForceRerun <String>]
  [-InstanceViewName <String>] [-InstanceViewType <String>] [-InstanceViewTypeHandlerVersion <String>]
- [-ProtectedSetting <IAny>] [-Publisher <String>] [-Setting <IAny>] [-StatusCode <String>]
+ [-ProtectedSetting <Hashtable>] [-Publisher <String>] [-Setting <Hashtable>] [-StatusCode <String>]
  [-StatusDisplayStatus <String>] [-StatusLevel <StatusLevelTypes>] [-StatusMessage <String>]
  [-StatusTime <DateTime>] [-Tag <Hashtable>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -177,7 +178,7 @@ Describes a Machine Extension.
 To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtension
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
@@ -343,7 +344,7 @@ Accept wildcard characters: False
 The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases: ProtectedSettings
 
@@ -389,7 +390,7 @@ Accept wildcard characters: False
 Json formatted public settings for the extension.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases: Settings
 
@@ -556,13 +557,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
 
 ## NOTES
 
@@ -584,9 +585,11 @@ EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
   - `[InstanceViewType <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
   - `[InstanceViewTypeHandlerVersion <String>]`: Specifies the version of the script handler.
   - `[MachineExtensionType <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
-  - `[ProtectedSetting <IAny>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+  - `[ProtectedSetting <IMachineExtensionPropertiesProtectedSettings>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[Publisher <String>]`: The name of the extension handler publisher.
-  - `[Setting <IAny>]`: Json formatted public settings for the extension.
+  - `[Setting <IMachineExtensionPropertiesSettings>]`: Json formatted public settings for the extension.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[StatusCode <String>]`: The status code.
   - `[StatusDisplayStatus <String>]`: The short localizable label for the status.
   - `[StatusLevel <StatusLevelTypes?>]`: The level code.

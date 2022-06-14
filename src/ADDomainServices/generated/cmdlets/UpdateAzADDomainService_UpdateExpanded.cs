@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// The Update Domain Service operation can be used to update the existing deployment. The update call only supports the properties
@@ -14,7 +15,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}"
     /// </remarks>
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzADDomainService_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Description(@"The Update Domain Service operation can be used to update the existing deployment. The update call only supports the properties listed in the PATCH body.")]
@@ -35,6 +35,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>Domain service.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService _domainServiceBody = new Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.DomainService();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -67,7 +70,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         Description = @"Domain Configuration Type",
         SerializedName = @"domainConfigurationType",
         PossibleTypes = new [] { typeof(string) })]
-        public string DomainConfigurationType { get => DomainServiceBody.DomainConfigurationType ?? null; set => DomainServiceBody.DomainConfigurationType = value; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.CompleterInfo(
+        Name = @"DomainConfigurationType Completer",
+        Description =@"Gets the list of DomainConfigurationTypes available for this resource.",
+        Script = @"'FullySynced', 'ResourceTrusting'")]
+        public string DomainConfigurationType { get => _domainServiceBody.DomainConfigurationType ?? null; set => _domainServiceBody.DomainConfigurationType = value; }
 
         /// <summary>
         /// The name of the Azure domain that the user would like to deploy Domain Services to.
@@ -80,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         Description = @"The name of the Azure domain that the user would like to deploy Domain Services to.",
         SerializedName = @"domainName",
         PossibleTypes = new [] { typeof(string) })]
-        public string DomainName { get => DomainServiceBody.DomainName ?? null; set => DomainServiceBody.DomainName = value; }
+        public string DomainName { get => _domainServiceBody.DomainName ?? null; set => _domainServiceBody.DomainName = value; }
 
         /// <summary>A flag to determine whether or not NtlmV1 is enabled or disabled.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A flag to determine whether or not NtlmV1 is enabled or disabled.")]
@@ -92,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         SerializedName = @"ntlmV1",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1 DomainSecuritySettingNtlmV1 { get => DomainServiceBody.DomainSecuritySettingNtlmV1 ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1)""); set => DomainServiceBody.DomainSecuritySettingNtlmV1 = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1 DomainSecuritySettingNtlmV1 { get => _domainServiceBody.DomainSecuritySettingNtlmV1 ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1)""); set => _domainServiceBody.DomainSecuritySettingNtlmV1 = value; }
 
         /// <summary>
         /// A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
@@ -106,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         SerializedName = @"syncKerberosPasswords",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords DomainSecuritySettingSyncKerberosPassword { get => DomainServiceBody.DomainSecuritySettingSyncKerberosPassword ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords)""); set => DomainServiceBody.DomainSecuritySettingSyncKerberosPassword = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords DomainSecuritySettingSyncKerberosPassword { get => _domainServiceBody.DomainSecuritySettingSyncKerberosPassword ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords)""); set => _domainServiceBody.DomainSecuritySettingSyncKerberosPassword = value; }
 
         /// <summary>A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.")]
@@ -118,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         SerializedName = @"syncNtlmPasswords",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords DomainSecuritySettingSyncNtlmPassword { get => DomainServiceBody.DomainSecuritySettingSyncNtlmPassword ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords)""); set => DomainServiceBody.DomainSecuritySettingSyncNtlmPassword = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords DomainSecuritySettingSyncNtlmPassword { get => _domainServiceBody.DomainSecuritySettingSyncNtlmPassword ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords)""); set => _domainServiceBody.DomainSecuritySettingSyncNtlmPassword = value; }
 
         /// <summary>A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.")]
@@ -130,7 +137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         SerializedName = @"syncOnPremPasswords",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords DomainSecuritySettingSyncOnPremPassword { get => DomainServiceBody.DomainSecuritySettingSyncOnPremPassword ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords)""); set => DomainServiceBody.DomainSecuritySettingSyncOnPremPassword = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords DomainSecuritySettingSyncOnPremPassword { get => _domainServiceBody.DomainSecuritySettingSyncOnPremPassword ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords)""); set => _domainServiceBody.DomainSecuritySettingSyncOnPremPassword = value; }
 
         /// <summary>A flag to determine whether or not TlsV1 is enabled or disabled.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A flag to determine whether or not TlsV1 is enabled or disabled.")]
@@ -142,13 +149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         SerializedName = @"tlsV1",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1 DomainSecuritySettingTlsV1 { get => DomainServiceBody.DomainSecuritySettingTlsV1 ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1)""); set => DomainServiceBody.DomainSecuritySettingTlsV1 = value; }
-
-        /// <summary>Backing field for <see cref="DomainServiceBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService _domainServiceBody= new Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.DomainService();
-
-        /// <summary>Domain service.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService DomainServiceBody { get => this._domainServiceBody; set => this._domainServiceBody = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1 DomainSecuritySettingTlsV1 { get => _domainServiceBody.DomainSecuritySettingTlsV1 ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1)""); set => _domainServiceBody.DomainSecuritySettingTlsV1 = value; }
 
         /// <summary>Resource etag</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource etag")]
@@ -159,7 +160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         Description = @"Resource etag",
         SerializedName = @"etag",
         PossibleTypes = new [] { typeof(string) })]
-        public string Etag { get => DomainServiceBody.Etag ?? null; set => DomainServiceBody.Etag = value; }
+        public string Etag { get => _domainServiceBody.Etag ?? null; set => _domainServiceBody.Etag = value; }
 
         /// <summary>Enabled or Disabled flag to turn on Group-based filtered sync</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enabled or Disabled flag to turn on Group-based filtered sync")]
@@ -171,7 +172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         SerializedName = @"filteredSync",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync FilteredSync { get => DomainServiceBody.FilteredSync ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync)""); set => DomainServiceBody.FilteredSync = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync FilteredSync { get => _domainServiceBody.FilteredSync ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync)""); set => _domainServiceBody.FilteredSync = value; }
 
         /// <summary>List of settings for Resource Forest</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -183,7 +184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         Description = @"List of settings for Resource Forest",
         SerializedName = @"settings",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IForestTrust) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IForestTrust[] ForestTrust { get => DomainServiceBody.PropertiesResourceForestSettingsSettings ?? null /* arrayOf */; set => DomainServiceBody.PropertiesResourceForestSettingsSettings = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IForestTrust[] ForestTrust { get => _domainServiceBody.PropertiesResourceForestSettingsSettings ?? null /* arrayOf */; set => _domainServiceBody.PropertiesResourceForestSettingsSettings = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -212,7 +213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         SerializedName = @"externalAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess LdapSettingExternalAccess { get => DomainServiceBody.LdapSettingExternalAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess)""); set => DomainServiceBody.LdapSettingExternalAccess = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess LdapSettingExternalAccess { get => _domainServiceBody.LdapSettingExternalAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess)""); set => _domainServiceBody.LdapSettingExternalAccess = value; }
 
         /// <summary>A flag to determine whether or not Secure LDAP is enabled or disabled.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A flag to determine whether or not Secure LDAP is enabled or disabled.")]
@@ -224,21 +225,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         SerializedName = @"ldaps",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps LdapSettingLdaps { get => DomainServiceBody.LdapSettingLdap ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps)""); set => DomainServiceBody.LdapSettingLdap = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps LdapSettingLdaps { get => _domainServiceBody.LdapSettingLdap ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps)""); set => _domainServiceBody.LdapSettingLdap = value; }
 
         /// <summary>
         /// The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation
         /// of the certificate pfx file.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file.")]
+        internal byte[] LdapSettingPfxCertificate { get => _domainServiceBody.LdapSettingPfxCertificate ?? null /* byte array */; set => _domainServiceBody.LdapSettingPfxCertificate = value; }
+
+        /// <summary>
+        /// Input File for LdapSettingPfxCertificate (The certificate required to configure Secure LDAP. The parameter passed here
+        /// should be a base64encoded representation of the certificate pfx file.)
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Input File for LdapSettingPfxCertificate (The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file.)")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file.",
-        SerializedName = @"pfxCertificate",
-        PossibleTypes = new [] { typeof(string) })]
-        public string LdapSettingPfxCertificate { get => DomainServiceBody.LdapSettingPfxCertificate ?? null; set => DomainServiceBody.LdapSettingPfxCertificate = value; }
+        public string LdapSettingPfxCertificateInputFile
+        {
+         set
+         {
+         var paths = this.SessionState.Path.GetResolvedProviderPathFromPSPath(value, out var provider);
+         if (provider.Name != "FileSystem" || paths.Count == 0)
+         {
+         ThrowTerminatingError( new System.Management.Automation.ErrorRecord(new global::System.Exception("Invalid input path."),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, value) );
+         }
+         if (paths.Count > 1)
+         {
+         ThrowTerminatingError( new System.Management.Automation.ErrorRecord(new global::System.Exception("Multiple input paths not allowed."),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, value) );
+         }
+         LdapSettingPfxCertificate = global::System.IO.File.ReadAllBytes(paths[0]);
+         }
+        }
 
         /// <summary>The password to decrypt the provided Secure LDAP certificate pfx file.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The password to decrypt the provided Secure LDAP certificate pfx file.")]
@@ -248,8 +264,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         ReadOnly = false,
         Description = @"The password to decrypt the provided Secure LDAP certificate pfx file.",
         SerializedName = @"pfxCertificatePassword",
-        PossibleTypes = new [] { typeof(string) })]
-        public string LdapSettingPfxCertificatePassword { get => DomainServiceBody.LdapSettingPfxCertificatePassword ?? null; set => DomainServiceBody.LdapSettingPfxCertificatePassword = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString LdapSettingPfxCertificatePassword { get => _domainServiceBody.LdapSettingPfxCertificatePassword ?? null; set => _domainServiceBody.LdapSettingPfxCertificatePassword = value; }
 
         /// <summary>Resource location</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource location")]
@@ -260,14 +276,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         Description = @"Resource location",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => DomainServiceBody.Location ?? null; set => DomainServiceBody.Location = value; }
+        public string Location { get => _domainServiceBody.Location ?? null; set => _domainServiceBody.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -303,7 +319,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         Description = @"The list of additional recipients",
         SerializedName = @"additionalRecipients",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] NotificationSettingAdditionalRecipient { get => DomainServiceBody.NotificationSettingAdditionalRecipient ?? null /* arrayOf */; set => DomainServiceBody.NotificationSettingAdditionalRecipient = value; }
+        public string[] NotificationSettingAdditionalRecipient { get => _domainServiceBody.NotificationSettingAdditionalRecipient ?? null /* arrayOf */; set => _domainServiceBody.NotificationSettingAdditionalRecipient = value; }
 
         /// <summary>Should domain controller admins be notified</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Should domain controller admins be notified")]
@@ -315,7 +331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         SerializedName = @"notifyDcAdmins",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins NotificationSettingNotifyDcAdmin { get => DomainServiceBody.NotificationSettingNotifyDcAdmin ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins)""); set => DomainServiceBody.NotificationSettingNotifyDcAdmin = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins NotificationSettingNotifyDcAdmin { get => _domainServiceBody.NotificationSettingNotifyDcAdmin ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins)""); set => _domainServiceBody.NotificationSettingNotifyDcAdmin = value; }
 
         /// <summary>Should global admins be notified</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Should global admins be notified")]
@@ -327,7 +343,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         SerializedName = @"notifyGlobalAdmins",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins NotificationSettingNotifyGlobalAdmin { get => DomainServiceBody.NotificationSettingNotifyGlobalAdmin ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins)""); set => DomainServiceBody.NotificationSettingNotifyGlobalAdmin = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins NotificationSettingNotifyGlobalAdmin { get => _domainServiceBody.NotificationSettingNotifyGlobalAdmin ?? ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins)""); set => _domainServiceBody.NotificationSettingNotifyGlobalAdmin = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.HttpPipeline" /> that the remote call will use.
@@ -360,7 +376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         Description = @"List of ReplicaSets",
         SerializedName = @"replicaSets",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IReplicaSet) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IReplicaSet[] ReplicaSet { get => DomainServiceBody.ReplicaSet ?? null /* arrayOf */; set => DomainServiceBody.ReplicaSet = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IReplicaSet[] ReplicaSet { get => _domainServiceBody.ReplicaSet ?? null /* arrayOf */; set => _domainServiceBody.ReplicaSet = value; }
 
         /// <summary>Resource Forest</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource Forest")]
@@ -371,7 +387,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         Description = @"Resource Forest",
         SerializedName = @"resourceForest",
         PossibleTypes = new [] { typeof(string) })]
-        public string ResourceForest { get => DomainServiceBody.ResourceForestSettingResourceForest ?? null; set => DomainServiceBody.ResourceForestSettingResourceForest = value; }
+        public string ResourceForest { get => _domainServiceBody.ResourceForestSettingResourceForest ?? null; set => _domainServiceBody.ResourceForestSettingResourceForest = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -398,7 +414,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         Description = @"Sku Type",
         SerializedName = @"sku",
         PossibleTypes = new [] { typeof(string) })]
-        public string Sku { get => DomainServiceBody.Sku ?? null; set => DomainServiceBody.Sku = value; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.CompleterInfo(
+        Name = @"Sku Completer",
+        Description =@"Gets the list of Skus available for this resource.",
+        Script = @"'Standard', 'Enterprise', 'Premium'")]
+        public string Sku { get => _domainServiceBody.Sku ?? null; set => _domainServiceBody.Sku = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -431,15 +451,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         Description = @"Resource tags",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceTags Tag { get => DomainServiceBody.Tag ?? null /* object */; set => DomainServiceBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceTags Tag { get => _domainServiceBody.Tag ?? null /* object */; set => _domainServiceBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ICloudError</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -450,8 +470,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService">Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -462,6 +482,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -487,7 +512,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.DomainServiceBody = this.DomainServiceBody;
+            clone._domainServiceBody = this._domainServiceBody;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
@@ -497,7 +522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -630,7 +655,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -645,12 +669,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.DomainServicesUpdate(SubscriptionId, ResourceGroupName, Name, DomainServiceBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.DomainServicesUpdate(SubscriptionId, ResourceGroupName, Name, _domainServiceBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=DomainServiceBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_domainServiceBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -681,8 +705,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ICloudError</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -704,14 +728,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=DomainServiceBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_domainServiceBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=DomainServiceBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_domainServiceBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -721,8 +745,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService">Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

@@ -40,6 +40,7 @@ using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using ResourceIdentityType = Microsoft.Azure.Management.ContainerService.Models.ResourceIdentityType;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -157,6 +158,12 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "The FQDN subdomain of the private cluster with custom private dns zone.")]
         public string FqdnSubdomain { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Using a managed identity to manage cluster resource group.")]
+        public SwitchParameter EnableManagedIdentity { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "ResourceId of user assign managed identity for cluster.")]
+        public string AssignIdentity { get; set; }
 
         protected void BeforeBuildNewCluster()
         {
@@ -565,6 +572,46 @@ namespace Microsoft.Azure.Commands.Aks
             }
 
             return apiServerAccessProfile;
+        }
+
+        protected ManagedCluster SetIdentity(ManagedCluster cluster)
+        {
+            if (this.IsParameterBound(c => c.EnableManagedIdentity))
+            {
+                if (!EnableManagedIdentity)
+                {
+                    cluster.Identity = null;
+                }
+                else
+                {
+                    if (cluster.Identity == null)
+                    {
+                        cluster.Identity = new ManagedClusterIdentity();
+                    }
+                }
+            }
+            if (this.IsParameterBound(c => c.AssignIdentity))
+            {
+                if (cluster.Identity == null)
+                {
+                    throw new AzPSArgumentException(Resources.NeedEnableManagedIdentity, nameof(AssignIdentity));
+                }
+                cluster.Identity.Type = ResourceIdentityType.UserAssigned;
+                cluster.Identity.UserAssignedIdentities = new Dictionary<string, ManagedClusterIdentityUserAssignedIdentitiesValue>
+                {
+                    { AssignIdentity, new ManagedClusterIdentityUserAssignedIdentitiesValue() }
+                };
+
+            }
+            else
+            {
+                if (cluster.Identity != null && cluster.Identity.Type == null)
+                {
+                    cluster.Identity.Type = ResourceIdentityType.SystemAssigned;
+                }
+            }
+
+            return cluster;
         }
     }
 }

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed parameters for Set-AzApplicationInsightsDailyCap [#18315]
 
 ## Version 2.0.0
 * Upgraded API version for ApplicationInsights component to 2020-02-02

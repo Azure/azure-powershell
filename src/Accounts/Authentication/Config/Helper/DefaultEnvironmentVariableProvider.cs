@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config
@@ -32,9 +33,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 
         public IReadOnlyDictionary<string, string> List(EnvironmentVariableTarget target = EnvironmentVariableTarget.Process)
         {
-            return Environment.GetEnvironmentVariables()
-                .Cast<DictionaryEntry>()
-                .ToDictionary(pair => pair.Key.ToString(), pair => pair.Value.ToString(), StringComparer.OrdinalIgnoreCase);
+            IDictionary source = Environment.GetEnvironmentVariables();
+            IDictionary<string, string> results = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            // cannot use ToDictionary() because keys (names of env var) may duplicate on Linux,
+            // with case being the only difference
+            foreach (var item in source.Cast<DictionaryEntry>())
+            {
+                results[item.Key.ToString()] = item.Value.ToString();
+            }
+            return new ReadOnlyDictionary<string, string>(results);
         }
 
         public void Set(string variableName, string value, EnvironmentVariableTarget target = EnvironmentVariableTarget.Process)
