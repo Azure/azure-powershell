@@ -21,7 +21,7 @@ $PARAMETERS_HEADING = "## PARAMETERS"
 $SINGLE_EXAMPLE_HEADING_REGEX = "\n###\s*"
 $SINGLE_EXAMPLE_TITLE_HEADING_REGEX = "$SINGLE_EXAMPLE_HEADING_REGEX.+"
 $CODE_BLOCK_REGEX = "``````(powershell)?\s*\n(.*\n)+?\s*``````"
-$OUTPUT_BLOCK_REGEX = "``````output\s*\n(.*\n)+?\s*``````"
+$OUTPUT_BLOCK_REGEX = "``````output\s*\n(.*\n)*?\s*``````"
 
 class Scale {
     [string]$Module
@@ -181,8 +181,13 @@ function Get-ExamplesDetailsFromMd {
                 }
             }
 
-            # From the end of the last codeblock to the end is example description. 
-            $description = $exampleContent.SubString($exampleCodeBlocks[-1].Index + $exampleCodeBlocks[-1].Length).Trim()
+            if($exampleOutputBlocks -ne $null){
+                $description = $exampleContent.SubString($exampleOutputBlocks[-1].Index + $exampleOutputBlocks[-1].Length).Trim()
+            }
+            else{
+                # From the end of the last codeblock to the end is example description. 
+                $description = $exampleContent.SubString($exampleCodeBlocks[-1].Index + $exampleCodeBlocks[-1].Length).Trim()
+            }
             if ($description -ne "") {
                 $exampleDescriptions += $description
             }
@@ -336,11 +341,18 @@ function Measure-SectionMissingAndOutputScript {
         $results += $result
     }
     else {
+        $missingExampleTitle += ($examplesDetails.Title | Select-String -Pattern "{{[A-Za-z ]*}}").Count
+        $missingExampleCode += ($examplesDetails.Codes | Select-String -Pattern "{{[A-Za-z ]*}}").Count
+        $missingExampleOutput += ($examplesDetails.Outputs | Select-String -Pattern "{{[A-Za-z ]*}}").Count
+        $missingExampleDescription += ($examplesDetails.Description | Select-String -Pattern "{{[A-Za-z ]*}}").Count
+
         foreach ($exampleDetails in $examplesDetails) {
             $exampleNumber++
             switch ($exampleDetails) {
-                {$exampleDetails.Title -eq ""} {
-                    $missingExampleTitle++
+                {$exampleDetails.Title -eq "" -or $missingExampleTitle -ne 0} {
+                    if($exampleDetails.Title -eq ""){
+                        $missingExampleTitle++
+                    }
                     $result = [AnalysisOutput]@{
                         Module = $Module
                         Cmdlet = $Cmdlet
@@ -354,8 +366,10 @@ function Measure-SectionMissingAndOutputScript {
                     }
                     $results += $result
                 }
-                {$exampleDetails.Codes.Count -eq 0} {
-                    $missingExampleCode++
+                {$exampleDetails.Codes.Count -eq 0 -or $missingExampleCode -ne 0} {
+                    if($exampleDetails.Codes.Count -eq 0){
+                        $missingExampleCode++
+                    }
                     $result = [AnalysisOutput]@{
                         Module = $Module
                         Cmdlet = $Cmdlet
@@ -369,8 +383,10 @@ function Measure-SectionMissingAndOutputScript {
                     }
                     $results += $result
                 }
-                {$exampleDetails.OutputBlocks.Count -ne 0 -and $exampleDetails.Outputs.Count -eq 0} {
-                    $missingExampleOutput++
+                {($exampleDetails.OutputBlocks.Count -ne 0 -and $exampleDetails.Outputs.Count -eq 0) -or $missingExampleOutput -ne 0} {
+                    if($exampleDetails.OutputBlocks.Count -ne 0 -and $exampleDetails.Outputs.Count -eq 0){
+                        $missingExampleOutput++
+                    }
                     $result = [AnalysisOutput]@{
                         Module = $Module
                         Cmdlet = $Cmdlet
@@ -399,8 +415,10 @@ function Measure-SectionMissingAndOutputScript {
                     }
                     $results += $result
                 }
-                {$exampleDetails.Description -eq ""} {
-                    $missingExampleDescription++
+                {$exampleDetails.Description -eq "" -or $missingExampleDescription -ne 0} {
+                    if($exampleDetails.Description -ne 0){
+                        $missingExampleDescription++
+                    }
                     $result = [AnalysisOutput]@{
                         Module = $Module
                         Cmdlet = $Cmdlet
@@ -463,11 +481,6 @@ function Measure-SectionMissingAndOutputScript {
     }
 
     # MissingTable
-    $missingExampleTitle += ($examplesDetails.Title | Select-String -Pattern "{{[A-Za-z ]*}}").Count
-    $missingExampleCode += ($examplesDetails.Codes | Select-String -Pattern "{{[A-Za-z ]*}}").Count
-    $missingExampleOutput += ($examplesDetails.Outputs | Select-String -Pattern "{{[A-Za-z ]*}}").Count
-    $missingExampleDescription += ($examplesDetails.Description | Select-String -Pattern "{{[A-Za-z ]*}}").Count
-
     if ($missingSynopsis -ne 0 -or $missingDescription -ne 0 -or $missingExampleTitle -ne 0 -or $missingExampleCode -ne 0 -or $missingExampleOutput -ne 0 -or $missingExampleDescription -ne 0) {
         $missing = [Missing]@{
             Module = $module
