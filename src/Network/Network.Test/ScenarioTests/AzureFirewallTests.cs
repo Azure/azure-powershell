@@ -136,5 +136,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureFirewallVirtualHubAllocateDeallocated");
         }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallBasicSku()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallBasicSku");
+        }
     }
 }

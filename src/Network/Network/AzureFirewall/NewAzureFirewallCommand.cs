@@ -205,6 +205,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
                 MNM.AzureFirewallSkuTier.Standard,
                 MNM.AzureFirewallSkuTier.Premium,
+                MNM.FirewallPolicySkuTier.Basic,
                 IgnoreCase = false)]
         public string SkuTier { get; set; }
 

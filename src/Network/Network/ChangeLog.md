@@ -69,6 +69,7 @@
 * Updated cmdlets to add new option of `HubRoutingPreference` in RouteServer.
     - `New-AzRouteServer`
     - `Update-AzRouteServer`
+* Fix bug that can't parse CustomIpPrefixParent parameter from swagger to powershell.
 
 ## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
