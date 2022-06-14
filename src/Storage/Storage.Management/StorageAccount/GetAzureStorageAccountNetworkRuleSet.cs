@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
-using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -49,12 +49,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             base.ExecuteCmdlet();
 
-            var storageAccount = this.StorageClient.StorageAccounts.GetProperties(
-                this.ResourceGroupName,
-                this.Name);
-            if (storageAccount.NetworkRuleSet != null)
+            Track2.StorageAccountResource account = this.StorageClientTrack2.GetStorageAccount(this.ResourceGroupName, this.Name)
+                .Get();
+
+            if (account.Data.NetworkRuleSet != null)
             {
-                WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet));
+                WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(account.Data.NetworkRuleSet));
             }
         }
     }

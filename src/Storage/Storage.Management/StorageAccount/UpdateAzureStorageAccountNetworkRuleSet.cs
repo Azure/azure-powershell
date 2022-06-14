@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
-using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -152,22 +151,20 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 {
                     throw new System.ArgumentNullException("IPRules, VirtualNetworkRules, Bypass, DefaultAction", "Request must specify an account NetworkRule property to update.");
                 }
-
-                var storageAccount = this.StorageClient.StorageAccounts.GetProperties(
-                    this.ResourceGroupName,
-                    this.Name);
-                NetworkRuleSet storageACL = storageAccount.NetworkRuleSet;
+                Track2.StorageAccountResource storageAccount = this.StorageClientTrack2
+                    .GetStorageAccount(this.ResourceGroupName, this.Name).Get();
+                Track2Models.NetworkRuleSet storageACL = storageAccount.Data.NetworkRuleSet;
 
                 if (storageACL == null)
                 {
-                    storageACL = new NetworkRuleSet();
+                    storageACL = new Track2Models.NetworkRuleSet(Track2Models.DefaultAction.Allow);
                 }
 
                 PSNetworkRuleSet psNetworkRule = PSNetworkRuleSet.ParsePSNetworkRule(storageACL);
 
                 if (isIpRuleSet)
                 {
-                    psNetworkRule.IpRules = IPRule;
+                    psNetworkRule.IpRules = IPRule;       
                 }
 
                 if (isNetworkRuleSet)
@@ -189,18 +186,30 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 {
                     psNetworkRule.DefaultAction = defaultAction.Value;
                 }
+
+                Track2Models.StorageAccountPatch patch = new Track2Models.StorageAccountPatch();
+                patch.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(psNetworkRule);
                 
-                StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
-                updateParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(psNetworkRule);
+                if (patch.NetworkRuleSet.IPRules.Count == 0)
+                {
+                    patch.NetworkRuleSet.IPRules.Clear();
+                }
+                if (patch.NetworkRuleSet.VirtualNetworkRules.Count == 0)
+                {
+                    patch.NetworkRuleSet.VirtualNetworkRules.Clear();
+                }
+                if (patch.NetworkRuleSet.ResourceAccessRules.Count == 0)
+                {
+                    patch.NetworkRuleSet.ResourceAccessRules.Clear();
+                }
 
-                var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
-                    this.ResourceGroupName,
-                    this.Name,
-                updateParameters);
+                var updatedStorageAccount = this.StorageClientTrack2
+                    .GetStorageAccount(this.ResourceGroupName, this.Name)
+                    .Update(patch);
 
-                storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-
-                WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet));
+                storageAccount = this.StorageClientTrack2
+                    .GetStorageAccount(this.ResourceGroupName, this.Name).Get();
+                WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.Data.NetworkRuleSet));
             }
         }
     }

@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Storage.Models;
 using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
