@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewayBackendAddressPool[] BackendAddressPools { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of backend http settings")]
         public PSApplicationGatewayBackendHttpSettings[] BackendHttpSettingsCollection { get; set; }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewaySslProfile[] SslProfiles { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of http listener")]
         public PSApplicationGatewayHttpListener[] HttpListeners { get; set; }
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewayUrlPathMap[] UrlPathMaps { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of request routing rule")]
         public PSApplicationGatewayRequestRoutingRule[] RequestRoutingRules { get; set; }

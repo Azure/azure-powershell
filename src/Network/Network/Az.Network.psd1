@@ -554,7 +554,23 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Get-AzVirtualHubBgpConnection', 'New-AzVirtualHubBgpConnection', 
                'Remove-AzVirtualHubBgpConnection', 
                'Update-AzVirtualHubBgpConnection', 
-               'New-AzPrivateEndpointIpConfiguration'
+               'New-AzPrivateEndpointIpConfiguration', 
+               'New-AzPrivateEndpointIpConfiguration',
+               'Get-AzApplicationGatewayListener',	
+               'New-AzApplicationGatewayListener',	
+               'Add-AzApplicationGatewayListener',	
+               'Set-AzApplicationGatewayListener',	
+               'Remove-AzApplicationGatewayListener',
+               'Get-AzApplicationGatewayBackendSetting',
+               'New-AzApplicationGatewayBackendSetting',
+               'Add-AzApplicationGatewayBackendSetting',
+               'Set-AzApplicationGatewayBackendSetting',
+               'Remove-AzApplicationGatewayBackendSetting',
+               'Get-AzApplicationGatewayRoutingRule',
+               'New-AzApplicationGatewayRoutingRule',
+               'Add-AzApplicationGatewayRoutingRule',
+               'Set-AzApplicationGatewayRoutingRule',
+               'Remove-AzApplicationGatewayRoutingRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
