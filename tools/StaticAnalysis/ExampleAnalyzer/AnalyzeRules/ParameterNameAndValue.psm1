@@ -56,7 +56,8 @@ function Measure-ParameterNameAndValue {
         $ScriptBlockAst
     )
     begin{
-        Get-Item ./artifacts/Debug/Az.*/Az.*.psd1 | Import-Module -Global
+        $modulePath = "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1"
+        Get-Item $modulePath | Import-Module -Global
     }
     process {
         $Results = @()

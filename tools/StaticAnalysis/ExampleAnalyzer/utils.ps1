@@ -211,7 +211,7 @@ function ExceptionRecord{
     param(
         [AnalysisOutput[]]$records
     )
-    $exceptionPaths = ".\tools\StaticAnalysis\Exceptions"
+    $exceptionPaths = "$PSScriptRoot\..\..\..\tools\StaticAnalysis\Exceptions"
     $results = @()
     foreach($record in $records){
         $needAdd = $true
