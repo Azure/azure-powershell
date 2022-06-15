@@ -9,6 +9,7 @@ ARG VCS_REF="none"
 ARG BUILD_DATE=
 ARG VERSION=
 ARG LATEST=
+ARG BLOB_URL=
 ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell:${VERSION}-alpine-3.14
 
 ENV AZUREPS_HOST_ENVIRONMENT="dockerImage/${VERSION}-alpine-3.14"

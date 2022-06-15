@@ -12,48 +12,44 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.DataFactoryV2.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
-    public class LinkedServiceTests : DataFactoriesScenarioTestsBase
+    public class LinkedServiceTests : DataFactoryV2TestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public LinkedServiceTests(Xunit.Abstractions.ITestOutputHelper output)
+        public LinkedServiceTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedServiceV2()
         {
-            RunPowerShellTest(_logger, "Test-LinkedService");
+            TestRunner.RunTestScript("Test-LinkedService");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedServiceWithDataFactoryParameterV2()
         {
-            RunPowerShellTest(_logger, "Test-LinkedServiceWithDataFactoryParameter");
+            TestRunner.RunTestScript("Test-LinkedServiceWithDataFactoryParameter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedServicePipingV2()
         {
-            RunPowerShellTest(_logger, "Test-LinkedServicePiping");
+            TestRunner.RunTestScript("Test-LinkedServicePiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedServiceWithResourceIdV2()
         {
-            RunPowerShellTest(_logger, "Test-LinkedServiceWithResourceId");
+            TestRunner.RunTestScript("Test-LinkedServiceWithResourceId");
         }
     }
 }

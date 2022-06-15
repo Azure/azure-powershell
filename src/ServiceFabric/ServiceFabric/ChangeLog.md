@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed typo in verbose log message.
 
 ## Version 3.0.2
 * Added support for Ubuntu 20.04 vm image. 

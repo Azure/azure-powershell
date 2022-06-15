@@ -264,9 +264,6 @@
             <Label>TrustDirection</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>TrustPassword</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>TrustedDomainFqdn</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -281,9 +278,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TrustDirection</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TrustPassword</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TrustedDomainFqdn</PropertyName>
@@ -396,9 +390,6 @@
             <Label>PfxCertificate</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>PfxCertificatePassword</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>PublicCertificate</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -419,9 +410,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PfxCertificate</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PfxCertificatePassword</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PublicCertificate</PropertyName>
@@ -685,9 +673,6 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -700,9 +685,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
