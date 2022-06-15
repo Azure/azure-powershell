@@ -14,7 +14,7 @@ Creates a custom log table
 
 ```
 New-AzOperationalInsightsTable [-ResourceGroupName] <String> [-WorkspaceName] <String> [-TableName] <String>
- [[-RetentionInDays] <Int32>] [[-TotalRetentionInDays] <Int32>] [-Columns <Hashtable>] [-Plan <String>]
+ [[-RetentionInDays] <Int32>] [[-TotalRetentionInDays] <Int32>] [-Column <Hashtable>] [-Plan <String>]
  [-Description <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Creates a custom log table
 
 ### Example 1
 ```powershell
-PS C:\> New-AzOperationalInsightsTable -ResourceGroupName {rgName} -WorkspaceName {wsName} -TableName {tableName_CL} -RetentionInDays 25 -TotalRetentionInDays 30 -Columns @{'ColName1' = 'string'; 'TimeGenerated' = 'DateTime'; 'ColName3' = 'int'}
+PS C:\> New-AzOperationalInsightsTable -ResourceGroupName {rgName} -WorkspaceName {wsName} -TableName {tableName_CL} -RetentionInDays 25 -TotalRetentionInDays 30 -Column @{'ColName1' = 'string'; 'TimeGenerated' = 'DateTime'; 'ColName3' = 'int'}
 
 TableName            : {tableName_CL}
 ResourceId           : /subscriptions/{subscriptionID}/resourcegroups/{rgName}/providers/Microsoft.OperationalInsights/workspaces/{wsName}/tables/{tableName_CL}
@@ -59,8 +59,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Columns
-The table columns passed as @{ ColName1 = Type; ColName2 = Type; ColName3 = Type}.
+### -Column
+The table column passed as @{ ColName1 = Type; ColName2 = Type; ColName3 = Type}.
 
 ```yaml
 Type: Hashtable

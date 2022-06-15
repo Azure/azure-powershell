@@ -14,7 +14,7 @@ Update a Log Analytics workspace table.
 
 ```
 Update-AzOperationalInsightsTable [-ResourceGroupName] <String> [-WorkspaceName] <String> [-TableName] <String>
- [[-RetentionInDays] <Int32>] [[-TotalRetentionInDays] <Int32>] [-Columns <Hashtable>] [-Plan <String>]
+ [[-RetentionInDays] <Int32>] [[-TotalRetentionInDays] <Int32>] [-Column <Hashtable>] [-Plan <String>]
  [-Description <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -59,7 +59,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Columns
+### -Column
 The table columns passed as @{ ColName1 = Type; ColName2 = Type; ColName3 = Type}.
 
 ```yaml
