@@ -86,7 +86,7 @@ The dependency analyzer can be found in the [`DependencyAnalyzer`](https://githu
 - `SharedAssemblyConflict`
     - The implementation of the `IReportRecord` interface; defines what a shared conflict exception looks like when it's reported in the `SharedAssemblyConflict.csv` file that is found in the build artifacts of a CI run, as well as how to compare a new record to a record found in the existing `SharedAssemblyConflict.csv` file used for exception suppressions
 - `ExampleIssue`
-    - The implementation of the `IReportRecord` interface; defines what a shared conflict exception looks like when it's reported in the `ExampleIssues.csv` file that is found in the build artifacts of a CI run, as well as how to compare a new record to a record found in the existing `ExampleIssues.csv` file used for exception suppressions    
+    - The implementation of the `IReportRecord` interface; defines what an example issue exception looks like when it's reported in the `ExampleIssues.csv` file that is found in the build artifacts of a CI run, as well as how to compare a new record to a record found in the existing `ExampleIssues.csv` file used for exception suppressions    
 
 #### Help Analyzer
 
