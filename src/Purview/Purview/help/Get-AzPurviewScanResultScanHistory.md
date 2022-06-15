@@ -24,7 +24,7 @@ Lists the scan history of a scan
 
 ### Example 1: List all scan runs within a scan instance of a data source
 ```powershell
-Get-AzPurviewScanResultScanHistory -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' | fl
+Get-AzPurviewScanResultScanHistory -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' | Format-List
 ```
 
 ```output
