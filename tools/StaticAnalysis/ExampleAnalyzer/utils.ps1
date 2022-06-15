@@ -20,7 +20,7 @@ $EXAMPLES_HEADING = "## EXAMPLES"
 $PARAMETERS_HEADING = "## PARAMETERS"
 $SINGLE_EXAMPLE_HEADING_REGEX = "\n###\s*"
 $SINGLE_EXAMPLE_TITLE_HEADING_REGEX = "$SINGLE_EXAMPLE_HEADING_REGEX.+"
-$CODE_BLOCK_REGEX = "``````(powershell)?\s*\n(.*\n)+?\s*``````"
+$CODE_BLOCK_REGEX = "``````(powershell)?\s*\n(.*\n)*?\s*``````"
 $OUTPUT_BLOCK_REGEX = "``````output\s*\n(.*\n)*?\s*``````"
 
 class Scale {
@@ -347,6 +347,8 @@ function Measure-SectionMissingAndOutputScript {
             $_missingExampleCode = ($exampleDetails.Codes | Select-String -Pattern "{{[A-Za-z ]*}}").Count
             $_missingExampleOutput = ($exampleDetails.Outputs | Select-String -Pattern "{{[A-Za-z ]*}}").Count
             $_missingExampleDescription = ($exampleDetails.Description | Select-String -Pattern "{{[A-Za-z ]*}}").Count
+            $_needDeleting = ($exampleDetails.CodeBlocks | Select-String -Pattern "\n([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*" -CaseSensitive).Count +
+                ($exampleDetails.CodeBlocks | Select-String -Pattern "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1" -CaseSensitive).Count
             switch ($exampleDetails) {
                 {$exampleDetails.Title -eq "" -or $_missingExampleTitle -ne 0} {
                     $missingExampleTitle ++
@@ -423,23 +425,21 @@ function Measure-SectionMissingAndOutputScript {
                     }
                     $results += $result
                 }
-            }
-            $needDeleting = ($examplesDetails.CodeBlocks | Select-String -Pattern "\n([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*" -CaseSensitive).Count +
-                ($examplesDetails.CodeBlocks | Select-String -Pattern "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1" -CaseSensitive).Count
-            
-            if($needDeleting -ne 0){
-                $result = [AnalysisOutput]@{
-                    Module = $Module
-                    Cmdlet = $Cmdlet
-                    Example = $exampleDetails.Num
-                    Description = "The prompt of example need to be deleted."
-                    RuleName = "NeedDeleting"
-                    Severity = 1
-                    Extent = "$Module\help\$Cmdlet.md"
-                    ProblemID = 5051
-                    Remediation = "Delete the prompt of example."
+                {$_needDeleting -ne 0}{
+                    $needDeleting++
+                    $result = [AnalysisOutput]@{
+                        Module = $Module
+                        Cmdlet = $Cmdlet
+                        Example = $exampleDetails.Num
+                        Description = "The prompt of example need to be deleted."
+                        RuleName = "NeedDeleting"
+                        Severity = 1
+                        Extent = "$Module\help\$Cmdlet.md"
+                        ProblemID = 5051
+                        Remediation = "Delete the prompt of example."
+                    }
+                    $results += $result
                 }
-                $results += $result
             }
 
             # Delete prompts
