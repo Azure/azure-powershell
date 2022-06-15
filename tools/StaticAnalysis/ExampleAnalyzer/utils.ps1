@@ -548,8 +548,17 @@ function Get-ScriptAnalyzerResult {
                 ProblemID = $analysisResult.RuleSuppressionID
                 Remediation = ($analysisResult.Message -split "@")[2] -replace "`"","`'"
             }
-            $results += $result
         }
+        else{
+            $result = [AnalysisOutput]@{
+                RuleName = $analysisResult.RuleName
+                Description = $analysisResult.Message
+                Severity = $Severity
+                Extent = $analysisResult.Extent
+                Remediation = "Unexpected Error! Please contact the Azure Powershell Team."
+            }
+        }
+        $results += $result
     }
     $results = ExceptionRecord $results
     return $results
