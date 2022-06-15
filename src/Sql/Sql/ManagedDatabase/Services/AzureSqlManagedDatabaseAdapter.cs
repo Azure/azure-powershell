@@ -47,8 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <summary>
         /// Constructs a managed database adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlManagedDatabaseAdapter(IAzureContext context)
         {
             Context = context;
@@ -229,7 +228,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 parameters.LastBackupName);
         }
 
-        private bool isLRSRestore(ManagedDatabaseRestoreDetailsResult restoreDetails) {
+        private bool isLRSRestore(ManagedDatabaseRestoreDetailsResult restoreDetails)
+        {
             var restoreType = restoreDetails.GetType().GetProperty("ManagedDatabaseRestoreDetailsResultType");
             // 1) no property => old api => it's log replay as the API only works for such dbs
             // 2) property is there => new api => property value will tell us if its LRS
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// </summary>
         /// <param name="resourceGroup">The resource group the managed instance is in</param>
         /// <param name="managedInstanceName">The name of the Azure Sql Database Managed Instance</param>
-        /// <param name="database">The service response</param>
+        /// <param name="managedDatabase">The service response</param>
         /// <returns>The converted model</returns>
         public static AzureSqlManagedDatabaseModel CreateManagedDatabaseModelFromResponse(string resourceGroup, string managedInstanceName, Management.Sql.Models.ManagedDatabase managedDatabase)
         {
