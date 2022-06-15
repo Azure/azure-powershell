@@ -85,7 +85,7 @@ Get log analytics workspace by path. It only supports management plane API and H
 
 ### Example 2
 ```powershell
-Invoke-AzRestMethod -Url https://graph.microsoft.com/v1.0/me
+Invoke-AzRestMethod https://graph.microsoft.com/v1.0/me
 ```
 
 ```output
@@ -103,6 +103,13 @@ Get current signed in user via MicrosoftGraph API. This example is equivalent to
 Invoke-AzRestMethod -Name "test" -Path "/subscriptions/{subscription}/resourcegroups/{resourcegroup}/providers/microsoft.operationalinsights/workspaces/{workspace}?api-version={API}"
 ```
 
+```output
+{{Add Output Here}}
+```
+
+### Example 4
+```powershell
+```
 
 ## PARAMETERS
 
