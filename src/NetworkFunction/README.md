@@ -39,8 +39,8 @@ nested-object-to-string: true
 directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-    remove: true
+    hide: true
   - where:
       verb: Set
-    remove: true
+    hide: true
 ```
