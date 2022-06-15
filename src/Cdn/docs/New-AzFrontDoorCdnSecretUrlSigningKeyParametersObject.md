@@ -31,18 +31,7 @@ Create an in-memory object for UrlSigningKeyParameters.
 {{ Add output here }}
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
