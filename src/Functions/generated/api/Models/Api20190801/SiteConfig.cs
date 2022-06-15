@@ -13,6 +13,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigInternal
     {
 
+        /// <summary>Backing field for <see cref="AcrUseManagedIdentityCred" /> property.</summary>
+        private bool? _acrUseManagedIdentityCred;
+
+        /// <summary>Flag to use Managed Identity Creds for ACR pull</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public bool? AcrUseManagedIdentityCred { get => this._acrUseManagedIdentityCred; set => this._acrUseManagedIdentityCred = value; }
+
+        /// <summary>Backing field for <see cref="AcrUserManagedIdentityId" /> property.</summary>
+        private string _acrUserManagedIdentityId;
+
+        /// <summary>If using user managed identity, the user managed identity ClientId</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string AcrUserManagedIdentityId { get => this._acrUserManagedIdentityId; set => this._acrUserManagedIdentityId = value; }
+
         /// <summary>
         /// Minimum time the process must execute
         /// before taking the action
@@ -611,6 +625,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
     public partial interface ISiteConfig :
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IJsonSerializable
     {
+        /// <summary>Flag to use Managed Identity Creds for ACR pull</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Flag to use Managed Identity Creds for ACR pull",
+        SerializedName = @"acrUseManagedIdentityCreds",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? AcrUseManagedIdentityCred { get; set; }
+        /// <summary>If using user managed identity, the user managed identity ClientId</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If using user managed identity, the user managed identity ClientId",
+        SerializedName = @"acrUserManagedIdentityID",
+        PossibleTypes = new [] { typeof(string) })]
+        string AcrUserManagedIdentityId { get; set; }
         /// <summary>
         /// Minimum time the process must execute
         /// before taking the action
@@ -1277,6 +1307,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
     internal partial interface ISiteConfigInternal
 
     {
+        /// <summary>Flag to use Managed Identity Creds for ACR pull</summary>
+        bool? AcrUseManagedIdentityCred { get; set; }
+        /// <summary>If using user managed identity, the user managed identity ClientId</summary>
+        string AcrUserManagedIdentityId { get; set; }
         /// <summary>Custom action to be taken.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomAction ActionCustomAction { get; set; }
         /// <summary>

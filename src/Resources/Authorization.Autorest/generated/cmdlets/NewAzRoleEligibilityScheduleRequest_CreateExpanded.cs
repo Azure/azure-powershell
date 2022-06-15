@@ -33,6 +33,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Role Eligibility schedule request</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleEligibilityScheduleRequest();
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.ParameterCategory.Runtime)]
@@ -53,7 +56,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'",
         SerializedName = @"condition",
         PossibleTypes = new [] { typeof(string) })]
-        public string Condition { get => ParametersBody.Condition ?? null; set => ParametersBody.Condition = value; }
+        public string Condition { get => _parametersBody.Condition ?? null; set => _parametersBody.Condition = value; }
 
         /// <summary>Version of the condition. Currently accepted value is '2.0'</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Version of the condition. Currently accepted value is '2.0'")]
@@ -64,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"Version of the condition. Currently accepted value is '2.0'",
         SerializedName = @"conditionVersion",
         PossibleTypes = new [] { typeof(string) })]
-        public string ConditionVersion { get => ParametersBody.ConditionVersion ?? null; set => ParametersBody.ConditionVersion = value; }
+        public string ConditionVersion { get => _parametersBody.ConditionVersion ?? null; set => _parametersBody.ConditionVersion = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -84,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"Duration of the role eligibility schedule in TimeSpan.",
         SerializedName = @"duration",
         PossibleTypes = new [] { typeof(string) })]
-        public string ExpirationDuration { get => ParametersBody.ExpirationDuration ?? null; set => ParametersBody.ExpirationDuration = value; }
+        public string ExpirationDuration { get => _parametersBody.ExpirationDuration ?? null; set => _parametersBody.ExpirationDuration = value; }
 
         /// <summary>End DateTime of the role eligibility schedule.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "End DateTime of the role eligibility schedule.")]
@@ -95,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"End DateTime of the role eligibility schedule.",
         SerializedName = @"endDateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime ExpirationEndDateTime { get => ParametersBody.ExpirationEndDateTime ?? default(global::System.DateTime); set => ParametersBody.ExpirationEndDateTime = value; }
+        public global::System.DateTime ExpirationEndDateTime { get => _parametersBody.ExpirationEndDateTime ?? default(global::System.DateTime); set => _parametersBody.ExpirationEndDateTime = value; }
 
         /// <summary>Type of the role eligibility schedule expiration</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of the role eligibility schedule expiration")]
@@ -107,7 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.Type) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.Type))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.Type ExpirationType { get => ParametersBody.ExpirationType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.Type)""); set => ParametersBody.ExpirationType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.Type ExpirationType { get => _parametersBody.ExpirationType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.Type)""); set => _parametersBody.ExpirationType = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -133,14 +136,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"Justification for the role eligibility",
         SerializedName = @"justification",
         PossibleTypes = new [] { typeof(string) })]
-        public string Justification { get => ParametersBody.Justification ?? null; set => ParametersBody.Justification = value; }
+        public string Justification { get => _parametersBody.Justification ?? null; set => _parametersBody.Justification = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -158,12 +161,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
 
-        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleEligibilityScheduleRequest();
-
-        /// <summary>Role Eligibility schedule request</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
-
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
@@ -178,7 +175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"The principal ID.",
         SerializedName = @"principalId",
         PossibleTypes = new [] { typeof(string) })]
-        public string PrincipalId { get => ParametersBody.PrincipalId ?? null; set => ParametersBody.PrincipalId = value; }
+        public string PrincipalId { get => _parametersBody.PrincipalId ?? null; set => _parametersBody.PrincipalId = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -208,7 +205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         SerializedName = @"requestType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RequestType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RequestType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RequestType RequestType { get => ParametersBody.RequestType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RequestType)""); set => ParametersBody.RequestType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RequestType RequestType { get => _parametersBody.RequestType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RequestType)""); set => _parametersBody.RequestType = value; }
 
         /// <summary>The role definition ID.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The role definition ID.")]
@@ -219,7 +216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"The role definition ID.",
         SerializedName = @"roleDefinitionId",
         PossibleTypes = new [] { typeof(string) })]
-        public string RoleDefinitionId { get => ParametersBody.RoleDefinitionId ?? null; set => ParametersBody.RoleDefinitionId = value; }
+        public string RoleDefinitionId { get => _parametersBody.RoleDefinitionId ?? null; set => _parametersBody.RoleDefinitionId = value; }
 
         /// <summary>Start DateTime of the role eligibility schedule.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Start DateTime of the role eligibility schedule.")]
@@ -230,7 +227,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"Start DateTime of the role eligibility schedule.",
         SerializedName = @"startDateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime ScheduleInfoStartDateTime { get => ParametersBody.ScheduleInfoStartDateTime ?? default(global::System.DateTime); set => ParametersBody.ScheduleInfoStartDateTime = value; }
+        public global::System.DateTime ScheduleInfoStartDateTime { get => _parametersBody.ScheduleInfoStartDateTime ?? default(global::System.DateTime); set => _parametersBody.ScheduleInfoStartDateTime = value; }
 
         /// <summary>Backing field for <see cref="Scope" /> property.</summary>
         private string _scope;
@@ -262,7 +259,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"The resultant role eligibility schedule id or the role eligibility schedule id being updated",
         SerializedName = @"targetRoleEligibilityScheduleId",
         PossibleTypes = new [] { typeof(string) })]
-        public string TargetRoleEligibilityScheduleId { get => ParametersBody.TargetRoleEligibilityScheduleId ?? null; set => ParametersBody.TargetRoleEligibilityScheduleId = value; }
+        public string TargetRoleEligibilityScheduleId { get => _parametersBody.TargetRoleEligibilityScheduleId ?? null; set => _parametersBody.TargetRoleEligibilityScheduleId = value; }
 
         /// <summary>The role eligibility schedule instance id being updated</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The role eligibility schedule instance id being updated")]
@@ -273,7 +270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"The role eligibility schedule instance id being updated",
         SerializedName = @"targetRoleEligibilityScheduleInstanceId",
         PossibleTypes = new [] { typeof(string) })]
-        public string TargetRoleEligibilityScheduleInstanceId { get => ParametersBody.TargetRoleEligibilityScheduleInstanceId ?? null; set => ParametersBody.TargetRoleEligibilityScheduleInstanceId = value; }
+        public string TargetRoleEligibilityScheduleInstanceId { get => _parametersBody.TargetRoleEligibilityScheduleInstanceId ?? null; set => _parametersBody.TargetRoleEligibilityScheduleInstanceId = value; }
 
         /// <summary>Ticket number for the role eligibility</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Ticket number for the role eligibility")]
@@ -284,7 +281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"Ticket number for the role eligibility",
         SerializedName = @"ticketNumber",
         PossibleTypes = new [] { typeof(string) })]
-        public string TicketNumber { get => ParametersBody.TicketInfoTicketNumber ?? null; set => ParametersBody.TicketInfoTicketNumber = value; }
+        public string TicketNumber { get => _parametersBody.TicketInfoTicketNumber ?? null; set => _parametersBody.TicketInfoTicketNumber = value; }
 
         /// <summary>Ticket system name for the role eligibility</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Ticket system name for the role eligibility")]
@@ -295,7 +292,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"Ticket system name for the role eligibility",
         SerializedName = @"ticketSystem",
         PossibleTypes = new [] { typeof(string) })]
-        public string TicketSystem { get => ParametersBody.TicketInfoTicketSystem ?? null; set => ParametersBody.TicketInfoTicketSystem = value; }
+        public string TicketSystem { get => _parametersBody.TicketInfoTicketSystem ?? null; set => _parametersBody.TicketInfoTicketSystem = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
@@ -467,12 +464,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.RoleEligibilityScheduleRequestsCreate(Scope, Name, ParametersBody, onCreated, onDefault, this, Pipeline);
+                    await this.Client.RoleEligibilityScheduleRequestsCreate(Scope, Name, _parametersBody, onCreated, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Scope=Scope,Name=Name,body=ParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Scope=Scope,Name=Name,body=_parametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -542,14 +539,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

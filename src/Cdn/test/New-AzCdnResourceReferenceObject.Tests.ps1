@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnResourceReferenceObj
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnResourceReferenceObject' {
+Describe 'New-AzCdnResourceReferenceObject' -Tag 'LiveOnly' {
     It '__AllParameterSets' {
         { 
             New-AzCdnResourceReferenceObject -Id "Id"

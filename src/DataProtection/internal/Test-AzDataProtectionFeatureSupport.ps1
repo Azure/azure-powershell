@@ -20,16 +20,12 @@ Validates if a feature is supported
 .Description
 Validates if a feature is supported
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationRequestBase
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IFeatureValidationRequestBase
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
@@ -88,7 +84,7 @@ param(
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationRequestBase]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IFeatureValidationRequestBase]
     # Base class for Backup Feature support
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -155,6 +151,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Check = 'Az.DataProtection.private\Test-AzDataProtectionFeatureSupport_Check';
             CheckExpanded = 'Az.DataProtection.private\Test-AzDataProtectionFeatureSupport_CheckExpanded';
@@ -170,6 +167,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -178,15 +176,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

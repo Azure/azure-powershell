@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.27.0
 * Edited `New-AzVm` cmdlet internal logic to use the `PlatformFaultDomain` value in the `PSVirtualMachine` object passed to it in the new virtual machine.
 * Added a new cmdlet named `Restart-AzHost` to restart dedicated hosts. 
 * Added `-DataAccessAuthMode` parameter to the following cmdlets:
@@ -34,6 +36,8 @@
     - `New-AzSnapshotUpdateConfig`
     - `New-AzGalleryImageDefinition`
 * Added `-InstanceView` parameter to `Get-AzRestorePoint`
+* Added parameter `-ScriptString` to `Invoke-AzvmRunCommand` and `Invoke-AzvmssRunCommand`
+* Added parameter `-ScaleInPolicyForceDeletion` to `Update-Azvmss`
 
 ## Version 4.26.0
 * Added `-ImageReferenceId` parameter to following cmdlets: `New-AzVm`, `New-AzVmConfig`, `New-AzVmss`, `Set-AzVmssStorageProfile`

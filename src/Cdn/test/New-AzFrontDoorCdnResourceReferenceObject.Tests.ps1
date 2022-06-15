@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnResourceRef
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnResourceReferenceObject' {
+Describe 'New-AzFrontDoorCdnResourceReferenceObject' -Tag 'LiveOnly' {
     It '__AllParameterSets'  {
         { 
             # ignore 

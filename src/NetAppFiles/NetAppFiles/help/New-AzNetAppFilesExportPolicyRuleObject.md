@@ -324,8 +324,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzExportPolicyObject](./New-AzExportPolicyObject.md)
-[Get-AzNetAppFilesVolume](./Get-AzNetAppFilessVolume.md)
-[New-AzNetAppFilesVolume](./New-AzNetAppFilessVolume.md)
-[Update-AzNetAppFilesVolume](./Update-AzNetAppFilessVolume.md)
-[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilessVolume.md)
+[Get-AzNetAppFilesVolume](./Get-AzNetAppFilesVolume.md)
+[New-AzNetAppFilesVolume](./New-AzNetAppFilesVolume.md)
+[Update-AzNetAppFilesVolume](./Update-AzNetAppFilesVolume.md)
+[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilesVolume.md)

@@ -19,8 +19,10 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Rest.Azure.OData;
-using Newtonsoft.Json;
 using RestAzureNS = Microsoft.Rest.Azure;
+using System;
+using Newtonsoft.Json;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -34,16 +36,54 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         public BackupResourceVaultConfigResource SetVaultProperty(string vaultName, string resourceGroupName,
-            BackupResourceVaultConfigResource param)
-        {
+            BackupResourceVaultConfigResource param, string auxiliaryAccessToken = null, bool isMUAProtected = false)
+        {            
+            Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();                        
+            string operationRequest = null;
+
+            if (isMUAProtected)
+            {
+                List<ResourceGuardProxyBaseResource> resourceGuardMapping = ListResourceGuardMapping(vaultName, resourceGroupName);
+                if (resourceGuardMapping != null && resourceGuardMapping.Count != 0)
+                {
+                    foreach (ResourceGuardOperationDetail operationDetail in resourceGuardMapping[0].Properties.ResourceGuardOperationDetails)
+                    {
+                        if (operationDetail.VaultCriticalOperation == "Microsoft.RecoveryServices/vaults/backupconfig/write") operationRequest = operationDetail.DefaultResourceRequest;
+                    }
+
+                    if (operationRequest != null)
+                    {
+                        param.Properties.ResourceGuardOperationRequests = new List<string>();
+                        param.Properties.ResourceGuardOperationRequests.Add(operationRequest);
+                    }
+                }
+            }            
+
+            if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
+            {
+                if (operationRequest != null)
+                {
+                    customHeaders.Add("x-ms-authorization-auxiliary", new List<string> { "Bearer " + auxiliaryAccessToken });
+                }
+                else if(!isMUAProtected)
+                {
+                    throw new ArgumentException(String.Format(Resources.BackupConfigUpdateNotCritical));
+                }
+                else
+                {
+                    string operationName = "Disabling SoftDelete or SecurityFeatures";
+                    throw new ArgumentException(String.Format(Resources.UnexpectedParameterToken, operationName));
+                }
+            }           
+
             return BmsAdapter.Client.BackupResourceVaultConfigs.UpdateWithHttpMessagesAsync(
-                vaultName, resourceGroupName, param).Result.Body;
+                vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), param, customHeaders).Result.Body;
         }
 
         public BackupResourceVaultConfigResource GetVaultProperty(string vaultName, string resourceGroupName)
-        {           
+        {
             return BmsAdapter.Client.BackupResourceVaultConfigs.GetWithHttpMessagesAsync(
-                vaultName, resourceGroupName).Result.Body;
+                vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName()).Result.Body;
         }
 
         /// <summary>  
@@ -106,7 +146,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns>Azure Recovery Services Vault</returns> 
         public ARSVault GetVault(string resouceGroupName, string vaultName)
         {
-            Vault response =  RSAdapter.Client.Vaults.GetWithHttpMessagesAsync(resouceGroupName, vaultName,
+            Vault response = RSAdapter.Client.Vaults.GetWithHttpMessagesAsync(resouceGroupName, vaultName,
                 cancellationToken: RSAdapter.CmdletCancellationToken).Result.Body;
 
             ARSVault vault = new ARSVault(response);
@@ -135,12 +175,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             ODataQuery<CrrModel.BMSAADPropertiesQueryObject> queryParams = null;
 
-            if(backupManagementType == BackupManagementType.AzureWorkload)
+            if (backupManagementType == BackupManagementType.AzureWorkload)
             {
                 queryParams = new ODataQuery<CrrModel.BMSAADPropertiesQueryObject>(q => q.BackupManagementType == BackupManagementType.AzureWorkload);
             }
 
-            CrrModel.AADPropertiesResource aadProperties =  CrrAdapter.Client.AadProperties.GetWithHttpMessagesAsync(azureRegion, queryParams).Result.Body;
+            CrrModel.AADPropertiesResource aadProperties = CrrAdapter.Client.AadProperties.GetWithHttpMessagesAsync(azureRegion, queryParams).Result.Body;
             return aadProperties;
         }
 
@@ -193,5 +233,102 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             Logger.Instance.WriteDebug("Trigger move operation: " + operationStatus.Body.Status);
 
         }
+
+        #region ResourceGuardAPIs
+
+        /// <summary>
+        /// Method to fetch resource guard proxy.
+        /// </summary>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <param name="resourceGuardProxyName"></param>
+        /// <returns></returns>
+        public ResourceGuardProxyBaseResource GetResourceGuardMapping(string vaultName, string resourceGroupName, string resourceGuardProxyName)
+        {
+            return BmsAdapter.Client.ResourceGuardProxy.GetWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), resourceGuardProxyName).Result.Body;
+        }
+
+        /// <summary>
+        /// Method to create resource guard proxy.
+        /// </summary>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <param name="resourceGuardProxyName"></param>
+        /// <returns></returns>
+        public ResourceGuardProxyBaseResource CreateResourceGuardMapping(string vaultName, string resourceGroupName, string resourceGuardProxyName, ResourceGuardProxyBaseResource param, string auxiliaryAccessToken)
+        {
+            Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
+            if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
+            {
+                customHeaders.Add("x-ms-authorization-auxiliary", new List<string> { "Bearer " + auxiliaryAccessToken });
+            }
+
+            return BmsAdapter.Client.ResourceGuardProxy.PutWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), resourceGuardProxyName, param, customHeaders).Result.Body;
+        }
+
+        /// <summary>
+        /// Method to delete resource guard proxy.
+        /// </summary>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <param name="resourceGuardProxyName"></param>
+        /// <returns></returns>
+        public RestAzureNS.AzureOperationResponse DeleteResourceGuardMapping(string vaultName, string resourceGroupName, string resourceGuardProxyName, string auxiliaryAccessToken)
+        {
+            Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
+            string operationRequest = null;
+
+            if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
+            {
+                customHeaders.Add("x-ms-authorization-auxiliary", new List<string> { "Bearer " + auxiliaryAccessToken });
+            }
+
+            // unlock 
+            UnlockDeleteRequest unlockDeleteRequest = new UnlockDeleteRequest();
+
+            List<ResourceGuardProxyBaseResource> resourceGuardMapping = ListResourceGuardMapping(vaultName, resourceGroupName);
+
+            if (resourceGuardMapping != null && resourceGuardMapping.Count != 0)
+            {
+                foreach (ResourceGuardOperationDetail operationDetail in resourceGuardMapping[0].Properties.ResourceGuardOperationDetails)
+                {
+                    if (operationDetail.VaultCriticalOperation == "Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/delete") operationRequest = operationDetail.DefaultResourceRequest;
+                }
+
+                if (operationRequest != null)
+                {
+                    unlockDeleteRequest.ResourceGuardOperationRequests = new List<string>();
+                    unlockDeleteRequest.ResourceGuardOperationRequests.Add(operationRequest);
+
+                    UnlockDeleteResponse unlockDeleteResponse = BmsAdapter.Client.ResourceGuardProxy.UnlockDeleteWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), resourceGuardProxyName, unlockDeleteRequest, customHeaders).Result.Body;
+                }                
+            }
+            else if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
+            {                
+                throw new ArgumentException(String.Format(Resources.ResourceGuardMappingNotFound));
+            }
+
+            return BmsAdapter.Client.ResourceGuardProxy.DeleteWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), resourceGuardProxyName).Result;
+        }
+
+        /// <summary>
+        /// Method to fetch resource guard proxy list.
+        /// </summary>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <returns></returns>
+        public List<ResourceGuardProxyBaseResource> ListResourceGuardMapping(string vaultName, string resourceGroupName)
+        {
+            Func<RestAzureNS.IPage<ResourceGuardProxyBaseResource>> proxyPagedList = () => BmsAdapter.Client.ResourceGuardProxies.GetWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName()).Result.Body;
+            
+            Func<string, RestAzureNS.IPage<ResourceGuardProxyBaseResource>> proxyPagedListNext = nextLink => BmsAdapter.Client.ResourceGuardProxies.GetNextWithHttpMessagesAsync(
+                    nextLink, cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            var proxyList = HelperUtils.GetPagedList(proxyPagedList, proxyPagedListNext);
+            
+            return proxyList;
+        }
+
+        #endregion
     }
 }

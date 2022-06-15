@@ -53,14 +53,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEntityInternal)__microsoftGraphDirectoryObject).Id; }
 
-        /// <summary>Backing field for <see cref="IsSyncedFromOnPremis" /> property.</summary>
-        private bool? _isSyncedFromOnPremis;
+        /// <summary>Backing field for <see cref="IsSyncedFromOnPremise" /> property.</summary>
+        private bool? _isSyncedFromOnPremise;
 
         /// <summary>
         /// Indicates if this extension property was sycned from onpremises directory using Azure AD Connect. Read-only.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
-        public bool? IsSyncedFromOnPremis { get => this._isSyncedFromOnPremis; }
+        public bool? IsSyncedFromOnPremise { get => this._isSyncedFromOnPremise; }
 
         /// <summary>Internal Acessors for OdataId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObjectInternal.OdataId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObjectInternal)__microsoftGraphDirectoryObject).OdataId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObjectInternal)__microsoftGraphDirectoryObject).OdataId = value; }
@@ -74,8 +74,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// <summary>Internal Acessors for AppDisplayName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphExtensionPropertyInternal.AppDisplayName { get => this._appDisplayName; set { {_appDisplayName = value;} } }
 
-        /// <summary>Internal Acessors for IsSyncedFromOnPremis</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphExtensionPropertyInternal.IsSyncedFromOnPremis { get => this._isSyncedFromOnPremis; set { {_isSyncedFromOnPremis = value;} } }
+        /// <summary>Internal Acessors for IsSyncedFromOnPremise</summary>
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphExtensionPropertyInternal.IsSyncedFromOnPremise { get => this._isSyncedFromOnPremise; set { {_isSyncedFromOnPremise = value;} } }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive validation
         /// events.</param>
         /// <returns>
-        /// A < see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener)
         {
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         Description = @"Indicates if this extension property was sycned from onpremises directory using Azure AD Connect. Read-only.",
         SerializedName = @"isSyncedFromOnPremises",
         PossibleTypes = new [] { typeof(bool) })]
-        bool? IsSyncedFromOnPremis { get;  }
+        bool? IsSyncedFromOnPremise { get;  }
         /// <summary>Name of the extension property. Not nullable.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// <summary>
         /// Indicates if this extension property was sycned from onpremises directory using Azure AD Connect. Read-only.
         /// </summary>
-        bool? IsSyncedFromOnPremis { get; set; }
+        bool? IsSyncedFromOnPremise { get; set; }
         /// <summary>Name of the extension property. Not nullable.</summary>
         string Name { get; set; }
         /// <summary>

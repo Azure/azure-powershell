@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
+Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
 .Description
-Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
+Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
 .Example
 {{ Add code here }}
 .Example
@@ -191,6 +191,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfigurationSlot_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfigurationSlot_GetViaIdentity';
@@ -205,6 +206,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -213,15 +215,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

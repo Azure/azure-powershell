@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnEdgeNode'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnEdgeNode' {
+Describe 'Get-AzCdnEdgeNode' -Tag 'LiveOnly' {
     It 'List' {
         {
             $minPrefixLength = 0;

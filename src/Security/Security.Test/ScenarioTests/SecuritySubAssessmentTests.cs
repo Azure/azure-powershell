@@ -12,36 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class SecuritySubAssessmentTests
+    public class SecuritySubAssessmentTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public SecuritySubAssessmentTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SecuritySubAssessmentTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAllSubAssessments()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AllSecuritySubAssessments");
+            TestRunner.RunTestScript("Get-AllSecuritySubAssessments");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSingleSubAssessments()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-SingleSecuritySubAssessment");
+            TestRunner.RunTestScript("Get-SingleSecuritySubAssessment");
         }
     }
 }
