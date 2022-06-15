@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Providers
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Provide
         /// Initialize a new instance from the source.
         /// </summary>
         /// <param name="source">The source settings.</param>
-        public UnsettableMemoryConfigurationProvider(UnsettableMemoryConfigurationSource source, string id): base(id)
+        public UnsettableMemoryConfigurationProvider(UnsettableMemoryConfigurationSource source, string id) : base(id)
         {
             if (source == null)
             {

@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.Authentication.Config;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System.Linq;
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Authentication.Test.Config
             var config2 = new SimpleTypedConfig<int>(key2, "", 0);
             const string key3 = "key3";
             var config3 = new SimpleTypedConfig<int>(key3, "", 0);
-            
+
             // register using wrong order
             var icm = GetConfigManager(config2, config1, config3);
 

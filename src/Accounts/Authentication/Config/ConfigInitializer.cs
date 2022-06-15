@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.PowerShell.Common.Config;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -34,11 +33,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
     internal class ConfigInitializer
     {
         internal IDataStore DataStore { get; set; } = new DiskDataStore();
-        private static readonly object _fsLock = new object();
 
         internal IEnvironmentVariableProvider EnvironmentVariableProvider { get; set; } = new DefaultEnvironmentVariableProvider();
 
-        public string ConfigPath
+        private string ConfigPath
         {
             get
             {
@@ -47,6 +45,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                     _cachedConfigPath = GetPathToConfigFile(_configPathCandidates);
                 }
                 return _cachedConfigPath;
+            }
+            set
+            {
+                _cachedConfigPath = value;
             }
         }
         private string _cachedConfigPath;
@@ -88,16 +90,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                     continue;
                 }
             }
-            throw new ApplicationException($"Failed to store the config file. Please make sure any one of the following paths is accessible: {string.Join(", ", paths)}");
-        }
-
-        internal IConfigManager GetConfigManager()
-        {
-            lock (_fsLock)
-            {
-                ValidateConfigFile();
-            }
-            return new ConfigManager(ConfigPath, DataStore, EnvironmentVariableProvider);
+            throw new ApplicationException($"Failed to create the config file. Please make sure any one of the following paths is accessible: {string.Join(", ", paths)}");
         }
 
         private void ValidateConfigFileContent()
@@ -146,13 +139,32 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             }
         }
 
-        // todo: tests initializes configs in a different way. Maybe there should be an abstraction IConfigInitializer and two concrete classes ConfigInitializer + TestConfigInitializer
-        internal void InitializeForAzureSession(AzureSession session)
+        /// <summary>
+        /// Initializes the config manager and registers it to <see cref="AzureSession"/>.
+        /// </summary>
+        /// <param name="session"></param>
+        public void Initialize(IAzureSession session)
         {
-            IConfigManager configManager = GetConfigManager();
-            session.RegisterComponent(nameof(IConfigManager), () => configManager);
+            ValidateConfigFile();
+            Initialize(session, new DefaultConfigManager(ConfigPath, DataStore, EnvironmentVariableProvider));
+        }
+
+        private void Initialize(IAzureSession session, IConfigManager configManager)
+        {
+            session.RegisterComponent(nameof(IConfigManager), () => configManager, true);
             RegisterConfigs(configManager);
             configManager.BuildConfig();
+        }
+
+        /// <summary>
+        /// Initializes the config manager with limited capabilities but in a safe manner.
+        /// Registers it to <see cref="AzureSession"/>.
+        /// </summary>
+        /// <param name="session"></param>
+        public void SafeInitialize(IAzureSession session)
+        {
+            ConfigPath = "";
+            Initialize(session, new SafeConfigManager());
         }
 
         /// <summary>
@@ -161,30 +173,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         /// <param name="profilePath">Path of session profile where old config files are stored.</param>
         internal void MigrateConfigs(string profilePath)
         {
-            lock (_fsLock)
+            // Migrate data collection config
+            string dataCollectionConfigPath = Path.Combine(profilePath, AzurePSDataCollectionProfile.DefaultFileName);
+            const string legacyConfigKey = "enableAzureDataCollection";
+            // Migrate only when:
+            // 1. Old config file exists
+            // 2. New config file does not exist
+            if (DataStore.FileExists(dataCollectionConfigPath) && _configPathCandidates.All(path => !DataStore.FileExists(path)))
             {
-                // Migrate data collection config
-                string dataCollectionConfigPath = Path.Combine(profilePath, AzurePSDataCollectionProfile.DefaultFileName);
-                const string legacyConfigKey = "enableAzureDataCollection";
-                // Migrate only when:
-                // 1. Old config file exists
-                // 2. New config file does not exist
-                if (DataStore.FileExists(dataCollectionConfigPath) && _configPathCandidates.All(path => !DataStore.FileExists(path)))
+                try
                 {
-                    try
+                    string json = DataStore.ReadFileAsText(dataCollectionConfigPath);
+                    JObject root = JObject.Parse(json);
+                    if (root.TryGetValue(legacyConfigKey, out JToken jToken))
                     {
-                        string json = DataStore.ReadFileAsText(dataCollectionConfigPath);
-                        JObject root = JObject.Parse(json);
-                        if (root.TryGetValue(legacyConfigKey, out JToken jToken))
-                        {
-                            bool enabled = ((bool)jToken);
-                            new JsonConfigWriter(ConfigPath, DataStore).Update(ConfigPathHelper.GetPathOfConfig(ConfigKeys.EnableDataCollection), enabled);
-                        }
+                        bool enabled = ((bool)jToken);
+                        new JsonConfigWriter(ConfigPath, DataStore).Update(ConfigPathHelper.GetPathOfConfig(ConfigKeys.EnableDataCollection), enabled);
                     }
-                    catch (Exception)
-                    {
-                        // do not throw for file IO exceptions
-                    }
+                }
+                catch (Exception)
+                {
+                    // do not throw for file IO exceptions
                 }
             }
         }

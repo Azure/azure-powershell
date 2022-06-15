@@ -55,15 +55,11 @@ namespace Microsoft.Azure.Authentication.Test.Config
 
             string configPath = Path.GetRandomFileName();
             var mockDataStore = new MockDataStore();
+            mockDataStore.WriteFile(configPath, @"{}");
             configFileWriter(mockDataStore, configPath);
             var environmentVariables = new MockEnvironmentVariableProvider();
             envVarWriter(environmentVariables);
-            ConfigInitializer ci = new ConfigInitializer(new List<string>() { configPath })
-            {
-                DataStore = mockDataStore,
-                EnvironmentVariableProvider = environmentVariables
-            };
-            IConfigManager icm = ci.GetConfigManager();
+            IConfigManager icm = new DefaultConfigManager(configPath, mockDataStore, environmentVariables);
             foreach (var configDefinition in config)
             {
                 icm.RegisterConfig(configDefinition);

@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.Authentication.Config;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Moq;
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Authentication.Test.Config
         public void ShouldThrowIfAppliesToIsWrong()
         {
             var key = "OnlyAppliesToAz";
-            var config = new SimpleTypedConfig<bool>(key, "", true, null, new AppliesTo[] {AppliesTo.Az});
+            var config = new SimpleTypedConfig<bool>(key, "", true, null, new AppliesTo[] { AppliesTo.Az });
             var icm = GetConfigManager(config);
             Assert.Throws<AzPSArgumentException>(() => icm.UpdateConfig(new UpdateConfigOptions(key, true, ConfigScope.CurrentUser) { AppliesTo = "Az.Accounts" }));
         }
