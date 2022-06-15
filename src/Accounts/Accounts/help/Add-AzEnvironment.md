@@ -160,6 +160,12 @@ TestEnvironment TestRMEndpoint       TestADEndpoint/
 
 In this example, we are discovering a new Azure environment from the `https://configuredmetadata.net` Uri.
 
+
+### Example 3: Test
+```powershell
+PS C:\>Add-AzEnvironment -Name Test
+```
+
 ## PARAMETERS
 
 ### -ActiveDirectoryEndpoint
