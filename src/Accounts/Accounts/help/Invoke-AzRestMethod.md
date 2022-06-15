@@ -111,6 +111,11 @@ Invoke-AzRestMethod -Name "test" -Path "/subscriptions/{subscription}/resourcegr
 ```powershell
 ```
 
+### Example 5
+```powershell
+Invoke-AzRestMethod "test" -Path "/subscriptions/{subscription}/resourcegroups/{resourcegroup}/providers/microsoft.operationalinsights/workspaces/{workspace}?api-version={API}"
+```
+
 ## PARAMETERS
 
 ### -ApiVersion
