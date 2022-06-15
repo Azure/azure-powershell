@@ -724,13 +724,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="serverName">The server the agent is in</param>
         /// <param name="agentName">The agent name</param>
-        /// <param name="createTimeMin"></param>
-        /// <param name="createTimeMax"></param>
-        /// <param name="endTimeMin"></param>
-        /// <param name="endTimeMax"></param>
-        /// <param name="isActive"></param>
-        /// <param name="skip"></param>
-        /// <param name="top"></param>
+        /// <param name="createTimeMin">The create time min</param>
+        /// <param name="createTimeMax">The create time max</param>
+        /// <param name="endTimeMin">The end time min</param>
+        /// <param name="endTimeMax">The end time max</param>
+        /// <param name="isActive">The is active flag</param>
+        /// <param name="skip">The skip count</param>
+        /// <param name="top">The top count</param>
         public List<AzureSqlElasticJobExecutionModel> ListByAgent(
             string resourceGroupName,
             string serverName,
@@ -764,13 +764,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="serverName">The server the agent is in</param>
         /// <param name="agentName">The agent name</param>
         /// <param name="jobName">The job name</param>
-        /// <param name="createTimeMin"></param>
-        /// <param name="createTimeMax"></param>
-        /// <param name="endTimeMin"></param>
-        /// <param name="endTimeMax"></param>
-        /// <param name="isActive"></param>
-        /// <param name="skip"></param>
-        /// <param name="top"></param>
+        /// <param name="createTimeMin">The create time min</param>
+        /// <param name="createTimeMax">The create time max</param>
+        /// <param name="endTimeMin">The end time min</param>
+        /// <param name="endTimeMax">The end time max</param>
+        /// <param name="isActive">The is active flag</param>
+        /// <param name="skip">The skip count</param>
+        /// <param name="top">The top count</param>
         public List<AzureSqlElasticJobExecutionModel> ListByJob(
             string resourceGroupName,
             string serverName,
@@ -986,8 +986,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <summary>
         /// Convert a JobAgent to AzureSqlDatabaseAgentJobExecutionModel
         /// </summary>
-        /// <param name="resourceGroupName">The resource group name</param>
-        /// <param name="serverName">The server name</param>
+        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="serverName">The server the agent is in</param>
         /// <param name="agentName">The agent name</param>
         /// <param name="jobName">The job name</param>
         /// <param name="resp">The management client server response to convert</param>
