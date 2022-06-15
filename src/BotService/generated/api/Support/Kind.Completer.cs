@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "sdk".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("sdk", "sdk", global::System.Management.Automation.CompletionResultType.ParameterValue, "sdk");
+                yield return new global::System.Management.Automation.CompletionResult("'sdk'", "sdk", global::System.Management.Automation.CompletionResultType.ParameterValue, "sdk");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "designer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("designer", "designer", global::System.Management.Automation.CompletionResultType.ParameterValue, "designer");
+                yield return new global::System.Management.Automation.CompletionResult("'designer'", "designer", global::System.Management.Automation.CompletionResultType.ParameterValue, "designer");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "bot".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("bot", "bot", global::System.Management.Automation.CompletionResultType.ParameterValue, "bot");
+                yield return new global::System.Management.Automation.CompletionResult("'bot'", "bot", global::System.Management.Automation.CompletionResultType.ParameterValue, "bot");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "function".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("function", "function", global::System.Management.Automation.CompletionResultType.ParameterValue, "function");
+                yield return new global::System.Management.Automation.CompletionResult("'function'", "function", global::System.Management.Automation.CompletionResultType.ParameterValue, "function");
             }
         }
     }
