@@ -83,24 +83,6 @@ Gets information about a Storage Insight.
 ### [Get-AzOperationalInsightsTable](Get-AzOperationalInsightsTable.md)
 Get or list tables for workspace.
 
-### [New-AzOperationalInsightsRestoreTable](New-AzOperationalInsightsRestoreTable.md)
-Create a Restore table.
-
-### [New-AzOperationalInsightsSearchTable](New-AzOperationalInsightsSearchTable.md)
-Create a Search table.
-
-### [New-AzOperationalInsightsTable](New-AzOperationalInsightsTable.md)
-Creates a custom log table.
-
-### [Update-AzOperationalInsightsTable](Update-AzOperationalInsightsTable.md)
-Update a Log Analytics workspace table.
-
-### [Migrate-AzOperationalInsightsTable](Migrate-AzOperationalInsightsTable.md)
-Migrate a Log Analytics table from support of the Data Collector API and Custom Fields features to support of Data Collection Rule-based Custom Logs.
-
-### [Delete-AzOperationalInsightsTable](Delete-AzOperationalInsightsTable.md)
-Delete a Log Analytics workspace table.
-
 ### [Get-AzOperationalInsightsWorkspace](Get-AzOperationalInsightsWorkspace.md)
 Gets information about a workspace.
 
@@ -115,6 +97,9 @@ Gets the usage data for a workspace.
 
 ### [Invoke-AzOperationalInsightsQuery](Invoke-AzOperationalInsightsQuery.md)
 Returns search results based on the specified parameters.
+
+### [Migrate-AzOperationalInsightsTable](Migrate-AzOperationalInsightsTable.md)
+Migrate a Log Analytics table from support of the Data Collector API and Custom Fields features to support of Data Collection Rule-based Custom Logs.
 
 ### [New-AzOperationalInsightsApplicationInsightsDataSource](New-AzOperationalInsightsApplicationInsightsDataSource.md)
 Collect logs from given Application-Insights application.
@@ -146,11 +131,20 @@ Adds a data source to Linux computers.
 ### [New-AzOperationalInsightsPurgeWorkspace](New-AzOperationalInsightsPurgeWorkspace.md)
 Purges data in an Log Analytics workspace by a set of user-defined filters
 
+### [New-AzOperationalInsightsRestoreTable](New-AzOperationalInsightsRestoreTable.md)
+Create a new Restore table
+
 ### [New-AzOperationalInsightsSavedSearch](New-AzOperationalInsightsSavedSearch.md)
 Creates a new saved search with the specified parameters.
 
+### [New-AzOperationalInsightsSearchTable](New-AzOperationalInsightsSearchTable.md)
+Create a Search table
+
 ### [New-AzOperationalInsightsStorageInsight](New-AzOperationalInsightsStorageInsight.md)
 Creates a Storage Insight inside a workspace.
+
+### [New-AzOperationalInsightsTable](New-AzOperationalInsightsTable.md)
+Creates a custom log table
 
 ### [New-AzOperationalInsightsWindowsEventDataSource](New-AzOperationalInsightsWindowsEventDataSource.md)
 Collects event logs from computers that run the Windows operating system.
@@ -181,6 +175,9 @@ Removes a saved search from the workspace.
 
 ### [Remove-AzOperationalInsightsStorageInsight](Remove-AzOperationalInsightsStorageInsight.md)
 Removes a Storage Insight.
+
+### [Remove-AzOperationalInsightsTable](Remove-AzOperationalInsightsTable.md)
+Delete a Log Analytics workspace table.
 
 ### [Remove-AzOperationalInsightsWorkspace](Remove-AzOperationalInsightsWorkspace.md)
 Removes a workspace.
@@ -216,6 +213,9 @@ update cluster
 
 ### [Update-AzOperationalInsightsDataExport](Update-AzOperationalInsightsDataExport.md)
 Update data export.
+
+### [Update-AzOperationalInsightsTable](Update-AzOperationalInsightsTable.md)
+Update a Log Analytics workspace table.
 
 ### [Update-AzOperationalInsightsWorkspaceSharedKey](Update-AzOperationalInsightsWorkspaceSharedKey.md)
 Regenerates the shared keys for a Log Analytics Workspace. These keys are used to connect Microsoft Operational Insights agents to the workspace.
