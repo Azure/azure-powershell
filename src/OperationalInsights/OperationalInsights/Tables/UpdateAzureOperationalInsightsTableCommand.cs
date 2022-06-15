@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
         [ValidateNotNullOrEmpty]
         public int? RetentionInDays { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The table total retention in days, between 4 and 2555. Setting this property to -1 will default to table retention.")]
         [ValidateNotNullOrEmpty]
         public int? TotalRetentionInDays { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The table columns passed as @{ ColName1 = Type; ColName2 = Type; ColName3 = Type}.")]
-        public Hashtable Columns { get; set; }
+            HelpMessage = "The table columns passed as Hashtable. for example: @{ ColName1 = Type; ColName2 = Type; ColName3 = Type}.")]
+        public Hashtable Column { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Table plan can be 'Basic' or 'Analytics'.")]
         [ValidateSet("Basic", "Analytics", IgnoreCase = true)]
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
                 totalRetentionInDays: TotalRetentionInDays,
                 plan: Plan,
                 description: Description,
-                columns: Columns);
+                columns: Column);
 
             if (ShouldProcess(TableName, $"Update Table: {TableName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
             {

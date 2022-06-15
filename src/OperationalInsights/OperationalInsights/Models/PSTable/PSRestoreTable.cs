@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
             base.ResourceGroupName = resourceGroupName;
             base.WorkspaceName = workspaceName;
-            base.TableName = tableName;
+            base.Name = tableName;
 
             DateTime start;
             DateTime end;
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public override Table ToTableProperties()
         {
             return new Table(
-                name: TableName,
+                name: Name,
                 plan: Plan,
                 restoredLogs: new RestoredLogs(this.StartRestoreTime, this.EndRestoreTime, this.SourceTable));
 

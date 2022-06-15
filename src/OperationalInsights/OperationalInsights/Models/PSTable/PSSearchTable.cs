@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
             base.ResourceGroupName = resourceGroupName;
             base.WorkspaceName = workspaceName;
-            base.TableName = tableName;
+            base.Name = tableName;
             this.Query = query;
 
             DateTime start;
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public override Table ToTableProperties()
         {
             return new Table(
-                name: TableName,
+                name: Name,
                 searchResults: new SearchResults(query: this.Query, startSearchTime: this.StartSearchTime, endSearchTime: this.EndSearchTime, limit: this.Limit));
         }
     }

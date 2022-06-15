@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
         [ValidateNotNullOrEmpty]
         public int? RetentionInDays { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The table total retention in days, between 4 and 2555. Setting this property to -1 will default to table retention.")]
         [ValidateNotNullOrEmpty]
         public int? TotalRetentionInDays { get; set; }

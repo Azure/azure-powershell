@@ -20,9 +20,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSTable : OperationalInsightsParametersBase
     {
-        public string TableName { get; set; }
+        /// <summary>
+        /// Table name
+        /// </summary>
+        public string Name { get; set; }
 
-        public string ResourceId { set; get; }
+        /// <summary>
+        /// Resource Id
+        /// </summary>
+        public string Id { set; get; }
 
         public int? RetentionInDays { get; set; }
 
@@ -49,8 +55,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
             this.ResourceGroupName = resourceGroupName;
             this.WorkspaceName = workspaceName;
-            this.TableName = table.Name;
-            this.ResourceId = table.Id;
+            this.Name = table.Name;
+            this.Id = table.Id;
             this.ProvisioningState = table.ProvisioningState;
             this.RetentionInDays = table.RetentionInDays;
             this.TotalRetentionInDays = table.TotalRetentionInDays;
@@ -73,8 +79,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
             this.ResourceGroupName = resourceGroupName;
             this.WorkspaceName = workspaceName;
-            this.TableName = tableName;
-            this.ResourceId = id;
+            this.Name = tableName;
+            this.Id = id;
             this.RetentionInDays = retentionInDays;
             this.TotalRetentionInDays = totalRetentionInDays;
             this.Plan = plan;
@@ -89,11 +95,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public virtual Table ToTableProperties()
         {
             return new Table(
-                name: this.TableName,
+                name: this.Name,
                 plan: this.Plan,
                 retentionInDays: this.RetentionInDays,
                 totalRetentionInDays: this.TotalRetentionInDays,
-                schema: this.Schema == null ? null : new Schema(name: this.TableName, description: this.Description, columns: this.Schema?.Columns));
+                schema: this.Schema == null ? null : new Schema(name: this.Name, description: this.Description, columns: this.Schema?.Columns));
         }
 
         private IList<Column> HashToColumns(Hashtable columns)

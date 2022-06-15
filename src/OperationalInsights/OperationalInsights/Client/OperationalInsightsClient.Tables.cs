@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -54,12 +53,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         /// <exception cref="PSArgumentException">Thrown if table does not exist</exception>
         public PSTable UpdatePSTable(PSTable parameters)
         {
-            PSTable existingTable = this.GetTable(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.TableName);
+            PSTable existingTable = this.GetTable(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Name);
 
             var response = OperationalInsightsManagementClient.Tables.Update(
                 resourceGroupName: parameters.ResourceGroupName,
                 workspaceName: parameters.WorkspaceName,
-                tableName: parameters.TableName,
+                tableName: parameters.Name,
                 parameters: parameters.ToTableProperties());
 
             return new PSTable(response, parameters.ResourceGroupName, parameters.WorkspaceName);
@@ -130,7 +129,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         public PSTable CreateRestoreTable(PSRestoreTable properties)
         {
             ValidateTableNotExist(properties, TableConsts.RestoredLogsSuffix);
-            var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.TableName, properties.ToTableProperties());
+            var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.Name, properties.ToTableProperties());
 
             return new PSTable(response, properties.ResourceGroupName, properties.WorkspaceName);
         }
@@ -138,7 +137,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         public PSTable CreateSearchTable(PSSearchTable properties)
         {
             ValidateTableNotExist(properties, TableConsts.SearchResultsSuffix);
-            var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.TableName, properties.ToTableProperties());
+            var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.Name, properties.ToTableProperties());
 
             return new PSTable(response, properties.ResourceGroupName, properties.WorkspaceName);
         }
@@ -146,7 +145,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         public PSTable CreatePSTable(PSTable properties)
         {
             ValidateTableNotExist(properties, TableConsts.CustomLogSuffix);
-            var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.TableName, properties.ToTableProperties());
+            var response = OperationalInsightsManagementClient.Tables.CreateOrUpdate(properties.ResourceGroupName, properties.WorkspaceName, properties.Name, properties.ToTableProperties());
 
             return new PSTable(response, properties.ResourceGroupName, properties.WorkspaceName);
         }
@@ -156,7 +155,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             PSTable existingTable = null;
             try
             {
-                existingTable = this.GetTable(properties.ResourceGroupName, properties.WorkspaceName, properties.TableName);
+                existingTable = this.GetTable(properties.ResourceGroupName, properties.WorkspaceName, properties.Name);
             }
             catch (PSArgumentException)
             {
@@ -165,12 +164,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             if (existingTable != null)
             {
-                throw new PSArgumentException(string.Format(Constants.TableAlreadyExist, properties.TableName, properties.ResourceGroupName, properties.WorkspaceName));
+                throw new PSArgumentException(string.Format(Constants.TableAlreadyExist, properties.Name, properties.ResourceGroupName, properties.WorkspaceName));
             }
 
-            if (!properties.TableName.Substring(properties.TableName.Length - suffix.Length).ToUpperInvariant().Equals(suffix))
+            if (!properties.Name.Substring(properties.Name.Length - suffix.Length).ToUpperInvariant().Equals(suffix))
             {
-                throw new PSArgumentException(string.Format(Constants.CustomLogTable, properties.TableName, suffix));
+                throw new PSArgumentException(string.Format(Constants.CustomLogTable, properties.Name, suffix));
             }
         }
     }
