@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string DeleteOption { get; set; }
 
         [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Gets or sets possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey")]
         [PSArgumentCompleter("DiskWithVMGuestState", "VMGuestStateOnly")]

@@ -500,5 +500,26 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachinePlatformFaultDomain");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConfidentialVMSetAzVmOsDisk()
+        {
+            TestRunner.RunTestScript("Test-ConfidentialVMSetAzVmOsDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConfVMSetAzVMSecurityProfile()
+        {
+            TestRunner.RunTestScript("Test-ConfVMSetAzVMSecurityProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConfVMSetAzDiskSecurityProfile()
+        {
+            TestRunner.RunTestScript("Test-ConfVMSetAzDiskSecurityProfile");
+        }
     }
 }
