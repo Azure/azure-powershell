@@ -8,3 +8,4 @@ Location Name   Kind ResourceGroupName
 -------- ----   ---- -----------------
 Global   cdn001 cdn  testps-rg-da16jm
 ```
+

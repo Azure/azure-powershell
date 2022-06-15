@@ -5,3 +5,4 @@ Remove-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileNam
 
 ```output
 ```
+

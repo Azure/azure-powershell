@@ -1,4 +1,4 @@
-### Example 1: {{ List AzureFrontDoor endpoints under the profile }}
+### Example 1: List AzureFrontDoor endpoints under the profile
 ```powershell
 Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 ```
@@ -10,7 +10,10 @@ Global   end001 testps-rg-da16jm
 Global   end002 testps-rg-da16jm
 ```
 
-### Example 2: {{ Get an AzureFrontDoor endpoint under the profile }}
+List AzureFrontDoor endpoints under the profile
+
+
+### Example 2: Get an AzureFrontDoor endpoint under the profile
 ```powershell
 Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
 ```
@@ -20,3 +23,6 @@ Location Name   ResourceGroupName
 -------- ----   -----------------
 Global   end001 testps-rg-da16jm
 ```
+
+Get an AzureFrontDoor endpoint under the profile
+

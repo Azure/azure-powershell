@@ -8,3 +8,4 @@ Location Name   ResourceGroupName
 -------- ----   -----------------
 Global   end001 testps-rg-da16jm
 ```
+

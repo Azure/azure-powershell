@@ -1,4 +1,4 @@
-### Example 1: {{ Update an AzureFrontDoor security policy within the specified AzureFrontDoor profile }}
+### Example 1: Update an AzureFrontDoor security policy within the specified AzureFrontDoor profile
 ```powershell
 $endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
 $endpoint2 = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end002
@@ -15,4 +15,5 @@ Name      ResourceGroupName
 policy001 testps-rg-da16jm
 ```
 
+Update an AzureFrontDoor security policy within the specified AzureFrontDoor profile
 

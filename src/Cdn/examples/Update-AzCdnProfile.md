@@ -1,4 +1,4 @@
-### Example 1: {{ Update an AzureCDN profile under the resource group }}
+### Example 1: Update an AzureCDN profile under the resource group
 ```powershell
 $tags = @{
     Tag1 = 11
@@ -13,7 +13,10 @@ Location Name   Kind ResourceGroupName
 Global   cdn001 cdn  testps-rg-da16jm
 ```
 
-### Example 2: {{ Update an AzureCDN profile under the resource group via identity}}
+Update an AzureCDN profile under the resource group
+
+
+### Example 2: Update an AzureCDN profile under the resource group via identity
 ```powershell
 $tags = @{
     Tag1 = 11
@@ -27,3 +30,6 @@ Location Name   Kind ResourceGroupName
 -------- ----   ---- -----------------
 Global   cdn001 cdn  testps-rg-da16jm
 ```
+
+Update an AzureCDN profile under the resource group via identity
+

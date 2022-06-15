@@ -8,3 +8,4 @@ Location Name       Kind      ResourceGroupName
 -------- ----       ----      -----------------
 Global   fdp-v542q6 frontdoor testps-rg-da16jm
 ```
+

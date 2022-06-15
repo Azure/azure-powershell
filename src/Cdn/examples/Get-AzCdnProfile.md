@@ -1,4 +1,4 @@
-### Example 1: {{ List AzureCDN profiles under the subscription }}
+### Example 1: List AzureCDN profiles under the subscription
 ```powershell
 Get-AzCdnProfile
 ```
@@ -11,7 +11,10 @@ Global   cdn001           cdn  testps-rg-da16jm
 Global   cdn002           cdn  testps-rg-da16jm
 ```
 
-### Example 2: {{ List AzureCDN profiles under the resource group }}
+List AzureCDN profiles under the subscription
+
+
+### Example 2: List AzureCDN profiles under the resource group
 ```powershell
 Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm
 ```
@@ -23,7 +26,11 @@ Global   cdn001 cdn  testps-rg-da16jm
 Global   cdn002 cdn  testps-rg-da16jm
 ```
 
-### Example 3: {{ Get an AzureCDN profile under the resource group }}
+List AzureCDN profiles under the resource group
+
+
+
+### Example 3: Get an AzureCDN profile under the resource group
 ```powershell
 Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001
 ```
@@ -33,3 +40,6 @@ Location Name   Kind ResourceGroupName
 -------- ----   ---- -----------------
 Global   cdn001 cdn  testps-rg-da16jm
 ```
+
+Get an AzureCDN profile under the resource group
+

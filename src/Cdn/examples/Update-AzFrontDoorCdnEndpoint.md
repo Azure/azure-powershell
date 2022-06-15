@@ -1,4 +1,4 @@
-### Example 1: {{ Update an AzureFrontDoor endpoint under the profile }}
+### Example 1: Update an AzureFrontDoor endpoint under the profile
 ```powershell
 Update-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -EnabledState Disabled
 ```
@@ -8,3 +8,6 @@ Location Name   ResourceGroupName
 -------- ----   -----------------
 Global   end001 testps-rg-da16jm
 ```
+
+Update an AzureFrontDoor endpoint under the profile
+

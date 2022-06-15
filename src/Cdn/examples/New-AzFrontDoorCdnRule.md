@@ -22,3 +22,4 @@ Name  ResourceGroupName
 ----  -----------------
 rule1 testps-rg-da16jm
 ```
+

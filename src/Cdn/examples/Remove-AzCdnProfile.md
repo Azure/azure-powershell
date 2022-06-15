@@ -6,6 +6,7 @@ Remove-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn-001
 ```output
 ```
 
+
 ### Example 2: {{ Delete an AzureCDN profile under the resource group via identity}}
 ```powershell
 Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-cdn001 | Remove-AzCdnProfile
@@ -13,3 +14,4 @@ Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-cdn001 | Remove-A
 
 ```output
 ```
+
