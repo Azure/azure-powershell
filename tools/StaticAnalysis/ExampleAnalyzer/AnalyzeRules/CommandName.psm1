@@ -40,6 +40,7 @@ function Measure-CommandName {
                 #find all command in .ps1
                 if ($Ast -is [System.Management.Automation.Language.CommandAst]) {
                     [System.Management.Automation.Language.CommandAst]$CommandAst = $Ast
+                    # Get wrapper function name by command element
                     if ($CommandAst.Parent.Parent -is [System.Management.Automation.Language.AssignmentStatementAst]){
                         $ModuleCmdletExNum = $CommandAst.Parent.Parent.Parent.Parent.Parent.Name
                     }
@@ -93,12 +94,14 @@ function Measure-CommandName {
                     $RuleName = [RuleNames]::Invalid_Cmdlet
                     $RuleSuppressionID = "5000"
                     $Remediation = "Check the spell of $($CommandParameterPair[$i].CommandName)."
+                    $Severity = "Error"
                 }
                 if ($global:CommandParameterPair[$i].ParameterName -eq "<is an alias>") {
                     $Message = "$($CommandParameterPair[$i].CommandName) is an alias of `"$((Get-Alias $CommandParameterPair[$i].CommandName)[0].ResolvedCommandName)`"."
                     $RuleName = [RuleNames]::Is_Alias
                     $RuleSuppressionID = "5100"
                     $Remediation = "Use formal name `"$((Get-Alias $CommandParameterPair[$i].CommandName)[0].ResolvedCommandName)`" of the alias `"$($CommandParameterPair[$i].CommandName)`"."
+                    $Severity = "Warning"
                 }
                 if ($global:CommandParameterPair[$i].ParameterName -eq "<doesn't follow the Capitalization Conventions>") {
                     $Message = "$($CommandParameterPair[$i].CommandName) doesn't follow the Capitalization Conventions."
@@ -110,13 +113,14 @@ function Measure-CommandName {
                     $CorrectName += "-Az"
                     $CorrectName += $textInfo.ToTitleCase(($name -split "Az")[1])
                     $Remediation = "Check the Capitalization Conventions. Suggest format: $CorrectName"
+                    $Severity = "Warning"
                 }
                 $ModuleCmdletExNum = $($CommandParameterPair[$i].ModuleCmdletExNum)
                 $Result = [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
                     Message = "$ModuleCmdletExNum-@$Message@$Remediation";
                     Extent = $Asts[$i].Extent;
                     RuleName = $RuleName;
-                    Severity = "Error"
+                    Severity = $Severity
                     RuleSuppressionID = $RuleSuppressionID
                 }
                 $Results += $Result

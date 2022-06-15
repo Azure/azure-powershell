@@ -222,10 +222,10 @@ function Measure-ParameterNameAndValue {
                                     $CommandExpressionElement = [System.Management.Automation.Language.ExpressionAst]$CommandElement
                                     $PositionMaximum = ($global:ParameterSet.Parameters.Position | Measure-Object -Maximum).Maximum
                                     for ($Position = 0; $Position -le $PositionMaximum; $Position++) {
-                                        $ImplicitParameterName = @() + ($global:ParameterSet.Parameters | where {$_.Position -eq $Position}).Name
-                                        if ($ImplicitParameterName.Count -ne 0 -and $ImplicitParameterName -notin $global:ParameterExpressionPair.ParameterName) {
+                                        $ImplicitParameterName = ($global:ParameterSet.Parameters | where {$_.Position -eq $Position}).Name
+                                        if ($ImplicitParameterName -ne $null -and $ImplicitParameterName -notin $global:ParameterExpressionPair.ParameterName) {
                                             $global:ParameterExpressionPair += @{
-                                                ParameterName = $ImplicitParameterName[0]
+                                                ParameterName = $ImplicitParameterName
                                                 ExpressionToParameter = $CommandExpressionElement
                                             }
                                             $i += 1
