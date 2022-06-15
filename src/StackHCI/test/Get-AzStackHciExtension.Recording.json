@@ -1,13 +1,13 @@
 {
-  "Get-AzStackHciExtension+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-l5/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterexwl/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2022-05-01+1": {
+  "Get-AzStackHciExtension+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2022-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-l5/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterexwl/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2022-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "bee881e5-01f5-4ca9-8580-5d2789052c85" ],
+        "x-ms-client-request-id": [ "ee52849c-2d45-4b61-863a-b8eb5620722b" ],
         "CommandName": [ "Get-AzStackHciExtension" ],
         "FullCommandName": [ "Get-AzStackHciExtension_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,26 +22,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"8f008c16-0000-0100-0000-62a20c4e0000\"" ],
+        "ETag": [ "\"0600b870-0000-0100-0000-62a9bb2c0000\"" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "mise-correlation-id": [ "fb768aea-1f2c-42e0-8d4a-bb121c5cb6bf" ],
-        "x-ms-request-id": [ "413df9c2-0c75-4ac7-bf7b-7056de39c10d" ],
-        "x-ms-correlation-request-id": [ "ffc2ff1b-df9d-4624-8e98-04bde39f32ac" ],
+        "mise-correlation-id": [ "658bc035-cdbc-46ae-8791-6a441dc9c0d1" ],
+        "x-ms-request-id": [ "a0221b70-d3bd-420f-b880-3825d9951883" ],
+        "x-ms-correlation-request-id": [ "d2d37a6f-6385-4eb6-bd13-edab70668431" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-routing-request-id": [ "EASTUS:20220609T150624Z:ffc2ff1b-df9d-4624-8e98-04bde39f32ac" ],
+        "x-ms-routing-request-id": [ "EASTUS:20220615T105824Z:d2d37a6f-6385-4eb6-bd13-edab70668431" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Thu, 09 Jun 2022 15:06:24 GMT" ]
+        "Date": [ "Wed, 15 Jun 2022 10:58:23 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "564" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-l5/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterexwl/arcSettings/default/extensions/MicrosoftMonitoringAgent\",\"name\":\"MicrosoftMonitoringAgent\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings/extensions\",\"properties\":{\"provisioningState\":\"Succeeded\",\"aggregateState\":\"NotSpecified\",\"perNodeExtensionDetails\":[],\"extensionParameters\":{\"type\":\"MicrosoftMonitoringAgent\",\"publisher\":\"Microsoft.EnterpriseCloud.Monitoring\",\"autoUpgradeMinorVersion\":false}}}",
+      "Content": "{\"id\":\"/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default/extensions/MicrosoftMonitoringAgent\",\"name\":\"MicrosoftMonitoringAgent\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings/extensions\",\"properties\":{\"provisioningState\":\"Succeeded\",\"aggregateState\":\"NotSpecified\",\"perNodeExtensionDetails\":[],\"extensionParameters\":{\"type\":\"MicrosoftMonitoringAgent\",\"publisher\":\"Microsoft.EnterpriseCloud.Monitoring\",\"autoUpgradeMinorVersion\":false}}}",
       "isContentBase64": false
     }
   }
