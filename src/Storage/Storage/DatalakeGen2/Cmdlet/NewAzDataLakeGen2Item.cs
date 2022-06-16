@@ -293,6 +293,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// upload file to azure blob
         /// </summary>
         /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="filePath">local file path</param>
         /// <param name="blob">destination azure blob object</param>
         internal virtual async Task Upload2Blob(long taskId, IStorageBlobManagement localChannel, string filePath, CloudBlob blob)

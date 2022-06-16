@@ -36,6 +36,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Validate the container access policy
         /// </summary>
+        /// <param name="channel">IStorageBlobManagement channel object</param>
+        /// <param name="containerName">Container name</param>
         /// <param name="policy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
         public static bool ValidateContainerAccessPolicy(IStorageBlobManagement channel, string containerName,
@@ -67,8 +69,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Validate the file share access policy
         /// </summary>
-        /// <param name="policy">SharedAccessFilePolicy object</param>
+        /// <param name="channel">IStorageFileManagement channel object</param>
+        /// <param name="shareName">A string containing the name of the share.</param>
         /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
+        /// <param name="shouldNoPermission"></param>
+        /// <param name="shouldNoStartTime"></param>
+        /// <param name="shouldNoExpiryTime"></param>
         public static bool ValidateShareAccessPolicy(IStorageFileManagement channel, string shareName,
              string policyIdentifier, bool shouldNoPermission, bool shouldNoStartTime, bool shouldNoExpiryTime)
         {
@@ -109,6 +115,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Validate the queue access policy
         /// </summary>
+        /// <param name="channel">IStorageQueueManagement channel object</param>
+        /// <param name="queueName">Queue name</param>
         /// <param name="policy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
         public static bool ValidateQueueAccessPolicy(IStorageQueueManagement channel, string queueName,
@@ -139,6 +147,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Validate the table access policy
         /// </summary>
+        /// <param name="channel">IStorageTableManagement channel object</param>
+        /// <param name="tableName">Table name</param>
         /// <param name="policy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
         internal static bool ValidateTableAccessPolicy(IStorageTableManagement channel,
