@@ -27,7 +27,7 @@ $testInfo = @{
 # Generate random suffix ^\d[\da-z]{9}$
 $strarray = "0123456789abcdefghijklmnopqurstuvxxyz"
 $randomValue = $strarray[(Get-Random -Maximum 10)]
-for($i=0; $i -lt 9; $i++) 
+for($i=0; $i -lt 9; $i++)
 {
     $randomValue += $strarray[(Get-Random -Maximum $strarray.Length)]
 }
@@ -67,7 +67,7 @@ function Retry-AzCommand {
                 Start-Sleep -Seconds $Sleep
             }
         }
-    } while ($true) 
+    } while ($true)
 }
 
 # The name of resource group is 1~90 charactors complying with ^[-\w\._\(\)]+$
@@ -162,11 +162,32 @@ $resourceTestCommands = @(
     @{Name = "Az.Websites";                   Command = {Get-AzWebApp -ResourceGroupName $resourceGroupName}}
 )
 
+$generalCommands = @(
+    @{
+        Name = "Import Az.Accounts in Parallel";
+        Command = {
+            $importJobs = @();
+            Import-Module Az.Accounts;
+            1..10 | ForEach-Object {
+                $importJobs += Start-Job -name "import-no.$_" -ScriptBlock { Import-Module Az.Accounts; Get-AzConfig; }
+            }
+            $importJobs | Wait-Job
+            $importJobs | Receive-Job
+            $importJobs | ForEach-Object {
+                if ("Completed" -ne $_.State) {
+                    throw "Some job(s) failed to import Az.Accounts in parallel"
+                }
+            }
+        };
+        Retry = 0; # no need to retry
+    }
+)
+
 if($Reverse.IsPresent){
     [array]::Reverse($resourceTestCommands)
 }
 
-$resourceCommands=$resourceSetUpCommands+$resourceTestCommands+$resourceCleanUpCommands
+$resourceCommands=$resourceSetUpCommands+$resourceTestCommands+$resourceCleanUpCommands+$generalCommands
 
 $startTime = Get-Date
 $resourceCommands | ForEach-Object {
