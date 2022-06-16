@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Profile
         public SwitchParameter ServicePrincipal { get; set; }
 
         [Parameter(ParameterSetName = UserParameterSet,
-                    Mandatory = false, HelpMessage = "Optional tenant name or ID")]
+                    Mandatory = true, HelpMessage = "Optional tenant name or ID")]
         [Parameter(ParameterSetName = UserWithCredentialParameterSet,
                     Mandatory = false, HelpMessage = "Optional tenant name or ID")]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
