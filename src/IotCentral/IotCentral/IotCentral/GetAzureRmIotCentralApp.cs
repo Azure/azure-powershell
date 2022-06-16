@@ -59,15 +59,20 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        public override async void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
 
             switch (ParameterSetName)
             {
                 case InteractiveIotCentralParameterSet:
+
                     var rg = this.IotCentralClient.GetResourceGroupResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}"));
-                    var appFromInterative = await rg.GetIotCentralAppAsync(Name);
-                    this.WriteObject(IotCentralUtils.ToPSIotCentralApp(appFromInterative));
+                    var identifierString2 = $"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}";
+                    var appResource = rg.GetIotCentralApp(this.Name);
+                    //var interactiveResponse = await appCollectionFromInteractive.GetAsync(this.Name, CancellationToken.None);
+                    var interactiveIotCentralApp = appResource.Value;
+                    //var appFromInterative = await rg.GetIotCentralAppAsync(Name);
+                    this.WriteObject(IotCentralUtils.ToPSIotCentralApp(interactiveIotCentralApp));
                     break;
                 case ListIotCentralAppsParameterSet:
                     if (string.IsNullOrEmpty(ResourceGroupName)) // list by subscription, not receiving arm client?
@@ -80,8 +85,12 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                     {
                         var resourceGroupResource = this.IotCentralClient.GetResourceGroupResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}"));
                         var iotCentralAppCollection = resourceGroupResource.GetIotCentralApps();
-                        IEnumerable<IotCentralAppResource> iotCentralAppsByResourceGroup = iotCentralAppCollection.GetAll();
-                        this.WriteObject(IotCentralUtils.ToPSIotCentralApps(iotCentralAppsByResourceGroup), enumerateCollection: true);
+                        //this.WriteObject(IotCentralUtils.ToPSIotCentralApps(resource));
+                        var allIoTCentralAppResources = iotCentralAppCollection.GetAll();
+                        foreach (IotCentralAppResource resource in allIoTCentralAppResources) {
+                            var dummy = resource;
+                            this.WriteObject(IotCentralUtils.ToPSIotCentralApp(resource));
+                        }
                         break;
                     }
                 case ResourceIdParameterSet:

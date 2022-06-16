@@ -65,16 +65,16 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
             HelpMessage = "Managed Identity Type. Can be None or SystemAssigned.")]
         public string Identity { get; set; }
 
-        public override async void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             this.SetNameAndResourceGroup();
             if (ShouldProcess(Name, ResourceProperties.Resources.SetIotCentralApp))
             {
                 var subscription = IotCentralClient.GetResourceGroupResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}"));
-                var iotCentralAppResponse = await subscription.GetIotCentralAppAsync(Name, CancellationToken.None);
+                var iotCentralAppResponse = subscription.GetIotCentralApp(Name, CancellationToken.None);
                 var iotCentralAppResource = iotCentralAppResponse.Value;
                 IotCentralAppPatch applicationPatch = CreateApplicationPatch();
-                await iotCentralAppResource.UpdateAsync(WaitUntil.Completed, applicationPatch);
+                iotCentralAppResource.Update(WaitUntil.Completed, applicationPatch);
                 this.WriteObject(IotCentralUtils.ToPSIotCentralApp(iotCentralAppResource));
             }
         }

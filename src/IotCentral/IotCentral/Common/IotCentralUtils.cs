@@ -35,16 +35,16 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
             return iotCentralApps.Select(app => ToPSIotCentralApp(app));
         }
 
-        public static async Task<IotCentralAppPatch> CreateAppPatchAsync(IotCentralAppResource iotCentralApp)
-        {
-            var data = iotCentralApp.Data;
-            var copiedIotCentralApp = new IotCentralAppPatch()
-            {
-                DisplayName = data.Name,
-                Subdomain = data.Subdomain
-            };
-            await iotCentralApp.SetTagsAsync(data.Tags, CancellationToken.None); //Tags = data.Tags,    Tags property not included anymore, have to use set or add method
-            return copiedIotCentralApp;
-        }
+        //public static Task<IotCentralAppPatch> CreateAppPatch(IotCentralAppResource iotCentralApp)
+        //{
+        //    var data = iotCentralApp.Data;
+        //    var copiedIotCentralApp = new IotCentralAppPatch()
+        //    {
+        //        DisplayName = data.Name,
+        //        Subdomain = data.Subdomain
+        //    };
+        //    iotCentralApp.SetTags(data.Tags, CancellationToken.None); 
+        //    return copiedIotCentralApp;
+        //}
     }
 }

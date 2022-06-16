@@ -29,6 +29,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using ResourceProperties = Microsoft.Azure.Commands.Management.IotCentral.Properties;
+using System;
 
 namespace Microsoft.Azure.Commands.Management.IotCentral
 {
@@ -91,12 +92,10 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         [ValidateNotNullOrEmpty]
         public string Identity { get; set; }
 
-        public override async void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, ResourceProperties.Resources.NewIotCentralApp))
             {
-                var resourceGroup = this.IotCentralClient.GetResourceGroupResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}"));
-                var appCollection = resourceGroup.GetIotCentralApps();
                 var Location = this.GetLocation();
                 var Sku = new AppSkuInfo(this.GetAppSkuName());
                 //var tags = this.GetTags();
@@ -107,11 +106,27 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                     Template = this.Template,
                     Identity = new SystemAssignedServiceIdentity(this.GetIdentity()),
                 };
-                var test = await appCollection.CreateOrUpdateAsync(WaitUntil.Completed, Name, iotCentralAppData, CancellationToken.None);
-                var iotCentralAppResponse = await appCollection.GetAsync(this.GetDisplayName());
-                var iotCentralApp = iotCentralAppResponse.Value;
-                await iotCentralApp.SetTagsAsync(this.GetTags(), CancellationToken.None); 
-                this.WriteObject(IotCentralUtils.ToPSIotCentralApp(iotCentralApp), false);
+                var resourceGroup = this.IotCentralClient.GetResourceGroupResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}"));
+                var identifierString1 = $"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}";
+
+                try
+                {
+                    var appCollection = resourceGroup.GetIotCentralApps();
+                    //var appCollectionResponse = await appCollection.CreateOrUpdateAsync(WaitUntil.Completed, Name, iotCentralAppData, CancellationToken.None);
+                    var appCollectionResponse = appCollection.CreateOrUpdate(WaitUntil.Completed, Name, iotCentralAppData, CancellationToken.None);
+
+                    var iotCentralApp = appCollectionResponse.Value;
+                    //var iotCentralAppResponse = await appCollection.GetAsync(Name, CancellationToken.None);
+                    //var iotCentralApp = iotCentralAppResponse.Value;
+                    var tagResponse = iotCentralApp.SetTags(this.GetTags(), CancellationToken.None);
+                    
+                    this.WriteObject(IotCentralUtils.ToPSIotCentralApp(iotCentralApp), false);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
             }
         }
 
