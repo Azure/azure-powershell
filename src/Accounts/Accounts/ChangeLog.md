@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed an issue that Az.Accounts failed to be imported if multiple environment variables, which only differ by case, are set. [#18304]
 
 ## Version 2.8.0
 * Added a preview feature allowing user to control the following configurations by using `Get-AzConfig`, `Update-AzConfig` and `Clear-AzConfig`:
