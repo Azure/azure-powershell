@@ -66,6 +66,5 @@ directive:
           - Name
           - CreationTime
           - LastAccessTime
-          - ProvisioningState
           - ResourceGroupName
 ```

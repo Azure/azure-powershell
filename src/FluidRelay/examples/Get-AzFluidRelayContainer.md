@@ -6,8 +6,8 @@ Get-AzFluidRelayContainer -FluidRelayServerName azps-fluidrelay -ResourceGroup a
 ```output
 Name                                 CreationTime           LastAccessTime         ProvisioningState ResourceGroupName
 ----                                 ------------           --------------         ----------------- -----------------
-eb4dd5f6-531f-44e1-86e3-759d39d1010c 2022-06-16 AM 02:35:16 2022-06-16 AM 02:58:55                   azpstest-gp
-5affba7d-d288-42c9-9ed2-6d50fbf7ec98 2022-06-16 AM 03:22:45                                          azpstest-gp
+eb4dd5f6-531f-44e1-86e3-759d39d1010c 2022-06-16 02:35:16 AM 2022-06-16 02:58:55 AM                   azpstest-gp
+5affba7d-d288-42c9-9ed2-6d50fbf7ec98 2022-06-16 03:22:45 AM                                          azpstest-gp
 ```
 
 List Fluid Relay container.
@@ -21,7 +21,7 @@ Get-AzFluidRelayContainer -FluidRelayServerName azps-fluidrelay -ResourceGroup a
 ```output
 Name                                 CreationTime           LastAccessTime         ProvisioningState ResourceGroupName
 ----                                 ------------           --------------         ----------------- -----------------
-eb4dd5f6-531f-44e1-86e3-759d39d1010c 2022-06-16 AM 02:35:16 2022-06-16 AM 02:58:55                   azpstest-gp
+eb4dd5f6-531f-44e1-86e3-759d39d1010c 2022-06-16 02:35:16 AM 2022-06-16 02:58:55 AM                   azpstest-gp
 ```
 
 Get a Fluid Relay container.
