@@ -167,7 +167,6 @@ $generalCommands = @(
         Name = "Import Az.Accounts in Parallel";
         Command = {
             $importJobs = @();
-            Import-Module Az.Accounts;
             1..10 | ForEach-Object {
                 $importJobs += Start-Job -name "import-no.$_" -ScriptBlock { Import-Module Az.Accounts; Get-AzConfig; }
             }
