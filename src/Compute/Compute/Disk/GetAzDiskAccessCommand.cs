@@ -75,8 +75,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 else if (ShouldListByResourceGroup(resourceGroupName, diskAccessName))
                 {
-                    var result = DiskAccessesClient.ListByResourceGroup(resourceGroupName);
+                    //var result = DiskAccessesClient.ListByResourceGroup(resourceGroupName);
+                    var result = this.ComputeClientTrack2.ListDiskAccessesByResourceGroup(resourceGroupName);
                     var resultList = result.ToList();
+                    /*
                     var nextPageLink = result.NextPageLink;
                     while (!string.IsNullOrEmpty(nextPageLink))
                     {
@@ -87,17 +89,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                         nextPageLink = pageResult.NextPageLink;
                     }
-                    var psObject = new List<PSDiskAccessList>();
+                    */
+                    var psObject = new List<PSDiskAccess>();
                     foreach (var r in resultList)
                     {
-                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<DiskAccess, PSDiskAccessList>(r));
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<DiskAccessResource, PSDiskAccess>(r));
                     }
                     WriteObject(TopLevelWildcardFilter(resourceGroupName, diskAccessName, psObject), true);
                 }
                 else
                 {
-                    var result = DiskAccessesClient.List();
+                    var result = this.ComputeClientTrack2.ListDiskAccessesBySubscription();
+                    //var result = DiskAccessesClient.List();
                     var resultList = result.ToList();
+                    /*
                     var nextPageLink = result.NextPageLink;
                     while (!string.IsNullOrEmpty(nextPageLink))
                     {
@@ -108,10 +113,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                         nextPageLink = pageResult.NextPageLink;
                     }
+                    */
                     var psObject = new List<PSDiskAccessList>();
                     foreach (var r in resultList)
                     {
-                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<DiskAccess, PSDiskAccessList>(r));
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<DiskAccessResource, PSDiskAccessList>(r));
                     }
                     WriteObject(TopLevelWildcardFilter(resourceGroupName, diskAccessName, psObject), true);
                 }
