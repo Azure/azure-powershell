@@ -6079,6 +6079,7 @@ function Test-ConfVMSetAzDiskSecurityProfile
     {
     # TODO: currently a copied test I need to actually rewrite
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        <#
         $ResourceGroupName = $rgname;
         $vmSize = "Standard_DC2as_v5";         
         $DNSNameLabel = "cvm" +$ResourceGroupName; 
@@ -6113,10 +6114,63 @@ function Test-ConfVMSetAzDiskSecurityProfile
         $VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
 
         $VirtualMachine =Set-AzVMOSDisk -VM $VirtualMachine  -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType “VMGuestStateOnly”;
-
+        #>
         #$vm = New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine;
         #$vm = Get-AzVm -ResourceGroupName $ResourceGroupName -Name $vmname;
         #Assert-AreEqual $securityType $vm.SecurityProfile.SecurityType;
+
+
+        # VM Profile & Hardware
+        # Create New key vault
+        $kvname = "vaultnam5";
+        $keyname = "keynam5";
+        $desName= "desnam5" ;
+        #Testing 
+        $rgname = "adsandordes3";
+        $loc = "northeurope";
+
+        # Creating a VM using simple parameterset
+        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        New-AzKeyVault -Name $kvName -Location WestUS -ResourceGroupName $rgName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
+
+        # Add Key vault Key
+        # Currently requires downloading a particular policy file.
+        #Add-AzKeyVaultKey -VaultName $kvName -Name $keyName -Size 3072 -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM;
+        $KeySize = 3072;
+        az keyvault key create --vault-name $kvname --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
+        
+        # Capture Keyvault and key details
+        $keyvaultId = (Get-AzKeyVault -VaultName $kvName -ResourceGroupName $rgName).ResourceId;
+        $keyUrl = (Get-AzKeyVaultKey -VaultName $kvName -KeyName $keyName).Key.Kid;
+
+        # Create new DES Config and DES
+        $diskEncryptionType = "ConfidentialVmEncryptedWithCustomerKey";
+        $desConfig = New-AzDiskEncryptionSetConfig -Location "WestUS" -SourceVaultId $keyvaultId -KeyUrl $keyUrl -IdentityType SystemAssigned -EncryptionType $diskEncryptionType;
+        New-AzDiskEncryptionSet -ResourceGroupName $rgName -Name $desName -DiskEncryptionSet $desConfig;
+        $diskencset = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $desName;
+
+        # Assign DES Access Policy to key vault (Can be RBAC as well)
+        $desIdentity = (Get-AzDiskEncryptionSet -Name $desName -ResourceGroupName $rgName).Identity.PrincipalId;
+        Set-AzKeyVaultAccessPolicy -VaultName $kvName -ResourceGroupName $rgname -ObjectId $desIdentity -PermissionsToKeys wrapKey,unwrapKey,get;
+        # $disk.EncryptionType
+
+        #$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'windowsserver' -Skus '2022-datacenter-smalldisk-g2' -Version "latest";
+        #$image = Create-ComputeVMImageObject -loc $loc -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2022-datacenter-smalldisk-g2" -version "latest";
+
+        $img = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
+        $img.PublisherName = "MicrosoftWindowsServer";
+        $img.Offer = "WindowsServer";
+        $img.Skus = "2022-datacenter-smalldisk-g2";
+        $img.Version = "latest";
+
+        $diskName = "disk1";
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption FromImage -Location $loc;
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image -Lun 0;
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "ConfidentialVM_DiskEncryptedWithCustomerKey" -SecureDiskEncryptionSetId $diskencset.id;
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskconfig;
 
 
     }
