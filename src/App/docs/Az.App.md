@@ -23,9 +23,6 @@ Get the properties of a Container App.
 ### [Get-AzContainerAppAuthConfig](Get-AzContainerAppAuthConfig.md)
 Get a AuthConfig of a Container App.
 
-### [Get-AzContainerAppCustomHostName](Get-AzContainerAppCustomHostName.md)
-Analyzes a custom hostname for a Container App
-
 ### [Get-AzContainerAppManagedEnv](Get-AzContainerAppManagedEnv.md)
 Get the properties of a Managed Environment used to host container apps.
 
@@ -44,14 +41,8 @@ Get storage for a managedEnvironment.
 ### [Get-AzContainerAppRevision](Get-AzContainerAppRevision.md)
 Get a revision of a Container App.
 
-### [Get-AzContainerAppRevisionReplica](Get-AzContainerAppRevisionReplica.md)
-Get a replica for a Container App Revision.
-
 ### [Get-AzContainerAppSecret](Get-AzContainerAppSecret.md)
 List secrets for a container app
-
-### [Get-AzContainerAppSourceControl](Get-AzContainerAppSourceControl.md)
-Get a SourceControl of a Container App.
 
 ### [New-AzContainerApp](New-AzContainerApp.md)
 Create or update a Container App.
@@ -101,9 +92,6 @@ Create an in-memory object for ScaleRule.
 ### [New-AzContainerAppSecretObject](New-AzContainerAppSecretObject.md)
 Create an in-memory object for Secret.
 
-### [New-AzContainerAppSourceControl](New-AzContainerAppSourceControl.md)
-Create or update the SourceControl for a Container App.
-
 ### [New-AzContainerAppTemplateObject](New-AzContainerAppTemplateObject.md)
 Create an in-memory object for Container.
 
@@ -134,17 +122,11 @@ Delete a Dapr Component from a Managed Environment.
 ### [Remove-AzContainerAppManagedEnvStorage](Remove-AzContainerAppManagedEnvStorage.md)
 Delete storage for a managedEnvironment.
 
-### [Remove-AzContainerAppSourceControl](Remove-AzContainerAppSourceControl.md)
-Delete a Container App SourceControl.
-
 ### [Restart-AzContainerAppRevision](Restart-AzContainerAppRevision.md)
 Restarts a revision for a Container App
 
 ### [Update-AzContainerApp](Update-AzContainerApp.md)
 Patches a Container App using JSON Merge Patch
-
-### [Update-AzContainerAppManagedEnv](Update-AzContainerAppManagedEnv.md)
-Patches a Managed Environment using JSON Merge Patch
 
 ### [Update-AzContainerAppManagedEnvCert](Update-AzContainerAppManagedEnvCert.md)
 Patches a certificate.

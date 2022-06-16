@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create or update a Container App.
 ```powershell
 $trafficWeight = New-AzContainerAppTrafficWeightObject -Label production -LatestRevision:$True -Weight 100
 $secretObject = New-AzContainerAppSecretObject -Name "facebook-secret" -Value "facebook-password"

@@ -285,4 +285,17 @@ directive:
           - Name
           - PlatformEnabled
           - ResourceGroupName
+  - where:
+      subject: ContainerAppSourceControl
+    remove: true
+  - where:
+      verb: Update
+      subject: ContainerAppManagedEnv
+    remove: true
+  - where:
+      subject: ContainerAppRevisionReplica
+    remove: true
+  - where:
+      subject: ContainerAppCustomHostName
+    remove: true
 ```
