@@ -33,7 +33,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ComputeResourceSku", DefaultParameterSetName = "DefaultParameter")]
-    [OutputType(typeof(List<PSResourceSku>))]
+    [OutputType(typeof(PSResourceSku))]
     public partial class GetAzureRmComputeResourceSku : ComputeAutomationBaseCmdlet
     {
         [Parameter(
