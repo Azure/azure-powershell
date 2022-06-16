@@ -485,7 +485,7 @@
             <Alignment>Right</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Restrictions</Label>
+            <Label>Restriction</Label>
             <Alignment>Right</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
