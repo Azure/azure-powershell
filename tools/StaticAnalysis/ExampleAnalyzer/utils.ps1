@@ -181,7 +181,7 @@ function Get-ExamplesDetailsFromMd {
                 }
             }
 
-            if($exampleOutputBlocks -ne $null){
+            if($null -ne $exampleOutputBlocks){
                 $description = $exampleContent.SubString($exampleOutputBlocks[-1].Index + $exampleOutputBlocks[-1].Length).Trim()
             }
             else{
@@ -522,7 +522,7 @@ function Get-ScriptAnalyzerResult {
     }
     
     # Invoke PSScriptAnalyzer : input scriptblock, output error set in $result with property: RuleName, Message, Extent
-    if ($RulePath -eq $null) {
+    if ($null -eq $RulePath) {
         $analysisResults = Invoke-ScriptAnalyzer -Path $ScriptPath -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
     }
     else {

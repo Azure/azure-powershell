@@ -52,7 +52,7 @@ function Measure-CommandName {
                         # $CommandName = $CommandAst.GetCommandName()
                         $CommandName = $CommandAst.CommandElements[0].Extent.Text
                         $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
-                        if ($GetCommand -eq $null) {
+                        if ($null -eq $GetCommand) {
                             # CommandName is not valid.
                             $global:CommandParameterPair += @{
                                 CommandName = $CommandName

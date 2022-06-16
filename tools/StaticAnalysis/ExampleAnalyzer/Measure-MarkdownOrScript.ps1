@@ -31,7 +31,6 @@ param (
 . $PSScriptRoot\utils.ps1
 
 if ($PSCmdlet.ParameterSetName -eq "Markdown") {
-    $ScriptsByExampleFolder = "ScriptsByExample"
     $scaleTable = @()
     $missingTable = @()
     $deletePromptAndSeparateOutputTable = @()
@@ -52,7 +51,7 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     $null = New-Item -ItemType Directory -Path $OutputFolder -ErrorAction SilentlyContinue
     $null = New-Item -ItemType File  $OutputFolder\TempScript.ps1
     $MarkdownPath = Get-Content $MarkdownPaths
-    (Get-ChildItem $MarkdownPath) | foreach{
+    foreach($_ in Get-ChildItem $MarkdownPath){
         # Filter the .md of overview in \help\
         if ((Get-Item -Path $_.FullName).Directory.Name -eq "help" -and $_.FullName -cmatch ".*\.md" -and $_.BaseName -cmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
             Write-Output "Searching in file $($_.FullName) ..."
@@ -72,13 +71,13 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     }
     # Summarize searching results
     if($scaleTable){
-         $scaleTable | where {$_ -ne $null} | Export-Csv "$OutputFolder\Scale.csv" -NoTypeInformation
+         $scaleTable | Where-Object {$_ -ne $null} | Export-Csv "$OutputFolder\Scale.csv" -NoTypeInformation
     }
     if($missingTable){
-        $missingTable | where {$_ -ne $null} | Export-Csv "$OutputFolder\Missing.csv" -NoTypeInformation
+        $missingTable | Where-Object {$_ -ne $null} | Export-Csv "$OutputFolder\Missing.csv" -NoTypeInformation
     }
     if($deletePromptAndSeparateOutputTable){
-        $deletePromptAndSeparateOutputTable | where {$_ -ne $null} | Export-Csv "$OutputFolder\DeletingSeparating.csv" -NoTypeInformation
+        $deletePromptAndSeparateOutputTable | Where-Object {$_ -ne $null} | Export-Csv "$OutputFolder\DeletingSeparating.csv" -NoTypeInformation
     }
 }
 
@@ -91,7 +90,7 @@ if ($PSCmdlet.ParameterSetName -eq "Script" -or $AnalyzeScriptsInFile.IsPresent)
     
     # Summarize analysis results, output in Result.csv
     if($analysisResultsTable){
-        $analysisResultsTable| where {$_ -ne $null} | Export-Csv "$PSScriptRoot\..\..\..\artifacts\StaticAnalysisResults\ExampleIssues.csv" -NoTypeInformation
+        $analysisResultsTable| Where-Object {$_ -ne $null} | Export-Csv "$PSScriptRoot\..\..\..\artifacts\StaticAnalysisResults\ExampleIssues.csv" -NoTypeInformation
     }
 }
 
