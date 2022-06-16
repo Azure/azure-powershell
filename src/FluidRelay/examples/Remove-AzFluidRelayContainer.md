@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Fluid Relay container.
 ```powershell
-{{ Add code here }}
+Remove-AzFluidRelayContainer -FluidRelayServerName azps-fluidrelay -ResourceGroup azpstest-gp -Name eb4dd5f6-531f-44e1-86e3-759d39d1010c
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Delete a Fluid Relay container.

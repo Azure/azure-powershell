@@ -30,11 +30,11 @@ For information on how to develop for `Az.FluidRelay`, see [how-to.md](how-to.md
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 1b2e3b97525b0b66a5e1d5826a4c6faab9aa9856
+branch: 9a6b5748f6ba9eeb2684497551226036c9d1da6b
 require:
   - $(this-folder)/../readme.azure.noprofile.md 
 input-file:
-  - $(repo)/specification/fluidrelay/resource-manager/Microsoft.FluidRelay/stable/2022-04-21/fluidrelay.json
+  - $(repo)/specification/fluidrelay/resource-manager/Microsoft.FluidRelay/stable/2022-05-26/fluidrelay.json
 
 module-version: 0.1.0
 title: FluidRelay
@@ -58,4 +58,14 @@ directive:
   - where:
       subject: FluidRelayOperation
     hide: true
+  - where:
+      model-name: FluidRelayContainer
+    set:
+      format-table:
+        properties:
+          - Name
+          - CreationTime
+          - LastAccessTime
+          - ProvisioningState
+          - ResourceGroupName
 ```

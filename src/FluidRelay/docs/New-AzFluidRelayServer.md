@@ -17,7 +17,8 @@ New-AzFluidRelayServer -Name <String> -ResourceGroup <String> -Location <String>
  [-CustomerManagedKeyEncryptionKeyUrl <String>] [-IdentityType <ResourceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-ProvisioningState <ProvisioningState>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Storagesku <StorageSku>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -196,6 +197,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Storagesku
+Sku of the storage associated with the resource
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.StorageSku
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The subscription id (GUID) for this resource.
 
@@ -264,7 +280,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220421.IFluidRelayServer
+### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220526.IFluidRelayServer
 
 ## NOTES
 

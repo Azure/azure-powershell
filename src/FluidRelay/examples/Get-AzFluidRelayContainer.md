@@ -4,9 +4,10 @@ Get-AzFluidRelayContainer -FluidRelayServerName azps-fluidrelay -ResourceGroup a
 ```
 
 ```output
-Name                                 ResourceGroupName
-----                                 -----------------
-6c0389c1-b0e9-45c8-b60d-cd4e9c318b9a azpstest-gp
+Name                                 CreationTime           LastAccessTime         ProvisioningState ResourceGroupName
+----                                 ------------           --------------         ----------------- -----------------
+eb4dd5f6-531f-44e1-86e3-759d39d1010c 2022-06-16 AM 02:35:16 2022-06-16 AM 02:58:55                   azpstest-gp
+5affba7d-d288-42c9-9ed2-6d50fbf7ec98 2022-06-16 AM 03:22:45                                          azpstest-gp
 ```
 
 Get a Fluid Relay container.
@@ -14,13 +15,13 @@ Read and execute this document [Quickstart: Dice roller](https://docs.microsoft.
 
 ### Example 2:Get a Fluid Relay container.
 ```powershell
-Get-AzFluidRelayContainer -FluidRelayServerName azps-fluidrelay -ResourceGroup azpstest-gp -Name 6c0389c1-b0e9-45c8-b60d-cd4e9c318b9a
+Get-AzFluidRelayContainer -FluidRelayServerName azps-fluidrelay -ResourceGroup azpstest-gp -Name eb4dd5f6-531f-44e1-86e3-759d39d1010c
 ```
 
 ```output
-Name                                 ResourceGroupName
-----                                 -----------------
-6c0389c1-b0e9-45c8-b60d-cd4e9c318b9a azpstest-gp
+Name                                 CreationTime           LastAccessTime         ProvisioningState ResourceGroupName
+----                                 ------------           --------------         ----------------- -----------------
+eb4dd5f6-531f-44e1-86e3-759d39d1010c 2022-06-16 AM 02:35:16 2022-06-16 AM 02:58:55                   azpstest-gp
 ```
 
 Get a Fluid Relay container.

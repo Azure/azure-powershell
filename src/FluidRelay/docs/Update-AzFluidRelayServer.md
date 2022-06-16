@@ -277,7 +277,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220421.IFluidRelayServer
+### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220526.IFluidRelayServer
 
 ## NOTES
 

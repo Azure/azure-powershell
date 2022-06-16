@@ -160,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220421.IFluidRelayServerKeys
+### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220526.IFluidRelayServerKeys
 
 ## NOTES
 
