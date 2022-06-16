@@ -6,7 +6,7 @@ Get-AzFluidRelayContainer -FluidRelayServerName azps-fluidrelay -ResourceGroup a
 ```output
 Name                                 ResourceGroupName
 ----                                 -----------------
-6c0389c1-b0e9-45c8-b60d-cd4e9c318b9a jinpei-gp
+6c0389c1-b0e9-45c8-b60d-cd4e9c318b9a azpstest-gp
 ```
 
 Get a Fluid Relay container.
@@ -20,7 +20,7 @@ Get-AzFluidRelayContainer -FluidRelayServerName azps-fluidrelay -ResourceGroup a
 ```output
 Name                                 ResourceGroupName
 ----                                 -----------------
-6c0389c1-b0e9-45c8-b60d-cd4e9c318b9a jinpei-gp
+6c0389c1-b0e9-45c8-b60d-cd4e9c318b9a azpstest-gp
 ```
 
 Get a Fluid Relay container.
