@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = UserParameterSet,
                     Mandatory = true, HelpMessage = "Optional tenant name or ID")]
         [Parameter(ParameterSetName = UserWithCredentialParameterSet,
-                    Mandatory = false, HelpMessage = "Optional tenant name or ID")]
+                    Mandatory = true, HelpMessage = "Optional tenant name or ID")]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true, HelpMessage = "Tenant name or ID")]
         [Parameter(ParameterSetName = AccessTokenParameterSet,
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ClientAssertionParameterSet,
                     Mandatory = true, HelpMessage = "Tenant name or ID")]
         [Parameter(ParameterSetName = ManagedServiceParameterSet,
-                    Mandatory = false, HelpMessage = "Optional tenant name or ID")]
+                    Mandatory = true, HelpMessage = "Optional tenant name or ID")]
         [Alias("Domain", "TenantId")]
         [ValidateNotNullOrEmpty]
         public string Tenant { get; set; }
