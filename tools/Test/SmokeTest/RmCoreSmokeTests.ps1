@@ -166,7 +166,11 @@ $generalCommands = @(
     @{
         Name = "Import Az.Accounts in Parallel";
         Command = {
-            $importJobs = @();
+            if ($null -ne $env:SYSTEM_DEFINITIONID) {
+                Write-Host "Skipping because 'Start-Job' is not supported by design in scenarios where PowerShell is being hosted in other applications."
+                return
+            }
+            $importJobs = @()
             1..10 | ForEach-Object {
                 $importJobs += Start-Job -name "import-no.$_" -ScriptBlock { Import-Module Az.Accounts; Get-AzConfig; }
             }
@@ -174,7 +178,7 @@ $generalCommands = @(
             $importJobs | Receive-Job
             $importJobs | ForEach-Object {
                 if ("Completed" -ne $_.State) {
-                    throw "Some job(s) failed to import Az.Accounts in parallel"
+                    throw "Some jobs have failed."
                 }
             }
         };
