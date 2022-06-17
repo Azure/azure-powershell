@@ -13,22 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class JobTests : RMTestBase
+    public partial class JobTests : RecoveryServicesBackupTestRunner
     {
-        public XunitTracingInterceptor _logger;
+        private readonly string _commonModule4 = $"ScenarioTests/{PsBackupProviderTypes.IaasVm}/Common.ps1";
+        private readonly string _testModule4 = $"ScenarioTests/{PsBackupProviderTypes.IaasVm}/JobTests.ps1";
 
-        public JobTests(Xunit.Abstractions.ITestOutputHelper output)
+        public JobTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -36,8 +35,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMGetJobs()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMGetJobs");
+            TestRunner.RunTestScript(
+                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                "Test-AzureVMGetJobs"
+            );
         }
 
         [Fact]
@@ -45,8 +47,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMGetJobsTimeFilter()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMGetJobsTimeFilter");
+            TestRunner.RunTestScript(
+                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                "Test-AzureVMGetJobsTimeFilter"
+            );
         }
 
         [Fact]
@@ -54,8 +59,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMWaitJob()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMWaitJob");
+            TestRunner.RunTestScript(
+                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                "Test-AzureVMWaitJob"
+            );
         }
 
         [Fact]
@@ -63,8 +71,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMCancelJob()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMCancelJob");
+            TestRunner.RunTestScript(
+                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                "Test-AzureVMCancelJob"
+            );
         }
     }
 }

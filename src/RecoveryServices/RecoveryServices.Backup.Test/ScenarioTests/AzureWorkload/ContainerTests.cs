@@ -15,19 +15,26 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class ContainerTests : RMTestBase
+    public partial class ContainerTests : RecoveryServicesBackupTestRunner
     {
+        private readonly string _commonModule2 = $"ScenarioTests/{PsBackupProviderTypes.AzureWorkload}/Common.ps1";
+        private readonly string _testModule2 = $"ScenarioTests/{PsBackupProviderTypes.AzureWorkload}/ContainerTests.ps1";
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void GetAzureVmWorkloadContainer()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Get-AzureVmWorkloadContainer");
+            TestRunner.RunTestScript(
+                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                "Get-AzureVmWorkloadContainer"
+            );
         }
 
         [Fact(Skip = "To be fixed in upcoming release")]
@@ -35,8 +42,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void UnregisterAzureWorkloadContainer()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Unregister-AzureWorkloadContainer");
+            TestRunner.RunTestScript(
+                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                "Unregister-AzureWorkloadContainer"
+            );
         }
     }
 }

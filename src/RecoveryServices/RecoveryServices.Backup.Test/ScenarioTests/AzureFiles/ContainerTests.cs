@@ -15,19 +15,26 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class ContainerTests : RMTestBase
+    public partial class ContainerTests : RecoveryServicesBackupTestRunner
     {
+        private readonly string _commonModule = $"ScenarioTests/{PsBackupProviderTypes.AzureFiles}/Common.ps1";
+        private readonly string _testModule = $"ScenarioTests/{PsBackupProviderTypes.AzureFiles}/ContainerTests.ps1";
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureFS)]
         public void TestAzureFSContainer()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFSContainer");
+            TestRunner.RunTestScript(
+                $"Import-Module {_commonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-AzureFSContainer"
+            );
         }
 
         [Fact]
@@ -35,8 +42,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureFS)]
         public void TestAzureFSUnregisterContainer()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFSUnregisterContainer");
+            TestRunner.RunTestScript(
+                $"Import-Module {_commonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-AzureFSUnregisterContainer"
+            );
         }
     }
 }

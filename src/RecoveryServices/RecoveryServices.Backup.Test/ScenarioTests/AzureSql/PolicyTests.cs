@@ -13,22 +13,28 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class PolicyTests : RMTestBase
+    public partial class PolicyTests : RecoveryServicesBackupTestRunner
     {
+        private readonly string _commonModule1 = $"ScenarioTests/Common.ps1";
+        private readonly string _testModule1 = $"ScenarioTests/{PsBackupProviderTypes.AzureSql}/PolicyTests.ps1";
+
         [Fact(Skip = "This workload is not supported anymore")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureSql)]
         public void TestAzureSqlPolicy()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureSql, "Test-AzureSqlPolicy");
+            TestRunner.RunTestScript(
+                $"Import-Module {_commonModule1.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule1.AsAbsoluteLocation()}",
+                "Test-AzureSqlPolicy"
+            );
         }
     }
 }

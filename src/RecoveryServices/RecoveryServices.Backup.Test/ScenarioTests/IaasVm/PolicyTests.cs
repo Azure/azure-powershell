@@ -16,19 +16,19 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class PolicyTests : RMTestBase
+    public partial class PolicyTests : RecoveryServicesBackupTestRunner
     {
-        public XunitTracingInterceptor _logger;
+        private readonly string _commonModule4 = $"ScenarioTests/{PsBackupProviderTypes.IaasVm}/Common.ps1";
+        private readonly string _testModule4 = $"ScenarioTests/{PsBackupProviderTypes.IaasVm}/PolicyTests.ps1";
 
-        public PolicyTests(Xunit.Abstractions.ITestOutputHelper output)
+        public PolicyTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -36,8 +36,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMPolicy()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMPolicy");
+            TestRunner.RunTestScript(
+                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                "Test-AzureVMPolicy"
+            );
         }
 
         [Fact]
@@ -45,8 +48,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMEnhancedPolicy()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMEnhancedPolicy");
+            TestRunner.RunTestScript(
+                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                "Test-AzureVMEnhancedPolicy"
+            );
         }
     }
 }

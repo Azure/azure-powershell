@@ -15,19 +15,26 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class PolicyTests : RMTestBase
+    public partial class PolicyTests : RecoveryServicesBackupTestRunner
     {
+        private readonly string _commonModule2 = $"ScenarioTests/{PsBackupProviderTypes.AzureWorkload}/Common.ps1";
+        private readonly string _testModule2 = $"ScenarioTests/{PsBackupProviderTypes.AzureWorkload}/PolicyTests.ps1";
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadPolicy()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadPolicy");
+            TestRunner.RunTestScript(
+                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                "Test-AzureVmWorkloadPolicy"
+            );
         }
     }
 }
