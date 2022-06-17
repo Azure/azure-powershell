@@ -1,4 +1,4 @@
-### Example 1: {{ Create an in-memory object for DeliveryRuleRequestSchemeCondition }}
+### Example 1: Create an in-memory object for DeliveryRuleRequestSchemeCondition
 ```powershell
 New-AzFrontDoorCdnRuleRequestSchemeConditionObject -Name RequestScheme -ParameterMatchValue HTTP
 ```

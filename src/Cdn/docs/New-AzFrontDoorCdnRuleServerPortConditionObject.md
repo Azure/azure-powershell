@@ -23,7 +23,7 @@ Create an in-memory object for DeliveryRuleServerPortCondition.
 
 ## EXAMPLES
 
-### Example 1: {{ Create an in-memory object for DeliveryRuleServerPortCondition }}
+### Example 1: Create an in-memory object for DeliveryRuleServerPortCondition
 ```powershell
 New-AzFrontDoorCdnRuleServerPortConditionObject -Name ServerPort -ParameterOperator Equal -ParameterMatchValue 80,81
 ```

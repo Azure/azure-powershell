@@ -1,9 +1,9 @@
-### Example 1: {{ Add title here }}
+### Example 1: Add title here
 ```powershell
-{{ Add code here }}
+Add code here
 ```
 
 ```output
-{{ Add output here }}
+Add output here
 ```
 

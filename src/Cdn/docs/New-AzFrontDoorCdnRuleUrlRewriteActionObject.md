@@ -22,7 +22,7 @@ Create an in-memory object for UrlRewriteAction.
 
 ## EXAMPLES
 
-### Example 1: {{ Create an in-memory object for UrlRewriteAction }}
+### Example 1: Create an in-memory object for UrlRewriteAction
 ```powershell
 New-AzFrontDoorCdnRuleUrlRewriteActionObject -Name UrlRewrite -ParameterDestination /b -ParameterSourcePattern /a -ParameterPreserveUnmatchedPath $False
 ```

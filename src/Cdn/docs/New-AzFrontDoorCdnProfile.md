@@ -23,7 +23,7 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 
 ## EXAMPLES
 
-### Example 1: {{ Create an AzureFrontDoor profile under the resource group }}
+### Example 1: Create an AzureFrontDoor profile under the resource group
 ```powershell
 New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -SkuName Standard_AzureFrontDoor -Location Global
 ```

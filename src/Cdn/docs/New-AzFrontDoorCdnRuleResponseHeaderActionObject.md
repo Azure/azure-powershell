@@ -23,7 +23,7 @@ Create an in-memory object for DeliveryRuleResponseHeaderAction.
 
 ## EXAMPLES
 
-### Example 1: {{ Create an in-memory object for DeliveryRuleResponseHeaderAction }}
+### Example 1: Create an in-memory object for DeliveryRuleResponseHeaderAction
 ```powershell
 New-AzFrontDoorCdnRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
 ```

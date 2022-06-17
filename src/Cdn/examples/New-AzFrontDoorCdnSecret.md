@@ -1,4 +1,4 @@
-### Example 1: {{ Create an AzureFrontDoor Secret within the specified AzureFrontDoor profile }}
+### Example 1: Create an AzureFrontDoor Secret within the specified AzureFrontDoor profile
 ```powershell
 $secretSourceId = "xxxxxxxx"      
 $certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId  

@@ -36,27 +36,19 @@ Updates an existing origin group within an endpoint.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an AzureCDN origin group under the AzureCDN endpoint
 ```powershell
-{{ Add code here }}
+$updateHealthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 60 -ProbePath "/new-check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
+Update-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001 -HealthProbeSetting $updateHealthProbeParameters
 ```
 
 ```output
-{{ Add output here }}
+Name   ResourceGroupName
+----   -----------------
+org001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update an AzureCDN origin group under the AzureCDN endpoint
 
 ## PARAMETERS
 

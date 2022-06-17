@@ -1,4 +1,4 @@
-### Example 1: {{ Create an in-memory object for DeliveryRuleRequestUriCondition }}
+### Example 1: Create an in-memory object for DeliveryRuleRequestUriCondition
 ```powershell
  New-AzFrontDoorCdnRuleRequestUriConditionObject -Name RequestUri -ParameterOperator Equal -ParameterMatchValue /test
 ```

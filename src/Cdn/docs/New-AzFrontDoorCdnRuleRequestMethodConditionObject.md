@@ -22,7 +22,7 @@ Create an in-memory object for DeliveryRuleRequestMethodCondition.
 
 ## EXAMPLES
 
-### Example 1: {{ Create an in-memory object for DeliveryRuleRequestMethodCondition }}
+### Example 1: Create an in-memory object for DeliveryRuleRequestMethodCondition
 ```powershell
 New-AzFrontDoorCdnRuleRequestMethodConditionObject -Name RequestMethod -ParameterMatchValue GET
 ```

@@ -23,7 +23,7 @@ Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
 
 ## EXAMPLES
 
-### Example 1: {{ Create an in-memory object for DeliveryRuleUrlFileExtensionCondition }}
+### Example 1: Create an in-memory object for DeliveryRuleUrlFileExtensionCondition
 ```powershell
 New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject -Name UrlFileExtension -ParameterOperator Equal -ParameterMatchValue txt -ParameterNegateCondition $False -ParameterTransform Lowercase
 ```

@@ -1,4 +1,4 @@
-### Example 1: {{ Create an in-memory object for DeliveryRuleClientPortCondition }}
+### Example 1: Create an in-memory object for DeliveryRuleClientPortCondition
 ```powershell
 New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
 ```

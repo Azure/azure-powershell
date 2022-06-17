@@ -22,7 +22,7 @@ Create an in-memory object for DeliveryRuleIsDeviceCondition.
 
 ## EXAMPLES
 
-### Example 1: {{ Create an in-memory object for DeliveryRuleIsDeviceCondition }}
+### Example 1: Create an in-memory object for DeliveryRuleIsDeviceCondition
 ```powershell
 New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
 ```

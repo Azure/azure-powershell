@@ -1,4 +1,4 @@
-### Example 1: {{ Create an AzureCDN profile under the resource group }}
+### Example 1: Create an AzureCDN profile under the resource group
 ```powershell
 New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Standard_Microsoft -Location Global
 ```

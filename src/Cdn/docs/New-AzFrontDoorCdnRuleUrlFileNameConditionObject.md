@@ -23,7 +23,7 @@ Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 
 ## EXAMPLES
 
-### Example 1: {{ Create an in-memory object for DeliveryRuleUrlFileNameCondition }}
+### Example 1: Create an in-memory object for DeliveryRuleUrlFileNameCondition
 ```powershell
 New-AzFrontDoorCdnRuleUrlFileNameConditionObject -Name UrlFileName -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 ```

@@ -25,7 +25,7 @@ Creates a new origin group within the specified profile.
 
 ## EXAMPLES
 
-### Example 1: {{ Create an AzureFrontDoor origin group under the AzureFrontDoor profile }}
+### Example 1: Create an AzureFrontDoor origin group under the AzureFrontDoor profile
 ```powershell
 $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
 $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4

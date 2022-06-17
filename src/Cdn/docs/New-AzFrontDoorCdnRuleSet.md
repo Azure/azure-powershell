@@ -22,7 +22,7 @@ Creates a new rule set within the specified profile.
 
 ## EXAMPLES
 
-### Example 1: {{ Create an AzureFrontDoor rule set under the AzureFrontDoor profile }}
+### Example 1: Create an AzureFrontDoor rule set under the AzureFrontDoor profile
 ```powershell
 New-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 ```
