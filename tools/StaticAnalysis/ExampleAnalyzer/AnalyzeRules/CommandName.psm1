@@ -38,7 +38,7 @@ function Measure-CommandName {
                 param([System.Management.Automation.Language.Ast]$Ast)
                 $global:Ast = $Ast
 
-                #find all command in .ps1
+                #Find all command in .ps1
                 if ($Ast -is [System.Management.Automation.Language.CommandAst]) {
                     [System.Management.Automation.Language.CommandAst]$CommandAst = $Ast
                     # Get wrapper function name by command element
@@ -49,7 +49,6 @@ function Measure-CommandName {
                         $ModuleCmdletExNum = $CommandAst.Parent.Parent.Parent.Parent.Name
                     }
                     if ($CommandAst.InvocationOperator -eq "Unknown") {
-                        # $CommandName = $CommandAst.GetCommandName()
                         $CommandName = $CommandAst.CommandElements[0].Extent.Text
                         $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
                         if ($null -eq $GetCommand) {
@@ -87,7 +86,7 @@ function Measure-CommandName {
                 return $false
             }
 
-            # find all false scriptblock
+            # Find all false scriptblock
             [System.Management.Automation.Language.Ast[]]$Asts = $ScriptBlockAst.FindAll($Predicate, $false)
             for ($i = 0; $i -lt $Asts.Count; $i++) {
                 if ($global:CommandParameterPair[$i].ParameterName -eq "<is not valid>") {

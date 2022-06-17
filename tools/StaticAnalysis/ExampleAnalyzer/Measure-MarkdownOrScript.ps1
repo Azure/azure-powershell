@@ -46,13 +46,13 @@ if ($OutputScriptsInFile.IsPresent) {
 }
 
 
-# find examples in "help\*.md", output ".ps1"
+# Find examples in "help\*.md", output ".ps1"
 if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     $null = New-Item -ItemType Directory -Path $OutputFolder -ErrorAction SilentlyContinue
     $null = New-Item -ItemType File  $OutputFolder\TempScript.ps1
     $MarkdownPath = Get-Content $MarkdownPaths
     foreach($_ in Get-ChildItem $MarkdownPath){
-        # Filter the .md of overview in \help\
+        # Filter the .md of overview in "\help\"
         if ((Get-Item -Path $_.FullName).Directory.Name -eq "help" -and $_.FullName -cmatch ".*\.md" -and $_.BaseName -cmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
             Write-Output "Searching in file $($_.FullName) ..."
             $module = (Get-Item -Path $_.FullName).Directory.Parent.Name
@@ -84,7 +84,7 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
 
 # Analyze scripts
 if ($PSCmdlet.ParameterSetName -eq "Script" -or $AnalyzeScriptsInFile.IsPresent) {
-    # read and analyze ".ps1" in \ScriptsByExample
+    # Read and analyze ".ps1" in \ScriptsByExample
     Write-Output "Analyzing file ..."
     $analysisResultsTable += Get-ScriptAnalyzerResult (Get-Item -Path $ScriptPaths) $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -ErrorAction SilentlyContinue
     
