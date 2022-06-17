@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported BaseBlob DaysAfterCreationGreaterThan in Management Policy
+    -  `Add-AzStorageAccountManagementPolicyAction`
 
 ## Version 4.6.0
 * Supported generate Sas token for DataLakeGen2
