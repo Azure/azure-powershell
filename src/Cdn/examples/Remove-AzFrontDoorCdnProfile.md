@@ -3,8 +3,6 @@
 Remove-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6
 ```
 
-```output
-```
 
 
 ### Example 1: {{ Delete an AzureFrontDoor profile under the resource group via identity}}
@@ -12,6 +10,5 @@ Remove-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q
 Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 | Remove-AzFrontDoorCdnProfile
 ```
 
-```output
-```
+
 

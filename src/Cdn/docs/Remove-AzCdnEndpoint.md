@@ -35,21 +35,6 @@ Deletes an existing CDN endpoint with the specified endpoint name under the spec
 {{ Add code here }}
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
 {{ Add description here }}
 
 ## PARAMETERS

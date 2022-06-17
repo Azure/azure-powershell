@@ -3,7 +3,5 @@
 Remove-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1
 ```
 
-```output
-```
 
 

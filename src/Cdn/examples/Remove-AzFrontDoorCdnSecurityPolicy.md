@@ -3,6 +3,4 @@
 Remove-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001
 ```
 
-```output
-```
-
+Delete an AzureFrontDoor security policy within the specified AzureFrontDoor profile
