@@ -31,7 +31,7 @@ Delete a private cloud
 
 ### Example 1: Delete private cloud
 ```powershell
-PS C:\> Remove-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud
+Remove-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud
 
 ```
 
@@ -39,7 +39,7 @@ Delete private cloud
 
 ### Example 2: Delete private cloud
 ```powershell
-PS C:\> Get-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud | Remove-AzVMwarePrivateCloud
+Get-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud | Remove-AzVMwarePrivateCloud
 
 ```
 
@@ -234,6 +234,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Azure region
+  - `[PlacementPolicyName <String>]`: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
   - `[PortMirroringId <String>]`: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
   - `[PrivateCloudName <String>]`: Name of the private cloud
   - `[PublicIPId <String>]`: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name

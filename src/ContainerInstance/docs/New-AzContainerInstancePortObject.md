@@ -23,8 +23,10 @@ Create a in-memory object for ContainerPort
 
 ### Example 1: Specify port 8000 exposed on a container instance with TCP protocol
 ```powershell
-PS C:\> New-AzContainerInstancePortObject -Port 8000 -Protocol TCP
+New-AzContainerInstancePortObject -Port 8000 -Protocol TCP
+```
 
+```output
 Port Protocol
 ----- --------
 8000  TCP
@@ -71,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ContainerPort
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ContainerPort
 
 ## NOTES
 

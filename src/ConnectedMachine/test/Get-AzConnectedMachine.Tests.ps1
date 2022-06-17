@@ -15,7 +15,7 @@ Import-Module "$PSScriptRoot/helper.psm1" -Force
 
 Describe 'Get-AzConnectedMachine' {
     BeforeAll {
-        $machineName = $env.MachineName1
+        $machineName = $env.MachineName
 
         if ($TestMode -ne 'playback' -and $IsMacOS) {
             Write-Host "Live tests can only be run on Windows and Linux. Skipping..."
@@ -49,7 +49,7 @@ Describe 'Get-AzConnectedMachine' {
 
     It 'Get all connected machines in a subscription' {
         $machines = Get-AzConnectedMachine
-        $machines.Count | Should -Be 1
+        $machines.Count | Should -BeGreaterThan 1
     }
 
     It 'Get all connected machines in a resource group' {

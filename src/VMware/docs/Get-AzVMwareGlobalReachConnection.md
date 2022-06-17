@@ -37,8 +37,9 @@ Get a global reach connection by name in a private cloud
 
 ### Example 1: List global reach connection in a private cloud
 ```powershell
-PS C:\> Get-AzVMwareGlobalReachConnection -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
-
+Get-AzVMwareGlobalReachConnection -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+```
+```output
 Name          Type                                               ResourceGroupName
 ----          ----                                               -----------------
 azps_test_grc Microsoft.AVS/privateClouds/globalReachConnections azps_test_group
@@ -48,8 +49,9 @@ List global reach connection in a private cloud
 
 ### Example 2: Get a global reach connection by name in a private cloud
 ```powershell
-PS C:\> Get-AzVMwareGlobalReachConnection -Name azps_test_grc -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
-
+Get-AzVMwareGlobalReachConnection -Name azps_test_grc -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+```
+```output
 Name          Type                                               ResourceGroupName
 ----          ----                                               -----------------
 azps_test_grc Microsoft.AVS/privateClouds/globalReachConnections azps_test_group
@@ -160,7 +162,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IGlobalReachConnection
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IGlobalReachConnection
 
 ## NOTES
 
@@ -185,6 +187,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Azure region
+  - `[PlacementPolicyName <String>]`: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
   - `[PortMirroringId <String>]`: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
   - `[PrivateCloudName <String>]`: Name of the private cloud
   - `[PublicIPId <String>]`: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name

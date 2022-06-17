@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         /// <summary>
         /// The task that a test can wait on until RequestPredictionsAsync is complete.
         /// </summary>
-        public TaskCompletionSource<bool> RequestPredictionTaskCompletionSource { get; private set; }
+        public TaskCompletionSource<bool?> RequestPredictionTaskCompletionSource { get; private set; }
 
         /// <summary>
         /// Constructs a new instance of <see cref="MockAzPredictorService"/>
@@ -72,12 +72,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         }
 
         /// <inheritdoc/>
-        public override Task<bool> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
+        public override Task<bool?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
         {
             if (ThrowException)
             {
                 RequestPredictionTaskCompletionSource.TrySetResult(false);
-                throw new MockTestException("Test Exception");
+                var e = new MockTestException("Test Exception");
+                throw new ServiceRequestException(e.Message, e)
+                {
+                    IsRequestSent = false,
+                };
             }
 
             Commands = commands;
@@ -110,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 
         public void ResetRequestPredictionTask()
         {
-            RequestPredictionTaskCompletionSource = new TaskCompletionSource<bool>();
+            RequestPredictionTaskCompletionSource = new TaskCompletionSource<bool?>();
         }
     }
 }

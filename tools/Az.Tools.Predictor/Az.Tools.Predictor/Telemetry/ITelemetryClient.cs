@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
-    /// The telemetry client that collects and sends the telemetry data.
+    /// The telemetry client that collects data at the interested places.
     /// </summary>
     public interface ITelemetryClient
     {
@@ -28,11 +30,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// Gets and sets the id to correlate the request and the server.
         /// </summary>
         public string RequestId { get; set; }
-
-        /// <summary>
-        /// Gets the session id for the telemetry events.
-        /// </summary>
-        public string SessionId { get; }
 
         /// <summary>
         /// Collects the event of the history command.
@@ -75,5 +72,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </summary>
         /// <param name="telemetryData">The data to collect.</param>
         public void OnParseCommandLineFailure(CommandLineParsingTelemetryData telemetryData);
+
+        /// <summary>
+        /// Collects when there is a non-specific failure in the code.
+        /// </summary>
+        /// <remarks>
+        /// Use the other methods to record the exceptions in those events.
+        /// This is only used when it's not in any specific telemetry event.
+        /// </remarks>
+        public void OnGeneralException(GeneralExceptionTelemetryData e);
     }
 }

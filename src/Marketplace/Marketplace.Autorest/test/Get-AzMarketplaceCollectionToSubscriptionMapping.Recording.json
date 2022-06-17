@@ -1,0 +1,44 @@
+{
+  "Get-AzMarketplaceCollectionToSubscriptionMapping+[NoContext]+CollectionsExpanded+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collectionsToSubscriptionsMapping?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collectionsToSubscriptionsMapping?api-version=2021-06-01",
+      "Content": "{\n  \"properties\": {\n    \"subscriptionIds\": [ \"1052ff5a-aa43-4ca1-bd18-010399494ce5\" ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "91" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.01832.0004-467b09b3" ],
+        "Set-Cookie": [ "ARRAffinity=d3888da00a6c22fd6922d241b1e1f8b74760295bc9888c172907d962f5a68055;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=d3888da00a6c22fd6922d241b1e1f8b74760295bc9888c172907d962f5a68055;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1197" ],
+        "x-ms-request-id": [ "ab14cf95-7090-4f5b-8cb5-0458bb065c89" ],
+        "x-ms-correlation-request-id": [ "ab14cf95-7090-4f5b-8cb5-0458bb065c89" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220124T135831Z:ab14cf95-7090-4f5b-8cb5-0458bb065c89" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Mon, 24 Jan 2022 13:58:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "271" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"details\":{\"a260d38c-96cf-492d-a340-404d0c4b3ad6\":{\"collectionName\":\"DefaultCollection\",\"subscriptions\":[\"1052ff5a-aa43-4ca1-bd18-010399494ce5\"]},\"8c7a91db-cd41-43b6-af47-2e869654126d\":{\"collectionName\":\"test1\",\"subscriptions\":[\"1052ff5a-aa43-4ca1-bd18-010399494ce5\"]}}}",
+      "isContentBase64": false
+    }
+  }
+}

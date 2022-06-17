@@ -89,7 +89,7 @@ function New-AzFunctionApp {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsVersionType])]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        # FunctionsVersion type (2 or 3). Default Functions version is defined in HelperFunctions.ps1
+        # FunctionsVersion type (3 or 4). Default Functions version is defined in HelperFunctions.ps1
         ${FunctionsVersion},
 
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='Disable creating application insights resource during the function app creation. No logs will be available.')]
@@ -266,21 +266,25 @@ function New-AzFunctionApp {
                 }
 
                 $FunctionsVersion = $DefaultFunctionsVersion
-                Write-Verbose "FunctionsVersion not specified. Setting default FunctionsVersion to '$FunctionsVersion'." -Verbose
+                Write-Warning "FunctionsVersion not specified. Setting default value to '$FunctionsVersion'. $SetDefaultValueParameterWarningMessage"
             }
 
             ValidateFunctionsVersion -FunctionsVersion $FunctionsVersion
 
-            if (($Runtime -eq "DotNet") -and ($RuntimeVersion -ne $FunctionsVersion))
+            if ($FunctionsVersion -eq "3")
             {
-                Write-Verbose "'DotNet' runtime version is specified by FunctionsVersion. The value of the -RuntimeVersion will be set to '$FunctionsVersion'." -Verbose
-                $RuntimeVersion = $FunctionsVersion
+                # In Functions V3, RuntimeVersion matches FunctionsVersion. However, this is no longer the case for Functions V4 or higher
+                if (($Runtime -eq "DotNet") -and ($RuntimeVersion -ne $FunctionsVersion))
+                {
+                    Write-Verbose "'DotNet' runtime version is specified by FunctionsVersion. The value of the -RuntimeVersion will be set to '$FunctionsVersion'." -Verbose
+                    $RuntimeVersion = $FunctionsVersion
+                }
             }
 
             if (-not $OSType)
             {
                 $OSType = GetDefaultOSType -Runtime $Runtime
-                Write-Verbose "OSType for $Runtime is '$OSType'." -Verbose
+                Write-Warning "OSType not specified. Setting default value to '$OSType'. $SetDefaultValueParameterWarningMessage"
             }
 
             $runtimeJsonDefintion = GetRuntimeJsonDefinition -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
@@ -313,6 +317,13 @@ function New-AzFunctionApp {
                 foreach ($PropertyName in $runtimeJsonDefintion.SiteConfigPropertiesDictionary.Keys)
                 {
                     $value = $runtimeJsonDefintion.SiteConfigPropertiesDictionary[$PropertyName]
+
+                    if (($OSType -eq "Windows") -and ($FunctionsVersion -eq "3") -and ($PropertyName -eq "netFrameworkVersion"))
+                    {
+                        # For Functions V3 apps, do not set netFrameworkVersion.
+                        continue
+                    }
+
                     $siteCofig.$PropertyName = $value
                 }
             }            

@@ -3,7 +3,7 @@
 
 param([string]$path = './')
 
-$moduleList = @('ADDomainServices', 'Aks/Aks.Autorest', 'AppConfiguration','Blockchain','BotService','ChangeAnalysis','CloudService','Communication','Confluent','ConnectedKubernetes','ConnectedMachine','ContainerInstance','CostManagement','CustomProviders', 'DataBox', 'Databricks','Datadog','DataProtection','DedicatedHsm','DesktopVirtualization','DigitalTwins','DiskPool','DnsResolver','Elastic','Functions','HanaOnAzure','HealthBot','ImageBuilder','ImportExport','KubernetesConfiguration','Kusto','Maps','MariaDb','Migrate','MonitoringSolutions','MySql','Portal','PostgreSql','ProviderHub','Purview','RedisEnterpriseCache','ResourceGraph/ResourceGraph.Autorest','ResourceMover','SpringCloud','StreamAnalytics','Synapse/Synapse.Autorest','TimeSeriesInsights','VMware','Websites/Websites.Autorest','WindowsIotServices')
+$moduleList = @('ADDomainServices', 'Aks/Aks.Autorest', 'AppConfiguration', 'BotService','ChangeAnalysis','CloudService','Communication','Confluent','ConnectedKubernetes','ConnectedMachine','ContainerInstance','CostManagement','CustomProviders', 'DataBox', 'Databricks','Datadog','DataProtection','DedicatedHsm','DesktopVirtualization','DigitalTwins','DiskPool','DnsResolver','Elastic','Functions','HanaOnAzure','HealthBot','ImageBuilder','ImportExport','KubernetesConfiguration','Kusto','Maps','MariaDb','Migrate','MonitoringSolutions','MySql','Portal','PostgreSql','ProviderHub','Purview','RedisEnterpriseCache','ResourceGraph/ResourceGraph.Autorest','ResourceMover','SpringCloud','StreamAnalytics','Synapse/Synapse.Autorest','TimeSeriesInsights','VMware','Websites/Websites.Autorest','WindowsIotServices')
 
 $resultFile = './result.csv'
 

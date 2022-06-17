@@ -24,8 +24,10 @@ Lists available Disk Pool Skus in an Azure location.
 
 ### Example 1: List availability zones for a location
 ```powershell
-PS C:\> Get-AzDiskPoolZone -Location eastus
+Get-AzDiskPoolZone -Location eastus
+```
 
+```output
 SkuName  SkuTier  AvailabilityZone AdditionalCapability
 -------  -------  ---------------- --------------------
 Basic    Basic    {3, 1, 2}
@@ -89,7 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPoolZoneInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolZoneInfo
 
 ## NOTES
 

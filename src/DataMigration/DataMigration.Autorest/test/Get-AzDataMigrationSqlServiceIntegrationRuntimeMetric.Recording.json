@@ -1,0 +1,41 @@
+{
+  "Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric+[NoContext]+List+$POST+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trialTD/listMonitoringData?api-version=2021-10-30-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trialTD/listMonitoringData?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "66a9944f-92bd-4dc2-a4d1-98a6bb84d077" ],
+        "CommandName": [ "Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric" ],
+        "FullCommandName": [ "Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "e3f94134-9b13-48d2-a8e6-e3aa8cbe2bdc" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "0a34f889-bb6b-4360-989a-16e12b629d23" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164447Z:0a34f889-bb6b-4360-989a-16e12b629d23" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:44:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "59" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"default-ir\",\"nodes\":[{\"nodeName\":\"SPEDL58001V1\"}]}"
+    }
+  }
+}

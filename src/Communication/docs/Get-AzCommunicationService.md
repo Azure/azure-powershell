@@ -42,8 +42,10 @@ Get the CommunicationService and its properties.
 
 ### Example 1: List existing CommunicationServices for a Subscription
 ```powershell
-PS C:\> Get-AzCommunicationService -SubscriptionId 73fc3592-3cef-4300-5e19-8d18b65ce0e8
+Get-AzCommunicationService -SubscriptionId 73fc3592-3cef-4300-5e19-8d18b65ce0e8
+```
 
+```output
 Location Name             Type                                          AzureAsyncOperation
 -------- ----             ----                                          -------------------
 global   ContosoResource1   Microsoft.Communication/communicationServices
@@ -56,8 +58,10 @@ Returns a list of all ACS resources under that subscription.
 
 ### Example 2: Get infomation on specified Azure Communication resource
 ```powershell
-PS C:\> Get-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+Get-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+```
 
+```output
 Location Name           Type                                          AzureAsyncOperation
 -------- ----           ----                                          -------------------
 Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
@@ -114,8 +118,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -130,8 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription ID which uniquely identifies the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -154,7 +157,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
 
 ## NOTES
 
@@ -168,9 +171,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   - `[CommunicationServiceName <String>]`: The name of the CommunicationService resource.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The Azure region
-  - `[OperationId <String>]`: The ID of an ongoing async operation
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS

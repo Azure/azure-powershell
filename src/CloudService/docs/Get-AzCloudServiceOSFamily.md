@@ -37,8 +37,10 @@ Gets properties of a guest operating system family that can be specified in the 
 
 ### Example 1: Get all OS families in a location
 ```powershell
-PS C:\> Get-AzCloudServiceOSFamily -location 'westus2'
+Get-AzCloudServiceOSFamily -location 'westus2'
+```
 
+```output
 Name Label
 ---- -----
 5    Windows Server 2016
@@ -52,8 +54,10 @@ This command gets all OS families in location westus2
 
 ### Example 2: Get OS family
 ```powershell
-PS C:\> Get-AzCloudServiceOSFamily -location 'westus2' -OSFamilyName 5
+Get-AzCloudServiceOSFamily -location 'westus2' -OSFamilyName 5
+```
 
+```output
 Name Label
 ---- -----
 5    Windows Server 2016
@@ -162,10 +166,13 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   - `[CloudServiceName <String>]`: 
+  - `[IPConfigurationName <String>]`: The IP configuration name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Name of the location that the OS version pertains to.
+  - `[NetworkInterfaceName <String>]`: The name of the network interface.
   - `[OSFamilyName <String>]`: Name of the OS family.
   - `[OSVersionName <String>]`: Name of the OS version.
+  - `[PublicIPAddressName <String>]`: The name of the public IP Address.
   - `[ResourceGroupName <String>]`: 
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.

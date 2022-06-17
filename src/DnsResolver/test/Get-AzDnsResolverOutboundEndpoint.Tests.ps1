@@ -1,3 +1,11 @@
+."$PSScriptRoot\testDataGenerator.ps1"
+."$PSScriptRoot\virtualNetworkClient.ps1"
+."$PSScriptRoot\outboundEndpointAssertions.ps1"
+."$PSScriptRoot\stringExtensions.ps1"
+."$PSScriptRoot\Constants.ps1"
+
+Add-AssertionOperator -Name 'BeSuccessfullyCreatedOutboundEndpoint' -Test $Function:BeSuccessfullyCreatedOutboundEndpoint
+
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
@@ -11,16 +19,47 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+function CreateOutboundEndpoint([String]$OutboundEndpointName, [String]$DnsResolverName, [String]$VirtualNetworkName)
+{
+    if ($TestMode -eq "Record")
+        {
+            $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $VirtualNetworkName;
+            $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $VirtualNetworkName;
+        }
+
+    New-AzDnsResolver -Name $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetwork.Id -Location $LOCATION
+    
+    New-AzDnsResolverOutboundEndpoint -DnsResolverName $DnsResolverName -Name $OutboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME -SubnetId $subnet.Id -Location $LOCATION
+}
+
 Describe 'Get-AzDnsResolverOutboundEndpoint' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get single outbound endpoint by name, expect outbound endpoint by name retrieved' {
+        # ARRANGE
+        $dnsResolverName = "psdnsresolvername21";
+        $outboundEndpointName =  "psoutboundendpointname21";
+        $virtualNetworkName = "psvirtualnetworkname21";
+
+        CreateOutboundEndpoint -OutboundEndpointName $outboundEndpointName -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
+
+        # ACT
+        $outboundEndpoint =  Get-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME
+
+        # ASSERT
+        $outboundEndpoint | Should -BeSuccessfullyCreatedOutboundEndpoint
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'List Outbound Endpoints under a DNS Resolver name, expected exact number of outbound endpoints retrieved' {
+        # ARRANGE
+        $dnsResolverName = "psdnsresolvername22";
+        $outboundEndpointName =  "psoutboundendpointname22";
+        $virtualNetworkName = "psvirtualnetworkname22";
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        CreateOutboundEndpoint -OutboundEndpointName $outboundEndpointName -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
+        
+        # ACT
+        $outboundEndpoints =  Get-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME
+
+        # ASSERT
+        $outboundEndpoints.Count | Should -Be "1"
     }
 }

@@ -37,8 +37,10 @@ Gets properties of a forwarding rule in a DNS forwarding ruleset.
 
 ### Example 1: List all forwarding rule under the resource
 ```powershell
-PS C:\> Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName DnsResolverName -ResourceGroupName sampleRG
+Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName DnsResolverName -ResourceGroupName sampleRG
+```
 
+```output
 Location Name                                                            Type                                                Etag
 -------- ----                                                            ----                                                ----
 westus2  dnsForwardingRule                                            Microsoft.Network/dnsForwardingRulesets/forwardingRule "04005592-0000-0800-0000-60e7ec170000"
@@ -49,8 +51,10 @@ This command gets all forwarding rule under the resource.
 
 ### Example 1: Get forwarding rule by name
 ```powershell
-PS C:\> Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName DnsResolverName -ResourceGroupName sampleRG -Name forwardingRule
+Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName DnsResolverName -ResourceGroupName sampleRG -Name forwardingRule
+```
 
+```output
 Location Name                                                            Type                                                Etag
 -------- ----                                                            ----                                                ----
 westus2  dnsForwardingRule                                            Microsoft.Network/dnsForwardingRulesets/forwardingRule "04005592-0000-0800-0000-60e7ec170000"
@@ -198,6 +202,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
+  - `[VirtualNetworkName <String>]`: The name of the virtual network.
 
 ## RELATED LINKS
 

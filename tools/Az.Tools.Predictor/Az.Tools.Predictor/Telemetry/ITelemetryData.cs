@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation.Subsystem.Prediction;
+
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
@@ -30,8 +32,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public string RequestId { get; internal set; }
 
         /// <summary>
-        /// Gets the session id.
+        /// Gets the client that makes the calls.
         /// </summary>
-        string SessionId { get; internal set; }
+        public PredictionClient Client { get; }
     }
 }

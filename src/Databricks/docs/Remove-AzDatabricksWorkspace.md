@@ -31,15 +31,15 @@ Deletes the workspace.
 
 ### Example 1: Remove a Databricks workspace
 ```powershell
-PS C:\> Remove-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test
+Remove-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test
 ```
 
 This command removes a Databricks workspace from a resource group.
 
 ### Example 2: Remove a Databricks workspace by object
 ```powershell
-PS C:\> $dbr = Get-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test02
-PS C:\> Remove-AzDatabricksWorkspace -InputObject $dbr
+$dbr = Get-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test02
+Remove-AzDatabricksWorkspace -InputObject $dbr
 ```
 
 This command removes a Databricks workspace from a resource group.
@@ -220,8 +220,10 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+  - `[GroupId <String>]`: The name of the private link resource
   - `[Id <String>]`: Resource identity path
   - `[PeeringName <String>]`: The name of the workspace vNet peering.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WorkspaceName <String>]`: The name of the workspace.

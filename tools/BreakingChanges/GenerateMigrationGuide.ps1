@@ -1,3 +1,17 @@
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
 #Requires -Modules PSExcel
 [CmdletBinding()]
 Param(
@@ -22,7 +36,7 @@ $MigrationGuidePath = [System.IO.Path]::Combine($PSScriptRoot, '..', '..', 'docu
 $MigrationGuidePath = Resolve-Path -Path $MigrationGuidePath
 Set-Content -Path $MigrationGuidePath -Value "# Migration Guide for Az $TargetAzVersion.0`n"
 
-foreach ($Module in $TotalTable.Keys) {
+foreach ($Module in ($TotalTable.Keys | Sort-Object)) {
     Add-Content -Path $MigrationGuidePath -Value "## $Module`n"
     foreach ($BreakingChangeItem in $TotalTable[$Module]) {
         $CmdletName = $BreakingChangeItem.CmdletName
@@ -31,6 +45,13 @@ foreach ($Module in $TotalTable.Keys) {
         $After = $BreakingChangeItem.After
         Add-Content -Path $MigrationGuidePath -Value "### ``${CmdletName}```n${Description}`n"
         if ($Null -ne $Before) {
+            if (-not $Before.StartsWith("``````")) {
+                $Before = "``````powershell`n" + $Before + "`n``````"
+            }
+        
+            if ($Null -ne $After -and -not $After.StartsWith("``````")) {
+                $After = "``````powershell`n" + $After + "`n``````"
+            }
             Add-Content -Path $MigrationGuidePath -Value "#### Before`n${Before}`n#### After`n${After}`n`n"
         }
     }

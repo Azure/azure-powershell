@@ -3,6 +3,9 @@
   xmlns="http://schemas.microsoft.com/developer/msbuild/2003" Target="Build">
   
   <Import Project="$(MSBuildThisFileDirectory)..\..\Repo.props" />
+  <PropertyGroup>
+    <PowerShellCoreCommandPrefix>pwsh -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
+  </PropertyGroup>
 
   <PropertyGroup>
     <PowerShellCoreCommandPrefix>pwsh -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
@@ -21,6 +24,10 @@
         <PublishFiles Include="**" Exclude="*.proj"/>
     </ItemGroup>
     <Copy SourceFiles="@(PublishFiles)" DestinationFolder="$(ArtifactFolder)$(ModuleName)\%(RecursiveDir)" />
+  </Target>
+
+  <Target Name="GenerateHelp">
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\GenerateHelp -ArtifactFolder $(ArtifactFolder) -ModuleName $(ModuleName)" />
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">

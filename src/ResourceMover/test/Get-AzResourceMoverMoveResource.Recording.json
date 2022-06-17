@@ -1,13 +1,12 @@
 {
-  "Get-AzResourceMoverMoveResource+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources?api-version=2021-01-01+1": {
+  "Get-AzResourceMoverMoveResource+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources?api-version=2021-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources?api-version=2021-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources?api-version=2021-08-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "087b2c78-0b20-4fb7-ac47-2ce45a2207bd" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "72231d25-b470-431f-83cb-1b3b135cbfdc" ],
         "CommandName": [ "Get-AzResourceMoverMoveResource" ],
         "FullCommandName": [ "Get-AzResourceMoverMoveResource_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,32 +21,30 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "4b7b7646-c720-4b51-bd9c-09458db3734a" ],
-        "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "583743bc-a986-4448-8a31-d2ba33166322" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210131T053002Z:583743bc-a986-4448-8a31-d2ba33166322" ],
-        "Date": [ "Sun, 31 Jan 2021 05:30:02 GMT" ]
+        "x-ms-request-id": [ "55387725-ffd0-4458-bb00-9302e5ef9e85" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "fff2fe5c-c719-4a2e-a2d2-f6bd60c0967d" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211217T073304Z:fff2fe5c-c719-4a2e-a2d2-f6bd60c0967d" ],
+        "Date": [ "Fri, 17 Dec 2021 07:33:04 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1528" ],
+        "Content-Length": [ "1392" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"rms-sRg\",\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources/rms-sRg\",\"type\":null,\"properties\":{\"provisioningState\":\"Succeeded\",\"isResolveRequired\":false,\"sourceId\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg\",\"targetId\":null,\"existingTargetId\":null,\"resourceSettings\":{\"resourceType\":\"resourceGroups\",\"targetResourceName\":\"rms-sRg-westus2\"},\"moveStatus\":{\"moveState\":\"PreparePending\",\"jobStatus\":null,\"errors\":{\"properties\":{\"code\":\"DependencyComputationPending\",\"message\":\"The dependency computation is not completed for resource - /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg\u0027.\\n    Possible Causes: Dependency computation is pending for resource.\\n    Recommended Action: Validate dependencies to compute the dependencies.\\n    \",\"details\":[{\"code\":\"TargetResourceGroupNameAlreadyExists\",\"message\":\"A resource group with the same name /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg already exists.\\n      Possible Causes: A resource group with the same name exists.\\n      Recommended Action: Retry the operation by providing a different target resource group name.\\n    \",\"details\":null}]}}},\"dependsOn\":[],\"dependsOnOverrides\":[],\"errors\":null,\"sourceResourceSettings\":{\"resourceType\":\"resourceGroups\",\"targetResourceName\":\"rms-sRg\"}}}],\"nextLink\":null,\"totalCount\":1,\"summaryCollection\":null}",
-      "isContentBase64": false
+      "Content": "{\"value\":[{\"name\":\"rms-sRg\",\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources/rms-sRg\",\"type\":null,\"properties\":{\"provisioningState\":\"Succeeded\",\"isResolveRequired\":false,\"sourceId\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg\",\"targetId\":null,\"existingTargetId\":null,\"resourceSettings\":{\"resourceType\":\"resourceGroups\",\"targetResourceName\":\"rms-sRg-westeurope\"},\"moveStatus\":{\"moveState\":\"PreparePending\",\"jobStatus\":null,\"errors\":{\"properties\":{\"code\":\"DependencyComputationPending\",\"message\":\"The dependency computation is not completed for resource - /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg\u0027.\\n    Possible Causes: Dependency computation is pending for resource.\\n    Recommended Action: Validate dependencies to compute the dependencies.\\n    \",\"details\":[]}}},\"dependsOn\":[],\"dependsOnOverrides\":[],\"errors\":null,\"sourceResourceSettings\":{\"resourceType\":\"resourceGroups\",\"targetResourceName\":\"rms-sRg\"}},\"systemdata\":{\"createdBy\":\"yashjain@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-12-17T07:32:37.6783221Z\",\"lastModifiedBy\":\"yashjain@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-12-17T07:32:37.6783221Z\"}}],\"nextLink\":null,\"totalCount\":1,\"summaryCollection\":null}"
     }
   },
-  "Get-AzResourceMoverMoveResource+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources/rms-sRg?api-version=2021-01-01+1": {
+  "Get-AzResourceMoverMoveResource+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources/rms-sRg?api-version=2021-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources/rms-sRg?api-version=2021-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources/rms-sRg?api-version=2021-08-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "fa4840eb-70a3-4b85-a115-7d844e2b3e8f" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "30497eba-a305-4dda-a8e8-131e5974d9e1" ],
         "CommandName": [ "Get-AzResourceMoverMoveResource" ],
         "FullCommandName": [ "Get-AzResourceMoverMoveResource_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -62,21 +59,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "3daa99c2-ef1b-4a85-a6ee-cfe13e4a0676" ],
-        "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-correlation-request-id": [ "6681fd1d-b95f-405f-a890-d07d072a8045" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210131T053003Z:6681fd1d-b95f-405f-a890-d07d072a8045" ],
-        "Date": [ "Sun, 31 Jan 2021 05:30:02 GMT" ]
+        "x-ms-request-id": [ "06a967aa-97d6-4e35-86bd-9f7c0e4c83e2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-correlation-request-id": [ "c8c2894b-6001-456f-a31b-c4475c3afd8e" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211217T073304Z:c8c2894b-6001-456f-a31b-c4475c3afd8e" ],
+        "Date": [ "Fri, 17 Dec 2021 07:33:04 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1460" ],
+        "Content-Length": [ "1324" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"rms-sRg\",\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources/rms-sRg\",\"type\":null,\"properties\":{\"provisioningState\":\"Succeeded\",\"isResolveRequired\":false,\"sourceId\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg\",\"targetId\":null,\"existingTargetId\":null,\"resourceSettings\":{\"resourceType\":\"resourceGroups\",\"targetResourceName\":\"rms-sRg-westus2\"},\"moveStatus\":{\"moveState\":\"PreparePending\",\"jobStatus\":null,\"errors\":{\"properties\":{\"code\":\"DependencyComputationPending\",\"message\":\"The dependency computation is not completed for resource - /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg\u0027.\\n    Possible Causes: Dependency computation is pending for resource.\\n    Recommended Action: Validate dependencies to compute the dependencies.\\n    \",\"details\":[{\"code\":\"TargetResourceGroupNameAlreadyExists\",\"message\":\"A resource group with the same name /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg already exists.\\n      Possible Causes: A resource group with the same name exists.\\n      Recommended Action: Retry the operation by providing a different target resource group name.\\n    \",\"details\":null}]}}},\"dependsOn\":[],\"dependsOnOverrides\":[],\"errors\":null,\"sourceResourceSettings\":{\"resourceType\":\"resourceGroups\",\"targetResourceName\":\"rms-sRg\"}}}",
-      "isContentBase64": false
+      "Content": "{\"name\":\"rms-sRg\",\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources/rms-sRg\",\"type\":null,\"properties\":{\"provisioningState\":\"Succeeded\",\"isResolveRequired\":false,\"sourceId\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg\",\"targetId\":null,\"existingTargetId\":null,\"resourceSettings\":{\"resourceType\":\"resourceGroups\",\"targetResourceName\":\"rms-sRg-westeurope\"},\"moveStatus\":{\"moveState\":\"PreparePending\",\"jobStatus\":null,\"errors\":{\"properties\":{\"code\":\"DependencyComputationPending\",\"message\":\"The dependency computation is not completed for resource - /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg\u0027.\\n    Possible Causes: Dependency computation is pending for resource.\\n    Recommended Action: Validate dependencies to compute the dependencies.\\n    \",\"details\":[]}}},\"dependsOn\":[],\"dependsOnOverrides\":[],\"errors\":null,\"sourceResourceSettings\":{\"resourceType\":\"resourceGroups\",\"targetResourceName\":\"rms-sRg\"}},\"systemdata\":{\"createdBy\":\"yashjain@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-12-17T07:32:37.6783221Z\",\"lastModifiedBy\":\"yashjain@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-12-17T07:32:37.6783221Z\"}}"
     }
   }
 }

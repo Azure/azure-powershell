@@ -1,13 +1,12 @@
 {
-  "AzVMwareLocationTrialAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/providers/Microsoft.AVS/locations/westcentralus/checkTrialAvailability?api-version=2021-06-01+1": {
+  "AzVMwareLocationTrialAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/eastus2/checkTrialAvailability?api-version=2021-12-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/providers/Microsoft.AVS/locations/westcentralus/checkTrialAvailability?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/eastus2/checkTrialAvailability?api-version=2021-12-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "228" ],
-        "x-ms-client-request-id": [ "50f69e1b-ab6f-4698-a9cb-370d2ff8b4ed" ],
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "45edc7b6-f850-4181-81c4-e6ff545d53e0" ],
         "CommandName": [ "Test-AzVMwareLocationTrialAvailability" ],
         "FullCommandName": [ "Test-AzVMwareLocationTrialAvailability_Check" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -20,25 +19,14 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
-        "x-ms-request-id": [ "977a0061-9e71-469f-8a64-2af5b68261fe" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "e17228e2-bc63-43ac-a6af-35ccf790fcfc" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T042101Z:e17228e2-bc63-43ac-a6af-35ccf790fcfc" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D03A890D768E49288B14640E3580CC7A Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:21:00Z" ],
-        "Date": [ "Thu, 29 Jul 2021 04:21:01 GMT" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:12:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "45" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "46" ],
+        "Content-Type": [ "application/json" ]
       },
-      "Content": "{\"availableHosts\":0,\"status\":\"TrialDisabled\"}",
-      "isContentBase64": false
+      "Content": "{\"status\":\"TrialAvailable\",\"availableHosts\":4}"
     }
   }
 }

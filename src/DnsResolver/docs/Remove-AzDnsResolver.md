@@ -33,15 +33,15 @@ WARNING: This operation cannot be undone.
 
 ### Example 1: Remove a DNS Resolver by name
 ```powershell
-PS C:\> Remove-AzDnsResolver -ResourceGroupName powershell-test-rg -Name psdnsresolvername33nmy1fz
+Remove-AzDnsResolver -ResourceGroupName powershell-test-rg -Name psdnsresolvername33nmy1fz
 ```
 
 This command removes a DNS Resolver by name.
 
 ### Example 2: Remove a DNS Resolver by identity
 ```powershell
-PS C:\> $dnsResolverObject = Get-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
-PS C:\> Remove-AzDnsResolver -InputObject $dnsResolverObject 
+$dnsResolverObject = Get-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
+Remove-AzDnsResolver -InputObject $dnsResolverObject 
 ```
 
 This command removes a DNS Resolver by identity.
@@ -248,6 +248,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
+  - `[VirtualNetworkName <String>]`: The name of the virtual network.
 
 ## RELATED LINKS
 

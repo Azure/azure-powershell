@@ -26,8 +26,9 @@ This can range from testing the connection to the underlying web service behind 
 
 ### Example 1: Test a Stream Analytics function
 ```powershell
-PS C:\> Test-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name mlsfunction-01
-
+Test-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name mlsfunction-01
+```
+```output
 Status
 ------
 TestSucceeded

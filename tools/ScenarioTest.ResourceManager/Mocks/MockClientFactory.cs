@@ -209,12 +209,20 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public void AddUserAgent(string productName, string productVersion)
         {
+            if (string.IsNullOrEmpty(productName))
+            {
+                return;
+            }
+            if (string.IsNullOrEmpty(productVersion))
+            {
+                productVersion = "";
+            }
             this.UniqueUserAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
         }
 
         public void AddUserAgent(string productName)
         {
-            this.AddUserAgent(productName, string.Empty);
+            this.AddUserAgent(productName, "");
         }
 
         public HashSet<ProductInfoHeaderValue> UniqueUserAgents { get; set; }

@@ -6,7 +6,7 @@ parameters:
 steps:
 - task: NodeTool@0
   condition: eq(variables.IsGenerateBased, true)
-  displayName: Install autorest
+  displayName: Install Autorest
   inputs:
     versionSpec: '14.17.1'
     command: custom
@@ -14,13 +14,13 @@ steps:
     customCommand: install autorest@latest
 - task: PowerShell@2
   condition: eq(variables.IsGenerateBased, true)
-  displayName: Setup environment for autorest
+  displayName: Setup environment for Autorest
   inputs:
     targetType: inline
     script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
     pwsh: true
 - task: PowerShell@2
-  displayName: 'Check Ingored File'
+  displayName: 'Check Ignored File'
   inputs:
     filePath: tools/CheckIgnoredFile.ps1
 
@@ -39,4 +39,4 @@ steps:
 
 - template: publish-artifacts-steps.yml
   parameters:
-    artifactName: build-${{ parameters.osName }}
+    artifactName: build-${{ parameters.testFramework }}

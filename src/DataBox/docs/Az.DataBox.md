@@ -18,35 +18,35 @@ Gets information about the specified job.
 This method gets the unencrypted secrets related to the job.
 
 ### [New-AzDataBoxContactDetailsObject](New-AzDataBoxContactDetailsObject.md)
-Create a in-memory object for ContactDetails
+Create an in-memory object for ContactDetails.
 
 ### [New-AzDataBoxDiskJobDetailsObject](New-AzDataBoxDiskJobDetailsObject.md)
-Create a in-memory object for DataBoxDiskJobDetails
+Create an in-memory object for DataBoxDiskJobDetails.
 
 ### [New-AzDataBoxHeavyJobDetailsObject](New-AzDataBoxHeavyJobDetailsObject.md)
-Create a in-memory object for DataBoxHeavyJobDetails
+Create an in-memory object for DataBoxHeavyJobDetails.
 
 ### [New-AzDataBoxJob](New-AzDataBoxJob.md)
 Creates a new job with the specified parameters.
 Existing job cannot be updated with this API and should instead be updated with the Update job API.
 
 ### [New-AzDataBoxJobDetailsObject](New-AzDataBoxJobDetailsObject.md)
-Create a in-memory object for DataBoxJobDetails
+Create an in-memory object for DataBoxJobDetails.
 
 ### [New-AzDataBoxKeyEncryptionKeyObject](New-AzDataBoxKeyEncryptionKeyObject.md)
-Create a in-memory object for KeyEncryptionKey
+Create an in-memory object for KeyEncryptionKey.
 
 ### [New-AzDataBoxManagedDiskDetailsObject](New-AzDataBoxManagedDiskDetailsObject.md)
-Create a in-memory object for ManagedDiskDetails
+Create an in-memory object for ManagedDiskDetails.
 
 ### [New-AzDataBoxShippingAddressObject](New-AzDataBoxShippingAddressObject.md)
-Create a in-memory object for ShippingAddress
+Create an in-memory object for ShippingAddress.
 
 ### [New-AzDataBoxStorageAccountDetailsObject](New-AzDataBoxStorageAccountDetailsObject.md)
-Create a in-memory object for StorageAccountDetails
+Create an in-memory object for StorageAccountDetails.
 
 ### [New-AzDataBoxTransferConfigurationObject](New-AzDataBoxTransferConfigurationObject.md)
-Create a in-memory object for TransferConfiguration
+Create an in-memory object for TransferConfiguration.
 
 ### [Remove-AzDataBoxJob](Remove-AzDataBoxJob.md)
 Deletes a job.

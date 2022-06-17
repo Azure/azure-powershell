@@ -23,8 +23,10 @@ Create a in-memory object for Acl
 
 ### Example 1: Create an acl object
 ```powershell
-PS C:\> New-AzDiskPoolAclObject -InitiatorIqn 'iqn.2021-05.com.microsoft:target0' -MappedLun @('lun0')
+New-AzDiskPoolAclObject -InitiatorIqn 'iqn.2021-05.com.microsoft:target0' -MappedLun @('lun0')
+```
 
+```output
 InitiatorIqn                      MappedLun
 ------------                      ---------
 iqn.2021-05.com.microsoft:target0 {lun0}
@@ -71,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.Acl
+### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Acl
 
 ## NOTES
 

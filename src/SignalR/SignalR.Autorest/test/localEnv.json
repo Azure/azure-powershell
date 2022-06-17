@@ -1,0 +1,7 @@
+{
+  "SubscriptionId": "9caf2a1e-9c49-49b6-89a2-56bdec7e3f97",
+  "Location": "eastus",
+  "WpsPrefix": "azwps-",
+  "ResourceGroupName": "azwps-test-rg",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+}

@@ -1,5 +1,6 @@
 
 ."$PSScriptRoot\testDataGenerator.ps1"
+."$PSScriptRoot\Constants.ps1"
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
@@ -7,12 +8,10 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 
 function CreateVirtualNetwork([String]$SubscriptionId, [String]$ResourceGroupName, [String]$VirtualNetworkName){
-    $nrpSimulatorUri = $env.NRP_SIMULATOR_URI
-
-    if( $null -eq $nrpSimulatorUri){
-        return CreateNrpVirtualNetwork -ResourceGroupName $ResourceGroupName  -Location $env.LocationForVirtualNetwork -VirtualNetworkName $VirtualNetworkName AddressPrefix $env.AddressPrefix
+    if( $null -eq $NRP_SIMULATOR_URI){
+        return CreateNrpVirtualNetwork -ResourceGroupName $ResourceGroupName  -Location $LOCATION -VirtualNetworkName $VirtualNetworkName AddressPrefix $env.AddressPrefix
     }else {
-        return CreateNrpMockVirtualNetwork -SubscriptionId  $SubscriptionId -ResourceGroupName $ResourceGroupName -VirtualNetworkName $VirtualNetworkName -NrpSimulatorUri $nrpSimulatorUri
+        return CreateNrpMockVirtualNetwork -SubscriptionId  $SubscriptionId -ResourceGroupName $ResourceGroupName -VirtualNetworkName $VirtualNetworkName
     }
 
 }
@@ -22,16 +21,16 @@ function CreateNrpVirtualNetwork([String]$ResourceGroupName, [String]$Location, 
     return $virtualNetwork
 }
 
-function CreateNrpMockVirtualNetwork([String]$SubscriptionId, [String]$ResourceGroupName, [String]$VirtualNetworkName, [String]$NrpSimulatorUri) {
+function CreateNrpMockVirtualNetwork([String]$SubscriptionId, [String]$ResourceGroupName, [String]$VirtualNetworkName) {
     $contentType3 = "application/json"
     $relativeRequestUri = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VirtualNetworkName"
-    $completeVirtualNetworkRequestUri = $NrpSimulatorUri + $relativeRequestUri
+    $completeVirtualNetworkRequestUri = $NRP_SIMULATOR_URI + $relativeRequestUri
 
     $data = [ordered]@{
         location = "eastus2"
         properties = @{
           addressSpace = @{
-            addressPrefixes = @({"40.121.0.0/16 "})
+            addressPrefixes = @({"10.0.0.0/8"})
          }
         } 
         tags = GetRandomHashtable -size 2
@@ -41,23 +40,22 @@ function CreateNrpMockVirtualNetwork([String]$SubscriptionId, [String]$ResourceG
     return $Result
 }
 
-function CreateSubnet([String]$SubscriptionId, [String]$ResourceGroupName, [String]$VirtualNetworkName, [String]$SubnetName){
-    $nrpSimulatorUri = $env.NRP_SIMULATOR_URI
-
-    if($null -eq $nrpSimulatorUri){
+function CreateSubnet([String]$SubscriptionId, [String]$ResourceGroupName, [String]$VirtualNetworkName){
+    if($null -eq $NRP_SIMULATOR_URI){
         throw [System.NotImplementedException]
     }else {
-        return CreateNrpMockSubnet -SubscriptionId  $SubscriptionId -ResourceGroupName $ResourceGroupName -VirtualNetworkName $VirtualNetworkName -SubnetName $SubnetName -NrpSimulatorUri $nrpSimulatorUri
+        return CreateNrpMockSubnet -SubscriptionId  $SubscriptionId -ResourceGroupName $ResourceGroupName -VirtualNetworkName $VirtualNetworkName
     }
 }
 
-function CreateNrpMockSubnet([String]$SubscriptionId, [String]$ResourceGroupName, [String]$VirtualNetworkName, [String]$SubnetName, [String]$NrpSimulatorUri) {
+function CreateNrpMockSubnet([String]$SubscriptionId, [String]$ResourceGroupName, [String]$VirtualNetworkName) {
     $contentType3 = "application/json"
+    $subnetName = "snet-sim2"
     $relativeRequestUri = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VirtualNetworkName/subnets/$SubnetName"
-    $completeVirtualNetworkRequestUri = $NrpSimulatorUri + $relativeRequestUri
+    $completeVirtualNetworkRequestUri = $NRP_SIMULATOR_URI + $relativeRequestUri
     $data = [ordered]@{
         properties = @{
-            addressPrefix = "40.121.0.0/16 "
+            addressPrefix = "10.2.2.0/28"
         } 
         tags = GetRandomHashtable -size 2
     }

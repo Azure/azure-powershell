@@ -1,0 +1,586 @@
+{
+  "Remove-AzWebPubSub+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete?api-version=2021-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete?api-version=2021-10-01",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_S1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "73" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "0c88126c-0fd6-4ea8-ae78-5376f83d1ebd" ],
+        "x-rp-server-mvid": [ "052104b6-a76f-4c87-b183-74bee8bc2fa4" ],
+        "x-ms-request-id": [ "4b1ef4ae-9062-4ed1-a4da-9f7fd59c9c85" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "28de56c8-beb9-46b8-bf04-bcbed6acf4cc" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T090111Z:28de56c8-beb9-46b8-bf04-bcbed6acf4cc" ],
+        "Date": [ "Mon, 18 Oct 2021 09:01:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1153" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.62.134.189\",\"hostName\":\"azwps-remove-wps-delete.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-18T08:39:42.4691776Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-18T09:01:09.1332152Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete\",\"name\":\"azwps-remove-wps-Delete\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWebPubSub+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete?api-version=2021-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete?api-version=2021-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "45" ],
+        "x-ms-client-request-id": [ "0c88126c-0fd6-4ea8-ae78-5376f83d1ebd" ],
+        "CommandName": [ "Az.WebPubSub.internal\\New-AzWebPubSub" ],
+        "FullCommandName": [ "New-AzWebPubSub_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "0c88126c-0fd6-4ea8-ae78-5376f83d1ebd" ],
+        "x-rp-server-mvid": [ "052104b6-a76f-4c87-b183-74bee8bc2fa4" ],
+        "x-ms-request-id": [ "916303cd-a5a1-40ef-83d1-72080ea4f5ff" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "cddb0874-ae5e-433e-8e65-7c5e03a1f868" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T090142Z:cddb0874-ae5e-433e-8e65-7c5e03a1f868" ],
+        "Date": [ "Mon, 18 Oct 2021 09:01:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1153" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.62.134.189\",\"hostName\":\"azwps-remove-wps-delete.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-18T08:39:42.4691776Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-18T09:01:09.1332152Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete\",\"name\":\"azwps-remove-wps-Delete\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWebPubSub+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete?api-version=2021-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete?api-version=2021-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "0c88126c-0fd6-4ea8-ae78-5376f83d1ebd" ],
+        "CommandName": [ "Az.WebPubSub.internal\\New-AzWebPubSub" ],
+        "FullCommandName": [ "New-AzWebPubSub_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "0c88126c-0fd6-4ea8-ae78-5376f83d1ebd" ],
+        "x-rp-server-mvid": [ "052104b6-a76f-4c87-b183-74bee8bc2fa4" ],
+        "x-ms-request-id": [ "e9dbc73e-b740-4838-86c7-38a1411fcd74" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "fb2e2559-29f8-4936-bb04-283fee8ce22a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T090142Z:fb2e2559-29f8-4936-bb04-283fee8ce22a" ],
+        "Date": [ "Mon, 18 Oct 2021 09:01:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1153" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.62.134.189\",\"hostName\":\"azwps-remove-wps-delete.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-18T08:39:42.4691776Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-18T09:01:09.1332152Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete\",\"name\":\"azwps-remove-wps-Delete\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWebPubSub+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete?api-version=2021-10-01+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete?api-version=2021-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "cbc021a0-668a-424d-94f4-e9bc1c71cbf4" ],
+        "CommandName": [ "Remove-AzWebPubSub" ],
+        "FullCommandName": [ "Remove-AzWebPubSub_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete/operationResults/48877043-84f4-416e-86d9-48d87c7bb852?api-version=2021-10-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "cbc021a0-668a-424d-94f4-e9bc1c71cbf4" ],
+        "x-rp-server-mvid": [ "052104b6-a76f-4c87-b183-74bee8bc2fa4" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete/operationStatuses/48877043-84f4-416e-86d9-48d87c7bb852?api-version=2021-10-01" ],
+        "x-ms-request-id": [ "ae4009d6-aa19-4122-80c7-060025c4255a" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "d38169a8-ceee-4ab3-a50e-b780f2f8bd91" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T090143Z:d38169a8-ceee-4ab3-a50e-b780f2f8bd91" ],
+        "Date": [ "Mon, 18 Oct 2021 09:01:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWebPubSub+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete/operationStatuses/48877043-84f4-416e-86d9-48d87c7bb852?api-version=2021-10-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete/operationStatuses/48877043-84f4-416e-86d9-48d87c7bb852?api-version=2021-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "48" ],
+        "x-ms-client-request-id": [ "cbc021a0-668a-424d-94f4-e9bc1c71cbf4" ],
+        "CommandName": [ "Remove-AzWebPubSub" ],
+        "FullCommandName": [ "Remove-AzWebPubSub_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "6ea47454-319c-48f9-b8f0-95f8dad7287d" ],
+        "x-ms-correlation-request-id": [ "6ea47454-319c-48f9-b8f0-95f8dad7287d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T090214Z:6ea47454-319c-48f9-b8f0-95f8dad7287d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 18 Oct 2021 09:02:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "243" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete\u0027 under resource group \u0027azwps-test-rg\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWebPubSub+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete/operationResults/48877043-84f4-416e-86d9-48d87c7bb852?api-version=2021-10-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete/operationResults/48877043-84f4-416e-86d9-48d87c7bb852?api-version=2021-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "49" ],
+        "x-ms-client-request-id": [ "cbc021a0-668a-424d-94f4-e9bc1c71cbf4" ],
+        "CommandName": [ "Remove-AzWebPubSub" ],
+        "FullCommandName": [ "Remove-AzWebPubSub_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "84cb7f2f-dcfe-49fb-8ffd-7de5c6c48102" ],
+        "x-ms-correlation-request-id": [ "84cb7f2f-dcfe-49fb-8ffd-7de5c6c48102" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T090214Z:84cb7f2f-dcfe-49fb-8ffd-7de5c6c48102" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 18 Oct 2021 09:02:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "243" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.SignalRService/WebPubSub/azwps-remove-wps-Delete\u0027 under resource group \u0027azwps-test-rg\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWebPubSub+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity?api-version=2021-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity?api-version=2021-10-01",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_S1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "73" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationResults/a5764440-fe1e-4fa2-a90c-8e0204fba48b?api-version=2021-10-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "dffbfac4-5887-4a81-821b-75058afc26ed" ],
+        "x-rp-server-mvid": [ "052104b6-a76f-4c87-b183-74bee8bc2fa4" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationStatuses/a5764440-fe1e-4fa2-a90c-8e0204fba48b?api-version=2021-10-01" ],
+        "x-ms-request-id": [ "e4ff1c33-05d7-4be3-a639-fd4716aff2c7" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "d27a1e43-c6d0-4bf1-ae39-181281504143" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T090221Z:d27a1e43-c6d0-4bf1-ae39-181281504143" ],
+        "Date": [ "Mon, 18 Oct 2021 09:02:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1182" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Creating\",\"externalIP\":null,\"hostName\":\"azwps-remove-wps-deleteviaidentity.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0-preview\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-18T09:02:17.5432212Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-18T09:02:17.5432212Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity\",\"name\":\"azwps-remove-wps-DeleteViaIdentity\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWebPubSub+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationStatuses/a5764440-fe1e-4fa2-a90c-8e0204fba48b?api-version=2021-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationStatuses/a5764440-fe1e-4fa2-a90c-8e0204fba48b?api-version=2021-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "51" ],
+        "x-ms-client-request-id": [ "dffbfac4-5887-4a81-821b-75058afc26ed" ],
+        "CommandName": [ "Az.WebPubSub.internal\\New-AzWebPubSub" ],
+        "FullCommandName": [ "New-AzWebPubSub_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11964" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "dffbfac4-5887-4a81-821b-75058afc26ed" ],
+        "x-rp-server-mvid": [ "052104b6-a76f-4c87-b183-74bee8bc2fa4" ],
+        "x-ms-request-id": [ "f97cd04b-5a2e-45eb-9833-c8cadd23d380" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "101d5e15-99cd-49fd-b129-fc9ceab3022f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T090252Z:101d5e15-99cd-49fd-b129-fc9ceab3022f" ],
+        "Date": [ "Mon, 18 Oct 2021 09:02:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "332" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationStatuses/a5764440-fe1e-4fa2-a90c-8e0204fba48b\",\"name\":\"a5764440-fe1e-4fa2-a90c-8e0204fba48b\",\"status\":\"Running\",\"startTime\":\"2021-10-18T09:02:19.7301026Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWebPubSub+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationStatuses/a5764440-fe1e-4fa2-a90c-8e0204fba48b?api-version=2021-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationStatuses/a5764440-fe1e-4fa2-a90c-8e0204fba48b?api-version=2021-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "52" ],
+        "x-ms-client-request-id": [ "dffbfac4-5887-4a81-821b-75058afc26ed" ],
+        "CommandName": [ "Az.WebPubSub.internal\\New-AzWebPubSub" ],
+        "FullCommandName": [ "New-AzWebPubSub_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11963" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "dffbfac4-5887-4a81-821b-75058afc26ed" ],
+        "x-rp-server-mvid": [ "052104b6-a76f-4c87-b183-74bee8bc2fa4" ],
+        "x-ms-request-id": [ "2bfc157d-97fe-463d-8145-8cd63911b69e" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "6c3a5bfa-7553-4f6e-b7a5-e2c32edf6a1d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T090322Z:6c3a5bfa-7553-4f6e-b7a5-e2c32edf6a1d" ],
+        "Date": [ "Mon, 18 Oct 2021 09:03:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "332" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationStatuses/a5764440-fe1e-4fa2-a90c-8e0204fba48b\",\"name\":\"a5764440-fe1e-4fa2-a90c-8e0204fba48b\",\"status\":\"Running\",\"startTime\":\"2021-10-18T09:02:19.7301026Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWebPubSub+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationStatuses/a5764440-fe1e-4fa2-a90c-8e0204fba48b?api-version=2021-10-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationStatuses/a5764440-fe1e-4fa2-a90c-8e0204fba48b?api-version=2021-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "53" ],
+        "x-ms-client-request-id": [ "dffbfac4-5887-4a81-821b-75058afc26ed" ],
+        "CommandName": [ "Az.WebPubSub.internal\\New-AzWebPubSub" ],
+        "FullCommandName": [ "New-AzWebPubSub_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11962" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "dffbfac4-5887-4a81-821b-75058afc26ed" ],
+        "x-rp-server-mvid": [ "052104b6-a76f-4c87-b183-74bee8bc2fa4" ],
+        "x-ms-request-id": [ "5f839b8a-88a2-4a33-aae6-57827098a252" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "12cb2a00-655e-4531-a740-556c679d52d1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T090352Z:12cb2a00-655e-4531-a740-556c679d52d1" ],
+        "Date": [ "Mon, 18 Oct 2021 09:03:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "375" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationStatuses/a5764440-fe1e-4fa2-a90c-8e0204fba48b\",\"name\":\"a5764440-fe1e-4fa2-a90c-8e0204fba48b\",\"status\":\"Succeeded\",\"startTime\":\"2021-10-18T09:02:19.7301026Z\",\"endTime\":\"2021-10-18T09:03:36.6921365Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWebPubSub+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity?api-version=2021-10-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity?api-version=2021-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "dffbfac4-5887-4a81-821b-75058afc26ed" ],
+        "CommandName": [ "Az.WebPubSub.internal\\New-AzWebPubSub" ],
+        "FullCommandName": [ "New-AzWebPubSub_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11961" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "dffbfac4-5887-4a81-821b-75058afc26ed" ],
+        "x-rp-server-mvid": [ "052104b6-a76f-4c87-b183-74bee8bc2fa4" ],
+        "x-ms-request-id": [ "e8c3da77-2ee4-4b68-9e24-497bc7f8f921" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "539fb589-36d4-4ea8-9fd6-afd289b47f25" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T090353Z:539fb589-36d4-4ea8-9fd6-afd289b47f25" ],
+        "Date": [ "Mon, 18 Oct 2021 09:03:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1186" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.62.134.173\",\"hostName\":\"azwps-remove-wps-deleteviaidentity.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-18T09:02:17.5432212Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-18T09:02:17.5432212Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity\",\"name\":\"azwps-remove-wps-DeleteViaIdentity\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWebPubSub+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity?api-version=2021-10-01+6": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity?api-version=2021-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "55" ],
+        "x-ms-client-request-id": [ "44e15903-c0f0-456d-bc1c-ccfa32003623" ],
+        "CommandName": [ "Remove-AzWebPubSub" ],
+        "FullCommandName": [ "Remove-AzWebPubSub_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationResults/73432ff2-3596-4aa7-b1ae-4a3200ae8851?api-version=2021-10-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "44e15903-c0f0-456d-bc1c-ccfa32003623" ],
+        "x-rp-server-mvid": [ "052104b6-a76f-4c87-b183-74bee8bc2fa4" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationStatuses/73432ff2-3596-4aa7-b1ae-4a3200ae8851?api-version=2021-10-01" ],
+        "x-ms-request-id": [ "f228c3b0-86b4-450c-9f7c-d80d3f694447" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-correlation-request-id": [ "51e280af-af89-4146-abae-77a64c3d8788" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T090354Z:51e280af-af89-4146-abae-77a64c3d8788" ],
+        "Date": [ "Mon, 18 Oct 2021 09:03:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWebPubSub+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationStatuses/73432ff2-3596-4aa7-b1ae-4a3200ae8851?api-version=2021-10-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationStatuses/73432ff2-3596-4aa7-b1ae-4a3200ae8851?api-version=2021-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "56" ],
+        "x-ms-client-request-id": [ "44e15903-c0f0-456d-bc1c-ccfa32003623" ],
+        "CommandName": [ "Remove-AzWebPubSub" ],
+        "FullCommandName": [ "Remove-AzWebPubSub_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "fa42dd83-28aa-41d5-ad0a-941e7171fccc" ],
+        "x-ms-correlation-request-id": [ "fa42dd83-28aa-41d5-ad0a-941e7171fccc" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T090424Z:fa42dd83-28aa-41d5-ad0a-941e7171fccc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 18 Oct 2021 09:04:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "254" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity\u0027 under resource group \u0027azwps-test-rg\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWebPubSub+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationResults/73432ff2-3596-4aa7-b1ae-4a3200ae8851?api-version=2021-10-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity/operationResults/73432ff2-3596-4aa7-b1ae-4a3200ae8851?api-version=2021-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "57" ],
+        "x-ms-client-request-id": [ "44e15903-c0f0-456d-bc1c-ccfa32003623" ],
+        "CommandName": [ "Remove-AzWebPubSub" ],
+        "FullCommandName": [ "Remove-AzWebPubSub_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "4243a35a-ede6-4375-9a34-d4a856dd6d3d" ],
+        "x-ms-correlation-request-id": [ "4243a35a-ede6-4375-9a34-d4a856dd6d3d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T090424Z:4243a35a-ede6-4375-9a34-d4a856dd6d3d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 18 Oct 2021 09:04:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "254" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.SignalRService/WebPubSub/azwps-remove-wps-DeleteViaIdentity\u0027 under resource group \u0027azwps-test-rg\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  }
+}

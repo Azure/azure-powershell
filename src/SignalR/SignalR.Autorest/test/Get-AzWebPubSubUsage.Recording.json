@@ -1,0 +1,45 @@
+{
+  "Get-AzWebPubSubUsage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/usages?api-version=2021-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/usages?api-version=2021-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "2675b55e-8cb3-446a-a40a-40d4515ee64b" ],
+        "CommandName": [ "Get-AzWebPubSubUsage" ],
+        "FullCommandName": [ "Get-AzWebPubSubUsage_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "2675b55e-8cb3-446a-a40a-40d4515ee64b" ],
+        "x-rp-server-mvid": [ "052104b6-a76f-4c87-b183-74bee8bc2fa4" ],
+        "x-ms-request-id": [ "8121a223-5b53-4a60-bceb-bc045249cec4" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "de99edbd-e7fb-48b1-964a-1a45e0060fb0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T085407Z:de99edbd-e7fb-48b1-964a-1a45e0060fb0" ],
+        "Date": [ "Mon, 18 Oct 2021 08:54:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "551" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/usages/FreeTierInstances\",\"currentValue\":5,\"limit\":5,\"name\":{\"value\":\"FreeTierInstances\",\"localizedValue\":\"Free Tier SignalR Instances per subscription\"},\"unit\":\"Count\"},{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/usages/SignalRTotalUnits\",\"currentValue\":232,\"limit\":1500,\"name\":{\"value\":\"SignalRTotalUnits\",\"localizedValue\":\"SignalRTotalUnits\"},\"unit\":\"Count\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

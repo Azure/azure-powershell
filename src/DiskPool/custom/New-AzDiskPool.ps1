@@ -16,31 +16,33 @@
 <#
 .Synopsis
 Create or Update Disk pool.
+This create or update operation can take 15 minutes to complete.
+This is expected service behavior.
 .Description
 Create or Update Disk pool.
+This create or update operation can take 15 minutes to complete.
+This is expected service behavior.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' -Location 'eastus2euap' -SkuName 'Standard' -SkuTier 'Standard' -SubnetId '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/storagepool-rg-test/providers/Microsoft.Network/virtualNetworks/disk-pool-vnet/subnets/default' -AvailabilityZone "1"
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Name             Location    Status    ProvisioningState AvailabilityZone
+----             --------    ------    ----------------- ----------------
+disk-pool-1      eastus2euap Running   Succeeded         {3}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPool
+Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-DISK <IDisk[]>: List of Azure Managed Disks to attach to a Disk Pool.
+DISKID <string[]>: List of Azure Managed Disks to attach to a Disk Pool.
   Id <String>: Unique Azure Resource ID of the Managed Disk.
 .Link
 https://docs.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
 #>
 function New-AzDiskPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -64,12 +66,6 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
-    [System.String[]]
-    # Logical zone for Disk Pool resource; example: ["1"].
-    ${AvailabilityZone},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
@@ -78,9 +74,8 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
-    [ValidateSet('Standard')]
     [System.String]
-    # .
+    # Sku name
     ${SkuName},
 
     [Parameter(Mandatory)]
@@ -90,28 +85,50 @@ param(
     ${SubnetId},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String[]]
     # List of additional capabilities for a Disk Pool.
     ${AdditionalCapability},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String[]]
-    # List of Azure Managed Disk Ids to attach to a Disk Pool.
+    # Logical zone for Disk Pool resource; example: ["1"].
+    ${AvailabilityZone},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
+    [System.String[]]
+    # List of Azure Managed Disks to attach to a Disk Pool.
     # To construct, see NOTES section for DISK properties and create a hash table.
     ${DiskId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.DiskPoolTier])]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
-    # Tier to use for the Disk Pool.
+    # Azure resource id.
+    # Indicates if this resource is managed by another Azure resource.
+    ${ManagedBy},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
+    [System.String[]]
+    # List of Azure resource ids that manage this resource.
+    ${ManagedByExtended},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
+    [System.String]
+    # Sku tier
     ${SkuTier},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPoolCreateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolCreateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -175,13 +192,12 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
-
     process {
         try {
             if ($PSBoundParameters.ContainsKey("DiskId")){
                 $disk = @()
                 for ($i = 0; $i -lt $DiskId.Count; $i++) {
-                    $diskObject = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.Disk
+                    $diskObject = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Disk
                     $diskObject.Id = $DiskId[$i]
                     $disk += $diskObject
                 }
@@ -193,5 +209,4 @@ param(
             throw
         }
     }
-
 }

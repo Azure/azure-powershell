@@ -47,8 +47,10 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 
 ### Example 1: Regenerates the Primary key using a IRegenerateKeyParameters hashtable
 ```powershell
-PS > New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Parameter @{KeyType="Primary"}
+New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Parameter @{KeyType="Primary"}
+```
 
+```output
 PrimaryConnectionString              PrimaryKey
 -----------------------              ----------
 endpoint=<example-primary-endpoint>  <example-primarykey>
@@ -58,8 +60,10 @@ Invalidates the previous Primary key, regenerate a new one and return it.
 
 ### Example 2: Regenerates the Secondary key using a KeyType
 ```powershell
-PS C:\> New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -KeyType Secondary
+New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -KeyType Secondary
+```
 
+```output
 SecondaryConnectionString               SecondaryKey
 -----------------------                 ----------
 endpoint=<example-secondary-endpoint>   <example-secondarykey>
@@ -136,7 +140,7 @@ Parameters describes the request to regenerate access keys
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.IRegenerateKeyParameters
 Parameter Sets: Regenerate, RegenerateViaIdentity
 Aliases:
 
@@ -148,8 +152,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -164,8 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription ID which uniquely identifies the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -215,13 +218,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.IRegenerateKeyParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys
 
 ## NOTES
 
@@ -235,9 +238,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   - `[CommunicationServiceName <String>]`: The name of the CommunicationService resource.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The Azure region
-  - `[OperationId <String>]`: The ID of an ongoing async operation
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 PARAMETER <IRegenerateKeyParameters>: Parameters describes the request to regenerate access keys

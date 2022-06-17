@@ -1,15 +1,14 @@
 {
-  "New-AzResourceMoverMoveCollection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms?api-version=2021-01-01+1": {
+  "New-AzResourceMoverMoveCollection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms?api-version=2021-08-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms?api-version=2021-01-01",
-      "Content": "{\n  \"identity\": {\n    \"type\": \"SystemAssigned\"\n  },\n  \"properties\": {\n    \"sourceRegion\": \"westus\",\n    \"targetRegion\": \"westus2\"\n  },\n  \"location\": \"EastUs2EUAP\"\n}",
-      "isContentBase64": false,
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms?api-version=2021-08-01",
+      "Content": "{\n  \"identity\": {\n    \"type\": \"SystemAssigned\"\n  },\n  \"properties\": {\n    \"sourceRegion\": \"westus\",\n    \"targetRegion\": \"westeurope\"\n  },\n  \"location\": \"EastUs2EUAP\"\n}",
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "164" ]
+        "Content-Length": [ "167" ]
       }
     },
     "Response": {
@@ -17,22 +16,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1c00b1f7-0000-3400-0000-601554340000\"" ],
-        "x-ms-request-id": [ "0a903323-3838-4286-95d0-4a24f794a0b0" ],
-        "X-Content-Type-Options": [ "nosniff" ],
+        "ETag": [ "\"00000c0e-0000-3400-0000-61bc3dcf0000\"" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "48abb75c-8080-4daf-acbe-e57ad9172744" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210130T124231Z:48abb75c-8080-4daf-acbe-e57ad9172744" ],
-        "Date": [ "Sat, 30 Jan 2021 12:42:31 GMT" ]
+        "x-ms-request-id": [ "3ffbc135-97f1-4db8-bd54-c3e5a5ef8574" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "473cd4e2-2ac5-4c2a-b777-2d8e46787fd5" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211217T073547Z:473cd4e2-2ac5-4c2a-b777-2d8e46787fd5" ],
+        "Date": [ "Fri, 17 Dec 2021 07:35:46 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "556" ],
+        "Content-Length": [ "794" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms\",\"name\":\"MoveCollection-rms\",\"type\":\"Microsoft.Migrate/moveCollections\",\"etag\":\"\\\"1c00b1f7-0000-3400-0000-601554340000\\\"\",\"location\":\"eastus2euap\",\"properties\":{\"sourceRegion\":\"westus\",\"targetRegion\":\"westus2\",\"provisioningState\":\"Succeeded\",\"errors\":null},\"identity\":{\"principalId\":\"5bfcb894-eafb-491d-a32d-527e1559d4b9\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"}}",
-      "isContentBase64": false
+      "Content": "{\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms\",\"name\":\"MoveCollection-rms\",\"type\":\"Microsoft.Migrate/moveCollections\",\"etag\":\"\\\"00000c0e-0000-3400-0000-61bc3dcf0000\\\"\",\"location\":\"eastus2euap\",\"properties\":{\"sourceRegion\":\"westus\",\"targetRegion\":\"westeurope\",\"provisioningState\":\"Succeeded\",\"errors\":null},\"identity\":{\"principalId\":\"d9630cd2-b247-454c-885f-986ca9626d68\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"systemData\":{\"createdBy\":\"yashjain@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-12-17T05:34:35.261909Z\",\"lastModifiedBy\":\"yashjain@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-12-17T07:35:41.5402604Z\"}}"
     }
   }
 }

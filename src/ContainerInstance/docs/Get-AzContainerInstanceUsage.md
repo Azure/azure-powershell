@@ -24,8 +24,10 @@ Get the usage for a subscription
 
 ### Example 1: Get the usage of the location
 ```powershell
-PS C:\> Get-AzContainerInstanceUsage -Location eastus
+Get-AzContainerInstanceUsage -Location eastus
+```
 
+```output
 CurrentValue Limit Unit
 ------------ ----- ----
 9            100   Count
@@ -94,7 +96,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsage
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IUsage
 
 ## NOTES
 

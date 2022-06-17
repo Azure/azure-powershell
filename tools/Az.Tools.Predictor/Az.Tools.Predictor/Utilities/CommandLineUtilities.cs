@@ -24,15 +24,47 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
     internal static class CommandLineUtilities
     {
         /// <summary>
+        /// Gets the CommandAst for the whole command line.
+        /// </summary>
+        /// <param name="commandLine">The command line to get the CommandAst.</param>
+        /// <returns>The CommandAst.</returns>
+        /// <remarks>This parses the command line and returns the first one it encounters. It doesn't work well in a complex command line, for example: <c>Get-AzContext | Set-AzContext</c> will return <c>Get-AzContext</c>.</remarks>
+        public static CommandAst GetCommandAst(string commandLine)
+        {
+            if (string.IsNullOrWhiteSpace(commandLine))
+            {
+                return null;
+            }
+
+            Ast ast = Parser.ParseInput(commandLine, out _, out _);
+            var commandAst = ast.Find((ast) => ast is CommandAst, searchNestedScriptBlocks: false) as CommandAst;
+            return commandAst;
+        }
+
+        /// <summary>
         /// Masks the user input of any data, like names and locations.
         /// Also alphabetizes the parameters to normalize them before sending
         /// them to the model.
         /// e.g., Get-AzContext -Name Hello -Location 'EastUS' => Get-AzContext -Location *** -Name ***
         /// </summary>
-        /// <param name="cmdAst">The last user input command.</param>
-        public static string MaskCommandLine(CommandAst cmdAst)
+        /// <param name="commandLine">The command line to mask.</param>
+        public static string MaskCommandLine(string commandLine)
         {
-            var commandElements = cmdAst?.CommandElements;
+            var commandAst = CommandLineUtilities.GetCommandAst(commandLine);
+
+            return CommandLineUtilities.MaskCommandLine(commandAst);
+        }
+
+        /// <summary>
+        /// Masks the user input of any data, like names and locations.
+        /// Also alphabetizes the parameters to normalize them before sending
+        /// them to the model.
+        /// e.g., Get-AzContext -Name Hello -Location 'EastUS' => Get-AzContext -Location *** -Name ***
+        /// </summary>
+        /// <param name="commandAst">The command to mask.</param>
+        public static string MaskCommandLine(CommandAst commandAst)
+        {
+            var commandElements = commandAst?.CommandElements;
 
             if (commandElements == null)
             {
@@ -41,10 +73,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
 
             if (commandElements.Count == 1)
             {
-                return cmdAst.Extent.Text;
+                return commandAst.Extent.Text;
             }
 
-            var sb = new StringBuilder(cmdAst.Extent.Text.Length);
+            var sb = new StringBuilder(commandAst.Extent.Text.Length);
             _ = sb.Append(commandElements[0].ToString());
             var parameters = commandElements
                 .Skip(1)

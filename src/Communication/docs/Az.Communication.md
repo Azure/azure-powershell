@@ -30,6 +30,9 @@ Operation to delete a CommunicationService.
 ### [Set-AzCommunicationServiceNotificationHub](Set-AzCommunicationServiceNotificationHub.md)
 Links an Azure Notification Hub to this communication service.
 
+### [Test-AzCommunicationServiceNameAvailability](Test-AzCommunicationServiceNameAvailability.md)
+Checks that the CommunicationService name is valid and is not already in use.
+
 ### [Update-AzCommunicationService](Update-AzCommunicationService.md)
 Operation to update an existing CommunicationService.
 

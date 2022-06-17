@@ -42,8 +42,10 @@ Get the properties of a specific Organization resource.
 
 ### Example 1: List all confluent organizations under a subscription
 ```powershell
-PS C:\> Get-AzConfluentOrganization
+Get-AzConfluentOrganization
+```
 
+```output
 Location      Name                     Type
 --------      ----                     ----
 westus2       RegionTestWestUS2        Microsoft.Confluent/organizations
@@ -63,8 +65,10 @@ This command lists all confluent organizations under a subscription.
 
 ### Example 2: List all confluent organizations under a resource group
 ```powershell
-PS C:\> Get-AzConfluentOrganization -ResourceGroupName azure-rg-test
+Get-AzConfluentOrganization -ResourceGroupName azure-rg-test
+```
 
+```output
 Location    Name          Type
 --------    ----          ----
 eastus2euap ppe-metrics-2 Microsoft.Confluent/organizations
@@ -74,8 +78,10 @@ This command lists all confluent organizations under a resource group.
 
 ### Example 3: Get a confluent organization by name
 ```powershell
-PS C:\> Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-01-portal
+Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-01-portal
+```
 
+```output
 Location Name                   Type
 -------- ----                   ----
 eastus   confluentorg-01-portal Microsoft.Confluent/organizations
@@ -85,8 +91,10 @@ This command gets a confluent organization by name.
 
 ### Example 4: Get a confluent organization by pipeline
 ```powershell
-PS C:\> New-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh -Location eastus -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" | Get-AzConfluentOrganization
+New-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh -Location eastus -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" | Get-AzConfluentOrganization
+```
 
+```output
 Location Name                   Type
 -------- ----                   ----
 eastus   confluentorg-02-pwsh Microsoft.Confluent/organizations

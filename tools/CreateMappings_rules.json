@@ -1,17 +1,21 @@
 [
   {
+    "alias": "Confidential Ledger",
+    "module": "ConfidentialLedger"
+  },
+  {
     "regex": "ApiManagement",
     "alias": "API Management"
   },
   {
     "regex": "MachineLearning",
-    "group": "Machine Learning",
-    "alias": "Machine Learning"
+    "group": "ML Studio (Classic)",
+    "alias": "ML Studio (Classic)"
   },
   {
     "regex": "Ml",
-    "group": "Machine Learning",
-    "alias": "Machine Learning"
+    "group": "ML Studio (Classic)",
+    "alias": "ML Studio (Classic)"
   },
   {
     "regex": "ImageBuilder",
@@ -22,7 +26,7 @@
     "alias": "VMware"
   },
   {
-    "regex": "VMGuest",
+    "module": "GuestConfiguration",
     "alias": "Guest Configuration"
   },
   {
@@ -99,6 +103,10 @@
     "regex": "Route",
     "group": "Network",
     "alias": "Route"
+  },
+  {
+    "group": "DnsResolver",
+    "alias": "DnsResolver"
   },
   {
     "regex": "Dns",
@@ -408,8 +416,14 @@
     "alias": "DevSpaces"
   },
   {
+    "module": "SignalR",
     "regex": "SignalR",
     "alias": "SignalR"
+  },
+  {
+    "module": "SignalR",
+    "regex": "WebPubSub",
+    "alias": "Web PubSub"
   },
   {
     "regex": "AzSearch",
@@ -542,10 +556,6 @@
     "alias": "SQL"
   },
   {
-    "regex": "Blockchain",
-    "alias": "Blockchain Service"
-  },
-  {
     "regex": "ImportExport",
     "alias": "Import/Export"
   },
@@ -580,10 +590,6 @@
   {
     "regex": "Monitor",
     "alias": "Monitor"
-  },
-  {
-    "regex": "StackEdge",
-    "alias": "Stack Edge"
   },
   {
     "regex": "ConnectedKubernetes",
@@ -670,6 +676,10 @@
     "module": "PrivateDns"
   },
   {
+    "alias": "Quota",
+    "module": "Quota"
+  },
+  {
     "regex": "ContainerInstance",
     "alias": "ContainerInstance"
   },
@@ -692,5 +702,37 @@
   {
     "alias": "Elastic",
     "regex": "Elastic"
+  },
+  {
+    "regex": "Logz",
+    "alias": "Logz"
+  },
+  {
+    "alias": "DiskPool",
+    "regex": "DiskPool"
+  },
+  {
+    "alias": "CustomLocation",
+    "regex": "CustomLocation"
+  },
+  {
+    "alias": "EdgeOrder",
+    "module": "EdgeOrder"
+  },
+  {
+    "alias": "Lab Services",
+    "module": "LabServices"
+  },
+  {
+    "alias": "BareMetal",
+    "module": "BareMetal"
+  },
+  {
+    "alias": "ConnectedNetwork",
+    "module": "ConnectedNetwork"
+  },
+  {
+    "alias": "ServiceLinker",
+    "module": "ServiceLinker"
   }
 ]

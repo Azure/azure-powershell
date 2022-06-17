@@ -13,12 +13,12 @@ Create a new Kubernetes Source Control Configuration.
 ## SYNTAX
 
 ```
-New-AzKubernetesConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
- -RepositoryUrl <String> [-ClusterType <String>] [-SubscriptionId <String>] [-ClusterScoped]
- [-ConfigurationProtectedSetting <Hashtable>] [-EnableHelmOperator] [-HelmOperatorChartValues <String>]
+New-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ClusterScoped]
+ [-ConfigurationProtectedSetting <Hashtable>] [-EnableHelmOperator] [-HelmOperatorChartValue <String>]
  [-HelmOperatorChartVersion <String>] [-OperatorInstanceName <String>] [-OperatorNamespace <String>]
- [-OperatorParameters <String>] [-SshKnownHosts <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-OperatorParam <String>] [-RepositoryUrl <String>] [-SshKnownHost <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,27 +26,29 @@ Create a new Kubernetes Source Control Configuration.
 
 ## EXAMPLES
 
-### Example 1: Create a configuration for kubernetes cluster
+### Example 1: Create a configuration for Kubernetes Cluster
 ```powershell
-PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azure-rg-test -ClusterName k8scluster-t01 -Name k8sconfig-t01 -RepositoryUrl http://github.com/xxxx
+PS C:\> New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azpstest_gp -Location eastus
+PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name azpstestk8s -RepositoryUrl http://github.com/xxxx -ClusterType ConnectedClusters
 
-Name          SystemDataCreatedAt   SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
-----          -------------------   ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ----
-k8sconfig-t01 12/21/2020 5:26:17 AM                                             12/21/2020 5:26:17 AM                                                          Microsoft.KubernetesConfiguration/so…
+Name        RepositoryUrl          ResourceGroupName
+----        -------------          -----------------
+azpstestk8s http://github.com/xxxx azpstest_gp
 ```
 
-This command creates a configuration for kubernetes cluster.
+This command creates a configuration for Kubernetes Cluster.
 
-### Example 2: Create a configuration for kubernetes cluster with specify paramter OperatorNamespace
+### Example 2: Create a configuration for Kubernetes Cluster with specify paramter OperatorNamespace
 ```powershell
-PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azure-rg-test -ClusterName k8scluster-t01 -Name k8sconfig-t02 -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01
+PS C:\> New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azpstest_gp -Location eastus
+PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name azpstestk8s-operator -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01 -ClusterType ConnectedClusters
 
-Name          SystemDataCreatedAt   SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
-----          -------------------   ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ----
-k8sconfig-t02 12/21/2020 5:26:17 AM                                             12/21/2020 5:26:17 AM                                                          Microsoft.KubernetesConfiguration/so…
+Name                 RepositoryUrl          ResourceGroupName
+----                 -------------          -----------------
+azpstestk8s-operator http://github.com/xxxx azpstest_gp
 ```
 
-This command creates a configuration in the new operator namespace for kubernetes cluster.
+This command creates a configuration in the new operator namespace for Kubernetes Cluster.
 Note, Unable to create a configuration in an existing operator namespace.
 
 ## PARAMETERS
@@ -82,14 +84,15 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterType
-The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
+The Kubernetes cluster resource name - i.e.
+managedClusters, connectedClusters, provisionedClusters.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -141,7 +144,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HelmOperatorChartValues
+### -HelmOperatorChartValue
 Values override for the operator Helm chart.
 
 ```yaml
@@ -217,7 +220,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperatorParameters
+### -OperatorParam
 Any Parameters for the Operator instance in string format.
 
 ```yaml
@@ -240,7 +243,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -249,6 +252,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -262,8 +266,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SshKnownHosts
-If passed set the scope of the Configuration to Cluster (default is nameSpace).
+### -SshKnownHost
+Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
 
 ```yaml
 Type: System.String
@@ -278,7 +282,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription ID.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -330,11 +334,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration
 
 ## NOTES
 
 ALIASES
+
+New-AzK8sConfiguration
 
 ## RELATED LINKS
 

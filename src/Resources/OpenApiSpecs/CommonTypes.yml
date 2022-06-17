@@ -1,0 +1,41 @@
+openapi: 3.0.1
+info:
+  title: "common types"
+  version: v1.0
+paths: {} 
+components:
+  schemas:
+    microsoft.graph.entity:
+      title: entity
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Read-only.
+    microsoft.graph.directoryObject:
+      allOf:
+        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - title: directoryObject
+          type: object
+          properties:
+            deletedDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              format: date-time
+              nullable: true
+            displayName:
+              type: string
+              description: 'The name displayed in directory'
+              nullable: true
+            '@odata.type':
+              type: string
+              readOnly: true
+              description: 'The type of object in directory'
+              nullable: true
+            '@odata.id':
+              type: string
+              readOnly: true
+              description: 'The full id of object in directory'
+              nullable: true
+          description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.

@@ -28,7 +28,8 @@ Describe 'Get-AzKustoPrivateLinkResource' {
     }
 
     It 'Get' {        
-        $PrivateLink = Get-AzKustoPrivateLinkResource -ClusterName $env.clusterName -Name $env.privateLinkResourceName -ResourceGroupName $env.resourceGroupName
+        $privateLinkResourceName = "cluster"
+        $PrivateLink = Get-AzKustoPrivateLinkResource -ClusterName $env.clusterName -Name $privateLinkResourceName -ResourceGroupName $env.resourceGroupName
         $fullPrivateLinkResourceName = $env.clusterName + "/cluster"
         $resourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroupName + "/providers/Microsoft.Kusto/Clusters/" + $env.clusterName + "/PrivateLinkResources/cluster"
         Validate_PrivateLink $PrivateLink $resourceId $fullPrivateLinkResourceName

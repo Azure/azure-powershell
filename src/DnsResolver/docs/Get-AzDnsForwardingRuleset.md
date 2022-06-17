@@ -36,6 +36,13 @@ Get-AzDnsForwardingRuleset -ResourceGroupName <String> [-SubscriptionId <String[
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List2
+```
+Get-AzDnsForwardingRuleset -ResourceGroupName <String> -VirtualNetworkName <String>
+ [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a DNS forwarding ruleset properties.
 
@@ -43,8 +50,10 @@ Gets a DNS forwarding ruleset properties.
 
 ### Example 1: List all DNS forwarding rulesets in a subscription
 ```powershell
-PS C:\> Get-AzDnsForwardingRuleset -SubscriptionId 0e5a46b1-de0b-4ec3-a5d7-dda908b4e076
+Get-AzDnsForwardingRuleset -SubscriptionId 0e5a46b1-de0b-4ec3-a5d7-dda908b4e076
+```
 
+```output
 Location Name                                                            Type                                    Etag
 -------- ----                                                            ----                                    ----
 westus2  dnsForwardingRuleset                                            Microsoft.Network/dnsForwardingRulesets "04005592-0000-0800-0000-60e7ec170000"
@@ -58,8 +67,10 @@ This command gets all DNS forwarding ruleset under the subscription.
 
 ### Example 2: Get single DNS forwarding ruleset by name
 ```powershell
-PS C:\>  Get-AzDnsForwardingRuleset -Name dnsForwardingRuleset -ResourceGroupName sampleRG
+Get-AzDnsForwardingRuleset -Name dnsForwardingRuleset -ResourceGroupName sampleRG
+```
 
+```output
 Location Name                 Type                                    Etag
 -------- ----                 ----                                    ----
 westus2  dnsForwardingRuleset Microsoft.Network/dnsForwardingRulesets "04005592-0000-0800-0000-60e7ec170000"
@@ -69,8 +80,10 @@ This command gets single DNS forwarding ruleset by name.
 
 ### Example 3: List all DNS forwarding ruleset under the resouce group
 ```powershell
-PS C:\>  Get-AzDnsForwardingRuleset -ResourceGroupName sampleRG
+Get-AzDnsForwardingRuleset -ResourceGroupName sampleRG
+```
 
+```output
 Location Name                     Type                                    Etag
 -------- ----                     ----                                    ----
 westus2  dnsForwardingRuleset     Microsoft.Network/dnsForwardingRulesets "04005592-0000-0800-0000-60e7ec170000"
@@ -79,6 +92,32 @@ westus2  pw-dnsForwardingRuleset1 Microsoft.Network/dnsForwardingRulesets "08007
 ```
 
 This command gets all DNS forwarding ruleset under the resouce group.
+
+### Example 4: List all DNS forwarding ruleset under the virtual network
+```powershell
+Get-AzDnsForwardingRuleset -ResourceGroupName sampleRG -VirtualNetworkName virtualnetwork-test
+```
+
+```output
+Location Name                     Type                                    Etag
+-------- ----                     ----                                    ----
+westus2  dnsForwardingRuleset     Microsoft.Network/dnsForwardingRulesets "04005592-0000-0800-0000-60e7ec170000"
+```
+
+This command gets all DNS forwarding ruleset under the virtual network.
+
+### Example 5: List all DNS forwarding ruleset under the Outbound Endpoint
+```powershell
+Get-AzDnsForwardingRuleset -ResourceGroupName sampleRG -DnsResolverName sampleDnsResolver -OutboundEndpointName sampleOutboundEndpoint
+```
+
+```output
+Location Name                     Type                                    Etag
+-------- ----                     ----                                    ----
+westus2  dnsForwardingRuleset     Microsoft.Network/dnsForwardingRulesets "04005592-0000-0800-0000-60e7ec170000"
+```
+
+This command gets all DNS forwarding ruleset under the outbound endpoint.
 
 ## PARAMETERS
 
@@ -134,7 +173,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List, List2
 Aliases:
 
 Required: True
@@ -149,7 +188,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: Get, List, List1, List2
 Aliases:
 
 Required: False
@@ -165,8 +204,54 @@ If not specified, returns up to 100 results.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, List1
+Parameter Sets: List, List1, List2
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkName
+The name of the virtual network.
+
+```yaml
+Type: System.String
+Parameter Sets: List2
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
@@ -185,6 +270,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset
+
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkDnsForwardingRuleset
 
 ## NOTES
 
@@ -205,6 +292,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
+  - `[VirtualNetworkName <String>]`: The name of the virtual network.
 
 ## RELATED LINKS
 

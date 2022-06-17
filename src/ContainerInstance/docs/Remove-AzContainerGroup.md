@@ -33,22 +33,26 @@ The operation does not delete other resources provided by the user, such as volu
 
 ### Example 1: Remove a container group
 ```powershell
-PS C:\> Remove-AzContainerGroup -Name test-cg -ResourceGroupName test-rg
+Remove-AzContainerGroup -Name test-cg -ResourceGroupName test-rg
+```
 
-Location Name    Type
--------- ----    ----
-eastus   test-cg Microsoft.ContainerInstance/containerGroups
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg      test-rg
 ```
 
 This command removes the specified container group.
 
 ### Example 2: Removes a container group by piping
 ```powershell
-PS C:\> Get-AzContainerGroup -Name test-cg -ResourceGroupName bez-rg | Remove-AzContainerGroup
+Get-AzContainerGroup -Name test-cg -ResourceGroupName bez-rg | Remove-AzContainerGroup
+```
 
-Location Name    Type
--------- ----    ----
-eastus   test-cg Microsoft.ContainerInstance/containerGroups
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg      test-rg
 ```
 
 This command removes a container group by piping.
@@ -217,7 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IContainerGroup
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup
 
 ## NOTES
 

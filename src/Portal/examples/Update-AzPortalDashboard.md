@@ -1,7 +1,9 @@
 ### Example 1: Update the Tags of a Dashboard
 ```powershell
-PS C:\> Update-AzPortalDashboard -ResourceGroupName my-rg -Name dashbase03 -Tag @{'hidden-title'="My Dashboard Title"; NewTag="NewValue"}
+Update-AzPortalDashboard -ResourceGroupName my-rg -Name dashbase03 -Tag @{'hidden-title'="My Dashboard Title"; NewTag="NewValue"}
+```
 
+```output
 Location Name       Type
 -------- ----       ----
 eastasia dashbase03 Microsoft.Portal/dashboards
@@ -11,8 +13,10 @@ Update the tags in a dashboard.  Tags are represented as an inline hashtable.
 
 ### Example 2: Update Dashboard tags using the pipeline
 ```powershell
-PS C:\> Get-AzPortalDashboard -ResourceGroupName my-rg -Name dashbase03 | Update-AzPortalDashboard -Tag @{'hidden-title'="My Dashboard Title"; NewTag="NewValue"}
+Get-AzPortalDashboard -ResourceGroupName my-rg -Name dashbase03 | Update-AzPortalDashboard -Tag @{'hidden-title'="My Dashboard Title"; NewTag="NewValue"}
+```
 
+```output
 Location Name       Type
 -------- ----       ----
 eastasia dashbase03 Microsoft.Portal/dashboards

@@ -1,8 +1,8 @@
 # Load Az.Functions module constants
 $constants = @{}
-$constants["AllowedStorageTypes"] = @('Standard_GRS', 'Standard_RAGRS', 'Standard_LRS', 'Standard_ZRS', 'Premium_LRS')
+$constants["AllowedStorageTypes"] = @('Standard_GRS', 'Standard_RAGRS', 'Standard_LRS', 'Standard_ZRS', 'Premium_LRS', 'Standard_GZRS')
 $constants["RequiredStorageEndpoints"] = @('PrimaryEndpointFile', 'PrimaryEndpointQueue', 'PrimaryEndpointTable')
-$constants["DefaultFunctionsVersion"] = '3'
+$constants["DefaultFunctionsVersion"] = '4'
 $constants["RuntimeToFormattedName"] = @{
     'node' = 'Node'
     'dotnet' = 'DotNet'
@@ -34,13 +34,15 @@ $constants["ReservedFunctionAppSettingNames"] = @(
     'WEBSITE_CONTENTSHARE'
     'APPINSIGHTS_INSTRUMENTATIONKEY'
 )
-$constants["SupportedFunctionsVersion"] = @('3')
+$constants["SupportedFunctionsVersion"] = @('3', '4')
 $constants["FunctionsNoV2Version"] = @(
     "USNat West"
     "USNat East"
     "USSec West"
     "USSec East"
 )
+
+$constants["SetDefaultValueParameterWarningMessage"] = "This default value is subject to change over time. Please set this value explicitly to ensure the behavior is not accidentally impacted by future changes."
 
 foreach ($variableName in $constants.Keys)
 {
@@ -1018,7 +1020,7 @@ function GetRuntimeJsonDefinition
             $RuntimeVersion = $latestVersion.ToString()
         }
 
-        Write-Verbose "RuntimeVersion not specified. Setting default runtime version for '$Runtime' to '$RuntimeVersion'." -Verbose
+        Write-Warning "RuntimeVersion not specified. Setting default value to '$RuntimeVersion'. $SetDefaultValueParameterWarningMessage"
     }
 
     # Get the RuntimeJsonDefinition
@@ -1041,7 +1043,7 @@ function GetRuntimeJsonDefinition
     if ($runtimeJsonDefinition.IsPreview)
     {
         # Write a verbose message to the user if the current runtime is in Preview
-        Write-Verbose "Runtime '$Runtime' version '$RuntimeVersion' is in Preview." -Verbose
+        Write-Verbose "Runtime '$Runtime' version '$RuntimeVersion' is in Preview for '$OSType'." -Verbose
     }
 
     return $runtimeJsonDefinition
@@ -1599,7 +1601,8 @@ function GetShareSuffix
         $Length = 8
     )
 
-    $letters = 'a'..'z'
+    # Create char array from 'a' to 'z'
+    $letters = 97..122 | ForEach-Object { [char]$_ }
     $numbers = 0..9
     $alphanumericLowerCase = $letters + $numbers
 

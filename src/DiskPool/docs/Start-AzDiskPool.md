@@ -9,6 +9,8 @@ schema: 2.0.0
 
 ## SYNOPSIS
 The operation to start a Disk Pool.
+This start operation can take 10 minutes to complete.
+This is expected service behavior.
 
 ## SYNTAX
 
@@ -26,21 +28,21 @@ Start-AzDiskPool -InputObject <IDiskPoolIdentity> [-DefaultProfile <PSObject>] [
 
 ## DESCRIPTION
 The operation to start a Disk Pool.
+This start operation can take 10 minutes to complete.
+This is expected service behavior.
 
 ## EXAMPLES
 
 ### Example 1: Start a Disk Pool
 ```powershell
-PS C:\> Start-AzDiskPool -DiskPoolName 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test'
-
+Start-AzDiskPool -DiskPoolName 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test'
 ```
 
 This command starts a Disk Pool.
 
 ### Example 2: Start a Disk Pool by object
 ```powershell
-PS C:\> Get-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' | Start-AzDiskPool
-
+Get-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' | Start-AzDiskPool
 ```
 
 This command starts a Disk Pool by object.

@@ -1,7 +1,7 @@
 function Update-AzFunctionAppPlan {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Updates a function app service plan.')]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess=$true, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='ByName', HelpMessage='The Azure subscription ID.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
@@ -48,6 +48,10 @@ function Update-AzFunctionAppPlan {
         [Alias("MinInstances")]
         [ValidateRange(1,20)]
         ${MinimumWorkerCount},
+
+        [Parameter(HelpMessage='Forces the cmdlet to update the function app plan without prompting for confirmation.')]
+        [System.Management.Automation.SwitchParameter]
+        ${Force},
 
         [Parameter(HelpMessage='Resource tags.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
@@ -244,7 +248,19 @@ function Update-AzFunctionAppPlan {
                     return
                 }
                 
-                Az.Functions.internal\Set-AzFunctionAppPlan @PSBoundParameters
+                if ($PsCmdlet.ShouldProcess($Name, "Updating function app plan"))
+                {
+                    if ($Force.IsPresent -or $PsCmdlet.ShouldContinue("Update function app plan '$Name'?", "Updating function app plan"))
+                    {
+                        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
+                        if ($PSBoundParameters.ContainsKey("Force"))
+                        {
+                            $PSBoundParameters.Remove("Force")  | Out-Null
+                        }
+
+                        Az.Functions.internal\Set-AzFunctionAppPlan @PSBoundParameters
+                    }
+                }
             }
             catch
             {

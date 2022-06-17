@@ -15,11 +15,10 @@ The operation to create or update the extension.
 ### UpdateExpanded (Default)
 ```
 Update-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-ForceRerun <String>]
- [-ProtectedSetting <IMachineExtensionUpdatePropertiesProtectedSettings>] [-Publisher <String>]
- [-Setting <IMachineExtensionUpdatePropertiesSettings>] [-Tag <Hashtable>] [-Type <String>]
- [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ForceRerun <String>]
+ [-ProtectedSetting <Hashtable>] [-Publisher <String>] [-Setting <Hashtable>] [-Tag <Hashtable>]
+ [-Type <String>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -39,10 +38,9 @@ Update-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity>
 ### UpdateViaIdentityExpanded
 ```
 Update-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> [-AutoUpgradeMinorVersion]
- [-ForceRerun <String>] [-ProtectedSetting <IMachineExtensionUpdatePropertiesProtectedSettings>]
- [-Publisher <String>] [-Setting <IMachineExtensionUpdatePropertiesSettings>] [-Tag <Hashtable>]
- [-Type <String>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-EnableAutomaticUpgrade] [-ForceRerun <String>] [-ProtectedSetting <Hashtable>] [-Publisher <String>]
+ [-Setting <Hashtable>] [-Tag <Hashtable>] [-Type <String>] [-TypeHandlerVersion <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,7 +50,7 @@ The operation to create or update the extension.
 
 ### Example 1: Update an extension
 ```powershell
-PS C:\> $splat = @{
+$splat = @{
             ResourceGroupName = "connectedMachines"
             MachineName = "linux-eastus1_1"
             Name = "customScript"
@@ -60,8 +58,10 @@ PS C:\> $splat = @{
                 commandToExecute = "ls -l"
             }
         }
-PS C:\> Update-AzConnectedMachineExtension @splat
+Update-AzConnectedMachineExtension @splat
+```
 
+```output
 Name         Location ProvisioningState
 ----         -------- -----------------
 customScript eastus   Succeeded
@@ -71,11 +71,13 @@ Updates an extension on a specific machine.
 
 ### Example 2: Update an extension with location specified via the pipeline
 ```powershell
-PS C:\> $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
-PS C:\> $extToUpdate | Update-AzConnectedMachineExtension -Settings @{
+$extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
+$extToUpdate | Update-AzConnectedMachineExtension -Settings @{
                 commandToExecute = "ls -l"
             }
+```
 
+```output
 Name         Location ProvisioningState
 ----         -------- -----------------
 customScript eastus   Succeeded
@@ -86,16 +88,18 @@ Here we are using the extension passed in via the pipeline to help us identify w
 
 ### Example 3: Update an extension with extension parameters specified via the pipeline
 ```powershell
-PS C:\> $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
-PS C:\> # Update the settings on the object that will be used via the pipeline
-PS C:\> $extToUpdate.Setting.commandToExecute = "ls -l"
-PS C:\> $splat = @{
+$extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
+# Update the settings on the object that will be used via the pipeline
+$extToUpdate.Setting.commandToExecute = "ls -l"
+$splat = @{
             ResourceGroupName = "connectedMachines"
             MachineName = "linux-eastus1_1"
             Name = "customScript"
         }
-PS C:\> $extToUpdate | Update-AzConnectedMachineExtension @splat
+$extToUpdate | Update-AzConnectedMachineExtension @splat
+```
 
+```output
 Name         Location ProvisioningState
 ----         -------- -----------------
 customScript eastus   Succeeded
@@ -107,11 +111,13 @@ The location of the extension is not retrieved via the pipeline but rather via t
 
 ### Example 4: Using an extension object as both the location and parameters for updating
 ```powershell
-PS C:\> $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
-PS C:\> # Update the settings on the object that will be used via the pipeline
-PS C:\> $extToUpdate.Setting.commandToExecute = "ls -l"
-PS C:\> $extToUpdate | Update-AzConnectedMachineExtension -ExtensionParameter $extToUpdate
+$extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
+# Update the settings on the object that will be used via the pipeline
+$extToUpdate.Setting.commandToExecute = "ls -l"
+$extToUpdate | Update-AzConnectedMachineExtension -ExtensionParameter $extToUpdate
+```
 
+```output
 Name         Location ProvisioningState
 ----         -------- -----------------
 customScript eastus   Succeeded
@@ -169,12 +175,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAutomaticUpgrade
+Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExtensionParameter
 Describes a Machine Extension Update.
 To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtensionUpdate
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtensionUpdate
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -265,7 +286,7 @@ Accept wildcard characters: False
 The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtensionUpdatePropertiesProtectedSettings
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases: ProtectedSettings
 
@@ -293,6 +314,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -310,7 +332,7 @@ Accept wildcard characters: False
 Json formatted public settings for the extension.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtensionUpdatePropertiesSettings
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases: Settings
 
@@ -322,8 +344,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -418,13 +439,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtensionUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtensionUpdate
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
 
 ## NOTES
 
@@ -436,22 +457,30 @@ To create the parameters described below, construct a hash table containing the 
 
 
 EXTENSIONPARAMETER <IMachineExtensionUpdate>: Describes a Machine Extension Update.
-  - `[Tag <IUpdateResourceTags>]`: Resource tags
+  - `[Tag <IResourceUpdateTags>]`: Resource tags
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AutoUpgradeMinorVersion <Boolean?>]`: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+  - `[EnableAutomaticUpgrade <Boolean?>]`: Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
   - `[ForceUpdateTag <String>]`: How the extension handler should be forced to update even if the extension configuration has not changed.
   - `[ProtectedSetting <IMachineExtensionUpdatePropertiesProtectedSettings>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[Publisher <String>]`: The name of the extension handler publisher.
   - `[Setting <IMachineExtensionUpdatePropertiesSettings>]`: Json formatted public settings for the extension.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[Type <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
   - `[TypeHandlerVersion <String>]`: Specifies the version of the script handler.
 
 INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   - `[ExtensionName <String>]`: The name of the machine extension.
+  - `[GroupName <String>]`: The name of the private link resource.
   - `[Id <String>]`: Resource identity path
-  - `[Name <String>]`: The name of the hybrid machine.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[Location <String>]`: The location of the target resource.
+  - `[MachineName <String>]`: The name of the hybrid machine.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
+  - `[PrivateLinkScopeId <String>]`: The id (Guid) of the Azure Arc PrivateLinkScope resource.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

@@ -98,11 +98,14 @@ function Remove-AzFunctionApp {
             $Name = $InputObject.Name
         }
 
+        # Set the option to not delete an empty App Service plan
+        $PSBoundParameters.Add("DeleteEmptyServerFarm", $false)  | Out-Null
+
         if ($PsCmdlet.ShouldProcess($Name, "Deleting function app"))
         {
             if ($Force.IsPresent  -or $PsCmdlet.ShouldContinue("Delete function app '$Name'? This operation cannot be undone. Are you sure?", "Deleting function app"))
             {
-            # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
+                # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
                 if ($PSBoundParameters.ContainsKey("Force"))
                 {
                     $PSBoundParameters.Remove("Force")  | Out-Null

@@ -1,14 +1,15 @@
 {
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61mxn1oi?api-version=2020-04-01-preview+1": {
+  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername19?api-version=2020-04-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61mxn1oi?api-version=2020-04-01-preview",
-      "Content": "{\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"virtualNetwork\": {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname618n3twp\"\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername19?api-version=2020-04-01-preview",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"virtualNetwork\": {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname19\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "260" ]
+        "Content-Length": [ "265" ]
       }
     },
     "Response": {
@@ -16,316 +17,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjBhZDcwY2RlLWQzNjctNGFiYS1iODZiLWE5OTFkOThiN2YwNiJ9?api-version=2020-04-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImQwZWEyNTc2LWQ2NzAtNGUzMi1hY2M0LWQ0MjNiZTJhOWE0OCJ9?api-version=2020-04-01-preview" ],
         "Retry-After": [ "5" ],
-        "x-ms-activity-id": [ "98203cb5-81c7-40b1-be2c-29a0e8cdfba5" ],
-        "Azure-AsyncOperation": [ "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjBhZDcwY2RlLWQzNjctNGFiYS1iODZiLWE5OTFkOThiN2YwNiJ9?api-version=2020-04-01-preview" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11997" ],
-        "x-ms-request-id": [ "5ac0a90e-755b-46bb-9b08-77348cd0be91" ],
-        "x-ms-correlation-request-id": [ "5ac0a90e-755b-46bb-9b08-77348cd0be91" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221214Z:5ac0a90e-755b-46bb-9b08-77348cd0be91" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:13 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjBhZDcwY2RlLWQzNjctNGFiYS1iODZiLWE5OTFkOThiN2YwNiJ9?api-version=2020-04-01-preview+2": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjBhZDcwY2RlLWQzNjctNGFiYS1iODZiLWE5OTFkOThiN2YwNiJ9?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "21" ],
-        "x-ms-client-request-id": [ "b413a44a-82b5-4bc6-8fd1-655f11daa3ec" ],
-        "CommandName": [ "New-AzDnsResolver" ],
-        "FullCommandName": [ "New-AzDnsResolver_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "6b137320-5333-4a01-b550-a65c1e588973" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "494" ],
-        "x-ms-request-id": [ "18b19a86-d197-47b0-94b9-26e51fa6d4d4" ],
-        "x-ms-correlation-request-id": [ "18b19a86-d197-47b0-94b9-26e51fa6d4d4" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221220Z:18b19a86-d197-47b0-94b9-26e51fa6d4d4" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:19 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "525" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjBhZDcwY2RlLWQzNjctNGFiYS1iODZiLWE5OTFkOThiN2YwNiJ9\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjBhZDcwY2RlLWQzNjctNGFiYS1iODZiLWE5OTFkOThiN2YwNiJ9\",\"startTime\":\"2021-03-04T22:12:14.0000000Z\",\"endTime\":\"2021-03-04T22:12:15.0000000Z\",\"status\":\"Succeeded\"}"
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61mxn1oi?api-version=2020-04-01-preview+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61mxn1oi?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "22" ],
-        "x-ms-client-request-id": [ "b413a44a-82b5-4bc6-8fd1-655f11daa3ec" ],
-        "CommandName": [ "New-AzDnsResolver" ],
-        "FullCommandName": [ "New-AzDnsResolver_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "719e0c72-3052-4d13-b5ce-39d972a9a06f" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
-        "x-ms-request-id": [ "330c5a41-1774-4e4f-bbe3-9892e6ff0743" ],
-        "x-ms-correlation-request-id": [ "330c5a41-1774-4e4f-bbe3-9892e6ff0743" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221221Z:330c5a41-1774-4e4f-bbe3-9892e6ff0743" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:20 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "636" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname618n3twp\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"387f853d-2575-4e35-bf26-ea89f3864912\"},\"etag\":\"\\\"0000d8ff-0000-0800-0000-60415b3f0000\\\"\",\"location\":\"westus2\",\"tags\":null,\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61mxn1oi\",\"name\":\"psdnsresolvername61mxn1oi\",\"type\":\"Microsoft.Network/dnsResolvers\"}"
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61mxn1oi/inboundEndpoints/psinboundendpointnamehqswmd?api-version=2020-04-01-preview+4": {
-    "Request": {
-      "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61mxn1oi/inboundEndpoints/psinboundendpointnamehqswmd?api-version=2020-04-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname618n3twp/subnets/pssubnetname61rzmco0\"\r\n        },\r\n        \"privateIpAddress\": \"132.61.255.63\",\r\n        \"privateIpAllocationMethod\": \"Dynamic\"\r\n      }\r\n    ]\r\n  }\r\n}",
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "414" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiJjODhmNGRhMS0yNWY0LTRkNmQtOTQ1MC04Njc5NGM0YTIwYjMifQ==?api-version=2020-04-01-preview" ],
-        "Retry-After": [ "5" ],
-        "x-ms-activity-id": [ "23dac7bb-8c05-47de-a151-33951521b948" ],
-        "Azure-AsyncOperation": [ "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiJjODhmNGRhMS0yNWY0LTRkNmQtOTQ1MC04Njc5NGM0YTIwYjMifQ==?api-version=2020-04-01-preview" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11996" ],
-        "x-ms-request-id": [ "77108f13-54ed-4ab6-a727-a3f47259f18b" ],
-        "x-ms-correlation-request-id": [ "77108f13-54ed-4ab6-a727-a3f47259f18b" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221222Z:77108f13-54ed-4ab6-a727-a3f47259f18b" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:21 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiJjODhmNGRhMS0yNWY0LTRkNmQtOTQ1MC04Njc5NGM0YTIwYjMifQ==?api-version=2020-04-01-preview+5": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiJjODhmNGRhMS0yNWY0LTRkNmQtOTQ1MC04Njc5NGM0YTIwYjMifQ==?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "366501fc-c3cb-4c24-b3d1-e241f897ac69" ],
-        "CommandName": [ "New-AzDnsResolverInboundEndpoint" ],
-        "FullCommandName": [ "New-AzDnsResolverInboundEndpoint_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "88d8563d-42a7-4d75-b497-8d2cd342f01b" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "493" ],
-        "x-ms-request-id": [ "e9775dd0-04ff-40c5-918e-c279465709b2" ],
-        "x-ms-correlation-request-id": [ "e9775dd0-04ff-40c5-918e-c279465709b2" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221227Z:e9775dd0-04ff-40c5-918e-c279465709b2" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:27 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "541" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiJjODhmNGRhMS0yNWY0LTRkNmQtOTQ1MC04Njc5NGM0YTIwYjMifQ==\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiJjODhmNGRhMS0yNWY0LTRkNmQtOTQ1MC04Njc5NGM0YTIwYjMifQ==\",\"startTime\":\"2021-03-04T22:12:21.0000000Z\",\"endTime\":\"2021-03-04T22:12:23.0000000Z\",\"status\":\"Succeeded\"}"
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61mxn1oi/inboundEndpoints/psinboundendpointnamehqswmd?api-version=2020-04-01-preview+6": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61mxn1oi/inboundEndpoints/psinboundendpointnamehqswmd?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "25" ],
-        "x-ms-client-request-id": [ "366501fc-c3cb-4c24-b3d1-e241f897ac69" ],
-        "CommandName": [ "New-AzDnsResolverInboundEndpoint" ],
-        "FullCommandName": [ "New-AzDnsResolverInboundEndpoint_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "b6558706-6341-4f85-b561-00825da60e53" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "493" ],
-        "x-ms-request-id": [ "480c7361-e2ef-442d-9ca3-dbe69dde46f3" ],
-        "x-ms-correlation-request-id": [ "480c7361-e2ef-442d-9ca3-dbe69dde46f3" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221228Z:480c7361-e2ef-442d-9ca3-dbe69dde46f3" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:27 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "733" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"properties\":{\"ipConfigurations\":[{\"subnet\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname618n3twp/subnets/pssubnetname61rzmco0\"},\"privateIpAllocationMethod\":\"Static\"}],\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"88cfb93b-3eb8-44c0-847f-6581b312a043\",\"metadata\":null},\"etag\":\"\\\"0c00f0e2-0000-0800-0000-60415b470000\\\"\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61mxn1oi/inboundEndpoints/psinboundendpointnamehqswmd\",\"name\":\"psinboundendpointnamehqswmd\",\"type\":\"Microsoft.Network/dnsResolvers/inboundEndpoints\"}"
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$DELETE+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61mxn1oi/inboundEndpoints/psinboundendpointnamehqswmd?api-version=2020-04-01-preview+7": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61mxn1oi/inboundEndpoints/psinboundendpointnamehqswmd?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "552acb1f-d019-49fd-9041-569517474ffe" ],
-        "CommandName": [ "Remove-AzDnsResolverInboundEndpoint" ],
-        "FullCommandName": [ "Remove-AzDnsResolverInboundEndpoint_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI3ZWMzMjBlOS04Y2M0LTRiMDMtYTFiZS02MTYyOGVmZGIyN2YifQ==?api-version=2020-04-01-preview" ],
-        "Retry-After": [ "5" ],
-        "x-ms-activity-id": [ "7e0a6329-f6e8-44c9-aedf-2afbd898b846" ],
-        "Azure-AsyncOperation": [ "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI3ZWMzMjBlOS04Y2M0LTRiMDMtYTFiZS02MTYyOGVmZGIyN2YifQ==?api-version=2020-04-01-preview" ],
-        "Server": [ "Kestrel" ],
+        "x-ms-activity-id": [ "e7e9cfdc-c6fd-4752-8aee-ffe60b869957" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImQwZWEyNTc2LWQ2NzAtNGUzMi1hY2M0LWQ0MjNiZTJhOWE0OCJ9?api-version=2020-04-01-preview" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11999" ],
-        "x-ms-request-id": [ "f9b93706-c579-4db7-b882-85c315e84590" ],
-        "x-ms-correlation-request-id": [ "f9b93706-c579-4db7-b882-85c315e84590" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221229Z:f9b93706-c579-4db7-b882-85c315e84590" ],
+        "x-ms-request-id": [ "b45492b1-5b35-41ec-82fa-67ad32399cf0" ],
+        "x-ms-correlation-request-id": [ "b45492b1-5b35-41ec-82fa-67ad32399cf0" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220216T014121Z:b45492b1-5b35-41ec-82fa-67ad32399cf0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:28 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 77C983FAFB61481D9D50AE28F0637731 Ref B: YVR311000108035 Ref C: 2022-02-16T01:41:19Z" ],
+        "Date": [ "Wed, 16 Feb 2022 01:41:20 GMT" ]
       },
       "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI3ZWMzMjBlOS04Y2M0LTRiMDMtYTFiZS02MTYyOGVmZGIyN2YifQ==?api-version=2020-04-01-preview+8": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI3ZWMzMjBlOS04Y2M0LTRiMDMtYTFiZS02MTYyOGVmZGIyN2YifQ==?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "552acb1f-d019-49fd-9041-569517474ffe" ],
-        "CommandName": [ "Remove-AzDnsResolverInboundEndpoint" ],
-        "FullCommandName": [ "Remove-AzDnsResolverInboundEndpoint_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "dbb5d550-9e6a-48f0-ba7d-69e80752e25c" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "492" ],
-        "x-ms-request-id": [ "1d5f7f3b-3e5d-43a3-8f6c-2f4c8b895ae5" ],
-        "x-ms-correlation-request-id": [ "1d5f7f3b-3e5d-43a3-8f6c-2f4c8b895ae5" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221235Z:1d5f7f3b-3e5d-43a3-8f6c-2f4c8b895ae5" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:35 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "541" ],
+        "Content-Length": [ "2" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI3ZWMzMjBlOS04Y2M0LTRiMDMtYTFiZS02MTYyOGVmZGIyN2YifQ==\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI3ZWMzMjBlOS04Y2M0LTRiMDMtYTFiZS02MTYyOGVmZGIyN2YifQ==\",\"startTime\":\"2021-03-04T22:12:29.0000000Z\",\"endTime\":\"2021-03-04T22:12:33.0000000Z\",\"status\":\"Succeeded\"}"
+      "Content": "{}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI3ZWMzMjBlOS04Y2M0LTRiMDMtYTFiZS02MTYyOGVmZGIyN2YifQ==?api-version=2020-04-01-preview+9": {
+  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImQwZWEyNTc2LWQ2NzAtNGUzMi1hY2M0LWQ0MjNiZTJhOWE0OCJ9?api-version=2020-04-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI3ZWMzMjBlOS04Y2M0LTRiMDMtYTFiZS02MTYyOGVmZGIyN2YifQ==?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImQwZWEyNTc2LWQ2NzAtNGUzMi1hY2M0LWQ0MjNiZTJhOWE0OCJ9?api-version=2020-04-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "552acb1f-d019-49fd-9041-569517474ffe" ],
-        "CommandName": [ "Remove-AzDnsResolverInboundEndpoint" ],
-        "FullCommandName": [ "Remove-AzDnsResolverInboundEndpoint_Delete" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "c532ac9a-c204-4bf7-b93e-0c8766ee5cca" ],
+        "CommandName": [ "New-AzDnsResolver" ],
+        "FullCommandName": [ "New-AzDnsResolver_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
       },
@@ -337,109 +63,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "d7c996d4-7300-41c9-bb79-f3965cd8fbcd" ],
-        "Server": [ "Kestrel" ],
+        "x-ms-activity-id": [ "19e4e246-1fb2-4db0-8a3b-e6d57219bd8f" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
-        "x-ms-request-id": [ "03dad7c1-6dad-4a97-afba-3d28fc0a7713" ],
-        "x-ms-correlation-request-id": [ "03dad7c1-6dad-4a97-afba-3d28fc0a7713" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221236Z:03dad7c1-6dad-4a97-afba-3d28fc0a7713" ],
+        "x-ms-request-id": [ "09241893-31e8-43e7-a619-29893c383e33" ],
+        "x-ms-correlation-request-id": [ "09241893-31e8-43e7-a619-29893c383e33" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220216T014126Z:09241893-31e8-43e7-a619-29893c383e33" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:35 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 47BCFAF31ACB4DE3A7E4CB63595D1121 Ref B: YVR311000108035 Ref C: 2022-02-16T01:41:26Z" ],
+        "Date": [ "Wed, 16 Feb 2022 01:41:26 GMT" ]
       },
       "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61mxn1oi/inboundEndpoints/psinboundendpointnamehqswmd?api-version=2020-04-01-preview+10": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61mxn1oi/inboundEndpoints/psinboundendpointnamehqswmd?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "f1b5fff1-4eee-482e-8dca-b7d78aa20fc8" ],
-        "CommandName": [ "Get-AzDnsResolverInboundEndpoint" ],
-        "FullCommandName": [ "Get-AzDnsResolverInboundEndpoint_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 404,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "7c67b25d-1444-401c-ab12-613711b547ba" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "492" ],
-        "x-ms-request-id": [ "47ddb484-e4f0-4a70-ac56-8b1356ea447d" ],
-        "x-ms-correlation-request-id": [ "47ddb484-e4f0-4a70-ac56-8b1356ea447d" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221236Z:47ddb484-e4f0-4a70-ac56-8b1356ea447d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:36 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "2743" ],
-        "Content-Type": [ "text/plain; charset=utf-8" ],
+        "Content-Length": [ "536" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"NotFound\",\"message\":\"Inbound endpoint not found in database. inboundEndpointResourceId=/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/dnsResolvers/psdnsresolvername61mxn1oi/inboundEndpoints/psinboundendpointnamehqswmd\",\"target\":\"\",\"details\":{},\"innererror\":{\"message\":\"Inbound endpoint not found in database. inboundEndpointResourceId=/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/dnsResolvers/psdnsresolvername61mxn1oi/inboundEndpoints/psinboundendpointnamehqswmd\",\"type\":\"Microsoft.Azure.Networking.Dns.ManagedResolver.Frontend.Contracts.ServiceExceptions.FrontendNotFoundServiceException\",\"stacktrace\":\"   at Microsoft.Azure.Networking.Dns.ManagedResolver.Frontend.Operations.Services.InboundEndpointService.InboundEndpointService.GetInboundEndpointAsync(IInboundEndpointIdentity inboundEndpointIdentity) in C:\\\\source\\\\src\\\\Frontend\\\\Frontend.Operations\\\\Services\\\\InboundEndpointService\\\\InboundEndpointService.cs:line 271\\r\\n   at Microsoft.Azure.Networking.Dns.ManagedResolver.Frontend.Web.Controllers.ManagedResolverController.GetInboundEndpoint(String subscriptionId, String resourceGroupName, String dnsResolverName, String inboundEndpointName, String apiVersion) in C:\\\\source\\\\src\\\\Frontend\\\\Frontend.Web\\\\Controllers\\\\ManagedResolverController.cs:line 533\\r\\n   at lambda_method228(Closure , Object )\\r\\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\\r\\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.\u003cInvokeActionMethodAsync\u003eg__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\\r\\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.\u003cInvokeNextActionFilterAsync\u003eg__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\\r\\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\\r\\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State\u0026 next, Scope\u0026 scope, Object\u0026 state, Boolean\u0026 isCompleted)\\r\\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.\u003cInvokeInnerFilterAsync\u003eg__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\\r\\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.\u003cInvokeNextExceptionFilterAsync\u003eg__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\",\"innererror\":{}} }}"
+      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImQwZWEyNTc2LWQ2NzAtNGUzMi1hY2M0LWQ0MjNiZTJhOWE0OCJ9\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImQwZWEyNTc2LWQ2NzAtNGUzMi1hY2M0LWQ0MjNiZTJhOWE0OCJ9\",\"startTime\":\"2022-02-16T01:41:21.0000000Z\",\"endTime\":\"2022-02-16T01:41:24.0000000Z\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint via identity, expected Inbound Endpoint deleted+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr?api-version=2020-04-01-preview+1": {
-    "Request": {
-      "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr?api-version=2020-04-01-preview",
-      "Content": "{\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"virtualNetwork\": {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname62g6fukz\"\r\n    }\r\n  }\r\n}",
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "260" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjlkZTE5NDQ5LWE1OGEtNDQ2OC1iNDdiLWE3MzY5MjZhMzgzOCJ9?api-version=2020-04-01-preview" ],
-        "Retry-After": [ "5" ],
-        "x-ms-activity-id": [ "54f5e7e8-3e44-43c3-8575-3462c3108dba" ],
-        "Azure-AsyncOperation": [ "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjlkZTE5NDQ5LWE1OGEtNDQ2OC1iNDdiLWE3MzY5MjZhMzgzOCJ9?api-version=2020-04-01-preview" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11996" ],
-        "x-ms-request-id": [ "f0767cab-83e6-474a-99de-d34fcec0c7e4" ],
-        "x-ms-correlation-request-id": [ "f0767cab-83e6-474a-99de-d34fcec0c7e4" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221239Z:f0767cab-83e6-474a-99de-d34fcec0c7e4" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:38 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint via identity, expected Inbound Endpoint deleted+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjlkZTE5NDQ5LWE1OGEtNDQ2OC1iNDdiLWE3MzY5MjZhMzgzOCJ9?api-version=2020-04-01-preview+2": {
+  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername19?api-version=2020-04-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjlkZTE5NDQ5LWE1OGEtNDQ2OC1iNDdiLWE3MzY5MjZhMzgzOCJ9?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername19?api-version=2020-04-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "31" ],
-        "x-ms-client-request-id": [ "636ab685-1cb5-41df-a438-a0b3b53a4b8b" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "c532ac9a-c204-4bf7-b93e-0c8766ee5cca" ],
         "CommandName": [ "New-AzDnsResolver" ],
         "FullCommandName": [ "New-AzDnsResolver_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -453,507 +106,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "8dd80c0d-ccc1-444b-82f0-591e7c1685bd" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "491" ],
-        "x-ms-request-id": [ "a9bb9e06-b346-410a-847c-b0ca278fe022" ],
-        "x-ms-correlation-request-id": [ "a9bb9e06-b346-410a-847c-b0ca278fe022" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221244Z:a9bb9e06-b346-410a-847c-b0ca278fe022" ],
+        "x-ms-activity-id": [ "3412048b-e3e9-41e4-9036-c054ea2fd489" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
+        "x-ms-request-id": [ "ea3687e8-566e-4081-85c5-ddbf2110c819" ],
+        "x-ms-correlation-request-id": [ "ea3687e8-566e-4081-85c5-ddbf2110c819" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220216T014127Z:ea3687e8-566e-4081-85c5-ddbf2110c819" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:44 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A96CF86A89AD40F187A8C77724082CFB Ref B: YVR311000108035 Ref C: 2022-02-16T01:41:27Z" ],
+        "Date": [ "Wed, 16 Feb 2022 01:41:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "525" ],
+        "Content-Length": [ "785" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjlkZTE5NDQ5LWE1OGEtNDQ2OC1iNDdiLWE3MzY5MjZhMzgzOCJ9\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjlkZTE5NDQ5LWE1OGEtNDQ2OC1iNDdiLWE3MzY5MjZhMzgzOCJ9\",\"startTime\":\"2021-03-04T22:12:39.0000000Z\",\"endTime\":\"2021-03-04T22:12:40.0000000Z\",\"status\":\"Succeeded\"}"
+      "Content": "{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname19\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"0e6f7b66-10c4-413d-acf9-040e9a907a17\"},\"etag\":\"\\\"0000ce10-0000-0200-0000-620c56440000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername19\",\"name\":\"psdnsresolvername19\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T01:41:21.2110273Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T01:41:21.2110273Z\",\"lastModifiedByType\":\"User\"}}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint via identity, expected Inbound Endpoint deleted+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr?api-version=2020-04-01-preview+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "636ab685-1cb5-41df-a438-a0b3b53a4b8b" ],
-        "CommandName": [ "New-AzDnsResolver" ],
-        "FullCommandName": [ "New-AzDnsResolver_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "e3de4ba9-e211-425f-a118-1fb1060a7987" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "496" ],
-        "x-ms-request-id": [ "ea8a2cda-828f-40da-b8fb-a11cf146bced" ],
-        "x-ms-correlation-request-id": [ "ea8a2cda-828f-40da-b8fb-a11cf146bced" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221245Z:ea8a2cda-828f-40da-b8fb-a11cf146bced" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:44 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "636" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname62g6fukz\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"980c4420-282e-432b-8b7b-28d369109a9f\"},\"etag\":\"\\\"0000e7ff-0000-0800-0000-60415b570000\\\"\",\"location\":\"westus2\",\"tags\":null,\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr\",\"name\":\"psdnsresolvername62xj5ywr\",\"type\":\"Microsoft.Network/dnsResolvers\"}"
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint via identity, expected Inbound Endpoint deleted+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr/inboundEndpoints/psinboundendpointnameszkcq3?api-version=2020-04-01-preview+4": {
-    "Request": {
-      "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr/inboundEndpoints/psinboundendpointnameszkcq3?api-version=2020-04-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname62g6fukz/subnets/pssubnetname627rodkz\"\r\n        },\r\n        \"privateIpAddress\": \"212.93.129.103\",\r\n        \"privateIpAllocationMethod\": \"Dynamic\"\r\n      }\r\n    ]\r\n  }\r\n}",
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "415" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI3YjgzODAyOS1lNThjLTQwMGMtYWYwNi04ZjY1M2VkYzQxOTAifQ==?api-version=2020-04-01-preview" ],
-        "Retry-After": [ "5" ],
-        "x-ms-activity-id": [ "ba000f44-b1d5-43f8-bcb0-ffd187436b19" ],
-        "Azure-AsyncOperation": [ "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI3YjgzODAyOS1lNThjLTQwMGMtYWYwNi04ZjY1M2VkYzQxOTAifQ==?api-version=2020-04-01-preview" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11995" ],
-        "x-ms-request-id": [ "5d790aff-37d1-46b4-94e8-af998488bf54" ],
-        "x-ms-correlation-request-id": [ "5d790aff-37d1-46b4-94e8-af998488bf54" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221246Z:5d790aff-37d1-46b4-94e8-af998488bf54" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:45 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint via identity, expected Inbound Endpoint deleted+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI3YjgzODAyOS1lNThjLTQwMGMtYWYwNi04ZjY1M2VkYzQxOTAifQ==?api-version=2020-04-01-preview+5": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI3YjgzODAyOS1lNThjLTQwMGMtYWYwNi04ZjY1M2VkYzQxOTAifQ==?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "34" ],
-        "x-ms-client-request-id": [ "9a521e48-18b8-4deb-a157-77b5a8a68c61" ],
-        "CommandName": [ "New-AzDnsResolverInboundEndpoint" ],
-        "FullCommandName": [ "New-AzDnsResolverInboundEndpoint_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "f65cffd3-c58e-46ad-b43a-cbd82ca759fc" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "490" ],
-        "x-ms-request-id": [ "28f54862-61a9-4b3f-a4b4-4c2939133866" ],
-        "x-ms-correlation-request-id": [ "28f54862-61a9-4b3f-a4b4-4c2939133866" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221252Z:28f54862-61a9-4b3f-a4b4-4c2939133866" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:52 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "541" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI3YjgzODAyOS1lNThjLTQwMGMtYWYwNi04ZjY1M2VkYzQxOTAifQ==\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI3YjgzODAyOS1lNThjLTQwMGMtYWYwNi04ZjY1M2VkYzQxOTAifQ==\",\"startTime\":\"2021-03-04T22:12:46.0000000Z\",\"endTime\":\"2021-03-04T22:12:49.0000000Z\",\"status\":\"Succeeded\"}"
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint via identity, expected Inbound Endpoint deleted+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr/inboundEndpoints/psinboundendpointnameszkcq3?api-version=2020-04-01-preview+6": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr/inboundEndpoints/psinboundendpointnameszkcq3?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "9a521e48-18b8-4deb-a157-77b5a8a68c61" ],
-        "CommandName": [ "New-AzDnsResolverInboundEndpoint" ],
-        "FullCommandName": [ "New-AzDnsResolverInboundEndpoint_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "6a106c20-bd4f-4c66-b28c-5c14db702fd8" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "491" ],
-        "x-ms-request-id": [ "a7353133-0dee-448b-94f4-9d71cdcb23d4" ],
-        "x-ms-correlation-request-id": [ "a7353133-0dee-448b-94f4-9d71cdcb23d4" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221253Z:a7353133-0dee-448b-94f4-9d71cdcb23d4" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:52 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "733" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"properties\":{\"ipConfigurations\":[{\"subnet\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname62g6fukz/subnets/pssubnetname627rodkz\"},\"privateIpAllocationMethod\":\"Static\"}],\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"95605174-ffaa-400e-9711-81ed78bcda7b\",\"metadata\":null},\"etag\":\"\\\"0c004de3-0000-0800-0000-60415b610000\\\"\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr/inboundEndpoints/psinboundendpointnameszkcq3\",\"name\":\"psinboundendpointnameszkcq3\",\"type\":\"Microsoft.Network/dnsResolvers/inboundEndpoints\"}"
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint via identity, expected Inbound Endpoint deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr/inboundEndpoints/psinboundendpointnameszkcq3?api-version=2020-04-01-preview+7": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr/inboundEndpoints/psinboundendpointnameszkcq3?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "36" ],
-        "x-ms-client-request-id": [ "18ba7a95-df22-4e5e-929e-8e625dcfc94c" ],
-        "CommandName": [ "Get-AzDnsResolverInboundEndpoint" ],
-        "FullCommandName": [ "Get-AzDnsResolverInboundEndpoint_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "d7398972-78df-4a4c-abd2-2acc62e2c969" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "490" ],
-        "x-ms-request-id": [ "77a84ef0-474e-4e96-8ea8-a668808e0b88" ],
-        "x-ms-correlation-request-id": [ "77a84ef0-474e-4e96-8ea8-a668808e0b88" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221254Z:77a84ef0-474e-4e96-8ea8-a668808e0b88" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:53 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "733" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"properties\":{\"ipConfigurations\":[{\"subnet\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname62g6fukz/subnets/pssubnetname627rodkz\"},\"privateIpAllocationMethod\":\"Static\"}],\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"95605174-ffaa-400e-9711-81ed78bcda7b\",\"metadata\":null},\"etag\":\"\\\"0c004de3-0000-0800-0000-60415b610000\\\"\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr/inboundEndpoints/psinboundendpointnameszkcq3\",\"name\":\"psinboundendpointnameszkcq3\",\"type\":\"Microsoft.Network/dnsResolvers/inboundEndpoints\"}"
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint via identity, expected Inbound Endpoint deleted+$DELETE+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr/inboundEndpoints/psinboundendpointnameszkcq3?api-version=2020-04-01-preview+8": {
+  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$DELETE+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername19/inboundEndpoints/psinboundendpointname19?api-version=2020-04-01-preview+4": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr/inboundEndpoints/psinboundendpointnameszkcq3?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername19/inboundEndpoints/psinboundendpointname19?api-version=2020-04-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "37" ],
-        "x-ms-client-request-id": [ "76025e9f-3fe3-4ffd-b487-9b165428d1bc" ],
-        "CommandName": [ "Remove-AzDnsResolverInboundEndpoint" ],
-        "FullCommandName": [ "Remove-AzDnsResolverInboundEndpoint_DeleteViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiIzNDA4MjAzYi1kOWM5LTQxN2ItYTNmYi00MTNmMGY4NzQwNTYifQ==?api-version=2020-04-01-preview" ],
-        "Retry-After": [ "5" ],
-        "x-ms-activity-id": [ "8bdefcfd-3f67-4db2-913b-dd8425446523" ],
-        "Azure-AsyncOperation": [ "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiIzNDA4MjAzYi1kOWM5LTQxN2ItYTNmYi00MTNmMGY4NzQwNTYifQ==?api-version=2020-04-01-preview" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11998" ],
-        "x-ms-request-id": [ "ab17bf4b-b573-4648-83f8-01d15f2d9c1f" ],
-        "x-ms-correlation-request-id": [ "ab17bf4b-b573-4648-83f8-01d15f2d9c1f" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221255Z:ab17bf4b-b573-4648-83f8-01d15f2d9c1f" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:12:54 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint via identity, expected Inbound Endpoint deleted+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiIzNDA4MjAzYi1kOWM5LTQxN2ItYTNmYi00MTNmMGY4NzQwNTYifQ==?api-version=2020-04-01-preview+9": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiIzNDA4MjAzYi1kOWM5LTQxN2ItYTNmYi00MTNmMGY4NzQwNTYifQ==?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "38" ],
-        "x-ms-client-request-id": [ "76025e9f-3fe3-4ffd-b487-9b165428d1bc" ],
-        "CommandName": [ "Remove-AzDnsResolverInboundEndpoint" ],
-        "FullCommandName": [ "Remove-AzDnsResolverInboundEndpoint_DeleteViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "b79969f0-13cf-4a5f-bf2a-2a8cea0c850d" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "489" ],
-        "x-ms-request-id": [ "e4da5749-ed96-4494-905e-175e9564139d" ],
-        "x-ms-correlation-request-id": [ "e4da5749-ed96-4494-905e-175e9564139d" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221300Z:e4da5749-ed96-4494-905e-175e9564139d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:13:00 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "541" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiIzNDA4MjAzYi1kOWM5LTQxN2ItYTNmYi00MTNmMGY4NzQwNTYifQ==\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiIzNDA4MjAzYi1kOWM5LTQxN2ItYTNmYi00MTNmMGY4NzQwNTYifQ==\",\"startTime\":\"2021-03-04T22:12:55.0000000Z\",\"endTime\":\"2021-03-04T22:12:55.0000000Z\",\"status\":\"Succeeded\"}"
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint via identity, expected Inbound Endpoint deleted+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiIzNDA4MjAzYi1kOWM5LTQxN2ItYTNmYi00MTNmMGY4NzQwNTYifQ==?api-version=2020-04-01-preview+10": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlSW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiIzNDA4MjAzYi1kOWM5LTQxN2ItYTNmYi00MTNmMGY4NzQwNTYifQ==?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "39" ],
-        "x-ms-client-request-id": [ "76025e9f-3fe3-4ffd-b487-9b165428d1bc" ],
-        "CommandName": [ "Remove-AzDnsResolverInboundEndpoint" ],
-        "FullCommandName": [ "Remove-AzDnsResolverInboundEndpoint_DeleteViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "7a10cf3d-d323-470f-b342-11b5582f6c70" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "498" ],
-        "x-ms-request-id": [ "223313b2-4432-4977-a9c6-0dd96be5f273" ],
-        "x-ms-correlation-request-id": [ "223313b2-4432-4977-a9c6-0dd96be5f273" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221302Z:223313b2-4432-4977-a9c6-0dd96be5f273" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:13:02 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint via identity, expected Inbound Endpoint deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr/inboundEndpoints/psinboundendpointnameszkcq3?api-version=2020-04-01-preview+11": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62xj5ywr/inboundEndpoints/psinboundendpointnameszkcq3?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "40" ],
-        "x-ms-client-request-id": [ "0e714269-9a22-4724-b8bf-a2bcb9ed261b" ],
-        "CommandName": [ "Get-AzDnsResolverInboundEndpoint" ],
-        "FullCommandName": [ "Get-AzDnsResolverInboundEndpoint_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 404,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "3bfd64cc-58c9-4cb4-a294-78a63bdf61b3" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "489" ],
-        "x-ms-request-id": [ "7892f6e2-56ee-4b54-95d3-1d462c80952e" ],
-        "x-ms-correlation-request-id": [ "7892f6e2-56ee-4b54-95d3-1d462c80952e" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221303Z:7892f6e2-56ee-4b54-95d3-1d462c80952e" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:13:02 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "2743" ],
-        "Content-Type": [ "text/plain; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"error\":{\"code\":\"NotFound\",\"message\":\"Inbound endpoint not found in database. inboundEndpointResourceId=/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/dnsResolvers/psdnsresolvername62xj5ywr/inboundEndpoints/psinboundendpointnameszkcq3\",\"target\":\"\",\"details\":{},\"innererror\":{\"message\":\"Inbound endpoint not found in database. inboundEndpointResourceId=/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/dnsResolvers/psdnsresolvername62xj5ywr/inboundEndpoints/psinboundendpointnameszkcq3\",\"type\":\"Microsoft.Azure.Networking.Dns.ManagedResolver.Frontend.Contracts.ServiceExceptions.FrontendNotFoundServiceException\",\"stacktrace\":\"   at Microsoft.Azure.Networking.Dns.ManagedResolver.Frontend.Operations.Services.InboundEndpointService.InboundEndpointService.GetInboundEndpointAsync(IInboundEndpointIdentity inboundEndpointIdentity) in C:\\\\source\\\\src\\\\Frontend\\\\Frontend.Operations\\\\Services\\\\InboundEndpointService\\\\InboundEndpointService.cs:line 271\\r\\n   at Microsoft.Azure.Networking.Dns.ManagedResolver.Frontend.Web.Controllers.ManagedResolverController.GetInboundEndpoint(String subscriptionId, String resourceGroupName, String dnsResolverName, String inboundEndpointName, String apiVersion) in C:\\\\source\\\\src\\\\Frontend\\\\Frontend.Web\\\\Controllers\\\\ManagedResolverController.cs:line 533\\r\\n   at lambda_method228(Closure , Object )\\r\\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\\r\\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.\u003cInvokeActionMethodAsync\u003eg__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\\r\\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.\u003cInvokeNextActionFilterAsync\u003eg__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\\r\\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\\r\\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State\u0026 next, Scope\u0026 scope, Object\u0026 state, Boolean\u0026 isCompleted)\\r\\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.\u003cInvokeInnerFilterAsync\u003eg__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\\r\\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.\u003cInvokeNextExceptionFilterAsync\u003eg__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\",\"innererror\":{}} }}"
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint that does not exist by name, expected failure+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername63z1svwu?api-version=2020-04-01-preview+1": {
-    "Request": {
-      "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername63z1svwu?api-version=2020-04-01-preview",
-      "Content": "{\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"virtualNetwork\": {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname637w1hft\"\r\n    }\r\n  }\r\n}",
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "260" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImZmYjMyODViLWIxYjItNDI5Ni04ZDdjLWQzNmZlZDJkMDFjNyJ9?api-version=2020-04-01-preview" ],
-        "Retry-After": [ "5" ],
-        "x-ms-activity-id": [ "09d9a0aa-9612-4f4d-a03c-715964b9a89a" ],
-        "Azure-AsyncOperation": [ "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImZmYjMyODViLWIxYjItNDI5Ni04ZDdjLWQzNmZlZDJkMDFjNyJ9?api-version=2020-04-01-preview" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11995" ],
-        "x-ms-request-id": [ "babe931e-6876-4ce8-832a-60c053fbc130" ],
-        "x-ms-correlation-request-id": [ "babe931e-6876-4ce8-832a-60c053fbc130" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221304Z:babe931e-6876-4ce8-832a-60c053fbc130" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:13:04 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint that does not exist by name, expected failure+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImZmYjMyODViLWIxYjItNDI5Ni04ZDdjLWQzNmZlZDJkMDFjNyJ9?api-version=2020-04-01-preview+2": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImZmYjMyODViLWIxYjItNDI5Ni04ZDdjLWQzNmZlZDJkMDFjNyJ9?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "42" ],
-        "x-ms-client-request-id": [ "47296b03-242f-443d-b21a-ef86659e4a6e" ],
-        "CommandName": [ "New-AzDnsResolver" ],
-        "FullCommandName": [ "New-AzDnsResolver_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "9b835c2f-fa4b-4eac-97db-f4be506caed4" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "488" ],
-        "x-ms-request-id": [ "e8cb6a2f-e374-4f7b-b998-98c61d0a86cf" ],
-        "x-ms-correlation-request-id": [ "e8cb6a2f-e374-4f7b-b998-98c61d0a86cf" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221310Z:e8cb6a2f-e374-4f7b-b998-98c61d0a86cf" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:13:09 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "525" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/locations/westus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImZmYjMyODViLWIxYjItNDI5Ni04ZDdjLWQzNmZlZDJkMDFjNyJ9\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImZmYjMyODViLWIxYjItNDI5Ni04ZDdjLWQzNmZlZDJkMDFjNyJ9\",\"startTime\":\"2021-03-04T22:13:04.0000000Z\",\"endTime\":\"2021-03-04T22:13:06.0000000Z\",\"status\":\"Succeeded\"}"
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint that does not exist by name, expected failure+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername63z1svwu?api-version=2020-04-01-preview+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername63z1svwu?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "43" ],
-        "x-ms-client-request-id": [ "47296b03-242f-443d-b21a-ef86659e4a6e" ],
-        "CommandName": [ "New-AzDnsResolver" ],
-        "FullCommandName": [ "New-AzDnsResolver_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "a74a205a-140b-4768-8c39-78a2a3bb7e50" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "495" ],
-        "x-ms-request-id": [ "adfdf9d4-0278-48a4-8e93-c7eabd0ab8fa" ],
-        "x-ms-correlation-request-id": [ "adfdf9d4-0278-48a4-8e93-c7eabd0ab8fa" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221311Z:adfdf9d4-0278-48a4-8e93-c7eabd0ab8fa" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:13:11 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "636" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname637w1hft\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"288bc538-1c51-47d3-a54a-ee97ac166be2\"},\"etag\":\"\\\"0000f0ff-0000-0800-0000-60415b710000\\\"\",\"location\":\"westus2\",\"tags\":null,\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername63z1svwu\",\"name\":\"psdnsresolvername63z1svwu\",\"type\":\"Microsoft.Network/dnsResolvers\"}"
-    }
-  },
-  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint that does not exist by name, expected failure+$DELETE+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername63z1svwu/inboundEndpoints/psinboundendpointname6mgj2a?api-version=2020-04-01-preview+4": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolvers/psdnsresolvername63z1svwu/inboundEndpoints/psinboundendpointname6mgj2a?api-version=2020-04-01-preview",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "44" ],
-        "x-ms-client-request-id": [ "dcd9f31d-8d2a-406f-b121-049ed4abd940" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "e99b55c8-b86a-4a2e-8b43-865a015d72bf" ],
         "CommandName": [ "Remove-AzDnsResolverInboundEndpoint" ],
         "FullCommandName": [ "Remove-AzDnsResolverInboundEndpoint_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -968,20 +149,63 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-activity-id": [ "474f4b94-4f7b-46ac-8961-c9bdc7081db9" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11997" ],
-        "x-ms-request-id": [ "f55bb52a-99c2-4ab3-a763-f8d67a8c4bda" ],
-        "x-ms-correlation-request-id": [ "f55bb52a-99c2-4ab3-a763-f8d67a8c4bda" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210304T221311Z:f55bb52a-99c2-4ab3-a763-f8d67a8c4bda" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11999" ],
+        "x-ms-request-id": [ "400bf037-0304-4259-b77e-7a1dacabb82e" ],
+        "x-ms-correlation-request-id": [ "400bf037-0304-4259-b77e-7a1dacabb82e" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220216T014128Z:400bf037-0304-4259-b77e-7a1dacabb82e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 04 Mar 2021 22:13:11 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 652FDF24CD8144C9A5E9FB69F8B7B9C1 Ref B: YVR311000108035 Ref C: 2022-02-16T01:41:28Z" ],
+        "Date": [ "Wed, 16 Feb 2022 01:41:27 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDnsResolverInboundEndpoint+[NoContext]+Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername19/inboundEndpoints/psinboundendpointname19?api-version=2020-04-01-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername19/inboundEndpoints/psinboundendpointname19?api-version=2020-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "7361592a-5344-4382-b2d2-6146173b5c9d" ],
+        "CommandName": [ "Get-AzDnsResolverInboundEndpoint" ],
+        "FullCommandName": [ "Get-AzDnsResolverInboundEndpoint_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "280f5469-eb1e-45cc-b561-ce94e0e6c24f" ],
+        "x-ms-correlation-request-id": [ "280f5469-eb1e-45cc-b561-ce94e0e6c24f" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220216T014128Z:280f5469-eb1e-45cc-b561-ce94e0e6c24f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 395A03ABD3A348BD8FE4BA516E21E73B Ref B: YVR311000108035 Ref C: 2022-02-16T01:41:28Z" ],
+        "Date": [ "Wed, 16 Feb 2022 01:41:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "292" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.Network/dnsResolvers/psdnsresolvername19/inboundEndpoints/psinboundendpointname19\u0027 under resource group \u0027rg-dev-eastus2-sdk-powershell\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
     }
   }
 }

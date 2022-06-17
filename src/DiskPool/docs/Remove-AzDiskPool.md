@@ -8,7 +8,9 @@ schema: 2.0.0
 # Remove-AzDiskPool
 
 ## SYNOPSIS
-Delete a Disk pool.
+Delete a Disk pool; attached disks are not affected.
+This delete operation can take 10 minutes to complete.
+This is expected service behavior.
 
 ## SYNTAX
 
@@ -25,22 +27,22 @@ Remove-AzDiskPool -InputObject <IDiskPoolIdentity> [-DefaultProfile <PSObject>] 
 ```
 
 ## DESCRIPTION
-Delete a Disk pool.
+Delete a Disk pool; attached disks are not affected.
+This delete operation can take 10 minutes to complete.
+This is expected service behavior.
 
 ## EXAMPLES
 
 ### Example 1: Delete a Disk Pool
 ```powershell
-PS C:\> Remove-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' 
-
+Remove-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' 
 ```
 
 This command deletes a Disk Pool.
 
 ### Example 2: Delete a Disk Pool by object
 ```powershell
-PS C:\> Get-AzDiskPool -ResourceGroupName 'storagepool-rg-test' -Name 'disk-pool-1' | Remove-AzDiskPool
-
+Get-AzDiskPool -ResourceGroupName 'storagepool-rg-test' -Name 'disk-pool-1' | Remove-AzDiskPool
 ```
 
 This command deletes a Disk Pool by object.

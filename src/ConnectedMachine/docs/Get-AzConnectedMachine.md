@@ -36,8 +36,10 @@ Retrieves information about the model view or the instance view of a hybrid mach
 
 ### Example 1: List all connected machines in a subscription
 ```powershell
-PS C:\> Get-AzConnectedMachine -SubscriptionId 67379433-5e19-4702-b39a-c0a03ca8d20c
+Get-AzConnectedMachine -SubscriptionId 67379433-5e19-4702-b39a-c0a03ca8d20c
+```
 
+```output
 Name           Location OSName   Status     ProvisioningState
 ----           -------- ------   ------     -----------------
 winwestus2_1   westus2  windows  Connected  Succeeded
@@ -52,8 +54,10 @@ If subscription isn't specified, it will use the subscription from your current 
 
 ### Example 2: List all connected machines in a resource group
 ```powershell
-PS C:\> Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines
+Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines
+```
 
+```output
 Name           Location OSName   Status     ProvisioningState
 ----           -------- ------   ------     -----------------
 winwestus2_2   westus2  windows  Connected  Succeeded
@@ -64,8 +68,10 @@ List all connected machines in a resource group.
 
 ### Example 3: Get a connected machine in a resource group by name
 ```powershell
-PS C:\> Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines -Name winwestus2_1
+Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines -Name winwestus2_1
+```
 
+```output
 Name           Location OSName   Status     ProvisioningState
 ----           -------- ------   ------     -----------------
 winwestus2_1   westus2  windows  Connected  Succeeded
@@ -111,7 +117,7 @@ The name of the hybrid machine.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: MachineName
 
 Required: True
 Position: Named
@@ -122,6 +128,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -136,8 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -158,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachine
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachine
 
 ## NOTES
 

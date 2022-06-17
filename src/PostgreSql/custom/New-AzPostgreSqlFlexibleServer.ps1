@@ -67,7 +67,7 @@ function New-AzPostgreSqlFlexibleServer {
         [ValidateNotNullOrEmpty()]
         ${AdministratorLoginPassword},
 
-        [Parameter(HelpMessage = 'The name of the sku, typically, tier + family + cores, e.g. Standard_B1ms, Standard_D2ds_v4.')]
+        [Parameter(HelpMessage = 'The name of the sku, typically, tier + family + cores, e.g. Standard_B1ms, Standard_D2s_v3.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [System.String]
         ${Sku},
@@ -109,7 +109,7 @@ function New-AzPostgreSqlFlexibleServer {
 
         [Parameter(HelpMessage = 'The id of an existing private dns zone. You can use the
         private dns zone from same resource group, different resource group, or
-        different subscription.')]
+        different subscription. The suffix of dns zone has to be same as that of fully qualified domain of the server. ')]
         [System.String]
         ${PrivateDnsZone},
 
@@ -322,6 +322,12 @@ function New-AzPostgreSqlFlexibleServer {
                     $null = $PSBoundParameters.Remove('NetworkDelegatedSubnetResourceId')
                 }
                 if ($NetworkParameters.ContainsKey('PrivateDnsZone')){
+                    if (!(Get-Module -ListAvailable -Name Az.PrivateDns)) {
+                        throw 'Please install Az.Network module by entering "Install-Module -Name Az.PrivateDns"'
+                    }
+                    else {
+                        Import-Module -Name Az.PrivateDns
+                    }
                     $ZoneName = $NetworkParameters["PrivateDnsZone"].split("/")[-1]
                     $DnsResourceGroup = $NetworkParameters["PrivateDnsZone"].split("/")[4]
                     $Links = Get-AzPrivateDnsVirtualNetworkLink -ZoneName $ZoneName -ResourceGroupName $DnsResourceGroup
@@ -333,6 +339,7 @@ function New-AzPostgreSqlFlexibleServer {
                         }
                     }
                     if (!$LinkedFlag){
+                        Write-Host "Adding virtual network link to the DNS zone..."
                         New-AzPrivateDnsVirtualNetworkLink -ZoneName $ZoneName -ResourceGroupName $DnsResourceGroup -Name $PSBoundParameters["Name"] -VirtualNetworkId $VnetId
                     }
                     $PSBoundParameters.NetworkPrivateDnsZoneArmResourceId = $NetworkParameters["PrivateDnsZone"]

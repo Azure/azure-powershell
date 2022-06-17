@@ -25,8 +25,10 @@ Computes, resolves and validate the dependencies of the moveResources in the mov
 
 ### Example 1: Compute, resolve and validate the dependencies of the Move Resources in the Move collection.
 ```powershell
-PS C:\> Resolve-AzResourceMoverMoveCollectionDependency -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" 
+Resolve-AzResourceMoverMoveCollectionDependency -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" 
+```
 
+```output
 AdditionalInfo : 
 Code           : MoveCollectionResolveDependenciesOperationFailed
 Detail         : {}
@@ -175,7 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 
 ## NOTES
 

@@ -1,0 +1,72 @@
+{
+  "Invoke-AzEdgeOrderItemCancellation+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/orderItems/powershellItemTestdk4i/cancel?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/orderItems/powershellItemTestdk4i/cancel?api-version=2021-12-01",
+      "Content": "{\n  \"reason\": \"Test Job\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "26" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "e8122ed3-1685-43ba-be9f-22b2355a314e" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "4564cc6d-ecb1-4032-9734-358c0ed30559" ],
+        "x-ms-correlation-request-id": [ "4564cc6d-ecb1-4032-9734-358c0ed30559" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211123T092515Z:4564cc6d-ecb1-4032-9734-358c0ed30559" ],
+        "Date": [ "Tue, 23 Nov 2021 09:25:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzEdgeOrderItemCancellation+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/orderItems/powershellItemyg5q/cancel?api-version=2021-12-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/orderItems/powershellItemyg5q/cancel?api-version=2021-12-01",
+      "Content": "{\n  \"reason\": \"Test Job\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "26" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "9c823699-433a-4b36-93fc-cfae5592eb4e" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "80bc4227-6389-430a-9fe4-99ff01043917" ],
+        "x-ms-correlation-request-id": [ "80bc4227-6389-430a-9fe4-99ff01043917" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211123T092516Z:80bc4227-6389-430a-9fe4-99ff01043917" ],
+        "Date": [ "Tue, 23 Nov 2021 09:25:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

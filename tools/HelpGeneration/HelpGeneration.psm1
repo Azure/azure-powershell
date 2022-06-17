@@ -91,7 +91,7 @@ function Test-AzMarkdownHelp
         $HelpFolder = Get-Item $HelpFolderPath
         $Exceptions = Import-Csv "$SuppressedExceptionsPath\ValidateHelpIssues.csv"
         [String[]]$errors = @()
-        $MarkdownFiles = Get-ChildItem -Path $HelpFolder
+        $MarkdownFiles = Get-ChildItem -Path $HelpFolder -Include "*.md"
         $ModuleName = ($MarkdownFiles | where { $_.Name -notlike "*-*" }).Name -replace ".md",""
         foreach ($file in $MarkdownFiles)
         {

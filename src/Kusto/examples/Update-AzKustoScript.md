@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an existing kusto script by name
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Update-AzKustoScript -DatabaseName mykustodatabase -Name newkustoscript -ClusterName testnewkustocluster -ResourceGroupName testrg -ScriptUrl $BlobSASURL -ScriptUrlSasToken $BlobSASToken
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name                                               Type
+----                                               ----
+testnewkustocluster/mykustodatabase/newkustoscript Microsoft.Kusto/Clusters/Databases/Scripts
 ```
 
-{{ Add description here }}
-
+The above command updates the Kusto script "newkustoscript" found in the resource group "testrg".

@@ -24,8 +24,10 @@ Get the list of cached images on specific OS type for a subscription in a region
 
 ### Example 1: Get the list of cached images for the current subscription in a region.
 ```powershell
-PS C:\> Get-AzContainerInstanceCachedImage -Location eastus
+Get-AzContainerInstanceCachedImage -Location eastus
+```
 
+```output
 Image                                                                                OSType
 -----                                                                                ------
 microsoft/dotnet-framework:4.7.2-runtime-20181211-windowsservercore-ltsc2016         Windows
@@ -91,7 +93,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ICachedImages
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICachedImages
 
 ## NOTES
 
