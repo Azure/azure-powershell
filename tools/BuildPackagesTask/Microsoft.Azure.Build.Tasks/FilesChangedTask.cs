@@ -50,6 +50,11 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         public string TargetModule { get; set; }
 
         /// <summary>
+        /// Gets or set the OutputFile, store FilesChanged.txt in 'artifacts' folder
+        /// </summary>
+        public string OutputFile { get; set; }
+
+        /// <summary>
         /// Gets or sets the files changed produced by the task.
         /// </summary>
         [Output]
@@ -148,10 +153,10 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             return true;
         }
 
-        // This method will record the changed files into FilesChanged.txt under root folder for other task to consum.
+        // This method will record the changed files into a text file at `OutputFile` for other task to consum.
         private void SerializeChangedFilesToFile(string[] FilesChanged)
         {
-            File.WriteAllLines("FilesChanged.txt", FilesChanged);
+            File.WriteAllLines(OutputFile, FilesChanged);
         }
     }
 }
