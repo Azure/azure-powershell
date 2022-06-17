@@ -28,7 +28,7 @@
     - `Get-AzExpressRoutePortAuthorization`
     - `Remove-AzExpressRoutePortAuthorization`
 * Added option parameter `AuthorizationKey` to cmdlet `New-AzExpressRouteCircuit` to allow creating ExpressRoute Circuit on a ExpressRoutePort with a different owner.
-* Fix bug that can't display CustomIpPrefix in PublicIpPrefix.
+* Fixed bug that can't display CustomIpPrefix in PublicIpPrefix.
 * Updated cmdlets to add new property of `HubRoutingPreference` in VirtualHub and set property of `PreferredRoutingGateway` deprecated .
     - `New-AzVirtualHub`
     - `Update-AzVirtualHub`
@@ -57,7 +57,7 @@
 * Updated cmdlets to add new option of `HubRoutingPreference` in RouteServer.
     - `New-AzRouteServer`
     - `Update-AzRouteServer`
-* Fix bug that can't parse CustomIpPrefixParent parameter from swagger to powershell.
+* Fixed bug that can't parse CustomIpPrefixParent parameter from swagger to powershell.
 * Added "Any" operator in New-AzApplicationGatewayFirewallCondition
 
 ## Version 4.16.1
