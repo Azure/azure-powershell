@@ -237,9 +237,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             throw new NotImplementedException();
         }
 
-        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags)
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string certificate, SecureString certPassword, IDictionary<string, string> tags)
         {
             throw new NotImplementedException();
+        }
+
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags)
+        {
+            return VaultClient.ImportCertificate(vaultName, certName, certificate, certPassword, tags);
         }
 
         public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags)
@@ -250,6 +255,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)
         {
             throw new NotImplementedException();
+        }
+
+        public PSKeyVaultCertificate MergeCertificate(string vaultName, string name, byte[] certBytes, Dictionary<string, string> tags)
+        {
+            return VaultClient.MergeCertifcate(vaultName, name, certBytes, tags);
         }
 
         public void PurgeCertificate(string vaultName, string certName)
