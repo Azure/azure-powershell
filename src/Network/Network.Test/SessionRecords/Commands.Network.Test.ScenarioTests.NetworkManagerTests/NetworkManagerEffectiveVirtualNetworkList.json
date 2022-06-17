@@ -1,0 +1,146 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/pstest/providers/Microsoft.Network/networkManagers/testnm/networkGroups/testng2/listEffectiveVirtualNetworks?api-version=2022-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3Rlc3RubS9uZXR3b3JrR3JvdXBzL3Rlc3RuZzIvbGlzdEVmZmVjdGl2ZVZpcnR1YWxOZXR3b3Jrcz9hcGktdmVyc2lvbj0yMDIyLTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "{}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "dbe29fb6-350c-4aac-96a9-7677812ff198"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/22.1.0.Beta.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "37b6d36f-9ab4-4650-a404-c7add6918670"
+        ],
+        "x-ms-correlation-request-id": [
+          "37b6d36f-9ab4-4650-a404-c7add6918670"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220610T232323Z:37b6d36f-9ab4-4650-a404-c7add6918670"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 10 Jun 2022 23:23:23 GMT"
+        ],
+        "Content-Length": [
+          "218"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"skipToken\": \"\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/pstest/providers/Microsoft.Network/virtualNetworks/pstestvent\",\r\n      \"location\": \"centraluseuap\",\r\n      \"membershipType\": \"Dynamic\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/pstest/providers/Microsoft.Network/networkManagers/testnm/listEffectiveVirtualNetworks?api-version=2022-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3Rlc3RubS9saXN0RWZmZWN0aXZlVmlydHVhbE5ldHdvcmtzP2FwaS12ZXJzaW9uPTIwMjItMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"conditionalMembers\": \"{\\\"allOf\\\": [{\\\"value\\\": \\\"[resourceGroup().Name]\\\", \\\"equals\\\": \\\"pstest\\\"}]}\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0f68752a-d22a-4718-b22a-59bbe59d1058"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/22.1.0.Beta.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "110"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "fd0c10e5-2a06-4016-bf5f-1f5ac8265d79"
+        ],
+        "x-ms-correlation-request-id": [
+          "fd0c10e5-2a06-4016-bf5f-1f5ac8265d79"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220610T232327Z:fd0c10e5-2a06-4016-bf5f-1f5ac8265d79"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 10 Jun 2022 23:23:27 GMT"
+        ],
+        "Content-Length": [
+          "218"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"skipToken\": \"\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/pstest/providers/Microsoft.Network/virtualNetworks/pstestvent\",\r\n      \"location\": \"centraluseuap\",\r\n      \"membershipType\": \"Dynamic\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+  }
+}
