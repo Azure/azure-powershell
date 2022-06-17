@@ -536,10 +536,10 @@ function Get-ScriptAnalyzerResult {
     $results = @()
     foreach($analysisResult in $analysisResults){
         if($analysisResult.Severity -eq "Error"){
-            $Severity = 1
+            $Severity = 2
         }
         elseif($analysisResult.Severity -eq "Warning"){
-            $Severity = 2
+            $Severity = 3
         }
         if($analysisResult.RuleSuppressionID -ge 5000 -and $analysisResult.RuleSuppressionID -le 5199){
             $result = [AnalysisOutput]@{
