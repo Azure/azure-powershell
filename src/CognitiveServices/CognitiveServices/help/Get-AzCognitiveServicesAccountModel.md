@@ -131,4 +131,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzCognitiveServicesAccountDeployment](./New-AzCognitiveServicesAccountDeployment)
+[New-AzCognitiveServicesAccountDeployment](./New-AzCognitiveServicesAccountDeployment.md)

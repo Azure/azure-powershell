@@ -20,13 +20,10 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class DatabaseBackupTests : SqlTestsBase
+    public class DatabaseBackupTests : SqlTestRunner
     {
         public DatabaseBackupTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
         [Fact(Skip = "Not recordable")]
@@ -35,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             // TODO Rewrite SQL backup tests to be recordable
             // TODO https://github.com/Azure/azure-powershell/issues/4155
-            RunPowerShellTest("Test-ListDatabaseRestorePoints");
+            TestRunner.RunTestScript("Test-ListDatabaseRestorePoints");
         }
 
         [Fact(Skip = "Not recordable")]
@@ -46,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
-                RunPowerShellTest("Test-RestoreGeoBackup");
+                TestRunner.RunTestScript("Test-RestoreGeoBackup");
             }
         }
 
@@ -56,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             if (TestMockSupport.RunningMocked)
             {
-                RunPowerShellTest("Test-RestoreDeletedDatabaseBackup");
+                TestRunner.RunTestScript("Test-RestoreDeletedDatabaseBackup");
             }
         }
 
@@ -68,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
-                RunPowerShellTest("Test-RestorePointInTimeBackup");
+                TestRunner.RunTestScript("Test-RestorePointInTimeBackup");
             }
         }
 
@@ -80,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
-                RunPowerShellTest("Test-RestoreLongTermRetentionBackup");
+                TestRunner.RunTestScript("Test-RestoreLongTermRetentionBackup");
             }
         }
 
@@ -88,21 +85,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2Policy()
         {
-            RunPowerShellTest("Test-LongTermRetentionV2Policy");
+            TestRunner.RunTestScript("Test-LongTermRetentionV2Policy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2Backup()
         {
-            RunPowerShellTest("Test-LongTermRetentionV2Backup");
+            TestRunner.RunTestScript("Test-LongTermRetentionV2Backup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2ResourceGroupBasedBackup()
         {
-            RunPowerShellTest("Test-LongTermRetentionV2ResourceGroupBasedBackup");
+            TestRunner.RunTestScript("Test-LongTermRetentionV2ResourceGroupBasedBackup");
         }
 
         [Fact(Skip = "This is not recordable test")]
@@ -113,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
-                RunPowerShellTest("Test-LongTermRetentionV2");
+                TestRunner.RunTestScript("Test-LongTermRetentionV2");
             }
         }
 
@@ -125,7 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
-                RunPowerShellTest("Test-CopyLongTermRetentionBackup");
+                TestRunner.RunTestScript("Test-CopyLongTermRetentionBackup");
             }
         }
 
@@ -135,7 +132,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             if (TestMockSupport.RunningMocked)
             {
-                RunPowerShellTest("Test-UpdateLongTermRetentionBackup");
+                TestRunner.RunTestScript("Test-UpdateLongTermRetentionBackup");
             }
         }
 
@@ -144,7 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2ResourceGroupBased()
         {
-            RunPowerShellTest("Test-LongTermRetentionV2ResourceGroupBased");
+            TestRunner.RunTestScript("Test-LongTermRetentionV2ResourceGroupBased");
         }
 
         [Fact(Skip = "Not recordable")]
@@ -155,7 +152,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
-                RunPowerShellTest("Test-DatabaseGeoBackupPolicy");
+                TestRunner.RunTestScript("Test-DatabaseGeoBackupPolicy");
             }
         }
 
@@ -167,7 +164,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
-                RunPowerShellTest("Test-NewDatabaseRestorePoint");
+                TestRunner.RunTestScript("Test-NewDatabaseRestorePoint");
             }
         }
 
@@ -179,7 +176,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
-                RunPowerShellTest("Test-RemoveDatabaseRestorePoint");
+                TestRunner.RunTestScript("Test-RemoveDatabaseRestorePoint");
             }
         }
 
@@ -189,7 +186,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             if (TestMockSupport.RunningMocked)
             {
-                RunPowerShellTest("Test-ShortTermRetentionPolicy");
+                TestRunner.RunTestScript("Test-ShortTermRetentionPolicy");
             }
         }
 
@@ -197,14 +194,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateRestoreRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
         {
-            RunPowerShellTest("Test-CreateRestoreRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
+            TestRunner.RunTestScript("Test-CreateRestoreRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
         }
 
         [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateRestoreRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
         {
-            RunPowerShellTest("Test-CreateRestoreRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
+            TestRunner.RunTestScript("Test-CreateRestoreRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
         }
     }
 }

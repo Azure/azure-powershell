@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     {
         public PSClientEncryptionPolicy()
         {
-        }        
+        }
 
         public PSClientEncryptionPolicy(ClientEncryptionPolicy clientEncryptionPolicy)
         {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             {
                 IncludedPaths = new List<ClientEncryptionIncludedPath>(),
                 PolicyFormatVersion = pSClientEncryptionPolicy.PolicyFormatVersion
-            };            
+            };
 
             if (ModelHelper.IsNotNullOrEmpty(pSClientEncryptionPolicy.IncludedPaths))
             {
@@ -100,6 +100,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// <summary>
         /// Ensures that partition key paths are not specified in the client encryption policy for encryption.
         /// </summary>
+        /// <param name="clientEncryptionIncludedPath">Included paths of the client encryption policy.</param>
         /// <param name="partitionKeyPathTokens">Tokens corresponding to validated partition key.</param>
         private static void ValidatePartitionKeyPathsAreNotEncrypted(IEnumerable<ClientEncryptionIncludedPath> clientEncryptionIncludedPath, List<string> partitionKeyPathTokens)
         {

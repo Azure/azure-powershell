@@ -118,12 +118,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            if (string.IsNullOrEmpty(writeLocation))
-            {
-                WriteWarning("Cannot create Account without a Write Location.");
-                return;
-            }
-
             Dictionary<string, string> tags = new Dictionary<string, string>();
             if (Tag != null)
             {

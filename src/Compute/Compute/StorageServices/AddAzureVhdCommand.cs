@@ -36,6 +36,8 @@ using System.Management;
 using Microsoft.Samples.HyperV.Storage;
 using Microsoft.Samples.HyperV.Common;
 using System.Threading;
+using Azure.Core;
+using Microsoft.Azure.Commands.Compute.Common;
 
 
 namespace Microsoft.Azure.Commands.Compute.StorageServices
@@ -178,6 +180,14 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Skips the resizing of VHD")]
         public SwitchParameter SkipResizing { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = DirectUploadToManagedDiskSet,
+            HelpMessage = "Additional authentication requirements when exporting or uploading to a disk or snapshot. Possible options are: \"AzureActiveDirectory\" and \"None\".")]
+        [PSArgumentCompleter("AzureActiveDirectory")]
+        public string DataAccessAuthMode { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -228,13 +238,19 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
                         // 3-4: UPLOAD                  
                         WriteVerbose("Preparing for Upload");
-                        PSPageBlobClient managedDisk = new PSPageBlobClient(sasUri);
+                        ComputeTokenCredential tokenCredential = null;
+                        if (this.DataAccessAuthMode == "AzureActiveDirectory")
+                        {
+                            // get token 
+                            tokenCredential = new ComputeTokenCredential(DefaultContext, "https://disk.azure.com/");
+                        }
+                        PSPageBlobClient managedDisk = new PSPageBlobClient(sasUri, tokenCredential);
                         DiskUploadCreator diskUploadCreator = new DiskUploadCreator();
                         var uploadContext = diskUploadCreator.Create(this.LocalFilePath, managedDisk, false);
                         var synchronizer = new DiskSynchronizer(uploadContext, this.NumberOfUploaderThreads ?? DefaultNumberOfUploaderThreads);
 
                         WriteVerbose("Uploading");
-                        if (synchronizer.Synchronize())
+                        if (synchronizer.Synchronize(tokenCredential))
                         {
                             var result = new VhdUploadContext { LocalFilePath = this.LocalFilePath, DestinationUri = sasUri };
                             WriteObject(result);
@@ -378,7 +394,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 EncryptionSettingsCollection = null,
                 Encryption = null,
                 NetworkAccessPolicy = null,
-                DiskAccessId = null
+                DiskAccessId = null,
+                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? this.DataAccessAuthMode : null
             };
             return vDisk;
         }
