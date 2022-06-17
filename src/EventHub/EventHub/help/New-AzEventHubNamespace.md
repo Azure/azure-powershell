@@ -204,10 +204,10 @@ Encryption.KeyVaultProperties :
 ```powershell
 
 # Create encryption config that will create an in memory config object
-$config1 = New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
+$config1 = New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri 'https://myvaultname.vault.azure.net' -UserAssignedIdentity '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
 
 # Create encryption config that will create an in memory config object
-$config2 = New-AzEventHubEncryptionConfig -KeyName key2 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
+$config2 = New-AzEventHubEncryptionConfig -KeyName key2 -KeyVaultUri 'https://myvaultname.vault.azure.net' -UserAssignedIdentity '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
 
 $id1 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
 
