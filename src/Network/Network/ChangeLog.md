@@ -44,6 +44,16 @@
     - `New-AzVpnServerConfigurationPolicyGroup`
     - `Update-AzVpnServerConfigurationPolicyGroup`
     - `Remove-AzVpnServerConfigurationPolicyGroup`
+* Added new cmdlets for RoutingIntent child resource of VirtualHub.
+    -`Add-AzRoutingPolicy`
+    -`Get-AzRoutingPolicy`
+    -`New-AzRoutingPolicy`
+    -`Remove-AzRoutingPolicy`
+    -`Set-AzRoutingPolicy`
+    -`Get-AzRoutingIntent`
+    -`New-AzRoutingIntent`
+    -`Remove-AzRoutingIntent`
+    -`Set-AzRoutingIntent`
 * Updated cmdlets to add new option of `HubRoutingPreference` in RouteServer.
     - `New-AzRouteServer`
     - `Update-AzRouteServer`
