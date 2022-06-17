@@ -42,12 +42,12 @@ function Measure-CommandName {
                 if ($Ast -is [System.Management.Automation.Language.CommandAst]) {
                     [System.Management.Automation.Language.CommandAst]$CommandAst = $Ast
                     # Get wrapper function name by command element
-                    if ($CommandAst.Parent.Parent -is [System.Management.Automation.Language.AssignmentStatementAst]){
-                        $ModuleCmdletExNum = $CommandAst.Parent.Parent.Parent.Parent.Parent.Name
+                    $funcAst = $CommandAst
+                    while($funcAst -isnot [System.Management.Automation.Language.FunctionDefinitionAst] -and $null -ne $funcAst.Parent.Parent.Parent){
+                        $funcAst = $funcAst.Parent
                     }
-                    else{
-                        $ModuleCmdletExNum = $CommandAst.Parent.Parent.Parent.Parent.Name
-                    }
+                    $ModuleCmdletExNum = $funcAst.name
+
                     if ($CommandAst.InvocationOperator -eq "Unknown") {
                         $CommandName = $CommandAst.CommandElements[0].Extent.Text
                         $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
