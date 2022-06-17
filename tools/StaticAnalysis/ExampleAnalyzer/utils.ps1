@@ -198,7 +198,7 @@ function Get-ExamplesDetailsFromMd {
         }
 
         $examplesProperties += [PSCustomObject]@{
-            Num = $exampleNumber
+            Num = $exampleNumber + 1
             Title = $exampleTitle
             Codes = $exampleCodes
             CodeBlocks = $exampleCodeBlocks
@@ -250,6 +250,7 @@ function Measure-SectionMissingAndOutputScript {
         [string]$OutputFolder
     )
     $results = @()
+    $missingSeverity = 2
 
     $fileContent = Get-Content $MarkdownPath -Raw
 
@@ -288,7 +289,7 @@ function Measure-SectionMissingAndOutputScript {
             Example = ""
             Description = "Synopsis is missing."
             RuleName = "MissingSynopsis"
-            Severity = 1
+            Severity = $missingSeverity
             Extent = "$Module\help\$Cmdlet.md"
             ProblemID = 5040
             Remediation = "Add Synopsis. Remove any placeholders."
@@ -316,7 +317,7 @@ function Measure-SectionMissingAndOutputScript {
             Example = ""
             Description = "Description is missing."
             RuleName = "MissingDescription"
-            Severity = 1
+            Severity = $missingSeverity
             Extent = "$Module\help\$Cmdlet.md"
             ProblemID = 5041
             Remediation = "Add Description. Remove any placeholders."
@@ -337,7 +338,7 @@ function Measure-SectionMissingAndOutputScript {
             Example = ""
             Description = "Example is missing."
             RuleName = "MissingExample"
-            Severity = 1
+            Severity = $missingSeverity
             Extent = "$Module\help\$Cmdlet.md"
             ProblemID = 5042
             Remediation = "Add Example. Remove any placeholders."
@@ -346,7 +347,6 @@ function Measure-SectionMissingAndOutputScript {
     }
     else {
         foreach ($exampleDetails in $examplesDetails) {
-            Write-Host "detail:$exampleDetails"
             $exampleNumber++
             $_missingExampleTitle = ($exampleDetails.Title | Select-String -Pattern "{{[A-Za-z ]*}}").Count
             $_missingExampleCode = ($exampleDetails.Codes | Select-String -Pattern "{{[A-Za-z ]*}}").Count
@@ -363,7 +363,7 @@ function Measure-SectionMissingAndOutputScript {
                         Example = $exampleDetails.Num
                         Description = "Title of the example is missing."
                         RuleName = "MissingExampleTitle"
-                        Severity = 1
+                        Severity = $missingSeverity
                         Extent = "$Module\help\$Cmdlet.md"
                         ProblemID = 5043
                         Remediation = "Add title for the example. Remove any placeholders."
@@ -378,7 +378,7 @@ function Measure-SectionMissingAndOutputScript {
                         Example = $exampleDetails.Num
                         Description = "Code of the example is missing."
                         RuleName = "MissingExampleCode"
-                        Severity = 1
+                        Severity = $missingSeverity
                         Extent = "$Module\help\$Cmdlet.md"
                         ProblemID = 5044
                         Remediation = "Add code for the example. Remove any placeholders."
@@ -393,7 +393,7 @@ function Measure-SectionMissingAndOutputScript {
                         Example = $exampleDetails.Num
                         Description = "Output of the example is missing."
                         RuleName = "MissingExampleOutput"
-                        Severity = 1
+                        Severity = $missingSeverity
                         Extent = "$Module\help\$Cmdlet.md"
                         ProblemID = 5045
                         Remediation = "Add output for the example. Remove any placeholders."
@@ -408,7 +408,7 @@ function Measure-SectionMissingAndOutputScript {
                         Example = $exampleDetails.Num
                         Description = "The output need to be split from example."
                         RuleName = "NeedSplitting"
-                        Severity = 1
+                        Severity = $missingSeverity
                         Extent = "$Module\help\$Cmdlet.md"
                         ProblemID = 5051
                         Remediation = "Split output from example."
@@ -423,7 +423,7 @@ function Measure-SectionMissingAndOutputScript {
                         Example = $exampleDetails.Num
                         Description = "Description of the example is missing."
                         RuleName = "MissingExampleDescription"
-                        Severity = 1
+                        Severity = $missingSeverity
                         Extent = "$Module\help\$Cmdlet.md"
                         ProblemID = 5046
                         Remediation = "Add description for the example. Remove any placeholders."
@@ -438,7 +438,7 @@ function Measure-SectionMissingAndOutputScript {
                         Example = $exampleDetails.Num
                         Description = "The prompt of example need to be deleted."
                         RuleName = "NeedDeleting"
-                        Severity = 1
+                        Severity = $missingSeverity
                         Extent = "$Module\help\$Cmdlet.md"
                         ProblemID = 5051
                         Remediation = "Delete the prompt of example."
