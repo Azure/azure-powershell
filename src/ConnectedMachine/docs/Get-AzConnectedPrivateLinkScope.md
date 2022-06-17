@@ -40,11 +40,11 @@ Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName
 ```
 
 ```output
-Name              Location    PublicNetworkAccess ProvisioningState Tag
-----              --------    ------------------- ----------------- ---
-name1 		eastus2euap Enabled             Succeeded 	  Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.PrivateLinkScopesResourceTags
-name2		eastus2euap Disabled            Succeeded         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.PrivateLinkScopesResourceTags
-name3		eastus2euap Enabled             Succeeded         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.PrivateLinkScopesResourceTags
+Name              Location    PublicNetworkAccess ProvisioningState
+----              --------    ------------------- ----------------- 
+name1 		eastus2euap Enabled             Succeeded 	 
+name2		eastus2euap Disabled            Succeeded        
+name3		eastus2euap Enabled             Succeeded         
 ```
 
 Lists all private link scopes in a specified resource group
@@ -55,9 +55,9 @@ Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName
 ```
 
 ```output
-Name         Location    PublicNetworkAccess ProvisioningState Tag
-----         --------    ------------------- ----------------- ---
-name1	     eastus2euap Enabled             Succeeded         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.PrivateLinkScopesRes…
+Name         Location    PublicNetworkAccess ProvisioningState
+----         --------    ------------------- -----------------
+name1	     eastus2euap Enabled             Succeeded         
 ```
 
 Gets a private link scope in a specified resource group by name
@@ -132,7 +132,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IHybridComputePrivateLinkScope
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope
 
 ## NOTES
 
