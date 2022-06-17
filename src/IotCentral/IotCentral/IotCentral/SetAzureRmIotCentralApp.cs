@@ -71,10 +71,16 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
             if (ShouldProcess(Name, ResourceProperties.Resources.SetIotCentralApp))
             {
                 var subscription = IotCentralClient.GetResourceGroupResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}"));
-                var iotCentralAppResponse = subscription.GetIotCentralApp(Name, CancellationToken.None);
+
+                //var iotCentralAppResponse = await subscription.GetIotCentralAppAsync(Name, CancellationToken.None); // ASYNCH
+                var iotCentralAppResponse = subscription.GetIotCentralApp(Name, CancellationToken.None);  // SYNCH
+
                 var iotCentralAppResource = iotCentralAppResponse.Value;
                 IotCentralAppPatch applicationPatch = CreateApplicationPatch();
-                iotCentralAppResource.Update(WaitUntil.Completed, applicationPatch);
+
+                //await iotCentralAppResource.UpdateAsync(WaitUntil.Completed, applicationPatch);  // ASYNCH
+                iotCentralAppResource.Update(WaitUntil.Completed, applicationPatch);  // SYNCH
+                
                 this.WriteObject(IotCentralUtils.ToPSIotCentralApp(iotCentralAppResource));
             }
         }

@@ -98,7 +98,6 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
             {
                 var Location = this.GetLocation();
                 var Sku = new AppSkuInfo(this.GetAppSkuName());
-                //var tags = this.GetTags();
                 var iotCentralAppData = new IotCentralAppData(Location, Sku)
                 {
                     DisplayName = this.GetDisplayName(),
@@ -112,15 +111,24 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                 try
                 {
                     var appCollection = resourceGroup.GetIotCentralApps();
-                    //var appCollectionResponse = await appCollection.CreateOrUpdateAsync(WaitUntil.Completed, Name, iotCentralAppData, CancellationToken.None);
-                    var appCollectionResponse = appCollection.CreateOrUpdate(WaitUntil.Completed, Name, iotCentralAppData, CancellationToken.None);
-
+                    //var appCollectionResponse = await appCollection.CreateOrUpdateAsync(WaitUntil.Completed, Name, iotCentralAppData, CancellationToken.None); // ASYNC
+                    var appCollectionResponse = appCollection.CreateOrUpdate(WaitUntil.Completed, Name, iotCentralAppData, CancellationToken.None); // SYNCH
                     var iotCentralApp = appCollectionResponse.Value;
-                    //var iotCentralAppResponse = await appCollection.GetAsync(Name, CancellationToken.None);
-                    //var iotCentralApp = iotCentralAppResponse.Value;
-                    var tagResponse = iotCentralApp.SetTags(this.GetTags(), CancellationToken.None);
-                    
-                    this.WriteObject(IotCentralUtils.ToPSIotCentralApp(iotCentralApp), false);
+                    //var iotCentralApp = appCollection.Get(Name,CancellationToken.None);
+
+                    //var tagResponse = iotCentralApp.Value.SetTags(this.GetTags(), CancellationToken.None); // SYNCH
+                    //var tagResponse = await iotCentralApp.SetTagsAsync(this.GetTags(), CancellationToken.None); // ASYNCH
+
+                    //Thread.Sleep(2000); 
+                    //var tagResponse = iotCentralApp.SetTags(this.GetTags(), CancellationToken.None); // SYNCH
+
+                    // above is resulting in exception, below is not
+
+                    foreach (var tag in this.GetTags()) {
+                        iotCentralApp.AddTag(tag.Key, tag.Value, CancellationToken.None);
+                    }
+
+                    this.WriteObject(IotCentralUtils.ToPSIotCentralApp(iotCentralApp), enumerateCollection: false);
                 }
                 catch (Exception e)
                 {

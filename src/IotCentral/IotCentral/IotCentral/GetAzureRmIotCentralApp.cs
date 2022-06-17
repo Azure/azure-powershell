@@ -68,14 +68,15 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
                     var rg = this.IotCentralClient.GetResourceGroupResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}"));
                     var identifierString2 = $"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}";
-                    var appResource = rg.GetIotCentralApp(this.Name);
-                    //var interactiveResponse = await appCollectionFromInteractive.GetAsync(this.Name, CancellationToken.None);
+
+                    //var appResource = await rg.GetIotCentralAppAsync(this.Name); // ASYNC
+                    var appResource = rg.GetIotCentralApp(this.Name); // SYNCH
+
                     var interactiveIotCentralApp = appResource.Value;
-                    //var appFromInterative = await rg.GetIotCentralAppAsync(Name);
-                    this.WriteObject(IotCentralUtils.ToPSIotCentralApp(interactiveIotCentralApp));
+                    this.WriteObject(IotCentralUtils.ToPSIotCentralApp(interactiveIotCentralApp), enumerateCollection: false);
                     break;
                 case ListIotCentralAppsParameterSet:
-                    if (string.IsNullOrEmpty(ResourceGroupName)) // list by subscription, not receiving arm client?
+                    if (string.IsNullOrEmpty(ResourceGroupName)) 
                     {
                         IEnumerable<IotCentralAppResource> iotCentralAppsBySubscription = (IEnumerable<IotCentralAppResource>)IotCentralClient.GetSubscriptionResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}"));
                         this.WriteObject(IotCentralUtils.ToPSIotCentralApps(iotCentralAppsBySubscription), enumerateCollection: true);
@@ -84,20 +85,16 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                     else  // list by resource group
                     {
                         var resourceGroupResource = this.IotCentralClient.GetResourceGroupResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}"));
-                        var iotCentralAppCollection = resourceGroupResource.GetIotCentralApps();
-                        //this.WriteObject(IotCentralUtils.ToPSIotCentralApps(resource));
-                        var allIoTCentralAppResources = iotCentralAppCollection.GetAll();
-                        foreach (IotCentralAppResource resource in allIoTCentralAppResources) {
-                            var dummy = resource;
-                            this.WriteObject(IotCentralUtils.ToPSIotCentralApp(resource));
-                        }
+                        var iotCentralApps = resourceGroupResource.GetIotCentralApps().GetAll();
+                        //IEnumerable<IotCentralAppResource> iotCentralAppsByResourceGroup = resourceGroupResource.GetIotCentralApps();
+                        this.WriteObject(IotCentralUtils.ToPSIotCentralApps(iotCentralApps), enumerateCollection: true);
                         break;
                     }
                 case ResourceIdParameterSet:
                     ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
                     var app = IotCentralClient.GetIotCentralAppResource(identifier);
-                    //var app = this.IotCentralClient.Apps.Get(identifier.ResourceGroupName, identifier.ResourceName);
-                    this.WriteObject(IotCentralUtils.ToPSIotCentralApp(app));
+                    var valOfIdentifier = identifier;
+                    this.WriteObject(IotCentralUtils.ToPSIotCentralApp(app), enumerateCollection: false);
                     break;
                 default:
                     throw new PSArgumentException("BadParameterSetName");

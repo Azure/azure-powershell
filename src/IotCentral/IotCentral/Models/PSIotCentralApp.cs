@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
         /// <summary>
         /// The Resource type.
         /// </summary>
-        public string Type { get; private set; }
+        //public string Type { get; private set; }
 
         /// <summary>
         /// The supported Managed Identities.

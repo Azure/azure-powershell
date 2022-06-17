@@ -38,7 +38,10 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
             if (ShouldProcess(Name, ResourceProperties.Resources.RemoveIotCentralApp))
             {
                 var iotCentralAppResource = this.IotCentralClient.GetIotCentralAppResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}/providers/Microsoft.IoTCentral/{resourceType}/{Name}"));
-                iotCentralAppResource.Delete(WaitUntil.Completed, CancellationToken.None);
+
+                //await iotCentralAppResource.DeleteAsync(WaitUntil.Completed, CancellationToken.None); // ASYNCH
+                iotCentralAppResource.Delete(WaitUntil.Completed, CancellationToken.None);  // SYNCH
+
                 if (PassThru)
                 {
                     this.WriteObject(true);
