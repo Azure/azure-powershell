@@ -109,7 +109,7 @@ CmdletsToExport = 'Disable-AzDataCollection', 'Disable-AzContextAutosave',
                'Register-AzModule', 'Enable-AzureRmAlias', 'Disable-AzureRmAlias', 
                'Uninstall-AzureRm', 'Invoke-AzRestMethod', 'Get-AzAccessToken', 
                'Open-AzSurveyLink', 'Get-AzConfig', 'Update-AzConfig', 
-               'Clear-AzConfig'
+               'Clear-AzConfig', 'Export-AzConfig', 'Import-AzConfig'
 
 # Variables to export from this module
 # VariablesToExport = @()

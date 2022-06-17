@@ -57,10 +57,11 @@ The **Set-AzStorageAccountManagementPolicy** cmdlet creates or modifies the mana
 
 ### Example 1: Create or update the management policy of a Storage account with ManagementPolicy rule objects.
 ```
-PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
-PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50
+PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -DaysAfterCreationGreaterThan 100
+PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50 -DaysAfterLastTierChangeGreaterThan 30
 PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BaseBlobAction TierToCool -DaysAfterLastAccessTimeGreaterThan 30 -EnableAutoTierToHotFromCool
 PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -SnapshotAction Delete -daysAfterCreationGreaterThan 100
+PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BlobVersionAction TierToArchive -daysAfterCreationGreaterThan 100 -DaysAfterLastTierChangeGreaterThan 14
 PS C:\>$filter1 = New-AzStorageAccountManagementPolicyFilter -PrefixMatch ab,cd 
 PS C:\>$rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action1 -Filter $filter1
 
@@ -76,7 +77,7 @@ ResourceGroupName  : myresourcegroup
 StorageAccountName : mystorageaccount
 Id                 : /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/managementPolicies/default
 Type               : Microsoft.Storage/storageAccounts/managementPolicies
-LastModifiedTime   : 2/19/2021 10:13:00 AM
+LastModifiedTime   : 6/14/2022 1:27:54 PM
 Rules              : [
                          {
                              "Enabled":  true,
@@ -86,26 +87,40 @@ Rules              : [
                                                                 "BaseBlob":  {
                                                                                  "TierToCool":  {
                                                                                                     "DaysAfterModificationGreaterThan":  null,
-                                                                                                    "DaysAfterLastAccessTimeGreaterThan":  30
+                                                                                                    "DaysAfterLastAccessTimeGreaterThan":  30,
+                                                                                                    "DaysAfterCreationGreaterThan":  null,
+                                                                                                    "DaysAfterLastTierChangeGreaterThan":  null
                                                                                                 },
                                                                                  "TierToArchive":  {
                                                                                                        "DaysAfterModificationGreaterThan":  50,
-                                                                                                       "DaysAfterLastAccessTimeGreaterThan":  null
+                                                                                                       "DaysAfterLastAccessTimeGreaterThan":  null,
+                                                                                                       "DaysAfterCreationGreaterThan":  null,
+                                                                                                       "DaysAfterLastTierChangeGreaterThan":  30
                                                                                                    },
                                                                                  "Delete":  {
-                                                                                                "DaysAfterModificationGreaterThan":  100,
-                                                                                                "DaysAfterLastAccessTimeGreaterThan":  null
+                                                                                                "DaysAfterModificationGreaterThan":  null,
+                                                                                                "DaysAfterLastAccessTimeGreaterThan":  null,
+                                                                                                "DaysAfterCreationGreaterThan":  100,
+                                                                                                "DaysAfterLastTierChangeGreaterThan":  null
                                                                                             },
                                                                                  "EnableAutoTierToHotFromCool":  true
                                                                              },
                                                                 "Snapshot":  {
                                                                                  "Delete":  {
-                                                                                                "DaysAfterCreationGreaterThan":  100
+                                                                                                "DaysAfterCreationGreaterThan":  100,
+                                                                                                "DaysAfterLastTierChangeGreaterThan":  null
                                                                                             },
                                                                                  "TierToCool":  null,
                                                                                  "TierToArchive":  null
                                                                              },
-                                                                "Version":  null
+                                                                "Version":  {
+                                                                                "Delete":  null,
+                                                                                "TierToCool":  null,
+                                                                                "TierToArchive":  {
+                                                                                                      "DaysAfterCreationGreaterThan":  100,
+                                                                                                      "DaysAfterLastTierChangeGreaterThan":  14
+                                                                                                  }
+                                                                            }
                                                             },
                                                 "Filters":  {
                                                                 "PrefixMatch":  [
@@ -126,15 +141,17 @@ Rules              : [
                                                                 "BaseBlob":  null,
                                                                 "Snapshot":  {
                                                                                  "Delete":  {
-                                                                                                "DaysAfterCreationGreaterThan":  100
+                                                                                                "DaysAfterCreationGreaterThan":  100,
+                                                                                                "DaysAfterLastTierChangeGreaterThan":  null
                                                                                             },
                                                                                  "TierToCool":  null,
                                                                                  "TierToArchive":  null
                                                                              },
                                                                 "Version":  {
                                                                                 "Delete":  {
-                                                                                               "DaysAfterCreationGreaterThan":  100
-                                                                                            },
+                                                                                               "DaysAfterCreationGreaterThan":  100,
+                                                                                               "DaysAfterLastTierChangeGreaterThan":  null
+                                                                                           },
                                                                                 "TierToCool":  null,
                                                                                 "TierToArchive":  null
                                                                             }
@@ -163,8 +180,8 @@ PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup"
             Actions=(@{
                 BaseBlob=(@{
                     TierToCool=@{DaysAfterLastAccessTimeGreaterThan=30};
-                    TierToArchive=@{DaysAfterModificationGreaterThan=50};
-                    Delete=@{DaysAfterModificationGreaterThan=100};
+                    TierToArchive=@{DaysAfterModificationGreaterThan=50;DaysAfterLastTierChangeGreaterThan=30};
+                    Delete=@{DaysAfterCreationGreaterThan=100};
                     EnableAutoTierToHotFromCool="true";
                 });
                 Snapshot=(@{
@@ -174,7 +191,7 @@ PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup"
                 });
                 Version=(@{
                     Delete=@{DaysAfterCreationGreaterThan=100};
-                    TierToArchive=@{DaysAfterCreationGreaterThan=50};
+                    TierToArchive=@{DaysAfterCreationGreaterThan=50;DaysAfterLastTierChangeGreaterThan=20};
                     TierToCool=@{DaysAfterCreationGreaterThan=60};
                 });
             });
@@ -205,7 +222,7 @@ ResourceGroupName  : myresourcegroup
 StorageAccountName : mystorageaccount
 Id                 : /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/managementPolicies/default
 Type               : Microsoft.Storage/storageAccounts/managementPolicies
-LastModifiedTime   : 2/19/2021 10:16:32 AM
+LastModifiedTime   : 6/14/2022 1:32:10 PM
 Rules              : [
                          {
                              "Enabled":  true,
@@ -215,38 +232,50 @@ Rules              : [
                                                                 "BaseBlob":  {
                                                                                  "TierToCool":  {
                                                                                                     "DaysAfterModificationGreaterThan":  null,
-                                                                                                    "DaysAfterLastAccessTimeGreaterThan":  30
+                                                                                                    "DaysAfterLastAccessTimeGreaterThan":  30,
+                                                                                                    "DaysAfterCreationGreaterThan":  null,
+                                                                                                    "DaysAfterLastTierChangeGreaterThan":  null
                                                                                                 },
                                                                                  "TierToArchive":  {
                                                                                                        "DaysAfterModificationGreaterThan":  50,
-                                                                                                       "DaysAfterLastAccessTimeGreaterThan":  null
+                                                                                                       "DaysAfterLastAccessTimeGreaterThan":  null,
+                                                                                                       "DaysAfterCreationGreaterThan":  null,
+                                                                                                       "DaysAfterLastTierChangeGreaterThan":  30
                                                                                                    },
                                                                                  "Delete":  {
-                                                                                                "DaysAfterModificationGreaterThan":  100,
-                                                                                                "DaysAfterLastAccessTimeGreaterThan":  null
+                                                                                                "DaysAfterModificationGreaterThan":  null,
+                                                                                                "DaysAfterLastAccessTimeGreaterThan":  null,
+                                                                                                "DaysAfterCreationGreaterThan":  100,
+                                                                                                "DaysAfterLastTierChangeGreaterThan":  null
                                                                                             },
                                                                                  "EnableAutoTierToHotFromCool":  true
                                                                              },
                                                                 "Snapshot":  {
                                                                                  "Delete":  {
-                                                                                                "DaysAfterCreationGreaterThan":  100
+                                                                                                "DaysAfterCreationGreaterThan":  100,
+                                                                                                "DaysAfterLastTierChangeGreaterThan":  null
                                                                                             },
                                                                                  "TierToCool":  {
-                                                                                                    "DaysAfterCreationGreaterThan":  60
+                                                                                                    "DaysAfterCreationGreaterThan":  60,
+                                                                                                    "DaysAfterLastTierChangeGreaterThan":  null
                                                                                                 },
                                                                                  "TierToArchive":  {
-                                                                                                       "DaysAfterCreationGreaterThan":  50
+                                                                                                       "DaysAfterCreationGreaterThan":  50,
+                                                                                                       "DaysAfterLastTierChangeGreaterThan":  null
                                                                                                    }
                                                                              },
                                                                 "Version":  {
                                                                                 "Delete":  {
-                                                                                               "DaysAfterCreationGreaterThan":  100
+                                                                                               "DaysAfterCreationGreaterThan":  100,
+                                                                                               "DaysAfterLastTierChangeGreaterThan":  null
                                                                                            },
                                                                                 "TierToCool":  {
-                                                                                                   "DaysAfterCreationGreaterThan":  60
+                                                                                                   "DaysAfterCreationGreaterThan":  60,
+                                                                                                   "DaysAfterLastTierChangeGreaterThan":  null
                                                                                                },
                                                                                 "TierToArchive":  {
-                                                                                                      "DaysAfterCreationGreaterThan":  50
+                                                                                                      "DaysAfterCreationGreaterThan":  50,
+                                                                                                      "DaysAfterLastTierChangeGreaterThan":  20
                                                                                                   }
                                                                             }
                                                             },
@@ -270,7 +299,8 @@ Rules              : [
                                                                 "Snapshot":  null,
                                                                 "Version":  {
                                                                                 "Delete":  {
-                                                                                               "DaysAfterCreationGreaterThan":  100
+                                                                                               "DaysAfterCreationGreaterThan":  100,
+                                                                                               "DaysAfterLastTierChangeGreaterThan":  null
                                                                                            },
                                                                                 "TierToCool":  null,
                                                                                 "TierToArchive":  null
