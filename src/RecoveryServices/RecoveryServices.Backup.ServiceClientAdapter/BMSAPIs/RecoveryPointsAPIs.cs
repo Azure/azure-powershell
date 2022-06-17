@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="containerName">Name of the container which the item belongs to</param>
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="recoveryPointId">ID of the recovery point</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Recovery point response returned by the service</returns>
         public RecoveryPointResource GetRecoveryPointDetails(
             string containerName,
@@ -56,6 +58,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="containerName">Name of the container which the item belongs to</param>
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="queryFilter">Query filter</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>List of recovery points</returns>
         public List<RecoveryPointResource> GetRecoveryPoints(
             string containerName,
@@ -89,6 +93,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="containerName">Name of the container which the item belongs to</param>
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="queryFilter">Query filter</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>List of recovery points</returns>
         public List<CrrModel.RecoveryPointResource> GetRecoveryPointsFromSecondaryRegion(
             string containerName,
@@ -121,6 +127,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="containerName">Name of the container which the item belongs to</param>
         /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="moveRequest"></param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>List of recovery points</returns>
         public List<RecoveryPointResource> GetMoveRecommendedRecoveryPoints(
             string containerName,
@@ -153,6 +162,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="containerName">Name of the container which the item belongs to</param>
         /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="moveRPAcrossTiersRequest"></param>
+        /// <param name="recoveryPointId"></param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>List of recovery points</returns>
         public RestAzureNS.AzureOperationResponse MoveRecoveryPoint(
             string containerName,
@@ -174,15 +187,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
 
-            /// <summary>
-            /// provision item level recovery connection identified by the input parameters
-            /// </summary>
-            /// <param name="containerName">Name of the container which the item belongs to</param>
-            /// <param name="protectedItemName">Name of the item</param>
-            /// <param name="recoveryPointId">ID of the recovery point</param>
-            /// <param name="registrationRequest">registration request for ILR</param>
-            /// <returns>Azure operation response returned by the service</returns>
-            public RestAzureNS.AzureOperationResponse ProvisioninItemLevelRecoveryAccess(
+        /// <summary>
+        /// provision item level recovery connection identified by the input parameters
+        /// </summary>
+        /// <param name="containerName">Name of the container which the item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="recoveryPointId">ID of the recovery point</param>
+        /// <param name="registrationRequest">registration request for ILR</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <returns>Azure operation response returned by the service</returns>
+        public RestAzureNS.AzureOperationResponse ProvisioninItemLevelRecoveryAccess(
             string containerName,
             string protectedItemName,
             string recoveryPointId,
@@ -212,6 +227,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="containerName">Name of the container which the item belongs to</param>
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="recoveryPointId">ID of the recovery point</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Azure operation response returned by the service</returns>
         public RestAzureNS.AzureOperationResponse RevokeItemLevelRecoveryAccess(
             string containerName,

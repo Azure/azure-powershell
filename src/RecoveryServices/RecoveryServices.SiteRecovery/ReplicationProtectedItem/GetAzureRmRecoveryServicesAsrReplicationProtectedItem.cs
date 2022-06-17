@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Write Protected Items
         /// </summary>
-        /// <param name="protectableItems">List of protectable items</param>
+        /// <param name="replicationProtectedItems"></param>
         private void WriteReplicationProtectedItems(
             IList<ReplicationProtectedItem> replicationProtectedItems)
         {
