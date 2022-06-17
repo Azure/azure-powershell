@@ -19,9 +19,9 @@
 -->
 
 ## Upcoming Release
-* Fixed bug related to Update-AzCosmosDBSqlContainer command on containers with Client Encryption Policy.
 
-## Version 1.9.0
+## Version 1.8.1
+* Fixed bug related to Update-AzCosmosDBSqlContainer command on containers with Client Encryption Policy.
 * Fixed the optional Location paramater of New-AzCosmosDBAccount cmdlet.
 
 ## Version 1.8.0
