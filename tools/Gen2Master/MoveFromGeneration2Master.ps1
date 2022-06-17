@@ -120,7 +120,7 @@ Function Move-Generation2Master {
         #EndRegion
 
         #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
-        $generateInfo = @{}
+        $generateInfo = [ordered]@{}
         $repo = "https://github.com/Azure/azure-rest-api-specs"
         $commit = git ls-remote $repo HEAD
         $generateInfo.Add("swagger_commit", $commit.Substring(0, 40))

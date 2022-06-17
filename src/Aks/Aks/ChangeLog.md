@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter `CommandContextAttachmentZip` for `Invoke-AzAksRunCommand`. [#17454]
+* Added ManagedIdentity support for Aks[#15656].
+* Added property `PowerState` for the output of `Get-AzAksCluster`[#18271]
+* Updated the logic of `Set-AzAksCluster` for parameter `NodeImageOnly`.
+* Added parameter `NodeImageOnly` for `Update-AzAksNodePool`.
 
 ## Version 4.1.0
 * Removed these aliases:

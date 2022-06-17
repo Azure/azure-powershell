@@ -1,72 +1,52 @@
-﻿using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 {
-    public class SqlPoolBackupTests: SynapseTestBase
+    public class SqlPoolBackupTests: SynapseTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public SqlPoolBackupTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SqlPoolBackupTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlPoolRestorePoint(){
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-SqlPoolRestorePoint");
+            TestRunner.RunTestScript("Test-SqlPoolRestorePoint");
         }
 
         [Fact(Skip = "Not recordable. Geo backup requires one day to complete.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlPoolGeoBackup()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-SqlPoolGeoBackup");
+            TestRunner.RunTestScript("Test-SqlPoolGeoBackup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDroppedSqlPool()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-DroppedSqlPool");
+            TestRunner.RunTestScript("Test-DroppedSqlPool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreFromRestorePoint()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-RestoreFromRestorePoint");
+            TestRunner.RunTestScript("Test-RestoreFromRestorePoint");
         }
 
         [Fact(Skip = "Currently the test case cannot pass due to some backend issues.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreFromBackup(){
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-RestoreFromBackup");
+            TestRunner.RunTestScript("Test-RestoreFromBackup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreFromDroppedSqlPool()
         {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-RestoreFromDroppedSqlPool");
+            TestRunner.RunTestScript("Test-RestoreFromDroppedSqlPool");
         }
     }
 }

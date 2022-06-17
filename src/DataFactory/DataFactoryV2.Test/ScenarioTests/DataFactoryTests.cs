@@ -12,104 +12,100 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.DataFactoryV2.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
-    public class DataFactoryTests : DataFactoriesScenarioTestsBase
+    public class DataFactoryTests : DataFactoryV2TestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public DataFactoryTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataFactoryTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDataFactoriesInSubscriptionV2()
         {
-            RunPowerShellTest(_logger, "Test-GetDataFactoriesInSubscription");
+            TestRunner.RunTestScript("Test-GetDataFactoriesInSubscription");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateFactoryGlobalParameters()
         {
-            RunPowerShellTest(_logger, "Test-UpdateFactoryGlobalParameters");
+            TestRunner.RunTestScript("Test-UpdateFactoryGlobalParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataFactoryV2WithUserAssignedIdentity()
         {
-            RunPowerShellTest(_logger, "Test-CreateDataFactoryV2WithUserAssignedIdentity");
+            TestRunner.RunTestScript("Test-CreateDataFactoryV2WithUserAssignedIdentity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataFactoryV2WithCMK()
         {
-            RunPowerShellTest(_logger, "Test-CreateDataFactoryV2WithCMK");
+            TestRunner.RunTestScript("Test-CreateDataFactoryV2WithCMK");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingDataFactoryV2()
         {
-            RunPowerShellTest(_logger, "Test-GetNonExistingDataFactory");
+            TestRunner.RunTestScript("Test-GetNonExistingDataFactory");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataFactoryV2()
         {
-            RunPowerShellTest(_logger, "Test-CreateDataFactory");
+            TestRunner.RunTestScript("Test-CreateDataFactory");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataFactoryV2WithVSTSRepoConfig()
         {
-            RunPowerShellTest(_logger, "Test-CreateDataFactoryV2WithVSTSRepoConfig");
+            TestRunner.RunTestScript("Test-CreateDataFactoryV2WithVSTSRepoConfig");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataFactoryV2WithGitHubRepoConfig()
         {
-            RunPowerShellTest(_logger, "Test-CreateDataFactoryV2WithGitHubRepoConfig");
+            TestRunner.RunTestScript("Test-CreateDataFactoryV2WithGitHubRepoConfig");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteDataFactoryWithDataFactoryParameterV2()
         {
-            RunPowerShellTest(_logger, "Test-DeleteDataFactoryWithDataFactoryParameter");
+            TestRunner.RunTestScript("Test-DeleteDataFactoryWithDataFactoryParameter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataFactoryPipingV2()
         {
-            RunPowerShellTest(_logger, "Test-DataFactoryPiping");
+            TestRunner.RunTestScript("Test-DataFactoryPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetFactoryByNameParameterSetV2()
         {
-            RunPowerShellTest(_logger, "Test-GetFactoryByNameParameterSet");
+            TestRunner.RunTestScript("Test-GetFactoryByNameParameterSet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateDataFactoryV2()
         {
-            RunPowerShellTest(_logger, "Test-UpdateDataFactory");
+            TestRunner.RunTestScript("Test-UpdateDataFactory");
         }
     }
 }
