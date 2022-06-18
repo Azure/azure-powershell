@@ -265,7 +265,7 @@ function DRConfigurationTests
 
 		# Assert
 		Assert-AreEqual $createdServiceBusDRConfigList_delete.Count 0 "DR Config List: after delete the DRCoinfig was listed"
-	# Wait till the Namespace Provisioning  state changes to succeeded
+		# Wait till the Namespace Provisioning  state changes to succeeded
 		WaitforStatetoBeSucceded_namespace $resourceGroupName $namespaceName1
 
 		Write-Debug " Delete namespaces"
