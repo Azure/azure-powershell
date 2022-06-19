@@ -57,7 +57,7 @@ class AnalysisOutput{
     [string]$Description
     [string]$Extent
     [String]$Remediation
-} 
+}
 
 <#
     .SYNOPSIS
@@ -130,7 +130,7 @@ function Get-ExamplesDetailsFromMd {
                         for ($i = 0; $i -lt $exampleCodeLines.Count; $i++) {
                             # If a codeline contains " :", it's not a codeline but an output line of "Format-List".
                             if ($exampleCodeLines[$i].Value -notmatch " : *\w") {
-                                # If a codeline ends with "`", "\r", or "\n", it should end at the last "`". 
+                                # If a codeline ends with "`", "\r", or "\n", it should end at the last "`".
                                 $lastCharacter = $exampleCodeLines[$i].Value.Substring($exampleCodeLines[$i].Value.Length - 1, 1)
                                 if ($lastCharacter -eq "``" -or $lastCharacter -eq "`r" -or $lastCharacter -eq "`n") {
                                     $exampleCodes += $exampleCodeLines[$i].Value.Substring(0, $exampleCodeLines[$i].Value.LastIndexOf("``")).Trim()
@@ -185,12 +185,12 @@ function Get-ExamplesDetailsFromMd {
                 }
             }
 
-            # From the end of the last codeblock to the end is example description. 
+            # From the end of the last codeblock to the end is example description.
             if($null -ne $exampleOutputBlocks){
                 $description = $exampleContent.SubString($exampleOutputBlocks[-1].Index + $exampleOutputBlocks[-1].Length).Trim()
             }
             else{
-                
+
                 $description = $exampleContent.SubString($exampleCodeBlocks[-1].Index + $exampleCodeBlocks[-1].Length).Trim()
             }
             if ($description -ne "") {
@@ -242,7 +242,7 @@ function ExceptionRecord{
 
 <#
     .SYNOPSIS
-    Tests whether the script is integral, outputs examples in ".md" to "TempScript.ps1" 
+    Tests whether the script is integral, outputs examples in ".md" to "TempScript.ps1"
     and records the Scale, Missing,  DeletePromptAndSeparateOutput class.
 #>
 function Measure-SectionMissingAndOutputScript {
@@ -458,7 +458,7 @@ function Measure-SectionMissingAndOutputScript {
                 $newCode = $newCode -replace "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1", ""
                 $exampleCodes[$i] = $newCode
             }
-            
+
             # Output example codes to "TempScript.ps1"
             if ($OutputScriptsInFile.IsPresent) {
                 $cmdletExamplesScriptPath = "$OutputFolder\TempScript.ps1"
@@ -531,7 +531,7 @@ function Get-ScriptAnalyzerResult {
     if (!(Test-Path $ScriptPath -PathType Leaf)) {
         throw "Cannot find cached script file '$ScriptPath'."
     }
-    
+
     # Invoke PSScriptAnalyzer : input scriptblock, output error set in $result with property: RuleName, Message, Extent
     if ($null -eq $RulePath) {
         $analysisResults = Invoke-ScriptAnalyzer -Path $ScriptPath -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
@@ -562,10 +562,13 @@ function Get-ScriptAnalyzerResult {
         }
         else{
             $result = [AnalysisOutput]@{
+                Module = ""
+                Cmdlet = ""
                 RuleName = $analysisResult.RuleName
-                Description = $analysisResult.Message
-                Severity = $Severity
-                Extent = $analysisResult.Extent
+                Description = $analysisResult.Message -replace "`"","`'"
+                Severity = 2
+                # Severity = $Severity
+                Extent = $analysisResult.Extent -replace "`"","`'" -replace "`n", " "
                 Remediation = "Unexpected Error! Please contact the Azure Powershell Team."
             }
         }
