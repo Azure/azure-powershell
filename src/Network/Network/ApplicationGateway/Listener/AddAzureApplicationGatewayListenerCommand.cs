@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayListener"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayListener", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayListenerCommand : AzureApplicationGatewayListenerBase
     {
         [Parameter(
