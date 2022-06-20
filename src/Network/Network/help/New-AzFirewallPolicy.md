@@ -18,7 +18,7 @@ New-AzFirewallPolicy -Name <String> -ResourceGroupName <String> -Location <Strin
  [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
  [-TransportSecurityName <String>] [-TransportSecurityKeyVaultSecretId <String>] [-SkuTier <String>]
- [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>] [-ExplicitProxySettings <PSAzureFirewallPolicyExplicitProxy>]
+ [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>] [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -70,7 +70,7 @@ This example creates a Firewall that treats "99.99.99.0/24" and "66.66.0.0/16" a
 ### Example 6: Create an empty Firewall Policy with Explicit Proxy Settings
 ```powershell
 $exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 100 -HttpsPort 101 -EnablePacFile  -PacFilePort 130 -PacFile "sampleurlfortesting.blob.core.windowsnet/nothing"
-New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ExplicitProxySettings $exProxy
+New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ExplicitProxy $exProxy
 ```
 
 This example creates a firewall policy with explicit proxy settings
@@ -228,7 +228,7 @@ Accept wildcard characters: False
 ```
 
 
-### -ExplicitProxySettings
+### -ExplicitProxy
 The Explicit Proxy Settings
 
 ```yaml

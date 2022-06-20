@@ -19,7 +19,7 @@
 --->
 
 ## Upcoming Release
- Updated cmdlets to add new property of `ExplicitProxySettings` in Azure Firewall Policy.
+ Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.
     - `New-AzFirewallPolicyExplicitProxy`
     - `New-AzFirewallPolicy`
     - `Set-AzFirewallPolicy`
