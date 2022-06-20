@@ -51,7 +51,7 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     $null = New-Item -ItemType Directory -Path $OutputFolder -ErrorAction SilentlyContinue
     $null = New-Item -ItemType File  $OutputFolder\TempScript.ps1
     # When the input $MarkdownPaths is the path of txt file
-    if ($_.FullName -cmatch ".*\.txt") {
+    if ($MarkdownPaths -cmatch ".*\.txt") {
         $MarkdownPath = Get-Content $MarkdownPaths
     }
     # When the input $MarkdownPaths is the path of a folder
