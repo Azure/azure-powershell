@@ -14,17 +14,15 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class JobTests : RecoveryServicesBackupTestRunner
     {
-        private readonly string _commonModule4 = $"ScenarioTests/{PsBackupProviderTypes.IaasVm}/Common.ps1";
-        private readonly string _testModule4 = $"ScenarioTests/{PsBackupProviderTypes.IaasVm}/JobTests.ps1";
+        private readonly string _IaasVmcommonModule = $"ScenarioTests/{PsBackupProviderTypes.IaasVm}/Common.ps1";
+        private readonly string _IaasVmtestModule = $"ScenarioTests/{PsBackupProviderTypes.IaasVm}/JobTests.ps1";
 
         public JobTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
@@ -36,8 +34,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMGetJobs()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMGetJobs"
             );
         }
@@ -48,8 +46,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMGetJobsTimeFilter()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMGetJobsTimeFilter"
             );
         }
@@ -60,8 +58,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMWaitJob()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMWaitJob"
             );
         }
@@ -72,8 +70,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMCancelJob()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMCancelJob"
             );
         }

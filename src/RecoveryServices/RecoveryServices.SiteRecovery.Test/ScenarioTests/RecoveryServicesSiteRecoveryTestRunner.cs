@@ -25,10 +25,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
         protected RecoveryServicesSiteRecoveryTestRunner(ITestOutputHelper output)
         {
             TestRunner = TestManager.CreateInstance(output)
+                .WithProjectSubfolderForTests("ScenarioTests")
                 .WithCommonPsScripts(new[]
                 {
-                    "AzureRM.Storage.ps1",
-                    "AzureRM.Resources.ps1"
+                    @"../AzureRM.Storage.ps1",
+                    @"../AzureRM.Resources.ps1"
                 })
                 .WithNewRmModules(helper => new[]
                 {

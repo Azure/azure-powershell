@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
@@ -23,8 +22,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ItemTests : RecoveryServicesBackupTestRunner
     {
-        private readonly string _commonModule2 = $"ScenarioTests/{PsBackupProviderTypes.AzureWorkload}/Common.ps1";
-        private readonly string _testModule2 = $"ScenarioTests/{PsBackupProviderTypes.AzureWorkload}/ItemTests.ps1";
+        private readonly string _AzureWorkloadcommonModule = $"ScenarioTests/{PsBackupProviderTypes.AzureWorkload}/Common.ps1";
+        private readonly string _AzureWorkloadtestModule = $"ScenarioTests/{PsBackupProviderTypes.AzureWorkload}/ItemTests.ps1";
 
         [Fact(Skip = "To be fixed in upcoming release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -32,8 +31,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVmWorkloadProtectableItem()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadProtectableItem"
             );
         }
@@ -44,8 +43,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVmWorkloadInitializeProtectableItem()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadInitializeProtectableItem"
             );
         }
@@ -56,8 +55,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVmWorkloadEnableProtectableItem()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadEnableProtectableItem"
             );
         }
@@ -69,8 +68,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         {
             AzureSession.Instance.RegisterComponent("GetGuidComponent", () => "29e3f4dc-6407-4a9a-99cf-ea910639ba19", true);
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadEnableAutoProtectableItem"
             );
         }
@@ -81,8 +80,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVmWorkloadBackupProtectionItem()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadBackupProtectionItem"
             );
         }
@@ -93,8 +92,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVmWorkloadGetRPs()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadGetRPs"
             );
         }
@@ -105,8 +104,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVmWorkloadGetLogChains()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadGetLogChains"
             );
         }
@@ -117,8 +116,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVmWorkloadFullRestore()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadFullRestore"
             );
         }
@@ -129,8 +128,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVmWorkloadFullRestoreWithFiles()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadFullRestoreWithFiles"
             );
         }
@@ -141,8 +140,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVmWorkloadRestoreAsFiles()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadRestoreAsFiles"
             );
         }

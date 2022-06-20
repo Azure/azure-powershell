@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
@@ -22,8 +21,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class PolicyTests : RecoveryServicesBackupTestRunner
     {
-        private readonly string _commonModule1 = $"ScenarioTests/Common.ps1";
-        private readonly string _testModule1 = $"ScenarioTests/{PsBackupProviderTypes.AzureSql}/PolicyTests.ps1";
+        private readonly string _AzureSqlcommonModule = $"ScenarioTests/Common.ps1";
+        private readonly string _AzureSqltestModule = $"ScenarioTests/{PsBackupProviderTypes.AzureSql}/PolicyTests.ps1";
 
         [Fact(Skip = "This workload is not supported anymore")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -31,8 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureSqlPolicy()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule1.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule1.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureSqlcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureSqltestModule.AsAbsoluteLocation()}",
                 "Test-AzureSqlPolicy"
             );
         }

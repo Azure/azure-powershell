@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
@@ -22,8 +21,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class JobTests : RecoveryServicesBackupTestRunner
     {
-        private readonly string _commonModule2 = $"ScenarioTests/{PsBackupProviderTypes.AzureWorkload}/Common.ps1";
-        private readonly string _testModule2 = $"ScenarioTests/{PsBackupProviderTypes.AzureWorkload}/JobTests.ps1";
+        private readonly string _AzureWorkloadcommonModule = $"ScenarioTests/{PsBackupProviderTypes.AzureWorkload}/Common.ps1";
+        private readonly string _AzureWorkloadtestModule = $"ScenarioTests/{PsBackupProviderTypes.AzureWorkload}/JobTests.ps1";
 
         [Fact(Skip = "To be fixed in upcoming release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -31,8 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVmWorkloadGetJob()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadGetJob"
             );
         }
@@ -43,8 +42,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVmWorkloadCancelJob()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadCancelJob"
             );
         }
@@ -55,8 +54,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVmWorkloadWaitJob()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule2.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule2.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadWaitJob"
             );
         }

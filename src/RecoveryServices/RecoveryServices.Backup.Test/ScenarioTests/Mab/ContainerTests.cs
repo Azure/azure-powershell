@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
@@ -22,8 +21,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ContainerTests : RecoveryServicesBackupTestRunner
     {
-        private readonly string _commonModule5 = $"ScenarioTests/Common.ps1";
-        private readonly string _testModule5 = $"ScenarioTests/{PsBackupProviderTypes.Mab}/ContainerTests.ps1";
+        private readonly string _MabcommonModule = $"ScenarioTests/Common.ps1";
+        private readonly string _MabtestModule = $"ScenarioTests/{PsBackupProviderTypes.Mab}/ContainerTests.ps1";
 
         [Fact(Skip = "To be fixed in upcoming release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -31,8 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestMabGetContainers()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule5.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule5.AsAbsoluteLocation()}",
+                $"Import-Module {_MabcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_MabtestModule.AsAbsoluteLocation()}",
                 "Test-MabGetContainers"
             );
         }
@@ -44,8 +43,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestMabUnregisterContainer()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_MabcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_MabtestModule.AsAbsoluteLocation()}",
                 "Test-MabUnregisterContainer");
         }
     }

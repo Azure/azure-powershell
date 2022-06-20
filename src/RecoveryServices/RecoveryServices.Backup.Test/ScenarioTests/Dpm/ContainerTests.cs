@@ -14,17 +14,15 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ContainerTests : RecoveryServicesBackupTestRunner
     {
-        private readonly string _commonModule3 = $"ScenarioTests/Common.ps1";
-        private readonly string _testModule3 = $"ScenarioTests/{PsBackupProviderTypes.Dpm}/ContainerTests.ps1";
+        private readonly string _DpmcommonModule = $"ScenarioTests/Common.ps1";
+        private readonly string _DpmtestModule = $"ScenarioTests/{PsBackupProviderTypes.Dpm}/ContainerTests.ps1";
 
         [Fact(Skip ="To be fixed in upcoming release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -32,8 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestBmsGetContainer()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule3.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule3.AsAbsoluteLocation()}",
+                $"Import-Module {_DpmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_DpmtestModule.AsAbsoluteLocation()}",
                 "Test-BmsGetContainer"
             );
         }
@@ -44,8 +42,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestBmsUnregisterContainer()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule3.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule3.AsAbsoluteLocation()}",
+                $"Import-Module {_DpmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_DpmtestModule.AsAbsoluteLocation()}",
                 "Test-BmsUnregisterContainer"
             );
         }

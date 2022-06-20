@@ -12,12 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -26,8 +21,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ItemTests : RecoveryServicesBackupTestRunner
     {
-        private readonly string _commonModule4 = $"ScenarioTests/{PsBackupProviderTypes.IaasVm}/Common.ps1";
-        private readonly string _testModule4 = $"ScenarioTests/{PsBackupProviderTypes.IaasVm}/ItemTests.ps1";
+        private readonly string _IaasVmcommonModule = $"ScenarioTests/{PsBackupProviderTypes.IaasVm}/Common.ps1";
+        private readonly string _IaasVmtestModule = $"ScenarioTests/{PsBackupProviderTypes.IaasVm}/ItemTests.ps1";
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -35,8 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMGetItems()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMGetItems"
              );
         }
@@ -47,8 +42,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMProtection()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMProtection"
             );
         }
@@ -59,8 +54,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMBackup()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMBackup"
             );
         }
@@ -71,8 +66,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMGetRPs()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMGetRPs"
             );
         }
@@ -85,8 +80,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMFullRestore()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMFullRestore"
             );
         }
@@ -97,8 +92,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureUnmanagedVMFullRestore()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureUnmanagedVMFullRestore"
             );
         }
@@ -109,8 +104,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMSoftDelete()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMSoftDelete"
             );
         }
@@ -121,8 +116,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMRPMountScript()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMRPMountScript");
 
             //AzureVmRPMountScriptDetails mountScriptDetails = (AzureVmRPMountScriptDetails)psObjects.First(
@@ -137,8 +132,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMSetVaultContext()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMSetVaultContext"
             );
         }
@@ -149,8 +144,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMSetVaultProperty()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMSetVaultProperty"
             );
         }
@@ -161,8 +156,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMDiskExclusion()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMDiskExclusion"
             );
         }
@@ -173,8 +168,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureBackupDataMove()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureBackupDataMove"
             );
         }
@@ -185,8 +180,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureRSVaultMSI()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureRSVaultMSI"
             );
         }
@@ -197,8 +192,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMCrossRegionRestore()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMCrossRegionRestore"
             );
         }
@@ -209,8 +204,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMRestoreWithMSI()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMRestoreWithMSI"
             );
         }
@@ -221,8 +216,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureRSVaultCMK()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureRSVaultCMK"
             );
         }
@@ -233,8 +228,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureManagedVMRestore()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureManagedVMRestore"
             );
         }
@@ -245,8 +240,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMMUA()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule4.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule4.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMMUA"
             );
         }        

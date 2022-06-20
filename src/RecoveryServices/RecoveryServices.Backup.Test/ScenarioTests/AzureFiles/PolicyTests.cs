@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
@@ -22,8 +21,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class PolicyTests : RecoveryServicesBackupTestRunner
     {
-        private readonly string _commonModule = $"ScenarioTests/{PsBackupProviderTypes.AzureFiles}/Common.ps1";
-        private readonly string _testModule = $"ScenarioTests/{PsBackupProviderTypes.AzureFiles}/PolicyTests.ps1";
+        private readonly string _AzureFilescommonModule = $"ScenarioTests/{PsBackupProviderTypes.AzureFiles}/Common.ps1";
+        private readonly string _AzureFilestestModule = $"ScenarioTests/{PsBackupProviderTypes.AzureFiles}/PolicyTests.ps1";
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -31,8 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureFSPolicy()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
                 "Test-AzureFSPolicy"
             );
         }
@@ -43,8 +42,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureFSHourlyPolicy()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
                 "Test-AzureFSHourlyPolicy"
             );
         }

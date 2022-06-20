@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
@@ -22,8 +21,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ItemTests : RecoveryServicesBackupTestRunner
     {
-        private readonly string _commonModule1 = $"ScenarioTests/Common.ps1";
-        private readonly string _testModule1 = $"ScenarioTests/{PsBackupProviderTypes.AzureSql}/ItemTests.ps1";
+        private readonly string _AzureSqlcommonModule = $"ScenarioTests/Common.ps1";
+        private readonly string _AzureSqltestModule = $"ScenarioTests/{PsBackupProviderTypes.AzureSql}/ItemTests.ps1";
 
         public ItemTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
@@ -35,8 +34,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureSqlGetItems()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule1.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule1.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureSqlcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureSqltestModule.AsAbsoluteLocation()}",
                 "Test-AzureSqlGetItems"
             );
         }
@@ -47,8 +46,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureSqlDisableProtection()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule1.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule1.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureSqlcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureSqltestModule.AsAbsoluteLocation()}",
                 "Test-AzureSqlDisableProtection"
             );
         }
@@ -59,8 +58,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureSqlGetRPs()
         {
             TestRunner.RunTestScript(
-                $"Import-Module {_commonModule1.AsAbsoluteLocation()}",
-                $"Import-Module {_testModule1.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureSqlcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureSqltestModule.AsAbsoluteLocation()}",
                 "Test-AzureSqlGetRPs"
             );
         }
