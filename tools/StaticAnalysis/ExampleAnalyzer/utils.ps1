@@ -562,13 +562,17 @@ function Get-ScriptAnalyzerResult {
         }
         else{
             $result = [AnalysisOutput]@{
+                Module = ""
+                Cmdlet = ""
+                Example = 0
                 RuleName = $analysisResult.RuleName
-                Description = $analysisResult.Message
+                Description = $analysisResult.Message -replace "`"","`'"
                 Severity = $Severity
-                Extent = $analysisResult.Extent
+                Extent = $analysisResult.Extent -replace "`"","`'" -replace "`n",";"
+                ProblemID = 5200
                 Remediation = "Unexpected Error! Please contact the Azure Powershell Team."
+                }
             }
-        }
         $results += $result
     }
     #Except the suppressed records
