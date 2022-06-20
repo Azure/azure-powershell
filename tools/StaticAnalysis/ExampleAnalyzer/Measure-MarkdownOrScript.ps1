@@ -50,7 +50,14 @@ if ($OutputScriptsInFile.IsPresent) {
 if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     $null = New-Item -ItemType Directory -Path $OutputFolder -ErrorAction SilentlyContinue
     $null = New-Item -ItemType File  $OutputFolder\TempScript.ps1
-    $MarkdownPath = Get-Content $MarkdownPaths
+    # When the input $MarkdownPaths is the path of txt file
+    if ($_.FullName -cmatch ".*\.txt") {
+        $MarkdownPath = Get-Content $MarkdownPaths
+    }
+    # When the input $MarkdownPaths is the path of a folder
+    else{
+        $MarkdownPath = $MarkdownPaths
+    }
     foreach($_ in Get-ChildItem $MarkdownPath){
         # Filter the .md of overview in "\help\"
         if ((Get-Item -Path $_.FullName).Directory.Name -eq "help" -and $_.FullName -cmatch ".*\.md" -and $_.BaseName -cmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
