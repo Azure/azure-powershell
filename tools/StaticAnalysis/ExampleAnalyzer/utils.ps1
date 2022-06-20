@@ -568,9 +568,9 @@ function Get-ScriptAnalyzerResult {
                 RuleName = $analysisResult.RuleName
                 Description = $analysisResult.Message -replace "`"","`'"
                 Severity = $Severity
-                Extent = $analysisResult.Extent -replace "`"","`'" -replace "`n",";"
+                Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace "`n",";"
                 ProblemID = 5200
-                Remediation = "Unexpected Error! Please contact the Azure Powershell Team."
+                Remediation = "Unexpected Error! Please check your example or contact the Azure Powershell Team."
                 }
             }
         $results += $result
