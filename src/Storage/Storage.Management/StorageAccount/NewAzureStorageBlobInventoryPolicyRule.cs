@@ -19,7 +19,6 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Reflection;
 
-
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageBlobInventoryPolicyRule", DefaultParameterSetName = BlobRuleParameterSet), OutputType(typeof(PSBlobInventoryPolicyRule))]
