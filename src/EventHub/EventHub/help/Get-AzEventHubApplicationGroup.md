@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventHubApplicationGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets an application group from a namespace or lists all application groups in a namespace.
 
 ## SYNTAX
 
@@ -25,16 +25,23 @@ Get-AzEventHubApplicationGroup [-ResourceId] <String> [-DefaultProfile <IAzureCo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Gets an application group from a namespace or lists all application groups in a namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup
 ```
 
-{{ Add example description here }}
+Gets application group `myappgroup` of namespace `mynamespace`.
+
+### Example 2
+```powershell
+PS C:\> Get-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace
+```
+
+Lists all application groups of namespace `mynamespace`.
 
 ## PARAMETERS
 

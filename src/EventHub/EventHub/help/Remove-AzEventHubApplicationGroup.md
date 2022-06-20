@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzEventHubApplicationGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes an application group from a namespace.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Remove-AzEventHubApplicationGroup [-InputObject] <PSEventHubApplicationGroupAttr
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Removes an application group from a namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup
 ```
 
-{{ Add example description here }}
+Removes application group myappgroup from namespace mynamespace.
 
 ## PARAMETERS
 

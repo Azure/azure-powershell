@@ -19,4 +19,8 @@
   <ItemGroup>
     <ProjectReference Include="..\EventHub\EventHub.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceBYOKTests\" />
+  </ItemGroup>
 </Project>

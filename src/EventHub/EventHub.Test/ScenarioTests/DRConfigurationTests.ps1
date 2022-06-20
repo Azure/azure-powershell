@@ -403,7 +403,7 @@ function DRConfigurationTestsAlternateName
 	
 	# Remove the Alias created
 	Remove-AzEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName2 -Name $drConfigName
-	Wait-Seconds 120
+	Wait-Seconds 180
 
 	# Get the Created GeoDRConfiguration
 	Write-Debug " Get all the created GeoDRConfiguration"
