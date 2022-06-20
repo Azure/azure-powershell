@@ -30,7 +30,7 @@ For information on how to develop for `Az.ConfidentialLedger`, see [how-to.md](h
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 429a7ea873cc1bbd4df133f71427162e15e258b1
+branch: c2d2b523575031790b8672640ea762bdf9ad4964
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
