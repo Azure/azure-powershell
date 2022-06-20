@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Config;
+using Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces;
 using Microsoft.Azure.PowerShell.Authentication.Test.Mocks;
 using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -32,7 +34,7 @@ namespace Microsoft.Azure.Authentication.Test.Config
         /// </summary>
         /// <param name="config">Definitions of configs to be registered to the config manager.</param>
         /// <returns>A config manager ready to use.</returns>
-        protected IConfigManager GetConfigManager(params ConfigDefinition[] config) => GetConfigManagerWithInitState(null, null, config);
+        protected IConfigManager GetConfigManager(params ConfigDefinition[] config) => GetConfigManager(null, config);
 
         /// <summary>
         /// Initializes and returns an <see cref="IConfigManager"/> with the specified configs registered with initial state.
@@ -41,27 +43,16 @@ namespace Microsoft.Azure.Authentication.Test.Config
         /// <param name="envVarWriter">An action to set up the environments before config manager initializes.</param>
         /// <param name="config">Definitions of configs to be registered to the config manager.</param>
         /// <returns>A config manager with initial state, ready to use.</returns>
-        protected IConfigManager GetConfigManagerWithInitState(Action<MockDataStore, string> configFileWriter, Action<MockEnvironmentVariableProvider> envVarWriter, params ConfigDefinition[] config)
+        internal IConfigManager GetConfigManager(InitSettings settings, params ConfigDefinition[] config)
         {
-            if (configFileWriter == null)
-            {
-                configFileWriter = _noopFileWriter;
-            }
+            var dataStore = settings?.DataStore ?? new MockDataStore();
+            var configPath = settings?.Path ?? Path.GetRandomFileName();
+            var environmentVariableProvider = settings?.EnvironmentVariableProvider ?? new MockEnvironmentVariableProvider();
 
-            if (envVarWriter == null)
-            {
-                envVarWriter = _noopEnvVarWriter;
-            }
-
-            string configPath = Path.GetRandomFileName();
-            var mockDataStore = new MockDataStore();
-            configFileWriter(mockDataStore, configPath);
-            var environmentVariables = new MockEnvironmentVariableProvider();
-            envVarWriter(environmentVariables);
             ConfigInitializer ci = new ConfigInitializer(new List<string>() { configPath })
             {
-                DataStore = mockDataStore,
-                EnvironmentVariableProvider = environmentVariables
+                DataStore = dataStore,
+                EnvironmentVariableProvider = environmentVariableProvider
             };
             IConfigManager icm = ci.GetConfigManager();
             foreach (var configDefinition in config)
@@ -70,6 +61,13 @@ namespace Microsoft.Azure.Authentication.Test.Config
             }
             icm.BuildConfig();
             return icm;
+        }
+
+        internal class InitSettings
+        {
+            public IDataStore DataStore { get; set; } = null;
+            public string Path { get; set; } = null;
+            public IEnvironmentVariableProvider EnvironmentVariableProvider { get; set; } = null;
         }
     }
 }
