@@ -11,7 +11,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2021 -Month 08 -Day 27 -Hour 10 -Minute 01 -Second 11).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2022 -Month 06 -Day 09 -Hour 21 -Minute 01 -Second 11).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
         
     $BackupInstanceTestVariables = @{
@@ -27,13 +27,12 @@ function setupEnv() {
         DiskNewPolicyName = "sarath-disk-generated-policy"
     }
 
-    $randomstring = RandomString -allChars $false -len 10
-    $newVaultName = "new-testing-vault-" +  $randomstring
+    $randomstring = RandomString -allChars $false -len 10    
     $BackupVaultTestVariables = @{
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
         ResourceGroupName = "sarath-rg"
         VaultName = "sarath-vault"
-        NewVaultName = $newVaultName
+        NewVaultName = "new-pstest-vault"
     }
 
     $BackupJobTestVariables = @{
@@ -67,7 +66,7 @@ function setupEnv() {
         ResourceGroupName = "BlobBackup-BugBash"
         VaultName = "jecECYBlobVault"
     }
-
+    
     $OssVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         ResourceGroupName = "oss-pstest-rg"
@@ -84,6 +83,13 @@ function setupEnv() {
         FileNamePrefix = "oss-pstest-restoreasfiles"
     }
 
+    $ResourceGuardVariables = @{
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        ResourceGroupName = "hiagarg"
+        ResourceGuardName = "pstest-resourceguard"
+        Location = "centraluseuap"
+    }
+
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
     $env.add("TestBackupPolicy", $BackupPolicyTestVariables) | Out-Null
     $env.add("TestBackupVault", $BackupVaultTestVariables) | Out-Null
@@ -92,6 +98,7 @@ function setupEnv() {
     $env.add("TestTriggerBackup", $TriggerBackupTestVariables) | Out-Null
     $env.add("TestBlobsRestore", $BlobsRestoreVariables) | Out-Null
     $env.add("TestOssBackupScenario", $OssVariables) | Out-Null
+    $env.add("TestResourceGuard", $ResourceGuardVariables) | Out-Null
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

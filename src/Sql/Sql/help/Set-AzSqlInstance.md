@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSqlInstance
 
 ## SYNOPSIS
-Sets properties for an Azure SQL Database Managed Instance.
+Sets properties for an Azure SQL Managed Instance.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ Set-AzSqlInstance [-ResourceId] <String> [-AdministratorPassword <SecureString>]
 ```
 
 ## DESCRIPTION
-The **Set-AzSqlInstance** cmdlet modifies properties of an Azure SQL Database Managed instance.
+The **Set-AzSqlInstance** cmdlet modifies properties of an Azure SQL Managed instance.
 
 ## EXAMPLES
 

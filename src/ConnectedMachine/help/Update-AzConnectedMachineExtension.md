@@ -16,9 +16,9 @@ The operation to create or update the extension.
 ```
 Update-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ForceRerun <String>]
- [-ProtectedSetting <IAny>] [-Publisher <String>] [-Setting <IAny>] [-Tag <Hashtable>] [-Type <String>]
- [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ProtectedSetting <Hashtable>] [-Publisher <String>] [-Setting <Hashtable>] [-Tag <Hashtable>]
+ [-Type <String>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -38,8 +38,8 @@ Update-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity>
 ### UpdateViaIdentityExpanded
 ```
 Update-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> [-AutoUpgradeMinorVersion]
- [-EnableAutomaticUpgrade] [-ForceRerun <String>] [-ProtectedSetting <IAny>] [-Publisher <String>]
- [-Setting <IAny>] [-Tag <Hashtable>] [-Type <String>] [-TypeHandlerVersion <String>]
+ [-EnableAutomaticUpgrade] [-ForceRerun <String>] [-ProtectedSetting <Hashtable>] [-Publisher <String>]
+ [-Setting <Hashtable>] [-Tag <Hashtable>] [-Type <String>] [-TypeHandlerVersion <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -195,7 +195,7 @@ Describes a Machine Extension Update.
 To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtensionUpdate
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtensionUpdate
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -286,7 +286,7 @@ Accept wildcard characters: False
 The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases: ProtectedSettings
 
@@ -332,7 +332,7 @@ Accept wildcard characters: False
 Json formatted public settings for the extension.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases: Settings
 
@@ -439,13 +439,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtensionUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtensionUpdate
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
 
 ## NOTES
 
@@ -462,9 +462,11 @@ EXTENSIONPARAMETER <IMachineExtensionUpdate>: Describes a Machine Extension Upda
   - `[AutoUpgradeMinorVersion <Boolean?>]`: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   - `[EnableAutomaticUpgrade <Boolean?>]`: Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
   - `[ForceUpdateTag <String>]`: How the extension handler should be forced to update even if the extension configuration has not changed.
-  - `[ProtectedSetting <IAny>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+  - `[ProtectedSetting <IMachineExtensionUpdatePropertiesProtectedSettings>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[Publisher <String>]`: The name of the extension handler publisher.
-  - `[Setting <IAny>]`: Json formatted public settings for the extension.
+  - `[Setting <IMachineExtensionUpdatePropertiesSettings>]`: Json formatted public settings for the extension.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[Type <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
   - `[TypeHandlerVersion <String>]`: Specifies the version of the script handler.
 

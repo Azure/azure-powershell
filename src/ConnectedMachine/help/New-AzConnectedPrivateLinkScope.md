@@ -53,9 +53,9 @@ New-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName
 ```
 
 ```output
-Name        Location    PublicNetworkAccess ProvisioningState Tag
-----        --------    ------------------- ----------------- ---
-name1      eastus2euap Enabled             Succeeded         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.PrivateLinkScopesReso…
+Name        Location    PublicNetworkAccess ProvisioningState 
+----        --------    ------------------- ----------------- 
+name1      eastus2euap Enabled             Succeeded         
 
 ```
 
@@ -114,7 +114,7 @@ An Azure Arc PrivateLinkScope definition.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IHybridComputePrivateLinkScope
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
@@ -237,13 +237,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IHybridComputePrivateLinkScope
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IHybridComputePrivateLinkScope
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope
 
 ## NOTES
 

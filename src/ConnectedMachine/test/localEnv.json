@@ -1,9 +1,9 @@
 {
-  "PrivateLinkScopeName": "scope-z83um1",
-  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-  "azcmagentPath": "C:\\Program Files\\AzureConnectedMachineAgent\\azcmagent.exe",
   "Location": "eastus2euap",
+  "ResourceGroupName": "az-sdk-test-powershell-rg-cg56rk",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "MachineName": "cluyzt",
   "SubscriptionId": "e6fe6705-4c9c-4b54-81d2-e455780e20b8",
-  "MachineName": "teolxu",
-  "ResourceGroupName": "test-az-powershell-rg-dbatuv"
+  "azcmagentPath": "C:\\Program Files\\AzureConnectedMachineAgent\\azcmagent.exe",
+  "PrivateLinkScopeName": "scope-pfiuc9"
 }

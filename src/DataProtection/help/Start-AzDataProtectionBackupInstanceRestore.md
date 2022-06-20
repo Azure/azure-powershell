@@ -23,8 +23,8 @@ Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -Resour
 ```
 Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -ResourceGroupName <String>
  -VaultName <String> -ObjectType <String> -RestoreTargetInfo <IRestoreTargetInfoBase>
- -SourceDataStoreType <SourceDataStoreType> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SourceDataStoreType <SourceDataStoreType> [-SubscriptionId <String>] [-SourceResourceId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -175,7 +175,7 @@ Azure backup restore request
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IAzureBackupRestoreRequest
 Parameter Sets: Trigger
 Aliases:
 
@@ -206,7 +206,7 @@ Gets or sets the restore target information.
 To construct, see NOTES section for RESTORETARGETINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IRestoreTargetInfoBase
 Parameter Sets: TriggerExpanded
 Aliases:
 
@@ -226,6 +226,21 @@ Parameter Sets: TriggerExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceResourceId
+Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
+
+```yaml
+Type: System.String
+Parameter Sets: TriggerExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -298,11 +313,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IAzureBackupRestoreRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IOperationJobExtendedInfo
 
 ## NOTES
 
@@ -319,6 +334,7 @@ PARAMETER <IAzureBackupRestoreRequest>: Azure backup restore request
     - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
     - `[RestoreLocation <String>]`: Target Restore region
   - `SourceDataStoreType <SourceDataStoreType>`: Gets or sets the type of the source data store.
+  - `[SourceResourceId <String>]`: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 
 RESTORETARGETINFO <IRestoreTargetInfoBase>: Gets or sets the restore target information.
   - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
