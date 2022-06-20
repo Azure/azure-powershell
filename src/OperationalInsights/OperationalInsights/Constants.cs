@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public const string ColumnsExample = "@{ ColName1 = Type; ColName2 = Type; ColName3 = Type}";
 
-        public static string TableDoesNotExist = $"Workspace {{0}} under resourceGroup {{1}} does not contain the table:{{2}}, please use {CmdletName.NewAzOperationalInsightsTable}.";
+        public static string TableDoesNotExist = $"Not found: Workspace {{0}} under resourceGroup {{1}} does not contain the table:{{2}}, please use {CmdletName.NewAzOperationalInsightsTable}.";
 
         public static string TableAlreadyExist = $"Table: {{0}} under resourceGroup {{1}} and workspace {{2}} already exists, please use {CmdletName.UpdateAzOperationalInsightsTable}.";
 
