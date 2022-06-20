@@ -93,36 +93,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             throw new ApplicationException($"Failed to create the config file. Please make sure any one of the following paths is accessible: {string.Join(", ", paths)}");
         }
 
-        private void ValidateConfigFileContent()
+        private void ValidateConfigFile()
         {
-            string json = DataStore.ReadFileAsText(ConfigPath);
-
-            bool isValidJson = true;
-            try
-            {
-                JObject.Parse(json);
-            }
-            catch (Exception)
-            {
-                isValidJson = false;
-            }
-
-            if (string.IsNullOrEmpty(json) || !isValidJson)
+            if (!DataStore.FileExists(ConfigPath) ||
+                !JsonConfigHelper.ValidateConfigFileContent(DataStore.ReadFileAsText(ConfigPath), out _))
             {
                 Debug.Write($"[ConfigInitializer] Failed to parse the config file at {ConfigPath}. Clearing the file.");
                 ResetConfigFileToDefault();
-            }
-        }
-
-        private void ValidateConfigFile()
-        {
-            if (!DataStore.FileExists(ConfigPath))
-            {
-                ResetConfigFileToDefault();
-            }
-            else
-            {
-                ValidateConfigFileContent();
             }
         }
 
@@ -188,7 +165,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                     if (root.TryGetValue(legacyConfigKey, out JToken jToken))
                     {
                         bool enabled = ((bool)jToken);
-                        new JsonConfigWriter(ConfigPath, DataStore).Update(ConfigPathHelper.GetPathOfConfig(ConfigKeys.EnableDataCollection), enabled);
+                        new JsonConfigHelper(ConfigPath, DataStore).Update(ConfigPathHelper.GetPathOfConfig(ConfigKeys.EnableDataCollection), enabled);
                     }
                 }
                 catch (Exception)

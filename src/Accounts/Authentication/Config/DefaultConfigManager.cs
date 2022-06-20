@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         private readonly ConcurrentDictionary<string, EnvironmentVariableConfigurationParser> EnvironmentVariableParsers = new ConcurrentDictionary<string, EnvironmentVariableConfigurationParser>();
         private readonly IEnvironmentVariableProvider _environmentVariableProvider;
         private readonly IDataStore _dataStore;
-        private readonly JsonConfigWriter _jsonConfigWriter;
+        private readonly JsonConfigHelper _jsonConfigHelper;
         private readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
         private IDictionary<string, string> _processLevelConfigs = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             ConfigFilePath = configFilePath;
             _environmentVariableProvider = environmentVariableProvider;
             _dataStore = dataStore;
-            _jsonConfigWriter = new JsonConfigWriter(ConfigFilePath, _dataStore);
+            _jsonConfigHelper = new JsonConfigHelper(ConfigFilePath, _dataStore);
         }
 
         /// <inheritdoc/>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             _lock.EnterWriteLock();
             try
             {
-                _jsonConfigWriter.Update(path, value);
+                _jsonConfigHelper.Update(path, value);
             }
             finally
             {
@@ -319,13 +319,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             {
                 if (string.IsNullOrEmpty(options.AppliesTo))
                 {
-                    _jsonConfigWriter.ClearAll();
+                    _jsonConfigHelper.ClearAll();
                 }
                 else
                 {
                     foreach (var key in _configDefinitionMap.Keys)
                     {
-                        _jsonConfigWriter.Clear(ConfigPathHelper.GetPathOfConfig(key, options.AppliesTo));
+                        _jsonConfigHelper.Clear(ConfigPathHelper.GetPathOfConfig(key, options.AppliesTo));
                     }
                 }
             }
@@ -396,12 +396,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                     }
                     foreach (var key in keysToClear)
                     {
-                        _jsonConfigWriter.Clear(key);
+                        _jsonConfigHelper.Clear(key);
                     }
                 }
                 else
                 {
-                    _jsonConfigWriter.Clear(ConfigPathHelper.GetPathOfConfig(options.Key, options.AppliesTo));
+                    _jsonConfigHelper.Clear(ConfigPathHelper.GetPathOfConfig(options.Key, options.AppliesTo));
                 }
             }
             finally
