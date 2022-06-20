@@ -6122,11 +6122,11 @@ function Test-ConfVMSetAzDiskSecurityProfile
 
         # VM Profile & Hardware
         # Create New key vault
-        $kvname = "vaultnam5";
-        $keyname = "keynam5";
-        $desName= "desnam5" ;
+        $kvname = "vaultnam10";
+        $keyname = "keynam10";
+        $desName= "desnam10" ;
         #Testing 
-        $rgname = "adsandordes3";
+        $rgname = "adsandordes8";
         $loc = "northeurope";
 
         # Creating a VM using simple parameterset
@@ -6160,19 +6160,33 @@ function Test-ConfVMSetAzDiskSecurityProfile
         #$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'windowsserver' -Skus '2022-datacenter-smalldisk-g2' -Version "latest";
         #$image = Create-ComputeVMImageObject -loc $loc -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2022-datacenter-smalldisk-g2" -version "latest";
 
+        
         $img = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
         $img.PublisherName = "MicrosoftWindowsServer";
         $img.Offer = "WindowsServer";
         $img.Skus = "2022-datacenter-smalldisk-g2";
         $img.Version = "latest";
+        $img.Location = $loc;
+
+        #$mockimage = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/images/TestImage123';
+        $subId = "e37510d7-33b6-4676-886f-ee75bcc01871";
+        $img.Id = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/images/TestImage123';
+        #$img.Id = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/images/TestImage123'
 
         $diskName = "disk1";
-        $diskconfig = New-AzDiskConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption FromImage -Location $loc;
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 10 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig ;#-Id $img.Id -Lun 0;
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "ConfidentialVM_DiskEncryptedWithCustomerKey" -SecureDiskEncryptionSetId $diskencset.id;
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskconfig;
+        
+        <#
+        $image = Create-ComputeVMImageObject -loc $loc -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2022-datacenter-smalldisk-g2" -version "latest";
+        $diskName = "disk1";
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 10 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
         $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image -Lun 0;
         $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "ConfidentialVM_DiskEncryptedWithCustomerKey" -SecureDiskEncryptionSetId $diskencset.id;
         New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskconfig;
-
-
+        #>
     }
     finally 
     {
