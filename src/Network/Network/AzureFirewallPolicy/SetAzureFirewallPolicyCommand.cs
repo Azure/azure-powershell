@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.Network
        [Parameter(
             Mandatory = false,
             HelpMessage = "Explicit Proxy Settings in Firewall Policy.")]
-        public PSAzureFirewallPolicyExplicitProxy ExplicitProxySettings { get; set; }
+        public PSAzureFirewallPolicyExplicitProxy ExplicitProxy { get; set; }
 
 
         private void AddPremiumProperties(PSAzureFirewallPolicy firewallPolicy)
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.UserAssignedIdentityId = this.IsParameterBound(c => c.UserAssignedIdentityId) ? UserAssignedIdentityId : (InputObject.Identity?.UserAssignedIdentities != null ? InputObject.Identity.UserAssignedIdentities?.First().Key : null);
                 this.SkuTier = this.IsParameterBound(c => c.SkuTier) ? SkuTier : (InputObject.Sku?.Tier != null ? InputObject.Sku.Tier : null);
                 this.PrivateRange = this.IsParameterBound(c => c.PrivateRange) ? PrivateRange : InputObject.PrivateRange;
-                this.ExplicitProxySettings = this.IsParameterBound(c => c.ExplicitProxySettings) ? ExplicitProxySettings : InputObject.ExplicitProxySettings;
+                this.ExplicitProxy = this.IsParameterBound(c => c.ExplicitProxy) ? ExplicitProxy : InputObject.ExplicitProxy;
 
                 var firewallPolicy = new PSAzureFirewallPolicy()
                 {
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.Network
                     DnsSettings = this.DnsSetting,
                     SqlSetting = this.SqlSetting,
                     PrivateRange = this.PrivateRange,
-                    ExplicitProxySettings = this.ExplicitProxySettings
+                    ExplicitProxy = this.ExplicitProxy
                 };
 
                 AddPremiumProperties(firewallPolicy);
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Commands.Network
                     DnsSettings = this.DnsSetting,
                     SqlSetting = this.SqlSetting,
                     PrivateRange = this.PrivateRange,
-                    ExplicitProxySettings = this.ExplicitProxySettings
+                    ExplicitProxy = this.ExplicitProxy
                 };
 
                 AddPremiumProperties(firewallPolicy);

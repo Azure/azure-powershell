@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = false,
            HelpMessage = "Explicit Proxy Settings in Firewall Policy.")]
-        public PSAzureFirewallPolicyExplicitProxy ExplicitProxySettings { get; set; }
+        public PSAzureFirewallPolicyExplicitProxy ExplicitProxy { get; set; }
 
         public override void Execute()
         {
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.Network
                 },
                 IntrusionDetection = this.IntrusionDetection,
                 PrivateRange = this.PrivateRange,
-                ExplicitProxySettings = this.ExplicitProxySettings
+                ExplicitProxy = this.ExplicitProxy
             };
 
             if (this.UserAssignedIdentityId != null)

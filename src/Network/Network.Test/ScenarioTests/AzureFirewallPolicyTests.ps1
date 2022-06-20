@@ -1579,7 +1579,7 @@ function Test-AzureFirewallPolicyExplicitProxyCRUD {
         $explicitProxySettings = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 85 -HttpsPort 121 -EnablePacFile  -PacFilePort 122 -PacFile $pacFile
 
         # Create AzureFirewallPolicy (with Explicit Proxy Settings)
-        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -ExplicitProxySettings $explicitProxySettings
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -ExplicitProxy $explicitProxySettings
 
         # Get AzureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
@@ -1590,24 +1590,24 @@ function Test-AzureFirewallPolicyExplicitProxyCRUD {
         Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
         Assert-NotNull  $getAzureFirewallPolicy.Location
         Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
-        Assert-NotNull  $getAzureFirewallPolicy.ExplicitProxySettings
-        Assert-AreEqual 85 $getAzureFirewallPolicy.ExplicitProxySettings.HttpPort
-        Assert-AreEqual 121 $getAzureFirewallPolicy.ExplicitProxySettings.HttpsPort
-        Assert-AreEqual 122 $getAzureFirewallPolicy.ExplicitProxySettings.PacFilePort
-        Assert-AreEqual $pacFile $getAzureFirewallPolicy.ExplicitProxySettings.PacFile
+        Assert-NotNull  $getAzureFirewallPolicy.ExplicitProxy
+        Assert-AreEqual 85 $getAzureFirewallPolicy.ExplicitProxy.HttpPort
+        Assert-AreEqual 121 $getAzureFirewallPolicy.ExplicitProxy.HttpsPort
+        Assert-AreEqual 122 $getAzureFirewallPolicy.ExplicitProxy.PacFilePort
+        Assert-AreEqual $pacFile $getAzureFirewallPolicy.ExplicitProxy.PacFile
 
         # Modify
         $exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 86 -HttpsPort 123 -EnablePacFile  -PacFilePort 124 -PacFile $pacFile
         # Set AzureFirewallPolicy
-        $azureFirewallPolicy.ExplicitProxySettings = $exProxy
+        $azureFirewallPolicy.ExplicitProxy = $exProxy
         Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
 
-        Assert-NotNull $getAzureFirewallPolicy.ExplicitProxySettings
-        Assert-AreEqual 86 $getAzureFirewallPolicy.ExplicitProxySettings.HttpPort
-        Assert-AreEqual 123 $getAzureFirewallPolicy.ExplicitProxySettings.HttpsPort
-        Assert-AreEqual 124 $getAzureFirewallPolicy.ExplicitProxySettings.PacFilePort
-        Assert-AreEqual $pacFile $getAzureFirewallPolicy.ExplicitProxySettings.PacFile
+        Assert-NotNull $getAzureFirewallPolicy.ExplicitProxy
+        Assert-AreEqual 86 $getAzureFirewallPolicy.ExplicitProxy.HttpPort
+        Assert-AreEqual 123 $getAzureFirewallPolicy.ExplicitProxy.HttpsPort
+        Assert-AreEqual 124 $getAzureFirewallPolicy.ExplicitProxy.PacFilePort
+        Assert-AreEqual $pacFile $getAzureFirewallPolicy.ExplicitProxy.PacFile
     }
     finally {
         # Cleanup
