@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Adds support for partition key and id paths to be part of client encryption policy.
 * Fixed bug related to Update-AzCosmosDBSqlContainer command on containers with Client Encryption Policy.
 
 ## Version 1.9.0
