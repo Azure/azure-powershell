@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 .WithNewRmModules(helper => new[]
                 {
                     helper.RMProfileModule,
-                    helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
-                    helper.GetRMModulePath("AzureRM.Network.psd1")
+                    helper.GetRMModulePath("Az.KeyVault.psd1"),
+                    helper.GetRMModulePath("Az.Network.psd1")
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
