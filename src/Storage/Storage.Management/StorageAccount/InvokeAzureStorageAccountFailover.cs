@@ -12,16 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
-using StorageModels = Microsoft.Azure.Management.Storage.Models;
-using Microsoft.Azure.Commands.Management.Storage.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Management.Storage
@@ -89,7 +86,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 shouldContinuePrompt.AppendLine("  2. After the failover, your storage account type will be converted to locally redundant storage (LRS). You can convert your account to use geo-redundant storage (GRS).");
                 shouldContinuePrompt.AppendLine("  3. Once you re-enable GRS for your storage account, Microsoft will replicate data to your new secondary region. Replication time is dependent on the amount of data to replicate. Please note that there are bandwidth charges for the bootstrap. Please refer to doc: https://azure.microsoft.com/en-us/pricing/details/bandwidth/");
 
-
                 if (this.force || ShouldContinue(shouldContinuePrompt.ToString(), ""))
                 {
                     if (ParameterSetName == AccountObjectParameterSet)
@@ -98,11 +94,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         this.Name = InputObject.StorageAccountName;
                     }
 
-                    this.StorageClient.StorageAccounts.Failover(
-                        this.ResourceGroupName,
-                        this.Name);
-
-                    var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+                    this.StorageClientTrack2.GetStorageAccount(this.ResourceGroupName, this.Name).Failover(global::Azure.WaitUntil.Completed);
+                    var storageAccount = this.StorageClientTrack2.GetStorageAccount(this.ResourceGroupName, this.Name).Get();
 
                     WriteStorageAccount(storageAccount);
                 }

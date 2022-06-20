@@ -14,13 +14,11 @@
 
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Reflection;
-using StorageModels = Microsoft.Azure.Management.Storage.Models;
+
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {

@@ -15,10 +15,9 @@
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
+using Track2 = Azure.ResourceManager.Storage;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -95,9 +94,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     break;
             }
 
-            BlobInventoryPolicy policy = this.StorageClient.BlobInventoryPolicies.Get(
-                 this.ResourceGroupName,
-                 this.StorageAccountName);
+            Track2.BlobInventoryPolicyResource policy =
+                this.StorageClientTrack2.GetBlobInventoryPolicyResource(this.ResourceGroupName, this.StorageAccountName, "default").Get();
 
             WriteObject(new PSBlobInventoryPolicy(policy, this.ResourceGroupName, this.StorageAccountName), true);
         }

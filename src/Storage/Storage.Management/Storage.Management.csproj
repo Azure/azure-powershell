@@ -19,7 +19,6 @@
     <Compile Remove="File\UpdateAzAzStorageFileServiceProperty.cs" />
     <Compile Remove="Models\PSFileServiceProperties.cs" />
     <Compile Remove="StorageAccount\InvokeAzureStorageAccountHierarchicalNamespaceUpgrade.cs" />
-    <Compile Remove="StorageAccount\InvokeAzureStorageAccountFailover.cs" />
   </ItemGroup>
   <ItemGroup>
     <!-- <PackageReference Include="Azure.Core" Version="1.24.0" /> -->
