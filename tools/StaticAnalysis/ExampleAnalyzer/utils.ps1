@@ -547,6 +547,9 @@ function Get-ScriptAnalyzerResult {
         elseif($analysisResult.Severity -eq "Warning"){
             $Severity = 3
         }
+        elseif($analysisResult.Severity -eq "ParseError"){
+            $Severity = 2
+        }
         if($analysisResult.RuleSuppressionID -ge 5000 -and $analysisResult.RuleSuppressionID -le 5199){
             $result = [AnalysisOutput]@{
                 Module = ($analysisResult.Message -split "-")[0]
