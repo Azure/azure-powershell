@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
-using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
-using System.Collections.Generic;
-using System;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -132,51 +132,45 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (ShouldProcess(this.Name, "Remove Storage Account Networkrules"))
             {
-                var storageAccount = this.StorageClient.StorageAccounts.GetProperties(
-                                        this.ResourceGroupName,
-                                        this.Name);
-                NetworkRuleSet storageACL = storageAccount.NetworkRuleSet;
+                Track2.StorageAccountResource storageAccount = this.StorageClientTrack2
+                    .GetStorageAccount(this.ResourceGroupName, this.Name)
+                    .Get();
+                Track2Models.NetworkRuleSet storageACL = storageAccount.Data.NetworkRuleSet;
 
                 if (storageACL == null)
                 {
-                    storageACL = new NetworkRuleSet();
+                    storageACL = new Track2Models.NetworkRuleSet(Track2Models.DefaultAction.Allow);
                 }
 
                 switch (ParameterSetName)
                 {
                     case NetWorkRuleStringParameterSet:
-                        if (storageACL.VirtualNetworkRules == null)
-                            storageACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
                         foreach (string s in VirtualNetworkResourceId)
                         {
-                            VirtualNetworkRule rule = new VirtualNetworkRule(s);
+                            Track2Models.VirtualNetworkRule rule = new Track2Models.VirtualNetworkRule(s);
                             if (!RemoveNetworkRule(storageACL.VirtualNetworkRules, rule))
                                 throw new ArgumentOutOfRangeException("VirtualNetworkResourceId", String.Format("Can't remove VirtualNetworkRule with specific ResourceId since not exist: {0}", rule.VirtualNetworkResourceId));
                         }
                         break;
                     case IpRuleStringParameterSet:
-                        if (storageACL.IpRules == null)
-                            storageACL.IpRules = new List<IPRule>();
                         foreach (string s in IPAddressOrRange)
                         {
-                            IPRule rule = new IPRule(s);
-                            if (!RemoveIpRule(storageACL.IpRules, rule))
+                            Track2Models.IPRule rule = new Track2Models.IPRule(s);
+                            if (!RemoveIpRule(storageACL.IPRules, rule))
                                 throw new ArgumentOutOfRangeException("IPAddressOrRange", String.Format("Can't remove IpRule with specific IPAddressOrRange since not exist: {0}", rule.IPAddressOrRange));
                         }
                         break;
                     case ResourceAccessRuleStringParameterSet:
-                        if (storageACL.ResourceAccessRules == null)
+                        Track2Models.ResourceAccessRule resourceaccessrule = new Track2Models.ResourceAccessRule
                         {
-                            storageACL.ResourceAccessRules = new List<ResourceAccessRule>();
-                        }
-                        ResourceAccessRule resourceaccessrule = new ResourceAccessRule(this.TenantId, this.ResourceId);
+                            ResourceId = this.ResourceId,
+                            TenantId = this.TenantId
+                        };
                         if (!RemoveResourceAccessRule(storageACL.ResourceAccessRules, resourceaccessrule))
                                 throw new ArgumentOutOfRangeException("TenantId, ResourceId", String.Format("Can't remove ResourceAccessRule since not exist, TenantId: {0}, ResourceId : {1}", resourceaccessrule.TenantId, resourceaccessrule.ResourceId));
                         
                         break;
                     case NetworkRuleObjectParameterSet:
-                        if (storageACL.VirtualNetworkRules == null)
-                            storageACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
                         foreach (PSVirtualNetworkRule rule in VirtualNetworkRule)
                         {
                             if (!RemoveNetworkRule(storageACL.VirtualNetworkRules, PSNetworkRuleSet.ParseStorageNetworkRuleVirtualNetworkRule(rule)))
@@ -184,19 +178,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         break;
                     case IpRuleObjectParameterSet:
-                        if (storageACL.IpRules == null)
-                            storageACL.IpRules = new List<IPRule>();
                         foreach (PSIpRule rule in IPRule)
                         {
-                            if (!RemoveIpRule(storageACL.IpRules, PSNetworkRuleSet.ParseStorageNetworkRuleIPRule(rule)))
+                            if (!RemoveIpRule(storageACL.IPRules, PSNetworkRuleSet.ParseStorageNetworkRuleIPRule(rule)))
                                 throw new ArgumentOutOfRangeException("IPRule", String.Format("Can't remove IpRule with specific IPAddressOrRange since not exist: {0}", rule.IPAddressOrRange));
                         }
                         break;
                     case ResourceAccessRuleObjectParameterSet:
-                        if (storageACL.ResourceAccessRules == null)
-                        {
-                            storageACL.ResourceAccessRules = new List<ResourceAccessRule>();
-                        }
                         foreach (PSResourceAccessRule rule in this.ResourceAccessRule)
                         {
                             if (!RemoveResourceAccessRule(storageACL.ResourceAccessRules, PSNetworkRuleSet.ParseStorageResourceAccessRule(rule)))
@@ -205,29 +193,27 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         break;
                 }
 
-                StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
-                updateParameters.NetworkRuleSet = storageACL;
+                Track2Models.StorageAccountPatch patch = new Track2Models.StorageAccountPatch();
+                patch.NetworkRuleSet = storageACL;
+                var updatedStorageAccount = this.StorageClientTrack2
+                    .GetStorageAccount(this.ResourceGroupName, this.Name)
+                    .Update(patch);
 
-                var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
-                    this.ResourceGroupName,
-                    this.Name,
-                    updateParameters);
-
-                storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+                storageAccount = this.StorageClientTrack2.GetStorageAccount(this.ResourceGroupName, this.Name).Get();
 
                 switch (ParameterSetName)
                 {
                     case NetWorkRuleStringParameterSet:
                     case NetworkRuleObjectParameterSet:
-                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).VirtualNetworkRules);
+                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.Data.NetworkRuleSet).VirtualNetworkRules);
                         break;
                     case IpRuleStringParameterSet:
                     case IpRuleObjectParameterSet:
-                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).IpRules);
+                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.Data.NetworkRuleSet).IpRules);
                         break;
                     case ResourceAccessRuleStringParameterSet:
                     case ResourceAccessRuleObjectParameterSet:
-                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).ResourceAccessRules);
+                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.Data.NetworkRuleSet).ResourceAccessRules);
                         break;
                 }
             }
@@ -239,9 +225,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// <param name="ruleList">The IpRule List</param>
         /// <param name="ruleToRemove">The IP Rule to remove</param>
         /// <returns>true if reove success</returns>
-        public bool RemoveIpRule(IList<IPRule> ruleList, IPRule ruleToRemove)
+        public bool RemoveIpRule(IList<Track2Models.IPRule> ruleList, Track2Models.IPRule ruleToRemove)
         {
-            foreach (IPRule rule in ruleList)
+            foreach (Track2Models.IPRule rule in ruleList)
             {
                 if (rule.IPAddressOrRange == ruleToRemove.IPAddressOrRange)
                 {
@@ -258,9 +244,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// <param name="ruleList">The ResourceAccessRule List</param>
         /// <param name="ruleToRemove">The ResourceAccessRule to remove</param>
         /// <returns>true if reove success</returns>
-        public bool RemoveResourceAccessRule(IList<ResourceAccessRule> ruleList, ResourceAccessRule ruleToRemove)
+        public bool RemoveResourceAccessRule(IList<Track2Models.ResourceAccessRule> ruleList, Track2Models.ResourceAccessRule ruleToRemove)
         {
-            foreach (ResourceAccessRule rule in ruleList)
+            foreach (Track2Models.ResourceAccessRule rule in ruleList)
             {
                 if (rule.TenantId.Equals(ruleToRemove.TenantId, System.StringComparison.InvariantCultureIgnoreCase)
                    && rule.ResourceId.Equals(ruleToRemove.ResourceId, System.StringComparison.InvariantCultureIgnoreCase))
@@ -278,9 +264,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// <param name="ruleList">The NetworkRule List</param>
         /// <param name="ruleToRemove">The NetworkRulee to remove</param>
         /// <returns>true if reove success</returns>
-        public bool RemoveNetworkRule(IList<VirtualNetworkRule> ruleList, VirtualNetworkRule ruleToRemove)
+        public bool RemoveNetworkRule(IList<Track2Models.VirtualNetworkRule> ruleList, Track2Models.VirtualNetworkRule ruleToRemove)
         {
-            foreach (VirtualNetworkRule rule in ruleList)
+            foreach (Track2Models.VirtualNetworkRule rule in ruleList)
             {
                 if (rule.VirtualNetworkResourceId == ruleToRemove.VirtualNetworkResourceId)
                 {

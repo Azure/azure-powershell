@@ -18,11 +18,7 @@
     <Compile Remove="File\GetAzStorageFileServiceProperty.cs" />
     <Compile Remove="File\UpdateAzAzStorageFileServiceProperty.cs" />
     <Compile Remove="Models\PSFileServiceProperties.cs" />
-    <Compile Remove="StorageAccount\AddAzureStorageAccountNetworkRule.cs" />
-    <Compile Remove="StorageAccount\GetAzureStorageAccountNetworkRuleSet.cs" />
     <Compile Remove="StorageAccount\InvokeAzureStorageAccountHierarchicalNamespaceUpgrade.cs" />
-    <Compile Remove="StorageAccount\RemoveAzureStorageAccountNetworkRule.cs" />
-    <Compile Remove="StorageAccount\UpdateAzureStorageAccountNetworkRuleSet.cs" />
     <Compile Remove="StorageAccount\InvokeAzureStorageAccountFailover.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
-using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -132,26 +131,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (ShouldProcess(this.Name, "Add Storage Account NetworkRules"))
             {
-                var storageAccount = this.StorageClient.StorageAccounts.GetProperties(
-                this.ResourceGroupName,
-                this.Name);
-                NetworkRuleSet storageACL = storageAccount.NetworkRuleSet;
+                Track2.StorageAccountResource storageAccount = this.StorageClientTrack2
+                    .GetStorageAccount(this.ResourceGroupName, this.Name).Get();
+                Track2Models.NetworkRuleSet storageACL = storageAccount.Data.NetworkRuleSet;
 
                 if (storageACL == null)
                 {
-                    storageACL = new NetworkRuleSet();
+                    storageACL = new Track2Models.NetworkRuleSet(Track2Models.DefaultAction.Allow);
                 }
                 bool ruleChanged = false;
 
                 switch (ParameterSetName)
                 {
                     case NetWorkRuleStringParameterSet:
-                        if (storageACL.VirtualNetworkRules == null)
-                            storageACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
                         foreach (string s in VirtualNetworkResourceId)
                         {
                             bool ruleExist = false;
-                            foreach (VirtualNetworkRule originRule in storageACL.VirtualNetworkRules)
+                            foreach (Track2Models.VirtualNetworkRule originRule in storageACL.VirtualNetworkRules)
                             {
                                 if (originRule.VirtualNetworkResourceId.Equals(s, System.StringComparison.InvariantCultureIgnoreCase))
                                 {
@@ -162,19 +158,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             }
                             if (!ruleExist)
                             {
-                                VirtualNetworkRule rule = new VirtualNetworkRule(s);
+                                Track2Models.VirtualNetworkRule rule = new Track2Models.VirtualNetworkRule(s);
                                 storageACL.VirtualNetworkRules.Add(rule);
                                 ruleChanged = true;
                             }
                         }
                         break;
                     case IpRuleStringParameterSet:
-                        if (storageACL.IpRules == null)
-                            storageACL.IpRules = new List<IPRule>();
                         foreach (string s in IPAddressOrRange)
                         {
                             bool ruleExist = false;
-                            foreach (IPRule originRule in storageACL.IpRules)
+                            foreach (Track2Models.IPRule originRule in storageACL.IPRules)
                             {
                                 if (originRule.IPAddressOrRange.Equals(s, System.StringComparison.InvariantCultureIgnoreCase))
                                 {
@@ -185,19 +179,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             }
                             if (!ruleExist)
                             {
-                                IPRule rule = new IPRule(s);
-                                storageACL.IpRules.Add(rule);
+                                Track2Models.IPRule rule = new Track2Models.IPRule(s);
+                                storageACL.IPRules.Add(rule);
                                 ruleChanged = true;
                             }
                         }
                         break;
                     case ResourceAccessRuleStringParameterSet:
-                        if (storageACL.ResourceAccessRules == null)
-                        {
-                            storageACL.ResourceAccessRules = new List<ResourceAccessRule>();
-                        }
                         bool ResourceAccessruleExist = false;
-                        foreach (ResourceAccessRule originRule in storageACL.ResourceAccessRules)
+                        foreach (Track2Models.ResourceAccessRule originRule in storageACL.ResourceAccessRules)
                         {
                             if (originRule.TenantId.Equals(this.TenantId, System.StringComparison.InvariantCultureIgnoreCase)
                             && originRule.ResourceId.Equals(this.ResourceId, System.StringComparison.InvariantCultureIgnoreCase))
@@ -209,18 +199,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         if (!ResourceAccessruleExist)
                         {
-                            ResourceAccessRule rule = new ResourceAccessRule(this.TenantId, this.ResourceId);
+                            Track2Models.ResourceAccessRule rule = new Track2Models.ResourceAccessRule{
+                                TenantId = this.TenantId,
+                                ResourceId = this.ResourceId,
+                            };
                             storageACL.ResourceAccessRules.Add(rule);
                             ruleChanged = true;
                         }
                         break;
                     case NetworkRuleObjectParameterSet:
-                        if (storageACL.VirtualNetworkRules == null)
-                            storageACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
                         foreach (PSVirtualNetworkRule rule in VirtualNetworkRule)
                         {
                             bool ruleExist = false;
-                            foreach (VirtualNetworkRule originRule in storageACL.VirtualNetworkRules)
+                            foreach (Track2Models.VirtualNetworkRule originRule in storageACL.VirtualNetworkRules)
                             {
                                 if (originRule.VirtualNetworkResourceId.Equals(rule.VirtualNetworkResourceId, System.StringComparison.InvariantCultureIgnoreCase))
                                 {
@@ -237,14 +228,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         break;
                     case ResourceAccessRuleObjectParameterSet:
-                        if (storageACL.ResourceAccessRules == null)
-                        {
-                            storageACL.ResourceAccessRules = new List<ResourceAccessRule>();
-                        }
                         foreach (PSResourceAccessRule rule in ResourceAccessRule)
                         {
                             bool ruleExist = false;
-                            foreach (ResourceAccessRule originRule in storageACL.ResourceAccessRules)
+                            foreach (Track2Models.ResourceAccessRule originRule in storageACL.ResourceAccessRules)
                             {
                                 if (originRule.TenantId.Equals(rule.TenantId, System.StringComparison.InvariantCultureIgnoreCase)
                                 && originRule.ResourceId.Equals(rule.ResourceId, System.StringComparison.InvariantCultureIgnoreCase))
@@ -263,12 +250,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         break;
                     case IpRuleObjectParameterSet:
-                        if (storageACL.IpRules == null)
-                            storageACL.IpRules = new List<IPRule>();
                         foreach (PSIpRule rule in IPRule)
                         {
                             bool ruleExist = false;
-                            foreach (IPRule originRule in storageACL.IpRules)
+                            foreach (Track2Models.IPRule originRule in storageACL.IPRules)
                             {
                                 if (originRule.IPAddressOrRange.Equals(rule.IPAddressOrRange, System.StringComparison.InvariantCultureIgnoreCase))
                                 {
@@ -279,8 +264,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             }
                             if (!ruleExist)
                             {
-
-                                storageACL.IpRules.Add(PSNetworkRuleSet.ParseStorageNetworkRuleIPRule(rule));
+                                storageACL.IPRules.Add(PSNetworkRuleSet.ParseStorageNetworkRuleIPRule(rule));
                                 ruleChanged = true;
                             }
                         }
@@ -289,30 +273,31 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                 if (ruleChanged)
                 {
-                    StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
-                    updateParameters.NetworkRuleSet = storageACL;
+                    Track2Models.StorageAccountPatch patch = new Track2Models.StorageAccountPatch();
+                    patch.NetworkRuleSet = storageACL;
 
-                    var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
-                        this.ResourceGroupName,
-                        this.Name,
-                        updateParameters);
+                    Track2.StorageAccountResource updatedStorageAccount = this.StorageClientTrack2
+                        .GetStorageAccount(this.ResourceGroupName, this.Name)
+                        .Update(patch);
 
-                    storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+                    storageAccount = this.StorageClientTrack2
+                        .GetStorageAccount(this.ResourceGroupName, this.Name)
+                        .Get();
                 }
 
                 switch (ParameterSetName)
                 {
                     case NetWorkRuleStringParameterSet:
                     case NetworkRuleObjectParameterSet:
-                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).VirtualNetworkRules);
+                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.Data.NetworkRuleSet).VirtualNetworkRules);
                         break;
                     case IpRuleStringParameterSet:
                     case IpRuleObjectParameterSet:
-                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).IpRules);
+                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.Data.NetworkRuleSet).IpRules);
                         break;
                     case ResourceAccessRuleStringParameterSet:
                     case ResourceAccessRuleObjectParameterSet:
-                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).ResourceAccessRules);
+                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.Data.NetworkRuleSet).ResourceAccessRules);
                         break;
                 }
             }
