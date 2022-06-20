@@ -146,7 +146,7 @@ Backup Instance object to trigger original localtion restore.
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.BackupInstanceResource
 Parameter Sets: OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
@@ -422,7 +422,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IAzureBackupRestoreRequest
 
 ## NOTES
 
@@ -461,6 +461,7 @@ BACKUPINSTANCE <BackupInstanceResource>: Backup Instance object to trigger origi
     - `[DatasourceAuthCredentials <IAuthCredentials>]`: Credentials to use to authenticate with data source provider.
       - `ObjectType <String>`: Type of the specific object - used for deserializing
     - `[FriendlyName <String>]`: Gets or sets the Backup Instance friendly name.
+    - `[ValidationType <ValidationType?>]`: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 
 ## RELATED LINKS
 

@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Compute","Microsoft.Azure.Commands.Compute.Automation.GetAzureRestorePoint","Get-AzRestorePoint","0","3000","The type of property 'ReplicationStatus' of type 'Microsoft.Azure.Management.Compute.Models.DiskRestorePointInstanceView' has changed from 'System.Object' to 'Microsoft.Azure.Management.Compute.Models.DiskRestorePointReplicationStatus'.","Change the type of property 'ReplicationStatus' back to 'System.Object'."

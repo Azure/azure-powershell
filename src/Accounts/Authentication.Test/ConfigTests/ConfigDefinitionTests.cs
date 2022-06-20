@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Authentication.Test.Config
             const string boolKey = "BoolKey";
             var boolConfig = new SimpleTypedConfig<bool>(boolKey, "", false);
             var rangedIntConfig = new RangedConfig();
-            var icm = GetConfigManagerWithInitState(null, null, boolConfig, rangedIntConfig);
+            var icm = GetConfigManager(boolConfig, rangedIntConfig);
 
             Assert.Throws<AzPSArgumentException>(() => { icm.UpdateConfig(boolKey, 0, ConfigScope.CurrentUser); });
             Assert.Throws<AzPSArgumentException>(() => { icm.UpdateConfig(rangedIntConfig.Key, true, ConfigScope.CurrentUser); });

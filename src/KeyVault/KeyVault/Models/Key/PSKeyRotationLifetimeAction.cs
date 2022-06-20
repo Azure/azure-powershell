@@ -14,24 +14,32 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         //     Gets or sets he Azure.Security.KeyVault.Keys.KeyRotationPolicyAction that will
         //     be executed.
         public string Action { get; set; }
-        //
-        // Summary:
-        //     Gets or sets the System.TimeSpan after creation to attempt to rotate. It only
-        //     applies to Azure.Security.KeyVault.Keys.KeyRotationPolicyAction.Rotate.
-        public TimeSpan? TimeAfterCreate { get; set; }
-        //
-        // Summary:
-        //     Gets or sets the System.TimeSpan before expiry to attempt to Azure.Security.KeyVault.Keys.KeyRotationPolicyAction.Rotate
-        //     or Azure.Security.KeyVault.Keys.KeyRotationPolicyAction.Notify.
-        public TimeSpan? TimeBeforeExpiry { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ISO 8601 duration after creation to attempt to rotate. It only
+        /// applies to Azure.Security.KeyVault.Keys.KeyRotationPolicyAction.Rotate.
+        /// </summary>
+        /// <example>
+        /// ISO 8601 duration examples:
+        /// • P90D – 90 days
+        /// • P3M – 3 months
+        /// • P1Y10D – 1 year and 10 days
+        /// </example>
+        public string TimeAfterCreate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ISO 8601 duration before expiry to attempt to Azure.Security.KeyVault.Keys.KeyRotationPolicyAction.Rotate
+        /// or Azure.Security.KeyVault.Keys.KeyRotationPolicyAction.Notify.
+        /// </summary>
+        public string TimeBeforeExpiry { get; set; }
         
         public PSKeyRotationLifetimeAction() { }
 
         public PSKeyRotationLifetimeAction(KeyRotationLifetimeAction keyRotationLifetimeAction) 
         {
             Action = keyRotationLifetimeAction.Action.ToString();
-            TimeAfterCreate = string.IsNullOrEmpty(keyRotationLifetimeAction.TimeAfterCreate) ? null : XmlConvert.ToTimeSpan(keyRotationLifetimeAction.TimeAfterCreate) as TimeSpan?;
-            TimeBeforeExpiry = string.IsNullOrEmpty(keyRotationLifetimeAction.TimeBeforeExpiry) ? null : XmlConvert.ToTimeSpan(keyRotationLifetimeAction.TimeBeforeExpiry) as TimeSpan?;
+            TimeAfterCreate = keyRotationLifetimeAction.TimeAfterCreate;
+            TimeBeforeExpiry = keyRotationLifetimeAction.TimeBeforeExpiry;
         }
         
         public override string ToString()

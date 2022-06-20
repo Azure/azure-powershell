@@ -13,8 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Config;
+using Microsoft.Azure.PowerShell.Authentication.Test.Mocks;
 using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using System.IO;
 using Xunit;
 
 namespace Microsoft.Azure.Authentication.Test.Config
@@ -28,18 +31,26 @@ namespace Microsoft.Azure.Authentication.Test.Config
             const string retryKey = "Retry";
             const string envName = "ENV_FOR_RETRY";
             var config = new SimpleTypedConfig<int>(retryKey, "", -1, envName);
-            IConfigManager icm = GetConfigManagerWithInitState((dataStore, path) =>
-            {
-                dataStore.WriteFile(path,
+
+            var path = Path.GetRandomFileName();
+            var dataStore = new MockDataStore();
+            dataStore.WriteFile(path,
 @"{
     ""Az"": {
         ""Retry"": 100
     }
 }");
-            }, envVar =>
-            {
-                envVar.Set(envName, "10", System.EnvironmentVariableTarget.User);
-            }, config);
+            var env = new MockEnvironmentVariableProvider();
+            env.Set(envName, "10", System.EnvironmentVariableTarget.User);
+
+            IConfigManager icm = GetConfigManager(
+                new InitSettings()
+                {
+                    DataStore = dataStore,
+                    Path = path,
+                    EnvironmentVariableProvider = env
+                },
+                config);
             Assert.Equal(100, icm.GetConfigValue<int>(retryKey));
         }
 
@@ -51,18 +62,26 @@ namespace Microsoft.Azure.Authentication.Test.Config
             const string retryKey = "Retry";
             const string envName = "ENV_FOR_RETRY";
             var config = new SimpleTypedConfig<int>(retryKey, "", -1, envName);
-            IConfigManager icm = GetConfigManagerWithInitState((dataStore, path) =>
-            {
-                dataStore.WriteFile(path,
+
+            var path = Path.GetRandomFileName();
+            var dataStore = new MockDataStore();
+            dataStore.WriteFile(path,
 @"{
     ""Az"": {
         ""Retry"": 100
     }
 }");
-            }, envVar =>
-            {
-                envVar.Set(envName, "10", System.EnvironmentVariableTarget.Process);
-            }, config);
+            var env = new MockEnvironmentVariableProvider();
+            env.Set(envName, "10", System.EnvironmentVariableTarget.Process);
+
+            IConfigManager icm = GetConfigManager(
+                new InitSettings()
+                {
+                    DataStore = dataStore,
+                    Path = path,
+                    EnvironmentVariableProvider = env
+                },
+                config);
             Assert.Equal(10, icm.GetConfigValue<int>(retryKey));
         }
 
@@ -73,10 +92,14 @@ namespace Microsoft.Azure.Authentication.Test.Config
             const string retryKey = "Retry";
             const string envName = "ENV_FOR_RETRY";
             var config = new SimpleTypedConfig<int>(retryKey, "", -1, envName);
-            IConfigManager icm = GetConfigManagerWithInitState(null, envVar =>
-            {
-                envVar.Set(envName, "10", System.EnvironmentVariableTarget.Process);
-            }, config);
+            var env = new MockEnvironmentVariableProvider();
+            env.Set(envName, "10", System.EnvironmentVariableTarget.Process);
+            IConfigManager icm = GetConfigManager(
+                new InitSettings()
+                {
+                    EnvironmentVariableProvider = env
+                },
+                config);
 
             icm.UpdateConfig(new UpdateConfigOptions(retryKey, 100, ConfigScope.Process));
             Assert.Equal(100, icm.GetConfigValue<int>(retryKey));

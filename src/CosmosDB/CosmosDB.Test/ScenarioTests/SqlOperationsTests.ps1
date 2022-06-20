@@ -1019,6 +1019,9 @@ function Test-ClientEncryptionKeyCmdlets
       Assert-AreEqual $ContainerWithEncryptionPolicy.Resource.ClientEncryptionPolicy.IncludedPaths[1].EncryptionType $EncryptionType_2
       Assert-AreEqual $ContainerWithEncryptionPolicy.Resource.ClientEncryptionPolicy.PolicyFormatVersion 1
 
+      #validate update container works on container with encryption policy.
+      updateContainerTtl = Update-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -TtlInSeconds 7200
+      Assert-AreEqual updateContainerTtl.Resource.DefaultTtl 7200
   }
   Finally {
     Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
