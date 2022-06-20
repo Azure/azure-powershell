@@ -30,27 +30,12 @@ Deletes an existing AzureFrontDoor endpoint with the specified endpoint name und
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete an AzureFrontDoor endpoint under the profile
 ```powershell
-{{ Add code here }}
+Remove-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
 ```
 
-```output
-{{ Add output here }}
-```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
