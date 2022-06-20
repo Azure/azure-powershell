@@ -559,11 +559,11 @@ function Get-ScriptAnalyzerResult {
                 Cmdlet = ($analysisResult.Message -split "-")[1] + "-" + ($analysisResult.Message -split "-")[2]
                 Example = ($analysisResult.Message -split "-")[3]
                 RuleName = $analysisResult.RuleName
-                Description = ($analysisResult.Message -split "@")[1] -replace "`"","`'" -replace [System.Environment]::NewLine," "
+                Description = ($analysisResult.Message -split "@")[1] -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 Severity = $Severity
-                Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace [System.Environment]::NewLine," "
+                Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 ProblemID = $analysisResult.RuleSuppressionID
-                Remediation = ($analysisResult.Message -split "@")[2] -replace "`"","`'" -replace [System.Environment]::NewLine," "
+                Remediation = ($analysisResult.Message -split "@")[2] -replace "`"","`'" -replace "`n"," " -replace "`r"," "
             }
         }
         else{
@@ -572,9 +572,9 @@ function Get-ScriptAnalyzerResult {
                 Cmdlet = ""
                 Example = 0
                 RuleName = $analysisResult.RuleName
-                Description = $analysisResult.Message -replace "`"","`'" -replace [System.Environment]::NewLine," "
+                Description = $analysisResult.Message -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 Severity = $Severity
-                Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace [System.Environment]::NewLine," "
+                Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 ProblemID = 5200
                 Remediation = "Unexpected Error! Please check your example or contact the Azure Powershell Team."
                 }
