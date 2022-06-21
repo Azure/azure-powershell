@@ -40,3 +40,9 @@ public enum ImdsAttestationNodeStatus
     Expired,
     Error,
 }
+public enum EventLogLevel
+{
+    Error,
+    Warning,
+    Information,
+}

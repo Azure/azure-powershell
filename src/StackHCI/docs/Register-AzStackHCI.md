@@ -17,7 +17,8 @@ Register-AzStackHCI [-SubscriptionId] <String> [[-Region] <String>] [[-ResourceN
  [[-Tag] <Hashtable>] [[-TenantId] <String>] [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>]
  [[-GraphAccessToken] <String>] [[-AccountId] <String>] [[-EnvironmentName] <String>]
  [[-ComputerName] <String>] [[-CertificateThumbprint] <String>] [[-Credential] <PSCredential>]
- [-EnableAzureArcServer] [-IsWAC] [-RepairRegistration] [-UseDeviceAuthentication] [<CommonParameters>]
+ [[-ArcServerResourceGroupName] <String>] [[-ArcSpnCredential] <PSCredential>] [-EnableAzureArcServer]
+ [-IsWAC] [-RepairRegistration] [-UseDeviceAuthentication] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,6 +95,38 @@ Aliases:
 
 Required: False
 Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcServerResourceGroupName
+Specifies the Arc Resource Group name.
+If not specified, service will generate a unique Resource Group name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 13
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcSpnCredential
+Specifies the credentials to be used for onboarding ARC agent.
+If not specified, new set of credentials will be generated.
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 14
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -360,10 +393,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### PSCustomObject. Returns following Properties in PSCustomObject
-Result: Success or Failed or PendingForAdminConsent or Cancelled.
+Result: Success or Failed or Cancelled.
 ResourceId: Resource ID of the resource created in Azure.
 PortalResourceURL: Azure Portal Resource URL.
-PortalAADAppPermissionsURL: Azure Portal URL for AAD App permissions page.
 
 ## NOTES
 
