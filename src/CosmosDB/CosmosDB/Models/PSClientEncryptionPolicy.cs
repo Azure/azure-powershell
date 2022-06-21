@@ -125,13 +125,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 {
                     if (policyFormatVersion < 2)
                     {
-                        throw new ArgumentException($"Path: {encryptedPartitionKeyPath} which is part of the partition key cannot be encrypted with PolicyFormatVersion: {policyFormatVersion}. Please use PolicyFormatVersion: 2. ");
+                        throw new ArgumentException($"Path: {encryptedPartitionKeyPath.Select(et => et.Path).FirstOrDefault()} which is part of the partition key cannot be encrypted with PolicyFormatVersion: {policyFormatVersion}. Please use PolicyFormatVersion: 2. ");
                     }
 
                     // for the ClientEncryptionIncludedPath found check the encryption type.
                     if (encryptedPartitionKeyPath.Select(et => et.EncryptionType).FirstOrDefault() != "Deterministic")
                     {
-                        throw new ArgumentException($"Path: {tokenInPath} which is part of the partition key has to be encrypted with Deterministic type Encryption.");
+                        throw new ArgumentException($"Path: {encryptedPartitionKeyPath.Select(et => et.Path).FirstOrDefault()} which is part of the partition key has to be encrypted with Deterministic type Encryption.");
                     }
                 }
             }
