@@ -233,6 +233,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         }
 
                         break;
+                    case ASRParameterSets.EdgeZoneToAzure:
+                    case ASRParameterSets.AzureToEdgeZone:
+                    case ASRParameterSets.EdgeZoneToEdgeZone:
+                        break;
                 }
 
                 if (string.Compare(
@@ -389,7 +393,57 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 createRecoveryPlanInputProperties.ProviderSpecificInput = new List<RecoveryPlanProviderSpecificInput>();
                 createRecoveryPlanInputProperties.ProviderSpecificInput.Add(recoveryPlanA2AInput);
             }
+            else if (this.ParameterSetName == ASRParameterSets.EdgeZoneToEdgeZone)
+            {
+                var recoveryPlanA2AInput = new RecoveryPlanA2AInput
+                {
+                    PrimaryZone = null,
+                    RecoveryZone = null,
+                    PrimaryExtendedLocation = this.IsParameterBound(c => c.PrimaryEdgeZone) ? new ExtendedLocation
+                    {
+                        Name = this.PrimaryEdgeZone
+                    } : null,
+                    RecoveryExtendedLocation = this.IsParameterBound(c => c.RecoveryEdgeZone) ? new ExtendedLocation
+                    {
+                        Name = this.RecoveryEdgeZone
+                    } : null
+                };
 
+                createRecoveryPlanInputProperties.ProviderSpecificInput = new List<RecoveryPlanProviderSpecificInput>();
+                createRecoveryPlanInputProperties.ProviderSpecificInput.Add(recoveryPlanA2AInput);
+            }
+            else if (this.ParameterSetName == ASRParameterSets.EdgeZoneToAzure)
+            {
+                var recoveryPlanA2AInput = new RecoveryPlanA2AInput
+                {
+                    PrimaryZone = null,
+                    RecoveryZone = null,
+                    PrimaryExtendedLocation = this.IsParameterBound(c => c.PrimaryEdgeZone) ? new ExtendedLocation
+                    {
+                        Name = this.PrimaryEdgeZone
+                    } : null,
+                    RecoveryExtendedLocation = null
+                };
+
+                createRecoveryPlanInputProperties.ProviderSpecificInput = new List<RecoveryPlanProviderSpecificInput>();
+                createRecoveryPlanInputProperties.ProviderSpecificInput.Add(recoveryPlanA2AInput);
+            }
+            else if (this.ParameterSetName == ASRParameterSets.AzureToEdgeZone)
+            {
+                var recoveryPlanA2AInput = new RecoveryPlanA2AInput
+                {
+                    PrimaryZone = null,
+                    RecoveryZone = null,
+                    PrimaryExtendedLocation = null,
+                    RecoveryExtendedLocation = this.IsParameterBound(c => c.RecoveryEdgeZone) ? new ExtendedLocation
+                    {
+                        Name = this.RecoveryEdgeZone
+                    } : null
+                };
+
+                createRecoveryPlanInputProperties.ProviderSpecificInput = new List<RecoveryPlanProviderSpecificInput>();
+                createRecoveryPlanInputProperties.ProviderSpecificInput.Add(recoveryPlanA2AInput);
+            }
 
             var createRecoveryPlanInput =
                 new CreateRecoveryPlanInput { Properties = createRecoveryPlanInputProperties };

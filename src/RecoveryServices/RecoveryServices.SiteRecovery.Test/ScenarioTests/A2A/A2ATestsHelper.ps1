@@ -45,6 +45,12 @@ function getPrimaryZoneLocation
     return "EastUS"
 }
 
+function getPrimaryExtendedLocation
+{
+    return "ezecustomerlabboston1"
+}
+
+
 function getPrimaryZone
 {
     return "1"
@@ -57,6 +63,11 @@ function getRecoveryZone
 
 function getRecoveryLocation{
   return getVaultLocation
+}
+
+function getRecoveryExtendedLocation
+{
+    return "ezecustomerlabboston1"
 }
 
 function getPrimaryFabric{
@@ -227,6 +238,23 @@ function createAzureVmInAvailabilityZone{
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
         $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -Zone $VMZone
+		return $vm.Id
+}
+
+function createAzureVmInEdgeZone{
+    param([string]$primaryLocation)
+    
+        $VMLocalAdminUser = "adminUser"
+		$PasswordString = $(Get-RandomSuffix 12)
+		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
+        $VMLocalAdminSecurePassword = $Password
+		$VMLocation = getPrimaryZoneLocation
+        $primaryExtendedLocation = getPrimaryExtendedLocation
+		$VMName = getAzureVmName
+		$domain = "domain"+ $seed
+        $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
+        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -EdgeZone $primaryExtendedLocation
 		return $vm.Id
 }
 

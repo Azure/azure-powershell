@@ -555,6 +555,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string DiskEncryptionSetId { get; set; }
 
         /// <summary>
+        ///  Gets or sets the recovery extended location.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specifies Recovery ExtendedLocation in case of EZ-to-EZ.", Mandatory = false)]
+        public string RecoveryExtendedLocation { get; set; }
+
+        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
@@ -937,7 +943,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 RecoveryAvailabilityZone = this.RecoveryAvailabilityZone,
                 RecoveryProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId,
                 RecoveryVirtualMachineScaleSetId = this.RecoveryVirtualMachineScaleSetId,
-                RecoveryCapacityReservationGroupId = this.RecoveryCapacityReservationGroupId
+                RecoveryCapacityReservationGroupId = this.RecoveryCapacityReservationGroupId,
+                RecoveryExtendedLocation = this.IsParameterBound(c => c.RecoveryExtendedLocation) ? new ExtendedLocation
+                {
+                    Name = this.RecoveryExtendedLocation
+                } : null
             };
 
             if (!string.IsNullOrEmpty(this.ReplicationGroupName))
