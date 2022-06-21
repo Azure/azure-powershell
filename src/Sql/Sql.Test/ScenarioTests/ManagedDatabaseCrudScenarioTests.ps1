@@ -434,14 +434,14 @@ function Test-SetManagedDatabase
 
 		$tags = @{tag2= "valueInputObject"}
 		# Set by using ManagedInstance as input
-		$db = Set-AzSqlInstanceDatabase -InstanceObject $managedInstance -Name $managedDatabaseName -Tags $tags
+		$db = Set-AzSqlInstanceDatabase -DatabaseObject $db -Tags $tags
 		Assert-AreEqual $db.Name $managedDatabaseName
 		Assert-NotNull $db.Tags
 		Assert-AreEqual True $db.Tags.ContainsKey("tag2")
 		
 		# Create with default values via piping
 		$tags = @{tag3= "valuePiping"}
-		$db = $managedInstance | Set-AzSqlInstanceDatabase -Name $managedDatabaseName -Tags $tags
+		$db = $db | Set-AzSqlInstanceDatabase -Tags $tags
 		Assert-AreEqual $db.Name $managedDatabaseName
 		Assert-NotNull $db.Tags
 		Assert-AreEqual True $db.Tags.ContainsKey("tag3")

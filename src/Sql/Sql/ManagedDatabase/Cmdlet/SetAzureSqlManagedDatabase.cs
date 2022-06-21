@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             "SetInstanceDatabaseFromInputParameters";
 
         protected const string SetByInputObjectParameterSet =
-            "SetInstanceDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition";
+            "SetInstanceDatabaseFromAzureSqlManagedDatabaseModel";
 
         protected const string SetByResourceIdParameterSet =
             "SetInstanceDatabaseFromAzureResourceId";
@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets the name of the instance database to create.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(ParameterSetName = SetByNameAndResourceGroupParameterSet,
+            Mandatory = true,
             Position = 0,
             HelpMessage = "The name of the instance database to create.")]
         [Alias("InstanceDatabaseName")]
@@ -89,10 +90,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The instance object")]
+            HelpMessage = "The database object")]
         [ValidateNotNullOrEmpty]
         [Alias("ParentObject")]
-        public AzureSqlManagedInstanceModel InstanceObject { get; set; }
+        public AzureSqlManagedDatabaseModel DatabaseObject { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id of the instance to get
@@ -101,10 +102,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The instance resource id")]
+            HelpMessage = "The instance database resource id")]
         [ValidateNotNullOrEmpty]
         [Alias("ParentResourceId")]
-        public string InstanceResourceId { get; set; }
+        public string InstanceDatabaseResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -128,15 +129,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         {
             if (string.Equals(this.ParameterSetName, SetByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
-                ResourceGroupName = InstanceObject.ResourceGroupName;
-                InstanceName = InstanceObject.ManagedInstanceName;
+                ResourceGroupName = DatabaseObject.ResourceGroupName;
+                InstanceName = DatabaseObject.ManagedInstanceName;
+                Name = DatabaseObject.Name;
             }
             else if (string.Equals(this.ParameterSetName, SetByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
-                var resourceInfo = new ResourceIdentifier(InstanceResourceId);
+                var resourceInfo = new ResourceIdentifier(InstanceDatabaseResourceId);
 
                 ResourceGroupName = resourceInfo.ResourceGroupName;
-                InstanceName = resourceInfo.ResourceName;
+                InstanceName = resourceInfo.ParentResource;
+                Name = resourceInfo.ResourceName;
             }
 
             return ModelAdapter.GetManagedDatabase(ResourceGroupName, InstanceName, Name);
