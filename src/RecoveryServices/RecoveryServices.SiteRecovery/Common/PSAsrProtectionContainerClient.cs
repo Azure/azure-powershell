@@ -127,6 +127,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets Azure Site Recovery Protection Container.
         /// </summary>
+        /// <param name="fabricName"></param>
         /// <param name="protectionContainerName">Protection Container ID</param>
         /// <returns>Protection Container response</returns>
         public ProtectionContainer GetAzureSiteRecoveryProtectionContainer(

@@ -105,8 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="primaryFabricName">Primary fabric name</param>
         /// <param name="primaryNetworkName">Primary network name</param>
         /// <param name="mappingName">Mapping name</param>
-        /// <param name="recoveryFabricName">Recovery fabric name</param>
-        /// <param name="recoveryNetworkId">Recovery network id</param>
+        /// <param name="input"></param>
         /// <returns>Long running operation response</returns>
         public PSSiteRecoveryLongRunningOperation NewAzureSiteRecoveryNetworkMapping(
             string primaryFabricName,

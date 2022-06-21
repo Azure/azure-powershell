@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
         /// required current subscription.
         /// </summary>
-        /// <param name="azureSubscription">Azure Subscription</param>
+        /// <param name="defaultContext"></param>
         public PSRecoveryServicesClient(IAzureContext defaultContext)
         {
             string resourceType = string.Empty;
@@ -155,7 +155,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets request headers.
         /// </summary>
-        /// <param name="shouldSignRequest">specifies whether to sign the request or not</param>
         /// <returns>Custom request headers</returns>
         public Dictionary<string, List<string>> GetRequestHeaders()
         {
