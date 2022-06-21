@@ -401,3 +401,53 @@ function Test-GeoRestoreManagedDatabase
 		Remove-ResourceGroupForTest $rg2
 	}
 }
+
+<#
+	.SYNOPSIS
+	Tests creating a managed database
+#>
+function Test-SetManagedDatabase
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+
+	$managedInstance = Create-ManagedInstanceForTest $rg
+	
+	try
+	{
+		# Create with all values
+		$managedDatabaseName = Get-ManagedDatabaseName
+		$collation = "SQL_Latin1_General_CP1_CI_AS"
+		$job1 = New-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Collation $collation -AsJob
+		$job1 | Wait-Job
+		$db = $job1.Output
+
+		Assert-AreEqual $db.Name $managedDatabaseName
+		Assert-Null $db.Tags
+
+		$tags = @{tag1= "value1"}
+		# Set by using ManagedInstance as input
+		$db = Set-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Tags $tags
+		Assert-AreEqual $db.Name $managedDatabaseName
+		Assert-NotNull $db.Tags
+		Assert-AreEqual True $db.Tags.ContainsKey("tag1")
+
+		$tags = @{tag2= "valueInputObject"}
+		# Set by using ManagedInstance as input
+		$db = Set-AzSqlInstanceDatabase -InstanceObject $managedInstance -Name $managedDatabaseName -Tags $tags
+		Assert-AreEqual $db.Name $managedDatabaseName
+		Assert-NotNull $db.Tags
+		Assert-AreEqual True $db.Tags.ContainsKey("tag2")
+		
+		# Create with default values via piping
+		$tags = @{tag3= "valuePiping"}
+		$db = $managedInstance | Set-AzSqlInstanceDatabase -Name $managedDatabaseName -Tags $tags
+		Assert-AreEqual $db.Name $managedDatabaseName
+		Assert-NotNull $db.Tags
+		Assert-AreEqual True $db.Tags.ContainsKey("tag3")
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}

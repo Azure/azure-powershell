@@ -104,6 +104,23 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         }
 
         /// <summary>
+        /// Updates an Azure Sql Managed Database.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="managedInstanceName">The name of the Azure Sql Database Managed Instance</param>
+        /// <param name="model">The input parameters for the create/update operation</param>
+        /// <returns>The upserted Azure Sql Database from AutoRest SDK</returns>
+        internal AzureSqlManagedDatabaseModel UpdateManagedDatabase(string resourceGroup, string managedInstanceName, AzureSqlManagedDatabaseModel model)
+        {
+            var resp = Communicator.Update(resourceGroup, managedInstanceName, model.Name, new Management.Sql.Models.ManagedDatabaseUpdate
+            {
+                Tags = model.Tags,
+            });
+
+            return CreateManagedDatabaseModelFromResponse(resourceGroup, managedInstanceName, resp);
+        }
+
+        /// <summary>
         /// Deletes a managed database
         /// </summary>
         /// <param name="resourceGroupName">The resource group the managed instance is in</param>

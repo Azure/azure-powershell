@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdlet `Set-AzSqlInstanceDatabase`
 
 ## Version 3.9.0
 * Added new cmdlet `Get-AzSqlInstanceEndpointCertificate`
