@@ -66,21 +66,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             // Quick access for key properties
             KeySize = JwkHelper.ConvertToRSAKey(Key)?.KeySize;
-<<<<<<< HEAD:src/KeyVault/KeyVault/Models/PSKeyVaultKey.cs
-            Attributes = new PSKeyVaultKeyAttributes(
-                key.Properties.Enabled,
-                // see https://docs.microsoft.com/en-us/dotnet/standard/datetime/converting-between-datetime-and-offset#conversions-from-datetimeoffset-to-datetime
-                key.Properties.ExpiresOn?.UtcDateTime, // time returned by key vault are UTC
-                key.Properties.NotBefore?.UtcDateTime,
-                key.KeyType.ToString(),
-                key.KeyOperations.Select(op => op.ToString()).ToArray(),
-                key.Properties.CreatedOn?.UtcDateTime,
-                key.Properties.UpdatedOn?.UtcDateTime,
-                key.Properties.RecoveryLevel,
-                key.Properties.Tags
-            );
-=======
->>>>>>> upstream/main:src/KeyVault/KeyVault/Models/Key/PSKeyVaultKey.cs
 
             // Key additional properties
             Attributes = new PSKeyVaultKeyAttributes(key);
