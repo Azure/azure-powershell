@@ -12,19 +12,19 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### SetByResourceId
+### SetByResource (Default)
 ```
 Set-AzApplicationGatewayRoutingRule -ApplicationGateway <PSApplicationGateway> -Name <String>
- -RuleType <String> [-BackendSettingsId <String>] [-ListenerId <String>] [-BackendAddressPoolId <String>]
+ -RuleType <String> -Priority <Int32> [-BackendSettings <PSApplicationGatewayBackendSettings>]
+ [-Listener <PSApplicationGatewayListener>] [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### SetByResource
+### SetByResourceId
 ```
 Set-AzApplicationGatewayRoutingRule -ApplicationGateway <PSApplicationGateway> -Name <String>
- -RuleType <String> [-BackendSettings <PSApplicationGatewayBackendSettings>]
- [-Listener <PSApplicationGatewayListener>] [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -RuleType <String> -Priority <Int32> [-BackendSettingsId <String>] [-ListenerId <String>]
+ [-BackendAddressPoolId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +45,7 @@ PS C:\> {{ Add example code here }}
 The applicationGateway
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 Application gateway BackendAddressPool
 
 ```yaml
-Type: PSApplicationGatewayBackendAddressPool
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool
 Parameter Sets: SetByResource
 Aliases:
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 ID of the application gateway BackendAddressPool
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 Application gateway BackendSettings
 
 ```yaml
-Type: PSApplicationGatewayBackendSettings
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendSettings
 Parameter Sets: SetByResource
 Aliases:
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ID of the application gateway BackendSettings
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 Application gateway Listener
 
 ```yaml
-Type: PSApplicationGatewayListener
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayListener
 Parameter Sets: SetByResource
 Aliases:
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 ID of the application gateway Listener
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -165,7 +165,22 @@ Accept wildcard characters: False
 The name of the Routing Rule
 
 ```yaml
-Type: String
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Priority
+The priority of the rule
+
+```yaml
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -180,7 +195,7 @@ Accept wildcard characters: False
 The type of rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Basic, PathBasedRouting

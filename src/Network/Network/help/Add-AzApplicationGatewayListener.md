@@ -12,20 +12,20 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### SetByResourceId
-```
-Add-AzApplicationGatewayListener -ApplicationGateway <PSApplicationGateway> -Name <String>
- [-FrontendIPConfigurationId <String>] [-FrontendPortId <String>] [-SslCertificateId <String>]
- [-SslProfileId <String>] -Protocol <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### SetByResource
+### SetByResource (Default)
 ```
 Add-AzApplicationGatewayListener -ApplicationGateway <PSApplicationGateway> -Name <String>
  [-FrontendIPConfiguration <PSApplicationGatewayFrontendIPConfiguration>]
  [-FrontendPort <PSApplicationGatewayFrontendPort>] [-SslCertificate <PSApplicationGatewaySslCertificate>]
  [-SslProfile <PSApplicationGatewaySslProfile>] -Protocol <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+```
+
+### SetByResourceId
+```
+Add-AzApplicationGatewayListener -ApplicationGateway <PSApplicationGateway> -Name <String>
+ [-FrontendIPConfigurationId <String>] [-FrontendPortId <String>] [-SslCertificateId <String>]
+ [-SslProfileId <String>] -Protocol <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +46,7 @@ PS C:\> {{ Add example code here }}
 The applicationGateway
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Application gateway FrontendIPConfiguration
 
 ```yaml
-Type: PSApplicationGatewayFrontendIPConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendIPConfiguration
 Parameter Sets: SetByResource
 Aliases:
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ID of the application gateway FrontendIPConfiguration
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 Application gateway FrontendPort
 
 ```yaml
-Type: PSApplicationGatewayFrontendPort
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendPort
 Parameter Sets: SetByResource
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ID of the application gateway FrontendPort
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 The name of the Listener
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 Protocol
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: TCP, TLS
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 Application gateway SslCertificate
 
 ```yaml
-Type: PSApplicationGatewaySslCertificate
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslCertificate
 Parameter Sets: SetByResource
 Aliases:
 
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 ID of the application gateway SslCertificate
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -197,7 +197,7 @@ Accept wildcard characters: False
 SslProfile
 
 ```yaml
-Type: PSApplicationGatewaySslProfile
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslProfile
 Parameter Sets: SetByResource
 Aliases:
 
@@ -212,7 +212,7 @@ Accept wildcard characters: False
 SslProfileId
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
