@@ -47,10 +47,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Body.Status == ServiceClientModel.OperationStatusValues.InProgress)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0 || TestMockSupport.RunningMocked)
+                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
                 {
-                    Thread.Sleep(5000);
+                    Thread.Sleep(10000);
+                }
+                else
+                {
+                    TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
                 }
                 opStatusResponse = getOpStatus(operationId);
             }
@@ -79,10 +82,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             while (opStatusResponse.Body.Status ==
                 ServiceClientModel.OperationStatusValues.InProgress)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0 || TestMockSupport.RunningMocked)
+                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
                 {
-                    Thread.Sleep(5000);
+                    Thread.Sleep(10000);
+                }
+                else
+                {
+                    TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
                 }
                 opStatusResponse = getOpStatus(operationId);
             }
@@ -110,10 +116,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0 || TestMockSupport.RunningMocked)
+                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
                 {
-                    Thread.Sleep(5000);
+                    Thread.Sleep(10000);
+                }
+                else
+                {
+                    TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
                 }
                 opStatusResponse = getOpStatus(operationId);
             }
@@ -141,10 +150,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Body.Status == "InProgress")
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0 || TestMockSupport.RunningMocked)
+                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
                 {
-                    Thread.Sleep(5000);
+                    Thread.Sleep(10000);
+                }
+                else
+                {
+                    TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
                 }
                 opStatusResponse = getOpStatus(operationId);
             }
@@ -171,10 +183,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0 || TestMockSupport.RunningMocked)
+                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
                 {
-                    Thread.Sleep(5000);
+                    Thread.Sleep(10000);
+                }
+                else
+                {
+                    TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
                 }
                 opStatusResponse = getOpStatus(operationId);
             }
@@ -216,10 +231,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0 || TestMockSupport.RunningMocked)
+                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
                 {
-                    Thread.Sleep(5000);
+                    Thread.Sleep(10000);
+                }
+                else
+                {
+                    TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
                 }
                 opStatusResponse = getOpStatus(operationId);
             }
