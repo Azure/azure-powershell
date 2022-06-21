@@ -239,7 +239,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </exception>
         /// <exception cref="Exception">
         /// </exception>
-        /// <exception cref="ArmErrorException">
+        /// <exception cref="PSArgumentException">
         /// </exception>
         /// <exception cref="HttpRequestException">
         /// </exception>
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </exception>
         /// <exception cref="Exception">
         /// </exception>
-        /// <exception cref="ArmErrorException">
+        /// <exception cref="ErrorResponseException">
         /// </exception>
         /// <exception cref="HttpRequestException">
         /// </exception>
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// The convert classic to Exchange peering.
         /// </summary>
         /// The classic peering.
-        /// </param>
+        /// <param name="peering"></param>
         /// <returns>
         /// The <see cref="object"/>.
         /// </returns>
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <summary>
         /// The convert classic to direct peering.
         /// </summary>
-        /// <param name="this.LegacyPeering">
+        /// <param name="peering">
         /// The classic peering.
         /// </param>
         /// <returns>

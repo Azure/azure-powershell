@@ -510,7 +510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// Base Cmdlet execute.
         /// </summary>
-        /// <exception cref="NetworkErrorResponseException"></exception>
+        /// <exception cref="Exception"></exception>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -520,7 +520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The get azure region.
         /// </summary>
-        /// <param name="PeeringLocation">
+        /// <param name="peeringLocation">
         /// The InputObject location.
         /// </param>
         /// <param name="kind">
