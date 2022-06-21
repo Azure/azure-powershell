@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
         public SwitchParameter IsEnabled { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupPropertiesParameterSet, HelpMessage = "List of Throttling Policy Objects")]
-        public PSEventHubThrottlingPolicyAttributes[] ThrottlingPolicy { get; set; }
+        public PSEventHubThrottlingPolicyConfigAttributes[] ThrottlingPolicyConfig { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
                                                               appGroupName: Name,
                                                               clientAppGroupIdentifier: ClientAppGroupIdentifier,
                                                               isEnabled: isEnabled,
-                                                              throttlingPolicy: ThrottlingPolicy));
+                                                              throttlingPolicy: ThrottlingPolicyConfig));
                 }
 
                 catch (Management.EventHub.Models.ErrorResponseException ex)

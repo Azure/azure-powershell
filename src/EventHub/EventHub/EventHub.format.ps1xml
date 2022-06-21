@@ -333,14 +333,14 @@
 								<PropertyName>ClientAppGroupIdentifier</PropertyName>
 							</ListItem>
 							<ListItem>
-								<Label>ThrottlingPolicy</Label>
+								<Label>ThrottlingPolicyConfig</Label>
 								<ScriptBlock>
-									$_.ThrottlingPolicy.GetEnumerator() | ForEach-Object{ "{ Name: "+$_.Name+",`MetricId: "+$_.MetricId+",`RateLimitThreshold: "+$_.RateLimitThreshold+" }`n" }
+									$_.ThrottlingPolicyConfig.GetEnumerator() | ForEach-Object{ "{ Name: "+$_.Name+",`MetricId: "+$_.MetricId+",`RateLimitThreshold: "+$_.RateLimitThreshold+" }`n" }
 								</ScriptBlock>
 							</ListItem>
 						</ListItems>
 					</ListEntry>
-				</ListEntries>
+				</ListEntries> 
 			</ListControl>
 		</View>
 	</ViewDefinitions>

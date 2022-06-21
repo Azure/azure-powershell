@@ -12,7 +12,7 @@ Gets an application group from a namespace or lists all application groups in a 
 
 ## SYNTAX
 
-### ApplicationGroupPropertiesParameterSet
+### ApplicationGroupPropertiesParameterSet (Default)
 ```
 Get-AzEventHubApplicationGroup [-ResourceGroupName] <String> [-NamespaceName] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

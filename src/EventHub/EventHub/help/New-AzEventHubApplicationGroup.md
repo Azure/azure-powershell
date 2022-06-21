@@ -14,7 +14,8 @@ Creates a new application group within an eventhub namespace
 
 ```
 New-AzEventHubApplicationGroup [-ResourceGroupName] <String> [-NamespaceName] <String> [-Name] <String>
- [-ClientAppGroupIdentifier] <String> [-IsEnabled] -ThrottlingPolicy <PSEventHubThrottlingPolicyAttributes[]>
+ [-ClientAppGroupIdentifier] <String> [-IsEnabled]
+ -ThrottlingPolicyConfig <PSEventHubThrottlingPolicyConfigAttributes[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -128,11 +129,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ThrottlingPolicy
+### -ThrottlingPolicyConfig
 List of Throttling Policy Objects
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyAttributes[]
+Type: Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyConfigAttributes[]
 Parameter Sets: (All)
 Aliases:
 
@@ -183,7 +184,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Management.Automation.SwitchParameter
 
-### Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyAttributes[]
+### Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyConfigAttributes[]
 
 ## OUTPUTS
 

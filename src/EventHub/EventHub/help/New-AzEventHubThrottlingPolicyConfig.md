@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubThrottlingPolicyConfig
 
 ## SYNOPSIS
-Creates an in memory object of type PSEventHubApplicationGroupAttributes
+Creates an in memory object of type PSEventHubThrottlingPolicyConfigAttributes
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzEventHubThrottlingPolicyConfig [[-Name] <String>] [-MetricId] <String> [-R
 ```
 
 ## DESCRIPTION
-Creates an in memory object of type PSEventHubApplicationGroupAttributes  that can be given as inputs to 
+Creates an in memory object of type PSEventHubThrottlingPolicyConfigAttributes  that can be given as inputs to 
 New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup. This cmdlet DOES NOT make any REST call.
 
 ## EXAMPLES
@@ -108,7 +108,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyAttributes
+### Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyConfigAttributes
 
 ## NOTES
 

@@ -11,32 +11,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
-using Microsoft.Azure.Management.EventHub.Models;
-
-namespace Microsoft.Azure.Commands.EventHub.Models
+namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
-    public class PSEventHubThrottlingPolicyAttributes
+    public class PaginationTests : EventHubTestRunner
     {
-        public PSEventHubThrottlingPolicyAttributes()
-        {
 
+        public PaginationTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
+        {
         }
 
-        public PSEventHubThrottlingPolicyAttributes(ThrottlingPolicy throttlingPolicy)
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApplicationGroupPaginationTests()
         {
-            if(throttlingPolicy != null)
-            {
-                Name = throttlingPolicy.Name;
-                MetricId = throttlingPolicy.MetricId;
-                RateLimitThreshold = throttlingPolicy.RateLimitThreshold;
-            }
+            TestRunner.RunTestScript("ApplicationGroupPagination");
         }
-
-        public string Name { get; set; }
-
-        public string MetricId { get; set; }
-
-        public long RateLimitThreshold { get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 Location = applicationGroup.Location;
                 Type = applicationGroup.Type;
 
-                ThrottlingPolicy = applicationGroup.Policies.Where(x => {
+                ThrottlingPolicyConfig = applicationGroup.Policies.Where(x => {
                     
                     ThrottlingPolicy t = x as ThrottlingPolicy;
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                     }
 
                     return false;
-                }).Select(x => new PSEventHubThrottlingPolicyAttributes(x as ThrottlingPolicy))
+                }).Select(x => new PSEventHubThrottlingPolicyConfigAttributes(x as ThrottlingPolicy))
                 .ToArray();
             }
         }
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 
         public string Type { get; set; }
 
-        public PSEventHubThrottlingPolicyAttributes[] ThrottlingPolicy { get; set; }
+        public PSEventHubThrottlingPolicyConfigAttributes[] ThrottlingPolicyConfig { get; set; }
 
 
     }

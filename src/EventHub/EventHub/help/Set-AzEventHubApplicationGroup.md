@@ -8,21 +8,22 @@ schema: 2.0.0
 # Set-AzEventHubApplicationGroup
 
 ## SYNOPSIS
-Updates the application group resource.
+Updates an application group in a namespace.
 
 ## SYNTAX
 
 ### ApplicationGroupPropertiesParameterSet (Default)
 ```
 Set-AzEventHubApplicationGroup [-ResourceGroupName] <String> [-NamespaceName] <String> [-Name] <String>
- [-IsEnabled] [[-ThrottlingPolicy] <PSEventHubThrottlingPolicyAttributes[]>]
+ [-IsEnabled] [-ThrottlingPolicyConfig <PSEventHubThrottlingPolicyConfigAttributes[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationGroupResourceIdParameterSet
 ```
-Set-AzEventHubApplicationGroup [-IsEnabled] [[-ThrottlingPolicy] <PSEventHubThrottlingPolicyAttributes[]>]
- -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzEventHubApplicationGroup [-IsEnabled]
+ [-ThrottlingPolicyConfig <PSEventHubThrottlingPolicyConfigAttributes[]>] -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationGroupInputObjectParameterSet
@@ -32,7 +33,7 @@ Set-AzEventHubApplicationGroup [-InputObject] <PSEventHubApplicationGroupAttribu
 ```
 
 ## DESCRIPTION
-Updates the application group resource.
+Updates an application group in a namespace.
 Cmdlet can be used to enable or disable application group connections and set throttling policies.
 
 ## EXAMPLES
@@ -160,17 +161,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ThrottlingPolicy
+### -ThrottlingPolicyConfig
 List of Throttling Policy Objects.
 Please use New-AzEventHubThrottlingPolicyConfig to create in memory object which can be one item in this list.
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyAttributes[]
+Type: Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyConfigAttributes[]
 Parameter Sets: ApplicationGroupPropertiesParameterSet, ApplicationGroupResourceIdParameterSet
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -216,7 +217,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Management.Automation.SwitchParameter
 
-### Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyAttributes[]
+### Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyConfigAttributes[]
 
 ### Microsoft.Azure.Commands.EventHub.Models.PSEventHubApplicationGroupAttributes
 

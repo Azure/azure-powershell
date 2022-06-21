@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.ApplicationGroups
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubThrottlingPolicyConfig"), OutputType(typeof(PSEventHubThrottlingPolicyAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubThrottlingPolicyConfig"), OutputType(typeof(PSEventHubThrottlingPolicyConfigAttributes))]
     public class NewAzureEventHubsThrottlingPolicyConfig: AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = false, 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ApplicationGroups
         {
             try
             {
-                PSEventHubThrottlingPolicyAttributes throttlingPolicy = new PSEventHubThrottlingPolicyAttributes();
+                PSEventHubThrottlingPolicyConfigAttributes throttlingPolicy = new PSEventHubThrottlingPolicyConfigAttributes();
                 
                 throttlingPolicy.Name = Name;
                 throttlingPolicy.MetricId = MetricId;

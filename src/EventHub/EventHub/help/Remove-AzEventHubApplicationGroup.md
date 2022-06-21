@@ -12,7 +12,7 @@ Removes an application group from a namespace.
 
 ## SYNTAX
 
-### ApplicationGroupPropertiesParameterSet
+### ApplicationGroupPropertiesParameterSet (Default)
 ```
 Remove-AzEventHubApplicationGroup [-ResourceGroupName] <String> [-NamespaceName] <String> [-Name] <String>
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

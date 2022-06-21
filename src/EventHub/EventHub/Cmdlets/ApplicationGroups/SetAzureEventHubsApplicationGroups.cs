@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupPropertiesParameterSet, HelpMessage = "List of Throttling Policy Objects. Please use New-AzEventHubThrottlingPolicyConfig to create in memory object which can be one item in this list.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupResourceIdParameterSet, HelpMessage = "List of Throttling Policy Objects. Please use New-AzEventHubThrottlingPolicyConfig to create in memory object which can be one item in this list.")]
-        public PSEventHubThrottlingPolicyAttributes[] ThrottlingPolicy { get; set; }
+        public PSEventHubThrottlingPolicyConfigAttributes[] ThrottlingPolicyConfig { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupResourceIdParameterSet, HelpMessage = "ResourceId of application group")]
         public string ResourceId { get; set; }
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
                                                                   namespaceName: NamespaceName,
                                                                   appGroupName: Name,
                                                                   isEnabled: isEnabled,
-                                                                  throttlingPolicy: ThrottlingPolicy));
+                                                                  throttlingPolicy: ThrottlingPolicyConfig));
                     }
                     else if(ParameterSetName == ApplicationGroupInputObjectParameterSet)
                     {
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
                                                                   appGroupName: Name,
                                                                   clientAppGroupIdentifier: InputObject.ClientAppGroupIdentifier,
                                                                   isEnabled: InputObject.IsEnabled,
-                                                                  throttlingPolicy: InputObject.ThrottlingPolicy));
+                                                                  throttlingPolicy: InputObject.ThrottlingPolicyConfig));
                     }
                     
                 }

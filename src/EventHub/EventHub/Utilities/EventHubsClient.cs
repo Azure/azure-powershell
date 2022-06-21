@@ -878,7 +878,7 @@ namespace Microsoft.Azure.Commands.Eventhub
         #region ApplicationGroup
 
         public PSEventHubApplicationGroupAttributes CreateApplicationGroup(string resourceGroupName, string namespaceName, 
-            string appGroupName, string clientAppGroupIdentifier, bool? isEnabled, PSEventHubThrottlingPolicyAttributes[] throttlingPolicy)
+            string appGroupName, string clientAppGroupIdentifier, bool? isEnabled, PSEventHubThrottlingPolicyConfigAttributes[] throttlingPolicy)
         {
             ApplicationGroup appGroup = new ApplicationGroup();
 
@@ -908,7 +908,7 @@ namespace Microsoft.Azure.Commands.Eventhub
         }
 
         public PSEventHubApplicationGroupAttributes UpdateApplicationGroup(string resourceGroupName, string namespaceName,
-            string appGroupName, bool? isEnabled, PSEventHubThrottlingPolicyAttributes[] throttlingPolicy)
+            string appGroupName, bool? isEnabled, PSEventHubThrottlingPolicyConfigAttributes[] throttlingPolicy)
         {
             var appGroup = Client.ApplicationGroup.Get(resourceGroupName, namespaceName, appGroupName);
 
