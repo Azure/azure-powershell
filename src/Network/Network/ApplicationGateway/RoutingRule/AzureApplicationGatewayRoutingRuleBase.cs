@@ -33,6 +33,12 @@ namespace Microsoft.Azure.Commands.Network
         public string RuleType { get; set; }
 
         [Parameter(
+                Mandatory = true,
+                HelpMessage = "The priority of the rule")]
+        [ValidateRange(1, 20000)]
+        public int? Priority { get; set; }
+
+        [Parameter(
                 ParameterSetName = "SetByResourceId",
                 HelpMessage = "ID of the application gateway BackendSettings")]
         [ValidateNotNullOrEmpty]
@@ -94,6 +100,7 @@ namespace Microsoft.Azure.Commands.Network
             var routingRule = new PSApplicationGatewayRoutingRule();
             routingRule.Name = this.Name;
             routingRule.RuleType = this.RuleType;
+            routingRule.Priority = this.Priority;
 
             if (!string.IsNullOrEmpty(this.BackendSettingsId))
             {

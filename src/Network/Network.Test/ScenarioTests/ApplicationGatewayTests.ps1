@@ -2789,7 +2789,7 @@ function Test-ApplicationGatewayWithTCPResources
 		$fp04 = New-AzApplicationGatewayFrontendPort -Name $frontendPort04Name -Port 404
 
 		# sku
-		$sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
+		$sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
 		$autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 		Assert-AreEqual $autoscaleConfig.MinCapacity 3
 		
@@ -2812,7 +2812,7 @@ function Test-ApplicationGatewayWithTCPResources
 		Assert-AreEqual $poolSetting01.Timeout    20
 
 		#New Routing rule  command
-		$rule01 = New-AzApplicationGatewayRoutingRule -Name $rule01Name -RuleType basic  -BackendSettings  $poolSetting01 -Listener  $listener01 -BackendAddressPool  $pool
+		$rule01 = New-AzApplicationGatewayRoutingRule -Name $rule01Name -RuleType basic -Priority 100  -BackendSettings  $poolSetting01 -Listener  $listener01 -BackendAddressPool  $pool
 		Assert-AreEqual $rule01.BackendSettings.Id   $poolSetting01.Id
 		Assert-AreEqual $rule01.Listener.Id    $listener01.Id
 		Assert-AreEqual $rule01.BackendAddressPool.Id    $pool.Id
@@ -2891,7 +2891,7 @@ function Test-ApplicationGatewayWithTCPResources
 		#Add Routing Rule
 		$poolSetting02 = Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting02Name
 		$listener02 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener02Name 
-	    Add-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType Basic  -BackendSettings  $poolSetting02 -Listener  $listener02 -BackendAddressPool  $pool
+	    Add-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType Basic -Priority 99  -BackendSettings  $poolSetting02 -Listener  $listener02 -BackendAddressPool  $pool
 		$rule02 =Get-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name
 		Assert-AreEqual $rule02.BackendSettings.Id   $poolSetting02.Id
 		Assert-AreEqual $rule02.Listener.Id    $listener02.Id
@@ -2940,7 +2940,7 @@ function Test-ApplicationGatewayWithTCPResources
 		#Set Routing Rule
 		$poolSetting03 = Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting03Name
 		$listener03 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener03Name 
-	    Set-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType Basic  -BackendSettings  $poolSetting03 -Listener  $listener03 -BackendAddressPool  $pool
+	    Set-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType Basic -Priority 98  -BackendSettings  $poolSetting03 -Listener  $listener03 -BackendAddressPool  $pool
 		$rule02 =Get-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name
 		Assert-AreEqual $rule02.BackendSettings.Id   $poolSetting03.Id
 		Assert-AreEqual $rule02.Listener.Id    $listener03.Id
@@ -3107,7 +3107,7 @@ function Test-ApplicationGatewayWithTLSResources
 		Assert-AreEqual $poolSetting01.HostName  "www.google.com"
 
 		#New Routing rule
-		$rule01 = New-AzApplicationGatewayRoutingRule -Name $rule01Name -RuleType basic -BackendSettings  $poolSetting01 -Listener  $listener01 -BackendAddressPool  $pool
+		$rule01 = New-AzApplicationGatewayRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendSettings  $poolSetting01 -Listener  $listener01 -BackendAddressPool  $pool
 		Assert-AreEqual $rule01.BackendSettings.Id   $poolSetting01.Id
 		Assert-AreEqual $rule01.Listener.Id    $listener01.Id
 		Assert-AreEqual $rule01.BackendAddressPool.Id    $pool.Id
@@ -3115,7 +3115,7 @@ function Test-ApplicationGatewayWithTLSResources
 
 
 		# sku
-		$sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
+		$sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
 		$autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 		Assert-AreEqual $autoscaleConfig.MinCapacity 3
 		
@@ -3198,7 +3198,7 @@ function Test-ApplicationGatewayWithTLSResources
 		#Add Routing Rule
 		$poolSetting02 = Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting02Name
 		$listener02 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener02Name 
-	    Add-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType Basic  -BackendSettings  $poolSetting02 -Listener  $listener02 -BackendAddressPool  $pool
+	    Add-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType Basic -Priority 99 -BackendSettings  $poolSetting02 -Listener  $listener02 -BackendAddressPool  $pool
 		$rule02 =Get-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name
 		Assert-AreEqual $rule02.BackendSettings.Id   $poolSetting02.Id
 		Assert-AreEqual $rule02.Listener.Id    $listener02.Id
@@ -3239,7 +3239,7 @@ function Test-ApplicationGatewayWithTLSResources
 		#Set Routing Rule
 		$poolSetting03 = Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting03Name
 		$listener03 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener03Name 
-	    Set-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType Basic  -BackendSettings  $poolSetting03 -Listener  $listener03 -BackendAddressPool  $pool
+	    Set-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType Basic -Priority 98 -BackendSettings  $poolSetting03 -Listener  $listener03 -BackendAddressPool  $pool
 		$rule02 =Get-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name
 		Assert-AreEqual $rule02.BackendSettings.Id   $poolSetting03.Id
 		Assert-AreEqual $rule02.Listener.Id    $listener03.Id
