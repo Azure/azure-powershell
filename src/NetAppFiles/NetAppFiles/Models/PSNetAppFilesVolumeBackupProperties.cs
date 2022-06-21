@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
     public class PSNetAppFilesVolumeBackupProperties
     {
         /// <summary>
-        /// Gets BackupPolicyId
+        /// Gets or sets BackupPolicyId
         /// </summary>
         /// <remarks>
         /// Backup Policy Resource ID
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string BackupPolicyId { get; set; }
 
         /// <summary>
-        /// Gets PolicyEnforced
+        /// Gets or sets PolicyEnforced
         /// </summary>
         /// <remarks>
         /// Policy Enforced
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public bool? PolicyEnforced { get; set; }
 
         /// <summary>
-        /// Gets PolicyEnforced
+        /// Gets or sets VaultId
         /// </summary>
         /// <remarks>
         /// Vault Resource ID
@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
 
         /// <summary>
         /// Gets or sets BackupEnabled
-        /// Gets PolicyEnforced
         /// </summary>
         /// <remarks>
         /// Backup Enabled
