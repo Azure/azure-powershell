@@ -30,11 +30,11 @@ For information on how to develop for `Az.FluidRelay`, see [how-to.md](how-to.md
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 9a6b5748f6ba9eeb2684497551226036c9d1da6b
+branch: 1b8d88d20ea46eaaf4b8a5237f206e925b8b1180
 require:
   - $(this-folder)/../readme.azure.noprofile.md 
 input-file:
-  - $(repo)/specification/fluidrelay/resource-manager/Microsoft.FluidRelay/stable/2022-05-26/fluidrelay.json
+  - $(repo)/specification/fluidrelay/resource-manager/Microsoft.FluidRelay/stable/2022-06-01/fluidrelay.json
 
 module-version: 0.1.0
 title: FluidRelay
