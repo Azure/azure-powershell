@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
     {
         public KeyVaultManagementTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
         }
 
         #region New-AzureKeyVault
