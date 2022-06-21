@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-	<PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="4.4.0-preview" />
+	  <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="5.0.0-preview" />
   </ItemGroup>
 
   <ItemGroup>

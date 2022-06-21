@@ -12,36 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class AlertsSuppressionRuleTests
+    public class AlertsSuppressionRuleTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public AlertsSuppressionRuleTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AlertsSuppressionRuleTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzAlertsSuppressionRule-SubscriptionScope");
+            TestRunner.RunTestScript("Get-AzAlertsSuppressionRule-SubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateAndDeleteAlertsSuppressionRule()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "CreateAndDelete-AzAlertsSuppressionRule");
+            TestRunner.RunTestScript("CreateAndDelete-AzAlertsSuppressionRule");
         }
     }
 }

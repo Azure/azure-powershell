@@ -15,22 +15,24 @@ Run a shell command (with kubectl, helm) on your aks cluster, support attaching 
 ### GroupNameParameterSet (Default)
 ```
 Invoke-AzAksRunCommand [-ResourceGroupName] <String> [-Name] <String> -Command <String>
- [-CommandContextAttachment <String[]>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-CommandContextAttachment <String[]>] [-CommandContextAttachmentZip <String>] [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Invoke-AzAksRunCommand -InputObject <PSKubernetesCluster> -Command <String>
- [-CommandContextAttachment <String[]>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-CommandContextAttachment <String[]>] [-CommandContextAttachmentZip <String>] [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Invoke-AzAksRunCommand [-Id] <String> -Command <String> [-CommandContextAttachment <String[]>] [-AsJob]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+Invoke-AzAksRunCommand [-Id] <String> -Command <String> [-CommandContextAttachment <String[]>]
+ [-CommandContextAttachmentZip <String>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,6 +95,21 @@ Gets or sets a base64 encoded zip file containing the files required by the comm
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CommandContextAttachmentZip
+Path of the zip file containing the files required by the command.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

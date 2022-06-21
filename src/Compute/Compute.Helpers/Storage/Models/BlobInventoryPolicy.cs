@@ -43,6 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models
         /// "Microsoft.Storage/storageAccounts"</param>
         /// <param name="lastModifiedTime">Returns the last modified date and
         /// time of the blob inventory policy.</param>
+        /// <param name="systemData"></param>
         public BlobInventoryPolicy(BlobInventoryPolicySchema policy, string id = default(string), string name = default(string), string type = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {

@@ -12,20 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.DataFactories.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {
-    public class DataFactoryTests : DataFactoriesScenarioTestsBase
+    public class DataFactoryTests : DataFactoriesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public DataFactoryTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataFactoryTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
 #if NETSTANDARD
@@ -37,7 +33,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingDataFactory()
         {
-            RunPowerShellTest(_logger, "Test-GetNonExistingDataFactory");
+            TestRunner.RunTestScript("Test-GetNonExistingDataFactory");
         }
 
 #if NETSTANDARD
@@ -49,7 +45,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataFactory()
         {
-            RunPowerShellTest(_logger, "Test-CreateDataFactory");
+            TestRunner.RunTestScript("Test-CreateDataFactory");
         }
 
 #if NETSTANDARD
@@ -61,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteDataFactoryWithDataFactoryParameter()
         {
-            RunPowerShellTest(_logger, "Test-DeleteDataFactoryWithDataFactoryParameter");
+            TestRunner.RunTestScript("Test-DeleteDataFactoryWithDataFactoryParameter");
         }
 
 #if NETSTANDARD
@@ -73,7 +69,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataFactoryPiping()
         {
-            RunPowerShellTest(_logger, "Test-DataFactoryPiping");
+            TestRunner.RunTestScript("Test-DataFactoryPiping");
         }
     }
 }

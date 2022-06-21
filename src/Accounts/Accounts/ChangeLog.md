@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Supported exporting and importing configurations by `Export-AzConfig` and `Import-AzConfig`.
+* Fixed an issue that Az.Accounts failed to be imported if multiple environment variables, which only differ by case, are set. [#18304]
+
+## Version 2.8.0
 * Added a preview feature allowing user to control the following configurations by using `Get-AzConfig`, `Update-AzConfig` and `Clear-AzConfig`:
     - `DefaultSubscriptionForLogin`: Subscription name or GUID. Sets the default context for Azure PowerShell when logging in without specifying a subscription.
     - `DisplayBreakingChangeWarning`: Controls if warning messages for breaking changes are displayed or suppressed.

@@ -8,14 +8,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
     using System;
 
-    /// <summary>Description for Create function for web site, or a deployment slot.</summary>
+    /// <summary>Create function for web site, or a deployment slot.</summary>
     /// <remarks>
     /// [OpenAPI] CreateFunction=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzFunction_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Description for Create function for web site, or a deployment slot.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Create function for web site, or a deployment slot.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Generated]
     public partial class NewAzFunction_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener
@@ -33,6 +33,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>Function information.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelope _functionEnvelopeBody = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.FunctionEnvelope();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -56,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Config information.",
         SerializedName = @"config",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAny) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAny Config { get => FunctionEnvelopeBody.Config ?? null /* object */; set => FunctionEnvelopeBody.Config = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAny Config { get => _functionEnvelopeBody.Config ?? null /* object */; set => _functionEnvelopeBody.Config = value; }
 
         /// <summary>Config URI.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Config URI.")]
@@ -67,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Config URI.",
         SerializedName = @"config_href",
         PossibleTypes = new [] { typeof(string) })]
-        public string ConfigHref { get => FunctionEnvelopeBody.ConfigHref ?? null; set => FunctionEnvelopeBody.ConfigHref = value; }
+        public string ConfigHref { get => _functionEnvelopeBody.ConfigHref ?? null; set => _functionEnvelopeBody.ConfigHref = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -88,7 +91,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"File list.",
         SerializedName = @"files",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelopePropertiesFiles) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelopePropertiesFiles File { get => FunctionEnvelopeBody.File ?? null /* object */; set => FunctionEnvelopeBody.File = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelopePropertiesFiles File { get => _functionEnvelopeBody.File ?? null /* object */; set => _functionEnvelopeBody.File = value; }
 
         /// <summary>Function App ID.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Function App ID.")]
@@ -99,13 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Function App ID.",
         SerializedName = @"function_app_id",
         PossibleTypes = new [] { typeof(string) })]
-        public string FunctionAppId { get => FunctionEnvelopeBody.FunctionAppId ?? null; set => FunctionEnvelopeBody.FunctionAppId = value; }
-
-        /// <summary>Backing field for <see cref="FunctionEnvelopeBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelope _functionEnvelopeBody= new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.FunctionEnvelope();
-
-        /// <summary>Function information.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelope FunctionEnvelopeBody { get => this._functionEnvelopeBody; set => this._functionEnvelopeBody = value; }
+        public string FunctionAppId { get => _functionEnvelopeBody.FunctionAppId ?? null; set => _functionEnvelopeBody.FunctionAppId = value; }
 
         /// <summary>Function URI.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Function URI.")]
@@ -116,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Function URI.",
         SerializedName = @"href",
         PossibleTypes = new [] { typeof(string) })]
-        public string Href { get => FunctionEnvelopeBody.Href ?? null; set => FunctionEnvelopeBody.Href = value; }
+        public string Href { get => _functionEnvelopeBody.Href ?? null; set => _functionEnvelopeBody.Href = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -150,7 +147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"The invocation URL",
         SerializedName = @"invoke_url_template",
         PossibleTypes = new [] { typeof(string) })]
-        public string InvokeUrlTemplate { get => FunctionEnvelopeBody.InvokeUrlTemplate ?? null; set => FunctionEnvelopeBody.InvokeUrlTemplate = value; }
+        public string InvokeUrlTemplate { get => _functionEnvelopeBody.InvokeUrlTemplate ?? null; set => _functionEnvelopeBody.InvokeUrlTemplate = value; }
 
         /// <summary>Gets or sets a value indicating whether the function is disabled</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets a value indicating whether the function is disabled")]
@@ -161,7 +158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Gets or sets a value indicating whether the function is disabled",
         SerializedName = @"isDisabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter IsDisabled { get => FunctionEnvelopeBody.IsDisabled ?? default(global::System.Management.Automation.SwitchParameter); set => FunctionEnvelopeBody.IsDisabled = value; }
+        public global::System.Management.Automation.SwitchParameter IsDisabled { get => _functionEnvelopeBody.IsDisabled ?? default(global::System.Management.Automation.SwitchParameter); set => _functionEnvelopeBody.IsDisabled = value; }
 
         /// <summary>Kind of resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Kind of resource.")]
@@ -172,7 +169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Kind of resource.",
         SerializedName = @"kind",
         PossibleTypes = new [] { typeof(string) })]
-        public string Kind { get => FunctionEnvelopeBody.Kind ?? null; set => FunctionEnvelopeBody.Kind = value; }
+        public string Kind { get => _functionEnvelopeBody.Kind ?? null; set => _functionEnvelopeBody.Kind = value; }
 
         /// <summary>The function language</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The function language")]
@@ -183,14 +180,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"The function language",
         SerializedName = @"language",
         PossibleTypes = new [] { typeof(string) })]
-        public string Language { get => FunctionEnvelopeBody.Language ?? null; set => FunctionEnvelopeBody.Language = value; }
+        public string Language { get => _functionEnvelopeBody.Language ?? null; set => _functionEnvelopeBody.Language = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -231,7 +228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Script URI.",
         SerializedName = @"script_href",
         PossibleTypes = new [] { typeof(string) })]
-        public string ScriptHref { get => FunctionEnvelopeBody.ScriptHref ?? null; set => FunctionEnvelopeBody.ScriptHref = value; }
+        public string ScriptHref { get => _functionEnvelopeBody.ScriptHref ?? null; set => _functionEnvelopeBody.ScriptHref = value; }
 
         /// <summary>Script root path URI.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Script root path URI.")]
@@ -242,7 +239,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Script root path URI.",
         SerializedName = @"script_root_path_href",
         PossibleTypes = new [] { typeof(string) })]
-        public string ScriptRootPathHref { get => FunctionEnvelopeBody.ScriptRootPathHref ?? null; set => FunctionEnvelopeBody.ScriptRootPathHref = value; }
+        public string ScriptRootPathHref { get => _functionEnvelopeBody.ScriptRootPathHref ?? null; set => _functionEnvelopeBody.ScriptRootPathHref = value; }
 
         /// <summary>Secrets file URI.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Secrets file URI.")]
@@ -253,7 +250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Secrets file URI.",
         SerializedName = @"secrets_file_href",
         PossibleTypes = new [] { typeof(string) })]
-        public string SecretsFileHref { get => FunctionEnvelopeBody.SecretsFileHref ?? null; set => FunctionEnvelopeBody.SecretsFileHref = value; }
+        public string SecretsFileHref { get => _functionEnvelopeBody.SecretsFileHref ?? null; set => _functionEnvelopeBody.SecretsFileHref = value; }
 
         /// <summary>Test data used when testing via the Azure Portal.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Test data used when testing via the Azure Portal.")]
@@ -264,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Test data used when testing via the Azure Portal.",
         SerializedName = @"test_data",
         PossibleTypes = new [] { typeof(string) })]
-        public string TestData { get => FunctionEnvelopeBody.TestData ?? null; set => FunctionEnvelopeBody.TestData = value; }
+        public string TestData { get => _functionEnvelopeBody.TestData ?? null; set => _functionEnvelopeBody.TestData = value; }
 
         /// <summary>Test data URI.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Test data URI.")]
@@ -275,7 +272,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Test data URI.",
         SerializedName = @"test_data_href",
         PossibleTypes = new [] { typeof(string) })]
-        public string TestDataHref { get => FunctionEnvelopeBody.TestDataHref ?? null; set => FunctionEnvelopeBody.TestDataHref = value; }
+        public string TestDataHref { get => _functionEnvelopeBody.TestDataHref ?? null; set => _functionEnvelopeBody.TestDataHref = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -294,6 +291,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -319,14 +321,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.FunctionEnvelopeBody = this.FunctionEnvelopeBody;
+            clone._functionEnvelopeBody = this._functionEnvelopeBody;
             return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -467,7 +469,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -484,7 +485,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.WebAppsCreateFunctionViaIdentity(InputObject.Id, FunctionEnvelopeBody, onDefault, this, Pipeline);
+                        await this.Client.WebAppsCreateFunctionViaIdentity(InputObject.Id, _functionEnvelopeBody, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -505,13 +506,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.WebAppsCreateFunction(InputObject.ResourceGroupName ?? null, InputObject.Name ?? null, InputObject.FunctionName ?? null, InputObject.SubscriptionId ?? null, FunctionEnvelopeBody, onDefault, this, Pipeline);
+                        await this.Client.WebAppsCreateFunction(InputObject.ResourceGroupName ?? null, InputObject.Name ?? null, InputObject.FunctionName ?? null, InputObject.SubscriptionId ?? null, _functionEnvelopeBody, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=FunctionEnvelopeBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_functionEnvelopeBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -557,14 +558,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=FunctionEnvelopeBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_functionEnvelopeBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=FunctionEnvelopeBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_functionEnvelopeBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

@@ -13,48 +13,44 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class LedgerDigestUploadTests : SqlTestsBase
+    public class LedgerDigestUploadTests : SqlTestRunner
     {
         public LedgerDigestUploadTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDefaultLedgerDigestUpload()
         {
-            RunPowerShellTest("Test-GetDefaultLedgerDigestUpload");
+            TestRunner.RunTestScript("Test-GetDefaultLedgerDigestUpload");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetLedgerDigestUploadByName()
         {
-            RunPowerShellTest("Test-SetLedgerDigestUploadByName");
+            TestRunner.RunTestScript("Test-SetLedgerDigestUploadByName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetLedgerDigestUploadByDatabaseObject()
         {
-            RunPowerShellTest("Test-SetLedgerDigestUploadByDatabaseObject");
+            TestRunner.RunTestScript("Test-SetLedgerDigestUploadByDatabaseObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetLedgerDigestUploadByResourceId()
         {
-            RunPowerShellTest("Test-SetLedgerDigestUploadByResourceId");
+            TestRunner.RunTestScript("Test-SetLedgerDigestUploadByResourceId");
         }
     }
 }

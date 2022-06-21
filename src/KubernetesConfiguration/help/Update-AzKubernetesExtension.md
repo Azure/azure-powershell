@@ -34,13 +34,11 @@ Patch an existing Kubernetes Cluster Extension.
 
 ### Example 1: Update an existing Kubernetes Cluster Extension.
 ```powershell
-Update-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group -ConfigurationProtectedSetting @{"aa"="bb"}
-```
+PS C:\> Update-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp -ConfigurationProtectedSetting @{"aa"="bb"}
 
-```output
-Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ReleaseTrain ResourceGroupName
-----                -------------             -------      ----------------- ----------------------- ------------ -----------------
-azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    Stable       azps_test_group
+Name               ExtensionType           Version ProvisioningState AutoUpgradeMinorVersion ReleaseTrain
+----               -------------           ------- ----------------- ----------------------- ------------
+azpstest-extension azuremonitor-containers 2.9.2   Succeeded         True                    Stable
 ```
 
 Update an existing Kubernetes Cluster Extension.
@@ -93,7 +91,8 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterType
-The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
+The Kubernetes cluster resource name - i.e.
+managedClusters, connectedClusters, provisionedClusters.
 
 ```yaml
 Type: System.String
@@ -231,9 +230,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription ID.
-This is a GUID-formatted string (e.g.
-00000000-0000-0000-0000-000000000000)
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -303,7 +300,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtension
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
 
 ## NOTES
 
@@ -318,14 +315,15 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   - `[ClusterName <String>]`: The name of the kubernetes cluster.
-  - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
-  - `[ClusterRp <String>]`: The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
+  - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
+  - `[ClusterRp <String>]`: The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
   - `[ExtensionName <String>]`: Name of the Extension.
+  - `[FluxConfigurationName <String>]`: Name of the Flux Configuration.
   - `[Id <String>]`: Resource identity path
   - `[OperationId <String>]`: operation Id
-  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SourceControlConfigurationName <String>]`: Name of the Source Control Configuration.
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

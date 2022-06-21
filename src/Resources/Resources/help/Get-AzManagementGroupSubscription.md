@@ -12,15 +12,8 @@ Gets the details of Subscription(s) under a Management Group.
 
 ## SYNTAX
 
-### ListOperation
 ```
-Get-AzManagementGroupSubscription [-GroupName] <String> [-PassThru][-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-
-### GetOperation
-```
-Get-AzManagementGroupSubscription [-GroupName] <String> [-SubscriptionId] <Guid> [-PassThru]
+Get-AzManagementGroupSubscription [-GroupName] <String> [[-SubscriptionId] <String>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -65,10 +58,7 @@ TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
 DisplayName       : Test Subscription
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroup
 State             : Active
-
 ```
-
-
 
 ## PARAMETERS
 
@@ -121,7 +111,7 @@ Accept wildcard characters: False
 Subscription Id of the subscription associated with the management
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

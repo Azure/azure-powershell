@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.9.0
 * Fixed miscellaneous network rule set typos across module.
 * Add `TrustedServiceAccessEnabled` to `Set-AzServiceBusNetworkRuleSet`
 

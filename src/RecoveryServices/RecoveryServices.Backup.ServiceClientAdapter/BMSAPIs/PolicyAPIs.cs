@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
 using RestAzureODataNS = Microsoft.Rest.Azure.OData;
@@ -34,13 +35,54 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 string policyName,
                 ProtectionPolicyResource request,
                 string vaultName = null,
-                string resourceGroupName = null)
+                string resourceGroupName = null, 
+                string auxiliaryAccessToken = "", 
+                bool isMUAProtected = false)
         {
+            Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
+            string operationRequest = null;
+
+            if (isMUAProtected)
+            {
+                List<ResourceGuardProxyBaseResource> resourceGuardMapping = ListResourceGuardMapping(vaultName, resourceGroupName);                
+
+                if (resourceGuardMapping != null && resourceGuardMapping.Count != 0)
+                {
+                    foreach (ResourceGuardOperationDetail operationDetail in resourceGuardMapping[0].Properties.ResourceGuardOperationDetails)
+                    {
+                        if (operationDetail.VaultCriticalOperation == "Microsoft.RecoveryServices/vaults/backupPolicies/write") operationRequest = operationDetail.DefaultResourceRequest;
+                    }
+
+                    if (operationRequest != null)
+                    {
+                        request.Properties.ResourceGuardOperationRequests = new List<string>();
+                        request.Properties.ResourceGuardOperationRequests.Add(operationRequest);
+                    }
+                }
+            }
+
+            if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
+            {
+                if (operationRequest != null)
+                {
+                    customHeaders.Add("x-ms-authorization-auxiliary", new List<string> { "Bearer " + auxiliaryAccessToken });
+                }
+                else if (!isMUAProtected)
+                {
+                    throw new ArgumentException(String.Format(Resources.PolicyUpdateNotCritical));
+                }
+                else
+                {   
+                    throw new ArgumentException(String.Format(Resources.UnexpectedParameterToken, "ModifyPolicy"));
+                }
+            }
+
             return BmsAdapter.Client.ProtectionPolicies.CreateOrUpdateWithHttpMessagesAsync(
                 vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 policyName,
                 request,
+                customHeaders,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 

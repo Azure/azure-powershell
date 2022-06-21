@@ -19,27 +19,24 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ServiceObjectiveTests : SqlTestsBase
+    public class ServiceObjectiveTests : SqlTestRunner
     {
         public ServiceObjectiveTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetServerServiceObjective()
         {
-            RunPowerShellTest("Test-GetServerServiceObjective");
+            TestRunner.RunTestScript("Test-GetServerServiceObjective");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetServerServiceObjectiveByLocation()
         {
-            RunPowerShellTest("Test-GetServerServiceObjectiveByLocation");
+            TestRunner.RunTestScript("Test-GetServerServiceObjectiveByLocation");
         }
     }
 }

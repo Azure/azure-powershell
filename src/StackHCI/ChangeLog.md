@@ -19,6 +19,20 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Improved Registration process for Register-AzStackHCI cmdlet
+    - All Azure AD related operations are now moved to HCI Cloud Services
+    - Register-AzStackHCI and UnRegister-AzStackHCI cmdlets no more use AzureAD PS module
+* Added support to register hybridConnectivity RP in Canary and Public clouds
+* Added support for Region Specific ServiceEndpoints
+    -Service endpoints are now specified by HCI Cloud services instead of it being hardcoded in the PS module
+* Added support to specify ArcServerResourceGroupName to Register-AzStackHCI cmdlet
+    - Now we can specify the resource group into which the ARC resource gets projected using 'ArcServerResourceGroupName' parameter during registration
+* Check ResourceProvider is already registered before attempting to register it during Register-AzStackHCI cmdlet
+    - Register-AzStackHCI cmdlet now does not take any action if required Resource Providers are already registered. This allows users with Roles who do not have permissions to register resource providers to still perform registration operation
+* Supported for writing event log entries from registration cmdlets
+    - Register-AzStackHCI and UnRegister-AzStackHCI flows will now write events to Node log reflecting the status  of registration. Events will be logged under source name "HCI Registration"
+
 ## Version 1.1.1
 * Updated firewall rules for Attestation network to block all other traffic
 * Updated cluster to ignore Attestation network
