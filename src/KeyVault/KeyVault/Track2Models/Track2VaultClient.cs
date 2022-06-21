@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         #endregion
 
         #region Certificate actions
-        internal PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags)
+        internal PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -221,13 +221,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 throw new ArgumentNullException(nameof(certificate));
 
             var certClient = CreateCertificateClient(vaultName);
-            return ImportCertificate(certClient, certName, certificate, password, tags);
+            return ImportCertificate(certClient, certName, certificate, password, tags, contentType);
         }
 
-        private PSKeyVaultCertificate ImportCertificate(CertificateClient certClient, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags)
+        private PSKeyVaultCertificate ImportCertificate(CertificateClient certClient, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
         {
             var options = new ImportCertificateOptions(certName, certificate)
             {
+                Policy = new CertificatePolicy()
+                {
+                    ContentType = contentType
+                },
                 Password = password?.ConvertToString()
             };
             tags?.ForEach((entry) =>
