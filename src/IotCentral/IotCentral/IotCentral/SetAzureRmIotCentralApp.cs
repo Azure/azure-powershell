@@ -27,6 +27,7 @@ using ResourceProperties = Microsoft.Azure.Commands.Management.IotCentral.Proper
 using Azure;
 using Azure.ResourceManager.Models;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Management.IotCentral
 {
@@ -70,12 +71,12 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
             this.SetNameAndResourceGroup();
             if (ShouldProcess(Name, ResourceProperties.Resources.SetIotCentralApp))
             {
-                var subscription = IotCentralClient.GetResourceGroupResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}"));
+                var rg = IotCentralClient.GetResourceGroupResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}"));
 
                 //var iotCentralAppResponse = await subscription.GetIotCentralAppAsync(Name, CancellationToken.None); // ASYNCH
-                var iotCentralAppResponse = subscription.GetIotCentralApp(Name, CancellationToken.None);  // SYNCH
+                var appResourceResponse = rg.GetIotCentralApp(Name, CancellationToken.None);  // SYNCH
 
-                var iotCentralAppResource = iotCentralAppResponse.Value;
+                var iotCentralAppResource = appResourceResponse.Value;
                 IotCentralAppPatch applicationPatch = CreateApplicationPatch();
 
                 //await iotCentralAppResource.UpdateAsync(WaitUntil.Completed, applicationPatch);  // ASYNCH
@@ -93,13 +94,28 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                 Subdomain = this.Subdomain,
                 //Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true),
             };
-     
+
+            if (this.GetTags() != null)
+            {
+                foreach (var tag in this.GetTags())
+                {
+                    appPatch.Tags.Add(tag.Key, tag.Value);
+                }
+            }
             if (!string.IsNullOrEmpty(this.Identity))
             {
                 appPatch.Identity = new SystemAssignedServiceIdentity(this.Identity);
             }
 
             return appPatch;
+        }
+        private IDictionary<string, string> GetTags() // considering moving this into utils along with the one in NewAzureRMIot
+        {
+            if (this.Tag != null)
+            {
+                return TagsConversionHelper.CreateTagDictionary(this.Tag, true);
+            }
+            return null;
         }
     }
 }

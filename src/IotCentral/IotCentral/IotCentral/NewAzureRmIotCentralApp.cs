@@ -98,20 +98,34 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
             {
                 var Location = this.GetLocation();
                 var Sku = new AppSkuInfo(this.GetAppSkuName());
+                //var networkRuleSets = new NetworkRuleSets
+                //{
+                //    ApplyToDevices = false,
+                //    ApplyToIoTCentral = false,
+                //    DefaultAction = NetworkAction.Allow,
+                //};
+                //networkRuleSets.IPRules.Add(new NetworkRuleSetIPRule() { 
+                //    FilterName = " ",
+                //    IPMask = " ",
+                //});
                 var iotCentralAppData = new IotCentralAppData(Location, Sku)
                 {
                     DisplayName = this.GetDisplayName(),
                     Subdomain = this.Subdomain,
                     Template = this.Template,
                     Identity = new SystemAssignedServiceIdentity(this.GetIdentity()),
+                    //PublicNetworkAccess = PublicNetworkAccess.Enabled,
+                    //NetworkRuleSets = new NetworkRuleSets(),
                 };
+
                 var resourceGroup = this.IotCentralClient.GetResourceGroupResource(new ResourceIdentifier($"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}"));
-                var identifierString1 = $"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}";
+                //var identifierString1 = $"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}";
 
                 try
                 {
                     var appCollection = resourceGroup.GetIotCentralApps();
                     //var appCollectionResponse = await appCollection.CreateOrUpdateAsync(WaitUntil.Completed, Name, iotCentralAppData, CancellationToken.None); // ASYNC
+                    
                     var appCollectionResponse = appCollection.CreateOrUpdate(WaitUntil.Completed, Name, iotCentralAppData, CancellationToken.None); // SYNCH
                     var iotCentralApp = appCollectionResponse.Value;
                     //var iotCentralApp = appCollection.Get(Name,CancellationToken.None);
@@ -123,11 +137,12 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                     //var tagResponse = iotCentralApp.SetTags(this.GetTags(), CancellationToken.None); // SYNCH
 
                     // above is resulting in exception, below is not
-
-                    foreach (var tag in this.GetTags()) {
-                        iotCentralApp.AddTag(tag.Key, tag.Value, CancellationToken.None);
+                    if (this.GetTags() != null) {
+                        foreach (var tag in this.GetTags())
+                        {
+                            iotCentralApp.AddTag(tag.Key, tag.Value, CancellationToken.None);
+                        }
                     }
-
                     this.WriteObject(IotCentralUtils.ToPSIotCentralApp(iotCentralApp), enumerateCollection: false);
                 }
                 catch (Exception e)

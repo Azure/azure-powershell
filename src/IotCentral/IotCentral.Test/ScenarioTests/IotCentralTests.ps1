@@ -58,8 +58,8 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual $actual.Name $list[0].Name
 		Assert-AreEqual $actual.Sku.Name $st2Sku
 		Assert-NotNull $actual.Identity
-		Assert-NotNull $actual.Identity.Type
-		Assert-AreEqual $actual.Identity.Type "SystemAssigned"
+		Assert-NotNull $actual.Identity.SystemAssignedServiceIdentityType
+		Assert-AreEqual $actual.Identity.SystemAssignedServiceIdentityType "SystemAssigned"
 
 		# Get App
 		$rname1 = $rname
@@ -79,8 +79,8 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual $rname2 $app2.Subdomain
 		Assert-AreEqual $resourceType $app1.Type
 		Assert-AreEqual $resourceType $app2.Type
-		Assert-AreEqual $app1.Identity.Type "SystemAssigned"
-		Assert-AreEqual $app2.Identity.Type "None"
+		Assert-AreEqual $app1.Identity.SystemAssignedServiceIdentityType "SystemAssigned"
+		Assert-AreEqual $app2.Identity.SystemAssignedServiceIdentityType "None"
 
 		# Test getting from empty group
 		$emptyrg = ($rgname) + "empty"
@@ -116,7 +116,7 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual $actual.Sku.Name $st1Sku
 		
 		# Ensure MI is not updated after update (when Identity is not provided as input to patch operation)
-		Assert-AreEqual $actual.Identity.Type "SystemAssigned"
+		Assert-AreEqual $actual.Identity.SystemAssignedServiceIdentityType "SystemAssigned"
 
 		# Delete
 		# $job = Find-AzResource -ResourceType $resourceType -ResourceGroupNameEquals $rgname | Get-AzIotCentralApp | Remove-AzIotCentralApp -AsJob

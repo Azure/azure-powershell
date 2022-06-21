@@ -70,9 +70,9 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                     var identifierString2 = $"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{ResourceGroupName}";
 
                     //var appResource = await rg.GetIotCentralAppAsync(this.Name); // ASYNC
-                    var appResource = rg.GetIotCentralApp(this.Name); // SYNCH
+                    var appResourceResponse = rg.GetIotCentralApp(this.Name, CancellationToken.None); // SYNCH
 
-                    var interactiveIotCentralApp = appResource.Value;
+                    var interactiveIotCentralApp = appResourceResponse.Value;
                     this.WriteObject(IotCentralUtils.ToPSIotCentralApp(interactiveIotCentralApp), enumerateCollection: false);
                     break;
                 case ListIotCentralAppsParameterSet:

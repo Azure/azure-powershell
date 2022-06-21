@@ -56,6 +56,8 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
             this.Subdomain = iotCentralAppData.Subdomain;
             this.Template = iotCentralAppData.Template;
             this.Identity = iotCentralAppData.Identity;
+            //this.Type = iotCentralAppData.Identity.SystemAssignedServiceIdentityType.ToString();
+            this.Type = iotCentralAppData.ResourceType.ToString();
         }
         
         /// <summary>
@@ -106,7 +108,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
         /// <summary>
         /// The Resource type.
         /// </summary>
-        //public string Type { get; private set; }
+        public string Type { get; private set; }
 
         /// <summary>
         /// The supported Managed Identities.

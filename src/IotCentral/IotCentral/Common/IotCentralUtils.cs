@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
             return iotCentralApps.Select(app => ToPSIotCentralApp(app));
         }
 
+
+
         //public static Task<IotCentralAppPatch> CreateAppPatch(IotCentralAppResource iotCentralApp)
         //{
         //    var data = iotCentralApp.Data;
