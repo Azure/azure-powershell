@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Gets a single role definition by the role Id guid.
         /// </summary>
         /// <param name="roleId">RoleId guid</param>
-        /// <param name="scope"></param>
+        /// <param name="scope">The scope of the role definition</param>
         public PSRoleDefinition GetRoleDefinition(Guid roleId, string scope)
         {
             return AuthorizationManagementClient.RoleDefinitions.Get(scope, roleId.ToString()).ToPSRoleDefinition();
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Otherwise  will fetch Roledefinitions with provided name
         /// </summary>
         /// <param name="name">The role name</param>
-        /// <param name="scope"></param>
+        /// <param name="scope">The scope of the role definition</param>
         /// <param name="first"></param>
         /// <param name="skip"></param>
         /// <returns>The matched role Definitions</returns>
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Creates new role assignment.
         /// </summary>
         /// <param name="parameters">The create parameters</param>
-        /// <param name="roleAssignmentId"></param>
+        /// <param name="roleAssignmentId">The name of the role assignment. It can be any valid GUID.</param>
         /// <returns>The created role assignment object</returns>
         public PSRoleAssignment CreateRoleAssignment(FilterRoleAssignmentsOptions parameters, Guid roleAssignmentId = default(Guid))
         {
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Deletes a role definition based on the id.
         /// </summary>
         /// <param name="roleDefinitionId">The role definition id to delete</param>
-        /// <param name="scope"></param>
+        /// <param name="scope">The scope of the role definition</param>
         /// <returns>The deleted role definition.</returns>
         public PSRoleDefinition RemoveRoleDefinition(Guid roleDefinitionId, string scope)
         {
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Deletes a role definition based on the name.
         /// </summary>
         /// <param name="roleDefinitionName">The role definition name.</param>
-        /// <param name="scope"></param>
+        /// <param name="scope">The scope of the role definition</param>
         /// <returns>The deleted role definition.</returns>
         public PSRoleDefinition RemoveRoleDefinition(string roleDefinitionName, string scope)
         {
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Creates a new role definition.
         /// </summary>
         /// <param name="roleDefinition">The role definition to create.</param>
-        /// <param name="roleDefinitionId">The role definition id to delete</param>
+        /// <param name="roleDefinitionId">The role definition id to create.</param>
         /// <returns>The created role definition.</returns>
         public PSRoleDefinition CreateRoleDefinition(PSRoleDefinition roleDefinition, Guid roleDefinitionId = default(Guid))
         {

@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         }
 
         /// <summary>
-        /// Gets either a resource type or resource Id based on the value of the <see cref="GetExtensionResourceTypeOrName"/> parameter.
+        /// Gets either a resource type or resource Id based on the value of the <paramref name="getResourceName"/> parameter.
         /// </summary>
         /// <param name="resourceId">The resource Id.</param>
         /// <param name="getResourceName">When set to true returns a resource name, otherwise a resource type.</param>
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         }
 
         /// <summary>
-        /// Gets either a resource type or resource Id based on the value of the <see cref="GetResourceTypeOrName"/> parameter.
+        /// Gets either a resource type or resource Id based on the value of the <paramref name="getResourceName"/> parameter.
         /// </summary>
         /// <param name="resourceId">The resource Id.</param>
         /// <param name="getResourceName">When set to true returns a resource name, otherwise a resource type.</param>
