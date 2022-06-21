@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupResourceIdParameterSet, HelpMessage = "Determines if Application Group is allowed to create connection with namespace or not. Once the isEnabled is set to false, all the existing connections of application group gets dropped and no new connections will be allowed")]
         public SwitchParameter IsEnabled { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupPropertiesParameterSet, Position = 4, HelpMessage = "List of Throttling Policy Objects. Please use New-AzEventHubThrottlingPolicyConfig to create in memory object which can be one item in this list.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupPropertiesParameterSet, HelpMessage = "List of Throttling Policy Objects. Please use New-AzEventHubThrottlingPolicyConfig to create in memory object which can be one item in this list.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupResourceIdParameterSet, HelpMessage = "List of Throttling Policy Objects. Please use New-AzEventHubThrottlingPolicyConfig to create in memory object which can be one item in this list.")]
         public PSEventHubThrottlingPolicyAttributes[] ThrottlingPolicy { get; set; }
 
