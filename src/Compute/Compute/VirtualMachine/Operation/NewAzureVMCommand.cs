@@ -386,6 +386,12 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
         public int vCPUCountPerCore { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "This flag disables the default behavior to install the Guest Attestation extension to certain virtual machines of the TrustedLaunch security type.")]
+        public SwitchParameter DisableIntegrityMonitoring { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.UserData))
@@ -894,6 +900,47 @@ namespace Microsoft.Azure.Commands.Compute
                                 extensionParameters).GetAwaiter().GetResult();
                             psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
                         }
+                    }
+
+                    if (this.DisableIntegrityMonitoring != false &&
+                        this.VM.SecurityProfile.SecurityType == "TrustedLaunch" &&
+                        this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
+                        this.VM.SecurityProfile.UefiSettings.VTpmEnabled == true)
+                    {
+                        // install the vm extension 
+                        
+                        if (IsLinuxOs()) //linux
+                        {
+                            //Set - AzVMExtension - Publisher "Microsoft.Azure.Security.LinuxAttestation" - ExtensionName "GuestAttestation" - ExtensionType "GuestAttestation" - VMName $vmName - ResourceGroupName $rgName - Location $location - TypeHandlerVersion "1.0";
+
+                        }
+                        else //windows
+                        {
+                            //Set - AzVMExtension - Publisher "Microsoft.Azure.Security.WindowsAttestation" - ExtensionName "GuestAttestation" - ExtensionType "GuestAttestation" - VMName $vmName - ResourceGroupName $rgName - Location $location - TypeHandlerVersion "1.0";
+                            var extensionParams = new VirtualMachineExtension
+                            {
+                                Location = this.Location,
+                                Publisher = "Microsoft.Azure.Security.WindowsAttestation",
+                                VirtualMachineExtensionType = "GuestAttestation",
+                                TypeHandlerVersion = "1.0",
+                                //Settings = this.Settings,
+                                //ProtectedSettings = this.ProtectedSettings,
+                                //AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
+                                //ForceUpdateTag = this.ForceRerun,
+                                //EnableAutomaticUpgrade = this.EnableAutomaticUpgrade
+                            };
+
+                            
+
+                            var extCli = new VirtualMachineExtensionClient();
+
+                            var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.VMName,
+                            this.Name,
+                            parameters).GetAwaiter().GetResult();
+                        }
+
                     }
 
                     WriteObject(psResult);
