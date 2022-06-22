@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Generates vault creds file content for backup Vault
         /// </summary>
-        /// <param name="certificateString"></param>
+        /// <param name="certificateString">management certificate</param>
         /// <param name="subscriptionId">subscription Id</param>
         /// <param name="vaultCertificateResponse"></param>
         /// <returns>xml file in string format</returns>

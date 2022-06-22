@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Translate Health errors to Powershell object.
         /// </summary>
-        /// <param name="eventSpecificDetails">Rest API ASREventSpecificDetails object.</param>
+        /// <param name="eventSpecificDetails">Rest API EventSpecificDetails object.</param>
         /// <returns></returns>
         private ASREventSpecificDetails TranslateEventSpecificDetails(
             EventSpecificDetails eventSpecificDetails)
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Translate Health errors to Powershell object.
         /// </summary>
-        /// <param name="eventSpecificDetails">Rest API ASREventSpecificDetails object.</param>
+        /// <param name="eventSpecificDetails">Rest API EventProviderSpecificDetails object.</param>
         /// <returns></returns>
         private ASREventProviderSpecificDetails TranslateProviderSpecificEventDetails(
             EventProviderSpecificDetails eventSpecificDetails)
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Converts REST API object to Powershell object.
         /// </summary>
-        /// <param name="eventDetails"></param>
+        /// <param name="eventDetails">Internal object for a monitoring event.</param>
         /// <returns>
         ///     REST API object for HyperVReplica E2A event provider specific
         ///     details.
