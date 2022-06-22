@@ -504,13 +504,9 @@ Accept wildcard characters: False
 
 ### -Sku
 
-Specifies the tier of the API Management service.
-Valid values are:
-
-- Developer
-- Standard
-- Premium
-The default is Developer.
+The tier of the Azure API Management service.
+Valid values are Developer, Basic, Standard, Premium and Consumption.
+The default value is Developer.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]
