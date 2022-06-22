@@ -200,6 +200,32 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.DiskEncryptionSetUpdate.FederatedClientId = this.FederatedClientId;
             }
+
+            if (this.IsParameterBound(c => c.UserAssignedIdentity))
+            {
+                if (this.DiskEncryptionSetUpdate.Identity == null)
+                {
+                    this.DiskEncryptionSetUpdate.Identity = new EncryptionSetIdentity();
+                }
+                if (this.DiskEncryptionSetUpdate.Identity.UserAssignedIdentities == null)
+                {
+                    this.DiskEncryptionSetUpdate.Identity.UserAssignedIdentities = new Dictionary<string, EncryptionSetIdentityUserAssignedIdentitiesValue>();
+                }
+
+                foreach (DictionaryEntry de in this.UserAssignedIdentity)
+                {
+                    if (((Hashtable)de.Value).Count == 0)
+                    {
+                        this.DiskEncryptionSetUpdate.Identity.UserAssignedIdentities.Add(de.Key.ToString(), new EncryptionSetIdentityUserAssignedIdentitiesValue());
+                    }
+                    else
+                    {
+                        string principalId = ((Hashtable)de.Value)["principalId"]?.ToString();
+                        string clientId = ((Hashtable)de.Value)["clientId"]?.ToString();
+                        this.DiskEncryptionSetUpdate.Identity.UserAssignedIdentities.Add(de.Key.ToString(), new EncryptionSetIdentityUserAssignedIdentitiesValue(principalId, clientId));
+                    }
+                }
+            }
         }
 
         private void BuildPutObject()
@@ -239,6 +265,32 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (this.IsParameterBound(c => c.FederatedClientId))
             {
                 this.InputObject.FederatedClientId = this.FederatedClientId;
+            }
+
+            if (this.IsParameterBound(c => c.UserAssignedIdentity))
+            {
+                if (this.InputObject.Identity == null)
+                {
+                    this.InputObject.Identity = new EncryptionSetIdentity();
+                }
+                if (this.InputObject.Identity.UserAssignedIdentities == null)
+                {
+                    this.InputObject.Identity.UserAssignedIdentities = new Dictionary<string, EncryptionSetIdentityUserAssignedIdentitiesValue>();
+                }
+
+                foreach (DictionaryEntry de in this.UserAssignedIdentity)
+                {
+                    if (((Hashtable)de.Value).Count == 0)
+                    {
+                        this.InputObject.Identity.UserAssignedIdentities.Add(de.Key.ToString(), new EncryptionSetIdentityUserAssignedIdentitiesValue());
+                    }
+                    else
+                    {
+                        string principalId = ((Hashtable)de.Value)["principalId"]?.ToString();
+                        string clientId = ((Hashtable)de.Value)["clientId"]?.ToString();
+                        this.InputObject.Identity.UserAssignedIdentities.Add(de.Key.ToString(), new EncryptionSetIdentityUserAssignedIdentitiesValue(principalId, clientId));
+                    }
+                }
             }
         }
     }

@@ -144,40 +144,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vIdentity = new EncryptionSetIdentity();
                 }
-
-                /*
-                foreach (var identity in this.UserAssignedIdentity)
+                if (vIdentity.UserAssignedIdentities == null)
                 {
-                    var target = new TargetRegion()
-                    {
-                        Name = (string)t["Name"],
-                        RegionalReplicaCount = (int?)t["ReplicaCount"],
-                        StorageAccountType = (string)t["StorageAccountType"],
-                    };
-                    if (t["Encryption"] != null)
-                    {
-                        var osDiskEncryptionSetId = (string)((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"])["DiskEncryptionSetId"];
-                        var osDiskImageEncryption = new OSDiskImageEncryption(osDiskEncryptionSetId);
-
-                        List<DataDiskImageEncryption> dataDiskImageEncryption = null;
-                        var dataDiskImage = (object[])((Hashtable)t["Encryption"])["dataDiskImages"];
-
-                        if (dataDiskImage != null)
-                        {
-                            dataDiskImageEncryption = new List<DataDiskImageEncryption>();
-                            foreach (Hashtable dataDiskEncryptionSetId in dataDiskImage)
-                            {
-                                DataDiskImageEncryption d = new DataDiskImageEncryption((int)dataDiskEncryptionSetId["Lun"], (string)dataDiskEncryptionSetId["DiskEncryptionSetId"]);
-                                dataDiskImageEncryption.Add(d);
-                            }
-                        }
-
-                        target.Encryption = new EncryptionImages(osDiskImageEncryption, dataDiskImageEncryption);
-                    }
-
-                    galleryImageVersion.PublishingProfile.TargetRegions.Add(target);
+                    vIdentity.UserAssignedIdentities = new Dictionary<string, EncryptionSetIdentityUserAssignedIdentitiesValue>();
                 }
-                */
+
+                foreach (DictionaryEntry de in this.UserAssignedIdentity)
+                {
+                    if (((Hashtable)de.Value).Count == 0)
+                    {
+                        vIdentity.UserAssignedIdentities.Add(de.Key.ToString(), new EncryptionSetIdentityUserAssignedIdentitiesValue());
+                    }
+                    else
+                    {
+                        string principalId = ((Hashtable)de.Value)["principalId"]?.ToString();
+                        string clientId = ((Hashtable)de.Value)["clientId"]?.ToString();
+                        vIdentity.UserAssignedIdentities.Add(de.Key.ToString(), new EncryptionSetIdentityUserAssignedIdentitiesValue(principalId, clientId));
+                    }
+                }
             }
 
             var vDiskEncryptionSet = new PSDiskEncryptionSet
