@@ -95,6 +95,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewaybackendHttpSettingsName", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to backendSettingsCollection.
+        /// </summary>
+        internal static string ApplicationGatewaybackendSettingsName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewaybackendSettingsName", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/applicationGateways/{2}/{3}/{4}.
@@ -138,6 +147,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string ApplicationGatewayHttpListenerName {
             get {
                 return ResourceManager.GetString("ApplicationGatewayHttpListenerName", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to listeners.
+        /// </summary>
+        internal static string ApplicationGatewayListenerName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayListenerName", resourceCulture);
             }
         }
         
@@ -210,6 +228,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string ApplicationGatewayRequestRoutingRuleName {
             get {
                 return ResourceManager.GetString("ApplicationGatewayRequestRoutingRuleName", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to routingRules.
+        /// </summary>
+        internal static string ApplicationGatewayRoutingRuleName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayRoutingRuleName", resourceCulture);
             }
         }
         

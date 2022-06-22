@@ -19,6 +19,28 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets to create/manage L4(TCP/TLS) objects for ApplicationGateway:
+	- `Get-AzApplicationGatewayListener`	
+	- `New-AzApplicationGatewayListener`	
+	- `Add-AzApplicationGatewayListener`	
+	- `Set-AzApplicationGatewayListener`	
+	- `Remove-AzApplicationGatewayListener`
+	- `Get-AzApplicationGatewayBackendSetting`
+	- `New-AzApplicationGatewayBackendSetting`
+	- `Add-AzApplicationGatewayBackendSetting`
+	- `Set-AzApplicationGatewayBackendSetting`
+	- `Remove-AzApplicationGatewayBackendSetting`
+	- `Get-AzApplicationGatewayRoutingRule`
+	- `New-AzApplicationGatewayRoutingRule`
+	- `Add-AzApplicationGatewayRoutingRule`
+	- `Set-AzApplicationGatewayRoutingRule`
+	- `Remove-AzApplicationGatewayRoutingRule`
+* Updated cmdlet to add TCP/TLS Listener , BackendSetting , RoutingRule support for  Application Gateway:
+	- `New-AzApplicationGateway`
+* Updated cmdlets to add TCP/TLS protocol support for Application gateway Health Probe configuration:
+	- `Set-AzApplicationGatewayProbeConfig`
+	- `Add-AzApplicationGatewayProbeConfig`
+	- `New-AzApplicationGatewayProbeConfig`
 * Updated cmdlets to add basic sku support on Azure Firewall and Azure Firewall Policy:
     - `New-AzFirewall`
     - `New-AzFirewallPolicy`
