@@ -141,16 +141,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Multi-tenant application client id to access key vault in a different tenant. Setting value to 'None' will clear the property.")]
+        public string FederatedClientId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of user identities associated with the disk encryption set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
+        public Hashtable UserAssignedIdentity { get; set; }
+
         private DiskEncryptionSetUpdate DiskEncryptionSetUpdate { get; set; }
 
         private void BuildPatchObject()
         {
+            if (this.DiskEncryptionSetUpdate == null)
+            {
+                this.DiskEncryptionSetUpdate = new DiskEncryptionSetUpdate();
+            }
+
             if (this.IsParameterBound(c => c.KeyUrl))
             {
-                if (this.DiskEncryptionSetUpdate == null)
-                {
-                    this.DiskEncryptionSetUpdate = new DiskEncryptionSetUpdate();
-                }
                 if (this.DiskEncryptionSetUpdate.ActiveKey == null)
                 {
                     //this.DiskEncryptionSetUpdate.ActiveKey = new KeyVaultAndKeyReference();
@@ -161,10 +174,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.SourceVaultId))
             {
-                if (this.DiskEncryptionSetUpdate == null)
-                {
-                    this.DiskEncryptionSetUpdate = new DiskEncryptionSetUpdate();
-                }
                 if (this.DiskEncryptionSetUpdate.ActiveKey == null)
                 {
                     //this.DiskEncryptionSetUpdate.ActiveKey = new KeyVaultAndKeyReference();
@@ -179,20 +188,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.Tag))
             {
-                if (this.DiskEncryptionSetUpdate == null)
-                {
-                    this.DiskEncryptionSetUpdate = new DiskEncryptionSetUpdate();
-                }
                 this.DiskEncryptionSetUpdate.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
             }
 
             if(this.IsParameterBound(c => c.RotationToLatestKeyVersionEnabled))
             {
-                if (this.DiskEncryptionSetUpdate == null)
-                {
-                    this.DiskEncryptionSetUpdate = new DiskEncryptionSetUpdate();
-                }
                 this.DiskEncryptionSetUpdate.RotationToLatestKeyVersionEnabled = this.RotationToLatestKeyVersionEnabled;
+            }
+
+            if(this.IsParameterBound(c => c.FederatedClientId))
+            {
+                this.DiskEncryptionSetUpdate.FederatedClientId = this.FederatedClientId;
             }
         }
 
@@ -230,6 +236,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.InputObject.RotationToLatestKeyVersionEnabled = this.RotationToLatestKeyVersionEnabled;
             }
 
+            if (this.IsParameterBound(c => c.FederatedClientId))
+            {
+                this.InputObject.FederatedClientId = this.FederatedClientId;
+            }
         }
     }
 }
