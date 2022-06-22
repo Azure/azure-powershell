@@ -39,3 +39,14 @@ function ApplicationGroupPagination{
 
 	Assert-ThrowsContains { New-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Name test -ClientAppGroupIdentifier SASKeyName=test -ThrottlingPolicyConfig $t1 }  "Operation returned an invalid status code 'BadRequest'"
 }
+
+function NamespacePagination{
+	$resourceGroupName = "testpaginationforps"
+
+	$listNamespacesBySubscription = Get-AzEventHubNamespace
+	Assert-True { $listNamespacesBySubscription.Count -gt 200 }
+
+	$listNamespacesByResourceGroup = Get-AzEventHubNamespace -ResourceGroupName $resourceGroupName
+	Assert-True { $listNamespacesByResourceGroup.Count -gt 200}
+	Assert-True { $listNamespacesByResourceGroup.Count -lt $listNamespacesBySubscription.Count }
+}
