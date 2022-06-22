@@ -1,7 +1,7 @@
 @{
   GUID = 'c7eaa9c1-72c4-4251-9e7d-bf9b8e8fa71e'
   RootModule = './Az.ConfidentialLedger.psm1'
-  ModuleVersion = '1.0.0'
+  ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
