@@ -17,7 +17,7 @@
 
 param(
 )
-$ChangedFiles = Get-Content -Path "$PSScriptRoot\..\FilesChanged.txt"
+$ChangedFiles = Get-Content -Path "$PSScriptRoot\..\artifacts\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
 

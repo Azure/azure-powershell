@@ -171,8 +171,7 @@ Get all galleries in subscription that start with "gallery".
 
 ### Example 5
 ```powershell
-PS C:\> Get-AzGallery -Name galleryName -ResourceGroupName rg -Expand SharingProfile/Groups
-
+Get-AzGallery -Name galleryName -ResourceGroupName rg -Expand SharingProfile/Groups
 ```
 
 Get a gallery's sharing profile.

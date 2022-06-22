@@ -149,7 +149,7 @@ By default it is CurrentUser.
 Type: Microsoft.Azure.PowerShell.Common.Config.ConfigScope
 Parameter Sets: (All)
 Aliases:
-Accepted values: CurrentUser, Process, Default
+Accepted values: CurrentUser, Process, Default, Environment
 
 Required: False
 Position: Named

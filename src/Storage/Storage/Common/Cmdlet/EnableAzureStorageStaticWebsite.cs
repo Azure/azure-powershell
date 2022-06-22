@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// <summary>
         /// Update the specified StaticWebsite Properties according to the input
         /// </summary>
-        /// <param name="policy">StaticWebsite Properties</param>
+        /// <param name="serviceProperties">Service properties</param>
         internal void EnableStaticWebsiteProperties(ServiceProperties serviceProperties)
         {
             if (serviceProperties.StaticWebsite == null)

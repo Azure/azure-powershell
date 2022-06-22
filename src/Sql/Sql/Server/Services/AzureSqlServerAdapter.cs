@@ -89,6 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the server</param>
+        /// <param name="expand">The child resources to include in the response.</param>
         /// <returns>The server</returns>
         public AzureSqlServerModel GetServer(string resourceGroupName, string serverName, string expand = null)
         {
@@ -99,7 +100,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <summary>
         /// Gets a list of all the servers in a subscription
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="expand">The child resources to include in the response.</param>
         /// <returns>A list of all the servers</returns>
         public List<AzureSqlServerModel> ListServers(string expand = null)
         {
@@ -114,6 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// Gets a list of all the servers in a resource group
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="expand">The child resources to include in the response.</param>
         /// <returns>A list of all the servers</returns>
         public List<AzureSqlServerModel> ListServersByResourceGroup(string resourceGroupName, string expand = null)
         {
@@ -164,7 +166,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <summary>
         /// Convert a Management.Sql.LegacySdk.Models.Server to AzureSqlDatabaseServerModel
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
         private static AzureSqlServerModel CreateServerModelFromResponse(Management.Sql.Models.Server resp)
@@ -226,8 +227,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <summary>
         /// Verifies that the Azure Active Directory user or group exists, and will get the object id if it is not set.
         /// </summary>
-        /// <param name="displayName">Azure Active Directory user or group display name</param>
-        /// <param name="objectId">Azure Active Directory user or group object id</param>
+        /// <param name="input">Azure Active Directory user or group object</param>
         /// <returns></returns>
         protected ServerExternalAdministrator GetActiveDirectoryInformation(ServerExternalAdministrator input)
         {

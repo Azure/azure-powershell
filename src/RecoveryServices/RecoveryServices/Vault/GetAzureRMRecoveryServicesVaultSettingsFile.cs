@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="cert">management certificate</param>
         /// <param name="subscriptionId">subscription Id</param>
-        /// <param name="acsNamespace">acs namespace</param>
+        /// <param name="vaultCertificateResponse"></param>
         /// <returns>xml file in string format</returns>
         private string GenerateVaultCreds(X509Certificate2 cert, string subscriptionId, VaultCertificateResponse vaultCertificateResponse)
         {
@@ -559,9 +559,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Generates vault creds file content for backup Vault
         /// </summary>
-        /// <param name="cert">management certificate</param>
+        /// <param name="certificateString"></param>
         /// <param name="subscriptionId">subscription Id</param>
-        /// <param name="acsNamespace">acs namespace</param>
+        /// <param name="vaultCertificateResponse"></param>
         /// <returns>xml file in string format</returns>
         private string GenerateVaultCredsForBackup(string certificateString, string subscriptionId,
             VaultCertificateResponse vaultCertificateResponse)
@@ -603,7 +603,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Generates vault creds file content for Site Recovery Vault
         /// </summary>
-        /// <param name="cert">management certificate</param>
+        /// <param name="managementCert">management certificate</param>
         /// <param name="subscriptionId">subscription Id</param>
         /// <param name="vaultCertificateResponse">vaultCertificate Response</param>
         /// <param name="asrSite">asrSite Info</param>

@@ -57,15 +57,15 @@ Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetPropertiesR
 
 ### Example 2: Create a new CosmosDB Sql Container with Client Encryption Policy
 ```powershell
-PS C:\> $includedPath1 = [Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionIncludedPath]::new("/path1","key1","Deterministic","AEAD_AES_256_CBC_HMAC_SHA256");
-PS C:\> $includedPath2 = [Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionIncludedPath]::new("/path2","key2","Randomized","AEAD_AES_256_CBC_HMAC_SHA256");
-PS C:\> $listofIncludedPaths = New-Object Collections.Generic.List[Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionIncludedPath]
-PS C:\> $listofIncludedPaths.Add($includedPath1)
-PS C:\> $listofIncludedPaths.Add($includedPath2)
-PS C:\> $newClientEncryptionPolicy = New-Object Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionPolicy
-PS C:\> $newClientEncryptionPolicy.IncludedPaths = $listofIncludedPaths
-PS C:\> $newPSSqlClientEncryptionPolicy = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlClientEncryptionPolicy]::new($newClientEncryptionPolicy)
-PS C:\> New-AzCosmosDBSqlContainer -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -Name myContainerName -PartitionKeyPath /a/b/c -PartitionKeyKind Hash -ClientEncryptionPolicy $newPSSqlClientEncryptionPolicy
+$includedPath1 = [Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionIncludedPath]::new("/path1","key1","Deterministic","AEAD_AES_256_CBC_HMAC_SHA256");
+$includedPath2 = [Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionIncludedPath]::new("/path2","key2","Randomized","AEAD_AES_256_CBC_HMAC_SHA256");
+$listofIncludedPaths = New-Object Collections.Generic.List[Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionIncludedPath]
+$listofIncludedPaths.Add($includedPath1)
+$listofIncludedPaths.Add($includedPath2)
+$newClientEncryptionPolicy = New-Object Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionPolicy
+$newClientEncryptionPolicy.IncludedPaths = $listofIncludedPaths
+$newPSSqlClientEncryptionPolicy = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlClientEncryptionPolicy]::new($newClientEncryptionPolicy)
+New-AzCosmosDBSqlContainer -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -Name myContainerName -PartitionKeyPath /a/b/c -PartitionKeyKind Hash -ClientEncryptionPolicy $newPSSqlClientEncryptionPolicy
 ```
 
 ```output

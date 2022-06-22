@@ -27,13 +27,13 @@ New-AzNetAppFilesSubvolume -Name <String> -Path <String> -Size <Int64> [-ParentP
 ```
 
 ## DESCRIPTION
-The **New-AzNetAppFilesVolume** cmdlet creates an ANF subvolume.
+The **New-AzNetAppFilesSubvolume** cmdlet creates an ANF subvolume.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MySubvolume" -l "westus2" "
+New-AzNetAppFilesSubvolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MySubvolume" -Location "westus2"
 ```
 
 This command creates the new ANF subvolume "MySubvolume" for the parent volume "MyAnfVolume".

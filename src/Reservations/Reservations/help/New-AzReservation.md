@@ -27,8 +27,8 @@ Purchase a reservation Instance and get benefit
 
 ### Example 1
 ```powershell
-New-AzReservation -ReservationOrderId "112382d9-9af7-4fd5-b136-b71f0a69a1d0" -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
--BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScopes ""]
+New-AzReservation -ReservationOrderId "112382d9-9af7-4fd5-b136-b71f0a69a1d0" -ReservedResourceType "VirtualMachines" -Sku "standard b1" -Location "centralus" `
+-BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" -BillingPlan "Monthly" -Quantity 2 -DisplayName "demo" -AppliedScopeType "Shared" -AppliedScope ""
 ```
 
 After calculate price, customer could purchase that RI provide by calculatePrice

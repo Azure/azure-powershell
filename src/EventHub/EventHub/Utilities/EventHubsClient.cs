@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.Eventhub
         public const string SystemAssignedUserAssigned = "SystemAssigned, UserAssigned";
         public const string None = "None";
 
+        public const int maxApplicationGroups = 100;
+
         #region Namespace
         public PSNamespaceAttributes GetNamespace(string resourceGroupName, string namespaceName)
         {
@@ -873,6 +875,114 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         #endregion
 
+        #region ApplicationGroup
+
+        public PSEventHubApplicationGroupAttributes CreateApplicationGroup(string resourceGroupName, string namespaceName, 
+            string appGroupName, string clientAppGroupIdentifier, bool? isEnabled, PSEventHubThrottlingPolicyConfigAttributes[] throttlingPolicy)
+        {
+            ApplicationGroup appGroup = new ApplicationGroup();
+
+            appGroup.ClientAppGroupIdentifier = clientAppGroupIdentifier;
+            
+            appGroup.IsEnabled = isEnabled;
+
+            if(throttlingPolicy != null)
+            {
+                appGroup.Policies = new List<ApplicationGroupPolicy>();
+
+                foreach(var policy in throttlingPolicy)
+                {
+                    ThrottlingPolicy sdkpolicy = new ThrottlingPolicy()
+                    {
+                        Name = policy.Name,
+                        RateLimitThreshold = policy.RateLimitThreshold,
+                        MetricId = policy.MetricId
+                    };
+                    appGroup.Policies.Add(sdkpolicy);
+                }
+            }
+
+            var response = Client.ApplicationGroup.CreateOrUpdateApplicationGroup(resourceGroupName, namespaceName, appGroupName, appGroup);
+
+            return new PSEventHubApplicationGroupAttributes(response);
+        }
+
+        public PSEventHubApplicationGroupAttributes UpdateApplicationGroup(string resourceGroupName, string namespaceName,
+            string appGroupName, bool? isEnabled, PSEventHubThrottlingPolicyConfigAttributes[] throttlingPolicy)
+        {
+            var appGroup = Client.ApplicationGroup.Get(resourceGroupName, namespaceName, appGroupName);
+
+            if (isEnabled != null)
+            {
+                appGroup.IsEnabled = isEnabled;
+            }
+
+            if (throttlingPolicy != null)
+            {
+                appGroup.Policies = new List<ApplicationGroupPolicy>();
+
+                foreach (var policy in throttlingPolicy)
+                {
+                    ThrottlingPolicy sdkpolicy = new ThrottlingPolicy()
+                    {
+                        Name = policy.Name,
+                        RateLimitThreshold = policy.RateLimitThreshold,
+                        MetricId = policy.MetricId
+                    };
+
+                    appGroup.Policies.Add(sdkpolicy);
+                }
+            }
+
+            var response = Client.ApplicationGroup.CreateOrUpdateApplicationGroup(resourceGroupName, namespaceName, appGroupName, appGroup);
+
+            return new PSEventHubApplicationGroupAttributes(response);
+        }
+
+        public PSEventHubApplicationGroupAttributes GetApplicationGroup(string resourceGroupName, string namespaceName, 
+            string appGroupName)
+        {
+            var response = Client.ApplicationGroup.Get(resourceGroupName, namespaceName, appGroupName);
+
+            return new PSEventHubApplicationGroupAttributes(response);
+        }
+
+        public IEnumerable<PSEventHubApplicationGroupAttributes> ListApplicationGroup(string resourceGroupName, string namespaceName)
+        {
+            var listOfAppGroups = new List<PSEventHubApplicationGroupAttributes>();
+
+            string nextPageLink = null;
+
+            do
+            {
+                var fetchAppGroups = new List<PSEventHubApplicationGroupAttributes>();
+
+                if (nextPageLink != null)
+                {
+                    var result = Client.ApplicationGroup.ListByNamespaceNext(nextPageLink);
+                    nextPageLink = result.NextPageLink;
+                    fetchAppGroups = result.Select(resource => new PSEventHubApplicationGroupAttributes(resource)).ToList();
+                }
+                else
+                {
+                    var result = Client.ApplicationGroup.ListByNamespace(resourceGroupName, namespaceName);
+                    nextPageLink = result.NextPageLink;
+                    fetchAppGroups = result.Select(resource => new PSEventHubApplicationGroupAttributes(resource)).ToList();
+                }
+                    
+                listOfAppGroups.AddRange(fetchAppGroups);
+
+            } while (nextPageLink != null);
+            
+            return listOfAppGroups;
+        }
+
+        public void DeleteApplicationGroup(string resourceGroupName, string namespaceName, string appGroupName)
+        {
+            Client.ApplicationGroup.Delete(resourceGroupName, namespaceName, appGroupName);
+        }
+
+        #endregion
 
         public static int ReturnmaxCountvalueForSwtich(int? maxcount)
         {

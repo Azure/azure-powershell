@@ -45,7 +45,7 @@ Update-AzNetAppFilesActiveDirectory [-Dns <String[]>] [-Domain <String>] [-Site 
 ```
 
 ## DESCRIPTION
-The **Update-AzNetAppFilesAccount** cmdlet modifies an ANF active directory configuration.
+The **Update-AzNetAppFilesActiveDirectory** cmdlet modifies an ANF active directory configuration.
 
 ## EXAMPLES
 

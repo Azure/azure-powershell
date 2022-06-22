@@ -546,8 +546,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// checks if daily retention is reduced first, then weekly, then monthly and then yearly; breaks and return true whenever it finds retention is reduced in any schedule.
         /// if retention is not reduced in any schedule, returns false at the end.
         /// </summary>
-        /// <param name="oldRetentionSchedule"></param>
-        /// <param name="newRetentionSchedule"></param>
+        /// <param name="newRetentionPolicy"></param>
+        /// <param name="oldRetentionPolicy"></param>
         /// <returns></returns>
         public bool checkMUAForLongTermRetentionPolicy(ServiceClientModel.LongTermRetentionPolicy oldRetentionPolicy, ServiceClientModel.LongTermRetentionPolicy newRetentionPolicy)
         {
@@ -596,8 +596,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// checks if daily retention is reduced first, then weekly, then monthly and then yearly; breaks and return true whenever it finds retention is reduced in any schedule.
         /// if retention is not reduced in any schedule, returns false at the end.
         /// </summary>
-        /// <param name="oldRetentionSchedule"></param>
-        /// <param name="newRetentionSchedule"></param>
+        /// <param name="oldRetentionPolicy"></param>
+        /// <param name="newRetentionPolicy"></param>
         /// <returns></returns>
         public bool checkMUAForMSSQLPolicy(ServiceClientModel.AzureVmWorkloadProtectionPolicy oldRetentionPolicy, ServiceClientModel.AzureVmWorkloadProtectionPolicy newRetentionPolicy)
         {            

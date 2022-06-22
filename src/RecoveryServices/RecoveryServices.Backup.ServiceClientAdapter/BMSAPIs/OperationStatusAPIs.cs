@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Gets result of a generic operation on the protected item using the operation ID
         /// </summary>
         /// <param name="operationId">ID of the operation in progress</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Operation status response returned by the service</returns>
         public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus>
             GetProtectedItemOperationStatus(
@@ -42,6 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>
         /// Gets status of a generic operation on the protected item using the operation ID
         /// </summary>
+        /// <param name="secondaryRegion"></param>
         /// <param name="operationId">ID of the operation in progress</param>
         /// <returns>Operation status response returned by the service</returns>
         public RestAzureNS.AzureOperationResponse<CrrModel.OperationStatus>
@@ -59,6 +62,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="policyName">Name of the policy associated with the operation</param>
         /// <param name="operationId">ID of the operation in progress</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns></returns>
         public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus>
             GetProtectionPolicyOperationStatus(
@@ -78,6 +83,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Gets result of the refresh operation on the protection container using the operation ID
         /// </summary>
         /// <param name="operationId">ID of the operation in progress</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns></returns>
         public RestAzureNS.AzureOperationResponse GetContainerRefreshOrInquiryOperationResult(
             string operationId,
@@ -98,6 +105,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Gets result of the refresh operation on the protection container using the operation ID
         /// </summary>
         /// <param name="operationId">ID of the operation in progress</param>
+        /// <param name="containerName"></param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns></returns>
         public RestAzureNS.AzureOperationResponse<ServiceClientModel.ProtectionContainerResource>
             GetRegisterContainerOperationResult(
@@ -121,6 +131,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Gets status of prepare data move operation on the source vault 
         /// </summary>
         /// <param name="operationId">ID of the operation in progress</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns></returns>
         public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus>
             GetDataMoveOperationStatus(
@@ -138,6 +150,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Gets correlationId result of prepare data move operation on the source vault 
         /// </summary>
         /// <param name="operationId">ID of the operation in progress</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns></returns>
         public PrepareDataMoveResponse
             GetPrepareDataMoveOperationResult(
@@ -160,6 +174,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Gets result of the cancel operation on the job using the operation ID
         /// </summary>
         /// <param name="operationId">ID of the operation in progress</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns></returns>
         public RestAzureNS.AzureOperationResponse GetCancelJobOperationResult(
             string operationId,

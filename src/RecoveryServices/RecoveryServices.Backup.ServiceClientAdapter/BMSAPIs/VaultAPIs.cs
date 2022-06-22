@@ -170,6 +170,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Method to get secondary region AAD properties
         /// </summary>
         /// <param name="azureRegion">Azure region to fetch AAD properties</param>
+        /// <param name="backupManagementType"></param>
         /// <returns>vault response object.</returns>
         public CrrModel.AADPropertiesResource GetAADProperties(string azureRegion, string backupManagementType = null)
         {
@@ -254,6 +255,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="vaultName"></param>
         /// <param name="resourceGroupName"></param>
         /// <param name="resourceGuardProxyName"></param>
+        /// <param name="param"></param>
+        /// <param name="auxiliaryAccessToken"></param>
         /// <returns></returns>
         public ResourceGuardProxyBaseResource CreateResourceGuardMapping(string vaultName, string resourceGroupName, string resourceGuardProxyName, ResourceGuardProxyBaseResource param, string auxiliaryAccessToken)
         {
@@ -272,6 +275,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="vaultName"></param>
         /// <param name="resourceGroupName"></param>
         /// <param name="resourceGuardProxyName"></param>
+        /// <param name="auxiliaryAccessToken"></param>
         /// <returns></returns>
         public RestAzureNS.AzureOperationResponse DeleteResourceGuardMapping(string vaultName, string resourceGroupName, string resourceGuardProxyName, string auxiliaryAccessToken)
         {
