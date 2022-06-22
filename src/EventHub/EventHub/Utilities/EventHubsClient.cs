@@ -61,16 +61,62 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public IEnumerable<PSNamespaceAttributes> ListNamespacesByResourceGroup(string resourceGroupName)
         {
-            var response = Client.Namespaces.ListByResourceGroup(resourceGroupName);
-            var resourceList = response.Select(resource => new PSNamespaceAttributes(resource));
-            return resourceList;
+            var listOfNamespaces = new List<PSNamespaceAttributes>();
+
+            string nextPageLink = null;
+
+            do
+            {
+                var pageOfNamespaces = new List<PSNamespaceAttributes>();
+
+                if (!String.IsNullOrEmpty(nextPageLink))
+                {
+                    var result = Client.Namespaces.ListByResourceGroupNext(nextPageLink);
+                    nextPageLink = result.NextPageLink;
+                    pageOfNamespaces = result.Select(resource => new PSNamespaceAttributes(resource)).ToList();
+                }
+                else
+                {
+                    var result = Client.Namespaces.ListByResourceGroup(resourceGroupName);
+                    nextPageLink = result.NextPageLink;
+                    pageOfNamespaces = result.Select(resource => new PSNamespaceAttributes(resource)).ToList();
+                }
+
+                listOfNamespaces.AddRange(pageOfNamespaces);
+            
+            } while (!String.IsNullOrEmpty(nextPageLink));
+
+            return listOfNamespaces;
         }
 
         public IEnumerable<PSNamespaceAttributes> ListNamespacesBySubscription()
         {
-            var response = Client.Namespaces.List();
-            var resourceList = response.Select(resource => new PSNamespaceAttributes(resource));
-            return resourceList;
+            var listOfNamespaces = new List<PSNamespaceAttributes>();
+
+            string nextPageLink = null;
+
+            do
+            {
+                var pageOfNamespaces = new List<PSNamespaceAttributes>();
+
+                if (!String.IsNullOrEmpty(nextPageLink))
+                {
+                    var result = Client.Namespaces.ListNext(nextPageLink);
+                    nextPageLink = result.NextPageLink;
+                    pageOfNamespaces = result.Select(resource => new PSNamespaceAttributes(resource)).ToList();
+                }
+                else
+                {
+                    var result = Client.Namespaces.List();
+                    nextPageLink = result.NextPageLink;
+                    pageOfNamespaces = result.Select(resource => new PSNamespaceAttributes(resource)).ToList();
+                }
+
+                listOfNamespaces.AddRange(pageOfNamespaces);
+
+            } while (!String.IsNullOrEmpty(nextPageLink));
+
+            return listOfNamespaces;
         }
 
         public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isAutoInflateEnabled, int? maximumThroughputUnits, bool isKafkaEnabled, string clusterARMId, bool isZoneRedundant, bool isDisableLocalAuth
