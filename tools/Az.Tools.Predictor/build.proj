@@ -21,8 +21,6 @@
   </Target>
 
   <Target Name="Build">
-
-    <!-- <Exec Command="" /> -->
     <PropertyGroup>
       <BuildAction>build</BuildAction>
     </PropertyGroup>
