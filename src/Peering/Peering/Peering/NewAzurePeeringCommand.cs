@@ -239,7 +239,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </exception>
         /// <exception cref="Exception">
         /// </exception>
-        /// <exception cref="PSArgumentException">
+        /// <exception cref="ErrorResponseException">
         /// </exception>
         /// <exception cref="HttpRequestException">
         /// </exception>
@@ -391,10 +391,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <summary>
         /// The convert classic to Exchange peering.
         /// </summary>
+        /// <param name="peering">
         /// The classic peering.
-        /// <param name="peering"></param>
+        /// </param>
         /// <returns>
-        /// The <see cref="object"/>.
+        /// The <see cref="PSPeering"/>.
         /// </returns>
         private PSPeering ConvertClassicToExchangePeering(PSExchangePeeringModelView peering)
         {
@@ -441,7 +442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// The classic peering.
         /// </param>
         /// <returns>
-        /// The <see cref="object"/>.
+        /// The <see cref="PSPeering"/>.
         /// </returns>
         private PSPeering ConvertClassicToDirectPeering(PSDirectPeeringModelView peering)
         {

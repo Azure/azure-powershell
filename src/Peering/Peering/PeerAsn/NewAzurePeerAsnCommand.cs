@@ -101,6 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// </exception>
         /// <exception cref="Exception">
         /// </exception>
+        /// <exception cref="ErrorResponseException">
+        /// </exception>
         /// <exception cref="HttpRequestException">
         /// </exception>
         private PSPeerAsn CreatePeerInfo()
