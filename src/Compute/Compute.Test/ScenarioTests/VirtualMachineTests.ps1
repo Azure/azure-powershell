@@ -6169,8 +6169,8 @@ function Test-ConfVMSetAzDiskSecurityProfile
         $img.Location = $loc;
 
         #$mockimage = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/images/TestImage123';
-        $subId = "e37510d7-33b6-4676-886f-ee75bcc01871";
-        $img.Id = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/images/TestImage123';
+        ##$subId = "e37510d7-33b6-4676-886f-ee75bcc01871";
+        ##$img.Id = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/images/TestImage123';
         #$img.Id = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/images/TestImage123'
 
         $diskName = "disk1";
@@ -6194,6 +6194,152 @@ function Test-ConfVMSetAzDiskSecurityProfile
         Clean-ResourceGroup $rgname;
     }
 }
+
+
+<#
+.SYNOPSIS
+No DES, Test conf vm Set-AzDiskSecurityProfile SecurityType feature:
+New values are 
+    ConfidentialVM_DiskEncryptedWithPlatformKey
+    ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey
+#>
+function Test-ConfVMSetAzDiskSecurityProfileNoDES
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "northeurope";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        # Create New key vault
+        $kvname = "vaultnam10";
+        $keyname = "keynam10";
+        $desName= "desnam10" ;
+        #Testing 
+        $rgname = "adsandordes11";
+        $loc = "northeurope";
+
+        # Creating a VM using simple parameterset
+        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        ##New-AzKeyVault -Name $kvName -Location WestUS -ResourceGroupName $rgName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
+
+        # Add Key vault Key
+        # Currently requires downloading a particular policy file.
+        #Add-AzKeyVaultKey -VaultName $kvName -Name $keyName -Size 3072 -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM;
+        ##$KeySize = 3072;
+        ##az keyvault key create --vault-name $kvname --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
+        
+        # Capture Keyvault and key details
+        ##$keyvaultId = (Get-AzKeyVault -VaultName $kvName -ResourceGroupName $rgName).ResourceId;
+        ##$keyUrl = (Get-AzKeyVaultKey -VaultName $kvName -KeyName $keyName).Key.Kid;
+
+        # Create new DES Config and DES
+        ##$diskEncryptionType = "ConfidentialVmEncryptedWithCustomerKey";
+        ##$desConfig = New-AzDiskEncryptionSetConfig -Location "WestUS" -SourceVaultId $keyvaultId -KeyUrl $keyUrl -IdentityType SystemAssigned -EncryptionType $diskEncryptionType;
+        ##New-AzDiskEncryptionSet -ResourceGroupName $rgName -Name $desName -DiskEncryptionSet $desConfig;
+        ##$diskencset = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $desName;
+
+        # Assign DES Access Policy to key vault (Can be RBAC as well)
+        ##$desIdentity = (Get-AzDiskEncryptionSet -Name $desName -ResourceGroupName $rgName).Identity.PrincipalId;
+        ##Set-AzKeyVaultAccessPolicy -VaultName $kvName -ResourceGroupName $rgname -ObjectId $desIdentity -PermissionsToKeys wrapKey,unwrapKey,get;
+        # $disk.EncryptionType
+
+        #$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'windowsserver' -Skus '2022-datacenter-smalldisk-g2' -Version "latest";
+        #$image = Create-ComputeVMImageObject -loc $loc -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2022-datacenter-smalldisk-g2" -version "latest";
+
+        
+        $img = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
+        #$img.PublisherName = "MicrosoftWindowsServer";
+        #$img.Offer = "WindowsServer";
+        #$img.Skus = "2022-datacenter-smalldisk-g2";
+        #$img.Version = "latest";
+        #$img.Location = $loc;
+        $img.PublisherName = "MicrosoftWindowsServer";
+        $img.Offer = "windows-cvm";
+        $img.Skus = "2019-datacenter-cvm";
+        $img.Version = "latest";
+        $img.Location = "westus";
+
+        #$mockimage = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/images/TestImage123';
+        $subId = "e37510d7-33b6-4676-886f-ee75bcc01871";
+        ##$img.Id = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/images/TestImage123';
+        ###$img.Id = "/subscriptions/821664e1-b43e-4312-a018-4d2d284c2b9c/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windows-cvm/Skus/2019-datacenter-cvm";
+        $img.Id = "/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/northeurope/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windows-cvm/Skus/2019-datacenter-cvm/Versions/latest";
+        #$img.Id = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/images/TestImage123'
+        $securityTypeDSP = "ConfidentialVM_DiskEncryptedWithPlatformKey";
+
+        $diskName = "disk1";
+        $diskconfig = New-AzDiskConfig  -AccountType Premium_LRS -OsType Linux -CreateOption "FromImage" -Location $loc;# -HyperVGeneration "V2"; # -DiskSizeGB 10
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id "/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/northeurope/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/18.04-LTS" -Lun 0;
+        ##try to remove $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig ;#-SecurityType $securityTypeDSP ; #-SecureDiskEncryptionSetId $diskencset.id;
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskconfig;
+        <# When not from Image and CreateOption is Empty. 
+        'Security Type 'ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey' is not supported for CreateOption 'Empty'. Supported create options are FromImage, ImportSecure, UploadPreparedSecure.
+ErrorCode: BadRequest
+ErrorMessage: Security Type 'ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey' is not supported for CreateOption 'Empty'. Supported create options are FromImage, ImportSecure, UploadPreparedSecure.
+ErrorTarget: 
+        #>
+
+        <#
+        $image = Create-ComputeVMImageObject -loc $loc -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2022-datacenter-smalldisk-g2" -version "latest";
+        $diskName = "disk1";
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 10 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image -Lun 0;
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "ConfidentialVM_DiskEncryptedWithCustomerKey" -SecureDiskEncryptionSetId $diskencset.id;
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskconfig;
+        #>
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+# Play time to figure out what is going on. 
+function Test-ConfVMSetAzDiskSecurityProfileNoDES
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "northeurope";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        # Create New key vault
+        $kvname = "vaultnam10";
+        $keyname = "keynam10";
+        $desName= "desnam10" ;
+        #Testing 
+        $rgname = "adsandordes11";
+        $loc = "northeurope";
+
+        # Creating a VM using simple parameterset
+        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+        $diskname = "disk" + $rgname;
+        #$diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig ;#-SecurityType "TrustedLaunch";
+        $diskPr = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
 
 <#
 .SYNOPSIS
