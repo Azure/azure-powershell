@@ -164,8 +164,7 @@ namespace Microsoft.Azure.Commands.Profile.Models.Core
         public IAzureTenant Tenant { get; set; }
 
         /// <summary>
-        /// Moved to <see cref="IClientApplicationBase.ClientTokenCache"> due to MSAL.
-        /// See <see cref="AuthenticationClientFactory"> for how to create client applications.
+        /// Moved to <see cref="TokenCache"/> due to MSAL.
         /// </summary>
         public IAzureTokenCache TokenCache { get; set; } = null;
 
