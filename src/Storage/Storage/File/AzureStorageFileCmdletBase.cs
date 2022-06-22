@@ -89,8 +89,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// <summary>
         /// Write CloudFile to output using specified service channel
         /// </summary>
-        /// <param name="file">The output CloudFile object</param>
+        /// <param name="taskId">Task id</param>
         /// <param name="channel">IStorageFileManagement channel object</param>
+        /// <param name="file">The output CloudFile object</param>
         internal void WriteCloudFileObject(long taskId, IStorageFileManagement channel, CloudFile file)
         {
             AzureStorageFile azureFile = new AzureStorageFile(file, channel.StorageContext);
@@ -101,8 +102,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// <summary>
         /// Write CloudFileDirectory to output using specified service channel
         /// </summary>
-        /// <param name="fileDir">The output CloudFileDirectory object</param>
+        /// <param name="taskId">Task id</param>
         /// <param name="channel">IStorageFileManagement channel object</param>
+        /// <param name="fileDir">The output CloudFileDirectory object</param>
         internal void WriteCloudFileDirectoryeObject(long taskId, IStorageFileManagement channel, CloudFileDirectory fileDir)
         {
             AzureStorageFileDirectory azureFileDir = new AzureStorageFileDirectory(fileDir, channel.StorageContext);
@@ -112,8 +114,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// <summary>
         /// Write CloudFileShare to output using specified service channel
         /// </summary>
-        /// <param name="share">The output CloudFileShare object</param>
+        /// <param name="taskId">Task id</param>
         /// <param name="channel">IStorageFileManagement channel object</param>
+        /// <param name="share">The output CloudFileShare object</param>
         internal void WriteCloudShareObject(long taskId, IStorageFileManagement channel, CloudFileShare share)
         {
             AzureStorageFileShare azureshare = new AzureStorageFileShare(share, channel.StorageContext);
@@ -123,8 +126,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// <summary>
         /// Write IListFileItem to output using specified service channel
         /// </summary>
-        /// <param name="item">The output IListFileItem object</param>
+        /// <param name="taskId">Task id</param>
         /// <param name="channel">IStorageFileManagement channel object</param>
+        /// <param name="item">The output IListFileItem object</param>
         internal void WriteListFileItemObject(long taskId, IStorageFileManagement channel, IListFileItem item)
         {
             if ((item as CloudFile) != null) // CloudFile
