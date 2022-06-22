@@ -1003,7 +1003,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             {
                 var fetchAppGroups = new List<PSEventHubApplicationGroupAttributes>();
 
-                if (nextPageLink != null)
+                if (!String.IsNullOrEmpty(nextPageLink))
                 {
                     var result = Client.ApplicationGroup.ListByNamespaceNext(nextPageLink);
                     nextPageLink = result.NextPageLink;
@@ -1018,7 +1018,7 @@ namespace Microsoft.Azure.Commands.Eventhub
                     
                 listOfAppGroups.AddRange(fetchAppGroups);
 
-            } while (nextPageLink != null);
+            } while (!String.IsNullOrEmpty(nextPageLink));
             
             return listOfAppGroups;
         }
