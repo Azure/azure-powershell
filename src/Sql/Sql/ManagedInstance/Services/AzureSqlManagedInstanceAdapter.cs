@@ -90,6 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="managedInstanceName">The name of the managed instance</param>
+        /// <param name="expand">The child resources to include in the response.</param>
         /// <returns>The managed instance</returns>
         public AzureSqlManagedInstanceModel GetManagedInstance(string resourceGroupName, string managedInstanceName, string expand = null)
         {
@@ -122,6 +123,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         /// Gets a list of all the managed instances in a resource group
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="expand">The child resources to include in the response.</param>
         /// <returns>A list of all the managed instances</returns>
         public List<AzureSqlManagedInstanceModel> ListManagedInstancesByResourceGroup(string resourceGroupName, string expand = null)
         {
@@ -220,7 +222,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         /// <summary>
         /// Convert a Management.Sql.LegacySdk.Models.ManagedInstance to AzureSqlDatabaseManagedInstanceModel
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the managed instance is in</param>
         /// <param name="resp">The management client managed instance response to convert</param>
         /// <returns>The converted managed instance model</returns>
         private static AzureSqlManagedInstanceModel CreateManagedInstanceModelFromResponse(Management.Sql.Models.ManagedInstance resp)
@@ -299,8 +300,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         /// <summary>
         /// Verifies that the Azure Active Directory user or group exists, and will get the object id if it is not set.
         /// </summary>
-        /// <param name="displayName">Azure Active Directory user or group display name</param>
-        /// <param name="objectId">Azure Active Directory user or group object id</param>
+        /// <param name="input">Azure Active Directory user or group object</param>
         /// <returns></returns>
         protected ManagedInstanceExternalAdministrator GetActiveDirectoryInformation(ManagedInstanceExternalAdministrator input)
         {

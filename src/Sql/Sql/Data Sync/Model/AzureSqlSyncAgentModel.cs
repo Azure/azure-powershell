@@ -81,6 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         /// Construct AzureSqlSyncAgentModel
         /// </summary>
         /// <param name="resourceGroup">resource group</param>
+        /// <param name="serverName">server name</param>
         /// <param name="syncAgent">sync agent</param>
         public AzureSqlSyncAgentModel(string resourceGroup, string serverName, SyncAgent syncAgent)
         {
