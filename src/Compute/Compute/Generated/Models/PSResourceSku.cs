@@ -47,10 +47,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 List<string> restrictionInfos = new List<string>();
                 foreach (ResourceSkuRestrictions info in Restrictions)
                 {
-                    string aInfo = info.ReasonCode.ToString();
+                    string aInfo = "";
                     if (info.Type != null)
                     {
-                        aInfo = aInfo + ", type: " + info.Type.ToString();
+                        aInfo = "type: " + info.Type.ToString();
                     }
                     if (info.RestrictionInfo != null)
                     {
