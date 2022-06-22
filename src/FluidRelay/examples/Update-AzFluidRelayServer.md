@@ -1,6 +1,6 @@
 ### Example 1: Update a Fluid Relay server.
 ```powershell
-Update-AzFluidRelayServer -Name azps-fluidrelay -ResourceGroup azpstest-gp -Tag @{"Category"="sales"}
+Update-AzFluidRelayServer -Name azps-fluidrelay -ResourceGroup azpstest-gp -KeyEncryptionKeyIdentityUserAssignedIdentityResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" -KeyEncryptionKeyIdentityType 'SystemAssigned' -IdentityType 'SystemAssigned' -Tag @{"Category"="sales"}
 ```
 
 ```output
