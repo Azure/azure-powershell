@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added cmdlets for CRUD operations on EventHub Application Groups.
+* Added cmdlets for CRUD operations on EventHub Application Groups. The added cmdlets include,
+    -New-AzEventHubApplicationGroup
+    -Set-AzEventHubApplicationGroup
+    -Remove-AzEventHubApplicationGroup
+    -Get-AzEventHubApplicationGroup
+    -New-AzEventHubThrottlingPolicyConfig
+* BREAKING CHANGE: Get-AzEventHubNamespace returned a maximum of 100 namespaces for list by resource groups or list by subscriptions so far. From here onwards, for resource groups and subscriptions with over a 100 namespaces, the cmdlet will return all the namespaces. You will not see a change in the cmdlet behaviour if your resource groups or subscriptions have less than a 100 namespaces.
 
 ## Version 2.0.0
 * Made `IPRule` and `VirtualNetworkRule` optional in `Set-AzEventHubNetworkRuleSet`.
