@@ -43,5 +43,12 @@ namespace Microsoft.Azure.Commands.PowerBI.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NegativePowerBIEmbeddedCapacity");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPBIECapacityLargeSku()
+        {
+            TestRunner.RunTestScript("Test-PowerBIEmbeddedCapacityLargeSku");
+        }
     }
 }
