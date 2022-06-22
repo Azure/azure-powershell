@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
             return recordTypes.Select(d => mapping[d.Trim().ToLowerInvariant()]).ToArray();
         }
 
-        protected static string[] ConvertToRecordType(string[] documentTypes)
+        public static string[] ConvertToRecordType(string[] documentTypes)
         {
             if (documentTypes == null)
             {
