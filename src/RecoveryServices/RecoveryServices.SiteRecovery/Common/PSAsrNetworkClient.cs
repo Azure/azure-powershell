@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets a particular Azure Site Recovery Network under a Server
         /// </summary>
-        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="fabricName">Fabric name</param>
         /// <param name="networkName">Network name</param>
         /// <returns>Network response</returns>
         public Network GetAzureSiteRecoveryNetwork(
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets all Azure Site Recovery Networks under a Server
         /// </summary>
-        /// <param name="fabricName">Fabric Name.</param>
+        /// <param name="fabricName">Fabric name</param>
         /// <returns>Network list response</returns>
         public List<Network> GetAzureSiteRecoveryNetworks(
             string fabricName)

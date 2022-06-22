@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Purge Azure Site Recovery Fabric.
         /// </summary>
-        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="fabricName">Fabric name</param>
         /// <returns>Long operation response</returns>
         public PSSiteRecoveryLongRunningOperation PurgeAzureSiteRecoveryFabric(
             string fabricName)
