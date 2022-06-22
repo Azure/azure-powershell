@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
 
         /// <summary>
         /// Gets or sets the IP Filter Action. Possible values include: 'Allow'
-        /// </summary>        
+        /// </summary>
         public string Action { get; set; }
 
     }

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Initializes a new instance of the NetworkRuleSet class.
         /// </summary>
         /// <param name="networkRuleSet"></param>
-        public PSNetworkRuleSetAttributes(NetworkRuleSet networkRuleSet)           
+        public PSNetworkRuleSetAttributes(NetworkRuleSet networkRuleSet)
         {
             DefaultAction = networkRuleSet.DefaultAction;
             VirtualNetworkRules = PSNWRuleSetVirtualNetworkRulesAttributes.PSNWRuleSetVirtualNetworkRulesAttributesCollection(networkRuleSet.VirtualNetworkRules);

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
 
             foreach (NWRuleSetVirtualNetworkRules nwRuleSetVirtualNetworkRules in nwVirtualNetworkRules)
             {
-                VNetRules.Add(new PSNWRuleSetVirtualNetworkRulesAttributes(nwRuleSetVirtualNetworkRules));                
+                VNetRules.Add(new PSNWRuleSetVirtualNetworkRulesAttributes(nwRuleSetVirtualNetworkRules));
             }
 
             return VNetRules;
@@ -63,6 +63,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Service Endpoint
         /// </summary>
         public bool? IgnoreMissingVnetServiceEndpoint { get; set; }
-       
+
     }
 }

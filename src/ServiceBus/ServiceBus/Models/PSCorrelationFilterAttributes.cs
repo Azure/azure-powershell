@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// Initializes a new instance of the CorrelationFilter class.
         /// </summary>
-        /// <param name="correlationFilter"></param>
+        /// <param name="correlationFilter">Properties of
+        /// correlationFilter</param>
         public PSCorrelationFilterAttributes(Management.ServiceBus.Models.CorrelationFilter correlationFilter)
         {
             if (correlationFilter != null)
