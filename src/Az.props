@@ -15,6 +15,12 @@
     <PublishDir>$(OutputPath)</PublishDir>
   </PropertyGroup>
 
+  <!-- Generate XML file-->
+  <PropertyGroup>
+    <NoWarn>$(NoWarn)</NoWarn>
+    <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DelaySign>false</DelaySign>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>

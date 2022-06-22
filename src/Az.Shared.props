@@ -13,4 +13,9 @@
     <WarningsAsErrors />
   </PropertyGroup>
 
+  <PropertyGroup>
+    <!-- warning CS1591: Missing XML comment for publicly visible type or member -->
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+
 </Project>
