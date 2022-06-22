@@ -25,23 +25,10 @@ steps:
     pwsh: true
 
 - task: UseDotNet@2
-  displayName: 'Use .NET Core sdk 3.1.x'
+  displayName: 'Use .NET Core sdk'
   inputs:
     packageType: sdk
     version: 3.1.x
-
-- task: UseDotNet@2
-  displayName: 'Use .NET Core sdk 6.0.x'
-  inputs:
-    packageType: sdk
-    version: 6.0.x
-
-- task: PowerShell@2
-  displayName: Setup global.json
-  inputs:
-    targetType: inline
-    script: "$SdkVersion=(dotnet --list-sdks | Select-String '3.1.\\d{3}').Matches[0].Value; dotnet new globaljson --sdk-version $SdkVersion --force"
-    pwsh: true
 
 - task: DotNetCoreCLI@2
   displayName: Test

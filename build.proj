@@ -163,7 +163,7 @@
     <Exec Command="dotnet new sln -n Azure.PowerShell -o $(RepoArtifacts) --force" />
     <CallTarget Targets="BuildNormalModules" />
 
-    <Exec Command="##vso[task.setvariable variable=BuildAzPredictor]true" Condition="$(SubTasks.Contains('Predictor')) OR $(SubTasks.Contains('all'))" />
+    <Exec Command="echo ##vso[task.setvariable variable=BuildAzPredictor;]true" Condition="$(SubTasks.Contains('Predictor')) OR $(SubTasks.Contains('all'))" />
     <CallTarget Targets="AzToolsInstaller" Condition="$(SubTasks.Contains('Installer')) OR $(SubTasks.Contains('all'))" />
   </Target>
 

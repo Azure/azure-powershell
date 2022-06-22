@@ -23,7 +23,6 @@ using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
 
-
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>

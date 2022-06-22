@@ -40,7 +40,7 @@ steps:
   displayName: Setup global.json
   inputs:
     targetType: inline
-    script: "$SdkVersion=(dotnet --list-sdks | Select-String '3.1.\\d{3}').Matches[0].Value; dotnet new globaljson --sdk-version $SdkVersion --force"
+    script: "$SdkVersion=(dotnet --list-sdks | Select-String '[3,4,5].\\d.\\d{3}').Matches[0].Value; dotnet new globaljson --sdk-version $SdkVersion --force"
     pwsh: true
     
 - task: DotNetCoreCLI@2
@@ -50,13 +50,13 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:Build /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
 
-- task: DotNetCoreCLI@2
+- task: PowerShell@2
   displayName: Build-AzPredictor
   condition: eq(variables.BuildAzPredictor, 'true')
   inputs:
-    command: custom
-    custom: msbuild
-    arguments: 'tools/Az.Tools.Predictor/build.proj /t:"clean;build;test"'
+    targetType: inline
+    script: "$SdkVersion=(dotnet --list-sdks | Select-String '6.0.\\d{3}').Matches[0].Value; dotnet new globaljson --sdk-version $SdkVersion --force;dotnet msbuild tools/Az.Tools.Predictor/build.proj /t:\"clean;build;test\""
+    pwsh: true
 
 - template: publish-artifacts-steps.yml
   parameters:
