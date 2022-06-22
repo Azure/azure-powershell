@@ -91,7 +91,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Azure storage file constructor
         /// </summary>
-        /// <param name="file">Cloud file share object</param>
+        /// <param name="share">Cloud file share object</param>
+        /// <param name="storageContext">Storage context containing account information used to construct ShareClient.</param>
         public AzureStorageFileShare(CloudFileShare share, AzureStorageContext storageContext)
         {
             Name = share.Name;

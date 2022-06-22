@@ -22,7 +22,7 @@ For further reading, please visit https://docs.microsoft.com/en-us/dotnet/standa
 2. Compare dependencies of `Azure.Core` on [nuget.org](https://www.nuget.org/packages/Azure.Core/) between current version and expected version.
 3. Extract DLL file in nuget package folder `lib/netcoreapp2.1` of `Azure.Core` and changed dependencies and copy them to `src/lib/NetCorePreloadAssemblies`. You need to ensure the version CANNOT be higher than existing assembly if PowerShell already includes it. 
 4. Update assembly version of `Azure.Core` and changed dependencies to .NET Stardard 2.0 in `/src/Accounts/AuthenticationAssemblyLoadContext/AzAssemblyLoadContextInitializer.cs`.
-5. Extract DLL file in nuget package folder `lib/net461` (alternatively, `netstandard2.0`) of `Azure.Core` and changed dependencies and copy them to `src/lib/NetFxPreloadAssemblies`.
+5. Extract DLL file in nuget package folder `lib/net461` (alternatively, `netstandard2.0`) of `Azure.Core` and changed dependencies and copy them to `src/lib/NetFxPreloadAssemblies`. As one of dependencies, `Microsoft.Identity.Client` needs its net461 version because of known issue with certificates.
 6. Update assembly version of `Azure.Core` and changed dependencies to .NET Framework in `/src/Accounts/Authentication/Utilities/CustomAssemblyResolver.cs`.
 7. Verify built `Az.Accounts` can work with existing Azure PowerShell modules on PowerShell 7 and Windows PowerShell.
    - Import module into PowerShell 7 or Windows PowerShell, and ensure there is no error in verbose output

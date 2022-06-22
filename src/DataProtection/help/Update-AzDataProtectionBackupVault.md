@@ -16,14 +16,15 @@ For example, updating tags for a resource.
 ### UpdateExpanded (Default)
 ```
 Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>]
- [-IdentityType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-IdentityType <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-IdentityType <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity>
+ [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-IdentityType <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +48,19 @@ ETag IdentityPrincipalId                  IdentityTenantId                     I
 The first command creates a new tag hashtable with tags and their values.
 The second command adds the given tags to the backup vault.
 
+### Example 2: Disable Azure monitor alerts for job failures
+```powershell
+PS C:\>  Update-AzDataProtectionBackupVault -ResourceGroupName "rgName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -AzureMonitorAlertsForAllJobFailure 'Disabled'
+
+Name          Location      Type                                  IdentityType
+----          --------      ----                                  ------------
+vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned
+```
+
+This command disables the monitor alerts for all the job failures for the backup vault.
+Allowed values are: Enabled, Disabled.
+Note that by default this setting is enabled.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -54,6 +68,22 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureMonitorAlertsForAllJobFailure
+Parameter to Enable or Disable built-in azure monitor alerts for job failures.
+Security alerts cannot be disabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState
 Parameter Sets: (All)
 Aliases:
 
@@ -225,7 +255,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupVaultResource
 
 ## NOTES
 

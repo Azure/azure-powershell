@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets for CRUD operations on EventHub Application Groups.
 
 ## Version 2.0.0
 * Made `IPRule` and `VirtualNetworkRule` optional in `Set-AzEventHubNetworkRuleSet`.

@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with
         ///     required current subscription.
         /// </summary>
-        /// <param name="azureSubscription">Azure Subscription</param>
+        /// <param name="azureProfile"></param>
         public PSAsrComputeManagementClient(
             IAzureContextContainer azureProfile)
         {

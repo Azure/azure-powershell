@@ -38,13 +38,13 @@ Set-AzNetAppFilesSnapshotPolicy -Name <String> [-Enabled] -HourlySchedule <PSNet
 ```
 
 ## DESCRIPTION
-The **Set-AzNetAppFilesPool** cmdlet modifies an ANF Snapshot Policy.
+The **Set-AzNetAppFilesSnapshotPolicy** cmdlet modifies an ANF Snapshot Policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$hourlySchedule = @{        
+$hourlySchedule = @{
         Minute = 2
         SnapshotsToKeep = 6
     }
@@ -54,18 +54,18 @@ $hourlySchedule = @{
         SnapshotsToKeep = 6
     }
     $weeklySchedule = @{
-        Minute = 2    
-        Hour = 1		        
+        Minute = 2
+        Hour = 1
         Day = "Sunday,Monday"
         SnapshotsToKeep = 6
     }
     $monthlySchedule = @{
-        Minute = 2    
-        Hour = 1        
+        Minute = 2
+        Hour = 1
         DaysOfMonth = "2,11,21"
         SnapshotsToKeep = 6
     }
-Set-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAccount" -Name "MySnapshotPolicy" -Enabled -HourlySchedule $hourlySchedule -DailySchedule $dailySchedule -WeeklySchedule $weeklySchedule -MonthlySchedule $monthlySchedule
+Set-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAccount" -Name "MySnapshotPolicy" -Enabled -HourlySchedule $hourlySchedule -DailySchedule $dailySchedule -WeeklySchedule $weeklySchedule -MonthlySchedule $monthlySchedule
 ```
 
 This command creates the new ANF snapshot policy for ANF account named account "MyAccount".
@@ -322,8 +322,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzNetAppFilesSnapshot](./Get-AzNetAppFilesSnapshot.md)
 [New-AzNetAppFilesSnapshot](./New-AzNetAppFilesSnapshot.md)
 [Remove-AzNetAppFilesSnapshot](./Remove-AzNetAppFilesSnapshot.md)
-[Update-AzNetAppFilesSnapshot](./Update-AzNetAppFilesSnapshot.md)
-[Get-AzNetAppFilesVolume](./Get-AzNetAppFilessVolume.md)
-[New-AzNetAppFilesVolume](./New-AzNetAppFilessVolume.md)
-[Update-AzNetAppFilesVolume](./Update-AzNetAppFilessVolume.md)
-[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilessVolume.md)
+[Get-AzNetAppFilesVolume](./Get-AzNetAppFilesVolume.md)
+[New-AzNetAppFilesVolume](./New-AzNetAppFilesVolume.md)
+[Update-AzNetAppFilesVolume](./Update-AzNetAppFilesVolume.md)
+[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilesVolume.md)

@@ -1,8 +1,8 @@
 {
-  "swagger_commit": "14b3b50008f77d12b7b2e238753c52b8f857cb63",
-  "autorest_modelerfour": "4.15.414",
-  "autorest_core": "3.7.3",
+  "swagger_commit": "9a6b5748f6ba9eeb2684497551226036c9d1da6b",
   "autorest": "`-- (empty)",
-  "node": "v14.15.5",
-  "autorest_powershell": "3.0.469"
+  "autorest_core": "3.8.4",
+  "autorest_modelerfour": "4.15.414",
+  "autorest_powershell": "3.0.490",
+  "node": "v14.15.5"
 }
