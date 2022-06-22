@@ -6266,7 +6266,7 @@ function Test-ConfVMSetAzDiskSecurityProfileNoDES
         $img.Version = "latest";
         $img.Location = "westus";
 
-        #$mockimage = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/images/TestImage123';
+       
         $subId = "e37510d7-33b6-4676-886f-ee75bcc01871";
         ##$img.Id = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/images/TestImage123';
         ###$img.Id = "/subscriptions/821664e1-b43e-4312-a018-4d2d284c2b9c/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windows-cvm/Skus/2019-datacenter-cvm";
@@ -6279,12 +6279,7 @@ function Test-ConfVMSetAzDiskSecurityProfileNoDES
         $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id "/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/northeurope/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/18.04-LTS" -Lun 0;
         ##try to remove $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig ;#-SecurityType $securityTypeDSP ; #-SecureDiskEncryptionSetId $diskencset.id;
         New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskconfig;
-        <# When not from Image and CreateOption is Empty. 
-        'Security Type 'ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey' is not supported for CreateOption 'Empty'. Supported create options are FromImage, ImportSecure, UploadPreparedSecure.
-ErrorCode: BadRequest
-ErrorMessage: Security Type 'ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey' is not supported for CreateOption 'Empty'. Supported create options are FromImage, ImportSecure, UploadPreparedSecure.
-ErrorTarget: 
-        #>
+        
 
         <#
         $image = Create-ComputeVMImageObject -loc $loc -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2022-datacenter-smalldisk-g2" -version "latest";
