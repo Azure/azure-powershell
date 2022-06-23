@@ -41,7 +41,8 @@ namespace VersionController
             "ExtraAssemblies.csv",
             "HelpIssues.csv",
             "MissingAssemblies.csv",
-            "SignatureIssues.csv"
+            "SignatureIssues.csv",
+            "ExampleIssues.csv"
         };
 
         public static void Main(string[] args)

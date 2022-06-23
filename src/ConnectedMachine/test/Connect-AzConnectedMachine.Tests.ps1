@@ -84,7 +84,7 @@ Describe 'Connect-AzConnectedMachine' {
         }
         catch {
             Enable-PSRemoting -Force
-            $pssession = New-PSSession -ComputerName localhost
+            $pssession = New-PSSession -ComputerName localhost -EnableNetworkAccess
         }
 
         $machine = Connect-AzConnectedMachine @commonParams -Location $env.location -PSSession $pssession

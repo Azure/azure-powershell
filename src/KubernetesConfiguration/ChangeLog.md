@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.6.0
  * Added cmdlets:
    * `Get-AzKubernetesConfigFluxOperationStatus`
    * `Get-AzKubernetesConfigurationFlux`
