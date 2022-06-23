@@ -163,8 +163,8 @@
     <Exec Command="dotnet new sln -n Azure.PowerShell -o $(RepoArtifacts) --force" />
     <CallTarget Targets="BuildNormalModules" />
 
-    <CallTarget Targets="AzToolsPredictor" Condition="$(SubTasks.Contains('predictor'))" />
-    <CallTarget Targets="AzToolsInstaller" Condition="$(SubTasks.Contains('installer'))" />
+    <Exec Command="echo ##vso[task.setvariable variable=BuildAzPredictor;]true" Condition="$(SubTasks.Contains('Predictor')) OR $(SubTasks.Contains('all'))" />
+    <CallTarget Targets="AzToolsInstaller" Condition="$(SubTasks.Contains('Installer')) OR $(SubTasks.Contains('all'))" />
   </Target>
 
   <Target Name="BuildNormalModules">
@@ -289,10 +289,6 @@
 
   <Target Name="AzToolsInstaller">
     <Exec Command='dotnet msbuild $(RepoTools)/Az.Tools.Installer/build.proj /t:"clean;build;test"' />
-  </Target>
-
-  <Target Name="AzToolsPredictor">
-    <Exec Command='dotnet msbuild $(RepoTools)/Az.Tools.Predictor/build.proj /t:"clean;build;test"' />
   </Target>
 
   <Target Name="ChangeLogErrorMessage">

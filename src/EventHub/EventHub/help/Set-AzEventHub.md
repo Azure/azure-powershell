@@ -52,7 +52,7 @@ Updates the Event Hub \`MyEventHubName\` represented by the \`MyCreatedEventHub\
 
 ### Example 2
 ```powershell
-Set-AzEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName -InputObject MyCreatedEventHub -messageRetentionInDays 4 -partitionCount 2
+Set-AzEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName -messageRetentionInDays 4 -partitionCount 2
 ```
 
 Updates the Event Hub \`MyEventHubName\` represented by the \`MyCreatedEventHub\` object, setting the message retention period to 4 days, and the number of partitions to 2.

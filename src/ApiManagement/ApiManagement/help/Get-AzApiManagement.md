@@ -56,8 +56,10 @@ This command gets all API Management services within a subscription.
 ### Example 2: Get an API Management services by a specific name
 
 ```powershell
-PS D:> Get-AzApiManagement -ResourceGroupName "contosogroup" -Name "contoso"                                                                                                                                 
+Get-AzApiManagement -ResourceGroupName "contosogroup" -Name "contoso"                                                                                                                                 
+```
 
+```output
 PublicIPAddresses                     : {52.143.79.150}
 PrivateIPAddresses                    :
 Id                                    : /subscriptions/4f5285a3-9fd7-40ad-91b1-d8fc3823983d/resourceGroups/contosogroup/providers/Microsoft.ApiManagement/service/contoso

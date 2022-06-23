@@ -24,11 +24,16 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <ProjectReference Include="..\Az.Tools.Predictor\Az.Tools.Predictor.csproj" />
+    <!-- The test project doesn't reference to it directly. Az.Tools.Predictor has a reference to Microsoft.PowerShell.SDK.
+      - But it's excluding content files to reduce the size of the module. The content files are not needed since they're in the runtime (PowerShell)
+      - The content files are needed to set up the runspace to parse the command line. So we need to include them when we run the unit tests.
+      -->
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Data\CommandsModel.zip" CopyToOutputDirectory="PreserveNewest" />
-    <None Include="Data\PredictionsModel.zip" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Data\CommandsModel.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Data\PredictionsModel.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
