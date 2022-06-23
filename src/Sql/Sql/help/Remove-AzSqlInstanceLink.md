@@ -116,7 +116,7 @@ $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "Manage
 $instance | Get-AzSqlInstanceLink | Remove-AzSqlInstanceLink -Force
 ```
 
-This command removes all instance links from the managed instance "ManagedInstance01" .
+This command removes all instance links from the managed instance "ManagedInstance01".
 
 ### Example 8: Remove instance link with an explicit -Force flag and output the deleted instance link object
 ```powershell
