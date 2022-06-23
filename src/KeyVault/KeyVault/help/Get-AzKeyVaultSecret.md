@@ -77,7 +77,7 @@ This cmdlet gets a specific secret or all the secrets in a key vault.
 ```powershell
 Get-AzKeyVaultSecret -VaultName 'Contoso'
 ```
-
+Output format:
 ```output
 Vault Name   : contoso
 Name         : secret1
