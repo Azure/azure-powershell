@@ -6219,7 +6219,7 @@ function Test-ConfVMSetAzDiskSecurityProfileNoDES
         $keyname = "keynam10";
         $desName= "desnam10" ;
         #Testing 
-        $rgname = "adsandordes11";
+        $rgname = "adsandordes12";
         $loc = "northeurope";
 
         # Creating a VM using simple parameterset
@@ -6276,7 +6276,7 @@ function Test-ConfVMSetAzDiskSecurityProfileNoDES
 
         $diskName = "disk1";
         $diskconfig = New-AzDiskConfig  -AccountType Premium_LRS -OsType Linux -CreateOption "FromImage" -Location $loc;# -HyperVGeneration "V2"; # -DiskSizeGB 10
-        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id "/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/northeurope/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/18.04-LTS" -Lun 0;
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id "/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/northeurope/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/18.04-LTS/Versions/latest" -Lun 0;
         ##try to remove $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig ;#-SecurityType $securityTypeDSP ; #-SecureDiskEncryptionSetId $diskencset.id;
         New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskconfig;
         
