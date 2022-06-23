@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// Writes profile to a specified path.
         /// </summary>
         /// <param name="path">File path on disk to save profile to</param>
-        /// <param name="serializeCache"></param>
+        /// <param name="serializeCache">true if the TokenCache should be serialized, false otherwise</param>
         public void Save(string path, bool serializeCache = true)
         {
             if (string.IsNullOrEmpty(path))
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// Writes the profile using the specified file provider
         /// </summary>
         /// <param name="provider">The file provider used to save the profile</param>
-        /// <param name="serializeCache"></param>
+        /// <param name="serializeCache">true if the TokenCache should be serialized, false otherwise</param>
         public void Save(IFileProvider provider, bool serializeCache = true)
         {
             foreach (string env in AzureEnvironment.PublicEnvironments.Keys)
