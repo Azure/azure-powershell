@@ -48,7 +48,7 @@ if ($ModuleSet.Contains($ALL_MODULE))
 {
     Write-Host (Get-Item env:)
     Write-Host (Get-Item env:SELECTEDMODULELIST)
-    $ModuleList = $Env:SELECTEDMODULELIST.Split(';')
+    $ModuleList = (Get-Item env:SELECTEDMODULELIST).Split(';')
 }
 else
 {
