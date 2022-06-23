@@ -11,7 +11,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 using System.Collections.Generic;
@@ -20,6 +19,7 @@ using System.Management.Automation;
 using System.Net;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {

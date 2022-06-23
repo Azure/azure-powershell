@@ -17,11 +17,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 
-namespace Microsoft.Azure.Commands.OperationalInsights.Models
+namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 {
     public class PSClusterPatch
     {
-        public PSClusterPatch(PSKeyVaultProperties keyVaultProperties = default(PSKeyVaultProperties), PSClusterSku sku = default(PSClusterSku), Hashtable tags = default(Hashtable), PSIdentity identity = default(PSIdentity), string billingType = default(string))
+        public PSClusterPatch(PSKeyVaultProperties keyVaultProperties = default, PSClusterSku sku = default, Hashtable tags = default, PSIdentity identity = default, string billingType = default)
         {
             KeyVaultProperties = keyVaultProperties;
             Sku = sku;
@@ -34,27 +34,27 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
             if (patch.KeyVaultProperties != null)
             {
-                this.KeyVaultProperties = new PSKeyVaultProperties(patch.KeyVaultProperties);
+                KeyVaultProperties = new PSKeyVaultProperties(patch.KeyVaultProperties);
             }
 
             if (patch.Sku != null)
             {
-                this.Sku = new PSClusterSku(patch.Sku);
+                Sku = new PSClusterSku(patch.Sku);
             }
 
             if (patch.Tags != null)
             {
-                this.Tags = new Hashtable((IDictionary)patch.Tags);
+                Tags = new Hashtable((IDictionary)patch.Tags);
             }
 
             if (patch.Identity != null)
             {
-                this.Identity = new PSIdentity(patch.Identity);
+                Identity = new PSIdentity(patch.Identity);
             }
 
             if (patch.BillingType != null)
             {
-                this.BillingType = patch.BillingType;
+                BillingType = patch.BillingType;
             }
         }
 
@@ -70,17 +70,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         private IDictionary<string, string> getTags()
         {
-            return this.Tags?.Cast<DictionaryEntry>().ToDictionary(kv => (string)kv.Key, kv => (string)kv.Value);
+            return Tags?.Cast<DictionaryEntry>().ToDictionary(kv => (string)kv.Key, kv => (string)kv.Value);
         }
 
         public ClusterPatch GetClusterPatch()
         {
             return new ClusterPatch(
-                keyVaultProperties: this.KeyVaultProperties?.GetKeyVaultProperties(),
-                billingType: this.BillingType,
-                identity: Identity.getIdentity(), 
-                sku: this.Sku?.getClusterSku(),
-                tags: this.getTags()
+                keyVaultProperties: KeyVaultProperties?.GetKeyVaultProperties(),
+                billingType: BillingType,
+                identity: Identity.getIdentity(),
+                sku: Sku?.getClusterSku(),
+                tags: getTags()
             );
         }
     }

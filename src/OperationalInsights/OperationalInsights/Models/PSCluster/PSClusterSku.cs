@@ -14,7 +14,7 @@
 using System.Management.Automation;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 
-namespace Microsoft.Azure.Commands.OperationalInsights.Models
+namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 {
     public enum AllowedClusterServiceTiers
     {
@@ -25,15 +25,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
     {
         public PSClusterSku(string name, long? capacity = 1000)
         {
-            this.Capacity = capacity;
-            this.Name = string.IsNullOrEmpty(name) ? AllowedClusterServiceTiers.CapacityReservation.ToString() : name;
+            Capacity = capacity;
+            Name = string.IsNullOrEmpty(name) ? AllowedClusterServiceTiers.CapacityReservation.ToString() : name;
             ValidateCapacity();
         }
 
         public PSClusterSku(ClusterSku sku)
         {
-            this.Capacity = sku.Capacity;
-            this.Name = sku.Name;
+            Capacity = sku.Capacity;
+            Name = sku.Name;
         }
 
         public long? Capacity { get; set; }
@@ -42,17 +42,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public ClusterSku getClusterSku()
         {
-            return new ClusterSku(this.Capacity, this.Name);
+            return new ClusterSku(Capacity, Name);
         }
 
         private void ValidateCapacity()
         {
-            if (this.Name != AllowedClusterServiceTiers.CapacityReservation.ToString())
+            if (Name != AllowedClusterServiceTiers.CapacityReservation.ToString())
             {
                 throw new PSArgumentException($"Sku name only supports: {AllowedClusterServiceTiers.CapacityReservation} ");
             }
 
-            if (this.Capacity % 100 != 0)
+            if (Capacity % 100 != 0)
             {
                 throw new PSArgumentException("SkuCapacity need to be multiple of 100 ");
             }

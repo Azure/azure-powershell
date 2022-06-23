@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,7 +19,7 @@ using System.Management.Automation;
 using System.Text.RegularExpressions;
 using Microsoft.WindowsAzure.Commands.Common;
 
-namespace Microsoft.Azure.Commands.OperationalInsights.Models
+namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 {
     public class PSCluster
     {
@@ -39,8 +38,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             LastModifiedDate = lastModifiedDate;
             CreatedDate = createdDate;
             AssociatedWorkspaces = associatedWorkspaces;
-            CapacityReservationProperties = capacityReservationProperties;
-
+            CapacityReservationProperties = new PSCapacityReservationProperties(capacityReservationProperties);
             Tags = tags;
             Location = location;
             Name = name;
@@ -53,45 +51,34 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
             if (cluster.Identity != null)
             {
-                this.Identity = new PSIdentity(cluster.Identity);
+                Identity = new PSIdentity(cluster.Identity);
             }
 
             if (cluster.Sku != null)
             {
-                this.Sku = new PSClusterSku(cluster.Sku);
+                Sku = new PSClusterSku(cluster.Sku);
             }
 
-            this.ClusterId = cluster.ClusterId;//cluster's GUID
-            this.ProvisioningState = cluster.ProvisioningState;
-            this.IsDoubleEncryptionEnabled = cluster.IsDoubleEncryptionEnabled;
-            this.IsAvailabilityZonesEnabled = cluster.IsAvailabilityZonesEnabled;
-            this.BillingType = cluster.BillingType;
-
-            if (cluster.KeyVaultProperties == null || PSKeyVaultProperties.CreateProperties(cluster.KeyVaultProperties.KeyVaultUri, cluster.KeyVaultProperties.KeyName, cluster.KeyVaultProperties.KeyVersion) == null)
-            {
-                this.KeyVaultProperties = null;
-            }
-            else
-            {
-                this.KeyVaultProperties = new PSKeyVaultProperties(cluster.KeyVaultProperties);
-            }
-
-            this.LastModifiedDate = cluster.LastModifiedDate;
-            this.CreatedDate = cluster.CreatedDate;
-            this.AssociatedWorkspaces = cluster.AssociatedWorkspaces;
-            this.CapacityReservationProperties = cluster.CapacityReservationProperties;
+            ClusterId = cluster.ClusterId;//cluster's GUID
+            ProvisioningState = cluster.ProvisioningState;
+            IsDoubleEncryptionEnabled = cluster.IsDoubleEncryptionEnabled;
+            IsAvailabilityZonesEnabled = cluster.IsAvailabilityZonesEnabled;
+            BillingType = cluster.BillingType;
+            KeyVaultProperties = cluster.KeyVaultProperties == null ? null : new PSKeyVaultProperties(cluster.KeyVaultProperties);
+            LastModifiedDate = cluster.LastModifiedDate;
+            CreatedDate = cluster.CreatedDate;
+            AssociatedWorkspaces = cluster.AssociatedWorkspaces;
+            CapacityReservationProperties = new PSCapacityReservationProperties(cluster.CapacityReservationProperties);
 
             if (cluster.Tags != null)
             {
-                this.Tags = new Hashtable((IDictionary)cluster.Tags);
+                Tags = new Hashtable((IDictionary)cluster.Tags);
             }
 
-            this.Location = cluster.Location;
-            this.Name = cluster.Name;
-            this.Type = cluster.Type;
-            this.Id = cluster.Id;//resource ID
-
-            validateClusterName();
+            Location = cluster.Location;
+            Name = cluster.Name;
+            Type = cluster.Type;
+            Id = cluster.Id;//resource ID
         }
 
         public PSIdentity Identity { get; set; }
@@ -105,8 +92,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public string LastModifiedDate { get; set; }
         public string CreatedDate { get; set; }
         public IList<AssociatedWorkspace> AssociatedWorkspaces { get; set; }
-        public CapacityReservationProperties CapacityReservationProperties { get; set; }
-
+        public PSCapacityReservationProperties CapacityReservationProperties { get; set; }
         public string Location { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
@@ -116,7 +102,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         private IDictionary<string, string> getTags()
         {
-            return this.Tags?.Cast<DictionaryEntry>().ToDictionary(kv => (string)kv.Key, kv => (string)kv.Value);
+            return Tags?.Cast<DictionaryEntry>().ToDictionary(kv => (string)kv.Key, kv => (string)kv.Value);
         }
 
         public Cluster getCluster()
@@ -139,12 +125,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         private void validateClusterName()
         {
             Regex regex = new Regex(Pattern);
-            if (!regex.Match(this.Name).Success)
+            if (!regex.Match(Name).Success)
             {
                 throw new PSArgumentException("ClusterName should starts/ends with numerical or alphabetical characters only");
             }
 
-            if (this.Name.Length < 4 || this.Name.Length > 63)
+            if (Name.Length < 4 || Name.Length > 63)
             {
                 throw new PSArgumentException("length of ClusterName need to be in range ''");
             }
