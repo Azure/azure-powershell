@@ -46,7 +46,7 @@ foreach ($file in $ChangedFiles)
 }
 if ($ModuleSet.Contains($ALL_MODULE))
 {
-    $ModuleList = $Env:SelectedModuleList.Split(';')
+    $ModuleList = $Env:SELECTEDMODULELIST.Split(';')
 }
 else
 {
