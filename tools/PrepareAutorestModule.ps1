@@ -46,7 +46,7 @@ foreach ($file in $ChangedFiles)
 }
 if ($ModuleSet.Contains($ALL_MODULE))
 {
-    $ModuleList = (Get-ChildItem "$PSScriptRoot\..\src\" -Directory -Exclude helpers,lib).Name | Where-Object { $SKIP_MODULES -notcontains $_ }
+    $ModuleList = $Env:SelectedModuleList.Split(';')
 }
 else
 {
