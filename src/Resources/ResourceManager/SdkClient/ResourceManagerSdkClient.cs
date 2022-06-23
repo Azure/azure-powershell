@@ -1371,6 +1371,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// Executes deployment What-If at the specified scope.
         /// </summary>
         /// <param name="parameters"></param>
+        /// <param name="excludeChangeTypeNames"></param>
         /// <returns></returns>
         public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, string[] excludeChangeTypeNames)
         {
@@ -1673,7 +1674,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// Validates a given deployment.
         /// </summary>
         /// <param name="parameters">The deployment create options</param>
-        /// <param name="deploymentMode">The deployment mode</param>
         /// <returns>The validation errors if there's any, or empty list otherwise.</returns>
         public virtual List<PSResourceManagerError> ValidateDeployment(PSDeploymentCmdletParameters parameters)
         {

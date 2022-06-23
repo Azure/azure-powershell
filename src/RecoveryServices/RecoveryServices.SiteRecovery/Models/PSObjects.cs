@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     required
         ///     parameters.
         /// </summary>
-        /// <param name="server">Server object</param>
+        /// <param name="provider"></param>
         public ASRRecoveryServicesProvider(
             RecoveryServicesProvider provider)
         {
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ID { get; set; }
 
         /// <summary>
-        ///     Gets or sets the Type of Management entity – VMM, V-Center.
+        ///     Gets or sets the Type of Management entity ?VMM, V-Center.
         /// </summary>
         public string Type { get; set; }
 
@@ -181,7 +181,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Initializes a new instance of the <see cref="ASRSite" /> class.
         /// </summary>
-        /// <param name="site">Hydra site object.</param>
         public ASRFabric(
             Fabric fabric)
         {
@@ -379,7 +378,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Initializes a new instance of the <see cref="ASRProtectionContainerMapping" /> class with
         ///     required parameters.
         /// </summary>
-        /// <param name="pc">Protection container mapping object</param>
+        /// <param name="pcm">Protection container mapping object</param>
         public ASRProtectionContainerMapping(
             ProtectionContainerMapping pcm)
         {
@@ -532,6 +531,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     required parameters.
         /// </summary>
         /// <param name="pc">Protection container object</param>
+        /// <param name="availablePolicies"></param>
+        /// <param name="protectionContainerMappings"></param>
         public ASRProtectionContainer(
             ProtectionContainer pc,
             List<ASRPolicy> availablePolicies,
@@ -1444,7 +1445,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class ASRFabricSpecificVMDetails
     {
     }
-
+    /// <summary>
     /// Azure Site Recovery Replication Protected Item.
     /// </summary>
     public class ASRReplicationProtectedItem
@@ -1460,7 +1461,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Initializes a new instance of the <see cref="ASRReplicationProtectedItem" /> class when it is
         ///     protected
         /// </summary>
-        /// <param name="pi">Protectable Item to read values from</param>
         /// <param name="rpi">Replication Protected Item to read values from</param>
         public ASRReplicationProtectedItem(
             ReplicationProtectedItem rpi)
@@ -2014,7 +2014,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Initializes a new instance of the <see cref="ASRGroupTaskDetails" /> class.
         /// </summary>
-        /// <param name="task">Task details to load values from.</param>
+        /// <param name="groupTaskDetails"></param>
         public ASRGroupTaskDetails(
             GroupTaskDetails groupTaskDetails)
         {
@@ -2053,7 +2053,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Initializes a new instance of the <see cref="ASRTaskBase" /> class.
         /// </summary>
-        /// <param name="task">Base task details to load values from.</param>
+        /// <param name="taskBase">Base task details to load values from.</param>
         public ASRTaskBase(
             Management.RecoveryServices.SiteRecovery.Models.ASRTask taskBase)
         {
@@ -2746,8 +2746,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Initializes a new instance of the <see cref="ASRRunAsAccount" /> class.
         /// </summary>
-        /// <param name="runAsAccountDetails">Run as account object.</param>
-        /// 
         /// <summary>
         /// Gets or sets the disk uri.
         /// </summary>
@@ -2920,27 +2918,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public bool? IsDiskKeyEncrypted { get; set; }
 
         /// <summary>
-        //  Gets or sets the KeyVault resource id for secret (BEK).
+        ///  Gets or sets the KeyVault resource id for secret (BEK).
         /// </summary>
         public string DekKeyVaultArmId { get; set; }
 
         /// <summary>
-        //  Gets or sets the secret URL / identifier (BEK).
+        ///  Gets or sets the secret URL / identifier (BEK).
         /// </summary>
         public string SecretIdentifier { get; set; }
 
         /// <summary>
-        //  Gets or sets a value indicating whether vm has encrypted os disk or not.
+        ///  Gets or sets a value indicating whether vm has encrypted os disk or not.
         /// </summary>
         public bool? IsDiskEncrypted { get; set; }
 
         /// <summary>
-        //  Gets or sets the key URL / identifier (KEK).
+        ///  Gets or sets the key URL / identifier (KEK).
         /// </summary>
         public string KeyIdentifier { get; set; }
 
         /// <summary>
-        //  Gets or sets the KeyVault resource id for key (KEK).
+        ///  Gets or sets the KeyVault resource id for key (KEK).
         /// </summary>
         public string KekKeyVaultArmId { get; set; }
 
@@ -3196,7 +3194,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         /// <summary>
         ///     Gets or sets the disk capacity in bytes.
-        /// <summary>
+        /// </summary>
         public long? CapacityInBytes { get; set; }
 
         /// <summary>

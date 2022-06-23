@@ -508,3 +508,188 @@ function EncryptionTest{
         Remove-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1
     }
 }
+
+
+function ApplicationGroupTest{
+    $location = "eastus"
+    $resourceGroupName =  getAssetName "PSSDKTesting-RG"
+    $namespaceName = getAssetName "PSSDKTesting-NS"
+    $appGroupName = getAssetName "appGroupName"
+    $appGroupName2 = getAssetName "appGroupName2"
+    $appGroupName3 = getAssetName "appGroupName3"
+    $appGroupName4 = getAssetName "appGroupName3"
+    $throttlingPolicy1 = "ThrottlingPolicy1"
+    $throttlingPolicy2 = "ThrottlingPolicy2"
+    $throttlingPolicy3 = "ThrottlingPolicy3"
+    $throttlingPolicy4 = "ThrottlingPolicy4"
+    $clientGroupId = getAssetName "SASKeyName=authkey"
+    $clientGroupId2 = getAssetName "SASKeyName=authkey"
+    $clientGroupId3 = getAssetName "SASKeyName=authkey"
+    $clientGroupId4 = getAssetName "SASKeyName=authkey"
+
+    try{
+        # Create Resource Group
+	    Write-Debug "Create resource group"    
+	    Write-Debug " Resource Group Name : $resourceGroupName"
+	    New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
+	
+		
+	    # Create EventHub Namespace
+	    Write-Debug "  Create new eventhub namespace"
+	    Write-Debug " Namespace name : $namespaceName"
+	    $result = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location -SkuName Premium
+
+        $t1 = New-AzEventHubThrottlingPolicyConfig -Name $throttlingPolicy1 -MetricId IncomingMessages -RateLimitThreshold 1032
+        $t2 = New-AzEventHubThrottlingPolicyConfig -Name $throttlingPolicy2 -MetricId OutgoingBytes -RateLimitThreshold 10567
+        $t3 = New-AzEventHubThrottlingPolicyConfig -Name $throttlingPolicy3 -MetricId OutgoingMessages -RateLimitThreshold 9058
+        $t4 = New-AzEventHubThrottlingPolicyConfig -Name $throttlingPolicy4 -MetricId IncomingBytes -RateLimitThreshold 1896
+
+        $appGroup1 = New-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Name $appGroupName -IsEnabled -ThrottlingPolicyConfig $t1, $t2 -ClientAppGroupIdentifier $clientGroupId
+
+        Assert-AreEqual $appGroup1.ClientAppGroupIdentifier $clientGroupId
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig.Count 2
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].Name $throttlingPolicy1
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].MetricId "IncomingMessages"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].RateLimitThreshold 1032
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].Name $throttlingPolicy2
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].MetricId "OutgoingBytes"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].RateLimitThreshold 10567
+        Assert-True { $appGroup1.IsEnabled }
+
+        $appGroup1 = Get-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Name $appGroupName
+
+        Assert-AreEqual $appGroup1.ClientAppGroupIdentifier $clientGroupId
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig.Count 2
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].Name $throttlingPolicy1
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].MetricId "IncomingMessages"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].RateLimitThreshold 1032
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].Name $throttlingPolicy2
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].MetricId "OutgoingBytes"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].RateLimitThreshold 10567
+        Assert-True { $appGroup1.IsEnabled }
+
+        $appGroup1 = Set-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Name $appGroupName -IsEnabled:$false
+
+        Assert-AreEqual $appGroup1.ClientAppGroupIdentifier $clientGroupId
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig.Count 2
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].Name $throttlingPolicy1
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].MetricId "IncomingMessages"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].RateLimitThreshold 1032
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].Name $throttlingPolicy2
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].MetricId "OutgoingBytes"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].RateLimitThreshold 10567
+        Assert-False { $appGroup1.IsEnabled }
+
+        $appGroup1 = Set-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Name $appGroupName -IsEnabled
+
+        Assert-AreEqual $appGroup1.ClientAppGroupIdentifier $clientGroupId
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig.Count 2
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].Name $throttlingPolicy1
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].MetricId "IncomingMessages"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].RateLimitThreshold 1032
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].Name $throttlingPolicy2
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].MetricId "OutgoingBytes"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].RateLimitThreshold 10567
+        Assert-True { $appGroup1.IsEnabled }
+
+
+        #Testing INPUT OBJECT parameter set
+        
+        $appGroup1.ThrottlingPolicyConfig += $t3
+
+        $appGroup1 = Set-AzEventHubApplicationGroup -InputObject $appGroup1
+
+        Assert-AreEqual $appGroup1.ClientAppGroupIdentifier $clientGroupId
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig.Count 3
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].Name $throttlingPolicy1
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].MetricId "IncomingMessages"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].RateLimitThreshold 1032
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].Name $throttlingPolicy2
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].MetricId "OutgoingBytes"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].RateLimitThreshold 10567
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[2].Name $throttlingPolicy3
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[2].MetricId "OutgoingMessages"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[2].RateLimitThreshold 9058
+        Assert-True { $appGroup1.IsEnabled }
+
+        $appGroup1.IsEnabled = $false
+
+        $appGroup1 = Set-AzEventHubApplicationGroup -InputObject $appGroup1
+
+        Assert-AreEqual $appGroup1.ClientAppGroupIdentifier $clientGroupId
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig.Count 3
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].Name $throttlingPolicy1
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].MetricId "IncomingMessages"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].RateLimitThreshold 1032
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].Name $throttlingPolicy2
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].MetricId "OutgoingBytes"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].RateLimitThreshold 10567
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[2].Name $throttlingPolicy3
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[2].MetricId "OutgoingMessages"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[2].RateLimitThreshold 9058
+        Assert-False { $appGroup1.IsEnabled }
+
+        #Testing RESOURCE ID
+
+        $appGroup1 = Set-AzEventHubApplicationGroup -ResourceId $appGroup1.Id -IsEnabled
+
+        Assert-AreEqual $appGroup1.ClientAppGroupIdentifier $clientGroupId
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig.Count 3
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].Name $throttlingPolicy1
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].MetricId "IncomingMessages"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].RateLimitThreshold 1032
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].Name $throttlingPolicy2
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].MetricId "OutgoingBytes"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].RateLimitThreshold 10567
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[2].Name $throttlingPolicy3
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[2].MetricId "OutgoingMessages"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[2].RateLimitThreshold 9058
+        Assert-True { $appGroup1.IsEnabled }
+
+        $appGroup1.ThrottlingPolicyConfig += $t4
+
+        $appGroup1 = Set-AzEventHubApplicationGroup -ResourceId $appGroup1.Id -ThrottlingPolicyConfig $appGroup1.ThrottlingPolicyConfig
+
+        Assert-AreEqual $appGroup1.ClientAppGroupIdentifier $clientGroupId
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig.Count 4
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].Name $throttlingPolicy1
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].MetricId "IncomingMessages"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[0].RateLimitThreshold 1032
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].Name $throttlingPolicy2
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].MetricId "OutgoingBytes"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[1].RateLimitThreshold 10567
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[2].Name $throttlingPolicy3
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[2].MetricId "OutgoingMessages"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[2].RateLimitThreshold 9058
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[3].Name $throttlingPolicy4
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[3].MetricId "IncomingBytes"
+        Assert-AreEqual $appGroup1.ThrottlingPolicyConfig[3].RateLimitThreshold 1896
+        Assert-True { $appGroup1.IsEnabled }
+
+        $appGroup2 = New-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Name $appGroupName2 -ClientAppGroupIdentifier $clientGroupId2 -ThrottlingPolicyConfig $t3
+        $appGroup3 = New-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Name $appGroupName3 -ClientAppGroupIdentifier $clientGroupId3 -ThrottlingPolicyConfig $t1
+        $appGroup4 = New-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Name $appGroupName4 -ClientAppGroupIdentifier $clientGroupId4 -ThrottlingPolicyConfig $t2
+
+        $listOfAppGroups = Get-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
+        Assert-AreEqual $listOfAppGroups.Count 4
+
+        Remove-AzEventHubApplicationGroup -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Name $appGroupName
+        
+        $listOfAppGroups = Get-AzEventHubApplicationGroup -ResourceId $result.Id
+        Assert-AreEqual $listOfAppGroups.Count 3
+
+        Remove-AzEventHubApplicationGroup -ResourceId $appGroup2.Id
+        Get-AzEventHubApplicationGroup -ResourceId $appGroup3.Id | Remove-AzEventHubApplicationGroup
+        Remove-AzEventHubApplicationGroup -InputObject $appGroup4
+
+        Start-Sleep -Seconds 10
+
+        $listOfAppGroups = Get-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
+        Assert-AreEqual $listOfAppGroups.Count 0
+    }
+
+    finally{
+        Write-Debug " Delete resourcegroup"
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}

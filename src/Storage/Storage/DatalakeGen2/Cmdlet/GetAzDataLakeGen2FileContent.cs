@@ -104,6 +104,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Download blob to local file
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="blob">Source blob object</param>
         /// <param name="filePath">Destination file path</param>
         internal virtual async Task DownloadBlob(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, string filePath)

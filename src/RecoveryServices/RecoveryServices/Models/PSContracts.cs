@@ -385,6 +385,9 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="resourceGroupName">cloud service name</param>
         /// <param name="siteId">custom site Id</param>
         /// <param name="siteName">custom site name</param>
+        /// <param name="resourceNamespace">Name of the resouce group</param>
+        /// <param name="resourceType"></param>
+        /// <param name="location"></param>
         public ASRVaultCreds(
             string subscriptionId,
             string resourceName,

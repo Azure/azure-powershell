@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version:https://docs.microsoft.com/powershell/module/az.compute/add-azvmssgalleryapplication
+online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmssgalleryapplication
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Add a GalleryApplication object to the PSVirtualMachineProfile object.
 
 ```
 Add-AzVmssGalleryApplication -VirtualMachineScaleSetVM <PSVirtualMachineScaleSetVMProfile>
- -GalleryApplication <PSVMGalleryApplication> [-Order <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -GalleryApplication <PSVMGalleryApplication> [-TreatFailureAsDeploymentFailure] [-Order <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +38,7 @@ This example creates a local VMGalleryApplication object and adds it to a PSVirt
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 VM Gallery Application Object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVMGalleryApplication
+Type: PSVMGalleryApplication
 Parameter Sets: (All)
 Aliases:
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 Order in which the application will be install in.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -79,15 +79,60 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TreatFailureAsDeploymentFailure
+If true, any failure for any operation in the VmApplication will fail the deployment. Defaults to false if not specified.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VirtualMachineScaleSetVM
 The PSVirtualMachineScaleSetVMProfile object to add a Gallery Application Reference ID.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVMProfile
+Type: PSVirtualMachineScaleSetVMProfile
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

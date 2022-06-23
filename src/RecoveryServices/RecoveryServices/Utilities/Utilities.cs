@@ -157,7 +157,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Get Value from ARM ID
         /// </summary>
-        /// <param name="size">size of the key to be generated</param>
+        /// <param name="armId"></param>
+        /// <param name="key"></param>
         /// <returns>the key</returns>
         public static string GetValueFromArmId(string armId, string key)
         {

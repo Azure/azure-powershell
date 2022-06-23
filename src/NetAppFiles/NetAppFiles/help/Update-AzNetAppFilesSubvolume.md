@@ -44,7 +44,7 @@ The **Update-AzNetAppFilesSubvolume** cmdlet updates an ANF subvolume.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzNetAppFilesVolume -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSubvolume" -Size Size
+Update-AzNetAppFilesSubvolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSubvolume" -Size Size
 ```
 
 This command updates the ANF volume "MyAnfSubvolume" with the new size. This will truncate the subvolume to the provided size in bytes.

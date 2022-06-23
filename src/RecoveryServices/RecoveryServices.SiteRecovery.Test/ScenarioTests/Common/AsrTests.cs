@@ -12,46 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 
 namespace RecoveryServices.SiteRecovery.Test
 {
-    public class AsrCommonTests : AsrTestsBase
+    public class AsrCommonTests : RecoveryServicesSiteRecoveryTestRunner
     {
-        public XunitTracingInterceptor _logger;
+        private readonly string _credModule = $"ScenarioTests/Common/Common.VaultCredentials";
+        private readonly string _testModule = $"ScenarioTests/Common/AsrTests.ps1";
 
-        public AsrCommonTests(
-            ITestOutputHelper output)
+        public AsrCommonTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            this.VaultSettingsFilePath = System.IO.Path.Combine(
-                System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "Common", "Common.VaultCredentials");
-            this.PowershellFile = System.IO.Path.Combine(
-                System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "Common", "AsrTests.ps1");
-            this.Initialize();
+
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnumerationTests()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-SiteRecoveryEnumerationTests -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-SiteRecoveryEnumerationTests -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
 #if NETSTANDARD
@@ -59,48 +47,36 @@ namespace RecoveryServices.SiteRecovery.Test
 #else
         [Fact]
 #endif
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void V2AEvent()
         {
-            this.RunPowerShellTest(
-                _logger,
-             Constants.NewModel,
-             "Test-AsrEvent -vaultSettingsFilePath \"" + this.VaultSettingsFilePath + "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-AsrEvent -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void V2AGetJobTest()
         {
-            this.RunPowerShellTest(
-                _logger,
-             Constants.NewModel,
-             "Test-Job -vaultSettingsFilePath \"" + this.VaultSettingsFilePath + "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-Job -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void V2AGetNotificationTest()
         {
-            this.RunPowerShellTest(
-                _logger,
-             Constants.NewModel,
-             "Test-NotificationSettings -vaultSettingsFilePath \"" + this.VaultSettingsFilePath + "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-NotificationSettings -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CIKTokenValidation()
         {
-
             DateTime dateTime = new DateTime(636604658296924385, DateTimeKind.Utc);
             PSRecoveryServicesClient.asrVaultCreds = new ASRVaultCreds();
             PSRecoveryServicesClient.asrVaultCreds.ChannelIntegrityKey = "RandomRandom";
