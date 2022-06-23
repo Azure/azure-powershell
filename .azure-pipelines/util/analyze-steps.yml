@@ -29,9 +29,9 @@ steps:
     packageType: sdk
     version: 3.1.x
 
-- pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
-  displayName: 'Install platyPS'
-
+- pwsh: 'Install-Module "platyPS", "PSScriptAnalyzer" -Force -Confirm:$false -Scope CurrentUser'
+  displayName: 'Install PowerShell Dependencies'
+  
 - task: DotNetCoreCLI@2
   displayName: 'Generate Help'
   inputs:
