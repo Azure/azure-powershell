@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* [Breaking Change] Set parameter OptimizationType to mandatory in cmdlet `New-AzCdnEndpoint`
 
 ## Version 2.1.0
 * Upgraded API version to 2021-06-01

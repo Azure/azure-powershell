@@ -184,7 +184,7 @@ param(
     # At least one protocol (HTTP or HTTPS) must be allowed.
     ${IsHttpsAllowed},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.OptimizationType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.OptimizationType]
