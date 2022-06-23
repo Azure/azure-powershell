@@ -46,6 +46,8 @@ foreach ($file in $ChangedFiles)
 }
 if ($ModuleSet.Contains($ALL_MODULE))
 {
+    Write-Host $Env:
+    Write-Host $Env:SELECTEDMODULELIST
     $ModuleList = $Env:SELECTEDMODULELIST.Split(';')
 }
 else
