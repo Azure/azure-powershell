@@ -11,8 +11,11 @@ Locale: en-US
 Microsoft Azure PowerShell: SpringCloud cmdlets
 
 ## Az.SpringCloud Cmdlets
-### [Deploy-AzSpringCloudApp](Deploy-AzSpringCloudApp.md)
-Deploy the built jar to service.
+### [Disable-AzSpringCloudTestEndpoint](Disable-AzSpringCloudTestEndpoint.md)
+Disable test endpoint functionality for a Service.
+
+### [Enable-AzSpringCloudTestEndpoint](Enable-AzSpringCloudTestEndpoint.md)
+Enable test endpoint functionality for a Service.
 
 ### [Get-AzSpringCloud](Get-AzSpringCloud.md)
 Get a Service and its properties.
@@ -20,8 +23,74 @@ Get a Service and its properties.
 ### [Get-AzSpringCloudApp](Get-AzSpringCloudApp.md)
 Get an App and its properties.
 
+### [Get-AzSpringCloudAppBinding](Get-AzSpringCloudAppBinding.md)
+Get a Binding and its properties.
+
+### [Get-AzSpringCloudAppCustomDomain](Get-AzSpringCloudAppCustomDomain.md)
+Get the custom domain of one lifecycle application.
+
 ### [Get-AzSpringCloudAppDeployment](Get-AzSpringCloudAppDeployment.md)
 Get a Deployment and its properties.
+
+### [Get-AzSpringCloudAppDeploymentLogFileUrl](Get-AzSpringCloudAppDeploymentLogFileUrl.md)
+Get deployment log file URL
+
+### [Get-AzSpringCloudAppResourceUploadUrl](Get-AzSpringCloudAppResourceUploadUrl.md)
+Get an resource upload URL for an App, which may be artifacts or source archive.
+
+### [Get-AzSpringCloudBuildpackBinding](Get-AzSpringCloudBuildpackBinding.md)
+Get a buildpack binding by name.
+
+### [Get-AzSpringCloudBuildService](Get-AzSpringCloudBuildService.md)
+Get a build service resource.
+
+### [Get-AzSpringCloudBuildServiceAgentPool](Get-AzSpringCloudBuildServiceAgentPool.md)
+Get build service agent pool.
+
+### [Get-AzSpringCloudBuildServiceBuild](Get-AzSpringCloudBuildServiceBuild.md)
+Get a KPack build.
+
+### [Get-AzSpringCloudBuildServiceBuilder](Get-AzSpringCloudBuildServiceBuilder.md)
+Get a KPack builder.
+
+### [Get-AzSpringCloudBuildServiceBuildResult](Get-AzSpringCloudBuildServiceBuildResult.md)
+Get a KPack build result.
+
+### [Get-AzSpringCloudBuildServiceBuildResultLog](Get-AzSpringCloudBuildServiceBuildResultLog.md)
+Get a KPack build result log download URL.
+
+### [Get-AzSpringCloudBuildServiceResourceUploadUrl](Get-AzSpringCloudBuildServiceResourceUploadUrl.md)
+Get an resource upload URL for build service, which may be artifacts or source archive.
+
+### [Get-AzSpringCloudBuildServiceSupportedBuildpack](Get-AzSpringCloudBuildServiceSupportedBuildpack.md)
+Get the supported buildpack resource.
+
+### [Get-AzSpringCloudBuildServiceSupportedStack](Get-AzSpringCloudBuildServiceSupportedStack.md)
+Get the supported stack resource.
+
+### [Get-AzSpringCloudCertificate](Get-AzSpringCloudCertificate.md)
+Get the certificate resource.
+
+### [Get-AzSpringCloudConfigServer](Get-AzSpringCloudConfigServer.md)
+Get the config server and its properties.
+
+### [Get-AzSpringCloudConfigurationService](Get-AzSpringCloudConfigurationService.md)
+Get the Application Configuration Service and its properties.
+
+### [Get-AzSpringCloudMonitoringSetting](Get-AzSpringCloudMonitoringSetting.md)
+Get the Monitoring Setting and its properties.
+
+### [Get-AzSpringCloudRegistry](Get-AzSpringCloudRegistry.md)
+Get the Service Registry and its properties.
+
+### [Get-AzSpringCloudRuntimeVersion](Get-AzSpringCloudRuntimeVersion.md)
+Lists all of the available runtime versions supported by Microsoft.AppPlatform provider.
+
+### [Get-AzSpringCloudSku](Get-AzSpringCloudSku.md)
+Lists all of the available skus of the Microsoft.AppPlatform provider.
+
+### [Get-AzSpringCloudTestKey](Get-AzSpringCloudTestKey.md)
+List test keys for a Service.
 
 ### [New-AzSpringCloud](New-AzSpringCloud.md)
 Create a new Service or update an exiting Service.
@@ -29,8 +98,53 @@ Create a new Service or update an exiting Service.
 ### [New-AzSpringCloudApp](New-AzSpringCloudApp.md)
 Create a new App or update an exiting App.
 
+### [New-AzSpringCloudAppBinding](New-AzSpringCloudAppBinding.md)
+Create a new Binding or update an exiting Binding.
+
+### [New-AzSpringCloudAppCustomDomain](New-AzSpringCloudAppCustomDomain.md)
+Create or update custom domain of one lifecycle application.
+
 ### [New-AzSpringCloudAppDeployment](New-AzSpringCloudAppDeployment.md)
 Create a new Deployment or update an exiting Deployment.
+
+### [New-AzSpringCloudAppDeploymentHeapDump](New-AzSpringCloudAppDeploymentHeapDump.md)
+Generate Heap Dump
+
+### [New-AzSpringCloudAppDeploymentThreadDump](New-AzSpringCloudAppDeploymentThreadDump.md)
+Generate Thread Dump
+
+### [New-AzSpringCloudAppLoadedCertificateObject](New-AzSpringCloudAppLoadedCertificateObject.md)
+Create an in-memory object for LoadedCertificate.
+
+### [New-AzSpringCloudBuildpackBinding](New-AzSpringCloudBuildpackBinding.md)
+Create or update a buildpack binding.
+
+### [New-AzSpringCloudBuildpackPropertiesObject](New-AzSpringCloudBuildpackPropertiesObject.md)
+Create an in-memory object for BuildpackProperties.
+
+### [New-AzSpringCloudBuildpacksGroupPropertiesObject](New-AzSpringCloudBuildpacksGroupPropertiesObject.md)
+Create an in-memory object for BuildpacksGroupProperties.
+
+### [New-AzSpringCloudBuildServiceBuild](New-AzSpringCloudBuildServiceBuild.md)
+Create or update a KPack build.
+
+### [New-AzSpringCloudBuildServiceBuilder](New-AzSpringCloudBuildServiceBuilder.md)
+Create or update a KPack builder.
+
+### [New-AzSpringCloudCertificate](New-AzSpringCloudCertificate.md)
+Create or update certificate resource.
+
+### [New-AzSpringCloudConfigurationService](New-AzSpringCloudConfigurationService.md)
+Create the default Application Configuration Service or update the existing Application Configuration Service.
+
+### [New-AzSpringCloudConfigurationServiceGitRepositoryObject](New-AzSpringCloudConfigurationServiceGitRepositoryObject.md)
+Create an in-memory object for ConfigurationServiceGitRepository.
+
+### [New-AzSpringCloudGitPatternRepositoryObject](New-AzSpringCloudGitPatternRepositoryObject.md)
+Create an in-memory object for GitPatternRepository.
+
+### [New-AzSpringCloudTestKey](New-AzSpringCloudTestKey.md)
+Regenerate a test key for a Service.
 
 ### [Remove-AzSpringCloud](Remove-AzSpringCloud.md)
 Operation to delete a Service.
@@ -38,8 +152,29 @@ Operation to delete a Service.
 ### [Remove-AzSpringCloudApp](Remove-AzSpringCloudApp.md)
 Operation to delete an App.
 
+### [Remove-AzSpringCloudAppBinding](Remove-AzSpringCloudAppBinding.md)
+Operation to delete a Binding.
+
+### [Remove-AzSpringCloudAppCustomDomain](Remove-AzSpringCloudAppCustomDomain.md)
+Delete the custom domain of one lifecycle application.
+
 ### [Remove-AzSpringCloudAppDeployment](Remove-AzSpringCloudAppDeployment.md)
 Operation to delete a Deployment.
+
+### [Remove-AzSpringCloudBuildpackBinding](Remove-AzSpringCloudBuildpackBinding.md)
+Operation to delete a Buildpack Binding
+
+### [Remove-AzSpringCloudBuildServiceBuilder](Remove-AzSpringCloudBuildServiceBuilder.md)
+Delete a KPack builder.
+
+### [Remove-AzSpringCloudCertificate](Remove-AzSpringCloudCertificate.md)
+Delete the certificate resource.
+
+### [Remove-AzSpringCloudConfigurationService](Remove-AzSpringCloudConfigurationService.md)
+Disable the default Application Configuration Service.
+
+### [Remove-AzSpringCloudRegistry](Remove-AzSpringCloudRegistry.md)
+Disable the default Service Registry.
 
 ### [Restart-AzSpringCloudAppDeployment](Restart-AzSpringCloudAppDeployment.md)
 Restart the deployment.
@@ -47,8 +182,23 @@ Restart the deployment.
 ### [Start-AzSpringCloudAppDeployment](Start-AzSpringCloudAppDeployment.md)
 Start the deployment.
 
+### [Start-AzSpringCloudAppDeploymentJfr](Start-AzSpringCloudAppDeploymentJfr.md)
+Start JFR
+
 ### [Stop-AzSpringCloudAppDeployment](Stop-AzSpringCloudAppDeployment.md)
 Stop the deployment.
+
+### [Test-AzSpringCloudAppDomain](Test-AzSpringCloudAppDomain.md)
+Check the resource name is valid as well as not in use.
+
+### [Test-AzSpringCloudConfigServer](Test-AzSpringCloudConfigServer.md)
+Check if the config server settings are valid.
+
+### [Test-AzSpringCloudConfigurationService](Test-AzSpringCloudConfigurationService.md)
+Check if the Application Configuration Service settings are valid.
+
+### [Test-AzSpringCloudNameAvailability](Test-AzSpringCloudNameAvailability.md)
+Checks that the resource name is valid and is not already in use.
 
 ### [Update-AzSpringCloud](Update-AzSpringCloud.md)
 Operation to update an exiting Service.
@@ -56,6 +206,18 @@ Operation to update an exiting Service.
 ### [Update-AzSpringCloudApp](Update-AzSpringCloudApp.md)
 Operation to update an exiting App.
 
+### [Update-AzSpringCloudAppBinding](Update-AzSpringCloudAppBinding.md)
+Operation to update an exiting Binding.
+
+### [Update-AzSpringCloudAppCustomDomain](Update-AzSpringCloudAppCustomDomain.md)
+Update custom domain of one lifecycle application.
+
 ### [Update-AzSpringCloudAppDeployment](Update-AzSpringCloudAppDeployment.md)
 Operation to update an exiting Deployment.
+
+### [Update-AzSpringCloudConfigServer](Update-AzSpringCloudConfigServer.md)
+Update the config server.
+
+### [Update-AzSpringCloudMonitoringSetting](Update-AzSpringCloudMonitoringSetting.md)
+Update the Monitoring Setting.
 

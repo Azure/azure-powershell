@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/powershell/module/az.SpringCloud/new-azSpringCloudappdeployment
+online version: https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloudappdeployment
 schema: 2.0.0
 ---
 
@@ -12,13 +12,34 @@ Create a new Deployment or update an exiting Deployment.
 
 ## SYNTAX
 
+### AppDeploymentForJar (Default)
 ```
 New-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String>] [-Cpu <Int32>] [-EnvironmentVariable <Hashtable>]
- [-JvmOption <String>] [-MemoryInGb <Int32>] [-RuntimeVersion <RuntimeVersion>]
- [-SourceArtifactSelector <String>] [-SourceRelativePath <String>] [-SourceType <UserSourceType>]
- [-SourceVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ServiceName <String> -SourceFilePath <String> -SourceType <String> [-SubscriptionId <String>] [-Active]
+ [-AddonConfig <Hashtable>] [-EnvironmentVariable <Hashtable>] [-JvmOption <String>]
+ [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>] [-RuntimeVersion <String>]
+ [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AppDeploymentForNetCore
+```
+New-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGroupName <String>
+ -ServiceName <String> -SourceFilePath <String> -SourceType <String> [-SubscriptionId <String>] [-Active]
+ [-AddonConfig <Hashtable>] [-EnvironmentVariable <Hashtable>] [-NetCoreMainEntryPath <String>]
+ [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>] [-RuntimeVersion <String>]
+ [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AppDeploymentForSource
+```
+New-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGroupName <String>
+ -ServiceName <String> -SourceFilePath <String> -SourceType <String> [-SubscriptionId <String>] [-Active]
+ [-AddonConfig <Hashtable>] [-ArtifactSelector <String>] [-EnvironmentVariable <Hashtable>]
+ [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>] [-RuntimeVersion <String>]
+ [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +81,36 @@ Create a spring cloud deployment.
 
 ## PARAMETERS
 
+### -Active
+Indicates whether the Deployment is active
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AddonConfig
+Collection of addons
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AppName
 The name of the App resource.
 
@@ -75,12 +126,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AsJob
-Run the command as a job
+### -ArtifactSelector
+Selector for the artifact to be used for the deployment for multi-module projects.
+This should be
+    the relative path to the target module/project.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: AppDeploymentForSource
 Aliases:
 
 Required: False
@@ -90,11 +143,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Cpu
-Required CPU
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.Int32
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -136,26 +189,11 @@ Accept wildcard characters: False
 ```
 
 ### -JvmOption
-JVM parameter
+JVM parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MemoryInGb
-Required Memory size in GB
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: AppDeploymentForJar
 Aliases:
 
 Required: False
@@ -174,6 +212,21 @@ Parameter Sets: (All)
 Aliases: DeploymentName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetCoreMainEntryPath
+The path to the .NET executable relative to zip root.
+
+```yaml
+Type: System.String
+Parameter Sets: AppDeploymentForNetCore
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -211,11 +264,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuntimeVersion
-Runtime version
+### -ResourceRequestCpu
+Required CPU.
+1 core can be represented by 1 or 1000m.
+This should be 500m or 1 for Basic tier, and {500m, 1, 2, 3, 4} for Standard tier.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceRequestMemory
+Required memory.
+1 GB can be represented by 1Gi or 1024Mi.
+This should be {512Mi, 1Gi, 2Gi} for Basic tier, and {512Mi, 1Gi, 2Gi, ..., 8Gi} for Standard tier.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuntimeVersion
+Runtime version of the file.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -241,9 +328,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceArtifactSelector
-Selector for the artifact to be used for the deployment for multi-module projects.
-This should bethe relative path to the target module/project.
+### -SkuCapacity
+Current capacity of the target resource
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+Name of the Sku
 
 ```yaml
 Type: System.String
@@ -257,8 +358,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceRelativePath
-Relative path of the storage which stores the source
+### -SkuTier
+Tier of the Sku
 
 ```yaml
 Type: System.String
@@ -266,6 +367,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceFilePath
+The source code path of the Jar or Zip according to the SourceType parameter.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -273,29 +389,14 @@ Accept wildcard characters: False
 ```
 
 ### -SourceType
-Type of the source uploaded
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceVersion
-Version of the source
+Type of the source uploaded.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -314,6 +415,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+Version of the source.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -356,7 +472,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IDeploymentResource
 
 ## NOTES
 

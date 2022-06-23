@@ -1,43 +1,50 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/powershell/module/az.SpringCloud/deploy-azSpringCloudapp
+online version: https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildpackbinding
 schema: 2.0.0
 ---
 
-# Deploy-AzSpringCloudApp
+# New-AzSpringCloudBuildpackBinding
 
 ## SYNOPSIS
-Deploy the built jar to service.
+Create or update a buildpack binding.
 
 ## SYNTAX
 
 ```
-Deploy-AzSpringCloudApp -JarPath <String> -Name <String> -ResourceGroupName <String> -ServiceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzSpringCloudBuildpackBinding -BuilderName <String> -BuildServiceName <String> -Name <String>
+ -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String>] [-BindingType <BindingType>]
+ [-LaunchProperty <Hashtable>] [-LaunchSecret <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deploy the built jar to service.
+Create or update a buildpack binding.
 
 ## EXAMPLES
 
-### Example 1: Deploy local compiled jar to service by name.
+### Example 1: {{ Add title here }}
 ```powershell
-Deploy-AzSpringCloudApp -ResourceGroupName 'spring-cloud-rg' -ServiceName 'spring-cloud-service' -AppName 'gateway' -JarPath '/home/user/piggymetrics/gateway/target/gateway.jar'
+{{ Add code here }}
 ```
 
 ```output
-[1/3] Requesting for upload URL
-[2/3] Uploading package to blob
-[3/3] Updating deployment in app account-service (this operation can take a while to complete)
-Name Type
----- ----
-prod Microsoft.AppPlatform/Spring/apps/deployments
+{{ Add output here }}
 ```
 
-Deploy local compiled jar to service by name.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -50,6 +57,51 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BindingType
+Buildpack Binding Type
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.BindingType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BuilderName
+The name of the builder resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BuildServiceName
+The name of the build service resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -71,15 +123,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JarPath
-The path of the jar need to be deploied.
+### -LaunchProperty
+Non-sensitive properties for launchProperties
 
 ```yaml
-Type: System.String
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LaunchSecret
+Sensitive properties for launchProperties
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -87,12 +154,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the App resource.
+The name of the Buildpack Binding Name
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: AppName
+Aliases: BuildpackBindingName
 
 Required: True
 Position: Named
@@ -201,7 +268,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuildpackBindingResource
 
 ## NOTES
 

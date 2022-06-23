@@ -13,10 +13,12 @@ Create a new Service or update an exiting Service.
 ## SYNTAX
 
 ```
-New-AzSpringCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-GitPropertyUri <String>] [-Location <String>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
- [-TraceAppInsightInstrumentationKey <String>] [-TraceEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSpringCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Location <String>]
+ [-NetworkProfileResourceGroup <String>] [-NetworkProfileServiceCidr <String>]
+ [-NetworkProfileServiceResourceGroup <String>] [-NetworkProfileServiceSubnetId <String>]
+ [-NetworkProfileSubnetId <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,21 +111,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GitPropertyUri
-URI of the repository
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
 The GEO location of the resource.
 
@@ -148,6 +135,81 @@ Parameter Sets: (All)
 Aliases: ServiceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfileResourceGroup
+Name of the resource group containing network resources for customer apps in Azure Spring Apps
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfileServiceCidr
+Azure Spring Apps service reserved CIDR
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfileServiceResourceGroup
+Name of the resource group containing network resources of Azure Spring Apps Service Runtime
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfileServiceSubnetId
+Fully qualified resource Id of the subnet to host Azure Spring Apps Service Runtime
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfileSubnetId
+Fully qualified resource Id of the subnet to host customer apps in Azure Spring Apps
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -179,6 +241,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuCapacity
+Current capacity of the target resource
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -246,23 +323,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TraceAppInsightInstrumentationKey
-Target application insight instrumentation key
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TraceEnabled
-Indicates whether enable the tracing functionality
+### -ZoneRedundant
+.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -314,7 +376,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IServiceResource
 
 ## NOTES
 
