@@ -35,10 +35,10 @@ The **Set-AzManagedApplication** cmdlet updates managed applications
 
 ### Example 1: Update managed application definition description
 ```powershell
-Set-AzManagedApplication -ResourceId "/subscriptions/mySubId/resourcegroups/myRG/Microsoft.Solutions/applications/myApp" -Tag "test"
+Set-AzManagedApplication -ResourceId "/subscriptions/mySubId/resourcegroups/myRG/Microsoft.Solutions/applications/myApp" -Tag @{"key" = "value"}
 ```
 
-This command updates the managed application Tag
+This command updates the managed application tag
 
 ## PARAMETERS
 
