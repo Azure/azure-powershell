@@ -11,7 +11,7 @@
 	</PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="55.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="56.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="22.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.3.2-preview" />
 	<PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="5.0.0-preview" />
