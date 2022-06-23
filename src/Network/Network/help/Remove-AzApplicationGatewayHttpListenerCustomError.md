@@ -19,7 +19,7 @@ Remove-AzApplicationGatewayHttpListenerCustomError -StatusCode <String>
 ```
 
 ## DESCRIPTION
-The **Remove-AzApplicationGatewayCustomError** cmdlet removes a custom error from a http listener of an application gateway.
+The **Remove-AzApplicationGatewayHttpListenerCustomError** cmdlet removes a custom error from a http listener of an application gateway.
 
 ## EXAMPLES
 
