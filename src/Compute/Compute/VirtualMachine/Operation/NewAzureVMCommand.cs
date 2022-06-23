@@ -955,7 +955,7 @@ namespace Microsoft.Azure.Commands.Compute
                         }
 
                         var extClient = ComputeClient.ComputeManagementClient.VirtualMachineExtensions;
-                        var op = extClient.CreateOrUpdateWithHttpMessagesAsync
+                        var op = extClient.BeginCreateOrUpdateWithHttpMessagesAsync //.CreateOrUpdateWithHttpMessagesAsync
                             (
                                 this.ResourceGroupName,
                                 this.VM.Name,

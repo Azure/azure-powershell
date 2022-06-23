@@ -5810,7 +5810,7 @@ function Test-VirtualMachineGuestAttestation
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $rgname = "adsandorga9";
+        $rgname = "adsandorga11";
         $loc = "northeurope";
 
         # VM Profile & Hardware
