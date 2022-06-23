@@ -5810,7 +5810,7 @@ function Test-VirtualMachineGuestAttestation
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $rgname = "adsandorga5";
+        $rgname = "adsandorga9";
         $loc = "northeurope";
 
         # VM Profile & Hardware
@@ -5860,11 +5860,6 @@ function Test-VirtualMachineGuestAttestation
 
         New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig ;
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
-
-        # Create VM using Default Parameter set
-        $domainNameLabel = "d1" + $rgname;
-        $vmnameDef = "defvm" + $rgname;
-        $vmDef = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel;
 
     }
     finally 

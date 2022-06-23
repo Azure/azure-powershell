@@ -902,22 +902,34 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
-                    if (this.DisableIntegrityMonitoring != false &&
+                    if (this.DisableIntegrityMonitoring != true &&
                         this.VM.SecurityProfile.SecurityType == "TrustedLaunch" &&
                         this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
                         this.VM.SecurityProfile.UefiSettings.VTpmEnabled == true)
                     {
                         // install the vm extension 
-                        
+
+                        var extensionParams = new VirtualMachineExtension { };
+
                         if (IsLinuxOs()) //linux
                         {
                             //Set - AzVMExtension - Publisher "Microsoft.Azure.Security.LinuxAttestation" - ExtensionName "GuestAttestation" - ExtensionType "GuestAttestation" - VMName $vmName - ResourceGroupName $rgName - Location $location - TypeHandlerVersion "1.0";
-
+                            extensionParams = new VirtualMachineExtension
+                            {
+                                Location = this.Location,
+                                Publisher = "Microsoft.Azure.Security.LinuxAttestation",
+                                VirtualMachineExtensionType = "GuestAttestation",
+                                TypeHandlerVersion = "1.0",
+                                //Settings = this.Settings,
+                                //ProtectedSettings = this.ProtectedSettings,
+                                AutoUpgradeMinorVersion = true,
+                                EnableAutomaticUpgrade = true
+                            };
                         }
                         else //windows
                         {
                             //Set - AzVMExtension - Publisher "Microsoft.Azure.Security.WindowsAttestation" - ExtensionName "GuestAttestation" - ExtensionType "GuestAttestation" - VMName $vmName - ResourceGroupName $rgName - Location $location - TypeHandlerVersion "1.0";
-                            var extensionParams = new VirtualMachineExtension
+                            extensionParams = new VirtualMachineExtension
                             {
                                 Location = this.Location,
                                 Publisher = "Microsoft.Azure.Security.WindowsAttestation",
@@ -925,21 +937,32 @@ namespace Microsoft.Azure.Commands.Compute
                                 TypeHandlerVersion = "1.0",
                                 //Settings = this.Settings,
                                 //ProtectedSettings = this.ProtectedSettings,
-                                //AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
-                                //ForceUpdateTag = this.ForceRerun,
-                                //EnableAutomaticUpgrade = this.EnableAutomaticUpgrade
+                                //AutoUpgradeMinorVersion = true,
+                                //EnableAutomaticUpgrade = true
                             };
 
+
+
+                            //var extCli = new VirtualMachineExtensionClient();
+
+                            //var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                            //this.ResourceGroupName,
+                            //this.VMName,
+                            //this.Name,
+                            //parameters).GetAwaiter().GetResult();
+
                             
-
-                            var extCli = new VirtualMachineExtensionClient();
-
-                            var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VMName,
-                            this.Name,
-                            parameters).GetAwaiter().GetResult();
                         }
+
+                        var extClient = ComputeClient.ComputeManagementClient.VirtualMachineExtensions;
+                        var op = extClient.CreateOrUpdateWithHttpMessagesAsync
+                            (
+                                this.ResourceGroupName,
+                                this.VM.Name,
+                                "GuestAttestationExtension",
+                                extensionParams
+                            ).GetAwaiter().GetResult();
+
 
                     }
 
