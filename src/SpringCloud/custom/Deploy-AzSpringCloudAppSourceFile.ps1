@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-upload the built file to spring cloud app.
+Upload the built file to spring cloud app.
 .Description
-upload the built file to spring cloud app.
+Upload the built file to spring cloud app.
 .Example
 PS C:\> {{ Add code here }}
 

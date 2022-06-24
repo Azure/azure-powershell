@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: SpringCloud cmdlets
 Deploy the build file to an existing deployment.
 
 ### [Deploy-AzSpringCloudAppSourceFile](Deploy-AzSpringCloudAppSourceFile.md)
-upload the built file to spring cloud app.
+Upload the built file to spring cloud app.
 
 ### [Disable-AzSpringCloudTestEndpoint](Disable-AzSpringCloudTestEndpoint.md)
 Disable test endpoint functionality for a Service.

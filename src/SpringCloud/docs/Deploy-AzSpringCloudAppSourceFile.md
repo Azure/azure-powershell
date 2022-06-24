@@ -8,7 +8,7 @@ schema: 2.0.0
 # Deploy-AzSpringCloudAppSourceFile
 
 ## SYNOPSIS
-upload the built file to spring cloud app.
+Upload the built file to spring cloud app.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Deploy-AzSpringCloudAppSourceFile -FilePath <String> -Name <String> -ResourceGro
 ```
 
 ## DESCRIPTION
-upload the built file to spring cloud app.
+Upload the built file to spring cloud app.
 
 ## EXAMPLES
 
