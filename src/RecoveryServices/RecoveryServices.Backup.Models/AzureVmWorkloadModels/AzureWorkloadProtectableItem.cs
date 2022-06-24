@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Constructor. Takes the service client object representing the protected item 
         /// and converts it in to the PS protected item model
         /// </summary>
-        /// <param name="workloadProtectableItemResource"></param>
+        /// <param name="workloadProtectableItemResource">Service client object representing the protected item resource</param>
         /// <param name="containerName">Name of the container associated with this protected item</param>
         /// <param name="containerType">Type of the container associated with this protected item</param>
         public AzureWorkloadProtectableItem(WorkloadProtectableItemResource workloadProtectableItemResource,
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             Subinquireditemcount = protectedItem.Subinquireditemcount;
             Subprotectableitemcount = protectedItem.Subprotectableitemcount;
             Prebackupvalidation = protectedItem.Prebackupvalidation;
-            ProtectableItemType = workloadProtectableItemResource.Properties.GetType().ToString();            
+            ProtectableItemType = workloadProtectableItemResource.Properties.GetType().ToString();
 
             if (workloadProtectableItemResource.Properties.GetType() == typeof(AzureVmWorkloadSQLAvailabilityGroupProtectableItem))
             {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             else if (workloadProtectableItemResource.Properties.GetType() == typeof(AzureVmWorkloadSQLDatabaseProtectableItem))
             {
                 ProtectableItemType = CmdletModel.ProtectableItemType.SQLDataBase.ToString();
-            }            
+            }
         }
     }
 }

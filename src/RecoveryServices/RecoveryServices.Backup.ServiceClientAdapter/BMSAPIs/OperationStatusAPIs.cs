@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>
         /// Gets status of a generic operation on the protected item using the operation ID
         /// </summary>
-        /// <param name="secondaryRegion"></param>
+        /// <param name="secondaryRegion">secondary region where to trigger the restore</param>
         /// <param name="operationId">ID of the operation in progress</param>
         /// <returns>Operation status response returned by the service</returns>
         public RestAzureNS.AzureOperationResponse<CrrModel.OperationStatus>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Gets result of the refresh operation on the protection container using the operation ID
         /// </summary>
         /// <param name="operationId">ID of the operation in progress</param>
-        /// <param name="containerName"></param>
+        /// <param name="containerName">Name of the container which this item belongs to</param>
         /// <param name="vaultName"></param>
         /// <param name="resourceGroupName"></param>
         /// <returns></returns>
