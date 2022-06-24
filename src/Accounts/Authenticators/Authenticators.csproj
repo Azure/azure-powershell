@@ -37,4 +37,6 @@
     <Copy SourceFiles="@(OutputAssembly)" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.Accounts\PreloadAssemblies" />
   </Target>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

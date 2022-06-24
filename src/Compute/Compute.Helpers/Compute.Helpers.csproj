@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Compute</PsModuleName>
@@ -12,5 +12,7 @@
     <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers</RootNamespace>
     <NoWarn>$(NoWarn);CS0108</NoWarn>
   </PropertyGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>
