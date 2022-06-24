@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>DataFactory</PsModuleName>
@@ -15,5 +15,7 @@
     <PackageReference Include="Microsoft.Azure.Management.DataFactory" Version="6.3.0" />
     <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="4.14.7587.7" />
   </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>
