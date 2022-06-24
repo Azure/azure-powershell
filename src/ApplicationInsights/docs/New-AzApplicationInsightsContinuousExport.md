@@ -77,7 +77,7 @@ Allowed values include 'Requests', 'Custom Event', 'Exception', 'Metric', 'Page 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: DocumentType 
 
 Required: False
 Position: Named

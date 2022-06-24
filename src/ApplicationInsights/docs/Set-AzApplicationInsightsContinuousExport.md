@@ -14,7 +14,7 @@ Create a Continuous Export configuration of an Application Insights component.
 
 ```
 Set-AzApplicationInsightsContinuousExport -ExportId <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DestinationType <String>] [-DisableConfiguration] [-DocumentType  <String[]>]
+ [-SubscriptionId <String>] [-DestinationType <String>] [-DisableConfiguration] [-DocumentType <String[]>]
  [-NotificationQueueEnabled <String>] [-NotificationQueueUri <String>] [-StorageAccountId <String>]
  [-StorageLocation <String>] [-StorageSASUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -85,13 +85,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DocumentType 
-
+### -DocumentType
+The document types to be exported, as comma separated values.
+Allowed values include 'Requests', 'Event', 'Exceptions', 'Metrics', 'PageViews', 'PageViewPerformance', 'Rdd', 'PerformanceCounters', 'Availability', 'Messages'.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: DocumentType 
 
 Required: False
 Position: Named
