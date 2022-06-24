@@ -87,12 +87,12 @@ Accept wildcard characters: False
 
 ### -DocumentType
 The document types to be exported, as comma separated values.
-Allowed values include 'Requests', 'Event', 'Exceptions', 'Metrics', 'PageViews', 'PageViewPerformance', 'Rdd', 'PerformanceCounters', 'Availability', 'Messages'.
+Allowed values include 'Requests', 'Custom Event', 'Exception', 'Metric', 'Page View', 'Page Load', 'Dependency', 'Performance Counter', 'Availability', 'Trace'.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases: DocumentType 
+Aliases:
 
 Required: False
 Position: Named
