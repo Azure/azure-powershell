@@ -5810,9 +5810,6 @@ function Test-VirtualMachineGuestAttestation
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        ##$rgname = "adsandorga12";
-        ##$loc = "northeurope";
-
         # VM Profile & Hardware
         $vmname = 'vm' + $rgname;
         $domainNameLabel = "d1" + $rgname;
@@ -5835,7 +5832,7 @@ function Test-VirtualMachineGuestAttestation
         $extDefaultName = "GuestAttestationExtension";
 
         # Creating a VM using Simple parameterset
-        $password = Get-PasswordForVM;#"Testing1234567"; # Get-PasswordForVM
+        $password = Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
