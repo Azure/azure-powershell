@@ -39,6 +39,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// </summary>
         private const string AccountResourceIdParameterSet = "AccountResourceId";
 
+        /// <summary>
+        /// Default policy name 
+        /// </summary>
+        private const string DefaultPolicyName = "default";
+
         [Parameter(
          Position = 0,
          Mandatory = true,
@@ -95,7 +100,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
 
             Track2.BlobInventoryPolicyResource policy =
-                this.StorageClientTrack2.GetBlobInventoryPolicyResource(this.ResourceGroupName, this.StorageAccountName, "default").Get();
+                this.StorageClientTrack2.GetBlobInventoryPolicyResource(this.ResourceGroupName, this.StorageAccountName, DefaultPolicyName).Get();
 
             WriteObject(new PSBlobInventoryPolicy(policy, this.ResourceGroupName, this.StorageAccountName), true);
         }

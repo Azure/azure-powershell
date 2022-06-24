@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.LastModifiedTime = policy.Data.LastModifiedOn;
             this.SystemData = policy.Data.SystemData is null ? null : new PSSystemData(policy.Data.SystemData);
             this.Enabled = policy.Data.Policy.Enabled;
+            // TODO: Destination is currently not supported yet. Will add later. 
 
             if (policy.Data.Policy.Rules != null)
             {
