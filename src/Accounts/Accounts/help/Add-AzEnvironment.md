@@ -3,7 +3,7 @@ external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
 online version: https://docs.microsoft.com/powershell/module/az.accounts/add-azenvironment
 schema: 2.0.0
----
+--- 
 
 # Add-AzEnvironment
 
@@ -159,6 +159,12 @@ TestEnvironment TestRMEndpoint       TestADEndpoint/
 ```
 
 In this example, we are discovering a new Azure environment from the `https://configuredmetadata.net` Uri.
+
+
+### Example 3: Test
+```powershell
+PS C:\>Add-AzEnvironment -Name Test
+```
 
 ## PARAMETERS
 

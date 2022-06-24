@@ -32,6 +32,7 @@ Clears the values of configs that are set by the user. By default all the config
 
 ### Example 1
 ```powershell
+$null = gal
 Clear-AzConfig -Force
 ```
 

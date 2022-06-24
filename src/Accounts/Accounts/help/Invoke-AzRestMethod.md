@@ -3,7 +3,7 @@ external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
 online version: https://docs.microsoft.com/powershell/module/az.accounts/invoke-azrestmethod
 schema: 2.0.0
----
+--- 
 
 # Invoke-AzRestMethod
 
@@ -97,6 +97,24 @@ Content    : {"@odata.context":"https://graph.microsoft.com/v1.0/$metadata#users
 ```
 
 Get current signed in user via MicrosoftGraph API. This example is equivalent to `Get-AzADUser -SignedIn`.
+
+### Example 3
+```powershell
+Invoke-AzRestMethod -Name "test" -Path "/subscriptions/{subscription}/resourcegroups/{resourcegroup}/providers/microsoft.operationalinsights/workspaces/{workspace}?api-version={API}"
+```
+
+```output
+{{Add Output Here}}
+```
+
+### Example 4
+```powershell
+```
+
+### Example 5
+```powershell
+Invoke-AzRestMethod "test" -Path "/subscriptions/{subscription}/resourcegroups/{resourcegroup}/providers/microsoft.operationalinsights/workspaces/{workspace}?api-version={API}"
+```
 
 ## PARAMETERS
 
