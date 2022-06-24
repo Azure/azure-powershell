@@ -1,6 +1,6 @@
 <!--
     Please leave this section at the top of the change log.
-
+ 
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
 
     ## Upcoming Release
