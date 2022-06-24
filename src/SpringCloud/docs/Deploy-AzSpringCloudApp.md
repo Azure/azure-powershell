@@ -1,28 +1,25 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloud
+online version: https://docs.microsoft.com/powershell/module/az.SpringCloud/deploy-azSpringCloudapp
 schema: 2.0.0
 ---
 
-# New-AzSpringCloud
+# Deploy-AzSpringCloudApp
 
 ## SYNOPSIS
-Create a new Service or update an exiting Service.
+Deploy the build file to an existing deployment.
 
 ## SYNTAX
 
 ```
-New-AzSpringCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Location <String>]
- [-NetworkProfileResourceGroup <String>] [-NetworkProfileServiceCidr <String>]
- [-NetworkProfileServiceResourceGroup <String>] [-NetworkProfileServiceSubnetId <String>]
- [-NetworkProfileSubnetId <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Deploy-AzSpringCloudApp -DeploymentName <String> -FilePath <String> -Name <String> -ResourceGroupName <String>
+ -ServiceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new Service or update an exiting Service.
+Deploy the build file to an existing deployment.
 
 ## EXAMPLES
 
@@ -80,28 +77,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The GEO location of the resource.
+### -DeploymentName
+The name of the App resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the Service resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ServiceName
 
 Required: True
 Position: Named
@@ -110,75 +92,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkProfileResourceGroup
-Name of the resource group containing network resources for customer apps in Azure Spring Apps
+### -FilePath
+The path of the file need to be deploied.
+The file supports Jar, NetcoreZip and Source.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkProfileServiceCidr
-Azure Spring Apps service reserved CIDR
+### -Name
+The name of the App resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: AppName
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkProfileServiceResourceGroup
-Name of the resource group containing network resources of Azure Spring Apps Service Runtime
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkProfileServiceSubnetId
-Fully qualified resource Id of the subnet to host Azure Spring Apps Service Runtime
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkProfileSubnetId
-Fully qualified resource Id of the subnet to host customer apps in Azure Spring Apps
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -216,45 +154,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuCapacity
-Current capacity of the target resource
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuName
-Name of the Sku
+### -ServiceName
+The name of the Service resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuTier
-Tier of the Sku
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -273,36 +181,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Tags of the service which is a list of key value pairs that describe the resource.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ZoneRedundant
-.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -345,7 +223,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
 
 ## NOTES
 

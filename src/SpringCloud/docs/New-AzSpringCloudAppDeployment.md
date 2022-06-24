@@ -12,33 +12,11 @@ Create a new Deployment or update an exiting Deployment.
 
 ## SYNTAX
 
-### AppDeploymentForJar (Default)
 ```
 New-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGroupName <String>
- -ServiceName <String> -SourceFilePath <String> -SourceType <String> [-SubscriptionId <String>] [-Active]
- [-AddonConfig <Hashtable>] [-EnvironmentVariable <Hashtable>] [-JvmOption <String>]
- [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>] [-RuntimeVersion <String>]
- [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AppDeploymentForNetCore
-```
-New-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGroupName <String>
- -ServiceName <String> -SourceFilePath <String> -SourceType <String> [-SubscriptionId <String>] [-Active]
- [-AddonConfig <Hashtable>] [-EnvironmentVariable <Hashtable>] [-NetCoreMainEntryPath <String>]
- [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>] [-RuntimeVersion <String>]
- [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AppDeploymentForSource
-```
-New-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGroupName <String>
- -ServiceName <String> -SourceFilePath <String> -SourceType <String> [-SubscriptionId <String>] [-Active]
- [-AddonConfig <Hashtable>] [-ArtifactSelector <String>] [-EnvironmentVariable <Hashtable>]
- [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>] [-RuntimeVersion <String>]
- [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Version <String>]
+ -ServiceName <String> [-SubscriptionId <String>] [-Active] [-AddonConfig <Hashtable>]
+ [-EnvironmentVariable <Hashtable>] [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>]
+ [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Source <IUserSourceInfo>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -126,23 +104,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ArtifactSelector
-Selector for the artifact to be used for the deployment for multi-module projects.
-This should be
-    the relative path to the target module/project.
-
-```yaml
-Type: System.String
-Parameter Sets: AppDeploymentForSource
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
 Run the command as a job
 
@@ -188,21 +149,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JvmOption
-JVM parameter.
-
-```yaml
-Type: System.String
-Parameter Sets: AppDeploymentForJar
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the Deployment resource.
 
@@ -212,21 +158,6 @@ Parameter Sets: (All)
 Aliases: DeploymentName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetCoreMainEntryPath
-The path to the .NET executable relative to zip root.
-
-```yaml
-Type: System.String
-Parameter Sets: AppDeploymentForNetCore
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -285,21 +216,6 @@ Accept wildcard characters: False
 Required memory.
 1 GB can be represented by 1Gi or 1024Mi.
 This should be {512Mi, 1Gi, 2Gi} for Basic tier, and {512Mi, 1Gi, 2Gi, ..., 8Gi} for Standard tier.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RuntimeVersion
-Runtime version of the file.
 
 ```yaml
 Type: System.String
@@ -373,30 +289,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceFilePath
-The source code path of the Jar or Zip according to the SourceType parameter.
+### -Source
+Uploaded source information of the deployment.
+To construct, see NOTES section for SOURCE properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IUserSourceInfo
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceType
-Type of the source uploaded.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -415,21 +317,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Version
-Version of the source.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -477,6 +364,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+SOURCE <IUserSourceInfo>: Uploaded source information of the deployment.
+  - `Type <String>`: Type of the source uploaded
+  - `[Version <String>]`: Version of the source
 
 ## RELATED LINKS
 

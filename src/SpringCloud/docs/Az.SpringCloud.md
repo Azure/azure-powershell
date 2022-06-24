@@ -11,6 +11,12 @@ Locale: en-US
 Microsoft Azure PowerShell: SpringCloud cmdlets
 
 ## Az.SpringCloud Cmdlets
+### [Deploy-AzSpringCloudApp](Deploy-AzSpringCloudApp.md)
+Deploy the build file to an existing deployment.
+
+### [Deploy-AzSpringCloudAppSourceFile](Deploy-AzSpringCloudAppSourceFile.md)
+upload the built file to spring cloud app.
+
 ### [Disable-AzSpringCloudTestEndpoint](Disable-AzSpringCloudTestEndpoint.md)
 Disable test endpoint functionality for a Service.
 
@@ -34,9 +40,6 @@ Get a Deployment and its properties.
 
 ### [Get-AzSpringCloudAppDeploymentLogFileUrl](Get-AzSpringCloudAppDeploymentLogFileUrl.md)
 Get deployment log file URL
-
-### [Get-AzSpringCloudAppResourceUploadUrl](Get-AzSpringCloudAppResourceUploadUrl.md)
-Get an resource upload URL for an App, which may be artifacts or source archive.
 
 ### [Get-AzSpringCloudBuildpackBinding](Get-AzSpringCloudBuildpackBinding.md)
 Get a buildpack binding by name.
@@ -109,6 +112,15 @@ Create a new Deployment or update an exiting Deployment.
 
 ### [New-AzSpringCloudAppDeploymentHeapDump](New-AzSpringCloudAppDeploymentHeapDump.md)
 Generate Heap Dump
+
+### [New-AzSpringCloudAppDeploymentJarUploadedObject](New-AzSpringCloudAppDeploymentJarUploadedObject.md)
+Create an in-memory object for JarUploadedUserSourceInfo.
+
+### [New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject](New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject.md)
+Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
+
+### [New-AzSpringCloudAppDeploymentSourceUploadedObject](New-AzSpringCloudAppDeploymentSourceUploadedObject.md)
+Create an in-memory object for SourceUploadedUserSourceInfo.
 
 ### [New-AzSpringCloudAppDeploymentThreadDump](New-AzSpringCloudAppDeploymentThreadDump.md)
 Generate Thread Dump

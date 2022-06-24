@@ -97,7 +97,11 @@ directive:
       parameter-name: NetworkProfileServiceRuntimeSubnetId
     set:
       parameter-name: NetworkProfileServiceSubnetId
-
+  # Customization for add default locatio value when not pass location parameter
+  - where:
+      verb: New
+      subject: ^Service$
+    hide: true
   - where:
       subject: ^Service(.*)
     set:
@@ -302,10 +306,16 @@ directive:
       parameter-name: (^GitProperty)(.*)
     set:
       parameter-name: Git$2
-  # hide cmdlet
+
+  # Returns a random value of RelativePath after each execution of Get-AzSpringCloudAppResourceUploadUrl
   - where:
-      verb: New|Update
-      subject: ^AppDeployment$
+      verb: Get
+      subject: ^AppResourceUploadUrl$
+    hide: true
+  # Customization for add default locatio value when not pass location parameter
+  - where:
+      verb: New
+      subject: ^App$
     hide: true
 
   - no-inline:
@@ -318,4 +328,10 @@ directive:
       - GitPatternRepository
     # - LoadedCertificate
     # --> rename  New-AzSpringCloudLoadedCertificateObject New-AzSpringCloudAppLoadedCertificateObject
+    # - JarUploadedUserSourceInfo
+    # --> rename New-AzSpringCloudDeploymentJarUploadedObject --> New-AzSpringCloudAppDeploymentJarUploadedObject
+    # - NetCoreZipUploadedUserSourceInfo
+    # --> rename New-AzSpringCloudDeploymentNetCoreZipUploadedObject --> New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject
+    # - SourceUploadedUserSourceInfo
+    # --> rename New-AzSpringCloudDeploymentSourceUploadedObject --> New-AzSpringCloudAppDeploymentSourceUploadedObject
 ```
