@@ -5810,8 +5810,8 @@ function Test-VirtualMachineGuestAttestation
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $rgname = "adsandorga11";
-        $loc = "northeurope";
+        ##$rgname = "adsandorga12";
+        ##$loc = "northeurope";
 
         # VM Profile & Hardware
         $vmname = 'vm' + $rgname;
@@ -5832,10 +5832,10 @@ function Test-VirtualMachineGuestAttestation
         $securityType = "TrustedLaunch";
         $secureboot = $true;
         $vtpm = $true;
-        
+        $extDefaultName = "GuestAttestationExtension";
 
         # Creating a VM using Simple parameterset
-        $password = "Testing1234567"; # Get-PasswordForVM
+        $password = Get-PasswordForVM;#"Testing1234567"; # Get-PasswordForVM
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
@@ -5850,9 +5850,7 @@ function Test-VirtualMachineGuestAttestation
 
         # VM
         $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize;
-        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred ;
-        #Set-AzVMOSDisk -VM $vmConfig -StorageAccountType "Premium_LRS" -Caching ReadWrite -Name $OSDiskName -DiskSizeInGB $OSDiskSizeinGB -CreateOption FromImage ;
-        #Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
+        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred;
         Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
         Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
         $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType;
@@ -5860,7 +5858,9 @@ function Test-VirtualMachineGuestAttestation
 
         New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig ;
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
+        $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
 
+        Assert-AreEqual $vmExt.Name $extDefaultName;
     }
     finally 
     {
