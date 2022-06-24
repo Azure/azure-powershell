@@ -9,6 +9,7 @@ SecurityTmp/
 tmp/
 FilesChanged.txt
 CsprojMappings.json
+global.json
 
 obj
 bin

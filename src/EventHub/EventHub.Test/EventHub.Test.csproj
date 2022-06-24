@@ -12,11 +12,15 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
-    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="5.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="4.0.0-preview.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\EventHub\EventHub.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceBYOKTests\" />
   </ItemGroup>
 </Project>

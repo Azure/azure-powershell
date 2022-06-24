@@ -93,7 +93,7 @@ This command gets all managed HSMs in the subscription that start with "myhsm".
 
 ### Example 5: List deleted managed HSMs
 ```powershell
-PS C:\> Get-AzKeyVaultManagedHsm -InRemovedState
+Get-AzKeyVaultManagedHsm -InRemovedState
 ```
 ```output
 Name                     Location      DeletionDate           ScheduledPurgeDate    Purge Protection Enabled?
