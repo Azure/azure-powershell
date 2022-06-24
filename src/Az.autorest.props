@@ -29,7 +29,6 @@
     <!-- warning CS1587: XML comment is not placed on a valid language element -->
     <!-- warning CS1571: XML comment has a duplicate param tag for 'serverName' -->
     <NoWarn>$(NoWarn);1570, 1571, 1572, 1573, 1574, 1584, 1587</NoWarn>
-    <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
