@@ -36,6 +36,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         public const string SubscriptionParameterSet = "SubscriptionScopedQuery";
 
         /// <summary>
+        /// Management group scoped query parameter set.
+        /// </summary>
+        public const string ManagementGroupParameterSet = "ManagementGroupScopedQuery";
+
+        /// <summary>
         /// Tenant scoped query parameter set.
         /// </summary>
         public const string TenantParameterSet = "TenantScopedQuery";
@@ -79,7 +84,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the management groups.
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = TenantParameterSet, HelpMessage = "Management group(s) to run query against")]
+        [Parameter(Mandatory = false, ParameterSetName = ManagementGroupParameterSet, HelpMessage = "Management group(s) to run query against")]
         public string[] ManagementGroup
         {
             get;
@@ -90,7 +95,19 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// Gets or sets if query should succeed with partial scopes when total number of scopes exceeds the number allowed on server side.
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = TenantParameterSet,
+            HelpMessage = "Run query across all available subscriptions in the current tenant.")]
+        public SwitchParameter OnTenantScope
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets if query should succeed with partial scopes when total number of scopes exceeds the number allowed on server side.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = ManagementGroupParameterSet, 
             HelpMessage = "Indicates if query should succeed when only partial number of subscription underneath can be processed by server")]
+        [Parameter(ParameterSetName = TenantParameterSet)]
         public SwitchParameter AllowPartialScope
         {
             get;
@@ -148,7 +165,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             }
 
             IList<string> subscriptions = null;
-            if (managementGroups == null)
+            if (!this.OnTenantScope.IsPresent && managementGroups == null)
             {
                 subscriptions = this.GetSubscriptions()?.ToList();
                 if (subscriptions != null && subscriptions.Count > SubscriptionLimit)

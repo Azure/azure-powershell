@@ -53,6 +53,13 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Tenant()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-Tenant");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SkipTokenQuery()
         {
             TestRunner.RunTestScript("Search-AzureRmGraph-SkipTokenQuery");
@@ -70,6 +77,13 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
         public void SubscriptionAndManagementGroupQueryError()
         {
             TestRunner.RunTestScript("Search-AzureRmGraph-SubscriptionAndManagementGroupQueryError");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SubscriptionAndTenantQueryError()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-SubscriptionAndTenantQueryError");
         }
     }
 }
