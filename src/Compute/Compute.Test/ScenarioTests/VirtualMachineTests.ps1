@@ -5829,7 +5829,8 @@ function Test-VirtualMachineGuestAttestation
         $securityType = "TrustedLaunch";
         $secureboot = $true;
         $vtpm = $true;
-        $extDefaultName = "GuestAttestationExtension";
+        $extDefaultName = "GuestAttestation";
+        $vmGADefaultIDentity = "SystemAssigned";
 
         # Creating a VM using Simple parameterset
         $password = Get-PasswordForVM;
@@ -5857,7 +5858,9 @@ function Test-VirtualMachineGuestAttestation
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
         $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
 
+        # Assert the default extension has been installed, and the Identity.Type defaulted to SystemAssigned.
         Assert-AreEqual $vmExt.Name $extDefaultName;
+        Assert-AreEqual $vm.Identity.Type $vmGADefaultIDentity;
     }
     finally 
     {

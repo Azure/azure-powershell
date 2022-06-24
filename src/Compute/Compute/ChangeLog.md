@@ -24,6 +24,13 @@
 * An unresolved path can be passed in for '-LocalFilePath' for `Add-AzVhd`. The cmdlet with unresolve the path itself.
 * Added `-DataAccessAuthMode` parameter to Add-AzVhd DirectUploadToManagedDisk parameter set. 
 * Added `-EnabldUltraSSD` parameter to New-AzHostGroup.
+* Added the `-DisableIntegrityMonitoring` switch parameter to the `New-AzVM` cmdlet. 
+  Changed the default behavior for `New-AzVM` when these conditions are met:
+  1) `-DisableIntegrityMonitoring` is not true.
+  2) `SecurityType` on the SecurityProfile is `TrustedLaunch`.
+  3) `VTpmEnabled` on the SecurityProfile is true.
+  4) `SecureBootEnabled` on the SecurityProfile is true. 
+  Now `New-AzVM` will install the `Guest Attestation` extension to the new VM when these conditions are met.
 
 ## Version 4.27.0
 * Edited `New-AzVm` cmdlet internal logic to use the `PlatformFaultDomain` value in the `PSVirtualMachine` object passed to it in the new virtual machine.

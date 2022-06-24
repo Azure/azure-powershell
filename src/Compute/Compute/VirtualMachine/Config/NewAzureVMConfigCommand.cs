@@ -179,12 +179,6 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
         public int vCPUCountPerCore { get; set; }
 
-        [Parameter(
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "This flag disables the default behavior to install the Guest Attestation extension to certain virtual machines of the TrustedLaunch security type.")]
-        public SwitchParameter DisableIntegrityMonitoring { get; set; }
-
         public override void ExecuteCmdlet()
         {
             var vm = new PSVirtualMachine

@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "This flag disables the default behavior to install the Guest Attestation extension to certain virtual machines of the TrustedLaunch security type.")]
+           HelpMessage = "This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.")]
         public SwitchParameter DisableIntegrityMonitoring { get; set; }
 
         public override void ExecuteCmdlet()
@@ -799,6 +799,15 @@ namespace Microsoft.Azure.Commands.Compute
                 ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
             }
 
+            // Check if Identity needs to be defaulted in. 
+            if (shouldGuestAttestationExtBeInstalled() &&
+                this.VM != null &&
+                this.VM.Identity == null)
+            {
+                this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
+            }
+
+
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>
@@ -902,72 +911,65 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
-                    if (this.DisableIntegrityMonitoring != true &&
-                        this.VM.SecurityProfile.SecurityType == "TrustedLaunch" &&
-                        this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
-                        this.VM.SecurityProfile.UefiSettings.VTpmEnabled == true)
+                    // Default behavior for Trusted Launch VM with SecureBootEnabled and VTpmEnabled is to install the Guest Attestation esxtension.
+                    // If DisableIntegrityMonitoring is true, then this extension will not be installed. 
+                    if (shouldGuestAttestationExtBeInstalled())
                     {
-                        // install the vm extension 
-
                         var extensionParams = new VirtualMachineExtension { };
 
                         if (IsLinuxOs()) //linux
                         {
-                            //Set - AzVMExtension - Publisher "Microsoft.Azure.Security.LinuxAttestation" - ExtensionName "GuestAttestation" - ExtensionType "GuestAttestation" - VMName $vmName - ResourceGroupName $rgName - Location $location - TypeHandlerVersion "1.0";
                             extensionParams = new VirtualMachineExtension
                             {
                                 Location = this.Location,
                                 Publisher = "Microsoft.Azure.Security.LinuxAttestation",
                                 VirtualMachineExtensionType = "GuestAttestation",
                                 TypeHandlerVersion = "1.0",
-                                //Settings = this.Settings,
-                                //ProtectedSettings = this.ProtectedSettings,
-                                AutoUpgradeMinorVersion = true,
-                                EnableAutomaticUpgrade = true
+                                //TODO: remove these AutoUpgradeMinorVersion = true,
+                                //EnableAutomaticUpgrade = true
                             };
                         }
                         else //windows
                         {
-                            //Set - AzVMExtension - Publisher "Microsoft.Azure.Security.WindowsAttestation" - ExtensionName "GuestAttestation" - ExtensionType "GuestAttestation" - VMName $vmName - ResourceGroupName $rgName - Location $location - TypeHandlerVersion "1.0";
                             extensionParams = new VirtualMachineExtension
                             {
                                 Location = this.Location,
                                 Publisher = "Microsoft.Azure.Security.WindowsAttestation",
                                 VirtualMachineExtensionType = "GuestAttestation",
                                 TypeHandlerVersion = "1.0",
-                                //Settings = this.Settings,
-                                //ProtectedSettings = this.ProtectedSettings,
-                                //AutoUpgradeMinorVersion = true,
-                                //EnableAutomaticUpgrade = true
                             };
-
-
-
-                            //var extCli = new VirtualMachineExtensionClient();
-
-                            //var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                            //this.ResourceGroupName,
-                            //this.VMName,
-                            //this.Name,
-                            //parameters).GetAwaiter().GetResult();
-
-                            
                         }
 
                         var extClient = ComputeClient.ComputeManagementClient.VirtualMachineExtensions;
-                        var op = extClient.BeginCreateOrUpdateWithHttpMessagesAsync //.CreateOrUpdateWithHttpMessagesAsync
+                        var op = extClient.BeginCreateOrUpdateWithHttpMessagesAsync
                             (
                                 this.ResourceGroupName,
                                 this.VM.Name,
-                                "GuestAttestationExtension",
+                                "GuestAttestation",
                                 extensionParams
                             ).GetAwaiter().GetResult();
-
-
                     }
 
                     WriteObject(psResult);
                 });
+            }
+        }
+
+        /// Summary: Method to determine if the Guest Attestation extension
+        /// should be installed on the VM being created.
+        /// Currently only functions with the DefaultParamSet parameter set. 
+        private bool shouldGuestAttestationExtBeInstalled()
+        {
+            if (this.DisableIntegrityMonitoring != true &&
+                        this.VM.SecurityProfile.SecurityType == "TrustedLaunch" &&
+                        this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
+                        this.VM.SecurityProfile.UefiSettings.VTpmEnabled == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
