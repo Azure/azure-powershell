@@ -37,7 +37,7 @@ Get the status of the replication
 
 ### Example 1
 ```powershell
-Get-AzNetAppFilesReplicationStatus -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -PoolName "MyDestinationPool" -VolumeName "MyVol"
+Get-AzNetAppFilesReplicationStatus -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyVol"
 ```
 
 ```output

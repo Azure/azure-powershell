@@ -34,6 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
     {
         /// <summary>
         /// Gets or sets the legacy InputObject.
+        /// </summary>
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,

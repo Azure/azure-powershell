@@ -97,7 +97,10 @@ CmdletsToExport = 'New-AzEventHubNamespace', 'Get-AzEventHubNamespace',
                'Set-AzEventHubCluster', 'Get-AzEventHubCluster', 
                'Remove-AzEventHubCluster', 'Get-AzEventHubClustersAvailableRegion', 
                'Get-AzEventHubSchemaGroup', 'New-AzEventHubSchemaGroup', 
-               'Remove-AzEventHubSchemaGroup', 'New-AzEventHubEncryptionConfig'
+               'Remove-AzEventHubSchemaGroup', 'New-AzEventHubEncryptionConfig',
+               'New-AzEventHubApplicationGroup', 'Set-AzEventHubApplicationGroup',
+               'Remove-AzEventHubApplicationGroup', 'Get-AzEventHubApplicationGroup',
+               'New-AzEventHubThrottlingPolicyConfig'
 
 # Variables to export from this module
 # VariablesToExport = @()

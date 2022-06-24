@@ -43,7 +43,7 @@ Returns the properties of a lab Schedule.
 
 ### Example 1: Get all schedules for a lab.
 ```powershell
-Get-AzLabSchedule -ResourceGroupName "group name" -LabName "lab name"
+Get-AzLabServicesSchedule -ResourceGroupName "group name" -LabName "lab name"
 ```
 
 ```output

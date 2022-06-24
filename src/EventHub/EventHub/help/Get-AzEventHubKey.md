@@ -49,7 +49,7 @@ Gets details of Primary and Secondary connectionstrings and keys for the authori
 
 ### Example 3: Alias (GeoRecovery Configuration)
 ```powershell
-Get-AzEventHubKey -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -AliasName MyAliasName -Name MyAuthRuleName
+Get-AzEventHubKey -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -AliasName MyAliasName -Name MyAuthRuleName
 ```
 
 Gets details of Primary, Secondary, AliasPrimary and AliasSecondary connectionstrings and keys for the authorization rule \`MyAuthRuleName\`.

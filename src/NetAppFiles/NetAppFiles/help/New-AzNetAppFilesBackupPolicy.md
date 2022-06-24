@@ -29,7 +29,7 @@ New-AzNetAppFilesBackupPolicy -Name <String> [-Enabled] [-DailyBackupsToKeep <In
 ```
 
 ## DESCRIPTION
-The **New-AzNetAppFilesActiveDirectory** cmdlet creates a new backup policy for an ANF account.
+The **New-AzNetAppFilesBackupPolicy** cmdlet creates a new backup policy for an ANF account.
 
 ## EXAMPLES
 
