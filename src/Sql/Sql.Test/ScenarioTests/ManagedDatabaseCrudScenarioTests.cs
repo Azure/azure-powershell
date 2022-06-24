@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetManagedDatabase()
         {
-            RunPowerShellTest("Test-SetManagedDatabase");
+            TestRunner.RunTestScript("Test-SetManagedDatabase");
         }
     }
 }

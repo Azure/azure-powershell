@@ -426,25 +426,43 @@ function Test-SetManagedDatabase
 		Assert-Null $db.Tags
 
 		$tags = @{tag1= "value1"}
-		# Set by using ManagedInstance as input
+
 		$db = Set-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Tags $tags
 		Assert-AreEqual $db.Name $managedDatabaseName
 		Assert-NotNull $db.Tags
 		Assert-AreEqual True $db.Tags.ContainsKey("tag1")
 
-		$tags = @{tag2= "valueInputObject"}
-		# Set by using ManagedInstance as input
-		$db = Set-AzSqlInstanceDatabase -DatabaseObject $db -Tags $tags
+		$tags = @{managedDatabaseTag= "valueInputObject"}
+		# Set by using ManagedDatabase as input
+		$db = Set-AzSqlInstanceDatabase -InputObject $db -Tags $tags
 		Assert-AreEqual $db.Name $managedDatabaseName
 		Assert-NotNull $db.Tags
-		Assert-AreEqual True $db.Tags.ContainsKey("tag2")
+		Assert-AreEqual True $db.Tags.ContainsKey("managedDatabaseTag")
+
+		$tags = @{managedInstanceTag= "managedInstanceInputObject"}
+		# Set by using ManagedInstance as input
+		$db = Set-AzSqlInstanceDatabase -TopLevelResourceObject $managedInstance -Name $db.Name -Tags $tags
+		Assert-AreEqual $db.Name $managedDatabaseName
+		Assert-NotNull $db.Tags
+		Assert-AreEqual True $db.Tags.ContainsKey("managedInstanceTag")
 		
-		# Create with default values via piping
-		$tags = @{tag3= "valuePiping"}
+		# Set tags via piping
+		$tags = @{piping= "valuePiping"}
 		$db = $db | Set-AzSqlInstanceDatabase -Tags $tags
 		Assert-AreEqual $db.Name $managedDatabaseName
 		Assert-NotNull $db.Tags
-		Assert-AreEqual True $db.Tags.ContainsKey("tag3")
+		Assert-AreEqual True $db.Tags.ContainsKey("piping")
+
+		# Set tags via resourceId
+		$tags = @{resourceIdTag= "resourceIdTagValue"}
+		$db = Set-AzSqlInstanceDatabase -ResourceId $db.Id -Tags $tags
+		Assert-AreEqual $db.Name $managedDatabaseName
+		Assert-NotNull $db.Tags
+		Assert-AreEqual True $db.Tags.ContainsKey("resourceIdTag")
+
+		# Expect exception when setting on db that doesn't exists
+		Assert-Throws { Set-AzSqlInstanceDatabase -Name "nonexisting_db" -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Tags $tags }
+
 	}
 	finally
 	{

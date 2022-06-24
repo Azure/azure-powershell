@@ -38,6 +38,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         protected const string SetByInputObjectParameterSet =
             "SetInstanceDatabaseFromAzureSqlManagedDatabaseModel";
 
+        protected const string SetByParentObjectParameterSet =
+            "SetInstanceDatabaseFromAzureSqlManagedInstanceModel";
+
         protected const string SetByResourceIdParameterSet =
             "SetInstanceDatabaseFromAzureResourceId";
 
@@ -47,7 +50,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = SetByNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 0,
-            HelpMessage = "The name of the instance database to create.")]
+            HelpMessage = "The name of the managed instance database to update.")]
+        [Parameter(ParameterSetName = SetByParentObjectParameterSet)]
         [Alias("InstanceDatabaseName")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", "ResourceGroupName", "InstanceName")]
         [ValidateNotNullOrEmpty]
@@ -59,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = SetByNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 1,
-            HelpMessage = "The name of the instance.")]
+            HelpMessage = "The name of the managed instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public override string InstanceName { get; set; }
@@ -79,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// Gets or sets the tags associated with the instance database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the instance database")]
+            HelpMessage = "The tags to associate with the managed instance database")]
         [Alias("Tags")]
         public Hashtable Tag { get; set; }
 
@@ -92,8 +96,20 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "The database object")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceObject")]
+        public AzureSqlManagedDatabaseModel InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the instance object
+        /// </summary>
+        [Parameter(ParameterSetName = SetByParentObjectParameterSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "The managed instance object")]
+        [ValidateNotNullOrEmpty]
         [Alias("ParentObject")]
-        public AzureSqlManagedDatabaseModel DatabaseObject { get; set; }
+        public AzureSqlManagedInstanceModel TopLevelResourceObject { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id of the instance to get
@@ -105,7 +121,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             HelpMessage = "The instance database resource id")]
         [ValidateNotNullOrEmpty]
         [Alias("ParentResourceId")]
-        public string InstanceDatabaseResourceId { get; set; }
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -114,32 +130,29 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
-        /// Executes the cmdlet.
-        /// </summary>
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
-        }
-
-        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
         protected override AzureSqlManagedDatabaseModel GetEntity()
         {
-            if (string.Equals(this.ParameterSetName, SetByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            switch(ParameterSetName)
             {
-                ResourceGroupName = DatabaseObject.ResourceGroupName;
-                InstanceName = DatabaseObject.ManagedInstanceName;
-                Name = DatabaseObject.Name;
-            }
-            else if (string.Equals(this.ParameterSetName, SetByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
-            {
-                var resourceInfo = new ResourceIdentifier(InstanceDatabaseResourceId);
+                case SetByInputObjectParameterSet:
+                    ResourceGroupName = InputObject.ResourceGroupName;
+                    InstanceName = InputObject.ManagedInstanceName;
+                    Name = InputObject.Name;
+                    break;
+                case SetByResourceIdParameterSet:
+                    var resourceInfo = new ResourceIdentifier(ResourceId);
 
-                ResourceGroupName = resourceInfo.ResourceGroupName;
-                InstanceName = resourceInfo.ParentResource;
-                Name = resourceInfo.ResourceName;
+                    ResourceGroupName = resourceInfo.ResourceGroupName;
+                    InstanceName = resourceInfo.ParentResource.Substring(resourceInfo.ParentResource.LastIndexOf("/") + 1);
+                    Name = resourceInfo.ResourceName;
+                    break;
+                case SetByParentObjectParameterSet:
+                    ResourceGroupName = TopLevelResourceObject.ResourceGroupName;
+                    InstanceName = TopLevelResourceObject.ManagedInstanceName;
+                    break;
             }
 
             return ModelAdapter.GetManagedDatabase(ResourceGroupName, InstanceName, Name);
@@ -170,16 +183,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <returns>The input entity</returns>
         protected override AzureSqlManagedDatabaseModel PersistChanges(AzureSqlManagedDatabaseModel entity)
         {
-            return ModelAdapter.UpdateManagedDatabase(this.ResourceGroupName, this.InstanceName, entity);
-        }
-
-        /// <summary>
-        /// Strips away the create or update properties from the model so that just the regular properties
-        /// are written to cmdlet output.
-        /// </summary>
-        protected override object TransformModelToOutputObject(AzureSqlManagedDatabaseModel model)
-        {
-            return model;
+            return ModelAdapter.UpsertManagedDatabase(ResourceGroupName, InstanceName, entity);
         }
     }
 }

@@ -78,14 +78,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         }
 
         /// <summary>
-        /// Updates a managed database
-        /// </summary>
-        public Management.Sql.Models.ManagedDatabase Update(string resourceGroupName, string managedInstanceName, string databaseName, Management.Sql.Models.ManagedDatabaseUpdate parameters)
-        {
-            return GetCurrentSqlClient().ManagedDatabases.Update(resourceGroupName, managedInstanceName, databaseName, parameters);
-        }
-
-        /// <summary>
         /// Deletes a managed database
         /// </summary>
         public void Remove(string resourceGroupName, string managedInstanceName, string databaseName)
