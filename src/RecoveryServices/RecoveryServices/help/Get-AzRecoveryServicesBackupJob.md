@@ -62,7 +62,8 @@ Therefore, it uses the default value of the current time.
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $Jobs = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
 $Job = $Jobs[0]
-While ( $Job.Status -ne Completed ) {
+$Completed = 'Completed'
+While ( $Job.Status -ne $Completed ) {
     Write-Host -Object "Waiting for completion..."
     Start-Sleep -Seconds 10
     $Job = Get-AzRecoveryServicesBackupJob -Job $Job -VaultId $vault.ID
