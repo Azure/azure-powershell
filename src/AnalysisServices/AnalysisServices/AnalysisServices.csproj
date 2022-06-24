@@ -16,4 +16,6 @@
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
 
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Post.props" />
+
 </Project>

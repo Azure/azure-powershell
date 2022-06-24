@@ -54,4 +54,6 @@
     </ProjectReference>
   </ItemGroup>
 
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Post.props" />
+
 </Project>

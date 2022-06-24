@@ -23,4 +23,6 @@
     <None Update="help\*.md" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Post.props" />
+
 </Project>

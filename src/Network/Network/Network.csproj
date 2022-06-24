@@ -41,4 +41,6 @@
     <Folder Include="RouteServerPeer\" />
   </ItemGroup>
 
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Post.props" />
+
 </Project>

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Batch</PsModuleName>
@@ -22,5 +22,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
   </ItemGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Post.props" />
 
 </Project>
