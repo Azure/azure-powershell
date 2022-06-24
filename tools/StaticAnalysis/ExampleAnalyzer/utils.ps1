@@ -8,8 +8,9 @@
                 DeletePromptAndSeparateOutput
                 AnalysisOutput
         Functions:  Get-ExamplesDetailsFromMd
-                    ExceptionRecord
+                    Get-NonExceptionRecord
                     Measure-SectionMissingAndOutputScript
+                    Measure-NotInWhiteList
                     Get-ScriptAnalyzerResult
 #>
 
@@ -115,11 +116,12 @@ function Get-ExamplesDetailsFromMd {
             if ($exampleOutputBlocks.Count -eq 0) {
                 foreach ($exampleCodeBlock in $exampleCodeBlocks) {
                     $codeRegex = "\n(([A-Za-z \t])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*)*[ \t]*((([A-Za-z]\w+-[A-Za-z]\w+\b(.ps1)?(?!(-|   +\w)))|(" +
-                    "(@?\((?>\((?<pair>)|[^\(\)]+|\)(?<-pair>))*(?(pair)(?!))\) *[|.-] *\w)|" +
-                    "(\[(?>\[(?<pair>)|[^\[\]]+|\](?<-pair>))*(?(pair)(?!))\]\$)|" +
-                    "(@{(?>{(?<pair>)|[^{}]+|}(?<-pair>))*(?(pair)(?!))})|" +
-                    "('(?>'(?<pair>)|[^']+|'(?<-pair>))*(?(pair)(?!))' *[|.-] *\w)|" +
-                    "((?<!``)`"(?>(?<!``)`"(?<pair>)|[\s\S]|(?<!``)`"(?<-pair>))*(?(pair)(?!))(?<!``)`" *[|.-] *\w)|" +
+                    "(@?\((?>\((?<pair>)|[^\(\)]+|\)(?<-pair>))*(?(pair)(?!))\) *[|.-] *\w)|" + # match ()
+                    "(\[(?>\[(?<pair>)|[^\[\]]+|\](?<-pair>))*(?(pair)(?!))\]\$)|" + # match []
+                    "((\$\w*\s*=.*)?@{(?>{(?<pair>)|[^{}]+|}(?<-pair>))*(?(pair)(?!))})|" + # match @{}
+                    "('(?>'(?<pair>)|[^']+|'(?<-pair>))*(?(pair)(?!))' *[|.-] *\w)|" + # match ''
+                    "((?<!``)`"(?>(?<!``)`"(?<pair>)|[\s\S]|(?<!``)`"(?<-pair>))*(?(pair)(?!))(?<!``)`" *[|.-] *\w)|" + # match ""
+                    "(\$\w*\s*=.*)?(@`"\s*\n?\{\s*)(.*\n)*(\s*\}\s*\n?`"@)|"+ # match @" "@
                     "\$))(?!\.)([\w-~``'`"$= \t:;<>@()\[\]{},.+*/|\\&!?%#]*[``|][ \t]*(\n|\r\n)?)*([\w-~``'`"$= \t:;<>@()\[\]{},.+*/|\\&!?%#]*(?=\n|\r\n|#)))"
                     $exampleCodeLines = ($exampleCodeBlock.Value | Select-String -Pattern $codeRegex -CaseSensitive -AllMatches).Matches
                     if ($exampleCodeLines.Count -eq 0) {
@@ -143,7 +145,7 @@ function Get-ExamplesDetailsFromMd {
                                 if ($i -eq 0) {
                                     $startIndex = $exampleCodeBlock.Value.IndexOf("`n")
                                     $output = $exampleCodeBlock.Value.Substring($startIndex, $exampleCodeLines[$i].Index - $startIndex).Trim()
-                                    if ($output -ne "") {
+                                    if ($output -ne "" -and $output.Trim() -notlike "#*") {
                                         $exampleOutputs += $output
                                     }
                                 }
@@ -154,12 +156,12 @@ function Get-ExamplesDetailsFromMd {
                                 else {
                                     $nextStartIndex = $exampleCodeBlock.Value.LastIndexOf("`n")
                                 }
-                                 # If an output line starts with "-", it's an incomplete codeline, but it should still be added to output.
+                                # If an output line starts with "-", it's an incomplete codeline, but it should still be added to output.
                                 $output = $exampleCodeBlock.Value.Substring($startIndex, $nextStartIndex - $startIndex).Trim()
                                 if ($output -match "^-+\w") {
                                     $exampleOutputs += $output
                                 }
-                                elseif ($output -ne "") {
+                                elseif ($output -ne "" -and $output.Trim() -notlike "#*") {
                                     $exampleOutputs += $output
                                 }
                             }
@@ -215,7 +217,7 @@ function Get-ExamplesDetailsFromMd {
     .SYNOPSIS
     Except the suppressed records
 #>
-function ExceptionRecord{
+function Get-NonExceptionRecord{
     param(
         [AnalysisOutput[]]$records
     )
@@ -505,7 +507,7 @@ function Measure-SectionMissingAndOutputScript {
     }
 
     # Except the suppressed records
-    $results = ExceptionRecord $results
+    $results = Get-NonExceptionRecord $results
 
     return @{
         Scale = $scale
@@ -513,6 +515,26 @@ function Measure-SectionMissingAndOutputScript {
         DeletePromptAndSeparateOutput = $deletePromptAndSeparateOutput
         Errors = $results
     }
+}
+
+<#
+    .SYNOPSIS
+    Measure whether the AnalysisOutput entry is in white list.
+#>
+function Measure-NotInWhiteList{
+    param (
+        [AnalysisOutput]$result
+    )
+    # Skip the unexpected error caused by using <xxx> to assign parameters
+    if($result.RuleName -eq "RedirectionNotSupported"){
+        return $false
+    }
+    # Skip the invaild cmdlet "<"
+    $CommandName = ($result.Description -split " ")[0]
+    if($CommandName -eq "<"){
+        return $false
+    }
+    return $true
 }
 
 <#
@@ -559,11 +581,11 @@ function Get-ScriptAnalyzerResult {
                 Cmdlet = ($analysisResult.Message -split "-")[1] + "-" + ($analysisResult.Message -split "-")[2]
                 Example = ($analysisResult.Message -split "-")[3]
                 RuleName = $analysisResult.RuleName
-                Description = ($analysisResult.Message -split "@")[1] -replace "`"","`'" -replace "`n"," " -replace "`r"," "
+                Description = ($analysisResult.Message -split "#@#")[1] -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 Severity = $Severity
                 Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 ProblemID = $analysisResult.RuleSuppressionID
-                Remediation = ($analysisResult.Message -split "@")[2] -replace "`"","`'" -replace "`n"," " -replace "`r"," "
+                Remediation = ($analysisResult.Message -split "#@#")[2] -replace "`"","`'" -replace "`n"," " -replace "`r"," "
             }
         }
         else{
@@ -579,10 +601,13 @@ function Get-ScriptAnalyzerResult {
                 Remediation = "Unexpected Error! Please check your example or contact the Azure Powershell Team."
                 }
             }
-        $results += $result
+        # Measure whether the result is in the white list
+        if(Measure-NotInWhiteList $result){
+           $results += $result 
+        }
     }
     #Except the suppressed records
-    $results = ExceptionRecord $results
+    $results = Get-NonExceptionRecord $results
 
     return $results
 }
