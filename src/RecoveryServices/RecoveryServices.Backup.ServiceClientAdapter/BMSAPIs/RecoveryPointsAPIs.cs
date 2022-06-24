@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="containerName">Name of the container which the item belongs to</param>
         /// <param name="protectedItemName">Name of the item</param>
-        /// <param name="moveRequest"></param>
+        /// <param name="moveRequest">List Recovery points Recommended for Move Request</param>
         /// <param name="vaultName"></param>
         /// <param name="resourceGroupName"></param>
         /// <returns>List of recovery points</returns>
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 AzureFabricName,
                 containerName,
                 protectedItemName,
-                moveRequest             
+                moveRequest
                 ).Result.Body;
 
             Func<string, RestAzureNS.IPage<RecoveryPointResource>> listNextAsync =
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="containerName">Name of the container which the item belongs to</param>
         /// <param name="protectedItemName">Name of the item</param>
-        /// <param name="moveRPAcrossTiersRequest"></param>
+        /// <param name="moveRPAcrossTiersRequest">Move Resource Across Tiers Request</param>
         /// <param name="recoveryPointId"></param>
         /// <param name="vaultName"></param>
         /// <param name="resourceGroupName"></param>
