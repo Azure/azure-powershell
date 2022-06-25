@@ -344,9 +344,9 @@
 			</ListControl>
 		</View>
 		<View>
-		  <Name>Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateEndpointAttributes</Name>
+		  <Name>Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateEndpointConnectionAttributes</Name>
 		  <ViewSelectedBy>
-			  <TypeName>Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateEndpointAttributes</TypeName>
+			  <TypeName>Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateEndpointConnectionAttributes</TypeName>
 		  </ViewSelectedBy>
 		  <ListControl>
 			  <ListEntries>
@@ -391,7 +391,7 @@
 			  </ListEntries>
 		  </ListControl>
 	  </View>
-	  <View>
+		<View>
 		  <Name>Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateLinkResourceAttributes</Name>
 		  <ViewSelectedBy>
 			  <TypeName>Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateLinkResourceAttributes</TypeName>
