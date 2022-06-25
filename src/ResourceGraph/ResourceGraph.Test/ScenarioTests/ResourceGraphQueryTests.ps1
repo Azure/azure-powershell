@@ -149,12 +149,12 @@ function Search-AzureRmGraph-Tenant
 	$queryResultTenant = Search-AzGraph $query -OnTenantScope
 	$queryResultTenantWithPartialScope = Search-AzGraph $query -OnTenantScope -AllowPartialScope
 	
-	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse $queryResultTenant	
+	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse[PSObject] $queryResultTenant	
 	Assert-Null $queryResultTenant.SkipToken
 	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResultTenant.Data
 	Assert-AreEqual $testSubId $queryResultTenant.Data.subscriptionId
 	
-	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse $queryResultTenantWithPartialScope
+	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse[PSObject] $queryResultTenantWithPartialScope
 	Assert-Null $queryResultTenantWithPartialScope.SkipToken
 	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResultTenantWithPartialScope.Data
 	Assert-AreEqual $testSubId $queryResultTenantWithPartialScope.Data.subscriptionId

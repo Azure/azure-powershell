@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Tenant()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-Tenant");
+            TestRunner.RunTestScript("Search-AzureRmGraph-Tenant");
         }
 
         [Fact]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionAndTenantQueryError()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-SubscriptionAndTenantQueryError");
+            TestRunner.RunTestScript("Search-AzureRmGraph-SubscriptionAndTenantQueryError");
         }
     }
 }
