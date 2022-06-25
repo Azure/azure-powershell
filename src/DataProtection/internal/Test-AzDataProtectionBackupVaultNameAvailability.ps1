@@ -20,20 +20,16 @@ API to check for resource name availability
 .Description
 API to check for resource name availability
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ICheckNameAvailabilityRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.ICheckNameAvailabilityRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ICheckNameAvailabilityResult
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.ICheckNameAvailabilityResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -60,7 +56,7 @@ PARAMETER <ICheckNameAvailabilityRequest>: CheckNameAvailability Request
 https://docs.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupvaultnameavailability
 #>
 function Test-AzDataProtectionBackupVaultNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ICheckNameAvailabilityResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.ICheckNameAvailabilityResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Check', Mandatory)]
@@ -96,7 +92,7 @@ param(
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ICheckNameAvailabilityRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.ICheckNameAvailabilityRequest]
     # CheckNameAvailability Request
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -170,6 +166,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Check = 'Az.DataProtection.private\Test-AzDataProtectionBackupVaultNameAvailability_Check';
             CheckExpanded = 'Az.DataProtection.private\Test-AzDataProtectionBackupVaultNameAvailability_CheckExpanded';
@@ -185,6 +182,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -193,15 +191,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnEndpointResourceUsag
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnEndpointResourceUsage' {
+Describe 'Get-AzCdnEndpointResourceUsage' -Tag 'LiveOnly' {
     It 'List' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)

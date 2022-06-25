@@ -12,30 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class SecurityAdvancedThreatProtectionTests
+    public class SecurityAdvancedThreatProtectionTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public SecurityAdvancedThreatProtectionTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SecurityAdvancedThreatProtectionTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzSecurityAdvancedThreatProtection-ResourceId");
+            TestRunner.RunTestScript("Test-AzSecurityAdvancedThreatProtection-ResourceId");
         }
-        
     }
 }

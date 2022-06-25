@@ -21,23 +21,16 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     /// <summary>
     /// The get legacy tests.
     /// </summary>
-    public class GetRxRoutes
+    public class GetRxRoutes : PeeringTestRunner
     {
-        /// <summary>
-        /// The logger.
-        /// </summary>
-        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="GetRxRoutes"/> class.
         /// </summary>
         /// <param name="output">
         /// The output.
         /// </param>
-        public GetRxRoutes(Xunit.Abstractions.ITestOutputHelper output)
+        public GetRxRoutes(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         /// <summary>
@@ -47,7 +40,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRxRoutes()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetRxRoutes");
+            TestRunner.RunTestScript("Test-GetRxRoutes");
         }
 
         /// <summary>
@@ -57,7 +50,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListRxRoutesAsPath()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ListRxRoutesAsPath");
+            TestRunner.RunTestScript("Test-ListRxRoutesAsPath");
         }
     }
 }

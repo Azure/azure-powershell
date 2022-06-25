@@ -240,7 +240,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Changes the Vault context
         /// </summary>
-        /// <param name="vault">vault object</param>
+        /// <param name="vaultName">Name of the vault</param>
+        /// <param name="resourceGroupName">Name of the resouce group</param>
         /// <returns>credential object</returns>
         public long? getVaultAuthType(string resourceGroupName, string vaultName)
         {

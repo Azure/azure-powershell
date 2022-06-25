@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     using System;
 
     /// <summary>
-    /// Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+    /// Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}"
@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzFunctionApp_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Generated]
     public partial class UpdateAzFunctionApp_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener
@@ -35,6 +35,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>ARM resource for a site.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePatchResource _siteEnvelopeBody = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SitePatchResource();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -56,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is <code>true</code>.",
         SerializedName = @"clientAffinityEnabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter ClientAffinityEnabled { get => SiteEnvelopeBody.ClientAffinityEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => SiteEnvelopeBody.ClientAffinityEnabled = value; }
+        public global::System.Management.Automation.SwitchParameter ClientAffinityEnabled { get => _siteEnvelopeBody.ClientAffinityEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.ClientAffinityEnabled = value; }
 
         /// <summary>
         /// <code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>.
@@ -70,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>. Default is <code>false</code>.",
         SerializedName = @"clientCertEnabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter ClientCertEnabled { get => SiteEnvelopeBody.ClientCertEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => SiteEnvelopeBody.ClientCertEnabled = value; }
+        public global::System.Management.Automation.SwitchParameter ClientCertEnabled { get => _siteEnvelopeBody.ClientCertEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.ClientCertEnabled = value; }
 
         /// <summary>client certificate authentication comma-separated exclusion paths</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "client certificate authentication comma-separated exclusion paths")]
@@ -81,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"client certificate authentication comma-separated exclusion paths",
         SerializedName = @"clientCertExclusionPaths",
         PossibleTypes = new [] { typeof(string) })]
-        public string ClientCertExclusionPath { get => SiteEnvelopeBody.ClientCertExclusionPath ?? null; set => SiteEnvelopeBody.ClientCertExclusionPath = value; }
+        public string ClientCertExclusionPath { get => _siteEnvelopeBody.ClientCertExclusionPath ?? null; set => _siteEnvelopeBody.ClientCertExclusionPath = value; }
 
         /// <summary>
         /// Application setting overrides for cloned app. If specified, these settings override the settings cloned from source app.
@@ -96,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Application setting overrides for cloned app. If specified, these settings override the settings cloned from source app. Otherwise, application settings from source app are retained.",
         SerializedName = @"appSettingsOverrides",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides CloningInfoAppSettingsOverride { get => SiteEnvelopeBody.CloningInfoAppSettingsOverride ?? null /* object */; set => SiteEnvelopeBody.CloningInfoAppSettingsOverride = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides CloningInfoAppSettingsOverride { get => _siteEnvelopeBody.CloningInfoAppSettingsOverride ?? null /* object */; set => _siteEnvelopeBody.CloningInfoAppSettingsOverride = value; }
 
         /// <summary>
         /// <code>true</code> to clone custom hostnames from source app; otherwise, <code>false</code>.
@@ -109,7 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> to clone custom hostnames from source app; otherwise, <code>false</code>.",
         SerializedName = @"cloneCustomHostNames",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter CloningInfoCloneCustomHostName { get => SiteEnvelopeBody.CloningInfoCloneCustomHostName ?? default(global::System.Management.Automation.SwitchParameter); set => SiteEnvelopeBody.CloningInfoCloneCustomHostName = value; }
+        public global::System.Management.Automation.SwitchParameter CloningInfoCloneCustomHostName { get => _siteEnvelopeBody.CloningInfoCloneCustomHostName ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.CloningInfoCloneCustomHostName = value; }
 
         /// <summary>
         /// <code>true</code> to clone source control from source app; otherwise, <code>false</code>.
@@ -122,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> to clone source control from source app; otherwise, <code>false</code>.",
         SerializedName = @"cloneSourceControl",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter CloningInfoCloneSourceControl { get => SiteEnvelopeBody.CloningInfoCloneSourceControl ?? default(global::System.Management.Automation.SwitchParameter); set => SiteEnvelopeBody.CloningInfoCloneSourceControl = value; }
+        public global::System.Management.Automation.SwitchParameter CloningInfoCloneSourceControl { get => _siteEnvelopeBody.CloningInfoCloneSourceControl ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.CloningInfoCloneSourceControl = value; }
 
         /// <summary><code>true</code> to configure load balancing for source and destination app.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "<code>true</code> to configure load balancing for source and destination app.")]
@@ -133,7 +136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> to configure load balancing for source and destination app.",
         SerializedName = @"configureLoadBalancing",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter CloningInfoConfigureLoadBalancing { get => SiteEnvelopeBody.CloningInfoConfigureLoadBalancing ?? default(global::System.Management.Automation.SwitchParameter); set => SiteEnvelopeBody.CloningInfoConfigureLoadBalancing = value; }
+        public global::System.Management.Automation.SwitchParameter CloningInfoConfigureLoadBalancing { get => _siteEnvelopeBody.CloningInfoConfigureLoadBalancing ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.CloningInfoConfigureLoadBalancing = value; }
 
         /// <summary>
         /// Correlation ID of cloning operation. This ID ties multiple cloning operationstogether to use the same snapshot.
@@ -146,7 +149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Correlation ID of cloning operation. This ID ties multiple cloning operationstogether to use the same snapshot.",
         SerializedName = @"correlationId",
         PossibleTypes = new [] { typeof(string) })]
-        public string CloningInfoCorrelationId { get => SiteEnvelopeBody.CloningInfoCorrelationId ?? null; set => SiteEnvelopeBody.CloningInfoCorrelationId = value; }
+        public string CloningInfoCorrelationId { get => _siteEnvelopeBody.CloningInfoCorrelationId ?? null; set => _siteEnvelopeBody.CloningInfoCorrelationId = value; }
 
         /// <summary>App Service Environment.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "App Service Environment.")]
@@ -157,7 +160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"App Service Environment.",
         SerializedName = @"hostingEnvironment",
         PossibleTypes = new [] { typeof(string) })]
-        public string CloningInfoHostingEnvironment { get => SiteEnvelopeBody.CloningInfoHostingEnvironment ?? null; set => SiteEnvelopeBody.CloningInfoHostingEnvironment = value; }
+        public string CloningInfoHostingEnvironment { get => _siteEnvelopeBody.CloningInfoHostingEnvironment ?? null; set => _siteEnvelopeBody.CloningInfoHostingEnvironment = value; }
 
         /// <summary><code>true</code> to overwrite destination app; otherwise, <code>false</code>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "<code>true</code> to overwrite destination app; otherwise, <code>false</code>.")]
@@ -168,7 +171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> to overwrite destination app; otherwise, <code>false</code>.",
         SerializedName = @"overwrite",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter CloningInfoOverwrite { get => SiteEnvelopeBody.CloningInfoOverwrite ?? default(global::System.Management.Automation.SwitchParameter); set => SiteEnvelopeBody.CloningInfoOverwrite = value; }
+        public global::System.Management.Automation.SwitchParameter CloningInfoOverwrite { get => _siteEnvelopeBody.CloningInfoOverwrite ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.CloningInfoOverwrite = value; }
 
         /// <summary>
         /// ARM resource ID of the source app. App resource ID is of the form /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
@@ -183,7 +186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"ARM resource ID of the source app. App resource ID is of the form /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.",
         SerializedName = @"sourceWebAppId",
         PossibleTypes = new [] { typeof(string) })]
-        public string CloningInfoSourceWebAppId { get => SiteEnvelopeBody.CloningInfoSourceWebAppId ?? null; set => SiteEnvelopeBody.CloningInfoSourceWebAppId = value; }
+        public string CloningInfoSourceWebAppId { get => _siteEnvelopeBody.CloningInfoSourceWebAppId ?? null; set => _siteEnvelopeBody.CloningInfoSourceWebAppId = value; }
 
         /// <summary>Location of source app ex: West US or North Europe</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Location of source app ex: West US or North Europe")]
@@ -194,7 +197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Location of source app ex: West US or North Europe",
         SerializedName = @"sourceWebAppLocation",
         PossibleTypes = new [] { typeof(string) })]
-        public string CloningInfoSourceWebAppLocation { get => SiteEnvelopeBody.CloningInfoSourceWebAppLocation ?? null; set => SiteEnvelopeBody.CloningInfoSourceWebAppLocation = value; }
+        public string CloningInfoSourceWebAppLocation { get => _siteEnvelopeBody.CloningInfoSourceWebAppLocation ?? null; set => _siteEnvelopeBody.CloningInfoSourceWebAppLocation = value; }
 
         /// <summary>
         /// ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
@@ -207,7 +210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.",
         SerializedName = @"trafficManagerProfileId",
         PossibleTypes = new [] { typeof(string) })]
-        public string CloningInfoTrafficManagerProfileId { get => SiteEnvelopeBody.CloningInfoTrafficManagerProfileId ?? null; set => SiteEnvelopeBody.CloningInfoTrafficManagerProfileId = value; }
+        public string CloningInfoTrafficManagerProfileId { get => _siteEnvelopeBody.CloningInfoTrafficManagerProfileId ?? null; set => _siteEnvelopeBody.CloningInfoTrafficManagerProfileId = value; }
 
         /// <summary>
         /// Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
@@ -220,7 +223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.",
         SerializedName = @"trafficManagerProfileName",
         PossibleTypes = new [] { typeof(string) })]
-        public string CloningInfoTrafficManagerProfileName { get => SiteEnvelopeBody.CloningInfoTrafficManagerProfileName ?? null; set => SiteEnvelopeBody.CloningInfoTrafficManagerProfileName = value; }
+        public string CloningInfoTrafficManagerProfileName { get => _siteEnvelopeBody.CloningInfoTrafficManagerProfileName ?? null; set => _siteEnvelopeBody.CloningInfoTrafficManagerProfileName = value; }
 
         /// <summary>Size of the function container.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Size of the function container.")]
@@ -231,7 +234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Size of the function container.",
         SerializedName = @"containerSize",
         PossibleTypes = new [] { typeof(int) })]
-        public int ContainerSize { get => SiteEnvelopeBody.ContainerSize ?? default(int); set => SiteEnvelopeBody.ContainerSize = value; }
+        public int ContainerSize { get => _siteEnvelopeBody.ContainerSize ?? default(int); set => _siteEnvelopeBody.ContainerSize = value; }
 
         /// <summary>Maximum allowed daily memory-time quota (applicable on dynamic apps only).</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Maximum allowed daily memory-time quota (applicable on dynamic apps only).")]
@@ -242,7 +245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Maximum allowed daily memory-time quota (applicable on dynamic apps only).",
         SerializedName = @"dailyMemoryTimeQuota",
         PossibleTypes = new [] { typeof(int) })]
-        public int DailyMemoryTimeQuota { get => SiteEnvelopeBody.DailyMemoryTimeQuota ?? default(int); set => SiteEnvelopeBody.DailyMemoryTimeQuota = value; }
+        public int DailyMemoryTimeQuota { get => _siteEnvelopeBody.DailyMemoryTimeQuota ?? default(int); set => _siteEnvelopeBody.DailyMemoryTimeQuota = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -265,7 +268,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).",
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter Enabled { get => SiteEnvelopeBody.Enabled ?? default(global::System.Management.Automation.SwitchParameter); set => SiteEnvelopeBody.Enabled = value; }
+        public global::System.Management.Automation.SwitchParameter Enabled { get => _siteEnvelopeBody.Enabled ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.Enabled = value; }
 
         /// <summary>Hostname SSL states are used to manage the SSL bindings for app's hostnames.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -277,7 +280,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Hostname SSL states are used to manage the SSL bindings for app's hostnames.",
         SerializedName = @"hostNameSslStates",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[] HostNameSslState { get => SiteEnvelopeBody.HostNameSslState ?? null /* arrayOf */; set => SiteEnvelopeBody.HostNameSslState = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[] HostNameSslState { get => _siteEnvelopeBody.HostNameSslState ?? null /* arrayOf */; set => _siteEnvelopeBody.HostNameSslState = value; }
 
         /// <summary>
         /// <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>. If <code>true</code>, the
@@ -291,7 +294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>. If <code>true</code>, the app is only accessible via API management process.",
         SerializedName = @"hostNamesDisabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter HostNamesDisabled { get => SiteEnvelopeBody.HostNamesDisabled ?? default(global::System.Management.Automation.SwitchParameter); set => SiteEnvelopeBody.HostNamesDisabled = value; }
+        public global::System.Management.Automation.SwitchParameter HostNamesDisabled { get => _siteEnvelopeBody.HostNamesDisabled ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.HostNamesDisabled = value; }
 
         /// <summary>Resource ID of the App Service Environment.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID of the App Service Environment.")]
@@ -302,7 +305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Resource ID of the App Service Environment.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
-        public string HostingEnvironmentProfileId { get => SiteEnvelopeBody.HostingEnvironmentProfileId ?? null; set => SiteEnvelopeBody.HostingEnvironmentProfileId = value; }
+        public string HostingEnvironmentProfileId { get => _siteEnvelopeBody.HostingEnvironmentProfileId ?? null; set => _siteEnvelopeBody.HostingEnvironmentProfileId = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -327,7 +330,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"HttpsOnly: configures a web site to accept only https requests. Issues redirect forhttp requests",
         SerializedName = @"httpsOnly",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter HttpsOnly { get => SiteEnvelopeBody.HttpsOnly ?? default(global::System.Management.Automation.SwitchParameter); set => SiteEnvelopeBody.HttpsOnly = value; }
+        public global::System.Management.Automation.SwitchParameter HttpsOnly { get => _siteEnvelopeBody.HttpsOnly ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.HttpsOnly = value; }
 
         /// <summary>Hyper-V sandbox.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Hyper-V sandbox.")]
@@ -338,7 +341,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Hyper-V sandbox.",
         SerializedName = @"hyperV",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter HyperV { get => SiteEnvelopeBody.HyperV ?? default(global::System.Management.Automation.SwitchParameter); set => SiteEnvelopeBody.HyperV = value; }
+        public global::System.Management.Automation.SwitchParameter HyperV { get => _siteEnvelopeBody.HyperV ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.HyperV = value; }
 
         /// <summary>Type of managed service identity.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity.")]
@@ -350,7 +353,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType IdentityType { get => SiteEnvelopeBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType)""); set => SiteEnvelopeBody.IdentityType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType IdentityType { get => _siteEnvelopeBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType)""); set => _siteEnvelopeBody.IdentityType = value; }
 
         /// <summary>
         /// The list of user assigned identities associated with the resource. The user identity dictionary key references will be
@@ -365,7 +368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}",
         SerializedName = @"userAssignedIdentities",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => SiteEnvelopeBody.IdentityUserAssignedIdentity ?? null /* object */; set => SiteEnvelopeBody.IdentityUserAssignedIdentity = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => _siteEnvelopeBody.IdentityUserAssignedIdentity ?? null /* object */; set => _siteEnvelopeBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -379,7 +382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Obsolete: Hyper-V sandbox.",
         SerializedName = @"isXenon",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter IsXenon { get => SiteEnvelopeBody.IsXenon ?? default(global::System.Management.Automation.SwitchParameter); set => SiteEnvelopeBody.IsXenon = value; }
+        public global::System.Management.Automation.SwitchParameter IsXenon { get => _siteEnvelopeBody.IsXenon ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.IsXenon = value; }
 
         /// <summary>Kind of resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Kind of resource.")]
@@ -390,14 +393,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Kind of resource.",
         SerializedName = @"kind",
         PossibleTypes = new [] { typeof(string) })]
-        public string Kind { get => SiteEnvelopeBody.Kind ?? null; set => SiteEnvelopeBody.Kind = value; }
+        public string Kind { get => _siteEnvelopeBody.Kind ?? null; set => _siteEnvelopeBody.Kind = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -447,7 +450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"redundancyMode",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode RedundancyMode { get => SiteEnvelopeBody.RedundancyMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode)""); set => SiteEnvelopeBody.RedundancyMode = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode RedundancyMode { get => _siteEnvelopeBody.RedundancyMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode)""); set => _siteEnvelopeBody.RedundancyMode = value; }
 
         /// <summary><code>true</code> if reserved; otherwise, <code>false</code>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "<code>true</code> if reserved; otherwise, <code>false</code>.")]
@@ -458,7 +461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> if reserved; otherwise, <code>false</code>.",
         SerializedName = @"reserved",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter Reserved { get => SiteEnvelopeBody.Reserved ?? default(global::System.Management.Automation.SwitchParameter); set => SiteEnvelopeBody.Reserved = value; }
+        public global::System.Management.Automation.SwitchParameter Reserved { get => _siteEnvelopeBody.Reserved ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.Reserved = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -485,7 +488,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"<code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.",
         SerializedName = @"scmSiteAlsoStopped",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter ScmSiteAlsoStopped { get => SiteEnvelopeBody.ScmSiteAlsoStopped ?? default(global::System.Management.Automation.SwitchParameter); set => SiteEnvelopeBody.ScmSiteAlsoStopped = value; }
+        public global::System.Management.Automation.SwitchParameter ScmSiteAlsoStopped { get => _siteEnvelopeBody.ScmSiteAlsoStopped ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.ScmSiteAlsoStopped = value; }
 
         /// <summary>
         /// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
@@ -498,7 +501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Resource ID of the associated App Service plan, formatted as: ""/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}"".",
         SerializedName = @"serverFarmId",
         PossibleTypes = new [] { typeof(string) })]
-        public string ServerFarmId { get => SiteEnvelopeBody.ServerFarmId ?? null; set => SiteEnvelopeBody.ServerFarmId = value; }
+        public string ServerFarmId { get => _siteEnvelopeBody.ServerFarmId ?? null; set => _siteEnvelopeBody.ServerFarmId = value; }
 
         /// <summary>Configuration of the app.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Configuration of the app.")]
@@ -509,13 +512,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Configuration of the app.",
         SerializedName = @"siteConfig",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfig) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfig SiteConfig { get => SiteEnvelopeBody.SiteConfig ?? null /* object */; set => SiteEnvelopeBody.SiteConfig = value; }
-
-        /// <summary>Backing field for <see cref="SiteEnvelopeBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePatchResource _siteEnvelopeBody= new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SitePatchResource();
-
-        /// <summary>ARM resource for a site.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePatchResource SiteEnvelopeBody { get => this._siteEnvelopeBody; set => this._siteEnvelopeBody = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfig SiteConfig { get => _siteEnvelopeBody.SiteConfig ?? null /* object */; set => _siteEnvelopeBody.SiteConfig = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -578,6 +575,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -589,7 +591,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -692,7 +694,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -707,12 +708,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.WebAppsUpdate(ResourceGroupName, Name, SubscriptionId, SiteEnvelopeBody, onOk, onAccepted, onDefault, this, Pipeline);
+                    await this.Client.WebAppsUpdate(ResourceGroupName, Name, SubscriptionId, _siteEnvelopeBody, onOk, onAccepted, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,SubscriptionId=SubscriptionId,body=SiteEnvelopeBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,SubscriptionId=SubscriptionId,body=_siteEnvelopeBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -790,14 +791,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=SiteEnvelopeBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_siteEnvelopeBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=SiteEnvelopeBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_siteEnvelopeBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

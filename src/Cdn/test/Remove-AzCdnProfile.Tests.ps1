@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzCdnProfile' {
+Describe 'Remove-AzCdnProfile' -Tag 'LiveOnly' {
     It 'Delete' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)

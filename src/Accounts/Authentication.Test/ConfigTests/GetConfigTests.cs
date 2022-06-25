@@ -18,6 +18,12 @@ using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System.Linq;
 using Xunit;
+using Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces;
+using Microsoft.Azure.PowerShell.Authentication.Test.Mocks;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using System;
+using System.IO;
 
 namespace Microsoft.Azure.Authentication.Test.Config
 {
@@ -121,7 +127,14 @@ namespace Microsoft.Azure.Authentication.Test.Config
             var config = new SimpleTypedConfig<int>(key, "", -1, envKey);
             const int value = 20;
 
-            var configurationManager = GetConfigManagerWithInitState(null, (envVar) => { envVar.Set(envKey, value.ToString()); }, config);
+            IEnvironmentVariableProvider env = new MockEnvironmentVariableProvider();
+            env.Set(envKey, value.ToString());
+            var configurationManager = GetConfigManager(
+                new InitSettings()
+                {
+                    EnvironmentVariableProvider = env
+                },
+                config);
 
             Assert.Equal(value, configurationManager.GetConfigValue<int>(key));
         }
@@ -135,10 +148,14 @@ namespace Microsoft.Azure.Authentication.Test.Config
             const int defaultValue = -1;
             var config = new SimpleTypedConfig<int>(key, "", defaultValue, envKey);
             const bool valueWithWrongType = true;
-            var configurationManager = GetConfigManagerWithInitState(null, envVar =>
-            {
-                envVar.Set(envKey, valueWithWrongType.ToString());
-            }, config);
+            IEnvironmentVariableProvider env = new MockEnvironmentVariableProvider();
+            env.Set(envKey, valueWithWrongType.ToString());
+            var configurationManager = GetConfigManager(
+                new InitSettings()
+                {
+                    EnvironmentVariableProvider = env
+                },
+                config);
 
             Assert.Equal(defaultValue, configurationManager.GetConfigValue<int>(key));
         }
@@ -158,9 +175,9 @@ namespace Microsoft.Azure.Authentication.Test.Config
         {
             var config1 = new SimpleTypedConfig<int>("Retry", "", -1);
             var config2 = new SimpleTypedConfig<string[]>("Array", "", null);
-            IConfigManager icm = GetConfigManagerWithInitState((dataStore, path) =>
-            {
-                dataStore.WriteFile(path,
+            IDataStore dataStore = new MockDataStore();
+            string path = Path.GetRandomFileName();
+            dataStore.WriteFile(path,
 @"{
     ""Az"": {
         ""Retry"": 100
@@ -172,7 +189,13 @@ namespace Microsoft.Azure.Authentication.Test.Config
         ""Array"": [""k"",""v""]
     }
 }");
-            }, null, config1, config2);
+            IConfigManager icm = GetConfigManager(
+                new InitSettings()
+                {
+                    DataStore = dataStore,
+                    Path = path
+                },
+                config1, config2);
             ConfigManager cm = icm as ConfigManager;
             Assert.Equal(100, cm.GetConfigValue<int>("Retry"));
             Assert.Equal(new string[] { "a", "b" }, cm.GetConfigValueInternal<string[]>("Array", new InternalInvocationInfo() { ModuleName = "Az.KeyVault" }));
@@ -346,7 +369,7 @@ namespace Microsoft.Azure.Authentication.Test.Config
             var config2 = new SimpleTypedConfig<int>(key2, "", 0);
             const string key3 = "key3";
             var config3 = new SimpleTypedConfig<int>(key3, "", 0);
-            
+
             // register using wrong order
             var icm = GetConfigManager(config2, config1, config3);
 

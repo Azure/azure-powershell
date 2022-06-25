@@ -15,171 +15,166 @@
 namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class ProfileTests
+    public class ProfileTests : TrafficManagerTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ProfileTests(ITestOutputHelper output)
+        public ProfileTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileCrud");
+            TestRunner.RunTestScript("Test-ProfileCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileCrudWithPiping()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileCrudWithPiping");
+            TestRunner.RunTestScript("Test-ProfileCrudWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteUsingProfile()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateDeleteUsingProfile");
+            TestRunner.RunTestScript("Test-CreateDeleteUsingProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudWithEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CrudWithEndpoint");
+            TestRunner.RunTestScript("Test-CrudWithEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudWithEndpointGeo()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CrudWithEndpointGeo");
+            TestRunner.RunTestScript("Test-CrudWithEndpointGeo");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListProfilesInResourceGroup()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListProfilesInResourceGroup");
+            TestRunner.RunTestScript("Test-ListProfilesInResourceGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListProfilesInSubscription()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListProfilesInSubscription");
+            TestRunner.RunTestScript("Test-ListProfilesInSubscription");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListProfilesWhereObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListProfilesWhereObject");
+            TestRunner.RunTestScript("Test-ListProfilesWhereObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileNewAlreadyExists()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileNewAlreadyExists");
+            TestRunner.RunTestScript("Test-ProfileNewAlreadyExists");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileRemoveNonExisting()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileRemoveNonExisting");
+            TestRunner.RunTestScript("Test-ProfileRemoveNonExisting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileEnable()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileEnable");
+            TestRunner.RunTestScript("Test-ProfileEnable");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileEnablePipeline()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileEnablePipeline");
+            TestRunner.RunTestScript("Test-ProfileEnablePipeline");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileEnableNonExisting()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileEnableNonExisting");
+            TestRunner.RunTestScript("Test-ProfileEnableNonExisting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileDisable()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileDisable");
+            TestRunner.RunTestScript("Test-ProfileDisable");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileDisablePipeline()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileDisablePipeline");
+            TestRunner.RunTestScript("Test-ProfileDisablePipeline");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileDisableNonExisting()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileDisableNonExisting");
+            TestRunner.RunTestScript("Test-ProfileDisableNonExisting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileMonitorDefault()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileMonitorDefaults");
+            TestRunner.RunTestScript("Test-ProfileMonitorDefaults");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileMonitorCustom()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileMonitorCustom");
+            TestRunner.RunTestScript("Test-ProfileMonitorCustom");
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileMonitorProtocol()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileMonitorProtocol");
+            TestRunner.RunTestScript("Test-ProfileMonitorProtocol");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileMonitorParameterAliases()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileMonitorParameterAliases");
+            TestRunner.RunTestScript("Test-ProfileMonitorParameterAliases");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAndRemoveCustomHeadersFromProfile()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AddAndRemoveCustomHeadersFromProfile");
+            TestRunner.RunTestScript("Test-AddAndRemoveCustomHeadersFromProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAndRemoveExpectedStatusCodeRanges()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AddAndRemoveExpectedStatusCodeRanges");
+            TestRunner.RunTestScript("Test-AddAndRemoveExpectedStatusCodeRanges");
         }
     }
 }

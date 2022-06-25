@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnCustomDomain'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzCdnCustomDomain' {
+Describe 'Remove-AzCdnCustomDomain' -Tag 'LiveOnly' {
     It 'Delete' {
         { 
             $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"

@@ -18,8 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets for CRUD operations on EventHub Application Groups.
+
+## Version 2.0.0
 * Made `IPRule` and `VirtualNetworkRule` optional in `Set-AzEventHubNetworkRuleSet`.
-* Deprecate older MSI properties in `Set-AzEventHubNamespace` and `New-AzEventHubNamespace`
+* Deprecated older MSI properties in `Set-AzEventHubNamespace` and `New-AzEventHubNamespace`
 
 ## Version 1.11.1
 

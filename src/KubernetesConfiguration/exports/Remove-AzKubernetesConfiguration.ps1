@@ -20,11 +20,11 @@ This will delete the YAML file used to set up the Source control configuration, 
 .Description
 This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.
 .Example
-PS C:\> Remove-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name  azpstestk8s01 -ClusterType ConnectedClusters
+PS C:\> Remove-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name  azpstestk8s -ClusterType ConnectedClusters
 
 .Example
-PS C:\> $kubConf = Get-AzKubernetesConfiguration -ClusterName azps_test_cluster -ClusterType ConnectedClusters -ResourceGroupName azps_test_group -Name azpstestk8s02
-PS C:\> Remove-AzKubernetesConfiguration -InputObject $kubConf
+PS C:\> $kubConf = Get-AzKubernetesConfiguration -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azpstest_gp -Name azpstestk8s-operator
+Remove-AzKubernetesConfiguration -InputObject $kubConf
 
 
 .Inputs
@@ -38,14 +38,15 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the kubernetes cluster.
-  [ClusterResourceName <String>]: The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
-  [ClusterRp <String>]: The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
+  [ClusterResourceName <String>]: The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
+  [ClusterRp <String>]: The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
   [ExtensionName <String>]: Name of the Extension.
+  [FluxConfigurationName <String>]: Name of the Flux Configuration.
   [Id <String>]: Resource identity path
   [OperationId <String>]: operation Id
-  [ResourceGroupName <String>]: The name of the resource group.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
-  [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfiguration
 #>
@@ -63,7 +64,8 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
-    # The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
+    # The Kubernetes cluster resource name - i.e.
+    # managedClusters, connectedClusters, provisionedClusters.
     ${ClusterType},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -77,13 +79,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The Azure subscription ID.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -166,6 +169,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Delete = 'Az.KubernetesConfiguration.custom\Remove-AzKubernetesConfiguration';
             DeleteViaIdentity = 'Az.KubernetesConfiguration.custom\Remove-AzKubernetesConfiguration';
@@ -180,6 +201,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -188,15 +210,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

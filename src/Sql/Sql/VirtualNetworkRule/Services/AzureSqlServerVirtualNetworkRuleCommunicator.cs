@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Server Virtual Network Rules
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlServerVirtualNetworkRuleCommunicator(IAzureContext context)
         {
             Context = context;
@@ -71,27 +70,27 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Services
             return GetCurrentSqlClient().VirtualNetworkRules.ListByServer(resourceGroupName, serverName).ToList();
         }
 
-        ///// <summary>
-        ///// Creates or updates an Azure Sql Database Server FirewallRule
-        ///// </summary>
+        /// <summary>
+        /// Creates or updates an Azure Sql Database Server FirewallRule
+        /// </summary>
         public Management.Sql.Models.VirtualNetworkRule CreateOrUpdate(string resourceGroupName, string serverName, string vnetFirewallRuleName, Management.Sql.Models.VirtualNetworkRule parameters)
         {
             return GetCurrentSqlClient().VirtualNetworkRules.CreateOrUpdate(resourceGroupName, serverName, vnetFirewallRuleName, parameters);
         }
 
-        ///// <summary>
-        ///// Deletes an Azure Sql Database Server FirewallRule
-        ///// </summary>
+        /// <summary>
+        /// Deletes an Azure Sql Database Server FirewallRule
+        /// </summary>
         public void Remove(string resourceGroupName, string serverName, string vnetFirewallRuleName)
         {
             GetCurrentSqlClient().VirtualNetworkRules.Delete(resourceGroupName, serverName, vnetFirewallRuleName);
         }
 
-        ///// <summary>
-        ///// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
-        ///// id tracing headers for the current cmdlet invocation.
-        ///// </summary>
-        ///// <returns>The SQL Management client for the currently selected subscription.</returns>
+        /// <summary>
+        /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
+        /// id tracing headers for the current cmdlet invocation.
+        /// </summary>
+        /// <returns>The SQL Management client for the currently selected subscription.</returns>
         private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription

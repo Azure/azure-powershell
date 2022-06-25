@@ -18,9 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Supported generae Sas token for DataLakeGen2
+* Supported BaseBlob DaysAfterCreationGreaterThan in Management Policy
+    -  `Add-AzStorageAccountManagementPolicyAction`
+
+## Version 4.6.0
+* Supported generate Sas token for DataLakeGen2
     -  `New-AzDataLakeGen2SasToken`
-* Show OAuth token in debug log in debug build only
+* Showed OAuth token in debug log in debug build only
     -  `New-AzStorageContext`
 * Supported return more file properties when list Azure file
     -  `Get-AzStorageFile`

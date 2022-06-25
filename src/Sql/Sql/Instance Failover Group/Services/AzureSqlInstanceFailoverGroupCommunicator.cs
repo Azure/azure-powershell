@@ -46,8 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services
         /// <summary>
         /// Creates a communicator for Instance Failover Group
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlInstanceFailoverGroupCommunicator(IAzureContext context)
         {
             Context = context;

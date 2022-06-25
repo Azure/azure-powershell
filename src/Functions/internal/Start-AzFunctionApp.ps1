@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Starts an app (or deployment slot, if specified).
+Starts an app (or deployment slot, if specified).
 .Description
-Description for Starts an app (or deployment slot, if specified).
+Starts an app (or deployment slot, if specified).
 .Example
 Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp
 .Example
@@ -186,6 +186,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Start = 'Az.Functions.private\Start-AzFunctionApp_Start';
             StartViaIdentity = 'Az.Functions.private\Start-AzFunctionApp_StartViaIdentity';
@@ -199,6 +200,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -207,15 +209,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

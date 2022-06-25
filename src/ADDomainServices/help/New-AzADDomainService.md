@@ -16,14 +16,16 @@ If the specific service already exists, then any patchable properties will be up
 ```
 New-AzADDomainService -Name <String> -ResourceGroupName <String> -DomainName <String>
  -ReplicaSet <IReplicaSet[]> [-SubscriptionId <String>] [-DomainConfigurationType <String>]
- [-DomainSecuritySettingNtlmV1 <String>] [-DomainSecuritySettingSyncKerberosPassword <String>]
- [-DomainSecuritySettingSyncNtlmPassword <String>] [-DomainSecuritySettingSyncOnPremPassword <String>]
- [-DomainSecuritySettingTlsV1 <String>] [-FilteredSync <String>] [-ForestTrust <IForestTrust[]>]
- [-LdapSettingExternalAccess <String>] [-LdapSettingLdaps <String>] [-LdapSettingPfxCertificate <String>]
- [-LdapSettingPfxCertificatePassword <SecureString>] [-NotificationSettingAdditionalRecipient <String[]>]
- [-NotificationSettingNotifyDcAdmin <String>] [-NotificationSettingNotifyGlobalAdmin <String>]
- [-ResourceForest <String>] [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DomainSecuritySettingNtlmV1 <NtlmV1>] [-DomainSecuritySettingSyncKerberosPassword <SyncKerberosPasswords>]
+ [-DomainSecuritySettingSyncNtlmPassword <SyncNtlmPasswords>]
+ [-DomainSecuritySettingSyncOnPremPassword <SyncOnPremPasswords>] [-DomainSecuritySettingTlsV1 <TlsV1>]
+ [-Etag <String>] [-FilteredSync <FilteredSync>] [-ForestTrust <IForestTrust[]>]
+ [-LdapSettingExternalAccess <ExternalAccess>] [-LdapSettingLdaps <Ldaps>]
+ [-LdapSettingPfxCertificateInputFile <String>] [-LdapSettingPfxCertificatePassword <SecureString>]
+ [-Location <String>] [-NotificationSettingAdditionalRecipient <String[]>]
+ [-NotificationSettingNotifyDcAdmin <NotifyDcAdmins>]
+ [-NotificationSettingNotifyGlobalAdmin <NotifyGlobalAdmins>] [-ResourceForest <String>] [-Sku <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,10 +34,10 @@ If the specific service already exists, then any patchable properties will be up
 
 ## EXAMPLES
 
-### Example 1: Create new ADDomainService
+### Example 1: Create a new ADDomainService
 ```powershell
-$replicaSet = New-AzADDomainServiceReplicaSet -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/yishitest/providers/Microsoft.Network/virtualNetworks/aadds-vnet/subnets/default
-New-AzADDomainService -name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet -debug
+$replicaSet = New-AzADDomainServiceReplicaSetObject -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default
+New-AzADDomainService -Name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet
 ```
 
 ```output
@@ -44,7 +46,7 @@ Name          Domain Name       Location Sku
 youriADdomain youriAddomain.com westus   Enterprise
 ```
 
-Create new ADDomainService
+Create a new ADDomainService
 
 ### Example 2: Create new ADDomainService with certificate 
 ```powershell
@@ -53,6 +55,7 @@ $replicaSet = New-AzADDomainServiceReplicaSet -Location westus -SubnetId /subscr
 $certificateBytes = get-content "certificate.pfx" -AsByteStream
 $base64String = [System.Convert]::ToBase64String($certificateBytes) 
 $ldaps_pfx_pass = "MyStrongPassword"
+
 New-AzADDomainService -name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet -LdapSettingLdaps Enabled -LdapSettingPfxCertificate $base64String -LdapSettingPfxCertificatePassword $($ldaps_pfx_pass | ConvertTo-SecureString -Force -AsPlainText)
 ```
 
@@ -130,7 +133,7 @@ Accept wildcard characters: False
 A flag to determine whether or not NtlmV1 is enabled or disabled.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1
 Parameter Sets: (All)
 Aliases:
 
@@ -145,7 +148,7 @@ Accept wildcard characters: False
 A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords
 Parameter Sets: (All)
 Aliases:
 
@@ -160,7 +163,7 @@ Accept wildcard characters: False
 A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +178,7 @@ Accept wildcard characters: False
 A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords
 Parameter Sets: (All)
 Aliases:
 
@@ -188,6 +191,21 @@ Accept wildcard characters: False
 
 ### -DomainSecuritySettingTlsV1
 A flag to determine whether or not TlsV1 is enabled or disabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Etag
+Resource etag
 
 ```yaml
 Type: System.String
@@ -205,7 +223,7 @@ Accept wildcard characters: False
 Enabled or Disabled flag to turn on Group-based filtered sync
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync
 Parameter Sets: (All)
 Aliases:
 
@@ -236,7 +254,7 @@ Accept wildcard characters: False
 A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess
 Parameter Sets: (All)
 Aliases:
 
@@ -251,7 +269,7 @@ Accept wildcard characters: False
 A flag to determine whether or not Secure LDAP is enabled or disabled.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps
 Parameter Sets: (All)
 Aliases:
 
@@ -262,9 +280,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LdapSettingPfxCertificate
-The certificate required to configure Secure LDAP.
-The parameter passed here should be a base64encoded representation of the certificate pfx file.
+### -LdapSettingPfxCertificateInputFile
+Input File for LdapSettingPfxCertificate (The certificate required to configure Secure LDAP.
+The parameter passed here should be a base64encoded representation of the certificate pfx file.)
 
 ```yaml
 Type: System.String
@@ -289,6 +307,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Resource location
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: $ReplicaSet[0].Location
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -327,7 +360,7 @@ Accept wildcard characters: False
 Should domain controller admins be notified
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins
 Parameter Sets: (All)
 Aliases:
 
@@ -342,7 +375,7 @@ Accept wildcard characters: False
 Should global admins be notified
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins
 Parameter Sets: (All)
 Aliases:
 
@@ -514,7 +547,7 @@ FORESTTRUST <IForestTrust[]>: List of settings for Resource Forest
   - `[FriendlyName <String>]`: Friendly Name
   - `[RemoteDnsIP <String>]`: Remote Dns ips
   - `[TrustDirection <String>]`: Trust Direction
-  - `[TrustPassword <String>]`: Trust Password
+  - `[TrustPassword <SecureString>]`: Trust Password
   - `[TrustedDomainFqdn <String>]`: Trusted Domain FQDN
 
 REPLICASET <IReplicaSet[]>: List of ReplicaSets

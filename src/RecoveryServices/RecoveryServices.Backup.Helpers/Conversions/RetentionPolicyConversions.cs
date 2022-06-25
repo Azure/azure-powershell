@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region public
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert ps long term retention policy from service response.
         /// </summary>
         public static LongTermRetentionPolicy GetPSLongTermRetentionPolicy(
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
         }
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert service long term retention policy from ps retention policy.
         /// </summary>
         public static ServiceClientModel.LongTermRetentionPolicy GetServiceClientLongTermRetentionPolicy(
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return serviceClientRetPolicy;
         }
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert service simple retention policy from ps simple policy.
         /// </summary>
         public static ServiceClientModel.SimpleRetentionPolicy GetServiceClientSimpleRetentionPolicy(

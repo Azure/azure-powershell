@@ -48,8 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Managed Databases
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlManagedDatabaseBackupCommunicator(IAzureContext context)
         {
             Context = context;
@@ -124,7 +123,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         /// <summary>
         /// Lists the restorable deleted databases for a given Sql Azure Server
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <returns>List of restore points</returns>
         public IList<RestorableDroppedManagedDatabase> ListDeletedDatabaseBackups(string resourceGroupName, string serverName)
@@ -136,7 +135,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         /// <summary>
         /// Get a restorable deleted database for a given Sql Azure Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="instanceName">The name of the Managed Instance</param>
         /// <param name="databaseName">The name of the Managed database</param>
         /// <returns>List of restore points</returns>
@@ -148,7 +147,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         /// <summary>
         /// Get a backup LongTermRetention policy for a Azure SQL Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="instanceName">The name of the Managed Instance</param>
         /// <param name="databaseName">The name of the Managed Database</param>
         /// <returns>A backup LongTermRetention policy</returns>

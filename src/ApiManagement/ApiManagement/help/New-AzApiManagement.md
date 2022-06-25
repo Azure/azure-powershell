@@ -212,9 +212,9 @@ This command creates a Premium SKU Api Management service in Zones
 ### Example 6: Create an API Management service in Internal Mode into Virtual Network with Stv2
 
 ```powershell
-PS D:> $virtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId "/subscriptions/4f5285a3-9fd7-40ad-91b1-d8fc3823983d/resourceGroups/contosogroup/providers/Microsoft.Network/virtualNetworks/apimvnet/subnets/ps"
-PS D:> $publicIpAddressId = "/subscriptions/4f5285a3-9fd7-40ad-91b1-d8fc3823983d/resourceGroups/contosogroup/providers/Microsoft.Network/publicIPAddresses/apim-external-vnet-ipv4"
-PS D:> New-AzApiManagement -ResourceGroupName "contosogroup" -Location "West US2" -Name "pstestinternalvnet2" -Organization "Contoso" -AdminEmail "admin@contoso.com" -VirtualNetwork $virtualNetwork -VpnType "Internal" -Sku "Premium" -PublicIpAddressId $publicIpAddressId
+$virtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId "/subscriptions/4f5285a3-9fd7-40ad-91b1-d8fc3823983d/resourceGroups/contosogroup/providers/Microsoft.Network/virtualNetworks/apimvnet/subnets/ps"
+$publicIpAddressId = "/subscriptions/4f5285a3-9fd7-40ad-91b1-d8fc3823983d/resourceGroups/contosogroup/providers/Microsoft.Network/publicIPAddresses/apim-external-vnet-ipv4"
+New-AzApiManagement -ResourceGroupName "contosogroup" -Location "West US2" -Name "pstestinternalvnet2" -Organization "Contoso" -AdminEmail "admin@contoso.com" -VirtualNetwork $virtualNetwork -VpnType "Internal" -Sku "Premium" -PublicIpAddressId $publicIpAddressId
 ```
 
 ```output
@@ -504,13 +504,9 @@ Accept wildcard characters: False
 
 ### -Sku
 
-Specifies the tier of the API Management service.
-Valid values are:
-
-- Developer
-- Standard
-- Premium
-The default is Developer.
+The tier of the Azure API Management service.
+Valid values are Developer, Basic, Standard, Premium and Consumption.
+The default value is Developer.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]

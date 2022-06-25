@@ -156,7 +156,7 @@ $resourceTestCommands = @(
     @{Name = "Az.StorageSync";                Command = {Get-AzStorageSyncService}},
     @{Name = "Az.Support";                    Command = {Get-AzSupportTicket}},
     @{Name = "Az.Resources [Tags]";           Command = {Get-AzTag}},
-    @{Name = "Az.Resources [MSGraph]";        Command = {Get-AzAdGroup -First 1}},
+    @{Name = "Az.Resources [MSGraph]";        Command = {Get-AzADUser -First 1 -Select Id}},
     @{Name = "Az.TrafficManager";             Command = {Get-AzTrafficManagerProfile}},
     @{Name = "Az.Billing [UsageAggregates]";  Command = {Get-UsageAggregates -ReportedStartTime '1/1/2018' -ReportedEndTime '1/2/2018'}},
     @{Name = "Az.Websites";                   Command = {Get-AzWebApp -ResourceGroupName $resourceGroupName}}
