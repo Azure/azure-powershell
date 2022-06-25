@@ -204,6 +204,14 @@ function PrivateEndpointTest
 		Assert-AreEqual $privateEndpoint1.ConnectionState "Rejected"
 		Assert-AreEqual $privateEndpoint1.ProvisioningState "Succeeded"
 
+		$privateLink = Get-AzEventHubPrivateLink -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
+
+		Assert-AreEqual "namespace" $privateLink.GroupId
+		Assert-AreEqual "namespace" $privateLink.Name
+		Assert-AreEqual "Microsoft.EventHub/namespaces/privateLinkResources" $privateLink.Type
+		Assert-AreEqual 1 $privateLink.RequiredMembers.Count
+		Assert-AreEqual 1 $privateLink.RequiredZoneNames.Count
+
 		Remove-AzEventHubPrivateEndpointConnection -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Name $privateEndpointId1
 		Wait-Seconds 30
 

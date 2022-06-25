@@ -25,10 +25,17 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.CheckIn, Category.CheckIn)]
         public void ApplicationGroupPaginationTests()
         {
             TestRunner.RunTestScript("ApplicationGroupPagination");
+        }
+
+        [Fact]
+        [Trait(Category.CheckIn, Category.CheckIn)]
+        public void PrivateEndpointPaginationTests()
+        {
+            TestRunner.RunTestScript("PrivateEndpointPagination");
         }
     }
 }

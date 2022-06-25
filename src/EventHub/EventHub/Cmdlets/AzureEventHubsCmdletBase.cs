@@ -152,8 +152,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             internal const string OutgoingMessages = "OutgoingMessages";
         }
 
-        }
-
         protected struct PrivateEndpointConnectionState
         {
             internal const string Pending = "Pending";

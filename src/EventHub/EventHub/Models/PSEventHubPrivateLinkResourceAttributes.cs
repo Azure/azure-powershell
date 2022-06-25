@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         {
             if (privateLink != null)
             {
-                Name = privateLink?.Name;
-                Id = privateLink?.Id;
-                Type = privateLink?.Type;
-                GroupId = privateLink?.GroupId;
+                Name = privateLink.Name;
+                Id = privateLink.Id;
+                Type = privateLink.Type;
+                GroupId = privateLink.GroupId;
                 RequiredMembers = privateLink?.RequiredMembers?.ToArray();
                 RequiredZoneNames = privateLink?.RequiredZoneNames?.ToArray();
             }

@@ -243,4 +243,7 @@
   <data name="UpdateNamespaceAuthorizationrule" xml:space="preserve">
     <value>Updating  AuthorizationRule named:{0} for Namespace: {1}</value>
   </data>
+  <data name="ListApplicationGroup" xml:space="preserve">
+    <value>List application groups for Namespace: {0} of resource group: {1}</value>
+  </data>
 </root>
