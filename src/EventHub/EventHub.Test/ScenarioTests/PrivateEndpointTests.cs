@@ -11,24 +11,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.EventHub.Models
+namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
-
-    public class PSEventHubPrivateEndpointAttributes
+    public class PrivateEndpointTests : EventHubTestRunner
     {
-        public PSEventHubPrivateEndpointAttributes()
-        { }
 
-        public PSEventHubPrivateEndpointAttributes(Microsoft.Azure.Management.EventHub.Models.PrivateEndpoint privateEndpoint)
+        public PrivateEndpointTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            if (privateEndpoint != null)
-            {
-                Id = privateEndpoint.Id;
-            }
         }
 
-        public string Id { get; set; }
-
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void PrivateEndpointManualApproval()
+        {
+            TestRunner.RunTestScript("PrivateEndpointTest");
+        }
     }
 }

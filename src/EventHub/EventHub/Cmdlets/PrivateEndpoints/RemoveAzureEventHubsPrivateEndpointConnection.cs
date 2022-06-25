@@ -22,9 +22,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
 {
-    /// <summary>
-    /// 'Set-AzEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
-    /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubPrivateEndpointConnection", SupportsShouldProcess = true, DefaultParameterSetName = PrivateEndpointPropertiesParameterSet), OutputType(typeof(void))]
     public class RemoveAzureEventHubsPrivateEndpointConnection : AzureEventHubsCmdletBase
     {
@@ -48,7 +45,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = PrivateEndpointResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Private Endpoint Connection ResourceId.")]
+        [Parameter(Mandatory = true, ParameterSetName = PrivateEndpointResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Private Endpoint Connection ARM ID.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

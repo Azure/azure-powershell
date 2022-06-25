@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
     /// <summary>
     /// 'Set-AzEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
     /// </summary>
-    [Cmdlet("Deny", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubPrivateEndpointConnection", SupportsShouldProcess = true, DefaultParameterSetName = PrivateEndpointPropertiesParameterSet), OutputType(typeof(PSEventHubPrivateEndpointAttributes))]
+    [Cmdlet("Deny", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubPrivateEndpointConnection", SupportsShouldProcess = true, DefaultParameterSetName = PrivateEndpointPropertiesParameterSet), OutputType(typeof(PSEventHubPrivateEndpointConnectionAttributes))]
     public class RejectAzureEventHubsPrivateEndpointConnection : AzureEventHubsCmdletBase
     {
 
@@ -48,10 +48,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = PrivateEndpointResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Private Endpoint Connection Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = PrivateEndpointResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Private Endpoint Connection ARM ID.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = PrivateEndpointResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Description of the connection state.")]
+        [Parameter(Mandatory = false, ParameterSetName = PrivateEndpointPropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Description of the connection state.")]
+        public string Description { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -74,10 +77,19 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
             {
                 try
                 {
+
+                    //We have to set an empty description in the payload,
+                    //indicating that the approval or rejection did not come with a message
+                    if (Description == null)
+                    {
+                        Description = String.Empty;
+                    }
+
                     WriteObject(Client.UpdatePrivateEndpointConnection(resourceGroupName: ResourceGroupName,
                                                                        namespaceName: NamespaceName,
                                                                        privateEndpointName: Name,
-                                                                       connectionState: "Rejected"));
+                                                                       connectionState: "Rejected",
+                                                                       description: Description));
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {

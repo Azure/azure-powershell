@@ -21,24 +21,15 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateLinks
 {
-    /// <summary>
-    /// 'Set-AzEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
-    /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubPrivateLink", SupportsShouldProcess = true, DefaultParameterSetName = PrivateLinkPropertiesParameterSet), OutputType(typeof(PSEventHubPrivateLinkResourceAttributes))]
     public class GetAzureEventHubsPrivateLinks : AzureEventHubsCmdletBase
     {
 
-        /// <summary>
-        /// Name of the resource group.
-        /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = PrivateLinkPropertiesParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        /// <summary>
-        /// EventHub Namespace Name.
-        /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = PrivateLinkPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "EventHub Namespace Name.")]
         [ValidateNotNullOrEmpty]
         public string NamespaceName { get; set; }

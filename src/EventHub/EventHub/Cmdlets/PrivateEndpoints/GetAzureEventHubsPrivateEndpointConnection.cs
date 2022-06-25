@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
     /// <summary>
     /// 'Set-AzEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubPrivateEndpointConnection", SupportsShouldProcess = true, DefaultParameterSetName = PrivateEndpointPropertiesParameterSet), OutputType(typeof(PSEventHubPrivateEndpointAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubPrivateEndpointConnection", SupportsShouldProcess = true, DefaultParameterSetName = PrivateEndpointPropertiesParameterSet), OutputType(typeof(PSEventHubPrivateEndpointConnectionAttributes))]
     public class GetAzureEventHubsPrivateEndpointConnection : AzureEventHubsCmdletBase
     {
 
@@ -45,10 +45,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
         public string NamespaceName { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = PrivateEndpointPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Private Endpoint Connection Name.")]
-        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = PrivateEndpointResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Private Endpoint Connection Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = PrivateEndpointResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Private Endpoint Connection ARM ID.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -82,8 +81,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
             {
                 if(Name == null)
                 {
-                    if(ShouldProcess(target: Name, action: string.Format(Resources.ListNamespacePrivateEndpoints, NamespaceName, ResourceGroupName))){
-                        WriteObject(Client.ListPrivateEndpointConnection(ResourceGroupName, NamespaceName));
+                    if(ShouldProcess(target: NamespaceName, action: string.Format(Resources.ListNamespacePrivateEndpoints, NamespaceName, ResourceGroupName))){
+                        WriteObject(Client.ListPrivateEndpointConnection(ResourceGroupName, NamespaceName).ToList(), true);
                     }
                 }
                 else

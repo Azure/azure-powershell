@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 
                 if (evResource.PrivateEndpointConnections != null)
                 {
-                    PrivateEndpointConnections = evResource.PrivateEndpointConnections.Where(x => x != null).Select(x => new PSEventHubPrivateEndpointAttributes(x)).ToArray();
+                    PrivateEndpointConnections = evResource.PrivateEndpointConnections.Where(x => x != null).Select(x => new PSEventHubPrivateEndpointConnectionAttributes(x)).ToArray();
                 }
 
                 ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 
         public bool? ZoneRedundant { get; set; }
 
-        public string ClusterArmId { get; set; }     
+        public string ClusterArmId { get; set; }
         
         public PSIdentityAttributes Identity { get; set; }
 
@@ -199,6 +199,6 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 
         public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
 
-        public PSEventHubPrivateEndpointAttributes[] PrivateEndpointConnections { get; set; }
+        public PSEventHubPrivateEndpointConnectionAttributes[] PrivateEndpointConnections { get; set; }
     }
 }

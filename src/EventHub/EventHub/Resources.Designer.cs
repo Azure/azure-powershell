@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         {
             get
             {
-                return ResourceManager.GetString("UpdateNamespacePrivateEndpoints", resourceCulture);
+                return ResourceManager.GetString("ApproveNamespacePrivateEndpoints", resourceCulture);
             }
         }
 

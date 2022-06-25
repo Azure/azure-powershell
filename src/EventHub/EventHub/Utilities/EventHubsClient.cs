@@ -875,7 +875,7 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         #region PrivateEndpoints
 
-        public PSEventHubPrivateEndpointAttributes UpdatePrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName, string connectionState, string description = null)
+        public PSEventHubPrivateEndpointConnectionAttributes UpdatePrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName, string connectionState, string description = null)
         {
             var privateEndpointConnection = Client.PrivateEndpointConnections.Get(resourceGroupName, namespaceName, privateEndpointName);
 
@@ -891,26 +891,47 @@ namespace Microsoft.Azure.Commands.Eventhub
             
             privateEndpointConnection = Client.PrivateEndpointConnections.CreateOrUpdate(resourceGroupName, namespaceName, privateEndpointName, privateEndpointConnection);
 
-            return new PSEventHubPrivateEndpointAttributes(privateEndpointConnection);
+            return new PSEventHubPrivateEndpointConnectionAttributes(privateEndpointConnection);
 
         }
 
-        public PSEventHubPrivateEndpointAttributes GetPrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName)
+        public PSEventHubPrivateEndpointConnectionAttributes GetPrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName)
         {
 
             var privateEndpointConnection = Client.PrivateEndpointConnections.Get(resourceGroupName, namespaceName, privateEndpointName);
 
-            return new PSEventHubPrivateEndpointAttributes(privateEndpointConnection);
+            return new PSEventHubPrivateEndpointConnectionAttributes(privateEndpointConnection);
 
         }
 
-        public IEnumerable<PSEventHubPrivateEndpointAttributes> ListPrivateEndpointConnection(string resourceGroupName, string namespaceName)
+        public IEnumerable<PSEventHubPrivateEndpointConnectionAttributes> ListPrivateEndpointConnection(string resourceGroupName, string namespaceName)
         {
-            var privateEndpointConnection = Client.PrivateEndpointConnections.List(resourceGroupName, namespaceName);
+            var listOfPrivateEndpoints = new List<PSEventHubPrivateEndpointConnectionAttributes>();
 
-            var resourceList = privateEndpointConnection.Select(resource => new PSEventHubPrivateEndpointAttributes(resource));
+            string nextPageLink = null;
 
-            return resourceList;
+            do
+            {
+                var pageOfPrivateEndpoints = new List<PSEventHubPrivateEndpointConnectionAttributes>();
+
+                if (!String.IsNullOrEmpty(nextPageLink))
+                {
+                    var result = Client.PrivateEndpointConnections.ListNext(nextPageLink);
+                    nextPageLink = result.NextPageLink;
+                    pageOfPrivateEndpoints = result.Select(resource => new PSEventHubPrivateEndpointConnectionAttributes(resource)).ToList();
+                }
+                else
+                {
+                    var result = Client.PrivateEndpointConnections.List(resourceGroupName, namespaceName);
+                    nextPageLink = result.NextPageLink;
+                    pageOfPrivateEndpoints = result.Select(resource => new PSEventHubPrivateEndpointConnectionAttributes(resource)).ToList();
+                }
+
+                listOfPrivateEndpoints.AddRange(pageOfPrivateEndpoints);
+
+            } while (!String.IsNullOrEmpty(nextPageLink));
+
+            return listOfPrivateEndpoints;
         }
 
         public void DeletePrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName)
@@ -925,7 +946,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             var resourceList = privateLinks.Select(resource => new PSEventHubPrivateLinkResourceAttributes(resource));
 
             return resourceList;
-        } 
+        }
 
         #endregion
 
