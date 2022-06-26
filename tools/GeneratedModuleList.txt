@@ -1,3 +1,4 @@
+Az.App
 Az.ADDomainServices
 Az.AppConfiguration
 Az.BotService
