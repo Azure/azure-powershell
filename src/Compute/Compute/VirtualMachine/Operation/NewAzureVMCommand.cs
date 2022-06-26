@@ -925,8 +925,6 @@ namespace Microsoft.Azure.Commands.Compute
                                 Publisher = "Microsoft.Azure.Security.LinuxAttestation",
                                 VirtualMachineExtensionType = "GuestAttestation",
                                 TypeHandlerVersion = "1.0",
-                                //TODO: remove these AutoUpgradeMinorVersion = true,
-                                //EnableAutomaticUpgrade = true
                             };
                         }
                         else //windows
