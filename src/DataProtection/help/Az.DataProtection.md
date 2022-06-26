@@ -47,6 +47,9 @@ Gets default policy template for a selected datasource type.
 ### [Get-AzDataProtectionRecoveryPoint](Get-AzDataProtectionRecoveryPoint.md)
 Gets a Recovery Point using recoveryPointId for a Datasource.
 
+### [Get-AzDataProtectionResourceGuard](Get-AzDataProtectionResourceGuard.md)
+Returns a ResourceGuard belonging to a resource group.
+
 ### [Initialize-AzDataProtectionBackupInstance](Initialize-AzDataProtectionBackupInstance.md)
 Initializes Backup instance Request object for configuring backup
 
@@ -71,6 +74,9 @@ Creates a new criteria object
 ### [New-AzDataProtectionPolicyTriggerScheduleClientObject](New-AzDataProtectionPolicyTriggerScheduleClientObject.md)
 Creates new Schedule object
 
+### [New-AzDataProtectionResourceGuard](New-AzDataProtectionResourceGuard.md)
+Creates a resource guard under a resource group
+
 ### [New-AzDataProtectionRetentionLifeCycleClientObject](New-AzDataProtectionRetentionLifeCycleClientObject.md)
 Creates new Lifecycle object
 
@@ -83,6 +89,12 @@ Deletes a backup policy belonging to a backup vault
 ### [Remove-AzDataProtectionBackupVault](Remove-AzDataProtectionBackupVault.md)
 Deletes a BackupVault resource from the resource group.
 
+### [Remove-AzDataProtectionResourceGuard](Remove-AzDataProtectionResourceGuard.md)
+Deletes a ResourceGuard resource from the resource group.
+
+### [Resume-AzDataProtectionBackupInstanceProtection](Resume-AzDataProtectionBackupInstanceProtection.md)
+This operation will resume protection for a stopped backup instance
+
 ### [Search-AzDataProtectionBackupInstanceInAzGraph](Search-AzDataProtectionBackupInstanceInAzGraph.md)
 Searches for Backup instances in Azure Resource Graph and retrieves the expected entries
 
@@ -92,10 +104,22 @@ Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entr
 ### [Start-AzDataProtectionBackupInstanceRestore](Start-AzDataProtectionBackupInstanceRestore.md)
 Triggers restore for a BackupInstance
 
+### [Stop-AzDataProtectionBackupInstanceProtection](Stop-AzDataProtectionBackupInstanceProtection.md)
+This operation will stop protection of a backup instance and data will be held forever
+
+### [Suspend-AzDataProtectionBackupInstanceBackup](Suspend-AzDataProtectionBackupInstanceBackup.md)
+This operation will stop backups for backup instance
+
+### [Sync-AzDataProtectionBackupInstance](Sync-AzDataProtectionBackupInstance.md)
+Sync backup instance again in case of failure\r\nThis action will retry last failed operation and will bring backup instance to valid state
+
 ### [Update-AzDataProtectionBackupInstanceAssociatedPolicy](Update-AzDataProtectionBackupInstanceAssociatedPolicy.md)
 Updates associated policy for a given backup instance
 
 ### [Update-AzDataProtectionBackupVault](Update-AzDataProtectionBackupVault.md)
 Updates a BackupVault resource belonging to a resource group.
 For example, updating tags for a resource.
+
+### [Update-AzDataProtectionResourceGuard](Update-AzDataProtectionResourceGuard.md)
+Updates a resource guard belonging to a resource group
 

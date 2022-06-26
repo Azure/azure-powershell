@@ -14,26 +14,21 @@
 
 namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 {
+    using Microsoft.Azure.Commands.EventHub.Test.ScenarioTests;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class NetworkRuleSetTests : RMTestBase
+    public class NetworkRuleSetTests : ServiceBusTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public NetworkRuleSetTests(ITestOutputHelper output)
+        public NetworkRuleSetTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NetworkRuleSetCRUD()
         {
-            ServiceBusController.NewInstance.RunPsTest(_logger, "NetworkRuleSetTests");
+            TestRunner.RunTestScript("NetworkRuleSetTests");
         }
     }
 }

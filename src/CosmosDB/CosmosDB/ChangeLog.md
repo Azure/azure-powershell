@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Fixed bug related to Update-AzCosmosDBSqlContainer command on containers with Client Encryption Policy.
+
+## Version 1.9.0
+* Fixed the optional Location paramater of New-AzCosmosDBAccount cmdlet.
 
 ## Version 1.8.0
 * Introduced support for creating containers with Client Encryption Policy. The current supported version of Client Encryption Policy is 1.

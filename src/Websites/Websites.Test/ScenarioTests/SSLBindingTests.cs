@@ -13,64 +13,59 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
-    public class SSLBindingTests : RMTestBase
+    public class SSLBindingTests : WebsitesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public SSLBindingTests(ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppSSLBinding()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppSSLBinding");
+            TestRunner.RunTestScript("Test-CreateNewWebAppSSLBinding");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNewWebAppSSLBinding()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetNewWebAppSSLBinding");
+            TestRunner.RunTestScript("Test-GetNewWebAppSSLBinding");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveNewWebAppSSLBinding()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveNewWebAppSSLBinding");
+            TestRunner.RunTestScript("Test-RemoveNewWebAppSSLBinding");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWebAppSSLBindingPipeSupport()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WebAppSSLBindingPipeSupport");
+            TestRunner.RunTestScript("Test-WebAppSSLBindingPipeSupport");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppCertificate()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppCertificate");
+            TestRunner.RunTestScript("Test-GetWebAppCertificate");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TagsNotRemovedByCreateNewWebAppSSLBinding()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-TagsNotRemovedByCreateNewWebAppSSLBinding");
+            TestRunner.RunTestScript("Test-TagsNotRemovedByCreateNewWebAppSSLBinding");
         }
     }
 }

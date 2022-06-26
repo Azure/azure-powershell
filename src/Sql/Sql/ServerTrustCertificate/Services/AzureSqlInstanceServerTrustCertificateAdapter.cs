@@ -99,6 +99,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Services
         /// <summary>
         /// Convert a Management.Sql.Models.ServerTrustCertificate to AzureSqlInstanceServerTrustCertificateModel
         /// </summary>
+        /// <param name="resourceGroupName">The resource group the managed instance is in</param>
+        /// <param name="instanceName">The name of the managed instance</param>
         /// <param name="serverTrustCertificate">The management client server trust certificate response to convert</param>
         /// <returns>The converted server trust certificate model</returns>
         private static AzureSqlInstanceServerTrustCertificateModel CreateServerTrustCertificateModelFromResponse(string resourceGroupName, string instanceName, Management.Sql.Models.ServerTrustCertificate serverTrustCertificate)

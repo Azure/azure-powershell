@@ -45,8 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Databases FirewallRules
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlServerFirewallRuleCommunicator(IAzureContext context)
         {
             Context = context;

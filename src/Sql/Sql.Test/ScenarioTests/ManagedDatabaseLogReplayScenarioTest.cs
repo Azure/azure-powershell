@@ -72,5 +72,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-PipingCompleteCancelManagedDatabaseLogReplay");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCancelManagedDatabaseLogReplayFailForWrongDatabase()
+        {
+            RunPowerShellTest("Test-CancelManagedDatabaseLogReplayFailForWrongDatabase");
+        }
     }
 }

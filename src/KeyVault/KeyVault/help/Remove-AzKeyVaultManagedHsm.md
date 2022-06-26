@@ -86,7 +86,7 @@ If you do not specify the resource group name, the cmdlet searches for the named
 
 ### Example 3: Purge a deleted managed hsm
 ```powershell
-PS C:\> Remove-AzKeyVaultManagedHsm -Name 'myhsm' -Location "eastus" -Force -PassThru
+Remove-AzKeyVaultManagedHsm -Name 'myhsm' -Location "eastus" -Force -PassThru
 ```
 
 ```output

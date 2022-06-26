@@ -14,18 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 {
+    using Microsoft.Azure.Commands.EventHub.Test.ScenarioTests;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
     public class ServiceBusSubscriptionTests : ServiceBusTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public ServiceBusSubscriptionTests(ITestOutputHelper output) : base(output)
         {
-
         }
 
         [Fact]

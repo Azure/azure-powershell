@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSqlInstance
 
 ## SYNOPSIS
-Creates an Azure SQL Database Managed Instance.
+Creates an Azure SQL Managed Instance.
 
 ## SYNTAX
 
@@ -68,7 +68,7 @@ New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Administrator
 ```
 
 ## DESCRIPTION
-The **New-AzSqlInstance** cmdlet creates an Azure SQL Database Managed instance.
+The **New-AzSqlInstance** cmdlet creates an Azure SQL Managed instance.
 
 ## EXAMPLES
 
