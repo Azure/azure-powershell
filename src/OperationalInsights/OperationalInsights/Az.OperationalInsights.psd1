@@ -140,7 +140,7 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'New-AzOperationalInsightsTable',
                'Remove-AzOperationalInsightsTable',
                'Update-AzOperationalInsightsTable',
-               'Migrate-AzOperationalInsightsTable'
+               'Convert-AzOperationalInsightsMigrateTable'
 
 # Variables to export from this module
 # VariablesToExport = @()

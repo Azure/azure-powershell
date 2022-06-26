@@ -98,7 +98,7 @@ Gets the usage data for a workspace.
 ### [Invoke-AzOperationalInsightsQuery](Invoke-AzOperationalInsightsQuery.md)
 Returns search results based on the specified parameters.
 
-### [Migrate-AzOperationalInsightsTable](Migrate-AzOperationalInsightsTable.md)
+### [Convert-AzOperationalInsightsMigrateTable](Convert-AzOperationalInsightsMigrateTable.md)
 Migrate a Log Analytics table from support of the Data Collector API and Custom Fields features to support of Data Collection Rule-based Custom Logs.
 
 ### [New-AzOperationalInsightsApplicationInsightsDataSource](New-AzOperationalInsightsApplicationInsightsDataSource.md)
