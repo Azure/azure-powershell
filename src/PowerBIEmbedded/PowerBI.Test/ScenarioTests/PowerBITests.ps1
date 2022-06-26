@@ -270,24 +270,21 @@ function Test-PowerBIEmbeddedCapacityLargeSku
 		# Test it without specifying a resource group
 		Assert-True {Test-AzPowerBIEmbeddedCapacity -Name $capacityName}
 		
-		# Updating capacity and Scale up A7 -> A5
-		# scaling to A7/A8 is not supported in this region since the list of skus returns A1-A6.
+		# Updating capacity and Scale up A7 -> A8
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		$capacityUpdated = Update-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Tag $tagsToUpdate -Sku 'A5' -Administrator 'aztest1@stabletest.ccsctp.net' -PassThru
+		$capacityUpdated = Update-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Tag $tagsToUpdate -Sku 'A8' -Administrator 'aztest1@stabletest.ccsctp.net' -PassThru
 		Assert-NotNull $capacityUpdated.Tag "Tag do not exists"
 		Assert-NotNull $capacityUpdated.Tag["TestTag"] "The updated tag 'TestTag' does not exist"
 		Assert-AreEqual $capacityUpdated.Administrator.Count 1
-		Assert-AreEqual A5 $capacityUpdated.Sku
+		Assert-AreEqual A8 $capacityUpdated.Sku
 		Assert-NotNull $capacityUpdated.Administrator "Capacity Administrator list is empty"
 
 		# Suspend PowerBI Embedded capacity
 		$capacityGetItem = Suspend-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
-		# this is to ensure backward compatibility compatibility. The servie side would make change to differenciate state and provisioningState in future
 		[array]$capacityGet = Get-AzPowerBIEmbeddedCapacity -ResourceId $capacityGetItem.Id
 		$capacityGetItem = $capacityGet[0]
 		Assert-AreEqual $capacityGetItem.Name $capacityGetItem.Name
 		Assert-True {$capacityGetItem.State -like "Paused"}
-		Assert-AreEqual $resourceGroupName $capacityGetItem.ResourceGroup
 
 		# Resume PowerBI Embedded capacity
 		$capacityGetItem = Resume-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
