@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
         {
             if (patch.KeyVaultProperties != null)
             {
-                KeyVaultProperties = new PSKeyVaultProperties(patch.KeyVaultProperties);
+                KeyVaultProperties = PSKeyVaultProperties.GetKVPropertiesFromSDK(patch.KeyVaultProperties);
             }
 
             if (patch.Sku != null)

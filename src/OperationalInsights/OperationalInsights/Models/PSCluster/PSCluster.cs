@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
             IsDoubleEncryptionEnabled = cluster.IsDoubleEncryptionEnabled;
             IsAvailabilityZonesEnabled = cluster.IsAvailabilityZonesEnabled;
             BillingType = cluster.BillingType;
-            KeyVaultProperties = cluster.KeyVaultProperties == null ? null : new PSKeyVaultProperties(cluster.KeyVaultProperties);
+            KeyVaultProperties = cluster.KeyVaultProperties == null ? null : PSKeyVaultProperties.GetKVPropertiesFromSDK(cluster.KeyVaultProperties);
             LastModifiedDate = cluster.LastModifiedDate;
             CreatedDate = cluster.CreatedDate;
             AssociatedWorkspaces = cluster.AssociatedWorkspaces;

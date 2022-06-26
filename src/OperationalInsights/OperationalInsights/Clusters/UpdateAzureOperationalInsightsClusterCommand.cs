@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 
             if (this.IsParameterBound(c => c.InputCluster))
             {
-                parameters.KeyVaultProperties = PSKeyVaultProperties.CreateProperties(InputCluster.KeyVaultProperties?.KeyVaultUri, InputCluster.KeyVaultProperties?.KeyName, InputCluster.KeyVaultProperties?.KeyVersion);
+                parameters.KeyVaultProperties = PSKeyVaultProperties.CreateKVProperties(InputCluster.KeyVaultProperties?.KeyVaultUri, InputCluster.KeyVaultProperties?.KeyName, InputCluster.KeyVaultProperties?.KeyVersion);
                 parameters.Sku = InputCluster.Sku;
                 parameters.Tags = InputCluster.Tags;
                 parameters.Identity = InputCluster.Identity;
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
             }
             else
             {
-                parameters.KeyVaultProperties = PSKeyVaultProperties.CreateProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion);
+                parameters.KeyVaultProperties = PSKeyVaultProperties.CreateKVProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion);
                 parameters.Sku = this.SkuCapacity == null ? null :  new PSClusterSku(this.SkuName ?? AllowedClusterServiceTiers.CapacityReservation.ToString(), this.SkuCapacity);
                 parameters.Tags = this.Tag;
                 parameters.Identity = new PSIdentity(IdentityType);

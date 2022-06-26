@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
                 IsDoubleEncryptionEnabled = this.IsDoubleEncryptionEnabled,
                 IsAvailabilityZonesEnabled = this.IsAvailabilityZonesEnabled,
                 BillingType = this.BillingType,
-                KeyVaultProperties = PSKeyVaultProperties.CreateProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion),
+                KeyVaultProperties = PSKeyVaultProperties.CreateKVProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion),
             };
 
             if (ShouldProcess(this.ClusterName,
