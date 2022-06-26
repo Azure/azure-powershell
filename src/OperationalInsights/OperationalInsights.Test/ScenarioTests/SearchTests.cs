@@ -12,49 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
-    public class SearchTests : OperationalInsightsScenarioTestBase
+    public class SearchTests : OperationalInsightsTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public SearchTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SearchTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSearchGetSchema()
         {
-            RunPowerShellTest(_logger, "Test-SearchGetSchema");
+            TestRunner.RunTestScript("Test-SearchGetSchema");
         }
 
         [Fact(Skip="Related cmdlet/API was deleted")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSearchGetSearchResultsAndUpdate()
         {
-            RunPowerShellTest(_logger, "Test-SearchGetSearchResultsAndUpdate");
+            TestRunner.RunTestScript("Test-SearchGetSearchResultsAndUpdate");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSearchGetSavedSearchesAndResults()
         {
-            RunPowerShellTest(_logger, "Test-SearchGetSavedSearchesAndResults");
+            TestRunner.RunTestScript("Test-SearchGetSavedSearchesAndResults");
         }
 
         [Fact(Skip="Service break, waiting for the fix")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSearchSetAndRemoveSavedSearches()
         {
-            RunPowerShellTest(_logger, "Test-SearchSetAndRemoveSavedSearches");
+            TestRunner.RunTestScript("Test-SearchSetAndRemoveSavedSearches");
         }
 
     }

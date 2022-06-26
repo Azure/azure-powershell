@@ -25,14 +25,14 @@ Usable in Set-AzAlertsSuppressionRule as part of the -AllOf parameter.
 
 ### Example 1
 ```powershell
-PS C:\> $scope1 = New-AzAlertsSuppressionRuleScope -Field "entities.account.name" -Contains "Example"
+$scope1 = New-AzAlertsSuppressionRuleScope -Field "entities.account.name" -ContainsSubstring "Example"
 ```
 
 Creates a PSScopeElementContains.
 
 ### Example 2
 ```powershell
-PS C:\> $scope2 = New-AzAlertsSuppressionRuleScope -Field "entities.file.name" -In "FileName1","FileName2","FileName3"
+$scope2 = New-AzAlertsSuppressionRuleScope -Field "entities.file.name" -AnyOf "FileName1","FileName2","FileName3"
 ```
 
 Creates a PSScopeElementIn.

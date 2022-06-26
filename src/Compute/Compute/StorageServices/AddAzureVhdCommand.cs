@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,14 +36,16 @@ using System.Management;
 using Microsoft.Samples.HyperV.Storage;
 using Microsoft.Samples.HyperV.Common;
 using System.Threading;
-
+using System.Runtime.InteropServices;
+using Azure.Core;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
     /// <summary>
     /// Uploads a vhd as fixed disk format vhd to a blob in Microsoft Azure Storage
     /// </summary>
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vhd", DefaultParameterSetName = DefaultParameterSet/*, SupportsShouldProcess = true*/)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vhd", DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(VhdUploadContext))]
     public class AddAzureVhdCommand : ComputeClientBaseCmdlet
     {
@@ -51,7 +53,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         private const string DefaultParameterSet = "DefaultParameterSet";
         private const string DirectUploadToManagedDiskSet = "DirectUploadToManagedDiskSet";
         private bool temporaryFileCreated = false;
-        private long FixedSize;
+        private FileInfo vhdFileToBeUploaded; 
 
         [Parameter(
             Position = 0,
@@ -178,6 +180,14 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Skips the resizing of VHD")]
         public SwitchParameter SkipResizing { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = DirectUploadToManagedDiskSet,
+            HelpMessage = "Additional authentication requirements when exporting or uploading to a disk or snapshot. Possible options are: \"AzureActiveDirectory\" and \"None\".")]
+        [PSArgumentCompleter("AzureActiveDirectory")]
+        public string DataAccessAuthMode { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -188,18 +198,31 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 try
                 {
-                    WriteVerbose("To be compatible with Azure, Add-AzVhd will automatically try to convert VHDX files to VHD and resize VHD files to N * Mib using Hyper-V Platform, a Windows native virtualization product. During the process the cmdlet will temporarily create a converted/resized file in the same directory as the provided VHD/VHDX file. \nFor more information visit https://aka.ms/usingAdd-AzVhd \n");
+                    WriteVerbose("To be compatible with Azure, Add-AzVhd will automatically try to convert VHDX files to VHD and resize VHD files to N * Mib using Hyper-V Platform, a Windows native virtualization product. During the process, the cmdlet will temporarily create a converted/resized file in the same directory as the provided VHD/VHDX file. \nFor more information visit https://aka.ms/usingAdd-AzVhd \n");
 
                     Program.SyncOutput = new PSSyncOutputEvents(this);
+                    PathIntrinsics currentPath = SessionState.Path;
+                    vhdFileToBeUploaded = new FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(LocalFilePath.ToString()));
 
                     // 1.              CONVERT VHDX TO VHD
-                    if (this.LocalFilePath.Extension == ".vhdx")
+                    if (vhdFileToBeUploaded.Extension == ".vhdx")
                     {
-                        convertVhd();
+                        vhdFileToBeUploaded = ConvertVhd();
                     }
 
                     // 2.              RESIZE VHD
-                    CheckForInvalidVhd();
+                    long vdsLength = GetVirtualDiskStreamLength();
+                    if (!this.SkipResizing.IsPresent && (vdsLength - 512) % 1048576 != 0)
+                    {
+                        long resizeTo = Convert.ToInt64(1048576 * Math.Ceiling((vdsLength - 512) / 1048576.0));
+                        vhdFileToBeUploaded = ResizeVhdFile(vdsLength,resizeTo);
+                        vdsLength = resizeTo + 512;
+                    }
+                    else if (this.SkipResizing.IsPresent)
+                    {
+                        WriteVerbose("Skipping VHD resizing.");
+                    }
+                    
 
                     if (this.ParameterSetName == DirectUploadToManagedDiskSet)
                     {
@@ -208,56 +231,55 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
 
                         // 3-1. CREATE DISK CONFIG 
-                        checkForExistingDisk(this.ResourceGroupName, this.DiskName);
-                        var diskConfig = CreateDiskConfig();
+                        CheckForExistingDisk(this.ResourceGroupName, this.DiskName);
+                        var diskConfig = CreateDiskConfig(vdsLength);
 
                         // 3-2: CREATE DISK
-                        createManagedDisk(this.ResourceGroupName, this.DiskName, diskConfig);
+                        CreateManagedDisk(this.ResourceGroupName, this.DiskName, diskConfig);
 
                         // 3-3: GENERATE SAS
                         WriteVerbose("Generating SAS");
-                        var grantAccessData = new GrantAccessData();
-                        grantAccessData.Access = "Write";
-                        long gbInBytes = 1073741824;
-                        int gb = (int)(this.LocalFilePath.Length / gbInBytes);
-                        grantAccessData.DurationInSeconds = 86400 * Math.Max(gb / 100, 1);   // 24h per 100gb
-                        var accessUri = this.ComputeClient.ComputeManagementClient.Disks.GrantAccess(this.ResourceGroupName, this.DiskName, grantAccessData);
+                        var accessUri = GenerateSAS();
                         Uri sasUri = new Uri(accessUri.AccessSAS);
                         WriteVerbose("SAS generated: " + accessUri.AccessSAS);
 
 
                         // 3-4: UPLOAD                  
                         WriteVerbose("Preparing for Upload");
-                        PSPageBlobClient managedDisk = new PSPageBlobClient(sasUri);
+                        ComputeTokenCredential tokenCredential = null;
+                        if (this.DataAccessAuthMode == "AzureActiveDirectory")
+                        {
+                            // get token 
+                            tokenCredential = new ComputeTokenCredential(DefaultContext, "https://disk.azure.com/");
+                        }
+                        PSPageBlobClient managedDisk = new PSPageBlobClient(sasUri, tokenCredential);
                         DiskUploadCreator diskUploadCreator = new DiskUploadCreator();
-                        var uploadContext = diskUploadCreator.Create(this.LocalFilePath, managedDisk, false);
+                        var uploadContext = diskUploadCreator.Create(vhdFileToBeUploaded, managedDisk, false);
                         var synchronizer = new DiskSynchronizer(uploadContext, this.NumberOfUploaderThreads ?? DefaultNumberOfUploaderThreads);
 
                         WriteVerbose("Uploading");
-                        if (synchronizer.Synchronize())
+                        if (synchronizer.Synchronize(tokenCredential))
                         {
-                            var result = new VhdUploadContext { LocalFilePath = this.LocalFilePath, DestinationUri = sasUri };
+                            var result = new VhdUploadContext { LocalFilePath = vhdFileToBeUploaded, DestinationUri = sasUri };
                             WriteObject(result);
                         }
                         else
                         {
-                            WriteVerbose("Upload failed");
+                            RevokeSAS();
+                            this.ComputeClient.ComputeManagementClient.Disks.Delete(this.ResourceGroupName, this.DiskName);
+                            Exception outputEx = new Exception("Upload failed. Please try again later.");
+                            ThrowTerminatingError(new ErrorRecord(
+                                outputEx,
+                                "Error uploading data.",
+                                ErrorCategory.NotSpecified,
+                                null));
                         }
 
                         // 3-5: REVOKE SAS
                         WriteVerbose("Revoking SAS");
-                        var RevokeResult = this.ComputeClient.ComputeManagementClient.Disks.RevokeAccessWithHttpMessagesAsync(this.ResourceGroupName, this.DiskName).GetAwaiter().GetResult();
-                        PSOperationStatusResponse output = new PSOperationStatusResponse
-                        {
-                            StartTime = this.StartTime,
-                            EndTime = DateTime.Now
-                        };
-                        if (RevokeResult != null && RevokeResult.Request != null && RevokeResult.Request.RequestUri != null)
-                        {
-                            output.Name = GetOperationIdFromUrlString(RevokeResult.Request.RequestUri.ToString());
-                        }
-
+                        RevokeSAS();
                         WriteVerbose("SAS revoked.");
+                        
                         WriteVerbose("\nUpload complete.");
 
                     }
@@ -272,8 +294,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 {
                     if (temporaryFileCreated)
                     {
-                        WriteVerbose("Deleting file: " + this.LocalFilePath.FullName);
-                        File.Delete(this.LocalFilePath.FullName);
+                        WriteVerbose("Deleting file: " + vhdFileToBeUploaded.FullName);
+                        File.Delete(vhdFileToBeUploaded.FullName);
                     }
                 }
             });
@@ -306,11 +328,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
             var storageCredentialsFactory = CreateStorageCredentialsFactory();
 
-            PathIntrinsics currentPath = SessionState.Path;
-            var filePath = new FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(LocalFilePath.ToString()));
-
             var parameters = new UploadParameters(
-                destinationUri, baseImageUri, filePath, OverWrite.IsPresent,
+                destinationUri, baseImageUri, vhdFileToBeUploaded, OverWrite.IsPresent,
                 (NumberOfUploaderThreads) ?? DefaultNumberOfUploaderThreads)
             {
                 Cmdlet = this,
@@ -339,7 +358,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             return storageCredentialsFactory;
         }
 
-        private PSDisk CreateDiskConfig()
+        private PSDisk CreateDiskConfig(long fixedSizeLength)
         {
             // Sku
             DiskSku vSku = null;
@@ -358,7 +377,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
             vCreationData = new CreationData();
             vCreationData.CreateOption = "upload";
-            vCreationData.UploadSizeBytes = FixedSize;
+            vCreationData.UploadSizeBytes = fixedSizeLength;
 
             var vDisk = new PSDisk
             {
@@ -378,17 +397,18 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 EncryptionSettingsCollection = null,
                 Encryption = null,
                 NetworkAccessPolicy = null,
-                DiskAccessId = null
+                DiskAccessId = null,
+                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? this.DataAccessAuthMode : null
             };
             return vDisk;
         }
 
-        private void createBackUp(string filePath)
+        private void CreateBackUp(string filePath)
         {
-            string resizedFileName = returnAvailExtensionName(filePath, "_resized", ".vhd");
+            string resizedFileName = ReturnAvailExtensionName(filePath, "_resized", ".vhd");
             System.IO.File.Move(filePath, resizedFileName);
-            this.LocalFilePath = new FileInfo(resizedFileName);
-            if (filePath.Contains("_fixedSize") || filePath.Contains("_converted"))
+            vhdFileToBeUploaded = new FileInfo(resizedFileName);
+            if (temporaryFileCreated == true)
             {
                 return;
             }
@@ -427,7 +447,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             WriteVerbose("Back up copy made to: " + backupPath);
         }
 
-        public string returnAvailExtensionName(string filePath, string extension, string format)
+        public string ReturnAvailExtensionName(string filePath, string extension, string format)
         {
             string extensionPath = Path.GetDirectoryName(filePath) + @"\" + Path.GetFileNameWithoutExtension(filePath) + extension + format;
             int extNum = 0;
@@ -439,7 +459,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             return extensionPath;
         }
 
-        private void createManagedDisk(string ResourceGroupName, string DiskName, PSDisk psDisk)
+        private void CreateManagedDisk(string ResourceGroupName, string DiskName, PSDisk psDisk)
         {
             string resourceGroupName = ResourceGroupName;
             string diskName = DiskName;
@@ -453,38 +473,18 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             WriteVerbose("\nCreated Managed Disk:");
         }
 
-        private void CheckForInvalidVhd()
+        private long GetVirtualDiskStreamLength()
         {
-            PathIntrinsics currentPath = SessionState.Path;
-            FileInfo filePath = new FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(LocalFilePath.ToString()));
-
+            long length;
             try
             {
-                bool resizeNeeded = false;
-                long resizeTo = 0;
-                using (VirtualDiskStream vds = new VirtualDiskStream(filePath.FullName))
+                using (VirtualDiskStream vds = new VirtualDiskStream(vhdFileToBeUploaded.FullName))
                 {
+                    length = vds.Length;
                     if (vds.Length < 20971520 || vds.Length > 4396972769280)
                     {
                         throw new InvalidOperationException("The VHD must be between 20 MB and 4095 GB.");
                     }
-
-                    if (!this.SkipResizing.IsPresent && (vds.Length - 512) % 1048576 != 0)
-                    {
-                        resizeNeeded = true;
-                        resizeTo = Convert.ToInt64(1048576 * Math.Ceiling((vds.Length - 512) / 1048576.0));
-                    }
-                    else if (this.SkipResizing.IsPresent)
-                    {
-                        WriteVerbose("Skipping VHD resizing.");
-                    }
-
-                    FixedSize = vds.Length;
-                }
-
-                if (resizeNeeded)
-                {
-                    resizeVhdFile(resizeTo);
                 }
             }
             catch (VhdParsingException)
@@ -492,10 +492,10 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 throw new InvalidOperationException("The VHD file is corrupted.");
             }
 
-            return;
+            return length;
         }
 
-        private void checkForExistingDisk(string resourceGroupName, string DiskName)
+        private void CheckForExistingDisk(string resourceGroupName, string DiskName)
         {
             Disk aDisk;
             try
@@ -513,9 +513,12 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             return;
         }
 
-        private void convertVhd()
+        private FileInfo ConvertVhd()
         {
-            string ConvertedPath = returnAvailExtensionName(this.LocalFilePath.FullName, "_converted", ".vhd");
+            CheckOS();
+            WriteWarning("The VHDX file needs to be converted to VHD. During the conversion process, the cmdlet will temporarily create a resized file in the same directory as the provided VHDX file.");
+
+            string ConvertedPath = ReturnAvailExtensionName(vhdFileToBeUploaded.FullName, "_converted", ".vhd");
             FileInfo vhdFileInfo = new FileInfo(ConvertedPath);
             ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
             VirtualHardDiskSettingData settingData = new VirtualHardDiskSettingData(VirtualHardDiskType.DynamicallyExpanding, VirtualHardDiskFormat.Vhd, vhdFileInfo.FullName, null, 0, 0, 0, 0);
@@ -529,7 +532,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     using (ManagementBaseObject inParams =
                         imageManagementService.GetMethodParameters("ConvertVirtualHardDisk"))
                     {
-                        inParams["SourcePath"] = this.LocalFilePath.FullName;
+                        inParams["SourcePath"] = vhdFileToBeUploaded.FullName;
                         inParams["VirtualDiskSettingData"] =
                             settingData.GetVirtualHardDiskSettingDataEmbeddedInstance(null, imageManagementService.Path.Path);
 
@@ -553,9 +556,9 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                             WmiUtilities.ValidateOutput(outParams, scope);
                         }
                     }
-                    WriteVerbose("Converted file: " + ConvertedPath);
-                    this.LocalFilePath = new FileInfo(vhdFileInfo.FullName);
                     temporaryFileCreated = true;
+                    WriteVerbose("Converted file: " + ConvertedPath);
+                    return new FileInfo(vhdFileInfo.FullName);
                 }
             }
             catch (System.Management.ManagementException ex)
@@ -569,16 +572,15 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         ErrorCategory.InvalidOperation,
                         null));
                 }
-                else
-                {
-                    throw ex;
-                }
-
+                throw ex;
             }
         }
 
-        private void resizeVhdFile(long FileSize)
+        private FileInfo ResizeVhdFile(long FileSizeBefore, long FileSize)
         {
+            CheckOS();
+            WriteWarning("The VHD file needs to be resized. During the resizing process, the cmdlet will temporarily create a resized file in the same directory as the provided VHD/VHDX file.");
+
             try
             {
                 ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
@@ -589,13 +591,12 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 using (ManagementObject imageManagementService =
                     StorageUtilities.GetImageManagementService(scope))
                 {
-                    createBackUp(this.LocalFilePath.FullName);
+                    CreateBackUp(vhdFileToBeUploaded.FullName);
                     WriteVerbose("Resizing VHD file");
-                    long sizeBefore = this.LocalFilePath.Length;
                     using (ManagementBaseObject inParams =
                         imageManagementService.GetMethodParameters("ResizeVirtualHardDisk"))
                     {
-                        inParams["Path"] = this.LocalFilePath.FullName;
+                        inParams["Path"] = vhdFileToBeUploaded.FullName;
                         inParams["MaxInternalSize"] = FileSize;
                         using (ManagementBaseObject outParams = imageManagementService.InvokeMethod(
                             "ResizeVirtualHardDisk", inParams, null))
@@ -616,10 +617,9 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                             WmiUtilities.ValidateOutput(outParams, scope);
                         }
                     }
-                    WriteVerbose("Resized " + this.LocalFilePath + " from " + sizeBefore + " bytes to " + FullFileSize + " bytes.");
-                    this.LocalFilePath = new FileInfo(this.LocalFilePath.FullName);
+                    WriteVerbose("Resized " + vhdFileToBeUploaded + " from " + FileSizeBefore + " bytes to " + FullFileSize + " bytes.");
                     temporaryFileCreated = true;
-                    FixedSize = FullFileSize;
+                    return new FileInfo(vhdFileToBeUploaded.FullName);
                 }
             }
             catch (System.Management.ManagementException ex)
@@ -633,11 +633,49 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         ErrorCategory.InvalidOperation,
                         null));
                 }
-                else
-                {
-                    throw ex;
-                }
+                throw ex;
             }
+        }
+
+        private AccessUri GenerateSAS()
+        {
+            var grantAccessData = new GrantAccessData();
+            grantAccessData.Access = "Write";
+            long gbInBytes = 1073741824;
+            int gb = (int)(vhdFileToBeUploaded.Length / gbInBytes);
+            grantAccessData.DurationInSeconds = 86400 * Math.Max(gb / 100, 1);   // 24h per 100gb
+            var accessUri = this.ComputeClient.ComputeManagementClient.Disks.GrantAccess(this.ResourceGroupName, this.DiskName, grantAccessData);
+
+            return accessUri;
+        }
+
+        private void RevokeSAS()
+        {
+            var RevokeResult = this.ComputeClient.ComputeManagementClient.Disks.RevokeAccessWithHttpMessagesAsync(this.ResourceGroupName, this.DiskName).GetAwaiter().GetResult();
+            PSOperationStatusResponse output = new PSOperationStatusResponse
+            {
+                StartTime = this.StartTime,
+                EndTime = DateTime.Now
+            };
+            if (RevokeResult != null && RevokeResult.Request != null && RevokeResult.Request.RequestUri != null)
+            {
+                output.Name = GetOperationIdFromUrlString(RevokeResult.Request.RequestUri.ToString());
+            }
+        }
+
+        private void CheckOS()
+        {
+            var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+            if (!isWindows)
+            {
+                Exception outputEx = new Exception("Failed to resize/convert the VHD/VHDX file. Currently automatic resizing and conversion is performed using Hyper-V, a native Windows feature. Please resize and convert file manually: https://aka.ms/usingAdd-AzVhd");
+                ThrowTerminatingError(new ErrorRecord(
+                    outputEx,
+                    "Hyper-V is unavailable",
+                    ErrorCategory.InvalidOperation,
+                    null));
+            }
+            
         }
     }
 }

@@ -38,11 +38,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 {
     /// <summary>
     /// Class StorageSyncClientWrapper.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncClientWrapper" />
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Interfaces.IStorageSyncClientWrapper" />
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Interfaces.IStorageSyncClientWrapper" />
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncClientWrapper" />
     public class StorageSyncClientWrapper : IStorageSyncClientWrapper
     {
         /// <summary>
@@ -108,7 +106,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Initializes a new instance of the <see cref="StorageSyncClientWrapper" /> class.
         /// </summary>
         /// <param name="context">The context.</param>
-        /// <param name="activeDirectoryClient">The active directory client.</param>
+        /// <param name="microsoftGraphClient">The active directory client.</param>
         public StorageSyncClientWrapper(IAzureContext context, MicrosoftGraphClient microsoftGraphClient)
                 : this(AzureSession.Instance.ClientFactory.CreateArmClient<StorageSyncManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                       AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),

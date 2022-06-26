@@ -203,12 +203,13 @@ namespace Microsoft.Azure.Commands.Compute
             "RHEL",
             "SLES",
             "UbuntuLTS",
+            "Win2022AzureEditionCore",
+            "Win2019Datacenter",
             "Win2016Datacenter",
             "Win2012R2Datacenter",
             "Win2012Datacenter",
             "Win2008R2SP1",
-            "Win10",
-            "Win2019Datacenter")]
+            "Win10")]
         [Alias("ImageName")]
         public string Image { get; set; } = "Win2016Datacenter";
 
@@ -882,9 +883,9 @@ namespace Microsoft.Azure.Commands.Compute
                                 AutoUpgradeMinorVersion = true,
                             };
 
-                            typeof(CM.Resource).GetRuntimeProperty("Name")
+                            typeof(CM.ResourceWithOptionalLocation).GetRuntimeProperty("Name")
                                 .SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
-                            typeof(CM.Resource).GetRuntimeProperty("Type")
+                            typeof(CM.ResourceWithOptionalLocation).GetRuntimeProperty("Type")
                                 .SetValue(extensionParameters, VirtualMachineExtensionType);
 
                             var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(

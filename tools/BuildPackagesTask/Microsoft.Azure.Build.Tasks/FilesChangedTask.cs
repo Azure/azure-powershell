@@ -153,7 +153,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             return true;
         }
 
-        // This method will record the changed files into FilesChanged.txt under '.\artifacts' folder for other task to consum.
+        // This method will record the changed files into a text file at `OutputFile` for other task to consum.
         private void SerializeChangedFilesToFile(string[] FilesChanged)
         {
             File.WriteAllLines(OutputFile, FilesChanged);

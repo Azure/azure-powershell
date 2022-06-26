@@ -75,7 +75,7 @@ Update an IoT Hub device.
 
 ### Example 1
 ```powershell
-Set-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -EdgeEnabled
+Set-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -EdgeEnabled $true
 ```
 
 Turn on edge capabilities for device.

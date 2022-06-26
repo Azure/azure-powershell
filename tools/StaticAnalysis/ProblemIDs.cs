@@ -74,6 +74,8 @@
         public const int ChangedGenericTypeArgument = 3040;
         public const int DifferentGenericTypeArgumentSize = 3050;
     }
+    
+    //ExampleProblemId is also defined in tools\StaticAnalysis\ExampleAnalyzer, the range is 5000-5199
     public static class ExampleProblemId
     {
         public const int Invalid_Cmdlet = 5000; 
