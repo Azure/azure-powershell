@@ -34,6 +34,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
         public void ServiceBusPaginationTests_CURD()
         {
             ServiceBusController.NewInstance.RunPsTest(_logger, "ServiceBusPaginationTests");
-        }        
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ServiceBusPrivateEndpointPagination()
+        {
+            ServiceBusController.NewInstance.RunPsTest(_logger, "PrivateEndpointPagination");
+        }
     }
 }

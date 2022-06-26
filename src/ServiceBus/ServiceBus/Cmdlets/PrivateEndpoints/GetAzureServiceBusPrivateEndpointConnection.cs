@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.PrivateEndpoints
     /// <summary>
     /// 'Set-AzEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusPrivateEndpointConnection", SupportsShouldProcess = true, DefaultParameterSetName = PrivateEndpointPropertiesParameterSet), OutputType(typeof(PSServiceBusPrivateEndpointAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusPrivateEndpointConnection", SupportsShouldProcess = true, DefaultParameterSetName = PrivateEndpointPropertiesParameterSet), OutputType(typeof(PSServiceBusPrivateEndpointConnectionAttributes))]
     public class GetAzureServiceBusPrivateEndpointConnection : AzureServiceBusCmdletBase
     {
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.PrivateEndpoints
             {
                 if(Name == null)
                 {
-                    if(ShouldProcess(target: Name, action: string.Format(Resources.ListNamespacePrivateEndpoints, NamespaceName, ResourceGroupName))){
+                    if(ShouldProcess(target: NamespaceName, action: string.Format(Resources.ListNamespacePrivateEndpoints, NamespaceName, ResourceGroupName))){
                         WriteObject(Client.ListPrivateEndpointConnection(ResourceGroupName, NamespaceName));
                     }
                 }

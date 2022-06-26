@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         {
             get
             {
-                return ResourceManager.GetString("UpdateNamespacePrivateEndpoints", resourceCulture);
+                return ResourceManager.GetString("ApproveNamespacePrivateEndpoints", resourceCulture);
             }
         }
 

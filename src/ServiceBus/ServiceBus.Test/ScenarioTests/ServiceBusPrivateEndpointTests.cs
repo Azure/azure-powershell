@@ -12,23 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ServiceBus.Models
+namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 {
-
-    public class PSServiceBusPrivateEndpointAttributes
+    using Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ServiceManagement.Common.Models;
+    using Xunit;
+    using Xunit.Abstractions;
+    public class ServiceBusPrivateEndpointTests : ServiceBusTestRunner
     {
-        public PSServiceBusPrivateEndpointAttributes()
-        { }
-
-        public PSServiceBusPrivateEndpointAttributes(Microsoft.Azure.Management.ServiceBus.Models.PrivateEndpoint privateEndpoint)
+        public ServiceBusPrivateEndpointTests(ITestOutputHelper output) : base(output)
         {
-            if (privateEndpoint != null)
-            {
-                Id = privateEndpoint.Id;
-            }
+
         }
 
-        public string Id { get; set; }
-
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ServiceBusPrivateEndpoints()
+        {
+            TestRunner.RunTestScript("PrivateEndpointTest");
+        }
     }
 }

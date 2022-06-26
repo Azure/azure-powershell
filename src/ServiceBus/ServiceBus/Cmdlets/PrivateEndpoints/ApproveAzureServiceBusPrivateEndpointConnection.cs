@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.PrivateEndpoints
     /// <summary>
     /// 'Set-AzEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
     /// </summary>
-    [Cmdlet("Approve", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusPrivateEndpointConnection", SupportsShouldProcess = true, DefaultParameterSetName = PrivateEndpointPropertiesParameterSet), OutputType(typeof(PSServiceBusPrivateEndpointAttributes))]
+    [Cmdlet("Approve", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusPrivateEndpointConnection", SupportsShouldProcess = true, DefaultParameterSetName = PrivateEndpointPropertiesParameterSet), OutputType(typeof(PSServiceBusPrivateEndpointConnectionAttributes))]
     public class ApproveAzureServiceBusPrivateEndpointConnection : AzureServiceBusCmdletBase
     {
 
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.PrivateEndpoints
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// EventHub Namespace Name.
+        /// ServiceBus Namespace Name.
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = PrivateEndpointPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "ServiceBus Namespace Name.")]
         [ValidateNotNullOrEmpty]
@@ -52,6 +52,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.PrivateEndpoints
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = PrivateEndpointResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Description of the connection state.")]
+        [Parameter(Mandatory = false, ParameterSetName = PrivateEndpointPropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Description of the connection state.")]
+        public string Description { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
@@ -59,7 +63,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.PrivateEndpoints
             if (ParameterSetName == PrivateEndpointResourceIdParameterSet)
             {
                 ResourceIdentifier getParamPrivateEndpoint = new ResourceIdentifier(ResourceId);
-                if (getParamPrivateEndpoint.ResourceType.Equals(PrivateEndpointURL))
+                if (getParamPrivateEndpoint.ResourceType.ToLower().Equals(PrivateEndpointURL.ToLower()))
                 {
                     ResourceGroupName = getParamPrivateEndpoint.ResourceGroupName;
                     string[] resourceNames = getParamPrivateEndpoint.ParentResource.Split(new[] { '/' });
@@ -74,10 +78,18 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.PrivateEndpoints
             {
                 try
                 {
+                    //We have to set an empty description in the payload,
+                    //indicating that the approval or rejection did not come with a message
+                    if (Description == null)
+                    {
+                        Description = String.Empty;
+                    }
+
                     WriteObject(Client.UpdatePrivateEndpointConnection(resourceGroupName: ResourceGroupName,
                                                                        namespaceName: NamespaceName,
                                                                        privateEndpointName: Name,
-                                                                       connectionState: "Approved"));
+                                                                       connectionState: "Approved",
+                                                                       description: Description));
                 }
                 catch (Management.ServiceBus.Models.ErrorResponseException ex)
                 {

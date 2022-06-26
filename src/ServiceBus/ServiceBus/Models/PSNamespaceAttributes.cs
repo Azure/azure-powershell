@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
 
                 if (evResource.PrivateEndpointConnections != null)
                 {
-                    PrivateEndpointConnections = evResource.PrivateEndpointConnections.Where(x => x != null).Select(x => new PSServiceBusPrivateEndpointAttributes(x)).ToArray();
+                    PrivateEndpointConnections = evResource.PrivateEndpointConnections.Where(x => x != null).Select(x => new PSServiceBusPrivateEndpointConnectionAttributes(x)).ToArray();
                 }
 
 
@@ -179,6 +179,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
 
         public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
 
-        public PSServiceBusPrivateEndpointAttributes[] PrivateEndpointConnections { get; set; }
+        public PSServiceBusPrivateEndpointConnectionAttributes[] PrivateEndpointConnections { get; set; }
     }
 }

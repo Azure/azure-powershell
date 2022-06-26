@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.TestFx;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 {
     public class ServiceBusTestRunner
     {
@@ -38,8 +38,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                     helper.RMProfileModule,
                     helper.GetRMModulePath("AzureRM.ServiceBus.psd1"),
                     helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
-                    helper.GetRMModulePath("AzureRM.ManagedServiceIdentity.psd1"),
-
+                    helper.GetRMModulePath("AzureRM.Network.psd1")
                 })
                 .WithRecordMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
@@ -57,9 +56,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                         {"Microsoft.Resources", null},
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null},
-                        {"Microsoft.ServiceBus", null},
-                        {"Microsoft.KeyVault", null},
-                        {"Microsoft.ManagedServiceIdentity", null},
+                        {"Microsoft.KeyVault", null}
                     }
                 )
                 .Build();

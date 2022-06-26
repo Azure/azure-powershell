@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.PrivateEndpoints
             {
                 ResourceIdentifier getParamPrivateEndpoint = new ResourceIdentifier(ResourceId);
 
-                if (getParamPrivateEndpoint.ResourceType.Equals(PrivateEndpointURL))
+                if (getParamPrivateEndpoint.ResourceType.ToLower().Equals(PrivateEndpointURL.ToLower()))
                 {
                     ResourceGroupName = getParamPrivateEndpoint.ResourceGroupName;
                     string[] resourceNames = getParamPrivateEndpoint.ParentResource.Split(new[] { '/' });
