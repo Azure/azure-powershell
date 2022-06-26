@@ -1,5 +1,9 @@
 [
   {
+    "alias": "Container Apps",
+    "module": "App"
+  },  
+  {
     "alias": "Confidential Ledger",
     "module": "ConfidentialLedger"
   },
