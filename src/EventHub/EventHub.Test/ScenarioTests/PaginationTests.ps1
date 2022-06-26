@@ -48,4 +48,8 @@ function PrivateEndpointPagination{
 	$listOfPrivateEndpoints = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
 
 	Assert-AreEqual 120 $listOfPrivateEndpoints.Count
+
+	$namespace = Get-AzEventHubNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
+
+    Assert-AreEqual 120 $namespace.PrivateEndpointConnections.Count
 }
