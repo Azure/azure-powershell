@@ -1,5 +1,5 @@
-Az.App
 Az.ADDomainServices
+Az.App
 Az.AppConfiguration
 Az.BotService
 Az.ChangeAnalysis
