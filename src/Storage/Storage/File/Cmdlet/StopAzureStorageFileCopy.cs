@@ -81,7 +81,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         /// <summary>
         /// Stop copy operation by CloudBlob object
         /// </summary>
-        /// <param name="blob">CloudBlob object</param>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageFileManagement channel object</param>
+        /// <param name="file">CloudFile object</param>
         /// <param name="copyId">Copy id</param>
         private async Task StopCopyFile(long taskId, IStorageFileManagement localChannel, CloudFile file, string copyId)
         {

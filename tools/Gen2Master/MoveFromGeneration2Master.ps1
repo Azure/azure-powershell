@@ -135,7 +135,7 @@ Function Move-Generation2Master {
             $info = $ex.Name.Split('@')
             $packageName = $info[1]
             $version = $info[2]
-            if ($generateInfo.ContainsKey($packageName)) {
+            if ($generateInfo.Contains($packageName)) {
                 $preVersion = $generateInfo[$packageName]
                 $versionFields = $version.Split('.')
                 $preVersionFields = $preVersion.Split('.')

@@ -1843,7 +1843,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to copy items to the <TargetVault> whose storage redundancy is <StorageRedundancyType>.
+        ///   Looks up a localized string similar to Are you sure you want to copy items to the {TargetVault} whose storage redundancy is {StorageRedundancyType}.
         /// </summary>
         public static string TargetVaultStorageRedundancy
         {
@@ -2095,7 +2095,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>        
-        ///   Looks up a localized string similar to Number of restore points are more than <Limit>, please reduce the
+        ///   Looks up a localized string similar to Number of restore points are more than {Limit}, please reduce the
         ///   retention duration count for Daily Schedule or reduce number of backups per day
         /// </summary>
         public static string DailyRetentionPointsLimitExceeded

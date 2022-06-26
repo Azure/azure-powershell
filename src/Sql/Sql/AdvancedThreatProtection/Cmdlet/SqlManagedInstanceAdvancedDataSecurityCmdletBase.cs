@@ -71,7 +71,6 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         /// <summary>
         /// Creation and initialization of the ModelAdapter object
         /// </summary>
-        /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
         protected override SqlAdvancedDataSecurityAdapter InitModelAdapter()
         {

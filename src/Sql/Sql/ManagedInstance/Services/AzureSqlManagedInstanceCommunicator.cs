@@ -48,8 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Services
         /// <summary>
         /// Creates a communicator for Managed instance
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlManagedInstanceCommunicator(IAzureContext context)
         {
             Context = context;

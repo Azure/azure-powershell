@@ -161,7 +161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </exception>
         /// <exception cref="Exception">
         /// </exception>
-        /// <exception cref="ArmErrorException">
+        /// <exception cref="ErrorResponseException">
         /// </exception>
         /// <exception cref="HttpRequestException">
         /// </exception>
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </exception>
         /// <exception cref="Exception">
         /// </exception>
-        /// <exception cref="ArmErrorException">
+        /// <exception cref="ErrorResponseException">
         /// </exception>
         /// <exception cref="HttpRequestException">
         /// </exception>
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </exception>
         /// <exception cref="Exception">
         /// </exception>
-        /// <exception cref="ArmErrorException">
+        /// <exception cref="ErrorResponseException">
         /// </exception>
         /// <exception cref="HttpRequestException">
         /// </exception>

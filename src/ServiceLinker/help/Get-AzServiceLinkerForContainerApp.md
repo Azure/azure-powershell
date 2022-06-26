@@ -37,7 +37,7 @@ Returns Linker resource for a given name in container app.
 
 ### Example 1: List all linkers in a container app
 ```powershell
-Get-AzServiceLinkerForContainerApp -ContainerApp servicelinker-app -ResourceGroupName servicelinker-test-group -Scope 'simple-hello-world-container'
+Get-AzServiceLinkerForContainerApp -ContainerApp servicelinker-app -ResourceGroupName servicelinker-test-group
 ```
 
 ```output
@@ -53,7 +53,7 @@ List all linkers in the container app
 
 ### Example 2: Get linker by name
 ```powershell
-Get-AzServiceLinkerForContainerApp -ContainerApp servicelinker-app -ResourceGroupName servicelinker-test-group  -Name postgresql_connection | fl
+Get-AzServiceLinkerForContainerApp -ContainerApp servicelinker-app -ResourceGroupName servicelinker-test-group  -Name postgresql_connection | Format-List
 ```
 
 ```output
@@ -89,7 +89,7 @@ $identity = @{
 ResourceUri = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-app'
 LinkerName = 'postgresql_connection'}
 
-$identity | Get-AzServiceLinkerForContainerApp  |fl
+$identity | Get-AzServiceLinkerForContainerApp  | Format-List
 ```
 
 ```output

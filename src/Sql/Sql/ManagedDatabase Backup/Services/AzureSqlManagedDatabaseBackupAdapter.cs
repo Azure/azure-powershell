@@ -49,8 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         /// <summary>
         /// Constructs a managed database adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlManagedDatabaseBackupAdapter(IAzureContext context)
         {
             Context = context;
@@ -91,6 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="managedInstanceName">The name of the Azure Sql Database Managed Instance</param>
         /// <param name="databaseName">The name of the Azure Sql Managed Database</param>
+        /// <param name="deletionDate">Deletion date for deleted databases</param>
         /// <returns>The Azure Sql Database object</returns>
         internal AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel ManagedBackupShortTermRetentionPoliciesDropped(string resourceGroupName, string managedInstanceName, string databaseName, DateTime deletionDate)
         {
@@ -103,6 +103,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="managedInstanceName">The name of the Azure Sql Database Managed Instance</param>
+        /// <param name="databaseName">The name of the Azure Sql Managed Database</param>
+        /// <param name="deletionDate">Deletion date for deleted databases</param>
         /// <returns>A list of database objects</returns>
         internal ICollection<AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel> ListManagedBackupShortTermRetentionPoliciesDropped(string resourceGroupName, string managedInstanceName, string databaseName, DateTime deletionDate)
         {
@@ -149,7 +151,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         /// </summary>
         /// <param name="resourceGroup">The resource group the managed instance is in</param>
         /// <param name="managedInstanceName">The name of the Azure Sql Database Managed Instance</param>
-        /// <param name="database">The service response</param>
+        /// <param name="managedDatabaseName">The name of the Azure Sql Managed Database</param>
+        /// <param name="managedBackupShortTermRetentionPolicy"></param>
         /// <param name="deletionDate">Deletion date for deleted databases</param>
         /// <returns>The converted model</returns>
         public static AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel CreateManagedDatabaseBackupShortTermRetentionPolicyModelFromResponse(string resourceGroup, string managedInstanceName, string managedDatabaseName, ManagedBackupShortTermRetentionPolicy managedBackupShortTermRetentionPolicy, DateTime? deletionDate = null)
@@ -209,7 +212,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="instanceName">The name of the Managed Instance</param>
         /// <param name="databaseName">The name of the Managed Database</param>
-        /// <param name="current">Whether or not the user provided the Current switch to get the current implementation of LTR policy</param>
         /// <returns>A backup LongTermRetention policy</returns>
         internal AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel GetManagedDatabaseLongTermRetentionPolicy(
             string resourceGroup,
@@ -238,6 +240,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="managedInstanceName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <param name="model"></param>
         /// <returns>A backup LongTermRetention policy</returns>
         internal AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel SetManagedDatabaseBackupLongTermRetentionPolicy(
             string resourceGroup,
