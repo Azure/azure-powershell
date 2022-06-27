@@ -51,6 +51,7 @@ function NamespaceAuthTests
     $createdNamespace = Get-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
 	Assert-AreEqual $createdNamespace.ResourceGroup $resourceGroupName "Namespace get : ResourceGroup name matches"
 	Assert-AreEqual $createdNamespace.ResourceGroupName $resourceGroupName "Namespace get : ResourceGroupName name matches"
+    Assert-AreEqual $createdNamespace.Name $namespaceName
     
 	#Assert
     Assert-AreEqual $createdNamespace.Name $namespaceName "Namespace created earlier is not found."
@@ -286,10 +287,13 @@ function NamespaceTests
     #Assert
     Assert-True {$allCreatedNamespace.Count -ge 0 } "Namespace created earlier is not found. in list"
     
-    #Write-Debug "Get all the namespaces created in the subscription"
-    #$allCreatedNamespace = Get-AzEventHubNamespace
+    Write-Debug "Get all the namespaces created in the subscription"
+    $allCreatedNamespace = Get-AzEventHubNamespace
     
-    #Assert-True {$allCreatedNamespace.Count -ge 0} "Namespaces created earlier is not found."
+    Assert-True {$allCreatedNamespace.Count -ge 0} "Namespaces created earlier is not found."
+
+    $listByResourceGroup = Get-AzEventHubNamespace -ResourceGroup $resourceGroupName
+    Assert-AreEqual 4 $listByResourceGroup.Count
 
     Write-Debug " Delete namespaces"
     Remove-AzEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2
@@ -526,6 +530,7 @@ function ApplicationGroupTest{
     $clientGroupId2 = getAssetName "SASKeyName=authkey"
     $clientGroupId3 = getAssetName "SASKeyName=authkey"
     $clientGroupId4 = getAssetName "SASKeyName=authkey"
+    $randomAppGroup = getAssetName "randomAppGroup"
 
     try{
         # Create Resource Group
@@ -669,6 +674,8 @@ function ApplicationGroupTest{
         $appGroup2 = New-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Name $appGroupName2 -ClientAppGroupIdentifier $clientGroupId2 -ThrottlingPolicyConfig $t3
         $appGroup3 = New-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Name $appGroupName3 -ClientAppGroupIdentifier $clientGroupId3 -ThrottlingPolicyConfig $t1
         $appGroup4 = New-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Name $appGroupName4 -ClientAppGroupIdentifier $clientGroupId4 -ThrottlingPolicyConfig $t2
+
+        Assert-ThrowsContains { Set-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Name $randomAppGroup -ThrottlingPolicyConfig $t1 }  "Operation returned an invalid status code 'NotFound'"
 
         $listOfAppGroups = Get-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
         Assert-AreEqual $listOfAppGroups.Count 4

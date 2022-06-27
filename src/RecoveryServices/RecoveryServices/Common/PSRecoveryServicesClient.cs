@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
         /// required current subscription.
         /// </summary>
-        /// <param name="defaultContext"></param>
+        /// <param name="defaultContext">Azure context.</param>
         public PSRecoveryServicesClient(IAzureContext defaultContext)
         {
             string resourceType = string.Empty;

@@ -53,3 +53,14 @@ function PrivateEndpointPagination{
 
     Assert-AreEqual 120 $namespace.PrivateEndpointConnections.Count
 }
+
+function NamespacePagination{
+	$resourceGroupName = "testpaginationforps"
+
+	$listNamespacesBySubscription = Get-AzEventHubNamespace
+	Assert-True { $listNamespacesBySubscription.Count -gt 200 }
+
+	$listNamespacesByResourceGroup = Get-AzEventHubNamespace -ResourceGroupName $resourceGroupName
+	Assert-True { $listNamespacesByResourceGroup.Count -gt 200}
+	Assert-True { $listNamespacesByResourceGroup.Count -lt $listNamespacesBySubscription.Count }
+}

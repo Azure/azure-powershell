@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                         customHeaders.Add("x-ms-authorization-auxiliary", new List<string> { "Bearer " + auxiliaryAccessToken });
                     }
                     else
-                    {                        
+                    {
                         throw new ArgumentException(String.Format(Resources.UnexpectedParameterToken, "ModifyProtection"));
                     }
                 }
@@ -116,25 +116,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             string operationRequest = null;
 
-            // unlock 
-            UnlockDeleteRequest unlockDeleteRequest = new UnlockDeleteRequest();                       
+            // unlock
+            UnlockDeleteRequest unlockDeleteRequest = new UnlockDeleteRequest();
 
             List<ResourceGuardProxyBaseResource> resourceGuardMapping = ListResourceGuardMapping(vaultName, resourceGroupName);
 
             if (resourceGuardMapping != null && resourceGuardMapping.Count != 0)
-            {                
+            {
                 foreach (ResourceGuardOperationDetail operationDetail in resourceGuardMapping[0].Properties.ResourceGuardOperationDetails)
                 {
                     if (operationDetail.VaultCriticalOperation == "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete") operationRequest = operationDetail.DefaultResourceRequest;
                 }
-                               
+
                 if(operationRequest != null)
                 {
                     unlockDeleteRequest.ResourceGuardOperationRequests = new List<string>();
                     unlockDeleteRequest.ResourceGuardOperationRequests.Add(operationRequest);
 
                     if(protectedItemUri == null)
-                    {                        
+                    {
                         throw new ArgumentException(String.Format(Resources.ProtectedItemURICantBeNull));
                     }
 
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     UnlockDeleteResponse unlockDeleteResponse = BmsAdapter.Client.ResourceGuardProxy.UnlockDeleteWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), resourceGuardMapping[0].Name, unlockDeleteRequest, customHeaders).Result.Body;
                 }
                 else if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
-                {   
+                {
                     throw new ArgumentException(String.Format(Resources.UnexpectedParameterToken, "Delete protection with DeleteBackupData"));
                 }
             }
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName,
                 containerName,
-                protectedItemName,                
+                protectedItemName,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string skipToken = default(string),
             string vaultName = null,
             string resourceGroupName = null)
-        {            
+        {
             Func<RestAzureNS.IPage<CrrModel.ProtectedItemResource>> listAsync =
                 () => CrrAdapter.Client.BackupProtectedItemsCrr.ListWithHttpMessagesAsync(
                     vaultName ?? BmsAdapter.GetResourceName(),
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>
         /// Lists workload items according to the query filter and the pagination params
         /// </summary>
-        /// <param name="containerName"></param>
+        /// <param name="containerName">Name of the container which this item belongs to</param>
         /// <param name="queryFilter">Query filter</param>
         /// <param name="skipToken">Skip token for pagination</param>
         /// <param name="vaultName"></param>

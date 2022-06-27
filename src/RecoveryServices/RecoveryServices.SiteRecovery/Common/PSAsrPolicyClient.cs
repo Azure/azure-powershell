@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Creates Azure Site Recovery Policy.
         /// </summary>
-        /// <param name="policyName">Policy name</param>
+        /// <param name="policyName">Policy Name</param>
         /// <param name="input">Policy Input</param>
         /// <returns>Long operation response</returns>
         public PSSiteRecoveryLongRunningOperation CreatePolicy(
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Deletes Azure Site Recovery Policy.
         /// </summary>
-        /// <param name="policyName"></param>
+        /// <param name="policyName">Policy Name</param>
         /// <returns>Long operation response</returns>
         public PSSiteRecoveryLongRunningOperation DeletePolicy(
             string policyName)

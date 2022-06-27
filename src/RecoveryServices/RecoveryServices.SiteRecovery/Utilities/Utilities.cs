@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Get Value from ARM ID
         /// </summary>
-        /// <param name="armId"></param>
+        /// <param name="armId">ARM Id.</param>
         /// <param name="key"></param>
         /// <returns>the key</returns>
         public static string GetValueFromArmId(

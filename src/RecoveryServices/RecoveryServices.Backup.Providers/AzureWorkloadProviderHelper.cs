@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             return newSubProtectionPolicies.Where(
                 newSubProtectionPolicy =>
-                {                   
+                {
                     return (newSubProtectionPolicy.PolicyType == policyType);
                 }).ToList();
         }
@@ -546,8 +546,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// checks if daily retention is reduced first, then weekly, then monthly and then yearly; breaks and return true whenever it finds retention is reduced in any schedule.
         /// if retention is not reduced in any schedule, returns false at the end.
         /// </summary>
-        /// <param name="newRetentionPolicy"></param>
         /// <param name="oldRetentionPolicy"></param>
+        /// <param name="newRetentionPolicy"></param>
         /// <returns></returns>
         public bool checkMUAForLongTermRetentionPolicy(ServiceClientModel.LongTermRetentionPolicy oldRetentionPolicy, ServiceClientModel.LongTermRetentionPolicy newRetentionPolicy)
         {
@@ -578,7 +578,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     return true;
                 }
-            }            
+            }
 
             return false;
         }
@@ -600,13 +600,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <param name="newRetentionPolicy"></param>
         /// <returns></returns>
         public bool checkMUAForMSSQLPolicy(ServiceClientModel.AzureVmWorkloadProtectionPolicy oldRetentionPolicy, ServiceClientModel.AzureVmWorkloadProtectionPolicy newRetentionPolicy)
-        {            
+        {
             IList<SubProtectionPolicy> oldSubProtectionPolicies = oldRetentionPolicy.SubProtectionPolicy;
             IList<SubProtectionPolicy> newSubProtectionPolicies = newRetentionPolicy.SubProtectionPolicy;
 
             foreach (SubProtectionPolicy oldSubProtectionPolicy in oldSubProtectionPolicies)
             {
-                string policyType = oldSubProtectionPolicy.PolicyType;                
+                string policyType = oldSubProtectionPolicy.PolicyType;
                 List<SubProtectionPolicy> newSubProtectionPolicy = GetSubProtectionPolicyOfType(newSubProtectionPolicies, policyType);
                 if(newSubProtectionPolicy == null || newSubProtectionPolicy.Count == 0) return true;
                 else
@@ -616,7 +616,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         if(checkMUAForSimpleRetentionPolicy((ServiceClientModel.SimpleRetentionPolicy)oldSubProtectionPolicy.RetentionPolicy, (ServiceClientModel.SimpleRetentionPolicy)newSubProtectionPolicy[0].RetentionPolicy))
                         {
                             return true;
-                        }                        
+                        }
                     }
                     else if (oldSubProtectionPolicy.RetentionPolicy.GetType() == typeof(ServiceClientModel.LongTermRetentionPolicy))
                     {
@@ -654,7 +654,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             else if (newPolicy.Properties.GetType() == typeof(ServiceClientModel.AzureVmWorkloadProtectionPolicy))
-            {                   
+            {
                 return checkMUAForMSSQLPolicy((ServiceClientModel.AzureVmWorkloadProtectionPolicy)oldPolicy.Properties, (ServiceClientModel.AzureVmWorkloadProtectionPolicy)newPolicy.Properties);                                
             }
 
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public bool checkMUAForModifyPolicy(ProtectionPolicyResource oldPolicy, ProtectionPolicyResource newPolicy, bool enableMUA = false)
-        {            
+        {
             if( enableMUA && (checkMUAForSchedulePolicy(oldPolicy, newPolicy) || checkMUAForRetentionPolicy(oldPolicy, newPolicy)))
             {
                 return true;
@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 // schedule runTimes is already validated if in UTC/not during validate()
                 // now copy times from schedule to retention policy
-                
+
                 List<DateTime> hourlyWindowStartTime = (schPolicyV2.HourlySchedule != null) ? new List<DateTime>{(DateTime)schPolicyV2.HourlySchedule.WindowStartTime} : null;
 
                 if (retPolicy.IsDailyScheduleEnabled && retPolicy.DailySchedule != null)

@@ -186,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateEndpointNetworkPoliciesFlag
-Configure to enable or disable applying network policies on private endpoint in the subnet.
+Configure to enable or disable applying network policies on private endpoint in the subnet. Default value is Disabled.
 
 ```yaml
 Type: System.String

@@ -30,10 +30,10 @@
           "3f956905-3154-4097-9152-249aebce9ec1_M1CH3_M1CH3"
         ],
         "Server-SB": [
-          "Service-Bus-Resource-Provider/CH3"
+          "Service-Bus-Resource-Provider/SN1"
         ],
         "Server": [
-          "Service-Bus-Resource-Provider/CH3",
+          "Service-Bus-Resource-Provider/SN1",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
@@ -97,10 +97,10 @@
           "9fc0baf6-ab35-4601-9383-2b9f13aeaad5_M6SN1_M6SN1"
         ],
         "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
+          "Service-Bus-Resource-Provider/CH3"
         ],
         "Server": [
-          "Service-Bus-Resource-Provider/SN1",
+          "Service-Bus-Resource-Provider/CH3",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
@@ -164,10 +164,10 @@
           "6afa45fd-452e-45eb-b8ec-871c3d188193_M8CH3_M8CH3"
         ],
         "Server-SB": [
-          "Service-Bus-Resource-Provider/CH3"
+          "Service-Bus-Resource-Provider/SN1"
         ],
         "Server": [
-          "Service-Bus-Resource-Provider/CH3",
+          "Service-Bus-Resource-Provider/SN1",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
@@ -237,10 +237,10 @@
           "8d6d4c3e-db92-49ce-a482-2083f1b6316f_M5CH3_M5CH3"
         ],
         "Server-SB": [
-          "Service-Bus-Resource-Provider/CH3"
+          "Service-Bus-Resource-Provider/SN1"
         ],
         "Server": [
-          "Service-Bus-Resource-Provider/CH3",
+          "Service-Bus-Resource-Provider/SN1",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [

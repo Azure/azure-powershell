@@ -431,6 +431,10 @@
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11984"
         ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
         "x-ms-correlation-request-id": [
           "bf766179-0546-4e2b-99f2-28c2271e511d"
         ],
@@ -673,7 +677,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "476"
+          "477"
         ]
       },
       "ResponseHeaders": {
@@ -712,7 +716,7 @@
           "Sat, 25 Jun 2022 16:11:30 GMT"
         ],
         "Content-Length": [
-          "611"
+          "612"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -746,7 +750,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "477"
+          "476"
         ]
       },
       "ResponseHeaders": {
@@ -785,7 +789,7 @@
           "Sat, 25 Jun 2022 16:11:38 GMT"
         ],
         "Content-Length": [
-          "612"
+          "611"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -819,7 +823,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "476"
+          "647"
         ]
       },
       "ResponseHeaders": {
@@ -858,7 +862,7 @@
           "Sat, 25 Jun 2022 16:11:45 GMT"
         ],
         "Content-Length": [
-          "611"
+          "722"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -892,7 +896,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "647"
+          "648"
         ]
       },
       "ResponseHeaders": {
@@ -931,7 +935,7 @@
           "Sat, 25 Jun 2022 16:11:49 GMT"
         ],
         "Content-Length": [
-          "722"
+          "723"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -965,7 +969,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "648"
+          "647"
         ]
       },
       "ResponseHeaders": {
@@ -1004,7 +1008,7 @@
           "Sat, 25 Jun 2022 16:11:53 GMT"
         ],
         "Content-Length": [
-          "723"
+          "722"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1038,7 +1042,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "647"
+          "815"
         ]
       },
       "ResponseHeaders": {
@@ -1052,10 +1056,10 @@
           "eb0d01b3-1e8f-43ee-be4e-a45171b20a5b_M4CH3_M4CH3"
         ],
         "Server-SB": [
-          "Service-Bus-Resource-Provider/CH3"
+          "Service-Bus-Resource-Provider/SN1"
         ],
         "Server": [
-          "Service-Bus-Resource-Provider/CH3",
+          "Service-Bus-Resource-Provider/SN1",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
@@ -1077,7 +1081,7 @@
           "Sat, 25 Jun 2022 16:11:56 GMT"
         ],
         "Content-Length": [
-          "722"
+          "830"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1106,12 +1110,6 @@
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.EventHub.EventHubManagementClient/5.0.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "815"
         ]
       },
       "ResponseHeaders": {
@@ -1131,8 +1129,8 @@
           "Service-Bus-Resource-Provider/CH3",
           "Microsoft-HTTPAPI/2.0"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
         ],
         "x-ms-correlation-request-id": [
           "558691a5-9595-4aa5-b56a-f1d4a7902d63"
@@ -1150,7 +1148,7 @@
           "Sat, 25 Jun 2022 16:12:00 GMT"
         ],
         "Content-Length": [
-          "830"
+          "611"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1284,7 +1282,7 @@
           "Sat, 25 Jun 2022 16:11:33 GMT"
         ],
         "Content-Length": [
-          "611"
+          "612"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1351,7 +1349,7 @@
           "Sat, 25 Jun 2022 16:11:41 GMT"
         ],
         "Content-Length": [
-          "612"
+          "611"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1395,8 +1393,75 @@
         "Server-SB": [
           "Service-Bus-Resource-Provider/CH3"
         ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
         "Server": [
           "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "8b470ee8-f3ce-46f6-9737-981f60455cee"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220622T162336Z:8b470ee8-f3ce-46f6-9737-981f60455cee"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 22 Jun 2022 16:23:36 GMT"
+        ],
+        "Content-Length": [
+          "722"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a70b8550-49b1-4c60-b9f9-86b7edbf31e4/resourceGroups/PSSDKTesting-RG5789/providers/Microsoft.EventHub/namespaces/PSSDKTesting-NS6523/applicationGroups/appGroupName5801\",\r\n  \"name\": \"appGroupName5801\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/ApplicationGroups\",\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"clientAppGroupIdentifier\": \"SASKeyName=authkey1224\",\r\n    \"policies\": [\r\n      {\r\n        \"type\": \"ThrottlingPolicy\",\r\n        \"name\": \"ThrottlingPolicy1\",\r\n        \"metricId\": \"IncomingMessages\",\r\n        \"rateLimitThreshold\": 1032\r\n      },\r\n      {\r\n        \"type\": \"ThrottlingPolicy\",\r\n        \"name\": \"ThrottlingPolicy2\",\r\n        \"metricId\": \"OutgoingBytes\",\r\n        \"rateLimitThreshold\": 10567\r\n      },\r\n      {\r\n        \"type\": \"ThrottlingPolicy\",\r\n        \"name\": \"ThrottlingPolicy3\",\r\n        \"metricId\": \"OutgoingMessages\",\r\n        \"rateLimitThreshold\": 9058\r\n      }\r\n    ],\r\n    \"isEnabled\": true\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a70b8550-49b1-4c60-b9f9-86b7edbf31e4/resourceGroups/PSSDKTesting-RG5789/providers/Microsoft.EventHub/namespaces/PSSDKTesting-NS6523/applicationGroups/appGroupName5801?api-version=2022-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTcwYjg1NTAtNDliMS00YzYwLWI5ZjktODZiN2VkYmYzMWU0L3Jlc291cmNlR3JvdXBzL1BTU0RLVGVzdGluZy1SRzU3ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL1BTU0RLVGVzdGluZy1OUzY1MjMvYXBwbGljYXRpb25Hcm91cHMvYXBwR3JvdXBOYW1lNTgwMT9hcGktdmVyc2lvbj0yMDIyLTAxLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "49978fc2-2d75-44b2-aa80-21d9443fddc0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/5.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "75a80f9a-dd20-4345-b691-fe3955812b67_M1SN1_M1SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
@@ -1467,7 +1532,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
           "151ec869-5cb7-4236-9b5c-ad05a91ee2ea"
@@ -1592,7 +1657,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "283"
+          "282"
         ]
       },
       "ResponseHeaders": {
@@ -1631,7 +1696,7 @@
           "Sat, 25 Jun 2022 16:12:05 GMT"
         ],
         "Content-Length": [
-          "504"
+          "503"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1820,7 +1885,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
           "22c1e2e8-0029-4703-93b8-7848455095b1"
@@ -1887,7 +1952,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
           "fa1cbea8-fc7d-4628-b512-6b851548897c"
@@ -2100,7 +2165,7 @@
           "Sat, 25 Jun 2022 16:12:19 GMT"
         ],
         "Content-Length": [
-          "504"
+          "503"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3048,6 +3113,6 @@
     ]
   },
   "Variables": {
-    "SubscriptionId": "326100e2-f69d-4268-8503-075374f62b6e"
+    "SubscriptionId": "a70b8550-49b1-4c60-b9f9-86b7edbf31e4"
   }
 }

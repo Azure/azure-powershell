@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Provide
         /// Initialize a new instance from the source.
         /// </summary>
         /// <param name="source">The source settings.</param>
+        /// <param name="id"></param>
         public UnsettableMemoryConfigurationProvider(UnsettableMemoryConfigurationSource source, string id): base(id)
         {
             if (source == null)

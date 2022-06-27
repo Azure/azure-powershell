@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     required
         ///     parameters.
         /// </summary>
-        /// <param name="provider"></param>
+        /// <param name="provider">Recovery Service Provider object</param>
         public ASRRecoveryServicesProvider(
             RecoveryServicesProvider provider)
         {
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ID { get; set; }
 
         /// <summary>
-        ///     Gets or sets the Type of Management entity ?VMM, V-Center.
+        ///     Gets or sets the Type of Management entity - VMM, V-Center.
         /// </summary>
         public string Type { get; set; }
 
@@ -181,6 +181,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Initializes a new instance of the <see cref="ASRSite" /> class.
         /// </summary>
+        /// <param name="fabric">Fabric object</param>
         public ASRFabric(
             Fabric fabric)
         {
@@ -1445,6 +1446,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class ASRFabricSpecificVMDetails
     {
     }
+
     /// <summary>
     /// Azure Site Recovery Replication Protected Item.
     /// </summary>
@@ -2014,7 +2016,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Initializes a new instance of the <see cref="ASRGroupTaskDetails" /> class.
         /// </summary>
-        /// <param name="groupTaskDetails"></param>
+        /// <param name="groupTaskDetails">Task details to load values from.</param>
         public ASRGroupTaskDetails(
             GroupTaskDetails groupTaskDetails)
         {
@@ -2743,9 +2745,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
         }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ASRRunAsAccount" /> class.
-        /// </summary>
         /// <summary>
         /// Gets or sets the disk uri.
         /// </summary>

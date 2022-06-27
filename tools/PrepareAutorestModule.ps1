@@ -21,7 +21,7 @@ $ChangedFiles = Get-Content -Path "$PSScriptRoot\..\artifacts\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
 
-$SKIP_MODULES = @("OperationalInsights")
+$SKIP_MODULES = @()
 
 #Region Detect which module should be processed
 $ModuleSet = New-Object System.Collections.Generic.HashSet[string]
@@ -46,7 +46,7 @@ foreach ($file in $ChangedFiles)
 }
 if ($ModuleSet.Contains($ALL_MODULE))
 {
-    $ModuleList = (Get-ChildItem "$PSScriptRoot\..\src\" -Directory -Exclude helpers,lib).Name | Where-Object { $SKIP_MODULES -notcontains $_ }
+    $ModuleList = (Get-ChildItem "$PSScriptRoot\..\src\" -Directory -Exclude helpers,lib).Name | Where-Object { $SKIP_MODULES -notcontains $_ -and (Get-Item env:SELECTEDMODULELIST).Value.Split(';') -contains $_ }
 }
 else
 {
