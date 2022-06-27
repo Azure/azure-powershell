@@ -1,2 +1,0 @@
-"Module","Cmdlet","Example","RuleName","ProblemId","Severity","Description","Extent","Remediation"
-"Accounts","Disable-AzContextAutosave","2","MissingExampleCode","5044","1","Code of the example is missing.","Accounts\help\Disable-AzContextAutosave.md","Add code for the example. Remove any placeholders."
