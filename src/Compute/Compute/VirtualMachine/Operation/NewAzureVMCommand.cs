@@ -387,6 +387,7 @@ namespace Microsoft.Azure.Commands.Compute
         public int vCPUCountPerCore { get; set; }
 
         [Parameter(
+           ParameterSetName = DefaultParameterSet,
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.")]
