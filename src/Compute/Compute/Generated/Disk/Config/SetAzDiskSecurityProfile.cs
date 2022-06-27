@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
             HelpMessage = "ResourceId of the disk encryption set to use for enabling encryption at rest.")]
-        public string SecureDiskEncryptionSetId { get; set; }
+        public string SecureVMDiskEncryptionSet { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -70,9 +70,9 @@ namespace Microsoft.Azure.Commands.Compute
 
             this.Disk.SecurityProfile.SecurityType = SecurityType;
 
-            if (this.SecureDiskEncryptionSetId != null)
+            if (this.SecureVMDiskEncryptionSet != null)
             {
-                this.Disk.SecurityProfile.SecureVMDiskEncryptionSetId = this.SecureDiskEncryptionSetId;
+                this.Disk.SecurityProfile.SecureVMDiskEncryptionSetId = this.SecureVMDiskEncryptionSet;
             }
 
             WriteObject(this.Disk);

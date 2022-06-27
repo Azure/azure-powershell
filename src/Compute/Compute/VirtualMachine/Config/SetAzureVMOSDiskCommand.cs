@@ -202,8 +202,8 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Placeholder")]
-        public string SecureDiskEncryptionSetId { get; set; }
+            HelpMessage = "ARM Resource ID for Disk Encryption Set. Allows customer to provide ARM ID for Disk Encryption Set created with ConfidentialVmEncryptedWithCustomerKey encryption type. This will allow customer to use Customer Managed Key (CMK) encryption with Confidential VM. Parameter SecurityEncryptionType value should be DiskwithVMGuestState.")]
+        public string SecureVMDiskEncryptionSet { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            if (this.IsParameterBound(c => c.SecureDiskEncryptionSetId))
+            if (this.IsParameterBound(c => c.SecureVMDiskEncryptionSet))
             {
                 if (this.VM.StorageProfile == null)
                 {
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet = new DiskEncryptionSetParameters();
                 }
-                this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet.Id = SecureDiskEncryptionSetId;
+                this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet.Id = SecureVMDiskEncryptionSet;
             }
             if (this.IsParameterBound(c => c.SecurityEncryptionType))
             {
