@@ -55,6 +55,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// Creates a PS Table object that is same as response contract
         /// </summary>
         /// <param name="table"></param>
+        /// <param name="resourceGroupName">Resource group name</param>
+        /// <param name="workspaceName">Workspace name</param>
         public PSTable(Table table, string resourceGroupName, string workspaceName)
         {
             this.ResourceGroupName = resourceGroupName;
