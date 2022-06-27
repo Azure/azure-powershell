@@ -515,11 +515,18 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ConfVMSetAzVMSecurityProfile");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Needs to be run manually.")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestConfVMSetAzDiskSecurityProfile()
         {
             TestRunner.RunTestScript("Test-ConfVMSetAzDiskSecurityProfile");
+        }
+
+        [Fact(Skip = "Needs to be run manually.")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestConfVMSetAzDiskEncryptionSetConfig()
+        {
+            TestRunner.RunTestScript("Test-ConfVMSetAzDiskEncryptionSetConfig");
         }
 
         [Fact]
