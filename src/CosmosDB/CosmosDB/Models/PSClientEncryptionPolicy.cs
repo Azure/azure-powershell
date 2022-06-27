@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
             if (ModelHelper.IsNotNullOrEmpty(clientEncryptionPolicy.IncludedPaths))
             {
-                PSClientEncryptionPolicy.ValidateIncludedPaths(clientEncryptionPolicy.IncludedPaths);
+                PSClientEncryptionPolicy.ValidateIncludedPaths(clientEncryptionPolicy.IncludedPaths, (int)clientEncryptionPolicy.PolicyFormatVersion);
 
                 IncludedPaths = new List<PSClientEncryptionIncludedPath>();
                 foreach (ClientEncryptionIncludedPath key in clientEncryptionPolicy.IncludedPaths)
@@ -87,9 +87,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 }
             }
 
-            PSClientEncryptionPolicy.ValidatePartitionKeyPathsAreNotEncrypted(clientEncryptionPolicy.IncludedPaths, partitionKeyPathTokens);
+            PSClientEncryptionPolicy.ValidatePartitionKeyPathsAreNotEncrypted(
+                clientEncryptionPolicy.IncludedPaths,
+                partitionKeyPathTokens,
+                pSClientEncryptionPolicy.PolicyFormatVersion);
 
-            if(clientEncryptionPolicy.PolicyFormatVersion != 1)
+            if(clientEncryptionPolicy.PolicyFormatVersion < 1 || clientEncryptionPolicy.PolicyFormatVersion > 2)
             {
                 throw new InvalidOperationException($"Invalid PolicyFormatVersion:{clientEncryptionPolicy.PolicyFormatVersion} used in Client Encryption Policy. ");
             }
@@ -102,26 +105,44 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// </summary>
         /// <param name="clientEncryptionIncludedPath">Included paths of the client encryption policy.</param>
         /// <param name="partitionKeyPathTokens">Tokens corresponding to validated partition key.</param>
-        private static void ValidatePartitionKeyPathsAreNotEncrypted(IEnumerable<ClientEncryptionIncludedPath> clientEncryptionIncludedPath, List<string> partitionKeyPathTokens)
+        /// <param name="policyFormatVersion">Client encryption policy format version.</param>
+        private static void ValidatePartitionKeyPathsAreNotEncrypted(
+            IEnumerable<ClientEncryptionIncludedPath> clientEncryptionIncludedPath,
+            List<string> partitionKeyPathTokens,
+            int policyFormatVersion)
         {
             Debug.Assert(partitionKeyPathTokens != null);
-            IEnumerable<string> propertiesToEncrypt = clientEncryptionIncludedPath.Select(p => p.Path.Substring(1));
+
             foreach (string tokenInPath in partitionKeyPathTokens)
             {
-                Debug.Assert(String.IsNullOrEmpty(tokenInPath));                
-                if (propertiesToEncrypt.Contains(tokenInPath.Substring(1)))
+                Debug.Assert(String.IsNullOrEmpty(tokenInPath));
+
+                string topLevelPath = tokenInPath.Split('/')[1];
+                // paths in included paths start with "/". Get the ClientEncryptionIncludedPath and validate.
+                IEnumerable<ClientEncryptionIncludedPath> encryptedPartitionKeyPath = clientEncryptionIncludedPath.Where(p => p.Path.Substring(1).Equals(topLevelPath));
+
+                if (encryptedPartitionKeyPath.Any())
                 {
-                    throw new ArgumentException($"Paths which are part of the partition key({tokenInPath}) may not be included in the Client Encryption Policy. ");
+                    if (policyFormatVersion < 2)
+                    {
+                        throw new ArgumentException($"Path: {encryptedPartitionKeyPath.Select(et => et.Path).FirstOrDefault()} which is part of the partition key cannot be encrypted with PolicyFormatVersion: {policyFormatVersion}. Please use PolicyFormatVersion: 2. ");
+                    }
+
+                    // for the ClientEncryptionIncludedPath found check the encryption type.
+                    if (encryptedPartitionKeyPath.Select(et => et.EncryptionType).FirstOrDefault() != "Deterministic")
+                    {
+                        throw new ArgumentException($"Path: {encryptedPartitionKeyPath.Select(et => et.Path).FirstOrDefault()} which is part of the partition key has to be encrypted with Deterministic type Encryption.");
+                    }
                 }
             }
         }
 
-        private static void ValidateIncludedPaths(IEnumerable<ClientEncryptionIncludedPath> clientEncryptionIncludedPath)
+        private static void ValidateIncludedPaths(IEnumerable<ClientEncryptionIncludedPath> clientEncryptionIncludedPath, int policyFormatVersion)
         {
             List<string> includedPathsList = new List<string>();
             foreach (ClientEncryptionIncludedPath path in clientEncryptionIncludedPath)
             {
-                PSClientEncryptionPolicy.ValidateClientEncryptionIncludedPath(path);
+                PSClientEncryptionPolicy.ValidateClientEncryptionIncludedPath(path, policyFormatVersion);
                 if (includedPathsList.Contains(path.Path))
                 {
                     throw new ArgumentException($"Duplicate Path({path.Path}) found.", nameof(clientEncryptionIncludedPath));
@@ -131,7 +152,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             }
         }
 
-        private static void ValidateClientEncryptionIncludedPath(ClientEncryptionIncludedPath clientEncryptionIncludedPath)
+        private static void ValidateClientEncryptionIncludedPath(ClientEncryptionIncludedPath clientEncryptionIncludedPath, int policyFormatVersion)
         {
             if (clientEncryptionIncludedPath == null)
             {
@@ -144,8 +165,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             }
 
             if (clientEncryptionIncludedPath.Path[0] != '/'
-                || clientEncryptionIncludedPath.Path.LastIndexOf('/') != 0
-                || string.Equals(clientEncryptionIncludedPath.Path.Substring(1), "id"))
+                || clientEncryptionIncludedPath.Path.LastIndexOf('/') != 0)
             {
                 throw new ArgumentException($"Invalid path '{clientEncryptionIncludedPath.Path ?? string.Empty}'.");
             }
@@ -158,6 +178,19 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             if (string.IsNullOrWhiteSpace(clientEncryptionIncludedPath.EncryptionType))
             {
                 throw new ArgumentNullException(nameof(clientEncryptionIncludedPath.EncryptionType));
+            }
+
+            if (string.Equals(clientEncryptionIncludedPath.Path.Substring(1), "id"))
+            {
+                if (policyFormatVersion < 2)
+                {
+                    throw new ArgumentException($"Path: {clientEncryptionIncludedPath.Path} cannot be encrypted with PolicyFormatVersion: {policyFormatVersion}. Please use PolicyFormatVersion: 2. ");
+                }
+
+                if (clientEncryptionIncludedPath.EncryptionType != "Deterministic")
+                {
+                    throw new ArgumentException($"Only Deterministic encryption type is supported for path: {clientEncryptionIncludedPath.Path}. ");
+                }
             }
 
             if (!string.Equals(clientEncryptionIncludedPath.EncryptionType, "Deterministic") &&
