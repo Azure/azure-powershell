@@ -20,9 +20,7 @@ Create an in-memory object for UrlSigningKeyParameters.
 .Description
 Create an in-memory object for UrlSigningKeyParameters.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Add code here
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningKeyParameters
@@ -69,7 +67,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
