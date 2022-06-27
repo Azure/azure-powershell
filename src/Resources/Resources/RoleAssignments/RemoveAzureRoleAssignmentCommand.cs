@@ -199,7 +199,6 @@ namespace Microsoft.Azure.Commands.Resources
             };
 
             AuthorizationClient.ValidateScope(options.Scope, true);
-            // https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/design-guidelines/should-process-confirm-impact.mds
             ConfirmAction(
                 string.Format(ProjectResources.RemovingRoleAssignment, ObjectId, Scope, RoleDefinitionName),
                 ObjectId,
