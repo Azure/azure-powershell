@@ -17,13 +17,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 {
     public class PSCapacityReservationProperties
     {
+
         /// <summary>
-        // The last time Sku was updated.
+        /// The last time Sku was updated.
         /// </summary>
         public string LastSkuUpdate { get; private set; }
 
         /// <summary>
-        // CapacityReservation value in GB.
+        /// CapacityReservation value in GB.
         /// </summary>
         public long? MinCapacity { get; private set; }
 
