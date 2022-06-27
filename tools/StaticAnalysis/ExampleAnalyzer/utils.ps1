@@ -541,11 +541,17 @@ function Get-ScriptAnalyzerResult {
     }
     $results = @()
     foreach($analysisResult in $analysisResults){
-        if($analysisResult.Severity -eq "Error"){
+        if($analysisResult.Severity -eq "ParseError"){
+            $Severity = 2
+        }
+        elseif($analysisResult.Severity -eq "Error"){
             $Severity = 2
         }
         elseif($analysisResult.Severity -eq "Warning"){
             $Severity = 3
+        }
+        elseif($analysisResult.Severity -eq "Information"){
+            $Severity = 4
         }
         if($analysisResult.RuleSuppressionID -ge 5000 -and $analysisResult.RuleSuppressionID -le 5199){
             $result = [AnalysisOutput]@{
@@ -553,22 +559,26 @@ function Get-ScriptAnalyzerResult {
                 Cmdlet = ($analysisResult.Message -split "-")[1] + "-" + ($analysisResult.Message -split "-")[2]
                 Example = ($analysisResult.Message -split "-")[3]
                 RuleName = $analysisResult.RuleName
-                Description = ($analysisResult.Message -split "@")[1] -replace "`"","`'"
+                Description = ($analysisResult.Message -split "@")[1] -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 Severity = $Severity
-                Extent = $analysisResult.Extent -replace "`"","`'"
+                Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 ProblemID = $analysisResult.RuleSuppressionID
-                Remediation = ($analysisResult.Message -split "@")[2] -replace "`"","`'"
+                Remediation = ($analysisResult.Message -split "@")[2] -replace "`"","`'" -replace "`n"," " -replace "`r"," "
             }
         }
         else{
             $result = [AnalysisOutput]@{
+                Module = ""
+                Cmdlet = ""
+                Example = 0
                 RuleName = $analysisResult.RuleName
-                Description = $analysisResult.Message
+                Description = $analysisResult.Message -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 Severity = $Severity
-                Extent = $analysisResult.Extent
-                Remediation = "Unexpected Error! Please contact the Azure Powershell Team."
+                Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace "`n"," " -replace "`r"," "
+                ProblemID = 5200
+                Remediation = "Unexpected Error! Please check your example or contact the Azure Powershell Team."
+                }
             }
-        }
         $results += $result
     }
     #Except the suppressed records

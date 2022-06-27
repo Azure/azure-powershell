@@ -95,6 +95,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Catches and logs any exception occuring during the execution.
         /// </summary>
         /// <param name="action">Delegate representing the cmdlet processing block</param>
+        /// <param name="shouldProcess"></param>
         protected void ExecutionBlock(Action action, bool shouldProcess = true)
         {
             try
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Handles set of exceptions thrown by client
         /// </summary>
-        /// <param name="ex">Exception thrown by the client</param>
+        /// <param name="exception">Exception thrown by the client</param>
         private void HandleException(Exception exception)
         {
             if (exception is AggregateException && ((AggregateException)exception).InnerExceptions != null

@@ -140,7 +140,7 @@ $aadClientCertThumbprint= $cert.Thumbprint
 
 #Upload pfx to KeyVault 
 $KeyVaultSecretName = "MyAADCert"
-$FileContentBytes = get-content $CertPath -Encoding Byte
+$FileContentBytes = Get-Content $CertPath -Encoding Byte
 $FileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 $JSONObject = @"
     { 
@@ -219,7 +219,7 @@ $AADClientCertThumbprint= $Cert.Thumbprint
 
 #Upload pfx to KeyVault 
 $KeyVaultSecretName = "MyAADCert"
-$FileContentBytes = get-content $CertPath -Encoding Byte
+$FileContentBytes = Get-Content $CertPath -Encoding Byte
 $FileContentEncoded = [System.Convert]::ToBase64String($FileContentBytes)
 $JSONObject = @"
     { 

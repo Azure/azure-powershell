@@ -25,7 +25,7 @@ list source configurations for a linker in container app.
 
 ### Example 1: Get container app's linker configuration list
 ```powershell
-Get-AzServiceLinkerConfigurationForContainerApp -ContainerApp servicelinker-containerapp -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker |fl
+Get-AzServiceLinkerConfigurationForContainerApp -ContainerApp servicelinker-containerapp -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker | Format-List
 ```
 
 ```output
