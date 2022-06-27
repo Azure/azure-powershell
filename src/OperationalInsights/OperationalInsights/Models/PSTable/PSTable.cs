@@ -67,8 +67,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Plan = table.Plan;
             this.Schema = table.Schema;
             this.Description = table.Schema?.Description;
-            this.RestoredLogs = table.RestoredLogs;
-            this.SearchResults = table.SearchResults;
+            this.RestoredLogs = table.RestoredLogs ?? table.Schema?.RestoredLogs;
+            this.SearchResults = table.SearchResults ?? table.Schema?.SearchResults;
         }
 
         public PSTable(
