@@ -81,6 +81,7 @@
     - `Update-AzRouteServer`
 * Fixed bug that can't parse CustomIpPrefixParent parameter from swagger to powershell.
 * Added "Any" operator in New-AzApplicationGatewayFirewallCondition
+* Fixed bugs that cannot parse virtual network encryption paramemters when updating exsiting vnet. 
 
 ## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
