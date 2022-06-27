@@ -294,6 +294,9 @@
   <data name="ParentVpnGatewayNotFound" xml:space="preserve">
     <value>The parent VpnGateway for this connection cannot be found.</value>
   </data>
+  <data name="ParentVpnServerConfigurationNotFound" xml:space="preserve">
+    <value>The parent VpnServerConfiguration for this PolicyGroup cannot be found.</value>
+  </data> 
   <data name="ParentExpressRouteGatewayNotFound" xml:space="preserve">
     <value>The parent ExpressRouteGateway for this connection cannot be found.</value>
   </data>
@@ -333,6 +336,9 @@
   <data name="VpnConnectionNotFound" xml:space="preserve">
     <value>The VpnConnection could not be found.</value>
   </data>
+  <data name="VpnServerConfigurationPolicyGroupNotFound" xml:space="preserve">
+    <value>The VpnServerConfigurationPolicyGroup could not be found.</value>
+  </data>
   <data name="VpnGatewayNotFound" xml:space="preserve">
     <value>The VpnGateway to modify could not be found</value>
   </data>
@@ -360,6 +366,9 @@
   <data name="CreatingLongRunningOperationMessage" xml:space="preserve">
     <value>Creating resource with ResourceGroupName {0}, ResourceName {1}.</value>
   </data>
+  <data name="CreatingChildResourceLongRunningOperationMessage" xml:space="preserve">
+    <value>Creating child resource with ResourceGroupName {0}, ParentResourceName {1} ResourceName {2}.</value>
+  </data>  
   <data name="ResourceAlreadyPresentInResourceGroup" xml:space="preserve">
     <value>A resource with the same name {0} and same type already exists in ResourceGroup {1}. If you wish to modify this resource please use the Update operation instead.</value>
   </data>
@@ -371,6 +380,9 @@
   </data>
   <data name="VpnGatewayRequiredToCreateVpnConnection" xml:space="preserve">
     <value>A valid VpnGateway reference is required to create a VpnConnection.</value>
+  </data>
+  <data name="VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup" xml:space="preserve">
+    <value>A valid VpnServerConfiguration reference is required to create or update a PolicyGroup.</value>
   </data>
   <data name="ExpressRouteGatewayRequiredToCreateExpressRouteConnection" xml:space="preserve">
     <value>A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection.</value>
@@ -722,5 +734,11 @@
   </data>
   <data name="VirtualNetworkGatewayNatRuleNotFound" xml:space="preserve">
     <value>The VirtualNetworkGatewayNatRule could not be found</value>
+  </data>
+  <data name="UnsupportPrivateEndpointConnectionType" xml:space="preserve">
+    <value>{0} doesn't support private endpoint connection.</value>
+  </data>
+  <data name="UnsupportPrivateLinkResourceType" xml:space="preserve">
+    <value>{0} doesn't support private link resource.</value>
   </data>
 </root>

@@ -49,5 +49,12 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ExpressRoutePortGenerateLOA");
         }
 
+        [Fact(Skip = "No bandwidth available")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestExpressRoutePortAuthorizationCRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRoutePortAuthorizationCRUD");
+        }
     }
 }

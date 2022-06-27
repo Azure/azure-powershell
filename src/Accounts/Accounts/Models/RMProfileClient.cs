@@ -284,11 +284,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 if (subscriptionId != null)
                 {
-                    throw new PSInvalidOperationException(String.Format(ResourceMessages.SubscriptionIdNotFound, account.Id, subscriptionId));
+                    throw new PSInvalidOperationException(String.Format(ResourceMessages.SubscriptionIdNotFound, account.Id, subscriptionId) + " " + ProfileMessages.SubscriptionNotFouldPleaseCheckConfig);
                 }
                 else if (subscriptionName != null)
                 {
-                    throw new PSInvalidOperationException(String.Format(ResourceMessages.SubscriptionNameNotFound, account.Id, subscriptionName));
+                    throw new PSInvalidOperationException(String.Format(ResourceMessages.SubscriptionNameNotFound, account.Id, subscriptionName) + " " + ProfileMessages.SubscriptionNotFouldPleaseCheckConfig);
                 }
 
                 var newContext = new AzureContext(account, environment, newTenant);
@@ -601,7 +601,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 {
                                     WriteWarningMessage(string.Format(
                                         "TenantId '{0}' contains more than one active subscription. First one will be selected for further use. " +
-                                        "To select another subscription, use Set-AzContext.",
+                                        "To select another subscription, use Set-AzContext. " +
+                                        "To override which subscription Connect-AzAccount selects by default, " +
+                                        "use `Update-AzConfig -DefaultSubscriptionForLogin <SubscriptionNameOrId>`.",
                                         accessToken.TenantId));
                                 }
                                 subscription = subscription ?? subscriptions.First();

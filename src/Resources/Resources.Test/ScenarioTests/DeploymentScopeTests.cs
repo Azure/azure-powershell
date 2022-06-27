@@ -43,14 +43,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd-ResourceGroup");
         }
 
-        [Fact()]
+        [Fact(Skip = "Need to update test Resources")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagementGroupLevelDeploymentEndToEnd()
         {
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd-ManagementGroup");
         }
 
-        [Fact()]
+        [Fact(Skip = "Need to update test Resources")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TenantLevelDeploymentEndToEnd()
         {

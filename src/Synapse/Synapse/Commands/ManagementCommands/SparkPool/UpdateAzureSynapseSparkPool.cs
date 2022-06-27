@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -242,9 +243,9 @@ namespace Microsoft.Azure.Commands.Synapse
                         Name = psPackage?.Name,
                         Type = psPackage?.PackageType,
                         Path = psPackage?.Path,
-                        ContainerName = psPackage?.ContainerName
-                        // TODO: set uploadedTimeStamp property after upgrading SDK otherwise we will see a incorrect property value from Azure portal.
-                    })).ToList();
+                        ContainerName = psPackage?.ContainerName,
+                        UploadedTimestamp = DateTime.Parse(psPackage?.UploadedTimestamp).ToUniversalTime()
+                    }), new LibraryComparer()).ToList();
                 }
                 else if (this.PackageAction == SynapseConstants.PackageActionType.Remove)
                 {
@@ -295,6 +296,35 @@ namespace Microsoft.Azure.Commands.Synapse
                 Filename = Path.GetFileName(powerShellDestinationPath),
                 Content = this.ReadFileAsText(powerShellDestinationPath)
             };
+        }
+
+        private class LibraryComparer : IEqualityComparer<LibraryInfo>
+        {
+            public bool Equals(LibraryInfo x, LibraryInfo y)
+            {
+                //Check whether the compared objects reference the same data.
+                if (Object.ReferenceEquals(x, y)) return true;
+
+                //Check whether any of the compared objects is null.
+                if (Object.ReferenceEquals(x, null) || Object.ReferenceEquals(y, null))
+                    return false;
+
+                return x.Name == y.Name
+                    && x.Path == y.Path
+                    && x.ContainerName == y.ContainerName
+                    && x.UploadedTimestamp == y.UploadedTimestamp
+                    && x.Type == y.Type;
+
+            }
+            public int GetHashCode(LibraryInfo obj)
+            {
+                //Check whether the object is null
+                if (Object.ReferenceEquals(obj, null)) return 0;
+
+                //Get hash code for the object if it is not null.
+                int hCode = obj.Name.GetHashCode() ^ obj.Path.GetHashCode() ^ obj.ContainerName.GetHashCode() ^ obj.UploadedTimestamp.GetHashCode() ^ obj.Type.GetHashCode();
+                return hCode;
+             }
         }
     }
 }

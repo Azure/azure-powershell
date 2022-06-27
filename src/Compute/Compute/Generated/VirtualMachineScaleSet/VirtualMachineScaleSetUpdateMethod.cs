@@ -236,6 +236,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
+        public bool ScaleInPolicyForceDeletion { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string PauseTimeBetweenBatches { get; set; }
 
@@ -954,6 +958,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSetUpdate.ScaleInPolicy = new ScaleInPolicy();
                 }
                 this.VirtualMachineScaleSetUpdate.ScaleInPolicy.Rules = this.ScaleInPolicy;
+            }
+
+            if (this.IsParameterBound(c => c.ScaleInPolicyForceDeletion))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.ScaleInPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ScaleInPolicy = new ScaleInPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.ScaleInPolicy.ForceDeletion = this.ScaleInPolicyForceDeletion;
             }
 
             if (this.IsParameterBound(c => c.SinglePlacementGroup))
@@ -1675,6 +1692,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.ScaleInPolicy = new ScaleInPolicy();
                 }
                 this.VirtualMachineScaleSet.ScaleInPolicy.Rules = this.ScaleInPolicy;
+            }
+
+            if (this.IsParameterBound(c => c.ScaleInPolicyForceDeletion))
+            {
+                if (this.VirtualMachineScaleSet.ScaleInPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ScaleInPolicy = new ScaleInPolicy();
+                }
+                this.VirtualMachineScaleSet.ScaleInPolicy.ForceDeletion = this.ScaleInPolicyForceDeletion;
             }
 
             if (this.IsParameterBound(c => c.SinglePlacementGroup))

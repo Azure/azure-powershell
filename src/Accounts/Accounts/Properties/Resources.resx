@@ -428,7 +428,7 @@
   </data>
   <data name="ClientAssertionWarning" xml:space="preserve">
     <value>The provided client id and assertion will be included in the '{0}' file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections.</value>
-  </data> 
+  </data>
   <data name="MSITenantDomainNotFound" xml:space="preserve">
     <value>Please ensure that the managed service identity found on this machine has proper permissions to the provided tenant domain.</value>
   </data>
@@ -536,5 +536,8 @@
   </data>
   <data name="TokenCachePersistenceCheckError" xml:space="preserve">
     <value>Persistence check fails due to unknown error</value>
+  </data>
+  <data name="SubscriptionNotFouldPleaseCheckConfig" xml:space="preserve">
+    <value>If a subscription is not specified, please check the configs by `Get-AzConfig`.</value>
   </data>
 </root>

@@ -24,7 +24,7 @@ The **Remove-AzWcfRelay** cmdlet removes the WcfRelay from the specified Relay n
 
 ### Example 1
 ```powershell
-Remove-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -Name TestWCFRelay1
+Remove-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1
 ```
 
 Removes the WcfRelay `TestWCFRelay1` from the namespace `TestNameSpace-Relay1`.

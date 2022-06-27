@@ -26,8 +26,14 @@ Creates or updates a Move Resource in the move collection.
 
 ### Example 1: Add a resource to the Move Collection.
 ```powershell
-Add-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $targetResourceSettingsObj
+$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
+$targetResourceSettingsObj.ResourceType = "Microsoft.Compute/virtualMachines"
+$targetResourceSettingsObj.TargetResourceName = "PSDemoVM"
 
+Add-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $targetResourceSettingsObj
+```
+
+```output
 DependsOn                         : {}
 DependsOnOverride                 : {}
 ErrorsPropertiesCode              : 
@@ -57,11 +63,6 @@ SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
-
-$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
-$targetResourceSettingsObj.ResourceType = "Microsoft.Compute/virtualMachines"
-$targetResourceSettingsObj.TargetResourceName = "PSDemoVM"
-
 ```
 
 Add a resource to the Move Collection.
@@ -101,16 +102,20 @@ SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
-
 ```
 
 Add a resource to the Move Collection that has existing target resource.
 
 ### Example 3: Update target resource settings after the Move Resource has been added.
 ```powershell
-Update-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $TargetResourceSettingObj
+$moveResourceObj = Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS1" -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PSDemoVM"
+$TargetResourceSettingObj = $moveResourceObj.ResourceSetting
+$TargetResourceSettingObj.TargetResourceName = "PSDemoVM-target"
 
+Add-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $TargetResourceSettingObj
+```
 
+```output
 DependsOn                         : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkInterfaces/psdemov
                                     m111, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PSDemoRM}
 DependsOnOverride                 : {}
@@ -141,11 +146,6 @@ SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
-
-$moveResourceObj = Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS1" -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PSDemoVM"
-$TargetResourceSettingObj = $moveResourceObj.ResourceSetting
-$TargetResourceSettingObj.TargetResourceName="PSDemoVM-target"
-
 ```
 
 Update target resource settings after the Move Resource has been added.

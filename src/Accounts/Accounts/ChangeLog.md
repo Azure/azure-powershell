@@ -19,7 +19,18 @@
 -->
 
 ## Upcoming Release
+* Fixed incorrect access token [#18105]
+* Supported exporting and importing configurations by `Export-AzConfig` and `Import-AzConfig`.
+* Upgraded version of Microsoft.Identity.Client for .NET Framework [#18495]
+* Fixed an issue that Az.Accounts failed to be imported if multiple environment variables, which only differ by case, are set. [#18304]
+
+## Version 2.8.0
+* Added a preview feature allowing user to control the following configurations by using `Get-AzConfig`, `Update-AzConfig` and `Clear-AzConfig`:
+    - `DefaultSubscriptionForLogin`: Subscription name or GUID. Sets the default context for Azure PowerShell when logging in without specifying a subscription.
+    - `DisplayBreakingChangeWarning`: Controls if warning messages for breaking changes are displayed or suppressed.
+    - `EnableDataCollection`: When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience.
 * Upgraded System.Reflection.DispatchProxy on Windows PowerShell [#17856]
+* Upgraded Azure.Identity to 1.6.0 and Azure.Core to 1.24.0
 
 ## Version 2.7.6
 * Upgraded Microsoft.Rest.ClientRuntime to 2.3.24
@@ -215,7 +226,7 @@
 * Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix
 
 ## Version 1.6.6
-* Add client-side telemetry info for Az 4.0 preview
+* Add client-side telemetry info for Az 4.0 `preview`
 
 ## Version 1.6.5
 * Update references in .psd1 to use relative path

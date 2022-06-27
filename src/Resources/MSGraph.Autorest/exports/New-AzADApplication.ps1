@@ -22,8 +22,6 @@ Adds new entity to applications
 .Example
 New-AzADApplication -SigninAudience AzureADandPersonalMicrosoftAccount
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 .Notes

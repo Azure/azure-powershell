@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 model.Edition = Edition;
             }
 
-            /// get auth headers for cross-sub and cross-tenant restore operations
+            // get auth headers for cross-sub and cross-tenant restore operations
             string targetSubscriptionId = ModelAdapter.Context?.Subscription?.Id;
             string sourceSubscriptionId = ParseSubscriptionIdFromResourceId(ResourceId);
             bool isCrossSubscriptionRestore = false;

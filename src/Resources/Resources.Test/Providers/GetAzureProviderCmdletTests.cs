@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// A mock of the ISubscriptionsOperations
         /// </summary>
-        private readonly Mock<Internal.Subscriptions.ISubscriptionsOperations> subscriptionsOperationsMock;
+        private readonly Mock<Management.ResourceManager.ISubscriptionsOperations> subscriptionsOperationsMock;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAzureProviderCmdletTests"/> class.
@@ -64,10 +64,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
         public GetAzureProviderCmdletTests(ITestOutputHelper output)
         {
             this.providerOperationsMock = new Mock<IProvidersOperations>();
-            this.subscriptionsOperationsMock = new Mock<Internal.Subscriptions.ISubscriptionsOperations>();
+            this.subscriptionsOperationsMock = new Mock<Management.ResourceManager.ISubscriptionsOperations>();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             var resourceManagementClient = new Mock<Microsoft.Azure.Management.ResourceManager.IResourceManagementClient>();
-            var subscriptionClient = new Mock<Internal.Subscriptions.ISubscriptionClient>();
+            var subscriptionClient = new Mock<Management.ResourceManager.ISubscriptionClient>();
 
             resourceManagementClient
                 .SetupGet(client => client.Providers)
@@ -139,18 +139,18 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 .Setup(f => f.ListWithHttpMessagesAsync(null, null, null, It.IsAny<CancellationToken>()))
                 .Returns(() => Task.FromResult(result));
 
-            var locationList = new List<Internal.Subscriptions.Models.Location>
+            var locationList = new List<Management.ResourceManager.Models.Location>
             {
-                new Internal.Subscriptions.Models.Location(name: "southus", displayName: "South US")
+                new Management.ResourceManager.Models.Location(name: "southus", displayName: "South US")
             };
-            var pagableLocations = new Page<Internal.Subscriptions.Models.Location>();
-            pagableLocations.SetItemValue<Internal.Subscriptions.Models.Location>(locationList);
-            var locationsResult = new AzureOperationResponse<IEnumerable<Internal.Subscriptions.Models.Location>>()
+            var pagableLocations = new Page<Management.ResourceManager.Models.Location>();
+            pagableLocations.SetItemValue<Management.ResourceManager.Models.Location>(locationList);
+            var locationsResult = new AzureOperationResponse<IEnumerable<Management.ResourceManager.Models.Location>>()
             {
                 Body = pagableLocations
             };
             this.subscriptionsOperationsMock
-                .Setup(f => f.ListLocationsWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+                .Setup(f => f.ListLocationsWithHttpMessagesAsync(It.IsAny<string>(), null, null, It.IsAny<CancellationToken>()))
                 .Returns(() => Task.FromResult(locationsResult));
 
 

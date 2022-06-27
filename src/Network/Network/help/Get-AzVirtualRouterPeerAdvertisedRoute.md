@@ -31,13 +31,13 @@ Given A virtual router peer either by name or by object, enumerate routes being 
 
 ### Example 1
 ```powershell
-Get-AzVirtualRouterPeerAdvertisedRouter -ResourceGroupName $resourceGroupName -VirtualRouterName $virtualRouterName -PeerName $peerName
+Get-AzVirtualRouterPeerAdvertisedRoute -ResourceGroupName $resourceGroupName -VirtualRouterName $virtualRouterName -PeerName $peerName
 ```
 
 ### Example 2
 ```powershell
 $virtualRouterPeer = Get-AzVirtualRouterPeer -ResourceGroupName $resourceGroupName -VirtualRouterName $virtualRouterName -PeerName $peerName
-Get-AzVirtualRouterPeerAdvertisedRouter -InputObject $virtualRouterPeer
+Get-AzVirtualRouterPeerAdvertisedRoute -InputObject $virtualRouterPeer
 ```
 
 ## PARAMETERS

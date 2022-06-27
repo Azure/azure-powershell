@@ -12,28 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test.ScenarioTests
 {
-    public class LinkedStorageAccountTests : OperationalInsightsScenarioTestBase
+    public class LinkedStorageAccountTests : OperationalInsightsTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public LinkedStorageAccountTests(ITestOutputHelper output)
+        public LinkedStorageAccountTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedStorageAccount()
         {
-            RunPowerShellTest(_logger, "Test-LinkedStorageAccount");
+            TestRunner.RunTestScript("Test-LinkedStorageAccount");
         }
     }
 }

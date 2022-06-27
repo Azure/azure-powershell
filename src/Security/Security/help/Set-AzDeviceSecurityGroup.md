@@ -44,10 +44,10 @@ The Set-AzDeviceSecurityGroup cmdlet creates or updates a device security group 
 ### Example 1
 ```powershell
 $TimeWindowSize = New-TimeSpan -Minutes 5
-$TimeWindowRule = New-AzDeviceSecurityGroupTimeWindowRuleObject -Type "ActiveConnectionsNotInAllowedRange" -Enabled $true 
+$TimeWindowRule = New-AzDeviceSecurityGroupTimeWindowRuleObject -Type "ActiveConnectionsNotInAllowedRange" -Enabled $true `
 -MaxThreshold 30 -MinThreshold 0 -TimeWindowSize $TimeWindowSize
-Set-AzDeviceSecurityGroup -Name "MySecurityGroup" 
--HubResourceId "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub" 
+Set-AzDeviceSecurityGroup -Name "MySecurityGroup" `
+-HubResourceId "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub" `
 -TimeWindowRule $TimeWindowRules
 ```
 

@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// </exception>
         /// <exception cref="Exception">
         /// </exception>
-        /// <exception cref="ArmErrorException">
+        /// <exception cref="ErrorResponseException">
         /// </exception>
         /// <exception cref="HttpRequestException">
         /// </exception>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// <summary>
         /// The put new InputObject.
         /// </summary>
-        /// <param name="newPeering">
+        /// <param name="psPeerInfo">
         /// The new InputObject.
         /// </param>
         /// <returns>

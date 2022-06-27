@@ -39,8 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
         /// <summary>
         /// Constructs a Azure SQL Managed Instance Active Directory only authentication administrator adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlInstanceActiveDirectoryOnlyAuthenticationAdapter(IAzureContext context)
         {
             Context = context;
@@ -80,6 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="InstanceName">The name of the Azure Sql Managed Instance</param>
+        /// <param name="model"></param>
         /// <returns>The upserted Azure SQL Managed Insance AD Only Authentication</returns>
         internal AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel UpsertAzureADOnlyAuthenticaion(string resourceGroup, string InstanceName, AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel model)
         {
@@ -91,9 +91,9 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
         /// <summary>
         /// Converts the response from the service to a powershell database object
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the instance is in</param>
+        /// <param name="resourceGroup">The resource group the instance is in</param>
         /// <param name="InstanceName">The name of the Azure Sql Managed Instance</param>
-        /// <param name="admin">The service response</param>
+        /// <param name="serverAzureADOnlyAuthentication"></param>
         /// <returns>The converted model</returns>
         public static AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel CreateInstanceActiveDirectoryOnlyAuthenticationModelFromResponse(string resourceGroup, string InstanceName, Management.Sql.Models.ManagedInstanceAzureADOnlyAuthentication serverAzureADOnlyAuthentication)
         {

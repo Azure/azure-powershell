@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// Initializes a new instance of the SharedAccessSignature class.
         /// </summary>
-        /// <param name="SharedAccessSignature">SharedAccess Signature</param>
+        /// <param name="sharedAccessSignature">SharedAccess Signature</param>
         public PSSharedAccessSignatureAttributes(string sharedAccessSignature)
         {
             SharedAccessSignature = sharedAccessSignature.Replace("SharedAccessSignature","");

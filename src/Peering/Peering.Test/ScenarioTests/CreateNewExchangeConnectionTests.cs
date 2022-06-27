@@ -15,29 +15,18 @@
 namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-
     using Xunit;
 
-    /// <summary>
-    /// The create new exchange connection tests.
-    /// </summary>
-    public class CreateNewExchangeConnectionTests
+    public class CreateNewExchangeConnectionTests : PeeringTestRunner
     {
-        /// <summary>
-        /// The _logger.
-        /// </summary>
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateNewExchangeConnectionTests"/> class.
         /// </summary>
         /// <param name="output">
         /// The output.
         /// </param>
-        public CreateNewExchangeConnectionTests(Xunit.Abstractions.ITestOutputHelper output)
+        public CreateNewExchangeConnectionTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this._logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this._logger);
         }
 
         /// <summary>
@@ -47,7 +36,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewExchangeConnectionV4V6()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewExchangeConnectionV4V6");
+            TestRunner.RunTestScript("Test-NewExchangeConnectionV4V6");
         }
 
         /// <summary>
@@ -57,7 +46,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewExchangeConnectionV4()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewExchangeConnectionV4");
+            TestRunner.RunTestScript("Test-NewExchangeConnectionV4");
         }
 
         /// <summary>
@@ -67,7 +56,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewExchangeConnectionV6()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewExchangeConnectionV6");
+            TestRunner.RunTestScript("Test-NewExchangeConnectionV6");
         }
     }
 }

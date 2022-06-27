@@ -23,6 +23,7 @@ New-AzStorageAccountSASToken -Service <SharedAccessAccountServices>
 ## DESCRIPTION
 The **New-AzStorageAccountSASToken** cmdlet creates an account-level shared access signature (SAS) token for an Azure Storage account.
 You can use the SAS token to delegate permissions for multiple services, or to delegate permissions for services not available with an object-level SAS token.
+An account SAS is secured using the storage account key. To create an account SAS, a client application must possess the account key.
 
 ## EXAMPLES
 

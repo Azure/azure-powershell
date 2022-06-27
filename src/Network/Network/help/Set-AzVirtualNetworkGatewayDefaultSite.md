@@ -28,7 +28,7 @@ Forced tunneling is carried out by using a virtual private network (VPN) tunnel;
 
 ### Example 1: Assign a default site to a virtual network gateway
 ```powershell
-$LocalGateway = Get-AzLocalNetworkGateway -Name "ContosoLocalGateway " -ResourceGroup "ContosoResourceGroup"
+$LocalGateway = Get-AzLocalNetworkGateway -Name "ContosoLocalGateway " -ResourceGroupName "ContosoResourceGroup"
 $VirtualGateway = Get-AzVirtualNetworkGateway -Name "ContosoVirtualGateway"
 Set-AzVirtualNetworkGatewayDefaultSite -GatewayDefaultSite $LocalGateway -VirtualNetworkGateway $VirtualGateway
 ```

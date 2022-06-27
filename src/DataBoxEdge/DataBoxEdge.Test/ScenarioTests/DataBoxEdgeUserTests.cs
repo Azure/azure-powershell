@@ -18,21 +18,17 @@ using Xunit;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
 {
-    public class DataBoxEdgeUserTests : DataBoxEdgeScenarioTestBase
+    public class DataBoxEdgeUserTests : DataBoxEdgeTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public DataBoxEdgeUserTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataBoxEdgeUserTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingUser()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-GetNonExistingUser");
+            TestRunner.RunTestScript("Test-GetNonExistingUser");
         }
 
 
@@ -40,14 +36,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestCreateUser()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateNewUser");
+            TestRunner.RunTestScript("Test-CreateNewUser");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveUser()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-RemoveUser");
+            TestRunner.RunTestScript("Test-RemoveUser");
         }
     }
 }

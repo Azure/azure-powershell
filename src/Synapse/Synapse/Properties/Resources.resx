@@ -809,4 +809,25 @@ Failed: {2}.</value>
   <data name="EnablingAzureADOnlyAuthentication" xml:space="preserve">
     <value>Enabling Azure AD only authentication for workspace '{0}' .</value>
   </data>
+  <data name="EditingLinkConnectionLinkTables" xml:space="preserve">
+    <value>Editing link tables under link connection '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="UpdatingLinkConnectionLandingZoneCredential" xml:space="preserve">
+    <value>Updating the landing zone credential of  link connection '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="StartingSynapseLinkConnection" xml:space="preserve">
+    <value>Starting link connection '{0}' in workspace '{1}'...</value>
+  </data>
+  <data name="StoppingSynapseLinkConnection" xml:space="preserve">
+    <value>Stopping link connection '{0}' in workspace '{1}'...</value>
+  </data>
+  <data name="RemoveSynapseLinkConnection" xml:space="preserve">
+    <value>Are you sure you want to remove link connection '{0}' under workspace '{1}'</value>
+  </data>
+  <data name="RemovingSynapseLinkConnection" xml:space="preserve">
+    <value>Removing link connection '{0}' in workspace '{1}'...</value>
+  </data>
+  <data name="SettingSynapseLinkConnection" xml:space="preserve">
+    <value>Setting link connection '{0}' in workspace '{1}'.</value>
+  </data>
 </root>

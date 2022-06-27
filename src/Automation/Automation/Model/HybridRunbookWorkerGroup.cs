@@ -14,24 +14,25 @@ namespace Microsoft.Azure.Commands.Automation.Model
     /// </summary>
     public class HybridRunbookWorkerGroup
     {
-
         /// <summary>
         /// Initializes a new instance of the <see cref="HybridRunbookWorkerGroup"/> class. 
         /// </summary>
-        /// <param name="resourceGroupName">
-        ///  The resource group name.
-        /// </param>
-        /// <param name="accountName">
-        /// The account name.
-        /// </param>
-        /// <exception cref="System.ArgumentException"
-        /// </exception>
-        
         public  HybridRunbookWorkerGroup()
         {
 
         }
 
+        /// <param name="resourceGroupName">
+        /// The resource group name.
+        /// </param>
+        /// <param name="accountName">
+        /// The account name.
+        /// </param>
+        /// <param name="hybridRunbookWorkerGroup">
+        /// The hybrid runbook worker group.
+        /// </param>
+        /// <exception cref="System.ArgumentException">
+        /// </exception>
         public HybridRunbookWorkerGroup(string resourceGroupName, string accountName, Azure.Management.Automation.Models.HybridRunbookWorkerGroup hybridRunbookWorkerGroup)
         {
 
@@ -45,10 +46,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
             RunbookWorker = new List<HybridRunbookWorker>();
             foreach (var worker in hybridRunbookWorkerGroup.HybridRunbookWorkers)
             {
-                var hbworker = new HybridRunbookWorker(worker);                
+                var hbworker = new HybridRunbookWorker(worker);
                 this.RunbookWorker.Add(hbworker);
             }
         }
+
         /// <summary>
         /// Gets or sets the resource group name.
         /// </summary>

@@ -24,10 +24,11 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCache;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-
+using Microsoft.Azure.Commands.Common.Authentication.Config;
 using Newtonsoft.Json;
 
 using TraceLevel = System.Diagnostics.TraceLevel;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -208,11 +209,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         static IAzureSession CreateInstance(IDataStore dataStore = null)
         {
             string profilePath = Path.Combine(
-#if NETSTANDARD
                     Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
                     Resources.AzureDirectoryName);
             string oldProfilePath = Path.Combine(
-#endif
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                     Resources.OldAzureDirectoryName);
             dataStore = dataStore ?? new DiskDataStore();
@@ -232,11 +231,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             };
 
             var migrated =
-#if !NETSTANDARD
-                false;
-#else
                 MigrateSettings(dataStore, oldProfilePath, profilePath);
-#endif
             var autoSave = InitializeSessionSettings(dataStore, cachePath, profilePath, ContextAutosaveSettings.AutoSaveSettingsFile, migrated);
             session.ARMContextSaveMode = autoSave.Mode;
             session.ARMProfileDirectory = autoSave.ContextDirectory;
@@ -244,10 +239,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = autoSave.CacheFile;
 
+            InitializeConfigs(session, profilePath);
             InitializeDataCollection(session);
             session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());
             session.TokenCache = session.TokenCache ?? new AzureTokenCache();
             return session;
+        }
+
+        private static void InitializeConfigs(AzureSession session, string profilePath)
+        {
+            var fallbackList = new List<string>()
+            {
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".Azure", "PSConfig.json"),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), ".Azure", "PSConfig.json")
+            };
+            ConfigInitializer configInitializer = new ConfigInitializer(fallbackList);
+            configInitializer.MigrateConfigs(profilePath);
+            configInitializer.InitializeForAzureSession(session);
         }
 
         public class AdalSession : AzureSession

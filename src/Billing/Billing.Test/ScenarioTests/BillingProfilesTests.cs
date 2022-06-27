@@ -13,49 +13,43 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Billing.Test.ScenarioTests.ScenarioTest;
-using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
 {
-    public class BillingProfilesTests
+    public class BillingProfilesTests : BillingTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public BillingProfilesTests(Xunit.Abstractions.ITestOutputHelper output)
+        public BillingProfilesTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingProfiles()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingProfiles");
+            TestRunner.RunTestScript("Test-ListBillingProfiles");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBillingProfileWithName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetBillingProfileWithName");
+            TestRunner.RunTestScript("Test-GetBillingProfileWithName");
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBillingProfileWithInvoiceSections()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetBillingProfileWithInvoiceSections");
+            TestRunner.RunTestScript("Test-GetBillingProfileWithInvoiceSections");
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBillingProfileByNameWithInvoiceSections()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetBillingProfileByNameWithInvoiceSections");
+            TestRunner.RunTestScript("Test-GetBillingProfileByNameWithInvoiceSections");
         }
     }
 }

@@ -54,7 +54,7 @@ This command gets the short term retention policy for database01.
 
 ### Example 2
 ```powershell
-Get-AzSqlInstanceDatabase -ResourceGroupName resourcegroup01 -InstanceName instance01 -DatabaseName database01 | Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy
+Get-AzSqlInstanceDatabase -ResourceGroupName resourcegroup01 -InstanceName instance01 -Name database01 | Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy
 ```
 
 ```output
