@@ -24,13 +24,15 @@ To check whether a resource name is available.
 
 ### Example 1: Name is available
 ```powershell
-PS C:\> Test-AzConfidentialLedgerNameAvailability `
+Test-AzConfidentialLedgerNameAvailability `
   -NameAvailabilityRequest `
       @{
           Name="available-name";
           Type="Microsoft.ConfidentialLedger/ledgers"
       }
+```
 
+```output
 Message       :
 NameAvailable : True
 Reason        :
@@ -42,13 +44,15 @@ Confidential Ledger names must be globally unique.
 
 ### Example 2: Name is not available
 ```powershell
-PS C:\> Test-AzConfidentialLedgerNameAvailability `
+Test-AzConfidentialLedgerNameAvailability `
   -NameAvailabilityRequest `
       @{
           Name="not-available-name";
           Type="Microsoft.ConfidentialLedger/ledgers"
       }
+```
 
+```output
 Message       : Resource name already exists
 NameAvailable : False
 Reason        : AlreadyExists
