@@ -1,6 +1,7 @@
 Az.ADDomainServices
 Az.AppConfiguration
 Az.BotService
+Az.Cdn
 Az.ChangeAnalysis
 Az.CloudService
 Az.Communication
@@ -35,6 +36,7 @@ Az.MariaDb
 Az.Migrate
 Az.MonitoringSolutions
 Az.MySql
+Az.NetworkFunction
 Az.Portal
 Az.PostgreSql
 Az.ProviderHub
