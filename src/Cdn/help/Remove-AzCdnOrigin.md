@@ -30,27 +30,12 @@ Deletes an existing origin within an endpoint.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete an AzureCDN origin group under the AzureCDN endpoint
 ```powershell
-{{ Add code here }}
+Remove-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete an AzureCDN origin group under the AzureCDN endpoint
 
 ## PARAMETERS
 

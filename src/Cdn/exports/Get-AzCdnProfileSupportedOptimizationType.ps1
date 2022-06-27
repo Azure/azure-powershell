@@ -22,9 +22,7 @@ A user can create an endpoint with an optimization type from the listed values.
 Gets the supported optimization types for the current profile.
 A user can create an endpoint with an optimization type from the listed values.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzCdnProfileSupportedOptimizationType -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.OptimizationType
@@ -111,7 +109,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
