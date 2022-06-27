@@ -3389,13 +3389,13 @@ function Test-VirtualMachineScaleSetGuestAttestation
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
 
     try
     {
         # Common
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $loc = Get-ComputeVMLocation;
         $vmssSize = 'Standard_DS3_v2';
         $PublisherName = "MicrosoftWindowsServer";
         $Offer = "WindowsServer";
@@ -3417,7 +3417,7 @@ function Test-VirtualMachineScaleSetGuestAttestation
         $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 
         $adminUsername = 'usertest';
-        $adminPassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
 
         $imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
         $imgRef.PublisherName = $PublisherName;
