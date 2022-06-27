@@ -209,12 +209,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             }
                             
                             //Guest Attestation extension defaulting behavior check.
-                            var vExtensions = new PSVirtualMachineScaleSetExtension();
-                            var extensionDirect = new VirtualMachineScaleSetExtension();
                             if (shouldGuestAttestationExtBeInstalled(parameters))
                             {
-                                
-                                vExtensions = new PSVirtualMachineScaleSetExtension();
+                                var extensionDirect = new VirtualMachineScaleSetExtension();
 
                                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                                 {
