@@ -150,11 +150,11 @@ AND <IQueryFilter[]>: The logical "AND" expression. Must have at least 2 items.
   - `[Or <IQueryFilter[]>]`: The logical "OR" expression. Must have at least 2 items.
   - `[Tag <IQueryComparisonExpression>]`: Has comparison expression for a tag
 
-DIMENSIONS <IQueryComparisonExpression>: Has comparison expression for a dimensions.
+DIMENSIONS `<IQueryComparisonExpression>`: Has comparison expression for a dimensions.
   - `Name <String>`: The name of the column to use in comparison.
   - `Value <String[]>`: Array of values to use for comparison
 
-NOT <IQueryFilter>: The logical "NOT" expression.
+NOT `<IQueryFilter>`: The logical "NOT" expression.
   - `[And <IQueryFilter[]>]`: The logical "AND" expression. Must have at least 2 items.
   - `[Dimensions <IQueryComparisonExpression>]`: Has comparison expression for a dimension
     - `Name <String>`: The name of the column to use in comparison.
@@ -172,7 +172,7 @@ OR <IQueryFilter[]>: The logical "OR" expression. Must have at least 2 items.
   - `[Or <IQueryFilter[]>]`: The logical "OR" expression. Must have at least 2 items.
   - `[Tag <IQueryComparisonExpression>]`: Has comparison expression for a tag
 
-TAG <IQueryComparisonExpression>: Has comparison expression for a tag.
+TAG `<IQueryComparisonExpression>`: Has comparison expression for a tag.
   - `Name <String>`: The name of the column to use in comparison.
   - `Value <String[]>`: Array of values to use for comparison
 
