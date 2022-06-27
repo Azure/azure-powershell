@@ -37,32 +37,33 @@ The **Stop-AzSynapseLinkConnection** cmdlet stops a link connection in workspace
 
 ### Example 1
 ```powershell
-PS C:\> Stop-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+Stop-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
 ```
 
 This command stops a link connection named ContosoLinkConnection in workspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Workspacename ContosoWorkspace 
-PS C:\> $ws | Stop-AzSynapseLinkConnection -Name ContosoLinkConnection
+$ws = Get-AzSynapseWorkspace -Workspacename ContosoWorkspace 
+$ws | Stop-AzSynapseLinkConnection -Name ContosoLinkConnection
 ```
 
 This command stops a link connection named ContosoLinkConnection in workspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $linkConnection = Get-AzSynapseLinkConnection -Workspacename ContosoWorkspace -Name ContosoLinkConnection
-PS C:\> $linkConnection | Stop-AzSynapseLinkConnection
+$linkConnection = Get-AzSynapseLinkConnection -Workspacename ContosoWorkspace -Name ContosoLinkConnection
+$linkConnection | Stop-AzSynapseLinkConnection
 ```
 
 This command stops a link connection named ContosoLinkConnection in workspace through pipeline.
 
 ### Example 4
 ```powershell
-PS C:\> Stop-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
-PS C:\> Get-AzSynapseLinkConnectionDetailedStatus -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
-
+Stop-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+Get-AzSynapseLinkConnectionDetailedStatus -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+```
+```output
 	WorkspaceName     : ContosoWorkspace
 	Id                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	Name              : ContosoLinkConnection

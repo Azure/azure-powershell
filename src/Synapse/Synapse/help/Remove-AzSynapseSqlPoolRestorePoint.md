@@ -61,7 +61,7 @@ This command deletes an Azure Synapse Analytics SQL pool restore point through p
 ### Example 3
 ```powershell
 $points = Get-AzSynapseSqlPoolRestorePoint -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
-$points[index] | Remove-AzSynapseSqlPoolRestorePoint
+$points[$index] | Remove-AzSynapseSqlPoolRestorePoint
 ```
 
 This command deletes an Azure Synapse Analytics SQL pool restore point through pipeline.

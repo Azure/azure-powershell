@@ -49,18 +49,14 @@ The **Invoke-AzSynapseSparkStatement** cmdlet invokes a Synapse Analytics Spark 
 ```powershell
 $session = Start-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -Name ContosoSessionName -ExecutorCount 3 -ExecutorSize Small
 $session.Language = 'Spark' 
-$session | Invoke-AzSynapseSparkStatement -Code '
- print("Hello world\n")
- '
+$session | Invoke-AzSynapseSparkStatement -Code 'print("Hello world\n")'
 ```
 
 These commands start a Spark session then invoke an inline Spark statement through pipeline.
 
 ### Example 2
 ```powershell
-Invoke-AzSynapseSparkStatement -SessionId 324 -Language 'Spark' -Code '
- print("Hello world\n")
- '
+Invoke-AzSynapseSparkStatement -SessionId 324 -Language 'Spark' -Code 'print("Hello world\n")'
 ```
 
 These commands start a Spark session then invoke an inline Spark statement.
@@ -69,7 +65,7 @@ These commands start a Spark session then invoke an inline Spark statement.
 ```powershell
 $session = Start-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -Name ContosoSessionName -ExecutorCount 3 -ExecutorSize Small
 $session.Language = 'Spark' 
-$session | Invoke-AzSynapseSparkStatement -FilePath C:\path\to\code.sc
+$session | Invoke-AzSynapseSparkStatement -FilePath 'C:\path\to\code.sc'
 ```
 
 These commands start a Spark session then invoke Spark statements in a file.
