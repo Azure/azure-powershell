@@ -16,33 +16,19 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
-    public class PaginationTests : EventHubTestRunner
+    public class PrivateEndpointTests : EventHubTestRunner
     {
 
-        public PaginationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public PrivateEndpointTests(Xunit.Abstractions.ITestOutputHelper output)
             : base(output)
         {
         }
 
         [Fact]
-        [Trait(Category.CheckIn, Category.CheckIn)]
-        public void ApplicationGroupPaginationTests()
-        {
-            TestRunner.RunTestScript("ApplicationGroupPagination");
-        }
-
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NamespacePaginationTests()
+        public void PrivateEndpointManualApproval()
         {
-            TestRunner.RunTestScript("NamespacePagination");
-        }
-
-        [Fact]
-        [Trait(Category.CheckIn, Category.CheckIn)]
-        public void PrivateEndpointPaginationTests()
-        {
-            TestRunner.RunTestScript("PrivateEndpointPagination");
+            TestRunner.RunTestScript("PrivateEndpointTest");
         }
     }
 }

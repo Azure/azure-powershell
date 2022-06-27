@@ -120,6 +120,9 @@
   <data name="CreateApplicationGroup" xml:space="preserve">
     <value>Creating new application group: {0} for Namespace: {1} of resource group: {2}</value>
   </data>
+  <data name="ApproveNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Approve PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2} </value>
+  </data>
   <data name="CreateConsumerGroup" xml:space="preserve">
     <value>Adding a new Consumer Group {0} under Eventhub {1}</value>
   </data>
@@ -162,8 +165,14 @@
   <data name="GetEventhubCluster" xml:space="preserve">
     <value>Get Eventhub Cluster details from ResourceGroup {0} with NAme {1}</value>
   </data>
-  <data name="ListApplicationGroup" xml:space="preserve">
-    <value>List application groups for Namespace: {0} of resource group: {1} </value>
+  <data name="GetNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Get PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2}</value>
+  </data>
+  <data name="GetNamespacePrivateLinks" xml:space="preserve">
+    <value>Get all PrivateLinks for Namespace: {0} of ResourceGroup: {1}</value>
+  </data>
+  <data name="ListNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Get all PrivateEndpoints for Namespace: {0} of ResourceGroup: {1}</value>
   </data>
   <data name="RegenerateKeyEventHub" xml:space="preserve">
     <value>Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of EventHub: {1}</value>
@@ -173,6 +182,9 @@
   </data>
   <data name="RemoveApplicationGroup" xml:space="preserve">
     <value>Removing application group: {0} for Namespace: {1} of resource group: {2}</value>
+  </data>
+  <data name="RejectNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Reject PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2}</value>
   </data>
   <data name="RemoveConsumerGroup" xml:space="preserve">
     <value>Deleting ConsumerGrop:{0} from Eventhub:{1}</value>
@@ -188,6 +200,9 @@
   </data>
   <data name="RemoveNamespaceAuthorizationRule" xml:space="preserve">
     <value>Removing AtuhorizationRule:{0} of Namespace: {1}</value>
+  </data>
+  <data name="RemoveNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Remove PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2}</value>
   </data>
   <data name="RemoveNamespaces" xml:space="preserve">
     <value>Delete NameSpace:{0} from ResourceGroup:{1}</value>
@@ -227,5 +242,8 @@
   </data>
   <data name="UpdateNamespaceAuthorizationrule" xml:space="preserve">
     <value>Updating  AuthorizationRule named:{0} for Namespace: {1}</value>
+  </data>
+  <data name="ListApplicationGroup" xml:space="preserve">
+    <value>List application groups for Namespace: {0} of resource group: {1}</value>
   </data>
 </root>
