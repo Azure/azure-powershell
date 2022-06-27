@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProtectionContainer
-Specifies the ASR protection container object of the ASR protection container corresponding to the replication protected item.
+Specifies the ASR protection container object of the ASR protection container corresponding to the replication protected item. To get the ASR protection container in the Recovery Service Container run the [Get-AzRecoveryServicesAsrProtectionContainer](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesasrprotectioncontainer?view=azps-8.0.0) PS command.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer
