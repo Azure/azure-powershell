@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ApplicationGroups
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubThrottlingPolicyConfig"), OutputType(typeof(PSEventHubThrottlingPolicyConfigAttributes))]
     public class NewAzureEventHubsThrottlingPolicyConfig: AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = false, 
+        [Parameter(Mandatory = true, 
             Position = 0, 
             HelpMessage = "Name of Throttling Policy")]
         public string Name { get; set; }

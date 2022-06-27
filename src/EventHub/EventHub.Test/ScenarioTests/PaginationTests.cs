@@ -30,5 +30,12 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         {
             TestRunner.RunTestScript("ApplicationGroupPagination");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NamespacePaginationTests()
+        {
+            TestRunner.RunTestScript("NamespacePagination");
+        }
     }
 }
