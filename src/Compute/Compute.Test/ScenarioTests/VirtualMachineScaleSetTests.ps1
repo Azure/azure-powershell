@@ -3443,7 +3443,7 @@ function Test-VirtualMachineScaleSetGuestAttestation
         $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
 
         $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
-
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
         # Validate DiffDiskPlacement value
         #Assert-AreEqual $result.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings.Placement $diffDiskPlacement;
         Assert-AreEqual 

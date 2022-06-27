@@ -32,6 +32,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Compute.Common;
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
+using System.Linq;
 
 
 
@@ -125,17 +126,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                             //parameters.VirtualMachineProfile.SecurityProfile.
                             // GuestAttestation install scenario
-                            var vExtensions = new PSVirtualMachineScaleSetExtension();
-                            var extensionDirect = new VirtualMachineScaleSetExtension();
                             if (shouldGuestAttestationExtBeInstalled(parameters) &&
                                 parameters.Identity == null)
                             {
                                 parameters.Identity = new VirtualMachineScaleSetIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned, null);
                             }
-                            
+                            /* TRying to do this before creation, some success, just unsure of OS.
+                            //var vExtensions = new PSVirtualMachineScaleSetExtension();
+                            var extensionDirect = new VirtualMachineScaleSetExtension();
                             if (shouldGuestAttestationExtBeInstalled(parameters))
                             {
-                                vExtensions = new PSVirtualMachineScaleSetExtension();
+                                //vExtensions = new PSVirtualMachineScaleSetExtension();
 
                                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                                 {
@@ -153,25 +154,43 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 {
                                     this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<PSVirtualMachineScaleSetExtension>();
                                 }
+                                
 
 
                                 if (parameters.VirtualMachineProfile.OsProfile.LinuxConfiguration != null)//TODO: verify what the default behavior is if no WindowsConfig or LinuxCONfigs are supplied to the vmss
                                 {
-                                    vExtensions.Name = "GuestAtestation";
-                                    vExtensions.Publisher = "Microsoft.Azure.Security.LinuxAttestation";
-                                    vExtensions.Type = "GuestAttestation";
-                                    vExtensions.TypeHandlerVersion = "1.0";
+                                    extensionDirect.Name = "GuestAtestation";
+                                    extensionDirect.Publisher = "Microsoft.Azure.Security.LinuxAttestation";
+                                    extensionDirect.Type1 = "GuestAttestation";
+                                    extensionDirect.TypeHandlerVersion = "1.0";
                                 }
-                                else
+                                //else
+                                else if (parameters.VirtualMachineProfile.OsProfile.WindowsConfiguration != null)
                                 {
-                                    vExtensions.Name = "GuestAtestation";
-                                    vExtensions.Publisher = "Microsoft.Azure.Security.WindowsAttestation";
-                                    vExtensions.Type = "GuestAttestation";
-                                    vExtensions.TypeHandlerVersion = "1.0";
+                                    extensionDirect.Name = "GuestAtestation";
+                                    extensionDirect.Publisher = "Microsoft.Azure.Security.WindowsAttestation";
+                                    extensionDirect.Type1 = "GuestAttestation";
+                                    extensionDirect.TypeHandlerVersion = "1.0";
                                 }
-                                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(vExtensions);
+
+                                //this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(vExtensions);
+                                if (parameters.VirtualMachineProfile == null)
+                                {
+                                    parameters.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                                }
+                                if (parameters.VirtualMachineProfile.ExtensionProfile == null)
+                                {
+                                    parameters.VirtualMachineProfile.ExtensionProfile = new VirtualMachineScaleSetExtensionProfile();
+                                }
+                                
+                                if (parameters.VirtualMachineProfile.ExtensionProfile.Extensions == null)
+                                {
+                                    parameters.VirtualMachineProfile.ExtensionProfile.Extensions = new List<VirtualMachineScaleSetExtension>();
+                                }
+                                parameters.VirtualMachineProfile.ExtensionProfile.Extensions.Add(extensionDirect);
                             }
-                            
+                            */
+
 
                             VirtualMachineScaleSet result;
                             if (auxAuthHeader != null)
@@ -188,13 +207,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             {
                                 result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
                             }
-
-                            //var vExtensions = new PSVirtualMachineScaleSetExtension();
-                            //var extensionDirect = new VirtualMachineScaleSetExtension();
+                            
+                            //Success with justthis for he extension on teh vmss not vms! 
+                            var vExtensions = new PSVirtualMachineScaleSetExtension();
+                            var extensionDirect = new VirtualMachineScaleSetExtension();
 
                             if (shouldGuestAttestationExtBeInstalled(parameters))
                             {
-                                /*
+                                
                                 vExtensions = new PSVirtualMachineScaleSetExtension();
 
                                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -217,34 +237,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 
                                 if (parameters.VirtualMachineProfile.OsProfile.LinuxConfiguration != null)//TODO: verify what the default behavior is if no WindowsConfig or LinuxCONfigs are supplied to the vmss
                                 {
-                                    vExtensions.Name = "GuestAtestation";
-                                    vExtensions.Publisher = "Microsoft.Azure.Security.LinuxAttestation"; 
-                                    vExtensions.Type = "GuestAttestation";
-                                    vExtensions.TypeHandlerVersion = "1.0"; 
-                                }
-                                else
-                                {
-                                    vExtensions.Name = "GuestAtestation";
-                                    vExtensions.Publisher = "Microsoft.Azure.Security.WindowsAttestation";
-                                    vExtensions.Type = "GuestAttestation";
-                                    vExtensions.TypeHandlerVersion = "1.0";
-                                }
-                                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(vExtensions);
-                                VirtualMachineScaleSetUpdate parametersupdate = new VirtualMachineScaleSetUpdate();
-                                parametersupdate.VirtualMachineProfile.ExtensionProfile = this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile;
-                                VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
-                                ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
-                                ComputeClient.ComputeManagementClient.VirtualMachineScaleSets.UpdateWithHttpMessagesAsync();
-                                */
-
-
-                                //TODO: currently trying to send an update vmss call with the exstension profile. NEed to ensure both the vmss and vms have this. 
-                                //SO actually likely need to update each instance of vmss too? 
-                                //!Hmmm, still worth seeing if the ExtensionPRrofile can be set befor ethe vmss is createdm then that might handle the vms too. !!!!!!!
-
-                                /*
-                                if (parameters.VirtualMachineProfile.OsProfile.LinuxConfiguration != null)//TODO: verify what the default behavior is if no WindowsConfig or LinuxCONfigs are supplied to the vmss
-                                {
+                                    
+                                    //vExtensions.Name = "GuestAtestation";
+                                    //vExtensions.Publisher = "Microsoft.Azure.Security.LinuxAttestation"; 
+                                   // vExtensions.Type = "GuestAttestation";
+                                   // vExtensions.TypeHandlerVersion = "1.0";
+                                    
                                     extensionDirect.Name = "GuestAtestation";
                                     extensionDirect.Publisher = "Microsoft.Azure.Security.LinuxAttestation";
                                     extensionDirect.Type1 = "GuestAttestation";
@@ -252,14 +250,116 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 }
                                 else
                                 {
+                                    
+                                   // vExtensions.Name = "GuestAtestation";
+                                   // vExtensions.Publisher = "Microsoft.Azure.Security.WindowsAttestation";
+                                  //  vExtensions.Type = "GuestAttestation";
+                                  //  vExtensions.TypeHandlerVersion = "1.0";
+                                    
+
                                     extensionDirect.Name = "GuestAtestation";
                                     extensionDirect.Publisher = "Microsoft.Azure.Security.WindowsAttestation";
                                     extensionDirect.Type1 = "GuestAttestation";
                                     extensionDirect.TypeHandlerVersion = "1.0";
                                 }
+                                //this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(vExtensions);
+                                
+
+                                VirtualMachineScaleSetUpdate parametersupdate = new VirtualMachineScaleSetUpdate();
+                                parametersupdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
+                                parametersupdate.VirtualMachineProfile.ExtensionProfile = new VirtualMachineScaleSetExtensionProfile();
+                                parametersupdate.VirtualMachineProfile.ExtensionProfile.Extensions = new List<VirtualMachineScaleSetExtension>();
+                                parametersupdate.VirtualMachineProfile.ExtensionProfile.Extensions.Add(extensionDirect);
+
+                                result = VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parametersupdate);
+
+
+                                //TODO: currently trying to send an update vmss call with the exstension profile. NEed to ensure both the vmss and vms have this. 
+                                //SO actually likely need to update each instance of vmss too? 
+                                //!Hmmm, still worth seeing if the ExtensionPRrofile can be set befor ethe vmss is createdm then that might handle the vms too. !!!!!!!
+
+                                //TRy to update each vm instance in teh vmss with this extension:
+                                var extensionParams = new VirtualMachineExtension { };
+                                var resultVmssVm = VirtualMachineScaleSetVMsClient.List(resourceGroupName, vmScaleSetName);
+                                var resultList = resultVmssVm.ToList();
+                                var nextPageLink = resultVmssVm.NextPageLink;
+                                while (!string.IsNullOrEmpty(nextPageLink))
+                                {
+                                    var pageResult = VirtualMachineScaleSetVMsClient.ListNext(nextPageLink);
+                                    foreach (var pageItem in pageResult)
+                                    {
+                                        resultList.Add(pageItem);
+                                    }
+                                    nextPageLink = pageResult.NextPageLink;
+                                }
+                                var psObjectVmssVm = new List<PSVirtualMachineScaleSetVMList>();
+                                foreach (var currentVmssVm in resultList)
+                                {
+                                    //psObjectVmssVm.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVMList>(r));
+                                    if (currentVmssVm.StorageProfile.OsDisk.OsType == OperatingSystemTypes.Linux)
+                                    {
+                                        extensionParams = new VirtualMachineExtension
+                                        {
+                                            Location = this.Location,
+                                            Publisher = "Microsoft.Azure.Security.LinuxAttestation",
+                                            VirtualMachineExtensionType = "GuestAttestation",
+                                            TypeHandlerVersion = "1.0",
+                                        };
+                                    }
+                                    else
+                                    {
+                                        extensionParams = new VirtualMachineExtension
+                                        {
+                                            Location = this.Location,
+                                            Publisher = "Microsoft.Azure.Security.WindowsAttestation",
+                                            VirtualMachineExtensionType = "GuestAttestation",
+                                            TypeHandlerVersion = "1.0",
+                                        };
+                                    }
+                                    currentVmssVm.Resources.Add(extensionParams);
+                                    //VirtualMachineScaleSetVM parametersVmssVm = new VirtualMachineScaleSetVM();
+                                    //var t = psObjectVmssVm[count];
+                                    var resultVmssVmUpdate = VirtualMachineScaleSetVMsClient.Update(resourceGroupName, vmScaleSetName, currentVmssVm.InstanceId, currentVmssVm);
+
+                                }
+
+                                var numVms = resultList.Count;
+                                //var numVms = psObjectVmssVm.Count;
+                                //var extensionParams = new VirtualMachineExtension { };
+                                /*
+                                for (int instanceIdCount = 0; instanceIdCount < numVms; instanceIdCount++)
+                                {
+                                    var currentVmssVm = resultList[instanceIdCount];
+                                    if (currentVmssVm.StorageProfile.OsDisk.OsType == OperatingSystemTypes.Linux)
+                                    {
+                                        extensionParams = new VirtualMachineExtension
+                                        {
+                                            Location = this.Location,
+                                            Publisher = "Microsoft.Azure.Security.LinuxAttestation",
+                                            VirtualMachineExtensionType = "GuestAttestation",
+                                            TypeHandlerVersion = "1.0",
+                                        };
+                                    }
+                                    else
+                                    {
+                                        extensionParams = new VirtualMachineExtension
+                                        {
+                                            Location = this.Location,
+                                            Publisher = "Microsoft.Azure.Security.WindowsAttestation",
+                                            VirtualMachineExtensionType = "GuestAttestation",
+                                            TypeHandlerVersion = "1.0",
+                                        };
+                                    }
+                                    
+                                    currentVmssVm.Resources.Add(extensionParams);
+                                    //VirtualMachineScaleSetVM parametersVmssVm = new VirtualMachineScaleSetVM();
+                                    //var t = psObjectVmssVm[count];
+                                    var resultVmssVmUpdate = VirtualMachineScaleSetVMsClient.Update(resourceGroupName, vmScaleSetName, currentVmssVm.InstanceId, currentVmssVm);
+                                    
+                                }
                                 */
-                                //ComputeClient.ComputeManagementClient.VirtualMachineScaleSetExtensions.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.VMScaleSetName, "GuestAttestation", extensionDirect);
                             }
+                            
 
                             var psObject = new PSVirtualMachineScaleSet();
                             ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
