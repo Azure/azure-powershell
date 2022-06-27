@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateRestoreWithGeoZoneBackupStorageRedundancy()
         {
-            RunPowerShellTest("Test-CreateRestoreWithGeoZoneBackupStorageRedundancy");
+            TestRunner.RunTestScript("Test-CreateRestoreWithGeoZoneBackupStorageRedundancy");
         }
     }
 }
