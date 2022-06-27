@@ -734,5 +734,9 @@
   {
     "alias": "ServiceLinker",
     "module": "ServiceLinker"
+  },
+  {
+    "alias": "NetworkFunction",
+    "module": "NetworkFunction"
   }
 ]
