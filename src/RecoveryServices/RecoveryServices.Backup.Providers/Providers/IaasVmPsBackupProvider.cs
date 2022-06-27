@@ -1635,6 +1635,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Generates ILR Response object for Windows VMs
         /// </summary>
         /// <param name="clientScriptForConnection"></param>
+        /// <param name="content"></param>
         /// <returns></returns>
         private AzureVmRPMountScriptDetails GenerateILRResponseForWindowsVMs(
             ClientScriptForConnect clientScriptForConnection, out string content)
@@ -1686,6 +1687,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <param name="clientScriptForConnection"></param>
         /// <param name="protectedItemName"></param>
         /// <param name="recoveryPointTime"></param>
+        /// <param name="content"></param>
         /// <returns></returns>
         private AzureVmRPMountScriptDetails GenerateILRResponseForLinuxVMs(
             ClientScriptForConnect clientScriptForConnection,

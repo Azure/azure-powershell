@@ -44,8 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
         /// <summary>
         /// Constructs a recommended elastic pool adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlElasticPoolRecommendationAdapter(IAzureContext context)
         {
             _subscription = context.Subscription;

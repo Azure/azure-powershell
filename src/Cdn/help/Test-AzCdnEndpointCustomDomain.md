@@ -30,27 +30,18 @@ Validates the custom domain mapping to ensure it maps to the correct CDN endpoin
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Test an AzureCDN custom domain under the AzureCDN endpoint
 ```powershell
-{{ Add code here }}
+Test-AzCdnEndpointCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -HostName 'testcm.dev.cdn.azure.cn'
 ```
 
 ```output
-{{ Add output here }}
+CustomDomainValidated Message Reason
+--------------------- ------- ------
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Test an AzureCDN custom domain under the AzureCDN endpoint
 
 ## PARAMETERS
 

@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             KeySize = JwkHelper.ConvertToRSAKey(Key)?.KeySize;
             Attributes = new PSKeyVaultKeyAttributes(
                 deletedKey.Properties.Enabled,
-                /// see https://docs.microsoft.com/en-us/dotnet/standard/datetime/converting-between-datetime-and-offset#conversions-from-datetimeoffset-to-datetime
+                // see https://docs.microsoft.com/en-us/dotnet/standard/datetime/converting-between-datetime-and-offset#conversions-from-datetimeoffset-to-datetime
                 deletedKey.Properties.ExpiresOn?.UtcDateTime, // time returned by key vault are UTC
                 deletedKey.Properties.NotBefore?.UtcDateTime,
                 deletedKey.KeyType.ToString(),

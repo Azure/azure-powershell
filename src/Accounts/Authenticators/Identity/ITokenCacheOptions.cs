@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 //
 
+using Azure.Identity;
+
 namespace Microsoft.Azure.PowerShell.Authenticators.Identity
 {
     /// <summary>

@@ -62,7 +62,7 @@ Updates the Tags for namespace \`MyNamespaceName\` to Created .
 
 ### Example 2
 ```powershell
-Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -State Created -EnableAutoInflate -MaximumThroughputUnits 10
+Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -EnableAutoInflate -MaximumThroughputUnits 10
 ```
 
 ```output
