@@ -42,6 +42,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public string ProvisioningState { get; set; }
 
+        public RestoredLogs RestoredLogs { get; set; }
+
+        public SearchResults SearchResults { get; set; }
+
         public PSTable()
         {
 
@@ -63,6 +67,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Plan = table.Plan;
             this.Schema = table.Schema;
             this.Description = table.Schema?.Description;
+            this.RestoredLogs = table.RestoredLogs;
+            this.SearchResults = table.SearchResults;
         }
 
         public PSTable(
