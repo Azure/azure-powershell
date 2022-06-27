@@ -5861,6 +5861,11 @@ function Test-VirtualMachineGuestAttestation
         # Assert the default extension has been installed, and the Identity.Type defaulted to SystemAssigned.
         Assert-AreEqual $vmExt.Name $extDefaultName;
         Assert-AreEqual $vm.Identity.Type $vmGADefaultIDentity;
+
+        Remove-AzVm -ResourceGroupName $rgname -Name $vmname -Force;
+        New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig -DisableIntegrityMonitoring;
+        Assert-ThrowsContains {
+            $vmExtError = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName; } "For more details please go to https://aka.ms/ARMResourceNotFoundFix";
     }
     finally 
     {
