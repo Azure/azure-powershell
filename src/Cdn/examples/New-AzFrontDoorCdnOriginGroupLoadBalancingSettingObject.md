@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AzureFrontDoor origin group `LoadBalancingSetting` object
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4
 ```
 
 ```output
-{{ Add output here }}
+AdditionalLatencyInMillisecond SampleSize SuccessfulSamplesRequired
+------------------------------ ---------- -------------------------
+200                            5          4
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

@@ -34,27 +34,32 @@ Gets an existing AzureFrontDoor domain with the specified domain name under the 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List AzureFrontDoor customdomains under the profile
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 ```
 
 ```output
-{{ Add output here }}
+Name      ResourceGroupName
+----      -----------------
+domain001 testps-rg-da16jm
+domain002 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+List AzureFrontDoor customdomains under the profile
 
-### Example 2: {{ Add title here }}
+### Example 2: Get an AzureFrontDoor customdomain under the profile
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
 ```
 
 ```output
-{{ Add output here }}
+Name      ResourceGroupName
+----      -----------------
+domain001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+Get an AzureFrontDoor customdomain under the profile
 
 ## PARAMETERS
 

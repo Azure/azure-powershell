@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// The get peering service location.
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{PSPeeringServiceLocation}"/>.
         /// </returns>
         /// <exception cref="ErrorResponseException">
         /// </exception>

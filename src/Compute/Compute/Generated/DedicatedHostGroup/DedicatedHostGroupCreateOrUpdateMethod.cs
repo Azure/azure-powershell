@@ -63,6 +63,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         parameters.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
+                    if (this.EnableUltraSSD.IsPresent)
+                    {
+                        if (parameters.AdditionalCapabilities == null)
+                        {
+                            parameters.AdditionalCapabilities = new DedicatedHostGroupPropertiesAdditionalCapabilities();
+                        }
+                        parameters.AdditionalCapabilities.UltraSSDEnabled = true;
+                    }
+
                     var result = DedicatedHostGroupsClient.CreateOrUpdate(resourceGroupName, hostGroupName, parameters);
                     var psObject = new PSHostGroup();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<DedicatedHostGroup, PSHostGroup>(result, psObject);
@@ -108,6 +117,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The flag that enables or disables a capability to have UltraSSD Enabled Virtual Machines on Dedicated Hosts of the Dedicated Host Group. For the Virtual Machines to be UltraSSD Enabled, UltraSSDEnabled flag for the resource needs to be set true as well. Please refer to https://docs.microsoft.com/en-us/azure/virtual-machines/disks-enable-ultra-ssd for more details on Ultra SSD feature. The ultraSSDEnabled setting can only be enabled for Host Groups that are created as zonal.")]
+        public SwitchParameter EnableUltraSSD { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

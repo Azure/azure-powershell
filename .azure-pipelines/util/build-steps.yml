@@ -25,17 +25,38 @@ steps:
     filePath: tools/CheckIgnoredFile.ps1
 
 - task: UseDotNet@2
-  displayName: 'Use .NET Core sdk'
+  displayName: 'Use .NET Core sdk 3.1.x'
   inputs:
     packageType: sdk
     version: 3.1.x
 
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk 6.0.x'
+  inputs:
+    packageType: sdk
+    version: 6.0.x
+
+- task: PowerShell@2
+  displayName: Setup global.json
+  inputs:
+    targetType: inline
+    script: "$SdkVersion=(dotnet --list-sdks | Select-String '[3,4,5].\\d.\\d{3}').Matches[0].Value; dotnet new globaljson --sdk-version $SdkVersion --force"
+    pwsh: true
+    
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:Build /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
+
+- task: PowerShell@2
+  displayName: Build-AzPredictor
+  condition: eq(variables.BuildAzPredictor, 'true')
+  inputs:
+    targetType: inline
+    script: "$SdkVersion=(dotnet --list-sdks | Select-String '6.0.\\d{3}').Matches[0].Value; dotnet new globaljson --sdk-version $SdkVersion --force;dotnet msbuild tools/Az.Tools.Predictor/build.proj /t:\"clean;build;test\""
+    pwsh: true
 
 - template: publish-artifacts-steps.yml
   parameters:

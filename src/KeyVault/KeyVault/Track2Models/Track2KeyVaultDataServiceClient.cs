@@ -489,6 +489,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         /// <summary>
         /// Remove a custom role definition from an HSM.
         /// </summary>
+        /// <param name="hsmName"></param>
+        /// <param name="scope"></param>
         /// <param name="name">Name of the role. A GUID.</param>
         public void RemoveHsmRoleDefinition(string hsmName, string scope, string name)
         {

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
   <PropertyGroup>
     <PsModuleName>Storage</PsModuleName>
     <OmitJsonPackage>true</OmitJsonPackage>
@@ -24,4 +24,6 @@
     <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.6\ARMStorageProvider.cs" Link="Common\ARMStorageProvider.cs" />
     <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.6\ARMStorageService.cs" Link="Common\ARMStorageService.cs" />
   </ItemGroup>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

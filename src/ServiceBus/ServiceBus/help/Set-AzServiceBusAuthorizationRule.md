@@ -51,7 +51,7 @@ $authRuleObj = Get-AzServiceBusAuthorizationRule -ResourceGroupName Default-Serv
 
 $authRuleObj.Rights.Remove("Manage")
 
-Set-AzServiceBusAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Name AuthoRule1 -InputObj $authRuleObj
+Set-AzServiceBusAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Name AuthoRule1 -InputObject $authRuleObj
 ```
 
 Removes **Manage** from the access rights of the authorization rule `AuthoRule1` in namespace `SB-Example1`.
@@ -62,7 +62,7 @@ $authRuleObj = Get-AzServiceBusAuthorizationRule -ResourceGroupName Default-Serv
 
 $authRuleObj.Rights.Remove("Manage")
 
-Set-AzServiceBusAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Queue SBQueue -Name AuthoRule1 -InputObj $authRuleObj
+Set-AzServiceBusAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Queue SBQueue -Name AuthoRule1 -InputObject $authRuleObj
 ```
 
 Removes **Manage** from the access rights of the authorization rule `AuthoRule1` in queue `SBQueue`.
@@ -73,7 +73,7 @@ $authRuleObj = Get-AzServiceBusAuthorizationRule -ResourceGroupName Default-Serv
 
 $authRuleObj.Rights.Remove("Manage")
 
-Set-AzServiceBusAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Topic SBTopic -Name AuthoRule1 -InputObj $authRuleObj
+Set-AzServiceBusAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Topic SBTopic -Name AuthoRule1 -InputObject $authRuleObj
 ```
 
 Removes **Manage** from the access rights of the authorization rule `AuthoRule1` in topic `SBTopic`.

@@ -30,27 +30,12 @@ Deletes an existing AzureFrontDoor rule set with the specified rule set name und
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete an AzureFrontDoor rule set under the profile
 ```powershell
-{{ Add code here }}
+Remove-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 ```
 
-```output
-{{ Add output here }}
-```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

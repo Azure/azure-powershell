@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     {
         protected const string BaseBlobParameterSet = "BaseBlob";
         protected const string BaseBlobLastAccessTimeParameterSet = "BaseBlobLastAccessTime";
+        protected const string BaseBlobCreationTimeParameterSet = "BaseBlobCreationTime";
         protected const string SnapshotParameterSet = "Snapshot";
         protected const string BlobVersionParameterSet = "BlobVersion";
         [Parameter(Mandatory = true,
@@ -35,6 +36,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = true,
             HelpMessage = "The management policy action for baseblob.",
             ParameterSetName = BaseBlobLastAccessTimeParameterSet)]
+        [Parameter(Mandatory = true,
+            HelpMessage = "The management policy action for baseblob.",
+            ParameterSetName = BaseBlobCreationTimeParameterSet)]
         [ValidateSet(ManagementPolicyAction.Delete,
             ManagementPolicyAction.TierToArchive,
             ManagementPolicyAction.TierToCool,
@@ -65,8 +69,22 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = true,
             HelpMessage = "Integer value indicating the age in days after creation.",
             ParameterSetName = BlobVersionParameterSet)]
+        [Parameter(Mandatory = true,
+            HelpMessage = "Integer value indicating the age in days after creation.",
+            ParameterSetName = BaseBlobCreationTimeParameterSet)]
         [ValidateNotNullOrEmpty]
-        public int DaysAfterCreationGreaterThan { get; set; }
+        public int DaysAfterCreationGreaterThan
+        {
+            get
+            {
+                return daysAfterCreationGreaterThan is null ? 0 : daysAfterCreationGreaterThan.Value;
+            }
+            set
+            {
+                daysAfterCreationGreaterThan = value;
+            }
+        }
+        public int? daysAfterCreationGreaterThan;
 
         [Parameter(Mandatory = true,
             HelpMessage = "Integer value indicating the age in days after last modification.",
@@ -149,6 +167,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 case BaseBlobParameterSet:
                 case BaseBlobLastAccessTimeParameterSet:
+                case BaseBlobCreationTimeParameterSet:
                     if (action.BaseBlob is null)
                     {
                         action.BaseBlob = new PSManagementPolicyBaseBlob();
@@ -172,17 +191,20 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         case ManagementPolicyAction.Delete:
                             action.BaseBlob.Delete = new PSDateAfterModification(this.daysAfterModificationGreaterThan, 
                                 this.daysAfterLastAccessTimeGreaterThan, 
-                                this.daysAfterLastTierChangeGreaterThan);
+                                this.daysAfterLastTierChangeGreaterThan,
+                                this.daysAfterCreationGreaterThan);
                             break;
                         case ManagementPolicyAction.TierToCool:
                             action.BaseBlob.TierToCool = new PSDateAfterModification(this.daysAfterModificationGreaterThan,
                                 this.daysAfterLastAccessTimeGreaterThan,
-                                this.daysAfterLastTierChangeGreaterThan); 
+                                this.daysAfterLastTierChangeGreaterThan,
+                                this.daysAfterCreationGreaterThan); 
                     break;
                         case ManagementPolicyAction.TierToArchive:
                             action.BaseBlob.TierToArchive = new PSDateAfterModification(this.daysAfterModificationGreaterThan,
                                 this.daysAfterLastAccessTimeGreaterThan,
-                                this.daysAfterLastTierChangeGreaterThan); 
+                                this.daysAfterLastTierChangeGreaterThan,
+                                this.daysAfterCreationGreaterThan); 
                             break;
                         default:
                             throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid BaseBlobAction: {0}", this.BaseBlobAction));

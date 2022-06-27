@@ -172,7 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### -MonitorService
-Filter on Moniter Service
+Filter on Monitor Service
 
 ```yaml
 Type: System.String
