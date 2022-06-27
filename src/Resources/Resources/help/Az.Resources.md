@@ -346,10 +346,10 @@ Publishes a Bicep file to a registry.
 Registers an Azure provider feature in your current subscription context.
 
 ### [Register-AzProviderPreviewFeature](Register-AzProviderPreviewFeature.md)
-Creates a feature registration in your current subscription context.
+Creates a feature registration in your account.
 
 ### [Register-AzResourceProvider](Register-AzResourceProvider.md)
-Registers a resource provider in your current subscription context.
+Registers a resource provider.
 
 ### [Remove-AzADAppCredential](Remove-AzADAppCredential.md)
 Removes key credentials or password credentials for an application.
