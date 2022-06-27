@@ -215,7 +215,27 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Upgraded API version to 2021-06-01
+* Removed deprecated cmdlets
+  - Disable-AzCdnCustomDomain
+  - Enable-AzCdnCustomDomain
+  - Get-AzCdnEdgeNodes
+  - Get-AzCdnProfileSsoUrl
+  - New-AzCdnDeliveryPolicy
+  - Set-AzFrontDoorCdnSecret
+* Added new cmdlets
+  - Clear-AzFrontDoorCdnEndpointContent
+  - Get-AzFrontDoorCdnEndpointResourceUsage
+  - Get-AzFrontDoorCdnOriginGroupResourceUsage
+  - Get-AzFrontDoorCdnProfileResourceUsage
+  - Get-AzFrontDoorCdnRuleSetResourceUsage
+  - Test-AzFrontDoorCdnEndpointCustomDomain
+  - Test-AzFrontDoorCdnEndpointNameAvailability
+  - Test-AzFrontDoorCdnProfileHostNameAvailability
+  - Update-AzFrontDoorCdnCustomDomainValidationToken
+  - Update-AzFrontDoorCdnRule
+* Renamed Set cmdlets to Update cmdlets
+* Added ''Object'' suffix to memory object creation cmdlets'
 
         # Prerelease string of this module
         # Prerelease = ''
