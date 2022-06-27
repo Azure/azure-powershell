@@ -73,7 +73,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models
         /// Creates new ResourcesClient instance
         /// </summary>
         /// <param name="resourceManagementClient">The IResourceManagementClient instance</param>
-        /// <param name="galleryTemplatesClient">The IGalleryClient instance</param>
         /// <param name="authorizationManagementClient">The management client instance</param>
         public ResourceClient(
             ResourceManagementClient resourceManagementClient,

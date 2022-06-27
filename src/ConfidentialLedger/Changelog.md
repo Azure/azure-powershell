@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated API version to 2022-05-13
 
 ## Version 0.1.0
 * First preview release for module Az.ConfidentialLedger

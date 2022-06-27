@@ -102,6 +102,7 @@ Monitoring Solutions                  | `Az.MonitoringSolutions`                
 Database for MySQL                    | `Az.MySql`                              | [![MySql]][MySqlGallery]
 NetApp Files                          | `Az.NetAppFiles`                        | [![NetAppFiles]][NetAppFilesGallery]
 Network                               | `Az.Network`                            | [![Network]][NetworkGallery]
+NetworkFunction                       | `Az.NetworkFunction`                    | [![NetworkFunction]][NetworkFunctionGallery]
 Notification Hubs                     | `Az.NotificationHubs`                   | [![NotificationHubs]][NotificationHubsGallery]
 Operational Insights                  | `Az.OperationalInsights`                | [![OperationalInsights]][OperationalInsightsGallery]
 Virtual Network peering               | `Az.Peering`                            | [![Peering]][PeeringGallery]
@@ -240,6 +241,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [MySql]:                      https://img.shields.io/powershellgallery/v/Az.MySql.svg?style=flat-square&label=Az.MySql
 [NetAppFiles]:                https://img.shields.io/powershellgallery/v/Az.NetAppFiles.svg?style=flat-square&label=Az.NetAppFiles
 [Network]:                    https://img.shields.io/powershellgallery/v/Az.Network.svg?style=flat-square&label=Az.Network
+[NetworkFunction]:            https://img.shields.io/powershellgallery/v/Az.NetworkFunction.svg?style=flat-square&label=Az.NetworkFunction
 [NotificationHubs]:           https://img.shields.io/powershellgallery/v/Az.NotificationHubs.svg?style=flat-square&label=Az.NotificationHubs
 [OperationalInsights]:        https://img.shields.io/powershellgallery/v/Az.OperationalInsights.svg?style=flat-square&label=Az.OperationalInsights
 [Peering]:                    https://img.shields.io/powershellgallery/v/Az.Peering.svg?style=flat-square&label=Az.Peering
@@ -376,6 +378,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [MySqlGallery]:                      https://www.powershellgallery.com/packages/Az.MySql/
 [NetAppFilesGallery]:                https://www.powershellgallery.com/packages/Az.NetAppFiles/
 [NetworkGallery]:                    https://www.powershellgallery.com/packages/Az.Network/
+[NetworkFunctionGallery]:            https://www.powershellgallery.com/packages/Az.NetworkFunction/
 [NotificationHubsGallery]:           https://www.powershellgallery.com/packages/Az.NotificationHubs/
 [OperationalInsightsGallery]:        https://www.powershellgallery.com/packages/Az.OperationalInsights/
 [PeeringGallery]:                    https://www.powershellgallery.com/packages/Az.Peering/
