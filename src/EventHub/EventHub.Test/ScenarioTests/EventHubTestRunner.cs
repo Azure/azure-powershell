@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                         {"Microsoft.Resources", null},
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null},
-                        {"Microsoft.EventHub", null},
+                        {"Microsoft.Storage", null},
                         {"Microsoft.KeyVault", null},
                         {"Microsoft.ManagedServiceIdentity", null}
                     }

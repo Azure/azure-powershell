@@ -35,17 +35,17 @@ New-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Locatio
 The New-AzEventHubNamespace cmdlet creates a new namespace of type Event Hubs.
 
 ## EXAMPLES
-### Example 1			 								
+### Example 1
 ```powershell
 New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation
 ```
 
 ```output
-Name                   		  : MyNamespaceName
-Id                     		  : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
-ResourceGroupName      		  : Default-EventHub-WestCentralUS
-Location               		  : West US
-Sku                    		  : Name : Standard , Capacity : 1 , Tier : Standard
+Name                          : MyNamespaceName
+Id                            : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
+ResourceGroupName             : Default-EventHub-WestCentralUS
+Location                      : West US
+Sku                           : Name : Standard , Capacity : 1 , Tier : Standard
 Tags                          :
 ProvisioningState             : Succeeded
 Status                        : Active
@@ -170,7 +170,7 @@ Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic 
 
 ### Example 5: Creating Namespace with Manage Identity in a cluster 
 ```powershell
-New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation --EnableAutoInflate -MaximumThroughputUnits 12 -EnableKafka -ZoneRedundant -IdentityType SystemAssigned
+New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation -EnableAutoInflate -MaximumThroughputUnits 12 -EnableKafka -ZoneRedundant -IdentityType SystemAssigned
 ```
 
 ```output
@@ -189,7 +189,7 @@ Enabled                       : True
 IsAutoInflateEnabled          : True
 MaximumThroughputUnits        : 12
 ZoneRedundant                 : True
-ClusterArmId                  :	/subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/clusters/TestCluster
+ClusterArmId                  : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/clusters/TestCluster
 Identity.PrincipalId          : ##########
 Identity.TenantId             : ##########
 Identity.Type                 : SystemAssigned
@@ -204,10 +204,10 @@ Encryption.KeyVaultProperties :
 ```powershell
 
 # Create encryption config that will create an in memory config object
-$config1 = New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
+$config1 = New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
 
 # Create encryption config that will create an in memory config object
-$config2 = New-AzEventHubEncryptionConfig -KeyName key2 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
+$config2 = New-AzEventHubEncryptionConfig -KeyName key2 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
 
 $id1 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
 

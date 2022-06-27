@@ -19,8 +19,9 @@
 -->
 
 ## Upcoming Release
-* Fixed an issue that Az.Accounts may fail to be imported in parallel PowerShell processes. [#18321] 
 * Supported exporting and importing configurations by `Export-AzConfig` and `Import-AzConfig`.
+* Fixed an issue that Az.Accounts may fail to be imported in parallel PowerShell processes. [#18321] 
+* Fixed incorrect access token [#18105]
 * Upgraded version of Microsoft.Identity.Client for .NET Framework. [#18495]
 * Fixed an issue that Az.Accounts failed to be imported if multiple environment variables, which only differ by case, are set. [#18304]
 

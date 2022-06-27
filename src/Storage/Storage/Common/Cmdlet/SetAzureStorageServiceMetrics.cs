@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// <summary>
         /// Update the specified service properties according to the input
         /// </summary>
-        /// <param name="serviceProperties">Service properties</param>
+        /// <param name="metrics"></param>
         internal void UpdateServiceProperties(MetricsProperties metrics)
         {
             if (Version != null)
@@ -155,7 +155,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// <summary>
         /// Update the specified service properties according to the input in old XSCL
         /// </summary>
-        /// <param name="serviceProperties">Service properties</param>
+        /// <param name="metrics"></param>
         internal void UpdateServiceProperties(XTable.MetricsProperties metrics)
         {
             if (Version != null)

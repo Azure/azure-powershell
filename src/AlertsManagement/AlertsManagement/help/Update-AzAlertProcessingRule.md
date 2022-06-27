@@ -37,7 +37,7 @@ Update-AzAlertProcessingRule -InputObject <PSActionRule> [-Enabled <String>] [-T
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "Test-AlertProcessingRule" -Enabled "False"
+Update-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "Test-AlertProcessingRule" -Enabled "False"
 ```
 
 This cmdlet disables the alert processing rule. 

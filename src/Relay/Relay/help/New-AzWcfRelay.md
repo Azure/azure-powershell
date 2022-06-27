@@ -33,11 +33,11 @@ The New-AzWcfRelay cmdlet creates a WcfRelay in the specified Relay namespace.
 
 ### Example 1 - InputObject
 ```powershell
-$getWcfRelay = Get-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1
+$getWcfRelay = Get-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1
 $GetWcfRelay.UserMetadata = "TestWCFRelay2"
 $GetWcfRelay.RequiresClientAuthorization = $False
 $GetWcfRelay.RelayType = "Http"
-New-AzWcfRelay -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay2 -InputObject
+New-AzWcfRelay -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay2 -InputObject $getWcfRelay
 ```
 
 ```output

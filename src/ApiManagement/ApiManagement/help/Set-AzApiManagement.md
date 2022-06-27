@@ -74,11 +74,11 @@ Set-AzApiManagement -InputObject $apim -PassThru
 ### Example 5: Add Managed Certificate to an APIM Service
 
 ```powershell
-PS D:> $gateway=New-AzApiManagementCustomHostnameConfiguration -Hostname freecertCanary.contoso.api -HostnameType Proxy -ManagedCertificate
-PS D:> $customConfig= @($gateway)
-PS D:> $apim=Get-AzApiManagement -ResourceGroupName contosogroup -Name contosoapim
-PS D:> $apim.ProxyCustomHostnameConfiguration = $customConfig
-PS D:> Set-AzApiManagement -InputObject $apim -PassThru
+$gateway=New-AzApiManagementCustomHostnameConfiguration -Hostname freecertCanary.contoso.api -HostnameType Proxy -ManagedCertificate
+$customConfig= @($gateway)
+$apim=Get-AzApiManagement -ResourceGroupName contosogroup -Name contosoapim
+$apim.ProxyCustomHostnameConfiguration = $customConfig
+Set-AzApiManagement -InputObject $apim -PassThru
 
 
 PublicIPAddresses                     : {20.45.236.81}
@@ -122,7 +122,7 @@ PublicNetworkAccess                   : Enabled
 PrivateEndpointConnections            :
 ResourceGroupName                     : contosogroup
 
-PS D:> $apim.ProxyCustomHostnameConfiguration
+$apim.ProxyCustomHostnameConfiguration
 
 CertificateInformation     :
 EncodedCertificate         :

@@ -15,7 +15,7 @@
     <PackageReference Include="Microsoft.Azure.Synapse" Version="0.1.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="24.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.24.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="5.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.26.0-preview" />
   </ItemGroup>
 

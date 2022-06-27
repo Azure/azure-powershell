@@ -308,5 +308,60 @@ namespace Microsoft.Azure.Commands.EventHub {
                 return ResourceManager.GetString("RemoveEventHubSchemaGroup", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Creating new application group: {0} for Namespace: {1} of resource group: {2}
+        /// </summary>
+        internal static string CreateApplicationGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("CreateApplicationGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Updating application group: {0} for Namespace: {1} of resource group: {2}
+        /// </summary>
+        internal static string UpdateApplicationGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("UpdateApplicationGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Get application group: {0} for Namespace: {1} of resource group: {2}
+        /// </summary>
+        internal static string GetApplicationGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("GetApplicationGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to List application groups for Namespace: {0} of resource group: {1} 
+        /// </summary>
+        internal static string ListApplicationGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("ListApplicationGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Removing application group: {0} for Namespace: {1} of resource group: {2}
+        /// </summary>
+        internal static string RemoveApplicationGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveApplicationGroup", resourceCulture);
+            }
+        }
     }
 }
