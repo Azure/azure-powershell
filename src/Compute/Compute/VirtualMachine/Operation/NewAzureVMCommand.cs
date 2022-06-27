@@ -800,7 +800,8 @@ namespace Microsoft.Azure.Commands.Compute
                 ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
             }
 
-            // Check if Identity needs to be defaulted in. 
+            // Guest Attestation extension defaulting scenario check.
+            // Check if Identity can be defaulted in. 
             if (shouldGuestAttestationExtBeInstalled() &&
                 this.VM != null &&
                 this.VM.Identity == null)
@@ -912,6 +913,7 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
+                    // Guest Attestation extension defaulting scenario check.
                     // Default behavior for Trusted Launch VM with SecureBootEnabled and VTpmEnabled is to install the Guest Attestation esxtension.
                     // If DisableIntegrityMonitoring is true, then this extension will not be installed. 
                     if (shouldGuestAttestationExtBeInstalled())
