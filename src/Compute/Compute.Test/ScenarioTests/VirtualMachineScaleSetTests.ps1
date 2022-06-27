@@ -3399,7 +3399,7 @@ function Test-VirtualMachineScaleSetGuestAttestation
         $vmssSize = 'Standard_DS3_v2';
         $PublisherName = "MicrosoftWindowsServer";
         $Offer = "WindowsServer";
-        $SKU = "2022-datacenter-smalldisk-g2";
+        $SKU = "2019-DATACENTER-GENSECOND";
         $securityType = "TrustedLaunch";
         $secureboot = $true;
         $vtpm = $true;
@@ -3415,14 +3415,10 @@ function Test-VirtualMachineScaleSetGuestAttestation
         # New VMSS Parameters
         $vmssName = 'vmss' + $rgname;
         $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
-        #$diffDiskPlacement = "CacheDisk";
 
         $adminUsername = 'usertest';
         $adminPassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;
 
-
-
-        #$imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName $PublisherName -offer $Offer -skus $SKU -version latest;
         $imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
         $imgRef.PublisherName = $PublisherName;
         $imgRef.Offer = $Offer;
@@ -3437,18 +3433,24 @@ function Test-VirtualMachineScaleSetGuestAttestation
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-            -ImageReferencePublisher $imgRef.PublisherName ;#-DiffDiskSetting 'Local' -DiffDiskPlacement $diffDiskPlacement;
+            -ImageReferencePublisher $imgRef.PublisherName ;
 
-        $vmss = Set-AzVmssSecurityProfile -VirtualMAchineScaleSet $vmss -SecurityType $securityType;
+        # Requirements for the Guest Attestation defaulting behavior.  
+        $vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
         $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
 
+        # Create Vmss
         $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
-        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
-        # Validate DiffDiskPlacement value
-        #Assert-AreEqual $result.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings.Placement $diffDiskPlacement;
-        Assert-AreEqual 
 
-        # The extension that was made was not added to the vmss.VMProfile.ExtensionProfile.Extensions. Why not????????
+        # Validate
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
+        Assert-AreEqual $vmGADefaultIDentity $vmssGet.Identity.Type;
+
+        $vmssvms = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-NotNull $vmssvms;
+        $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId;
+        Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
+        
 
     }
     finally
