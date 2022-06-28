@@ -441,7 +441,7 @@ function Test-SetManagedDatabase
 
 		$tags = @{managedInstanceTag= "managedInstanceInputObject"}
 		# Set by using ManagedInstance as input
-		$db = Set-AzSqlInstanceDatabase -TopLevelResourceObject $managedInstance -Name $db.Name -Tags $tags
+		$db = Set-AzSqlInstanceDatabase -InstanceObject $managedInstance -Name $db.Name -Tags $tags
 		Assert-AreEqual $db.Name $managedDatabaseName
 		Assert-NotNull $db.Tags
 		Assert-AreEqual True $db.Tags.ContainsKey("managedInstanceTag")
