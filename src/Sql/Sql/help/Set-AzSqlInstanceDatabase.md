@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSqlInstanceDatabase
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updated an Azure SQL Managed Instance database.
 
 ## SYNTAX
 
@@ -19,21 +19,27 @@ Set-AzSqlInstanceDatabase [-Name] <String> [-InstanceName] <String> [-ResourceGr
  [<CommonParameters>]
 ```
 
+### SetInstanceDatabaseFromAzureSqlManagedInstanceModel
+```
+Set-AzSqlInstanceDatabase [[-Name] <String>] [-Tag <Hashtable>]
+ [-TopLevelResourceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### SetInstanceDatabaseFromAzureSqlManagedDatabaseModel
 ```
-Set-AzSqlInstanceDatabase [-Name] <String> [-Tag <Hashtable>] [-InstanceObject] <AzureSqlManagedInstanceModel>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlInstanceDatabase [-Tag <Hashtable>] [-InputObject] <AzureSqlManagedDatabaseModel> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetInstanceDatabaseFromAzureResourceId
 ```
-Set-AzSqlInstanceDatabase [-Name] <String> [-Tag <Hashtable>] [-InstanceResourceId] <String> [-AsJob]
+Set-AzSqlInstanceDatabase [-Tag <Hashtable>] [-ResourceId] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 **Set-AzSqlInstanceDatabase** cmdlet updates properties on the given managed database.
-
 
 ## EXAMPLES
 
@@ -64,7 +70,6 @@ Name                              : name1
 CreationDate                      : 4/11/2022 5:26:30 PM
 EarliestRestorePoint              : 6/14/2022 5:07:14 PM
 Id                                : /subscriptions/subscription_id/resourceGroups/rg1/providers/Microsoft.Sql/managedInstances/instance1/databases/name1
-
 ```
 
 This command sets tags to existing managed database.
@@ -75,7 +80,7 @@ This command sets tags to existing managed database.
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +95,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -101,11 +106,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The database object
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+Parameter Sets: SetInstanceDatabaseFromAzureSqlManagedDatabaseModel
+Aliases: ResourceObject
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InstanceName
 The name of the instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetInstanceDatabaseFromInputParameters
 Aliases:
 
@@ -116,41 +136,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseObject
-The instance object
-
-```yaml
-Type: AzureSqlManagedDatabaseModel
-Parameter Sets: SetInstanceDatabaseFromAzureSqlManagedDatabaseModel
-Aliases: ParentObject
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InstanceDatabaseResourceId
-The instance resource id
-
-```yaml
-Type: String
-Parameter Sets: SetInstanceDatabaseFromAzureResourceId
-Aliases: ParentResourceId
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the instance database to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetInstanceDatabaseFromInputParameters
 Aliases: InstanceDatabaseName
 
@@ -161,11 +151,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: System.String
+Parameter Sets: SetInstanceDatabaseFromAzureSqlManagedInstanceModel
+Aliases: InstanceDatabaseName
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetInstanceDatabaseFromInputParameters
 Aliases:
 
@@ -176,11 +178,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+The instance database resource id
+
+```yaml
+Type: System.String
+Parameter Sets: SetInstanceDatabaseFromAzureResourceId
+Aliases: ParentResourceId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Tag
 The tags to associate with the instance database
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -191,11 +208,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TopLevelResourceObject
+The managed instance object
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Parameter Sets: SetInstanceDatabaseFromAzureSqlManagedInstanceModel
+Aliases: ParentObject
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -211,7 +243,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -226,6 +258,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 
