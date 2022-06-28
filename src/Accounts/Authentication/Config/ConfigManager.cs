@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Config.Internal;
 using Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.PowerShell.Common.Config;
 using System;
 using System.Collections.Concurrent;
