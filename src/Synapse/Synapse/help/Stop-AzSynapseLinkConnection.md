@@ -64,16 +64,16 @@ Stop-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkCo
 Get-AzSynapseLinkConnectionDetailedStatus -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
 ```
 ```output
-	WorkspaceName     : ContosoWorkspace
-	Id                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-	Name              : ContosoLinkConnection
-	IsApplyingChanges :
-	IsPartiallyFailed : False
-	StartTime         : 2022-03-10T06:59:34.5820499Z
-	StopTime          : 2022-03-10T07:21:42.4895248Z
-	Status            : Stopping
-	ContinuousRunId   : 
-	Error             :
+WorkspaceName     : ContosoWorkspace
+Id                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Name              : ContosoLinkConnection
+IsApplyingChanges :
+IsPartiallyFailed : False
+StartTime         : 2022-03-10T06:59:34.5820499Z
+StopTime          : 2022-03-10T07:21:42.4895248Z
+Status            : Stopping
+ContinuousRunId   : 
+Error             :
 ```
 
 This command stops a link connection named ContosoLinkConnection in workspace, then you can call **Get-AzSynapseLinkConnectionDetailedStatus** to get status of the link connection.
