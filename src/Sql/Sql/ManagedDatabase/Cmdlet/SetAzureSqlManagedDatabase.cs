@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets the tags associated with the instance database
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
             HelpMessage = "The tags to associate with the managed instance database")]
         [Alias("Tags")]
         public Hashtable Tag { get; set; }
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "The database object")]
         [ValidateNotNullOrEmpty]
-        [Alias("ResourceObject")]
+        [Alias("DatabaseObject")]
         public AzureSqlManagedDatabaseModel InputObject { get; set; }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             HelpMessage = "The managed instance object")]
         [ValidateNotNullOrEmpty]
         [Alias("ParentObject")]
-        public AzureSqlManagedInstanceModel TopLevelResourceObject { get; set; }
+        public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id of the instance to get
@@ -120,7 +120,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The instance database resource id")]
         [ValidateNotNullOrEmpty]
-        [Alias("ParentResourceId")]
         public string ResourceId { get; set; }
 
         /// <summary>
@@ -150,8 +149,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                     Name = resourceInfo.ResourceName;
                     break;
                 case SetByParentObjectParameterSet:
-                    ResourceGroupName = TopLevelResourceObject.ResourceGroupName;
-                    InstanceName = TopLevelResourceObject.ManagedInstanceName;
+                    ResourceGroupName = InstanceObject.ResourceGroupName;
+                    InstanceName = InstanceObject.ManagedInstanceName;
                     break;
             }
 
