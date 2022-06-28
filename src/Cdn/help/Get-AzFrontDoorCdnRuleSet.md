@@ -34,27 +34,32 @@ Gets an existing AzureFrontDoor rule set with the specified rule set name under 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List AzureFrontDoor rule sets under the profile
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 ```
 
 ```output
-{{ Add output here }}
+Name       ResourceGroupName
+----       -----------------
+ruleset001 testps-rg-da16jm
+ruleset002 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+List AzureFrontDoor rule sets under the profile
 
-### Example 2: {{ Add title here }}
+### Example 2: Get an AzureFrontDoor rule set under the profile
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 ```
 
 ```output
-{{ Add output here }}
+Name       ResourceGroupName
+----       -----------------
+ruleset001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+Get an AzureFrontDoor rule set under the profile
 
 ## PARAMETERS
 
