@@ -419,4 +419,4 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [VMwareGallery]:                     https://www.powershellgallery.com/packages/Az.VMware/
 [WebsitesGallery]:                   https://www.powershellgallery.com/packages/Az.Websites/
 [WindowsIotServicesGallery]:         https://www.powershellgallery.com/packages/Az.WindowsIotServices/
-[MachineLearningServicesGallery]:         https://www.powershellgallery.com/packages/Az.MachineLearningServices/
+[MachineLearningServicesGallery]:    https://www.powershellgallery.com/packages/Az.MachineLearningServices/
