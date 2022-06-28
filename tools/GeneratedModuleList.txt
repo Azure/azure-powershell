@@ -46,3 +46,4 @@ Az.StreamAnalytics
 Az.TimeSeriesInsights
 Az.VMware
 Az.WindowsIotServices
+Az.MachineLearningServices
