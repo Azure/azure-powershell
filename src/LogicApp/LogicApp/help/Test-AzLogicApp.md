@@ -47,7 +47,7 @@ The command specifies definition and parameter file paths.
 
 ### Example 2: Validate a logic app by using objects
 ```powershell
-Test-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp01" -Location "westus" -State "Enabled" -Definition [IO.File]::ReadAllText("d:\Workflows\Definition.json") -Parameters @{name1="value1";name2="value2"}
+Test-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp01" -Location "westus" -State "Enabled" -Definition ([IO.File]::ReadAllText("d:\Workflows\Definition.json")) -Parameters @{name1="value1";name2="value2"}
 ```
 
 This command validates a logic app named LogicApp01 in the specified resource group.
