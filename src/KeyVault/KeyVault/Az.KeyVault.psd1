@@ -60,6 +60,7 @@ RequiredAssemblies = 'Microsoft.Azure.KeyVault.dll',
                'Microsoft.Azure.KeyVault.WebKey.dll', 
                'Microsoft.Azure.Management.KeyVault.dll', 
                'Azure.Security.KeyVault.Keys.dll', 
+               'Azure.Security.KeyVault.Certificates.dll', 
                'Azure.Security.KeyVault.Administration.dll', 
                'BouncyCastle.Crypto.dll'
 

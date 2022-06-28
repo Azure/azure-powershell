@@ -23,6 +23,9 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -116,57 +119,89 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
+        protected override void BeginProcessing()
+        {
+            FilePath = this.TryResolvePath(FilePath);
+            base.BeginProcessing();
+        }
+
+        private void ValidateParameters()
+        {
+            // Verify the FileNotFound whether exists
+            if (this.IsParameterBound(c => c.FilePath))
+            {
+                if (!File.Exists(FilePath))
+                {
+                    throw new AzPSArgumentException(string.Format(Resources.FileNotFound, this.FilePath), nameof(FilePath));
+                }
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, Properties.Resources.ImportCertificate))
             {
-                List<CertificateBundle> certBundleList = new List<CertificateBundle>();
+                ValidateParameters();
+
                 PSKeyVaultCertificate certBundle = null;
 
                 switch (ParameterSetName)
                 {
                     case ImportCertificateFromFileParameterSet:
-
-                        bool doImport = false;
-                        X509Certificate2Collection userProvidedCertColl = InitializeCertificateCollection();
-
-                        // look for at least one certificate which contains a private key
-                        foreach (var cert in userProvidedCertColl)
+                        // Pem file can't be handled by X509Certificate2Collection in dotnet standard
+                        // Just read it as raw data and pass it to service side
+                        if (IsPemFile(FilePath))
                         {
-                            doImport |= cert.HasPrivateKey;
-                            if (doImport)
-                                break;
-                        }
-
-                        if (doImport)
-                        {
-                            byte[] base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx, Password?.ConvertToString());
-                            string base64CertCollection = Convert.ToBase64String(base64Bytes);
-                            certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, base64CertCollection, Password, Tag == null ? null : Tag.ConvertToDictionary());
+                            byte[] pemBytes = File.ReadAllBytes(FilePath);
+                            certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, pemBytes, Password, Tag?.ConvertToDictionary(), Constants.PemContentType);
                         }
                         else
                         {
-                            certBundle = this.DataServiceClient.MergeCertificate(
-                                VaultName,
-                                Name,
-                                userProvidedCertColl,
-                                Tag == null ? null : Tag.ConvertToDictionary());
+                            bool doImport = false;
+                            X509Certificate2Collection userProvidedCertColl = InitializeCertificateCollection();
+
+                            // look for at least one certificate which contains a private key
+                            foreach (var cert in userProvidedCertColl)
+                            {
+                                doImport |= cert.HasPrivateKey;
+                                if (doImport)
+                                    break;
+                            }
+
+                            if (doImport)
+                            {
+                                byte[] base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx, Password?.ConvertToString());
+                                certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, base64Bytes, Password, Tag?.ConvertToDictionary());
+                            }
+                            else
+                            {
+                                certBundle = this.DataServiceClient.MergeCertificate(
+                                    VaultName,
+                                    Name,
+                                    userProvidedCertColl,
+                                    Tag == null ? null : Tag.ConvertToDictionary());
+                            }
                         }
                         break;
 
                     case ImportWithPrivateKeyFromCollectionParameterSet:
-                        certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, CertificateCollection, Tag == null ? null : Tag.ConvertToDictionary());
+                        certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, CertificateCollection, Tag?.ConvertToDictionary());
 
                         break;
 
                     case ImportWithPrivateKeyFromStringParameterSet:
-                        certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, CertificateString, Password, Tag == null ? null : Tag.ConvertToDictionary());
+                        certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, CertificateString, Password, Tag?.ConvertToDictionary());
 
                         break;
                 }
 
                 this.WriteObject(certBundle);
             }
+        }
+
+        private bool IsPemFile(string filePath)
+        {
+            return ".pem".Equals(Path.GetExtension(FilePath), StringComparison.OrdinalIgnoreCase);
         }
 
         internal X509Certificate2Collection InitializeCertificateCollection()
