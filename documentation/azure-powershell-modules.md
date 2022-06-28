@@ -344,7 +344,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [ElasticGallery]:                    https://www.powershellgallery.com/packages/Az.Elastic/
 [EventGridGallery]:                  https://www.powershellgallery.com/packages/Az.EventGrid/
 [EventHubGallery]:                   https://www.powershellgallery.com/packages/Az.EventHub/
-[FluidRealyGallery]:                 https://www.powershellgallery.com/packages/Az.FluidRelay/
+[FluidRelayGallery]:                 https://www.powershellgallery.com/packages/Az.FluidRelay/
 [FrontDoorGallery]:                  https://www.powershellgallery.com/packages/Az.FrontDoor/
 [FunctionsGallery]:                  https://www.powershellgallery.com/packages/Az.Functions/
 [GuestConfigurationGallery]:         https://www.powershellgallery.com/packages/Az.GuestConfiguration/
