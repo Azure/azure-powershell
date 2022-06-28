@@ -99,7 +99,7 @@ function Test-RaDeleteByPSRoleAssignment
     $expectedMessage = "Succesfully removed role assignment for AD object 'f2dc21ac-702a-4bde-a4ce-146edf751d81' on scope '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/PowershellTest' with role definition 'Reader'"
 
     # Test
-    $newAssignment = New-AzRoleAssignment -ObjectId $principalId -RoleDefinitionName $definitionName -Scope $scope
+    $newAssignment = New-AzRoleAssignmentWithId -ObjectId $principalId -RoleDefinitionName $definitionName -Scope $scope -RoleAssignmentId 305df7f7-c560-4577-8f38-257fdfa1f93e
 
     $result = Remove-AzRoleAssignment $newAssignment
 
