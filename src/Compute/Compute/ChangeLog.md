@@ -21,15 +21,17 @@
 -->
 ## Upcoming Release
 * Added image alias 'Win2022AzureEditionCore'
-* For `Add-AzVhd` upon upload failure using DirectUploadToManagedDisk parameter set, the SAS will be revoked and the created managed disk will be deleted.
-* An unresolved path can be passed in for '-LocalFilePath' for `Add-AzVhd`. The cmdlet with unresolve the path itself.
-* Added `-DataAccessAuthMode` parameter to Add-AzVhd DirectUploadToManagedDisk parameter set. 
-* Added `-EnabldUltraSSD` parameter to New-AzHostGroup.
 * Added `-UserAssignedIdentity` and `-FederatedClientId` to the following cmdlets:
     - `New-AzDiskEncryptionSetConfig`
     - `Update-AzDiskEncryptionSet`
 * Added `-TreatFailureAsDeploymentFailure` to cmdlets `Add-AzVmGalleryApplication` and `Add-AzVmssGalleryApplication`
 * Removed Exceptions for when SinglePlacementGroup is set to true in 'OrchestrationMode'
+
+## Version 4.28.0
+* For `Add-AzVhd` upon upload failure using DirectUploadToManagedDisk parameter set, the SAS will be revoked and the created managed disk will be deleted.
+* An unresolved path can be passed in for '-LocalFilePath' for `Add-AzVhd`. The cmdlet with unresolve the path itself.
+* Added `-DataAccessAuthMode` parameter to Add-AzVhd DirectUploadToManagedDisk parameter set. 
+* Added `-EnabldUltraSSD` parameter to New-AzHostGroup.
 
 ## Version 4.27.0
 * Edited `New-AzVm` cmdlet internal logic to use the `PlatformFaultDomain` value in the `PSVirtualMachine` object passed to it in the new virtual machine.
