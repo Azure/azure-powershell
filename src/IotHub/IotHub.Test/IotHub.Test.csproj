@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Devices" Version="1.22.0" />
-    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="5.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="24.0.0" />
   </ItemGroup>

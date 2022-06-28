@@ -45,27 +45,12 @@ Available for Verizon Profiles.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Import content of an AzureCDN Endpoint under the AzureCDN profile
 ```powershell
-{{ Add code here }}
+Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verzion -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentPath @("/movies/hello","/pictures/pic1.jpg") 
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Import content of an AzureCDN Endpoint under the AzureCDN profile, only some skus support this action
 
 ## PARAMETERS
 

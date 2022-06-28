@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get resource usages of an AzureCDN profile
 ```powershell
-{{ Add code here }}
+Get-AzCdnProfileResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
 ```
 
 ```output
-{{ Add output here }}
+CurrentValue Limit ResourceType Unit
+------------ ----- ------------ ----
+0            25    endpoint     count
 ```
+Get resource usages of an AzureCDN profile
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

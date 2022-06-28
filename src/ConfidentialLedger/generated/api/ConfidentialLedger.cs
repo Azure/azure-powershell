@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckNameAvailability(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.ICheckNameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.ICheckNameAvailabilityResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.ICheckNameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.ICheckNameAvailabilityResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -192,9 +192,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LedgerCreate(string subscriptionId, string resourceGroupName, string ledgerName, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LedgerCreate(string subscriptionId, string resourceGroupName, string ledgerName, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -238,9 +238,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LedgerCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LedgerCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LedgerCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task LedgerCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -399,6 +399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -408,7 +409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.ConfidentialLedger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ConfidentialLedger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -441,7 +442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LedgerCreate_Validate(string subscriptionId, string resourceGroupName, string ledgerName, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger body, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task LedgerCreate_Validate(string subscriptionId, string resourceGroupName, string ledgerName, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger body, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -471,7 +472,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// </returns>
         public async global::System.Threading.Tasks.Task LedgerDelete(string subscriptionId, string resourceGroupName, string ledgerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -513,7 +514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// </returns>
         public async global::System.Threading.Tasks.Task LedgerDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -672,6 +673,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -745,9 +747,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LedgerGet(string subscriptionId, string resourceGroupName, string ledgerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LedgerGet(string subscriptionId, string resourceGroupName, string ledgerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -786,9 +788,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LedgerGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LedgerGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -839,7 +841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LedgerGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task LedgerGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -857,7 +859,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.ConfidentialLedger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ConfidentialLedger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -914,9 +916,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LedgerListByResourceGroup(string subscriptionId, string resourceGroupName, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedgerList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LedgerListByResourceGroup(string subscriptionId, string resourceGroupName, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedgerList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -957,9 +959,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LedgerListByResourceGroupViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedgerList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LedgerListByResourceGroupViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedgerList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1010,7 +1012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LedgerListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedgerList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task LedgerListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedgerList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1028,7 +1030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.ConfidentialLedgerList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ConfidentialLedgerList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1083,9 +1085,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LedgerListBySubscription(string subscriptionId, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedgerList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LedgerListBySubscription(string subscriptionId, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedgerList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1124,9 +1126,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LedgerListBySubscriptionViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedgerList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LedgerListBySubscriptionViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedgerList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1174,7 +1176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LedgerListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedgerList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task LedgerListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedgerList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1192,7 +1194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.ConfidentialLedgerList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ConfidentialLedgerList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1245,9 +1247,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LedgerUpdate(string subscriptionId, string resourceGroupName, string ledgerName, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LedgerUpdate(string subscriptionId, string resourceGroupName, string ledgerName, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1291,9 +1293,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LedgerUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LedgerUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1348,7 +1350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LedgerUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task LedgerUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1454,6 +1456,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -1464,7 +1467,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.ConfidentialLedger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ConfidentialLedger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1497,7 +1500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LedgerUpdate_Validate(string subscriptionId, string resourceGroupName, string ledgerName, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger body, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task LedgerUpdate_Validate(string subscriptionId, string resourceGroupName, string ledgerName, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger body, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1521,9 +1524,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IResourceProviderOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IResourceProviderOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1557,9 +1560,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IResourceProviderOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IResourceProviderOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-05-13-preview";
+            var apiVersion = @"2022-05-13";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1602,7 +1605,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IResourceProviderOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IResourceProviderOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1620,7 +1623,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.ResourceProviderOperationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ResourceProviderOperationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:

@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
-    // <summary>
+    /// <summary>
     /// Pairs storage classification
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrStorageClassificationMapping",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]

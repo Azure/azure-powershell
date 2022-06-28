@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
         /// <summary>
         /// Initializes a new instance of the AutoscaleNotification class.
         /// </summary>
-        /// <param name="autoscaleNotification">The autoscale notification</param>
         public AutoscaleNotification()
             : base()
         {

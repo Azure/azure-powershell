@@ -20,6 +20,8 @@ using Moq;
 using System;
 using System.Linq;
 using Xunit;
+using System.IO;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 
 namespace Microsoft.Azure.Authentication.Test.Config
 {
@@ -33,9 +35,9 @@ namespace Microsoft.Azure.Authentication.Test.Config
             var intConfig = new SimpleTypedConfig<int>(retryKey, "", -1);
             const string arrayKey = "Array";
             var arrayConfig = new SimpleTypedConfig<string[]>(arrayKey, "", null);
-            IConfigManager icm = GetConfigManagerWithInitState((dataStore, path) =>
-            {
-                dataStore.WriteFile(path,
+            var path = Path.GetRandomFileName();
+            var dataStore = new MockDataStore();
+            dataStore.WriteFile(path,
 @"{
     ""Az"": {
         ""Retry"": 100
@@ -44,7 +46,13 @@ namespace Microsoft.Azure.Authentication.Test.Config
         ""Array"": [""a"",""b""]
     }
 }");
-            }, null, intConfig, arrayConfig);
+            IConfigManager icm = GetConfigManager(
+                new InitSettings()
+                {
+                    DataStore = dataStore,
+                    Path = path
+                },
+                intConfig, arrayConfig);
             ConfigManager cm = icm as ConfigManager;
             Assert.Equal(100, cm.GetConfigValue<int>(retryKey));
             Assert.Equal(new string[] { "a", "b" }, cm.GetConfigValueInternal<string[]>(arrayKey, new InternalInvocationInfo() { ModuleName = "Az.KeyVault" }));
@@ -176,7 +184,7 @@ namespace Microsoft.Azure.Authentication.Test.Config
         public void ShouldThrowIfAppliesToIsWrong()
         {
             var key = "OnlyAppliesToAz";
-            var config = new SimpleTypedConfig<bool>(key, "", true, null, new AppliesTo[] {AppliesTo.Az});
+            var config = new SimpleTypedConfig<bool>(key, "", true, null, new AppliesTo[] { AppliesTo.Az });
             var icm = GetConfigManager(config);
             Assert.Throws<AzPSArgumentException>(() => icm.UpdateConfig(new UpdateConfigOptions(key, true, ConfigScope.CurrentUser) { AppliesTo = "Az.Accounts" }));
         }

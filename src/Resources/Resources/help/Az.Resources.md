@@ -343,13 +343,13 @@ Create a deployment at tenant scope
 Publishes a Bicep file to a registry.
 
 ### [Register-AzProviderFeature](Register-AzProviderFeature.md)
-Registers an Azure provider feature in your account.
+Registers an Azure provider feature in your current subscription context.
 
 ### [Register-AzProviderPreviewFeature](Register-AzProviderPreviewFeature.md)
-Creates a feature registration in your account.
+Creates a feature registration in your current subscription context.
 
 ### [Register-AzResourceProvider](Register-AzResourceProvider.md)
-Registers a resource provider.
+Registers a resource provider in your current subscription context.
 
 ### [Remove-AzADAppCredential](Remove-AzADAppCredential.md)
 Removes key credentials or password credentials for an application.

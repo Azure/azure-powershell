@@ -22,27 +22,18 @@ Create an in-memory object for DeliveryRuleHttpVersionCondition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AzureCDN DeliveryRuleHttpVersionCondition
 ```powershell
-{{ Add code here }}
+New-AzCdnDeliveryRuleHttpVersionConditionObject -Name HttpVersion -ParameterMatchValue 2.0
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+HttpVersion
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for AzureCDN DeliveryRuleHttpVersionCondition
 
 ## PARAMETERS
 
