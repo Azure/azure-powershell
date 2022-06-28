@@ -5903,6 +5903,7 @@ function Test-ConfidentialVMSetAzVmOsDisk
 <#
 .SYNOPSIS
 Test confidential vm set-azvmosdisk SecureEncryptionType feature
+with DES Id
 #>
 function Test-ConfidentialVMSetAzVmOsDiskDESId
 {
@@ -5914,15 +5915,17 @@ function Test-ConfidentialVMSetAzVmOsDiskDESId
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        # Set-AzVmOsDisk test, VMGuestStateOnly scenario. 
-        # testing
-        $rgname = "adsandordes27";
-        $vmname = 'vm' + $rgname;
+        $vmname = 'vm3' + $rgname;
         $vmSize = "Standard_DC2as_v5";         
-        $domainNameLabel2 = "d2" + $rgname;
-        $computerName = "v2" + $rgname;
+        $domainNameLabel2 = "d3" + $rgname;
+        $computerName = "v3" + $rgname;
         $identityType = "SystemAssigned";
         $loc = 'northeurope';
+        $subnetPrefix = "subnet2";
+        $vnetPrefix = "vnet2";
+        $pubIpPrefix = "pubip2";
+        $nicPrefix = "nic2";
+        $secureEncryptGuestState = 'DiskWithVMGuestState';
         $vmSecurityType = "ConfidentialVM";
         $user = "admin01";
         $password = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force; 
@@ -5932,9 +5935,6 @@ function Test-ConfidentialVMSetAzVmOsDiskDESId
         $kvname = "val" + $rgname;
         $keyname = "key" + $rgname;
         $desName= "des" + $rgname;
-
-        
-
 
         New-AzKeyVault -Name $kvName -Location $loc -ResourceGroupName $rgName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
 
@@ -5960,19 +5960,6 @@ function Test-ConfidentialVMSetAzVmOsDiskDESId
         
 
         # Set-AzVmOsDisk test, DiskWithVMGuestState scenario. 
-        $secureEncryptDisk = 'DiskWithVMGuestState';
-        $vmname = 'vm3' + $rgname;
-        $vmSize = "Standard_DC2as_v5";         
-        $domainNameLabel2 = "d3" + $rgname;
-        $computerName = "v3" + $rgname;
-        $identityType = "SystemAssigned";
-        $loc = 'northeurope';
-        $subnetPrefix = "subnet2";
-        $vnetPrefix = "vnet2";
-        $pubIpPrefix = "pubip2";
-        $nicPrefix = "nic2";
-        $secureEncryptGuestState = 'DiskWithVMGuestState';
-        $vmSecurityType = "ConfidentialVM";
 
         $virtualMachine = New-AzVMConfig -VMName $VMName -VMSize $vmSize;
         $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
@@ -6001,7 +5988,7 @@ function Test-ConfidentialVMSetAzVmOsDiskDESId
         New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $VirtualMachine;
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
 
-        Assert-AreEqual $secureEncryptDisk $vm.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
+        Assert-AreEqual $secureEncryptGuestState $vm.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
     }
     finally 
     {
@@ -6028,11 +6015,11 @@ function Test-ConfVMSetAzVMSecurityProfile
 
         $ResourceGroupName = $rgname;
         $vmSize = "Standard_DC2as_v5";         
-        $DNSNameLabel = "cvm" +$ResourceGroupName; 
-        $NetworkName = "MyNet";
-        $NICName = "MyNIC";
-        $PublicIPAddressName = "MyPIP";
-        $SubnetName = "MySubnet";
+        $DNSNameLabel = "cvm1" +$ResourceGroupName; 
+        $NetworkName = "MyNet1";
+        $NICName = "MyNIC1";
+        $PublicIPAddressName = "MyPIP1";
+        $SubnetName = "MySubnet1";
         $SubnetAddressPrefix = "10.0.0.0/24";
         $VnetAddressPrefix = "10.0.0.0/16";
 
@@ -6044,7 +6031,7 @@ function Test-ConfVMSetAzVMSecurityProfile
         $ComputerName = "CVM";
         $VMName = "CVM";
         $securityType = "ConfidentialVM";
-        $vmDiskSEcurityEncryptionType = "VMGuestStateOnly";
+        $vmDiskSecurityEncryptionType = "VMGuestStateOnly";
         $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize;
 
         $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
@@ -6059,7 +6046,7 @@ function Test-ConfVMSetAzVMSecurityProfile
         $VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $securityType;
         $VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
 
-        $VirtualMachine =Set-AzVMOSDisk -VM $VirtualMachine  -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType $vmDiskSEcurityEncryptionType;
+        $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine  -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType $vmDiskSEcurityEncryptionType;
 
         $vm = New-AzVM -ResourceGroupName $rgname -Location $LocationName -VM $VirtualMachine;
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
