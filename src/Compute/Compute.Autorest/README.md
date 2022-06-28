@@ -35,7 +35,6 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  #- https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/stable/2022-01-03/GalleryRP/gallery.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2022-01-03/GalleryRP/gallery.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/runCommands.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
@@ -150,6 +149,18 @@ directive:
       parameter-name: PublishingProfileTargetRegion
     set:
       parameter-name: TargetRegion  
+  - where:  
+      verb: New|Update
+      subject: GalleryApplicationVersion
+      parameter-name: SettingConfigFileName
+    set:
+      parameter-name: ConfigFileName  
+  - where:  
+      verb: New|Update
+      subject: GalleryApplicationVersion
+      parameter-name: SettingPackageFileName
+    set:
+      parameter-name: PackageFileName  
   ### END # change parameter names for GalleryApplicationVersion
   # hide parameters for New, Update Gallery Application
   - where:
@@ -167,7 +178,7 @@ directive:
   - where:
       verb: Update|New
       subject: GalleryApplicationVersion$
-      parameter-name: PublishingProfileEnableHealthCheck|PublishingProfileStorageAccountType|PublishingProfileReplicationMode
+      parameter-name: PublishingProfileEnableHealthCheck|PublishingProfileStorageAccountType|PublishingProfileReplicationMode|PublishingProfileTargetExtendedLocation|PublishingProfileAdvancedSetting
     hide: true
   - where:
       verb: Update

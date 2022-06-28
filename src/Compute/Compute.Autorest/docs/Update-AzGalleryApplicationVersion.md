@@ -294,7 +294,7 @@ This property is updatable.
 To construct, see NOTES section for TARGETREGION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ITargetRegion[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ITargetRegion[]
 Parameter Sets: (All)
 Aliases:
 
@@ -345,7 +345,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion
 
 ## NOTES
 
@@ -379,6 +379,8 @@ TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is go
     - `[DiskEncryptionSetId <String>]`: A relative URI containing the resource ID of the disk encryption set.
   - `[OSDiskImageDiskEncryptionSetId <String>]`: A relative URI containing the resource ID of the disk encryption set.
   - `[RegionalReplicaCount <Int32?>]`: The number of replicas of the Image Version to be created per region. This property is updatable.
+  - `[SecurityProfileConfidentialVMEncryptionType <ConfidentialVMEncryptionType?>]`: confidential VM encryption types
+  - `[SecurityProfileSecureVMDiskEncryptionSetId <String>]`: secure VM disk encryption set id
   - `[StorageAccountType <StorageAccountType?>]`: Specifies the storage account type to be used to store the image. This property is not updatable.
 
 ## RELATED LINKS
