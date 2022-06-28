@@ -957,15 +957,24 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        /// Summary: Method to determine if the Guest Attestation extension
-        /// should be installed on the VM being created.
-        /// Currently only functions with the DefaultParamSet parameter set. 
+        /// <summary>
+        /// Check to see if the Guest Attestation extension should be installed and Identity set to SystemAssigned.
+        /// Requirements for this scenario to be true:
+        /// 1) DisableIntegrityMonitoring is not true.
+        /// 2) SecurityType is TrustedLaunch.
+        /// 3) SecureBootEnabled is true.
+        /// 4) VTpmEnabled is true.
+        /// </summary>
+        /// <returns></returns>
         private bool shouldGuestAttestationExtBeInstalled()
         {
             if (this.DisableIntegrityMonitoring != true &&
-                        this.VM.SecurityProfile.SecurityType == "TrustedLaunch" &&
-                        this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
-                        this.VM.SecurityProfile.UefiSettings.VTpmEnabled == true)
+                    this.VM != null &&
+                    this.VM.SecurityProfile != null &&
+                    this.VM.SecurityProfile.SecurityType == "TrustedLaunch" &&
+                    this.VM.SecurityProfile.UefiSettings != null &&
+                    this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
+                    this.VM.SecurityProfile.UefiSettings.VTpmEnabled == true)
             {
                 return true;
             }

@@ -265,9 +265,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vmssParameters != null &&
                     vmssParameters.VirtualMachineProfile != null &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile != null &&
-                        vmssParameters.VirtualMachineProfile.SecurityProfile.SecurityType == "TrustedLaunch" &&
-                        vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
-                        vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == true)
+                    vmssParameters.VirtualMachineProfile.SecurityProfile.SecurityType == "TrustedLaunch" &&
+                    vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings != null &&
+                    vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
+                    vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == true)
             {
                 return true;
             }
