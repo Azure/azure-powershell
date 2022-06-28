@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private bool IsPemFile(string filePath)
         {
-            return ".pem".Equals(Path.GetExtension(FilePath), StringComparison.OrdinalIgnoreCase);
+            return ".pem".Equals(Path.GetExtension(filePath), StringComparison.OrdinalIgnoreCase);
         }
 
         internal X509Certificate2Collection InitializeCertificateCollection()
