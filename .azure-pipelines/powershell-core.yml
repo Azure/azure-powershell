@@ -13,6 +13,7 @@ variables:
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
   TestTimeoutInMinutes: 180
+  BuildAzPredictor: false
 
 trigger: none
 

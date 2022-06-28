@@ -380,14 +380,14 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="subscriptionId">subscription Id</param>
         /// <param name="resourceName">resource name</param>
         /// <param name="managementCert">management cert</param>
-        /// <param name="acsNamespace">authenticating service  namespace</param>
+        /// <param name="acsNamespace">authenticating service namespace</param>
         /// <param name="channelIntegrityKey">Agent Channel Integrity Key</param>
         /// <param name="resourceGroupName">cloud service name</param>
         /// <param name="siteId">custom site Id</param>
         /// <param name="siteName">custom site name</param>
-        /// <param name="resourceNamespace">Name of the resouce group</param>
-        /// <param name="resourceType"></param>
-        /// <param name="location"></param>
+        /// <param name="resourceNamespace">resource namespace</param>
+        /// <param name="resourceType">resource type</param>
+        /// <param name="location">vault location</param>
         public ASRVaultCreds(
             string subscriptionId,
             string resourceName,

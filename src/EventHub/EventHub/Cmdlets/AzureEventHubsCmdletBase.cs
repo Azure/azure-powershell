@@ -84,6 +84,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string ClusterResourceIdParameterSet = "ClusterResourceIdParameterSet";
         protected const string SchemaGroupResourceIdParameterSet = "SchemaGroupResourceIdParameterSet";
         protected const string ApplicationGroupResourceIdParameterSet = "ApplicationGroupResourceIdParameterSet";
+        protected const string PrivateEndpointResourceIdParameterSet = "PrivateEndpointResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -91,6 +92,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string ConsumergroupPropertiesParameterSet = "ConsumergroupPropertiesSet";
         protected const string GeoDRParameterSet = "GeoDRParameterSet";
         protected const string NetwrokruleSetPropertiesParameterSet = "NetworkRuleSetPropertiesSet";
+        protected const string PrivateEndpointPropertiesParameterSet = "PrivateEndpointPropertiesSet";
+        protected const string PrivateLinkPropertiesParameterSet = "PrivateLinkPropertiesSet";
         protected const string NetwrokruleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
         protected const string VirtualNetworkRulePropertiesParameterSet = "VirtualNetworkRulePropertiesParameterSet";
         protected const string IPRulePropertiesParameterSet = "IPRulePropertiesParameterSet";
@@ -149,6 +152,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             internal const string OutgoingMessages = "OutgoingMessages";
         }
 
+        protected struct PrivateEndpointConnectionState
+        {
+            internal const string Pending = "Pending";
+            internal const string Approved = "Approved";
+            internal const string Rejected = "Rejected";
+            internal const string Disconnected = "Disconnected";
+        }
+
         protected struct RegeneKeys
         {
             internal const string PrimaryKey = "PrimaryKey";
@@ -158,6 +169,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string NamespaceURL = "Microsoft.EventHub/namespaces";
         protected const string SchemaGroupURL = "Microsoft.EventHub/namespaces/schemagroups";
         protected const string ApplicationGroupURL = "Microsoft.EventHub/namespaces/applicationgroups";
+        protected const string PrivateEndpointURL = "Microsoft.EventHub/namespaces/privateEndpointConnections";
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
         private EventHubsClient  _client;

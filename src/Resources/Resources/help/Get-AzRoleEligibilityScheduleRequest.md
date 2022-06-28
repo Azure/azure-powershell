@@ -37,9 +37,11 @@ Get the specified role eligibility schedule request.
 
 ### Example 1: List all role assignment schedule requests for a resource
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
-PS C:\> Get-AzRoleEligibilityScheduleRequest -Scope $scope 
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
+Get-AzRoleEligibilityScheduleRequest -Scope $scope 
+```
 
+```output
 Name                                 Type                                                   Scope
 ----                                 ----                                                   -----
 01b86d0b-2d7d-4ee2-bedb-68417ca9cc6a Microsoft.Authorization/roleEligibilityScheduleRequests /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d
@@ -52,9 +54,11 @@ Returns all `roleEligibilityScheduleRequests` for the `scope`.
 
 ### Example 2: List all My role assignment schedule requests for a resource
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
-PS C:\> Get-AzRoleEligibilityScheduleRequest -Scope $scope -Filter "asTarget()"
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
+Get-AzRoleEligibilityScheduleRequest -Scope $scope -Filter "asTarget()"
+```
 
+```output
 Name                                 Type                                                   Scope                                                                       RoleDefinitionId
 ----                                 ----                                                   -----                                                                       ----------------
 2cc018c2-27f8-4730-a0bc-b6a8fcee3e70 Microsoft.Authorization/roleEligibilityScheduleRequests /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d                         /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/prov…
@@ -66,9 +70,11 @@ Returns all `roleEligibilityScheduleRequests` for the `scope` which are assigned
 
 ### Example 3: List all role assignment schedule requests for a resource where calling user is an approver
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
-PS C:\> Get-AzRoleEligibilityScheduleRequest -Scope $scope -Filter "asApprover()"
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
+Get-AzRoleEligibilityScheduleRequest -Scope $scope -Filter "asApprover()"
+```
 
+```output
 Name                                 Type                                                   Scope                                                                       RoleDefinitionId
 ----                                 ----                                                   -----                                                                       ----------------
 2cc018c2-27f8-4730-a0bc-b6a8fcee3e70 Microsoft.Authorization/roleEligibilityScheduleRequests /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d                         /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/prov…
@@ -80,9 +86,11 @@ Returns all `roleEligibilitySchedules` for the `scope` on which the calling user
 
 ### Example 4: Get a role assignment schedule request by scope and name
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
-PS C:\> Get-AzRoleEligibilityScheduleRequest -Scope $scope -Name "2cc018c2-27f8-4730-a0bc-b6a8fcee3e70"
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
+Get-AzRoleEligibilityScheduleRequest -Scope $scope -Name "2cc018c2-27f8-4730-a0bc-b6a8fcee3e70"
+```
 
+```output
 Name                                 Type                                                   Scope                                               RoleDefinitionId
 ----                                 ----                                                   -----                                               ----------------
 2cc018c2-27f8-4730-a0bc-b6a8fcee3e70 Microsoft.Authorization/roleEligibilityScheduleRequests /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authoriz…
@@ -193,7 +201,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
+INPUTOBJECT `<IAuthorizationIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[RoleAssignmentScheduleInstanceName <String>]`: The name (hash of schedule name + time) of the role assignment schedule to get.
   - `[RoleAssignmentScheduleName <String>]`: The name (guid) of the role assignment schedule to get.

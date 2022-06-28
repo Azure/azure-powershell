@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets the events.
         /// </summary>
-        /// <param name="eventName"></param>
+        /// <param name="eventName">The name of the Azure Site Recovery event.</param>
         /// <returns></returns>
         public EventModel GetAzureRmSiteRecoveryEvent(string eventName)
         {

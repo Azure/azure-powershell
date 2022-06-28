@@ -29,8 +29,10 @@ Create an in-memory object for Trigger.
 
 ### Example 1: Create trigger object
 ```powershell
-PS C:\> New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -ScheduleHour $(9) -ScheduleMinute $(0) -ScheduleMonthDay $(10)
+New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -ScheduleHour $(9) -ScheduleMinute $(0) -ScheduleMonthDay $(10)
+```
 
+```output
 CreatedAt                  :
 Id                         :
 IncrementalScanStartTime   :
@@ -275,7 +277,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-SCHEDULEADDITIONALPROPERTY <IRecurrenceScheduleAdditionalProperties>: Dictionary of <any>.
+SCHEDULEADDITIONALPROPERTY `<IRecurrenceScheduleAdditionalProperties>`: Dictionary of <any>.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
 
 SCHEDULEMONTHLYOCCURRENCE <IRecurrenceScheduleOccurrence[]>: 

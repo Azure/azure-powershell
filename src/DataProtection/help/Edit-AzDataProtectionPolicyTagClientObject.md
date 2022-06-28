@@ -149,7 +149,7 @@ CRITERIA <IScheduleBasedBackupCriteria[]>: Criterias to be associated with the s
   - `[ScheduleTime <DateTime[]>]`: List of schedule times for backup
   - `[WeeksOfTheMonth <WeekNumber[]>]`: It should be First/Second/Third/Fourth/Last
 
-POLICY <IBackupPolicy>: Backup Policy Object.
+POLICY `<IBackupPolicy>`: Backup Policy Object.
   - `DatasourceType <String[]>`: Type of datasource for the backup management
   - `ObjectType <String>`: 
   - `PolicyRule <IBasePolicyRule[]>`: Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc
