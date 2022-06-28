@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.SignalR",
-  "ModuleVersion": "1.4.0",
+  "ModuleVersion": "1.4.1",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -327,7 +327,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRKeys, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRKeys, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Name": "System.String",
               "PrimaryKey": "System.String",
@@ -413,7 +413,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -574,7 +574,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -677,7 +677,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRUsage, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRUsage, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CurrentValue": "System.Nullable`1[System.Int64]",
               "Limit": "System.Nullable`1[System.Int64]",
@@ -821,7 +821,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -1218,7 +1218,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -1469,7 +1469,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -1680,7 +1680,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -1919,7 +1919,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -2122,7 +2122,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -2361,7 +2361,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -2524,7 +2524,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Templates": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate]"
             },
@@ -2602,7 +2602,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -2639,7 +2639,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate"
           },
           "ValidateNotNullOrEmpty": false
@@ -2729,7 +2729,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2821,7 +2821,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2883,7 +2883,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -2932,7 +2932,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3009,7 +3009,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3206,7 +3206,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -3300,7 +3300,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -3719,7 +3719,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -4018,7 +4018,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PublicNetwork": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl",
               "PrivateEndpoints": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL]",
@@ -4098,7 +4098,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -4550,7 +4550,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Upstream": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
@@ -4871,7 +4871,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LiveTraceCategory": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]",
               "UserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentityUserAssignedIdentities",
@@ -4952,7 +4952,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HubName": "System.String",
               "Id": "System.String",
@@ -4993,7 +4993,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5003,7 +5003,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5129,7 +5129,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5145,7 +5145,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5276,7 +5276,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5292,7 +5292,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5408,7 +5408,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5424,7 +5424,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5490,7 +5490,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HubName": "System.String",
                     "Id": "System.String",
@@ -5549,7 +5549,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5565,7 +5565,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5665,7 +5665,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5681,7 +5681,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5754,7 +5754,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHub, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHub, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EventHandler": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType]",
@@ -5814,7 +5814,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HubName": "System.String",
               "Id": "System.String",
@@ -5855,7 +5855,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5865,7 +5865,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6003,7 +6003,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6019,7 +6019,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6165,7 +6165,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6181,7 +6181,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6247,7 +6247,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HubName": "System.String",
                     "Id": "System.String",
@@ -6306,7 +6306,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6322,7 +6322,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6422,7 +6422,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6438,7 +6438,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6511,7 +6511,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimaryConnectionString": "System.String",
               "PrimaryKey": "System.String",
@@ -6558,7 +6558,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HubName": "System.String",
               "Id": "System.String",
@@ -6599,7 +6599,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6609,7 +6609,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6732,7 +6732,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6748,7 +6748,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6814,7 +6814,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HubName": "System.String",
                     "Id": "System.String",
@@ -6873,7 +6873,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6889,7 +6889,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6989,7 +6989,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7005,7 +7005,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7078,7 +7078,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuList",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuList, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuList, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Value": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku[]",
               "NextLink": "System.String"
@@ -7145,7 +7145,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7155,7 +7155,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7278,7 +7278,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7294,7 +7294,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7367,7 +7367,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISignalRServiceUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISignalRServiceUsage, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISignalRServiceUsage, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CurrentValue": "System.Nullable`1[System.Int64]",
               "Limit": "System.Nullable`1[System.Int64]",
@@ -7429,7 +7429,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7439,7 +7439,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7547,7 +7547,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7563,7 +7563,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7636,7 +7636,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LiveTraceCategory": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]",
               "UserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentityUserAssignedIdentities",
@@ -7761,7 +7761,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7770,7 +7770,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory"
           },
           "ValidateNotNullOrEmpty": false
@@ -7789,7 +7789,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7798,7 +7798,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl"
           },
           "ValidateNotNullOrEmpty": false
@@ -7817,7 +7817,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType"
           },
           "ValidateNotNullOrEmpty": false
@@ -7827,7 +7827,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType"
           },
           "ValidateNotNullOrEmpty": false
@@ -7837,7 +7837,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory"
           },
           "ValidateNotNullOrEmpty": false
@@ -7856,7 +7856,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7914,7 +7914,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7924,7 +7924,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8099,7 +8099,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8114,7 +8114,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8145,7 +8145,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8160,7 +8160,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8191,7 +8191,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8207,7 +8207,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8223,7 +8223,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8254,7 +8254,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8348,7 +8348,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8364,7 +8364,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8452,7 +8452,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHub, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHub, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EventHandler": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType]",
@@ -8520,7 +8520,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler"
           },
           "ValidateNotNullOrEmpty": false
@@ -8561,7 +8561,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8571,7 +8571,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8698,7 +8698,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8763,7 +8763,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8779,7 +8779,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8867,7 +8867,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimaryConnectionString": "System.String",
               "PrimaryKey": "System.String",
@@ -8913,7 +8913,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HubName": "System.String",
               "Id": "System.String",
@@ -8932,7 +8932,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -8972,7 +8972,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8982,7 +8982,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -9088,7 +9088,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9152,7 +9152,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9168,7 +9168,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9264,7 +9264,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HubName": "System.String",
                     "Id": "System.String",
@@ -9289,7 +9289,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9353,7 +9353,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9369,7 +9369,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9465,7 +9465,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9529,7 +9529,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9545,7 +9545,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9691,7 +9691,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HubName": "System.String",
               "Id": "System.String",
@@ -9741,7 +9741,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -9751,7 +9751,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -9909,7 +9909,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9925,7 +9925,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10021,7 +10021,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HubName": "System.String",
                     "Id": "System.String",
@@ -10095,7 +10095,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10111,7 +10111,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10256,7 +10256,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10272,7 +10272,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10424,7 +10424,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HubName": "System.String",
               "Id": "System.String",
@@ -10474,7 +10474,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -10484,7 +10484,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -10654,7 +10654,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10670,7 +10670,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10766,7 +10766,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HubName": "System.String",
                     "Id": "System.String",
@@ -10840,7 +10840,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10856,7 +10856,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11001,7 +11001,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11017,7 +11017,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11163,7 +11163,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HubName": "System.String",
               "Id": "System.String",
@@ -11213,7 +11213,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -11223,7 +11223,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -11381,7 +11381,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11397,7 +11397,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11493,7 +11493,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HubName": "System.String",
                     "Id": "System.String",
@@ -11567,7 +11567,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11583,7 +11583,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11728,7 +11728,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11744,7 +11744,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11847,7 +11847,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INameAvailability",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INameAvailability, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INameAvailability, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NameAvailable": "System.Nullable`1[System.Boolean]",
               "Message": "System.String",
@@ -11914,7 +11914,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -11924,7 +11924,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -12046,7 +12046,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12062,7 +12062,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12135,7 +12135,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LiveTraceCategory": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]",
               "UserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentityUserAssignedIdentities",
@@ -12215,7 +12215,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HubName": "System.String",
               "Id": "System.String",
@@ -12261,7 +12261,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -12270,7 +12270,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory"
           },
           "ValidateNotNullOrEmpty": false
@@ -12289,7 +12289,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -12298,7 +12298,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl"
           },
           "ValidateNotNullOrEmpty": false
@@ -12317,7 +12317,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType"
           },
           "ValidateNotNullOrEmpty": false
@@ -12327,7 +12327,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType"
           },
           "ValidateNotNullOrEmpty": false
@@ -12337,7 +12337,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory"
           },
           "ValidateNotNullOrEmpty": false
@@ -12365,7 +12365,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -12423,7 +12423,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -12433,7 +12433,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -12578,7 +12578,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -12593,7 +12593,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12624,7 +12624,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -12639,7 +12639,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12670,7 +12670,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12686,7 +12686,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12702,7 +12702,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12748,7 +12748,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -12842,7 +12842,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12858,7 +12858,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12939,7 +12939,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HubName": "System.String",
                     "Id": "System.String",
@@ -13009,7 +13009,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -13024,7 +13024,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13055,7 +13055,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -13070,7 +13070,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13101,7 +13101,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13117,7 +13117,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13133,7 +13133,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13179,7 +13179,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -13273,7 +13273,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13289,7 +13289,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13415,7 +13415,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -13430,7 +13430,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13461,7 +13461,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -13476,7 +13476,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13507,7 +13507,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13523,7 +13523,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13539,7 +13539,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13585,7 +13585,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -13679,7 +13679,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13695,7 +13695,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13816,7 +13816,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Capacity": "System.Nullable`1[System.Int32]",
         "Family": "System.String",
@@ -13876,7 +13876,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Templates": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate]"
       },
@@ -13919,7 +13919,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate"
       ]
@@ -13927,7 +13927,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "HubPattern": "System.String",
         "EventPattern": "System.String",
@@ -14152,7 +14152,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AllowedOrigins": "System.Collections.Generic.IList`1[System.String]"
       },
@@ -14203,7 +14203,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PublicNetwork": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl",
         "PrivateEndpoints": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL]",
@@ -14248,7 +14248,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Allow": "System.Collections.Generic.IList`1[System.String]",
         "Deny": "System.Collections.Generic.IList`1[System.String]"
@@ -14292,7 +14292,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL"
       ]
@@ -14300,7 +14300,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Allow": "System.Collections.Generic.IList`1[System.String]",
         "Deny": "System.Collections.Generic.IList`1[System.String]",
@@ -14354,7 +14354,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature"
       ]
@@ -14362,7 +14362,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Properties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "Value": "System.String",
@@ -14531,13 +14531,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.String",
         "Name": "System.String"
@@ -14546,18 +14546,18 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentityUserAssignedIdentities": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentityUserAssignedIdentities",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentityUserAssignedIdentities, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentityUserAssignedIdentities, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String"
       }
@@ -14565,13 +14565,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType]",
         "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType]",
@@ -14590,7 +14590,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType"
       ]
@@ -14598,7 +14598,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -14676,7 +14676,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.PrivateLinkServiceConnectionStatus]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.PrivateLinkServiceConnectionStatus]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.PrivateLinkServiceConnectionStatus, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.PrivateLinkServiceConnectionStatus, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.PrivateLinkServiceConnectionStatus"
       ]
@@ -14684,7 +14684,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.PrivateLinkServiceConnectionStatus": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.PrivateLinkServiceConnectionStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.PrivateLinkServiceConnectionStatus, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.PrivateLinkServiceConnectionStatus, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -14749,7 +14749,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState"
       ]
@@ -14757,7 +14757,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -14841,13 +14841,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.String",
         "Name": "System.String"
@@ -14856,13 +14856,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType]",
         "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType]",
@@ -14880,7 +14880,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus"
       ]
@@ -14888,7 +14888,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -14953,13 +14953,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -15024,7 +15024,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction"
       ]
@@ -15032,7 +15032,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -15097,7 +15097,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType"
       ]
@@ -15105,7 +15105,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -15170,7 +15170,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier"
       ]
@@ -15178,7 +15178,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -15251,7 +15251,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -15424,13 +15424,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AuthType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType]",
         "ManagedIdentityResource": "System.String",
@@ -15442,7 +15442,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType"
       ]
@@ -15450,7 +15450,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -15515,13 +15515,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku[], Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku[], Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CapacityAllowedValue": "System.Int32[]",
         "CapacityScaleType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType]",
@@ -15545,7 +15545,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType"
       ]
@@ -15553,7 +15553,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType, Az.SignalR.private, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType, Az.SignalR.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",

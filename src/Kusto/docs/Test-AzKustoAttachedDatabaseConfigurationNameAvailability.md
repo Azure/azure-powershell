@@ -32,8 +32,10 @@ Checks that the attached database configuration resource name is valid and is no
 
 ### Example 1: Checks whether the attached database configuration name is available in the given cluster
 ```powershell
-PS C:\> Test-AzKustoAttachedDatabaseConfigurationNameAvailability -ResourceGroupName "testrg" -ClusterName "mycluster" -Name "testdatabase"
+Test-AzKustoAttachedDatabaseConfigurationNameAvailability -ResourceGroupName "testrg" -ClusterName "mycluster" -Name "testdatabase"
+```
 
+```output
 Message Name               NameAvailable Reason
 ------- ----               ------------- ------
         testdatabase       True
@@ -175,7 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.ICheckNameResult
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICheckNameResult
 
 ## NOTES
 

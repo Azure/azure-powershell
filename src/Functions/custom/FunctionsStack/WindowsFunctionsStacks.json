@@ -223,7 +223,7 @@
                         "supportedFunctionsExtensionVersions": [
                             "~4"
                         ],
-                        "isDefault": true,
+                        "isDefault": false,
                         "minorVersions": [],
                         "applicationInsights": true,
                         "appSettingsDictionary": {
@@ -234,9 +234,9 @@
                             "use32BitWorkerProcess": true,
                             "netFrameworkVersion": "v6.0"
                         },
-                        "isPreview": true,
+                        "isPreview": false,
                         "isDeprecated": false,
-                        "isHidden": true
+                        "isHidden": false
                     },
                     {
                         "displayVersion": "7.0",

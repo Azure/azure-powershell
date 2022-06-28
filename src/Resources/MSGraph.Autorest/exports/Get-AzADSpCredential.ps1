@@ -20,7 +20,7 @@ Lists key credentials and password credentials for an service principal.
 .Description
 Lists key credentials and password credentials for an service principal.
 .Example
-PS C:\> Get-AzADSpCredential -DisplayName $name
+Get-AzADSpCredential -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -155,7 +155,7 @@ SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal 
 https://docs.microsoft.com/powershell/module/az.resources/get-azadspcredential
 #>
 function Get-AzADSpCredential {
-[Alias('GetADServicePrincipalCredential')]
+[Alias('Get-AzADServicePrincipalCredential')]
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
 [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -241,10 +241,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Get-AzADSpCredential';
-            SPNParameterSet = 'MSGraph.custom\Get-AzADSpCredential';
-            DisplayNameParameterSet = 'MSGraph.custom\Get-AzADSpCredential';
-            SPNObjectParameterSet = 'MSGraph.custom\Get-AzADSpCredential';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADSpCredential';
+            SPNParameterSet = 'Az.MSGraph.custom\Get-AzADSpCredential';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Get-AzADSpCredential';
+            SPNObjectParameterSet = 'Az.MSGraph.custom\Get-AzADSpCredential';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

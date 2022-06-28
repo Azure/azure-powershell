@@ -215,6 +215,30 @@ function Assert-NotNull
   return $true
 }
 
+###################
+#
+# Verify that the given string is not null or empty
+#
+#    param [string] $actual  : The actual string
+#    param [string] $message : The message to return if the given script does not return true
+####################
+function Assert-NotNullOrEmpty
+{
+  param([string] $actual, [string] $message)
+
+  if (!$message)
+  {
+    $message = "Assertion failed because the string is null or empty: " + $actual
+  }
+
+  if ([string]::IsNullOrEmpty($actual))
+  {
+    throw $message
+  }
+
+  return $true
+}
+
 ######################
 #
 # Assert that the given file exists
@@ -390,7 +414,7 @@ function Assert-StartsWith
 {
     param([string] $expectedPrefix, [string] $actual, [string] $message)
 
-  Assert-NotNull $actual
+  Assert-NotNullOrEmpty $actual
 
   if (!$message)
   {
@@ -417,7 +441,7 @@ function Assert-Match
 {
     param([string] $regex, [string] $actual, [string] $message)
 
-  Assert-NotNull $actual
+  Assert-NotNullOrEmpty $actual
 
   if (!$message)
   {
@@ -444,7 +468,7 @@ function Assert-NotMatch
 {
     param([string] $regex, [string] $actual, [string] $message)
 
-  Assert-NotNull $actual
+  Assert-NotNullOrEmpty $actual
 
   if (!$message)
   {
@@ -452,6 +476,36 @@ function Assert-NotMatch
   }
 
   if ($actual -Match $regex >$null)
+  {
+      throw $message
+  }
+
+  return $true
+}
+
+###################
+#
+# Verify that the a space-delimited string contains an item matching a specific value.
+#
+#    param [string] $actual   : The actual string
+#    param [string] $expected : The expected value.
+#    param [string] $message  : The message to return if the actual string does not contain the expected value.
+####################
+function Assert-ContainsItem
+{
+    param([string] $actual, [string] $expected, [string] $message)
+
+  Assert-NotNullOrEmpty $actual
+  Assert-NotNullOrEmpty $expected
+
+  if (!$message)
+  {
+      $message = "Assertion failed because actual '$actual' does not contain an item matching '$expected'"
+  }
+
+  $split = $actual -Split ' '
+
+  if (!$split.contains($expected))
   {
       throw $message
   }

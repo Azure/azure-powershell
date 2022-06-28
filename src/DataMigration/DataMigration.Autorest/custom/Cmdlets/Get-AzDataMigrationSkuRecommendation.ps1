@@ -54,23 +54,23 @@ function Get-AzDataMigrationSkuRecommendation
         [System.String]
         ${EndTime},
 
-        [Parameter(ParameterSetName='CommandLine', HelpMessage='Optional. Whether or not to overwrite any existing SKU recommendation reports. (Default: true)')]
+        [Parameter(ParameterSetName='CommandLine', HelpMessage='Optional. Whether or not to overwrite any existing SKU recommendation reports.')]
         [System.Management.Automation.SwitchParameter]
         ${Overwrite},
 
-        [Parameter(ParameterSetName='CommandLine', HelpMessage='Optional. Whether or not to print the SKU recommendation results to the console. (Default: true)')]
+        [Parameter(ParameterSetName='CommandLine', HelpMessage='Optional. Whether or not to print the SKU recommendation results to the console.')]
         [System.Management.Automation.SwitchParameter]
         ${DisplayResult},
 
-        [Parameter(ParameterSetName='CommandLine', HelpMessage='Optional. Whether or not to use the elastic strategy for SKU recommendations based on resource usage profiling. (Default: false)')]
+        [Parameter(ParameterSetName='CommandLine', HelpMessage='Optional. Whether or not to use the elastic strategy for SKU recommendations based on resource usage profiling.')]
         [System.Management.Automation.SwitchParameter]
         ${ElasticStrategy},
 
-        [Parameter(ParameterSetName='CommandLine', HelpMessage='Optional. Space separated list of names of databases to be allowed for SKU recommendation consideration while excluding all others. Only set one of the following or neither: databaseAllowList, databaseDenyList. (Default: null)')]
+        [Parameter(ParameterSetName='CommandLine', HelpMessage='Optional. Space separated list of names of databases to be allowed for SKU recommendation consideration while excluding all others. Only set one of the following or neither: databaseAllowList, databaseDenyList. How to pass - "Database1 Database2" (Default: null)')]
         [System.String]
         ${DatabaseAllowList},
 
-        [Parameter(ParameterSetName='CommandLine', HelpMessage='Optional. Space separated list of names of databases to not be considered for SKU recommendation. Only set one of the following or neither: databaseAllowList, databaseDenyList. (Default: null)
+        [Parameter(ParameterSetName='CommandLine', HelpMessage='Optional. Space separated list of names of databases to not be considered for SKU recommendation. Only set one of the following or neither: databaseAllowList, databaseDenyList. How to pass - "Database1 Database2" (Default: null)
         ')]
         [System.String]
         ${DatabaseDenyList},

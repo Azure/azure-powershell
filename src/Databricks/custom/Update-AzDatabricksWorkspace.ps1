@@ -20,7 +20,7 @@ Updates a workspace.
 Updates a workspace.
 #>
 function Update-AzDatabricksWorkspace {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the workspace.")]
@@ -83,9 +83,39 @@ function Update-AzDatabricksWorkspace {
         # The version of KeyVault key.
         ${EncryptionKeyVersion},
 
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The name of KeyVault key.
+        ${KeyVaultKeyName},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The version of KeyVault key.
+        ${KeyVaultKeyVersion},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The Uri of KeyVault.
+        ${KeyVaultUri},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The value which should be used for this field.
+        ${AmlWorkspaceId},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The SKU tier.
+        ${SkuTier},
+
         [Parameter(HelpMessage = "Resource tags.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceUpdateTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspaceUpdateTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
@@ -158,6 +188,11 @@ function Update-AzDatabricksWorkspace {
             $hasEncryptionKeyVaultUri = $PSBoundParameters.Remove('EncryptionKeyVaultUri')
             $hasEncryptionKeyName = $PSBoundParameters.Remove('EncryptionKeyName')
             $hasEncryptionKeyVersion = $PSBoundParameters.Remove('EncryptionKeyVersion')
+            $hasKeyVaultKeyName = $PSBoundParameters.Remove('KeyVaultKeyName')
+            $hasKeyVaultKeyVersion = $PSBoundParameters.Remove('KeyVaultKeyVersion')
+            $hasKeyVaultUri = $PSBoundParameters.Remove('KeyVaultUri')
+            $hasAmlWorkspaceId = $PSBoundParameters.Remove('AmlWorkspaceId')
+            $hasSkuTier = $PSBoundParameters.Remove('SkuTier')
             $hasTag = $PSBoundParameters.Remove('Tag')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
@@ -190,6 +225,26 @@ function Update-AzDatabricksWorkspace {
                     $workspace.EncryptionKeyVersion = ""
                 }
             }
+            if ($hasKeyVaultKeyName) {
+                $workspace.KeyVaultKeyName = $KeyVaultKeyName
+            }
+
+            if ($hasKeyVaultKeyVersion) {
+                $workspace.KeyVaultKeyVersion = $KeyVaultKeyVersion
+            }
+
+            if ($hasKeyVaultUri) {
+                $workspace.KeyVaultUri = $KeyVaultUri
+            }
+
+            if ($hasAmlWorkspaceId) {
+                $workspace.AmlWorkspaceId = $AmlWorkspaceId
+            }
+
+            if ($hasSkuTier) {
+                $workspace.SkuTier = $SkuTier
+            }
+
             if ($hasTag) {
                 $workspace.Tag = $Tag
             }

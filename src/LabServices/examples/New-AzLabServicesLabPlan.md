@@ -1,6 +1,6 @@
 ### Example 1: Create a new Lab plan.
 ```powershell
-PS C:\> New-AzLabServicesLabPlan `
+New-AzLabServicesLabPlan `
 	-LabPlanName "testplan" `
 	-ResourceGroupName "Group Name" `
 	-Location "westus2" `
@@ -16,7 +16,9 @@ PS C:\> New-AzLabServicesLabPlan `
 	-SupportInfoUrl 'https:\\test.com' `
 	-DefaultConnectionProfileWebRdpAccess None `
 	-DefaultConnectionProfileWebSshAccess None
+```
 
+```output
 Location Name
 -------- ----
 westus2  testplan

@@ -38,7 +38,9 @@ Creates a new criteria object
 ### Example 1: Create a tag with absolute criteria 
 ```powershell
 PS C:\> New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfDay
+```
 
+```output
 ObjectType                  AbsoluteCriterion DaysOfTheWeek MonthsOfYear ScheduleTime WeeksOfTheMonth
 ----------                  ----------------- ------------- ------------ ------------ ---------------
 ScheduleBasedBackupCriteria {FirstOfDay}
@@ -49,7 +51,9 @@ This command creates a criteria object with absolute criteria.
 ### Example 2: create a tag with weekly criteria
 ```powershell
 PS C:\> New-AzDataProtectionPolicyTagCriteriaClientObject -DaysOfWeek @("Sunday", "Monday")
+```
 
+```output
 ObjectType                  AbsoluteCriterion DaysOfTheWeek    MonthsOfYear ScheduleTime WeeksOfTheMonth
 ----------                  ----------------- -------------    ------------ ------------ ---------------
 ScheduleBasedBackupCriteria                   {Sunday, Monday}
@@ -157,7 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedBackupCriteria
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IScheduleBasedBackupCriteria
 
 ## NOTES
 

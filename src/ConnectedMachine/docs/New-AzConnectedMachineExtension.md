@@ -17,10 +17,11 @@ The operation to create or update the extension.
 New-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
  -Location <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade]
  [-ExtensionType <String>] [-ForceRerun <String>] [-InstanceViewName <String>] [-InstanceViewType <String>]
- [-InstanceViewTypeHandlerVersion <String>] [-ProtectedSetting <IAny>] [-Publisher <String>] [-Setting <IAny>]
- [-StatusCode <String>] [-StatusDisplayStatus <String>] [-StatusLevel <StatusLevelTypes>]
- [-StatusMessage <String>] [-StatusTime <DateTime>] [-Tag <Hashtable>] [-TypeHandlerVersion <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-InstanceViewTypeHandlerVersion <String>] [-ProtectedSetting <Hashtable>] [-Publisher <String>]
+ [-Setting <Hashtable>] [-StatusCode <String>] [-StatusDisplayStatus <String>]
+ [-StatusLevel <StatusLevelTypes>] [-StatusMessage <String>] [-StatusTime <DateTime>] [-Tag <Hashtable>]
+ [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
@@ -42,7 +43,7 @@ New-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity>
 New-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> -Location <String>
  [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ExtensionType <String>] [-ForceRerun <String>]
  [-InstanceViewName <String>] [-InstanceViewType <String>] [-InstanceViewTypeHandlerVersion <String>]
- [-ProtectedSetting <IAny>] [-Publisher <String>] [-Setting <IAny>] [-StatusCode <String>]
+ [-ProtectedSetting <Hashtable>] [-Publisher <String>] [-Setting <Hashtable>] [-StatusCode <String>]
  [-StatusDisplayStatus <String>] [-StatusLevel <StatusLevelTypes>] [-StatusMessage <String>]
  [-StatusTime <DateTime>] [-Tag <Hashtable>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -55,9 +56,11 @@ The operation to create or update the extension.
 
 ### Example 1: Add a new extension to a machine
 ```powershell
-PS C:\> $Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
-PS C:\> New-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName win-eastus1 -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Settings -ExtensionType CustomScriptExtension
+$Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
+New-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName win-eastus1 -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Settings -ExtensionType CustomScriptExtension
+```
 
+```output
 Name   Location ProvisioningState
 ----   -------- -----------------
 custom eastus   Succeeded
@@ -67,9 +70,11 @@ Sets an extension on a machine.
 
 ### Example 2: Add a new extension with extension parameters specified via the pipeline
 ```powershell
-PS C:\> $otherExtension = Get-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName other
-PS C:\> $otherExtension | New-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName important
+$otherExtension = Get-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName other
+$otherExtension | New-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName important
+```
 
+```output
 Name   Location ProvisioningState
 ----   -------- -----------------
 custom eastus   Succeeded
@@ -80,12 +85,14 @@ This is great if you want to grab the parameters of one machine and apply it to 
 
 ### Example 3: Add a new extension with location specified via the pipeline
 ```powershell
-PS C:\> $identity = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ConnectedMachineIdentity]@{
+$identity = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ConnectedMachineIdentity]@{
     Id = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.HybridCompute/machines/$MachineName/extensions/$ExtensionName"
 }
-PS C:\> $Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
-PS C:\> $identity | New-AzConnectedMachineExtension -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Settings -ExtensionType CustomScriptExtension
+$Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
+$identity | New-AzConnectedMachineExtension -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Settings -ExtensionType CustomScriptExtension
+```
 
+```output
 Name   Location ProvisioningState
 ----   -------- -----------------
 custom eastus   Succeeded
@@ -96,8 +103,8 @@ You likely won't do this, but it's possible.
 
 ### Example 4: Add a new extension using an extension object as both the location and parameters for updating
 ```powershell
-PS C:\> $ext = Get-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName other
-PS C:\> $ext | New-AzConnectedMachineExtension -ExtensionParameter $ext
+$ext = Get-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName other
+$ext | New-AzConnectedMachineExtension -ExtensionParameter $ext
 ```
 
 This creates a new machine extension using the identity provided via the pipeline and the extension details provided by the passed in extension object.
@@ -171,7 +178,7 @@ Describes a Machine Extension.
 To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtension
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
@@ -337,7 +344,7 @@ Accept wildcard characters: False
 The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases: ProtectedSettings
 
@@ -383,7 +390,7 @@ Accept wildcard characters: False
 Json formatted public settings for the extension.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases: Settings
 
@@ -550,13 +557,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
 
 ## NOTES
 
@@ -578,9 +585,11 @@ EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
   - `[InstanceViewType <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
   - `[InstanceViewTypeHandlerVersion <String>]`: Specifies the version of the script handler.
   - `[MachineExtensionType <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
-  - `[ProtectedSetting <IAny>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+  - `[ProtectedSetting <IMachineExtensionPropertiesProtectedSettings>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[Publisher <String>]`: The name of the extension handler publisher.
-  - `[Setting <IAny>]`: Json formatted public settings for the extension.
+  - `[Setting <IMachineExtensionPropertiesSettings>]`: Json formatted public settings for the extension.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[StatusCode <String>]`: The status code.
   - `[StatusDisplayStatus <String>]`: The short localizable label for the status.
   - `[StatusLevel <StatusLevelTypes?>]`: The level code.

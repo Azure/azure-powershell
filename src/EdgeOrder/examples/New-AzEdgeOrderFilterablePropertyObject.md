@@ -1,8 +1,10 @@
 ### Example 1: Filterable property object 
 ```powershell
-PS C:\> $filterableProperty = New-AzEdgeOrderFilterablePropertyObject -Type "ShipToCountries" -SupportedValue @("US")
-PS C:\> $filterableProperty | fl
+$filterableProperty = New-AzEdgeOrderFilterablePropertyObject -Type "ShipToCountries" -SupportedValue @("US")
+$filterableProperty | Format-List
+```
 
+```output
 SupportedValue : {US}
 Type           : ShipToCountries
 ```

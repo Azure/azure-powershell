@@ -57,7 +57,8 @@ PS C:\> while($jobstatus -ne "Completed")
 
 ```
 
-This Command Triggers Backup for a given backup instance using protection policy used to protect the backup instance. Then we track the backup job in a loop until it's completed.
+This Command Triggers Backup for a given backup instance using protection policy used to protect the backup instance.
+Then we track the backup job in a loop until it's completed.
 
 ## PARAMETERS
 
@@ -252,7 +253,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IOperationJobExtendedInfo
 
 ## NOTES
 

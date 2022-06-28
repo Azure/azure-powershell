@@ -27,7 +27,9 @@ Creates a new backup policy in a given backup vault
 ```powershell
 PS C:\> $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDisk
 PS C:\> New-AzDataProtectionBackupPolicy -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -Name "MyPolicy" -Policy $defaultPol
+```
 
+```output
 Name              Type
 ----              ----
 MyPolicy       Microsoft.DataProtection/backupVaults/backupPolicies
@@ -57,20 +59,23 @@ PS C:\> Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol
 PS C:\> $tagCriteria = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfMonth
 PS C:\> Edit-AzDataProtectionPolicyTagClientObject -Policy $defaultPol -Name Monthly -Criteria $tagCriteria
 PS C:\> New-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Name "MyPolicy" -Policy $defaultPol
+```
 
-
+```output
 Name              Type
 ----              ----
 MyPolicy       Microsoft.DataProtection/backupVaults/backupPolicies
 ```
 
 The first command gets the default policy template for AzureDatabaseForPostgreSQL.
-The second, third commands create two diffrent backup lifecycles for vault and archive store respectively. The backup stays in vaultstore for 3 Months, and then copies on expiry to the Archive store and stays there till 6 months.
+The second, third commands create two diffrent backup lifecycles for vault and archive store respectively.
+The backup stays in vaultstore for 3 Months, and then copies on expiry to the Archive store and stays there till 6 months.
 The fourth command updates the policy object with lifecycles created.
 The fifth, sixth commands create the custom schedule object for the backup policy, twice weekly starting from $schDates.
 The seventh command updates the policy object with custom schedule.
 The eighth, ninth, tenth commands update the Monthly retention rule with custom lifecycles.
-The eleventh, twelth commands create a tag criteria for Monthly policy. Tag criteria needs to be added for each custom retention rule (automatically added for default retention rule).
+The eleventh, twelth commands create a tag criteria for Monthly policy.
+Tag criteria needs to be added for each custom retention rule (automatically added for default retention rule).
 The last command creates the policy.
 
 ## PARAMETERS
@@ -110,7 +115,7 @@ Policy Request Object
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -204,7 +209,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBaseBackupPolicyResource
 
 ## NOTES
 

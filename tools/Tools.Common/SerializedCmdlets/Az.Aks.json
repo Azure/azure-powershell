@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Aks",
-  "ModuleVersion": "3.0.0",
+  "ModuleVersion": "4.1.0",
   "Cmdlets": [
     {
       "VerbName": "Disable",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -157,7 +157,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -330,7 +330,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -503,7 +503,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -662,7 +662,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -957,7 +957,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -1098,7 +1098,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -1524,9 +1524,6 @@
             }
           ]
         }
-      ],
-      "AliasList": [
-        "Get-AzAks"
       ]
     },
     {
@@ -1543,7 +1540,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -1619,7 +1616,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -1781,7 +1778,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -2041,7 +2038,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -2178,7 +2175,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -2944,7 +2941,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSRunCommandResult",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSRunCommandResult, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSRunCommandResult, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartedAt": "System.Nullable`1[System.DateTime]",
               "FinishedAt": "System.Nullable`1[System.DateTime]",
@@ -2995,7 +2992,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -3133,7 +3130,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -3658,7 +3655,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -4167,6 +4164,103 @@
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "LoadBalancerAllocatedOutboundPort",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateRangeMin": 0,
+          "ValidateRangeMax": 64000,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "LoadBalancerManagedOutboundIpCount",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "LoadBalancerOutboundIp",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "LoadBalancerOutboundIpPrefix",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "LoadBalancerIdleTimeoutInMinute",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateRangeMin": 4,
+          "ValidateRangeMax": 120,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ApiServerAccessAuthorizedIpRange",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "EnableApiServerAccessPrivateCluster",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ApiServerAccessPrivateDnsZone",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "EnableApiServerAccessPrivateClusterPublicFQDN",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "FqdnSubdomain",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4803,6 +4897,163 @@
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerAllocatedOutboundPort",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 0,
+                "ValidateRangeMax": 64000,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerManagedOutboundIpCount",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerOutboundIp",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerOutboundIpPrefix",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerIdleTimeoutInMinute",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 4,
+                "ValidateRangeMax": 120,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiServerAccessAuthorizedIpRange",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableApiServerAccessPrivateCluster",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiServerAccessPrivateDnsZone",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableApiServerAccessPrivateClusterPublicFQDN",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FqdnSubdomain",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5511,6 +5762,163 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "LoadBalancerAllocatedOutboundPort",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 0,
+                "ValidateRangeMax": 64000,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerManagedOutboundIpCount",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerOutboundIp",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerOutboundIpPrefix",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerIdleTimeoutInMinute",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 4,
+                "ValidateRangeMax": 120,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiServerAccessAuthorizedIpRange",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableApiServerAccessPrivateCluster",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiServerAccessPrivateDnsZone",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableApiServerAccessPrivateClusterPublicFQDN",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FqdnSubdomain",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzContext",
@@ -5552,9 +5960,6 @@
             }
           ]
         }
-      ],
-      "AliasList": [
-        "New-AzAks"
       ]
     },
     {
@@ -5571,7 +5976,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -5662,7 +6067,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -6249,7 +6654,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -6915,7 +7320,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -7043,7 +7448,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -7488,9 +7893,6 @@
             }
           ]
         }
-      ],
-      "AliasList": [
-        "Remove-AzAks"
       ]
     },
     {
@@ -7520,7 +7922,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -7590,7 +7992,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -7688,7 +8090,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
                     "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -8076,7 +8478,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -8307,7 +8709,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -8430,7 +8832,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -8678,6 +9080,103 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "LoadBalancerAllocatedOutboundPort",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateRangeMin": 0,
+          "ValidateRangeMax": 64000,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "LoadBalancerManagedOutboundIpCount",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "LoadBalancerOutboundIp",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "LoadBalancerOutboundIpPrefix",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "LoadBalancerIdleTimeoutInMinute",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateRangeMin": 4,
+          "ValidateRangeMax": 120,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ApiServerAccessAuthorizedIpRange",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "EnableApiServerAccessPrivateCluster",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ApiServerAccessPrivateDnsZone",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "EnableApiServerAccessPrivateClusterPublicFQDN",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "FqdnSubdomain",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzContext",
@@ -8717,7 +9216,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -9046,6 +9545,163 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "LoadBalancerAllocatedOutboundPort",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 0,
+                "ValidateRangeMax": 64000,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerManagedOutboundIpCount",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerOutboundIp",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerOutboundIpPrefix",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerIdleTimeoutInMinute",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 4,
+                "ValidateRangeMax": 120,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiServerAccessAuthorizedIpRange",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableApiServerAccessPrivateCluster",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiServerAccessPrivateDnsZone",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableApiServerAccessPrivateClusterPublicFQDN",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FqdnSubdomain",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzContext",
@@ -9373,6 +10029,163 @@
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerAllocatedOutboundPort",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 0,
+                "ValidateRangeMax": 64000,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerManagedOutboundIpCount",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerOutboundIp",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerOutboundIpPrefix",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerIdleTimeoutInMinute",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 4,
+                "ValidateRangeMax": 120,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiServerAccessAuthorizedIpRange",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableApiServerAccessPrivateCluster",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiServerAccessPrivateDnsZone",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableApiServerAccessPrivateClusterPublicFQDN",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FqdnSubdomain",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9728,6 +10541,163 @@
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerAllocatedOutboundPort",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 0,
+                "ValidateRangeMax": 64000,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerManagedOutboundIpCount",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerOutboundIp",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerOutboundIpPrefix",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerIdleTimeoutInMinute",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 4,
+                "ValidateRangeMax": 120,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiServerAccessAuthorizedIpRange",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableApiServerAccessPrivateCluster",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiServerAccessPrivateDnsZone",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableApiServerAccessPrivateClusterPublicFQDN",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FqdnSubdomain",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10120,6 +11090,163 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "LoadBalancerAllocatedOutboundPort",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 0,
+                "ValidateRangeMax": 64000,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerManagedOutboundIpCount",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerOutboundIp",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerOutboundIpPrefix",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LoadBalancerIdleTimeoutInMinute",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 4,
+                "ValidateRangeMax": 120,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiServerAccessAuthorizedIpRange",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableApiServerAccessPrivateCluster",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiServerAccessPrivateDnsZone",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableApiServerAccessPrivateClusterPublicFQDN",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FqdnSubdomain",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzContext",
@@ -10161,9 +11288,6 @@
             }
           ]
         }
-      ],
-      "AliasList": [
-        "Set-AzAks"
       ]
     },
     {
@@ -10193,7 +11317,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -10330,7 +11454,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -10836,7 +11960,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks",
             "Name": "Microsoft.Azure.Commands.Aks.KubeTunnelJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.KubeTunnelJob, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.KubeTunnelJob, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HasMoreData": "System.Boolean",
               "ChildJobs": "System.Collections.Generic.IList`1[System.Management.Automation.Job]",
@@ -11028,7 +12152,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -11156,7 +12280,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -11742,7 +12866,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -11833,7 +12957,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -11869,7 +12993,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -12221,7 +13345,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -12414,7 +13538,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
                     "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -12929,7 +14053,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IAgentPoolUpgradeProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IAgentPoolUpgradeProfile, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IAgentPoolUpgradeProfile, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Upgrade": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IAgentPoolUpgradeProfilePropertiesUpgradesItem[]",
               "OSType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType",
@@ -12991,7 +14115,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AgentPoolName": "System.String",
               "Id": "System.String",
@@ -13032,7 +14156,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -13042,7 +14166,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -13183,7 +14307,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13199,7 +14323,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13265,7 +14389,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AgentPoolName": "System.String",
                     "Id": "System.String",
@@ -13324,7 +14448,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13340,7 +14464,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13440,7 +14564,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13456,7 +14580,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13529,7 +14653,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterUpgradeProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterUpgradeProfile, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterUpgradeProfile, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AgentPoolProfile": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfile[]",
               "ControlPlaneProfileUpgrade": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfileUpgradesItem[]",
@@ -13583,7 +14707,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AgentPoolName": "System.String",
               "Id": "System.String",
@@ -13624,7 +14748,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -13634,7 +14758,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -13760,7 +14884,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13776,7 +14900,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13842,7 +14966,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AgentPoolName": "System.String",
                     "Id": "System.String",
@@ -13901,7 +15025,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13917,7 +15041,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14017,7 +15141,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14033,7 +15157,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14106,7 +15230,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Orchestrator": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfile[]",
               "Id": "System.String",
@@ -14166,7 +15290,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -14176,7 +15300,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -14284,7 +15408,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14300,7 +15424,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14416,7 +15540,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AgentPoolName": "System.String",
               "Id": "System.String",
@@ -14466,7 +15590,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -14476,7 +15600,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -14634,7 +15758,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14650,7 +15774,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14746,7 +15870,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AgentPoolName": "System.String",
                     "Id": "System.String",
@@ -14820,7 +15944,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14836,7 +15960,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14981,7 +16105,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14997,7 +16121,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -15143,7 +16267,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AgentPoolName": "System.String",
               "Id": "System.String",
@@ -15193,7 +16317,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -15203,7 +16327,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -15361,7 +16485,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -15377,7 +16501,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -15473,7 +16597,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AgentPoolName": "System.String",
                     "Id": "System.String",
@@ -15547,7 +16671,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -15563,7 +16687,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -15708,7 +16832,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -15724,7 +16848,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -15860,7 +16984,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Ssh": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration",
         "AdminUsername": "System.String"
@@ -15911,7 +17035,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PublicKeys": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey]"
       },
@@ -15957,7 +17081,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey"
       ]
@@ -15965,7 +17089,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "KeyData": "System.String"
       },
@@ -16016,7 +17140,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "LoadBalancerProfile": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile",
         "NetworkPlugin": "System.String",
@@ -16060,7 +17184,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ManagedOutboundIPs": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs",
         "OutboundIPPrefixes": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes",
@@ -16100,7 +17224,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Count": "System.Nullable`1[System.Int32]"
       },
@@ -16154,7 +17278,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PublicIPPrefixes": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]"
       },
@@ -16191,7 +17315,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Aks.Models.PSResourceReference"
       ]
@@ -16199,7 +17323,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSResourceReference": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSResourceReference",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String"
       },
@@ -16236,7 +17360,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PublicIPs": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]"
       },
@@ -16273,7 +17397,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ClientId": "System.String",
         "Secret": "System.String"
@@ -16324,7 +17448,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ClientAppID": "System.String",
         "ServerAppID": "System.String",
@@ -16364,7 +17488,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AuthorizedIPRanges": "System.Collections.Generic.IList`1[System.String]",
         "EnablePrivateCluster": "System.Nullable`1[System.Boolean]"
@@ -16418,11 +17542,59 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
+        "UserAssignedIdentities": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue]",
         "Type": "System.Nullable`1[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType]",
-        "TenantId": "System.String",
-        "PrincipalId": "System.String"
+        "PrincipalId": "System.String",
+        "TenantId": "System.String"
+      },
+      "Methods": [
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": ""
+        }
+      ]
+    },
+    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.String",
+        "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue"
+      ]
+    },
+    "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue": {
+      "Namespace": "Microsoft.Azure.Commands.Aks.Models",
+      "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "PrincipalId": "System.String",
+        "ClientId": "System.String"
       },
       "Methods": [
         {
@@ -16457,7 +17629,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType"
       ]
@@ -16465,7 +17637,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -16557,7 +17729,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AdminUsername": "System.String",
         "AdminPassword": "System.String"
@@ -16595,7 +17767,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.String",
         "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile"
@@ -16604,7 +17776,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Boolean",
         "Config": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
@@ -16651,7 +17823,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.String",
         "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile"
@@ -16660,7 +17832,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ResourceId": "System.String",
         "ClientId": "System.String",
@@ -16713,7 +17885,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile"
       ]
@@ -16721,7 +17893,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Ports": "System.Collections.Generic.IList`1[System.Nullable`1[System.Int32]]",
         "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
@@ -17054,13 +18226,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IAgentPoolUpgradeProfilePropertiesUpgradesItem[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IAgentPoolUpgradeProfilePropertiesUpgradesItem[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IAgentPoolUpgradeProfilePropertiesUpgradesItem[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IAgentPoolUpgradeProfilePropertiesUpgradesItem[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IAgentPoolUpgradeProfilePropertiesUpgradesItem"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IAgentPoolUpgradeProfilePropertiesUpgradesItem": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IAgentPoolUpgradeProfilePropertiesUpgradesItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IAgentPoolUpgradeProfilePropertiesUpgradesItem, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IAgentPoolUpgradeProfilePropertiesUpgradesItem, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IsPreview": "System.Nullable`1[System.Boolean]",
         "KubernetesVersion": "System.String"
@@ -17069,7 +18241,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -17147,7 +18319,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -17320,13 +18492,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfile[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfile[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfile[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfile[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfile"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfile": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfile, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfile, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Upgrade": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfileUpgradesItem[]",
         "OSType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType",
@@ -17337,13 +18509,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfileUpgradesItem[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfileUpgradesItem[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfileUpgradesItem[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfileUpgradesItem[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfileUpgradesItem"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfileUpgradesItem": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfileUpgradesItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfileUpgradesItem, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterPoolUpgradeProfileUpgradesItem, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IsPreview": "System.Nullable`1[System.Boolean]",
         "KubernetesVersion": "System.String"
@@ -17352,13 +18524,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfile[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfile[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfile[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfile[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfile"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfile": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfile, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfile, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Upgrade": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorProfile[]",
         "Default": "System.Nullable`1[System.Boolean]",
@@ -17370,13 +18542,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorProfile[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorProfile[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorProfile[], Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorProfile[], Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorProfile"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorProfile": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorProfile, Az.Aks.private, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorProfile, Az.Aks.private, Version=3.1.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IsPreview": "System.Nullable`1[System.Boolean]",
         "OrchestratorType": "System.String",

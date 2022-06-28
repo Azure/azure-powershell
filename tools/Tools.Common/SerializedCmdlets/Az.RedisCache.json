@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.RedisCache",
-  "ModuleVersion": "1.5.1",
+  "ModuleVersion": "1.6.0",
   "Cmdlets": [
     {
       "VerbName": "Export",
@@ -237,28 +237,31 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EnableNonSslPort": "System.Boolean",
-              "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "RedisConfiguration": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "SystemAssignedIdentity": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "UserAssignedIdentity": "System.Collections.Generic.IList`1[System.String]",
               "Zone": "System.Collections.Generic.IList`1[System.String]",
               "Port": "System.Int32",
               "SslPort": "System.Int32",
               "ShardCount": "System.Nullable`1[System.Int32]",
-              "HostName": "System.String",
-              "ProvisioningState": "System.String",
-              "Name": "System.String",
-              "Location": "System.String",
+              "IdentityType": "System.String",
+              "StaticIP": "System.String",
+              "SubnetId": "System.String",
+              "MinimumTlsVersion": "System.String",
               "RedisVersion": "System.String",
               "Size": "System.String",
-              "Sku": "System.String",
-              "Id": "System.String",
-              "MinimumTlsVersion": "System.String",
-              "SubnetId": "System.String",
-              "StaticIP": "System.String",
+              "ProvisioningState": "System.String",
+              "HostName": "System.String",
               "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Id": "System.String",
+              "Sku": "System.String",
               "ResourceGroupName": "System.String"
             },
             "Methods": [
@@ -427,7 +430,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -614,7 +617,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Redis.Models",
             "Name": "Microsoft.Azure.Management.Redis.Models.RedisAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Redis.Models.RedisAccessKeys, Microsoft.Azure.Management.Redis, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Redis.Models.RedisAccessKeys, Microsoft.Azure.Management.Redis, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimaryKey": "System.String",
               "SecondaryKey": "System.String"
@@ -785,7 +788,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimaryServerName": "System.String",
               "SecondaryServerName": "System.String",
@@ -1122,7 +1125,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartHourUtc": "System.Int32",
               "MaintenanceWindow": "System.Nullable`1[System.TimeSpan]",
@@ -1504,30 +1507,33 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EnableNonSslPort": "System.Boolean",
-              "RedisConfiguration": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "SystemAssignedIdentity": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "RedisConfiguration": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Zone": "System.Collections.Generic.IList`1[System.String]",
+              "UserAssignedIdentity": "System.Collections.Generic.IList`1[System.String]",
               "Port": "System.Int32",
               "SslPort": "System.Int32",
               "ShardCount": "System.Nullable`1[System.Int32]",
-              "Name": "System.String",
+              "HostName": "System.String",
+              "IdentityType": "System.String",
+              "SecondaryKey": "System.String",
+              "ResourceGroupName": "System.String",
               "StaticIP": "System.String",
               "SubnetId": "System.String",
               "MinimumTlsVersion": "System.String",
-              "SecondaryKey": "System.String",
+              "Id": "System.String",
               "Sku": "System.String",
+              "Size": "System.String",
               "RedisVersion": "System.String",
               "Location": "System.String",
-              "ResourceGroupName": "System.String",
-              "Id": "System.String",
+              "Name": "System.String",
               "ProvisioningState": "System.String",
-              "HostName": "System.String",
               "Type": "System.String",
-              "Size": "System.String",
               "PrimaryKey": "System.String"
             },
             "Methods": [
@@ -1724,6 +1730,25 @@
             "Namespace": "System",
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "IdentityType",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "UserAssignedIdentity",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1991,6 +2016,37 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "IdentityType",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "UserAssignedIdentity",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzContext",
@@ -2033,7 +2089,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -2102,28 +2158,31 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EnableNonSslPort": "System.Boolean",
-              "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "RedisConfiguration": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "SystemAssignedIdentity": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "UserAssignedIdentity": "System.Collections.Generic.IList`1[System.String]",
               "Zone": "System.Collections.Generic.IList`1[System.String]",
               "Port": "System.Int32",
               "SslPort": "System.Int32",
               "ShardCount": "System.Nullable`1[System.Int32]",
-              "HostName": "System.String",
-              "ProvisioningState": "System.String",
-              "Name": "System.String",
-              "Location": "System.String",
+              "IdentityType": "System.String",
+              "StaticIP": "System.String",
+              "SubnetId": "System.String",
+              "MinimumTlsVersion": "System.String",
               "RedisVersion": "System.String",
               "Size": "System.String",
-              "Sku": "System.String",
-              "Id": "System.String",
-              "MinimumTlsVersion": "System.String",
-              "SubnetId": "System.String",
-              "StaticIP": "System.String",
+              "ProvisioningState": "System.String",
+              "HostName": "System.String",
               "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Id": "System.String",
+              "Sku": "System.String",
               "ResourceGroupName": "System.String"
             }
           },
@@ -2302,28 +2361,31 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
                   "Name": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "EnableNonSslPort": "System.Boolean",
-                    "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "RedisConfiguration": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "SystemAssignedIdentity": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "UserAssignedIdentity": "System.Collections.Generic.IList`1[System.String]",
                     "Zone": "System.Collections.Generic.IList`1[System.String]",
                     "Port": "System.Int32",
                     "SslPort": "System.Int32",
                     "ShardCount": "System.Nullable`1[System.Int32]",
-                    "HostName": "System.String",
-                    "ProvisioningState": "System.String",
-                    "Name": "System.String",
-                    "Location": "System.String",
+                    "IdentityType": "System.String",
+                    "StaticIP": "System.String",
+                    "SubnetId": "System.String",
+                    "MinimumTlsVersion": "System.String",
                     "RedisVersion": "System.String",
                     "Size": "System.String",
-                    "Sku": "System.String",
-                    "Id": "System.String",
-                    "MinimumTlsVersion": "System.String",
-                    "SubnetId": "System.String",
-                    "StaticIP": "System.String",
+                    "ProvisioningState": "System.String",
+                    "HostName": "System.String",
                     "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Id": "System.String",
+                    "Sku": "System.String",
                     "ResourceGroupName": "System.String"
                   }
                 },
@@ -2590,7 +2652,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Redis.Models",
             "Name": "Microsoft.Azure.Management.Redis.Models.RedisAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Redis.Models.RedisAccessKeys, Microsoft.Azure.Management.Redis, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Redis.Models.RedisAccessKeys, Microsoft.Azure.Management.Redis, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimaryKey": "System.String",
               "SecondaryKey": "System.String"
@@ -2817,7 +2879,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimaryServerName": "System.String",
               "SecondaryServerName": "System.String",
@@ -2976,7 +3038,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartHourUtc": "System.Int32",
               "MaintenanceWindow": "System.Nullable`1[System.TimeSpan]",
@@ -3041,7 +3103,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[], Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[], Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry"
           },
           "ValidateNotNullOrEmpty": true
@@ -3107,7 +3169,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
                   "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[], Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[], Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry"
                 },
                 "ValidateNotNullOrEmpty": true
@@ -3161,7 +3223,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartHourUtc": "System.Int32",
               "MaintenanceWindow": "System.Nullable`1[System.TimeSpan]",
@@ -3713,7 +3775,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -3857,7 +3919,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
                   "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String",
                     "Name": "System.String",
@@ -4515,30 +4577,33 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EnableNonSslPort": "System.Boolean",
-              "RedisConfiguration": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "SystemAssignedIdentity": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "RedisConfiguration": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Zone": "System.Collections.Generic.IList`1[System.String]",
+              "UserAssignedIdentity": "System.Collections.Generic.IList`1[System.String]",
               "Port": "System.Int32",
               "SslPort": "System.Int32",
               "ShardCount": "System.Nullable`1[System.Int32]",
-              "Name": "System.String",
+              "HostName": "System.String",
+              "IdentityType": "System.String",
+              "SecondaryKey": "System.String",
+              "ResourceGroupName": "System.String",
               "StaticIP": "System.String",
               "SubnetId": "System.String",
               "MinimumTlsVersion": "System.String",
-              "SecondaryKey": "System.String",
+              "Id": "System.String",
               "Sku": "System.String",
+              "Size": "System.String",
               "RedisVersion": "System.String",
               "Location": "System.String",
-              "ResourceGroupName": "System.String",
-              "Id": "System.String",
+              "Name": "System.String",
               "ProvisioningState": "System.String",
-              "HostName": "System.String",
               "Type": "System.String",
-              "Size": "System.String",
               "PrimaryKey": "System.String"
             },
             "Methods": [
@@ -4698,6 +4763,25 @@
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "IdentityType",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "UserAssignedIdentity",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4894,6 +4978,37 @@
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "IdentityType",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "UserAssignedIdentity",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5295,7 +5410,7 @@
     "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry": {
       "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
       "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.PowerShell.Cmdlets.RedisCache, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "StartHourUtc": "System.Int32",
         "MaintenanceWindow": "System.Nullable`1[System.TimeSpan]",

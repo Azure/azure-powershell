@@ -1,0 +1,400 @@
+{
+  "AzVMwarePlacementPolicy+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf?api-version=2021-12-01",
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"av20\"\r\n  },\r\n  \"properties\": {\r\n    \"clusterSize\": 3\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "88" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:12:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "393" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1\",\"name\":\"cluster1\",\"type\":\"Microsoft.AVS/privateClouds/clusters\",\"sku\":{\"name\":\"AV20\"},\"properties\":{\"clusterSize\":3,\"provisioningState\":\"Succeeded\",\"hosts\":[\"fakehost22.nyc1.kubernetes.center\",\"fakehost23.nyc1.kubernetes.center\",\"fakehost24.nyc1.kubernetes.center\"]}}"
+    }
+  },
+  "AzVMwarePlacementPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf?api-version=2021-12-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf?api-version=2021-12-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "56" ],
+        "x-ms-client-request-id": [ "ca941bfc-9f3a-4e26-99b9-19edc75630c7" ],
+        "CommandName": [ "New-AzVMwareCluster" ],
+        "FullCommandName": [ "New-AzVMwareCluster_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:12:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "429" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1\",\"name\":\"cluster1\",\"type\":\"Microsoft.AVS/privateClouds/clusters\",\"sku\":{\"name\":\"AV20\"},\"properties\":{\"clusterSize\":4,\"provisioningState\":\"Succeeded\",\"hosts\":[\"fakehost22.nyc1.kubernetes.center\",\"fakehost23.nyc1.kubernetes.center\",\"fakehost24.nyc1.kubernetes.center\",\"fakehost25.nyc1.kubernetes.center\"]}}"
+    }
+  },
+  "AzVMwarePlacementPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf?api-version=2021-12-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf?api-version=2021-12-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "57" ],
+        "x-ms-client-request-id": [ "ca941bfc-9f3a-4e26-99b9-19edc75630c7" ],
+        "CommandName": [ "New-AzVMwareCluster" ],
+        "FullCommandName": [ "New-AzVMwareCluster_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:12:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "429" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1\",\"name\":\"cluster1\",\"type\":\"Microsoft.AVS/privateClouds/clusters\",\"sku\":{\"name\":\"AV20\"},\"properties\":{\"clusterSize\":4,\"provisioningState\":\"Succeeded\",\"hosts\":[\"fakehost22.nyc1.kubernetes.center\",\"fakehost23.nyc1.kubernetes.center\",\"fakehost24.nyc1.kubernetes.center\",\"fakehost25.nyc1.kubernetes.center\"]}}"
+    }
+  },
+  "AzVMwarePlacementPolicy+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"type\": \"VmVm\",\r\n    \"vmMembers\": [ \"System.Collections.Hashtable\" ],\r\n    \"affinityType\": \"Affinity\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "135" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:12:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "338" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1\",\"name\":\"policy1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/placementPolicies\",\"properties\":{\"type\":\"VmHost\",\"state\":\"Enabled\",\"displayName\":\"policy1\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "AzVMwarePlacementPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "59" ],
+        "x-ms-client-request-id": [ "dd275eca-1bd1-4bac-a409-8b6e3199df05" ],
+        "CommandName": [ "New-AzVMwarePlacementPolicy" ],
+        "FullCommandName": [ "New-AzVMwarePlacementPolicy_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:13:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "338" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1\",\"name\":\"policy1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/placementPolicies\",\"properties\":{\"type\":\"VmHost\",\"state\":\"Enabled\",\"displayName\":\"policy1\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "AzVMwarePlacementPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "60" ],
+        "x-ms-client-request-id": [ "dd275eca-1bd1-4bac-a409-8b6e3199df05" ],
+        "CommandName": [ "New-AzVMwarePlacementPolicy" ],
+        "FullCommandName": [ "New-AzVMwarePlacementPolicy_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:13:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "338" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1\",\"name\":\"policy1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/placementPolicies\",\"properties\":{\"type\":\"VmHost\",\"state\":\"Enabled\",\"displayName\":\"policy1\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "AzVMwarePlacementPolicy+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies?api-version=2021-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "61" ],
+        "x-ms-client-request-id": [ "2795593d-caf5-4971-9be4-84d8abca4a3b" ],
+        "CommandName": [ "Get-AzVMwarePlacementPolicy" ],
+        "FullCommandName": [ "Get-AzVMwarePlacementPolicy_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:13:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "687" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1\",\"name\":\"policy1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/placementPolicies\",\"properties\":{\"type\":\"VmHost\",\"state\":\"Enabled\",\"displayName\":\"policy1\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy2\",\"name\":\"policy2\",\"type\":\"Microsoft.AVS/privateClouds/clusters/placementPolicies\",\"properties\":{\"type\":\"VmVm\",\"state\":\"Enabled\",\"displayName\":\"policy2\",\"provisioningState\":\"Succeeded\"}}]}"
+    }
+  },
+  "AzVMwarePlacementPolicy+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "62" ],
+        "x-ms-client-request-id": [ "6391d2d8-3fba-440a-b298-c3547223d726" ],
+        "CommandName": [ "Get-AzVMwarePlacementPolicy" ],
+        "FullCommandName": [ "Get-AzVMwarePlacementPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:13:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "338" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1\",\"name\":\"policy1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/placementPolicies\",\"properties\":{\"type\":\"VmHost\",\"state\":\"Enabled\",\"displayName\":\"policy1\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "AzVMwarePlacementPolicy+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "52" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:13:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "339" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1\",\"name\":\"policy1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/placementPolicies\",\"properties\":{\"type\":\"VmHost\",\"state\":\"Disabled\",\"displayName\":\"policy1\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "AzVMwarePlacementPolicy+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "64" ],
+        "x-ms-client-request-id": [ "e2ad48c5-92d7-49c1-8f78-67265d249338" ],
+        "CommandName": [ "Get-AzVMwarePlacementPolicy" ],
+        "FullCommandName": [ "Get-AzVMwarePlacementPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:13:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "338" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1\",\"name\":\"policy1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/placementPolicies\",\"properties\":{\"type\":\"VmHost\",\"state\":\"Enabled\",\"displayName\":\"policy1\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "AzVMwarePlacementPolicy+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1?api-version=2021-12-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/%7Bsubscription-id%7D/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1?api-version=2021-12-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "52" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:13:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "339" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1\",\"name\":\"policy1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/placementPolicies\",\"properties\":{\"type\":\"VmHost\",\"state\":\"Disabled\",\"displayName\":\"policy1\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "AzVMwarePlacementPolicy+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "66" ],
+        "x-ms-client-request-id": [ "98b36834-5079-416e-92c5-e776946e339a" ],
+        "CommandName": [ "Remove-AzVMwarePlacementPolicy" ],
+        "FullCommandName": [ "Remove-AzVMwarePlacementPolicy_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:13:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "AzVMwarePlacementPolicy+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/placementPolicies/policy1?api-version=2021-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "67" ],
+        "x-ms-client-request-id": [ "c59c0ca9-9d85-4be5-9eb2-70e11d2fff39" ],
+        "CommandName": [ "Get-AzVMwarePlacementPolicy" ],
+        "FullCommandName": [ "Get-AzVMwarePlacementPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:13:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "338" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1\",\"name\":\"policy1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/placementPolicies\",\"properties\":{\"type\":\"VmHost\",\"state\":\"Enabled\",\"displayName\":\"policy1\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "AzVMwarePlacementPolicy+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1?api-version=2021-12-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/%7Bsubscription-id%7D/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1?api-version=2021-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "68" ],
+        "x-ms-client-request-id": [ "194345ab-95dc-4ac4-b56f-3c5365268942" ],
+        "CommandName": [ "Remove-AzVMwarePlacementPolicy" ],
+        "FullCommandName": [ "Remove-AzVMwarePlacementPolicy_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:13:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

@@ -62,7 +62,7 @@ function Install-SingleModuleFromPackage{
             $downloader.Dispose()
         }
 
-        Write-Progress -Id $script:FixProgressBarId  "Install packagkes from local."
+        Write-Progress -Id $script:FixProgressBarId  "Install packages from local."
 
         $InstallStarted = Get-Date
         Write-Debug "[$Invoker] Will install $moduleName"

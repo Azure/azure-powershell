@@ -23,8 +23,10 @@ Create a in-memory object for Port
 
 ### Example 1: Specify port 8000 exposed on a container group with TCP protocol
 ```powershell
-PS C:\> New-AzContainerGroupPortObject -Port 8000 -Protocol TCP
+New-AzContainerGroupPortObject -Port 8000 -Protocol TCP
+```
 
+```output
 Port1 Protocol
 ----- --------
 8000  TCP

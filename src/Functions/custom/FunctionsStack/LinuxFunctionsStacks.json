@@ -318,7 +318,7 @@
                         "supportedFunctionsExtensionVersions": [
                             "~4"
                         ],
-                        "isDefault": true,
+                        "isDefault": false,
                         "minorVersions": [],
                         "applicationInsights": true,
                         "appSettingsDictionary": {
@@ -328,9 +328,9 @@
                             "use32BitWorkerProcess": false,
                             "linuxFxVersion": "PowerShell|7.2"
                         },
-                        "isPreview": true,
+                        "isPreview": false,
                         "isDeprecated": false,
-                        "isHidden": true
+                        "isHidden": false
                     }
                 ],
                 "frameworks": [],
