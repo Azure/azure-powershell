@@ -88,6 +88,11 @@ directive:
   - where:
       verb: New
       subject: ArcSettingPassword
+    remove: true
+  # Remove Update-AzStackHciArcSetting
+  - where:
+      verb: Update
+      subject: ArcSetting
     remove: true 
   # Hide aadClientId from Update-AzStackHCICluster
   - where:

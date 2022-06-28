@@ -84,9 +84,6 @@ Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes
 Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and unregisters the on-premises cluster with Azure.
 The registered information available on the cluster is used to unregister the cluster if no parameters are passed.
 
-### [Update-AzStackHciArcSetting](Update-AzStackHciArcSetting.md)
-Update ArcSettings for HCI cluster.
-
 ### [Update-AzStackHciCluster](Update-AzStackHciCluster.md)
 Update an HCI cluster.
 

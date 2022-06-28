@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
 Get-AzStackHciArcSetting -ResourceGroupName test-rg -ClusterName myCluster
 ```
