@@ -41,7 +41,7 @@ function Test-ClTableCrud
 	# setup
 	$rgNameExisting = "dabenham-dev"
 	$wsNameExisting = "dabenham-pshTest"
-	$clTableName = "dabenhamPoc16_CL"
+	$clTableName = "dabenhamPoc17_CL"
 	
 	# Create CustomLog table
 	$columns = @{'ColName1' = 'string'; 'ColName3' = 'int' ; 'TimeGenerated' = 'DateTime'}
@@ -56,8 +56,14 @@ function Test-ClTableCrud
 	Assert-True { $getClTable.RetentionInDays -eq 25 }
 	Assert-True { $getClTable.TotalRetentionInDays -eq 30 }
 
+	# update CL table retention
+	$updatedTable = Update-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName -RetentionInDays 30 -TotalRetentionInDays 35
+	Assert-NotNull $updatedTable
+	Assert-True { $updatedTable.RetentionInDays -eq 30 }
+	Assert-True { $updatedTable.TotalRetentionInDays -eq 35 }
+
 	# Migrate
-	$migrateTable = Migrate-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName
+	$migrateTable = Invoke-AzOperationalInsightsMigrateTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $clTableName
 	Assert-True { $migrateTable }
 
 	# Delete
@@ -78,17 +84,16 @@ function Test-SearchTableCrud
 	$rgNameExisting = "dabenham-dev"
 	$wsNameExisting = "dabenham-eus"
 	$searchTableName = "dabenhamPoc_SRCH"
+	$queryTableName = "Heartbeat"
 
 	# Create Search table
-	$searchTable = New-AzOperationalInsightsSearchTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $searchTableName -SearchQuery "Heartbeat"  -StartSearchTime "05-27-2022 12:26:36" -EndSearchTime "05-28-2022 12:26:36"
+	$searchTable = New-AzOperationalInsightsSearchTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $searchTableName -SearchQuery $queryTableName  -StartSearchTime "05-27-2022 12:26:36" -EndSearchTime "05-28-2022 12:26:36"
 	Assert-NotNull $searchTable
 
 	# Get the new Search table
 	$getSearchTable = Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $searchTableName
 	Assert-NotNull $getSearchTable
-	# TODO - validate another property - check the object manually for potential properties
-	# Assert-True { $getSearchTable.RetentionInDays -eq 25 } 
-	# Assert-True { $getSearchTable.TotalRetentionInDays -eq 30 }
+	Assert-True { $getSearchTable.SearchResults.SourceTable -eq $queryTableName } 
 				
 	#Delete
 	$deleteTable = Remove-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $searchTableName
@@ -107,7 +112,7 @@ function Test-RestoreTableCrud
 	# setup
 	$rgNameExisting = "dabenham-dev"
 	$wsNameExisting = "dabenham-pshTest"
-	$restoreTableName = "dabenhamPoc11_RST"
+	$restoreTableName = "dabenhamPoc12_RST"
 
 	# Create Restore table
 	$restoreTable = New-AzOperationalInsightsRestoreTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName -StartRestoreTime "05-25-2022 12:26:36" -EndRestoreTime "05-28-2022 12:26:36" -SourceTable "Usage"
@@ -115,9 +120,7 @@ function Test-RestoreTableCrud
 	# Get the new Restore table
 	$getRestoreTable = Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName
 	Assert-NotNull $getRestoreTable
-	# TODO - validate another property - check the object manually for potential properties
-	# Assert-True { $getSearchTable.RetentionInDays -eq 25 } 
-	# Assert-True { $getSearchTable.TotalRetentionInDays -eq 30 }
+	Assert-True { $getRestoreTable.RestoredLogs.SourceTable -eq "Usage" } 
 		
 	#Delete
 	$deleteTable = Remove-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -TableName $restoreTableName

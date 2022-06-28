@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "640b125d-8c83-4518-8919-d28e8f4e95d9"
+          "e9c1359b-5a8b-4ef7-bed5-6194e3dd0481"
         ],
         "Accept-Language": [
           "en-US"
@@ -26,6 +26,15 @@
         "Pragma": [
           "no-cache"
         ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
         "X-AMS-APIVersion": [
           "WebAPI1.0"
         ],
@@ -33,16 +42,12 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "7522aa5f-5ceb-4f51-966d-55ed0869affe"
+          "c42fc3cd-e5e1-49c1-a688-b5acc65a5e1e"
         ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "Access-Control-Allow-Origin": [
+          "*"
         ],
         "Server": [
-          "Microsoft-IIS/10.0",
           "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
@@ -50,16 +55,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "b02a4939-c6cc-4315-8d92-2ffd802ffaa8"
+          "3c5345b3-a43b-4b2a-bd51-36882ec31bbf"
         ],
         "x-ms-routing-request-id": [
-          "UAECENTRAL:20220615T135528Z:b02a4939-c6cc-4315-8d92-2ffd802ffaa8"
+          "FRANCESOUTH:20220628T080157Z:3c5345b3-a43b-4b2a-bd51-36882ec31bbf"
         ],
         "Date": [
-          "Wed, 15 Jun 2022 13:55:27 GMT"
+          "Tue, 28 Jun 2022 08:01:57 GMT"
         ],
         "Content-Length": [
           "97"
@@ -81,7 +86,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "640b125d-8c83-4518-8919-d28e8f4e95d9"
+          "e9c1359b-5a8b-4ef7-bed5-6194e3dd0481"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.26002",
@@ -97,6 +102,18 @@
         "Pragma": [
           "no-cache"
         ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
         "X-AMS-APIVersion": [
           "WebAPI1.0"
         ],
@@ -104,16 +121,12 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "492e0426-16f9-49e7-bd68-8c4a8ed3f0ef"
+          "d7289705-dd61-4e0a-ba51-164246201f7e"
         ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "Access-Control-Allow-Origin": [
+          "*"
         ],
         "Server": [
-          "Microsoft-IIS/10.0",
           "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
@@ -121,19 +134,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "97395a27-8989-43ba-9bbf-cbdca1ceb680"
+          "32a687d6-d319-464a-bdfa-99abc8a1239d"
         ],
         "x-ms-routing-request-id": [
-          "FRANCESOUTH:20220615T154040Z:97395a27-8989-43ba-9bbf-cbdca1ceb680"
+          "FRANCESOUTH:20220628T080346Z:32a687d6-d319-464a-bdfa-99abc8a1239d"
         ],
         "Date": [
-          "Wed, 15 Jun 2022 15:40:40 GMT"
+          "Tue, 28 Jun 2022 08:03:46 GMT"
         ],
         "Content-Length": [
-          "6548"
+          "6459"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -142,7 +155,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 30,\r\n    \"archiveRetentionInDays\": 0,\r\n    \"plan\": \"Analytics\",\r\n    \"lastPlanModifiedDate\": \"2022-06-15T13:55:42.687Z\",\r\n    \"createDate\": \"2022-06-15T13:55:42.7Z\",\r\n    \"createdBy\": \"53ec114a-2fa5-492c-8fad-7d3718e25090\",\r\n    \"retentionInDaysAsDefault\": true,\r\n    \"totalRetentionInDaysAsDefault\": true,\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"dabenhamPoc_SRCH\",\r\n      \"tableType\": \"SearchResults\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"SourceSystem\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"MG\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ManagementGroupName\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SourceComputerId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerIP\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Computer\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Category\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSName\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSMajorVersion\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSMinorVersion\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Version\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SCAgentChannel\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"IsGatewayInstalled\",\r\n          \"type\": \"bool\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPLongitude\",\r\n          \"type\": \"real\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPLatitude\",\r\n          \"type\": \"real\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPCountry\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SubscriptionId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceGroup\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceProvider\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Resource\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerEnvironment\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Solutions\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"VMUUID\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerPrivateIPs\",\r\n          \"type\": \"dynamic\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Id\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalItemId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalTimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ],\r\n      \"isTroubleshootingAllowed\": false,\r\n      \"searchResults\": {\r\n        \"query\": \"Heartbeat\",\r\n        \"description\": \"This table was created using a Search Job with the following query: 'Heartbeat'.\",\r\n        \"startSearchTime\": \"2022-05-27T12:26:36Z\",\r\n        \"endSearchTime\": \"2022-05-28T12:26:36Z\",\r\n        \"sourceTable\": \"Heartbeat\",\r\n        \"azureAsyncOperationId\": \"b2480b2f-c64e-421f-a20e-c02b36815b97\"\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 30\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH\",\r\n  \"name\": \"dabenhamPoc_SRCH\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"53ec114a-2fa5-492c-8fad-7d3718e25090\",\r\n    \"createdAt\": \"2022-06-15T13:55:42.7Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 30,\r\n    \"archiveRetentionInDays\": 0,\r\n    \"plan\": \"Analytics\",\r\n    \"lastPlanModifiedDate\": \"2022-06-15T13:55:42.687Z\",\r\n    \"createdBy\": \"53ec114a-2fa5-492c-8fad-7d3718e25090\",\r\n    \"retentionInDaysAsDefault\": true,\r\n    \"totalRetentionInDaysAsDefault\": true,\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"dabenhamPoc_SRCH\",\r\n      \"tableType\": \"SearchResults\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"SourceSystem\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"MG\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ManagementGroupName\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SourceComputerId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerIP\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Computer\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Category\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSName\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSMajorVersion\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSMinorVersion\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Version\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SCAgentChannel\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"IsGatewayInstalled\",\r\n          \"type\": \"bool\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPLongitude\",\r\n          \"type\": \"real\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPLatitude\",\r\n          \"type\": \"real\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPCountry\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SubscriptionId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceGroup\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceProvider\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Resource\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerEnvironment\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Solutions\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"VMUUID\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerPrivateIPs\",\r\n          \"type\": \"dynamic\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Id\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalItemId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalTimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ],\r\n      \"isTroubleshootingAllowed\": false,\r\n      \"searchResults\": {\r\n        \"query\": \"Heartbeat\",\r\n        \"description\": \"This table was created using a Search Job with the following query: 'Heartbeat'.\",\r\n        \"startSearchTime\": \"2022-05-27T12:26:36Z\",\r\n        \"endSearchTime\": \"2022-05-28T12:26:36Z\",\r\n        \"sourceTable\": \"Heartbeat\",\r\n        \"azureAsyncOperationId\": \"7108ec7a-3bce-4261-a323-3b8ddc07b9a6\"\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 30\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH\",\r\n  \"name\": \"dabenhamPoc_SRCH\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"53ec114a-2fa5-492c-8fad-7d3718e25090\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -152,7 +165,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1dfe3b92-3d63-45ee-b50e-9b0763d5694c"
+          "808cc2b5-dfbe-44ae-9d7a-9b6c2213b45a"
         ],
         "Accept-Language": [
           "en-US"
@@ -178,7 +191,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "50affcfd-452f-48e2-b5c6-7498ef73654e"
+          "87d3a74c-67a1-43ee-a44c-747d3a777ce2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -195,19 +208,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "cabc9097-b991-471b-8fa2-3c1fd0064e82"
+          "5b60cb41-a909-4a12-8620-b522b98423f1"
         ],
         "x-ms-routing-request-id": [
-          "FRANCESOUTH:20220615T154042Z:cabc9097-b991-471b-8fa2-3c1fd0064e82"
+          "FRANCESOUTH:20220628T080348Z:5b60cb41-a909-4a12-8620-b522b98423f1"
         ],
         "Date": [
-          "Wed, 15 Jun 2022 15:40:42 GMT"
+          "Tue, 28 Jun 2022 08:03:48 GMT"
         ],
         "Content-Length": [
-          "6548"
+          "6459"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -216,7 +229,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 30,\r\n    \"archiveRetentionInDays\": 0,\r\n    \"plan\": \"Analytics\",\r\n    \"lastPlanModifiedDate\": \"2022-06-15T13:55:42.687Z\",\r\n    \"createDate\": \"2022-06-15T13:55:42.7Z\",\r\n    \"createdBy\": \"53ec114a-2fa5-492c-8fad-7d3718e25090\",\r\n    \"retentionInDaysAsDefault\": true,\r\n    \"totalRetentionInDaysAsDefault\": true,\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"dabenhamPoc_SRCH\",\r\n      \"tableType\": \"SearchResults\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"SourceSystem\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"MG\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ManagementGroupName\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SourceComputerId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerIP\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Computer\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Category\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSName\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSMajorVersion\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSMinorVersion\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Version\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SCAgentChannel\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"IsGatewayInstalled\",\r\n          \"type\": \"bool\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPLongitude\",\r\n          \"type\": \"real\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPLatitude\",\r\n          \"type\": \"real\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPCountry\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SubscriptionId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceGroup\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceProvider\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Resource\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerEnvironment\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Solutions\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"VMUUID\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerPrivateIPs\",\r\n          \"type\": \"dynamic\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Id\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalItemId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalTimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ],\r\n      \"isTroubleshootingAllowed\": false,\r\n      \"searchResults\": {\r\n        \"query\": \"Heartbeat\",\r\n        \"description\": \"This table was created using a Search Job with the following query: 'Heartbeat'.\",\r\n        \"startSearchTime\": \"2022-05-27T12:26:36Z\",\r\n        \"endSearchTime\": \"2022-05-28T12:26:36Z\",\r\n        \"sourceTable\": \"Heartbeat\",\r\n        \"azureAsyncOperationId\": \"b2480b2f-c64e-421f-a20e-c02b36815b97\"\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 30\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH\",\r\n  \"name\": \"dabenhamPoc_SRCH\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"53ec114a-2fa5-492c-8fad-7d3718e25090\",\r\n    \"createdAt\": \"2022-06-15T13:55:42.7Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 30,\r\n    \"archiveRetentionInDays\": 0,\r\n    \"plan\": \"Analytics\",\r\n    \"lastPlanModifiedDate\": \"2022-06-15T13:55:42.687Z\",\r\n    \"createdBy\": \"53ec114a-2fa5-492c-8fad-7d3718e25090\",\r\n    \"retentionInDaysAsDefault\": true,\r\n    \"totalRetentionInDaysAsDefault\": true,\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"dabenhamPoc_SRCH\",\r\n      \"tableType\": \"SearchResults\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"SourceSystem\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"MG\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ManagementGroupName\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SourceComputerId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerIP\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Computer\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Category\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSName\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSMajorVersion\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSMinorVersion\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Version\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SCAgentChannel\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"IsGatewayInstalled\",\r\n          \"type\": \"bool\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPLongitude\",\r\n          \"type\": \"real\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPLatitude\",\r\n          \"type\": \"real\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPCountry\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SubscriptionId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceGroup\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceProvider\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Resource\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerEnvironment\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Solutions\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"VMUUID\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerPrivateIPs\",\r\n          \"type\": \"dynamic\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Id\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalItemId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalTimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ],\r\n      \"isTroubleshootingAllowed\": false,\r\n      \"searchResults\": {\r\n        \"query\": \"Heartbeat\",\r\n        \"description\": \"This table was created using a Search Job with the following query: 'Heartbeat'.\",\r\n        \"startSearchTime\": \"2022-05-27T12:26:36Z\",\r\n        \"endSearchTime\": \"2022-05-28T12:26:36Z\",\r\n        \"sourceTable\": \"Heartbeat\",\r\n        \"azureAsyncOperationId\": \"7108ec7a-3bce-4261-a323-3b8ddc07b9a6\"\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 30\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH\",\r\n  \"name\": \"dabenhamPoc_SRCH\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"53ec114a-2fa5-492c-8fad-7d3718e25090\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -226,7 +239,89 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "243bc8d1-e2c3-4de8-913e-4c35bbd30c19"
+          "85e2f31a-d700-407e-ab1c-557ede30894f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c6a53550-72e0-4e7d-9611-af1a5a234647"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "8faab268-f551-4dde-8545-024350120e6a"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T080351Z:8faab268-f551-4dde-8545-024350120e6a"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 08:03:51 GMT"
+        ],
+        "Content-Length": [
+          "6459"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 30,\r\n    \"archiveRetentionInDays\": 0,\r\n    \"plan\": \"Analytics\",\r\n    \"lastPlanModifiedDate\": \"2022-06-15T13:55:42.687Z\",\r\n    \"createdBy\": \"53ec114a-2fa5-492c-8fad-7d3718e25090\",\r\n    \"retentionInDaysAsDefault\": true,\r\n    \"totalRetentionInDaysAsDefault\": true,\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"dabenhamPoc_SRCH\",\r\n      \"tableType\": \"SearchResults\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"SourceSystem\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"MG\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ManagementGroupName\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SourceComputerId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerIP\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Computer\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Category\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSName\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSMajorVersion\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSMinorVersion\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Version\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SCAgentChannel\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"IsGatewayInstalled\",\r\n          \"type\": \"bool\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPLongitude\",\r\n          \"type\": \"real\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPLatitude\",\r\n          \"type\": \"real\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPCountry\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SubscriptionId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceGroup\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceProvider\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Resource\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerEnvironment\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Solutions\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"VMUUID\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerPrivateIPs\",\r\n          \"type\": \"dynamic\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Id\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalItemId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalTimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ],\r\n      \"isTroubleshootingAllowed\": false,\r\n      \"searchResults\": {\r\n        \"query\": \"Heartbeat\",\r\n        \"description\": \"This table was created using a Search Job with the following query: 'Heartbeat'.\",\r\n        \"startSearchTime\": \"2022-05-27T12:26:36Z\",\r\n        \"endSearchTime\": \"2022-05-28T12:26:36Z\",\r\n        \"sourceTable\": \"Heartbeat\",\r\n        \"azureAsyncOperationId\": \"7108ec7a-3bce-4261-a323-3b8ddc07b9a6\"\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 30\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH\",\r\n  \"name\": \"dabenhamPoc_SRCH\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"53ec114a-2fa5-492c-8fad-7d3718e25090\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1ldXMvdGFibGVzL2RhYmVuaGFtUG9jX1NSQ0g/YXBpLXZlcnNpb249MjAyMS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e2b7fd98-956a-4e85-b6de-d6166236271f"
         ],
         "Accept-Language": [
           "en-US"
@@ -252,7 +347,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "63b5c5f5-f396-41fb-a9ca-be31e34b3bd8"
+          "1bee5f0d-000e-4077-9166-fac6e302e1b3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -272,87 +367,13 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "2c09331f-d183-41c3-9cc5-6c77022b79ac"
+          "104be13e-51b5-4fd1-9110-6b7ccc7c001b"
         ],
         "x-ms-routing-request-id": [
-          "FRANCESOUTH:20220615T154044Z:2c09331f-d183-41c3-9cc5-6c77022b79ac"
+          "FRANCESOUTH:20220628T080544Z:104be13e-51b5-4fd1-9110-6b7ccc7c001b"
         ],
         "Date": [
-          "Wed, 15 Jun 2022 15:40:44 GMT"
-        ],
-        "Content-Length": [
-          "6548"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 30,\r\n    \"archiveRetentionInDays\": 0,\r\n    \"plan\": \"Analytics\",\r\n    \"lastPlanModifiedDate\": \"2022-06-15T13:55:42.687Z\",\r\n    \"createDate\": \"2022-06-15T13:55:42.7Z\",\r\n    \"createdBy\": \"53ec114a-2fa5-492c-8fad-7d3718e25090\",\r\n    \"retentionInDaysAsDefault\": true,\r\n    \"totalRetentionInDaysAsDefault\": true,\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"dabenhamPoc_SRCH\",\r\n      \"tableType\": \"SearchResults\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"SourceSystem\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"MG\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ManagementGroupName\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SourceComputerId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerIP\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Computer\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Category\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSName\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSMajorVersion\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"OSMinorVersion\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Version\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SCAgentChannel\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"IsGatewayInstalled\",\r\n          \"type\": \"bool\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPLongitude\",\r\n          \"type\": \"real\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPLatitude\",\r\n          \"type\": \"real\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"RemoteIPCountry\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"SubscriptionId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceGroup\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceProvider\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Resource\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ResourceType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerEnvironment\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Solutions\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"VMUUID\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ComputerPrivateIPs\",\r\n          \"type\": \"dynamic\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"Id\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalType\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalItemId\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"_OriginalTimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ],\r\n      \"isTroubleshootingAllowed\": false,\r\n      \"searchResults\": {\r\n        \"query\": \"Heartbeat\",\r\n        \"description\": \"This table was created using a Search Job with the following query: 'Heartbeat'.\",\r\n        \"startSearchTime\": \"2022-05-27T12:26:36Z\",\r\n        \"endSearchTime\": \"2022-05-28T12:26:36Z\",\r\n        \"sourceTable\": \"Heartbeat\",\r\n        \"azureAsyncOperationId\": \"b2480b2f-c64e-421f-a20e-c02b36815b97\"\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 30\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH\",\r\n  \"name\": \"dabenhamPoc_SRCH\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"53ec114a-2fa5-492c-8fad-7d3718e25090\",\r\n    \"createdAt\": \"2022-06-15T13:55:42.7Z\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH?api-version=2021-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1ldXMvdGFibGVzL2RhYmVuaGFtUG9jX1NSQ0g/YXBpLXZlcnNpb249MjAyMS0xMi0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "0be87dd8-b222-4775-bec0-af2d19340f3f"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.26002",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-AMS-APIVersion": [
-          "WebAPI1.0"
-        ],
-        "CacheControl": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "897b9c49-a5c1-476c-b721-70b5b6485a33"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET",
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-correlation-request-id": [
-          "85b1148a-a5eb-4342-8037-9bd689100a01"
-        ],
-        "x-ms-routing-request-id": [
-          "FRANCESOUTH:20220615T154238Z:85b1148a-a5eb-4342-8037-9bd689100a01"
-        ],
-        "Date": [
-          "Wed, 15 Jun 2022 15:42:38 GMT"
+          "Tue, 28 Jun 2022 08:05:44 GMT"
         ],
         "Content-Length": [
           "97"
@@ -374,7 +395,7 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"searchResults\": {\r\n      \"query\": \"Heartbeat\",\r\n      \"startSearchTime\": \"2022-05-27T12:26:36Z\",\r\n      \"endSearchTime\": \"2022-05-28T12:26:36Z\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "640b125d-8c83-4518-8919-d28e8f4e95d9"
+          "e9c1359b-5a8b-4ef7-bed5-6194e3dd0481"
         ],
         "Accept-Language": [
           "en-US"
@@ -400,10 +421,19 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH/operationresults/b2480b2f-c64e-421f-a20e-c02b36815b97?api-version=2021-12-01-preview"
+          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH/operationresults/7108ec7a-3bce-4261-a323-3b8ddc07b9a6?api-version=2021-12-01-preview"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/b2480b2f-c64e-421f-a20e-c02b36815b97?api-version=2015-11-01-preview"
+          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/7108ec7a-3bce-4261-a323-3b8ddc07b9a6?api-version=2015-11-01-preview"
         ],
         "X-AMS-APIVersion": [
           "WebAPI1.0"
@@ -412,16 +442,12 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "fa8debf9-c96d-48ae-8c9c-301b7a202bfd"
+          "769eeee3-9b00-4c9f-988e-44a79a39cce9"
         ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "Access-Control-Allow-Origin": [
+          "*"
         ],
         "Server": [
-          "Microsoft-IIS/10.0",
           "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
@@ -429,16 +455,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "30b41bc4-9764-4713-a318-92e93deadd03"
+          "7471c667-6d09-40b4-ac11-78fdd2b0e6ec"
         ],
         "x-ms-routing-request-id": [
-          "UAECENTRAL:20220615T135543Z:30b41bc4-9764-4713-a318-92e93deadd03"
+          "FRANCESOUTH:20220628T080214Z:7471c667-6d09-40b4-ac11-78fdd2b0e6ec"
         ],
         "Date": [
-          "Wed, 15 Jun 2022 13:55:42 GMT"
+          "Tue, 28 Jun 2022 08:02:13 GMT"
         ],
         "Expires": [
           "-1"
@@ -451,13 +477,13 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/b2480b2f-c64e-421f-a20e-c02b36815b97?api-version=2015-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzL2IyNDgwYjJmLWM2NGUtNDIxZi1hMjBlLWMwMmIzNjgxNWI5Nz9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/7108ec7a-3bce-4261-a323-3b8ddc07b9a6?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzLzcxMDhlYzdhLTNiY2UtNDI2MS1hMzIzLTNiOGRkYzA3YjlhNj9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "640b125d-8c83-4518-8919-d28e8f4e95d9"
+          "e9c1359b-5a8b-4ef7-bed5-6194e3dd0481"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.26002",
@@ -473,76 +499,17 @@
         "Pragma": [
           "no-cache"
         ],
-        "X-AMS-APIVersion": [
-          "WebAPI1.0"
-        ],
-        "CacheControl": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "4b84b129-56e8-449a-abbb-49f769485e49"
+        "Vary": [
+          "Accept-Encoding"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET",
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
-        ],
-        "x-ms-correlation-request-id": [
-          "e5c6ea3d-e9a7-4b26-a4ae-a9732f22698a"
-        ],
-        "x-ms-routing-request-id": [
-          "UAECENTRAL:20220615T135613Z:e5c6ea3d-e9a7-4b26-a4ae-a9732f22698a"
-        ],
-        "Date": [
-          "Wed, 15 Jun 2022 13:56:13 GMT"
-        ],
-        "Content-Length": [
-          "304"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"status\": \"Updating\",\r\n  \"name\": \"b2480b2f-c64e-421f-a20e-c02b36815b97\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/b2480b2f-c64e-421f-a20e-c02b36815b97\",\r\n  \"startTime\": \"Wed, 15 Jun 2022 13:55:42 GMT\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/b2480b2f-c64e-421f-a20e-c02b36815b97?api-version=2015-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzL2IyNDgwYjJmLWM2NGUtNDIxZi1hMjBlLWMwMmIzNjgxNWI5Nz9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "640b125d-8c83-4518-8919-d28e8f4e95d9"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.26002",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
         ],
         "X-AMS-APIVersion": [
           "WebAPI1.0"
@@ -551,235 +518,12 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1518da31-7e5b-45c0-899a-f15ac04c9f99"
+          "c5f53c72-7a25-4787-a311-d82f73ed1dc4"
         ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "Access-Control-Allow-Origin": [
+          "*"
         ],
         "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET",
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
-        ],
-        "x-ms-correlation-request-id": [
-          "681e17f6-9815-47a3-9f2b-1470a0d8eba0"
-        ],
-        "x-ms-routing-request-id": [
-          "UAECENTRAL:20220615T135644Z:681e17f6-9815-47a3-9f2b-1470a0d8eba0"
-        ],
-        "Date": [
-          "Wed, 15 Jun 2022 13:56:43 GMT"
-        ],
-        "Content-Length": [
-          "442"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"b2480b2f-c64e-421f-a20e-c02b36815b97\",\r\n  \"properties\": {\r\n    \"resultStatistics\": {\r\n      \"progress\": 0.0,\r\n      \"ingestedRecords\": 0,\r\n      \"scannedGb\": 0.0\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/b2480b2f-c64e-421f-a20e-c02b36815b97\",\r\n  \"startTime\": \"Wed, 15 Jun 2022 13:55:42 GMT\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/b2480b2f-c64e-421f-a20e-c02b36815b97?api-version=2015-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzL2IyNDgwYjJmLWM2NGUtNDIxZi1hMjBlLWMwMmIzNjgxNWI5Nz9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "640b125d-8c83-4518-8919-d28e8f4e95d9"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.26002",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-AMS-APIVersion": [
-          "WebAPI1.0"
-        ],
-        "CacheControl": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "15c4b61c-4a5f-46eb-957e-4591083d8067"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET",
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-correlation-request-id": [
-          "9ead87f6-f6d6-44b5-96f5-f6f350acbd0a"
-        ],
-        "x-ms-routing-request-id": [
-          "FRANCESOUTH:20220615T154038Z:9ead87f6-f6d6-44b5-96f5-f6f350acbd0a"
-        ],
-        "Date": [
-          "Wed, 15 Jun 2022 15:40:38 GMT"
-        ],
-        "Content-Length": [
-          "490"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"b2480b2f-c64e-421f-a20e-c02b36815b97\",\r\n  \"properties\": {\r\n    \"resultStatistics\": {\r\n      \"progress\": 100.0,\r\n      \"ingestedRecords\": 0,\r\n      \"scannedGb\": 0.0\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/b2480b2f-c64e-421f-a20e-c02b36815b97\",\r\n  \"startTime\": \"Wed, 15 Jun 2022 13:55:42 GMT\",\r\n  \"endTime\": \"Wed, 15 Jun 2022 13:56:52 GMT\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH?api-version=2021-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1ldXMvdGFibGVzL2RhYmVuaGFtUG9jX1NSQ0g/YXBpLXZlcnNpb249MjAyMS0xMi0wMS1wcmV2aWV3",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "243bc8d1-e2c3-4de8-913e-4c35bbd30c19"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.26002",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH/operationresults/44386315-d5df-4e3d-8017-47a398a39532?api-version=2021-12-01-preview"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/44386315-d5df-4e3d-8017-47a398a39532?api-version=2015-11-01-preview"
-        ],
-        "X-AMS-APIVersion": [
-          "WebAPI1.0"
-        ],
-        "CacheControl": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "d8d5f073-3a25-4448-8f35-14ce12c3a766"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET",
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
-        ],
-        "x-ms-correlation-request-id": [
-          "74acbe1b-f9c3-4219-a417-89fba2f5ce2b"
-        ],
-        "x-ms-routing-request-id": [
-          "FRANCESOUTH:20220615T154046Z:74acbe1b-f9c3-4219-a417-89fba2f5ce2b"
-        ],
-        "Date": [
-          "Wed, 15 Jun 2022 15:40:46 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/44386315-d5df-4e3d-8017-47a398a39532?api-version=2015-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzLzQ0Mzg2MzE1LWQ1ZGYtNGUzZC04MDE3LTQ3YTM5OGEzOTUzMj9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "243bc8d1-e2c3-4de8-913e-4c35bbd30c19"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.26002",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-AMS-APIVersion": [
-          "WebAPI1.0"
-        ],
-        "CacheControl": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "7859a481-91d1-472c-85ac-67d1857f966f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0",
           "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
@@ -790,13 +534,13 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "ac79e185-90f9-475c-9211-8580b7787492"
+          "3c3f9c7b-9646-4b4a-8f2f-3ce81561bd6a"
         ],
         "x-ms-routing-request-id": [
-          "FRANCESOUTH:20220615T154117Z:ac79e185-90f9-475c-9211-8580b7787492"
+          "FRANCESOUTH:20220628T080244Z:3c3f9c7b-9646-4b4a-8f2f-3ce81561bd6a"
         ],
         "Date": [
-          "Wed, 15 Jun 2022 15:41:16 GMT"
+          "Tue, 28 Jun 2022 08:02:44 GMT"
         ],
         "Content-Length": [
           "304"
@@ -808,17 +552,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Deleting\",\r\n  \"name\": \"44386315-d5df-4e3d-8017-47a398a39532\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/44386315-d5df-4e3d-8017-47a398a39532\",\r\n  \"startTime\": \"Wed, 15 Jun 2022 15:40:46 GMT\"\r\n}",
+      "ResponseBody": "{\r\n  \"status\": \"Updating\",\r\n  \"name\": \"7108ec7a-3bce-4261-a323-3b8ddc07b9a6\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/7108ec7a-3bce-4261-a323-3b8ddc07b9a6\",\r\n  \"startTime\": \"Tue, 28 Jun 2022 08:02:13 GMT\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/44386315-d5df-4e3d-8017-47a398a39532?api-version=2015-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzLzQ0Mzg2MzE1LWQ1ZGYtNGUzZC04MDE3LTQ3YTM5OGEzOTUzMj9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/7108ec7a-3bce-4261-a323-3b8ddc07b9a6?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzLzcxMDhlYzdhLTNiY2UtNDI2MS1hMzIzLTNiOGRkYzA3YjlhNj9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "243bc8d1-e2c3-4de8-913e-4c35bbd30c19"
+          "e9c1359b-5a8b-4ef7-bed5-6194e3dd0481"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.26002",
@@ -834,6 +578,18 @@
         "Pragma": [
           "no-cache"
         ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
         "X-AMS-APIVersion": [
           "WebAPI1.0"
         ],
@@ -841,16 +597,12 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9f0c6493-b513-471b-9041-094f52a3010d"
+          "58fdf7e8-445a-4373-9666-f28eafa3f023"
         ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "Access-Control-Allow-Origin": [
+          "*"
         ],
         "Server": [
-          "Microsoft-IIS/10.0",
           "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
@@ -861,13 +613,13 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "af693631-2505-4ad4-9454-66011edfedef"
+          "34127818-5eec-4e44-8b56-e947c190d5f2"
         ],
         "x-ms-routing-request-id": [
-          "FRANCESOUTH:20220615T154148Z:af693631-2505-4ad4-9454-66011edfedef"
+          "FRANCESOUTH:20220628T080314Z:34127818-5eec-4e44-8b56-e947c190d5f2"
         ],
         "Date": [
-          "Wed, 15 Jun 2022 15:41:47 GMT"
+          "Tue, 28 Jun 2022 08:03:14 GMT"
         ],
         "Content-Length": [
           "304"
@@ -879,17 +631,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Deleting\",\r\n  \"name\": \"44386315-d5df-4e3d-8017-47a398a39532\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/44386315-d5df-4e3d-8017-47a398a39532\",\r\n  \"startTime\": \"Wed, 15 Jun 2022 15:40:46 GMT\"\r\n}",
+      "ResponseBody": "{\r\n  \"status\": \"Updating\",\r\n  \"name\": \"7108ec7a-3bce-4261-a323-3b8ddc07b9a6\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/7108ec7a-3bce-4261-a323-3b8ddc07b9a6\",\r\n  \"startTime\": \"Tue, 28 Jun 2022 08:02:13 GMT\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/44386315-d5df-4e3d-8017-47a398a39532?api-version=2015-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzLzQ0Mzg2MzE1LWQ1ZGYtNGUzZC04MDE3LTQ3YTM5OGEzOTUzMj9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/7108ec7a-3bce-4261-a323-3b8ddc07b9a6?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzLzcxMDhlYzdhLTNiY2UtNDI2MS1hMzIzLTNiOGRkYzA3YjlhNj9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "243bc8d1-e2c3-4de8-913e-4c35bbd30c19"
+          "e9c1359b-5a8b-4ef7-bed5-6194e3dd0481"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.26002",
@@ -912,7 +664,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "50b3a5de-5390-426e-9f69-54eb56549a16"
+          "fe917cf0-ed85-47c4-8ee0-cc36dbf7047c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -932,16 +684,16 @@
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "a2413d1f-e8ec-4329-b1a0-da3fbfe9b86e"
+          "4881a251-e5f0-483f-845e-2a54f6252d59"
         ],
         "x-ms-routing-request-id": [
-          "FRANCESOUTH:20220615T154218Z:a2413d1f-e8ec-4329-b1a0-da3fbfe9b86e"
+          "FRANCESOUTH:20220628T080345Z:4881a251-e5f0-483f-845e-2a54f6252d59"
         ],
         "Date": [
-          "Wed, 15 Jun 2022 15:42:18 GMT"
+          "Tue, 28 Jun 2022 08:03:45 GMT"
         ],
         "Content-Length": [
-          "352"
+          "490"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -950,17 +702,257 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"44386315-d5df-4e3d-8017-47a398a39532\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/44386315-d5df-4e3d-8017-47a398a39532\",\r\n  \"startTime\": \"Wed, 15 Jun 2022 15:40:46 GMT\",\r\n  \"endTime\": \"Wed, 15 Jun 2022 15:42:07 GMT\"\r\n}",
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"7108ec7a-3bce-4261-a323-3b8ddc07b9a6\",\r\n  \"properties\": {\r\n    \"resultStatistics\": {\r\n      \"progress\": 100.0,\r\n      \"ingestedRecords\": 0,\r\n      \"scannedGb\": 0.0\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/7108ec7a-3bce-4261-a323-3b8ddc07b9a6\",\r\n  \"startTime\": \"Tue, 28 Jun 2022 08:02:13 GMT\",\r\n  \"endTime\": \"Tue, 28 Jun 2022 08:03:37 GMT\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH/operationresults/44386315-d5df-4e3d-8017-47a398a39532?api-version=2021-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1ldXMvdGFibGVzL2RhYmVuaGFtUG9jX1NSQ0gvb3BlcmF0aW9ucmVzdWx0cy80NDM4NjMxNS1kNWRmLTRlM2QtODAxNy00N2EzOThhMzk1MzI/YXBpLXZlcnNpb249MjAyMS0xMi0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1ldXMvdGFibGVzL2RhYmVuaGFtUG9jX1NSQ0g/YXBpLXZlcnNpb249MjAyMS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "85e2f31a-d700-407e-ab1c-557ede30894f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH/operationresults/2a9d8fa0-bd8d-4241-8434-21d6d0c2d8a5?api-version=2021-12-01-preview"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/2a9d8fa0-bd8d-4241-8434-21d6d0c2d8a5?api-version=2015-11-01-preview"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e6d41e2d-0e24-409a-bcaa-742c34f1066e"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "06a374de-b701-4456-b02a-505f0971a7d2"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T080354Z:06a374de-b701-4456-b02a-505f0971a7d2"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 08:03:54 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/2a9d8fa0-bd8d-4241-8434-21d6d0c2d8a5?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzLzJhOWQ4ZmEwLWJkOGQtNDI0MS04NDM0LTIxZDZkMGMyZDhhNT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "243bc8d1-e2c3-4de8-913e-4c35bbd30c19"
+          "85e2f31a-d700-407e-ab1c-557ede30894f"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c5943cf4-9285-4c97-ae5c-3bbe25d3cb31"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "1a0f34d7-37f8-4c6b-91d8-3cff4fce2114"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T080424Z:1a0f34d7-37f8-4c6b-91d8-3cff4fce2114"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 08:04:24 GMT"
+        ],
+        "Content-Length": [
+          "304"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Deleting\",\r\n  \"name\": \"2a9d8fa0-bd8d-4241-8434-21d6d0c2d8a5\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/2a9d8fa0-bd8d-4241-8434-21d6d0c2d8a5\",\r\n  \"startTime\": \"Tue, 28 Jun 2022 08:03:53 GMT\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/2a9d8fa0-bd8d-4241-8434-21d6d0c2d8a5?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzLzJhOWQ4ZmEwLWJkOGQtNDI0MS04NDM0LTIxZDZkMGMyZDhhNT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "85e2f31a-d700-407e-ab1c-557ede30894f"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e39323e4-40f9-4662-a8f0-a26d23e80cdc"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "a5d63a57-49d4-4d24-8439-92c1c62ef361"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T080454Z:a5d63a57-49d4-4d24-8439-92c1c62ef361"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 08:04:54 GMT"
+        ],
+        "Content-Length": [
+          "304"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Deleting\",\r\n  \"name\": \"2a9d8fa0-bd8d-4241-8434-21d6d0c2d8a5\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/2a9d8fa0-bd8d-4241-8434-21d6d0c2d8a5\",\r\n  \"startTime\": \"Tue, 28 Jun 2022 08:03:53 GMT\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/2a9d8fa0-bd8d-4241-8434-21d6d0c2d8a5?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzLzJhOWQ4ZmEwLWJkOGQtNDI0MS04NDM0LTIxZDZkMGMyZDhhNT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "85e2f31a-d700-407e-ab1c-557ede30894f"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.26002",
@@ -983,7 +975,78 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5a322e1c-197a-4d92-907d-6bf519bb2377"
+          "1ad718fd-c45c-42a4-ad24-9adeab32640d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "6c48186e-7845-40ad-af68-d18b23502f97"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T080525Z:6c48186e-7845-40ad-af68-d18b23502f97"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 08:05:25 GMT"
+        ],
+        "Content-Length": [
+          "352"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"2a9d8fa0-bd8d-4241-8434-21d6d0c2d8a5\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/2a9d8fa0-bd8d-4241-8434-21d6d0c2d8a5\",\r\n  \"startTime\": \"Tue, 28 Jun 2022 08:03:53 GMT\",\r\n  \"endTime\": \"Tue, 28 Jun 2022 08:05:10 GMT\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-eus/tables/dabenhamPoc_SRCH/operationresults/2a9d8fa0-bd8d-4241-8434-21d6d0c2d8a5?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1ldXMvdGFibGVzL2RhYmVuaGFtUG9jX1NSQ0gvb3BlcmF0aW9ucmVzdWx0cy8yYTlkOGZhMC1iZDhkLTQyNDEtODQzNC0yMWQ2ZDBjMmQ4YTU/YXBpLXZlcnNpb249MjAyMS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "85e2f31a-d700-407e-ab1c-557ede30894f"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "0c575808-bc15-406f-b624-f94791b532b0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1003,13 +1066,13 @@
           "11995"
         ],
         "x-ms-correlation-request-id": [
-          "01bd65b1-3a40-40c5-a900-1c3a691d3360"
+          "d4c94d38-80cc-4337-a244-38f9d4fd3fef"
         ],
         "x-ms-routing-request-id": [
-          "FRANCESOUTH:20220615T154228Z:01bd65b1-3a40-40c5-a900-1c3a691d3360"
+          "FRANCESOUTH:20220628T080533Z:d4c94d38-80cc-4337-a244-38f9d4fd3fef"
         ],
         "Date": [
-          "Wed, 15 Jun 2022 15:42:27 GMT"
+          "Tue, 28 Jun 2022 08:05:33 GMT"
         ],
         "Content-Length": [
           "97"
