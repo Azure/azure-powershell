@@ -346,7 +346,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IKustoIdentity>: Identity Parameter
+INPUTOBJECT `<IKustoIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[ClusterName <String>]`: The name of the Kusto cluster.
   - `[DataConnectionName <String>]`: The name of the data connection.
@@ -362,7 +362,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   - `[ScriptName <String>]`: The name of the Kusto database script.
   - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
-PARAMETER <IScript>: Class representing a database script.
+PARAMETER `<IScript>`: Class representing a database script.
   - `[AzureAsyncOperation <String>]`: 
   - `[Content <String>]`: The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with scriptUrl and scriptUrlSasToken properties.
   - `[ContinueOnError <Boolean?>]`: Flag that indicates whether to continue if one of the command fails.
