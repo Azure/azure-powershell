@@ -1,0 +1,45 @@
+{
+  "Get-AzReservationsAppliedReservationList+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/6d5e2387-bdf5-4ca1-83db-795fd2398b93/providers/Microsoft.Capacity/appliedReservations?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6d5e2387-bdf5-4ca1-83db-795fd2398b93/providers/Microsoft.Capacity/appliedReservations?api-version=2022-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "f266d6ef-0e03-4d29-a35b-de30e9be04ee" ],
+        "CommandName": [ "Get-AzReservationsAppliedReservationList" ],
+        "FullCommandName": [ "Get-AzReservationsAppliedReservationList_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "westus:3650e898-0f7d-4b7c-b25d-54089e1d462b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-correlation-request-id": [ "d23a4261-2077-4936-ab07-4af59f03f13c" ],
+        "x-ms-routing-request-id": [ "WESTUS:20220627T222005Z:d23a4261-2077-4936-ab07-4af59f03f13c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Mon, 27 Jun 2022 22:20:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1449" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/6d5e2387-bdf5-4ca1-83db-795fd2398b93/providers/microsoft.capacity/AppliedReservations/default\",\"type\":\"Microsoft.Capacity/AppliedReservations\",\"name\":\"default\",\"properties\":{\"reservationOrderIds\":{\"value\":[\"/providers/Microsoft.Capacity/reservationorders/76c7b820-a0b5-43c4-9bc7-421f64b7cd39\",\"/providers/Microsoft.Capacity/reservationorders/d80e4407-0a7f-4f36-b516-badf9ecf059d\",\"/providers/Microsoft.Capacity/reservationorders/8c497bca-74b3-4fc2-9242-2f6e271b8d32\",\"/providers/Microsoft.Capacity/reservationorders/e9123db4-8e9b-4a4d-9d6c-a942a4fb21bf\",\"/providers/Microsoft.Capacity/reservationorders/67a0fb91-490b-4741-ae98-a51662bbde0d\",\"/providers/Microsoft.Capacity/reservationorders/d526ff8d-826b-4d4a-a68b-956382ab01f2\",\"/providers/Microsoft.Capacity/reservationorders/9359bc0b-e9e1-4b03-9e9e-a82e1c30d719\",\"/providers/Microsoft.Capacity/reservationorders/b19f3e01-6175-4b88-840c-4cd640f563e8\",\"/providers/Microsoft.Capacity/reservationorders/30fa3b85-6d4d-4a5c-b67d-0cd809ca5d3b\",\"/providers/Microsoft.Capacity/reservationorders/c11a9660-11e6-4b6f-8f2c-90344eab4072\",\"/providers/Microsoft.Capacity/reservationorders/c848cae0-7ade-43c8-a42c-52cc53413a72\",\"/providers/Microsoft.Capacity/reservationorders/545d132c-6066-47ad-9f39-e67e542caef2\",\"/providers/Microsoft.Capacity/reservationorders/9292c9d8-4f40-4f69-b914-f6ae745c9a2e\",\"/providers/Microsoft.Capacity/reservationorders/3ecd01a0-d1bc-4438-9264-363b1525c442\"]}}}",
+      "isContentBase64": false
+    }
+  }
+}
