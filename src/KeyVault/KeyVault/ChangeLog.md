@@ -23,6 +23,7 @@
 * [Breaking Change] Changed output properties `ExpiresIn`, `TimeAfterCreate` and `TimeBeforeExpiry` of `Set-AzKeyVaultKeyRotationPolicy` and `Get-AzKeyVaultKeyRotationPolicy` from TimeSpan? to string.
 * Supported creating/updating key with release policy in a Managed HSM
 * Removed default value for key vault creation
+* Changed default access policies for Key Vault secret, certificate and storage as `All`
 
 ## Version 4.5.0
 * Added `Rotate` into the list of permissions to keys [#17970]
