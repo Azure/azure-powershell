@@ -143,7 +143,7 @@ Traffic Manager                       | `Az.TrafficManager`                     
 Azure VMware Solution                 | `Az.VMware`                             | [![VMware]][VMwareGallery]
 Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery]
 Windows Iot Services                  | `Az.WindowsIotServices`                 | [![WindowsIotServices]][WindowsIotServicesGallery]
-Machine Learning Services             | `Az.MachineLearningServices`                 | [![MachineLearningServices]][MachineLearningServices]
+Machine Learning Services             | `Az.MachineLearningServices`            | [![MachineLearningServices]][MachineLearningServices]
 
 <!-- References -->
 
