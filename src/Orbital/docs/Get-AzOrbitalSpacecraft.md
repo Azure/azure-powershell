@@ -40,7 +40,7 @@ Gets the specified spacecraft in a specified resource group
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the specified spacecraft.
 ```powershell
 Get-AzOrbitalSpacecraft
 ```
@@ -48,38 +48,38 @@ Get-AzOrbitalSpacecraft
 ```output
 Name                     Location NoradId TitleLine   ResourceGroupName
 ----                     -------- ------- ---------   -----------------
-azpstest-test-spacecraft westus2  12345   ISS (ZARYA) azpstest_gp
-azps-orbitalspacecraft   eastus   12345   ISS (ZARYA) azpstest_gp
+azpstest-test-spacecraft westus2  12345   ISS (ZARYA) azpstest-gp
+azps-orbitalspacecraft   eastus   12345   ISS (ZARYA) azpstest-gp
 ```
 
-{{ Add description here }}
+List the specified spacecraft.
 
-### Example 2: {{ Add title here }}
+### Example 2: Gets the specified spacecraft in a specified resource group.
 ```powershell
-Get-AzOrbitalSpacecraft -ResourceGroupName azpstest_gp
+Get-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp
 ```
 
 ```output
 Name                     Location NoradId TitleLine   ResourceGroupName
 ----                     -------- ------- ---------   -----------------
-azpstest-test-spacecraft westus2  12345   ISS (ZARYA) azpstest_gp
-azps-orbitalspacecraft   eastus   12345   ISS (ZARYA) azpstest_gp
+azpstest-test-spacecraft westus2  12345   ISS (ZARYA) azpstest-gp
+azps-orbitalspacecraft   eastus   12345   ISS (ZARYA) azpstest-gp
 ```
 
-{{ Add description here }}
+Gets the specified spacecraft in a specified resource group.
 
-### Example 3: {{ Add title here }}
+### Example 3: Get the specified spacecraft in a specified Name.
 ```powershell
-Get-AzOrbitalSpacecraft -ResourceGroupName azpstest_gp -Name azps-orbitalspacecraft
+Get-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name azps-orbitalspacecraft
 ```
 
 ```output
 Name                   Location NoradId TitleLine   ResourceGroupName
 ----                   -------- ------- ---------   -----------------
-azps-orbitalspacecraft eastus   12345   ISS (ZARYA) azpstest_gp
+azps-orbitalspacecraft eastus   12345   ISS (ZARYA) azpstest-gp
 ```
 
-{{ Add description here }}
+Get the specified spacecraft in a specified Name.
 
 ## PARAMETERS
 

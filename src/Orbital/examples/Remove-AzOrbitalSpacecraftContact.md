@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes a specified contact.
 ```powershell
-{{ Add code here }}
+Remove-AzOrbitalSpacecraftContact -Name azps-orbital-contact-0628 -ResourceGroupName azpstest-gp -SpacecraftName azps-orbitalspacecraft
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Deletes a specified contact.
