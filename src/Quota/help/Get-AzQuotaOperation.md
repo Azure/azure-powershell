@@ -39,7 +39,6 @@ Microsoft.Quota/register/action
 
 This command lists all the operations supported by the Microsoft.Quota resource provider.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
