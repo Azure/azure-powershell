@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,14 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using Microsoft.Azure.PowerShell.Common.Config;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
-    internal class InvocationInfoAdapter : InternalInvocationInfo
+    public static class ConfigDefinitionExtensions
     {
-        public InvocationInfoAdapter(InvocationInfo invocationInfo) : base(
-            invocationInfo?.MyCommand?.ModuleName, invocationInfo?.MyCommand?.Name)
-        { }
+        /// <summary>
+        /// Convert a <see cref="ConfigDefinition"/> to a <see cref="ConfigData"/>
+        /// representing the definition with its default value.
+        /// </summary>
+        /// <param name="configDefinition">Definition of the config.</param>
+        public static ConfigData ToDefaultConfigData(this ConfigDefinition configDefinition)
+        {
+            return new ConfigData(configDefinition,
+               configDefinition.DefaultValue,
+               ConfigScope.Default,
+               ConfigFilter.GlobalAppliesTo);
+        }
     }
 }

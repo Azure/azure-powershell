@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.Authentication.Config;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using Xunit;
 using System.Linq;
+using Xunit;
 
 namespace Microsoft.Azure.Authentication.Test.Config
 {
