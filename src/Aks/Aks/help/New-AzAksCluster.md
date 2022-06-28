@@ -24,7 +24,7 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-NetworkPlugin <String>] [-NetworkPolicy <String>] [-PodCidr <String>] [-ServiceCidr <String>]
  [-DnsServiceIP <String>] [-DockerBridgeCidr <String>] [-NodePoolLabel <Hashtable>]
  [-AksCustomHeader <Hashtable>] [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey] [-EnableNodePublicIp]
- [-NodePublicIPPrefixID <String>] [-ResourceGroupName] <String> [-Name] <String>
+ [-NodePublicIPPrefixID <String>] [-AvailabilityZone <String[]>] [-ResourceGroupName] <String> [-Name] <String>
  [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>] [-LinuxProfileAdminUserName <String>]
  [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
  [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
@@ -157,6 +157,21 @@ ResourceId of user assign managed identity for cluster.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AvailabilityZone
+Availability zones for cluster. Must use VirtualMachineScaleSets AgentPoolType.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

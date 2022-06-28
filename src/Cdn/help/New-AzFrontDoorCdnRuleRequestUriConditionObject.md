@@ -23,27 +23,18 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for DeliveryRuleRequestUriCondition
 ```powershell
-{{ Add code here }}
+ New-AzFrontDoorCdnRuleRequestUriConditionObject -Name RequestUri -ParameterOperator Equal -ParameterMatchValue /test
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+RequestUri
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

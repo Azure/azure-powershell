@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete an AzureFrontDoor profile under the resource group}}
 ```powershell
-{{ Add code here }}
+Remove-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6
 ```
 
-```output
-{{ Add output here }}
-```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+### Example 1: Delete an AzureFrontDoor profile under the resource group via identity}}
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 | Remove-AzFrontDoorCdnProfile
 ```
 
-```output
-{{ Add output here }}
-```
 
-{{ Add description here }}
 

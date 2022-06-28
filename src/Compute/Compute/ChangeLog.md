@@ -29,6 +29,7 @@
     - `New-AzDiskEncryptionSetConfig`
     - `Update-AzDiskEncryptionSet`
 * Added `-TreatFailureAsDeploymentFailure` to cmdlets `Add-AzVmGalleryApplication` and `Add-AzVmssGalleryApplication`
+* Removed Exceptions for when SinglePlacementGroup is set to true in 'OrchestrationMode'
 
 ## Version 4.27.0
 * Edited `New-AzVm` cmdlet internal logic to use the `PlatformFaultDomain` value in the `PSVirtualMachine` object passed to it in the new virtual machine.
