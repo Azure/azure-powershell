@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponent
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights
 schema: 2.0.0
 ---
 
