@@ -22,6 +22,7 @@
 * [Breaking Change] Changed parameter `ExpiresIn` in `Set-AzKeyVaultKeyRotationPolicy` from TimeSpan? to string. It must be an ISO 8601 duration like "P30D" for 30 days.
 * [Breaking Change] Changed output properties `ExpiresIn`, `TimeAfterCreate` and `TimeBeforeExpiry` of `Set-AzKeyVaultKeyRotationPolicy` and `Get-AzKeyVaultKeyRotationPolicy` from TimeSpan? to string.
 * Supported creating/updating key with release policy in a Managed HSM
+* Removed default value for key vault creation
 
 ## Version 4.5.0
 * Added `Rotate` into the list of permissions to keys [#17970]
