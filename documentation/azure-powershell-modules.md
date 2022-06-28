@@ -68,6 +68,7 @@ Stack Edge Order                      | `Az.EdgeOrder`                          
 Elastic on Azure                      | `Az.Elastic`                            | [![Elastic]][ElasticGallery]
 Event Grid                            | `Az.EventGrid`                          | [![EventGrid]][EventGridGallery]
 Event Hubs                            | `Az.EventHub`                           | [![EventHub]][EventHubGallery]
+Fluid Relay                           | `Az.FluidRelay`                         | [![FluidRelay]][FluidRelayGallery]
 Front Door                            | `Az.FrontDoor`                          | [![FrontDoor]][FrontDoorGallery]
 Functions                             | `Az.Functions`                          | [![Functions]][FunctionsGallery]
 Guest Configuration                   | `Az.GuestConfiguration`                 | [![GuestConfiguration]][GuestConfigurationGallery]
@@ -206,6 +207,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [Elastic]:                    https://img.shields.io/powershellgallery/v/Az.Elastic.svg?style=flat-square&label=Az.Elastic
 [EventGrid]:                  https://img.shields.io/powershellgallery/v/Az.EventGrid.svg?style=flat-square&label=Az.EventGrid
 [EventHub]:                   https://img.shields.io/powershellgallery/v/Az.EventHub.svg?style=flat-square&label=Az.EventHub
+[FluidRelay]                  https://img.shields.io/powershellgallery/v/Az.FluidRelay.svg?style=flat-square&label=Az.FluidRelay
 [FrontDoor]:                  https://img.shields.io/powershellgallery/v/Az.FrontDoor.svg?style=flat-square&label=Az.FrontDoor
 [Functions]:                  https://img.shields.io/powershellgallery/v/Az.Functions.svg?style=flat-square&label=Az.Functions
 [GuestConfiguration]:         https://img.shields.io/powershellgallery/v/Az.GuestConfiguration.svg?style=flat-square&label=Az.GuestConfiguration
