@@ -93,7 +93,7 @@ Accept wildcard characters: False
 {{ Fill InputCluster Description }}
 
 ```yaml
-Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster.PSCluster
 Parameter Sets: DeleteByInputObjectParameterSet
 Aliases:
 
@@ -171,7 +171,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster.PSCluster
 
 ### System.String
 

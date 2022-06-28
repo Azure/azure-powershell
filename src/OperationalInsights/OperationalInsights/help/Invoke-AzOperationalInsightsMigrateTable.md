@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/Convert-AzOperationalInsightsMigrateTable
+online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsMigrateTable
 schema: 2.0.0
 ---
 
-# Convert-AzOperationalInsightsMigrateTable
+# Invoke-AzOperationalInsightsMigrateTable
 
 ## SYNOPSIS
 Migrate a Log Analytics table from support of the Data Collector API and Custom Fields features to support of Data Collection Rule-based Custom Logs.
@@ -13,7 +13,7 @@ Migrate a Log Analytics table from support of the Data Collector API and Custom 
 ## SYNTAX
 
 ```
-Convert-AzOperationalInsightsMigrateTable [-ResourceGroupName] <String> [-WorkspaceName] <String>
+Invoke-AzOperationalInsightsMigrateTable [-ResourceGroupName] <String> [-WorkspaceName] <String>
  [-TableName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Migrate a Log Analytics table from support of the Data Collector API and Custom 
 
 ### Example 1
 ```powershell
-PS C:\> Convert-AzOperationalInsightsMigrateTable -ResourceGroupName rgName -WorkspaceName dabenham-pshTest -TableName "dabenham2_CL"
+PS C:\> Invoke-AzOperationalInsightsMigrateTable -ResourceGroupName rgName -WorkspaceName dabenham-pshTest -TableName "dabenham2_CL"
 True
 ```
 

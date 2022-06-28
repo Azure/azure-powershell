@@ -170,7 +170,7 @@ Accept wildcard characters: False
 Specifies the cluster to be updated.
 
 ```yaml
-Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster.PSCluster
 Parameter Sets: AllParameterSet
 Aliases:
 
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster.PSCluster
 Parameter Sets: UpdateByInputObjectParameterSet
 Aliases:
 
@@ -377,11 +377,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster.PSCluster
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster.PSCluster
 
 ## NOTES
 

@@ -17,8 +17,8 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 {
-    [Cmdlet("Convert", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsMigrateTable", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class ConvertAzureOperationalInsightsMigrateTableCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsMigrateTable", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class InvokeAzureOperationalInsightsMigrateTableCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]

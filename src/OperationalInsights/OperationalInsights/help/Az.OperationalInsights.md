@@ -95,11 +95,11 @@ Gets the shared keys for a workspace.
 ### [Get-AzOperationalInsightsWorkspaceUsage](Get-AzOperationalInsightsWorkspaceUsage.md)
 Gets the usage data for a workspace.
 
+### [Invoke-AzOperationalInsightsMigrateTable](Invoke-AzOperationalInsightsMigrateTable.md)
+Migrate a Log Analytics table from support of the Data Collector API and Custom Fields features to support of Data Collection Rule-based Custom Logs.
+
 ### [Invoke-AzOperationalInsightsQuery](Invoke-AzOperationalInsightsQuery.md)
 Returns search results based on the specified parameters.
-
-### [Convert-AzOperationalInsightsMigrateTable](Convert-AzOperationalInsightsMigrateTable.md)
-Migrate a Log Analytics table from support of the Data Collector API and Custom Fields features to support of Data Collection Rule-based Custom Logs.
 
 ### [New-AzOperationalInsightsApplicationInsightsDataSource](New-AzOperationalInsightsApplicationInsightsDataSource.md)
 Collect logs from given Application-Insights application.
