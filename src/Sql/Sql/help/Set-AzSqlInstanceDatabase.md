@@ -22,7 +22,7 @@ Set-AzSqlInstanceDatabase [-Name] <String> [-InstanceName] <String> [-ResourceGr
 ### SetInstanceDatabaseFromAzureSqlManagedInstanceModel
 ```
 Set-AzSqlInstanceDatabase [[-Name] <String>] [-Tag <Hashtable>]
- [-TopLevelResourceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-InstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -112,7 +112,7 @@ The database object
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 Parameter Sets: SetInstanceDatabaseFromAzureSqlManagedDatabaseModel
-Aliases: ResourceObject
+Aliases: DatabaseObject
 
 Required: True
 Position: 0
@@ -184,7 +184,7 @@ The instance database resource id
 ```yaml
 Type: System.String
 Parameter Sets: SetInstanceDatabaseFromAzureResourceId
-Aliases: ParentResourceId
+Aliases:
 
 Required: True
 Position: 0
@@ -201,14 +201,14 @@ Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TopLevelResourceObject
+### -InstanceObject
 The managed instance object
 
 ```yaml
