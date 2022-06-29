@@ -34,7 +34,7 @@ Patch an existing Kubernetes Cluster Extension.
 
 ### Example 1: Update an existing Kubernetes Cluster Extension.
 ```powershell
-PS C:\> Update-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp -ConfigurationProtectedSetting @{"aa"="bb"}
+Update-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp -ConfigurationProtectedSetting @{"aa"="bb"}
 
 Name               ExtensionType           Version ProvisioningState AutoUpgradeMinorVersion ReleaseTrain
 ----               -------------           ------- ----------------- ----------------------- ------------
