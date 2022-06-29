@@ -55,7 +55,7 @@ Location Name                 Type                                    Etag
 westus2  dnsForwardingRuleset Microsoft.Network/dnsForwardingRulesets "04005592-0000-0800-0000-60e7ec170000"
 ```
 
-This command updates DNS Forwarding ruleset via identity (adding metadata)
+This command updates DNS Forwarding ruleset via identity (adding tag)
 
 ## PARAMETERS
 
