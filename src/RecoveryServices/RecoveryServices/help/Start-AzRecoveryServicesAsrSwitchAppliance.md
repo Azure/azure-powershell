@@ -27,7 +27,7 @@ The **Start-AzRecoveryServicesAsrSwitchAppliance** cmdlet starts the switch appl
 ### Example 1
 ```powershell
 $currentJob = Start-AzRecoveryServicesAsrSwitchAppliance -Fabric $Fabric `
-    -ReplicationProtectedItem $RPI -TargetApplianceName $TargetApplianceName
+-ReplicationProtectedItem $RPI -TargetApplianceName $TargetApplianceName
 ```
 
 Starts the switch appliance for the specified replicated protected item and returns the ASR job used to track the operation.
