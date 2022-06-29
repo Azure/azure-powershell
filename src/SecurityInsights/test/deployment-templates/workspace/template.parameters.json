@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspaceName": {
+      "value": "asptest8xu4wd"
+    },
+    "newOnboardingStateWS": {
+      "value": "asptest0u4c9l"
+    },
+    "removeOnboardingStateWS": {
+      "value": "asptestdlvh1s"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dataConnectorId": {
+      "value": "88da8507-46cb-4c34-9cf3-189e58b34c9e"
+    },
+    "updateDataConnectorId": {
+      "value": "b4b8bb52-2917-4179-a28d-fb197dc52aa6"
+    },
+    "workspaceName": {
+      "value": "asptest8xu4wd"
+    }
+  }
+}

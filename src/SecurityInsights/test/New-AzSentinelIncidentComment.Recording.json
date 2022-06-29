@@ -1,0 +1,74 @@
+{
+  "New-AzSentinelIncidentComment+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/incidents/ded5d1ef-0f12-402a-adab-bbd723756ea1?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/incidents/ded5d1ef-0f12-402a-adab-bbd723756ea1?api-version=2021-09-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"severity\": \"Informational\",\n    \"status\": \"New\",\n    \"title\": \"NewIncidentCommentPSTest\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "119" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
+        "x-ms-request-id": [ "b9a2fecf-a534-4b99-b1f6-db6642e90197" ],
+        "x-ms-correlation-request-id": [ "b9a2fecf-a534-4b99-b1f6-db6642e90197" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T020809Z:b9a2fecf-a534-4b99-b1f6-db6642e90197" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:08:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1220" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/Incidents/ded5d1ef-0f12-402a-adab-bbd723756ea1\",\"name\":\"ded5d1ef-0f12-402a-adab-bbd723756ea1\",\"etag\":\"\\\"3c00ec7a-0000-0100-0000-61b559890000\\\"\",\"type\":\"Microsoft.SecurityInsights/Incidents\",\"properties\":{\"title\":\"NewIncidentCommentPSTest\",\"severity\":\"Informational\",\"status\":\"New\",\"owner\":{\"objectId\":null,\"email\":null,\"assignedTo\":null,\"userPrincipalName\":null,\"ownerType\":null},\"labels\":[],\"lastModifiedTimeUtc\":\"2021-12-12T02:08:09.5235385Z\",\"createdTimeUtc\":\"2021-12-12T02:08:09.5235385Z\",\"incidentNumber\":24,\"additionalData\":{\"alertsCount\":0,\"bookmarksCount\":0,\"commentsCount\":0,\"alertProductNames\":[],\"tactics\":[]},\"relatedAnalyticRuleIds\":[],\"incidentUrl\":\"https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/Incidents/ded5d1ef-0f12-402a-adab-bbd723756ea1\",\"providerName\":\"Azure Sentinel\",\"providerIncidentId\":\"24\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzSentinelIncidentComment+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/incidents/ded5d1ef-0f12-402a-adab-bbd723756ea1/comments/af24ae68-4352-4fb3-837b-8bce51dae455?api-version=2021-09-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/incidents/ded5d1ef-0f12-402a-adab-bbd723756ea1/comments/af24ae68-4352-4fb3-837b-8bce51dae455?api-version=2021-09-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"message\": \"NewIncidentCommentPSTest\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "67" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
+        "x-ms-request-id": [ "2dc93090-c394-4f85-bf6e-2bb4d0f38179" ],
+        "x-ms-correlation-request-id": [ "2dc93090-c394-4f85-bf6e-2bb4d0f38179" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T020810Z:2dc93090-c394-4f85-bf6e-2bb4d0f38179" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:08:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "789" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/Incidents/ded5d1ef-0f12-402a-adab-bbd723756ea1/Comments/af24ae68-4352-4fb3-837b-8bce51dae455\",\"name\":\"af24ae68-4352-4fb3-837b-8bce51dae455\",\"etag\":\"\\\"3c00f17a-0000-0100-0000-61b559890000\\\"\",\"type\":\"Microsoft.SecurityInsights/Incidents/Comments\",\"properties\":{\"message\":\"NewIncidentCommentPSTest\",\"createdTimeUtc\":\"2021-12-12T02:08:09.9001761Z\",\"lastModifiedTimeUtc\":\"2021-12-12T02:08:09.9001761Z\",\"author\":{\"objectId\":\"2b53ce42-3ff1-4523-a239-0f377d3e0fdb\",\"email\":\"ndicola@buildseccxpninja.onmicrosoft.com\",\"name\":\"Nicholas DiCola\",\"userPrincipalName\":\"ndicola@buildseccxpninja.onmicrosoft.com\"}}}",
+      "isContentBase64": false
+    }
+  }
+}
