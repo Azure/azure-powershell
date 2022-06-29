@@ -39,6 +39,11 @@
     "alias": "VM Snapshots"
   },
   {
+    "regex": "FluidRelay",
+    "group": "Fluid Relay",
+    "alias": "Fluid Relay"
+  },
+  {
     "regex": "Image",
     "group": "Virtual Machines",
     "alias": "VM Images"
