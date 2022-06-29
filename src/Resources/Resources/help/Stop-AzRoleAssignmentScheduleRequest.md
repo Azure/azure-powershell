@@ -31,9 +31,9 @@ Cancels a pending role assignment schedule request.
 
 ### Example 1: Cancel a pending role assignment schedule request
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-PS C:\> $name = "47f8978c-5d8d-4fbf-b4b6-2f43eeb43ec6"
-PS C:\> Stop-AzRoleAssignmentScheduleRequest -Scope $scope -Name $name
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+$name = "47f8978c-5d8d-4fbf-b4b6-2f43eeb43ec6"
+Stop-AzRoleAssignmentScheduleRequest -Scope $scope -Name $name
 ```
 
 You can use this operation to cancel a `roleAssignmentScheduleRequest` which has not been provisioned yet.
@@ -167,7 +167,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
+INPUTOBJECT `<IAuthorizationIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[RoleAssignmentScheduleInstanceName <String>]`: The name (hash of schedule name + time) of the role assignment schedule to get.
   - `[RoleAssignmentScheduleName <String>]`: The name (guid) of the role assignment schedule to get.

@@ -311,7 +311,7 @@ CERTBASEDSECURITYPRINCIPAL <ICertBasedSecurityPrincipal[]>: Array of all cert ba
   - `[Cert <String>]`: Public key of the user cert (.pem or .cer)
   - `[LedgerRoleName <LedgerRoleName?>]`: LedgerRole associated with the Security Principal of Ledger
 
-INPUTOBJECT <IConfidentialLedgerIdentity>: Identity Parameter
+INPUTOBJECT `<IConfidentialLedgerIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[LedgerName <String>]`: Name of the Confidential Ledger
   - `[ResourceGroupName <String>]`: The name of the resource group.

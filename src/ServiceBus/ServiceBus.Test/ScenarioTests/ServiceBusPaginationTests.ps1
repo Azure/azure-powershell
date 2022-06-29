@@ -103,3 +103,17 @@ function ServiceBusPaginationTests {
 
 	
 }
+
+function PrivateEndpointPagination{
+	#Max allowed private endpoints : 120
+	$resourceGroupName = "ps-testing"
+	$namespaceName = "sb-ps-pagination-testing"
+	
+	$listOfPrivateEndpoints = Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
+
+	Assert-AreEqual 120 $listOfPrivateEndpoints.Count
+
+    $namespace = Get-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
+
+    Assert-AreEqual 120 $namespace.PrivateEndpointConnections.Count
+}

@@ -1,5 +1,9 @@
 [
   {
+    "alias": "Container Apps",
+    "module": "App"
+  },  
+  {
     "alias": "Confidential Ledger",
     "module": "ConfidentialLedger"
   },
@@ -733,5 +737,9 @@
   {
     "alias": "ServiceLinker",
     "module": "ServiceLinker"
+  },
+  {
+    "alias": "NetworkFunction",
+    "module": "NetworkFunction"
   }
 ]

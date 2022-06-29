@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete an AzureCDN profile under the resource group
 ```powershell
-{{ Add code here }}
+Remove-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn-001
 ```
 
-```output
-{{ Add output here }}
-```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete an AzureCDN profile under the resource group via identity}}
 ```powershell
-{{ Add code here }}
+Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-cdn001 | Remove-AzCdnProfile
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

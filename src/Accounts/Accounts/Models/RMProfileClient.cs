@@ -601,7 +601,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 {
                                     WriteWarningMessage(string.Format(
                                         "TenantId '{0}' contains more than one active subscription. First one will be selected for further use. " +
-                                        "To select another subscription, use Set-AzContext.",
+                                        "To select another subscription, use Set-AzContext. " +
+                                        Environment.NewLine +
+                                        "To override which subscription Connect-AzAccount selects by default, " +
+                                        "use `Update-AzConfig -DefaultSubscriptionForLogin 00000000-0000-0000-0000-000000000000`. " +
+                                        "Go to https://go.microsoft.com/fwlink/?linkid=2200610 for more information.",
                                         accessToken.TenantId));
                                 }
                                 subscription = subscription ?? subscriptions.First();

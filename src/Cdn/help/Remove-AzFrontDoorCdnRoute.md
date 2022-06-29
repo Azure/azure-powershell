@@ -30,27 +30,12 @@ Deletes an existing route with the specified route name under the specified subs
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete an AzureFrontDoor route under the AzureFrontDoor profile
 ```powershell
-{{ Add code here }}
+Remove-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete an AzureFrontDoor route under the AzureFrontDoor profile
 
 ## PARAMETERS
 

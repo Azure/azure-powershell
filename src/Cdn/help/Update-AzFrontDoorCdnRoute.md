@@ -42,27 +42,18 @@ Updates an existing route with the specified route name under the specified subs
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an AzureFrontDoor route under the AzureFrontDoor profile
 ```powershell
-{{ Add code here }}
+Update-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -EnabledState "Enabled"
 ```
 
 ```output
-{{ Add output here }}
+Name     ResourceGroupName
+----     -----------------
+route001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update an AzureFrontDoor route under the AzureFrontDoor profile
 
 ## PARAMETERS
 
