@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCI-help.xml
+external help file:
 Module Name: Az.StackHCI
 online version: https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportsessionhistory
 schema: 2.0.0
@@ -13,8 +13,8 @@ Gets Remote Support Session History Details.
 ## SYNTAX
 
 ```
-Get-AzStackHCIRemoteSupportSessionHistory [[-SessionId] <String>] [-IncludeSessionTranscript]
- [[-FromDate] <DateTime>] [<CommonParameters>]
+Get-AzStackHCIRemoteSupportSessionHistory [[-SessionId] <String>] [[-FromDate] <DateTime>]
+ [-IncludeSessionTranscript] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,14 +22,24 @@ Session history represents all remote accesses made by Microsoft Support for eit
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1:
 ```powershell
-Get-AzStackHCIRemoteSupportSessionHistory -SessionId 467e3234-13f4-42f2-9422-81db248930fa -IncludeSessionTranscript $true
+Get-AzStackHCIRemoteSupportSessionHistory 
 ```
+
+```output
+Microsoft.AzureStack.Deployment.RemoteSupport is loaded already ...
+Listing Session History for last '7' days.
+No remote support session exists.
+```
+
+Gets Session Transcript for the particular session Id when access was made by Microsoft Support for either Diagnostics or DiagnosticsRepair based on the Access Level granted.
 
 ## PARAMETERS
 
 ### -FromDate
+Optional.
+Defaults to last 7 days.
 Indicates date from where to start listing sessions from until now.
 
 ```yaml
@@ -38,14 +48,17 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
-Default value: False
+Position: 1
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -IncludeSessionTranscript
-Indicates whether to include complete session transcript. Transcript provides details on all operations performed during the session.
+Optional.
+Defaults to false.
+Indicates whether to include complete session transcript.
+Transcript provides details on all operations performed during the session.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -54,13 +67,15 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SessionId
-Session Id to get details for a specific session. If omitted then lists all sessions starting from date 'FromDate'.
+Optional.
+Session Id to get details for a specific session.
+If omitted then lists all sessions starting from date 'FromDate'.
 
 ```yaml
 Type: System.String
@@ -68,8 +83,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: [System.String]::Empty
+Position: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -81,6 +96,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Boolean
+
 ## NOTES
 
+ALIASES
+
 ## RELATED LINKS
+

@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCI-help.xml
+external help file:
 Module Name: Az.StackHCI
 online version: https://docs.microsoft.com/powershell/module/az.stackhci/install-azstackhciremotesupport
 schema: 2.0.0
@@ -13,7 +13,7 @@ Installs Remote Support.
 ## SYNTAX
 
 ```
-Install-AzStackHCIRemoteSupport [-WhatIf] [-Confirm] [<CommonParameters>]
+Install-AzStackHCIRemoteSupport [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,10 +21,31 @@ Install-AzStackHCIRemoteSupport installs Remote Support Deployment module.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1: 
 ```powershell
 Install-AzStackHCIRemoteSupport
 ```
+
+```output
+Status   Name               DisplayName
+------   ----               -----------
+Stopped  RemoteSupportAgent Azure Stack Remote Support Agent
+
+Property      : {}
+PSPath        : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\Software\Microsoft\RemoteSupportAgent
+PSParentPath  : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\Software\Microsoft
+PSChildName   : RemoteSupportAgent
+PSDrive       : HKLM
+PSProvider    : Microsoft.PowerShell.Core\Registry
+PSIsContainer : True
+SubKeyCount   : 0
+View          : Default
+Handle        : Microsoft.Win32.SafeHandles.SafeRegistryHandle
+ValueCount    : 0
+Name          : HKEY_LOCAL_MACHINE\SYSTEM\Software\Microsoft\RemoteSupportAgent
+```
+
+Installs Remort Support
 
 ## PARAMETERS
 
@@ -44,7 +65,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -65,6 +87,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Boolean
+
 ## NOTES
 
+ALIASES
+
 ## RELATED LINKS
+
