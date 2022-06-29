@@ -40,18 +40,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// Initializes a new instance of the Rule class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="action">Represents the filter actions which are
-        /// allowed for the transformation of a message that have been matched
-        /// by a filter expression.</param>
-        /// <param name="filterType">Filter type that is evaluated against a
-        /// BrokeredMessage. Possible values include: 'SqlFilter',
-        /// 'CorrelationFilter'</param>
-        /// <param name="sqlFilter">Properties of sqlFilter</param>
-        /// <param name="correlationFilter">Properties of
-        /// correlationFilter</param>
+        /// <param name="rule"></param>
         public PSRulesAttributes(Rule rule)
         {
             Name = rule.Name;

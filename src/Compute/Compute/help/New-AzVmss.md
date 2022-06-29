@@ -45,11 +45,11 @@ Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set 
 
 ### Example 1: Create a VMSS using the SimpleParameterSet
 ```powershell
-$vmssName = <VMSSNAME>
+$vmssName = 'VMSSNAME'
 # Create credentials, I am using one way to create credentials, there are others as well. 
 # Pick one that makes the most sense according to your use case.
-$vmPassword = ConvertTo-SecureString <PASSWORD_HERE> -AsPlainText -Force
-$vmCred = New-Object System.Management.Automation.PSCredential(<USERNAME_HERE>, $vmPassword)
+$vmPassword = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
+$vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPassword)
 
 #Create a VMSS using the default settings
 New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName
@@ -149,13 +149,13 @@ New-AzVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleSet $V
 
 ### Example 3: Create a VMSS with a UserData value
 ```powershell
-$ResourceGroupName = '<RESOURCE GROUP NAME>';
-$vmssName = <VMSSNAME>;
+$ResourceGroupName = 'RESOURCE GROUP NAME';
+$vmssName = 'VMSSNAME';
 $domainNameLabel = "dnl" + $ResourceGroupName;
 # Create credentials, I am using one way to create credentials, there are others as well. 
 # Pick one that makes the most sense according to your use case.
-$vmPassword = ConvertTo-SecureString <PASSWORD_HERE> -AsPlainText -Force;
-$vmCred = New-Object System.Management.Automation.PSCredential(<USERNAME_HERE>, $vmPassword);
+$vmPassword = ConvertTo-SecureString 'PASSWORD' -AsPlainText -Force;
+$vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPassword);
 
 $text = "UserData value to encode";
 $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);

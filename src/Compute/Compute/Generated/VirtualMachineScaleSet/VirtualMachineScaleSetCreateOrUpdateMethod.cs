@@ -161,18 +161,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             //{
             //    throw new Exception("The value for NetworkApiVersion is not valid for a VMSS with OrchestrationMode set to Flexible. You must use a valid Network API Version equal to or greater than " + vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum);
             //}
-            else if (parameters?.SinglePlacementGroup == true)
-            {
-                throw new Exception("The value provided for SinglePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.");
-            }
         }
 
         private void flexibleOrchestrationModeDefaultParameters(VirtualMachineScaleSet parameters)
         {
-            if (parameters?.SinglePlacementGroup == null)
-            {
-                parameters.SinglePlacementGroup = false;
-            }
             if (parameters?.VirtualMachineProfile?.NetworkProfile != null &&
                 parameters?.VirtualMachineProfile?.NetworkProfile.NetworkApiVersion == null)
             {

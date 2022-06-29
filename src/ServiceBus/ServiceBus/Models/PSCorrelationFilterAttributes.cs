@@ -32,17 +32,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// Initializes a new instance of the CorrelationFilter class.
         /// </summary>
-        /// <param name="correlationId">Identifier of the correlation.</param>
-        /// <param name="messageId">Identifier of the message.</param>
-        /// <param name="to">Address to send to.</param>
-        /// <param name="replyTo">Address of the queue to reply to.</param>
-        /// <param name="label">Application specific label.</param>
-        /// <param name="sessionId">Session identifier.</param>
-        /// <param name="replyToSessionId">Session identifier to reply
-        /// to.</param>
-        /// <param name="contentType">Content type of the message.</param>
-        /// <param name="requiresPreprocessing">Value that indicates whether
-        /// the rule action requires preprocessing.</param>
+        /// <param name="correlationFilter">Properties of
+        /// correlationFilter</param>
         public PSCorrelationFilterAttributes(Management.ServiceBus.Models.CorrelationFilter correlationFilter)
         {
             if (correlationFilter != null)

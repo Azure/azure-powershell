@@ -24,9 +24,11 @@ Creates or updates a filter
 
 ### Example 1: Create the scope filters of the scan
 ```powershell
-PS C:\> $filterObj = New-AzPurviewFilterObject -ExcludeUriPrefix @('https://foo.file.core.windows.net/share1/user/temp') -IncludeUriPrefix @('https://foo.file.core.windows.net/share1/user','https://foo.file.core.windows.net/share1/aggregated')
+$filterObj = New-AzPurviewFilterObject -ExcludeUriPrefix @('https://foo.file.core.windows.net/share1/user/temp') -IncludeUriPrefix @('https://foo.file.core.windows.net/share1/user','https://foo.file.core.windows.net/share1/aggregated')
 New-AzPurviewFilter -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' -Body $filterObj
+```
 
+```output
 ExcludeUriPrefix  : {https://foo.file.core.windows.net/share1/user/temp}
 Id                : datasources/DataScanTestData-Parv/scans/Scan1ForDemo/filters/custom
 IncludeUriPrefix  : {https://foo.file.core.windows.net/share1/user,
@@ -166,7 +168,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <IFilter>: .
+BODY `<IFilter>`: .
   - `[ExcludeUriPrefix <String[]>]`: 
   - `[IncludeUriPrefix <String[]>]`: 
 

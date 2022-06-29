@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 using Microsoft.Azure.Management.CosmosDB.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
@@ -20,15 +21,28 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     {
         public PSSqlClientEncryptionPolicy() : base()
         {
-        }        
+        }
 
-        public PSSqlClientEncryptionPolicy(ClientEncryptionPolicy clientEncryptionPolicy) : base(PSSqlClientEncryptionPolicy.SetSupportedPolicyVersionOnClientEncryptionPolicy(clientEncryptionPolicy))
+        public PSSqlClientEncryptionPolicy(ClientEncryptionPolicy clientEncryptionPolicy) : base(PSSqlClientEncryptionPolicy.SetSupportedPolicyVersionOnClientEncryptionPolicy(clientEncryptionPolicy, clientEncryptionPolicy.PolicyFormatVersion))
         {
         }
 
-        private static ClientEncryptionPolicy SetSupportedPolicyVersionOnClientEncryptionPolicy(ClientEncryptionPolicy clientEncryptionPolicy)
+        private static ClientEncryptionPolicy SetSupportedPolicyVersionOnClientEncryptionPolicy(ClientEncryptionPolicy clientEncryptionPolicy, int? policyFormatVersion = null)
         {
-            clientEncryptionPolicy.PolicyFormatVersion = 1;
+            if (policyFormatVersion == null)
+            {
+                clientEncryptionPolicy.PolicyFormatVersion = 1;
+            }
+            else
+            {
+                if(policyFormatVersion > 2 || policyFormatVersion < 1)
+                {
+                    throw new ArgumentException($"Supported versions of client encryption policy are 1 and 2. ");
+                }
+
+                clientEncryptionPolicy.PolicyFormatVersion = policyFormatVersion;
+            }
+
             return clientEncryptionPolicy;
         }
     }

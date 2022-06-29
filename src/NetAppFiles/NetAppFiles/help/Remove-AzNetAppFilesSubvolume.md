@@ -44,7 +44,7 @@ The **Remove-AzNetAppFilesSubvolume** cmdlet deletes an ANF subvolume.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetAppFilesSubvolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSubvolume"
+Remove-AzNetAppFilesSubvolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSubvolume"
 ```
 
 This command deletes the ANF volume "MyAnfSubvolume".

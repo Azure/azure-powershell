@@ -24,10 +24,13 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// 
     [JsonTransformation]
     public class PSPrivateEndpointConnection
-    {       
+    {
         /// <summary>
         /// Initializes a new instance of the PrivateEndpointConnection class.
         /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
         /// <param name="privateEndpoint">Private endpoint which the connection
         /// belongs to.</param>
         /// <param name="privateLinkServiceConnectionState">Connection state of

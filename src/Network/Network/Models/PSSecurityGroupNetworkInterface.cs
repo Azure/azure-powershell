@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(this.SecurityRuleAssociations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
-///        public bool ShouldSerializeIpConfigurations()
-///        {
-///            return !string.IsNullOrEmpty(this.Name);
-///        }
+//        public bool ShouldSerializeIpConfigurations()
+//        {
+//            return !string.IsNullOrEmpty(this.Name);
+//        }
     }
 }

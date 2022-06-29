@@ -1,241 +1,331 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuration>
-  <ViewDefinitions>
-    <View>
-      <Name>Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <PropertyName>Name</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>Id</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>Location</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Sku </Label>
-                <ScriptBlock>"Name : " + $_.Sku.Name  + " , Tier : " +  $_.Sku.Tier + ", Capacity : " +  $_.Sku.Capacity </ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>Tags</Label>
-                <ScriptBlock>
-                  if($_.Tags -ne $null)
-                  {
-                    $_.Tags.GetEnumerator() | ForEach-Object{ $_.Key, $_.Value }
-                  }
-                </ScriptBlock>              
-              </ListItem>              
-              <ListItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>UpdatedAt</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>ServiceBusEndpoint</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>ZoneRedundant</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>DisableLocalAuth</PropertyName>
-              </ListItem>
-			  <ListItem>
-                <Label>Identity</Label>
-                <ScriptBlock>
-                  "PrinicipalId : "+ $_.Identity.PrincipalId + ", TenantId: "+ $_.Identity.TenantId
-                </ScriptBlock>              
-             </ListItem>
-			 <ListItem>
-			    <Label>IdentityType</Label>
-				<ScriptBlock>
-					$_.Identity.Type
-				</ScriptBlock>
-				</ListItem>
-			<ListItem>
-				<Label>IdentityId</Label>
-				<ScriptBlock>
-					$_.IdentityId -join "`n"
-				</ScriptBlock>
-			</ListItem>
-			<ListItem>
-                <Label>EncryptionConfigs</Label>
-				<ScriptBlock>
-					$_.EncryptionConfig.GetEnumerator() | ForEach-Object{ "{ KeyName: "+$_.KeyName+",`nKeyVaultUri: "+$_.KeyVaultUri+",`nKeyVersion: "+$_.KeyVersion+",`nUserAssignedIdentity: "+$_.UserAssignedIdentity+" }`n" }
-				</ScriptBlock>
-            </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <PropertyName>Name</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>Id</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>Type</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>FilterType </Label>
-                <ScriptBlock>$_.FilterType </ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>Action </Label>
-                <ScriptBlock>
-                  if ($_.Action -ne $null -and $_.Action.SqlExpression -ne $null)
-                  {
-                  "SqlExpression: " + $_.Action.SqlExpression + " , CompatibilityLevel: " + $_.Action.CompatibilityLevel
-                  }
-                  else
-                  {
-                  $null
-                  }
-                </ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>SqlFilter </Label>
-                <ScriptBlock>
-                  if ($_.SqlFilter -ne $null -and $_.SqlFilter.SqlExpression -ne $null)
-                  {
-                  "SqlExpression: " + $_.SqlFilter.SqlExpression + " , CompatibilityLevel: " + $_.SqlFilter.CompatibilityLevel
-                  }
-                  else
-                  {
-                  $null
-                  }
-                </ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>CorrelationFilter </Label>
-                <ScriptBlock>
-                  if ($_.CorrelationFilter -ne $null)
-                  {
-                  if ($_.CorrelationFilter.Properties -ne $null -and $_.CorrelationFilter.Properties.Count -ne 0) { $results = $results + "Properties: " + $results +  $_.CorrelationFilter.Properties.Keys.ForEach({"$_ $($_.CorrelationFilter.Properties.$_) `n "}) + "`n" }
-                  if ($_.CorrelationFilter.ContentType -ne $null){$results = $results + "ContentType: " +  $_.CorrelationFilter.ContentType + "`n" }
-                  if ($_.CorrelationFilterMessageId -ne $null){$results = $results + "MessageId: " + $_.CorrelationFilter.MessageId + "`n"}
-                  if ($_.CorrelationFilter.To -ne $null){$results = $results + "To: " + $_.CorrelationFilter.To + "`n" }
-                  if ($_.CorrelationFilter.ReplyTo -ne $null){$results = $results + "ReplyTo: " + $_.CorrelationFilter.ReplyTo + "`n"}
-                  if ($_.CorrelationFilter.Label -ne $null){$results = $results + "Label: " +  $_.CorrelationFilter.Label + "`n"}
-                  if ($_.CorrelationFilter.SessionId -ne $null){$results = $results + "SessionId: " +  $_.CorrelationFilter.SessionId + "`n" }
-                  if ($_.CorrelationFilter.ReplyToSessionId -ne $null){$results = $results + "ReplyToSessionId: " +  $_.CorrelationFilter.ReplyToSessionId + "`n" }
-                  if ($_.CorrelationFilter.CorrelationId -ne $null){$results = $results + "CorrelationId: " +  $_.CorrelationFilter.CorrelationId}
+	<ViewDefinitions>
+		<View>
+			<Name>Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ResourceGroupName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Location</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Sku </Label>
+								<ScriptBlock>"Name : " + $_.Sku.Name  + " , Tier : " +  $_.Sku.Tier + ", Capacity : " +  $_.Sku.Capacity </ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>Tags</Label>
+								<ScriptBlock>
+									if($_.Tags -ne $null)
+									{
+									$_.Tags.GetEnumerator() | ForEach-Object{ $_.Key, $_.Value }
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ProvisioningState</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CreatedAt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>UpdatedAt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ServiceBusEndpoint</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ZoneRedundant</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DisableLocalAuth</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Identity</Label>
+								<ScriptBlock>
+									"PrinicipalId : "+ $_.Identity.PrincipalId + ", TenantId: "+ $_.Identity.TenantId
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>IdentityType</Label>
+								<ScriptBlock>
+									$_.Identity.Type
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>IdentityId</Label>
+								<ScriptBlock>
+									$_.IdentityId -join "`n"
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>EncryptionConfigs</Label>
+								<ScriptBlock>
+									$_.EncryptionConfig.GetEnumerator() | ForEach-Object{ "{ KeyName: "+$_.KeyName+",`nKeyVaultUri: "+$_.KeyVaultUri+",`nKeyVersion: "+$_.KeyVersion+",`nUserAssignedIdentity: "+$_.UserAssignedIdentity+" }`n" }
+								</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Type</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>FilterType </Label>
+								<ScriptBlock>$_.FilterType </ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>Action </Label>
+								<ScriptBlock>
+									if ($_.Action -ne $null -and $_.Action.SqlExpression -ne $null)
+									{
+									"SqlExpression: " + $_.Action.SqlExpression + " , CompatibilityLevel: " + $_.Action.CompatibilityLevel
+									}
+									else
+									{
+									$null
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>SqlFilter </Label>
+								<ScriptBlock>
+									if ($_.SqlFilter -ne $null -and $_.SqlFilter.SqlExpression -ne $null)
+									{
+									"SqlExpression: " + $_.SqlFilter.SqlExpression + " , CompatibilityLevel: " + $_.SqlFilter.CompatibilityLevel
+									}
+									else
+									{
+									$null
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>CorrelationFilter </Label>
+								<ScriptBlock>
+									if ($_.CorrelationFilter -ne $null)
+									{
+									if ($_.CorrelationFilter.Properties -ne $null -and $_.CorrelationFilter.Properties.Count -ne 0) { $results = $results + "Properties: " + $results +  $_.CorrelationFilter.Properties.Keys.ForEach({"$_ $($_.CorrelationFilter.Properties.$_) `n "}) + "`n" }
+									if ($_.CorrelationFilter.ContentType -ne $null){$results = $results + "ContentType: " +  $_.CorrelationFilter.ContentType + "`n" }
+									if ($_.CorrelationFilterMessageId -ne $null){$results = $results + "MessageId: " + $_.CorrelationFilter.MessageId + "`n"}
+									if ($_.CorrelationFilter.To -ne $null){$results = $results + "To: " + $_.CorrelationFilter.To + "`n" }
+									if ($_.CorrelationFilter.ReplyTo -ne $null){$results = $results + "ReplyTo: " + $_.CorrelationFilter.ReplyTo + "`n"}
+									if ($_.CorrelationFilter.Label -ne $null){$results = $results + "Label: " +  $_.CorrelationFilter.Label + "`n"}
+									if ($_.CorrelationFilter.SessionId -ne $null){$results = $results + "SessionId: " +  $_.CorrelationFilter.SessionId + "`n" }
+									if ($_.CorrelationFilter.ReplyToSessionId -ne $null){$results = $results + "ReplyToSessionId: " +  $_.CorrelationFilter.ReplyToSessionId + "`n" }
+									if ($_.CorrelationFilter.CorrelationId -ne $null){$results = $results + "CorrelationId: " +  $_.CorrelationFilter.CorrelationId}
 
-                  $results
-                  }
-                </ScriptBlock>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <PropertyName>Id</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>Name</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>Rights</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>Name</Label>
-                <PropertyName>Name</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>DefaultAction</Label>
-                <PropertyName>DefaultAction</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>PublicNetworkAccess</Label>
-                <PropertyName>PublicNetworkAccess</PropertyName>
-              </ListItem>
-			  <ListItem>
-			    <Label>TrustedServiceAccessEnabled</Label>
-				<PropertyName>TrustedServiceAccessEnabled</PropertyName>
-			  </ListItem>
-              <ListItem>
-                <Label>Id</Label>
-                <PropertyName>Id</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Type</Label>
-                <PropertyName>Type</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>IpRules</Label>
-                <ScriptBlock>
-                  $nwiprules = $_.IpRules;
-                  foreach ($nwiprule in $nwiprules)
-                  {
-                  $nwiprule.IpMask.ToString();
-                  $nwiprule.Action.ToString();
-                  }
-                </ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>VirtualNetworkRules</Label>
-                <ScriptBlock>
-                  $vnetrules = $_.VirtualNetworkRules;
-                  foreach ($vnetrule in $vnetrules)
-                  {
-                  $vnetrule.Subnet.Id.ToString();
-                  $vnetrule.IgnoreMissingVnetServiceEndpoint.ToString();
-                  }
-                </ScriptBlock>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-  </ViewDefinitions>
+									$results
+									}
+								</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Rights</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<Label>Name</Label>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>DefaultAction</Label>
+								<PropertyName>DefaultAction</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>PublicNetworkAccess</Label>
+								<PropertyName>PublicNetworkAccess</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TrustedServiceAccessEnabled</Label>
+								<PropertyName>TrustedServiceAccessEnabled</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Id</Label>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Type</Label>
+								<PropertyName>Type</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>IpRules</Label>
+								<ScriptBlock>
+									$nwiprules = $_.IpRules;
+									foreach ($nwiprule in $nwiprules)
+									{
+									$nwiprule.IpMask.ToString();
+									$nwiprule.Action.ToString();
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>VirtualNetworkRules</Label>
+								<ScriptBlock>
+									$vnetrules = $_.VirtualNetworkRules;
+									foreach ($vnetrule in $vnetrules)
+									{
+									$vnetrule.Subnet.Id.ToString();
+									$vnetrule.IgnoreMissingVnetServiceEndpoint.ToString();
+									}
+								</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusPrivateEndpointConnectionAttributes</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusPrivateEndpointConnectionAttributes</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<Label>Id</Label>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Name</Label>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Location</Label>
+								<PropertyName>Location</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Type</Label>
+								<PropertyName>Type</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>ProvisioningState</Label>
+								<PropertyName>ProvisioningState</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>PrivateEndpoint</Label>
+								<ScriptBlock>
+								  "{ Id: "+$_.PrivateEndpoint.Id+" }"
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>ConnectionState</Label>
+								<PropertyName>ConnectionState</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Description</Label>
+								<PropertyName>Description</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusPrivateLinkResourceAttributes</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusPrivateLinkResourceAttributes</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<Label>Id</Label>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Name</Label>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Type</Label>
+								<PropertyName>Type</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>GroupId</Label>
+								<PropertyName>GroupId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>RequiredMembers</Label>
+								<ScriptBlock>
+									$_.RequiredMembers -join "`n"
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>RequiredZoneNames</Label>
+								<ScriptBlock>
+									$_.RequiredZoneNames -join "`n"
+								</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+	</ViewDefinitions>
 </Configuration>

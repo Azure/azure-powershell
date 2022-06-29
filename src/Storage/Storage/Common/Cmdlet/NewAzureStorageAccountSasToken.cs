@@ -126,7 +126,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// <summary>
         /// Set up access policy permission
         /// </summary>
-        /// <param name="policy">SharedAccessBlobPolicy object</param>
         /// <param name="permission">Permisson</param>
         internal SharedAccessAccountPermissions SetupAccessPolicyPermission(string permission)
         {

@@ -304,6 +304,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public int? DaysAfterModificationGreaterThan { get; set; }
         public int? DaysAfterLastAccessTimeGreaterThan { get; set; }
+        public int? DaysAfterCreationGreaterThan { get; set; }
         public int? DaysAfterLastTierChangeGreaterThan { get; set; }
 
         public PSDateAfterModification()
@@ -329,6 +330,14 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.DaysAfterModificationGreaterThan = daysAfterModificationGreaterThan;
             this.DaysAfterLastAccessTimeGreaterThan = daysAfterLastAccessTimeGreaterThan;
             this.DaysAfterLastTierChangeGreaterThan = DaysAfterLastTierChangeGreaterThan;
+        }
+
+        public PSDateAfterModification(int? daysAfterModificationGreaterThan, int? daysAfterLastAccessTimeGreaterThan, int? DaysAfterLastTierChangeGreaterThan, int? DaysAfterCreationGreaterThan)
+        {
+            this.DaysAfterModificationGreaterThan = daysAfterModificationGreaterThan;
+            this.DaysAfterLastAccessTimeGreaterThan = daysAfterLastAccessTimeGreaterThan;
+            this.DaysAfterLastTierChangeGreaterThan = DaysAfterLastTierChangeGreaterThan;
+            this.DaysAfterCreationGreaterThan = DaysAfterCreationGreaterThan;
         }
 
         public PSDateAfterModification(DateAfterModification data)
@@ -357,10 +366,21 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 this.DaysAfterLastTierChangeGreaterThan = Convert.ToInt32(data.DaysAfterLastTierChangeGreaterThan);
             }
+            if (data.DaysAfterCreationGreaterThan is null)
+            {
+                this.DaysAfterCreationGreaterThan = null;
+            }
+            else
+            {
+                this.DaysAfterCreationGreaterThan = Convert.ToInt32(data.DaysAfterCreationGreaterThan);
+            }
         }
         public DateAfterModification ParseDateAfterModification()
         {
-            return new DateAfterModification(this.DaysAfterModificationGreaterThan, this.DaysAfterLastAccessTimeGreaterThan, this.DaysAfterLastTierChangeGreaterThan);
+            return new DateAfterModification(this.DaysAfterModificationGreaterThan, 
+                this.DaysAfterLastAccessTimeGreaterThan, 
+                this.DaysAfterLastTierChangeGreaterThan, 
+                this.DaysAfterCreationGreaterThan);
         }
     }
 

@@ -317,6 +317,83 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
         #endregion
 
+        #region PrivateEndpoints
+
+        public PSServiceBusPrivateEndpointConnectionAttributes UpdatePrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName, string connectionState, string description = null)
+        {
+            var privateEndpointConnection = Client.PrivateEndpointConnections.Get(resourceGroupName, namespaceName, privateEndpointName);
+
+            if (connectionState != null)
+            {
+                privateEndpointConnection.PrivateLinkServiceConnectionState.Status = connectionState;
+            }
+
+            if (description != null)
+            {
+                privateEndpointConnection.PrivateLinkServiceConnectionState.Description = description;
+            }
+
+            privateEndpointConnection = Client.PrivateEndpointConnections.CreateOrUpdate(resourceGroupName, namespaceName, privateEndpointName, privateEndpointConnection);
+
+            return new PSServiceBusPrivateEndpointConnectionAttributes(privateEndpointConnection);
+
+        }
+
+        public PSServiceBusPrivateEndpointConnectionAttributes GetPrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName)
+        {
+
+            var privateEndpointConnection = Client.PrivateEndpointConnections.Get(resourceGroupName, namespaceName, privateEndpointName);
+
+            return new PSServiceBusPrivateEndpointConnectionAttributes(privateEndpointConnection);
+
+        }
+
+        public IEnumerable<PSServiceBusPrivateEndpointConnectionAttributes> ListPrivateEndpointConnection(string resourceGroupName, string namespaceName)
+        {
+            var listOfPrivateEndpoints = new List<PSServiceBusPrivateEndpointConnectionAttributes>();
+
+            string nextPageLink = null;
+
+            do
+            {
+                var pageOfPrivateEndpoints = new List<PSServiceBusPrivateEndpointConnectionAttributes>();
+
+                if (!String.IsNullOrEmpty(nextPageLink))
+                {
+                    var result = Client.PrivateEndpointConnections.ListNext(nextPageLink);
+                    nextPageLink = result.NextPageLink;
+                    pageOfPrivateEndpoints = result.Select(resource => new PSServiceBusPrivateEndpointConnectionAttributes(resource)).ToList();
+                }
+                else
+                {
+                    var result = Client.PrivateEndpointConnections.List(resourceGroupName, namespaceName);
+                    nextPageLink = result.NextPageLink;
+                    pageOfPrivateEndpoints = result.Select(resource => new PSServiceBusPrivateEndpointConnectionAttributes(resource)).ToList();
+                }
+
+                listOfPrivateEndpoints.AddRange(pageOfPrivateEndpoints);
+
+            } while (!String.IsNullOrEmpty(nextPageLink));
+
+            return listOfPrivateEndpoints;
+        }
+
+        public void DeletePrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName)
+        {
+            Client.PrivateEndpointConnections.Delete(resourceGroupName, namespaceName, privateEndpointName);
+        }
+
+        public IEnumerable<PSServiceBusPrivateLinkResourceAttributes> GetPrivateLinkResource(string resourceGroupName, string namespaceName)
+        {
+            var privateLinks = Client.PrivateLinkResources.Get(resourceGroupName, namespaceName).Value.ToList();
+
+            var resourceList = privateLinks.Select(resource => new PSServiceBusPrivateLinkResourceAttributes(resource));
+
+            return resourceList;
+        }
+
+        #endregion
+
         #region NetworkRuleSet
         public PSNetworkRuleSetAttributes GetNetworkRuleSet(string resourceGroupName, string namespaceName)
         {
@@ -1087,6 +1164,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
 
         #endregion
+
 
         public static ErrorRecord WriteErrorforBadrequest(ErrorResponseException ex)
         {
