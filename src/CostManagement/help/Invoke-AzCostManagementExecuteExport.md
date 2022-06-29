@@ -173,7 +173,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
+INPUTOBJECT `<ICostManagementIdentity>`: Identity Parameter
   - `[AlertId <String>]`: Alert ID
   - `[ExportName <String>]`: Export Name.
   - `[ExternalCloudProviderId <String>]`: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.

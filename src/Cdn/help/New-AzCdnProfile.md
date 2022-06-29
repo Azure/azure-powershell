@@ -23,27 +23,18 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an AzureCDN profile under the resource group
 ```powershell
-{{ Add code here }}
+New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Standard_Microsoft -Location Global
 ```
 
 ```output
-{{ Add output here }}
+Location Name   Kind ResourceGroupName
+-------- ----   ---- -----------------
+Global   cdn001 cdn  testps-rg-da16jm
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

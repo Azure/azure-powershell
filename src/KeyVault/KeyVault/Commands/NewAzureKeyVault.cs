@@ -165,12 +165,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                     Name = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
-                    EnabledForDeployment = this.EnabledForDeployment.IsPresent,
-                    EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
-                    EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
+                    EnabledForDeployment = this.EnabledForDeployment.IsPresent ? true : null as bool?,
+                    EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent ? true : null as bool?,
+                    EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent ? true : null as bool?,
                     EnableSoftDelete = null,
                     EnablePurgeProtection = EnablePurgeProtection.IsPresent ? true : (bool?)null, // false is not accepted
-                    EnableRbacAuthorization = EnableRbacAuthorization.IsPresent,
+                    EnableRbacAuthorization = EnableRbacAuthorization.IsPresent ? true : null as bool?,
                     /*
                      * If retention days is not specified, use the default value,
                      * else use the vault user provides

@@ -211,7 +211,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IManagedServiceIdentity>: Identity Parameter
+INPUTOBJECT `<IManagedServiceIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the Resource Group to which the identity belongs.
   - `[ResourceName <String>]`: The name of the identity resource.

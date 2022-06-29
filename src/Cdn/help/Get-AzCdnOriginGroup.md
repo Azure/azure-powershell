@@ -34,27 +34,33 @@ Gets an existing origin group within an endpoint.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List AzureCDN origin groups under the AzureCDN endpoint
 ```powershell
-{{ Add code here }}
+Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
 ```
 
 ```output
-{{ Add output here }}
+Name   ResourceGroupName
+----   -----------------
+org001 testps-rg-da16jm
+org002 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+List AzureCDN origin groups under the AzureCDN endpoint
 
-### Example 2: {{ Add title here }}
+### Example 2: Get an AzureCDN origin group under the AzureCDN endpoint
 ```powershell
-{{ Add code here }}
+Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001
 ```
 
 ```output
-{{ Add output here }}
+Name   ResourceGroupName
+----   -----------------
+org001 testps-rg-da16jm
+
 ```
 
-{{ Add description here }}
+Get an AzureCDN origin group under the AzureCDN endpoint
 
 ## PARAMETERS
 
