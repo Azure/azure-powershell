@@ -45,7 +45,7 @@ This command updates Inbound Endpoint by name (adding tag)
 
 ### Example 2: Update Inbound Endpoint via identity (adding tag)
 ```powershell
-$inputobject = Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg   
+$inputobject = Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
 Update-AzDnsResolverInboundEndpoint -InputObject $inputobject -Tag @{"value0" = "value1"}
 ```
 
