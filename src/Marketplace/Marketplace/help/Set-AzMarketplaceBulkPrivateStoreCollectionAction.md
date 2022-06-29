@@ -171,7 +171,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PAYLOAD <IBulkCollectionsPayload>: Bulk collections action properties
+PAYLOAD `<IBulkCollectionsPayload>`: Bulk collections action properties
   - `[Action <String>]`: Action to perform (For example: EnableCollections, DisableCollections)
   - `[CollectionId <String[]>]`: collection ids list that the action is performed on
 

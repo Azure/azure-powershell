@@ -37,7 +37,7 @@ The **Get-AzNetAppFilesVolumeGroup** cmdlet gets details of an ANF VolumeGroup.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfVolumeGroup"
+Get-AzNetAppFilesVolumeGroup -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfVolumeGroup"
 ```
 
 This command gets the volume named MyAnfVolumeGroup from the Account "MyAnfAccount". 

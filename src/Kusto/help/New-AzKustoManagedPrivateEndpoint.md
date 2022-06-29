@@ -280,7 +280,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETER <IManagedPrivateEndpoint>: Class representing a managed private endpoint.
+PARAMETER `<IManagedPrivateEndpoint>`: Class representing a managed private endpoint.
   - `[AzureAsyncOperation <String>]`: 
   - `[GroupId <String>]`: The groupId in which the managed private endpoint is created.
   - `[PrivateLinkResourceId <String>]`: The ARM resource ID of the resource for which the managed private endpoint is created.

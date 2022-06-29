@@ -33,8 +33,10 @@ Update the metadata of a service instance.
 
 ### Example 1: Update the metadata of a service instance.
 ```powershell
-PS C:\> Update-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice -Tag @{"abc"="123"}
+Update-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice -Tag @{"abc"="123"}
+```
 
+```output
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
 eastus2  azpsapiservice fhir azps_test_group
@@ -44,8 +46,10 @@ Update the metadata of a service instance.
 
 ### Example 2: Update the metadata of a service instance.
 ```powershell
-PS C:\> Get-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice | Update-AzHealthcareApisService -Tag @{"abc"="123"}
+Get-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice | Update-AzHealthcareApisService -Tag @{"abc"="123"}
+```
 
+```output
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
 eastus2  azpsapiservice fhir azps_test_group
@@ -242,7 +246,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
+INPUTOBJECT `<IHealthcareApisIdentity>`: Identity Parameter
   - `[DicomServiceName <String>]`: The name of DICOM Service resource.
   - `[FhirDestinationName <String>]`: The name of IoT Connector FHIR destination resource.
   - `[FhirServiceName <String>]`: The name of FHIR Service resource.

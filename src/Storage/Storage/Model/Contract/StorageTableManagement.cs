@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Storage table management constructor
         /// </summary>
-        /// <param name="client">Cloud table client</param>
+        /// <param name="context">Cloud table client</param>
         public StorageTableManagement(AzureStorageContext context)
         {
             internalStorageContext = context;
@@ -244,7 +244,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Get the Table service properties
         /// </summary>
-        /// <param name="account">Cloud storage account</param>
         /// <param name="options">Request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>The service properties of the specified service type</returns>
@@ -264,7 +263,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Set Table service properties
         /// </summary>
-        /// <param name="account">Cloud storage account</param>
         /// <param name="properties">Service properties</param>
         /// <param name="options">Request options</param>
         /// <param name="operationContext">Operation context</param>

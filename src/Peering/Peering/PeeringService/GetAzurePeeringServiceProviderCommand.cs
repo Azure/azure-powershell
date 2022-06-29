@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// The get peering service provider.
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{PSPeeringServiceProvider}"/>.
         /// </returns>
         /// <exception cref="ErrorResponseException">
         /// </exception>

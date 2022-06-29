@@ -38,7 +38,7 @@ Creates an Event Grid System topic \`Topic1\`  for the Azure ServiceBus namespac
 
 ### Example 2
 ```powershell
-New-AzEventGridTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Source ServiceBusNamespaceResourceId -TopicType 'Microsoft.ServiceBus.Namespaces' -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
+New-AzEventGridSystemTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Source ServiceBusNamespaceResourceId -TopicType 'Microsoft.ServiceBus.Namespaces' -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
 ```
 
 Creates an Event Grid System topic \`Topic1\` for the Azure ServiceBus namespace with resource id \`ServiceBusNamespaceResourceId\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with the specified tags "Department" and "Environment".

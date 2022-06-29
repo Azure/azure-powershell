@@ -30,27 +30,12 @@ Deletes an existing AzureFrontDoor domain with the specified domain name under t
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete an AzureFrontDoor customdomain under the profile
 ```powershell
-{{ Add code here }}
+Remove-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete an AzureFrontDoor customdomain under the profile
 
 ## PARAMETERS
 

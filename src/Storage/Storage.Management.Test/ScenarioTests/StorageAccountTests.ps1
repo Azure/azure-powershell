@@ -1057,7 +1057,7 @@ function Test-StorageAccountManagementPolicy
         Assert-AreEqual $kind $sto.Kind;        
                     
 		# create Rule1
-		$action1 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
+		$action1 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -DaysAfterCreationGreaterThan 100
 		$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50 -DaysAfterLastTierChangeGreaterThan 40
 		$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BaseBlobAction TierToCool -daysAfterModificationGreaterThan 30
 		$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -SnapshotAction Delete -daysAfterCreationGreaterThan 100
@@ -1084,7 +1084,7 @@ function Test-StorageAccountManagementPolicy
 		Assert-AreEqual 3 $policy.Rules.Count
 		Assert-AreEqual $rule1.Enabled $policy.Rules[0].Enabled
 		Assert-AreEqual $rule1.Name $policy.Rules[0].Name
-		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterCreationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterCreationGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan
@@ -1120,7 +1120,7 @@ function Test-StorageAccountManagementPolicy
 		Assert-AreEqual 3 $policy.Rules.Count
 		Assert-AreEqual $rule1.Enabled $policy.Rules[0].Enabled
 		Assert-AreEqual $rule1.Name $policy.Rules[0].Name
-		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterCreationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterCreationGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan
@@ -1160,7 +1160,7 @@ function Test-StorageAccountManagementPolicy
 		Assert-AreEqual 3 $policy.Rules.Count
 		Assert-AreEqual $rule1.Enabled $policy.Rules[0].Enabled
 		Assert-AreEqual $rule1.Name $policy.Rules[0].Name
-		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterCreationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterCreationGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan

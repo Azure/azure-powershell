@@ -264,11 +264,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-EXTENSIONUPGRADEPARAMETER <IMachineExtensionUpgrade>: Describes the Machine Extension Upgrade Properties
+EXTENSIONUPGRADEPARAMETER `<IMachineExtensionUpgrade>`: Describes the Machine Extension Upgrade Properties
   - `[ExtensionTarget <IExtensionTarget>]`: Describes the Extension Target Properties.
     - `[(Any) <IExtensionTargetProperties>]`: This indicates any property can be added to this object.
 
-INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedMachineIdentity>`: Identity Parameter
   - `[ExtensionName <String>]`: The name of the machine extension.
   - `[GroupName <String>]`: The name of the private link resource.
   - `[Id <String>]`: Resource identity path
