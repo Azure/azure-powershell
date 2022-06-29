@@ -33,7 +33,7 @@ The **Set-AzDataLakeStoreItemExpiry** cmdlet sets or removes the expire time for
 
 ### Example 1: Set the expiration time for a file
 ```powershell
-Set-AzDataLakeStoreItemExpiry -AccountName "ContosoADL" -Path /myfile.txt -Expiration "[DateTimeOffset]::Now.AddHours(2)"
+Set-AzDataLakeStoreItemExpiry -AccountName "ContosoADL" -Path /myfile.txt -Expiration ([DateTimeOffset]::Now.AddHours(2))
 ```
 
 Sets expiration on the file myfile.txt in account ContosoADL to be two hours from now.
