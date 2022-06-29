@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support to Stack HCI Cluster
+* Added support to Stack HCI Extension
+* Added support to Stack HCI Arc Settings
 
 ## Version 1.2.0
 * Improved Registration process for Register-AzStackHCI cmdlet
