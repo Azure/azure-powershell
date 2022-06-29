@@ -30,27 +30,39 @@ Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an AzureCDN profile under the resource group
 ```powershell
-{{ Add code here }}
+$tags = @{
+    Tag1 = 11
+    Tag2  = 22
+}
+Update-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -Tag $tags
 ```
 
 ```output
-{{ Add output here }}
+Location Name   Kind ResourceGroupName
+-------- ----   ---- -----------------
+Global   cdn001 cdn  testps-rg-da16jm
 ```
 
-{{ Add description here }}
+Update an AzureCDN profile under the resource group
 
-### Example 2: {{ Add title here }}
+### Example 2: Update an AzureCDN profile under the resource group via identity
 ```powershell
-{{ Add code here }}
+$tags = @{
+    Tag1 = 11
+    Tag2  = 22
+}
+Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 | Update-AzCdnProfile -Tag $tags
 ```
 
 ```output
-{{ Add output here }}
+Location Name   Kind ResourceGroupName
+-------- ----   ---- -----------------
+Global   cdn001 cdn  testps-rg-da16jm
 ```
 
-{{ Add description here }}
+Update an AzureCDN profile under the resource group via identity
 
 ## PARAMETERS
 

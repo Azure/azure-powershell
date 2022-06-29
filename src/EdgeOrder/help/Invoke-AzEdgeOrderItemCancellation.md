@@ -196,7 +196,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IEdgeOrderIdentity>: Identity Parameter
+INPUTOBJECT `<IEdgeOrderIdentity>`: Identity Parameter
   - `[AddressName <String>]`: The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The name of Azure region.

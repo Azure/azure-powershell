@@ -786,6 +786,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return outputBlobPath;
         }
 
+        public PSKeyVaultCertificate MergeCertificate(string vaultName, string name, byte[] certBytes, Dictionary<string, string> tags)
+        {
+            throw new NotImplementedException();
+        }
+
         public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)
         {
             if (string.IsNullOrEmpty(vaultName))
@@ -812,7 +817,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         }
 
-        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags)
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
+        {
+            return ImportCertificate(vaultName, certName, Convert.ToBase64String(certificate), certPassword, tags, contentType);
+        }
+
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -827,14 +837,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             var password = (certPassword == null) ? string.Empty : certPassword.ConvertToString();
 
-
             try
             {
                 certBundle = this.keyVaultClient.ImportCertificateAsync(vaultAddress, certName, base64CertColl, password, new CertificatePolicy
                 {
                     SecretProperties = new SecretProperties
                     {
-                        ContentType = "application/x-pkcs12"
+                        ContentType = contentType
                     }
                 }, null, tags).GetAwaiter().GetResult();
             }
@@ -846,7 +855,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSKeyVaultCertificate(certBundle);
         }
 
-        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags)
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -864,7 +873,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 {
                     SecretProperties = new SecretProperties
                     {
-                        ContentType = "application/x-pkcs12"
+                        ContentType = contentType
                     }
                 }, null, tags).GetAwaiter().GetResult();
             }
@@ -875,6 +884,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             return new PSKeyVaultCertificate(certBundle);
         }
+       
         public IEnumerable<PSKeyVaultCertificateContact> GetCertificateContacts(string vaultName)
         {
             if (string.IsNullOrEmpty(vaultName))

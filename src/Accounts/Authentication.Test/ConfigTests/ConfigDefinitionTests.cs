@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.Authentication.Config;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.WindowsAzure.Commands.Common;
-using System;
-using System.Linq;
-using Xunit;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.PowerShell.Common.Config;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System;
+using Xunit;
 
 namespace Microsoft.Azure.Authentication.Test.Config
 {
@@ -27,7 +25,8 @@ namespace Microsoft.Azure.Authentication.Test.Config
     {
         [Fact]
         [Trait(TestTraits.AcceptanceType, TestTraits.CheckIn)]
-        public void CanValidateInput() {
+        public void CanValidateInput()
+        {
             const string boolKey = "BoolKey";
             var boolConfig = new SimpleTypedConfig<bool>(boolKey, "", false);
             var rangedIntConfig = new RangedConfig();

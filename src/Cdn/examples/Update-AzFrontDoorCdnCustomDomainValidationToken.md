@@ -1,22 +1,9 @@
-### Example 1: {{ Add title here }}
+### Example 1: Updates the AzureFrontDoor customdomain validation token
+
 ```powershell
-{{ Add code here }}
+ Update-AzFrontDoorCdnCustomDomainValidationToken -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
 ```
 
-```output
-{{ Add output here }}
-```
+Updates the AzureFrontDoor customdomain validation token
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
