@@ -37,7 +37,7 @@ Removes an application group from a namespace.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup
+Remove-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup
 ```
 
 Removes application group myappgroup from namespace mynamespace.
