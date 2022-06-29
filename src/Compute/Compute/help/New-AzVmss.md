@@ -188,10 +188,10 @@ $vmss = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $vmssNa
 
 ### Example 4: Create a VMSS with the Guest Attestation extension installed with the TrustedLaunch security type.
 ```powershell
+# Common setup
 $rgname = <RESOURCE GROUP NAME>;
 $loc = <AZURE REGION>;
 New-AzResourceGroup -Name $rgname -Location $loc -Force;
-# Example values
 $vmssSize = 'Standard_DS3_v2';
 $PublisherName = "MicrosoftWindowsServer";
 $Offer = "WindowsServer";
@@ -199,11 +199,13 @@ $SKU = "2019-DATACENTER-GENSECOND";
 $securityType = "TrustedLaunch";
 $secureboot = $true;
 $vtpm = $true;
+
 # NRP
 $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
 $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
 $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
 $subnetId = $vnet.Subnets[0].Id;
+
 # New VMSS Parameters
 $vmssName = 'vmss' + $rgname;
 $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
@@ -215,16 +217,19 @@ $imgRef.Offer = $Offer;
 $imgRef.Skus = $SKU;
 $imgRef.Version = "latest";
 $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+
 $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
 | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
 | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
 | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
     -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
     -ImageReferencePublisher $imgRef.PublisherName ;
+    
 # Requirements for the Guest Attestation defaulting behavior.  
 # SecurityType is TrustedLaunch, EnableVtpm is true, EnableSecureBoot is true, DisableIntegrityMonitoring is not true.
 $vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
 $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
+
 # Create Vmss
 $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 # This Vmss and its Vm instances has the GuestAttestation extension installed, and the Identity of SystemAssigned.
