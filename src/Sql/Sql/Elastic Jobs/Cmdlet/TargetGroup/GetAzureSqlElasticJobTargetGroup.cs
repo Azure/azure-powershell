@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Check to see if the target group exists
         /// </summary>
-        /// <returns>Throws exception if the target group doesn't exist.<returns>
+        /// <returns>Throws exception if the target group doesn't exist.</returns>
         protected override IEnumerable<AzureSqlElasticJobTargetGroupModel> GetEntity()
         {
             try

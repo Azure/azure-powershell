@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Monitor</PsModuleName>
@@ -14,5 +14,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.26.0-preview" />
     <PackageReference Include="AutoMapper" Version="6.2.2" />
   </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

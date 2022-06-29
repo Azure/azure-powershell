@@ -670,7 +670,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-EXTENSIONPROFILE <ICloudServiceExtensionProfile>: Describes a cloud service extension profile.
+EXTENSIONPROFILE `<ICloudServiceExtensionProfile>`: Describes a cloud service extension profile.
   - `[Extension <IExtension[]>]`: List of extensions for the cloud service.
     - `[AutoUpgradeMinorVersion <Boolean?>]`: Explicitly specify whether platform can automatically upgrade typeHandlerVersion to higher minor versions when they become available.
     - `[ForceUpdateTag <String>]`: Tag to force apply the provided public and protected settings.         Changing the tag value allows for re-running the extension without changing any of the public or protected settings.         If forceUpdateTag is not changed, updates to public or protected settings would still be applied by the handler.         If neither forceUpdateTag nor any of public or protected settings change, extension would flow to the role instance with the same sequence-number, and         it is up to handler implementation whether to re-run it or not
@@ -684,7 +684,7 @@ EXTENSIONPROFILE <ICloudServiceExtensionProfile>: Describes a cloud service exte
     - `[Type <String>]`: Specifies the type of the extension.
     - `[TypeHandlerVersion <String>]`: Specifies the version of the extension. Specifies the version of the extension. If this element is not specified or an asterisk (*) is used as the value, the latest version of the extension is used. If the value is specified with a major version number and an asterisk as the minor version number (X.), the latest minor version of the specified major version is selected. If a major version number and a minor version number are specified (X.Y), the specific extension version is selected. If a version is specified, an auto-upgrade is performed on the role instance.
 
-NETWORKPROFILE <ICloudServiceNetworkProfile>: Network Profile for the cloud service.
+NETWORKPROFILE `<ICloudServiceNetworkProfile>`: Network Profile for the cloud service.
   - `[LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]`: List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
     - `FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>`: Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
       - `Name <String>`: The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
@@ -696,13 +696,13 @@ NETWORKPROFILE <ICloudServiceNetworkProfile>: Network Profile for the cloud serv
   - `[SwappableCloudService <ISubResource>]`: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
     - `[Id <String>]`: Resource Id
 
-OSPROFILE <ICloudServiceOSProfile>: Describes the OS profile for the cloud service.
+OSPROFILE `<ICloudServiceOSProfile>`: Describes the OS profile for the cloud service.
   - `[Secret <ICloudServiceVaultSecretGroup[]>]`: Specifies set of certificates that should be installed onto the role instances.
     - `[SourceVaultId <String>]`: Resource Id
     - `[VaultCertificate <ICloudServiceVaultCertificate[]>]`: The list of key vault references in SourceVault which contain certificates.
       - `[CertificateUrl <String>]`: This is the URL of a certificate that has been uploaded to Key Vault as a secret.
 
-ROLEPROFILE <ICloudServiceRoleProfile>: Describes the role profile for the cloud service.
+ROLEPROFILE `<ICloudServiceRoleProfile>`: Describes the role profile for the cloud service.
   - `[Role <ICloudServiceRoleProfileProperties[]>]`: List of roles for the cloud service.
     - `[Name <String>]`: Resource name.
     - `[SkuCapacity <Int64?>]`: Specifies the number of role instances in the cloud service.

@@ -18,6 +18,7 @@ Kubernetes Service                    | `Az.Aks`                                
 Alert Management                      | `Az.AlertsManagement`                   | [![AlertsManagement]][AlertsManagementGallery]
 Analysis Services                     | `Az.AnalysisServices`                   | [![AnalysisServices]][AnalysisServicesGallery]
 API Management                        | `Az.ApiManagement`                      | [![ApiManagement]][ApiManagementGallery]
+Container Apps                        | `Az.App`                                | [![App]][AppGallery]
 App Configuration                     | `Az.AppConfiguration`                   | [![AppConfiguration]][AppConfigurationGallery]
 Application Insights                  | `Az.ApplicationInsights`                | [![ApplicationInsights]][ApplicationInsightsGallery]
 Attestation                           | `Az.Attestation`                        | [![Attestation]][AttestationGallery]
@@ -68,6 +69,7 @@ Stack Edge Order                      | `Az.EdgeOrder`                          
 Elastic on Azure                      | `Az.Elastic`                            | [![Elastic]][ElasticGallery]
 Event Grid                            | `Az.EventGrid`                          | [![EventGrid]][EventGridGallery]
 Event Hubs                            | `Az.EventHub`                           | [![EventHub]][EventHubGallery]
+Fluid Relay                           | `Az.FluidRelay`                         | [![FluidRelay]][FluidRelayGallery]
 Front Door                            | `Az.FrontDoor`                          | [![FrontDoor]][FrontDoorGallery]
 Functions                             | `Az.Functions`                          | [![Functions]][FunctionsGallery]
 Guest Configuration                   | `Az.GuestConfiguration`                 | [![GuestConfiguration]][GuestConfigurationGallery]
@@ -102,6 +104,7 @@ Monitoring Solutions                  | `Az.MonitoringSolutions`                
 Database for MySQL                    | `Az.MySql`                              | [![MySql]][MySqlGallery]
 NetApp Files                          | `Az.NetAppFiles`                        | [![NetAppFiles]][NetAppFilesGallery]
 Network                               | `Az.Network`                            | [![Network]][NetworkGallery]
+NetworkFunction                       | `Az.NetworkFunction`                    | [![NetworkFunction]][NetworkFunctionGallery]
 Notification Hubs                     | `Az.NotificationHubs`                   | [![NotificationHubs]][NotificationHubsGallery]
 Operational Insights                  | `Az.OperationalInsights`                | [![OperationalInsights]][OperationalInsightsGallery]
 Virtual Network peering               | `Az.Peering`                            | [![Peering]][PeeringGallery]
@@ -156,6 +159,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [AlertsManagement]:           https://img.shields.io/powershellgallery/v/Az.AlertsManagement.svg?style=flat-square&label=Az.AlertsManagement
 [AnalysisServices]:           https://img.shields.io/powershellgallery/v/Az.AnalysisServices.svg?style=flat-square&label=Az.AnalysisServices
 [ApiManagement]:              https://img.shields.io/powershellgallery/v/Az.ApiManagement.svg?style=flat-square&label=Az.ApiManagement
+[App]:                        https://img.shields.io/powershellgallery/v/Az.App.svg?style=flat-square&label=Az.App
 [AppConfiguration]:           https://img.shields.io/powershellgallery/v/Az.AppConfiguration.svg?style=flat-square&label=Az.AppConfiguration
 [ApplicationInsights]:        https://img.shields.io/powershellgallery/v/Az.ApplicationInsights.svg?style=flat-square&label=Az.ApplicationInsights
 [Attestation]:                https://img.shields.io/powershellgallery/v/Az.Attestation.svg?style=flat-square&label=Az.Attestation
@@ -206,6 +210,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [Elastic]:                    https://img.shields.io/powershellgallery/v/Az.Elastic.svg?style=flat-square&label=Az.Elastic
 [EventGrid]:                  https://img.shields.io/powershellgallery/v/Az.EventGrid.svg?style=flat-square&label=Az.EventGrid
 [EventHub]:                   https://img.shields.io/powershellgallery/v/Az.EventHub.svg?style=flat-square&label=Az.EventHub
+[FluidRelay]:                 https://img.shields.io/powershellgallery/v/Az.FluidRelay.svg?style=flat-square&label=Az.FluidRelay
 [FrontDoor]:                  https://img.shields.io/powershellgallery/v/Az.FrontDoor.svg?style=flat-square&label=Az.FrontDoor
 [Functions]:                  https://img.shields.io/powershellgallery/v/Az.Functions.svg?style=flat-square&label=Az.Functions
 [GuestConfiguration]:         https://img.shields.io/powershellgallery/v/Az.GuestConfiguration.svg?style=flat-square&label=Az.GuestConfiguration
@@ -240,6 +245,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [MySql]:                      https://img.shields.io/powershellgallery/v/Az.MySql.svg?style=flat-square&label=Az.MySql
 [NetAppFiles]:                https://img.shields.io/powershellgallery/v/Az.NetAppFiles.svg?style=flat-square&label=Az.NetAppFiles
 [Network]:                    https://img.shields.io/powershellgallery/v/Az.Network.svg?style=flat-square&label=Az.Network
+[NetworkFunction]:            https://img.shields.io/powershellgallery/v/Az.NetworkFunction.svg?style=flat-square&label=Az.NetworkFunction
 [NotificationHubs]:           https://img.shields.io/powershellgallery/v/Az.NotificationHubs.svg?style=flat-square&label=Az.NotificationHubs
 [OperationalInsights]:        https://img.shields.io/powershellgallery/v/Az.OperationalInsights.svg?style=flat-square&label=Az.OperationalInsights
 [Peering]:                    https://img.shields.io/powershellgallery/v/Az.Peering.svg?style=flat-square&label=Az.Peering
@@ -292,6 +298,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [AlertsManagementGallery]:           https://www.powershellgallery.com/packages/Az.AlertsManagement/
 [AnalysisServicesGallery]:           https://www.powershellgallery.com/packages/Az.AnalysisServices/
 [ApiManagementGallery]:              https://www.powershellgallery.com/packages/Az.ApiManagement/
+[App]:                               https://www.powershellgallery.com/packages/Az.App/
 [AppConfigurationGallery]:           https://www.powershellgallery.com/packages/Az.AppConfiguration/
 [ApplicationInsightsGallery]:        https://www.powershellgallery.com/packages/Az.ApplicationInsights/
 [AttestationGallery]:                https://www.powershellgallery.com/packages/Az.Attestation/
@@ -342,6 +349,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [ElasticGallery]:                    https://www.powershellgallery.com/packages/Az.Elastic/
 [EventGridGallery]:                  https://www.powershellgallery.com/packages/Az.EventGrid/
 [EventHubGallery]:                   https://www.powershellgallery.com/packages/Az.EventHub/
+[FluidRelayGallery]:                 https://www.powershellgallery.com/packages/Az.FluidRelay/
 [FrontDoorGallery]:                  https://www.powershellgallery.com/packages/Az.FrontDoor/
 [FunctionsGallery]:                  https://www.powershellgallery.com/packages/Az.Functions/
 [GuestConfigurationGallery]:         https://www.powershellgallery.com/packages/Az.GuestConfiguration/
@@ -376,6 +384,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [MySqlGallery]:                      https://www.powershellgallery.com/packages/Az.MySql/
 [NetAppFilesGallery]:                https://www.powershellgallery.com/packages/Az.NetAppFiles/
 [NetworkGallery]:                    https://www.powershellgallery.com/packages/Az.Network/
+[NetworkFunctionGallery]:            https://www.powershellgallery.com/packages/Az.NetworkFunction/
 [NotificationHubsGallery]:           https://www.powershellgallery.com/packages/Az.NotificationHubs/
 [OperationalInsightsGallery]:        https://www.powershellgallery.com/packages/Az.OperationalInsights/
 [PeeringGallery]:                    https://www.powershellgallery.com/packages/Az.Peering/

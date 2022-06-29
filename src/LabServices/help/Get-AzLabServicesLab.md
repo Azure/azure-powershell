@@ -48,7 +48,7 @@ API to get labs.
 
 ### Example 1: Get all labs
 ```powershell
-Get-AzLab
+Get-AzLabServicesLab
 ```
 
 ```output
@@ -64,7 +64,7 @@ Returns all labs for the current subscription.
 
 ### Example 2: Get a specific lab
 ```powershell
-Get-AzLab -ResourceGroupName 'yourgroupname' -Name 'yourlabname'
+Get-AzLabServicesLab -ResourceGroupName 'yourgroupname' -Name 'yourlabname'
 ```
 
 ```output
@@ -77,8 +77,8 @@ Get a specific lab using the resource group name and the lab name.
 
 ### Example 3: Get all labs created with a lab plan
 ```powershell
-$plan = Get-AzLabPlan -LabPlanName 'lab plan name'
-$plan | Get-AzLab -Name 'lab name'
+$plan = Get-AzLabServicesLabPlan -LabPlanName 'lab plan name'
+$plan | Get-AzLabServicesLab -Name 'lab name'
 ```
 
 ```output
@@ -91,7 +91,7 @@ Get the specific lab in a lab plan using the lab plan object and the lab name.
 
 ### Example 4: Get labs using wildcards in the lab name.
 ```powershell
-Get-AzLab -ResourceGroupName 'group name' -Name '*lab name'
+Get-AzLabServicesLab -ResourceGroupName 'group name' -Name '*lab name'
 ```
 
 ```output
@@ -246,7 +246,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-LABPLAN <LabPlan>: 
+LABPLAN `<LabPlan>`: 
   - `Location <String>`: The geo-location where the resource lives
   - `[AllowedRegion <String[]>]`: The allowed regions for the lab creator to use when creating labs using this lab plan.
   - `[DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]`: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.

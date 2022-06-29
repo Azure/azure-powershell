@@ -24,7 +24,7 @@ Creates security automation rule set object
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSecurityAutomationRuleSetObject -Rule $rule
+New-AzSecurityAutomationRuleSetObject -Rule $rule
 ```
 
 Creates security automation rule set object

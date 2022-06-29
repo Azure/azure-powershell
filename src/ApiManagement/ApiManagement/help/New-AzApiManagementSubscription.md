@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ### -PrimaryKey
 Specifies the subscription primary key.
 If this parameter is not specified the key is generated automatically.
-This parameter must be 1 to 300 characters long.
+This parameter must be 1 to 256 characters long.
 
 ```yaml
 Type: System.String
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 ### -SecondaryKey
 Specifies the subscription secondary key.
 This parameter is generated automatically if it is not specified.
-This parameter must be 1 to 300 characters long.
+This parameter must be 1 to 256 characters long.
 
 ```yaml
 Type: System.String

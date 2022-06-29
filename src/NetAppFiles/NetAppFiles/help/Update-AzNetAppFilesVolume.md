@@ -439,6 +439,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzNetAppFilesVolumeBackupStatus](./Get-AzNetAppFilesVolumeBackupStatus.md)
 [Get-AzNetAppFilesVolumeRestoreStatus](./Get-AzNetAppFilesVolumeRestoreStatus.md)
 [Approve-AzNetAppFilesReplication](./Approve-AzNetAppFilesReplication.md)
-[Inititialize-AzNetAppFilesReplication](./Inititialize-AzNetAppFilesReplication.md)
+[Initialize-AzNetAppFilesReplication](./Initialize-AzNetAppFilesReplication.md)
 [Resume-AzNetAppFilesReplication](./Resume-AzNetAppFilesReplication.md)
 [Remove-AzNetAppFilesReplication](./Remove-AzNetAppFilesReplication.md)

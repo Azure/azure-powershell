@@ -32,7 +32,7 @@ Validate a link in webapp.
 
 ### Example 1: Test Linker
 ```powershell
-Test-AzServiceLinkerForWebApp -WebApp servicelinker-webapp -ResourceGroupName servicelinker-test-group -Name postgresql_connection | fl
+Test-AzServiceLinkerForWebApp -WebApp servicelinker-webapp -ResourceGroupName servicelinker-test-group -Name postgresql_connection | Format-List
 ```
 
 ```output
@@ -245,7 +245,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+INPUTOBJECT `<IServiceLinkerIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[LinkerName <String>]`: The name Linker resource.
   - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the resource to be connected.

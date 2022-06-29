@@ -318,7 +318,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// Get a service channel object using specified storage account
         /// </summary>
-        /// <param name="account">Cloud storage account object</param>
+        /// <param name="context">Cloud storage account object</param>
         /// <returns>IStorageBlobManagement channel object</returns>
         protected IStorageBlobManagement CreateChannel(AzureStorageContext context)
         {
@@ -338,8 +338,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// Write CloudBlob to output using specified service channel
         /// </summary>
-        /// <param name="blob">The output CloudBlob object</param>
+        /// <param name="taskId">Task id</param>
         /// <param name="channel">IStorageBlobManagement channel object</param>
+        /// <param name="blob">A CloudBlob object</param>
+        /// <param name="continuationToken">Continuation token.</param>
         internal void WriteCloudBlobObject(long taskId, IStorageBlobManagement channel, CloudBlob blob, BlobContinuationToken continuationToken = null)
         {
             AzureStorageBlob azureBlob = new AzureStorageBlob(blob, channel.StorageContext, ClientOptions);
@@ -388,8 +390,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// Write CloudBlob to output using specified service channel
         /// </summary>
-        /// <param name="blob">The output CloudBlob object</param>
+        /// 
+        /// <param name="taskId">Task id</param>
         /// <param name="channel">IStorageBlobManagement channel object</param>
+        /// <param name="container">A CloudBlobContainer object</param>
+        /// <param name="permissions">permissions of container</param>
+        /// <param name="continuationToken">Continuation token.</param>
         internal void WriteCloudContainerObject(long taskId, IStorageBlobManagement channel,
             CloudBlobContainer container, BlobContainerPermissions permissions, BlobContinuationToken continuationToken = null)
         {
@@ -463,7 +469,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// get the CloudBlobContainer object by name if container exists
         /// </summary>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="containerName">container name</param>
+        /// <param name="skipCheckExists"></param>
         /// <returns>return CloudBlobContianer object if specified container exists, otherwise throw an exception</returns>
         internal async Task<CloudBlobContainer> GetCloudBlobContainerByName(IStorageBlobManagement localChannel, string containerName, bool skipCheckExists = false)
         {
@@ -487,8 +495,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// Get an Exist DataLakeGen2Item, return true is the item is a folder, return false if it's File
         /// </summary>
-        /// <param name="container">the blob container</param>
+        /// <param name="fileSystem"></param>
         /// <param name="path">the path of the Items</param>
+        /// <param name="fileClient"></param>
+        /// <param name="dirClient"></param>
         /// <returns>return true if the item is a folder, else false</returns>
         public static bool GetExistDataLakeGen2Item(DataLakeFileSystemClient fileSystem, string path, out DataLakeFileClient fileClient, out DataLakeDirectoryClient dirClient)
         {
@@ -590,7 +600,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// Set Metadata to a datalake gen2 item
         /// </summary>
-        /// <param name="file">datalake gen2 item</param>
+        /// <param name="item">datalake gen2 item</param>
         /// <param name="Metadata">Metadata to set</param>
         /// <param name="setToServer">True will set to server, false only set to the local Datalakegen2Item object</param>
         protected static IDictionary<string, string> SetDatalakegen2ItemMetaData(DataLakePathClient item, Hashtable Metadata, bool setToServer = true)
@@ -668,7 +678,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// get the DataLakeFileSystemClient object by name if DataLakeFileSystem exists
         /// </summary>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="fileSystemName">DataLakeFileSystem name</param>
+        /// <param name="skipCheckExists"></param>
         /// <returns>return DataLakeFileSystemClient object if specified DataLakeFileSystem exists, otherwise throw an exception</returns>
         internal DataLakeFileSystemClient GetFileSystemClientByName(IStorageBlobManagement localChannel, string fileSystemName, bool skipCheckExists = false)
         {
@@ -737,8 +749,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// set blob properties to a blob object
         /// </summary>
-        /// <param name="azureBlob">CloudBlob object</param>
-        /// <param name="meta">blob properties hashtable</param>
+        /// <param name="blob">CloudBlob object</param>
+        /// <param name="properties">blob properties hashtable</param>
         protected static void SetBlobProperties(CloudBlob blob, Hashtable properties)
         {
             if (properties == null)
@@ -762,7 +774,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// set blob metadata to a blob object
         /// </summary>
-        /// <param name="azureBlob">CloudBlob object</param>
+        /// <param name="blob">CloudBlob object</param>
         /// <param name="meta">meta data hashtable</param>
         protected static void SetBlobMeta(CloudBlob blob, Hashtable meta)
         {

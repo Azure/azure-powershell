@@ -352,6 +352,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     parameters.
         /// </summary>
         /// <param name="recoveryPlan">Recovery plan object</param>
+        /// <param name="replicationProtectedItems"></param>
         public ASRRecoveryPlan(
             RecoveryPlan recoveryPlan,
             IList<ReplicationProtectedItem> replicationProtectedItems)

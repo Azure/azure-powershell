@@ -54,8 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <summary>
         /// Constructs a database adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlDatabaseReplicationAdapter(IAzureContext context)
         {
             Context = context;
@@ -165,8 +164,6 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <param name="resourceGroupName">The source's resource group name</param>
         /// <param name="serverName">The source's Azure SQL Server name</param>
         /// <param name="databaseName">The source database name</param>
-        /// <param name="elasticPoolName">The copy's target elastic pool</param>
-        /// <param name="serviceLevelObjective">The copy's nondefault service level objective</param>
         /// <param name="response">The database create response</param>
         /// <returns>A powershell DatabaseCopy object</returns>
         private AzureSqlDatabaseCopyModel CreateDatabaseCopyModelFromDatabaseCreateOrUpdateResponse(string copyResourceGroupName, string copyServerName, string copyDatabaseName,
@@ -196,7 +193,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <param name="resourceGroupName">The source's resource group name</param>
         /// <param name="serverName">The source's Azure SQL Server name</param>
         /// <param name="databaseName">The source database name</param>
-        /// <param name="response">The database create response</param>
+        /// <param name="database">The database create response</param>
         /// <returns>A powershell DatabaseCopy object</returns>
         private AzureSqlDatabaseCopyModel CreateDatabaseCopyModelFromResponse(string copyResourceGroup, string copyServerName, string resourceGroupName, 
             string serverName, string databaseName, Management.Sql.Models.Database database)
@@ -337,8 +334,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <param name="serverName">The name of the Azure SQL Server containing the primary database</param>
         /// <param name="databaseName">The name of primary database</param>
         /// <param name="partnerResourceGroupName">The name of the Resource Group containing the secondary database</param>
-        /// <param name="linkId">The linkId of the replication link to the secondary</param>
-        /// <param name="response">The replication link response</param>
+        /// <param name="resp">The replication link response</param>
         /// <returns>The Azure SQL Database ReplicationLink object</returns>
         private AzureReplicationLinkModel CreateReplicationLinkModelFromReplicationLinkResponse(string resourceGroupName,
             string serverName, string databaseName, string partnerResourceGroupName, Management.Sql.LegacySdk.Models.ReplicationLink resp)
@@ -376,8 +372,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <param name="serverName">The name of the Azure SQL Server containing the primary database</param>
         /// <param name="databaseName">The name of primary database</param>
         /// <param name="partnerResourceGroupName">The name of the Resource Group containing the secondary database</param>
-        /// <param name="linkId">The linkId of the replication link to the secondary</param>
-        /// <param name="response">The replication link response</param>
+        /// <param name="resp">The replication link response</param>
         /// <returns>The Azure SQL Database ReplicationLink object</returns>
         private AzureReplicationLinkModel CreateReplicationLinkModelFromResponse(string resourceGroupName, string serverName, string databaseName, string partnerResourceGroupName, Management.Sql.Models.ReplicationLink resp)
         {
@@ -447,7 +442,6 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <param name="serverName">The name of the Azure SQL Server containing the primary database</param>
         /// <param name="databaseName">The name of primary database</param>
         /// <param name="partnerResourceGroupName">The name of the Resource Group containing the secondary database</param>
-        /// <param name="partnerServerName">The name of the Azure SQL Server containing the secondary database</param>
         /// <param name="allowDataLoss">Whether the failover operation will allow data loss</param>
         /// <returns>The Azure SQL Database ReplicationLink object</returns>
         internal AzureReplicationLinkModel FailoverLink(string resourceGroupName, string serverName, string databaseName, string partnerResourceGroupName, bool allowDataLoss)
