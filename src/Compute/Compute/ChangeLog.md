@@ -21,6 +21,13 @@
 -->
 ## Upcoming Release
 * Added image alias 'Win2022AzureEditionCore'
+* Added the `-DisableIntegrityMonitoring` switch parameter to the `New-AzVM` cmdlet. 
+  Changed the default behavior for `New-AzVM` when these conditions are met:
+  1) `-DisableIntegrityMonitoring` is not true.
+  2) `SecurityType` on the SecurityProfile is `TrustedLaunch`.
+  3) `VTpmEnabled` on the SecurityProfile is true.
+  4) `SecureBootEnabled` on the SecurityProfile is true. 
+  Now `New-AzVM` will install the `Guest Attestation` extension to the new VM when these conditions are met.
 * Added `-UserAssignedIdentity` and `-FederatedClientId` to the following cmdlets:
     - `New-AzDiskEncryptionSetConfig`
     - `Update-AzDiskEncryptionSet`

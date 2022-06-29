@@ -270,5 +270,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetOrchestrationModeNullChecks");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetGuestAttestation()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetGuestAttestation");
+        }
+
     }
 }
