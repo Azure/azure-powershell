@@ -23,6 +23,7 @@ Az.DigitalTwins
 Az.DiskPool
 Az.EdgeOrder
 Az.Elastic
+Az.FluidRelay
 Az.Functions
 Az.HanaOnAzure
 Az.HealthBot
