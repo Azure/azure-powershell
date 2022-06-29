@@ -113,6 +113,27 @@ namespace RecoveryServices.SiteRecovery.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AAzureToEdgeZoneRecoveryPlanReplication()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-AzureToEdgeZoneRecoveryPlanReplication");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AEdgeZoneToAzureRecoveryPlanReplication()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-EdgeZoneToAzureRecoveryPlanReplication");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AEdgeZoneToEdgeZoneRecoveryPlanReplication()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-EdgeZoneToEdgeZoneRecoveryPlanReplication");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2ARecoveryPlanReplication()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-RecoveryPlanReplication");

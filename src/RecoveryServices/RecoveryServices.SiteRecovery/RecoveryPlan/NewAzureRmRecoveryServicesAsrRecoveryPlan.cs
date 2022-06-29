@@ -200,6 +200,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         this.primaryserver = this.PrimaryFabric.ID;
                         this.recoveryserver = this.RecoveryFabric.ID;
                         break;
+                    // Fall-through
+                    case ASRParameterSets.EdgeZoneToAzure:
+                    case ASRParameterSets.AzureToEdgeZone:
+                    case ASRParameterSets.EdgeZoneToEdgeZone:
                     case ASRParameterSets.AzureZoneToZone:
                         this.failoverDeploymentModel = Constants.NotApplicable;
                         this.primaryserver = this.PrimaryFabric.ID;
@@ -232,10 +236,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                 new RecoveryPlanProviderSpecificDetailsConverter());
                         }
 
-                        break;
-                    case ASRParameterSets.EdgeZoneToAzure:
-                    case ASRParameterSets.AzureToEdgeZone:
-                    case ASRParameterSets.EdgeZoneToEdgeZone:
                         break;
                 }
 

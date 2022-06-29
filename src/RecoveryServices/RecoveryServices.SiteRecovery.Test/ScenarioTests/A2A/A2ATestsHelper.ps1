@@ -241,21 +241,21 @@ function createAzureVmInAvailabilityZone{
 		return $vm.Id
 }
 
-function createAzureVmInEdgeZone{
+function createAzureVmInEdgeZone {
     param([string]$primaryLocation)
     
-        $VMLocalAdminUser = "adminUser"
-		$PasswordString = $(Get-RandomSuffix 12)
-		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
-        $VMLocalAdminSecurePassword = $Password
-		$VMLocation = getPrimaryZoneLocation
-        $primaryExtendedLocation = getPrimaryExtendedLocation
-		$VMName = getAzureVmName
-		$domain = "domain"+ $seed
-        $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
-        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
-        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -EdgeZone $primaryExtendedLocation
-		return $vm.Id
+    $VMLocalAdminUser = "adminUser"
+    $PasswordString = $(Get-RandomSuffix 12)
+    $Password = $PasswordString | ConvertTo-SecureString -Force -AsPlainText
+    $VMLocalAdminSecurePassword = $Password
+    $VMLocation = getPrimaryZoneLocation
+    $primaryExtendedLocation = getPrimaryExtendedLocation
+    $VMName = getAzureVmName
+    $domain = "domain" + $seed
+    $password = $VMLocalAdminSecurePassword | ConvertTo-SecureString -AsPlainText -Force
+    $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
+    $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -EdgeZone $primaryExtendedLocation
+    return $vm.Id
 }
 
 function createRecoveryNetworkId{
