@@ -19,7 +19,7 @@ $vnf = @{ NetworkFunctionName = "myVnf1"; ResourceGroupName = "myResources"; Sub
 Update-AzConnectedNetworkFunctionTag -InputObject $vnf -Tag $tags
 ```
 
-```outputs
+```output
 Location    Name      Etag                                   ResourceGroupName
 --------    ----      ----                                   -----------------
 eastus2euap myNewVnf1 "0000f211-0000-3300-0000-61a9edc70000" myResources

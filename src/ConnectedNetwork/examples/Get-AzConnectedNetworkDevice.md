@@ -31,7 +31,7 @@ $mecDevice = @{ DeviceName = "myMecDevice1"; Location = "eastus"; ResourceGroupN
 Get-AzConnectedNetworkDevice -InputObject $mecDevice
 ```
 
-```outputh
+```output
 DeviceType                   : AzureStackEdge
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMecDevice1
 Location                     : eastus
