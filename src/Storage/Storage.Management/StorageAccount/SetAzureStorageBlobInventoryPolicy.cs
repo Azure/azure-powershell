@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
-using System.Management.Automation;
-using Newtonsoft.Json.Linq;
-using System.Globalization;
-using System.Collections.Generic;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Management.Automation;
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -184,33 +185,35 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     this.ResourceGroupName = accountResource.ResourceGroupName;
                     this.StorageAccountName = accountResource.ResourceName;
                 }
-                BlobInventoryPolicy blobInventoryPolicy;
+
+                Track2.BlobInventoryPolicyResource blobInventoryPolicyResource;
 
                 switch (this.ParameterSetName)
                 {
                     case AccountObjectPolicyRuleParameterSet:
                     case AccountNamePolicyRuleParameterSet:
                     case AccountResourceIdPolicyRuleParameterSet:
-                        blobInventoryPolicy = this.StorageClient.BlobInventoryPolicies.CreateOrUpdate(
-                            this.ResourceGroupName,
-                            this.StorageAccountName,
-                            new BlobInventoryPolicySchema(
-                                enabled: !(this.Disabled.IsPresent),
-                                rules: PSBlobInventoryPolicy.ParseBlobInventoryPolicyRules(this.Rule)));
+                        Track2.BlobInventoryPolicyData data = new Track2.BlobInventoryPolicyData();
+                        data.Policy = new Track2Models.BlobInventoryPolicySchema(
+                            !(this.Disabled.IsPresent),
+                            Track2Models.InventoryRuleType.Inventory,
+                            PSBlobInventoryPolicy.ParseBlobInventoryPolicyRules(this.Rule));
+                        blobInventoryPolicyResource = this.StorageClientTrack2
+                            .GetBlobInventoryPolicyResource(this.ResourceGroupName, this.StorageAccountName, "default")
+                            .Update(WaitUntil.Completed, data).Value;
                         break;
                     case AccountObjectPolicyObjectParameterSet:
                     case AccountNamePolicyObjectParameterSet:
                     case AccountResourceIdPolicyObjectParameterSet:
-                        blobInventoryPolicy = this.StorageClient.BlobInventoryPolicies.CreateOrUpdate(
-                            this.ResourceGroupName,
-                            this.StorageAccountName,
-                            this.Policy.ParseBlobInventoryPolicy().Policy);
+                        blobInventoryPolicyResource = this.StorageClientTrack2
+                            .GetBlobInventoryPolicyResource(this.ResourceGroupName, this.StorageAccountName, "default")
+                            .Update(WaitUntil.Completed, this.Policy.ParseBlobInventoryPolicy()).Value;
                         break;
                     default:
                         throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid ParameterSet: {0}", this.ParameterSetName));
                 }
 
-                WriteObject(new PSBlobInventoryPolicy(blobInventoryPolicy, this.ResourceGroupName, this.StorageAccountName), true);
+                WriteObject(new PSBlobInventoryPolicy(blobInventoryPolicyResource, this.ResourceGroupName, this.StorageAccountName), true); 
             }
         }
     }
