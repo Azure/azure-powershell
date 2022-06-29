@@ -24,7 +24,7 @@ Gets lists of resources that supports Privatelinks.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzEventHubPrivateLink -ResourceGroupName myresourcegroup -NamespaceName mynamespace
+Get-AzEventHubPrivateLink -ResourceGroupName myresourcegroup -NamespaceName mynamespace
 ```
 
 Gets lists of resources that supports Privatelinks on `mynamespace`.
