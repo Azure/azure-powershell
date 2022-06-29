@@ -45,16 +45,19 @@ namespace Microsoft.Azure.Authentication.Test.Config
         /// <returns>A config manager with initial state, ready to use.</returns>
         internal IConfigManager GetConfigManager(InitSettings settings, params ConfigDefinition[] config)
         {
-            var dataStore = settings?.DataStore ?? new MockDataStore();
             var configPath = settings?.Path ?? Path.GetRandomFileName();
+            var dataStore = settings?.DataStore;
+            if (dataStore == null)
+            {
+                dataStore = new MockDataStore();
+            }
+            if (!dataStore.FileExists(configPath))
+            {
+                dataStore.WriteFile(configPath, @"{}");
+            }
             var environmentVariableProvider = settings?.EnvironmentVariableProvider ?? new MockEnvironmentVariableProvider();
 
-            ConfigInitializer ci = new ConfigInitializer(new List<string>() { configPath })
-            {
-                DataStore = dataStore,
-                EnvironmentVariableProvider = environmentVariableProvider
-            };
-            IConfigManager icm = ci.GetConfigManager();
+            IConfigManager icm = new DefaultConfigManager(configPath, dataStore, environmentVariableProvider);
             foreach (var configDefinition in config)
             {
                 icm.RegisterConfig(configDefinition);

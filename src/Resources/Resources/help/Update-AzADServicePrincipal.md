@@ -960,14 +960,14 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: The homeRe
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory
 
-INFO <IMicrosoftGraphInformationalUrl>: informationalUrl
+INFO `<IMicrosoftGraphInformationalUrl>`: informationalUrl
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[MarketingUrl <String>]`: Link to the application's marketing page. For example, https://www.contoso.com/app/marketing
   - `[PrivacyStatementUrl <String>]`: Link to the application's privacy statement. For example, https://www.contoso.com/app/privacy
   - `[SupportUrl <String>]`: Link to the application's support page. For example, https://www.contoso.com/app/support
   - `[TermsOfServiceUrl <String>]`: Link to the application's terms of service statement. For example, https://www.contoso.com/app/termsofservice
 
-INPUTOBJECT <IMicrosoftGraphServicePrincipal>: service principal object
+INPUTOBJECT `<IMicrosoftGraphServicePrincipal>`: service principal object
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory
@@ -1114,7 +1114,7 @@ PASSWORDCREDENTIAL <IMicrosoftGraphPasswordCredential[]>: The collection of pass
   - `[KeyId <String>]`: The unique identifier for the password.
   - `[StartDateTime <DateTime?>]`: The date and time at which the password becomes valid. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
 
-SAMLSINGLESIGNONSETTING <IMicrosoftGraphSamlSingleSignOnSettings>: samlSingleSignOnSettings
+SAMLSINGLESIGNONSETTING `<IMicrosoftGraphSamlSingleSignOnSettings>`: samlSingleSignOnSettings
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[RelayState <String>]`: The relative URI the service provider would redirect to after completion of the single sign-on flow.
 

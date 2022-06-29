@@ -361,7 +361,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ENDPOINTDESCRIPTION <IDigitalTwinsEndpointResource>: DigitalTwinsInstance endpoint resource.
+ENDPOINTDESCRIPTION `<IDigitalTwinsEndpointResource>`: DigitalTwinsInstance endpoint resource.
   - `EndpointType <EndpointType>`: The type of Digital Twins endpoint
   - `[DeadLetterSecret <String>]`: Dead letter storage secret. Will be obfuscated during read.
 
