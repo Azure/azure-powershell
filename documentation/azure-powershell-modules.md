@@ -146,6 +146,7 @@ Traffic Manager                       | `Az.TrafficManager`                     
 Azure VMware Solution                 | `Az.VMware`                             | [![VMware]][VMwareGallery]
 Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery]
 Windows Iot Services                  | `Az.WindowsIotServices`                 | [![WindowsIotServices]][WindowsIotServicesGallery]
+Machine Learning Services             | `Az.MachineLearningServices`            | [![MachineLearningServices]][MachineLearningServices]
 
 <!-- References -->
 
@@ -287,6 +288,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [VMware]:                     https://img.shields.io/powershellgallery/v/Az.VMware.svg?style=flat-square&label=Az.VMware
 [Websites]:                   https://img.shields.io/powershellgallery/v/Az.Websites.svg?style=flat-square&label=Az.Websites
 [WindowsIotServices]:         https://img.shields.io/powershellgallery/v/Az.WindowsIotServices.svg?style=flat-square&label=Az.WindowsIotServices
+[MachineLearningServices]:    https://img.shields.io/powershellgallery/v/Az.MachineLearningServices.svg?style=flat-square&label=Az.MachineLearningServices
 
 <!-- PS Gallery -->
 [AzGallery]:                         https://www.powershellgallery.com/packages/Az/
@@ -426,3 +428,4 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [VMwareGallery]:                     https://www.powershellgallery.com/packages/Az.VMware/
 [WebsitesGallery]:                   https://www.powershellgallery.com/packages/Az.Websites/
 [WindowsIotServicesGallery]:         https://www.powershellgallery.com/packages/Az.WindowsIotServices/
+[MachineLearningServicesGallery]:    https://www.powershellgallery.com/packages/Az.MachineLearningServices/
