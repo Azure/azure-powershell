@@ -49,9 +49,9 @@ To update other fields use the CreateOrUpdate method.
 ```powershell
 $scope = Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
 
-Name         Location    PublicNetworkAccess ProvisioningState 
-----         --------    ------------------- ----------------- 
-name         eastus2euap Disabled            Succeeded         
+Name         Location    PublicNetworkAccess ProvisioningState
+----         --------    ------------------- -----------------
+name         eastus2euap Disabled            Succeeded
 
 $scope.Tag
 ```
