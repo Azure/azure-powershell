@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/providers/Microsoft.Subscription/aliases/navyprod1?api-version=2020-09-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3Vic2NyaXB0aW9uL2FsaWFzZXMvbmF2eXByb2QxP2FwaS12ZXJzaW9uPTIwMjAtMDktMDE=",
+      "RequestUri": "/providers/Microsoft.Subscription/aliases/test-alias?api-version=2021-10-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3Vic2NyaXB0aW9uL2FsaWFzZXMvdGVzdC1hbGlhcz9hcGktdmVyc2lvbj0yMDIxLTEwLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "39c471c0-9fd7-434d-8947-38ed4d2be60f"
+          "5ee407b7-67ba-42f8-a3d0-fefe39ec2ed4"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19041.",
-          "Microsoft.Azure.Management.Subscription.SubscriptionClient/1.1.5.0"
+          "OSVersion/Microsoft.Windows.10.0.22000.",
+          "Microsoft.Azure.Management.Subscription.SubscriptionClient/2.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -32,11 +32,14 @@
         "x-ms-ratelimit-remaining-tenant-reads": [
           "11999"
         ],
+        "MS-CV": [
+          "r5h1/XAVhkOlk90uyr4GLg.0"
+        ],
         "x-ms-correlation-request-id": [
-          "68f53ee5-2184-430d-90ff-f0afcf2d9b69"
+          "e180e822-d382-41a4-aea1-be73cf507e7a"
         ],
         "request-id": [
-          "68f53ee5-2184-430d-90ff-f0afcf2d9b69"
+          "e180e822-d382-41a4-aea1-be73cf507e7a"
         ],
         "x-gsm": [
           "1.0.0.0"
@@ -54,19 +57,19 @@
           "ASP.NET"
         ],
         "x-ms-request-id": [
-          "68f53ee5-2184-430d-90ff-f0afcf2d9b69"
+          "e180e822-d382-41a4-aea1-be73cf507e7a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200901T220819Z:68f53ee5-2184-430d-90ff-f0afcf2d9b69"
+          "WESTUS:20220203T065754Z:e180e822-d382-41a4-aea1-be73cf507e7a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 01 Sep 2020 22:08:18 GMT"
+          "Thu, 03 Feb 2022 06:57:53 GMT"
         ],
         "Content-Length": [
-          "222"
+          "224"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -75,12 +78,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Subscription/aliases/navyprod1\",\r\n  \"name\": \"navyprod1\",\r\n  \"type\": \"Microsoft.Subscription/aliases\",\r\n  \"properties\": {\r\n    \"subscriptionId\": \"cef41c82-c4f0-48ae-a336-2ec44ec4375a\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Subscription/aliases/test-alias\",\r\n  \"name\": \"test-alias\",\r\n  \"type\": \"Microsoft.Subscription/aliases\",\r\n  \"properties\": {\r\n    \"subscriptionId\": \"d17ad3ae-320e-42ff-b5a1-705389c6063a\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "5b47c35e-863f-4c66-ba9f-52b9d0ced037"
+    "SubscriptionId": "d17ad3ae-320e-42ff-b5a1-705389c6063a"
   }
 }

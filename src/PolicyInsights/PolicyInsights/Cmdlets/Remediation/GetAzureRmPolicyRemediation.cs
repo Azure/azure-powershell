@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
                         getFirstPage: () => this.PolicyInsightsClient.Remediations.ListDeploymentsAtResource(resourceId: rootScope, remediationName: remediationName, queryOptions: queryOptions),
                         getNextPage: nextLink => this.PolicyInsightsClient.Remediations.ListDeploymentsAtResourceNext(nextPageLink: nextLink),
                         action: deploymentPage => deployments.AddRange(deploymentPage),
-                        top: queryOptions.Top.GetValueOrDefault(int.MaxValue),
+                        numberOfResults: int.MaxValue,
                         cancellationToken: this.CancellationToken);
                 }
 
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
                     getFirstPage: () => this.PolicyInsightsClient.Remediations.ListForResource(resourceId: rootScope, queryOptions: queryOptions),
                     getNextPage: nextLink => this.PolicyInsightsClient.Remediations.ListForResourceNext(nextPageLink: nextLink),
                     action: resources => this.WriteObject(sendToPipeline: resources.Select(r => new PSRemediation(r)), enumerateCollection: true),
-                    top: queryOptions.Top.GetValueOrDefault(int.MaxValue),
+                    numberOfResults: int.MaxValue,
                     cancellationToken: this.CancellationToken);
             }
         }

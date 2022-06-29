@@ -38,29 +38,29 @@ This cmdlet removes an managed application type form the cluster and will remove
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appTypeName = "testAppType"
-PS C:\> Remove-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Verbose
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appTypeName = "testAppType"
+Remove-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Verbose
 ```
 
 This example will remove the managed application type "testAppType" and all the version under it. If there are any applications created with this type, the command will throw an exception.
 
 ### Example 2
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appTypeName = "testAppType"
-PS C:\> $appType = Get-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName
-PS C:\> $appType | Remove-AzServiceFabricManagedClusterApplicationType -Verbose
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appTypeName = "testAppType"
+$appType = Get-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName
+$appType | Remove-AzServiceFabricManagedClusterApplicationType -Verbose
 ```
 
 This example will remove the managed application type "testAppType" and all the version under it. If there are any applications created with this type, the command will throw an exception.
 
 ### Example 3
 ```powershell
-PS C:\> $resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applicationTypes/testAppType"
-PS C:\> Remove-AzServiceFabricManagedClusterApplicationType -ResourceId $resourceId
+$resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applicationTypes/testAppType"
+Remove-AzServiceFabricManagedClusterApplicationType -ResourceId $resourceId
 ```
 
 This example will remove the managed application type details with the ARM Resource ID specified.

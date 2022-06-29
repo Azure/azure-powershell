@@ -14,8 +14,8 @@ Create a gallery.
 
 ```
 New-AzGallery [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Location] <String>
- [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Description <String>] [-Tag <Hashtable>] [-Permission <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,10 +25,17 @@ Create a gallery.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location -Description $galleryDescription
+New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location -Description $galleryDescription
 ```
 
 Create a gallery.
+
+### Example 2
+```powershell
+New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location -Description $galleryDescription -Permission Groups
+```
+
+Create a gallery with Direct Sharing enabled.
 
 ## PARAMETERS
 
@@ -102,6 +109,21 @@ Aliases: GalleryName
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Permission
+This property allows you to specify the permission of sharing gallery. Possible values are: 'Private' and 'Groups'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

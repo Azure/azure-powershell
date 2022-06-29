@@ -25,8 +25,8 @@ To use this cmdlet, specify the ResourceGroupName and ServerName parameters to i
 ## EXAMPLES
 
 ### Example 1: Remove a advanced threat protection settings for a database
-```
-PS C:\> Clear-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -ServerName "Server01"
+```powershell
+Clear-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -ServerName "Server01"
 ```
 
 This command removes the advanced threat protection settings from a server named Server01.

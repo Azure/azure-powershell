@@ -38,7 +38,10 @@ The **Remove-AzMetricAlertRuleV2** cmdlet removes an alert rule. This cmdlet imp
 ### Example 1: Remove an alert rule by name
 
 ```powershell
-PS C:\> Remove-AzMetricAlertRuleV2 -ResourceGroupName xxxxRG -Name PsSdk -PassThru
+Remove-AzMetricAlertRuleV2 -ResourceGroupName xxxxRG -Name PsSdk -PassThru
+```
+
+```output
 True
 ```
 
@@ -47,7 +50,7 @@ This command removes the alert rule named PsSdk
 ### Example 2: Remove an alert rule by ID
 
 ```powershell
-PS C:\>Remove-AzMetricAlertRuleV2 -ResourceId /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricAlertRG/providers/Microsoft.Insights/metricAlerts/myAlertRule
+Remove-AzMetricAlertRuleV2 -ResourceId /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricAlertRG/providers/Microsoft.Insights/metricAlerts/myAlertRule
 ```
 
 This command removes the alert rule with resource ID `/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricAlertRG/providers/Microsoft.Insights/metricAlerts/myAlertRule`
@@ -55,7 +58,7 @@ This command removes the alert rule with resource ID `/subscriptions/00000000-00
 ### Example 3: Get an alert and remove it
 
 ```powershell
-PS c:\>Get-AzMetricAlertRuleV2 -ResourceGroupName alertstest -Name sampleAlertRule |Remove-AzMetricAlertRuleV2
+Get-AzMetricAlertRuleV2 -ResourceGroupName alertstest -Name sampleAlertRule | Remove-AzMetricAlertRuleV2
 ```
 
 This command gets an alert and removes it.

@@ -28,8 +28,11 @@ For an overview of the Compute Resource Provider's API throttling, see https://d
 ## EXAMPLES
 
 ### Example 1: Export records aggregated by operation name
+```powershell
+Export-AzLogAnalyticRequestRateByInterval -Location 'West Central US' -FromTime '2018-02-20T17:54:14.8806951-08:00' -ToTime '2018-02-22T17:54:17.5832413-08:00' -BlobContainerSasUri 'https://wkuotest1.blob.core.windows.net/mylogs?someSasUri' -IntervalLength ThirtyMins -GroupByOperationName
 ```
-PS C:\> Export-AzLogAnalyticRequestRateByInterval -Location 'West Central US' -FromTime '2018-02-20T17:54:14.8806951-08:00' -ToTime '2018-02-22T17:54:17.5832413-08:00' -BlobContainerSasUri 'https://wkuotest1.blob.core.windows.net/mylogs?someSasUri' -IntervalLength ThirtyMins -GroupByOperationName
+
+```output
 This command downloads a .csv file to the provided container. The format of the file is:
 
 TIMESTAMP             operationName   TotalRequests SuccessfulRequests ThrottledRequests
@@ -37,15 +40,16 @@ TIMESTAMP             operationName   TotalRequests SuccessfulRequests Throttled
 2/21/2018  7:00:00 PM <operationName> 10            10                 0
 2/21/2018  7:30:00 PM <operationName> 8             8                  0
 2/21/2018  9:00:00 PM <operationName> 9             9                  0
-
 ```
 
 This command stores the aggregated numbers of Microsoft.Compute API calls separated by Success, Failure, or Throttled between 2018-02-20T17:54:14 and 2018-02-22T17:54:17 in the given SAS URI, aggregated by operation name.
 
 ### Example 2: Export records aggregated by application id
+```powershell
+Export-AzLogAnalyticRequestRateByInterval -Location 'West Central US' -FromTime '2018-02-20T17:54:14.8806951-08:00' -ToTime '2018-02-22T17:54:17.5832413-08:00' -BlobContainerSasUri 'https://wkuotest1.blob.core.windows.net/mylogs?someSasUri' -IntervalLength ThirtyMins -GroupByApplicationId
 ```
-PS C:\> Export-AzLogAnalyticRequestRateByInterval -Location 'West Central US' -FromTime '2018-02-20T17:54:14.8806951-08:00' -ToTime '2018-02-22T17:54:17.5832413-08:00' -BlobContainerSasUri 'https://wkuotest1.blob.core.windows.net/mylogs?someSasUri' -IntervalLength ThirtyMins -GroupByApplicationId
 
+```output
 This command downloads a .csv file to the provided container. The format of the file is:
 
 TIMESTAMP             clientApplicationId   TotalRequests SuccessfulRequests ThrottledRequests
@@ -53,14 +57,16 @@ TIMESTAMP             clientApplicationId   TotalRequests SuccessfulRequests Thr
 2/21/2018  7:00:00 PM <clientApplicationId> 10            10                 0
 2/21/2018  7:30:00 PM <clientApplicationId> 8             8                  0
 2/21/2018  9:00:00 PM <clientApplicationId> 9             9                  0
-
 ```
 
 This command stores the aggregated numbers of Microsoft.Compute API calls separated by Success, Failure, or Throttled between 2018-02-20T17:54:14 and 2018-02-22T17:54:17 in the given SAS URI, aggregated by application id. 
 
 ### Example 3: Export records aggregated by user agent
+```powershell
+Export-AzLogAnalyticRequestRateByInterval -Location 'West Central US' -FromTime '2018-02-20T17:54:14.8806951-08:00' -ToTime '2018-02-22T17:54:17.5832413-08:00' -BlobContainerSasUri 'https://wkuotest1.blob.core.windows.net/mylogs?someSasUri' -IntervalLength ThirtyMins -GroupByUserAgent
 ```
-PS C:\> Export-AzLogAnalyticRequestRateByInterval -Location 'West Central US' -FromTime '2018-02-20T17:54:14.8806951-08:00' -ToTime '2018-02-22T17:54:17.5832413-08:00' -BlobContainerSasUri 'https://wkuotest1.blob.core.windows.net/mylogs?someSasUri' -IntervalLength ThirtyMins -GroupByUserAgent
+
+```output
 This command downloads a .csv file to the provided container. The format of the file is:
 
 TIMESTAMP             userAgent   TotalRequests SuccessfulRequests ThrottledRequests
@@ -68,7 +74,6 @@ TIMESTAMP             userAgent   TotalRequests SuccessfulRequests ThrottledRequ
 2/21/2018  7:00:00 PM <userAgent> 10            10                 0
 2/21/2018  7:30:00 PM <userAgent> 8             8                  0
 2/21/2018  9:00:00 PM <userAgent> 9             9                  0
-
 ```
 
 This command stores the aggregated numbers of Microsoft.Compute API calls separated by Success, Failure, or Throttled between 2018-02-20T17:54:14 and 2018-02-22T17:54:17 in the given SAS URI, aggregated by user agent. 

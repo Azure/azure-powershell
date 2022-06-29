@@ -37,7 +37,7 @@ Delete a SSH Public Key resource.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSshKey -ResourceGroupName "testRG" -Name "sshKey1"
+Remove-AzSshKey -ResourceGroupName "testRG" -Name "sshKey1"
 ```
 
 Deletes Ssh Public Key resource named "sshKey1" in Resource Group "testRG"

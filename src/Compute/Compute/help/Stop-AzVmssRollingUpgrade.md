@@ -23,8 +23,8 @@ Cancels the current virtual machine scale set rolling upgrade.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Stop-AzVmssRollingUpgrade -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+```powershell
+Stop-AzVmssRollingUpgrade -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 This command cancels on-going rolling upgrade of VM scale set "VMSS001" in resource group "Group001".

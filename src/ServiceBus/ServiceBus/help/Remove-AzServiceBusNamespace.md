@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
 online version: https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusnamespace
@@ -36,31 +36,31 @@ The **Remove-AzServiceBusNamespace** cmdlet removes the namespace from the speci
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
+```powershell
+Remove-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
 ```
 
 Removes the Service Bus namespace `SB-Example1` from the specified resource group `Default-ServiceBus-WestUS`.
 
 ### Example 2.1 - InputObject - Using variable:
-```
-PS C:\> $inputobject = Get-AzServiceBusNamespace <params>
-PS C:\> Remove-AzServiceBusNamespace -InputObject $inputobject
+```powershell
+$inputobject = Get-AzServiceBusNamespace <params>
+Remove-AzServiceBusNamespace -InputObject $inputobject
 ```
 
 Removes the Service Bus namespace provided through the $inputobject.
 
 ### Example 2.2 - InputObject - Using Piping:
-```
-PS C:\> Get-AzServiceBusNamespace <params> | Remove-AzServiceBusNamespace
+```powershell
+Get-AzServiceBusNamespace <params> | Remove-AzServiceBusNamespace
 ```
 
 Removes the Service Bus namespace using Piping.
 
 ### Example 3 - ResourceId
-```
-PS c:\> $ResourceId = (Get-AzResource -ResourceType Microsoft.ServiceBus/namespaces).ResourceId
-PS C:\> Remove-AzServiceBusNamespace -ResourceId $resourceid
+```powershell
+$ResourceId = (Get-AzResource -ResourceType Microsoft.ServiceBus/namespaces).ResourceId
+Remove-AzServiceBusNamespace -ResourceId $resourceid
 ```
 
 Removes the Service Bus namespace provided through ARM id in $resourceid for -ResourceId parameter or through piping.

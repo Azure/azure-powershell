@@ -23,8 +23,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 {
     public partial class ServiceClientAdapter
     {
-
-
         /// <summary>
         /// Get azure resource
         /// </summary>
@@ -44,8 +42,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Get storage accounts according to the query params
         /// </summary>
         /// <param name="storageAccountName">Name of the container to unregister</param>
+        /// <param name="subscriptionId"></param>
         /// <returns>Generic resource returned from the service</returns>
-        public GenericResource GetStorageAccountResource(string storageAccountName)
+        public GenericResource GetStorageAccountResource(string storageAccountName, string subscriptionId = null)
         {
             List<GenericResource> storageAccounts = null;
             GenericResource storageAccount = null;
@@ -53,6 +52,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             ODataQuery<GenericResourceFilter> getItemQueryParams =
                 new ODataQuery<GenericResourceFilter>(q =>
                 q.ResourceType == "Microsoft.ClassicStorage/storageAccounts");
+
+            // switch subscription context 
+            string subscriptionContext = RMAdapter.Client.SubscriptionId;
+            RMAdapter.Client.SubscriptionId = (subscriptionId != null)? subscriptionId: RMAdapter.Client.SubscriptionId;
+
             Func<RestAzureNS.IPage<GenericResource>> listAsync =
             () => RMAdapter.Client.Resources.ListWithHttpMessagesAsync(
                 getItemQueryParams,
@@ -83,6 +87,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 storageAccount = storageAccounts.Find(account =>
                     string.Compare(account.Name, storageAccountName) == 0);
             }
+
+            RMAdapter.Client.SubscriptionId = subscriptionContext;
+
             return storageAccount;
         }
     }

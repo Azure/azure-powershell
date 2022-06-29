@@ -15,6 +15,7 @@
 using Commands.StorageSync.Interop.Clients;
 using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -150,5 +151,11 @@ namespace StorageSync.Test.Common
             }
             return tenantId;
         }
+
+        /// <summary>
+        /// Get Service Principal Or Null
+        /// </summary>
+        /// <returns>MicrosoftGraphServicePrincipal</returns>
+        public MicrosoftGraphServicePrincipal GetServicePrincipalOrNull() => new MicrosoftGraphServicePrincipal() { Id = "384dab06-7a70-4ecf-a04e-284602199124" }; // Change Object ID if we are using some other tenant
     }
 }

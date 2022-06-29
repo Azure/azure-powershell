@@ -62,8 +62,10 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 
 ### Example 1: Restore a backed-up key
 ```powershell
-PS C:\> Restore-AzKeyVaultKey -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+Restore-AzKeyVaultKey -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+```
 
+```output
 Vault Name     : MyKeyVault
 Name           : key1
 Version        : 394f9379a47a4e2086585468de6c7ae5

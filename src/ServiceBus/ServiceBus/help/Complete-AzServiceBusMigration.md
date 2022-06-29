@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
 online version: https://docs.microsoft.com/powershell/module/az.servicebus/complete-azservicebusmigration
@@ -37,7 +37,7 @@ The **Complete-AzServiceBusMigration** cmdlets set the Migration from Standard t
 
 ### Example 1
 ```powershell
-PS C:\> Complete-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name NamespaceStandardMigration
+Complete-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name NamespaceStandardMigration
 ```
 
 Sets the Migration of 'NamespaceStandardMigration' namespace as complete.

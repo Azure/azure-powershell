@@ -36,15 +36,15 @@ List `Reservation`s within a single `ReservationOrder`.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzReservation -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff"
+```powershell
+Get-AzReservation -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff"
 ```
 
 List `Reservation`s within the specified `ReservationOrder`.
 
 ### Example 2
-```
-PS C:\> Get-AzReservation -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservationId "11111111-1111-1111-1111-1111111111"
+```powershell
+Get-AzReservation -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservationId "11111111-1111-1111-1111-1111111111"
 ```
 
 Get specific `Reservation` details.

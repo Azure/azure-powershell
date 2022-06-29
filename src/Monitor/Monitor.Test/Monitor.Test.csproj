@@ -13,7 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.26.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ApplicationInsights" Version="0.3.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="21.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="22.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.24.0-preview" />
   </ItemGroup>
 

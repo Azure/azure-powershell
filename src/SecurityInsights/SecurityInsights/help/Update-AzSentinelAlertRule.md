@@ -60,15 +60,15 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId" -Disabled -DisplayName "Disabled-AlertRuleDisplayName"
+Update-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId" -Disabled -DisplayName "Disabled-AlertRuleDisplayName"
 ```
 
 This example updates an **AlertRule** setting it to *Disabled* and renames the AlertRule to *Disabled-AlertRuleDisplayName*.  All other properties will remain the same.
 
 ### Example 2
 ```powershell
-PS C:\> $AlertRule = Get-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId"
-PS C:\> Update-AzSentinelAlertRule -InputObject $AlertRule -Disabled
+$AlertRule = Get-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId"
+Update-AzSentinelAlertRule -InputObject $AlertRule -Disabled
 ```
 
 This example updates an **AlertRule** using an InputObject setting it to *Disabled*.  All other properties will remain the same.

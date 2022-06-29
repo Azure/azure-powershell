@@ -16,49 +16,51 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
 {
     /// <summary>
     /// 'Set-AzEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNetworkRuleSet", SupportsShouldProcess = true, DefaultParameterSetName = NetwrokruleSetPropertiesParameterSet), OutputType(typeof(PSNetworkRuleSetAttributes))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNetworkRuleSet", SupportsShouldProcess = true, DefaultParameterSetName = NetworkRuleSetPropertiesParameterSet), OutputType(typeof(PSNetworkRuleSetAttributes))]
     public class SetAzureServiceBusNetworkrule : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetInputObjectParameterSet, Position = 0, HelpMessage = "Resource Group Name.")]
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 0, HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetInputObjectParameterSet, Position = 0, HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetPropertiesParameterSet, Position = 0, HelpMessage = "Resource Group Name.")]
         [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetResourceIdParameterSet, Position = 0, HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetInputObjectParameterSet, Position = 1, HelpMessage = "ServiceBus Namespace Name.")]
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 1, HelpMessage = "ServiceBus Namespace Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetInputObjectParameterSet, Position = 1, HelpMessage = "ServiceBus Namespace Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetPropertiesParameterSet, Position = 1, HelpMessage = "ServiceBus Namespace Name.")]
         [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetResourceIdParameterSet, Position = 1, HelpMessage = "ServiceBus Namespace Name.")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Name { get; set; }       
 
-        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet, HelpMessage = "Default Action for NetwrokeuleSet")]
+        [Parameter(Mandatory = false, ParameterSetName = NetworkRuleSetPropertiesParameterSet, HelpMessage = "Default Action for NetwrokeuleSet")]
         [PSArgumentCompleter("Allow", "Deny")]
         [PSDefaultValue(Value ="Deny")]
         public string DefaultAction { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet, HelpMessage = "Public Network Access for NetwrokeuleSet")]
+        [Parameter(Mandatory = false, ParameterSetName = NetworkRuleSetPropertiesParameterSet, HelpMessage = "Public Network Access for NetwrokeuleSet")]
         [PSArgumentCompleter("Enabled", "Disabled")]
         [PSDefaultValue(Value = "Enabled")]
         public string PublicNetworkAccess { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 2, HelpMessage = "List of IPRuleSet")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, ParameterSetName = NetworkRuleSetPropertiesParameterSet, HelpMessage = "Trusted Service Access for NetworkRuleSet")]
+        public SwitchParameter TrustedServiceAccessEnabled { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = NetworkRuleSetPropertiesParameterSet, Position = 2, HelpMessage = "List of IPRuleSet")]
         public PSNWRuleSetIpRulesAttributes[] IPRule { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 3, HelpMessage = "List of VirtualNetworkRules")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, ParameterSetName = NetworkRuleSetPropertiesParameterSet, Position = 3, HelpMessage = "List of VirtualNetworkRules")]
         [Alias(AliasVirtualNetworkRule)]
         public PSNWRuleSetVirtualNetworkRulesAttributes[] VirtualNetworkRule { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetInputObjectParameterSet, ValueFromPipeline = true, Position = 2, HelpMessage = "NetworkruleSet Configuration Object")]
+        [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetInputObjectParameterSet, ValueFromPipeline = true, Position = 2, HelpMessage = "NetworkruleSet Configuration Object")]
         [ValidateNotNullOrEmpty]
         public PSNetworkRuleSetAttributes InputObject { get; set; }
 
@@ -76,20 +78,26 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
                 try
                 {
 
-                    if (ParameterSetName.Equals(NetwrokruleSetPropertiesParameterSet))
+                    if (ParameterSetName.Equals(NetworkRuleSetPropertiesParameterSet))
                     {
-                        PSNetworkRuleSetAttributes networkRuleSetAttributes = new PSNetworkRuleSetAttributes()
-                        {
-                            DefaultAction = DefaultAction,
-                            IpRules = IPRule.OfType<PSNWRuleSetIpRulesAttributes>().ToList(),
-                            VirtualNetworkRules = VirtualNetworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList(),
-                            PublicNetworkAccess = PublicNetworkAccess
-                        };
+                        bool? trustedServiceAccessEnabled = null;
 
-                        WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSetAttributes));
+                        if (this.IsParameterBound(c => c.TrustedServiceAccessEnabled) == true)
+                        {
+                            trustedServiceAccessEnabled = TrustedServiceAccessEnabled.IsPresent;
+                        }
+
+
+                        WriteObject(Client.UpdateNetworkRuleSet(resourceGroupName: ResourceGroupName, 
+                                                                namespaceName: Name, 
+                                                                publicNetworkAccess: PublicNetworkAccess,
+                                                                trustedServiceAccessEnabled: trustedServiceAccessEnabled,
+                                                                defaultAction: DefaultAction,
+                                                                iPRule: IPRule,
+                                                                virtualNetworkRule: VirtualNetworkRule));
                     }
 
-                    if (ParameterSetName.Equals(NetwrokruleSetInputObjectParameterSet))
+                    if (ParameterSetName.Equals(NetworkRuleSetInputObjectParameterSet))
                     {
                         WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, InputObject));
                     }
@@ -102,7 +110,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
 
                         if (ResourceGroupName != null && getParamGeoDR.ResourceName != null)
                         {
-                            if (ShouldProcess(target: Name, action: string.Format("updating NetwrokruleSet", Name, ResourceGroupName)))
+                            if (ShouldProcess(target: Name, action: string.Format("updating NetworkRuleSet", Name, ResourceGroupName)))
                             {
                                 WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, getNWRuleSet));
                             }

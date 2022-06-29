@@ -40,7 +40,7 @@ Currently only supported for TumblingWindowTriggers in WaitingOnDependency State
 
 ### Example 1
 ```powershell
-PS C:\> Stop-AzDataFactoryV2TriggerRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "testTumblingWindowTrigger" -TriggerRunId 08586002468005888497807248799CU16
+Stop-AzDataFactoryV2TriggerRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "testTumblingWindowTrigger" -TriggerRunId 08586002468005888497807248799CU16
 ```
 
 This command stops the trigger run with id '08586002468005888497807248799CU16' in the factory WikiADF.

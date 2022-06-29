@@ -19,13 +19,6 @@
 Executes a command for a specific container instance in a specified resource group and container group.
 .Description
 Executes a command for a specific container instance in a specified resource group and container group.
-.Example
-PS C:\> Invoke-AzContainerInstanceCommand -ContainerGroupName test-cg -ContainerName test-container -ResourceGroupName　test-rg -Command "echo hello"
-
-hello
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerExecResponse
 .Link
 https://docs.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
 #>

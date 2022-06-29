@@ -48,9 +48,9 @@ The **Remove-AzPolicySetDefinition** cmdlet removes a policy definition.
 ## EXAMPLES
 
 ### Example 1: Remove policy set definition by resource ID
-```
-PS C:\> $PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
-PS C:\> Remove-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force
+```powershell
+$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
+Remove-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force
 ```
 
 The first command gets a policy set definition by using the Get-AzPolicySetDefinition cmdlet.

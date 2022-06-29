@@ -29,6 +29,7 @@ using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Rest.Azure.OData;
+using ServicePrincipal = Microsoft.Azure.Graph.RBAC.Version1_6.Models.ServicePrincipal;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
 {
@@ -89,6 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="managedInstanceName">The name of the managed instance</param>
+        /// <param name="expand">The child resources to include in the response.</param>
         /// <returns>The managed instance</returns>
         public AzureSqlManagedInstanceModel GetManagedInstance(string resourceGroupName, string managedInstanceName, string expand = null)
         {
@@ -121,6 +123,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         /// Gets a list of all the managed instances in a resource group
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="expand">The child resources to include in the response.</param>
         /// <returns>A list of all the managed instances</returns>
         public List<AzureSqlManagedInstanceModel> ListManagedInstancesByResourceGroup(string resourceGroupName, string expand = null)
         {
@@ -170,12 +173,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                     string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/instancePools/{2}",
                         Context.Subscription.Id, model.ResourceGroupName, model.InstancePoolName) : null,
                 MinimalTlsVersion = model.MinimalTlsVersion,
-                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
+                RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
                 MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.MaintenanceConfigurationId, Context.Subscription.Id),
                 Administrators = GetActiveDirectoryInformation(model.Administrators),
                 PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
                 KeyId = model.KeyId,
-                ZoneRedundant = model.ZoneRedundant
+                ZoneRedundant = model.ZoneRedundant,
+                ServicePrincipal = ResourceServicePrincipalHelper.UnwrapServicePrincipalObject(model.ServicePrincipal)
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -200,7 +204,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 VCores = model.VCores,
                 PublicDataEndpointEnabled = model.PublicDataEndpointEnabled,
                 ProxyOverride = model.ProxyOverride,
-        });
+            });
 
             return CreateManagedInstanceModelFromResponse(resp);
         }
@@ -218,7 +222,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         /// <summary>
         /// Convert a Management.Sql.LegacySdk.Models.ManagedInstance to AzureSqlDatabaseManagedInstanceModel
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the managed instance is in</param>
         /// <param name="resp">The management client managed instance response to convert</param>
         /// <returns>The converted managed instance model</returns>
         private static AzureSqlManagedInstanceModel CreateManagedInstanceModelFromResponse(Management.Sql.Models.ManagedInstance resp)
@@ -251,8 +254,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.InstancePoolName = resp.InstancePoolId != null ?
                 new ResourceIdentifier(resp.InstancePoolId).ResourceName : null;
             managedInstance.MinimalTlsVersion = resp.MinimalTlsVersion;
-            managedInstance.BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(resp.StorageAccountType);
+            managedInstance.BackupStorageRedundancy = resp.CurrentBackupStorageRedundancy;
+            managedInstance.RequestedBackupStorageRedundancy = resp.RequestedBackupStorageRedundancy;
+            managedInstance.CurrentBackupStorageRedundancy = resp.CurrentBackupStorageRedundancy;
             managedInstance.MaintenanceConfigurationId = resp.MaintenanceConfigurationId;
+            managedInstance.ServicePrincipal = ResourceServicePrincipalHelper.WrapServicePrincipalObject(resp.ServicePrincipal);
 
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;
@@ -292,55 +298,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         }
 
         /// <summary>
-        /// Map external BackupStorageRedundancy to Internal
-        /// </summary>
-        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
-        /// <returns>internal backupStorageRedundancy</returns>
-        public static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
-        {
-            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
-            {
-                return null;
-            }
-
-            switch (backupStorageRedundancy.ToLower())
-            {
-                case "geo":
-                    return "GRS";
-                case "local":
-                    return "LRS";
-                case "zone":
-                    return "ZRS";
-                default:
-                    return null;
-            }
-        }
-
-        /// <summary>
-        /// Map internal BackupStorageRedundancy to external
-        /// </summary>
-        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
-        /// <returns>internal backupStorageRedundancy</returns>
-        public static string MapInternalBackupStorageRedundancyToExternal(string backupStorageRedundancy)
-        {
-            switch (backupStorageRedundancy)
-            {
-                case "GRS":
-                    return "Geo";
-                case "LRS":
-                    return "Local";
-                case "ZRS":
-                    return "Zone";
-                default:
-                    return null;
-            }
-        }
-
-        /// <summary>
         /// Verifies that the Azure Active Directory user or group exists, and will get the object id if it is not set.
         /// </summary>
-        /// <param name="displayName">Azure Active Directory user or group display name</param>
-        /// <param name="objectId">Azure Active Directory user or group object id</param>
+        /// <param name="input">Azure Active Directory user or group object</param>
         /// <returns></returns>
         protected ManagedInstanceExternalAdministrator GetActiveDirectoryInformation(ManagedInstanceExternalAdministrator input)
         {

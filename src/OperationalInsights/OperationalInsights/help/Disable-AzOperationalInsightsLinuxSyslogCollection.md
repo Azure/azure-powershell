@@ -32,12 +32,14 @@ The **Disable-AzOperationalInsightsLinuxSyslogCollection** cmdlet stops collecti
 
 ### Example 1
 ```powershell
-PS C:\> Disable-AzOperationalInsightsLinuxSyslogCollection -ResourceGroupName yuzhi-rg -WorkspaceName OperationalInsights-1
+Disable-AzOperationalInsightsLinuxSyslogCollection -ResourceGroupName test-rg -WorkspaceName OperationalInsights-1
+```
 
+```output
 Name              : DataSource_LinuxSyslogCollection
-ResourceGroupName : yuzhi-rg
+ResourceGroupName : test-rg
 WorkspaceName     : OperationalInsights-1
-ResourceId        : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yuzhi-rg/providers/Microsoft.OperationalInsights/wo
+ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/wo
                     rkspaces/OperationalInsights-1/datasources/DataSource_LinuxSyslogCollection
 Kind              : LinuxSyslogCollection
 Properties        : {"state":"Disabled"} 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubcertificate
@@ -36,9 +36,11 @@ For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
-PS C:\> Get-AzIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub"
 
+```output
 ResourceGroupName	Name		CertificateName Status     Expiry
 -----------------	----        ---------------	------     ------
 myresourcegroup		myiothub3	mycert1         Unverified 12/04/2027 13:12
@@ -48,9 +50,11 @@ myresourcegroup     myiothub	mycert2         Unverified 12/04/2027 13:12
 List all certificates in MyIotHub
 
 ### Example 2
+```powershell
+Get-AzIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate"
 ```
-PS C:\> Get-AzIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate"
 
+```output
 Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/IotHubs/myiothub/certificates/mycertificate
 ResourceGroupName	: myresourcegroup
 Name				: myiothub

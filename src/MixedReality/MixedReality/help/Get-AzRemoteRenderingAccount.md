@@ -37,8 +37,10 @@ Get or list Remote Rendering Account(s) in certain Subscription and Resource Gro
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzRemoteRenderingAccount -ResourceGroup rg1
+Get-AzRemoteRenderingAccount -ResourceGroup rg1
+```
 
+```output
 ResourceGroupName   : rg1
 AccountId           : 5f70bc31-a5da-4dd7-b5ec-ccdf806ff0ef
 AccountEndpoint     : https://mrc-anchor-prod.trafficmanager.net/Accounts/5f70bc31-a5da-4dd7-b5ec-ccdf806ff0ef/
@@ -74,8 +76,10 @@ List all Remote Rendering Account in Resource Group "rg1".
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzRemoteRenderingAccount -ResourceGroup rg1 -Name example
+Get-AzRemoteRenderingAccount -ResourceGroup rg1 -Name example
+```
 
+```output
 ResourceGroupName   : rg1
 AccountId           : 5f70bc31-a5da-4dd7-b5ec-ccdf806ff0ef
 AccountEndpoint     : https://mrc-anchor-prod.trafficmanager.net/Accounts/5f70bc31-a5da-4dd7-b5ec-ccdf806ff0ef/

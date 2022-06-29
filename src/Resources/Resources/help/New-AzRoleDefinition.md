@@ -82,32 +82,32 @@ Following is a sample json role definition that can be provided as input
 
 ### Example 1: Create using PSRoleDefinitionObject
 ```powershell
-PS C:\> $role = Get-AzRoleDefinition -Name "Virtual Machine Contributor"
+$role = Get-AzRoleDefinition -Name "Virtual Machine Contributor"
 
-PS C:\> $role.Id = $null
-PS C:\> $role.Name = "Virtual Machine Operator"
-PS C:\> $role.Description = "Can monitor, start, and restart virtual machines."
-PS C:\> $role.Actions.RemoveRange(0,$role.Actions.Count)
-PS C:\> $role.Actions.Add("Microsoft.Compute/*/read")
-PS C:\> $role.Actions.Add("Microsoft.Compute/virtualMachines/start/action")
-PS C:\> $role.Actions.Add("Microsoft.Compute/virtualMachines/restart/action")
-PS C:\> $role.Actions.Add("Microsoft.Compute/virtualMachines/downloadRemoteDesktopConnectionFile/action")
-PS C:\> $role.Actions.Add("Microsoft.Network/*/read")
-PS C:\> $role.Actions.Add("Microsoft.Storage/*/read")
-PS C:\> $role.Actions.Add("Microsoft.Authorization/*/read")
-PS C:\> $role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/read")
-PS C:\> $role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/resources/read")
-PS C:\> $role.Actions.Add("Microsoft.Insights/alertRules/*")
-PS C:\> $role.Actions.Add("Microsoft.Support/*")
-PS C:\> $role.AssignableScopes.Clear()
-PS C:\> $role.AssignableScopes.Add("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+$role.Id = $null
+$role.Name = "Virtual Machine Operator"
+$role.Description = "Can monitor, start, and restart virtual machines."
+$role.Actions.RemoveRange(0,$role.Actions.Count)
+$role.Actions.Add("Microsoft.Compute/*/read")
+$role.Actions.Add("Microsoft.Compute/virtualMachines/start/action")
+$role.Actions.Add("Microsoft.Compute/virtualMachines/restart/action")
+$role.Actions.Add("Microsoft.Compute/virtualMachines/downloadRemoteDesktopConnectionFile/action")
+$role.Actions.Add("Microsoft.Network/*/read")
+$role.Actions.Add("Microsoft.Storage/*/read")
+$role.Actions.Add("Microsoft.Authorization/*/read")
+$role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/read")
+$role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/resources/read")
+$role.Actions.Add("Microsoft.Insights/alertRules/*")
+$role.Actions.Add("Microsoft.Support/*")
+$role.AssignableScopes.Clear()
+$role.AssignableScopes.Add("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
 
-PS C:\> New-AzRoleDefinition -Role $role
+New-AzRoleDefinition -Role $role
 ```
 
 ### Example 2: Create using JSON file
 ```powershell
-PS C:\> New-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
+New-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
 ```
 
 ## PARAMETERS

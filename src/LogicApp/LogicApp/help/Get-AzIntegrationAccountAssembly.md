@@ -37,23 +37,26 @@ The **Get-AzIntegrationAccountAssembly** cmdlet gets an assembly from an integra
 
 ### Example 1: Get an assembly by parameters
 ```powershell
-PS C:\> Get-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly"
+Get-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly"
+```
 
+```output
 Properties : Microsoft.Azure.Management.Logic.Models.AssemblyProperties
 Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/assemblies/sampleAssembly
 Name       : sampleAssembly
 Type       : Microsoft.Logic/integrationAccounts/assemblies
 Location   :
 Tags       :
-
 ```
 
 Get an assembly named "sampleAssembly" located in the integration account "sampleIntegrationAccount" which is contained in the resource group "sampleResourceGroup".
 
 ### Example 2: List all assemblies in an integration account by parameters
 ```powershell
-PS C:\> Get-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount"
+Get-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount"
+```
 
+```output
 Properties : Microsoft.Azure.Management.Logic.Models.AssemblyProperties
 Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/assemblies/sampleAssembly
 Name       : sampleAssembly
@@ -67,7 +70,6 @@ Name       : sampleAssembly2
 Type       : Microsoft.Logic/integrationAccounts/assemblies
 Location   :
 Tags       :
-
 ```
 
 Get all assemblies located in the integration account "sampleIntegrationAccount" which is contained in the resource group "sampleResourceGroup".

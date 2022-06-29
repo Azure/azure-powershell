@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string BackupManagementType = "The class of resources being protected. Currently the values supported for this cmdlet are ";
             public const string IdentityType = "The MSI type assigned to Recovery Services Vault. Input 'None' if MSI has to be removed."; 
             public const string UseSecondaryReg = "Filters from Secondary Region for Cross Region Restore";
+            public const string HybridBackupSecurity = "Optional flag ($true/$false) to disable/enable security setting for hybrid backups against accidental deletes and add additional layer of authentication for critical operations. Provide $false to enable the security.";
         }
 
         internal static class Policy
@@ -56,10 +57,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string Name = "Name of the Policy that is being managed.";
             public const string RetentionPolicy = "Retention Policy object for the policy.";
             public const string SchedulePolicy = "Schedule Policy object for the policy.";
+            public const string ScheduleRunFrequency = "Schedule run frequency for the policy schedule.";
+            public const string ScheduleFrequencyForRetention = "Frequency of the schedule for which base retention policy object is fetched. Acceptable values are Daily and Hourly.";
             public const string ProtectionPolicy = "Protection policy object.";
             public const string FixForInConsistentItems = "Switch Parameter indicating whether or not to retry Policy Update for failed items.";
             public const string EnableProtectionPolicy = "Protection policy object. If policy ID is not present or the backup item is not associated with any" +
                 " policy, then this command will expect a policyID.";
+            public const string SchedulePolicySubType = "Type of schedule policy to be fetched: Standard, Enhanced";
+            public const string PolicySubType = "Type of policy to be fetched: Standard, Enhanced";
         }
 
         internal static class Job
@@ -162,7 +167,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TargetZone = "Target zone to restore the disks";
             public const string RestoreAsManagedDisk = "Use this switch to specify to restore as managed disks.";
             public const string UseSystemAssignedIdentity = "Use this switch to trigger MSI based restore with SystemAssigned Identity";
-            public const string UserAssignedIdentityId = "UserAssigned Identity Id to trigger MSI based restore with UserAssigned Identity"; 
+            public const string UserAssignedIdentityId = "UserAssigned Identity Id to trigger MSI based restore with UserAssigned Identity";            
+            public const string TargetVMName = "Name of the VM to which the data should be restored, in the case of Alternate Location restore to a new VM";
+            public const string TargetVNetName = "Name of the VNet in which the target VM should be created, in the case of Alternate Location restore to a new VM";
+            public const string TargetVNetResourceGroup = "Name of the resource group which contains the target VNet, in the case of Alternate Location restore to a new VM";
+            public const string TargetSubnetName = "Name of the subnet in which the target VM should be created, in the case of Alternate Location restore to a new VM";
+            public const string TargetSubscriptionId = "ID of the target subscription to which the resource should be restored. Use this parameter for Cross subscription restore";
         }
 
         internal static class RestoreFS
@@ -219,6 +229,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 " used to encrypt newly created disks.";
             public const string UseSystemAssignedIdentity = "Boolean flag to indicate if SystemAssigned Identity will be used for CMK encryption";
             public const string UserAssignedIdentity = "ARM Id of UserAssigned Identity to be used for CMK encryption. Provide this parameter if UseSystemAssignedIdentity is $false";
+        }
+
+        internal static class ResourceGuard
+        {
+            public const string ResourceGuardMappingName = "Resource guard mapping Name to be fetched";
+            public const string AuxiliaryAccessToken = "Auxiliary access token for authenticating critical operation to resource guard subscription";
+            public const string ResourceGuardId = "ResourceGuardId of the ResourceGuard to be mapped with RecoveryServicesVault";
         }
     }
 }

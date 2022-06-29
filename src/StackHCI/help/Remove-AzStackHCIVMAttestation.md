@@ -33,18 +33,18 @@ Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestati
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
-Removing all guests on current node
+```powershell
+Remove-AzStackHCIVMAttestation -RemoveAll
 ```
 
-C:\PS\>Remove-AzStackHCIVMAttestation -RemoveVM
+Removing all guests on current node
 
 ### EXAMPLE 2
-```
-Invoking from the management node/WAC
+```powershell
+Invoke-Command -ScriptBlock {Remove-AzStackHCIVMAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
 ```
 
-C:\PS\>Invoke-Command -ScriptBlock {Remove-AzStackHCIVMAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
+Invoking from the management node/WAC
 
 ## PARAMETERS
 

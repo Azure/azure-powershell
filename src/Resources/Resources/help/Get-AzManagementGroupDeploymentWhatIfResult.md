@@ -143,7 +143,7 @@ The **Get-AzManagementGroupDeploymentWhatIfResult** cmdlet gets the ARM template
 
 ### Example 1: Get a What-If result at management group scope
 ```powershell
-PS C:\> Get-AzManagementGroupDeploymentWhatIfResult `
+Get-AzManagementGroupDeploymentWhatIfResult `
     -DeploymentName "deploy-01" `
     -Location "West US" `
     -ManagementGroupId "myManagementGroup" `
@@ -161,7 +161,7 @@ The command uses the *ResultFormat* parameter to set the What-If result to inclu
 
 ### Example 2: Get a What-If result at management group scope with ResourceIdOnly
 ```powershell
-PS C:\> Get-AzManagementGroupDeploymentWhatIfResult `
+Get-AzManagementGroupDeploymentWhatIfResult `
     -DeploymentName "deploy-01" `
     -Location "West US" `
     -ManagementGroupId "myManagementGroup" `

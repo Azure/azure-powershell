@@ -34,8 +34,8 @@ If the media service already exists, this cmdlet update its properties.
 ## EXAMPLES
 
 ### Example1: Create a media service with the primary storage account only
-```
-PS C:\># Variables
+```powershell
+# Variables
 ## Global
 $ResourceGroupName = "ResourceGroup001"
 $Location = "East US"
@@ -49,21 +49,21 @@ $Tags = @{"tag1" = "value1"; "tag2" = "value2"}
 $MediaServiceName = "MediaService1"
 
 # Resource Group
-PS C:\> New-AzResourceGroup -Name $ResourceGroupName -Location $Location
+New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 # Storage
 $StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -Location $Location -Type $StorageType
 
 # Media Service
-PS C:\> New-AzMediaService -ResourceGroupName $ResourceGroupName -AccountName $MediaServiceName -Location $Location -StorageAccountId $StorageAccount.Id -Tag $Tags
+New-AzMediaService -ResourceGroupName $ResourceGroupName -AccountName $MediaServiceName -Location $Location -StorageAccountId $StorageAccount.Id -Tag $Tags
 ```
 
 This example shows how to  create a media service with specifying primary storage account only.
 This script uses several other cmdlets.
 
 ### Example 2: Create a media service with multiple storage
-```
-PS C:\># Variables
+```powershell
+# Variables
 
 ## Global
 $ResourceGroupName = "ResourceGroup001"
@@ -79,7 +79,7 @@ $Tags = @{"tag1" = "value1"; "tag2" = "value2"}
 $MediaServiceName = "MediaService1"
 
 # Resource Group
-PS C:\> New-AzResourceGroup -Name $ResourceGroupName -Location $Location
+New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 # Storage
 $StorageAccount1 = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName1 -Location $Location -Type $StorageType
@@ -90,9 +90,9 @@ $StorageAccount2 = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -N
 # Media Service
 
 ## Setup the storage configuration object.
-PS C:\> $PrimaryStorageAccount = New-AzMediaServiceStorageConfig -StorageAccountId $StorageAccount1.Id -IsPrimary
-PS C:\> $SecondaryStorageAccount = New-AzMediaServiceStorageConfig -StorageAccountId $StorageAccount2.Id
-PS C:\> $StorageAccounts = @($PrimaryStorageAccount, $SecondaryStorageAccount)
+$PrimaryStorageAccount = New-AzMediaServiceStorageConfig -StorageAccountId $StorageAccount1.Id -IsPrimary
+$SecondaryStorageAccount = New-AzMediaServiceStorageConfig -StorageAccountId $StorageAccount2.Id
+$StorageAccounts = @($PrimaryStorageAccount, $SecondaryStorageAccount)
 
 ## Create a media service.New-AzMediaService -ResourceGroupName $ResourceGroupName -AccountName $MediaServiceName -Location $Location -StorageAccounts $StorageAccounts -Tag $Tags
 ```

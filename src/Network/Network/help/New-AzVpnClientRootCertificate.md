@@ -32,10 +32,10 @@ For more information, see the documentation for the New-AzVirtualNetworkGateway 
 ## EXAMPLES
 
 ### Example 1: Create a client root certificate
-```
-PS C:\> $Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
-PS C:\> $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
-PS C:\> $Certificate = New-AzVpnClientRootCertificate -PublicCertData $CertificateText -Name "ContosoClientRootCertificate"
+```powershell
+$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
+$CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
+$Certificate = New-AzVpnClientRootCertificate -PublicCertData $CertificateText -Name "ContosoClientRootCertificate"
 ```
 
 This example creates a client root certificate and store the certificate object in a variable named $Certificate.

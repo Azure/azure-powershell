@@ -32,8 +32,10 @@ The Get-AzSqlDatabaseSensitivityRecommendation cmdlet returns the recommended in
 
 ### Example 1: Get recommended information types and sensitivity labels of an Azure SQL database.
 ```powershell
-PS C:\> Get-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -ServerName server -DatabaseName database
+Get-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -ServerName server -DatabaseName database
+```
 
+```output
 ResourceGroupName : resourceGroup
 ServerName        : server
 DatabaseName      : database
@@ -60,8 +62,10 @@ SensitivityLabels : {{
 
 ### Example 2: Get recommended information types and sensitivity labels of an Azure SQL database using Piping.
 ```powershell
-PS C:\> Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Get-AzSqlDatabaseSensitivityRecommendation
+Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Get-AzSqlDatabaseSensitivityRecommendation
+```
 
+```output
 ResourceGroupName : resourceGroup
 ServerName        : server
 DatabaseName      : database

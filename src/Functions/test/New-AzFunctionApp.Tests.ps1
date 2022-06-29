@@ -128,11 +128,11 @@ Describe 'New-AzFunctionApp' {
                                               -FunctionsVersion $functionsVersion `
                                               -WhatIf
 
-                        } 4>&1 2>&1 > $filePath
+                        } 3>&1 2>&1 > $filePath
 
                         $logFileContent = Get-Content -Path $filePath -Raw
                         $expectectedRuntimeVersion = $expectedDefaultRuntimeVersion[$OSType][$functionsVersion][$runtime]
-                        $expectedMessage = "RuntimeVersion not specified. Setting default runtime version for '$runtime' to '$expectectedRuntimeVersion'."
+                        $expectedMessage = "RuntimeVersion not specified. Setting default value to '$expectectedRuntimeVersion'."
                         $logFileContent | Should Match $expectedMessage
                     }
                     finally
@@ -234,12 +234,12 @@ Describe 'New-AzFunctionApp' {
                                       -RuntimeVersion $runtimeVersion `
                                       -WhatIf
 
-                } 4>&1 2>&1 > $filePath
+                } 3>&1 2>&1 > $filePath
 
                 $logFileContent = Get-Content -Path $filePath -Raw
 
-                $expectectedFunctionsVersionWarning = "FunctionsVersion not specified. Setting default FunctionsVersion to '$expectedFunctionsVersion'."
-                $expectectedOSTypeWarning = "OSType for $runtime is '$expectedOSType'."
+                $expectectedFunctionsVersionWarning = "FunctionsVersion not specified. Setting default value to '$expectedFunctionsVersion'."
+                $expectectedOSTypeWarning = "OSType not specified. Setting default value to '$expectedOSType'."
 
                 $logFileContent | Should Match $expectectedFunctionsVersionWarning
                 $logFileContent | Should Match $expectectedOSTypeWarning

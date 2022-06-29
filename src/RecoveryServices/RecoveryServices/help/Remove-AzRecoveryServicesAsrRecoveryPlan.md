@@ -30,8 +30,8 @@ The **Remove-AzRecoveryServicesAsrRecoveryPlan** cmdlet deletes the specified re
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = Remove-AzRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP
+```powershell
+$currentJob = Remove-AzRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP
 ```
 
 Starts the deletion of specified recovery plan and returns the ASR job used to track the operation.

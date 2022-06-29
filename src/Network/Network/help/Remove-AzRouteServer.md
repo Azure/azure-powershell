@@ -37,18 +37,18 @@ The **Remove-AzRouteServer** cmdlet deletes an Azure RouteServer
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzRouteServer -ResourceGroupName routeServerRG -RouteServerName routeServer
+Remove-AzRouteServer -ResourceGroupName routeServerRG -RouteServerName routeServer
 ```
 
 ### Example 2
 ```powershell
-PS C:\> $routeServerId = '/subscriptions/8c992d64-fce9-426d-b278-85642dfeab03/resourceGroups/routeServerRG/providers/Microsoft.Network/virtualHubs/routeServer'
+$routeServerId = '/subscriptions/8c992d64-fce9-426d-b278-85642dfeab03/resourceGroups/routeServerRG/providers/Microsoft.Network/virtualHubs/routeServer'
 Remove-AzRouteServer -ResourceId $routeServerId
 ```
 
 ### Example 3
 ```powershell
-PS C:\> $routeServer = Get-AzRouteServer -ResourceGroupName routeServerRG -RouteServerName routeServer
+$routeServer = Get-AzRouteServer -ResourceGroupName routeServerRG -RouteServerName routeServer
 Remove-AzRouteServer -InputObject $routeServer
 ```
 

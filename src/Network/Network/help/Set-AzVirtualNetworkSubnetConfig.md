@@ -39,13 +39,12 @@ The **Set-AzVirtualNetworkSubnetConfig** cmdlet updates a subnet configuration f
 ## EXAMPLES
 
 ### 1: Modify the address prefix of a subnet
-```
+```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
 
-$virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup    
-    -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
+$virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
 
 Set-AzVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.3.0/23"
 
@@ -58,22 +57,18 @@ This example creates a virtual network with one subnet. Then is calls
     Set-AzVirtualNetwork is then called to modify the virtual network in Azure.
 
 ### 2: Add a network security group to a subnet
-```
+```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
 
-$virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup 
-    -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
+$virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
 
-$rdpRule = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow 
-    -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
+$rdpRule = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
 
-$networkSecurityGroup = New-AzNetworkSecurityGroup -ResourceGroupName 
-    TestResourceGroup -Location centralus -Name "NSG-FrontEnd" -SecurityRules $rdpRule
+$networkSecurityGroup = New-AzNetworkSecurityGroup -ResourceGroupName TestResourceGroup -Location centralus -Name "NSG-FrontEnd" -SecurityRules $rdpRule
 
-Set-AzVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork -AddressPrefix 
-    "10.0.1.0/24" -NetworkSecurityGroup $networkSecurityGroup
+Set-AzVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -NetworkSecurityGroupId $networkSecurityGroup.Id
 
 $virtualNetwork | Set-AzVirtualNetwork
 ```
@@ -86,7 +81,7 @@ This example creates a resource group with one virtual network containing just o
     state back to the service.
 
 ### 3: Attach a Nat Gateway to a subnet
-```
+```powershell
 $pip = New-AzPublicIpAddress -Name "pip" -ResourceGroupName "natgateway_test" `
    -Location "eastus2" -Sku "Standard" -IdleTimeoutInMinutes 4 -AllocationMethod "static"
 
@@ -95,8 +90,7 @@ $natGateway = New-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_g
 
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" 
 
-$virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup 
-    -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
+$virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
 
 Set-AzVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork -InputObject $natGateway 
 

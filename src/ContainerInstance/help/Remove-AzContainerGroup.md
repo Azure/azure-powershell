@@ -33,8 +33,10 @@ The operation does not delete other resources provided by the user, such as volu
 
 ### Example 1: Remove a container group
 ```powershell
-PS C:\> Remove-AzContainerGroup -Name test-cg -ResourceGroupName test-rg
+Remove-AzContainerGroup -Name test-cg -ResourceGroupName test-rg
+```
 
+```output
 Location Name    Zone ResourceGroupName
 -------- ----    ---- -----------------
 eastus   test-cg      test-rg
@@ -44,8 +46,10 @@ This command removes the specified container group.
 
 ### Example 2: Removes a container group by piping
 ```powershell
-PS C:\> Get-AzContainerGroup -Name test-cg -ResourceGroupName bez-rg | Remove-AzContainerGroup
+Get-AzContainerGroup -Name test-cg -ResourceGroupName bez-rg | Remove-AzContainerGroup
+```
 
+```output
 Location Name    Zone ResourceGroupName
 -------- ----    ---- -----------------
 eastus   test-cg      test-rg
@@ -228,7 +232,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
+INPUTOBJECT `<IContainerInstanceIdentity>`: Identity Parameter
   - `[ContainerGroupName <String>]`: The name of the container group.
   - `[ContainerName <String>]`: The name of the container instance.
   - `[Id <String>]`: Resource identity path

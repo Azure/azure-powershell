@@ -37,8 +37,10 @@ The **Get-AzP2sVpnGatewayConnectionHealth** cmdlet enables you to get the curren
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzP2sVpnGatewayConnectionHealth -ResourceGroupName P2SCortexGATesting -Name 683482ade8564515aed4b8448c9757ea-westus-gw
+Get-AzP2sVpnGatewayConnectionHealth -ResourceGroupName P2SCortexGATesting -Name 683482ade8564515aed4b8448c9757ea-westus-gw
+```
 
+```output
 ResourceGroupName              : P2SCortexGATesting
 Name                           : 683482ade8564515aed4b8448c9757ea-westus-gw
 Id                             : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/p2sVpnGateways/683482ade8564515a

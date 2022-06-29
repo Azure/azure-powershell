@@ -32,7 +32,7 @@ The **Stop-AzSqlInstanceDatabaseLogReplay** cmdlet drops the database and thus c
 
 ### Example 1
 ```powershell
-PS C:\> Stop-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "ManagedDatabaseName"
+Stop-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "ManagedDatabaseName"
 ```
 
 This command will cancel log replay service on the given database.

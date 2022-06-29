@@ -31,15 +31,15 @@ The **Get-AzProviderFeature** cmdlet gets the feature name, provider name, and r
 ## EXAMPLES
 
 ### Example 1: Get all available features
-```
-PS C:\>Get-AzProviderFeature -ListAvailable
+```powershell
+Get-AzProviderFeature -ListAvailable
 ```
 
 This command gets all available features.
 
 ### Example 2: Get information about a specific feature
-```
-PS C:\>Get-AzProviderFeature -FeatureName "AllowPreReleaseRegions" -ProviderNamespace "Microsoft.Compute"
+```powershell
+Get-AzProviderFeature -FeatureName "AllowPreReleaseRegions" -ProviderNamespace "Microsoft.Compute"
 ```
 
 This command gets information for the feature named AllowPreReleaseRegions for the specified provider.

@@ -24,10 +24,10 @@ The cmdlet creates a new service fabric application type under the specified res
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appTypeName = "testAppType"
-PS C:\> $appType = New-AzServiceFabricApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Verbose
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appTypeName = "testAppType"
+$appType = New-AzServiceFabricApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Verbose
 ```
 
 This example will create a new application type "testAppType" under the resource group and cluster specified.

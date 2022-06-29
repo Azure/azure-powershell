@@ -14,7 +14,6 @@
 
 using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 
@@ -93,7 +92,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
                 IsDoubleEncryptionEnabled = this.IsDoubleEncryptionEnabled,
                 IsAvailabilityZonesEnabled = this.IsAvailabilityZonesEnabled,
                 BillingType = this.BillingType,
-                KeyVaultProperties = new PSKeyVaultProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion),
+                KeyVaultProperties = PSKeyVaultProperties.CreateProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion),
             };
 
             if (ShouldProcess(this.ClusterName,

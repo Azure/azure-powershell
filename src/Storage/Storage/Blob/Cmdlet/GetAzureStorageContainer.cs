@@ -164,6 +164,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// List containers by container name prefix
         /// </summary>
         /// <param name="prefix">Container name prefix</param>
+        /// <param name="containerFilter"></param>
         /// <returns>An enumerable collection of cloudblobcontainer</returns>
         internal IEnumerable<Tuple<AzureStorageContainer, BlobContinuationToken>> ListContainersByPrefix(string prefix, Func<string, bool> containerFilter = null)
         {

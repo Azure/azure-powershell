@@ -45,8 +45,10 @@ Create operation does not require eTag.
 
 ### Example 1: Update AzCostManagementExport by scope and name
 ```powershell
-PS C:\> Update-AzCostManagementExport -Scope "subscriptions//*********" -Name "TestExport" -ScheduleRecurrence 'Weekly'
+Update-AzCostManagementExport -Scope "subscriptions//*********" -Name "TestExport" -ScheduleRecurrence 'Weekly'
+```
 
+```output
 ETag              Name                                 Type
 ----              ----                                 ----
 "********" TestExportDatasetAggregationInfo Microsoft.CostManagement/exports
@@ -56,9 +58,11 @@ Update AzCostManagementExport by Scope and name
 
 ### Example 2: Update AzCostManagementExport by InputObject
 ```powershell
-PS C:\> $oldExport = Get-AzCostManagementExport -Scope "subscriptions/*********" -Name "TestExport"
+$oldExport = Get-AzCostManagementExport -Scope "subscriptions/*********" -Name "TestExport"
 Update-AzCostManagementExport -InputObject $oldExport -ScheduleRecurrence 'Weekly'
+```
 
+```output
 ETag              Name                                 Type
 ----              ----                                 ----
 "********" TestExportDatasetAggregationInfo Microsoft.CostManagement/exports
@@ -413,7 +417,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
+INPUTOBJECT `<ICostManagementIdentity>`: Identity Parameter
   - `[AlertId <String>]`: Alert ID
   - `[ExportName <String>]`: Export Name.
   - `[ExternalCloudProviderId <String>]`: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.

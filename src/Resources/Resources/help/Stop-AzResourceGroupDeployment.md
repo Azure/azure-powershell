@@ -42,16 +42,16 @@ If the cmdlet finds more than one running deployment, the command fails.
 ### Example 1: Starting and stopping a resource group deployment
 
 ```powershell
-PS C:\> New-AzResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg -TemplateFile .\storage-account-create-azdeploy.json -TemplateParameterFile .\storage-account-create-azdeploy.parameters.json -AsJob
+New-AzResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg -TemplateFile .\storage-account-create-azdeploy.json -TemplateParameterFile .\storage-account-create-azdeploy.parameters.json -AsJob
 
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
 --     ----            -------------   -----         -----------     --------             -------
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzResourceGro...
 
-PS C:\> Stop-AzResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg
+ Stop-AzResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg
 True
 
-PS C:\> Get-Job 1
+Get-Job 1
 
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
 --     ----            -------------   -----         -----------     --------             -------

@@ -32,7 +32,6 @@ Deletes a configuration store.
 ### Example 1: Remove an app configuration store
 ```powershell
 Remove-AzAppConfigurationStore -Name appconfig-test03 -ResourceGroupName lucas-manual-test
-
 ```
 
 This command removes an app configuration store.
@@ -40,7 +39,6 @@ This command removes an app configuration store.
 ### Example 2: Remove an app configuration store
 ```powershell
 Get-AzAppConfigurationStore -Name appconfig-test02 -ResourceGroupName lucas-manual-test | Remove-AzAppConfigurationStore
-
 ```
 
 This command removes an app configuration store.
@@ -219,7 +217,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
+INPUTOBJECT `<IAppConfigurationIdentity>`: Identity Parameter
   - `[ConfigStoreName <String>]`: The name of the configuration store.
   - `[GroupName <String>]`: The name of the private link resource group.
   - `[Id <String>]`: Resource identity path

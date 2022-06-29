@@ -23,9 +23,10 @@ Lists all of the available OperationalInsights Rest API operations.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzOperationalInsightsOperation
+Get-AzOperationalInsightsOperation
 ```
 
+```output
 Name        : microsoft.operationalinsights/workspaces/features/{resource_name0}/read
 Provider    : MicrosoftOperationalInsights
 Resource    : {resource_name0}
@@ -37,7 +38,7 @@ Provider    : MicrosoftOperationalInsights
 Resource    : {resource_name1}
 Operation   : 
 Description : 
-
+```
 This command gets all available OperationalInsights Rest API operations by tenant.
 
 ## PARAMETERS

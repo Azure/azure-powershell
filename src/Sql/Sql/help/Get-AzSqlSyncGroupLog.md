@@ -24,8 +24,11 @@ The **Get-AzSqlSyncGroupLog** cmdlet returns the logs of an Azure SQL Database S
 ## EXAMPLES
 
 ### Example 1: Get the logs of an Azure SQL Sync Group
+```powershell
+Get-AzSqlSyncGroupLog -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -StartTime "9/16/2016 11:31:12" -EndTime "9/16/2016 12:31:00" -LogLevel "All"
 ```
-PS C:\>Get-AzSqlSyncGroupLog -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -StartTime "9/16/2016 11:31:12" -EndTime "9/16/2016 12:31:00" -LogLevel "All"
+
+```output
 TimeStamp            LogLevel Details                                   Source
 ---------            -------- -------                                   ------
 6/13/2017 9:14:26 AM Success  Schema information obtained successfully. fangltest2.database.windows.net/fangltest

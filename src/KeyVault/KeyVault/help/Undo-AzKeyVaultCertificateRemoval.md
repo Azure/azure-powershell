@@ -33,8 +33,10 @@ Caller needs to have 'recover' permission in order to perform this operation.
 
 ### Example 1
 ```powershell
-PS C:\> Undo-AzKeyVaultCertificateRemoval -VaultName 'MyKeyVault' -Name 'MyCertificate'
+Undo-AzKeyVaultCertificateRemoval -VaultName 'MyKeyVault' -Name 'MyCertificate'
+```
 
+```output
 Certificate   : [Subject]
                   CN=contoso.com
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 ms.assetid: 5EB9E134-C789-47A5-9AF8-CD4A475559C2
@@ -24,8 +24,8 @@ The **Stop-AzDataLakeAnalyticsJob** cmdlet cancels an Azure Data Lake Analytics 
 ## EXAMPLES
 
 ### Example 1: Cancel a job
-```
-PS C:\>Stop-AzDataLakeAnalyticsJob -Account "ContosoAdlAccout" -JobId "a0a78d72-3fa8-4564-9b18-6becb3fda48a"
+```powershell
+Stop-AzDataLakeAnalyticsJob -Account "ContosoAdlAccout" -JobId "a0a78d72-3fa8-4564-9b18-6becb3fda48a"
 ```
 
 This command cancels the job with the specified ID.

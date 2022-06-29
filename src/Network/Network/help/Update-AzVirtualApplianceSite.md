@@ -25,8 +25,8 @@ The Update-AzVirtualApplianceSite command modifies a Virtual Appliance site reso
 
 ### Example 1
 ```powershell
-PS C:\> $nva=Get-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva
-PS C:\> Update-AzVirtualApplianceSite -Name testsite -ResourceGroupName testrg -AddresssPrefix 10.0.4.0/24 -NetworkVirtualApplianceId $nva.Id
+$nva=Get-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva
+Update-AzVirtualApplianceSite -Name testsite -ResourceGroupName testrg -AddresssPrefix 10.0.4.0/24 -NetworkVirtualApplianceId $nva.Id
 ```
 
 Modify the address prefix for a Virtual Appliance site resource.

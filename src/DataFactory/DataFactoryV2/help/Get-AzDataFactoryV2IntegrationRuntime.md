@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
 online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2integrationruntime
@@ -38,9 +38,11 @@ If you do not specify a name, this cmdlet gets information about all of the inte
 ## EXAMPLES
 
 ### Example 1: List all integration runtimes in a data factory
+```powershell
+Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2
 ```
-PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2
 
+```output
 	ResourceGroupName DataFactoryName Name                   Description
 	----------------- --------------- ----                   -----------
 	rg-test-dfv2      test-df-eu2     test-reserved-ir       Reserved IR
@@ -51,9 +53,11 @@ PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -D
 List all integration runtimes in the data factory named 'test-df-eu2'.
 
 ### Example 2: Get managed dedicated integration runtime
+```powershell
+Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-dedicated-ir
 ```
-PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-dedicated-ir
 
+```output
 	Location                     : West US
 	NodeSize                     : Standard_D1_v2
 	NodeCount                    : 1
@@ -77,9 +81,11 @@ PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -D
 This command displays information about the integration runtime named 'test-dedicated-ir' in the subscription for the resource group named 'rg-test-dfv2' and data factory named 'test-df-eu2'.
 
 ### Example 3: Get managed dedicated integration runtime with detail status
+```powershell
+Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-dedicated-ir -Status
 ```
-PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-dedicated-ir -Status
 
+```output
 	CreateTime                   : 
 	Nodes                        : 
 	OtherErrors                  : 
@@ -107,9 +113,11 @@ PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -D
 This command displays information about the integration runtime named 'test-dedicated-ir' in the subscription for the resource group named 'rg-test-dfv2' and data factory named 'test-df-eu2'.
 
 ### Example 4: Get self-hosted integration runtime
+```powershell
+Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-selfhost-ir
 ```
-PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-selfhost-ir
 
+```output
 	ResourceGroupName DataFactoryName Name                 Description
 	----------------- --------------- ----                 -----------
 	rg-test-dfv2      test-df-eu2     test-selfhost-ir     selfhost IR
@@ -118,9 +126,11 @@ PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -D
 This command displays information about the integration runtime named 'test-dedicated-ir' in the subscription for the resource group named 'rg-test-dfv2' and data factory named 'test-df-eu2'.
 
 ### Example 5: Get self-hosted integration runtime with detail status
+```powershell
+Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-selfhost-ir -Status
 ```
-PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-selfhost-ir -Status
 
+```output
 	State                     : Online
 	Version                   : 4.2.7233.1
 	CreateTime                : 9/26/2019 6:00:08 AM

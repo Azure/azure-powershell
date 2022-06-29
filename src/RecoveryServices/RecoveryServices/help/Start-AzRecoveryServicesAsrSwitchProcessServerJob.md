@@ -24,15 +24,15 @@ The **Start-AzRecoveryServicesAsrSwitchProcessServerJob** switches replication d
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Start-AzRecoveryServicesAsrSwitchProcessServerJob -Fabric $fabric -SourceProcessServer $sourceProcessServer  -TargetProcessServer $TargetProcessServer
+```powershell
+Start-AzRecoveryServicesAsrSwitchProcessServerJob -Fabric $fabric -SourceProcessServer $sourceProcessServer  -TargetProcessServer $TargetProcessServer
 ```
 
 Job to track switching process server for all replication protected item from source to target process server.
 
 ### Example 2
-```
-PS C:\> Start-AzRecoveryServicesAsrSwitchProcessServerJob -Fabric $fabric -SourceProcessServer $sourceProcessServer  -TargetProcessServer $TargetProcessServer -ReplicatedItem $rpList
+```powershell
+Start-AzRecoveryServicesAsrSwitchProcessServerJob -Fabric $fabric -SourceProcessServer $sourceProcessServer  -TargetProcessServer $TargetProcessServer -ReplicatedItem $rpList
 ```
 
 Job to track switching process server for passed replication protected item from source to target process server.

@@ -38,7 +38,7 @@ Get-AzKeyVaultKeyRotationPolicy -VaultName test-kv -Name test-key
 Id              :
 VaultName       : test-kv
 KeyName         : test-key
-LifetimeActions : {[Action: Notify, TimeAfterCreate: , TimeBeforeExpiry: 30.00:00:00]}
+LifetimeActions : {[Action: Notify, TimeAfterCreate: , TimeBeforeExpiry: P30D]}
 ExpiresIn       :
 CreatedOn       :
 UpdatedOn       :

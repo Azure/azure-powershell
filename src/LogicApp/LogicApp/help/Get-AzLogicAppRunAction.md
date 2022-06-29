@@ -35,7 +35,10 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ### Example 1: Get an action from a Logic App run
 
 ```powershell
-PS C:\>Get-AzLogicAppRunAction -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -RunName "08585925184423369718380498702CU26" -ActionName "LogicAppAction01"
+Get-AzLogicAppRunAction -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -RunName "08585925184423369718380498702CU26" -ActionName "LogicAppAction01"
+```
+
+```output
 Code        : NotFound
 EndTime     : 1/13/2016 2:42:56 PM
 Error       : 
@@ -53,7 +56,7 @@ This command gets a specific Logic App action from the logic app named LogicApp0
 ### Example 2: Get all the actions from a Logic App run
 
 ```powershell
-PS C:\>Get-AzLogicAppRunAction -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -RunName "08585925184423369718380498702CU26" -FollowNextPageLink
+Get-AzLogicAppRunAction -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -RunName "08585925184423369718380498702CU26" -FollowNextPageLink
 ```
 
 This command gets all Logic App actions from a run with identifier 08585925184423369718380498702CU26 of a logic app named LogicApp05.

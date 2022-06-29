@@ -40,33 +40,33 @@ The Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate adds a Transpar
 
 ### Example 1
 ```powershell
-PS C:\>     $privateBlob = "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"
-PS C:\>     $securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
-PS C:\>     $password = "CertificatePassword"
-PS C:\>     $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
-PS C:\>     Add-AzSqlServerTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -ServerName "YourServerName" -PrivateBlob $securePrivateBlob -Password $securePassword
+$privateBlob = "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"
+$securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
+$password = "CertificatePassword"
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+Add-AzSqlServerTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -ServerName "YourServerName" -PrivateBlob $securePrivateBlob -Password $securePassword
 ```
 
 Add TDE certificate to a sql server using resource group name and SQL Server name
 
 ### Example 2
 ```powershell
-PS C:\>     $privateBlob = "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"
-PS C:\>     $securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
-PS C:\>     $password = "CertificatePassword"
-PS C:\>     $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
-PS C:\>     $server = Get-AzSqlServer -ServerName "YourServerName" -ResourceGroupName "YourResourceGroupName" 
-PS C:\>     Add-AzSqlServerTransparentDataEncryptionCertificate -SqlServerResourceId $server.ResourceId -PrivateBlob $securePrivateBlob -Password $securePassword
+$privateBlob = "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"
+$securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
+$password = "CertificatePassword"
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+$server = Get-AzSqlServer -ServerName "YourServerName" -ResourceGroupName "YourResourceGroupName" 
+Add-AzSqlServerTransparentDataEncryptionCertificate -SqlServerResourceId $server.ResourceId -PrivateBlob $securePrivateBlob -Password $securePassword
 ```
 
 Add TDE certificate to the servers using server resourceId
 
 ### Example 3
 ```powershell
-PS C:\>     $privateBlob = "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"
-PS C:\>     $securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
-PS C:\>     $password = "CertificatePassword"
-PS C:\>     $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+$privateBlob = "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"
+$securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
+$password = "CertificatePassword"
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
 Get-AzSqlServer | Add-AzSqlServerTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -PrivateBlob $securePrivateBlob -Password $securePassword
 ```
 

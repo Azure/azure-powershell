@@ -25,13 +25,13 @@ associated with Private Peering for an ExpressRoute circuit.
 ## EXAMPLES
 
 ### Example 1: Display the circuit connection configuration for an ExpressRoute circuit
-```
+```powershell
 $circuit_init = Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
 Get-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init
 ```
 
 ### Example 2: Get circuit connection resource associated with an ExpressRoute Circuit using piping
-```
+```powershell
 Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Get-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName
 ```
 

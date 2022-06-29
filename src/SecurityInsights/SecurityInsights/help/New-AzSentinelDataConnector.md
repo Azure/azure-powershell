@@ -85,14 +85,14 @@ Please note that only the following data connectors have automation support thro
 
 ### Example 1
 ```powershell
-PS C:\> $DataConnector = New-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
+$DataConnector = New-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 ```
 
 This example creates a **DataConnector** for *Azure Security Center* in the specified workspace, and then stores it in the $DataConnector variable.
 
 ### Example 2
 ```powershell
-PS C:\> $DataConnector = New-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -MicrosoftCloudAppSecurity -Alerts Enabled -DiscoveryLogs Disabled
+$DataConnector = New-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -MicrosoftCloudAppSecurity -Alerts Enabled -DiscoveryLogs Disabled
 ```
 
 This example creates a **DataConnector** for *Microsoft Defender for Cloud Apps* in the specified workspace, and then stores it in the $DataConnector variable.

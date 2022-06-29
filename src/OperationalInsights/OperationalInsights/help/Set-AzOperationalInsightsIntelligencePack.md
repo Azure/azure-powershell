@@ -27,8 +27,8 @@ The **Set-AzOperationalInsightsIntelligencePack** cmdlet enables the specified I
 ## EXAMPLES
 
 ### Example 1: Set Intelligence Packs
-```
-PS C:\>Set-AzOperationalInsightsIntelligencePack -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -IntelligencePackName "ContosoWorkspace" -Enabled $True
+```powershell
+Set-AzOperationalInsightsIntelligencePack -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -IntelligencePackName "ContosoWorkspace" -Enabled $True
 ```
 
 This command enables the specified Intelligence Pack.

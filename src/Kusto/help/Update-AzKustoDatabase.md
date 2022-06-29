@@ -33,10 +33,12 @@ Updates a database.
 
 ### Example 1: Update an existing database by name
 ```powershell
-PS C:\> $2ds = New-TimeSpan -Days 2
-PS C:\> $4ds = New-TimeSpan -Days 4
-PS C:\> Update-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -SoftDeletePeriod $4ds -HotCachePeriod $2ds -Location 'East US'
+$2ds = New-TimeSpan -Days 2
+$4ds = New-TimeSpan -Days 4
+Update-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -SoftDeletePeriod $4ds -HotCachePeriod $2ds -Location 'East US'
+```
 
+```output
 Kind      Location Name                                Type
 ----      -------- ----                                ----
 ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
@@ -46,11 +48,13 @@ The above command updates the soft deletion period and hot cache period of the K
 
 ### Example 2: Update an existing database via identity
 ```powershell
-PS C:\> $database = Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase
-PS C:\> $2ds = New-TimeSpan -Days 2
-PS C:\> $4ds = New-TimeSpan -Days 4
-PS C:\> Update-AzKustoDatabase -InputObject $database -Kind ReadWrite -SoftDeletePeriod $4ds -HotCachePeriod $2ds -Location 'East US'
+$database = Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase
+$2ds = New-TimeSpan -Days 2
+$4ds = New-TimeSpan -Days 4
+Update-AzKustoDatabase -InputObject $database -Kind ReadWrite -SoftDeletePeriod $4ds -HotCachePeriod $2ds -Location 'East US'
+```
 
+```output
 Kind      Location Name                                Type
 ----      -------- ----                                ----
 ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
@@ -60,9 +64,11 @@ The above command updates the soft deletion period and hot cache period of the K
 
 ### Example 3: Update an existing ReadOnly database by name
 ```powershell
-PS C:\> $2ds = New-TimeSpan -Days 2
-PS C:\> Update-AzKustoDatabase -ResourceGroupName testrg -ClusterName myfollowercluster -Name mykustodatabase -Kind ReadOnlyFollowing -HotCachePeriod $2ds -Location 'East US'
+$2ds = New-TimeSpan -Days 2
+Update-AzKustoDatabase -ResourceGroupName testrg -ClusterName myfollowercluster -Name mykustodatabase -Kind ReadOnlyFollowing -HotCachePeriod $2ds -Location 'East US'
+```
 
+```output
 Kind              Location Name                                Type
 ----              -------- ----                                ----
 ReadOnlyFollowing East US  myfollowercluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
@@ -72,10 +78,12 @@ The above command updates the hot cache period of the Kusto database "mykustodat
 
 ### Example 4: Update an existing ReadOnly database via identity
 ```powershell
-PS C:\> $database = Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName myfollowercluster -Name mykustodatabase
-PS C:\> $2ds = New-TimeSpan -Days 2
-PS C:\> Update-AzKustoDatabase -InputObject $database -Kind ReadOnlyFollowing -HotCachePeriod $2ds -Location 'East US'
+$database = Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName myfollowercluster -Name mykustodatabase
+$2ds = New-TimeSpan -Days 2
+Update-AzKustoDatabase -InputObject $database -Kind ReadOnlyFollowing -HotCachePeriod $2ds -Location 'East US'
+```
 
+```output
 Kind              Location Name                                Type
 ----              -------- ----                                ----
 ReadOnlyFollowing East US  myfollowercluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
@@ -307,7 +315,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase
 
 ## NOTES
 
@@ -318,15 +326,18 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IKustoIdentity>: Identity Parameter
+INPUTOBJECT `<IKustoIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[ClusterName <String>]`: The name of the Kusto cluster.
   - `[DataConnectionName <String>]`: The name of the data connection.
   - `[DatabaseName <String>]`: The name of the database in the Kusto cluster.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Azure location (region) name.
+  - `[ManagedPrivateEndpointName <String>]`: The name of the managed private endpoint.
   - `[OperationId <String>]`: The Guid of the operation ID
   - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
+  - `[PrivateLinkResourceName <String>]`: The name of the private link resource.
   - `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
   - `[ScriptName <String>]`: The name of the Kusto database script.
   - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.

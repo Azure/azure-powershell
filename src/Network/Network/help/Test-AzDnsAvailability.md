@@ -24,7 +24,7 @@ Checks whether a domain name in the cloudapp.azure.com zone is available for use
 ## EXAMPLES
 
 ### Example 1: Check if contoso.westus.cloudapp.azure.com is available for use.
-```
+```powershell
 Test-AzDnsAvailability -DomainNameLabel contoso -Location westus
 ```
 

@@ -60,8 +60,8 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUD2 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Skip as current test framework does not support recording generated cmdlets.")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestApplicationGatewayCRUD3()
         {
@@ -69,7 +69,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestKeyVaultIntegrationTest()
         {

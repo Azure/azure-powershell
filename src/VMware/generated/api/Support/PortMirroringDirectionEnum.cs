@@ -10,7 +10,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Support
     public partial struct PortMirroringDirectionEnum :
         System.IEquatable<PortMirroringDirectionEnum>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PortMirroringDirectionEnum IngressEgressBidirectional = @"INGRESS, EGRESS, BIDIRECTIONAL";
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PortMirroringDirectionEnum Bidirectional = @"BIDIRECTIONAL";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PortMirroringDirectionEnum Egress = @"EGRESS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PortMirroringDirectionEnum Ingress = @"INGRESS";
 
         /// <summary>
         /// the value for an instance of the <see cref="PortMirroringDirectionEnum" /> Enum.

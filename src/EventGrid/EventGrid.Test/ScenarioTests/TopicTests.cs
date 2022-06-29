@@ -13,64 +13,65 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
 {
-    public class TopicTests : RMTestBase
+    public class TopicTests : EventGridTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public TopicTests(ITestOutputHelper output)
+        public TopicTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_TopicsCreateGetAndDelete()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "TopicTests");
+            TestRunner.RunTestScript("TopicTests");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EventGrid_TopicsIdentityTests()
+        {
+            TestRunner.RunTestScript("TopicsIdentityTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_TopicsSet()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "TopicSetTests");
+            TestRunner.RunTestScript("TopicSetTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_TopicsGetKey()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "TopicGetKeyTests");
+            TestRunner.RunTestScript("TopicGetKeyTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_TopicsNewKey()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "TopicNewKeyTests");
+            TestRunner.RunTestScript("TopicNewKeyTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_TopicsInputMappingCreateGetAndDelete()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "TopicInputMappingTests");
+            TestRunner.RunTestScript("TopicInputMappingTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_TopicsIpFiltering()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "TopicIpFilteringTests");
+            TestRunner.RunTestScript("TopicIpFilteringTests");
         }
     }
 }

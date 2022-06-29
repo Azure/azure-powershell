@@ -38,7 +38,10 @@ Operation to update an exiting Deployment.
 
 ### Example 1: Update Spring Cloud Deployment by name.
 ```powershell
-PS C:\> Update-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default -SourceRelativePath resources/4ea5ee68fea05586106890ded5733820bb77d919cda27bc4b8139b7cd33b8889-2020080815-6986fdbd-59f6-42b8-8d1f-a75d403cbcde
+Update-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default -SourceRelativePath resources/4ea5ee68fea05586106890ded5733820bb77d919cda27bc4b8139b7cd33b8889-2020080815-6986fdbd-59f6-42b8-8d1f-a75d403cbcde
+```
+
+```output
 Active                               : True
 AppName                              : gateway
 CreatedTime                          :
@@ -67,7 +70,10 @@ Update Spring Cloud Deployment by name.
 
 ### Example 2: Update Spring Cloud Deployment from pipe.
 ```powershell
-PS C:\> Get-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default | Update-AzSpringCloudAppDeployment -SourceRelativePath resources/4ea5ee68fea05586106890ded5733820bb77d919cda27bc4b8139b7cd33b8889-2020080815-6986fdbd-59f6-42b8-8d1f-a75d403cbcde
+Get-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default | Update-AzSpringCloudAppDeployment -SourceRelativePath resources/4ea5ee68fea05586106890ded5733820bb77d919cda27bc4b8139b7cd33b8889-2020080815-6986fdbd-59f6-42b8-8d1f-a75d403cbcde
+```
+
+```output
 Active                               : True
 AppName                              : gateway
 CreatedTime                          :
@@ -421,7 +427,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+INPUTOBJECT `<ISpringCloudIdentity>`: Identity Parameter
   - `[AppName <String>]`: The name of the App resource.
   - `[BindingName <String>]`: The name of the Binding resource.
   - `[CertificateName <String>]`: The name of the certificate resource.

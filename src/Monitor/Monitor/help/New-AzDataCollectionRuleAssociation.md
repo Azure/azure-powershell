@@ -47,11 +47,13 @@ To apply a DCR to a virtual machine, you create an association for the virtual m
 ## EXAMPLES
 
 ### Example 1: Create data collection rule association
+```powershell
+$dcr = Get-AzDataCollectionRule -ResourceGroupName $rg -RuleName $dcrName
+$vmId = '/subscriptions/{subId}/resourceGroups/{resourcegroup}/providers/Microsoft.Compute/virtualMachines/{vmName}'
+New-AzDataCollectionRuleAssociation -TargetResourceId $vmId -AssociationName "dcrAssoc" -RuleId $dcr.Id
 ```
-PS C:\>$dcr = Get-AzDataCollectionRule -ResourceGroupName $rg -RuleName $dcrName
-PS C:\>$vmId = '/subscriptions/{subId}/resourceGroups/{resourcegroup}/providers/Microsoft.Compute/virtualMachines/{vmName}'
-PS C:\>New-AzDataCollectionRuleAssociation -TargetResourceId $vmId -AssociationName "dcrAssoc" -RuleId $dcr.Id
 
+```output
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{resourcegroup}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}
 ProvisioningState    :
@@ -64,11 +66,13 @@ Type                 : Microsoft.Insights/dataCollectionRuleAssociations
 This command creates a data collection rule association for given rule and target resource ID.
 
 ### Example 2: Create data collection rule association from a DCR object
+```powershell
+$dcr = Get-AzDataCollectionRule -ResourceGroupName $rg -RuleName $dcrName
+$vmId = '/subscriptions/{subId}/resourceGroups/{resourcegroup}/providers/Microsoft.Compute/virtualMachines/{vmName}'
+$dcr | New-AzDataCollectionRuleAssociation -TargetResourceId $vmId -AssociationName "dcrAssocInput"
 ```
-PS C:\>$dcr = Get-AzDataCollectionRule -ResourceGroupName $rg -RuleName $dcrName
-PS C:\>$vmId = '/subscriptions/{subId}/resourceGroups/{resourcegroup}/providers/Microsoft.Compute/virtualMachines/{vmName}'
-PS C:\>$dcr | New-AzDataCollectionRuleAssociation -TargetResourceId $vmId -AssociationName "dcrAssocInput"
 
+```output
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{resourcegroup}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}
 ProvisioningState    :

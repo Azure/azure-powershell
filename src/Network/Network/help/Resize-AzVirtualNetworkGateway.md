@@ -29,9 +29,9 @@ For more information, see https://azure.microsoft.com/en-us/pricing/details/vpn-
 ## EXAMPLES
 
 ### Example 1: Change the size of a virtual network gateway
-```
-PS C:\>$Gateway = Get-AzVirtualNetworkGateway -Name "ContosoVirtualGateway"
-PS C:\> Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -GatewaySku "Basic"
+```powershell
+$Gateway = Get-AzVirtualNetworkGateway -Name "ContosoVirtualGateway"
+Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -GatewaySku "Basic"
 ```
 
 This example changes the size of a virtual network gateway named ContosoVirtualGateway.

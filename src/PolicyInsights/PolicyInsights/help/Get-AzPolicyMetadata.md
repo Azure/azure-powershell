@@ -24,21 +24,21 @@ The **Get-AzPolicyRemediation** cmdlet gets all policy metadata resources or a p
 
 ### Example 1: Get all policy metadata resources
 ```powershell
-PS C:\> Get-AzPolicyMetadata
+Get-AzPolicyMetadata
 ```
 
 This command gets all policy metadata resources
 
 ### Example 2: Get a collection of 10 policy metadata resources
 ```powershell
-PS C:\> Get-AzPolicyMetadata -Top 10
+Get-AzPolicyMetadata -Top 10
 ```
 
 This command gets a collection of 10 policy metadata resources
 
 ### Example 3: Get a single policy metadata resource with the name 'ACF1348'
 ```powershell
-PS C:\> Get-AzPolicyMetadata -Name ACF1348
+Get-AzPolicyMetadata -Name ACF1348
 ```
 
 This command gets a single policy metadata resource with the name 'ACF1348'

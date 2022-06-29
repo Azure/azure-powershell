@@ -24,7 +24,7 @@ The **New-AzApplicationGatewayFirewallExclusionConfig** cmdlet a new exclusion r
 
 ### Example 1
 ```powershell
-PS C:\> $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig -Variable "RequestHeaderNames" -Operator "StartsWith" -Selector "xyz"
+$exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig -Variable "RequestHeaderNames" -Operator "StartsWith" -Selector "xyz"
 ```
 
 This command creates a new exclusion rule lists configuration for the variable named RequestHeaderNames and operator named StartsWith and Selector named xyz. The exclusion list configuration is saved in $exclusion1.
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Operator
-When variable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
+When variable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to. Possible values are Any, IPMatch, GeoMatch, Equal, Contains, LessThan, GreaterThan, LessThanOrEqual, GreaterThanOrEqual, BeginsWith, EndsWith.
 
 ```yaml
 Type: System.String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -Variable
-The variable to be excluded.
+The variable to be excluded. Match variable. Possible values are RequestHeaderNames, RequestCookieNames, QueryStringArgNames, RequestBodyPostArgNames.
 
 ```yaml
 Type: System.String

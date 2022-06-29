@@ -10,7 +10,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Support
     public partial struct PortMirroringStatusEnum :
         System.IEquatable<PortMirroringStatusEnum>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PortMirroringStatusEnum SuccessFailure = @"SUCCESS, FAILURE";
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PortMirroringStatusEnum Failure = @"FAILURE";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PortMirroringStatusEnum Success = @"SUCCESS";
 
         /// <summary>the value for an instance of the <see cref="PortMirroringStatusEnum" /> Enum.</summary>
         private string _value { get; set; }

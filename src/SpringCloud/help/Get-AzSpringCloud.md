@@ -41,7 +41,10 @@ Get a Service and its properties.
 
 ### Example 1: Get Spring Cloud Service by name
 ```powershell
-PS C:\> Get-AzSpringCloud -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service
+Get-AzSpringCloud -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service
+```
+
+```output
 ConfigServerPropertiesErrorCode                  :
 ConfigServerPropertiesErrorMessage               :
 ConfigServerPropertyState                        : Succeeded
@@ -91,7 +94,10 @@ Get Spring Cloud Service by name
 
 ### Example 2: List all the spring cloud service under the resource group.
 ```powershell
-PS C:\> Get-AzSpringCloud -ResourceGroupName spring-cloud-rg
+Get-AzSpringCloud -ResourceGroupName spring-cloud-rg
+```
+
+```output
 Location Name                Type
 -------- ----                ----
 eastus   spring-cloud-rg Microsoft.AppPlatform/Spring
@@ -199,7 +205,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+INPUTOBJECT `<ISpringCloudIdentity>`: Identity Parameter
   - `[AppName <String>]`: The name of the App resource.
   - `[BindingName <String>]`: The name of the Binding resource.
   - `[CertificateName <String>]`: The name of the certificate resource.

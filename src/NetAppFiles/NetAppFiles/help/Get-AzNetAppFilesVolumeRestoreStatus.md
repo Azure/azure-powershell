@@ -43,7 +43,7 @@ The **Get-AzNetAppFilesVolumeRestoreStatus** cmdLet gets the status of the resto
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetAppFilesVolumeRestoreStatus -ResourceGroupName MyGroup -AccountName MyAccount -PoolName MyPool -Name MyVolume
+Get-AzNetAppFilesVolumeRestoreStatus -ResourceGroupName MyGroup -AccountName MyAccount -PoolName MyPool -Name MyVolume
 ```
 
 This command gets the status of a restore from backup of volume named "MyVolume".
@@ -188,3 +188,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetAppFilesBackup](./New-AzNetAppFilesBackup.md)
+[Remove-AzNetAppFilesBackup](./Remove-AzNetAppFilesBackup.md)
+[Update-AzNetAppFilesBackup](./Update-AzNetAppFilesBackup.md)
+[Get-AzNetAppFilesBackupPolicy](./Get-AzNetAppFilesBackupPolicy.md)
+[New-AzNetAppFilesBackupPolicy](./New-AzNetAppFilesBackupPolicy.md)
+[Update-AzNetAppFilesBackupPolicy](./Update-AzNetAppFilesBackupPolicy.md)
+[Remove-AzNetAppFilesBackupPolicy](./Remove-AzNetAppFilesBackupPolicy.md)
+[Set-AzNetAppFilesBackupPolicy](./Set-AzNetAppFilesBackupPolicy.md)
+[Get-AzNetAppFilesVault](./Get-AzNetAppFilesVault.md)
+[Get-AzNetAppFilesVolume](./Get-AzNetAppFilesVolume.md)
+[New-AzNetAppFilesVolume](./New-AzNetAppFilesVolume.md)
+[Update-AzNetAppFilesVolume](./Update-AzNetAppFilesVolume.md)
+[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilesVolume.md)

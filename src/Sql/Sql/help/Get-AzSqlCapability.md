@@ -33,8 +33,11 @@ If you specify the *ServerVersionName*, *EditionName*, or *ServiceObjectiveName*
 ## EXAMPLES
 
 ### Example 1: Get capabilities for the current subscription for a region
+```powershell
+Get-AzSqlCapability -LocationName "Central US"
 ```
-PS C:\>Get-AzSqlCapability -LocationName "Central US"
+
+```output
 Location                : Central US
 Status                  : Available
 SupportedServerVersions : {12.0, 2.0}
@@ -43,8 +46,11 @@ SupportedServerVersions : {12.0, 2.0}
 This command returns the capabilities for SQL Database instances on the current subscription for the Central US region.
 
 ### Example 2: Get default capabilities for the current subscription for a region
+```powershell
+Get-AzSqlCapability -LocationName "Central US" -Defaults
 ```
-PS C:\>Get-AzSqlCapability -LocationName "Central US" -Defaults
+
+```output
 Location        : Central US
 Status          : Available
 ExpandedDetails : Version: 2.0 (Default) -> Edition: Standard (Default) -> Service Objective: S0 (Default)
@@ -53,8 +59,11 @@ ExpandedDetails : Version: 2.0 (Default) -> Edition: Standard (Default) -> Servi
 This command returns the default capabilities for SQL Databases on the current subscription in the Central US region.
 
 ### Example 3: Get details for a service objective
+```powershell
+Get-AzSqlCapability -LocationName "Central US" -ServiceObjectiveName "S1"
 ```
-PS C:\>Get-AzSqlCapability -LocationName "Central US" -ServiceObjectiveName "S1"
+
+```output
 Location        : Central US
 Status          : Available
 ExpandedDetails : Version: 12.0 (Available) -> Edition: Standard (Default) -> Service Objective: S1 (Available) 

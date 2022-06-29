@@ -32,8 +32,10 @@ Description for Creates or updates the function app settings of a static site.
 
 ### Example 1: Create or updates the function app settings of a static site
 ```powershell
-PS C:\> New-AzStaticWebAppFunctionAppSetting -ResourceGroupName azure-rg-test -Name staticweb-pwsh01  -AppSetting @{'function01' = 'value01'; 'function02' = 'value02' }
+New-AzStaticWebAppFunctionAppSetting -ResourceGroupName azure-rg-test -Name staticweb-pwsh01  -AppSetting @{'function01' = 'value01'; 'function02' = 'value02' }
+```
 
+```output
 Kind Name        Type
 ---- ----        ----
      appsettings Microsoft.Web/staticSites/config
@@ -41,10 +43,12 @@ Kind Name        Type
 
 This command creates or updates the function app settings of a static site.
 
-### Example 1: Create or updates the function app settings of a static site by pipeline
+### Example 2: Create or updates the function app settings of a static site by pipeline
 ```powershell
-PS C:\> Get-AzStaticWebAppFunctionAppSetting -ResourceGroupName resourceGroup -Name staticweb01 | New-AzStaticWebAppFunctionAppSetting -AppSetting @{'function01' = 'value01'; 'function02' = 'value02' }
+Get-AzStaticWebAppFunctionAppSetting -ResourceGroupName resourceGroup -Name staticweb01 | New-AzStaticWebAppFunctionAppSetting -AppSetting @{'function01' = 'value01'; 'function02' = 'value02' }
+```
 
+```output
 Kind Name        Type
 ---- ----        ----
      appsettings Microsoft.Web/staticSites/config
@@ -219,12 +223,15 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[EnvironmentName <String>]`: The stage site identifier.
   - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
   - `[Id <String>]`: Resource identity path
+  - `[JobHistoryId <String>]`: History ID.
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
   - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[Slot <String>]`: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.
+  - `[WebJobName <String>]`: Name of Web Job.
 
 ## RELATED LINKS
 

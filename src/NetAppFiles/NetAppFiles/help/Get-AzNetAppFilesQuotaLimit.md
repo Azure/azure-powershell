@@ -24,10 +24,10 @@ Get the default and current limits for Azure NetApp Files (ANF) quotas
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetAppFilesQuotaLimit -Location "westus2"  -Name totalTiBsPerSubscription
+Get-AzNetAppFilesQuotaLimit -Location "westus2"  -Name totalTiBsPerSubscription
+```
 
-Output
-
+```output
 Name                             Current Default
 ----                             ------- -------
 westus2/totalTiBsPerSubscription      25      25

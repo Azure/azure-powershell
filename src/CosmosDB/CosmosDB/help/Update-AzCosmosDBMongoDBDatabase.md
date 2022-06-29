@@ -40,8 +40,10 @@ Updates the CosmosDB MongoDB Database. Performs a client side patch operation by
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCosmosDBMongoDBDatabase -AccountName myAccountName -Name myDatabaseName -ResourceGroupName myResourcegroupName -Throughput 600
+Update-AzCosmosDBMongoDBDatabase -AccountName myAccountName -Name myDatabaseName -ResourceGroupName myResourcegroupName -Throughput 600
+```
 
+```output
 Name     : myDatabaseName
 Id       : /subscriptions/mySubscriptionId/resourceGroups/myResourcegroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/mongodbDatabases/myDatabaseName
 Location :

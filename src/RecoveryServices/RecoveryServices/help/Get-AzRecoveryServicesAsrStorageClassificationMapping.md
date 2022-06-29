@@ -31,8 +31,8 @@ The **Get-AzRecoveryServicesAsrStorageClassificationMapping** cmdlet gets the de
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $StorageClassificationMappings = Get-AzRecoveryServicesAsrStorageClassificationMapping -StorageClassification $StorageClassification
+```powershell
+$StorageClassificationMappings = Get-AzRecoveryServicesAsrStorageClassificationMapping -StorageClassification $StorageClassification
 ```
 
 List all storage classification mappings corresponding to the specified storage classification.

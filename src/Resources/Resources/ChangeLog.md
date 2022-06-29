@@ -19,8 +19,81 @@
 -->
 
 ## Upcoming Release
-* Updated parameter name `EnableAccount` to `AccountEnabled`, and added alias `EnableAccount` for `Update-AzADUser` [#16753]
-* Fix for https://github.com/Azure/azure-powershell/issues/15828 (Set-AzPolicyAssignment)
+* Fixed relative path failure in -AsJob scenario [#18084]
+* Fixed logic of `createtime` and `ChangedTime` in `Get-AzResource --ExpandProperties`. [#18206]
+* Fixed role assignment latency for `New-AzADServicePrincipal` [#16777]
+
+## Version 6.0.0
+* Added cmdlet for Application federated identity credential
+    - `Get-AzADAppFederatedIdentityCredential` 
+    - `New-AzADAppFederatedIdentityCredential` 
+    - `Remove-AzADAppFederatedIdentityCredential`
+    - `Update-AzADAppFederatedIdentityCredential`
+* Upgraded and revised `Get-AzLocation` cmdlet:
+    - Upgraded `subscriptionClient` for `Get-AzLocation`. Changed its apiVersion from 2016-01-01 to 2021-01-01.[#18002]
+    - Added all attributes of location info for `Get-AzLocation`, including `pairedRegion` and so on. [#18045][#17536]
+    - Support ExtendedLocations by `Get-AzLocation` [#18046]
+* Added the following cmdlets to remain in parity with 2021-04-01 API version:
+    - `New-AzHierarchySetting`
+    - `Get-AzHierarchySetting`
+    - `Update-AzHierarchySetting`
+    - `Remove-AzHierarchySetting`
+    - `Get-AzManagementGroupSubscription`
+    - `Get-AzSubscriptionUnderManagementGroup` 
+    - `Start-AzTenantBackfill`
+    - `Get-AzTenantBackfillStatus` 
+    - `Get-AzManagementGroupNameAvailability`
+    - `Get-AzEntity` 
+* [Breaking Change] Renamed property `isSyncedFromOnPremis` to `isSyncedFromOnPremise` to align with API spec
+
+## Version 5.6.0
+* Fixed redundant quotes in list pagination [#17667]
+* Added cmdlet `Update-AzADGroup` [#17514]
+* Updated API version to beta for group member related cmdlet to allow service principal to be add, get and delete from group [#16698]
+* Added parameter '-OwnedApplication' for `Get-AzADApplication` to get applications owned by current user
+* Added parameter '-Web' for `Update-AzADApplication` [#16750]
+
+## Version 5.5.0
+* Removed `-ApplicationId` from `New-AzADServicePrincipal` `SimpleParameterSet` [#17256]
+* Added `New-AzResourceManagementPrivateLink`, and `New-AzPrivateLinkAssociation` cmdlets
+* Added authorization related cmdlets:
+    - `Get-AzRoleAssignmentSchedule`
+    - `Get-AzRoleAssignmentScheduleInstance`
+    - `Get-AzRoleAssignmentScheduleRequest`
+    - `Get-AzRoleEligibilitySchedule`
+    - `Get-AzRoleEligibilityScheduleInstance`
+    - `Get-AzRoleEligibilityScheduleRequest` 
+    - `Get-AzRoleEligibleChildResource`
+    - `Get-AzRoleManagementPolicy` 
+    - `Get-AzRoleManagementPolicyAssignment`
+    - `New-AzRoleAssignmentScheduleRequest` 
+    - `New-AzRoleEligibilityScheduleRequest`
+    - `New-AzRoleManagementPolicyAssignment` 
+    - `Remove-AzRoleManagementPolicy`
+    - `Remove-AzRoleManagementPolicyAssignment` 
+    - `Stop-AzRoleAssignmentScheduleRequest`
+    - `Stop-AzRoleEligibilityScheduleRequest` 
+    - `Update-AzRoleManagementPolicy`
+* Added `Get-AzResourceManagementPrivateLink`, `Remove-AzResourceManagementPrivateLink`, `Get-AzResourceManagementPrivateLinkAssociation` and  `Remove-AzResourceManagementPrivateLinkAssociation` cmdlets
+
+## Version 5.4.0
+* Fixed keycredential key format, from base64url to byte [#17131]
+* Fixed add key credential overwrite existing one [#17088]
+* Deleted parameter sets cannot be reached for `New-AzADSericePrincipal`
+* Marked `ObjectType` as `Unknown` if object is not found or current account has insufficient privileges to get object type for role assignment [#16981]
+* Fixed that `Get-AzRoleAssignment` shows empty RoleDefinitionName for custom roles when not specifying scope [#16991]
+* Unified the returned `RoleDefinitionId` in PSRoleAssignment to GUID [#16991]
+
+## Version 5.3.1
+* Fixed `New-AzADServicePrincipal` not working [#17054] [#17040]
+
+## Version 5.3.0
+* Added proeprties `onPremisesLastSyncDateTime`, `onPremisesSyncEnabled` to `User` object [#16892]
+* Added additional properties when creating request for `New-AzADServicePrincipal` and `Update-AzADServicePrincipal` [#16847] [#16841]
+* Fixed `DisplayName` and `ApplicationId` for `New-AzADAppCredential` [#16764]
+* Enabled password reset for `Update-AzADUser` [#16869]
+* Updated parameter name `EnableAccount` to `AccountEnabled`, and added alias `EnableAccount` for `Update-AzADUser` [#16753] [#16795]
+* Fixed `Set-AzPolicyAssignment` does not remove `notScope` if empty [#15828]
 
 ## Version 5.2.0
 * Fixed incorrect alias for `Get-AzADSpCredential` [#16592]

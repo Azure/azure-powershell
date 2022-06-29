@@ -216,8 +216,8 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="InvalidVaultUri" xml:space="preserve">
     <value>Invalid vault uri '{0}'. Vault uri must contain valid dns host name with domain suffix '{1}'.</value>
   </data>
-  <data name="KeyFileNotFound" xml:space="preserve">
-    <value>Can not find key file '{0}'.</value>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>Can not find file '{0}'.</value>
   </data>
   <data name="NoDefaultUserAccount" xml:space="preserve">
     <value>There is no default user account associated with this subscription. Certificate accounts are not supported with Azure Key Vault.</value>
@@ -596,5 +596,17 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="SetKeyRotationPolicy" xml:space="preserve">
     <value>Set key rotation policy</value>
+  </data>
+  <data name="DeletedManagedHsmNotFound" xml:space="preserve">
+    <value>Cannot find deleted managed HSM '{0}' in location '{1}'</value>
+  </data>
+  <data name="PurgeManagedHsmWarning" xml:space="preserve">
+    <value>Are you sure you want to remove managed HSM '{0}' forever.</value>
+  </data>
+  <data name="PurgeManagedHsmWarningWhatIf" xml:space="preserve">
+    <value>Purge managed HSM</value>
+  </data>
+  <data name="FetchDefaultCVMPolicyFailed" xml:space="preserve">
+    <value>Fetch default CVM Policy failed, {0}</value>
   </data>
 </root>

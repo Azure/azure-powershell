@@ -83,22 +83,22 @@ The **New-AzActionGroupReceiver** cmdlet creates new action group receiver in me
 ## EXAMPLES
 
 ### Example 1: Create a new Email receiver in memory.
-```
-PS C:\>$emailReceiver = New-AzActionGroupReceiver -Name 'emailReceiver1' -EmailReceiver -EmailAddress 'user1@example.com'
+```powershell
+$emailReceiver = New-AzActionGroupReceiver -Name 'emailReceiver1' -EmailReceiver -EmailAddress 'user1@example.com'
 ```
 
 This command creates a new Email receiver in memory.
 
 ### Example 2: Create a new SMS receiver in memory.
-```
-PS C:\>$smsReceiver = New-AzActionGroupReceiver -Name 'smsReceiver1' -SmsReceiver -CountryCode '1' -PhoneNumber '5555555555'
+```powershell
+$smsReceiver = New-AzActionGroupReceiver -Name 'smsReceiver1' -SmsReceiver -CountryCode '1' -PhoneNumber '5555555555'
 ```
 
 This command creates a new SMS receiver in memory.
 
 ### Example 3: Create a new webhook receiver in memory.
-```
-PS C:\>$webhookReceiver = New-AzActionGroupReceiver -Name 'webhookReceiver1' -WebhookReceiver -ServiceUri 'http://test.com'
+```powershell
+$webhookReceiver = New-AzActionGroupReceiver -Name 'webhookReceiver1' -WebhookReceiver -ServiceUri 'http://test.com'
 ```
 
 This command creates a new webhook receiver in memory.

@@ -43,7 +43,7 @@ The **Remove-AzSearchPrivateEndpointConnection** removes the private endpoint co
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSearchPrivateEndpointConnection -ResourceGroupName arjagann -ServiceName arjagann-test-cuseuap -Name arjagann-test-cuseuap-pe.4c74dd7c-7016-42ac-827a-8d5d1378f266
+Remove-AzSearchPrivateEndpointConnection -ResourceGroupName arjagann -ServiceName arjagann-test-cuseuap -Name arjagann-test-cuseuap-pe.4c74dd7c-7016-42ac-827a-8d5d1378f266
 ```
 
 This example removes a private endpoint connection from the search service by name.

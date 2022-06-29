@@ -31,17 +31,15 @@ The operation to execute an export.
 
 ### Example 1: Invoke Export by ExportName and Scope
 ```powershell
-PS C:\> Invoke-AzCostManagementExecuteExport -ExportName 'TestExport' -Scope 'subscriptions/**********'
-
+Invoke-AzCostManagementExecuteExport -ExportName 'TestExport' -Scope 'subscriptions/**********'
 ```
 
 Invoke Export by ExportName and Scope
 
 ### Example 2: Invoke Export by InputObject
 ```powershell
-PS C:\> $getExport = Get-AzCostManagementExport -Name 'TestExport' -Scope 'subscriptions/**********'
+$getExport = Get-AzCostManagementExport -Name 'TestExport' -Scope 'subscriptions/**********'
 Invoke-AzCostManagementExecuteExport -InputObject $getExport
-
 ```
 
 Invoke Export by InputObject
@@ -175,7 +173,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
+INPUTOBJECT `<ICostManagementIdentity>`: Identity Parameter
   - `[AlertId <String>]`: Alert ID
   - `[ExportName <String>]`: Export Name.
   - `[ExternalCloudProviderId <String>]`: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.

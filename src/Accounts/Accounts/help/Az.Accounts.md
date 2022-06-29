@@ -14,6 +14,9 @@ Manages credentials and common configuration for all Azure modules.
 ### [Add-AzEnvironment](Add-AzEnvironment.md)
 Adds endpoints and metadata for an instance of Azure Resource Manager.
 
+### [Clear-AzConfig](Clear-AzConfig.md)
+Clears the values of configs that are set by the user.
+
 ### [Clear-AzContext](Clear-AzContext.md)
 Remove all Azure credentials, account, and subscription information.
 
@@ -53,8 +56,14 @@ machine. Data is collected by default unless you explicitly opt out.
 ### [Enable-AzureRmAlias](Enable-AzureRmAlias.md)
 Enables AzureRm prefix aliases for Az modules.
 
+### [Export-AzConfig](Export-AzConfig.md)
+Exports all the configs into a file so that it can be imported on another machine.
+
 ### [Get-AzAccessToken](Get-AzAccessToken.md)
 Get raw access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
+
+### [Get-AzConfig](Get-AzConfig.md)
+Gets the configs of Azure PowerShell.
 
 ### [Get-AzContext](Get-AzContext.md)
 Gets the metadata used to authenticate Azure Resource Manager requests.
@@ -74,6 +83,9 @@ Get subscriptions that the current account can access.
 
 ### [Get-AzTenant](Get-AzTenant.md)
 Gets tenants that are authorized for the current user.
+
+### [Import-AzConfig](Import-AzConfig.md)
+Imports configs from a file that was previously exported by `Export-AzConfig`.
 
 ### [Import-AzContext](Import-AzContext.md)
 Loads Azure authentication information from a file.
@@ -119,4 +131,7 @@ Sets properties for an Azure environment.
 
 ### [Uninstall-AzureRm](Uninstall-AzureRm.md)
 Removes all AzureRm modules from a machine.
+
+### [Update-AzConfig](Update-AzConfig.md)
+Updates the configs of Azure PowerShell.
 

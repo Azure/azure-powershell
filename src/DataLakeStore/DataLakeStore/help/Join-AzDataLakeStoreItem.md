@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 4E9EA2E9-4BE2-4530-BC2B-D369C016CD8C
@@ -25,8 +25,8 @@ The **Join-AzDataLakeStoreItem** cmdlet joins one or more files to create one fi
 ## EXAMPLES
 
 ### Example 1: Join two items
-```
-PS C:\>Join-AzDataLakeStoreItem -AccountName "ContosoADL" -Paths "/MyFiles/File01.txt","/MyFiles/File02.txt" -Destination "/MyFiles/CombinedFile.txt"
+```powershell
+Join-AzDataLakeStoreItem -AccountName "ContosoADL" -Paths "/MyFiles/File01.txt","/MyFiles/File02.txt" -Destination "/MyFiles/CombinedFile.txt"
 ```
 
 This command joins File01.txt and File02.txt to create the file CombinedFile.txt.

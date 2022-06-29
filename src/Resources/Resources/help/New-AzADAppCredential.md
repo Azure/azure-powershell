@@ -124,19 +124,23 @@ Creates key credentials or password credentials for an application.
 
 ### Example 1: Create key credentials for application
 ```powershell
-PS C:\> $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
-                                 -Property @{'Key' = $cert;
-                                 'Usage'       = 'Verify'; 
-                                 'Type'        = 'AsymmetricX509Cert'
+# ObjectId is the string representation of a GUID for directory object, application, in Azure AD.
+$Id = "00000000-0000-0000-0000-000000000000"
+# $cert is Base64 encoded content of certificate
+$credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
+                                 -Property @{'Key' = $cert; `
+                                 'Usage'       = 'Verify'; `
+                                 'Type'        = 'AsymmetricX509Cert' `
                                  }
-PS C:\> New-AzADAppCredential -ObjectId $Id -KeyCredentials $credential
+New-AzADAppCredential -ObjectId $Id -KeyCredentials $credential
 ```
 
 Create key credentials for application with object Id $Id
 
 ### Example 2: Create password credentials for application
 ```powershell
-PS C:\> Get-AzADApplication -ApplicationId $appId | New-AzADAppCredential -StartDate $startDate -EndDate $endDate
+# ApplicationId is AppId of Application object which is different from directory id in Azure AD.
+Get-AzADApplication -ApplicationId $appId | New-AzADAppCredential -StartDate $startDate -EndDate $endDate
 ```
 
 Create password credentials for application
@@ -368,7 +372,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be used as pipeline input.
+APPLICATIONOBJECT `<IMicrosoftGraphApplication>`: The application object, could be used as pipeline input.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

@@ -23,25 +23,26 @@ The New-AzDdosProtectionPlan cmdlet creates a DDoS protection plan.
 ## EXAMPLES
 
 ### Example 1: Create and associate a DDoS protection plan with a new virtual network
-```
-D:\> $ddosProtectionPlan = New-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName -Location "West US"
-D:\> $subnet = New-AzVirtualNetworkSubnetConfig -Name SubnetName -AddressPrefix 10.0.1.0/24
-D:\> $vnet = New-AzVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName -Location "West US" -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
+```powershell
+$ddosProtectionPlan = New-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName -Location "West US"
+$subnet = New-AzVirtualNetworkSubnetConfig -Name SubnetName -AddressPrefix 10.0.1.0/24
+$vnet = New-AzVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName -Location "West US" -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
 ```
 
 First, we create a new DDoS Protection plan with the **New-AzDdosProtectionPlan** command.
 Then, we create a new virtual network with **New-AzVirtualNetwork** and we specify the ID of the newly created plan in the parameter **DdosProtectionPlanId**. In this case, since we are associating the virtual network with a plan, we can also specify the parameter **EnableDdoSProtection**.
 
 ### Example 2: Create and associate a DDoS protection plan with an existing virtual network
+```powershell
+$ddosProtectionPlan = New-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName -Location "West US"
+$vnet = Get-AzVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName
+$vnet.DdosProtectionPlan = New-Object Microsoft.Azure.Commands.Network.Models.PSResourceId
+$vnet.DdosProtectionPlan.Id = $ddosProtectionPlan.Id
+$vnet.EnableDdosProtection = $true
+$vnet | Set-AzVirtualNetwork
 ```
-D:\> $ddosProtectionPlan = New-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName -Location "West US"
-D:\> $vnet = Get-AzVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName
-D:\> $vnet.DdosProtectionPlan = New-Object Microsoft.Azure.Commands.Network.Models.PSResourceId
-D:\> $vnet.DdosProtectionPlan.Id = $ddosProtectionPlan.Id
-D:\> $vnet.EnableDdosProtection = $true
-D:\> $vnet | Set-AzVirtualNetwork
 
-
+```output
 Name                   : VnetName
 ResourceGroupName      : ResourceGroupName
 Location               : westus

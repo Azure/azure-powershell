@@ -33,8 +33,10 @@ For container groups, this will always be an empty list.
 
 ### Example 1: Get a list of the outbound network dependencies
 ```powershell
-PS C:\> Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint -ResourceGroupName test-rg -ContainerGroupName test-cg
+Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint -ResourceGroupName test-rg -ContainerGroupName test-cg
+```
 
+```output
 []
 ```
 
@@ -142,7 +144,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
+INPUTOBJECT `<IContainerInstanceIdentity>`: Identity Parameter
   - `[ContainerGroupName <String>]`: The name of the container group.
   - `[ContainerName <String>]`: The name of the container instance.
   - `[Id <String>]`: Resource identity path

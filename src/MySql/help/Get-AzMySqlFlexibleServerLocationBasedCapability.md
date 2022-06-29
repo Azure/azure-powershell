@@ -24,9 +24,11 @@ Get the available SKU information for the location
 
 ### Example 1: Get location capabilities by location name
 ```powershell
-PS C:\> Get-AzMySqlFlexibleServerLocationBasedCapability -Location westus2
+Get-AzMySqlFlexibleServerLocationBasedCapability -Location westus2
 "Please refer to https://aka.ms/mysql-pricing for pricing details"
+```
 
+```output
 SKU               Memory Tier            vCore
 ---               ------ ----            -----
 Standard_B1s        1024 Burstable           1

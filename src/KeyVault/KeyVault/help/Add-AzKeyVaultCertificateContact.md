@@ -40,8 +40,10 @@ These events are determined by the certificate policy.
 
 ### Example 1: Add a key vault certificate contact
 ```powershell
-PS C:\> Add-AzKeyVaultCertificateContact -VaultName "ContosoKV01" -EmailAddress "patti.fuller@contoso.com" -PassThru
+Add-AzKeyVaultCertificateContact -VaultName "ContosoKV01" -EmailAddress "patti.fuller@contoso.com" -PassThru
+```
 
+```output
 Email                    VaultName
 -----                    ---------
 patti.fuller@contoso.com ContosoKV01

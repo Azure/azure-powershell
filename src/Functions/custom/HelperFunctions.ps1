@@ -42,6 +42,8 @@ $constants["FunctionsNoV2Version"] = @(
     "USSec East"
 )
 
+$constants["SetDefaultValueParameterWarningMessage"] = "This default value is subject to change over time. Please set this value explicitly to ensure the behavior is not accidentally impacted by future changes."
+
 foreach ($variableName in $constants.Keys)
 {
     if (-not (Get-Variable $variableName -ErrorAction SilentlyContinue))
@@ -1018,7 +1020,7 @@ function GetRuntimeJsonDefinition
             $RuntimeVersion = $latestVersion.ToString()
         }
 
-        Write-Verbose "RuntimeVersion not specified. Setting default runtime version for '$Runtime' to '$RuntimeVersion'." -Verbose
+        Write-Warning "RuntimeVersion not specified. Setting default value to '$RuntimeVersion'. $SetDefaultValueParameterWarningMessage"
     }
 
     # Get the RuntimeJsonDefinition

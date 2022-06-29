@@ -42,13 +42,15 @@ RoleDefinitionId and Id can be either fully qualified or just the Guid.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Update-AzCosmosDBSqlRoleAssignment `
+```powershell
+Update-AzCosmosDBSqlRoleAssignment `
 	-AccountName accountName `
 	-ResourceGroupName resourceGroupName `
 	-Id roleAssignmentId `
 	-RoleDefinitionId "/subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleDefinitions/roleDefinitionId"
+```
 
+```output
 Id               : /subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleAssignments/roleAssignmentId
 Scope            : /subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/
 RoleDefinitionId : /subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleDefinitions/roleDefinitionId

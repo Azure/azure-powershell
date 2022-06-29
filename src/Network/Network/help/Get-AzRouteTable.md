@@ -32,9 +32,11 @@ You can get a single route table, or get all the route tables in a resource grou
 ## EXAMPLES
 
 ### Example 1: Get a route table
+```powershell
+Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
 ```
-PS C:\> Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
 
+```output
 Name              : routetable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus
@@ -61,9 +63,11 @@ Subnets           : []
 This command gets the route table named RouteTable01 in the resource group named ResourceGroup11.
 
 ### Example 2: List route tables using filtering
+```powershell
+Get-AzRouteTable -Name RouteTable*
 ```
-PS C:\> Get-AzRouteTable -Name RouteTable*
 
+```output
 Name              : routetable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus

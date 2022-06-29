@@ -72,10 +72,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             else
             {
-                if (logMaxCount != null)
-                {
-                    logMaxCount();
-                }
+                logMaxCount?.Invoke();
                 return asyncEnumerable.Take(maxCount);
             }
         }

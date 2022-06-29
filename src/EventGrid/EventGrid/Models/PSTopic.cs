@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public PSTopic(Topic topic)
         {
             this.Id = topic.Id;
+            this.Identity = new PsIdentityInfo(topic.Identity);
             this.TopicName = topic.Name;
             this.Type = topic.Type;
             this.ResourceGroupName = EventGridUtils.ParseResourceGroupFromId(topic.Id);
@@ -112,6 +113,8 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public string TopicName { get; set; }
 
         public string Id { get; set; }
+
+        public PsIdentityInfo Identity { get; set; }
 
         public string Type { get; set; }
 

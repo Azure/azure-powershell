@@ -37,42 +37,47 @@ Gets the details of an Event Hubs NetworkruleSet of namespace in the current Azu
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzServiceBusNetworkRuleSet -ResourceGroupName  v-ajnavtest -Namespace ServiceBus-Namespace-1122
+Get-AzServiceBusNetworkRuleSet -ResourceGroupName  v-ajnavtest -Namespace ServiceBus-Namespace-1122
 ```
+
+```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/subscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-1122/networkRuleSets/default
 Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {1.1.1.1, Allow}
 VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, False}
-
+```
 Get the details of Event Hubs NetworkruleSet of namespace using ResourceGroup and Namespace parameters. 
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzServiceBusNetworkRuleSet -Namespace ServiceBus-Namespace-1122
+Get-AzServiceBusNetworkRuleSet -Namespace ServiceBus-Namespace-1122
 ```
+
+```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/subscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-1122/networkRuleSets/default
 Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {1.1.1.1, Allow}
 VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, False}
-
+```
 Get the details of Event Hubs NetworkruleSet of namespace using  Namespace which is in the current subscription.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzServiceBusNetworkRuleSet -ResourceId /SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-2389
+Get-AzServiceBusNetworkRuleSet -ResourceId /SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-2389
 ```
 
+```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/subscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-2389/networkRuleSets/default
 Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {1.1.1.1, Allow}
 VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, False}
-
+```
 Get the details of Event Hubs NetworkruleSet of namespace using Resource Id of other Namespace 
 
 ## PARAMETERS

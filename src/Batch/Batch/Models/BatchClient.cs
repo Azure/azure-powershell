@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Internal.Resources;
 using System;
+using Microsoft.Azure.Commands.Batch.Properties;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -62,10 +63,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
         private void WriteVerbose(string message)
         {
-            if (VerboseLogger != null)
-            {
-                VerboseLogger(message);
-            }
+            VerboseLogger?.Invoke(message);
+        }
+
+        private void WriteMaxCount(int count)
+        {
+            WriteVerbose(string.Format(Resources.MaxCount, count));
         }
     }
 }

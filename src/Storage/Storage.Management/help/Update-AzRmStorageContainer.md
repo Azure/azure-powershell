@@ -54,7 +54,7 @@ This command disables public access on a Storage blob container with Storage acc
 
 ### Example 3: Set public access as Blob for all Storage blob containers in a Storage account with pipeline
 ```
-PS C:\>Get-AzStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" | Update-AzRmStorageContainer -PublicAccess Blob
+PS C:\>Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" | Update-AzRmStorageContainer -PublicAccess Blob
 ```
 
 This command set public access as Blob for all Storage blob containers in a Storage account with pipeline.

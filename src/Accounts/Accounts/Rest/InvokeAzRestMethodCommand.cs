@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         [ValidateNotNullOrEmpty]
         public string[] Name { get; set; }
 
-        [Parameter(ParameterSetName = ByPath, Mandatory = true, HelpMessage = "Target Path")]
+        [Parameter(ParameterSetName = ByPath, Mandatory = true, HelpMessage = "Path of target resource URL. Hostname of Resource Manager should not be added.")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 

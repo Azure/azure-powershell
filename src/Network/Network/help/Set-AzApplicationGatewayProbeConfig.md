@@ -27,7 +27,7 @@ The Set-AzApplicationGatewayProbeConfig cmdlet sets the health probe configurati
 
 ### Example 1: Set the configuration for a health probe on an application gateway
 ```powershell
-PS C:\>Set-AzApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe05" -Protocol Http -HostName "contoso.com" -Path "/path/custompath.htm" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
+Set-AzApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe05" -Protocol Http -HostName "contoso.com" -Path "/path/custompath.htm" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
 ```
 
 This command sets the configuration for a health probe named Probe05 for the application gateway named Gateway.

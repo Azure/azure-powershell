@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support
 {
 
-    /// <summary>TypeConverter implementation for IdentityType.</summary>
+    /// <summary>
+    /// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity
+    /// and a set of user-assigned identities. The type 'None' will remove any identities.
+    /// </summary>
     public partial class IdentityTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

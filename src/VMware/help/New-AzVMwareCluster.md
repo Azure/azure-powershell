@@ -14,8 +14,8 @@ Create or update a cluster in a private cloud
 
 ```
 New-AzVMwareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName <String> -SkuName <String>
- [-SubscriptionId <String>] [-ClusterSize <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ClusterSize <Int32>] [-PropertiesHost <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,8 +25,9 @@ Create or update a cluster in a private cloud
 
 ### Example 1: Create a cluster
 ```powershell
-PS C:\> New-AzVMwareCluster -Name azps_test_cluster -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -ClusterSize 3 -SkuName av36
-
+New-AzVMwareCluster -Name azps_test_cluster -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -ClusterSize 3 -SkuName av36
+```
+```output
 Name              Type                                 ResourceGroupName
 ----              ----                                 -----------------
 azps_test_cluster Microsoft.AVS/privateClouds/clusters azps_test_group
@@ -126,6 +127,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PropertiesHost
+The hosts
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -210,7 +226,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICluster
 
 ## NOTES
 

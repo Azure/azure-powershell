@@ -30,22 +30,22 @@ The template will still be generated for the parts that were successful.
 ## EXAMPLES
 
 ### Example 1: Export a resource group
-```
-PS C:\>Export-AzResourceGroup -ResourceGroupName "TestGroup"
+```powershell
+Export-AzResourceGroup -ResourceGroupName "TestGroup"
 ```
 
 This command captures the resource group named TestGroup as a template, and saves it to a JSON file in the current directory.
 
 ### Example 2: Export a single resource from a resource group
-```
-PS C:\>Export-AzResourceGroup -ResourceGroupName "TestGroup" -Resource "/subscriptions/5f43547b-1d2d-4a3e-ace4-88d4b600d568/resourceGroups/TestGroup/providers/Microsoft.Compute/virtualMachines/TestVirtualMachine"
+```powershell
+Export-AzResourceGroup -ResourceGroupName "TestGroup" -Resource "/subscriptions/5f43547b-1d2d-4a3e-ace4-88d4b600d568/resourceGroups/TestGroup/providers/Microsoft.Compute/virtualMachines/TestVirtualMachine"
 ```
 
 This command captures the Virtual Machine resource named "TestVirtualMachine" from the "TestGroup" resource group as a template, and saves it to a JSON file in the current directory.
 
 ### Example 3: Export a selection of resources from a resource group
-```
-PS C:\>Export-AzResourceGroup -ResourceGroupName "TestGroup" -SkipAllParameterization -Resource @(
+```powershell
+Export-AzResourceGroup -ResourceGroupName "TestGroup" -SkipAllParameterization -Resource @(
   "/subscriptions/5f43547b-1d2d-4a3e-ace4-88d4b600d568/resourceGroups/TestGroup/providers/Microsoft.Compute/virtualMachines/TestVm",
   "/subscriptions/5f43547b-1d2d-4a3e-ace4-88d4b600d568/resourceGroups/TestGroup/providers/Microsoft.Network/networkInterfaces/TestNic"
 )

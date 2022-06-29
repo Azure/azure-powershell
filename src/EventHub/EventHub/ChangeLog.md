@@ -18,9 +18,34 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added public network access to the Set-AzEventHubNetworkRuleSet set cmdlet
+* Added cmdlets for CRUD operations on EventHub Application Groups. The added cmdlets include,
+    -New-AzEventHubApplicationGroup
+    -Set-AzEventHubApplicationGroup
+    -Remove-AzEventHubApplicationGroup
+    -Get-AzEventHubApplicationGroup
+    -New-AzEventHubThrottlingPolicyConfig
+* Get-AzEventHubNamespace returned a maximum of 100 namespaces for list by resource groups or list by subscriptions so far. From here onwards, for resource groups and subscriptions with over a 100 namespaces, the cmdlet will return all the namespaces. You will not see a change in the cmdlet behaviour if your resource groups or subscriptions have less than a 100 namespaces.
+* Added cmdlets for manual approval of EventHubs Private Endpoint Connections. The added cmdlets include,
+    -Approve-AzEventHubPrivateEndpointConnection
+    -Deny-AzEventHubPrivateEndpointConnection
+    -Get-AzEventHubPrivateEndpointConnection
+    -Remove-AzEventHubPrivateEndpointConnection
+    -Get-AzEventHubPrivateLink
 
-* Added New-AzEventHubSchemaGroup, Remove-AzEventHubSchemaGroup and Get-AzEventHubSchemaGroup in the eventhubs PS.
+## Version 2.0.0
+* Made `IPRule` and `VirtualNetworkRule` optional in `Set-AzEventHubNetworkRuleSet`.
+* Deprecated older MSI properties in `Set-AzEventHubNamespace` and `New-AzEventHubNamespace`
+
+## Version 1.11.1
+
+* Deprecating older MSI related fields in New-AzEventHubNamespace and Set-AzEventHubNamespace
+
+## Version 1.11.0
+* Added MSI properties to New-AzEventHubNamespace and Set-AzEventHubNamespace. Adding New-AzEventHubEncryptionConfig.
+
+## Version 1.10.0
+* Added public network access to the `Set-AzEventHubNetworkRuleSet` set cmdlet
+* Added `New-AzEventHubSchemaGroup`, `Remove-AzEventHubSchemaGroup` and `Get-AzEventHubSchemaGroup` in the eventhubs PS.
 
 ## Version 1.9.1
 * Fixed the issue that `New-AzEventHubKey` always generates a new primary key instead of a secondary key since version 1.9.0 [#16362]

@@ -30,8 +30,8 @@ Use **Set-AzServiceFabricUpgradeType** to set upgrade type to automatic or manua
 ## EXAMPLES
 
 ### Example 1
-```
-PS c:> Set-AzServiceFabricUpgradeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster'  -UpgradeMode Automatic
+```powershell
+Set-AzServiceFabricUpgradeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster'  -UpgradeMode Automatic
 ```
 
 This command will set the cluster upgrade mode to automatic.

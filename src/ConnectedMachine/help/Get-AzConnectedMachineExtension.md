@@ -31,8 +31,10 @@ The operation to get the extension.
 
 ### Example 1: List all extensions for a machine
 ```powershell
-PS C:\> Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName winwestus2_2
+Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName winwestus2_2
+```
 
+```output
 Name    Location  PropertiesType        ProvisioningState
 ----    --------  --------------        -----------------
 custom  westus2   CustomScriptExtension Succeeded
@@ -44,8 +46,10 @@ Lists all extensions for a specific machine.
 
 ### Example 2: Get a specific extension on a machine
 ```powershell
-PS C:\> Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName winwestus2_2 -Name dsc
+Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName winwestus2_2 -Name dsc
+```
 
+```output
 Name  Location  PropertiesType        ProvisioningState
 ----  --------  --------------        -----------------
 dsc   westus2   CustomScriptExtension Succeeded
@@ -153,7 +157,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
 
 ## NOTES
 

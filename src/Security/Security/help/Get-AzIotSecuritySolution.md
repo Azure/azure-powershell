@@ -42,8 +42,10 @@ The IoT security solution collects security data and events from iot devices and
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzIotSecuritySolution -Name "MySample" -ResourceGroupName "MyResourceGroup"
+Get-AzIotSecuritySolution -Name "MySample" -ResourceGroupName "MyResourceGroup"
+```
 
+```output
 Id: "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/IoTSecuritySolutions/MySample"
 Name: "MySample"
 Type: "Microsoft.Security/IoTSecuritySolutions"
@@ -79,8 +81,10 @@ Get the solution "MySample" in resource group "MyResourceGroup"
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzIotSecuritySolution -ResourceGroupName "MyResourceGroup"
+Get-AzIotSecuritySolution -ResourceGroupName "MyResourceGroup"
+```
 
+```output
 Array of security solution items as shown is example 1
 ```
 

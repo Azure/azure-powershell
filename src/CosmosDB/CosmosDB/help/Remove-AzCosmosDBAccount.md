@@ -37,8 +37,10 @@ Remove a CosmosDB Account with a given Name in the given ResourceGroup.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCosmosDBAccount -ResourceGroupName rg -Name dbname  -PassThru
+Remove-AzCosmosDBAccount -ResourceGroupName rg -Name dbname  -PassThru
+```
 
+```output
 True
 ```
 

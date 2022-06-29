@@ -24,9 +24,11 @@ The **Get-AzVMExtensionImage** cmdlet gets all versions for an Azure extension.
 ## EXAMPLES
 
 ### Example 1: Get the versions of an extension image
+```powershell
+Get-AzVMExtensionImage -Location "West US" -PublisherName "Chef.Bootstrap.WindowsAzure" -Type "ChefClient"
 ```
-PS C:\> Get-AzVMExtensionImage -Location "West US" -PublisherName "Chef.Bootstrap.WindowsAzure" -Type "ChefClient"
 
+```output
 Id               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Pub
                    lishers/Chef.Bootstrap.WindowsAzure/ArtifactTypes/VMExtension/Types/ChefClient/Versions/11.18.6.2
 Location         : westus
@@ -56,9 +58,11 @@ FilterExpression :
 This command gets all the versions of the extension image for the specified location, publisher, and type.
 
 ### Example 2: Get the versions of an extension image with filter over version
+```powershell
+Get-AzVMExtensionImage -Location "West US" -PublisherName "Chef.Bootstrap.WindowsAzure" -Type "ChefClient" -Version 12*
 ```
-PS C:\> Get-AzVMExtensionImage -Location "West US" -PublisherName "Chef.Bootstrap.WindowsAzure" -Type "ChefClient" -Version 12*
 
+```output
 Id               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Pub
                    lishers/Chef.Bootstrap.WindowsAzure/ArtifactTypes/VMExtension/Types/ChefClient/Versions/1207.12.3.0
 Location         : westus
@@ -80,9 +84,11 @@ FilterExpression :
 This command gets all the versions of the extension image for the specified location, publisher, type, and version starting with 12.
 
 ### Example 3: Get the versions of an extension image with filter over version
+```powershell
+Get-AzVMExtensionImage -Location "West US" -PublisherName "Chef.Bootstrap.WindowsAzure" -Type "ChefClient" -Version 1207.12.3.0
 ```
-PS C:\> Get-AzVMExtensionImage -Location "West US" -PublisherName "Chef.Bootstrap.WindowsAzure" -Type "ChefClient" -Version 1207.12.3.0
 
+```output
 Id                         : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/
                              westus/Publishers/Chef.Bootstrap.WindowsAzure/ArtifactTypes/VMExtension/Types/ChefClient/V
                              ersions/1207.12.3.0

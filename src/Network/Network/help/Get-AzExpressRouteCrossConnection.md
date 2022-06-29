@@ -26,12 +26,12 @@ AzureRmExpressRouteCrossConnection
 ## EXAMPLES
 
 ### Example 1: Get the ExpressRoute cross connection
-```
+```powershell
 Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
 ```
 
 ### Example 2: List the ExpressRoute cross connections using a filter
-```
+```powershell
 Get-AzExpressRouteCrossConnection -Name test*
 ```
 

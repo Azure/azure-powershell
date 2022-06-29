@@ -24,7 +24,7 @@ The **New-AzApplicationGatewayClientAuthConfiguration** cmdlet creates a new cli
 
 ### Example 1
 ```powershell
-PS C:\> $clientAuthConfig = New-AzApplicationGatewayClientAuthConfiguration -VerifyClientCertIssuerDN
+$clientAuthConfig = New-AzApplicationGatewayClientAuthConfiguration -VerifyClientCertIssuerDN
 ```
 
 The command create a new client auth configuration and stores it in $clientAuthConfig variable to be used in a SSL profile.

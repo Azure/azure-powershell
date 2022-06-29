@@ -61,7 +61,7 @@ This command locks ImmutabilityPolicy of a Storage blob container, with Storage 
 
 ### Example 3: Lock ImmutabilityPolicyof a Storage blob container, with container object
 ```
-PS C:\>$containerObject = Get-AzStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name "myContainer"
+PS C:\>$containerObject = Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name "myContainer"
 PS C:\>$policy = Get-AzRmStorageContainerImmutabilityPolicy -Container $containerObject
 PS C:\>Lock-AzRmStorageContainerImmutabilityPolicy -Container $containerObject -Etag $policy.Etag -Force
 ```

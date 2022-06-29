@@ -24,8 +24,10 @@ Method to get a migrate project.
 
 ### Example 1: Get
 ```powershell
-PS C:\> Get-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -Name BugBashAVSVMware
+Get-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -Name BugBashAVSVMware
+```
 
+```output
 ETag Location      Name             Type
 ---- --------      ----             ----
      southeastasia BugBashAVSVMware Microsoft.Migrate/MigrateProjects

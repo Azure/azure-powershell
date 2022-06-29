@@ -24,10 +24,10 @@ The **Remove-AzApplicationGatewayRequestRoutingRule** cmdlet removes a request r
 ## EXAMPLES
 
 ### Example 1: Remove a request routing rule from an application gateway
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Remove-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGw -Name "Rule02"
-PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGw
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+Remove-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGw -Name "Rule02"
+Set-AzApplicationGateway -ApplicationGateway $AppGw
 ```
 
 The first command gets an application gateway and stores it in the $AppGw variable.

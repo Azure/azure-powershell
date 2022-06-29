@@ -26,8 +26,11 @@ This allows a recommended action to be applied, reverted or discarded based on t
 ## EXAMPLES
 
 ### Example 1: Apply a recommended action state to pending
+```powershell
+Set-AzSqlDatabaseRecommendedActionState -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName "CreateIndex" -RecommendedActionName "IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893" -State Pending
 ```
-PS C:\>Set-AzSqlDatabaseRecommendedActionState -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName "CreateIndex" -RecommendedActionName "IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893" -State Pending
+
+```output
 DatabaseName               : WIRunner
 
 ResourceGroupName          : WIRunnersProd

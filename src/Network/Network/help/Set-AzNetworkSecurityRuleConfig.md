@@ -40,9 +40,9 @@ The **Set-AzNetworkSecurityRuleConfig** cmdlet updates a network security rule c
 
 ### Example 1: Change the access configuration in a network security rule
 ```powershell
-PS C:\>$nsg = Get-AzNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"
-PS C:\> $nsg | Get-AzNetworkSecurityRuleConfig -Name "rdp-rule"
-PS C:\> Set-AzNetworkSecurityRuleConfig -Name "rdp-rule" -NetworkSecurityGroup $nsg -Access "Deny"
+$nsg = Get-AzNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"
+$nsg | Get-AzNetworkSecurityRuleConfig -Name "rdp-rule"
+Set-AzNetworkSecurityRuleConfig -Name "rdp-rule" -NetworkSecurityGroup $nsg -Access "Deny"
 ```
 
 The first command gets the network security group named NSG-FrontEnd, and then stores it in the variable $nsg.

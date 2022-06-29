@@ -33,14 +33,14 @@ The **Update-AzRecoveryServicesAsrProtectionContainerMapping** cmdlet updates th
 
 ### Example 1
 ```powershell
-PS C:> Update-AzRecoveryServicesAsrProtectionContainerMapping -InputObject $ASRProtectionContainerMapping -AzureToAzure -DisableAutoUpdate
+Update-AzRecoveryServicesAsrProtectionContainerMapping -InputObject $ASRProtectionContainerMapping -AzureToAzure -DisableAutoUpdate
 ```
 
 Start the operation to disable auto update for container.
 
 ### Example 2
 ```powershell
-PS C:> Update-AzRecoveryServicesAsrProtectionContainerMapping -InputObject $ASRProtectionContainerMapping  -AzureToAzure -EnableAutoUpdate -AutomationAccountId $automationAccountId
+Update-AzRecoveryServicesAsrProtectionContainerMapping -InputObject $ASRProtectionContainerMapping  -AzureToAzure -EnableAutoUpdate -AutomationAccountId $automationAccountId
 ```
 
 Start the operation to disable enable auto update for container.

@@ -39,8 +39,6 @@ Reset the policy to the default for the Attestation Provider *pshtest* for Tee t
 ### Example 2
 ```powershell
 $resetJwt = Get-Content -Path .\reset.policy.txt.signed.txt
-```
-```powershell
 Reset-AzAttestationPolicy -Name pshtest -ResourceGroupName psh-test-rg -Tee SgxEnclave -Policy $resetJwt
 ```
 

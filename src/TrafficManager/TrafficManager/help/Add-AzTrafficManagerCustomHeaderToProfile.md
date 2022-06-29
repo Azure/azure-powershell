@@ -29,10 +29,10 @@ Commit your changes to the profile for Traffic Manager by using the Set-AzTraffi
 ## EXAMPLES
 
 ### Example 1: Add custom header information to a profile
-```
-PS C:\> $TrafficManagerProfile = Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
-PS C:\> Add-AzTrafficManagerCustomHeaderToProfile -TrafficManagerProfile $TrafficManagerProfile -Name "host" -Value "www.contoso.com"
-PS C:\> Set-AzTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile
+```powershell
+$TrafficManagerProfile = Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+Add-AzTrafficManagerCustomHeaderToProfile -TrafficManagerProfile $TrafficManagerProfile -Name "host" -Value "www.contoso.com"
+Set-AzTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile
 ```
 
 The first command gets an Azure Traffic Manager profile by using the **Get-AzTrafficManagerProfile** cmdlet.

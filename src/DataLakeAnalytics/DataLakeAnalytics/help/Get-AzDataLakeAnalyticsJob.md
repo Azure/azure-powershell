@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 ms.assetid: A0293D80-5935-4D2C-AF11-2837FEC95760
@@ -34,15 +34,15 @@ If you do not specify a job, this cmdlet gets all jobs.
 ## EXAMPLES
 
 ### Example 1: Get a specified job
-```
-PS C:\>Get-AzDataLakeAnalyticsJob -Account "contosoadla" -JobId $JobID01
+```powershell
+Get-AzDataLakeAnalyticsJob -Account "contosoadla" -JobId $JobID01
 ```
 
 This command gets the job with the specified ID.
 
 ### Example 2: Get jobs submitted in the past week
-```
-PS C:\>Get-AzDataLakeAnalyticsJob -Account "contosoadla" -SubmittedAfter (Get-Date).AddDays(-7)
+```powershell
+Get-AzDataLakeAnalyticsJob -Account "contosoadla" -SubmittedAfter (Get-Date).AddDays(-7)
 ```
 
 This command gets jobs submitted in the past week.

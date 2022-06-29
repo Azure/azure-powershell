@@ -43,7 +43,7 @@ The **Remove-AzSynapseIntegrationRuntime** cmdlet removes a integration runtime.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-reserved-ir' -Confirm
+Remove-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-reserved-ir' -Confirm
 ```
 
 This command removes the integration runtime named 'test-reserved-ir' from the workspace named ContosoWorkspace.

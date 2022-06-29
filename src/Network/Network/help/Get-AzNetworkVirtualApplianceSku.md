@@ -24,8 +24,10 @@ The Get-AzNetworkVirtualApplianceSku gets or lists available Network Virtual App
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetworkVirtualApplianceSku -SkuName barracudasdwanrelease                                                                                                                        
+Get-AzNetworkVirtualApplianceSku -SkuName barracudasdwanrelease                                                                                                                        
+```
 
+```output
 Vendor              : barracudasdwanrelease
 AvailableVersions   : {8.1.0038301, latest}
 AvailableScaleUnits : {Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceSkuInstances, Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceSkuInstances}
@@ -38,8 +40,10 @@ Get a sku by name.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzNetworkVirtualApplianceSku                                                                                                                                                       
+Get-AzNetworkVirtualApplianceSku                                                                                                                                                       
+```
 
+```output
 Vendor              : barracuda sdwan nightly
 AvailableVersions   : {latest}
 AvailableScaleUnits : {Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceSkuInstances}

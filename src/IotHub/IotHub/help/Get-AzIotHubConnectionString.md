@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubconnectionstring
@@ -24,15 +24,15 @@ You can either get connectionstrings for all the keys or filter them by a specif
 ## EXAMPLES
 
 ### Example 1 Get All IotHub connectionstrings
-```
-PS C:\> Get-AzIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub"
+```powershell
+Get-AzIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets the connectionstrings for all keys for the iothub named "myiothub"
 
 ### Example 2 Get the IotHub connectionstrings for a specific key
-```
-PS C:\> Get-AzIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "mykey"
+```powershell
+Get-AzIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "mykey"
 ```
 
 Gets the connectionstrings for the key named "mykey" for the iothub named "myiothub"

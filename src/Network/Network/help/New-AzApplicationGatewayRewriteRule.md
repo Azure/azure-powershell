@@ -26,7 +26,7 @@ New-AzApplicationGatewayRewriteRule -Name <String> -ActionSet <PSApplicationGate
 
 ### Example 1 : Create a rewrite rule for an application gateway
 ```powershell
-PS C:\> $rule = New-AzApplicationGatewayRewriteRule -Name rule1 -ActionSet $action -RuleSequence 101 -Condition $condition
+$rule = New-AzApplicationGatewayRewriteRule -Name rule1 -ActionSet $action -RuleSequence 101 -Condition $condition
 ```
 
 This command creates a rewrite rule named rule1 and stores the result in the variable named $rule.

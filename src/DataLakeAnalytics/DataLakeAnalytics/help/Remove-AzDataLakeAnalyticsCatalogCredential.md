@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 ms.assetid: C6BB6E4D-6009-4796-866B-17115FDFA06D
@@ -25,8 +25,8 @@ The Remove-AzDataLakeAnalyticsCatalogCredential cmdlet deletes an Azure Data Lak
 ## EXAMPLES
 
 ### Example 1: Remove a credential
-```
-PS C:\> Remove-AzDataLakeAnalyticsCatalogCredential -AccountName "ContosoAdla" `
+```powershell
+Remove-AzDataLakeAnalyticsCatalogCredential -AccountName "ContosoAdla" `
                       -DatabaseName "DatabaseName" `
                       -Name "CredName"
 ```

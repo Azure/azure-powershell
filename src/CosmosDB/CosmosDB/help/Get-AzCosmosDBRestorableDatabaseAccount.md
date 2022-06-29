@@ -24,8 +24,10 @@ Gets the list of all restorable database account objects in the given account, o
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBRestorableDatabaseAccount
+Get-AzCosmosDBRestorableDatabaseAccount
+```
 
+```output
 Id                        : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/fb8f230e-bab0-452b-81cf-e32643ccc898
 DatabaseAccountInstanceId : fb8f230e-bab0-452b-81cf-e32643ccc898
 Location                  : West US
@@ -58,8 +60,10 @@ Lists all the restorable database accounts in the current subscription
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBRestorableDatabaseAccount -Location "West US" -DatabaseAccountInstanceId fb8f230e-bab0-452b-81cf-e32643ccc898
+Get-AzCosmosDBRestorableDatabaseAccount -Location "West US" -DatabaseAccountInstanceId fb8f230e-bab0-452b-81cf-e32643ccc898
+```
 
+```output
 Id                        : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/fb8f230e-bab0-452b-81cf-e32643ccc898
 DatabaseAccountInstanceId : fb8f230e-bab0-452b-81cf-e32643ccc898
 Location                  : West US

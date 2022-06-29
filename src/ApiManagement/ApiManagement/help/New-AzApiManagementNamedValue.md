@@ -27,7 +27,7 @@ The **New-AzApiManagementNamedValue** cmdlet creates an Azure API Management **N
 ```powershell
 $apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 $Tags = 'sdk', 'powershell'
-New-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property11" -Name "Property Name" -Value "Property Value" -Tags $Tags
+New-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property11" -Name "Property Name" -Value "Property Value" -Tag $Tags
 ```
 
 The first command assigns two values to the $Tags variable.

@@ -50,7 +50,10 @@ It can also be used to cancel an existing job.
 
 ### Example 1: Update ImportExport job by resource group and server name
 ```powershell
-PS C:\> Update-AzImportExport -Name test-job -ResourceGroupName ImportTestRG -DeliveryPackageCarrierName pwsh -DeliveryPackageTrackingNumber pwsh20200000
+Update-AzImportExport -Name test-job -ResourceGroupName ImportTestRG -DeliveryPackageCarrierName pwsh -DeliveryPackageTrackingNumber pwsh20200000
+```
+
+```output
 Location Name     Type
 -------- ----     ----
 East US  test-job Microsoft.ImportExport/jobs
@@ -60,7 +63,10 @@ This cmdlet updates ImportExport job by resource group and server name.
 
 ### Example 2: Update ImportExport job by identity.
 ```powershell
-PS C:\> Get-AzImportExport -Name test-job -ResourceGroupName ImportTestRG | Update-AzImportExport -CancelRequested
+Get-AzImportExport -Name test-job -ResourceGroupName ImportTestRG | Update-AzImportExport -CancelRequested
+```
+
+```output
 Location Name     Type
 -------- ----     ----
 East US  test-job Microsoft.ImportExport/jobs
@@ -544,7 +550,7 @@ DRIVELIST <IDriveStatus[]>: List of drives that comprise the job.
   - `[State <DriveState?>]`: The drive's current state. 
   - `[VerboseLogUri <String>]`: A URI that points to the blob containing the verbose log for the data transfer operation. 
 
-INPUTOBJECT <IImportExportIdentity>: Identity Parameter
+INPUTOBJECT `<IImportExportIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[JobName <String>]`: The name of the import/export job.
   - `[LocationName <String>]`: The name of the location. For example, West US or westus.

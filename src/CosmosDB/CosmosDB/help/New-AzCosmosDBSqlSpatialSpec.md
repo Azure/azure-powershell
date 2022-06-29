@@ -24,7 +24,10 @@ Creates Object corresponding to Sql API's SpatialSpec.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBSqlSpatialSpec -Path "/abc" -Type String
+New-AzCosmosDBSqlSpatialSpec -Path "/abc" -Type String
+```
+
+```output
 Path Types
 ---- -----
 /abc {String}

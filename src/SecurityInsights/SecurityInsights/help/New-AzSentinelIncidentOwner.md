@@ -24,10 +24,10 @@ The **New-AzSentinelIncidentOwner** cmdlet creates a Incident Owner object in me
 
 ### Example 1
 ```powershell
-PS C:\> $Incident = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId"
-PS C:\> $owner = New-AzSentinelIncidentOwner -AssignedTo "First Last" -Email "user@domain.com" -Objectid "userobjectId" -UserPrincipalName "user@domain.com"
-PS C:\> $Incident.Owner = $owner
-PS C:\> $Incident | Set-AzSentinelIncident
+$Incident = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId"
+$owner = New-AzSentinelIncidentOwner -AssignedTo "First Last" -Email "user@domain.com" -Objectid "userobjectId" -UserPrincipalName "user@domain.com"
+$Incident.Owner = $owner
+$Incident | Set-AzSentinelIncident
 ```
 
 This example creates an **IncidentOwner** and updates an Incident to the new owner.

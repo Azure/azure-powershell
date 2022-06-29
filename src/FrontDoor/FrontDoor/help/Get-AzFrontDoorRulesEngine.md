@@ -24,8 +24,10 @@ The **Get-AzFrontDoorRulesEngine** cmdlet gets a specific rules engine configura
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name rulesengine3
+Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name rulesengine3
+```
 
+```output
 Name         RulesEngineRules
 ----         ----------------
 rulesEngine3 {rules1}
@@ -36,8 +38,10 @@ Get specific rules engine configuration.
 ### Example 2
 
 ```powershell
-PS C:\> Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName
+Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName
+```
 
+```output
 Name         RulesEngineRules
 ----         ----------------
 rulesEngine1 {Rule1}
@@ -50,7 +54,10 @@ Get all rules engine configurations in a front door.
 ### Example 3
 
 ```powershell
-PS C:\> Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name nonexistent
+Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name nonexistent
+```
+
+```output
 Get-AzFrontDoorRulesEngine : Rules Engine with name 'nonexistent' in Front Door 'frontDoorName' is not found.
 At line:1 char:1
 + Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontD ...

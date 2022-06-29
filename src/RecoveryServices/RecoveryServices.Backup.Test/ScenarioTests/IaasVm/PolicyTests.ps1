@@ -26,6 +26,74 @@ $oldResourceGroupName = "sambit_rg"
 $oldVaultName = "sambit"
 $oldPolicyName = "iaasvmretentioncheck"
 
+function Test-AzureVMEnhancedPolicy
+{
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaVault"
+	$newEnhPolicyName = "psTestEnhancedPolicy"
+	$scheduleRunTime = "2021-12-22T06:00:00.00+00:00"
+	$subscription = "38304e13-357e-405e-9e9a-220351dcce8c"  # remove
+	
+	try
+	{
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		
+		# create Enhanced policy weekly
+		# get weekly default schedule
+		$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -PolicySubType Enhanced -ScheduleRunFrequency Weekly
+		Assert-NotNull $schedulePolicy
+
+		# get default weekly retention schedule 
+		$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency Weekly
+		Assert-NotNull $retentionPolicy
+
+		# create v2 policy
+		$policy = New-AzRecoveryServicesBackupProtectionPolicy -Name $newEnhPolicyName -WorkloadType AzureVM -BackupManagementType AzureVM -RetentionPolicy $retentionPolicy -SchedulePolicy $schedulePolicy -VaultId $vault.ID
+
+		Assert-NotNull $policy
+		Assert-AreEqual $policy.Name $newEnhPolicyName		
+		Assert-AreEqual $policy.PolicySubType "Enhanced"
+
+        # modify Enhanced policy weekly 		
+		$timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "India" }
+		$schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
+		$scheduleTime = (Get-Date -Date $scheduleRunTime).ToUniversalTime()
+		$schedulePolicy.WeeklySchedule.ScheduleRunTimes[0] = $scheduleTime
+		
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newEnhPolicyName
+		
+		Assert-NotNull $policy
+		Assert-AreEqual $policy.Name $newEnhPolicyName
+		Assert-AreEqual $policy.PolicySubType "Enhanced"
+
+		Set-AzRecoveryServicesBackupProtectionPolicy -Policy $policy -VaultId $vault.ID -SchedulePolicy $schedulePolicy		
+
+	    # modify Enhanced policy weekly to Daily
+		$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -PolicySubType Enhanced -ScheduleRunFrequency Daily
+		$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency Daily
+
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newEnhPolicyName
+		Assert-True { $policy.SchedulePolicy.ScheduleRunTimeZone -match "India" }
+
+		Set-AzRecoveryServicesBackupProtectionPolicy -Policy $policy -VaultId $vault.ID -SchedulePolicy $schedulePolicy -RetentionPolicy $retentionPolicy
+
+        # if we try giving non UTC time we would get an error 
+		$scheduleTime = (Get-Date -Hour 6 -Minute 0 -Second 0)
+		$schedulePolicy.DailySchedule.ScheduleRunTImes[0] = $scheduleTime	
+		
+		Assert-ThrowsContains {Set-AzRecoveryServicesBackupProtectionPolicy -Policy $policy -VaultId $vault.ID -SchedulePolicy $schedulePolicy } `
+			"ScheduleTimes in Schedule should be in UTC Timezone, have ONE time and must be of multiples of 30 Mins with seconds and milliseconds set to 0"
+	}
+	finally
+	{
+		# Cleanup		
+		# Delete policy
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newEnhPolicyName
+		Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $policy -Force
+	}
+}
+
 function Test-AzureVMPolicy
 {
 	$location = "southeastasia"

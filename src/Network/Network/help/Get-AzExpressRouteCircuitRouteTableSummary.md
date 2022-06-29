@@ -28,7 +28,7 @@ router.
 ## EXAMPLES
 
 ### Example 1: Display the route summary for the primary path
-```
+```powershell
 Get-AzExpressRouteCircuitRouteTableSummary -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -DevicePath 'Primary'
 ```
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: 3D2E9FAE-FE34-457A-BE95-BC61D025B07A
@@ -31,8 +31,11 @@ The **Remove-AzDataFactory** cmdlet removes a data factory.
 ## EXAMPLES
 
 ### Example 1: Remove a data factory
+```powershell
+Remove-AzDataFactory -Name "WikiADF" -ResourceGroupName "ADF"
 ```
-PS C:\>Remove-AzDataFactory -Name "WikiADF" -ResourceGroupName "ADF"
+
+```output
 Confirm
 Are you sure you want to remove data factory 'WikiADF' in resource group 'ADF'? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y

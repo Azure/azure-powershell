@@ -37,9 +37,10 @@ Specify the name of a virtual cluster to see information for only that cluster.
 
 ### Example 1: Get all virtual clusters assigned to a resource group
 ```powershell
-PS C:> Get-AzSqlVirtualCluster -ResourceGroupName ResourceGroup01
+Get-AzSqlVirtualCluster -ResourceGroupName ResourceGroup01
+```
 
-
+```output
 Location           : eastus
 Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/virtualClusters/VirtualCluster1
 ResourceGroupName  : ResourceGroup01
@@ -65,10 +66,11 @@ SubnetId           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourc
 This command gets information about all Virtual Clusters assigned to the resource group ResourceGroup01.
 
 ### Example 2: Get information about specific virtual cluster
+```powershell
+Get-AzSqlVirtualCluster -Name VirtualCluster1 -ResourceGroupName ResourceGroup01
 ```
-PS C:\>  Get-AzSqlVirtualCluster -Name VirtualCluster1 -ResourceGroupName ResourceGroup01
 
-
+```output
 Location           : eastus
 Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/virtualClusters/VirtualCluster1
 ResourceGroupName  : ResourceGroup01

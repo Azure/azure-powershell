@@ -24,8 +24,8 @@ The **Get-AzEffectiveNetworkSecurityGroup** cmdlet returns the effective network
 ## EXAMPLES
 
 ### Example 1: Get the effective network security group on a network interface
-```
-PS C:\>Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName "MyNetworkInterface" -ResourceGroupName "myResourceGroup"
+```powershell
+Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName "MyNetworkInterface" -ResourceGroupName "myResourceGroup"
 ```
 
 This command gets all of the effective network security rules associated with the network interface named MyNetworkInterface in the resource group named myResourceGroup.

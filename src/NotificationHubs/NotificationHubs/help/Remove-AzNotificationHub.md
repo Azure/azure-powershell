@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: 62631E1C-FB43-4E87-82C2-159A9D1D4221
@@ -29,8 +29,8 @@ After a hub has been removed you can no longer use that hub to send push notific
 ## EXAMPLES
 
 ### Example 1: Remove a notification hub
-```
-PS C:\>Remove-AzNotificationHub -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -NotificationHub "ContosoInternalHub"
+```powershell
+Remove-AzNotificationHub -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -NotificationHub "ContosoInternalHub"
 ```
 
 This command removes the notification hub named ContosoInternalHub.

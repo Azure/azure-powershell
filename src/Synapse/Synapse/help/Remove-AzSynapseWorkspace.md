@@ -37,22 +37,22 @@ The **Remove-AzSynapseWorkspace** cmdlet permanently deletes an Azure Synapse An
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseWorkspace -Name ContosoWorkspace
+Remove-AzSynapseWorkspace -Name ContosoWorkspace
 ```
 
 This command deletes an Azure Synapse Analytics workspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapseWorkspace
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Remove-AzSynapseWorkspace
 ```
 
 This command deletes an Azure Synapse Analytics workspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> Remove-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace
+Remove-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace
 ```
 
 This command deletes an Azure Synapse Analytics workspace through pipeline with the specified resource ID.

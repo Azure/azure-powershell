@@ -18,10 +18,12 @@ Kubernetes Service                    | `Az.Aks`                                
 Alert Management                      | `Az.AlertsManagement`                   | [![AlertsManagement]][AlertsManagementGallery]
 Analysis Services                     | `Az.AnalysisServices`                   | [![AnalysisServices]][AnalysisServicesGallery]
 API Management                        | `Az.ApiManagement`                      | [![ApiManagement]][ApiManagementGallery]
+Container Apps                        | `Az.App`                                | [![App]][AppGallery]
 App Configuration                     | `Az.AppConfiguration`                   | [![AppConfiguration]][AppConfigurationGallery]
 Application Insights                  | `Az.ApplicationInsights`                | [![ApplicationInsights]][ApplicationInsightsGallery]
 Attestation                           | `Az.Attestation`                        | [![Attestation]][AttestationGallery]
 Automation                            | `Az.Automation`                         | [![Automation]][AutomationGallery]
+BareMetal                             | `Az.BareMetal`                          | [![BareMetal]][BareMetalGallery]
 Batch                                 | `Az.Batch`                              | [![Batch]][BatchGallery]
 Billing                               | `Az.Billing`                            | [![Billing]][BillingGallery]
 Blueprints                            | `Az.Blueprint`                          | [![Blueprint]][BlueprintGallery]
@@ -32,9 +34,11 @@ Cloud Service                         | `Az.CloudService`                       
 Cognitive Services                    | `Az.CognitiveServices`                  | [![CognitiveServices]][CognitiveServicesGallery]
 Communication                         | `Az.Communication`                      | [![Communication]][CommunicationGallery]
 Compute                               | `Az.Compute`                            | [![Compute]][ComputeGallery]
+ConfidentialLedger                    | `Az.ConfidentialLedger`                 | [![ConfidentialLedger]][ConfidentialLedgerGallery]
 Confluent                             | `Az.Confluent`                          | [![Confluent]][ConfluentGallery]
 Connected Kubernetes                  | `Az.ConnectedKubernetes`                | [![ConnectedKubernetes]][ConnectedKubernetesGallery]
 Connected Machine                     | `Az.ConnectedMachine`                   | [![ConnectedMachine]][ConnectedMachineGallery]
+ConnectedNetwork                      | `Az.ConnectedNetwork`                   | [![ConnectedNetwork]][ConnectedNetworkGallery]
 Container Instance                    | `Az.ContainerInstance`                  | [![ContainerInstance]][ContainerInstanceGallery]
 Container Registry                    | `Az.ContainerRegistry`                  | [![ContainerRegistry]][ContainerRegistryGallery]
 Cosmos DB                             | `Az.CosmosDB`                           | [![CosmosDB]][CosmosDBGallery]
@@ -60,6 +64,7 @@ DevTest Labs                          | `Az.DevTestLabs`                        
 Digital Twins                         | `Az.DigitalTwins`                       | [![DigitalTwins]][DigitalTwinsGallery]
 Disk Pool                             | `Az.DiskPool`                           | [![DiskPool]][DiskPoolGallery]
 DNS                                   | `Az.Dns`                                | [![Dns]][DnsGallery]
+DnsResolver                           | `Az.DnsResolver`                        | [![DnsResolver]][DnsResolverGallery]
 Stack Edge Order                      | `Az.EdgeOrder`                          | [![EdgeOrder]][EdgeOrderGallery]
 Elastic on Azure                      | `Az.Elastic`                            | [![Elastic]][ElasticGallery]
 Event Grid                            | `Az.EventGrid`                          | [![EventGrid]][EventGridGallery]
@@ -98,6 +103,7 @@ Monitoring Solutions                  | `Az.MonitoringSolutions`                
 Database for MySQL                    | `Az.MySql`                              | [![MySql]][MySqlGallery]
 NetApp Files                          | `Az.NetAppFiles`                        | [![NetAppFiles]][NetAppFilesGallery]
 Network                               | `Az.Network`                            | [![Network]][NetworkGallery]
+NetworkFunction                       | `Az.NetworkFunction`                    | [![NetworkFunction]][NetworkFunctionGallery]
 Notification Hubs                     | `Az.NotificationHubs`                   | [![NotificationHubs]][NotificationHubsGallery]
 Operational Insights                  | `Az.OperationalInsights`                | [![OperationalInsights]][OperationalInsightsGallery]
 Virtual Network peering               | `Az.Peering`                            | [![Peering]][PeeringGallery]
@@ -108,6 +114,7 @@ Power BI Embedded                     | `Az.PowerBIEmbedded`                    
 Private Dns                           | `Az.PrivateDns`                         | [![PrivateDns]][PrivateDnsGallery]
 Provider Hub                          | `Az.ProviderHub`                        | [![ProviderHub]][ProviderHubGallery]
 Purview                               | `Az.Purview`                            | [![Purview]][PurviewGallery]
+Quota                                 | `Az.Quota`                              | [![Quota]][QuotaGallery]
 Recovery Services                     | `Az.RecoveryServices`                   | [![RecoveryServices]][RecoveryServicesGallery]
 Redis Cache                           | `Az.RedisCache`                         | [![RedisCache]][RedisCacheGallery]
 Redis Enterprise Cache                | `Az.RedisEnterpriseCache`               | [![RedisEnterpriseCache]][RedisEnterpriseCacheGallery]
@@ -121,11 +128,11 @@ Security                              | `Az.Security`                           
 Sentinel (SecurityInsights)           | `Az.SecurityInsights`                   | [![SecurityInsights]][SecurityInsightsGallery]
 Service Bus                           | `Az.ServiceBus`                         | [![ServiceBus]][ServiceBusGallery]
 Service Fabric                        | `Az.ServiceFabric`                      | [![ServiceFabric]][ServiceFabricGallery]
+Service Linker                        | `Az.ServiceLinker`                      | [![ServiceLinker]][ServiceLinkerGallery]
 SignalR                               | `Az.SignalR`                            | [![SignalR]][SignalRGallery]
 SpringCloud                           | `Az.SpringCloud`                        | [![SpringCloud]][SpringCloudGallery]
 SQL                                   | `Az.Sql`                                | [![Sql]][SqlGallery]
 SQL Server on Virtual Machines        | `Az.SqlVirtualMachine`                  | [![SqlVirtualMachine]][SqlVirtualMachineGallery]
-Stack Edge                            | `Az.StackEdge`                          | [![StackEdge]][StackEdgeGallery]
 Stack HCI                             | `Az.StackHCI`                           | [![StackHCI]][StackHCIGallery]
 Storage                               | `Az.Storage`                            | [![Storage]][StorageGallery]
 File Sync                             | `Az.StorageSync`                        | [![StorageSync]][StorageSyncGallery]
@@ -151,10 +158,12 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [AlertsManagement]:           https://img.shields.io/powershellgallery/v/Az.AlertsManagement.svg?style=flat-square&label=Az.AlertsManagement
 [AnalysisServices]:           https://img.shields.io/powershellgallery/v/Az.AnalysisServices.svg?style=flat-square&label=Az.AnalysisServices
 [ApiManagement]:              https://img.shields.io/powershellgallery/v/Az.ApiManagement.svg?style=flat-square&label=Az.ApiManagement
+[App]:                        https://img.shields.io/powershellgallery/v/Az.App.svg?style=flat-square&label=Az.App
 [AppConfiguration]:           https://img.shields.io/powershellgallery/v/Az.AppConfiguration.svg?style=flat-square&label=Az.AppConfiguration
 [ApplicationInsights]:        https://img.shields.io/powershellgallery/v/Az.ApplicationInsights.svg?style=flat-square&label=Az.ApplicationInsights
 [Attestation]:                https://img.shields.io/powershellgallery/v/Az.Attestation.svg?style=flat-square&label=Az.Attestation
 [Automation]:                 https://img.shields.io/powershellgallery/v/Az.Automation.svg?style=flat-square&label=Az.Automation
+[BareMetal]:                  https://img.shields.io/powershellgallery/v/Az.BareMetal.svg?style=flat-square&label=Az.BareMetal
 [Batch]:                      https://img.shields.io/powershellgallery/v/Az.Batch.svg?style=flat-square&label=Az.Batch
 [Billing]:                    https://img.shields.io/powershellgallery/v/Az.Billing.svg?style=flat-square&label=Az.Billing
 [Blueprint]:                  https://img.shields.io/powershellgallery/v/Az.Blueprint.svg?style=flat-square&label=Az.Blueprint
@@ -164,10 +173,12 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [CloudService]:               https://img.shields.io/powershellgallery/v/Az.CloudService.svg?style=flat-square&label=Az.CloudService
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
 [Compute]:                    https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute
+[ConfidentialLedger]:         https://img.shields.io/powershellgallery/v/Az.ConfidentialLedger.svg?style=flat-square&label=Az.ConfidentialLedger
 [Communication]:              https://img.shields.io/powershellgallery/v/Az.Communication.svg?style=flat-square&label=Az.Communication
 [Confluent]:                  https://img.shields.io/powershellgallery/v/Az.Confluent.svg?style=flat-square&label=Az.Confluent
 [ConnectedKubernetes]:        https://img.shields.io/powershellgallery/v/Az.ConnectedKubernetes.svg?style=flat-square&label=Az.ConnectedKubernetes
 [ConnectedMachine]:           https://img.shields.io/powershellgallery/v/Az.ConnectedMachine.svg?style=flat-square&label=Az.ConnectedMachine
+[ConnectedNetwork]:           https://img.shields.io/powershellgallery/v/Az.ConnectedNetwork.svg?style=flat-square&label=Az.ConnectedNetwork
 [ContainerInstance]:          https://img.shields.io/powershellgallery/v/Az.ContainerInstance.svg?style=flat-square&label=Az.ContainerInstance
 [ContainerRegistry]:          https://img.shields.io/powershellgallery/v/Az.ContainerRegistry.svg?style=flat-square&label=Az.ContainerRegistry
 [CosmosDB]:                   https://img.shields.io/powershellgallery/v/Az.CosmosDB.svg?style=flat-square&label=Az.CosmosDB
@@ -193,6 +204,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [DevSpaces]:                  https://img.shields.io/powershellgallery/v/Az.DevSpaces.svg?style=flat-square&label=Az.DevSpaces
 [DevTestLabs]:                https://img.shields.io/powershellgallery/v/Az.DevTestLabs.svg?style=flat-square&label=Az.DevTestLabs
 [Dns]:                        https://img.shields.io/powershellgallery/v/Az.Dns.svg?style=flat-square&label=Az.Dns
+[DnsResolver]:                https://img.shields.io/powershellgallery/v/Az.DnsResolver.svg?style=flat-square&label=Az.DnsResolver
 [EdgeOrder]:                  https://img.shields.io/powershellgallery/v/Az.EdgeOrder.svg?style=flat-square&label=Az.EdgeOrder
 [Elastic]:                    https://img.shields.io/powershellgallery/v/Az.Elastic.svg?style=flat-square&label=Az.Elastic
 [EventGrid]:                  https://img.shields.io/powershellgallery/v/Az.EventGrid.svg?style=flat-square&label=Az.EventGrid
@@ -231,6 +243,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [MySql]:                      https://img.shields.io/powershellgallery/v/Az.MySql.svg?style=flat-square&label=Az.MySql
 [NetAppFiles]:                https://img.shields.io/powershellgallery/v/Az.NetAppFiles.svg?style=flat-square&label=Az.NetAppFiles
 [Network]:                    https://img.shields.io/powershellgallery/v/Az.Network.svg?style=flat-square&label=Az.Network
+[NetworkFunction]:            https://img.shields.io/powershellgallery/v/Az.NetworkFunction.svg?style=flat-square&label=Az.NetworkFunction
 [NotificationHubs]:           https://img.shields.io/powershellgallery/v/Az.NotificationHubs.svg?style=flat-square&label=Az.NotificationHubs
 [OperationalInsights]:        https://img.shields.io/powershellgallery/v/Az.OperationalInsights.svg?style=flat-square&label=Az.OperationalInsights
 [Peering]:                    https://img.shields.io/powershellgallery/v/Az.Peering.svg?style=flat-square&label=Az.Peering
@@ -241,6 +254,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [PrivateDns]:                 https://img.shields.io/powershellgallery/v/Az.PrivateDns.svg?style=flat-square&label=Az.PrivateDns
 [ProviderHub]:                https://img.shields.io/powershellgallery/v/Az.ProviderHub.svg?style=flat-square&label=Az.ProviderHub
 [Purview]:                    https://img.shields.io/powershellgallery/v/Az.Purview.svg?style=flat-square&label=Az.Purview
+[Quota]:                      https://img.shields.io/powershellgallery/v/Az.Quota.svg?style=flat-square&label=Az.Quota
 [RecoveryServices]:           https://img.shields.io/powershellgallery/v/Az.RecoveryServices.svg?style=flat-square&label=Az.RecoveryServices
 [RedisCache]:                 https://img.shields.io/powershellgallery/v/Az.RedisCache.svg?style=flat-square&label=Az.RedisCache
 [RedisEnterpriseCache]:       https://img.shields.io/powershellgallery/v/Az.RedisEnterpriseCache.svg?style=flat-square&label=Az.RedisEnterpriseCache
@@ -254,11 +268,11 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [SecurityInsights]:           https://img.shields.io/powershellgallery/v/Az.SecurityInsights.svg?style=flat-square&label=Az.SecurityInsights
 [ServiceBus]:                 https://img.shields.io/powershellgallery/v/Az.ServiceBus.svg?style=flat-square&label=Az.ServiceBus
 [ServiceFabric]:              https://img.shields.io/powershellgallery/v/Az.ServiceFabric.svg?style=flat-square&label=Az.ServiceFabric
+[ServiceLinker]:              https://img.shields.io/powershellgallery/v/Az.ServiceLinker.svg?style=flat-square&label=Az.ServiceLinker
 [SignalR]:                    https://img.shields.io/powershellgallery/v/Az.SignalR.svg?style=flat-square&label=Az.SignalR
 [SpringCloud]:                https://img.shields.io/powershellgallery/v/Az.SpringCloud.svg?style=flat-square&label=Az.SpringCloud
 [Sql]:                        https://img.shields.io/powershellgallery/v/Az.Sql.svg?style=flat-square&label=Az.Sql
 [SqlVirtualMachine]:          https://img.shields.io/powershellgallery/v/Az.SqlVirtualMachine.svg?style=flat-square&label=Az.SqlVirtualMachine
-[StackEdge]:                  https://img.shields.io/powershellgallery/v/Az.StackEdge.svg?style=flat-square&label=Az.StackEdge
 [StackHCI]:                   https://img.shields.io/powershellgallery/v/Az.StackHCI.svg?style=flat-square&label=Az.StackHCI
 [Storage]:                    https://img.shields.io/powershellgallery/v/Az.Storage.svg?style=flat-square&label=Az.Storage
 [StorageSync]:                https://img.shields.io/powershellgallery/v/Az.StorageSync.svg?style=flat-square&label=Az.StorageSync
@@ -282,10 +296,12 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [AlertsManagementGallery]:           https://www.powershellgallery.com/packages/Az.AlertsManagement/
 [AnalysisServicesGallery]:           https://www.powershellgallery.com/packages/Az.AnalysisServices/
 [ApiManagementGallery]:              https://www.powershellgallery.com/packages/Az.ApiManagement/
+[App]:                               https://www.powershellgallery.com/packages/Az.App/
 [AppConfigurationGallery]:           https://www.powershellgallery.com/packages/Az.AppConfiguration/
 [ApplicationInsightsGallery]:        https://www.powershellgallery.com/packages/Az.ApplicationInsights/
 [AttestationGallery]:                https://www.powershellgallery.com/packages/Az.Attestation/
 [AutomationGallery]:                 https://www.powershellgallery.com/packages/Az.Automation/
+[BareMetalGallery]:                  https://www.powershellgallery.com/packages/Az.BareMetal/
 [BatchGallery]:                      https://www.powershellgallery.com/packages/Az.Batch/
 [BillingGallery]:                    https://www.powershellgallery.com/packages/Az.Billing/
 [BlueprintGallery]:                  https://www.powershellgallery.com/packages/Az.Blueprint/
@@ -295,10 +311,12 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [CloudServiceGallery]:               https://www.powershellgallery.com/packages/Az.CloudService/
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
 [ComputeGallery]:                    https://www.powershellgallery.com/packages/Az.Compute/
+[ConfidentialLedgerGallery]:         https://www.powershellgallery.com/packages/Az.ConfidentialLedger/
 [CommunicationGallery]:              https://www.powershellgallery.com/packages/Az.Communication/
 [ConfluentGallery]:                  https://www.powershellgallery.com/packages/Az.Confluent/
 [ConnectedKubernetesGallery]:        https://www.powershellgallery.com/packages/Az.ConnectedKubernetes/
 [ConnectedMachineGallery]:           https://www.powershellgallery.com/packages/Az.ConnectedMachine/
+[ConnectedNetworkGallery]:           https://www.powershellgallery.com/packages/Az.ConnectedNetwork/
 [ContainerInstanceGallery]:          https://www.powershellgallery.com/packages/Az.ContainerInstance/
 [ContainerRegistryGallery]:          https://www.powershellgallery.com/packages/Az.ContainerRegistry/
 [CosmosDBGallery]:                   https://www.powershellgallery.com/packages/Az.CosmosDB/
@@ -324,6 +342,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [DevSpacesGallery]:                  https://www.powershellgallery.com/packages/Az.DevSpaces/
 [DevTestLabsGallery]:                https://www.powershellgallery.com/packages/Az.DevTestLabs/
 [DnsGallery]:                        https://www.powershellgallery.com/packages/Az.Dns/
+[DnsResolverGallery]:                https://www.powershellgallery.com/packages/Az.DnsResolver/
 [EdgeOrderGallery]:                  https://www.powershellgallery.com/packages/Az.EdgeOrder/
 [ElasticGallery]:                    https://www.powershellgallery.com/packages/Az.Elastic/
 [EventGridGallery]:                  https://www.powershellgallery.com/packages/Az.EventGrid/
@@ -362,6 +381,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [MySqlGallery]:                      https://www.powershellgallery.com/packages/Az.MySql/
 [NetAppFilesGallery]:                https://www.powershellgallery.com/packages/Az.NetAppFiles/
 [NetworkGallery]:                    https://www.powershellgallery.com/packages/Az.Network/
+[NetworkFunctionGallery]:            https://www.powershellgallery.com/packages/Az.NetworkFunction/
 [NotificationHubsGallery]:           https://www.powershellgallery.com/packages/Az.NotificationHubs/
 [OperationalInsightsGallery]:        https://www.powershellgallery.com/packages/Az.OperationalInsights/
 [PeeringGallery]:                    https://www.powershellgallery.com/packages/Az.Peering/
@@ -372,6 +392,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [PrivateDnsGallery]:                 https://www.powershellgallery.com/packages/Az.PrivateDns/
 [ProviderHubGallery]:                https://www.powershellgallery.com/packages/Az.ProviderHub/
 [PurviewGallery]:                    https://www.powershellgallery.com/packages/Az.Purview/
+[QuotaGallery]:                      https://www.powershellgallery.com/packages/Az.Quota/
 [RecoveryServicesGallery]:           https://www.powershellgallery.com/packages/Az.RecoveryServices/
 [RedisCacheGallery]:                 https://www.powershellgallery.com/packages/Az.RedisCache/
 [RedisEnterpriseCacheGallery]:       https://www.powershellgallery.com/packages/Az.RedisEnterpriseCache/
@@ -385,11 +406,11 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [SecurityInsightsGallery]:           https://www.powershellgallery.com/packages/Az.SecurityInsights/
 [ServiceBusGallery]:                 https://www.powershellgallery.com/packages/Az.ServiceBus/
 [ServiceFabricGallery]:              https://www.powershellgallery.com/packages/Az.ServiceFabric/
+[ServiceLinkerGallery]:              https://www.powershellgallery.com/packages/Az.ServiceLinker/
 [SignalRGallery]:                    https://www.powershellgallery.com/packages/Az.SignalR/
 [SpringCloudGallery]:                https://www.powershellgallery.com/packages/Az.SpringCloud/
 [SqlGallery]:                        https://www.powershellgallery.com/packages/Az.Sql/
 [SqlVirtualMachineGallery]:          https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/
-[StackEdgeGallery]:                  https://www.powershellgallery.com/packages/Az.StackEdge/
 [StackHCIGallery]:                   https://www.powershellgallery.com/packages/Az.StackHCI/
 [StorageGallery]:                    https://www.powershellgallery.com/packages/Az.Storage/
 [StorageSyncGallery]:                https://www.powershellgallery.com/packages/Az.StorageSync/

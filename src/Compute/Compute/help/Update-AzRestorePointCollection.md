@@ -24,7 +24,7 @@ Update Restore Point Collection. Can only Update Tags
 
 ### Example 1
 ```powershell
-Update-AzRestorePointCollection -ResourceGroupName <String> -Name <String> -Confirm <CommonParameters> [-Tag] <Hashtable>
+Update-AzRestorePointCollection -ResourceGroupName <String> -Name <String> [-Tag] <Hashtable> -Confirm
 ```
 
 Add updated tags using -Tag parameter

@@ -24,7 +24,7 @@ The New-AzRouteFilterRuleConfig cmdlet creates a route filter rule for an Azure 
 
 ### Example 1
 ```powershell
-PS C:\> $rule1 = New-AzRouteFilterRuleConfig -Name "Rule01" -Access "Allow" -RouteFilterRuleType "Community" -CommunityList "12076:5040"
+$rule1 = New-AzRouteFilterRuleConfig -Name "Rule01" -Access "Allow" -RouteFilterRuleType "Community" -CommunityList "12076:5040"
 ```
 
 The command creates a new route filter rule and stores it in variable $rule1.

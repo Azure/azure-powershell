@@ -30,7 +30,7 @@ The **Get-AzFirewallPolicy** cmdlet gets one or more Firewalls in a resource gro
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzFirewallPolicy -Name firewallPolicy -ResourceGroupName TestRg
+Get-AzFirewallPolicy -Name firewallPolicy -ResourceGroupName TestRg
 ```
 
 This example gets a firewall policy named "firewallPolicy" in the resource group "TestRg"

@@ -6,10 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Extensions;
+    using System;
 
     /// <summary>Creates a configuration store with the specified parameters.</summary>
     /// <remarks>
-    /// [OpenAPI] ConfigurationStores_Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}"
+    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAppConfigurationStore_CreateExpanded", SupportsShouldProcess = true)]

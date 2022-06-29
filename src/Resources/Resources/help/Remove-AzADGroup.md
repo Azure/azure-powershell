@@ -37,14 +37,14 @@ Deletes entity from groups.
 
 ### Example 1: Remove group by display name
 ```powershell
-PS C:\> Remove-AzADGroup -DisplayName $name
+Remove-AzADGroup -DisplayName $name
 ```
 
 Remove group by display name
 
 ### Example 2: Remove group by pipeline input
 ```powershell
-PS C:\> Get-AzADGroup -ObjectId $id | Remove-AzADGroup
+Get-AzADGroup -ObjectId $id | Remove-AzADGroup
 ```
 
 Remove group by pipeline input
@@ -193,7 +193,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMicrosoftGraphGroup>: user input object
+INPUTOBJECT `<IMicrosoftGraphGroup>`: user input object
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

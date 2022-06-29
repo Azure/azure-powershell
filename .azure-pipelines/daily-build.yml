@@ -1,5 +1,8 @@
 # Please don't use ADO UI defined scheduled triggers because it takes precedence over YAML scheduled triggers.
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/scheduled-triggers
+variables:
+  today: $(Get-Date -Format yyyyMMddhhmmss)
+
 schedules:
 - cron: "0 18 * * *"
   displayName: 2:00 AM (UTC + 8:00) China Daily Build
@@ -55,23 +58,10 @@ jobs:
       targetType: 'inline'
       script: |
         $command = "`$PSVersionTable `
-        ./tools/RunVersionController.ps1  -MonthName $(MonthName) -Year $(Year) `
+        Get-PSRepository `
+        ./tools/RunVersionController.ps1 -Release 'Daily Build $(today)' `
         Exit"
         dotnet tool run pwsh -c $command  
-
-  # - task: PowerShell@2
-  #   displayName: 'Push to Branch internal/dailybuild'
-  #   inputs:
-  #     targetType: 'inline'
-  #     script: |
-  #       git config user.email "azuresdkci@microsoft.com"
-  #       git config user.name "azuresdkci"
-  #       git remote set-url origin https://$(Token)@github.com/Azure/azure-powershell.git
-  #       git checkout -b internal/dailybuild
-  #       git add .
-  #       git commit -m "Bump Version"
-  #       git status
-  #       git push -u origin internal/dailybuild --force
 
   - task: PowerShell@2
     displayName: 'Clean artifacts folder'

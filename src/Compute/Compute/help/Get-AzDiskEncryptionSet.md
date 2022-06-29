@@ -24,8 +24,10 @@ Get or list disk encryption sets.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDiskEncryptionSet -ResourceGroupName rg1 -Name enc1;
+Get-AzDiskEncryptionSet -ResourceGroupName rg1 -Name enc1;
+```
 
+```output
 ResourceGroupName : rg1
 Identity          : Microsoft.Azure.Management.Compute.Models.EncryptionSetIdentity
 ActiveKey         : Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
@@ -42,8 +44,10 @@ Get disk encryption set 'enc1'
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzDiskEncryptionSet
+Get-AzDiskEncryptionSet
+```
 
+```output
 ResourceGroupName : rg1
 Identity          : Microsoft.Azure.Management.Compute.Models.EncryptionSetIdentity
 ActiveKey         : Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
@@ -71,8 +75,10 @@ Get all disk encryption sets in resource group 'rg1'.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzDiskEncryptionSet -ResourceGroupName rg1
+Get-AzDiskEncryptionSet -ResourceGroupName rg1
+```
 
+```output
 ResourceGroupName : rg1
 Identity          : Microsoft.Azure.Management.Compute.Models.EncryptionSetIdentity
 ActiveKey         : Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference

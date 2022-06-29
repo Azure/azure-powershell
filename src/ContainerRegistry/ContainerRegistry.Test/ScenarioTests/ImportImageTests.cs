@@ -12,31 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
 {
-    public class ImportImageTests : RMTestBase
+    public class ImportImageTests : ContainerRegistryTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ImportImageTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ImportImageTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestImportImage()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ImportImage");
+            TestRunner.RunTestScript("Test-ImportImage");
         }
     }
 }

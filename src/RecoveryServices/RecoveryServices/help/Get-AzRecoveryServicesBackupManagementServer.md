@@ -27,8 +27,8 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 ## EXAMPLES
 
 ### Example 1: Get all Backup management servers
-```
-PS C:\>Get-AzRecoveryServicesBackupManagementServer
+```powershell
+Get-AzRecoveryServicesBackupManagementServer
 ```
 
 This command gets all Backup management servers registered with the vault.

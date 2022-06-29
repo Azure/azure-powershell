@@ -62,35 +62,35 @@ Lists entities from service principals or get entity from service principals by 
 
 ### Example 1: Get service principal by display name
 ```powershell
-PS C:\> Get-AzADServicePrincipal -DisplayName $name
+Get-AzADServicePrincipal -DisplayName $name
 ```
 
 Get service principal by display name
 
 ### Example 2: Search for service principal display name starts with
 ```powershell
-PS C:\> Get-AzADServicePrincipal -DisplayNameStartsWith $prefix
+Get-AzADServicePrincipal -DisplayNameStartsWith $prefix
 ```
 
 Search for service principal display name starts with
 
 ### Example 3: List service principals
 ```powershell
-PS C:\> Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
+Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
 ```
 
 List first 10 service principals and append property 'Tags' after default properties: 'DisplayName', 'Id', 'DeletedDateTime', 'ServicePrincipalNames', 'AppId'
 
 ### Example 4: Get service principal by application Id
 ```powershell
-PS C:\> Get-AzADServicePrincipal -ApplicationId $appId
+Get-AzADServicePrincipal -ApplicationId $appId
 ```
 
 Get service principal by application Id
 
 ### Example 5: Get service principal by pipeline input
 ```powershell
-PS C:\> Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
+Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
 ```
 
 Get service principal by pipeline input
@@ -344,7 +344,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-APPLICATIONOBJECT <IMicrosoftGraphApplication>: The service principal object, could be used as pipeline input.
+APPLICATIONOBJECT `<IMicrosoftGraphApplication>`: The service principal object, could be used as pipeline input.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

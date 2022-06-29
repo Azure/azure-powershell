@@ -24,7 +24,7 @@ The **Set-AzNetworkInterface** updates a network interface.
 ## EXAMPLES
 
 ### Example 1: Configure a network interface
-```
+```powershell
 $Nic = Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -Name "NetworkInterface1"
 $Nic.IpConfigurations[0].PrivateIpAddress = "10.0.1.20"
 $Nic.IpConfigurations[0].PrivateIpAllocationMethod = "Static"
@@ -40,7 +40,7 @@ The fourth command sets a tag on the network interface.
 The fifth command uses the information stored in the $Nic variable to set the network interface.
 
 ### Example 2: Change DNS settings on a network interface
-```
+```powershell
 $nic = Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -Name "NetworkInterface1"
 $nic.DnsSettings.DnsServers.Add("192.168.1.100")
 $nic | Set-AzNetworkInterface
@@ -49,7 +49,7 @@ $nic | Set-AzNetworkInterface
 The first command gets a network interface named NetworkInterface1 that exists within resource group ResourceGroup1. The second command adds DNS server 192.168.1.100 to this interface. The third command applies these changes to the network interface. To remove a DNS server, follow the commands listed above, but replace ".Add" with ".Remove" in the second command.
 
 ### Example 3: Enable IP forwarding on a network interface
-```
+```powershell
 $nic = Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -Name "NetworkInterface1"
 $nic.EnableIPForwarding = 1
 $nic | Set-AzNetworkInterface
@@ -58,7 +58,7 @@ $nic | Set-AzNetworkInterface
 The first command gets an existing network interface called NetworkInterface1 and stores it in the $nic variable. The second command changes the IP forwarding value to true. Finally, the third command applies the changes to the network interface. To disable IP forwarding on a network interface, follow the sample example, but be sure to change the second command to "$nic.EnableIPForwarding = 0".
 
 ### Example 4: Change the subnet of a network interface
-```
+```powershell
 $nic = Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -Name "NetworkInterface1"
 $vnet = Get-AzVirtualNetwork -Name VNet1 -ResourceGroupName crosssubcrossversionpeering
 $subnet2 = Get-AzVirtualNetworkSubnetConfig -Name Subnet2 -VirtualNetwork $vnet
@@ -73,7 +73,7 @@ The first command gets the network interface NetworkInterface1 and stores it in 
 >If the network interface has multiple IP configurations, the fourth command must be done for all these IP configurations before the final Set-AzNetworkInterface command is executed. This can be done as in the fourth command but by replacing "0" with the appropriate number. If a network interface has N IP configurations, then N-1 of these commands must exist.
 
 ### Example 5: Associate/Dissociate a Network Security Group to a network interface
-```
+```powershell
 $nic = Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -Name "NetworkInterface1"
 $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName "ResourceGroup1" -Name "MyNSG"
 $nic.NetworkSecurityGroup = $nsg

@@ -27,8 +27,8 @@ If you do not specify a name and resource group, this cmdlet gets information ab
 ## EXAMPLES
 
 ### Example 1: Get a workspace by name
-```
-PS C:\>Get-AzOperationalInsightsWorkspace -Name "MyWorkspace" -ResourceGroupName "ContosoResourceGroup"
+```powershell
+Get-AzOperationalInsightsWorkspace -Name "MyWorkspace" -ResourceGroupName "ContosoResourceGroup"
 ```
 
 This command gets a workspace named MyWorkspace in the resource group named ContosoResourceGroup.

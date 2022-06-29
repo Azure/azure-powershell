@@ -31,9 +31,11 @@ The **Get-AzDataShareSubscriptionSynchronizationDetail** cmdlet provides details
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareSubscriptionSynchronizationDetail -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -SynchronizationId "a6ee5c8d-0ce0-485e-b2f2-966b187dc6c7"
 ```
-PS C:\> Get-AzDataShareSubscriptionSynchronizationDetail -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -SynchronizationId "a6ee5c8d-0ce0-485e-b2f2-966b187dc6c7"
 
+```output
 DataSetId    : d2411889-5357-4ca8-8d65-9363e46ef2ed
 DataSetType  : BlobFolder
 EndTime      : 7/8/2019 10:24:27 PM

@@ -1238,6 +1238,7 @@ function Test-SetWebApp
 		$webapp.SiteConfig.RequestTracingEnabled = $true
 		$webapp.SiteConfig.FtpsState = "FtpsOnly"
 		$webApp.SiteConfig.MinTlsVersion = "1.0"
+		$webApp.SiteConfig.HealthCheckPath = "/api/path"
 
 		# Set site properties
 		$webApp = $webApp | Set-AzWebApp
@@ -1252,6 +1253,7 @@ function Test-SetWebApp
 		Assert-AreEqual $false $webApp.SiteConfig.AlwaysOn
 		Assert-AreEqual "FtpsOnly" $webApp.SiteConfig.FtpsState
 		Assert-AreEqual "1.0" $webApp.SiteConfig.MinTlsVersion
+		Assert-AreEqual "/api/path" $webApp.SiteConfig.HealthCheckPath
 		 
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
 		$connectionStrings = @{ connstring1 = @{ Type="MySql"; Value="string value 1"}; connstring2 = @{ Type = "SQLAzure"; Value="string value 2"}}

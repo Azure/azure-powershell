@@ -37,7 +37,7 @@ Delete specified Spatial Anchors Account from certain Subscription and Resource 
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSpatialAnchorsAccount -ResourceGroup rg1 -Name example
+Remove-AzSpatialAnchorsAccount -ResourceGroup rg1 -Name example
 ```
 
 Delete Spatial Anchors Account "example" from current Subscription and Resource Group "rg1".

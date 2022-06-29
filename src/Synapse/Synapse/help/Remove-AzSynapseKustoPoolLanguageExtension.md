@@ -32,7 +32,7 @@ Remove a list of language extensions that can run within KQL queries.
 
 ### Example 1: Remove a list of language extensions from kusto pool
 ```powershell
-PS C:\> Remove-AzSynapseKustoPoolLanguageExtension -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -Value (@{Name="R"})
+Remove-AzSynapseKustoPoolLanguageExtension -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -Value (@{Name="R"})
 ```
 
 The above command removes a list of language extensions that can run within KQL queries.
@@ -243,7 +243,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISynapseIdentity>: Identity Parameter
+INPUTOBJECT `<ISynapseIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[DataConnectionName <String>]`: The name of the data connection.
   - `[DatabaseName <String>]`: The name of the database in the Kusto pool.

@@ -49,8 +49,10 @@ Description for Gets the details of the user provided function app registered wi
 
 ### Example 1: List the details of the user provided function apps registered with a static site
 ```powershell
-PS C:\> Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00
+Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00
+```
 
+```output
 Kind Name               Type
 ---- ----               ----
      functionApp-5enjko Microsoft.Web/staticSites/userProvidedFunctionApps
@@ -60,8 +62,10 @@ This command lists the details of the user provided function apps registered wit
 
 ### Example 2: List the details of the user provided function apps registered with a static site build
 ```powershell
-PS C:\> Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default'
+ Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default'
+```
 
+```output
 Kind Name               Type
 ---- ----               ----
      functionApp-5enjko Microsoft.Web/staticSites/builds/userProvidedFunctionApps
@@ -71,8 +75,10 @@ This command lists the details of the user provided function apps registered wit
 
 ### Example 3: List the details of the user provided function apps registered
 ```powershell
-PS C:\> Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -FunctionAppName $env.functionAppName01
+Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -FunctionAppName $env.functionAppName01
+```
 
+```output
 Kind Name               Type
 ---- ----               ----
      functionApp-5enjko Microsoft.Web/staticSites/builds/userProvidedFunctionApps
@@ -82,8 +88,10 @@ This command lists the details of the user provided function apps registered.
 
 ### Example 4: Get the details of the user provided function app registered with a static site build
 ```powershell
-PS C:\> Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default' -FunctionAppName $env.functionAppName01
+Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default' -FunctionAppName $env.functionAppName01
+```
 
+```output
 Kind Name               Type
 ---- ----               ----
      functionApp-5enjko Microsoft.Web/staticSites/builds/userProvidedFunctionApps
@@ -93,8 +101,10 @@ This command gets the details of the user provided function app registered with 
 
 ### Example 5: Get the details of the user provided function apps registered with a static site build by pipeline
 ```powershell
-PS C:\> Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh02 -FunctionAppName functionapp-portal02 -FunctionAppResourceId '/subscriptions/xxxxxx-xx-xxx-xxxx-xxxxx/resourcegroups/xxx-xx-xxxx/providers/Microsoft.Web/sites/functionapp-portal02' -FunctionAppRegion 'Central US' -EnvironmentName 5 | Get-AzStaticWebAppUserProvidedFunctionApp 
+Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh02 -FunctionAppName functionapp-portal02 -FunctionAppResourceId '/subscriptions/xxxxxx-xx-xxx-xxxx-xxxxx/resourcegroups/xxx-xx-xxxx/providers/Microsoft.Web/sites/functionapp-portal02' -FunctionAppRegion 'Central US' -EnvironmentName 5 | Get-AzStaticWebAppUserProvidedFunctionApp 
+```
 
+```output
 Kind Name               Type
 ---- ----               ----
      functionApp-5enjko Microsoft.Web/staticSites/builds/userProvidedFunctionApps
@@ -238,12 +248,15 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[EnvironmentName <String>]`: The stage site identifier.
   - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
   - `[Id <String>]`: Resource identity path
+  - `[JobHistoryId <String>]`: History ID.
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
   - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[Slot <String>]`: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.
+  - `[WebJobName <String>]`: Name of Web Job.
 
 ## RELATED LINKS
 

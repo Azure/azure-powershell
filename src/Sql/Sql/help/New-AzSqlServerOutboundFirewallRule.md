@@ -13,8 +13,8 @@ Adds the allowed FQDN to the list of outbound firewall rules and creates a new o
 ## SYNTAX
 
 ```
-New-AzSqlServerOutboundFirewallRule [-ResourceGroupName] <String> [-ServerName] <String>
- [-AllowedFQDN] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzSqlServerOutboundFirewallRule [-AllowedFQDN] <String> [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,9 +24,11 @@ The **New-AzSqlServerOutboundFirewallRule** cmdlet adds the allowed FQDN to the 
 ## EXAMPLES
 
 ### Example 1: Create a new outbound firewall rule
+```powershell
+New-AzSqlServerOutboundFirewallRule -ServerName "Server01" -ResourceGroupName "ResourceGroup01" -AllowedFQDN "OutboundFirewallRule01"
 ```
-PS C:\>New-AzSqlServerOutboundFirewallRule -ServerName "Server01" -ResourceGroupName "ResourceGroup01" -AllowedFQDN "OutboundFirewallRule01"
 
+```output
 ResourceGroupName : ResourceGroup01
 ServerName        : Server01
 AllowedFQDN       : OutboundFirewallRule01
@@ -35,6 +37,21 @@ AllowedFQDN       : OutboundFirewallRule01
 This command creates a new allowed FQDN named OutboundFirewallRule01 in the list of outbound firewall rules on the server named Server01.
 
 ## PARAMETERS
+
+### -AllowedFQDN
+Specifies the allowed fully qualified domain name (FQDN) in the list of outbound firewall rules.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
@@ -77,21 +94,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AllowedFQDN
-Specifies the allowed fully qualified domain name (FQDN) in the list of outbound firewall rules.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: Name
-
-Required: True
-Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

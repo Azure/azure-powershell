@@ -22,8 +22,8 @@ The **Get-AzWebAppAccessRestrictionConfig** cmdlet gets Access Restriction confi
 ## EXAMPLES
 
 ### Example 1: Get a Web App Access Restriction Config from a resource group
-```
-PS C:\>Get-AzWebAppAccessRestrictionConfig -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
+```powershell
+Get-AzWebAppAccessRestrictionConfig -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
 ```
 
 This command gets the access restriction config of a Web App named ContosoSite that belongs to the resource group Default-Web-WestUS.

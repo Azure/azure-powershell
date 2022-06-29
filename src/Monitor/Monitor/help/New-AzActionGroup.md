@@ -25,10 +25,10 @@ The **New-AzActionGroup** cmdlet creates an action group reference object in mem
 ## EXAMPLES
 
 ### Example 1: Create an action group reference object in memory
-```
-PS C:\>$dict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
-PS C:\>$dict.Add('key1', 'value1')
-PS C:\>$actionGrp1 = New-AzActionGroup -ActionGroupId 'actiongr1' -WebhookProperty $dict
+```powershell
+$dict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
+$dict.Add('key1', 'value1')
+$actionGrp1 = New-AzActionGroup -ActionGroupId 'actiongr1' -WebhookProperty $dict
 ```
 
 ## PARAMETERS

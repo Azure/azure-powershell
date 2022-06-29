@@ -23,8 +23,8 @@ The **New-AzApplicationGatewayConnectionDraining** cmdlet creates a new connecti
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $connectionDraining = New-AzApplicationGatewayConnectionDraining -Enabled $True -DrainTimeoutInSec 42
+```powershell
+$connectionDraining = New-AzApplicationGatewayConnectionDraining -Enabled $True -DrainTimeoutInSec 42
 ```
 
 The command creates a new connection draining configuration with Enabled set to True and DrainTimeoutInSec set to 42 seconds and stores it in $connectionDraining.

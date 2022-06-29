@@ -30,8 +30,10 @@ Get a tag rule set for a given monitor resource.
 
 ### Example 1: Get a tag rule set for a given monitor resource
 ```powershell
-PS C:\> Get-AzElasticTagRule -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
+Get-AzElasticTagRule -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
+```
 
+```output
 Name    ProvisioningState ResourceGroupName
 ----    ----------------- -----------------
 default Succeeded         azure-elastic-test
@@ -41,8 +43,10 @@ This command gets a tag rule set for a given monitor resource.
 
 ### Example 2: Get a tag rule set for a given monitor resource by pipeline
 ```powershell
-PS C:\> New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 | Get-AzElasticTagRule
+New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 | Get-AzElasticTagRule
+```
 
+```output
 Name    ProvisioningState ResourceGroupName
 ----    ----------------- -----------------
 default Succeeded         azure-elastic-test
@@ -150,7 +154,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IElasticIdentity>: Identity Parameter
+INPUTOBJECT `<IElasticIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name
   - `[ResourceGroupName <String>]`: The name of the resource group to which the Elastic resource belongs.

@@ -8,14 +8,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
     using System;
 
-    /// <summary>Description for Creates a backup of an app.</summary>
+    /// <summary>Creates a backup of an app.</summary>
     /// <remarks>
     /// [OpenAPI] Backup=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backup"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Backup, @"AzFunctionApp_BackupViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItem))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Description for Creates a backup of an app.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Creates a backup of an app.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Generated]
     public partial class BackupAzFunctionApp_BackupViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener
@@ -34,6 +34,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Description of a backup which will be performed.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupRequest _requestBody = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.BackupRequest();
+
         /// <summary>Name of the backup.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the backup.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
@@ -43,7 +46,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Name of the backup.",
         SerializedName = @"backupName",
         PossibleTypes = new [] { typeof(string) })]
-        public string BackupName { get => RequestBody.BackupName ?? null; set => RequestBody.BackupName = value; }
+        public string BackupName { get => _requestBody.BackupName ?? null; set => _requestBody.BackupName = value; }
 
         /// <summary>
         /// How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set
@@ -57,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)",
         SerializedName = @"frequencyInterval",
         PossibleTypes = new [] { typeof(int) })]
-        public int BackupScheduleFrequencyInterval { get => RequestBody.BackupScheduleFrequencyInterval ?? default(int); set => RequestBody.BackupScheduleFrequencyInterval = value; }
+        public int BackupScheduleFrequencyInterval { get => _requestBody.BackupScheduleFrequencyInterval ?? default(int); set => _requestBody.BackupScheduleFrequencyInterval = value; }
 
         /// <summary>
         /// The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval
@@ -72,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"frequencyUnit",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit BackupScheduleFrequencyUnit { get => RequestBody.BackupScheduleFrequencyUnit ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit)""); set => RequestBody.BackupScheduleFrequencyUnit = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit BackupScheduleFrequencyUnit { get => _requestBody.BackupScheduleFrequencyUnit ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit)""); set => _requestBody.BackupScheduleFrequencyUnit = value; }
 
         /// <summary>
         /// True if the retention policy should always keep at least one backup in the storage account, regardless how old it is;
@@ -86,7 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.",
         SerializedName = @"keepAtLeastOneBackup",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter BackupScheduleKeepAtLeastOneBackup { get => RequestBody.BackupScheduleKeepAtLeastOneBackup ?? default(global::System.Management.Automation.SwitchParameter); set => RequestBody.BackupScheduleKeepAtLeastOneBackup = value; }
+        public global::System.Management.Automation.SwitchParameter BackupScheduleKeepAtLeastOneBackup { get => _requestBody.BackupScheduleKeepAtLeastOneBackup ?? default(global::System.Management.Automation.SwitchParameter); set => _requestBody.BackupScheduleKeepAtLeastOneBackup = value; }
 
         /// <summary>After how many days backups should be deleted.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "After how many days backups should be deleted.")]
@@ -97,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"After how many days backups should be deleted.",
         SerializedName = @"retentionPeriodInDays",
         PossibleTypes = new [] { typeof(int) })]
-        public int BackupScheduleRetentionPeriodInDay { get => RequestBody.BackupScheduleRetentionPeriodInDay ?? default(int); set => RequestBody.BackupScheduleRetentionPeriodInDay = value; }
+        public int BackupScheduleRetentionPeriodInDay { get => _requestBody.BackupScheduleRetentionPeriodInDay ?? default(int); set => _requestBody.BackupScheduleRetentionPeriodInDay = value; }
 
         /// <summary>When the schedule should start working.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "When the schedule should start working.")]
@@ -108,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"When the schedule should start working.",
         SerializedName = @"startTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime BackupScheduleStartTime { get => RequestBody.BackupScheduleStartTime ?? default(global::System.DateTime); set => RequestBody.BackupScheduleStartTime = value; }
+        public global::System.DateTime BackupScheduleStartTime { get => _requestBody.BackupScheduleStartTime ?? default(global::System.DateTime); set => _requestBody.BackupScheduleStartTime = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -128,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Databases included in the backup.",
         SerializedName = @"databases",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDatabaseBackupSetting) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDatabaseBackupSetting[] Database { get => RequestBody.Database ?? null /* arrayOf */; set => RequestBody.Database = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDatabaseBackupSetting[] Database { get => _requestBody.Database ?? null /* arrayOf */; set => _requestBody.Database = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -150,7 +153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.",
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter Enabled { get => RequestBody.Enabled ?? default(global::System.Management.Automation.SwitchParameter); set => RequestBody.Enabled = value; }
+        public global::System.Management.Automation.SwitchParameter Enabled { get => _requestBody.Enabled ?? default(global::System.Management.Automation.SwitchParameter); set => _requestBody.Enabled = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -184,14 +187,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Kind of resource.",
         SerializedName = @"kind",
         PossibleTypes = new [] { typeof(string) })]
-        public string Kind { get => RequestBody.Kind ?? null; set => RequestBody.Kind = value; }
+        public string Kind { get => _requestBody.Kind ?? null; set => _requestBody.Kind = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -215,12 +218,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Backing field for <see cref="RequestBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupRequest _requestBody= new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.BackupRequest();
-
-        /// <summary>Description of a backup which will be performed.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupRequest RequestBody { get => this._requestBody; set => this._requestBody = value; }
-
         /// <summary>SAS URL to the container.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SAS URL to the container.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
@@ -230,7 +227,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"SAS URL to the container.",
         SerializedName = @"storageAccountUrl",
         PossibleTypes = new [] { typeof(string) })]
-        public string StorageAccountUrl { get => RequestBody.StorageAccountUrl ?? null; set => RequestBody.StorageAccountUrl = value; }
+        public string StorageAccountUrl { get => _requestBody.StorageAccountUrl ?? null; set => _requestBody.StorageAccountUrl = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -269,6 +266,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -280,7 +282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -383,7 +385,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -400,7 +401,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.WebAppsBackupViaIdentity(InputObject.Id, RequestBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.WebAppsBackupViaIdentity(InputObject.Id, _requestBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -417,13 +418,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.WebAppsBackup(InputObject.ResourceGroupName ?? null, InputObject.Name ?? null, InputObject.SubscriptionId ?? null, RequestBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.WebAppsBackup(InputObject.ResourceGroupName ?? null, InputObject.Name ?? null, InputObject.SubscriptionId ?? null, _requestBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=RequestBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_requestBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -469,14 +470,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=RequestBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_requestBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=RequestBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_requestBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

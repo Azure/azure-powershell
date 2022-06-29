@@ -32,18 +32,18 @@ Delete a hub setting.
 
 ### Example 1: Remove a hub setting.
 ```powershell
-PS C:\>  Remove-AzWebPubSubHub -Name testHub -ResourceGroupName psdemo -ResourceName psdemo-wps
+Remove-AzWebPubSubHub -Name testHub -ResourceGroupName psdemo -ResourceName psdemo-wps
 ```
 
 
 
 ### Example 2: Remove a hub setting via identity.
 ```powershell
-PS C:\> $hubIdentity = @{HubName = 'testHub'
+$hubIdentity = @{HubName = 'testHub'
 ResourceGroupName='psdemo'
 ResourceName = 'psdemo-wps'
 SubscriptionId = $(Get-AzContext).Subscription.Id}
-PS C:\> $hubIdentity | Remove-AzWebPubSubHub
+$hubIdentity | Remove-AzWebPubSubHub
 ```
 
 The example first constructs a hash table standing for the hub identity.
@@ -240,7 +240,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+INPUTOBJECT `<IWebPubSubIdentity>`: Identity Parameter
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region

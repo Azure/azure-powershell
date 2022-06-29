@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Management.ApiManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementOperation", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementOperation))]
@@ -88,12 +89,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                           " Use the parameter to give more details on parameters like description, type, possible values.")]
         public PsApiManagementParameter[] TemplateParameters { get; set; }
 
+        public const String ChangeDesc = "Change Request.Representations.Sample Request.Representations.Example";
+        [CmdletParameterBreakingChange("Request", ChangeDescription = ChangeDesc)]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Operation request details. This parameter is optional.")]
         public PsApiManagementRequest Request { get; set; }
-
+        
+        public const String ChangeDesc2 = "Change Responses.Representations.Sample to Responses.Representations.Example";
+        [CmdletParameterBreakingChange("Responses", ChangeDescription = ChangeDesc2)]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,

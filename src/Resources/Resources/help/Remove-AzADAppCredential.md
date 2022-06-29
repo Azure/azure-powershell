@@ -43,14 +43,14 @@ Removes key credentials or password credentials for an application.
 
 ### Example 1: Remove credentials from application by key id
 ```powershell
-PS C:\> Remove-AzADAppCredential -DisplayName $name -KeyId $keyid
+Remove-AzADAppCredential -DisplayName $name -KeyId $keyid
 ```
 
 Remove credentials from application by key id
 
 ### Example 2: Remove all credentials from application
 ```powershell
-PS C:\> Get-AzADApplication -DisplayName $name | Remove-AzADAppCredential
+Get-AzADApplication -DisplayName $name | Remove-AzADAppCredential
 ```
 
 Remove all credentials from application
@@ -214,7 +214,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be used as pipeline input.
+APPLICATIONOBJECT `<IMicrosoftGraphApplication>`: The application object, could be used as pipeline input.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

@@ -18,17 +18,6 @@
 Lists entities from users or get entity from users by key
 .Description
 Lists entities from users or get entity from users by key
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/get-azaduser
 #>

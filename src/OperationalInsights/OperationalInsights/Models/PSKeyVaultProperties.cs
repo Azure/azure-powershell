@@ -18,12 +18,22 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSKeyVaultProperties
     {
-        public PSKeyVaultProperties(string keyVaultUri = default(string), string keyName = default(string), string keyVersion = default(string), int keyRsaSize= default(int))
+        public PSKeyVaultProperties(string keyVaultUri = default, string keyName = default, string keyVersion = default, int keyRsaSize = default)
         {
             KeyVaultUri = keyVaultUri;
             KeyName = keyName;
             KeyVersion = keyVersion;
             KeyRsaSize = keyRsaSize;
+        }
+
+        public static PSKeyVaultProperties CreateProperties(string keyVaultUri = default, string keyName = default, string keyVersion = default, int keyRsaSize = default)
+        {
+            if (keyVaultUri == null && keyName == null && keyVersion == null && keyRsaSize == 0)
+            {
+                return null;
+            }
+
+            return new PSKeyVaultProperties(keyVaultUri, keyName, keyVersion, keyRsaSize);
         }
 
         public PSKeyVaultProperties(KeyVaultProperties kv)

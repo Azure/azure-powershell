@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
 online version: https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubconsumergroup
@@ -38,31 +38,31 @@ The Remove-AzEventHubConsumerGroup cmdlet removes and deletes the specified cons
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -EventHub MyEventHubName -Name MyConsumerGroupName
+Remove-AzEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -EventHub MyEventHubName -Name MyConsumerGroupName
 ```
 
 Deletes the consumer group \`MyConsumerGroupName\` from the Event Hub \`MyEventHubName\`, scoped to the \`MyNamespaceName\` namespace.
 
 ### Example 2: InputObject - Using Variable
 ```powershell
-PS C:\> $inputobject = Get-AzEventHubConsumerGroup <params>
-PS C:\> Remove-AzEventHubConsumerGroup -InputObject $inputobject
+$inputobject = Get-AzEventHubConsumerGroup <params>
+Remove-AzEventHubConsumerGroup -InputObject $inputobject
 ```
 
 ### Example 3: InputObject - Using Piping
 ```powershell
-PS C:\> Get-AzEventHubConsumerGroup <params> | Remove-AzEventHubConsumerGroup
+Get-AzEventHubConsumerGroup <params> | Remove-AzEventHubConsumerGroup
 ```
 
 ### Example 4: ResourceId Using Variable
 ```powershell
-PS C:\> $resourceid = Get-AzEventHubConsumerGroup <params>
-PS C:\> Remove-AzEventHubConsumerGroup -ResourceId $resourceid.Id
+$resourceid = Get-AzEventHubConsumerGroup <params>
+Remove-AzEventHubConsumerGroup -ResourceId $resourceid.Id
 ```
 
 ### Example 5: ResourceId Using string
 ```powershell
-PS C:\> Remove-AzEventHubConsumerGroup -ResourceId "/subscriptions/xxx-xxxx-xxxxx-xxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName/eventhubs/EventHubName/consumergroups/ConsumerGroupName"
+Remove-AzEventHubConsumerGroup -ResourceId "/subscriptions/xxx-xxxx-xxxxx-xxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName/eventhubs/EventHubName/consumergroups/ConsumerGroupName"
 ```
 
 ## PARAMETERS

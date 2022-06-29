@@ -28,8 +28,11 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 ## EXAMPLES
 
 ### Example 1: Get all data masking rules from a database
+```powershell
+Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
-PS C:\>Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+
+```output
 DatabaseName      : database01
 ResourceGroupName : resourcegroup01
 ServerName        : server01
@@ -58,8 +61,11 @@ NumberTo          :
 ```
 
 ### Example 2: Get the data masking rule defined on schema "dbo", table "table1" and column "column1".
+```powershell
+Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SchemaName "dbo" -TableName  "table1" -ColumnName "column1"
 ```
-PS C:\>Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SchemaName "dbo" -TableName  "table1" -ColumnName "column1"
+
+```output
 DatabaseName      : database01
 ResourceGroupName : resourcegroup01
 ServerName        : server01

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void RaDeletedPrincipals()
         {
-            TestRunner.RunTestScript("Test-RaDeletedPrincipals");
+            TestRunner.RunTestScript("Test-UnknowndPrincipals");
         }
 
         [Fact]

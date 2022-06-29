@@ -20,11 +20,11 @@ Adds new entity to servicePrincipals
 .Description
 Adds new entity to servicePrincipals
 .Example
-PS C:\> New-AzADServicePrincipal
+New-AzADServicePrincipal
 .Example
-PS C:\> New-AzADServicePrincipal -ApplicationId $appid
+New-AzADServicePrincipal -ApplicationId $appid
 .Example
-PS C:\> New-AzADServicePrincipal -DisplayName $name
+New-AzADServicePrincipal -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -302,16 +302,6 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.
     ${DisplayName},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithKeyPlainParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationWithKeyCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationWithPasswordCredentialParameterSet', Mandatory)]
-    [Alias('AppId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Guid]
-    # The unique identifier for the associated application (its appId property).
-    ${ApplicationId},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
@@ -340,9 +330,6 @@ param(
 
     [Parameter(ParameterSetName='SimpleParameterSet')]
     [Parameter(ParameterSetName='DisplayNameWithKeyPlainParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithKeyPlainParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithPasswordPlainParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithKeyPlainParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The effective start date of the credential usage.
@@ -352,9 +339,6 @@ param(
 
     [Parameter(ParameterSetName='SimpleParameterSet')]
     [Parameter(ParameterSetName='DisplayNameWithKeyPlainParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithKeyPlainParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithPasswordPlainParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithKeyPlainParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The effective end date of the credential usage.
@@ -630,8 +614,6 @@ param(
     ${TransitiveMemberOf},
 
     [Parameter(ParameterSetName='DisplayNameWithKeyPlainParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationObjectWithKeyPlainParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationWithKeyPlainParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The value of the 'asymmetric' credential type.
@@ -639,8 +621,6 @@ param(
     ${CertValue},
 
     [Parameter(ParameterSetName='DisplayNameWithKeyCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationObjectWithKeyCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationWithKeyCredentialParameterSet', Mandatory)]
     [Alias('KeyCredentials')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -650,8 +630,6 @@ param(
     ${KeyCredential},
 
     [Parameter(ParameterSetName='DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationObjectWithPasswordCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationWithPasswordCredentialParameterSet', Mandatory)]
     [Alias('PasswordCredentials')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -660,15 +638,19 @@ param(
     # To construct, see NOTES section for PASSWORDCREDENTIAL properties and create a hash table.
     ${PasswordCredential},
 
-    [Parameter(ParameterSetName='ApplicationObjectWithKeyPlainParameterSet', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ApplicationObjectWithPasswordPlainParameterSet', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ApplicationObjectWithKeyCredentialParameterSet', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ApplicationObjectWithPasswordCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ApplicationObjectParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
     # The application object, could be used as pipeline input.
     # To construct, see NOTES section for APPLICATIONOBJECT properties and create a hash table.
     ${ApplicationObject},
+
+    [Parameter(ParameterSetName='ApplicationIdParameterSet')]
+    [Alias('AppId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Guid]
+    # The unique identifier for the associated application (its appId property).
+    ${ApplicationId},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -725,18 +707,31 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             SimpleParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
             DisplayNameWithKeyPlainParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
             DisplayNameWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
             DisplayNameWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
-            ApplicationObjectWithKeyPlainParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
-            ApplicationObjectWithPasswordPlainParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
-            ApplicationObjectWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
-            ApplicationObjectWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
-            ApplicationWithKeyPlainParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
-            ApplicationWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
-            ApplicationWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
+            ApplicationObjectParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
+            ApplicationIdParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -745,6 +740,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -753,15 +749,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

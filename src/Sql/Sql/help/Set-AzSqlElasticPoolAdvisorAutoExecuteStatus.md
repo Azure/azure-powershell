@@ -26,8 +26,11 @@ The **Set-AzSqlElasticPoolAdvisorAutoExecuteStatus** cmdlet sets auto execute pr
 ## EXAMPLES
 
 ### Example 1: Enable auto execute for an advisor
+```powershell
+Set-AzSqlElasticPoolAdvisorAutoExecuteStatus -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -ElasticPoolName "WIRunnerPool" -AdvisorName "CreateIndex" -AutoExecuteStatus Enabled
 ```
-PS C:\>Set-AzSqlElasticPoolAdvisorAutoExecuteStatus -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -ElasticPoolName "WIRunnerPool" -AdvisorName "CreateIndex" -AutoExecuteStatus Enabled
+
+```output
 'Enabled'ElasticPoolName                : WIRunnerPool
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east

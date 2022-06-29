@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ContainerInstance service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -30,7 +30,7 @@ For information on how to develop for `Az.ContainerInstance`, see [how-to.md](ho
 > see https://aka.ms/autorest
 
 ``` yaml
-Branch: 2601b21eccaab01da2feb65d232ab6c3cb9c1c45
+branch: 314f28163917b9cfc527f7776b5e4a1dea69d295
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
@@ -140,4 +140,15 @@ directive:
       $["204"] = {
           "description": "No content"
       }
+  # Change the type of EmptyDir from IAny() to VolumeEmptyDir
+  - from: swagger-document
+    where: $.definitions.Volume.properties.emptyDir
+    transform: >-
+      return {
+        "description": "The empty directory volume.",
+        "type": "object",
+        "additionalProperties": true
+      }
+  # - model-cmdlet:
+  #   - Volume # Hide to customize AzureFileStorageAccountKey from string to securestring
 ```

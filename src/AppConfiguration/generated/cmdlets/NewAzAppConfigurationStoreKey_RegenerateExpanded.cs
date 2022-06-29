@@ -6,10 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Extensions;
+    using System;
 
     /// <summary>Regenerates an access key for the specified configuration store.</summary>
     /// <remarks>
-    /// [OpenAPI] ConfigurationStores_RegenerateKey=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/RegenerateKey"
+    /// [OpenAPI] RegenerateKey=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/RegenerateKey"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAppConfigurationStoreKey_RegenerateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IApiKey))]
@@ -230,7 +231,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Events.Debug:

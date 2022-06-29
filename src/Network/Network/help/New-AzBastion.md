@@ -89,7 +89,9 @@ $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0
 $vnet = New-AzVirtualNetwork -Name "TestVnet" -ResourceGroupName "BastionPowershellTest" -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 $publicip = New-AzPublicIpAddress -ResourceGroupName "BastionPowershellTest" -Name "Test-Ip" -location "westeurope" -AllocationMethod Dynamic -Sku Standard
 $bastion = New-AzBastion -ResourceGroupName "BastionPowershellTest" -Name "test-Bastion2" -PublicIpAddress $publicip -VirtualNetwork $vnet
+```
 
+```output
 IpConfigurations     : {IpConf}
 DnsName              : bst-a9ca868f-ddab-4a50-9f45-a443ea8a0187.bastion.azure.com
 ProvisioningState    : Succeeded
@@ -121,11 +123,11 @@ Sku                  : {
                          "Name": "Basic"
                        }
 Scale Units          : 2
-
+```
 This example creates a bastion attached to virtual network "vnet" in the same resource group as the bastion.
 There must be a subnet with name AzureBastionSubnet in this vnet.
 The Ip Address must be created with Sku Standard.
-```
+
 
 ### Example 2
 ```powershell
@@ -133,7 +135,9 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName "BastionPowershellTest" -Name "t
 Add-AzVirtualNetworkSubnetConfig -Name "AzureBastionSubnet" -VirtualNetwork $vnet -AddressPrefix "10.0.0.0/24"
 $vnet| Set-AzVirtualNetwork
 New-AzBastion -ResourceGroupName "BastionPowershellTest" -Name "testBastion2" -PublicIpAddressRgName "BastionPowershellTest" -PublicIpAddressName "testIp2" -VirtualNetworkRgName "BastionPowershellTest" -VirtualNetworkName "testVnet2"
+```
 
+```output
 IpConfigurations     : {IpConf}
 DnsName              : bst-53757658-c4fd-4908-b1a7-0849e555d489.bastion.azure.com
 ProvisioningState    : Succeeded
@@ -173,7 +177,9 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName "BastionPowershellTest" -Name "t
 Add-AzVirtualNetworkSubnetConfig -Name "AzureBastionSubnet" -VirtualNetwork $vnet -AddressPrefix "10.0.0.0/24"
 $vnet| Set-AzVirtualNetwork
 New-AzBastion -ResourceGroupName "BastionPowershellTest" -Name "testBastion2" -PublicIpAddressRgName "BastionPowershellTest" -PublicIpAddressName "testIp2" -VirtualNetworkRgName "BastionPowershellTest" -VirtualNetworkName "testVnet2" -Sku "Standard" -ScaleUnit 3
+```
 
+```output
 IpConfigurations     : {IpConf}
 DnsName              : bst-53757658-c4fd-4908-b1a7-0849e555d489.bastion.azure.com
 ProvisioningState    : Succeeded
@@ -205,9 +211,9 @@ Sku                  : {
                          "Name": "Standard"
                        }
 Scale Units          : 3
-
-This example creates a BastionHost resource with Standard Sku and 3 Scale Units.
 ```
+This example creates a BastionHost resource with Standard Sku and 3 Scale Units.
+
 
 ## PARAMETERS
 

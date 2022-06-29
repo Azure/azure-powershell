@@ -30,15 +30,15 @@ By default, **Get-AzDeployment** gets all deployments at the current subscriptio
 ## EXAMPLES
 
 ### Example 1: Get all deployments at subscription scope
-```
-PS C:\>Get-AzDeployment
+```powershell
+Get-AzDeployment
 ```
 
 This command gets all deployments at the current subscription scope.
 
 ### Example 2: Get a deployment by name
-```
-PS C:\>Get-AzDeployment -Name "DeployRoles01"
+```powershell
+Get-AzDeployment -Name "DeployRoles01"
 ```
 
 This command gets the DeployRoles01 deployment at the current subscription scope.

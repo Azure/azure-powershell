@@ -12,6 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="GroupId" /> property.</summary>
+        private string _groupId;
+
+        /// <summary>The name of the private link resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Owned)]
+        public string GroupId { get => this._groupId; set => this._groupId = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -25,6 +32,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
         /// <summary>The name of the workspace vNet peering.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Owned)]
         public string PeeringName { get => this._peeringName; set => this._peeringName = value; }
+
+        /// <summary>Backing field for <see cref="PrivateEndpointConnectionName" /> property.</summary>
+        private string _privateEndpointConnectionName;
+
+        /// <summary>The name of the private endpoint connection</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Owned)]
+        public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -56,6 +70,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
     public partial interface IDatabricksIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IJsonSerializable
     {
+        /// <summary>The name of the private link resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the private link resource",
+        SerializedName = @"groupId",
+        PossibleTypes = new [] { typeof(string) })]
+        string GroupId { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
@@ -72,6 +94,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
         SerializedName = @"peeringName",
         PossibleTypes = new [] { typeof(string) })]
         string PeeringName { get; set; }
+        /// <summary>The name of the private endpoint connection</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the private endpoint connection",
+        SerializedName = @"privateEndpointConnectionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateEndpointConnectionName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
@@ -101,10 +131,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
     internal partial interface IDatabricksIdentityInternal
 
     {
+        /// <summary>The name of the private link resource</summary>
+        string GroupId { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The name of the workspace vNet peering.</summary>
         string PeeringName { get; set; }
+        /// <summary>The name of the private endpoint connection</summary>
+        string PrivateEndpointConnectionName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The ID of the target subscription.</summary>

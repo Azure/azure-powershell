@@ -15,7 +15,10 @@
 using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
+using Microsoft.Rest.Azure;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -37,6 +40,45 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             BatchLocationQuota response = this.BatchManagementClient.Location.GetQuotas(location);
             return new PSBatchLocationQuotas(location, response);
+        }
+
+        public virtual List<PSSupportedSku> GetSupportedVirtualMachineSku(string location)
+        {
+            return GetSupportedVirtualMachineSku(location, default, default);
+        }
+
+        public virtual List<PSSupportedSku> GetSupportedVirtualMachineSku(string location, int? maxResultCount, string filter)
+        {
+            if (string.IsNullOrEmpty(location))
+            {
+                throw new ArgumentNullException("location");
+            }
+
+            if (maxResultCount == default && filter == default)
+            {
+                WriteVerbose(string.Format(Resources.GettingSupportedVirtualMachineSku, location));
+            }
+            else
+            {
+                WriteVerbose(string.Format(Resources.GettingSupportedVirtualMachineSku, location, maxResultCount, filter));
+            }
+
+            IPage<SupportedSku> response = BatchManagementClient.Location.ListSupportedVirtualMachineSkus(location, maxResultCount, filter);
+            List<PSSupportedSku> psSupportedSku = response.Select(ConvertToPSSupportedSku).ToList();
+
+            while (response.NextPageLink != null)
+            {
+                response = BatchManagementClient.Location.ListSupportedVirtualMachineSkusNext(response.NextPageLink);
+                psSupportedSku.AddRange(response.Select(ConvertToPSSupportedSku));
+            }
+
+            return psSupportedSku;
+        }
+
+        private static PSSupportedSku ConvertToPSSupportedSku(SupportedSku sku)
+        {
+            IList<PSSkuCapability> capabilities = sku.Capabilities.Select(c => new PSSkuCapability(c.Name, c.Value)).ToList();
+            return new PSSupportedSku(sku.Name, sku.FamilyName, capabilities);
         }
     }
 }

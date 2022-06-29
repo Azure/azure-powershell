@@ -37,23 +37,23 @@ The **Remove-AzSynapsePipeline** cmdlet removes a pipeline from workspace.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
+Remove-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
 ```
 
 This cmdlet removes the pipeline named ContosoPipeline from the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapsePipeline -Name ContosoPipeline
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Remove-AzSynapsePipeline -Name ContosoPipeline
 ```
 
 This cmdlet removes the pipeline named ContosoPipeline from the workspace named ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $pipeline = Get-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
-PS C:\> $pipeline | Remove-AzSynapsePipeline
+$pipeline = Get-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
+$pipeline | Remove-AzSynapsePipeline
 ```
 
 This cmdlet removes the pipeline named ContosoPipeline from the workspace named ContosoWorkspace through pipeline.

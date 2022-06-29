@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
 online version: https://docs.microsoft.com/powershell/module/az.datafactory/stop-azdatafactoryv2trigger
@@ -36,9 +36,11 @@ The **Stop-AzDataFactoryV2Trigger** cmdlet stops a trigger in a data factory. If
 ## EXAMPLES
 
 ### Example 1: Stop a trigger
-```
+```powershell
 Stop-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
+```
 
+```output
 Confirm
 Are you sure you want to stop trigger 'ScheduledTrigger' in data factory 'TestFactory'?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y

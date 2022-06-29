@@ -44,7 +44,7 @@ The Set-AzAnalysisServicesServer cmdlet modifies an instance of Analysis Service
 
 ### Example 1
 ```powershell
-Set-AzAnalysisServicesServer -Name "testserver" -ResourceGroupName "testgroup" -Tag "key1:value1,key2:value2" -Administrator "testuser1@contoso.com"
+Set-AzAnalysisServicesServer -Name "testserver" -ResourceGroupName "testgroup" -Tag @{key1 = "value1"; key2 ="value2"} -Administrator "testuser1@contoso.com"
 ```
 
 Modifies the server named testserver in resourcegroup testgroup to set the tags as key1:value1 and key2:value2 and administrator to testuser1@contoso.com

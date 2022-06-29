@@ -44,7 +44,10 @@ The **Get-AzDataBoxEdgeTriger** cmdlet gets the triggers for a device. You can s
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDataBoxEdgeTrigger -ResourceGroupName resourceGroupName -DeviceName deviceName
+Get-AzDataBoxEdgeTrigger -ResourceGroupName resourceGroupName -DeviceName deviceName
+```
+
+```output
 Name                  Kind               
 ----                  ----               
 triggerName          PeriodicTimerEvent

@@ -24,9 +24,9 @@ The **Add-AzApplicationGatewayRewriteRuleSet** cmdlet adds a rewrite rule set to
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $AppGw = Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $AppGw -Name "ruleset1" -RewriteRule $rule
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGw = Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $AppGw -Name "ruleset1" -RewriteRule $rule
 ```
 
 The first command gets the application gateway and stores it in the $AppGw variable.

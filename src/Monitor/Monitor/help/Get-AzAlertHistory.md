@@ -24,8 +24,11 @@ The **Get-AzAlertHistory** cmdlet gets the history of classic alert rules as the
 ## EXAMPLES
 
 ### Example 1: Get the alert history
+```powershell
+Get-AzAlertHistory -StartTime 2015-02-11T11:00:00 -EndTime 2015-02-11T12:00:00 -DetailedOutput
 ```
-PS C:\>Get-AzAlertHistory -StartTime 2015-02-11T11:00:00 -EndTime 2015-02-11T12:00:00 -DetailedOutput
+
+```output
 Authorization        :
 Caller               : Microsoft.Insights/alertRules
 Claims               :
@@ -166,9 +169,11 @@ SubStatus            :
 This command gets the alert history for the specified time frame for the current subscription.
 
 ### Example 2: Get alert history for a specified resource
+```powershell
+Get-AzAlertHistory -StartTime 2015-02-11T11:00:00 -EndTime 2015-02-11T12:00:00 -ResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d" -DetailedOutput
 ```
-PS C:\>Get-AzAlertHistory -StartTime 2015-02-11T11:00:00 -EndTime 2015-02-11T12:00:00 -ResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d" -DetailedOutput
 
+```output
 Authorization        :
 Caller               : Microsoft.Insights/alertRules
 Claims               :

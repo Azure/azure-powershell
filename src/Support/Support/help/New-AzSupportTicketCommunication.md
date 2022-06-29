@@ -33,8 +33,9 @@ Adds a new customer communication to an Azure support ticket.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSupportTicketCommunication -Name "testmessage" -SupportTicketName "testticket" -Subject "test subject" -Body "test body" -Sender "user@contoso.com"
-
+New-AzSupportTicketCommunication -Name "testmessage" -SupportTicketName "testticket" -Subject "test subject" -Body "test body" -Sender "user@contoso.com"
+```
+```output
 Name         Sender               Subject        CreatedDate
 ----         ------               -------        -----------
 testmessage  user@contoso.com     test subject   2/4/2020 9:38:14 PM

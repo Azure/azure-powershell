@@ -45,7 +45,7 @@ Gets one or more activity log alert resources.
 Gets the history of classic alert rules.
 
 ### [Get-AzAlertRule](Get-AzAlertRule.md)
-Gets alert rules.
+Gets classic alert rules.
 
 ### [Get-AzAutoscaleHistory](Get-AzAutoscaleHistory.md)
 Gets the Autoscale history.

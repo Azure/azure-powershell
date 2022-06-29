@@ -32,22 +32,22 @@ The **New-AzSynapseWorkspacePackage** uploads a local workspace package file to 
 
 ### Example 1: Upload a named workspace package
 ```powershell
-PS C:\> New-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Package ".\ContosoPackage.whl"
+New-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Package ".\ContosoPackage.whl"
 ```
 
 This command uploads the workspace package whose location is ".\ContosoPackage.whl" to an Azure Synapse workspace named ContosoWorkspace. The workspace pacakge can be either wheel or jar files.
 
 ### Example 2: Upload all workspace packages under the current folder
 ```powershell
-PS C:\> Get-ChildItem -File | New-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace
+Get-ChildItem -File | New-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace
 ```
 
 This command uses the core Windows PowerShell cmdlet Get-ChildItem to get all the workspace packages in the current folder and in subfolders, and then passes them to the current cmdlet by using the pipeline operator. The New-AzSynapseWorkspacePackage cmdlet uploads the workspace package files to the Azure Synapse workspace named ContosoWorkspace.
 
 ### Example 3: Upload a named workspace package and add it to Apache Spark pool
 ```powershell
-PS C:\> $package = New-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Package ".\ContosoPackage.whl"
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Add -Package $package
+$package = New-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Package ".\ContosoPackage.whl"
+Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Add -Package $package
 ```
 
 This first command uploads the workspace package whose location is ".\ContosoPackage.whl" to an Azure Synapse workspace named ContosoWorkspace. The workspace pacakge can be either wheel or jar files. Then the second command addes the package to a given Apache Spark pool named ContotoSparkPool.

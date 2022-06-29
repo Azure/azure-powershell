@@ -25,9 +25,7 @@ Unlink service for workspace
 
 ### Example 1
 ```powershell
-Remove-AzOperationalInsightsLinkedService -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster
-
-true
+Remove-AzOperationalInsightsLinkedService -ResourceGroupName "rg-name" -WorkspaceName "workspace-name" -LinkedServiceName cluster
 ```
 
 Unlink linked service for workspace

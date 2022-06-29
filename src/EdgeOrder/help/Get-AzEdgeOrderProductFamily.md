@@ -24,9 +24,11 @@ This method provides the list of product families for the given subscription.
 
 ### Example 1: Get details of specific productFamilies
 ```powershell
-PS C:\>  $familyDetails = Get-AzEdgeOrderProductFamily -SubscriptionId SubscriptionId -FilterableProperty  @{"azurestackedge"=@($filterableProperty)} -Expand "configurations"
-PS C:\> $familyDetails.ProductLine.Product.Configuration.HierarchyInformation
+$familyDetails = Get-AzEdgeOrderProductFamily -SubscriptionId SubscriptionId -FilterableProperty  @{"azurestackedge"=@($filterableProperty)} -Expand "configurations"
+$familyDetails.ProductLine.Product.Configuration.HierarchyInformation
+```
 
+```output
 ConfigurationName ProductFamilyName ProductLineName ProductName
 ----------------- ----------------- --------------- -----------
 edgep_high        azurestackedge    azurestackedge  azurestackedgegpu
@@ -149,7 +151,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CUSTOMERSUBSCRIPTIONDETAIL <ICustomerSubscriptionDetails>: Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details
+CUSTOMERSUBSCRIPTIONDETAIL `<ICustomerSubscriptionDetails>`: Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details
   - `QuotaId <String>`: Quota ID of a subscription
   - `[LocationPlacementId <String>]`: Location placement Id of a subscription
   - `[RegisteredFeature <ICustomerSubscriptionRegisteredFeatures[]>]`: List of registered feature flags for subscription

@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 isDoubleEncryptionEnabled: IsDoubleEncryptionEnabled,
                 isAvailabilityZonesEnabled: IsAvailabilityZonesEnabled,
                 billingType: BillingType,
-                keyVaultProperties: KeyVaultProperties.GetKeyVaultProperties()
+                keyVaultProperties: KeyVaultProperties?.GetKeyVaultProperties()
                 );
         }
 

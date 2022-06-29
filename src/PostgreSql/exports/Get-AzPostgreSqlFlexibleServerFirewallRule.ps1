@@ -20,25 +20,12 @@ List all the firewall rules in a given server.
 .Description
 List all the firewall rules in a given server.
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerFirewallRule -Name firewallrule-test -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
-
-FirewallRuleName   StartIPAddress   EndIPAddress
------------------  ---------------  ---------------
-firewallrule-test   12.12.12.12     23.23.23.23
+Get-AzPostgreSqlFlexibleServerFirewallRule -Name firewallrule-test -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/servers/postgresql-test/firewallRules/firewallrule-test"
-PS C:\> Get-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID
-
-FirewallRuleName   StartIPAddress   EndIPAddress
------------------  ---------------  ---------------
-firewallrule-test   12.12.12.12     23.23.23.23
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/servers/postgresql-test/firewallRules/firewallrule-test"
+Get-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
-
-FirewallRuleName   StartIPAddress   EndIPAddress
------------------  ---------------  ---------------
-firewallrule-test   12.12.12.12     23.23.23.23
-firewallrule-test2  12.12.12.15     23.23.23.25
+Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity

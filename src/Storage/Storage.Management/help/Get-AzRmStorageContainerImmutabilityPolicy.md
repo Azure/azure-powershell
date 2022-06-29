@@ -52,7 +52,7 @@ This command gets ImmutabilityPolicy of a Storage blob containers with Storage a
 
 ### Example 3: Get ImmutabilityPolicy of a Storage blob container with Storage container object
 ```
-PS C:\>$containerObject = Get-AzStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name "myContainer"
+PS C:\>$containerObject = Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name "myContainer"
 PS C:\>Get-AzRmStorageContainerImmutabilityPolicy -Container $containerObject
 ```
 

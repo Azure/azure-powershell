@@ -23,19 +23,18 @@ The Remove-AzDdosProtectionPlan cmdlet removes a DDoS protection plan.
 ## EXAMPLES
 
 ### Example 1: Remove an empty DDoS protection plan
-```
-D:\> Remove-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlan
+```powershell
+Remove-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlan
 ```
 
 In this case, we remove a DDoS protection plan as specified.
 
 ### Example 2: Remove a DDoS protection plan associated with a virtual network
-```
-D:\> $vnet = Get-AzVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName
-D:\> $vnet.DdosProtectionPlan = $null
-D:\> $vnet.EnableDdosProtection = $false
-D:\> $vnet | Set-AzVirtualNetwork
-
+```powershell
+$vnet = Get-AzVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName
+$vnet.DdosProtectionPlan = $null
+$vnet.EnableDdosProtection = $false
+$vnet | Set-AzVirtualNetwork
 
 Name                   : VnetName
 ResourceGroupName      : ResourceGroupName
@@ -73,7 +72,7 @@ DdosProtectionPlan     : null
 EnableVmProtection     : false
 
 
-D:\> Remove-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlan
+Remove-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlan
 ```
 
 DDoS protection plans cannot be deleted if they are associated with a virtual network. So the first step is to disassociate both objects. Here, we get the most updated version of the virtual network associated with the plan, and we set the property **DdosProtectionPlan** to an empty value and the flag **EnableDdosProtection** (this flag cannot be true without a plan).

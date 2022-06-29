@@ -18,14 +18,14 @@
 #>
 function Test-CreateDatabase
 {
-	Test-CreateDatabaseInternal "southeastasia"
+	Test-CreateDatabaseInternal "westeurope"
 }
 
 <#
 	.SYNOPSIS
 	Tests creating a database
 #>
-function Test-CreateDatabaseInternal ($location = "southeastasia")
+function Test-CreateDatabaseInternal ($location = "westeurope")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -112,7 +112,7 @@ function Test-CreateDatabaseInternal ($location = "southeastasia")
 function Test-CreateVcoreDatabase
 {
 	# Setup
-	$location = "southeastasia"
+	$location = "westeurope"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -157,7 +157,7 @@ function Test-CreateVcoreDatabase
 function Test-CreateVcoreDatabaseWithLicenseType
 {
 	# Setup
-	$location = "southeastasia"
+	$location = "westeurope"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -196,7 +196,7 @@ function Test-CreateVcoreDatabaseWithLicenseType
 function Test-CreateServerlessDatabase
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Japan East"
+	$location = Get-Location "Microsoft.Sql" "operations" "west europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -229,7 +229,7 @@ function Test-CreateServerlessDatabase
 function Test-CreateDatabaseWithSampleName
 {
 	# Setup
-	$location = "southeastasia"
+	$location = "westeurope"
 	$rg = Create-ResourceGroupForTest
 	try
 	{
@@ -358,7 +358,7 @@ function Test-CreateDatabaseWithMaintenanceConfigurationId
 function Test-CreateDatabaseWithBackupStorageRedundancy
 {
 	# Setup
-	$location = "southeastasia"
+	$location = "westeurope"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -383,14 +383,14 @@ function Test-CreateDatabaseWithBackupStorageRedundancy
 #>
 function Test-UpdateDatabase
 {
-	Test-UpdateDatabaseInternal "southeastasia"
+	Test-UpdateDatabaseInternal "westeurope"
 }
 
 <#
 	.SYNOPSIS
 	Tests updating a database
 #>
-function Test-UpdateDatabaseInternal ($location = "southeastasia")
+function Test-UpdateDatabaseInternal ($location = "westeurope")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -462,7 +462,7 @@ function Test-UpdateDatabaseInternal ($location = "southeastasia")
 function Test-UpdateVcoreDatabase()
 {
 	# Setup
-	$location = "southeastasia"
+	$location = "westeurope"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -542,7 +542,7 @@ function Test-UpdateVcoreDatabase()
 function Test-UpdateVcoreDatabaseLicenseType()
 {
 	# Setup
-	$location = "southeastasia"
+	$location = "westeurope"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -671,7 +671,7 @@ function Test-UpdateDatabaseWithMaintenanceConfigurationId
 function Test-UpdateServerlessDatabase()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Japan East"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -739,7 +739,7 @@ function Test-UpdateServerlessDatabase()
 function Test-UpdateDatabaseWithZoneRedundantNotSpecified ()
 {
 	# Setup
-	$location = "southeastasia"
+	$location = "westeurope"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$databaseName = Get-DatabaseName
@@ -777,7 +777,7 @@ function Test-RenameDatabase
 
 	try
 	{
-		$location = "southeastasia"
+		$location = "westeurope"
 		$server = Create-ServerForTest $rg $location
 
 		# Create with default values
@@ -815,14 +815,14 @@ function Test-RenameDatabase
 #>
 function Test-GetDatabase
 {
-	Test-GetDatabaseInternal "southeastasia"
+	Test-GetDatabaseInternal "westeurope"
 }
 
 <#
 	.SYNOPSIS
 	Tests Getting a database
 #>
-function Test-GetDatabaseInternal  ($location = "southeastasia")
+function Test-GetDatabaseInternal  ($location = "westeurope")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -881,7 +881,7 @@ function Test-GetDatabaseInternal  ($location = "southeastasia")
 	.SYNOPSIS
 	Tests Getting a database
 #>
-function Test-GetDatabaseWithBackupStorageRedundancy ($location = "southeastasia")
+function Test-GetDatabaseWithBackupStorageRedundancy ($location = "westeurope")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -979,7 +979,7 @@ function Test-GetDatabaseWithMaintenanceConfigurationId
 	.SYNOPSIS
 	Tests creating a database with ledger enabled
 #>
-function Test-DatabaseCreateWithLedgerEnabled ($location = "eastus2euap")
+function Test-DatabaseCreateWithLedgerEnabled ($location = "westeurope")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -1004,14 +1004,14 @@ function Test-DatabaseCreateWithLedgerEnabled ($location = "eastus2euap")
 #>
 function Test-RemoveDatabase
 {
-	Test-RemoveDatabaseInternal "southeastasia"
+	Test-RemoveDatabaseInternal "westeurope"
 }
 
 <#
 	.SYNOPSIS
 	Tests Deleting a database
 #>
-function Test-RemoveDatabaseInternal  ($location = "southeastasia")
+function Test-RemoveDatabaseInternal  ($location = "westeurope")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -1071,7 +1071,7 @@ function Test-CancelDatabaseOperation
 function Test-CancelDatabaseOperationInternal
 {
 	# Setup
-	$location = Get-Location "southeastasia"
+	$location = Get-Location "Microsoft.Sql" "servers"  "west europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 

@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "HttpTrigger".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("HttpTrigger", "HttpTrigger", global::System.Management.Automation.CompletionResultType.ParameterValue, "HttpTrigger");
+                yield return new global::System.Management.Automation.CompletionResult("'HttpTrigger'", "HttpTrigger", global::System.Management.Automation.CompletionResultType.ParameterValue, "HttpTrigger");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unknown", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
+                yield return new global::System.Management.Automation.CompletionResult("'Unknown'", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
             }
         }
     }

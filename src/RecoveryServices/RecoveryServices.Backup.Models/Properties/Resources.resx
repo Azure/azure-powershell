@@ -566,13 +566,13 @@ Please contact Microsoft for further assistance.</value>
     <value>Please provide the target of the restore operation using the switch -OriginalWorkloadRestore or -AlternateWorkloadRestore</value>
   </data>
   <data name="InstantRPRetentionDaysException" xml:space="preserve">
-    <value>For SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly</value>
+    <value>For Standard policy SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly</value>
   </data>
   <data name="RetentionDurationCountInDaysInvalidException" xml:space="preserve">
     <value>RetentionDuration in Days should be from 7 - 9999</value>
   </data>
   <data name="ProtectedItemsCountExceededException" xml:space="preserve">
-    <value>Cannot configure backup for more than 1000 VMs per policy</value>
+    <value>Cannot configure backup for more than 100 VMs per policy</value>
   </data>
   <data name="SoftdeleteNotImplementedException" xml:space="preserve">
     <value>Undo-deletion is only supported for AzureVMs. This method is not supported for other workloads.</value>
@@ -678,5 +678,86 @@ Please contact Microsoft for further assistance.</value>
   </data>
   <data name="UnregisterContainer" xml:space="preserve">
     <value>Unregister container</value>
+  </data>
+  <data name="DailyRetentionPointsLimitExceeded" xml:space="preserve">
+    <value>Number of restore points are more than {0}, please reduce the retention duration count for Daily Schedule or reduce number of backups per day</value>
+  </data>
+  <data name="HourlyScheduleNullValueException" xml:space="preserve">
+    <value>ScheduleInterval, ScheduleWindowStartTime, ScheduleWindowDuration, ScheduleRunTimeZone can't be null for Hourly policy</value>
+  </data>
+  <data name="InvalidLastBackupTime" xml:space="preserve">
+    <value>ScheduleWindowDuration should be less than or equal to (23:30 - ScheduleWindowStartTime)</value>
+  </data>
+  <data name="InvalidScheduleInterval" xml:space="preserve">
+    <value>Incorrect value for ScheduleInterval, allowed values are {0}</value>
+  </data>
+  <data name="InvalidScheduleWindowDuration" xml:space="preserve">
+    <value>ScheduleWindowDuration can't be lesser than ScheduleInterval and should exist in range from {0} to {1}</value>
+  </data>
+  <data name="ScheduleWindowStartTimeOutOfRange" xml:space="preserve">
+    <value>ScheduleWindowStartTime is out of range, valid range is from 00:00 to 19:30</value>
+  </data>
+  <data name="TargetParamsMissingException" xml:space="preserve">
+    <value>TargetVMName, TargetVNetName, TargetVNetResourceGroup, TargetSubnetName can't be empty for restoring to AlternateLocation with create new VM option</value>
+  </data>
+  <data name="TargetRGNotRequiredException" xml:space="preserve">
+    <value>TargetResourceGroupName parameter should be empty for OriginalLocation in-place restore</value>
+  </data>
+  <data name="EnhancedHourlyPolicyNotSupported" xml:space="preserve">
+    <value>Enhanced Hourly policy is currently not supported for WorkloadType AzureIaasVM. This will be supported soon</value>
+  </data>
+  <data name="EnhancedPolicyNotSupported" xml:space="preserve">
+    <value>Enhanced policy is only supported for workloadType AzureVM. Please provide correct PolicySubType and WorkloadType</value>
+  </data>
+  <data name="HourlyScheduleNotNull" xml:space="preserve">
+    <value>ScheduleInterval, ScheduleWindowStartTime, ScheduleWindowDuration must be empty for non-Hourly policy</value>
+  </data>
+  <data name="NonHourlyAttributesNotNull" xml:space="preserve">
+    <value>ScheduleRunTimes and ScheduleRunDays must be empty for Hourly policy</value>
+  </data>
+  <data name="SnapshotRetentionOutOfRange" xml:space="preserve">
+    <value>For Enhanced policy SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 30. For weekly backup policies, the minimum allowed value is 5. Please set the value accordingly</value>
+  </data>
+  <data name="StandardHourlyPolicyNotSupported" xml:space="preserve">
+    <value>Standard Hourly policy is not supported for WorkloadType AzureIaasVM, please try with Enhanced policy or different schedule frequency: Daily, Weekly</value>
+  </data>
+  <data name="StandardHourlyScheduleNotSupported" xml:space="preserve">
+    <value>Standard Hourly schedule is not supported for WorkloadType AzureVM</value>
+  </data>
+  <data name="UnexpectedParamScheduleRunFrequency" xml:space="preserve">
+    <value>ScheduleRunFrequency parameter is only expected for WorkloadTypes: AzureVM, AzureFiles</value>
+  </data>
+  <data name="WeeklyScheduleNotSupported" xml:space="preserve">
+    <value>Weekly ScheduleRunFrequency isn't supported for WorkloadType: AzureFiles</value>
+  </data>
+  <data name="WindowDurationLessThanInterval" xml:space="preserve">
+    <value>ScheduleWindowDuration can't be less than ScheduleInterval for Hourly policy</value>
+  </data>
+  <data name="WindowStartTimeNotInUTC" xml:space="preserve">
+    <value>ScheduleWindowStartTime in Hourly schedule policy should be in UTC time, however policy can be created in a different time zone by providing the timezone in ScheduleRunTimeZone attribute</value>
+  </data>
+  <data name="InvalidPolicyForTrustedVMProtection" xml:space="preserve">
+    <value>Trusted VM can only be protected using Enhanced policy. Please provide a valid AzureVM Enhanced policy</value>
+  </data>
+  <data name="ProtectedItemURICantBeNull" xml:space="preserve">
+    <value>ProtectedItemURI can't be null as the operation is protected with ResourceGuard</value>
+  </data>
+  <data name="PolicyUpdateNotCritical" xml:space="preserve">
+    <value>Operation not critical, please try without the Token parameter. MUA currently only protects reducing or disabling retention times</value>
+  </data>
+  <data name="UnexpectedParameterToken" xml:space="preserve">
+    <value>{0} is not protected via MUA, either protect or try without the Token parameter</value>
+  </data>
+  <data name="BackupConfigUpdateNotCritical" xml:space="preserve">
+    <value>Operation not critical, please try without the Token parameter. MUA currently protects disabling SoftDelete or SecurityFeatures only when it was previously enabled</value>
+  </data>
+  <data name="ResourceGuardMappingNotFound" xml:space="preserve">
+    <value>ResourceGuardMapping not found</value>
+  </data>
+  <data name="DisableWithRetainBackupNotCrititcal" xml:space="preserve">
+    <value>Invalid parameter Token: Stop protection with retain backup data is not MUA protected</value>
+  </data>
+  <data name="CRRNotSupportedWIthCSR" xml:space="preserve">
+    <value>Cross region restore is not supported along with cross subscription restore, please try passing either RestoreToSecondaryRegion or TargetSubscriptionId parameter but not both</value>
   </data>
 </root>

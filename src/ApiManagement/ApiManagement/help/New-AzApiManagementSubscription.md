@@ -43,13 +43,13 @@ This command subscribes an existing user to a product.
 ### Example 2: Create a subscription for all Api Scope
 ```powershell
 $apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-New-AzApiManagementSubscription -Context $context -Scope "/apis" -Name "GlobalApiScope"
+New-AzApiManagementSubscription -Context $apimContext -Scope "/apis" -Name "GlobalApiScope"
 ```
 
 ### Example 3: Create a subscription for Product Scope
 ```powershell
 $apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-New-AzApiManagementSubscription -Context $context -Scope "/products/starter" -Name "UnlimitedProductSub"
+New-AzApiManagementSubscription -Context $apimContext -Scope "/products/starter" -Name "UnlimitedProductSub"
 ```
 
 ## PARAMETERS
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ### -PrimaryKey
 Specifies the subscription primary key.
 If this parameter is not specified the key is generated automatically.
-This parameter must be 1 to 300 characters long.
+This parameter must be 1 to 256 characters long.
 
 ```yaml
 Type: System.String
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 ### -SecondaryKey
 Specifies the subscription secondary key.
 This parameter is generated automatically if it is not specified.
-This parameter must be 1 to 300 characters long.
+This parameter must be 1 to 256 characters long.
 
 ```yaml
 Type: System.String

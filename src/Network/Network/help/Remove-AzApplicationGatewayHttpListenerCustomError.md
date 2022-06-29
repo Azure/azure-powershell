@@ -25,7 +25,7 @@ The **Remove-AzApplicationGatewayCustomError** cmdlet removes a custom error fro
 
 ### Example 1: Removes custom error from a http listener
 ```powershell
-PS C:\> $updatedlistener = Remove-AzApplicationGatewayCustomError -HttpListener $listener01 -StatusCode HttpStatus502
+$updatedlistener = Remove-AzApplicationGatewayCustomError -HttpListener $listener01 -StatusCode HttpStatus502
 ```
 
 This command removes the custom error of http status code 502 from the http listener $listener01, and return the updated listener.

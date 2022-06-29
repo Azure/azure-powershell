@@ -43,14 +43,14 @@ Removes key credentials or password credentials for an service principal.
 
 ### Example 1: Remove service principal credentials by key id
 ```powershell
-PS C:\> Remove-AzADSpCredential -DisplayName $name -KeyId $keyid
+Remove-AzADSpCredential -DisplayName $name -KeyId $keyid
 ```
 
 Remove service principal credentials by key id
 
 ### Example 2: Remove all credentials from service principal
 ```powershell
-PS C:\> Get-AzADServicePrincipal -DisplayName $name | Remove-AzADSpCredential
+Get-AzADServicePrincipal -DisplayName $name | Remove-AzADSpCredential
 ```
 
 Remove all credentials from service principal
@@ -216,7 +216,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal object, could be used as pipeline input.
+SERVICEPRINCIPALOBJECT `<IMicrosoftGraphServicePrincipal>`: The service principal object, could be used as pipeline input.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

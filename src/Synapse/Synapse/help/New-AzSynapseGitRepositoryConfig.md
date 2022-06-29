@@ -25,10 +25,10 @@ This **New-AzSynapseGitRepositoryConfig** cmdlets creates a Git repository confi
 
 ### Example 1
 ```powershell
-PS C:\> $config = New-AzSynapseGitRepositoryConfig -RepositoryType GitHub -AccountName ContosoAccount -RepositoryName ContosoRepo -CollaborationBranch main
-PS C:\> $password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
-PS C:\> $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
-PS C:\> New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -AsJob -GitRepository $config
+$config = New-AzSynapseGitRepositoryConfig -RepositoryType GitHub -AccountName ContosoAccount -RepositoryName ContosoRepo -CollaborationBranch main
+$password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+$creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
+New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -AsJob -GitRepository $config
 ```
 
 The first command creates a Git repository configuration. Then the rest methods uses the configuration to creates a new Synapse workspace.

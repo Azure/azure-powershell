@@ -38,21 +38,21 @@ Specify the rollout by its name and resource group name. Alternately, you can pr
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout
+Remove-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout
 ```
 
 This command deletes a rollout named ContosoRollout in the ContosoResourceGroup.
 
 ### Example 2: Delete a rollout using the resource identifier
 ```powershell
-PS C:\> Remove-AzDeploymentManagerRollout -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/rollouts/ContosoRollout"
+Remove-AzDeploymentManagerRollout -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/rollouts/ContosoRollout"
 ```
 
 This command deletes a rollout named ContosoRollout in the ContosoResourceGroup.
 
 ### Example 3: Delete a rollout using the rollout object.
 ```powershell
-PS C:\> Remove-AzDeploymentManagerRollout -InputObject $rolloutObject
+Remove-AzDeploymentManagerRollout -InputObject $rolloutObject
 ```
 
 This command deletes a rollout whose name and ResourceGroup match the Name and ResourceGroupName properties of the $rolloutObject, respectively.

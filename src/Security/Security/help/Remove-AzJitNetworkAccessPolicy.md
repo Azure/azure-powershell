@@ -38,7 +38,7 @@ After this action a user will not be able to request temporary network connectio
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzJitNetworkAccessPolicy -ResourceGroupName "myService1" -Location "centralus" -Name "default"
+Remove-AzJitNetworkAccessPolicy -ResourceGroupName "myService1" -Location "centralus" -Name "default"
 ```
 
 Deletes a Just In Time network access policy.

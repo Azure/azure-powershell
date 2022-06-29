@@ -33,12 +33,14 @@ Update a workspace.
 
 ### Example 1: Update a Windows Virtual Desktop Workspace by name
 ```powershell
-PS C:\> Update-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
+Update-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `
                         -FriendlyName 'Friendly Name' `
                         -ApplicationGroupReference "/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupName1","/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupName2" `
                         -Description 'Description'
+```
 
+```output
 Location   Name                 Type
 --------   ----                 ----
 eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
@@ -236,7 +238,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+INPUTOBJECT `<IDesktopVirtualizationIdentity>`: Identity Parameter
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group

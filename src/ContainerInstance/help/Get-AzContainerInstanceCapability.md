@@ -24,8 +24,10 @@ Get the list of CPU/memory/GPU capabilities of a region.
 
 ### Example 1: Get the list of capabilities of the location
 ```powershell
-PS C:\> Get-AzContainerInstanceCapability -Location eastus
+Get-AzContainerInstanceCapability -Location eastus
+```
 
+```output
 Gpu  IPAddressType Location OSType       ResourceType   
 ---  ------------- -------- ------       ------------   
 None Public        eastus   NotSpecified containerGroups

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Description for Validates a particular custom domain can be added to a static site.

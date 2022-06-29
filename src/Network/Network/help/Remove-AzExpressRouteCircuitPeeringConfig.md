@@ -25,7 +25,7 @@ peering configuration.
 ## EXAMPLES
 
 ### Example 1: Remove a peering configuration from an ExpressRoute circuit
-```
+```powershell
 $circuit = Get-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
 Remove-AzExpressRouteCircuitPeeringConfig -Name 'AzurePrivatePeering' -ExpressRouteCircuit $circuit
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit

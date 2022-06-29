@@ -24,12 +24,12 @@ The **Remove-AzExpressRouteCircuit** cmdlet removes an ExpressRoute circuit.
 ## EXAMPLES
 
 ### Example 1: Delete an ExpressRoute circuit
-```
+```powershell
 Remove-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
 ```
 
 ### Example 2: Delete an ExpressRoute circuit using the pipeline
-```
+```powershell
 Get-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg | Remove-AzExpressRouteCircuit
 ```
 

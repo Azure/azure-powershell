@@ -46,30 +46,30 @@ The **Update-AzSynapseSqlPool** cmdlet updates an Azure Synapse Analytics SQL po
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -Tag @{'key'='value'} -PerformanceLevel DW300c
+Update-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -Tag @{'key'='value'} -PerformanceLevel DW300c
 ```
 
 This command updates an Azure Synapse Analytics SQL pool.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Update-AzSynapseSqlPool -Name ContosoSqlPool -Tag @{'key'='value1'}
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Update-AzSynapseSqlPool -Name ContosoSqlPool -Tag @{'key'='value1'}
 ```
 
 This command updates an Azure Synapse Analytics SQL pool through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $pool = Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
-PS C:\> $pool | Update-AzSynapseSqlPool -Tag @{'key'='value2'}
+$pool = Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+$pool | Update-AzSynapseSqlPool -Tag @{'key'='value2'}
 ```
 
 This command updates an Azure Synapse Analytics SQL pool through pipeline.
 
 ### Example 4
 ```powershell
-PS C:\> Update-AzSynapseSqlPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd3/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlPools/ContosoSqlPool -Tag @{'key'='value3'}
+Update-AzSynapseSqlPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd3/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlPools/ContosoSqlPool -Tag @{'key'='value3'}
 ```
 
 This command updates an Azure Synapse Analytics SQL pool with resource ID.

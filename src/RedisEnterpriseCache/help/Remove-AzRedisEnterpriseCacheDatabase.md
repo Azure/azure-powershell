@@ -32,7 +32,10 @@ Deletes a single database in a Redis Enterprise cache.
 
 ### Example 1: Remove a database in a Redis Enterprise cache and return the result
 ```powershell
-PS C:\> Remove-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -PassThru
+Remove-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -PassThru
+```
+
+```output
 True
 ```
 
@@ -40,7 +43,7 @@ This command removes a database in a Redis Enterprise cache and displays whether
 
 ### Example 2: Remove a database in a Redis Enterprise cache and do not display the result
 ```powershell
-PS C:\> Remove-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
+Remove-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
 ```
 
 This command removes a database in a Redis Enterprise cache.
@@ -221,7 +224,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
+INPUTOBJECT `<IRedisEnterpriseCacheIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the RedisEnterprise cluster.
   - `[DatabaseName <String>]`: The name of the database.
   - `[Id <String>]`: Resource identity path

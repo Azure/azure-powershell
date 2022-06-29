@@ -20,8 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
-using System.Management.Automation.Runspaces;
-using ProgressRecord = Microsoft.WindowsAzure.Commands.Sync.ProgressRecord;
+using ProgressRecord = System.Management.Automation.ProgressRecord;
 using Rsrc = Microsoft.Azure.Commands.Compute.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Compute.Models
@@ -29,14 +28,11 @@ namespace Microsoft.Azure.Commands.Compute.Models
     public class PSSyncOutputEvents : ISyncOutputEvents, IDisposable
     {
         private readonly PSCmdlet cmdlet;
-        private Runspace runspace;
         private bool disposed;
 
         public PSSyncOutputEvents(PSCmdlet cmdlet)
         {
             this.cmdlet = cmdlet;
-            this.runspace = RunspaceFactory.CreateRunspace(this.cmdlet.Host);
-            this.runspace.Open();
         }
 
         private static string FormatDuration(TimeSpan ts)
@@ -48,7 +44,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             return String.Format(Rsrc.PSSyncOutputEventsFormatDuration, ts.Days, ts.Hours, ts.Minutes, ts.Seconds);
         }
 
-        public void ProgressCopyStatus(ProgressRecord record)
+        public void ProgressCopyStatus(WindowsAzure.Commands.Sync.ProgressRecord record)
         {
             ProgressCopyStatus(record.PercentComplete, record.AvgThroughputMbPerSecond, record.RemainingTime);
         }
@@ -64,7 +60,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             LogMessage(Rsrc.PSSyncOutputEventsElapsedTimeForCopy, FormatDuration(elapsed));
         }
 
-        public void ProgressUploadStatus(ProgressRecord record)
+        public void ProgressUploadStatus(WindowsAzure.Commands.Sync.ProgressRecord record)
         {
             ProgressUploadStatus(record.PercentComplete, record.AvgThroughputMbPerSecond, record.RemainingTime);
         }
@@ -80,24 +76,21 @@ namespace Microsoft.Azure.Commands.Compute.Models
                                         precentComplete,
                                         FormatDuration(remainingTime),
                                         avgThroughputMbps);
-            var progressCommand = String.Format(@"Write-Progress -Id {0} -Activity '{1}' -Status '{2}' -SecondsRemaining {3} -PercentComplete {4}", activityId, activity, message, (int)remainingTime.TotalSeconds, (int)precentComplete);
-            using (var ps = System.Management.Automation.PowerShell.Create())
-            {
-                ps.Runspace = runspace;
-                ps.AddScript(progressCommand);
-                ps.Invoke();
-            }
+            ProgressRecord progressRecord = new ProgressRecord(activityId, activity, message);
+            progressRecord.SecondsRemaining = (int)remainingTime.TotalSeconds;
+            progressRecord.PercentComplete = (int)precentComplete;
+
+            cmdlet.WriteProgress(progressRecord);
         }
 
         private void LogProgressComplete(int activityId, string activity)
         {
-            var progressCommand = String.Format(@"Write-Progress -Id {0} -Activity '{1}' -Status '{2}' -Completed", activityId, activity, Rsrc.PSSyncOutputEventsLogProgressCompleteCompleted);
-            using (var ps = System.Management.Automation.PowerShell.Create())
-            {
-                ps.Runspace = runspace;
-                ps.AddScript(progressCommand);
-                ps.Invoke();
-            }
+            ProgressRecord progressRecord = new ProgressRecord(activityId,
+                                                               activity,
+                                                               Rsrc.PSSyncOutputEventsLogProgressCompleteCompleted);
+            progressRecord.RecordType = ProgressRecordType.Completed;
+
+            cmdlet.WriteProgress(progressRecord);
         }
 
         public void MessageCreatingNewPageBlob(long pageBlobSize)
@@ -108,24 +101,13 @@ namespace Microsoft.Azure.Commands.Compute.Models
         private void LogMessage(string format, params object[] parameters)
         {
             var message = String.Format(format, parameters);
-            var verboseMessage = String.Format("Write-Host '{0}'", message);
-            using (var ps = System.Management.Automation.PowerShell.Create())
-            {
-                ps.Runspace = runspace;
-                ps.AddScript(verboseMessage);
-                ps.Invoke();
-            }
+            cmdlet.WriteVerbose(message);
         }
 
         private void LogError(Exception e)
         {
-            using (var ps = System.Management.Automation.PowerShell.Create())
-            {
-                ps.Runspace = runspace;
-                ps.AddCommand("Write-Error");
-                ps.AddParameter("ErrorRecord", new ErrorRecord(e, String.Empty, ErrorCategory.NotSpecified, null));
-                ps.Invoke();
-            }
+            ErrorRecord errorRecord = new ErrorRecord(e, String.Empty, ErrorCategory.NotSpecified, null);
+            cmdlet.WriteError(errorRecord);
         }
 
         public void MessageResumingUpload()
@@ -139,7 +121,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             LogMessage(Rsrc.PSSyncOutputEventsElapsedTimeForUpload, FormatDuration(elapsed));
         }
 
-        public void ProgressDownloadStatus(ProgressRecord record)
+        public void ProgressDownloadStatus(WindowsAzure.Commands.Sync.ProgressRecord record)
         {
             ProgressDownloadStatus(record.PercentComplete, record.AvgThroughputMbPerSecond, record.RemainingTime);
         }
@@ -155,7 +137,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             LogMessage(Rsrc.PSSyncOutputEventsElapsedTimeForDownload, FormatDuration(elapsed));
         }
 
-        public void ProgressOperationStatus(ProgressRecord record)
+        public void ProgressOperationStatus(WindowsAzure.Commands.Sync.ProgressRecord record)
         {
             ProgressOperationStatus(record.PercentComplete, record.AvgThroughputMbPerSecond, record.RemainingTime);
         }
@@ -231,89 +213,70 @@ namespace Microsoft.Azure.Commands.Compute.Models
         private void LogDebug(string format, params object[] parameters)
         {
             var message = String.Format(format, parameters);
-            var debugMessage = String.Format("Write-Debug -Message '{0}'", message);
-            using (var ps = System.Management.Automation.PowerShell.Create())
-            {
-                ps.Runspace = runspace;
-                ps.AddScript(debugMessage);
-                ps.Invoke();
-            }
+            cmdlet.WriteDebug(message);
         }
 
         public void ProgressEmptyBlockDetection(int processedRangeCount, int totalRangeCount)
         {
-            using (var ps = System.Management.Automation.PowerShell.Create())
+            ProgressRecord progressRecord = new ProgressRecord(2,
+                                                               Rsrc.PSSyncOutputEventsProgressEmptyBlockDetection,
+                                                               Rsrc.PSSyncOutputEventsEmptyBlockDetectionDetecting);
+
+            if (processedRangeCount >= totalRangeCount)
             {
-                if (processedRangeCount >= totalRangeCount)
-                {
-
-                    var progressCommand1 = String.Format(@"Write-Progress -Id {0} -Activity '{1}' -Status '{2}' -Completed", 2, Rsrc.PSSyncOutputEventsProgressEmptyBlockDetection, Rsrc.PSSyncOutputEventsEmptyBlockDetectionCompleted);
-                    ps.Runspace = runspace;
-                    ps.AddScript(progressCommand1);
-                    ps.Invoke();
-                    return;
-                }
-
-                var progressCommand = String.Format(@"Write-Progress -Id {0} -Activity '{1}' -Status '{2}' -SecondsRemaining {3} -PercentComplete {4}", 2, Rsrc.PSSyncOutputEventsProgressEmptyBlockDetection, Rsrc.PSSyncOutputEventsEmptyBlockDetectionDetecting, -1, ((double)processedRangeCount / totalRangeCount) * 100);
-                ps.Runspace = runspace;
-                ps.AddScript(progressCommand);
-                ps.Invoke();
+                progressRecord.RecordType = ProgressRecordType.Completed;
+                progressRecord.StatusDescription = Rsrc.PSSyncOutputEventsEmptyBlockDetectionCompleted;
             }
+            else
+            {
+                progressRecord.PercentComplete = (int)((double)processedRangeCount / totalRangeCount * 100);
+            }
+
+            cmdlet.WriteProgress(progressRecord);
         }
 
         public void ProgressCopy(double percentageDone)
         {
-            using (var ps = System.Management.Automation.PowerShell.Create())
+            var status = String.Format("{0}% Complete", (int)percentageDone);
+            ProgressRecord progressRecord = new ProgressRecord(0,
+                                                               "Making a copy of the VHD file before resizing",
+                                                               status);
+
+            if (percentageDone >= 100.0)
             {
-                if (percentageDone >= 100.0)
-                {
-
-                    var progressCommand1 = String.Format(@"Write-Progress -Activity 'Making a Copy of the VHD file before resizing' -Status '100% Complete' -Completed");
-                    ps.Runspace = runspace;
-                    ps.AddScript(progressCommand1);
-                    ps.Invoke();
-                    return;
-                }
-
-                var progressCommand = String.Format(@"Write-Progress -Activity 'Making a Copy of the VHD file before resizing' -PercentComplete {0} -Status '{1}% Complete' ", percentageDone, (int)percentageDone);
-                ps.Runspace = runspace;
-                ps.AddScript(progressCommand);
-                ps.Invoke();
+                progressRecord.RecordType = ProgressRecordType.Completed;
+                progressRecord.StatusDescription = "100% Complete";
             }
+            else
+            {
+                progressRecord.PercentComplete = (int)percentageDone;
+            }
+
+            cmdlet.WriteProgress(progressRecord);
         }
 
         public void ProgressHyperV(ushort percentComplete, string message)
         {
-            int percentCompleteInt = Convert.ToInt32(percentComplete);
-            using (var ps = System.Management.Automation.PowerShell.Create())
+            var status = String.Format("{0}% Complete", percentComplete);
+            ProgressRecord progressRecord = new ProgressRecord(0, message, status);
+
+            if (percentComplete >= 100)
             {
-                if (percentCompleteInt >= 100)
-                {
-
-                    var progressCommand1 = String.Format(@"Write-Progress -Activity '{0}' -Status '100% Complete' -Completed", message);
-                    ps.Runspace = runspace;
-                    ps.AddScript(progressCommand1);
-                    ps.Invoke();
-                    return;
-                }
-
-                var progressCommand = String.Format(@"Write-Progress -Activity '{0}' -PercentComplete {1} -Status '{2}% Complete' ", message, percentCompleteInt, percentCompleteInt);
-                ps.Runspace = runspace;
-                ps.AddScript(progressCommand);
-                ps.Invoke();
+                progressRecord.RecordType = ProgressRecordType.Completed;
+                progressRecord.StatusDescription = "100% Complete";
             }
+            else
+            {
+                progressRecord.PercentComplete = percentComplete;
+            }
+
+            cmdlet.WriteProgress(progressRecord);
         }
 
         public void WriteVerboseWithTimestamp(string message, params object[] args)
         {
             var messageWithTimeStamp = string.Format(CultureInfo.CurrentCulture, "{0:T} - {1}", DateTime.Now, string.Format(message, args));
-            var progressCommand = String.Format(@"Write-Verbose -Message {0}", messageWithTimeStamp);
-            using (var ps = System.Management.Automation.PowerShell.Create())
-            {
-                ps.Runspace = runspace;
-                ps.AddScript(progressCommand);
-                ps.Invoke();
-            }
+            cmdlet.WriteVerbose(messageWithTimeStamp);
         }
 
 
@@ -327,10 +290,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             if (!disposed)
             {
-                if (disposing)
-                {
-                    runspace.Dispose();
-                }
                 this.disposed = true;
             }
         }

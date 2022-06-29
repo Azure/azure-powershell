@@ -44,13 +44,14 @@ The Remove-AzAvailabilityGroupListener cmdlet deletes an Availability Group List
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzAvailabilityGroupListener -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01 -Name AgListener01
+Remove-AzAvailabilityGroupListener -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01 -Name AgListener01
 ```
 
+```output
 Name         ResourceGroupName GroupName    AvailabilityGroupName
 ----         ----------------- ---------    ---------------------
 AgListener01 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
-
+```
 Deletes the Availability Group Listener AgListener01 in the Availability Group AvailabilityGroup01.
 
 ## PARAMETERS

@@ -23,15 +23,15 @@ Enable-AzStackHCIAttestation configures the host and enables specified guests fo
 ## EXAMPLES
 
 ### EXAMPLE 1
-```poweshell
-C:\PS\>Enable-AzStackHCIAttestation -AddVM
+```powershell
+Enable-AzStackHCIAttestation -AddVM
 ```
 
 Invoking on one of the cluster node.
 
 ### EXAMPLE 2
 ```powershell
-C:\PS\>Enable-AzStackHCIAttestation -ComputerName "host1" -AddVM
+Enable-AzStackHCIAttestation -ComputerName "host1" -AddVM
 ```
 
 Invoking from WAC/Management node and adding all existing VMs cluster-wide

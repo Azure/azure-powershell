@@ -25,9 +25,11 @@ The **Stop-AzSqlDatabaseActivity** cmdlet cancels the asynchronous updates opera
 ## EXAMPLES
 
 ### Example 1: Cancel the asynchronous updates operation on the database
+```powershell
+Stop-AzSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -OperationId af97005d-9243-4f8a-844e-402d1cc855f5
 ```
-PS C:\>Stop-AzSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -OperationId af97005d-9243-4f8a-844e-402d1cc855f5
 
+```output
 OperationId     : af97005d-9243-4f8a-844e-402d1cc855f5
 ServerName      : Server01
 DatabaseName    : Database01

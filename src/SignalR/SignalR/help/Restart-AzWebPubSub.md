@@ -31,18 +31,18 @@ Operation to restart a resource.
 
 ### Example 1: Restart a Web PubSub resource
 ```powershell
-PS C:\> Restart-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps
+Restart-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps
 ```
 
 
 
 ### Example 2: Restart a Web PubSub resource with identity
 ```powershell
-PS C:\> $identity = @{ResourceGroupName = 'psdemo'
+$identity = @{ResourceGroupName = 'psdemo'
 ResourceName = 'psdemo-wps'
 SubscriptionId = $(Get-AzContext).Subscription.Id }
 
-PS C:\> $identity | Restart-AzWebPubSub
+$identity | Restart-AzWebPubSub
 ```
 
 
@@ -223,7 +223,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+INPUTOBJECT `<IWebPubSubIdentity>`: Identity Parameter
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region

@@ -25,15 +25,15 @@ If you do specify a saved search ID, then the saved search corresponding to that
 ## EXAMPLES
 
 ### Example 1: Get all saved searches for a workspace
-```
-PS C:\>Get-AzOperationalInsightsSavedSearch -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
+```powershell
+Get-AzOperationalInsightsSavedSearch -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
 ```
 
 This command gets all of the saved resources associated with a workspace.
 
 ### Example 2: Get a specific saved search by ID
-```
-PS C:\>Get-AzOperationalInsightsSavedSearch -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -SavedSearchId "ContosoSavedSearchId"
+```powershell
+Get-AzOperationalInsightsSavedSearch -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -SavedSearchId "ContosoSavedSearchId"
 ```
 
 This command gets a specific saved search by its ID.

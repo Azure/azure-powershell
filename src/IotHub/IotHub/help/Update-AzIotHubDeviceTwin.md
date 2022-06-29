@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/update-aziothubdevicetwin
@@ -39,32 +39,32 @@ Updates or replaces a device twin. See https://docs.microsoft.com/azure/iot-hub/
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzIotHubDeviceTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -Tag $updatedTag -Desired $updatedDesired -Partial
+Update-AzIotHubDeviceTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -Tag $updatedTag -Desired $updatedDesired -Partial
 ```
 
 Returns the updated device twin object.
 
 ### Example 2
 ```powershell
-PS C:\> Update-AzIotHubDeviceTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -Desired $updatedDesired -Partial
+Update-AzIotHubDeviceTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -Desired $updatedDesired -Partial
 ```
 
 Returns the device twin object with updated desired properties.
 
 ### Example 3
 ```powershell
-PS C:\> Update-AzIotHubDeviceTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -Tag $updatedTag -Partial
+Update-AzIotHubDeviceTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -Tag $updatedTag -Partial
 ```
 
 Returns the device twin object with updated tags property.
 
 ### Example 4
 ```powershell
-PS C:\> $updatedTag = @{}
-PS C:\> $updatedTag.add("key0","value0")
-PS C:\> $updatedDesired =@{}
-PS C:\> $updatedDesired.add("desiredkey","desiredvalue")
-PS C:\> Update-AzIotHubDeviceTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -Tag $updatedTag -Desired $updatedDesired
+$updatedTag = @{}
+$updatedTag.add("key0","value0")
+$updatedDesired =@{}
+$updatedDesired.add("desiredkey","desiredvalue")
+Update-AzIotHubDeviceTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -Tag $updatedTag -Desired $updatedDesired
 ```
 
 Returns the replaced device twin object.

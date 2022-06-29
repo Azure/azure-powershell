@@ -25,8 +25,8 @@ The **Set-AzApplicationGatewayCustomError** cmdlet updates a custom error in a h
 
 ### Example 1: Updates a custom error from a http listener
 ```powershell
-PS C:\> $customError502Url = "https://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
-PS C:\> $updatedlistener = Set-AzApplicationGatewayCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url
+$customError502Url = "https://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
+$updatedlistener = Set-AzApplicationGatewayCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url
 ```
 
 This command updates the custom error of http status code 502 in the http listener $listener01, and returns the updated listener.

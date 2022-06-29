@@ -34,7 +34,10 @@ Operation to update an exiting Service.
 
 ### Example 1: Update Spring Cloud Service by name.
 ```powershell
-PS C:\> Update-AzSpringCloud -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service
+Update-AzSpringCloud -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service
+```
+
+```output
 ConfigServerPropertiesErrorCode                  :
 ConfigServerPropertiesErrorMessage               :
 ConfigServerPropertyState                        : Succeeded
@@ -84,7 +87,10 @@ Update Spring Cloud Service by name.
 
 ### Example 2: Update Spring Cloud Service from pipe.
 ```powershell
-PS C:\> Get-AzSpringCloud -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service | Update-AzSpringCloud
+Get-AzSpringCloud -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service | Update-AzSpringCloud
+```
+
+```output
 ConfigServerPropertiesErrorCode                  :
 ConfigServerPropertiesErrorMessage               :
 ConfigServerPropertyState                        : Succeeded
@@ -398,7 +404,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+INPUTOBJECT `<ISpringCloudIdentity>`: Identity Parameter
   - `[AppName <String>]`: The name of the App resource.
   - `[BindingName <String>]`: The name of the Binding resource.
   - `[CertificateName <String>]`: The name of the certificate resource.

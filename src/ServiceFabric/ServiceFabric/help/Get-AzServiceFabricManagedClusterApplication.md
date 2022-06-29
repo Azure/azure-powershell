@@ -37,27 +37,27 @@ This cmdlet gets the managed application details in the specified resource group
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> Get-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+Get-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName
 ```
 
 This example gets the managed application resource details for the managed application "testApp".
 
 ### Example 2
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> Get-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+Get-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName
 ```
 
 This example gets a list of the managed applications under the cluster "testCluster".
 
 ### Example 3
 ```powershell
-PS C:\> $resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applications/testApp"
-PS C:\> Get-AzServiceFabricManagedClusterApplication -ResourceId $resourceId
+$resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applications/testApp"
+Get-AzServiceFabricManagedClusterApplication -ResourceId $resourceId
 ```
 
 This example will get the managed application details with the ARM Resource ID specified, if it doesn't find the resource it will throw an exception.

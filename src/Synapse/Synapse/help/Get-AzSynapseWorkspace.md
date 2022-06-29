@@ -30,28 +30,28 @@ The **Get-AzSynapseWorkspace** cmdlet gets information about an Azure Synapse An
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseWorkspace
+Get-AzSynapseWorkspace
 ```
 
 This command gets all the Azure Synapse Analytics workspaces under the current subscription.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup
+Get-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup
 ```
 
 This command gets all the Azure Synapse Analytics workspaces under the current subscription within the Resource Group ContosoResourceGroup.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzSynapseWorkspace -Name ContosoWorkspace
+Get-AzSynapseWorkspace -Name ContosoWorkspace
 ```
 
 This command gets the Azure Synapse Analytics workspace with the specified name.
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace
+Get-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace
 ```
 
 This command gets the Azure Synapse Analytics workspace with the specified resource ID.

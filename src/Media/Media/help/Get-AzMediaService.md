@@ -31,15 +31,15 @@ The **Get-AzMediaService** cmdlet gets information about a media service.
 ## EXAMPLES
 
 ### Example 1: Get all media services in a resource group
-```
-PS C:\>Get-AzMediaService -ResourceGroupName "ResourceGroup001"
+```powershell
+Get-AzMediaService -ResourceGroupName "ResourceGroup001"
 ```
 
 This command gets properties for all media services in the resource group named ResourceGroup001.
 
 ### Example 2: Get media service properties
-```
-PS C:\>Get-AzMediaService -ResourceGroupName "ResourceGroup002" -AccountName "MediaService1"
+```powershell
+Get-AzMediaService -ResourceGroupName "ResourceGroup002" -AccountName "MediaService1"
 ```
 
 This command gets the properties of the media service named MediaService1 that belongs to the resource group named ResourceGroup002.

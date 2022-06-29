@@ -95,19 +95,19 @@ Creates key credentials or password credentials for an service principal.
 
 ### Example 1: Create key credentials for service principal
 ```powershell
-PS C:\> $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
+$credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
                                  -Property @{'Key' = $cert;
                                  'Usage'       = 'Verify'; 
                                  'Type'        = 'AsymmetricX509Cert'
                                  }
-PS C:\> New-AzADSpCredential -ObjectId $Id -KeyCredentials $credential
+New-AzADSpCredential -ObjectId $Id -KeyCredentials $credential
 ```
 
 Create key credentials for service principal
 
 ### Example 2: Create password credentials for service principal
 ```powershell
-PS C:\> Get-AzADServicePrincipal -ApplicationId $appId | New-AzADSpCredential -StartDate $startDate -EndDate $endDate
+Get-AzADServicePrincipal -ApplicationId $appId | New-AzADSpCredential -StartDate $startDate -EndDate $endDate
 ```
 
 Create password credentials for service principal
@@ -329,7 +329,7 @@ PASSWORDCREDENTIALS <MicrosoftGraphPasswordCredential[]>: Password credentials a
   - `[KeyId <String>]`: The unique identifier for the password.
   - `[StartDateTime <DateTime?>]`: The date and time at which the password becomes valid. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
 
-SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal object, could be used as pipeline input.
+SERVICEPRINCIPALOBJECT `<IMicrosoftGraphServicePrincipal>`: The service principal object, could be used as pipeline input.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

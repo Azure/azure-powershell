@@ -23,8 +23,8 @@ The Get-AzApplicationGatewayProbeConfig cmdlet gets an existing health probe con
 ## EXAMPLES
 
 ### Example 1: Get an existing probe from an application gateway
-```
-PS C:\>Get-AzApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe02"
+```powershell
+Get-AzApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe02"
 ```
 
 This command gets the health probe named Probe02 from the application gateway named Gateway.

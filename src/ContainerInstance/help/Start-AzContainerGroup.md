@@ -33,15 +33,14 @@ Compute resources will be allocated and billing will start.
 
 ### Example 1: Start all containers in a container group
 ```powershell
-PS C:\> start-AzContainerGroup -Name test-cg -ResourceGroupName test-rg
+Start-AzContainerGroup -Name test-cg -ResourceGroupName test-rg
 ```
 
 This command starts all containers in a container group.
 
 ### Example 2: Start all containers in a container group by piping
 ```powershell
-PS C:\> Get-AzContainerGroup -Name test-cg -ResourceGroupName test-rg | Start-AzContainerGroup
-
+Get-AzContainerGroup -Name test-cg -ResourceGroupName test-rg | Start-AzContainerGroup
 ```
 
 This command starts all containers in a container group by piping.
@@ -221,7 +220,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
+INPUTOBJECT `<IContainerInstanceIdentity>`: Identity Parameter
   - `[ContainerGroupName <String>]`: The name of the container group.
   - `[ContainerName <String>]`: The name of the container instance.
   - `[Id <String>]`: Resource identity path

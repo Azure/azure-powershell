@@ -9,7 +9,7 @@ schema: 2.0.0
 # Get-AzAlertRule
 
 ## SYNOPSIS
-Gets alert rules.
+Gets classic alert rules.
 
 ## SYNTAX
 
@@ -32,29 +32,29 @@ Get-AzAlertRule -ResourceGroupName <String> -TargetResourceId <String> [-Detaile
 ```
 
 ## DESCRIPTION
-The **Get-AzAlertRule** cmdlet gets an alert rule by its name or URI, or all alert rules from a specified resource group.
+The **Get-AzAlertRule** cmdlet gets a classic alert rule by its name or URI, or all classic alert rules from a specified resource group.
 
 ## EXAMPLES
 
 ### Example 1: Get alert rules for a resource group
-```
-PS C:\>Get-AzAlertRule -ResourceGroup "Default-Web-CentralUS"
+```powershell
+Get-AzAlertRule -ResourceGroup "Default-Web-CentralUS"
 ```
 
 This command gets all of the alert rules for the resource group named Default-Web-CentralUS.
 The output does not contain details about the rules because the *DetailedOutput* parameter is not specified.
 
 ### Example 2: Get an alert rule by name
-```
-PS C:\>Get-AzAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8"
+```powershell
+Get-AzAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8"
 ```
 
 This command gets the alert rule named myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8.
 Because the *DetailedOutput* parameter is not specified, the output contains only basic information about the alert rule.
 
 ### Example 3: Get an alert rule by name with detailed output
-```
-PS C:\>Get-AzAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8" -DetailedOutput
+```powershell
+Get-AzAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8" -DetailedOutput
 ```
 
 This command gets the alert rule named myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8.

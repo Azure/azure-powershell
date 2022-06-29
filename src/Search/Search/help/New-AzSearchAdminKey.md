@@ -37,8 +37,9 @@ The **New-AzSearchAdminKey** cmdlet regenerates an admin key of the Azure Cognit
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSearchAdminKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -KeyKind Primary
-
+New-AzSearchAdminKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -KeyKind Primary
+```
+```output
 Confirm
 Are you sure you want to regenerate 'Primary' key for Search Service 'pstestazuresearch01'?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y

@@ -36,8 +36,11 @@ The **New-AzDataShareInvitation** cmdlet sends an invitation to the target consu
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzDataShareInvitation -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsInvitation" -TargetEmail "adstest@microsoft.com"
 ```
-PS C:\> New-AzDataShareInvitation -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsInvitation" -TargetEmail "adstest@microsoft.com"
+
+```output
 InvitationId     : 167e06ff-567f-4bc7-be0c-645a6de710f3
 InvitationStatus : Pending
 Sender           : adsprovider@microsoft.com

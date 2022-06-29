@@ -37,7 +37,7 @@ Deletes an existing IoT Central Application.
 
 ### Example 1 Delete and IoT Central Application
 ```powershell
-PS C:\> Remove-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName"
+Remove-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName"
 ```
 
 Deletes the provided IoT Central Application.

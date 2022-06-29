@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothub
@@ -30,22 +30,22 @@ You can view all IotHub instances in a subscription, or filter your results by a
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzIotHub
+```powershell
+Get-AzIotHub
 ```
 
 Gets all the IotHubs in the subscription.
 
 ### Example 2
-```
-PS C:\> Get-AzIotHub -ResourceGroupName "myresourcegroup"
+```powershell
+Get-AzIotHub -ResourceGroupName "myresourcegroup"
 ```
 
 Gets all the IotHubs in the subscription belonging to the resourcegroup named "myresourcegroup".
 
 ### Example 3
-```
-PS C:\> Get-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub"
+```powershell
+Get-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets information about the IotHub named "myiothub".

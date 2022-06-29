@@ -50,7 +50,7 @@ The **Update-AzNetAppFilesBackupPolicy** cmdlet modifies an ANF backup policy .
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyBackupPolicy" -DailyBackupsToKeep 2
+Update-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyBackupPolicy" -DailyBackupsToKeep 2
 ```
 
 This command changes the ANF backup policy "MyBackupPolicy" to have the given DailyBackupsToKeep.
@@ -301,3 +301,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetAppFilesSnapshotPolicy](./Get-AzNetAppFilesSnapshotPolicy.md)
+[New-AzNetAppFilesSnapshotPolicy](./New-AzNetAppFilesSnapshotPolicy.md)
+[Remove-AzNetAppFilesSnapshotPolicy](./Remove-AzNetAppFilesSnapshotPolicy.md)
+[Set-AzNetAppFilesSnapshotPolicy](./Set-AzNetAppFilesSnapshotPolicy.md)
+[Get-AzNetAppFilesSnapshot](./Get-AzNetAppFilesSnapshot.md)
+[New-AzNetAppFilesSnapshot](./New-AzNetAppFilesSnapshot.md)
+[Remove-AzNetAppFilesSnapshot](./Remove-AzNetAppFilesSnapshot.md)
+[Get-AzNetAppFilesVolume](./Get-AzNetAppFilesVolume.md)
+[New-AzNetAppFilesVolume](./New-AzNetAppFilesVolume.md)
+[Update-AzNetAppFilesVolume](./Update-AzNetAppFilesVolume.md)
+[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilesVolume.md)

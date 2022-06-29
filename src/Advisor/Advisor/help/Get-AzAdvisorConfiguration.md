@@ -28,7 +28,7 @@ ResourceGroup level configuration: There can be only one configuration for each 
 
 ### Example 1
 ```powershell
-$data = Get-AzAdvisorConfiguration
+Get-AzAdvisorConfiguration
 ```
 
 ```output
@@ -41,27 +41,6 @@ Id         : /subscriptions/{user_subscription}/providers/Microsoft.Advisor/conf
 Name       : {user_subscription}-{resourceGroupName}
 Properties : Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties
 Type       : Microsoft.Advisor/Configurations
-```
-
-```powershell
-$data[0].Properties
-```
-
-```output
-AdditionalProperties :
-Exclude              : False
-LowCpuThreshold      : 20
-```
-
-```powershell
-$data[1].Properties
-```
-
-```output
-AdditionalProperties :
-Exclude              : True
-LowCpuThreshold      : null
-
 ```
 Retrieves a list of Azure Advisor Configuration(s).
 

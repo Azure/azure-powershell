@@ -30,8 +30,11 @@ The **Update-AzRecoveryServicesAsrvCenter** cmdlet is updates discovery details 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Update-AzRecoveryServicesAsrvCenter -Account $fabric.fabricSpecificDetails.RunAsAccounts[1] -InputObject $vCenter
 ```
-PS C:\> Update-AzRecoveryServicesAsrvCenter -Account $fabric.fabricSpecificDetails.RunAsAccounts[1] -InputObject $vCenter
+
+```output
 Returns ASRJOB for update vCenter.
 ```
 

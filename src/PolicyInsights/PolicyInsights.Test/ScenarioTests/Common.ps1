@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,149 +16,190 @@
 .SYNOPSIS
 Gets test management group name
 #>
-function Get-TestManagementGroupName
-{
-   "azgovtest5"
+function Get-TestManagementGroupName {
+   # should be a parent of the test subscription
+   "AzGovPerfTest"
+}
+
+<#
+.SYNOPSIS
+Gets test subscription ID.
+#>
+function Get-TestSubscriptionId {
+   # Reminder: The subscription ID in the test context (created via PS command or by creating an env variable) should be the same as this subscription ID.
+   "086aecf4-23d6-4dfd-99a8-a5c6299f0322"
 }
 
 <#
 .SYNOPSIS
 Gets test resource group group name
 #>
-function Get-TestResourceGroupName
-{
-   "cheggpolicy"
+function Get-FirstTestResourceGroupName {
+   "PSTestRG1"
+}
+
+<#
+.SYNOPSIS
+Gets test resource group group name
+#>
+function Get-SecondTestResourceGroupName {
+   "PSTestRG2"
+}
+
+<#
+.SYNOPSIS
+Gets empty test resource group group name
+#>
+function Get-EmptyTestResourceGroupName {
+   "PSTestEmptyRG"
+}
+
+<#
+.SYNOPSIS
+Gets test resource name prefix
+#>
+function Get-TestResourceNamePrefix {
+   "pstests"
 }
 
 <#
 .SYNOPSIS
 Gets test resource id
 #>
-function Get-TestResourceId
-{
-   "/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourcegroups/cheggpolicy/providers/microsoft.keyvault/vaults/cheggkv"
+function Get-TestResourceId {
+   "/subscriptions/$(Get-TestSubscriptionId)/resourceGroups/$(Get-FirstTestResourceGroupName)/providers/Microsoft.Network/networkSecurityGroups/$(Get-TestResourceNamePrefix)1"
 }
 
 <#
 .SYNOPSIS
-Gets test policy set definition name
+Gets test modify policy definition name
 #>
-function Get-TestPolicySetDefinitionName
-{
-   "81811175-958c-478d-936a-d96e158a8c66"
+function Get-TestModifyPolicyDefinitionName {
+   "PSTestModifyDefinition"
 }
 
 <#
 .SYNOPSIS
-Gets test policy definition name
+Gets test DINE policy definition name
 #>
-function Get-TestPolicyDefinitionName
-{
-   "3520924f-7a65-4cbf-83e6-e2ed67bbf0da"
+function Get-TestDINEPolicyDefinitionName {
+   "PSTestDINEDefinition"
 }
 
 <#
 .SYNOPSIS
-Gets test policy assignment name
+Gets test audit policy definition name
 #>
-function Get-TestPolicyAssignmentName
-{
-   "1e4e70f9cd4846268b6998ee"
+function Get-TestAuditPolicyDefinitionName {
+   "PSTestAuditDefinition"
 }
 
 <#
 .SYNOPSIS
-Gets test resource group group name for resource group level policy assignment (for event tests)
+Gets test set definition name
 #>
-function Get-TestResourceGroupNameForPolicyAssignmentEvents
-{
-   "cheggpolicy"
+function Get-TestPolicySetDefinitionName {
+   "PSTestInitiative"
 }
 
 <#
 .SYNOPSIS
-Gets test policy assignment name (resource group level) (for event tests)
+Gets test DINE assignment name (subscription level)
 #>
-function Get-TestPolicyAssignmentNameResourceGroupLevelEvents
-{
-   "8a4555d353ed46bb856e9890"
-}
-
-<#
-.SYNOPSIS
-Gets test policy definition name for events
-#>
-function Get-TestPolicyDefinitionNameForEvents
-{
-   "926d9eb2-ac1e-4408-b27a-9c61a70f8ff8"
-}
-
-<#
-.SYNOPSIS
-Gets test resource group group name for resource group level policy assignment (for state tests)
-#>
-function Get-TestResourceGroupNameForPolicyAssignmentStates
-{
-   "cheggpolicy"
-}
-
-<#
-.SYNOPSIS
-Gets test policy assignment name (resource group level) (for state tests)
-#>
-function Get-TestPolicyAssignmentNameResourceGroupLevelStates
-{
-   "8a4555d353ed46bb856e9890"
-}
-
-<#
-.SYNOPSIS
-Gets test query interval start
-#>
-function Get-TestQueryIntervalStart
-{
-   "2020-03-24 00:00:00Z"
-}
-
-<#
-.SYNOPSIS
-Gets test query interval end
-#>
-function Get-TestQueryIntervalEnd
-{
-   "2020-03-30 00:00:00Z"
+function Get-TestSubscriptionDINEAssignmentName {
+   "PSTestDeployAssignmentSub"
 }
 
 <#
 .SYNOPSIS
 Gets the policy assignment used in remediation tests at subscription level and below
 #>
-function Get-TestRemediationSubscriptionPolicyAssignmentId
-{
-   "/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/Microsoft.Authorization/policyAssignments/fcddeb6113ec43798567dce2"
+function Get-TestRemediationSubscriptionPolicyAssignmentId {
+   "/subscriptions/$(Get-TestSubscriptionId)/providers/Microsoft.Authorization/policyAssignments/$(Get-TestSubscriptionDINEAssignmentName)"
+}
+
+<#
+.SYNOPSIS
+Gets test DINE assignment name (MG level)
+#>
+function Get-TestManagementGroupDINEAssignmentName {
+   "PSTestDeployAssignmentMG"
 }
 
 <#
 .SYNOPSIS
 Gets the policy assignment used in remediation tests at management group scope
 #>
-function Get-TestRemediationMgPolicyAssignmentId
-{
-   "/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/d80d743b97874fd3bfd1d539"
+function Get-TestRemediationMgPolicyAssignmentId {
+   "/providers/Microsoft.Management/managementGroups/$(Get-TestManagementGroupName)/providers/Microsoft.Authorization/policyAssignments/$(Get-TestManagementGroupDINEAssignmentName)"
+}
+
+<#
+.SYNOPSIS
+Gets test modify assignment name (subscription level)
+#>
+function Get-TestSubscriptionModifyAssignmentName {
+   "PSTestModifyAssignmentSub"
+}
+
+<#
+.SYNOPSIS
+Gets the policy assignment used in remediation tests at subscription level and below
+#>
+function Get-TestRemediationSubscriptionModifyPolicyAssignmentId {
+   "/subscriptions/$(Get-TestSubscriptionId)/providers/Microsoft.Authorization/policyAssignments/$(Get-TestSubscriptionModifyAssignmentName)"
+}
+
+<#
+.SYNOPSIS
+Gets test audit assignment name (subscription level)
+#>
+function Get-TestSubscriptionAuditAssignmentName {
+   "PSTestAuditAssignmentSub"
+}
+
+<#
+.SYNOPSIS
+Gets test audit assignment name (RG level)
+#>
+function Get-TestResourceGroupAuditAssignmentName {
+   "PSTestAuditAssignmentRG"
+}
+
+<#
+.SYNOPSIS
+Gets test audit assignment name (subscription level)
+#>
+function Get-TestSubscriptionAuditInitiativeAssignmentName {
+   "PSTestAuditInitiativeAssignmentSub"
+}
+
+<#
+.SYNOPSIS
+Gets test query interval start
+#>
+function Get-TestQueryIntervalStart {
+   "2022-01-08 00:00:00Z"
+}
+
+<#
+.SYNOPSIS
+Gets test query interval end
+#>
+function Get-TestQueryIntervalEnd {
+   "2022-01-13 02:00:00Z"
 }
 
 <#
 .SYNOPSIS
 Validates a list of policy events
 #>
-function Validate-PolicyEvents
-{
+function Validate-PolicyEvents {
    param([System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent]]]$policyEvents, [int]$count)
 
    Assert-True { $count -ge $policyEvents.Count }
    Assert-True { $policyEvents.Count -gt 0 }
-   Foreach($policyEvent in $policyEvents)
-   {
+   Foreach ($policyEvent in $policyEvents) {
       Validate-PolicyEvent $policyEvent
    }
 }
@@ -167,8 +208,7 @@ function Validate-PolicyEvents
 .SYNOPSIS
 Validates a policy event
 #>
-function Validate-PolicyEvent
-{
+function Validate-PolicyEvent {
    param([Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent]$policyEvent)
 
    Assert-NotNull $policyEvent
@@ -188,17 +228,15 @@ function Validate-PolicyEvent
 .SYNOPSIS
 Validates a list of policy states
 #>
-function Validate-PolicyStates
-{
+function Validate-PolicyStates {
    param(
       [System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]]]$policyStates,
-	  [int]$count,
-	  [switch]$expandPolicyEvaluationDetails = $false)
+      [int]$count,
+      [switch]$expandPolicyEvaluationDetails = $false)
 
    Assert-True { $count -ge $policyStates.Count }
    Assert-True { $policyStates.Count -gt 0 }
-   Foreach($policyState in $policyStates)
-   {
+   Foreach ($policyState in $policyStates) {
       Validate-PolicyState $policyState -expandPolicyEvaluationDetails:$expandPolicyEvaluationDetails
    }
 }
@@ -207,11 +245,10 @@ function Validate-PolicyStates
 .SYNOPSIS
 Validates a policy state
 #>
-function Validate-PolicyState
-{
+function Validate-PolicyState {
    param(
       [Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]$policyState,
-	  [switch]$expandPolicyEvaluationDetails = $false)
+      [switch]$expandPolicyEvaluationDetails = $false)
 
    Assert-NotNull $policyState
 
@@ -224,12 +261,10 @@ function Validate-PolicyState
    Assert-NotNullOrEmpty $policyState.PolicyDefinitionAction
    Assert-NotNullOrEmpty $policyState.ComplianceState
 
-   if ($expandPolicyEvaluationDetails -and $policyState.ComplianceState -eq "NonCompliant")
-   {
+   if ($expandPolicyEvaluationDetails -and $policyState.ComplianceState -eq "NonCompliant") {
       Assert-NotNull $policyState.PolicyEvaluationDetails
    }
-   else
-   {
+   else {
       Assert-Null $policyState.PolicyEvaluationDetails
    }
 }
@@ -238,8 +273,7 @@ function Validate-PolicyState
 .SYNOPSIS
 Validates a policy state summary
 #>
-function Validate-PolicyStateSummary
-{
+function Validate-PolicyStateSummary {
    param([Microsoft.Azure.Commands.PolicyInsights.Models.PolicyStateSummary]$policyStateSummary)
 
    Assert-NotNull $policyStateSummary
@@ -251,34 +285,31 @@ function Validate-PolicyStateSummary
    Assert-NotNull $policyStateSummary.PolicyAssignments
    Assert-True { $policyStateSummary.PolicyAssignments.Count -gt 0 } 
 
-   Foreach($policyAssignmentSummary in $policyStateSummary.PolicyAssignments)
-   {
+   Foreach ($policyAssignmentSummary in $policyStateSummary.PolicyAssignments) {
       Assert-NotNull $policyAssignmentSummary
 
       Assert-NotNullOrEmpty $policyAssignmentSummary.PolicyAssignmentId
 
       Assert-NotNull $policyAssignmentSummary.Results
       Validate-SummaryResults -results:$policyAssignmentSummary.Results -nonCompliantPoliciesAssertNull:$false
-	  Assert-NotNull $policyAssignmentSummary.PolicyDefinitions
-	  Assert-NotNull $policyAssignmentSummary.PolicyGroups
-	  Assert-True { $policyAssignmentSummary.PolicyGroups.Count -gt 0 }
+      Assert-NotNull $policyAssignmentSummary.PolicyDefinitions
+      Assert-NotNull $policyAssignmentSummary.PolicyGroups
+      Assert-True { $policyAssignmentSummary.PolicyGroups.Count -gt 0 }
 
       Assert-NotNull $policyAssignmentSummary.PolicyDefinitions
-      if ($policyAssignmentSummary.PolicyDefinitions.Count -gt 0)
-	  {
-		  Assert-True { ($policyAssignmentSummary.PolicyDefinitions | Where-Object { $_.Results.NonCompliantResources -gt 0 }).Count -eq $policyAssignmentSummary.Results.NonCompliantPolicies }
+      if ($policyAssignmentSummary.PolicyDefinitions.Count -gt 0) {
+         Assert-True { ($policyAssignmentSummary.PolicyDefinitions | Where-Object { $_.Results.NonCompliantResources -gt 0 }).Count -eq $policyAssignmentSummary.Results.NonCompliantPolicies }
 
-		  Foreach($policyDefinitionSummary in $policyAssignmentSummary.PolicyDefinitions)
-		  {
-			 Assert-NotNull $policyDefinitionSummary
-			 Assert-NotNullOrEmpty $policyDefinitionSummary.PolicyDefinitionId
-			 Assert-NotNullOrEmpty $policyDefinitionSummary.Effect
+         Foreach ($policyDefinitionSummary in $policyAssignmentSummary.PolicyDefinitions) {
+            Assert-NotNull $policyDefinitionSummary
+            Assert-NotNullOrEmpty $policyDefinitionSummary.PolicyDefinitionId
+            Assert-NotNullOrEmpty $policyDefinitionSummary.Effect
 
-			 Assert-NotNull $policyDefinitionSummary.PolicyDefinitionGroupNames
-			 Assert-NotNull $policyDefinitionSummary.Results
-			 Validate-SummaryResults -results:$policyDefinitionSummary.Results
-		  }
-	  }
+            Assert-NotNull $policyDefinitionSummary.PolicyDefinitionGroupNames
+            Assert-NotNull $policyDefinitionSummary.Results
+            Validate-SummaryResults -results:$policyDefinitionSummary.Results
+         }
+      }
    }
 }
 
@@ -286,19 +317,16 @@ function Validate-PolicyStateSummary
 .SYNOPSIS
 Validates a summary results
 #>
-function Validate-SummaryResults
-{
+function Validate-SummaryResults {
    param([Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults] $results,
-   [switch]$nonCompliantPoliciesAssertNull = $true
+      [switch]$nonCompliantPoliciesAssertNull = $true
    )
    
    Assert-NotNull $results.NonCompliantResources
-   if($nonCompliantPoliciesAssertNull)
-   {
+   if ($nonCompliantPoliciesAssertNull) {
       Assert-Null $results.NonCompliantPolicies
    }
-   else
-   {
+   else {
       Assert-NotNull $results.NonCompliantPolicies
    }
    Assert-NotNull $results.ResourceDetails
@@ -311,14 +339,13 @@ function Validate-SummaryResults
 .SYNOPSIS
 Validates a remediation
 #>
-function Validate-Remediation
-{
+function Validate-Remediation {
    param([Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation]$remediation)
 
    Assert-NotNull $remediation
-
    Assert-NotNull $remediation.CreatedOn
    Assert-NotNull $remediation.LastUpdatedOn
+   Assert-NotNull $remediation.CorrelationId
    Assert-True { $remediation.Id -like "*/providers/microsoft.policyinsights/remediations/*" }
    Assert-AreEqual "Microsoft.PolicyInsights/remediations" $remediation.Type
    Assert-NotNullOrEmpty $remediation.Name
@@ -331,8 +358,7 @@ function Validate-Remediation
 .SYNOPSIS
 Validates a remediation deployment
 #>
-function Validate-RemediationDeployment
-{
+function Validate-RemediationDeployment {
    param([Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment]$deployment)
 
    Assert-NotNull $deployment
@@ -348,10 +374,9 @@ function Validate-RemediationDeployment
 .SYNOPSIS
 Validates a policy metadata resource
 #>
-function Validate-PolicyMetadata
-{
+function Validate-PolicyMetadata {
    param([Microsoft.Azure.Commands.PolicyInsights.Models.PSPolicyMetadata]$policyMetadata,
-   [switch]$validateExtendedProperties = $false)
+      [switch]$validateExtendedProperties = $false)
 
    Assert-NotNull $policyMetadata
 
@@ -363,8 +388,7 @@ function Validate-PolicyMetadata
    Assert-NotNull $policyMetadata.Title
    Assert-NotNull $policyMetadata.Category
    Assert-NotNull $policyMetadata.MetadataId
-   if($validateExtendedProperties)
-   {
+   if ($validateExtendedProperties) {
       Assert-NotNull $policyMetadata.Requirements
       Assert-NotNull $policyMetadata.Description
    }
@@ -374,8 +398,7 @@ function Validate-PolicyMetadata
 .SYNOPSIS
 Validates a string is not null or empty
 #>
-function Assert-NotNullOrEmpty
-{
+function Assert-NotNullOrEmpty {
    param([string]$value)
 
    Assert-False { [string]::IsNullOrEmpty($value) }

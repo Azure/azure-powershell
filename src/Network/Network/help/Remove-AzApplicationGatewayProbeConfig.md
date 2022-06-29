@@ -23,8 +23,8 @@ The Remove-AzApplicationGatewayProbeConfig cmdlet removes a heath probe from an 
 ## EXAMPLES
 
 ### Example 1: Remove a health probe from an existing application gateway
-```
-PS C:\>$Gateway = Remove-AzApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe04"
+```powershell
+$Gateway = Remove-AzApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe04"
 ```
 
 This command removes the health probe named Probe04 from the application gateway named Gateway.

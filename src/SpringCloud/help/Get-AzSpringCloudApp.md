@@ -37,7 +37,10 @@ Get an App and its properties.
 
 ### Example 1: Get Spring Cloud App by name.
 ```powershell
-PS C:\> Get-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway
+Get-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway
+```
+
+```output
 ActiveDeploymentName    : default
 CreatedTime             : 2020-08-08 15:37:43
 Fqdn                    : spring-cloud-service.azuremicroservices.io
@@ -67,7 +70,10 @@ Get Spring Cloud App by name.
 
 ### Example 2: List all the app under a given spring cloud service.
 ```powershell
-PS C:\> Get-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service
+Get-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service
+```
+
+```output
 Name            Type                              Location
 ----            ----                              --------
 account-service Microsoft.AppPlatform/Spring/apps eastus
@@ -207,7 +213,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+INPUTOBJECT `<ISpringCloudIdentity>`: Identity Parameter
   - `[AppName <String>]`: The name of the App resource.
   - `[BindingName <String>]`: The name of the Binding resource.
   - `[CertificateName <String>]`: The name of the certificate resource.

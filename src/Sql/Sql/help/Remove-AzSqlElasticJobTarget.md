@@ -81,9 +81,11 @@ The Remove-AzSqlElasticJobTarget cmdlet removes a target resource to a target gr
 
 ### Example 1: Remove a server target
 ```powershell
-PS C:\> $tg = Get-AzSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
+$tg = Get-AzSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
 $tg | Remove-AzSqlElasticJobTarget -ServerName s1 -RefreshCredentialName cred1
+```
 
+```output
 TargetGroupName TargetType TargetServerName TargetDatabaseName TargetElasticPoolName TargetShardMapName RefreshCredentialName MembershipType
 --------------- ---------- ---------------- ------------------ --------------------- ------------------ --------------------- --------------
 tg1             SqlServer  s1                                                                           cred1                 Include
@@ -91,9 +93,11 @@ tg1             SqlServer  s1                                                   
 
 ### Example 2: Remove a database target
 ```powershell
-PS C:\> $tg = Get-AzSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
+$tg = Get-AzSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
 $tg | Remove-AzSqlElasticJobTarget -ServerName s1 -DatabaseName db2
+```
 
+```output
 TargetGroupName TargetType  TargetServerName TargetDatabaseName TargetElasticPoolName TargetShardMapName RefreshCredentialName MembershipType
 --------------- ----------  ---------------- ------------------ --------------------- ------------------ --------------------- --------------
 tg1             SqlDatabase s1               db2                                                                               Include
@@ -101,9 +105,11 @@ tg1             SqlDatabase s1               db2                                
 
 ### Example 3: Remove an elastic pool target
 ```powershell
-PS C:\> $tg = Get-AzSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
+$tg = Get-AzSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
 $tg | Remove-AzSqlElasticJobTarget -ServerName s1 -ElasticPoolName ep1 -RefreshCredentialName cred1
+```
 
+```output
 TargetGroupName TargetType     TargetServerName TargetDatabaseName TargetElasticPoolName TargetShardMapName RefreshCredentialName MembershipType
 --------------- ----------     ---------------- ------------------ --------------------- ------------------ --------------------- --------------
 tg1             SqlElasticPool s1                                  ep1                                      cred1                 Include
@@ -111,9 +117,11 @@ tg1             SqlElasticPool s1                                  ep1          
 
 ### Example 4: Remove a shard map target
 ```powershell
-PS C:\> $tg = Get-AzSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
+$tg = Get-AzSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
 $tg | Remove-AzSqlElasticJobTarget -ServerName s1 -ShardMapName sm1 -DatabaseName db1 -RefreshCredentialName cred1
+```
 
+```output
 TargetGroupName TargetType  TargetServerName TargetDatabaseName TargetElasticPoolName TargetShardMapName RefreshCredentialName MembershipType
 --------------- ----------  ---------------- ------------------ --------------------- ------------------ --------------------- --------------
 tg1             SqlShardMap s1               db1                                      sm1                cred1                 Include

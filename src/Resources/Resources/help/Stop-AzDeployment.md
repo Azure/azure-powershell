@@ -41,15 +41,15 @@ This cmdlet stops only one running deployment. Use the *Name* parameter to stop 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>Stop-AzDeployment -Name "deployment01"
+```powershell
+Stop-AzDeployment -Name "deployment01"
 ```
 
 This command cancels a running deployment "deployment01" at the current subscription scope.
 
 ### Example 2
-```
-PS C:\>Get-AzDeployment -Name "deployment01" | Stop-AzDeployment
+```powershell
+Get-AzDeployment -Name "deployment01" | Stop-AzDeployment
 ```
 
 This command gets the deployment "deployment01" at the current subscription scope and cancels it. 
