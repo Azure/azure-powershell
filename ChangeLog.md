@@ -1194,6 +1194,7 @@ This release migrates Microsoft.Azure.Graph SDK to MicrosoftGraph SDK.
     - 'Update-AzVirtualHubBgpConnection'
     - 'Remove-AzVirtualHubBgpConnection'
 * Onboard Azure HDInsight to Private Link Common Cmdlets
+* Onboard KubernetesConfiguration PrivateLink Scopws to Private Link Common Cmdlets
 
 #### Az.RecoveryServices
 * Azure Site Recovery bug fixes for VMware to Azure Reprotect, Update policy and Disable scenarios.
