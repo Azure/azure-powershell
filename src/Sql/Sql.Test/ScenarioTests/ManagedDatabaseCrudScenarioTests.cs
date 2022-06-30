@@ -76,5 +76,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GeoRestoreManagedDatabase");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetManagedDatabase()
+        {
+            TestRunner.RunTestScript("Test-SetManagedDatabase");
+        }
     }
 }
