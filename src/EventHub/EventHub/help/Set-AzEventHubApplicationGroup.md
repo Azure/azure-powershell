@@ -44,14 +44,14 @@ PS C:\> $policyToBeAppended = New-AzEventHubThrottlingPolicyConfig -Name policy1
 
 PS C:\> $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup
 
-PS C:\> $appGroup.ThrottlingPolicy += $policyToBeAppended
+PS C:\> $appGroup.ThrottlingPolicyConfig += $policyToBeAppended
 
-PS C:\> Set-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup -ThrottlingPolicy $appGroup.ThrottlingPolicy
+PS C:\> Set-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup -ThrottlingPolicyConfig $appGroup.ThrottlingPolicyConfig
 ```
 
-`-ThrottlingPolicy` takes an array of PSEventHubThrottlingPolicyAttributes objects. It represents the entire set of throttling policies
+`-ThrottlingPolicyConfig` takes an array of PSEventHubThrottlingPolicyConfigAttributes objects. It represents the entire set of throttling policies
 defined on the appplication group and not just the one. If you want to add or remove throttling policies, the right way to do it is to get
-the application group and query the ThrottlingPolicy field of the object returned as shown above.
+the application group and query the ThrottlingPolicyConfig field of the object returned as shown above.
 
 ## PARAMETERS
 
