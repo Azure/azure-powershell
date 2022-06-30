@@ -1,3 +1,125 @@
+## 8.1.0 - July 2022
+#### Az.Accounts
+* Supported exporting and importing configurations by 'Export-AzConfig' and 'Import-AzConfig'.
+* Fixed an issue that Az.Accounts may fail to be imported in parallel PowerShell processes. [#18321] 
+* Fixed incorrect access token [#18105]
+* Upgraded version of Microsoft.Identity.Client for .NET Framework. [#18495]
+* Fixed an issue that Az.Accounts failed to be imported if multiple environment variables, which only differ by case, are set. [#18304]
+
+#### Az.Aks
+* Added parameter 'CommandContextAttachmentZip' for 'Invoke-AzAksRunCommand'. [#17454]
+* Added ManagedIdentity support for Aks[#15656].
+* Added property 'PowerState' for the output of 'Get-AzAksCluster'[#18271]
+* Updated the logic of 'Set-AzAksCluster' for parameter 'NodeImageOnly'.
+* Added parameter 'NodeImageOnly' for 'Update-AzAksNodePool'.
+* Added parameter 'AvailabilityZone' for 'New-AzAksCluster'. [#18658]
+
+#### Az.ApplicationInsights
+* Fixed parameters for Set-AzApplicationInsightsDailyCap [#18315]
+* Fixed parameter 'DocumentType' for 'New-AzApplicationInsightsContinuousExport' and 'Set-AzApplicationInsightsContinuousExport' [#18350]
+* Fixed parameter 'ResourceId' for 'Get-AzApplicationInsights' [#18707]
+
+#### Az.Compute
+* Added image alias 'Win2022AzureEditionCore'
+* Added the '-DisableIntegrityMonitoring' switch parameter to the 'New-AzVM' cmdlet. 
+  Changed the default behavior for 'New-AzVM' and 'New-AzVmss' when these conditions are met:
+  1) '-DisableIntegrityMonitoring' is not true.
+  2) 'SecurityType' on the SecurityProfile is 'TrustedLaunch'.
+  3) 'VTpmEnabled' on the SecurityProfile is true.
+  4) 'SecureBootEnabled' on the SecurityProfile is true. 
+  Now 'New-AzVM' will install the 'Guest Attestation' extension to the new VM when these conditions are met.
+  Now 'New-AzVmss' will install the 'Guest Attestation' extension to the new Vmss when these conditions are met and installed to all VM instances in the Vmss.
+* Added '-UserAssignedIdentity' and '-FederatedClientId' to the following cmdlets:
+    - 'New-AzDiskEncryptionSetConfig'
+    - 'Update-AzDiskEncryptionSet'
+* Added '-TreatFailureAsDeploymentFailure' to cmdlets 'Add-AzVmGalleryApplication' and 'Add-AzVmssGalleryApplication'
+* Removed Exceptions for when SinglePlacementGroup is set to true in 'OrchestrationMode'
+
+#### Az.CosmosDB
+* Added support for partition key and id paths to be part of client encryption policy.
+* Fixed bug related to Update-AzCosmosDBSqlContainer command on containers with Client Encryption Policy.
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 6.3.0
+
+#### Az.EventHub
+* Added cmdlets for CRUD operations on EventHub Application Groups. The added cmdlets include,
+    -New-AzEventHubApplicationGroup
+    -Set-AzEventHubApplicationGroup
+    -Remove-AzEventHubApplicationGroup
+    -Get-AzEventHubApplicationGroup
+    -New-AzEventHubThrottlingPolicyConfig
+* Get-AzEventHubNamespace returned a maximum of 100 namespaces for list by resource groups or list by subscriptions so far. From here onwards, for resource groups and subscriptions with over a 100 namespaces, the cmdlet will return all the namespaces. You will not see a change in the cmdlet behaviour if your resource groups or subscriptions have less than a 100 namespaces.
+* Added cmdlets for manual approval of EventHubs Private Endpoint Connections. The added cmdlets include,
+    -Approve-AzEventHubPrivateEndpointConnection
+    -Deny-AzEventHubPrivateEndpointConnection
+    -Get-AzEventHubPrivateEndpointConnection
+    -Remove-AzEventHubPrivateEndpointConnection
+    -Get-AzEventHubPrivateLink
+
+#### Az.KeyVault
+* Supported importing pem certificate by 'Import-AzKeyVaultCertificate' [#18494]
+* Supported accepting rotation policy in a JSON file 
+* [Breaking Change] Changed parameter 'ExpiresIn' in 'Set-AzKeyVaultKeyRotationPolicy' from TimeSpan? to string. It must be an ISO 8601 duration like 'P30D' for 30 days.
+* [Breaking Change] Changed output properties 'ExpiresIn', 'TimeAfterCreate' and 'TimeBeforeExpiry' of 'Set-AzKeyVaultKeyRotationPolicy' and 'Get-AzKeyVaultKeyRotationPolicy' from TimeSpan? to string.
+* Supported creating/updating key with release policy in a Managed HSM
+* Removed default value for 'EnabledForDeployment', 'EnabledForTemplateDeployment', 'EnabledForDiskEncryption' and 'EnableRbacAuthorization' during the process of key vault creation
+* Changed default access policies for Key Vault secret, certificate and storage as 'All'
+
+#### Az.Network
+* Added support for CustomV2 ssl policies for Application Gateway.
+    - Added 'CustomV2' to the validation set of 'PolicyType'
+    - Added 'TLSv1_3' to the validation set of 'MinProtocolVersion'
+    - Removed validation for null or empty cipher suites list since there can be empty cipher suites list for min protocol version of tls1.3
+* [Breaking Change] Changed default value of '-PrivateEndpointNetworkPoliciesFlag' to 'Disabled' in 'Add-AzVirtualNetworkSubnetConfig' and 'New-AzVirtualNetworkSubnetConfig'
+* Fixed bugs that cannot parse virtual network encryption paramemters when updating exsiting vnet.
+
+#### Az.PowerBIEmbedded
+* Updated SKU allowed values to support A7 and A8
+
+#### Az.RecoveryServices
+* Fixed delay in long running operations [#18567]
+
+#### Az.Resources
+* Added feedback when deleting role assignments even if passthru is not used
+* Fixed relative path failure in -AsJob scenario [#18084]
+* Fixed logic of 'createtime' and 'ChangedTime' in 'Get-AzResource --ExpandProperties'. [#18206]
+* Fixed role assignment latency for 'New-AzADServicePrincipal' [#16777]
+
+#### Az.ServiceBus
+* Added cmdlets for manual approval of Service Bus Private Endpoint Connections. The added cmdlets include,
+    -Approve-AzServiceBusPrivateEndpointConnection
+    -Deny-AzServiceBusPrivateEndpointConnection
+    -Get-AzServiceBusPrivateEndpointConnection
+    -Remove-AzServiceBusPrivateEndpointConnection
+    -Get-AzServiceBusPrivateLink
+
+#### Az.ServiceFabric
+* Fixed typo in verbose log message.
+* Added Tag support for managed cluster create and update
+
+#### Az.Sql
+* Added 'GeoZone' option to 'BackupStorageRedundancy' parameter to 'New-AzSqlDatabase', 'Set-AzSqlDatabase', 'New-AzSqlDatabaseCopy', 'New-AzSqlDatabaseSecondary', and 'Restore-AzSqlDatabase' to enable create, update, copy, geo secondary and PITR support for GeoZone hyperscale databases
+* Added additional input validation to 'Stop-AzSqlInstanceDatabaseLogReplay' cmdlet to ensure the target database was created by log replay service
+* Bug fix for cmdlet 'Restore-AzSqlDatabase'. The optional property 'Tags' was not working as expected
+* Added isManagedIdentityInUse get parameter for 'Get-AzSqlServerAudit' and 'Get-AzSqlDatabaseAudit'
+* Added new cmdlet 'Set-AzSqlInstanceDatabase'
+
+#### Az.StackHCI
+* Added support to Stack HCI Cluster
+* Added support to Stack HCI Extension
+* Added support to Stack HCI Arc Settings
+
+#### Az.Storage
+* Supported BaseBlob DaysAfterCreationGreaterThan in Management Policy
+    -  'Add-AzStorageAccountManagementPolicyAction'
+
+### Thanks to our community contributors
+* @ayeshurun, Update SKU allowed values for PowerBI Embedded capacities (#18670)
+* @JulianePadrao, [SQL] fix for deprecated term (#18620)
+* @kaushik-ms, powershell changes for new ssl policies in appgw (#18287)
+* Adrian Leonhard (@NaridaL), fix typo beging -> begin in 3 files (#18391)
+
 ## 8.0.0 - May 2022
 #### Az.Accounts
 * Added a preview feature allowing user to control the following configurations by using 'Get-AzConfig', 'Update-AzConfig' and 'Clear-AzConfig':
