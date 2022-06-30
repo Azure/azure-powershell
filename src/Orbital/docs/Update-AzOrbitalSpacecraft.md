@@ -14,7 +14,7 @@ Updates the specified spacecraft tags.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzOrbitalSpacecraft -ResourceGroupName <String> -SpacecraftName <String> [-SubscriptionId <String>]
+Update-AzOrbitalSpacecraft -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Updates the specified spacecraft tags.
 
 ### Example 1: Updates the specified spacecraft tags.
 ```powershell
-Update-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -SpacecraftName azps-orbitalspacecraft -Tag @{"123"="abc"}
+Update-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name azps-orbitalspacecraft -Tag @{"123"="abc"}
 ```
 
 ```output
@@ -104,6 +104,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Spacecraft ID
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -122,21 +137,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SpacecraftName
-Spacecraft ID
 
 ```yaml
 Type: System.String

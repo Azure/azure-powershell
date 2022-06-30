@@ -1,6 +1,6 @@
 ### Example 1: Updates the specified spacecraft tags.
 ```powershell
-Update-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -SpacecraftName azps-orbitalspacecraft -Tag @{"123"="abc"}
+Update-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name azps-orbitalspacecraft -Tag @{"123"="abc"}
 ```
 
 ```output

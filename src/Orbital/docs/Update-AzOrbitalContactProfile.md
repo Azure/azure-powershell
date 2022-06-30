@@ -14,9 +14,8 @@ Updates the specified contact profile tags.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzOrbitalContactProfile -ContactProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzOrbitalContactProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -32,7 +31,7 @@ Updates the specified contact profile tags.
 
 ### Example 1: Updates the specified contact profile tags.
 ```powershell
-Update-AzOrbitalContactProfile -ContactProfileName azps-orbital-contactprofile -ResourceGroupName azpstest-gp -Tag @{"123"="abc"}
+Update-AzOrbitalContactProfile -Name azps-orbital-contactprofile -ResourceGroupName azpstest-gp -Tag @{"123"="abc"}
 ```
 
 ```output
@@ -73,21 +72,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ContactProfileName
-Contact Profile Name
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -116,6 +100,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Contact Profile Name
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

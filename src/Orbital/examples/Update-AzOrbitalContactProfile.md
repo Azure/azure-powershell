@@ -1,6 +1,6 @@
 ### Example 1: Updates the specified contact profile tags.
 ```powershell
-Update-AzOrbitalContactProfile -ContactProfileName azps-orbital-contactprofile -ResourceGroupName azpstest-gp -Tag @{"123"="abc"}
+Update-AzOrbitalContactProfile -Name azps-orbital-contactprofile -ResourceGroupName azpstest-gp -Tag @{"123"="abc"}
 ```
 
 ```output

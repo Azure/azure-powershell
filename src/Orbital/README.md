@@ -71,6 +71,18 @@ directive:
       subject: SpacecraftTag
     set:
       subject: Spacecraft
+  - where:
+      verb: Update
+      subject: ContactProfile
+      parameter-name: ContactProfileName
+    set:
+      parameter-name: Name
+  - where:
+      verb: Update
+      subject: Spacecraft
+      parameter-name: SpacecraftName
+    set:
+      parameter-name: Name
   # Re-name and custom it
   # - model-cmdlet:
   #     - ContactProfileLinkChannel
@@ -106,4 +118,24 @@ directive:
           - ReservationStartTime
           - ReservationEndTime
           - ResourceGroupName
+  - where:
+      model-name: AvailableGroundStation
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ProviderName
+          - City
+  - where:
+      model-name: AvailableContacts
+    set:
+      format-table:
+        properties:
+          - GroundStationName
+          - StartAzimuthDegree
+          - EndAzimuthDegree
+          - StartElevationDegree
+          - EndElevationDegree
+          - MaximumElevationDegree
 ```
