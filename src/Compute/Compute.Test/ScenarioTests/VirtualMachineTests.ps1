@@ -5798,7 +5798,13 @@ function Test-VirtualMachinePlatformFaultDomain
 
 <#
 .SYNOPSIS
-Test GuestAttestation
+Test GuestAttestation defaulting behavior.
+1) SecurityType is TrustedLaunch.
+2) EnableVtpm is true.
+3) EnabledSecureBoot is true.
+4) DisableIntegrityMonitoring is not true.
+Then this test removes the VM and recreates it with -DisableIntegrityMonitoring set to true so the
+Guest Attestation extension is not installed.
 #>
 function Test-VirtualMachineGuestAttestation
 {

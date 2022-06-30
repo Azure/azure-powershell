@@ -241,6 +241,70 @@ $vmss = New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -Virtua
 $vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id
 ```
 
+### Example 7: Creating a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
+```
+$rgname = <RESOURCE GROUP NAME>;
+$loc = <AZURE REGION>;
+New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+# VM Profile & Hardware
+$vmname = 'vm' + $rgname;
+$domainNameLabel = "d1" + $rgname;
+$vnetname = "myVnet";
+$vnetAddress = "10.0.0.0/16";
+$subnetname = "slb" + $rgname;
+$subnetAddress = "10.0.2.0/24";
+$OSDiskName = $vmname + "-osdisk";
+$NICName = $vmname+ "-nic";
+$NSGName = $vmname + "-NSG";
+$OSDiskSizeinGB = 128;
+$VMSize = "Standard_DS2_v2";
+$PublisherName = "MicrosoftWindowsServer";
+$Offer = "WindowsServer";
+$SKU = "2019-DATACENTER-GENSECOND";
+$securityType = "TrustedLaunch";
+$secureboot = $true;
+$vtpm = $true;
+
+# Default extension and identity values.
+$extDefaultName = "GuestAttestation";
+$vmGADefaultIDentity = "SystemAssigned";
+
+# Credential
+$password = <PASSWORD>;
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+$user = <USER NAME>;
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+# Network resources
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+$vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+$nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+# VM creation
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize;
+Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred;
+Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest;
+Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+$vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType;
+$vmConfig = Set-AzVmUefi -VM $vmConfig -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
+New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig;
+
+# Verify values
+$vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
+$vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
+# Check the default extension has been installed, and the Identity.Type defaulted to SystemAssigned.
+# $vmExt.Name
+# $vm.Identity.Type
+
+# Use the DisableIntegrityMonitoring parameter
+Remove-AzVm -ResourceGroupName $rgname -Name $vmname -Force;
+New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig -DisableIntegrityMonitoring;
+# This VM does not have the Guest Attestation extension installed on it, and the Identity is not set to SystemAssigned by default.
+```
+
 ## PARAMETERS
 
 ### -AddressPrefix
