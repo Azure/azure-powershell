@@ -39,7 +39,6 @@ Get-AzSqlInstanceEndpointCertificate [-ResourceId] <String> [-DefaultProfile <IA
 ## DESCRIPTION
 **Get-AzSqlInstanceEndpointCertificate** cmdlet returns information about one or more instance of endpoint certificate on an Azure SQL Managed Instance. Specify the name of a certificate (or endpoint type) to see information for that certificate only.
 
-
 ## EXAMPLES
 
 ### Example 1: Get information about all endpoint certificates on Azure SQL Managed Instance
