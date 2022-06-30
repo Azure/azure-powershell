@@ -60,8 +60,4 @@ Describe 'Get-AzReservationsCatalog' {
             $sku.Term.Count | Should -Be 3
         }
     }
-
-    function setupEnv() {
-        set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
-    }
 }
