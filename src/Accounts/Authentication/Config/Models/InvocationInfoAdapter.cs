@@ -20,6 +20,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
     {
         public InvocationInfoAdapter(InvocationInfo invocationInfo) : base(
             invocationInfo?.MyCommand?.ModuleName, invocationInfo?.MyCommand?.Name)
-        { } 
+        { }
     }
 }

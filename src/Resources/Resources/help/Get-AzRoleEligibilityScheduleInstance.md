@@ -37,9 +37,11 @@ Gets the specified role eligibility schedule instance.
 
 ### Example 1: List all role eligible schedule instances for a resource
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
 Get-AzRoleEligibilityScheduleInstance -Scope $scope 
+```
 
+```output
 Name                                 Type                                            Scope
 ----                                 ----                                            -----
 986d4ad8-f513-4a21-92e5-7163486e9e7c Microsoft.Authorization/roleEligibilityScheduleInstances /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d
@@ -53,9 +55,11 @@ To call the API, you must have access to the `Microsoft.Authorization/roleAssign
 
 ### Example 2: List all My role eligible schedule instances for a resource
 ```powershell
-PS C:\> $scope = "/" # "/" stands for tenant level resource
+$scope = "/" # "/" stands for tenant level resource
 Get-AzRoleEligibilityScheduleInstance -Scope $scope -Filter "asTarget()"
+```
 
+```output
 Name                                 Type                                            Scope                                                 RoleDefinitionId
 ----                                 ----                                            -----                                                 ----------------                                                                      
 4cd7e26b-8eca-425c-969d-ec708c88bf18 Microsoft.Authorization/roleEligibilityScheduleInstances /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d   /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorizatio… 
@@ -68,10 +72,12 @@ Returns all `roleEligibilityScheduleInstances` for the `scope` which are assigne
 
 ### Example 3: List all role eligible schedule instances for a resource with filters
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
 $filter = "roleDefinitionId eq '/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635'"
 Get-AzRoleEligibilityScheduleInstance -Scope $scope -Filter $filter
+```
 
+```output
 Name                                 Type                                            Scope                                                                                 RoleDefinitionId
 ----                                 ----                                            -----                                                                                 ----------------                                      
 314aa57e-064d-46c3-964e-a0d20989c1a2 Microsoft.Authorization/roleEligibilityScheduleInstances /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d                                   /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/… 
@@ -99,9 +105,11 @@ Supported filters:
 
 ### Example 4: Get a role eligible schedule instances by scope and name
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
 Get-AzRoleEligibilityScheduleInstance -Scope $scope -Name "4cd7e26b-8eca-425c-969d-ec708c88bf18"
+```
 
+```output
 Name                                 Type                                            Scope                                               RoleDefinitionId
 ----                                 ----                                            -----                                               ----------------                                                                        
 4cd7e26b-8eca-425c-969d-ec708c88bf18 Microsoft.Authorization/roleEligibilityScheduleInstances /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/…
@@ -211,7 +219,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
+INPUTOBJECT `<IAuthorizationIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[RoleAssignmentScheduleInstanceName <String>]`: The name (hash of schedule name + time) of the role assignment schedule to get.
   - `[RoleAssignmentScheduleName <String>]`: The name (guid) of the role assignment schedule to get.

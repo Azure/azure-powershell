@@ -277,7 +277,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-SCHEDULEADDITIONALPROPERTY <IRecurrenceScheduleAdditionalProperties>: Dictionary of <any>.
+SCHEDULEADDITIONALPROPERTY `<IRecurrenceScheduleAdditionalProperties>`: Dictionary of <any>.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
 
 SCHEDULEMONTHLYOCCURRENCE <IRecurrenceScheduleOccurrence[]>: 

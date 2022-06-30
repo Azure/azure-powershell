@@ -23,6 +23,7 @@
 * Added additional input validation to `Stop-AzSqlInstanceDatabaseLogReplay` cmdlet to ensure the target database was created by log replay service
 * Bug fix for cmdlet `Restore-AzSqlDatabase`. The optional property `Tags` was not working as expected
 * Added isManagedIdentityInUse get parameter for `Get-AzSqlServerAudit` and `Get-AzSqlDatabaseAudit`
+* Added new cmdlet `Set-AzSqlInstanceDatabase`
 
 ## Version 3.9.0
 * Added new cmdlet `Get-AzSqlInstanceEndpointCertificate`
