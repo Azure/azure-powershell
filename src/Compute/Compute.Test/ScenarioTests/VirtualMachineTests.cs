@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestConfidentialVMSetAzVmOsDiskDESId()
         {
             TestRunner.RunTestScript("Test-ConfidentialVMSetAzVmOsDiskDESId");
