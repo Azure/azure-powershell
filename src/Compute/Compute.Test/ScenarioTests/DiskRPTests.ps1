@@ -1668,35 +1668,3 @@ function Test-DiskAcceleratedNetworkAndPublicNetworkAccess
 		Clean-ResourceGroup $rgname;
 	}
 }
-
-<#
-.SYNOPSIS
-
-#>
-function Test-DiskConfidentialVM
-{
-    $rgname = Get-ComputeTestResourceName;
-	$loc = 'eastus2euap';
-
-	try
-    {
-		New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        
-        # Setup
-        $diskName = 'disk' + $rgname;
-        $diskAccountType = 'Premium_LRS';
-        $createOption = 'Empty';
-        $diskSize = 32;
-
-        # Disks
-        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
-        $diskname = "disk" + $rgname;
-        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "ConfidentialVM_DiskEncryptedWithPlatformKey";
-        $diskPr = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
-	}
-    finally 
-    {
-		# Cleanup
-		Clean-ResourceGroup $rgname;
-	}
-}

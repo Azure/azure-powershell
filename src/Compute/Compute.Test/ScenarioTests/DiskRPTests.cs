@@ -163,12 +163,5 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-DiskAcceleratedNetworkAndPublicNetworkAccess");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDiskConfidentialVM()
-        {
-            TestRunner.RunTestScript("Test-DiskConfidentialVM");
-        }
     }
 }
