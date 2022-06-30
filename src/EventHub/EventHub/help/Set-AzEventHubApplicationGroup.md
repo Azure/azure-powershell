@@ -44,9 +44,9 @@ PS C:\> $policyToBeAppended = New-AzEventHubThrottlingPolicyConfig -Name policy1
 
 PS C:\> $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup
 
-PS C:\> $appGroup.ThrottlingPolicy += $policyToBeAppended
+PS C:\> $appGroup.ThrottlingPolicyConfig += $policyToBeAppended
 
-PS C:\> Set-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup -ThrottlingPolicy $appGroup.ThrottlingPolicy
+PS C:\> Set-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup -ThrottlingPolicyConfig $appGroup.ThrottlingPolicy
 ```
 
 `-ThrottlingPolicy` takes an array of PSEventHubThrottlingPolicyAttributes objects. It represents the entire set of throttling policies
