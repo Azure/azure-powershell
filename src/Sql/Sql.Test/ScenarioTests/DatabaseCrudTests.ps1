@@ -384,7 +384,7 @@ function Test-CreateDatabaseWithBackupStorageRedundancy
 function Test-CreateDatabaseWithGeoZoneBackupStorageRedundancy
 {
 	# Setup
-	$location = "westeurope"
+	$location = Get-Location "Microsoft.Sql" "operations" "Brazil South"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -392,7 +392,7 @@ function Test-CreateDatabaseWithGeoZoneBackupStorageRedundancy
 	{
 		$databaseName = Get-DatabaseName
 		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
-			-DatabaseName $databaseName -BackupStorageRedundancy "GeoZone" -Edition HyperScale
+			-DatabaseName $databaseName -BackupStorageRedundancy "GeoZone" -Edition HyperScale -VCore 2 -ComputeGeneration Gen5
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.Edition "Hyperscale"
 		Assert-NotNull $db.CurrentBackupStorageRedundancy

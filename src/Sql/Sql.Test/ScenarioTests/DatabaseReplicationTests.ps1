@@ -455,7 +455,7 @@ function Test-CreateSecondaryDatabaseWithBackupStorageRedundancy()
 function Test-CreateCopyDatabaseWithGeoZoneBackupStorageRedundancy()
 {
 	# Setup
-    $location = "westeurope"
+    $location = Get-Location "Microsoft.Sql" "operations" "Brazil South"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-HyperscaleDatabaseForTest $rg $server
@@ -470,7 +470,7 @@ function Test-CreateCopyDatabaseWithGeoZoneBackupStorageRedundancy()
 		$dbLocalCopy = New-AzSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -CopyDatabaseName $copyDatabaseName -BackupStorageRedundancy 'GeoZone'
 
-		$newDb = Get-AzSqlDatabase -ResourceGroupName $dbLocalCopy.ResourceGroupName -ServerName $dbLocalCopy.ServerName -DatabaseName $$copyDatabaseName
+		$newDb = Get-AzSqlDatabase -ResourceGroupName $dbLocalCopy.ResourceGroupName -ServerName $dbLocalCopy.ServerName -DatabaseName $copyDatabaseName
 		Assert-AreEqual $newDb.CurrentBackupStorageRedundancy "GeoZone"
 	}
 	finally
@@ -487,7 +487,7 @@ function Test-CreateCopyDatabaseWithGeoZoneBackupStorageRedundancy()
 function Test-CreateSecondaryDatabaseWithGeoZoneBackupStorageRedundancy()
 {
 	# Setup
-    $location = "westeurope"
+    $location = Get-Location "Microsoft.Sql" "operations" "Brazil South"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-HyperscaleDatabaseForTest $rg $server
