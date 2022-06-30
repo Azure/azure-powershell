@@ -1,6 +1,6 @@
 ### Example 1: Get the list of reservation orders in the current tenant
 ```powershell
-Get-AzReservationsReservation
+Get-AzReservation
 ```
 
 ```output
@@ -17,7 +17,7 @@ Some data might be trucated due to the width of powershell view, appending this 
 
 ### Example 2: {{ Add title here }}
 ```powershell
-Get-AzReservationsReservation -ReservationOrderId a87c1742-0080-5b4d-b953-8531ad46fdc8 -ReservationId cad6fef7-ae86-4d47-91d0-67c897934bfe
+Get-AzReservation -ReservationOrderId a87c1742-0080-5b4d-b953-8531ad46fdc8 -ReservationId cad6fef7-ae86-4d47-91d0-67c897934bfe
 ```
 
 ```output

@@ -1,5 +1,5 @@
 {
-  "Get-AzReservationsReservationOrder+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders?api-version=2022-03-01+1": {
+  "Get-AzReservationOrder+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders?api-version=2022-03-01+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders?api-version=2022-03-01",
@@ -8,7 +8,7 @@
       "Headers": {
         "x-ms-unique-id": [ "1" ],
         "x-ms-client-request-id": [ "6ce62163-6645-4513-b958-b0791b4b0ff0" ],
-        "CommandName": [ "Get-AzReservationsReservationOrder" ],
+        "CommandName": [ "Get-AzReservationOrder" ],
         "FullCommandName": [ "Get-AzReservationsReservationOrder_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ],
@@ -38,7 +38,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzReservationsReservationOrder+[NoContext]+Get+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001?api-version=2022-03-01+1": {
+  "Get-AzReservationOrder+[NoContext]+Get+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001?api-version=2022-03-01+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001?api-version=2022-03-01",
@@ -47,7 +47,7 @@
       "Headers": {
         "x-ms-unique-id": [ "2" ],
         "x-ms-client-request-id": [ "6a567d6f-3a9c-4b91-99b7-06ac1a0614b4" ],
-        "CommandName": [ "Get-AzReservationsReservationOrder" ],
+        "CommandName": [ "Get-AzReservationOrder" ],
         "FullCommandName": [ "Get-AzReservationsReservationOrder_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ],
@@ -81,7 +81,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzReservationsReservationOrder+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001?api-version=2022-03-01+1": {
+  "Get-AzReservationOrder+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001?api-version=2022-03-01+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001?api-version=2022-03-01",
@@ -90,7 +90,7 @@
       "Headers": {
         "x-ms-unique-id": [ "3" ],
         "x-ms-client-request-id": [ "99cb7a3e-65cc-4ce1-9d7d-e32ae6a3f427" ],
-        "CommandName": [ "Get-AzReservationsReservationOrder" ],
+        "CommandName": [ "Get-AzReservationOrder" ],
         "FullCommandName": [ "Get-AzReservationsReservationOrder_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ],
