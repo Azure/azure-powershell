@@ -110,7 +110,7 @@ function Get-ExamplesDetailsFromMd {
                 foreach ($exampleCodeBlock in $exampleCodeBlocks) {
                     $codeRegex = "\n("+
                     "(.*ForEach-Object {((.*\n)|(\w*=.*))*\s*})|"+
-                    "((.*[A-Za-z]\w+-[A-Za-z]\w+\s*(``\n)?)((\s*-.*``\n)*(.*@{((.*\n)|(\w*=.*))*\s*}\s*``?)+)+(?=\n|\r\n))|"+
+                    "((.*[A-Za-z]\w+-[A-Za-z]\w+\s*(``(\r)?\n)?)((\s*-.*``(\r)?\n)*(.*@{((.*(\r)?\n)|(\w*=.*))*\s*}\s*``?)+)+(?=\n|\r\n))|"+
                     "((([A-Za-z \t])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*)*[ \t]*((([A-Za-z]\w+-[A-Za-z]\w+\b(.ps1)?(?!(-|   +\w)))|(" +
                     "(@?\((?>\((?<pair>)|[^\(\)]+|\)(?<-pair>))*(?(pair)(?!))\) *[|.-] *\w)|" + # match ()
                     "(\[(?>\[(?<pair>)|[^\[\]]+|\](?<-pair>))*(?(pair)(?!))\]\$)|" + # match []
