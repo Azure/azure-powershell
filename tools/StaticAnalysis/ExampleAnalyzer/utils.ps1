@@ -108,16 +108,16 @@ function Get-ExamplesDetailsFromMd {
             # If there is no ```output``` split codelines and outputlines
             if ($exampleOutputBlocks.Count -eq 0) {
                 foreach ($exampleCodeBlock in $exampleCodeBlocks) {
-                    $codeRegex = "\r?\n("+
-                    "(.*ForEach-Object {((.*\r?\n)|(\w*=.*))*\s*})|"+
-                    "((.*[A-Za-z]\w+-[A-Za-z]\w+\s*(``\r?\n)?)((\s*-.*``\r?\n)*(.*@{((.*\r?\n)|(\w*=.*))*\s*}\s*``?)+)+(?=\n|\r\n))|"+
+                    $codeRegex = "(\n|\r\n)("+
+                    "(.*ForEach-Object {((.*(\n|\r\n))|(\w*=.*))*\s*})|"+
+                    "((.*[A-Za-z]\w+-[A-Za-z]\w+\s*(``(\n|\r\n))?)((\s*-.*``(\n|\r\n))*(.*@{((.*(\n|\r\n))|(\w*=.*))*\s*}\s*``?)+)+(?=\n|\r\n))|"+
                     "((([A-Za-z \t])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*)*[ \t]*((([A-Za-z]\w+-[A-Za-z]\w+\b(.ps1)?(?!(-|   +\w)))|(" +
                     "(@?\((?>\((?<pair>)|[^\(\)]+|\)(?<-pair>))*(?(pair)(?!))\) *[|.-] *\w)|" + # match ()
                     "(\[(?>\[(?<pair>)|[^\[\]]+|\](?<-pair>))*(?(pair)(?!))\]\$)|" + # match []
-                    "((\s*-\w*\s*(``\r?\n\s*)?)?(\$\w*\s*=.*)?@{(?>{(?<pair>)|[^{}]+|}(?<-pair>))*(?(pair)(?!))})|" + # match @{}
+                    "((\$\w*\s*=.*)?@{(?>{(?<pair>)|[^{}]+|}(?<-pair>))*(?(pair)(?!))})|" + # match @{}
                     "('(?>'(?<pair>)|[^']+|'(?<-pair>))*(?(pair)(?!))' *[|.-] *\w)|" + # match ''
                     "((?<!``)`"(?>(?<!``)`"(?<pair>)|[\s\S]|(?<!``)`"(?<-pair>))*(?(pair)(?!))(?<!``)`" *[|.-] *\w)|" + # match ""
-                    "(\$\w*\s*=.*)?(@`"\s*\r?\n?(\{\s*)?)(.*\r?\n)*((\s*\})?\s*\r?\n?`"@)|"+ # match @" "@
+                    "(\$\w*\s*=.*)?(@`"\s*(\n|\r\n)?(\{\s*)?)(.*(\n|\r\n))*((\s*\})?\s*(\n|\r\n)?`"@)|"+ # match @" "@
                     "\$))(?!\.)([\w-~``'`"$= \t:;<>@()\[\]{},.+*/|\\&!?%#]*[``|][ \t]*(\n|\r\n)?)*([\w-~``'`"$= \t:;<>@()\[\]{},.+*/|\\&!?%#]*(?=\n|\r\n|#))))"+
                     ")"
                     $exampleCodeLines = ($exampleCodeBlock.Value | Select-String -Pattern $codeRegex -CaseSensitive -AllMatches).Matches
