@@ -119,6 +119,32 @@ function Get-RecoveredValueType{
     return $Type
 }
 
+<#
+    .SYNOPSIS
+    Measure whether the actual type matches the expected type.
+#>
+function Measure-IsTypeMatched{
+    param (
+        [System.Reflection.TypeInfo]$ExpectedType,
+        [System.Reflection.TypeInfo]$ActualType
+    )
+    if($ActualType.IsArray) {
+        $ActualType = $ActualType.GetElementType()
+    }
+    if($ActualType.IsGenericType){
+        $ActualType = $ActualType.GetGenericArguments()[0]
+    }
+    if ($ActualType -eq $ExpectedType -or $ActualType -is $ExpectedType -or
+    $ActualType.GetInterfaces().Contains($ExpectedType) -or $ExpectedType.GetInterfaces().Contains($ActualType)) {
+        return $true
+    }
+    return $false
+}
+
+<#
+    .SYNOPSIS
+    Gets the expression's actual value and type, if the parameter is assigned with a value.
+#>
 function Get-AssignedParameterExpression {
     param (
         [System.Management.Automation.CommandInfo]$GetCommand,
@@ -141,6 +167,21 @@ function Get-AssignedParameterExpression {
             $ExpressionToParameter = $CommandElement.Extent.Text + " is a null-valued parameter value."
             return $ExpressionToParameter
         }
+    }
+    $ExpectedType = $GetCommand.Parameters.$ParameterNameNotAlias.ParameterType
+    if($CommandElement_Copy -is [System.Management.Automation.Language.HashtableAst]){
+        # If ExpectedType is ValueType, then it cannot be created by Hashtable.
+        if($ExpectedType.IsValueType){
+            # Mismatched_Parameter_Value_Type
+            $ExpressionToParameter = "$($CommandElement.Extent.Text)-#-$ExpectedType"
+            return $ExpressionToParameter
+        }
+    }
+    if ($ExpectedType.IsArray) {
+        $ExpectedType = $ExpectedType.GetElementType()
+    }
+    if($ExpectedType.IsGenericType){
+        $ExpectedType = $ExpectedType.GetGenericArguments()[0]
     }
     if ($CommandElement_Copy -is [System.Management.Automation.Language.CommandAst]) {
         # Value is an command
@@ -174,37 +215,20 @@ function Get-AssignedParameterExpression {
             $ReturnType = $OutputTypes[$j]
             $j++
             $ActualType = Get-RecoveredValueType $CommandElement $ReturnType
-            $ExpectedType = $GetCommand.Parameters.$ParameterNameNotAlias.ParameterType
             if($null -eq $ActualType){
                 Continue
             }
-            if ($ExpectedType.IsArray) {
-                $ExpectedType = $ExpectedType.GetElementType()
-            }
-            if($ActualType.IsArray) {
-                $ActualType = $ActualType.GetElementType()
-            }
-            if($ActualType.IsGenericType){
-                $ActualType = $ActualType.GetGenericArguments()[0]
-            }
-            if($ExpectedType.IsGenericType){
-                $ExpectedType = $ExpectedType.GetGenericArguments()[0]
-            }
-            if ($ActualType -eq $ExpectedType -or $ActualType -is $ExpectedType -or
-            $ActualType.GetInterfaces().Contains($ExpectedType) -or $ExpectedType.GetInterfaces().Contains($ActualType)) {
-                $flag = $false
-            }
+            $flag = !(Measure-IsTypeMatched $ExpectedType $ActualType)
         }
         if($flag){
             # Mismatched_Parameter_Value_Type
             $ExpressionToParameter = "$($CommandElement.Extent.Text)-#-$ExpectedType"
             return $ExpressionToParameter
         }
-            
     }
-    elseif($CommandElement_Copy -is [System.Management.Automation.Language.HashtableAst]){
-        # If ExpectedType is ValueType, then it cannot be created by Hashtable.
-        if($ExpectedType.IsValueType){
+    elseif($CommandElement_Copy -is [System.Management.Automation.Language.TypeExpressionAst]){
+        $ReturnType = $CommandElement_Copy.TypeName.ToString() -as [Type]
+        if (!(Measure-IsTypeMatched $ExpectedType $ReturnType)) {
             # Mismatched_Parameter_Value_Type
             $ExpressionToParameter = "$($CommandElement.Extent.Text)-#-$ExpectedType"
             return $ExpressionToParameter
@@ -212,23 +236,9 @@ function Get-AssignedParameterExpression {
     }
     elseif($CommandElement_Copy -is [System.Management.Automation.Language.ExpressionAst]) {
         # Value is a constant expression                        
-        $ExpectedType = $GetCommand.Parameters.$ParameterNameNotAlias.ParameterType
         $ConvertedObject = $CommandElement_Copy.Extent.text -as $ExpectedType
         $StaticType = $CommandElement_Copy.StaticType
-        if($ExpectedType.IsGenericType){
-            $ExpectedType = $ExpectedType.GetGenericArguments()[0]
-        }
-        if($StaticType.IsGenericType){
-            $StaticType = $StaticType.GetGenericArguments()[0]
-        }
-        if ($ExpectedType.IsArray){
-            $ExpectedType = $ExpectedType.GetElementType()
-        }
-        if($StaticType.IsArray){
-            $StaticType = $StaticType.GetElementType()
-        }
-        if ($StaticType -ne $ExpectedType -and $null -eq $ConvertedObject -and
-        !$StaticType.GetInterfaces().Contains($ExpectedType) -and !$ExpectedType.GetInterfaces().Contains($StaticType)) {
+        if (!(Measure-IsTypeMatched $ExpectedType $StaticType) -or $null -eq $ConvertedObject) {
             # Mismatched_Parameter_Value_Type
             $ExpressionToParameter = "$($CommandElement.Extent.Text)-#-$ExpectedType"
             return $ExpressionToParameter
