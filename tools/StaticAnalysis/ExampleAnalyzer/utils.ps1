@@ -21,7 +21,7 @@ $EXAMPLES_HEADING = "## EXAMPLES"
 $PARAMETERS_HEADING = "## PARAMETERS"
 $SINGLE_EXAMPLE_HEADING_REGEX = "\n###\s*"
 $SINGLE_EXAMPLE_TITLE_HEADING_REGEX = "$SINGLE_EXAMPLE_HEADING_REGEX.+"
-$CODE_BLOCK_REGEX = "``````\s*(powershell)?\s*\n(.*\n)*?\s*``````"
+$CODE_BLOCK_REGEX = "``````(powershell)?\s*\n(.*\n)*?\s*``````"
 $OUTPUT_BLOCK_REGEX = "``````output\s*\n(.*\n)*?\s*``````"
 
 class Scale {
@@ -114,10 +114,10 @@ function Get-ExamplesDetailsFromMd {
                     "((([A-Za-z \t])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*)*[ \t]*((([A-Za-z]\w+-[A-Za-z]\w+\b(.ps1)?(?!(-|   +\w)))|(" +
                     "(@?\((?>\((?<pair>)|[^\(\)]+|\)(?<-pair>))*(?(pair)(?!))\) *[|.-] *\w)|" + # match ()
                     "(\[(?>\[(?<pair>)|[^\[\]]+|\](?<-pair>))*(?(pair)(?!))\]\$)|" + # match []
-                    "((\s*-\w*\s*(``\n\s*)?)?(\$\w*\s*=.*)?@{(?>{(?<pair>)|[^{}]+|}(?<-pair>))*(?(pair)(?!))})|" + # match @{}
+                    "((\s*-\w*\s*(``\r?\n\s*)?)?(\$\w*\s*=.*)?@{(?>{(?<pair>)|[^{}]+|}(?<-pair>))*(?(pair)(?!))})|" + # match @{}
                     "('(?>'(?<pair>)|[^']+|'(?<-pair>))*(?(pair)(?!))' *[|.-] *\w)|" + # match ''
                     "((?<!``)`"(?>(?<!``)`"(?<pair>)|[\s\S]|(?<!``)`"(?<-pair>))*(?(pair)(?!))(?<!``)`" *[|.-] *\w)|" + # match ""
-                    "(\$\w*\s*=.*)?(@`"\s*\n?(\{\s*)?)(.*\n)*((\s*\})?\s*\n?`"@)|"+ # match @" "@
+                    "(\$\w*\s*=.*)?(@`"\s*\r?\n?(\{\s*)?)(.*\r?\n)*((\s*\})?\s*\r?\n?`"@)|"+ # match @" "@
                     "\$))(?!\.)([\w-~``'`"$= \t:;<>@()\[\]{},.+*/|\\&!?%#]*[``|][ \t]*(\n|\r\n)?)*([\w-~``'`"$= \t:;<>@()\[\]{},.+*/|\\&!?%#]*(?=\n|\r\n|#))))"+
                     ")"
                     $exampleCodeLines = ($exampleCodeBlock.Value | Select-String -Pattern $codeRegex -CaseSensitive -AllMatches).Matches
