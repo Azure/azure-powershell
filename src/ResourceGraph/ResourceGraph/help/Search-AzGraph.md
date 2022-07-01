@@ -20,13 +20,13 @@ Search-AzGraph [-Query] <String> [-Subscription <String[]>] [-First <Int32>] [-S
 
 ### ManagementGroupScopedQuery
 ```
-Search-AzGraph [-Query] <String> [-ManagementGroup <String[]>] [-AllowPartialScope] [-First <Int32>]
+Search-AzGraph [-Query] <String> -ManagementGroup <String[]> [-AllowPartialScope] [-First <Int32>]
  [-Skip <Int32>] [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### TenantScopedQuery
 ```
-Search-AzGraph [-Query] <String> [-OnTenantScope] [-AllowPartialScope] [-First <Int32>] [-Skip <Int32>]
+Search-AzGraph [-Query] <String> [-UseTenantScope] [-AllowPartialScope] [-First <Int32>] [-Skip <Int32>]
  [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -159,22 +159,7 @@ Type: System.String[]
 Parameter Sets: ManagementGroupScopedQuery
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OnTenantScope
-Run query across all available subscriptions in the current tenant.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: TenantScopedQuery
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -220,6 +205,21 @@ Parameter Sets: SubscriptionScopedQuery
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseTenantScope
+Run query across all available subscriptions in the current tenant.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: TenantScopedQuery
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

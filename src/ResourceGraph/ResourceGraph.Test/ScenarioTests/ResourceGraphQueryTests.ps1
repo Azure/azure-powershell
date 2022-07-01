@@ -139,15 +139,15 @@ function Search-AzureRmGraph-ManagementGroups
 
 <#
 .SYNOPSIS
-Run query with OnTenantScope passed
+Run query with UseTenantScope passed
 #>
 function Search-AzureRmGraph-Tenant
 {
 	$testSubId = "82506e98-9fdb-41f5-ab67-031005041a26"
 	$query = "distinct subscriptionId | order by subscriptionId asc"
 
-	$queryResultTenant = Search-AzGraph $query -OnTenantScope
-	$queryResultTenantWithPartialScope = Search-AzGraph $query -OnTenantScope -AllowPartialScope
+	$queryResultTenant = Search-AzGraph $query -UseTenantScope
+	$queryResultTenantWithPartialScope = Search-AzGraph $query -UseTenantScope -AllowPartialScope
 	
 	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse[PSObject] $queryResultTenant	
 	Assert-Null $queryResultTenant.SkipToken
@@ -285,7 +285,7 @@ function Search-AzureRmGraph-SubscriptionAndTenantQueryError
 
  	try
 	{
-		Search-AzGraph "project id, type" -Subscription 'a' -OnTenantScope
+		Search-AzGraph "project id, type" -Subscription 'a' -UseTenantScope
 		Assert-True $false  # Expecting an error
 	}
 	catch [Exception]

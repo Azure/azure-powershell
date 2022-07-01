@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the subscriptions.
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = SubscriptionParameterSet, HelpMessage = "Subscription(s) to run query against")]
+        [Parameter(Mandatory = false, ParameterSetName = SubscriptionParameterSet, HelpMessage = "Subscription(s) to run query against. Cannot be used together with -ManagementGroup or -UseTenantScope parameters.")]
         public string[] Subscription
         {
             get;
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the management groups.
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = ManagementGroupParameterSet, HelpMessage = "Management group(s) to run query against")]
+        [Parameter(Mandatory = true, ParameterSetName = ManagementGroupParameterSet, HelpMessage = "Management group(s) to run query against. Cannot be used together with -Subscription or -UseTenantScope parameters.")]
         public string[] ManagementGroup
         {
             get;
@@ -94,9 +94,9 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets if query should succeed with partial scopes when total number of scopes exceeds the number allowed on server side.
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = TenantParameterSet,
-            HelpMessage = "Run query across all available subscriptions in the current tenant.")]
-        public SwitchParameter OnTenantScope
+        [Parameter(Mandatory = true, ParameterSetName = TenantParameterSet,
+            HelpMessage = "Run query across all available subscriptions in the current tenant. Cannot be used together with -Subscription or -ManagementGroup parameters.")]
+        public SwitchParameter UseTenantScope
         {
             get;
             set;
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             }
 
             IList<string> subscriptions = null;
-            if (!this.OnTenantScope.IsPresent && managementGroups == null)
+            if (!this.UseTenantScope.IsPresent && managementGroups == null)
             {
                 subscriptions = this.GetSubscriptions()?.ToList();
                 if (subscriptions != null && subscriptions.Count > SubscriptionLimit)
