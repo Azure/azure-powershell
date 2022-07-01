@@ -264,10 +264,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.BgpServiceCommunity, CNM.PSBgpServiceCommunity>();
                 cfg.CreateMap<MNM.BGPCommunity, CNM.PSBgpCommunity>();
 
-                // Virtual Network Encryption
-                cfg.CreateMap<CNM.PSVirtualNetworkEncryption, MNM.VirtualNetworkEncryption>();
-                cfg.CreateMap<MNM.VirtualNetworkEncryption, CNM.PSVirtualNetworkEncryption>();
-
                 // Subnet
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSDhcpOptions, MNM.DhcpOptions>();
