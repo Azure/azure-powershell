@@ -452,8 +452,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             // validated that unmasked bits are 0
             var splittedIp = split[0].Split('.');
-            var ip = Int32.Parse(splittedIp[0]) << 24;
-            ip = ip + Int32.Parse(splittedIp[1]) << 16 + Int32.Parse(splittedIp[2]) << 8 + Int32.Parse(splittedIp[3]);
+            var ip = Int32.Parse(splittedIp[0]) << 24;            
+            ip += (Int32.Parse(splittedIp[1]) << 16) + (Int32.Parse(splittedIp[2]) << 8) + Int32.Parse(splittedIp[3]);
             if (ip << bit != 0)
                 throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address, bits not covered by subnet mask should be all 0", ipAddress));
         }
