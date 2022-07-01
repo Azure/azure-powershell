@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzReservationsCalculateExchange'))
+if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzReservationCalculateExchange'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzReservationsCalculateExchange.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzReservationCalculateExchange.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -51,17 +51,20 @@ function ExecuteTestCases([object]$response) {
     $response | Should -Not -Be $null
     $response.SessionId | Should -Not -Be $null
     $response.Status | Should -Be 'Succeeded'
-    $response.RefundTotalCurrencyCode | Should -Be 'GBP'
-    $response.RefundTotalAmount | Should -Be 5598.46
-    $response.PurchaseTotalCurrencyCode | Should -Be 'GBP'
-    $response.PurchaseTotalAmount | Should -Be 9910.0
-    $response.NetPayableCurrencyCode | Should -Be 'GBP'
-    $response.NetPayableAmount | Should -Be 4311.54
+    $response.RefundsTotal | Should -Not -Be $null
+    $response.PurchasesTotal | Should -Not -Be $null
+    $response.NetPayable | Should -Not -Be $null
+    $response.RefundsTotal.CurrencyCode | Should -Be 'GBP'
+    $response.RefundsTotal.Amount | Should -Be 5598.46
+    $response.PurchasesTotal.CurrencyCode | Should -Be 'GBP'
+    $response.PurchasesTotal.Amount | Should -Be 9910.0
+    $response.NetPayable.CurrencyCode | Should -Be 'GBP'
+    $response.NetPayable.Amount | Should -Be 4311.54
 }
 
-Describe 'Invoke-AzReservationsCalculateExchange' {
+Describe 'Invoke-AzReservationCalculateExchange' {
     It 'PostExpanded' {
-        $response = Invoke-AzReservationsCalculateExchange -ReservationsToExchange $reservationsToReturn -ReservationsToPurchase $reservationsToPurchase
+        $response = Invoke-AzReservationCalculateExchange -ReservationsToExchange $reservationsToReturn -ReservationsToPurchase $reservationsToPurchase
         ExecuteTestCases($response)
     }
 
@@ -70,7 +73,7 @@ Describe 'Invoke-AzReservationsCalculateExchange' {
             ReservationsToExchange = $reservationsToReturn
             ReservationsToPurchase = $reservationsToPurchase
         }
-        $response = Invoke-AzReservationsCalculateExchange -Body $request
+        $response = Invoke-AzReservationCalculateExchange -Body $request
         ExecuteTestCases($response)
     }
 }

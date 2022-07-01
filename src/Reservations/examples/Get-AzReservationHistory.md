@@ -1,6 +1,6 @@
 ### Example 1: Get the revision of a reservation
 ```powershell
-Get-AzReservationsReservationRevision  -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a  -ReservationOrderId 2b9b9372-24e1-4a07-a354-2078fe347cf9
+Get-AzReservationHistory -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a -ReservationOrderId 2b9b9372-24e1-4a07-a354-2078fe347cf9
 ```
 
 ```output

@@ -1,5 +1,5 @@
 {
-  "Invoke-AzReservationsCalculateExchange+[NoContext]+PostExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculateExchange?api-version=2022-03-01+1": {
+  "Invoke-AzReservationCalculateExchange+[NoContext]+PostExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculateExchange?api-version=2022-03-01+1": {
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculateExchange?api-version=2022-03-01",
@@ -38,7 +38,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsCalculateExchange+[NoContext]+PostExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01+2": {
+  "Invoke-AzReservationCalculateExchange+[NoContext]+PostExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01+2": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01",
@@ -48,8 +48,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "2" ],
         "x-ms-client-request-id": [ "ad6d9407-11bd-4f6f-8b92-08a807010184" ],
-        "CommandName": [ "Invoke-AzReservationsCalculateExchange" ],
-        "FullCommandName": [ "Invoke-AzReservationsCalculateExchange_PostExpanded" ],
+        "CommandName": [ "Invoke-AzReservationCalculateExchange" ],
+        "FullCommandName": [ "Invoke-AzReservationCalculateExchange_PostExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ]
       },
@@ -84,7 +84,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsCalculateExchange+[NoContext]+PostExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01+3": {
+  "Invoke-AzReservationCalculateExchange+[NoContext]+PostExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01+3": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01",
@@ -94,8 +94,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "3" ],
         "x-ms-client-request-id": [ "ad6d9407-11bd-4f6f-8b92-08a807010184" ],
-        "CommandName": [ "Invoke-AzReservationsCalculateExchange" ],
-        "FullCommandName": [ "Invoke-AzReservationsCalculateExchange_PostExpanded" ],
+        "CommandName": [ "Invoke-AzReservationCalculateExchange" ],
+        "FullCommandName": [ "Invoke-AzReservationCalculateExchange_PostExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ]
       },
@@ -130,7 +130,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsCalculateExchange+[NoContext]+PostExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01+4": {
+  "Invoke-AzReservationCalculateExchange+[NoContext]+PostExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01+4": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01",
@@ -140,8 +140,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "4" ],
         "x-ms-client-request-id": [ "ad6d9407-11bd-4f6f-8b92-08a807010184" ],
-        "CommandName": [ "Invoke-AzReservationsCalculateExchange" ],
-        "FullCommandName": [ "Invoke-AzReservationsCalculateExchange_PostExpanded" ],
+        "CommandName": [ "Invoke-AzReservationCalculateExchange" ],
+        "FullCommandName": [ "Invoke-AzReservationCalculateExchange_PostExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ]
       },
@@ -176,7 +176,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsCalculateExchange+[NoContext]+PostExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01+5": {
+  "Invoke-AzReservationCalculateExchange+[NoContext]+PostExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01+5": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01",
@@ -186,8 +186,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "5" ],
         "x-ms-client-request-id": [ "ad6d9407-11bd-4f6f-8b92-08a807010184" ],
-        "CommandName": [ "Invoke-AzReservationsCalculateExchange" ],
-        "FullCommandName": [ "Invoke-AzReservationsCalculateExchange_PostExpanded" ],
+        "CommandName": [ "Invoke-AzReservationCalculateExchange" ],
+        "FullCommandName": [ "Invoke-AzReservationCalculateExchange_PostExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ]
       },
@@ -222,7 +222,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsCalculateExchange+[NoContext]+PostExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01+6": {
+  "Invoke-AzReservationCalculateExchange+[NoContext]+PostExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01+6": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01",
@@ -232,8 +232,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "6" ],
         "x-ms-client-request-id": [ "ad6d9407-11bd-4f6f-8b92-08a807010184" ],
-        "CommandName": [ "Invoke-AzReservationsCalculateExchange" ],
-        "FullCommandName": [ "Invoke-AzReservationsCalculateExchange_PostExpanded" ],
+        "CommandName": [ "Invoke-AzReservationCalculateExchange" ],
+        "FullCommandName": [ "Invoke-AzReservationCalculateExchange_PostExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ]
       },
@@ -265,7 +265,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsCalculateExchange+[NoContext]+PostExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01+7": {
+  "Invoke-AzReservationCalculateExchange+[NoContext]+PostExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01+7": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/fd059cb0-8654-49c7-923a-1069a5d0edfa?api-version=2022-03-01",
@@ -275,8 +275,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "7" ],
         "x-ms-client-request-id": [ "ad6d9407-11bd-4f6f-8b92-08a807010184" ],
-        "CommandName": [ "Invoke-AzReservationsCalculateExchange" ],
-        "FullCommandName": [ "Invoke-AzReservationsCalculateExchange_PostExpanded" ],
+        "CommandName": [ "Invoke-AzReservationCalculateExchange" ],
+        "FullCommandName": [ "Invoke-AzReservationCalculateExchange_PostExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ]
       },
@@ -308,7 +308,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsCalculateExchange+[NoContext]+Post+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculateExchange?api-version=2022-03-01+1": {
+  "Invoke-AzReservationCalculateExchange+[NoContext]+Post+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculateExchange?api-version=2022-03-01+1": {
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculateExchange?api-version=2022-03-01",
@@ -347,7 +347,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsCalculateExchange+[NoContext]+Post+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01+2": {
+  "Invoke-AzReservationCalculateExchange+[NoContext]+Post+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01+2": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01",
@@ -357,8 +357,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "9" ],
         "x-ms-client-request-id": [ "ad9b1c0e-843a-4b0e-857a-2f1f55079168" ],
-        "CommandName": [ "Invoke-AzReservationsCalculateExchange" ],
-        "FullCommandName": [ "Invoke-AzReservationsCalculateExchange_Post" ],
+        "CommandName": [ "Invoke-AzReservationCalculateExchange" ],
+        "FullCommandName": [ "Invoke-AzReservationCalculateExchange_Post" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ]
       },
@@ -393,7 +393,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsCalculateExchange+[NoContext]+Post+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01+3": {
+  "Invoke-AzReservationCalculateExchange+[NoContext]+Post+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01+3": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01",
@@ -403,8 +403,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "10" ],
         "x-ms-client-request-id": [ "ad9b1c0e-843a-4b0e-857a-2f1f55079168" ],
-        "CommandName": [ "Invoke-AzReservationsCalculateExchange" ],
-        "FullCommandName": [ "Invoke-AzReservationsCalculateExchange_Post" ],
+        "CommandName": [ "Invoke-AzReservationCalculateExchange" ],
+        "FullCommandName": [ "Invoke-AzReservationCalculateExchange_Post" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ]
       },
@@ -439,7 +439,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsCalculateExchange+[NoContext]+Post+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01+4": {
+  "Invoke-AzReservationCalculateExchange+[NoContext]+Post+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01+4": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01",
@@ -449,8 +449,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "11" ],
         "x-ms-client-request-id": [ "ad9b1c0e-843a-4b0e-857a-2f1f55079168" ],
-        "CommandName": [ "Invoke-AzReservationsCalculateExchange" ],
-        "FullCommandName": [ "Invoke-AzReservationsCalculateExchange_Post" ],
+        "CommandName": [ "Invoke-AzReservationCalculateExchange" ],
+        "FullCommandName": [ "Invoke-AzReservationCalculateExchange_Post" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ]
       },
@@ -485,7 +485,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsCalculateExchange+[NoContext]+Post+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01+5": {
+  "Invoke-AzReservationCalculateExchange+[NoContext]+Post+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01+5": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01",
@@ -495,8 +495,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "12" ],
         "x-ms-client-request-id": [ "ad9b1c0e-843a-4b0e-857a-2f1f55079168" ],
-        "CommandName": [ "Invoke-AzReservationsCalculateExchange" ],
-        "FullCommandName": [ "Invoke-AzReservationsCalculateExchange_Post" ],
+        "CommandName": [ "Invoke-AzReservationCalculateExchange" ],
+        "FullCommandName": [ "Invoke-AzReservationCalculateExchange_Post" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ]
       },
@@ -531,7 +531,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsCalculateExchange+[NoContext]+Post+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01+6": {
+  "Invoke-AzReservationCalculateExchange+[NoContext]+Post+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01+6": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01",
@@ -541,8 +541,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "13" ],
         "x-ms-client-request-id": [ "ad9b1c0e-843a-4b0e-857a-2f1f55079168" ],
-        "CommandName": [ "Invoke-AzReservationsCalculateExchange" ],
-        "FullCommandName": [ "Invoke-AzReservationsCalculateExchange_Post" ],
+        "CommandName": [ "Invoke-AzReservationCalculateExchange" ],
+        "FullCommandName": [ "Invoke-AzReservationCalculateExchange_Post" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ]
       },
@@ -574,7 +574,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsCalculateExchange+[NoContext]+Post+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01+7": {
+  "Invoke-AzReservationCalculateExchange+[NoContext]+Post+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01+7": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/2cd0476f-999a-4d9f-a799-0f9a00f1549e?api-version=2022-03-01",
@@ -584,8 +584,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "14" ],
         "x-ms-client-request-id": [ "ad9b1c0e-843a-4b0e-857a-2f1f55079168" ],
-        "CommandName": [ "Invoke-AzReservationsCalculateExchange" ],
-        "FullCommandName": [ "Invoke-AzReservationsCalculateExchange_Post" ],
+        "CommandName": [ "Invoke-AzReservationCalculateExchange" ],
+        "FullCommandName": [ "Invoke-AzReservationCalculateExchange_Post" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ]
       },

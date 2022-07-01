@@ -1,15 +1,15 @@
 {
-  "Get-AzReservationsCatalog+[NoContext]+GetSkusWithLocation+$GET+https://management.azure.com/subscriptions/6d5e2387-bdf5-4ca1-83db-795fd2398b93/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=VirtualMachine\u0026location=westus+1": {
+  "Get-AzReservationCatalog+[NoContext]+GetSkusWithLocation+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=VirtualMachine\u0026location=westus+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6d5e2387-bdf5-4ca1-83db-795fd2398b93/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=VirtualMachine\u0026location=westus",
+      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=VirtualMachine\u0026location=westus",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
         "x-ms-client-request-id": [ "c81c702e-08e1-4466-b38e-a84d87f42eb8" ],
-        "CommandName": [ "Get-AzReservationsCatalog" ],
-        "FullCommandName": [ "Get-AzReservationsCatalog_Get" ],
+        "CommandName": [ "Get-AzReservationCatalog" ],
+        "FullCommandName": [ "Get-AzReservationCatalog_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
@@ -41,17 +41,17 @@
       "isContentBase64": false
     }
   },
-  "Get-AzReservationsCatalog+[NoContext]+GetSkusWithOutLocation+$GET+https://management.azure.com/subscriptions/6d5e2387-bdf5-4ca1-83db-795fd2398b93/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=SuseLinux+1": {
+  "Get-AzReservationCatalog+[NoContext]+GetSkusWithOutLocation+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=SuseLinux+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6d5e2387-bdf5-4ca1-83db-795fd2398b93/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=SuseLinux",
+      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=SuseLinux",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
         "x-ms-client-request-id": [ "627bd31b-5a15-4a93-b4dd-258630c98eea" ],
-        "CommandName": [ "Get-AzReservationsCatalog" ],
-        "FullCommandName": [ "Get-AzReservationsCatalog_Get" ],
+        "CommandName": [ "Get-AzReservationCatalog" ],
+        "FullCommandName": [ "Get-AzReservationCatalog_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
@@ -83,17 +83,17 @@
       "isContentBase64": false
     }
   },
-  "Get-AzReservationsCatalog+[NoContext]+Get3PPSkus+$GET+https://management.azure.com/subscriptions/6d5e2387-bdf5-4ca1-83db-795fd2398b93/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=VirtualMachineSoftware\u0026publisherId=test_test_pmc2pc1\u0026offerId=mnk_vmri_test_001\u0026planId=testplan001+1": {
+  "Get-AzReservationCatalog+[NoContext]+Get3PPSkus+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=VirtualMachineSoftware\u0026publisherId=test_test_pmc2pc1\u0026offerId=mnk_vmri_test_001\u0026planId=testplan001+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6d5e2387-bdf5-4ca1-83db-795fd2398b93/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=VirtualMachineSoftware\u0026publisherId=test_test_pmc2pc1\u0026offerId=mnk_vmri_test_001\u0026planId=testplan001",
+      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=VirtualMachineSoftware\u0026publisherId=test_test_pmc2pc1\u0026offerId=mnk_vmri_test_001\u0026planId=testplan001",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
         "x-ms-client-request-id": [ "5f570fb9-762c-40ee-acef-71f9e46ac225" ],
-        "CommandName": [ "Get-AzReservationsCatalog" ],
-        "FullCommandName": [ "Get-AzReservationsCatalog_Get" ],
+        "CommandName": [ "Get-AzReservationCatalog" ],
+        "FullCommandName": [ "Get-AzReservationCatalog_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
@@ -125,17 +125,17 @@
       "isContentBase64": false
     }
   },
-  "Get-AzReservationsCatalog+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/6d5e2387-bdf5-4ca1-83db-795fd2398b93/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=SuseLinux+1": {
+  "Get-AzReservationCatalog+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=SuseLinux+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6d5e2387-bdf5-4ca1-83db-795fd2398b93/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=SuseLinux",
+      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=SuseLinux",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
         "x-ms-client-request-id": [ "5cbf5159-74df-4619-bf0c-23f13258f8e1" ],
-        "CommandName": [ "Get-AzReservationsCatalog" ],
-        "FullCommandName": [ "Get-AzReservationsCatalog_GetViaIdentity" ],
+        "CommandName": [ "Get-AzReservationCatalog" ],
+        "FullCommandName": [ "Get-AzReservationCatalog_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ],
         "Authorization": [ "[Filtered]" ]

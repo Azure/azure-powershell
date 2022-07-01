@@ -58,9 +58,110 @@ subject-prefix: $(service-name)
 
 resourcegroup-append: true
 nested-object-to-string: true
-inlining-threshold: 100
 
 directive:
+  ### Rename Cmdlet names
+  - where:
+      verb: Invoke
+      subject: CalculateReservationOrder
+    set:
+      verb: Get
+      subject-prefix: Reservation
+      subject: Quote
+  - where:
+      verb: Get
+      subject: ReservationOrder
+    set:
+      verb: Get
+      subject-prefix: Reservation
+      subject: Order
+  - where:
+      verb: Get
+      subject: Reservation
+    set:
+      verb: Get
+      subject-prefix: ''
+      subject: Reservation
+  - where:
+      verb: Get
+      subject: Catalog
+    set:
+      verb: Get
+      subject-prefix: Reservation
+      subject: Catalog
+  - where:
+      verb: Get
+      subject: ReservationRevision
+    set:
+      verb: Get
+      subject-prefix: Reservation
+      subject: History  
+
+  ### Rename property name
+  - where:
+      model-name: ReservationResponse
+      property-name: Sku
+    set:
+      property-name: InternalSku
+  - where:
+      model-name: ReservationResponse
+      property-name: SkuName1
+    set:
+      property-name: Sku
+  - where:
+      model-name: ReservationResponse
+      property-name: AppliedScope
+    set:
+      property-name: AppliedScopes
+  - where:
+      model-name: ReservationOrderResponse
+      property-name: Reservation
+    set:
+      property-name: Reservations
+  - where:
+      model-name: Catalog
+      property-name: Term
+    set:
+      property-name: Terms
+  - where:
+      model-name: Catalog
+      property-name: Location
+    set:
+      property-name: Locations
+  - where:
+      model-name: Catalog
+      property-name: SkuProperty
+    set:
+      property-name: SkuProperties
+  - where:
+      model-name: Catalog
+      property-name: Restriction
+    set:
+      property-name: Restrictions
+  - where:
+      model-name: SkuRestriction
+      property-name: Value
+    set:
+      property-name: Values
+
+  ###Rename parameter name
+  ## Get-AzReservationQuote
+  - where:
+      verb: Get
+      subject-prefix: Reservation
+      subject: Quote
+      parameter-name: SkuName
+    set:
+      parameter-name: Sku
+  - where:
+      verb: Get
+      subject-prefix: Reservation
+      subject: Quote
+      parameter-name: ReservedResourcePropertyInstanceFlexibility
+    set:
+      parameter-name: InstanceFlexibility 
+
+  ### Format output table
   - where:
       model-name: ReservationOrderResponse
     set:
@@ -82,10 +183,9 @@ directive:
     set:
       format-table:
         properties:
-          - Sku
           - Location
           - Name
-          - SkuName1
+          - Sku
           - ProvisioningState
           - BenefitStartTime
           - ExpiryDate
@@ -93,7 +193,6 @@ directive:
           - SkuDescription
         labels:
           Name: ReservationOrderId/ReservationId
-          SkuName1: Sku
           ProvisioningState: State
   - where:
       model-name: AppliedReservations
@@ -105,8 +204,39 @@ directive:
       format-table:
         properties:
           - ResourceType
-          - Term
+          - Terms
           - Name
-          - Location
-
+          - Locations
+  - where:
+      model-name: PaymentDetail
+    set:
+      format-table:
+        properties:
+          - DueDate
+          - PaymentDate
+          - Status
+  - where:
+      model-name: CalculateExchangeOperationResultResponse
+    set:
+      format-table:
+        properties:
+          - SessionId
+          - Status
+          - RefundsTotal
+          - PurchasesTotal
+          - NetPayable
+  - where:
+      model-name: SkuRestriction
+    set:
+      format-table:
+        properties:
+          - Type
+          - Values
+          - ReasonCode
+          
+  - no-inline:
+    - Price
+    - ExtendedStatusInfo
+    - CalculatePriceResponsePropertiesBillingCurrencyTotal
+    - CalculatePriceResponsePropertiesPricingCurrencyTotal
 ```
