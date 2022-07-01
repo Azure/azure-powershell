@@ -31,7 +31,7 @@ Gets or lists private endpoint connections in a ServiceBus namespace
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name 00000000000
+Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name 00000000000
 ```
 
 Gets private endpoint connection `00000000000` on Service Bus namespace `mynamespace`. 
@@ -39,7 +39,7 @@ Note that connection name is NOT the same as Private Endpoint Name.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName myresourcegroup -NamespaceName mynamespace
+Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName myresourcegroup -NamespaceName mynamespace
 ```
 
 Lists all private endpoints in namespace `mynamespace`.
