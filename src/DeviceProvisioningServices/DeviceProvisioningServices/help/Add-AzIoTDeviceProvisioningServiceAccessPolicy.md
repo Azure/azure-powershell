@@ -39,7 +39,7 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 
 ### Example 1
 ```powershell
-Add-AzIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" -Permissions "ServiceConfig, EnrollmentWrite"
+Add-AzIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" -Permissions "ServiceConfig", "EnrollmentWrite"
 ```
 
 ```output
@@ -55,12 +55,12 @@ Add a new shared access policy in an Azure IoT Hub device provisioning service w
 
 ### Example 2
 ```powershell
-Add-AzIoTDpsAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy2" -Permissions "EnrollmentRead"
+Add-AzIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy2" -Permissions "EnrollmentRead"
 ```
 
 ```output
-KeyName		Rights		
--------		------	
+KeyName		Rights
+-------		------
 mypolicy1	ServiceConfig, EnrollmentWrite
 mypolicy2	EnrollmentRead
 ```
