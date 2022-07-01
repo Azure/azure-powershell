@@ -149,7 +149,7 @@ Uri https://configuredmetadata.net returns an array of environment metadata. The
 ]
 #>
 
-Add-AzEnvironment -AutoDiscover -Uri https://configuredmetadata.net
+Add-AzEnvironment -AutoDiscover -Uri https://configuredmetadata.net -Test
 ```
 
 ```Output
