@@ -1,7 +1,9 @@
 ### Example 1: Get-AzConnectedNetworkVendorSkuPreview using sku name, vendor name and preview subscription
 ```powershell
-PS C:\> Get-AzConnectedNetworkVendorSkuPreview -SkuName mySku -VendorName myVendor -PreviewSubscription xxxxx-22222-xxxxx-22222
+Get-AzConnectedNetworkVendorSkuPreview -SkuName mySku -VendorName myVendor -PreviewSubscription xxxxx-22222-xxxxx-22222
+```
 
+```output
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/myVendor/vendorSkus/mySku/previewSubscriptions/xxxxx-22222-xxxxx-22222
 Name                         : xxxxx-22222-xxxxx-22222
 ProvisioningState            : Succeeded
@@ -20,9 +22,11 @@ Getting the preview information of a vendor sku mySku with vendor myVendor for t
 
 ### Example 2: Get-AzConnectedNetworkVendorSkuPreview via Identity
 ```powershell
-PS C:\> $skuPreview = @{ SkuName = "mySku";  VendorName = "myVendor"; PreviewSubscription = "xxxxx-22222-xxxxx-22222"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
-PS C:\> Get-AzConnectedNetworkVendorSkuPreview -InputObject $skuPreview
+$skuPreview = @{ SkuName = "mySku";  VendorName = "myVendor"; PreviewSubscription = "xxxxx-22222-xxxxx-22222"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
+Get-AzConnectedNetworkVendorSkuPreview -InputObject $skuPreview
+```
 
+```output
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/myVendor/vendorSkus/mySku/previewSubscriptions/xxxxx-22222-xxxxx-22222
 Name                         : xxxxx-22222-xxxxx-22222
 ProvisioningState            : Succeeded
