@@ -39,7 +39,7 @@ The **Set-AzSynapseLinkConnectionLinkTables** cmdlet edits link tables under a l
 
 ### Example 1
 ```powershell
-Set-AzSynapseLinkConnectionLinkTables -WorkspaceName ContosoWorkspace -LinkConnectionName ContosoLinkConnection -EditTablesRequestFile "C:\\samples\\edittables.json"
+Set-AzSynapseLinkConnectionLinkTable -WorkspaceName ContosoWorkspace -LinkConnectionName ContosoLinkConnection -EditTablesRequestFile "C:\\samples\\edittables.json"
 ```
 
 This command edits link tables under link connection ContosoLinkConnection in workspace ContosoWorkspace.
@@ -49,7 +49,7 @@ This file includes information about edited link table.
 ### Example 2
 ```powershell
 $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-$ws | Set-AzSynapseLinkConnectionLinkTables -LinkConnectionName ContosoLinkConnection -EditTablesRequestFile "C:\\samples\\edittables.json"
+$ws | Set-AzSynapseLinkConnectionLinkTable -LinkConnectionName ContosoLinkConnection -EditTablesRequestFile "C:\\samples\\edittables.json"
 ```
 
 This command edits link tables under link connection ContosoLinkConnection in workspace ContosoWorkspace through pipeline.
@@ -58,8 +58,8 @@ This file includes information about edited link table.
 
 ### Example 3
 ```powershell
-$lc = Get-AzSynpaseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
-$lc | Set-AzSynapseLinkConnectionLinkTables -EditTablesRequestFile "C:\\samples\\edittables.json"
+$lc = Get-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+$lc | Set-AzSynapseLinkConnectionLinkTable -EditTablesRequestFile "C:\\samples\\edittables.json"
 ```
 
 This command edits link tables under a link connection through pipeline.

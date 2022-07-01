@@ -52,7 +52,7 @@ This command gets information about link tables under link connection ContosoLin
 
 ### Example 3
 ```powershell
-$lc = Get-AzSynpaseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+$lc = Get-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
 $lc | Get-AzSynapseLinkConnectionLinkTable
 ```
 
