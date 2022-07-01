@@ -27,7 +27,7 @@ The **Get-AzSqlInstanceAdvancedDataSecurityPolicy** cmdlet retrieves the Advance
 ```powershell
 Get-AzSqlInstanceAdvancedDataSecurityPolicy `
             -ResourceGroupName "ResourceGroup01" `
-            -InstanceName "ManagedInstance01" `
+            -InstanceName "ManagedInstance01"
 ```
 
 ```output
