@@ -16,8 +16,8 @@ Creates or updates a contact profile
 New-AzOrbitalContactProfile -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AutoTrackingConfiguration <AutoTrackingConfiguration>] [-EventHubUri <String>]
  [-Link <IContactProfileLink[]>] [-MinimumElevationDegree <Single>] [-MinimumViableContactDuration <String>]
- [-NetworkConfigurationSubnetId <String>] [-ProvisioningState <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NetworkConfigurationSubnetId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -210,21 +210,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProvisioningState
-The current state of the resource's creation, deletion, or modification
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -320,7 +305,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-LINK <IContactProfileLink[]>: Links of the Contact Profile
+`LINK <IContactProfileLink[]>`: Links of the Contact Profile
   - `Channel <IContactProfileLinkChannel[]>`: Contact Profile Link Channel
     - `BandwidthMHz <Single>`: Bandwidth in MHz
     - `CenterFrequencyMHz <Single>`: Center Frequency in MHz

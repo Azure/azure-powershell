@@ -14,6 +14,9 @@ Microsoft Azure PowerShell: Orbital cmdlets
 ### [Get-AzOrbitalAvailableGroundStation](Get-AzOrbitalAvailableGroundStation.md)
 Gets the specified  available ground station
 
+### [Get-AzOrbitalAvailableSpacecraftContact](Get-AzOrbitalAvailableSpacecraftContact.md)
+Return list of available contacts
+
 ### [Get-AzOrbitalContactProfile](Get-AzOrbitalContactProfile.md)
 Gets the specified contact Profile in a specified resource group
 
@@ -22,9 +25,6 @@ Gets the specified spacecraft in a specified resource group
 
 ### [Get-AzOrbitalSpacecraftContact](Get-AzOrbitalSpacecraftContact.md)
 Gets the specified contact in a specified resource group
-
-### [Get-AzOrbitalSpacecraftContactAvailable](Get-AzOrbitalSpacecraftContactAvailable.md)
-Return list of available contacts
 
 ### [New-AzOrbitalContactProfile](New-AzOrbitalContactProfile.md)
 Creates or updates a contact profile

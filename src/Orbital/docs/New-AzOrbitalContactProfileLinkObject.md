@@ -150,7 +150,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CHANNEL <IContactProfileLinkChannel[]>: Contact Profile Link Channel.
+`CHANNEL <IContactProfileLinkChannel[]>`: Contact Profile Link Channel.
   - `BandwidthMHz <Single>`: Bandwidth in MHz
   - `CenterFrequencyMHz <Single>`: Center Frequency in MHz
   - `EndPointIPAddress <String>`: IP Address.

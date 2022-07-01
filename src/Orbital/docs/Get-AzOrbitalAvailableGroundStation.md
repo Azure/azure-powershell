@@ -14,8 +14,8 @@ Gets the specified  available ground station
 
 ### Get (Default)
 ```
-Get-AzOrbitalAvailableGroundStation -GroundStationName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzOrbitalAvailableGroundStation -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -98,21 +98,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroundStationName
-Ground Station name
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -126,6 +111,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Ground Station name
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: GroundStationName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -164,7 +164,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
+`INPUTOBJECT <IOrbitalIdentity>`: Identity Parameter
   - `[ContactName <String>]`: Contact Name
   - `[ContactProfileName <String>]`: Contact Profile Name
   - `[GroundStationName <String>]`: Ground Station name

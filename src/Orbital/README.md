@@ -30,7 +30,7 @@ For information on how to develop for `Az.Orbital`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: a5cd8e4c6a799a60d90a2f4a190ea930ea509d9d
+branch: eb606ec7a7abadc78ded1423ddbea9e8f49e72c3
 require:
   - $(this-folder)/../readme.azure.noprofile.md 
 input-file:
@@ -46,6 +46,45 @@ identity-correction-for-post: true
 nested-object-to-string: true
 
 directive:
+  - from: swagger-document 
+    where: $.definitions.SpacecraftsProperties.properties.provisioningState
+    transform: >-
+      return {
+        "type": "string",
+        "readOnly": true,
+        "allOf": [
+          {
+            "$ref": "#/definitions/ProvisioningState"
+          }
+        ],
+        "description": "The current state of the resource's creation, deletion, or modification."
+      }
+  - from: swagger-document 
+    where: $.definitions.ContactsProperties.properties.provisioningState
+    transform: >-
+      return {
+        "type": "string",
+        "readOnly": true,
+        "allOf": [
+          {
+            "$ref": "#/definitions/ProvisioningState"
+          }
+        ],
+        "description": "The current state of the resource's creation, deletion, or modification."
+      }
+  - from: swagger-document 
+    where: $.definitions.ContactProfilesProperties.properties.provisioningState
+    transform: >-
+      return {
+        "type": "string",
+        "readOnly": true,
+        "allOf": [
+          {
+            "$ref": "#/definitions/ProvisioningState"
+          }
+        ],
+        "description": "The current state of the resource's creation, deletion, or modification."
+      }
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
@@ -62,7 +101,7 @@ directive:
   - where:
       subject: SpacecraftAvailableContact
     set:
-      subject: SpacecraftContactAvailable
+      subject: AvailableSpacecraftContact
   - where:
       subject: ContactProfileTag
     set:
@@ -83,6 +122,18 @@ directive:
       parameter-name: SpacecraftName
     set:
       parameter-name: Name
+  - where:
+      subject: AvailableSpacecraftContact
+      parameter-name: SpacecraftName
+    set:
+      parameter-name: Name
+      alias: SpacecraftName
+  - where:
+      subject: AvailableGroundStation
+      parameter-name: GroundStationName
+    set:
+      parameter-name: Name
+      alias: GroundStationName
   # Re-name and custom it
   # - model-cmdlet:
   #     - ContactProfileLinkChannel

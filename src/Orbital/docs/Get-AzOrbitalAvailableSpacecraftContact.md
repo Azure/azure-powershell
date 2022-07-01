@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Orbital
-online version: https://docs.microsoft.com/powershell/module/az.orbital/get-azorbitalspacecraftcontactavailable
+online version: https://docs.microsoft.com/powershell/module/az.orbital/get-azorbitalavailablespacecraftcontact
 schema: 2.0.0
 ---
 
-# Get-AzOrbitalSpacecraftContactAvailable
+# Get-AzOrbitalAvailableSpacecraftContact
 
 ## SYNOPSIS
 Return list of available contacts
@@ -14,15 +14,14 @@ Return list of available contacts
 
 ### ListExpanded (Default)
 ```
-Get-AzOrbitalSpacecraftContactAvailable -ResourceGroupName <String> -SpacecraftName <String>
- -EndTime <DateTime> -GroundStationName <String> -StartTime <DateTime> [-SubscriptionId <String[]>]
- [-ContactProfileId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzOrbitalAvailableSpacecraftContact -Name <String> -ResourceGroupName <String> -EndTime <DateTime>
+ -GroundStationName <String> -StartTime <DateTime> [-SubscriptionId <String[]>] [-ContactProfileId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzOrbitalSpacecraftContactAvailable -ResourceGroupName <String> -SpacecraftName <String>
+Get-AzOrbitalAvailableSpacecraftContact -Name <String> -ResourceGroupName <String>
  -Parameter <IContactParameters> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -34,10 +33,7 @@ Return list of available contacts
 
 ### Example 1: {{ Add title here }}
 ```powershell
-$dateS = Get-Date -Day 23
-$dateE = Get-Date -Day 24
-
-Get-AzOrbitalSpacecraftContactAvailable -ResourceGroupName azpstest-gp -SpacecraftName azps-orbitalspacecraft -EndTime $dateE -GroundStationName "KSAT_SVALBARD" -StartTime $dateS -ContactProfileId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile"
+{{ Add code here }}
 ```
 
 ```output
@@ -134,6 +130,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Spacecraft ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: SpacecraftName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -168,21 +179,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SpacecraftName
-Spacecraft ID
 
 ```yaml
 Type: System.String
@@ -277,7 +273,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETER <IContactParameters>: Parameters that define the contact resource.
+`PARAMETER <IContactParameters>`: Parameters that define the contact resource.
   - `EndTime <DateTime>`: End time of a contact.
   - `GroundStationName <String>`: Name of Azure Ground Station.
   - `StartTime <DateTime>`: Start time of a contact.
