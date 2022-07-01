@@ -37,7 +37,7 @@ Returns resource collection belonging to a resource group.
 
 ### Example 1: Get all backup vaults in a given subscription
 ```powershell
-PS C:\> Get-AzDataProtectionBackupVault
+Get-AzDataProtectionBackupVault
 ```
 
 ```output
@@ -54,7 +54,7 @@ Provide SubscriptionId parameter to retrieve backup vaults in a different subscr
 
 ### Example 2: Get all backup vaults in a given resource Group.
 ```powershell
-PS C:\> Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupName sarath-rg
+Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupName sarath-rg
 ```
 
 ```output
@@ -68,7 +68,7 @@ This command gets all backup vaults in a given resource group.
 
 ### Example 3: Get a specific vault.
 ```powershell
-PS C:\> Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupName sarath-rg -VaultName sarath-vault
+Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupName sarath-rg -VaultName sarath-vault
 ```
 
 ```output
