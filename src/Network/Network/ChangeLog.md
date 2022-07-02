@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.18.0
 * Added support for CustomV2 ssl policies for Application Gateway.
     - Added `CustomV2` to the validation set of `PolicyType`
     - Added `TLSv1_3` to the validation set of `MinProtocolVersion`

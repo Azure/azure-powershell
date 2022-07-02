@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.BotService",
-  "ModuleVersion": "0.3.2",
+  "ModuleVersion": "0.4.0",
   "Cmdlets": [
     {
       "VerbName": "Export",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Description": "System.String",
               "DeveloperAppInsightKey": "System.String",
@@ -106,7 +106,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -116,7 +116,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -257,7 +257,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -273,7 +273,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -346,7 +346,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Description": "System.String",
               "DeveloperAppInsightKey": "System.String",
@@ -405,7 +405,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ChannelName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]",
               "ConnectionName": "System.String",
@@ -444,7 +444,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -454,7 +454,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -580,7 +580,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -596,7 +596,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -727,7 +727,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -743,7 +743,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -859,7 +859,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -875,7 +875,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -941,7 +941,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ChannelName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]",
                     "ConnectionName": "System.String",
@@ -998,7 +998,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1014,7 +1014,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1114,7 +1114,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1130,7 +1130,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1203,7 +1203,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Description": "System.String",
               "DeveloperAppInsightKey": "System.String",
@@ -1290,7 +1290,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1300,7 +1300,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1438,7 +1438,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1454,7 +1454,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1527,7 +1527,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Description": "System.String",
               "DeveloperAppInsightKey": "System.String",
@@ -1552,15 +1552,6 @@
       "Parameters": [
         {
           "Name": "ApplicationId",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Location",
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -1622,6 +1613,15 @@
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Location",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1716,7 +1716,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1726,7 +1726,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1780,21 +1780,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Location",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "ResourceGroupName",
                 "Type": {
                   "Namespace": "System",
@@ -1829,6 +1814,21 @@
             {
               "ParameterMetadata": {
                 "Name": "Description",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -1942,7 +1942,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1958,7 +1958,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2080,21 +2080,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Location",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "ResourceGroupName",
                 "Type": {
                   "Namespace": "System",
@@ -2129,6 +2114,21 @@
             {
               "ParameterMetadata": {
                 "Name": "Description",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -2242,7 +2242,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2258,7 +2258,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2380,21 +2380,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Location",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "ResourceGroupName",
                 "Type": {
                   "Namespace": "System",
@@ -2429,6 +2414,21 @@
             {
               "ParameterMetadata": {
                 "Name": "Description",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -2542,7 +2542,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2558,7 +2558,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2765,7 +2765,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ChannelName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]",
               "ConnectionName": "System.String",
@@ -2804,7 +2804,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2814,7 +2814,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2948,7 +2948,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2964,7 +2964,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3045,7 +3045,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ChannelName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]",
                     "ConnectionName": "System.String",
@@ -3102,7 +3102,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3118,7 +3118,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3233,7 +3233,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3249,7 +3249,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3337,7 +3337,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Description": "System.String",
               "DeveloperAppInsightKey": "System.String",
@@ -3395,7 +3395,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ChannelName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]",
               "ConnectionName": "System.String",
@@ -3484,7 +3484,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3530,7 +3530,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3570,7 +3570,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3580,7 +3580,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3791,7 +3791,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3867,7 +3867,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3931,7 +3931,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3947,7 +3947,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4013,7 +4013,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ChannelName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]",
                     "ConnectionName": "System.String",
@@ -4156,7 +4156,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4232,7 +4232,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4296,7 +4296,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4312,7 +4312,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4498,7 +4498,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4574,7 +4574,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4638,7 +4638,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4654,7 +4654,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4766,7 +4766,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -4949,7 +4949,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName"
       ]
@@ -4957,7 +4957,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName, Az.BotService.private, Version=0.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",

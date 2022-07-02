@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Updated the API version to stable 2022-03-10
 * Added cmdlet Update-AzConnectedMachine
 * Added ResourceGroup to the display table

@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.29.0
 * Added image alias 'Win2022AzureEditionCore'
 * Added the `-DisableIntegrityMonitoring` switch parameter to the `New-AzVM` cmdlet. 
   Changed the default behavior for `New-AzVM` and `New-AzVmss` when these conditions are met:

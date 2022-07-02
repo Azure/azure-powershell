@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.6.0
 * Supported importing pem certificate by `Import-AzKeyVaultCertificate` [#18494]
 * Supported accepting rotation policy in a JSON file 
 * [Breaking Change] Changed parameter `ExpiresIn` in `Set-AzKeyVaultKeyRotationPolicy` from TimeSpan? to string. It must be an ISO 8601 duration like "P30D" for 30 days.
