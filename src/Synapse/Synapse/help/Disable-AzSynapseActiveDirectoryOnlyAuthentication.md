@@ -37,36 +37,36 @@ The **Disable-AzSynapseActiveDirectoryOnlyAuthentication** cmdlet disables Azure
 
 ### Example 1
 ```powershell
-PS C:\> Disable-AzSynapseActiveDirectoryOnlyAuthentication -WorkspaceName ContosoWorkspace
+Disable-AzSynapseActiveDirectoryOnlyAuthentication -WorkspaceName ContosoWorkspace
 ```
-
+```output
 WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                              False Consistent 3/23/2022 8:27:47 AM
-
+```
 This command disables Azure AD only authentication for workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -WorkspaceName ContosoWorkspace
-PS C:\> $ws | Disable-AzSynapseActiveDirectoryOnlyAuthentication
+$ws = Get-AzSynapseWorkspace -WorkspaceName ContosoWorkspace
+$ws | Disable-AzSynapseActiveDirectoryOnlyAuthentication
 ```
-
+```output
 WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                              False Consistent 3/23/2022 8:27:47 AM
-
+```
 This command disables Azure AD only authentication for workspace ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> Disable-AzSynapseActiveDirectoryOnlyAuthentication -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace
+Disable-AzSynapseActiveDirectoryOnlyAuthentication -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace
 ```
-
+```outout
 WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                              False Consistent 3/23/2022 8:27:47 AM
-
+```
 This command disables Azure AD only authentication for workspace ContosoWorkspace by ResourceId.
 
 ## PARAMETERS

@@ -32,7 +32,7 @@ Removes a private endpoint connection from a namespace.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzServiceBusPrivateEndpointConnection -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name 00000000000
+Remove-AzServiceBusPrivateEndpointConnection -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name 00000000000
 ```
 
 Removes a private endpoint connection `00000000000` to connect to Service Bus namespace `mynamespace`. 

@@ -20,9 +20,7 @@ param (
     [switch]$Recurse,
     [switch]$IncludeDefaultRules,
     [string]$OutputFolder = "$PSScriptRoot\..\..\..\artifacts\StaticAnalysisResults\ExampleAnalysis",
-    [Parameter(ParameterSetName = "Markdown")]
     [switch]$AnalyzeScriptsInFile,
-    [Parameter(ParameterSetName = "Markdown")]
     [switch]$OutputScriptsInFile,
     [switch]$OutputResultsByModule,
     [switch]$CleanScripts
@@ -45,7 +43,6 @@ if ($OutputScriptsInFile.IsPresent) {
     Remove-Item $OutputFolder -ErrorAction SilentlyContinue
 }
 
-
 # Find examples in "help\*.md", output ".ps1"
 if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     $null = New-Item -ItemType Directory -Path $OutputFolder -ErrorAction SilentlyContinue
@@ -58,9 +55,12 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     else{
         $MarkdownPath = $MarkdownPaths
     }
-    foreach($_ in Get-ChildItem $MarkdownPath){
+    foreach($_ in Get-ChildItem $MarkdownPath -Recurse:$Recurse.IsPresent){
         # Filter the .md of overview in "\help\"
-        if ((Get-Item -Path $_.FullName).Directory.Name -eq "help" -and $_.FullName -cmatch ".*\.md" -and $_.BaseName -cmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
+        if ((Get-Item -Path $_.FullName).Directory.Name -eq "help" -and $_.FullName -cmatch ".*\.md" -and $_.BaseName -cmatch "^[A-Z][a-z]+-([A-Z][a-z0-9]*)+$") {
+            if((Get-Item -Path $_.FullName).Directory.Parent.Name -eq "netcoreapp3.1"){
+                continue
+            }
             Write-Output "Searching in file $($_.FullName) ..."
             $module = (Get-Item -Path $_.FullName).Directory.Parent.Name
             $cmdlet = $_.BaseName
@@ -87,7 +87,6 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
         $deletePromptAndSeparateOutputTable | Where-Object {$_ -ne $null} | Export-Csv "$OutputFolder\DeletingSeparating.csv" -NoTypeInformation
     }
 }
-
 
 # Analyze scripts
 if ($PSCmdlet.ParameterSetName -eq "Script" -or $AnalyzeScriptsInFile.IsPresent) {

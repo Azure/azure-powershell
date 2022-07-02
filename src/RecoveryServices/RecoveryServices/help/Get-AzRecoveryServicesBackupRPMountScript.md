@@ -30,7 +30,7 @@ $startDate = (Get-Date).AddDays(-7)
 $endDate = Get-Date
 $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
 
-To mount files of the latest recovery point, obtain the script by
+<# To mount files of the latest recovery point, obtain the script by #>
 
 Get-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 ```

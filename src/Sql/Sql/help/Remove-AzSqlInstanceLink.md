@@ -43,7 +43,10 @@ Remove-AzSqlInstanceLink [-ResourceId] <String> [-Force] [-PassThru] [-DefaultPr
 
 ### Example 1: Remove instance link
 ```powershell
-PS C:\> Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01"
+Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01"
+```
+
+```output
 This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
 ```
@@ -52,14 +55,17 @@ This command removes the instance link "Link01" from the managed instance "Manag
 
 ### Example 2: Remove instance link with an explicit -Force flag
 ```powershell
-PS C:\> Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" -Force
+Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" -Force
 ```
 
 This command forcefully removes the instance link "Link01" from the managed instance "ManagedInstance01", ignoring the data loss warning.
 
 ### Example 3: Remove instance link by its resource identifier
 ```powershell
-PS C:\> Remove-AzSqlInstanceLink -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01"
+Remove-AzSqlInstanceLink -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01"
+```
+
+```output
 This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
 ```
@@ -68,8 +74,11 @@ This command removes the instance link with specified resource ID.
 
 ### Example 4: Remove instance link by its PowerShell object
 ```powershell
-PS C:\> $managedInstanceLink = Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" 
-PS C:\> Remove-AzSqlInstanceLink -InputObject $managedInstanceLink
+$managedInstanceLink = Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" 
+Remove-AzSqlInstanceLink -InputObject $managedInstanceLink
+```
+
+```output
 This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
 ```
@@ -78,8 +87,11 @@ This command removes the instance link specified by instance link object.
 
 ### Example 5: Remove instance link by its parent instance object
 ```powershell
-PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" 
-PS C:\> Remove-AzSqlInstanceLink -InstanceObject $instance -Name "Link01"
+$instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" 
+Remove-AzSqlInstanceLink -InstanceObject $instance -Name "Link01"
+```
+
+```output
 This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
 ```
@@ -88,7 +100,10 @@ This command removes the instance link "Link01" from the managed instance specif
 
 ### Example 6: Remove instance link using positional parameters
 ```powershell
-PS C:\> Remove-AzSqlInstanceLink "ResourceGroup01" "ManagedInstance01" "Link01"
+Remove-AzSqlInstanceLink "ResourceGroup01" "ManagedInstance01" "Link01"
+```
+
+```output
 This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
 ```
@@ -97,15 +112,18 @@ This command removes the instance link "Link01" from the managed instance "Manag
 
 ### Example 7: Remove all instance links from its parent instance by piping link objects
 ```powershell
-PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" 
-PS C:\> $instance | Get-AzSqlInstanceLink | Remove-AzSqlInstanceLink -Force
+$instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" 
+$instance | Get-AzSqlInstanceLink | Remove-AzSqlInstanceLink -Force
 ```
 
-This command removes all instance links from the managed instance "ManagedInstance01" .
+This command removes all instance links from the managed instance "ManagedInstance01".
 
 ### Example 8: Remove instance link with an explicit -Force flag and output the deleted instance link object
 ```powershell
-PS C:\> Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" -Force -PassThru
+Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" -Force -PassThru
+```
+
+```output
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
