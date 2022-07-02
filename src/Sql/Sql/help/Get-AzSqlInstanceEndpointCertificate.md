@@ -44,7 +44,10 @@ Get-AzSqlInstanceEndpointCertificate [-ResourceId] <String> [-DefaultProfile <IA
 
 ### Example 1: Get information about all endpoint certificates on Azure SQL Managed Instance
 ```powershell
-PS C:\> Get-AzSqlInstanceEndpointCertificate -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+Get-AzSqlInstanceEndpointCertificate -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+```
+
+```output
 ResourceGroupName : ResourceGroup01
 InstanceName      : ManagedInstance01
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/endpointCertificates/DATABASE_MIRRORING
@@ -64,7 +67,10 @@ This command gets information about all endpoint certificates within the instanc
 
 ### Example 2: Get information about a certificate for specific endpoint type on Azure SQL Managed Instance
 ```powershell
-PS C:\> Get-AzSqlInstanceEndpointCertificate -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -EndpointType "DATABASE_MIRRORING"
+Get-AzSqlInstanceEndpointCertificate -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -EndpointType "DATABASE_MIRRORING"
+```
+
+```output
 ResourceGroupName : ResourceGroup01
 InstanceName      : ManagedInstance01
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/endpointCertificates/DATABASE_MIRRORING
@@ -77,8 +83,11 @@ This command gets information about the "DATABASE_MIRRORING" endpoint certificat
 
 ### Example 3: Get all endpoint certificates on Azure SQL Managed Instance using Instance object
 ```powershell
-PS C:\> $instance = Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Get-AzSqlInstanceEndpointCertificate -InstanceObject $instance
+$instance = Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01"
+Get-AzSqlInstanceEndpointCertificate -InstanceObject $instance
+```
+
+```output
 ResourceGroupName : ResourceGroup01
 InstanceName      : ManagedInstance01
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/endpointCertificates/DATABASE_MIRRORING
@@ -99,7 +108,10 @@ This command gets information about all endpoint certificates within the instanc
 ### Example 4: Get all endpoint certificates on Azure SQL Managed Instance using instance resource identifier
 
 ```powershell
-PS C:\> Get-AzSqlInstanceEndpointCertificate -InstanceResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01"
+Get-AzSqlInstanceEndpointCertificate -InstanceResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01"
+```
+
+```output
 ResourceGroupName : ResourceGroup01
 InstanceName      : ManagedInstance01
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/endpointCertificates/DATABASE_MIRRORING
@@ -120,7 +132,10 @@ This command gets information about all endpoint certificates within the instanc
 ### Example 5: Get an endpoint certificate using its resource identifier
 
 ```powershell
-PS C:\> Get-AzSqlInstanceEndpointCertificate -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/endpointCertificates/DATABASE_MIRRORING"
+Get-AzSqlInstanceEndpointCertificate -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/endpointCertificates/DATABASE_MIRRORING"
+```
+
+```output
 ResourceGroupName : ResourceGroup01
 InstanceName      : ManagedInstance01
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/endpointCertificates/DATABASE_MIRRORING
@@ -134,7 +149,10 @@ This command gets information about the endpoint certificate named "DATABASE_MIR
 ### Example 6: Get all endpoint certificates for a Managed Instance by piping an instance object
 
 ```powershell
-PS C:\> Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceEndpointCertificate
+Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceEndpointCertificate
+```
+
+```output
 ResourceGroupName : ResourceGroup01
 InstanceName      : ManagedInstance01
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/endpointCertificates/DATABASE_MIRRORING
@@ -154,7 +172,10 @@ This command gets information about all endpoint certificates within the instanc
 
 ### Example 7: Get a specific endpoint certificate for an instance by piping an instance object and specifying the certificate name
 ```powershell
-PS C:\> Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceEndpointCertificate -Name "SERVICE_BROKER"
+Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceEndpointCertificate -Name "SERVICE_BROKER"
+```
+
+```output
 ResourceGroupName : ResourceGroup01
 InstanceName      : ManagedInstance01
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/endpointCertificates/SERVICE_BROKER
@@ -167,7 +188,10 @@ This command gets information about the "SERVICE_BROKER" endpoint certificate on
 
 ### Example 8: Get information about endpoint certificate using positional parameters
 ```powershell
-PS C:\> Get-AzSqlInstanceEndpointCertificate "ResourceGroup01" "ManagedInstance01" "DATABASE_MIRRORING"
+Get-AzSqlInstanceEndpointCertificate "ResourceGroup01" "ManagedInstance01" "DATABASE_MIRRORING"
+```
+
+```output
 ResourceGroupName : ResourceGroup01
 InstanceName      : ManagedInstance01
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/endpointCertificates/DATABASE_MIRRORING

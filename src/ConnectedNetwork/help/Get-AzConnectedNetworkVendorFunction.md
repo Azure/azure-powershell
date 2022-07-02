@@ -37,8 +37,10 @@ Gets information about the specified vendor network function.
 
 ### Example 1: Get-AzConnectedNetworkVendorFunction via Location Name, Service Key and Subscription
 ```powershell
-PS C:\> Get-AzConnectedNetworkVendorFunction -LocationName centraluseuap -ServiceKey 1234-abcd-4321-dcba -SubscriptionId xxxx-3333-xxxx-3333 -VendorName myVendor
+Get-AzConnectedNetworkVendorFunction -LocationName centraluseuap -ServiceKey 1234-abcd-4321-dcba -SubscriptionId xxxx-3333-xxxx-3333 -VendorName myVendor
+```
 
+```output
 Id                                 : /subscriptions/xxxx-3333-xxxx-3333/providers/Microsoft.HybridNetwork/locations/centraluseuap/vendors/myVendor/networkfunctions/1b69005b-9168-4d74-a371-d4c4f6a521d
                                      0
 Name                               : 1234-abcd-4321-dcba
@@ -63,9 +65,11 @@ Service key can be obtained when getting details of network funcrtion or when cr
 
 ### Example 2: Get-AzConnectedNetworkVendorFunction via Identity
 ```powershell
-PS C:\> $vendorNF = @{ ServiceKey = "1234-abcd-4321-dcba"; VendorName = "myVendor"; LocationName = "centraluseuap"; SubscriptionId = "xxxx-3333-xxxx-3333"}
-PS C:\> Get-AzConnectedNetworkVendorFunction -InputObject $vendorNF
+$vendorNF = @{ ServiceKey = "1234-abcd-4321-dcba"; VendorName = "myVendor"; LocationName = "centraluseuap"; SubscriptionId = "xxxx-3333-xxxx-3333"}
+Get-AzConnectedNetworkVendorFunction -InputObject $vendorNF
+```
 
+```output
 Id                                 : /subscriptions/xxxx-3333-xxxx-3333/providers/Microsoft.HybridNetwork/locations/centraluseuap/vendors/myVendor/networkfunctions/1b69005b-9168-4d74-a371-d4c4f6a521d
                                      0
 Name                               : 1234-abcd-4321-dcba

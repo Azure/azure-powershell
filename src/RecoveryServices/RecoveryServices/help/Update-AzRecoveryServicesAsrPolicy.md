@@ -86,13 +86,6 @@ Starts the update replication policy operation using the specified parameters an
 
 ### Example 2
 ```powershell
-Update-AzRecoveryServicesAsrPolicy -AzureToAzure -InputObject $Policy -ReplicationFrequencyInSeconds 900
-```
-
-Starts the update azure to azure replication policy operation using the specified parameters and returns the ASR job used to track the operation.
-
-### Example 3
-```powershell
 $currentJob = Update-AzRecoveryServicesAsrPolicy -AzureToAzure -InputObject $Policy -RecoveryPointRetentionInHours 20
 ```
 
