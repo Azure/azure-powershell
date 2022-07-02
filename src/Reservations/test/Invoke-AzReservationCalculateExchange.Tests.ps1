@@ -14,6 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzReservationCalculate
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Prepare request body
 $reservationToReturn1 = @{
     Quantity = 1
     ReservationId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003"
@@ -23,27 +24,33 @@ $reservationToReturn2 = @{
     ReservationId = "/providers/microsoft.capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000003/reservations/40000000-aaaa-bbbb-cccc-100000000002"
 }
 $reservationsToReturn = @($reservationToReturn1, $reservationToReturn2)
-$reservationToPurchase1 = @{
+$reservationToPurchase1Properties = @{
     AppliedScopeType = "Shared"
     BillingPlan = "Upfront"
     BillingScopeId = "/subscriptions/10000000-aaaa-bbbb-cccc-100000000001"
     DisplayName = "PSExchange"
-    Location = "westeurope"
+    Term = "P3Y"
     Quantity = 1
     ReservedResourceType = "VirtualMachines"
-    SkuName = "Standard_B12ms"
-    Term = "P3Y"
 }
-$reservationToPurchase2 = @{
+$reservationToPurchase2Properties = @{
     AppliedScopeType = "Shared"
     BillingPlan = "Upfront"
     BillingScopeId = "/subscriptions/10000000-aaaa-bbbb-cccc-100000000001"
     DisplayName = "PSExchange2"
-    Location = "westeurope"
     Quantity = 2
     ReservedResourceType = "VirtualMachines"
-    SkuName = "Standard_B8ms"
     Term = "P3Y"
+}
+$reservationToPurchase1 = @{
+    Location = "westeurope"
+    SkuName = "Standard_B12ms"
+    Properties = $reservationToPurchase1Properties
+}
+$reservationToPurchase2 = @{
+    Location = "westeurope"
+    SkuName = "Standard_B8ms"
+    Properties = $reservationToPurchase2Properties
 }
 $reservationsToPurchase = @($reservationToPurchase1, $reservationToPurchase2)
 

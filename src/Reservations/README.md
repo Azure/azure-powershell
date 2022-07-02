@@ -95,24 +95,45 @@ directive:
     set:
       verb: Get
       subject-prefix: Reservation
-      subject: History  
+      subject: History
+  - where:
+      verb: Get
+      subject: AppliedReservationList
+    set:
+      verb: Get
+      subject-prefix: Reservation
+      subject: OrderId
+  - where:
+      verb: Invoke
+      subject: CalculateExchange
+    set:
+      verb: Invoke
+      subject-prefix: Reservation
+      subject: CalculateExchange
+  - where:
+      verb: Invoke
+      subject: Exchange
+    set:
+      verb: Invoke
+      subject-prefix: Reservation
+      subject: Exchange
 
   ### Rename property name
   - where:
-      model-name: ReservationResponse
+      model-name: ReservationResponse|PurchaseRequest
       property-name: Sku
     set:
-      property-name: InternalSku
+      property-name: InternalSkuName
   - where:
       model-name: ReservationResponse
       property-name: SkuName1
     set:
       property-name: Sku
   - where:
-      model-name: ReservationResponse
-      property-name: AppliedScope
+      model-name: PurchaseRequest
+      property-name: SkuName
     set:
-      property-name: AppliedScopes
+      property-name: Sku
   - where:
       model-name: ReservationOrderResponse
       property-name: Reservation
@@ -143,6 +164,26 @@ directive:
       property-name: Value
     set:
       property-name: Values
+  - where:
+      model-name: ExchangeOperationResultResponse|ReservationToPurchaseExchange|PurchaseRequest
+      property-name: Property
+    set:
+      property-name: Properties
+  - where:
+      model-name: ReservationToPurchaseExchange|PurchaseRequest|ReservationResponse
+      property-name: AppliedScope
+    set:
+      property-name: AppliedScopes  
+  - where:
+      model-name: ReservationToPurchaseExchange|PurchaseRequest
+      property-name: ReservedResourceProperty
+    set:
+      property-name: ReservedResourceProperties
+  - where:
+      model-name: PurchaseRequest
+      property-name: ReservedResourcePropertyInstanceFlexibility
+    set:
+      property-name: InstanceFlexibility
 
   ###Rename parameter name
   ## Get-AzReservationQuote
@@ -222,9 +263,13 @@ directive:
         properties:
           - SessionId
           - Status
-          - RefundsTotal
-          - PurchasesTotal
-          - NetPayable
+  - where:
+      model-name: ExchangeOperationResultResponse
+    set:
+      format-table:
+        properties:
+          - SessionId
+          - Status
   - where:
       model-name: SkuRestriction
     set:
@@ -239,4 +284,7 @@ directive:
     - ExtendedStatusInfo
     - CalculatePriceResponsePropertiesBillingCurrencyTotal
     - CalculatePriceResponsePropertiesPricingCurrencyTotal
+    - ReservationToPurchaseExchange
+    - PurchaseRequestProperties
+    - BillingInformation
 ```
