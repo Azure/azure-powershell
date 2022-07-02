@@ -16,7 +16,7 @@ Creates a VMSS.
 ### DefaultParameter (Default)
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-EdgeZone <String>]
+ [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-DisableIntegrityMonitoring] [-AsJob] [-EdgeZone <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -147,25 +147,6 @@ $VMSS = New-AzVmssConfig -Location $LOC -SkuCapacity 2 -SkuName "Standard_E4-2ds
 New-AzVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleSet $VMSS;
 ```
 
-### Example 3: Create a VMSS with a UserData value
-```powershell
-$ResourceGroupName = 'RESOURCE GROUP NAME';
-$vmssName = 'VMSSNAME';
-$domainNameLabel = "dnl" + $ResourceGroupName;
-# Create credentials, I am using one way to create credentials, there are others as well. 
-# Pick one that makes the most sense according to your use case.
-$vmPassword = ConvertTo-SecureString 'PASSWORD' -AsPlainText -Force;
-$vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPassword);
-
-$text = "UserData value to encode";
-$bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
-$userData = [Convert]::ToBase64String($bytes);
-
-#Create a VMSS
-New-AzVmss -ResourceGroupName $ResourceGroupName -Name $vmssName -Credential $vmCred -DomainNameLabel $domainNameLabel -Userdata $userData;
-$vmss = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $vmssName -InstanceView:$false -Userdata;
-```
-
 The complex example above creates a VMSS, following is an explanation of what is happening:
 * The first command creates a resource group with the specified name and location.
 * The second command uses the **New-AzStorageAccount** cmdlet to create a storage account.
@@ -185,6 +166,74 @@ The complex example above creates a VMSS, following is an explanation of what is
 * The seventeenth command uses the **New-AzVmssIPConfig** cmdlet to create a VMSS IP configuration and stores the information in the variable named $IPCfg.
 * The eighteenth command uses the **New-AzVmssConfig** cmdlet to create a VMSS configuration object and stores the result in the variable named $VMSS.
 * The nineteenth command uses the **New-AzVmss** cmdlet to create the VMSS.
+
+### Example 3: Create a VMSS with a UserData value
+```powershell
+$ResourceGroupName = 'RESOURCE GROUP NAME';
+$vmssName = 'VMSSNAME';
+$domainNameLabel = "dnl" + $ResourceGroupName;
+# Create credentials, I am using one way to create credentials, there are others as well. 
+# Pick one that makes the most sense according to your use case.
+$vmPassword = ConvertTo-SecureString 'PASSWORD' -AsPlainText -Force;
+$vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPassword);
+
+$text = "UserData value to encode";
+$bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+$userData = [Convert]::ToBase64String($bytes);
+
+#Create a VMSS
+New-AzVmss -ResourceGroupName $ResourceGroupName -Name $vmssName -Credential $vmCred -DomainNameLabel $domainNameLabel -Userdata $userData;
+$vmss = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $vmssName -InstanceView:$false -Userdata;
+```
+
+### Example 4: Create a VMSS with the Guest Attestation extension installed with the TrustedLaunch security type.
+```powershell
+# Common setup
+$rgname = <RESOURCE GROUP NAME>;
+$loc = <AZURE REGION>;
+New-AzResourceGroup -Name $rgname -Location $loc -Force;
+$vmssSize = 'Standard_DS3_v2';
+$PublisherName = "MicrosoftWindowsServer";
+$Offer = "WindowsServer";
+$SKU = "2019-DATACENTER-GENSECOND";
+$securityType = "TrustedLaunch";
+$secureboot = $true;
+$vtpm = $true;
+
+# NRP
+$subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+$vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+$vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+$subnetId = $vnet.Subnets[0].Id;
+
+# New VMSS Parameters
+$vmssName = 'vmss' + $rgname;
+$vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+$adminUsername = <USER NAME>;
+$adminPassword = <PASSWORD> | ConvertTo-SecureString -AsPlainText -Force;
+$imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
+$imgRef.PublisherName = $PublisherName;
+$imgRef.Offer = $Offer;
+$imgRef.Skus = $SKU;
+$imgRef.Version = "latest";
+$ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+
+$vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
+| Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+| Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+| Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
+    -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+    -ImageReferencePublisher $imgRef.PublisherName ;
+    
+# Requirements for the Guest Attestation defaulting behavior.  
+# SecurityType is TrustedLaunch, EnableVtpm is true, EnableSecureBoot is true, DisableIntegrityMonitoring is not true.
+$vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
+$vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
+
+# Create Vmss
+$result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+# This Vmss and its Vm instances has the GuestAttestation extension installed, and the Identity of SystemAssigned.
+```
 
 ## PARAMETERS
 
@@ -875,6 +924,20 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+ 
+### -DisableIntegrityMonitoring
+This flag disables the default behavior to install the Guest Attestation extension to the virtual machine scale set and its vm instances if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DefaultParameter
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

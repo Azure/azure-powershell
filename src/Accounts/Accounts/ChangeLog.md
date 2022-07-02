@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.9.0
 * Supported exporting and importing configurations by `Export-AzConfig` and `Import-AzConfig`.
 * Fixed an issue that Az.Accounts may fail to be imported in parallel PowerShell processes. [#18321] 
 * Fixed incorrect access token [#18105]
