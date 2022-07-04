@@ -59,7 +59,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             var match = Regex.Match(line, matcher);
             if (!match.Success || match.Groups.Count < 8)
             {
-                throw new InvalidOperationException(string.Format("Could not parse '{0}' as HelpIssue record", line));
+                throw new InvalidOperationException(string.Format("Could not parse '{0}' as BreakingChangeIssue record", line));
             }
 
             AssemblyFileName = match.Groups[1].Value;

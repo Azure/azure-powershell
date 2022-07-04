@@ -30,7 +30,7 @@ $startDate = (Get-Date).AddDays(-7)
 $endDate = Get-Date
 $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
 
-To mount files of the latest recovery point, obtain the script by
+<# To mount files of the latest recovery point, obtain the script by #>
 
 Get-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
@@ -38,9 +38,9 @@ OsType  Password        Filename
 ------  --------        --------
 Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe
 
-When the script is run, it will mount the files of the recovery point $rp[0]
+<#  When the script is run, it will mount the files of the recovery point $rp[0]
 
-After the relevant files are copied, then you remove the files of the recovery point by running the disable cmdlet
+After the relevant files are copied, then you remove the files of the recovery point by running the disable cmdlet #>
 
 Disable-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 ```

@@ -78,7 +78,9 @@ Get all system scanrulesets
 ### Example 2: Get system scanruleset for a data source type
 ```powershell
 Get-AzPurviewSystemScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/  -DataSourceType 'AdlsGen2'
+```
 
+```output
 Id                : systemscanrulesets/AdlsGen2
 Kind              : AdlsGen2
 Name              : AdlsGen2
@@ -90,7 +92,7 @@ Version           : 3
 
 Get system scanruleset for a data source type
 
-### Example 2: Get system scanruleset for a data source type and specific version
+### Example 3: Get system scanruleset for a data source type and specific version
 ```powershell
 Get-AzPurviewSystemScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/  -DataSourceType 'AdlsGen2' -Version 2
 ```

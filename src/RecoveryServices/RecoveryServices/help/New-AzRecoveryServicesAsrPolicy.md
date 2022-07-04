@@ -102,30 +102,6 @@ Starts the replication policy creation operation using the specified parameters 
 
 ### Example 3
 ```powershell
-New-AzRecoveryServicesAsrPolicy -Name $policyName1 -ReplicationProvider InMageAzureV2 -RecoveryPoints 40  -RPOWarningThresholdInMinutes 5 -ApplicationConsistentSnapshotFrequencyInMinutes 15
-```
-
-```output
-Name             : ed69e451-878b-4f19-9c0f-73184be05eaf
-ID               : /Subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxxxx/replicationJobs/ed69e451-878b-4f19-9c0f-73184be05eaf
-Type             :
-JobType          :
-DisplayName      :
-ClientRequestId  : d8922fa2-303c-4eb4-b556-e07969ea6fba ActivityId: 9e946cdf-2351-44c2-9aef-70ef2eab29b4
-State            : NotStarted
-StateDescription : NotStarted
-StartTime        :
-EndTime          :
-TargetObjectId   :
-TargetObjectType :
-TargetObjectName :
-AllowedActions   :
-Tasks            : {}
-Errors           : {}
-```
-
-### Example 4
-```powershell
 $Job = New-AzRecoveryServicesAsrPolicy -Name $TestPolicy1 -AzureToAzure -RecoveryPointRetentionInHours 10  -ApplicationConsistentSnapshotFrequencyInHours 5 
 Get-AzRecoveryServicesAsrJob -name $Job.id
 ```

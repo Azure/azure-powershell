@@ -37,23 +37,23 @@ The **Remove-AzSynapseLinkConnection** cmdlet removes a link connection from wor
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+Remove-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
 ```
 
 This command removes the link connection named ContosoLinkConnection from the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapseLinkConnection -Name ContosoLinkConnection
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Remove-AzSynapseLinkConnection -Name ContosoLinkConnection
 ```
 
 This command removes the link connection named ContosoLinkConnection from the workspace named ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $linkConnection = Get-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
-PS C:\> $linkConnection | Remove-AzSynapseLinkConnection
+$linkConnection = Get-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+$linkConnection | Remove-AzSynapseLinkConnection
 ```
 
 This command removes the link connection named ContosoLinkConnection from the workspace named ContosoWorkspace through pipeline.

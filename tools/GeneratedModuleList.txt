@@ -23,6 +23,7 @@ Az.DigitalTwins
 Az.DiskPool
 Az.EdgeOrder
 Az.Elastic
+Az.FluidRelay
 Az.Functions
 Az.HanaOnAzure
 Az.HealthBot
@@ -49,3 +50,4 @@ Az.StreamAnalytics
 Az.TimeSeriesInsights
 Az.VMware
 Az.WindowsIotServices
+Az.MachineLearningServices

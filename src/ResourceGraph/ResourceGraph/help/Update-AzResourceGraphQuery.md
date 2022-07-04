@@ -47,7 +47,9 @@ This command updates the parameter query and tag by name.
 ```powershell
 $query =  Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t05 
 Update-AzResourceGraphQuery -InputObject $query -File './Query.kql'
+```
 
+```output
 Location Name      Type
 -------- ----      ----
 global   query-t05 microsoft.resourcegraph/queries
