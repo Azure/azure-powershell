@@ -149,7 +149,7 @@ You can confirm your login status by using the **Get-AzSubscription** cmdlet.
 ### Example 3: Create a VM from a marketplace image without a Public IP
 ```powershell
 $VMLocalAdminUser = "LocalAdminUser"
-$VMLocalAdminSecurePassword = ConvertTo-SecureString <password> -AsPlainText -Force
+$VMLocalAdminSecurePassword = ConvertTo-SecureString "password" -AsPlainText -Force
 $LocationName = "westus"
 $ResourceGroupName = "MyResourceGroup"
 $ComputerName = "MyVM"
@@ -206,7 +206,7 @@ $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -UserData;
 The UserData value must always be Base64 encoded. 
 
 ### Example 5: Creating a new VM with an existing subnet in another resource group
-```
+```powershell
 $UserName = "User"
 $Password = ConvertTo-SecureString "############" -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($UserName, $Password)
@@ -225,15 +225,15 @@ New-AzVm -ResourceGroupName ResourceGroup1 -Location SouthCentralUS -VM $Virtual
 This example deploys a Windows VM from the marketplace in one resource group with an existing subnet in another resource group.
 
 ### Example 6: Creating a new VM as part of a VMSS with a PlatformFaultDomain value.
-```
-$resourceGroupName= <Resource Group Name>
-$domainNameLabel = <Domain Name Label Name>
-$vmname = "<Virtual Machine Name>"
+```powershell
+$resourceGroupName= "Resource Group Name"
+$domainNameLabel = "Domain Name Label Name"
+$vmname = "Virtual Machine Name"
 $platformFaultDomainVMDefaultSet = 2
-$securePassword = <Password> | ConvertTo-SecureString -AsPlainText -Force
-$user = <Username>
+$securePassword = "Password" | ConvertTo-SecureString -AsPlainText -Force
+$user = "Username"
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
-$vmssName = <Vmss Name>;
+$vmssName = "Vmss Name";
 
 $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain;
 $vmss = New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $vmssConfig;
