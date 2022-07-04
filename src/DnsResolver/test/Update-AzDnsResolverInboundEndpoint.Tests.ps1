@@ -1,120 +1,48 @@
 ."$PSScriptRoot\testDataGenerator.ps1"
 ."$PSScriptRoot\virtualNetworkClient.ps1"
 ."$PSScriptRoot\inboundEndpointAssertions.ps1"
+."$PSScriptRoot\Constants.ps1"
 
-Add-AssertionOperator -Name 'BeSameInboundEndpointAsExpected' -Test $Function:BeSameInboundEndpointAsExpected
 Add-AssertionOperator -Name 'BeSuccessfullyCreatedInboundEndpoint' -Test $Function:BeSuccessfullyCreatedInboundEndpoint
 
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-if (-Not (Test-Path -Path $loadEnvPath)){
+if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzDnsResolverInboundEndpoint.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath){
+while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Update-AzDnsResolverInboundEndpoint'{
-    It 'Update inbound endpoint with no change, expect inbound endpoint not changed' -skip{
-        $dnsResolverName = $env.DnsResolverName46
-        $virtualNetworkId = $env.VirtualNetworkId46
-        $inboundEndpointName =  $env.InboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
-        $subnetid = $env.SubnetId46
-        $privateIp = RandomIp
+Describe 'Update-AzDnsResolverInboundEndpoint' {
+    It 'Update inbound endpoint by adding tag, expect inbound endpoint updated' {
+        # ARRANGE
+        $dnsResolverName = "psdnsresolvername48";
+        $inboundEndpointName =  "psinboundendpointname48";
+        $virtualNetworkName = "psvirtualnetworkname48";
+        
+        if ($TestMode -eq "Record")
+        {
+            $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
+            $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
+        }
 
-        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
-        $inboundEndpoint = New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName -IPConfiguration $ipConfiguration
+        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetwork.Id -Location $LOCATION
+        
+        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAllocationMethod Dynamic -SubnetId $subnet.id 
+        New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME -IPConfiguration $ipConfiguration -Location $LOCATION
 
-        Update-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName
-        $retrievedInboundEndpoint = Get-AzDnsResolverInboundEndpoint -InputObject $inboundEndpoint
-        $retrievedInboundEndpoint | Should -BeSameInboundEndpointAsExpected $inboundEndpoint
-        $retrievedInboundEndpoint.Metadata.Count | Should -Be 0
+        $tag  = GetRandomHashtable -size 5
+
+        # ACT
+        $updatedInboundEndpoint = Update-AzDnsResolverInboundEndpoint -Name $inboundEndpointName -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -Tag $tag
+
+        # ASSERT
+        $updatedInboundEndpoint | Should -BeSuccessfullyCreatedInboundEndpoint
+        $updatedInboundEndpoint.Tag.Count | Should -Be $tag.Count
     }
-
-    It 'Update inbound endpoint with new metaddata expect inbound endpoint updated' -skip{
-        $dnsResolverName = $env.DnsResolverName47
-        $virtualNetworkId = $env.VirtualNetworkId47
-        $inboundEndpointName =  $env.InboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
-        $subnetid = $env.SubnetId47
-        $privateIp = RandomIp
-
-        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
-        $inboundEndpoint = New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName -IPConfiguration $ipConfiguration
-
-        Update-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName
-        $retrievedInboundEndpoint = Get-AzDnsResolverInboundEndpoint -InputObject $inboundEndpoint
-        $retrievedInboundEndpoint | Should -BeSuccessfullyCreatedInboundEndpoint
-        $retrievedInboundEndpoint.Metadata.Count | Should -Be 0
-    }
-
-    It 'Update inbound endpoint with new metadata via identity, expect inbound endpoint updated' -skip{
-        $dnsResolverName = $env.DnsResolverName48
-        $virtualNetworkId = $env.VirtualNetworkId48
-        $inboundEndpointName =  $env.InboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
-        $subnetid = $env.SubnetId48
-        $privateIp = RandomIp
-
-        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
-        $inboundEndpoint = New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName -IPConfiguration $ipConfiguration
-        $inputObject = (Get-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName)
-        $metadata  = GetRandomHashtable -size 2
-        Update-AzDnsResolverInboundEndpoint -InputObject $inputObject -Metadaat $metadata
-
-        $retrievedInboundEndpoint = Get-AzDnsResolverInboundEndpoint -InputObject $inboundEndpoint
-
-        $retrievedInboundEndpoint | Should -BeSameInboundEndpointAsExpected inboundEndpoint
-        $retrievedInboundEndpoint.Metadata.Count | Should -Be metadata.Count
-    }
-
-    It 'Update inbound endpoint with new metadata via identity and IfMatch matches, expect inbound endpoint updated' -skip{
-        $dnsResolverName = $env.DnsResolverName49
-        $virtualNetworkId = $env.VirtualNetworkId49
-        $inboundEndpointName =  $env.InboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
-        $subnetid = $env.SubnetId49
-        $privateIp = RandomIp
-
-        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
-        $metadata  = GetRandomHashtable -size 6
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation 
-        $inboundEndpoint = New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName -IPConfiguration $ipConfiguration -Metadata $metadata
-        $inputObject = (Get-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName)
-        $newMetadata  = GetRandomHashtable -size 2
-        Update-AzDnsResolverInboundEndpoint -InputObject $inputObject -Metadata $newMetadata -IfMatch $inputObject.Etag
-
-        $retrievedInboundEndpoint = Get-AzDnsResolverInboundEndpoint -InputObject $inboundEndpoint
-
-        $retrievedInboundEndpoint | Should -BeSameInboundEndpointAsExpected $inboundEndpoint
-        $retrievedInboundEndpoint.Metadata.Count | Should -Be $newMetadata.Count
-    }
-
-    
-    It 'Update inbound endpoint with new metadata via identity and IfMatch not match, expect inbound endpoint not updated' -skip{
-        $dnsResolverName = $env.DnsResolverName50
-        $virtualNetworkId = $env.VirtualNetworkId50
-        $inboundEndpointName =  $env.InboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
-        $subnetid = $env.SubnetId50
-        $privateIp = RandomIp
-
-        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
-        $metadata  = GetRandomHashtable -size 6
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation 
-        $inboundEndpoint = New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName -IPConfiguration $ipConfiguration -Metadata $metadata
-        $inputObject = (Get-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName)
-        $newMetadata  = GetRandomHashtable -size 2
-        $ranomEtag = (RandomString -allChars $false -len 10)
-        -skip{Update-AzDnsResolverInboundEndpoint -InputObject $inputObject -Metadata $newMetadata -IfMatch $ranomEtag} | Should -Throw "is invalid"
-
-        $retrievedInboundEndpoint = Get-AzDnsResolverInboundEndpoint -InputObject $inboundEndpoint
-
-        $retrievedInboundEndpoint | Should -BeSameInboundEndpointAsExpected $inboundEndpoint
-        $retrievedInboundEndpoint.Metadata.Count | Should -Not -Be $newMetadata.Count
-    }
-
 }

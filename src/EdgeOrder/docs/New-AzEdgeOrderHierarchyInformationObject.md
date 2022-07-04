@@ -24,9 +24,11 @@ Create an in-memory object for HierarchyInformation.
 
 ### Example 1: Creates hierarchy information object
 ```powershell
-PS C:\> $HierarchyInformation=New-AzEdgeOrderHierarchyInformationObject -ProductFamilyName "azurestackedge" -ProductLineName "azurestackedge" -ProductName "azurestackedgegpu" -ConfigurationName "EdgeP_High"
-PS C:\> $HierarchyInformation | fl
+$HierarchyInformation=New-AzEdgeOrderHierarchyInformationObject -ProductFamilyName "azurestackedge" -ProductLineName "azurestackedge" -ProductName "azurestackedgegpu" -ConfigurationName "EdgeP_High"
+$HierarchyInformation | Format-List
+```
 
+```output
 ConfigurationName : EdgeP_High
 ProductFamilyName : azurestackedge
 ProductLineName   : azurestackedge

@@ -39,7 +39,7 @@ function Get-AzDataMigrationPerformanceDataCollection
 
         [Parameter(ParameterSetName='CommandLine', HelpMessage='Interval at which to query and persist static configuration data, in seconds. (Default: 3600)')]
         [System.String]
-        ${StaticQueryIntervalInSec},
+        ${StaticQueryInterval},
 
         [Parameter(ParameterSetName='CommandLine', HelpMessage='Number of iterations of performance data collection to perform before persisting to file. For example, with default values, performance data will be persisted every 30 seconds * 20 iterations = 10 minutes. (Default: 20, Minimum: 2)
         ')]
@@ -49,6 +49,10 @@ function Get-AzDataMigrationPerformanceDataCollection
         [Parameter(ParameterSetName='ConfigFile', Mandatory, HelpMessage='Path of the ConfigFile')]
         [System.String]
         ${ConfigFilePath},
+
+        [Parameter(HelpMessage = 'Duration of time in seconds for which you want to collect performance data')]
+        [System.Int64]
+        ${Time},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Runtime')]
@@ -101,8 +105,8 @@ function Get-AzDataMigrationPerformanceDataCollection
                 [System.Collections.ArrayList] $splat = @(
                 '--sqlConnectionStrings', $SqlConnectionStrings
                 '--outputfolder', $OutputFolder
-                '--perfQueryInterval', $PerfQueryInterval
-                '--staticQueryIntervalInSec', $StaticQueryIntervalInSec
+                '--perfQueryIntervalInSec', $PerfQueryInterval
+                '--staticQueryIntervalInSec', $StaticQueryInterval
                 '--numberOfIterations', $NumberOfIterations
                 )
                 
@@ -122,13 +126,65 @@ function Get-AzDataMigrationPerformanceDataCollection
                 }
                 
                 # Running PerfDataCollection
-                & $ExePath PerfDataCollection @splat
-                  
+                If($PSBoundParameters.ContainsKey("Time"))
+                {   
+                    #this is used to create a json file in case the perf collection is to be time based
+                    $jsonHash = [Ordered]@{
+                    'action' = "PerfDataCollection"
+                    'sqlConnectionStrings'= $SqlConnectionStrings
+                    'outputfolder'= $OutputFolder
+                    'perfQueryIntervalInSec'= $PerfQueryInterval
+                    'staticQueryIntervalInSec'= $StaticQueryInterval
+                    'numberOfIterations'= $NumberOfIterations
+                    }
+                    # removing empty key,vallue pairs from $jsonHash
+                    if($OutputFolder -eq "")
+                    {
+                        $jsonHash.Remove('outputfolder')
+                    }
+                    if($PerfQueryInterval -eq "")
+                    {
+                        $jsonHash.Remove('perfQueryIntervalInSec')
+                    }
+                    if($StaticQueryInterval -eq "")
+                    {
+                        $jsonHash.Remove('staticQueryIntervalInSec')
+                    }
+                    if($NumberOfIterations -eq "")
+                    {
+                        $jsonHash.Remove('numberOfIterations')
+                    } 
+                    
+                    $saveAt = Join-Path -Path $DefaultOutputFolder -ChildPath Downloads;
+                    $saveas = Join-Path -Path $saveAt -ChildPath "tempConfigFileForPerf.json"
+                    $jsonHash | ConvertTo-Json -depth 100 | Set-Content $saveas
+                    $pro = Start-Process -FilePath $ExePath -ArgumentList "--configFile ""$saveas"""  -PassThru -NoNewWindow
+                    Start-Sleep -Seconds $Time
+                    $pro | stop-process  
+                    Remove-Item -Path $saveas       
+                }
+                else
+                {
+                    & $ExePath PerfDataCollection @splat
+                }                 
             }
             else
             {   
-                Test-ConfigFile $PSBoundParameters.ConfigFilePath "PerfDataCollection"
-                & $ExePath --configFile $PSBoundParameters.ConfigFilePath
+                if($PSBoundParameters.ContainsKey("Time"))
+                {
+                    $paramPath = $PSBoundParameters.ConfigFilePath
+                    Test-ConfigFile $PSBoundParameters.ConfigFilePath "PerfDataCollection"
+                    $pro = Start-Process -FilePath $ExePath -ArgumentList "--configFile ""$paramPath"""  -PassThru -NoNewWindow
+                    Start-Sleep -Seconds $Time
+                    $pro | stop-process
+                    
+                }
+                else{
+                    Test-ConfigFile $PSBoundParameters.ConfigFilePath "PerfDataCollection"
+                    & $ExePath --configFile $PSBoundParameters.ConfigFilePath
+                }
+                
+                
             }
 
             $LogFilePath = Join-Path -Path $DefaultOutputFolder -ChildPath Logs;
@@ -145,5 +201,4 @@ function Get-AzDataMigrationPerformanceDataCollection
         }
     }
 }
-
 

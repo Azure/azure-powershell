@@ -12,46 +12,23 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDnsResolver' {
-    It 'Delete an existing DNS Resolver by name, expect DNS Resolver deleted'  -skip{
-        $dnsResolverName = $env.DnsResolverName22
-        $virtualNetworkId = $env.VirtualNetworkId22
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
-        Remove-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName
-        {Get-AzDnsResolver -Name $dnsResolverName  -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
-    }
+    It 'Delete a DNS resolver by name, expected DNS resolver deleted' {
+         # ARRANGE
+        $dnsResolverName = "psdnsresolvername64";
+        $virtualNetworkName = "psvirtualnetworkname64";
+        
+        if ($TestMode -eq "Record")
+        {
+            $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
+            $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
+        }
 
-    It 'Delete an existing DNS Resolver via identity, expect DNS Resolver deleted'  -skip{
-        $dnsResolverName = $env.DnsResolverName23
-        $virtualNetworkId = $env.VirtualNetworkId23
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
-        $resolverObject = (Get-AzDnsResolver -Name $dnsResolverName  -ResourceGroupName $env.ResourceGroupName)
-        Remove-AzDnsResolver -InputObject $resolverObject
-        {Get-AzDnsResolver -Name $dnsResolverName  -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
-    }
+        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetwork.Id -Location $LOCATION
 
-    It 'Delete an existing DNS Resolver by name and IfMatch success, expect DNS Resolver deleted' -skip{
-        $dnsResolverName = $env.DnsResolverName24
-        $virtualNetworkId = $env.VirtualNetworkId24
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
-        Remove-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -IfMatch $resolver.Etag
-        {Get-AzDnsResolver -Name $dnsResolverName  -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
-    }
+        # ACT
+        Remove-AzDnsResolver  -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME
 
-    It 'Delete an existing DNS Resolver by name and IfMatch wildcard success, expect DNS Resolver deleted'  -skip{
-        $dnsResolverName = $env.DnsResolverName25
-        $virtualNetworkId = $env.VirtualNetworkId25
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
-        Remove-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -IfMatch *
-        {Get-AzDnsResolver -Name $dnsResolverName  -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
+        # ASSERT 
+        {Get-AzDnsResolver  -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME } | Should -Throw "not found"
     }
-
-    It 'Delete an existing DNS Resolver by name and IfMatch failure, expect DNS Resolver not deleted'  -skip{
-        $dnsResolverName = $env.DnsResolverName26
-        $virtualNetworkId = $env.VirtualNetworkId26
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId  $virtualNetworkId -Location $env.ResourceLocation
-        {Remove-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -IfMatch (RandomString -allChars $false -len 6)} | Should -Throw "is invalid"
-        $resolver = Get-AzDnsResolver -Name $dnsResolverName  -ResourceGroupName $env.ResourceGroupName
-        $resolver| Should -BeSuccessfullyCreated
-    }
-
 }

@@ -20,12 +20,12 @@
     Create a in-memory object for PSCredentialExecutionParameter
 
     .Outputs
-    Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.PSCredentialExecutionParameter
+    Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PSCredentialExecutionParameter
     .Link
     https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwarePSCredentialExecutionParameterObject
     #>
     function New-AzVMwarePSCredentialExecutionParameterObject {
-        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.PSCredentialExecutionParameter')]
+        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PSCredentialExecutionParameter')]
         [CmdletBinding(PositionalBinding=$false)]
         Param(
     
@@ -41,7 +41,7 @@
         )
 
         process {
-            $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.PSCredentialExecutionParameter]::New()
+            $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PSCredentialExecutionParameter]::New()
     
             $Object.Password = $Password
             $Object.Username = $Username

@@ -37,7 +37,7 @@ Function BeSuccessfullyCreatedInboundEndpoint {
 Function BeSameInboundEndpointAsExpected {
     <#
     .SYNOPSIS
-    Tests whether an inbound endpoint is created successfully
+    Tests whether an inbound endpoint is same as expected
     #>
         [CmdletBinding()]
         Param(

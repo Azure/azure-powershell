@@ -33,15 +33,18 @@ namespace VersionController.Models
 
         private string _oldVersion, _newVersion;
         private bool _isPreview;
+        private IList<string> _changedModules { get; set; }
 
         public AzurePSVersion MinimalVersion { get; set; }
+        public string PSRepositories { get; set; }
 
-        public VersionBumper(VersionFileHelper fileHelper)
+        public VersionBumper(VersionFileHelper fileHelper, IList<string> changedModules)
         {
             _fileHelper = fileHelper;
             _metadataHelper = new VersionMetadataHelper(_fileHelper);
             _loggerFactory = LoggerFactory.Create(builder => builder.AddConsole().AddDebug());
             _logger = _loggerFactory.CreateLogger<VersionBumper>();
+            _changedModules = changedModules;
         }
 
         /// <summary>
@@ -93,7 +96,6 @@ namespace VersionController.Models
             
             using (PowerShell powershell = PowerShell.Create())
             {
-                powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
                 powershell.AddScript("$metadata = Test-ModuleManifest -Path " + _fileHelper.OutputModuleManifestPath + ";$metadata.Version;$metadata.PrivateData.PSData.Prerelease");
                 var cmdletResult = powershell.Invoke();
                 localVersion = cmdletResult[0]?.ToString();
@@ -220,15 +222,14 @@ namespace VersionController.Models
             HashSet<AzurePSVersion> galleryVersion = new HashSet<AzurePSVersion>();
             using (PowerShell powershell = PowerShell.Create())
             {
-                powershell.AddScript("Register-PackageSource -Name PSGallery -Location https://www.powershellgallery.com/api/v2 -ProviderName PowerShellGet");
-                powershell.AddScript("Register-PackageSource -Name TestGallery -Location https://www.poshtestgallery.com/api/v2 -ProviderName PowerShellGet");
-                powershell.AddScript("Find-Module -Name " + moduleName + " -Repository PSGallery, TestGallery -AllowPrerelease -AllVersions");
+                powershell.AddScript($"Find-Module -Name {moduleName} -Repository {PSRepositories} -AllowPrerelease -AllVersions");
                 var cmdletResult = powershell.Invoke();
-                foreach (var versionImformation in cmdletResult)
+                foreach (var versionInformation in cmdletResult)
                 {
-                    Regex reg = new Regex("Version=(.*?);");
-                    Match match = reg.Match(versionImformation.ToString());
-                    galleryVersion.Add(new AzurePSVersion(match.Groups[1].Value));
+                    if(versionInformation.Properties["Version"]?.Value != null)
+                    {
+                        galleryVersion.Add(new AzurePSVersion(versionInformation.Properties["Version"]?.Value?.ToString()));
+                    }
                 }
             }
             return galleryVersion.ToList();
@@ -409,6 +410,8 @@ namespace VersionController.Models
                                                                !f.Contains("bin") &&
                                                                !f.Contains("dll-Help") &&
                                                                !ModuleFilter.IsAzureStackModule(f))
+                                                   // Only update changed modules in this release
+                                                   .Intersect(_changedModules)
                                                    .ToList();
                 foreach (var moduleManifestPath in moduleManifestPaths)
                 {

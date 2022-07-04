@@ -20,14 +20,14 @@ Creates key credentials or password credentials for an service principal.
 .Description
 Creates key credentials or password credentials for an service principal.
 .Example
-PS C:\> $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
+$credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
                                  -Property @{'Key' = $cert;
                                  'Usage'       = 'Verify'; 
                                  'Type'        = 'AsymmetricX509Cert'
                                  }
-PS C:\> New-AzADSpCredential -ObjectId $Id -KeyCredentials $credential
+New-AzADSpCredential -ObjectId $Id -KeyCredentials $credential
 .Example
-PS C:\> Get-AzADServicePrincipal -ApplicationId $appId | New-AzADSpCredential -StartDate $startDate -EndDate $endDate
+Get-AzADServicePrincipal -ApplicationId $appId | New-AzADSpCredential -StartDate $startDate -EndDate $endDate
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -184,7 +184,8 @@ function New-AzADSpCredential {
 [CmdletBinding(DefaultParameterSetName='SpObjectIdWithPasswordParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SpObjectIdWithPasswordParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='SpObjectIdWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='SpObjectIdWithKeyCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SpObjectIdWithCertValueParameterSet', Mandatory)]
     [Alias('Id', 'ServicePrincipalObjectId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -218,23 +219,23 @@ param(
     # For an 'asymmetric' type credential, this must be set to on or before the date that the X509 certificate is valid.
     ${EndDate},
 
-    [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='SPNWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='ServicePrincipalObjectWithCredentialParameterSet')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential[]]
-    # key credentials associated with the service principal.
-    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
-    ${KeyCredentials},
-
-    [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='SPNWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='ServicePrincipalObjectWithCredentialParameterSet')]
+    [Parameter(ParameterSetName='SpObjectIdWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='SPNWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordCredentialParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential[]]
     # Password credentials associated with the service principal.
     # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
     ${PasswordCredentials},
+
+    [Parameter(ParameterSetName='SpObjectIdWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='SPNWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ServicePrincipalObjectWithKeyCredentialParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential[]]
+    # key credentials associated with the service principal.
+    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
+    ${KeyCredentials},
 
     [Parameter(ParameterSetName='SpObjectIdWithCertValueParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SPNWithCertValueParameterSet', Mandatory)]
@@ -245,7 +246,8 @@ param(
     # It represents the base 64 encoded certificate.
     ${CertValue},
 
-    [Parameter(ParameterSetName='SPNWithCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='SPNWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='SPNWithKeyCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SPNWithPasswordParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SPNWithCertValueParameterSet', Mandatory)]
     [Alias('SPN')]
@@ -254,7 +256,8 @@ param(
     # The service principal name.
     ${ServicePrincipalName},
 
-    [Parameter(ParameterSetName='ServicePrincipalObjectWithCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ServicePrincipalObjectWithKeyCredentialParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ServicePrincipalObjectWithCertValueParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -319,15 +322,18 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            SpObjectIdWithPasswordParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            SpObjectIdWithCredentialParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            SpObjectIdWithCertValueParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            SPNWithCredentialParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            SPNWithPasswordParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            SPNWithCertValueParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            ServicePrincipalObjectWithCredentialParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            ServicePrincipalObjectWithPasswordParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            ServicePrincipalObjectWithCertValueParameterSet = 'MSGraph.custom\New-AzADSpCredential';
+            SpObjectIdWithPasswordParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            SpObjectIdWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            SpObjectIdWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            SpObjectIdWithCertValueParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            SPNWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            SPNWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            SPNWithPasswordParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            SPNWithCertValueParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            ServicePrincipalObjectWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            ServicePrincipalObjectWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            ServicePrincipalObjectWithPasswordParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            ServicePrincipalObjectWithCertValueParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -65,7 +65,7 @@ AutoRest V3 generators require the use of `--tag=all-api-versions` to select api
 This block is updated by an automatic script. Edits may be lost!
 
 ``` yaml
-apprepo: https://github.com/Azure/azure-rest-api-specs/blob/resource-hybrid-profile
+apprepo: https://github.com/Azure/azure-rest-api-specs/blob/e0d9ceb1ca85e76a31b8496201499a7312824c09
 # include the azure profile definitions from the standard location
 appinsights: $(apprepo)/specification/applicationinsights/resource-manager
 

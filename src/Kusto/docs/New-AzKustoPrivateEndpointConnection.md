@@ -34,8 +34,10 @@ Approve or reject a private endpoint connection with a given name.
 
 ### Example 1: Create a new PrivateEndpointConnection in a cluster
 ```powershell
-PS C:\> New-AzKustoPrivateEndpointConnection -ClusterName "mycluster" -ResourceGroupName "testrg" -SubscriptionId "12345678-1234-1234-1234-123456789098" -Parameter $privateEndpointConnection -Name "testprivateconnection-12345678-1234-1234-1234-123456789098"
+New-AzKustoPrivateEndpointConnection -ClusterName "mycluster" -ResourceGroupName "testrg" -SubscriptionId "12345678-1234-1234-1234-123456789098" -Parameter $privateEndpointConnection -Name "testprivateconnection-12345678-1234-1234-1234-123456789098"
+```
 
+```output
 Name                                                       	Type
 ----                                                       	----
 testprivateconnection-12345678-1234-1234-1234-123456789098  Microsoft.Kusto/Clusters/PrivateEndpointConnections
@@ -125,7 +127,7 @@ A private endpoint connection
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IPrivateEndpointConnection
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IPrivateEndpointConnection
 Parameter Sets: Create
 Aliases:
 
@@ -233,11 +235,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IPrivateEndpointConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IPrivateEndpointConnection
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IPrivateEndpointConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IPrivateEndpointConnection
 
 ## NOTES
 

@@ -39,8 +39,10 @@ Gets a Kusto pool database principalAssignment.
 
 ### Example 1:  List all PrincipalAssignments in a kusto database by name
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolDatabasePrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
+Get-AzSynapseKustoPoolDatabasePrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
+```
 
+```output
 Name                                                  Type
 ----                                                  ----
 testws/testkustopool/mykustodatabase/kustoprincipal1  Microsoft.Synapse/workspaces/kustoPools/Databases/PrincipalAssignments
@@ -51,8 +53,10 @@ The above command returns all PrincipalAssignments in the kusto database "mykust
 
 ### Example 2: Get a specific PrincipalAssignment in a kusto database by name
 ```powershell
-PS C:\>  Get-AzSynapseKustoPoolDatabasePrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase -PrincipalAssignmentName kustoprincipal1
+Get-AzSynapseKustoPoolDatabasePrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase -PrincipalAssignmentName kustoprincipal1
+```
 
+```output
 Name                                                  Type
 ----                                                  ----
 testws/testkustopool/mykustodatabase/kustoprincipal1  Microsoft.Synapse/workspaces/kustoPools/Databases/PrincipalAssignments

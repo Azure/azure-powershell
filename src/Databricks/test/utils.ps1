@@ -19,6 +19,7 @@ function setupEnv() {
     $rstr2 = RandomString -allChars $false -len 6
     $rstr3 = RandomString -allChars $false -len 6
     $rstr6 = RandomString -allChars $false -len 6
+    $rstr8 = RandomString -allChars $false -len 6
     # Follow random strings will be used in the test directly, so add it to $env
     $rstr4 = RandomString -allChars $false -len 6
     $rstr5 = RandomString -allChars $false -len 6
@@ -37,11 +38,41 @@ function setupEnv() {
     $null = $env.Add("vnetpeeringname03", $vnetpeeringname03)
     $null = $env.Add("vnetpeeringname04", $vnetpeeringname04)
 
+    $env.PrivSubNet = "bricks-privsubnet"
+    $env.PubSubNet = "bricks-pubsubnet"
     # Create the test group
     write-host "start to create test group"
     $resourceGroup = 'databricks-rg-' + $rstr1
     $null = $env.Add("resourceGroup", $resourceGroup)
     New-AzResourceGroup -Name $resourceGroup -Location eastus
+
+    # Deploy two virtual network and network security group for test
+    Write-Host -ForegroundColor Green "Deloying network..." 
+    $subscriptionId = $env.SubscriptionId
+
+    $virtualNetwork = "databricks-vnet-" + (RandomString -allChars $false -len 6)
+    $securityNetworkGroup = "vnet-security-" + (RandomString -allChars $false -len 6)
+    $databricksSecurityNetworkGroup = "vnet-security-" + (RandomString -allChars $false -len 6)
+
+    $securityVnPara = Get-Content .\test\deployment-templates\security-network-group\parameters.json | ConvertFrom-Json
+    $securityVnPara.parameters.netSG_name.value = $securityNetworkGroup
+    Set-Content -Path .\test\deployment-templates\security-network-group\parameters.json -Value (ConvertTo-Json $securityVnPara)
+    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\security-network-group\template.json -TemplateParameterFile .\test\deployment-templates\security-network-group\parameters.json -Name nsg -ResourceGroupName $resourceGroup
+
+    $securityVnPara = Get-Content .\test\deployment-templates\security-network-group\parameters01.json | ConvertFrom-Json
+    $securityVnPara.parameters.netbricksSG_id.value = $securityNetworkGroup
+    Set-Content -Path .\test\deployment-templates\security-network-group\parameters01.json -Value (ConvertTo-Json $securityVnPara)
+    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\security-network-group\template01.json -TemplateParameterFile .\test\deployment-templates\security-network-group\parameters01.json -Name nsg -ResourceGroupName $resourceGroup
+
+    $null = $env.Add("virtualNetwork", "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$virtualNetwork")
+    $vnPara = Get-Content .\test\deployment-templates\virtual-network\parameters.json | ConvertFrom-Json
+    $vnPara.parameters.virtualNetworks_name.value = $virtualNetwork
+    $vnPara.parameters.netSG_id.value = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.Network/networkSecurityGroups/$securityNetworkGroup"
+    $vnPara.parameters.netbricksSG_id.value = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.Network/networkSecurityGroups/$securityNetworkGroup"
+    Set-Content -Path .\test\deployment-templates\virtual-network\parameters.json -Value (ConvertTo-Json $vnPara)
+    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
+    Start-Sleep -Seconds 60
+    Write-Host -ForegroundColor Green "Network deploy completed." 
 
     # create three Databricks workspaces for test
     Write-Host -ForegroundColor Green "Create databricks workspace for test..." 
@@ -54,27 +85,10 @@ function setupEnv() {
     $testWorkspace3 = "workspace" + $rstr6
     $dbr3 = New-AzDatabricksWorkspace -Name $testWorkspace3 -ResourceGroupName $resourceGroup -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
     $null = $env.Add("testWorkspace3", $testWorkspace3)
-    Write-Host -ForegroundColor Green "Create completed" 
-
-    # Deploy two virtual network and network security group for test
-    Write-Host -ForegroundColor Green "Deloying network..." 
-    $subscriptionId = $env.SubscriptionId
-
-    $virtualNetwork = "databricks-vnet-" + (RandomString -allChars $false -len 6)
-    $securityNetworkGroup = "vnet-security-" + (RandomString -allChars $false -len 6)
-
-    $securityVnPara = Get-Content .\test\deployment-templates\security-network-group\parameters.json | ConvertFrom-Json
-    $securityVnPara.parameters.networkSecurityGroupName.value = $securityNetworkGroup
-    Set-Content -Path .\test\deployment-templates\security-network-group\parameters.json -Value (ConvertTo-Json $securityVnPara)
-    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\security-network-group\template.json -TemplateParameterFile .\test\deployment-templates\security-network-group\parameters.json -Name nsg -ResourceGroupName $resourceGroup
-    $null = $env.Add("virtualNetwork", "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$virtualNetwork")
-    $vnPara = Get-Content .\test\deployment-templates\virtual-network\parameters.json | ConvertFrom-Json
-    $vnPara.parameters.virtualNetworks_dbrvn_name.value = $virtualNetwork
-    $vnPara.parameters.networkSecurityGroups_dolaulinsg_externalid.value = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.Network/networkSecurityGroups/$securityNetworkGroup"
-    Set-Content -Path .\test\deployment-templates\virtual-network\parameters.json -Value (ConvertTo-Json $vnPara)
-    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
-    Start-Sleep -Seconds 60
-    Write-Host -ForegroundColor Green "Network deploy completed." 
+    $testWorkspace4 = "workspace" + $rstr8
+    $dbr4 = New-AzDatabricksWorkspace -Name $testWorkspace4 -ResourceGroupName $resourceGroup -Location eastus -Sku standard -VirtualNetworkId $env.virtualNetwork -PrivateSubnetName $env.PrivSubNet -PublicSubnetName $env.PubSubNet
+    $null = $env.Add("testWorkspace4", $testWorkspace4)
+    Write-Host -ForegroundColor Green "Create completed"
 
     # Create two vnet peering for test
     Write-Host -ForegroundColor Green "Create vnet peering for test..."

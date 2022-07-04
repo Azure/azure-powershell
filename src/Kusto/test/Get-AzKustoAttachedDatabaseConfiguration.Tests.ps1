@@ -23,13 +23,13 @@ Describe 'Get-AzKustoAttachedDatabaseConfiguration' {
         $databaseName = $env.databaseName
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
         $followerClusterName = $env.followerClusterName
-        $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
+        $DefaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
         $attachedDatabaseConfigurationFullName = $followerClusterName + "/" + $attachedDatabaseConfigurationName
 
         [array]$attachedDatabaseConfigurationGet = Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName
         $attachedDatabaseConfiguration = $attachedDatabaseConfigurationGet[0]
-        Validate_AttachedDatabaseConfiguration $attachedDatabaseConfiguration $attachedDatabaseConfigurationFullName  $location $clusterResourceId $databaseName $defaultPrincipalsModificationKind
+        Validate_AttachedDatabaseConfiguration $attachedDatabaseConfiguration $attachedDatabaseConfigurationFullName  $location $clusterResourceId $databaseName $DefaultPrincipalsModificationKind
     }
 
     It 'Get' {
@@ -40,11 +40,11 @@ Describe 'Get-AzKustoAttachedDatabaseConfiguration' {
         $databaseName = $env.databaseName
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
         $followerClusterName = $env.followerClusterName
-        $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
+        $DefaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
         $attachedDatabaseConfigurationFullName = $followerClusterName + "/" + $attachedDatabaseConfigurationName
 
         $attachedDatabaseConfiguration = Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName
-        Validate_AttachedDatabaseConfiguration $attachedDatabaseConfiguration $attachedDatabaseConfigurationFullName  $location $clusterResourceId $databaseName $defaultPrincipalsModificationKind
+        Validate_AttachedDatabaseConfiguration $attachedDatabaseConfiguration $attachedDatabaseConfigurationFullName  $location $clusterResourceId $databaseName $DefaultPrincipalsModificationKind
     }
 }

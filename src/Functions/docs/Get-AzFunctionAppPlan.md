@@ -42,8 +42,10 @@ Get function apps plans in a subscription.
 
 ### Example 1: Get all function app plans.
 ```powershell
-PS C:\> Get-AzFunctionAppPlan
+Get-AzFunctionAppPlan
+```
 
+```output
 Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
 ----                               ---------- -------        ------- --------    -----------------                --------------
 Func99-West-Europe-Linux-Premium   Linux      ElasticPremium EP1     West Europe Func99-West-Europe-Linux-Premium fe16564a-d943-4bf8-8c28-cf01708c3f8b
@@ -59,8 +61,10 @@ This command gets all function app plans.
 
 ### Example 2: Get function app plans by resource group name.
 ```powershell
-PS C:\> Get-AzFunctionAppPlan -ResourceGroupName "West Europe"
+Get-AzFunctionAppPlan -ResourceGroupName "West Europe"
+```
 
+```output
 Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
 ----                               ---------- -------        ------- --------    -----------------                --------------
 Func99-West-Europe-Linux-Premium   Linux      ElasticPremium EP1     West Europe Func99-West-Europe-Linux-Premium fe16564a-d943-4bf8-8c28-cf01708c3f8b
@@ -72,8 +76,10 @@ This command gets function app plans by resource group name.
 
 ### Example 3: Get function app plans for the given subscriptions.
 ```powershell
-PS C:\> Get-AzFunctionAppPlan -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8z
+Get-AzFunctionAppPlan -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8z
+```
 
+```output
 Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
 ----                               ---------- -------        ------- --------    -----------------                --------------
 Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8z
@@ -83,8 +89,10 @@ This command gets function app plans for the given subscriptions.
 
 ### Example 4: Get function app plans by location.
 ```powershell
-PS C:\> Get-AzFunctionAppPlan -Location "Central US"
+Get-AzFunctionAppPlan -Location "Central US"
+```
 
+```output
 Name                               WorkerType SkuTier        SkuName Location   ResourceGroupName                SubscriptionId
 ----                               ---------- -------        ------- --------   -----------------                --------------
 Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     Central US Func99-West-Europe-Win-Premium   3r16564a-d943-4bf8-8c28-cf01708c3f8b

@@ -24,8 +24,10 @@ Lists available StoragePool resources and skus in an Azure location.
 
 ### Example 1: Lists all resources and skus in a location
 ```powershell
-PS C:\> Get-AzDiskPoolResourceSku -Location AustraliaEast
+Get-AzDiskPoolResourceSku -Location AustraliaEast
+```
 
+```output
 ApiVersion Name        ResourceType Tier
 ---------- ----        ------------ ----
 2021-08-01 Standard_S1 diskPools    Standard

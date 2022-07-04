@@ -32,8 +32,10 @@ Gives SKU recommendations for Azure SQL offerings
 
 ### Example 1: Run SKU Recommendation on given SQL Server using connection string
 ```powershell
-PS C:\> Get-AzDataMigrationSkuRecommendation -DisplayResult
+Get-AzDataMigrationSkuRecommendation -DisplayResult
+```
 
+```output
 Starting SKU recommendation...
 
 Performing aggregation for instance AALAB03-2K8...
@@ -59,8 +61,10 @@ This command runs Run SKU Recommendation on given SQL Server using the connectio
 
 ### Example 2: Run Run SKU Recommendation on given SQL Server using assessment config file
 ```powershell
-PS C:\> Get-AzDataMigrationSkuRecommendation -ConfigFilePath "C:\Users\user\document\config.json"
+Get-AzDataMigrationSkuRecommendation -ConfigFilePath "C:\Users\user\document\config.json"
+```
 
+```output
 Starting SKU recommendation...
 
 Performing aggregation for instance AALAB03-2K8...
@@ -105,7 +109,7 @@ Accept wildcard characters: False
 Optional.
 Space separated list of names of databases to be allowed for SKU recommendation consideration while excluding all others.
 Only set one of the following or neither: databaseAllowList, databaseDenyList.
-(Default: null)
+How to pass - "Database1 Database2" (Default: null)
 
 ```yaml
 Type: System.String
@@ -123,7 +127,7 @@ Accept wildcard characters: False
 Optional.
 Space separated list of names of databases to not be considered for SKU recommendation.
 Only set one of the following or neither: databaseAllowList, databaseDenyList.
-(Default: null)
+How to pass - "Database1 Database2" (Default: null)
 
 ```yaml
 Type: System.String
@@ -140,7 +144,6 @@ Accept wildcard characters: False
 ### -DisplayResult
 Optional.
 Whether or not to print the SKU recommendation results to the console.
-(Default: true)
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -157,7 +160,6 @@ Accept wildcard characters: False
 ### -ElasticStrategy
 Optional.
 Whether or not to use the elastic strategy for SKU recommendations based on resource usage profiling.
-(Default: false)
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -208,7 +210,6 @@ Accept wildcard characters: False
 ### -Overwrite
 Optional.
 Whether or not to overwrite any existing SKU recommendation reports.
-(Default: true)
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

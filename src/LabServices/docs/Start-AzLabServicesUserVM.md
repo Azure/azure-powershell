@@ -32,8 +32,7 @@ API to start the assigned vm for the user.
 
 ### Example 1: Start user assigned VM in the lab.
 ```powershell
-PS C:\> Start-AzLabServicesUserVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Email "user@contoso.com"
-
+Start-AzLabServicesUserVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Email "user@contoso.com"
 ```
 
 This starts the VM assigned to the user with the specific email.

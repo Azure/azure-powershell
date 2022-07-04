@@ -31,7 +31,7 @@ Describe 'Get-AzKustoDatabasePrincipalAssignment' {
                 $principalAssignment = $principalAssignmentItem
             }
         }
-        Validate_PrincipalAssignment $principalAssignment $principalAssignmentFullName $principalId $principalType $role
+        Validate_PrincipalAssignment $principalAssignment $principalAssignmentFullName $principalId $principalType $role $env.principalAadObjectId
     }
 
     It 'Get' {
@@ -45,6 +45,6 @@ Describe 'Get-AzKustoDatabasePrincipalAssignment' {
         $principalAssignmentFullName = "$clusterName/$databaseName/$principalAssignmentName"
 
         $principalAssignment = Get-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -PrincipalAssignmentName  $principalAssignmentName
-        Validate_PrincipalAssignment $principalAssignment $principalAssignmentFullName $principalId $principalType $role
+        Validate_PrincipalAssignment $principalAssignment $principalAssignmentFullName $principalId $principalType $role $env.principalAadObjectId
     }
 }

@@ -31,8 +31,10 @@ Checks that the cluster name is valid and is not already in use.
 
 ### Example 1: Check the availability of a Kusto cluster name which is in use
 ```powershell
-PS C:\> Test-AzKustoClusterNameAvailability -Name testnewkustocluster -Location 'East US' -Type Microsoft.Kusto/clusters
+Test-AzKustoClusterNameAvailability -Name testnewkustocluster -Location 'East US'
+```
 
+```output
 Message                                                                                       Name                NameAvailable Reason
 -------                                                                                       ----                ------------- ------
 Name 'testnewkustocluster' with type Engine is already taken. Please specify a different name testnewkustocluster False
@@ -42,8 +44,10 @@ The above command returns whether or not a Kusto cluster named "testnewkustoclus
 
 ### Example 2: Check the availability of a Kusto cluster name which is not in use
 ```powershell
-PS C:\> Test-AzKustoClusterNameAvailability -Name availablekustocluster -Location 'East US' -Type Microsoft.Kusto/clusters
+Test-AzKustoClusterNameAvailability -Name availablekustocluster -Location 'East US'
+```
 
+```output
 Message Name                  NameAvailable Reason
 ------- ----                  ------------- ------
         availablekustocluster True
@@ -170,7 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.ICheckNameResult
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICheckNameResult
 
 ## NOTES
 

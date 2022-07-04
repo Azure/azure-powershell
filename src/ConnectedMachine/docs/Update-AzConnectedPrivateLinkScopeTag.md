@@ -47,12 +47,13 @@ To update other fields use the CreateOrUpdate method.
 
 ### Example 1: Update the tags of a private link scope
 ```powershell
-PS C:\> Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
+$scope = Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
 
-Name         Location    PublicNetworkAccess ProvisioningState Tag
-----         --------    ------------------- ----------------- ---
-name         eastus2euap Disabled            Succeeded         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.PrivateLinkScopesRes…
+Name         Location    PublicNetworkAccess ProvisioningState
+----         --------    ------------------- -----------------
+name         eastus2euap Disabled            Succeeded
 
+$scope.Tag
 ```
 
 Update the tags of a private link scope
@@ -95,7 +96,7 @@ A container holding only the Tags for a resource, allowing the user to update th
 To construct, see NOTES section for PRIVATELINKSCOPETAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.ITagsResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.ITagsResource
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -203,13 +204,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.ITagsResource
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.ITagsResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IHybridComputePrivateLinkScope
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope
 
 ## NOTES
 

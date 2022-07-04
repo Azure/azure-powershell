@@ -23,8 +23,10 @@ Create an in-memory object for LimitObject.
 
 ### Example 1: Create an in-memory object for LimitValue
 ```powershell
-PS C:\> New-AzQuotaLimitObject -Value 1003
+New-AzQuotaLimitObject -Value 1003
+```
 
+```output
 LimitObjectType LimitType Value
 --------------- --------- -----
 LimitValue                1003

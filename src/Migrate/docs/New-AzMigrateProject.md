@@ -24,8 +24,10 @@ Creates a new Migrate project.
 
 ### Example 1: Create (Default)
 ```powershell
-PS C:\> New-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName kuchaturimpkocrg1 -Name kuchaturimpkocrg1pwshp14 -Location "centralus"
+New-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName kuchaturimpkocrg1 -Name kuchaturimpkocrg1pwshp14 -Location "centralus"
+```
 
+```output
 ETag Location  Name                     Type
 ---- --------  ----                     ----
      centralus kuchaturimpkocrg1pwshp14 Microsoft.Migrate/MigrateProjects

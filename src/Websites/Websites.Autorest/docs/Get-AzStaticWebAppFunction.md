@@ -24,7 +24,7 @@ Description for Gets the functions of a static site.
 
 ### Example 1: Get the functions of a static site
 ```powershell
-PS C:\>  Get-AzStaticWebAppFunction -ResourceGroupName azure-rg-test -Name staticweb-portal04
+Get-AzStaticWebAppFunction -ResourceGroupName azure-rg-test -Name staticweb-portal04
 
 ```
 

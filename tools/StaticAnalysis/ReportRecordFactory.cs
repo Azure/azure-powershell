@@ -17,6 +17,7 @@ using StaticAnalysis.BreakingChangeAnalyzer;
 using StaticAnalysis.DependencyAnalyzer;
 using StaticAnalysis.HelpAnalyzer;
 using StaticAnalysis.SignatureVerifier;
+using StaticAnalysis.ExampleAnalyzer;
 
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,10 @@ namespace StaticAnalysis
             if (type.Equals(typeof(SignatureIssue).FullName))
             {
                 return new SignatureIssue();
+            }
+            if (type.Equals(typeof(ExampleIssue).FullName))
+            {
+                return new ExampleIssue();
             }
 
             return null;

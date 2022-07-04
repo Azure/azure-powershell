@@ -14,6 +14,10 @@ Microsoft Azure PowerShell: DedicatedHsm cmdlets
 ### [Get-AzDedicatedHsm](Get-AzDedicatedHsm.md)
 Gets the specified Azure dedicated HSM.
 
+### [Get-AzDedicatedHsmOutboundNetworkDependencyEndpoint](Get-AzDedicatedHsmOutboundNetworkDependencyEndpoint.md)
+Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified dedicated hsm resource.
+The operation returns properties of each egress endpoint.
+
 ### [New-AzDedicatedHsm](New-AzDedicatedHsm.md)
 Create or Update a dedicated HSM in the specified subscription.
 
