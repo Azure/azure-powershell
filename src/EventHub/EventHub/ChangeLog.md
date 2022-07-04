@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * Added cmdlets for CRUD operations on EventHub Application Groups. The added cmdlets include,
     -New-AzEventHubApplicationGroup
     -Set-AzEventHubApplicationGroup

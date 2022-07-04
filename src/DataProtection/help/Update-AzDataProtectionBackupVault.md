@@ -50,8 +50,10 @@ The second command adds the given tags to the backup vault.
 
 ### Example 2: Disable Azure monitor alerts for job failures
 ```powershell
-PS C:\>  Update-AzDataProtectionBackupVault -ResourceGroupName "rgName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -AzureMonitorAlertsForAllJobFailure 'Disabled'
+Update-AzDataProtectionBackupVault -ResourceGroupName "rgName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -AzureMonitorAlertsForAllJobFailure 'Disabled'
+```
 
+```output
 Name          Location      Type                                  IdentityType
 ----          --------      ----                                  ------------
 vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned

@@ -28,7 +28,7 @@ You must specify the architecture type when running **Get-AzVpnClientPackage**.
 
 ### Example 1: Get information about a processor architecture VPN client package
 ```powershell
-Get-AzVpnClientPackage -ProcessorArchitecture -VirtualNetworkGatewayName "ContosoVirtualNetworkGateway" -ResourceGroupName "ContosoResourceGroup" -ProcessorArchitecture "Amd64"
+Get-AzVpnClientPackage -VirtualNetworkGatewayName "ContosoVirtualNetworkGateway" -ResourceGroupName "ContosoResourceGroup" -ProcessorArchitecture "Amd64"
 ```
 
 This command gets information about the AMD64 VPN client packages stored on the virtual network gateway named ContosoVirtualNetworkGateway.

@@ -25,12 +25,12 @@ New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup. This cmdlet DO
 
 ### Example 1
 ```powershell
-PS C:\> $policy1 = New-AzEventHubThrottlingPolicyConfig -Name policy1 -MetricId IncomingBytes -RateLimitThreshold 12345
+$policy1 = New-AzEventHubThrottlingPolicyConfig -Name policy1 -MetricId IncomingBytes -RateLimitThreshold 12345
 
-PS C:\> $policy2 = New-AzEventHubThrottlingPolicyConfig -Name policy2 -MetricId IncomingMessages -RateLimitThreshold 12345
+$policy2 = New-AzEventHubThrottlingPolicyConfig -Name policy2 -MetricId IncomingMessages -RateLimitThreshold 12345
 
-PS C:\> New-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -ClientAppGroupIdentifier SASKeyName=myauthkey 
-		-ThrottlingPolicy $policy1, $policy2
+New-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -ClientAppGroupIdentifier SASKeyName=myauthkey ` 
+-ThrottlingPolicy $policy1, $policy2
 ```
 
 $policy1 and $policy2 are objects of type PSEventHubApplicationGroupAttributes. The objects can then be fed as input to
