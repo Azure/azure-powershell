@@ -80,14 +80,14 @@ The command passes that table to the Add-AzRouteConfig cmdlet by using the pipel
 ```powershell
 $rt = Get-AzRouteTable -ResourceGroupName "rgName" -Name "rtName"
 $rt.DisableBgpRoutePropagation
+
 False
+
 $rt.DisableBgpRoutePropagation = $true
 Set-AzRouteTable -RouteTable $rt
 $rt = Get-AzRouteTable -ResourceGroupName "rgName" -Name "rtName"
 $rt.DisableBgpRoutePropagation
-```
 
-```output
 True
 ```
 

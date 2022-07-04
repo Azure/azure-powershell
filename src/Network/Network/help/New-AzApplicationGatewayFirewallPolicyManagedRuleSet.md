@@ -25,7 +25,7 @@ The **New-AzApplicationGatewayFirewallPolicyManagedRuleSet** creates a managed-r
 
 ### Example 1
 ```powershell
-$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType $ruleSetType 
+$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType $ruleSetType `
 -RuleSetVersion $ruleSetVersion -RuleGroupOverrides $ruleGroupOverride1, $ruleGroupOverride2
 ```
 
