@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -249,7 +248,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             foreach (Track2Models.ResourceAccessRule rule in ruleList)
             {
-                if (rule.TenantId.ToString().Equals(ruleToRemove.TenantId.ToString(), System.StringComparison.InvariantCultureIgnoreCase)
+                if (rule.TenantId.Equals(ruleToRemove.TenantId)
                    && rule.ResourceId.Equals(ruleToRemove.ResourceId, System.StringComparison.InvariantCultureIgnoreCase))
                 {
                     ruleList.Remove(rule);
