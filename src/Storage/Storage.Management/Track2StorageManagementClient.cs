@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// <summary>
         /// Check if a storage account name is available
         /// </summary>
-        public CheckNameAvailabilityResult CheckNameAvailability(StorageAccountCheckNameAvailabilityContent content) =>
+        public CheckNameAvailabilityResult CheckNameAvailability(StorageAccountNameAvailabilityContent content) =>
             GetSubscription(_subscription).CheckStorageAccountNameAvailability(content);
 
         /// <summary>

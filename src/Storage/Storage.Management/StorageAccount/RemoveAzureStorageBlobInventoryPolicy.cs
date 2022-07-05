@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                         break;
                 }
-                this.StorageClientTrack2.GetBlobInventoryPolicyResource(this.ResourceGroupName, this.StorageAccountName, "default").Delete(WaitUntil.Completed);
+                this.StorageClientTrack2.GetBlobInventoryPolicyResource(this.ResourceGroupName, this.StorageAccountName, DefaultPolicyName).Delete(WaitUntil.Completed);
 
                 if (PassThru.IsPresent)
                 {

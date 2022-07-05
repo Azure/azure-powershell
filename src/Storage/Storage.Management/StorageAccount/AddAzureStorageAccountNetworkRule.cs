@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             HelpMessage = "Storage Account ResourceAccessRule TenantId  in string.",
             ParameterSetName = ResourceAccessRuleStringParameterSet)]
-        public string TenantId { get; set; }
+        public Guid? TenantId { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -189,7 +190,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         bool ResourceAccessruleExist = false;
                         foreach (Track2Models.ResourceAccessRule originRule in storageACL.ResourceAccessRules)
                         {
-                            if (originRule.TenantId.Equals(this.TenantId, System.StringComparison.InvariantCultureIgnoreCase)
+                            if (originRule.TenantId.Equals(this.TenantId)
                             && originRule.ResourceId.Equals(this.ResourceId, System.StringComparison.InvariantCultureIgnoreCase))
                             {
                                 ResourceAccessruleExist = true;
@@ -233,7 +234,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             bool ruleExist = false;
                             foreach (Track2Models.ResourceAccessRule originRule in storageACL.ResourceAccessRules)
                             {
-                                if (originRule.TenantId.Equals(rule.TenantId, System.StringComparison.InvariantCultureIgnoreCase)
+                                if (originRule.TenantId.Equals(rule.TenantId)
                                 && originRule.ResourceId.Equals(rule.ResourceId, System.StringComparison.InvariantCultureIgnoreCase))
                                 {
                                     ruleExist = true;

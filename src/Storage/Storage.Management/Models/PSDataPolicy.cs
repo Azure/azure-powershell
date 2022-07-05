@@ -1,4 +1,5 @@
 ﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +13,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Track2 = global::Azure.ResourceManager.Storage;
+using Track2 = Azure.ResourceManager.Storage;
+using Track2Models = Azure.ResourceManager.Storage.Models;
 using Azure.ResourceManager.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System;
@@ -67,16 +69,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
         }
 
-        public PSManagementPolicyRule(global::Azure.ResourceManager.Storage.Models.ManagementPolicyRule rule)
+        public PSManagementPolicyRule(Track2Models.ManagementPolicyRule rule)
         {
             this.Enabled = rule.Enabled;
             this.Name = rule.Name;
             this.Definition = rule.Definition is null ? null : new PSManagementPolicyDefinition(rule.Definition);
         }
 
-        public Track2.Models.ManagementPolicyRule ParseManagementPolicyRule()
+        public Track2Models.ManagementPolicyRule ParseManagementPolicyRule()
         {
-            Track2.Models.ManagementPolicyRule rule = new Track2.Models.ManagementPolicyRule(
+            Track2Models.ManagementPolicyRule rule = new Track2Models.ManagementPolicyRule(
                 this.Name,
                 RuleType.Lifecycle,
                 this.Definition?.ParseManagementPolicyDefination()
@@ -85,7 +87,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             return rule;
         }
 
-        public static PSManagementPolicyRule[] GetPSManagementPolicyRules(IList<Track2.Models.ManagementPolicyRule> rules)
+        public static PSManagementPolicyRule[] GetPSManagementPolicyRules(IList<Track2Models.ManagementPolicyRule> rules)
         {
             if (rules == null)
             {
@@ -273,9 +275,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSManagementPolicySnapShot(Track2.Models.ManagementPolicySnapShot blobAction)
         {
 
-            this.Delete = blobAction.DeleteDaysAfterCreationGreaterThan is null ? null : new PSDateAfterCreation((int)blobAction.DeleteDaysAfterCreationGreaterThan);
-            this.TierToCool = blobAction.TierToCoolDaysAfterCreationGreaterThan is null ? null : new PSDateAfterCreation((int)blobAction.TierToCoolDaysAfterCreationGreaterThan);
-            TierToArchive = blobAction.TierToArchiveDaysAfterCreationGreaterThan is null ? null : new PSDateAfterCreation((int)blobAction.TierToArchiveDaysAfterCreationGreaterThan);
+            this.Delete = blobAction.Delete is null ? null : new PSDateAfterCreation((int)blobAction.Delete.DaysAfterCreationGreaterThan);
+            this.TierToCool = blobAction.TierToCool is null ? null : new PSDateAfterCreation((int)blobAction.TierToCool.DaysAfterCreationGreaterThan);
+            TierToArchive = blobAction.TierToArchive is null ? null : new PSDateAfterCreation((int)blobAction.TierToArchive.DaysAfterCreationGreaterThan);
         }
         public Track2.Models.ManagementPolicySnapShot ParseManagementPolicySnapShot()
         {
@@ -284,15 +286,17 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
             if (this.Delete != null)
             {
-                snapShot.DeleteDaysAfterCreationGreaterThan = this.Delete.DaysAfterCreationGreaterThan;
+                snapShot.Delete = new Track2.Models.DateAfterCreation(this.Delete.DaysAfterCreationGreaterThan);
             }
             if (this.TierToCool != null)
             {
-                snapShot.TierToCoolDaysAfterCreationGreaterThan = this.TierToCool.DaysAfterCreationGreaterThan;
+                snapShot.TierToCool = new Track2.Models.DateAfterCreation(this.TierToCool.DaysAfterCreationGreaterThan);
+                //snapShot.TierToCoolDaysAfterCreationGreaterThan = this.TierToCool.DaysAfterCreationGreaterThan;
             }
             if (this.TierToArchive != null)
             {
-                snapShot.TierToArchiveDaysAfterCreationGreaterThan = this.TierToArchive.DaysAfterCreationGreaterThan;
+                snapShot.TierToArchive = new Track2.Models.DateAfterCreation(this.TierToArchive.DaysAfterCreationGreaterThan);
+                //snapShot.TierToArchiveDaysAfterCreationGreaterThan = this.TierToArchive.DaysAfterCreationGreaterThan;
             }
 
             return snapShot;
@@ -313,24 +317,27 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public PSManagementPolicyVersion(Track2.Models.ManagementPolicyVersion blobAction)
         {
-            this.Delete = blobAction.DeleteDaysAfterCreationGreaterThan is null ? null : new PSDateAfterCreation((int)blobAction.DeleteDaysAfterCreationGreaterThan);
-            this.TierToCool = blobAction.TierToCoolDaysAfterCreationGreaterThan is null ? null :new PSDateAfterCreation((int)blobAction.TierToCoolDaysAfterCreationGreaterThan);
-            this.TierToArchive = blobAction.TierToArchiveDaysAfterCreationGreaterThan is null ? null : new PSDateAfterCreation((int)blobAction.TierToArchiveDaysAfterCreationGreaterThan);
+            this.Delete = blobAction.Delete is null ? null : new PSDateAfterCreation((int)blobAction.Delete.DaysAfterCreationGreaterThan);
+            this.TierToCool = blobAction.TierToCool is null ? null :new PSDateAfterCreation((int)blobAction.TierToCool.DaysAfterCreationGreaterThan);
+            this.TierToArchive = blobAction.TierToArchive is null ? null : new PSDateAfterCreation((int)blobAction.TierToArchive.DaysAfterCreationGreaterThan);
         }
         public Track2.Models.ManagementPolicyVersion ParseManagementPolicyVersion()
         {
             Track2.Models.ManagementPolicyVersion policyVersion = new Track2.Models.ManagementPolicyVersion();
             if (this.Delete != null)
             {
-                policyVersion.DeleteDaysAfterCreationGreaterThan = this.Delete.DaysAfterCreationGreaterThan;
+                policyVersion.Delete = new DateAfterCreation(this.Delete.DaysAfterCreationGreaterThan);
+                //policyVersion.DeleteDaysAfterCreationGreaterThan = this.Delete.DaysAfterCreationGreaterThan;
             }
             if (this.TierToCool != null)
             {
-                policyVersion.TierToCoolDaysAfterCreationGreaterThan = this.TierToCool.DaysAfterCreationGreaterThan;
+                policyVersion.TierToCool = new DateAfterCreation(this.TierToCool.DaysAfterCreationGreaterThan);
+                //policyVersion.TierToCoolDaysAfterCreationGreaterThan = this.TierToCool.DaysAfterCreationGreaterThan;
             }
             if (this.TierToArchive != null)
             {
-                policyVersion.TierToArchiveDaysAfterCreationGreaterThan = this.TierToArchive.DaysAfterCreationGreaterThan;
+                policyVersion.TierToArchive = new DateAfterCreation(this.TierToArchive.DaysAfterCreationGreaterThan);
+                //policyVersion.TierToArchiveDaysAfterCreationGreaterThan = this.TierToArchive.DaysAfterCreationGreaterThan;
             }
 
             return policyVersion;

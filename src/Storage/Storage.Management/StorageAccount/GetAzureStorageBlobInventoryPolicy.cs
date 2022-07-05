@@ -39,11 +39,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// </summary>
         private const string AccountResourceIdParameterSet = "AccountResourceId";
 
-        /// <summary>
-        /// Default policy name 
-        /// </summary>
-        private const string DefaultPolicyName = "default";
-
         [Parameter(
          Position = 0,
          Mandatory = true,

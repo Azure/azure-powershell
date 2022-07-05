@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             Track2Models.CheckNameAvailabilityResult checkNameAvailabilityResult =
                 this.StorageClientTrack2.GetSubscription(this.SubscriptionId).CheckStorageAccountNameAvailability(
-                    new Track2Models.StorageAccountCheckNameAvailabilityContent(this.Name));
+                    new Track2Models.StorageAccountNameAvailabilityContent(this.Name));
 
             if (!checkNameAvailabilityResult.NameAvailable.Value)
             {
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 if (enableAzureActiveDirectoryDomainServicesForFile != null && enableAzureActiveDirectoryDomainServicesForFile.Value)
                 {
-                    createContent.AzureFilesIdentityBasedAuthentication = new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOptions.Aadds);
+                    createContent.AzureFilesIdentityBasedAuthentication = new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOption.Aadds);
                 }
                 else if (enableActiveDirectoryDomainServicesForFile != null && enableActiveDirectoryDomainServicesForFile.Value)
                 {
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
 
                     createContent.AzureFilesIdentityBasedAuthentication =
-                        new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOptions.AD);
+                        new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOption.AD);
                     createContent.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties =
                         new Track2Models.ActiveDirectoryProperties(this.ActiveDirectoryDomainName, this.ActiveDirectoryNetBiosDomainName,
                         this.ActiveDirectoryForestName, this.ActiveDirectoryDomainGuid, this.ActiveDirectoryDomainSid, this.ActiveDirectoryAzureStorageSid);
@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 else
                 {
                     createContent.AzureFilesIdentityBasedAuthentication =
-                        new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOptions.None);
+                        new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOption.None);
                 }
             }
 
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 if (createContent.AzureFilesIdentityBasedAuthentication == null)
                 {
                     createContent.AzureFilesIdentityBasedAuthentication =
-                        new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOptions.None);
+                        new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOption.None);
                 }
 
                 createContent.AzureFilesIdentityBasedAuthentication.DefaultSharePermission = this.DefaultSharePermission;
@@ -676,9 +676,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             if (this.EncryptionKeyTypeForQueue != null || this.EncryptionKeyTypeForTable != null || this.RequireInfrastructureEncryption.IsPresent)
             {
-
-                createContent.Encryption = new Track2Models.Encryption(Track2Models.KeySource.MicrosoftStorage);
-
+                createContent.Encryption = new Track2Models.Encryption
+                {
+                    KeySource = Track2Models.KeySource.MicrosoftStorage
+                };
+            
                 if (this.EncryptionKeyTypeForQueue != null || this.EncryptionKeyTypeForTable != null)
                 {
                     createContent.Encryption.Services = new Track2Models.EncryptionServices();
@@ -729,8 +731,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                 if (createContent.Encryption == null)
                 {
-                    createContent.Encryption = new Track2Models.Encryption(
-                        Track2Models.KeySource.MicrosoftStorage);
+                    createContent.Encryption = new Track2Models.Encryption
+                    {
+                        KeySource = Track2Models.KeySource.MicrosoftStorage,
+                    };
                 }
 
                 if (createContent.Encryption.Services == null)
@@ -792,7 +796,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 createContent.ExtendedLocation = new Track2Models.ExtendedLocation
                 {
                     Name = this.EdgeZone,
-                    ExtendedLocationType = Track2Models.ExtendedLocationTypes.EdgeZone,
+                    ExtendedLocationType = Track2Models.ExtendedLocationType.EdgeZone,
                 };
             }
             if (sasExpirationPeriod != null)
