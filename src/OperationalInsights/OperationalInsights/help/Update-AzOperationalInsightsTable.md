@@ -106,13 +106,13 @@ Accept wildcard characters: False
 ```
 
 ### -Plan
-Table plan can be 'Basic' or 'Analytics'.
+Table plan can be 'Analytics' or 'Basic'.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Basic, Analytics
+Accepted values: Analytics, Basic
 
 Required: False
 Position: Named

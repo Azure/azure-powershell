@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
             HelpMessage = "The table columns passed as Hashtable. for example: @{ ColName1 = Type; ColName2 = Type; ColName3 = Type}.")]
         public Hashtable Column { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Table plan can be 'Basic' or 'Analytics'.")]
-        [ValidateSet("Basic", "Analytics", IgnoreCase = true)]
+        [Parameter(Mandatory = false, HelpMessage = "Table plan can be 'Analytics' or 'Basic'.")]
+        [ValidateSet("Analytics", "Basic", IgnoreCase = true)]
         public string Plan { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Search job Description.")]
