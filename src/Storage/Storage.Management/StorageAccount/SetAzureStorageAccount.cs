@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                     }
                                 }
                             }
-                        }
+                        } 
                     }
 
                     if (StorageEncryption || ParameterSetName == KeyvaultEncryptionParameterSet || this.KeyVaultUserAssignedIdentityId != null)
@@ -619,13 +619,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             var originStorageAccount = this.StorageClientTrack2.GetSingleStorageAccount(this.ResourceGroupName, this.Name);
 
                             if (originStorageAccount.Data.AzureFilesIdentityBasedAuthentication != null
-                                && originStorageAccount.Data.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == Track2Models.DirectoryServiceOptions.AD)
+                                && originStorageAccount.Data.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == Track2Models.DirectoryServiceOption.AD)
                             {
                                 throw new System.ArgumentException("The Storage account already enabled ActiveDirectoryDomainServicesForFile, please disable it by run this cmdlets with \"-EnableActiveDirectoryDomainServicesForFile $false\" before enable AzureActiveDirectoryDomainServicesForFile.");
                             }
 
                             storageAccountPatch.AzureFilesIdentityBasedAuthentication =
-                                new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOptions.Aadds);
+                                new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOption.Aadds);
 
                         }
                         else //Disable AADDS
@@ -635,10 +635,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             var originStorageAccount = this.StorageClientTrack2.GetSingleStorageAccount(this.ResourceGroupName, this.Name);
 
                             if (originStorageAccount.Data.AzureFilesIdentityBasedAuthentication == null
-                                || originStorageAccount.Data.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == Track2Models.DirectoryServiceOptions.Aadds)
+                                || originStorageAccount.Data.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == Track2Models.DirectoryServiceOption.Aadds)
                             {
                                 storageAccountPatch.AzureFilesIdentityBasedAuthentication =
-                                    new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOptions.None);
+                                    new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOption.None);
                             }
                             else
                             {
@@ -671,13 +671,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
 
                             if (originStorageAccount.Data.AzureFilesIdentityBasedAuthentication != null
-                                && originStorageAccount.Data.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == Track2Models.DirectoryServiceOptions.Aadds)
+                                && originStorageAccount.Data.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == Track2Models.DirectoryServiceOption.Aadds)
                             {
                                 throw new System.ArgumentException("The Storage account already enabled AzureActiveDirectoryDomainServicesForFile, please disable it by run this cmdlets with \"-EnableAzureActiveDirectoryDomainServicesForFile $false\" before enable ActiveDirectoryDomainServicesForFile.");
                             }
 
                             storageAccountPatch.AzureFilesIdentityBasedAuthentication =
-                                new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOptions.AD);
+                                new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOption.AD);
 
                             storageAccountPatch.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties =
                                 new Track2Models.ActiveDirectoryProperties(this.ActiveDirectoryDomainName, this.ActiveDirectoryNetBiosDomainName,
@@ -707,10 +707,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             var originStorageAccount = this.StorageClientTrack2.GetSingleStorageAccount(this.ResourceGroupName, this.Name);
 
                             if (originStorageAccount.Data.AzureFilesIdentityBasedAuthentication == null
-                                || originStorageAccount.Data.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == Track2Models.DirectoryServiceOptions.AD)
+                                || originStorageAccount.Data.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == Track2Models.DirectoryServiceOption.AD)
                             {
                                 storageAccountPatch.AzureFilesIdentityBasedAuthentication =
-                                    new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOptions.None);
+                                    new Track2Models.AzureFilesIdentityBasedAuthentication(Track2Models.DirectoryServiceOption.None);
 
                             }
                             else
@@ -726,7 +726,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         {
                             storageAccountPatch.AzureFilesIdentityBasedAuthentication =
                                 new Track2Models.AzureFilesIdentityBasedAuthentication(
-                                    Track2Models.DirectoryServiceOptions.None);
+                                    Track2Models.DirectoryServiceOption.None);
                         }
 
                         storageAccountPatch.AzureFilesIdentityBasedAuthentication.DefaultSharePermission = this.DefaultSharePermission;
