@@ -39,7 +39,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/redisenterprise/resource-manager/Microsoft.Cache/stable/2022-01-01/redisenterprise.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/ea6bb1c836308d5b11166b9b2da6b306bc665a0f/specification/redisenterprise/resource-manager/Microsoft.Cache/stable/2022-01-01/redisenterprise.json
 
 module-version: 1.0.0
 title: RedisEnterpriseCache
@@ -101,6 +101,23 @@ directive:
       parameter-name: ClusterName
     set:
       alias: Name
+  - where:
+      verb: New
+      subject: Database
+      parameter-name: GeoReplicationLinkedDatabase
+    set:
+      parameter-name: LinkedDatabase
+  - where:
+      verb: New
+      subject: Database
+    set:
+      hide: true
+  - where:
+      verb: New
+      subject: Database
+      parameter-name: GeoReplicationGroupNickname
+    set:
+      parameter-name: GroupNickname
   - where:
       parameter-name: SkuCapacity
     set:
