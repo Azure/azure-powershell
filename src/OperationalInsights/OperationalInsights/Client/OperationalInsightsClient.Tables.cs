@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             PSTable existingTable = this.GetTable(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Name);
 
+            parameters.TotalRetentionInDays = parameters.TotalRetentionInDays ?? existingTable.TotalRetentionInDays;//dabenham TODO - test scenario where paln is changed from Analytics to Basic - see if total retention stays high to protect data loss from customers
             var response = OperationalInsightsManagementClient.Tables.Update(
                 resourceGroupName: parameters.ResourceGroupName,
                 workspaceName: parameters.WorkspaceName,
