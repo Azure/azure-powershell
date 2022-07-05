@@ -55,7 +55,6 @@ Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Permission Group
 
 Update a gallery to be shared and add two subscriptions it is to be shared with.
 
-
 ## PARAMETERS
 
 ### -AsJob

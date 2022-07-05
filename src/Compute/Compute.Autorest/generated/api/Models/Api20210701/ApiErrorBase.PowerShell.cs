@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -66,9 +68,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Message, global::System.Convert.ToString);
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Message, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -86,9 +97,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Message, global::System.Convert.ToString);
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBaseInternal)this).Message, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -122,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701
         /// Creates a new instance of <see cref="ApiErrorBase" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ApiErrorBase" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IApiErrorBase FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

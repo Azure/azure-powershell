@@ -25,9 +25,9 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
- [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>]
- [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -35,8 +35,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
 New-AzVM [-ResourceGroupName] <String> [-Location] <String> [-EdgeZone <String>] [-VM] <PSVirtualMachine>
  [[-Zone] <String[]>] [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
  [-OSDiskDeleteOption <String>] [-DataDiskDeleteOption <String>] [-SshKeyName <String>] [-GenerateSshKey]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DisableIntegrityMonitoring] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DisableIntegrityMonitoring]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DiskFileParameterSet
@@ -49,7 +49,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-UserAssignedIdentity <String>] [-AsJob] [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>]
  [-DataDiskDeleteOption <String>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>]
  [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
- [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>] [-ImageReferenceId <String>]
+ [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
  [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -458,6 +458,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableIntegrityMonitoring
+This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DiskFile
 The local path to the virtual hard disk file to be uploaded to the cloud and for creating the VM, and it must have '.vhd' as its suffix.
 
@@ -621,6 +636,21 @@ Aliases: ImageName
 Required: False
 Position: Named
 Default value: Win2016Datacenter
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageReferenceId
+Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -868,20 +898,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImageReferenceId
-Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
-
-```yaml
-Type: System.String
-Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases:
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Size
 The Virtual Machine Size.  The Default Value is: Standard_D2s_v3.
 
@@ -1031,21 +1047,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DisableIntegrityMonitoring
-This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DefaultParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

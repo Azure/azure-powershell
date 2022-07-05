@@ -188,7 +188,6 @@ $vmss = New-AzVmss `
     -VirtualMachineScaleSet $vmssConfig;
 ```
 
-
 ## PARAMETERS
 
 ### -AdditionalUnattendContent

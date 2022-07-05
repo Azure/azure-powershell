@@ -16,19 +16,20 @@ Creates a VMSS.
 ### DefaultParameter (Default)
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-DisableIntegrityMonitoring] [-AsJob] [-EdgeZone <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-DisableIntegrityMonitoring]
+ [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SimpleParameterSet
 ```
 New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [-UserData <String>]
- [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>] [-VirtualNetworkName <String>]
- [-SubnetName <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
- [-SecurityGroupName <String>] [-LoadBalancerName <String>] [-BackendPort <Int32[]>] [-Location <String>]
- [-EdgeZone <String>] [-VmSize <String>] [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>]
- [-VnetAddressPrefix <String>] [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>]
- [-BackendPoolName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-EnableUltraSSD]
+ [-DisableIntegrityMonitoring] [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>]
+ [-VirtualNetworkName <String>] [-SubnetName <String>] [-PublicIpAddressName <String>]
+ [-DomainNameLabel <String>] [-SecurityGroupName <String>] [-LoadBalancerName <String>]
+ [-BackendPort <Int32[]>] [-Location <String>] [-EdgeZone <String>] [-VmSize <String>]
+ [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>] [-VnetAddressPrefix <String>]
+ [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
+ [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-EnableUltraSSD]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-NatBackendPort <Int32[]>]
  [-DataDiskSizeInGb <Int32[]>] [-ProximityPlacementGroupId <String>] [-HostGroupId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
@@ -358,6 +359,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableIntegrityMonitoring
+This flag disables the default behavior to install the Guest Attestation extension to the virtual machine scale set and its vm instances if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DomainNameLabel
 The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set. This is the first component of the domain name that is automatically assigned to the Scale Set. Automatically assigned Domain names use the form (<DomainNameLabel>.<Location>.cloudapp.azure.com). If no value is supplied, the default domain name label will be the concatenation of <ScaleSetName> and <ResourceGroupName>.
 
@@ -466,6 +482,21 @@ Accept wildcard characters: False
 
 ### -ImageName
 The name of the image for VMs in this Scale Set. If no value is provided, the "Windows Server 2016 DataCenter" image will be used.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageReferenceId
+Specified the shared gallery image unique id for vmss deployment. This can be fetched from shared gallery image GET call.
 
 ```yaml
 Type: System.String
@@ -676,21 +707,6 @@ Accept wildcard characters: False
 
 ### -SecurityGroupName
 The name of the network security group to apply to this Scale Set.  If no value is provided, a default network security group with the same name as the Scale Set will be created and applied to the Scale Set.
-
-```yaml
-Type: System.String
-Parameter Sets: SimpleParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ImageReferenceId
-Specified the shared gallery image unique id for vmss deployment. This can be fetched from shared gallery image GET call.
 
 ```yaml
 Type: System.String
@@ -924,20 +940,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
- 
-### -DisableIntegrityMonitoring
-This flag disables the default behavior to install the Guest Attestation extension to the virtual machine scale set and its vm instances if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DefaultParameter
-Aliases:
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

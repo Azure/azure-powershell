@@ -24,8 +24,8 @@ New-AzDiskConfig [[-SkuName] <String>] [-Tier <String>] [-LogicalSectorSize <Int
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
  [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DiskAccessId <String>]
  [-NetworkAccessPolicy <String>] [-BurstingEnabled <Boolean>] [-PublicNetworkAccess <String>]
- [-AcceleratedNetwork <Boolean>] [-DataAccessAuthMode <String>] [-Architecture <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AcceleratedNetwork <Boolean>] [-DataAccessAuthMode <String>] [-Architecture <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
