@@ -117,6 +117,27 @@ directive:
       verb: Invoke
       subject-prefix: Reservation
       subject: Exchange
+  - where:
+      verb: Invoke
+      subject: PurchaseReservationOrder
+    set:
+      verb: New
+      subject-prefix: ''
+      subject: Reservation
+  - where:
+      verb: Split
+      subject: Reservation
+    set:
+      verb: Split
+      subject-prefix: ''
+      subject: Reservation
+  - where:
+      verb: Merge
+      subject: Reservation
+    set:
+      verb: Merge
+      subject-prefix: ''
+      subject: Reservation
 
   ### Rename property name
   - where:
@@ -184,6 +205,26 @@ directive:
       property-name: ReservedResourcePropertyInstanceFlexibility
     set:
       property-name: InstanceFlexibility
+  - where:
+      model-name: ReservationResponse
+      property-name: SplitProperty
+    set:
+      property-name: SplitProperties
+  - where:
+      model-name: ReservationResponse
+      property-name: MergeProperty
+    set:
+      property-name: MergeProperties
+  - where:
+      model-name: ReservationSplitProperties
+      property-name: SplitDestination
+    set:
+      property-name: SplitDestinations
+  - where:
+      model-name: ReservationMergeProperties
+      property-name: MergeSource
+    set:
+      property-name: MergeSources
 
   ###Rename parameter name
   ## Get-AzReservationQuote
@@ -200,7 +241,35 @@ directive:
       subject: Quote
       parameter-name: ReservedResourcePropertyInstanceFlexibility
     set:
-      parameter-name: InstanceFlexibility 
+      parameter-name: InstanceFlexibility
+  ## New-AzReservation
+  - where:
+      verb: New
+      subject-prefix: ''
+      subject: Reservation
+      parameter-name: SkuName
+    set:
+      parameter-name: Sku
+  - where:
+      verb: New
+      subject-prefix: ''
+      subject: Reservation
+      parameter-name: ReservedResourcePropertyInstanceFlexibility
+    set:
+      parameter-name: InstanceFlexibility
+  ## Merge-AzReservation
+  - where:
+      verb: Merge
+      subject-prefix: ''
+      subject: Reservation
+      parameter-name: Source
+    set:
+      parameter-name: ReservationId
+
+  - where:
+      parameter-name: OrderId
+    set:
+      alias: ReservationOrderId
 
   ### Format output table
   - where:
@@ -285,6 +354,7 @@ directive:
     - CalculatePriceResponsePropertiesBillingCurrencyTotal
     - CalculatePriceResponsePropertiesPricingCurrencyTotal
     - ReservationToPurchaseExchange
-    - PurchaseRequestProperties
     - BillingInformation
+    - ReservationSplitProperties
+    - ReservationMergeProperties
 ```

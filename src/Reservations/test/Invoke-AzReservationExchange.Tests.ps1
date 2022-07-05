@@ -57,13 +57,13 @@ function ExecuteTestCases([object]$response) {
     $response.ReservationsToPurchase[0].Properties | Should -Not -Be $null
     $response.ReservationsToPurchase[0].Properties.Location | Should -Be "westeurope"
     $response.ReservationsToPurchase[0].Properties.Sku | Should -Be "Standard_B16ms"
-    $response.ReservationsToPurchase[0].Properties.Properties.BillingScopeId | Should -Be "/subscriptions/10000000-aaaa-bbbb-cccc-100000000000"
-    $response.ReservationsToPurchase[0].Properties.Properties.Term | Should -Be "P3Y"
-    $response.ReservationsToPurchase[0].Properties.Properties.BillingPlan | Should -Be "Upfront"
-    $response.ReservationsToPurchase[0].Properties.Properties.Quantity | Should -Be 2
-    $response.ReservationsToPurchase[0].Properties.Properties.ReservedResourceType | Should -Be "VirtualMachines"
-    $response.ReservationsToPurchase[0].Properties.Properties.AppliedScopeType | Should -Be "Shared"
-    $response.ReservationsToPurchase[0].Properties.Properties.DisplayName | Should -Be "PSExchange"
+    $response.ReservationsToPurchase[0].Properties.BillingScopeId | Should -Be "/subscriptions/10000000-aaaa-bbbb-cccc-100000000000"
+    $response.ReservationsToPurchase[0].Properties.Term | Should -Be "P3Y"
+    $response.ReservationsToPurchase[0].Properties.BillingPlan | Should -Be "Upfront"
+    $response.ReservationsToPurchase[0].Properties.Quantity | Should -Be 2
+    $response.ReservationsToPurchase[0].Properties.ReservedResourceType | Should -Be "VirtualMachines"
+    $response.ReservationsToPurchase[0].Properties.AppliedScopeType | Should -Be "Shared"
+    $response.ReservationsToPurchase[0].Properties.DisplayName | Should -Be "PSExchange"
     $response.ReservationsToPurchase[0].ReservationOrderId | Should -Not -Be $null
     $response.ReservationsToPurchase[0].ReservationId | Should -Not -Be $null
     $response.ReservationsToPurchase[0].BillingCurrencyTotal | Should -Not -Be $null
