@@ -946,7 +946,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new ArgumentException(string.Format(Resources.AzureWorkloadAlreadyRegisteredException));
             }
         }
-
+        
         public List<PointInTimeBase> GetLogChains()
         {
             return AzureWorkloadProviderHelper.ListLogChains(ProviderData);

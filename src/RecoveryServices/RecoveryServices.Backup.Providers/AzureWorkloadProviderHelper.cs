@@ -67,6 +67,49 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
+        private List<ProtectableContainerResource> GetUnRegisteredVmContainers(string vaultName = null,
+           string vaultResourceGroupName = null)
+        {
+            ODataQuery<BMSContainerQueryObject> queryParams = null;
+            queryParams = new ODataQuery<BMSContainerQueryObject>(
+                q => q.BackupManagementType == ServiceClientModel.BackupManagementType.AzureWorkload);
+
+            var listResponse = ServiceClientAdapter.ListUnregisteredContainers(
+                queryParams,
+                vaultName: vaultName,
+                resourceGroupName: vaultResourceGroupName);
+            List<ProtectableContainerResource> containerModels = listResponse.ToList();
+
+            return containerModels;
+        }
+
+        public List<ProtectableContainerResource> GetProtectableContainer(string vaultName, string vaultResourceGroupName, string containerName = null, Boolean refresh = false)         
+        {            
+            //Trigger Discovery
+            ODataQuery<BMSRefreshContainersQueryObject> queryParam = new ODataQuery<BMSRefreshContainersQueryObject>(
+                q => q.BackupManagementType == ServiceClientModel.BackupManagementType.AzureWorkload);
+
+            if (refresh)
+            {
+                RefreshContainer(vaultName, vaultResourceGroupName, queryParam);
+            }
+
+            List<ProtectableContainerResource> unregisteredVmContainers =
+                    GetUnRegisteredVmContainers(vaultName, vaultResourceGroupName);
+
+            if (containerName != null)
+            {
+                List<ProtectableContainerResource> unregisteredVmContainersMatched = unregisteredVmContainers.FindAll(
+                vmContainer => string.Compare(vmContainer.Name.Split(';').Last(),
+                containerName, true) == 0);
+                return unregisteredVmContainersMatched;
+            }
+            else
+            {
+                return unregisteredVmContainers;
+            }            
+        }
+
         public void RegisterContainer(string containerName,
             ProtectionContainerResource protectionContainerResource,
             string vaultName, string vaultResourceGroupName)
