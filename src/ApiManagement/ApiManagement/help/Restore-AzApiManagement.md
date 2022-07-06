@@ -38,6 +38,7 @@ Restore-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "RestoredContoso
 This command restores an API Management service from Azure storage blob.
 
 ### Example 2: Restore an API Management service using Managed Identity Credentials
+<!-- Skip: Output cannot be splitted from code -->
 
 ```powershell
 PS D:> $storageContext=New-AzStorageContext -StorageAccountName apimbackupmsi

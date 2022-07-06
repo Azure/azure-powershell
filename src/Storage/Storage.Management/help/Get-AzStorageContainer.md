@@ -49,6 +49,7 @@ PS C:\>Get-AzStorageContainer -Prefix "container"
 This example uses the *Prefix* parameter to return a list of all containers with a name that starts with container.
 
 ### Example 3: List Azure Storage container, include deleted containers
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $containers =  Get-AzStorageContainer -IncludeDeleted -Context $ctx 
 

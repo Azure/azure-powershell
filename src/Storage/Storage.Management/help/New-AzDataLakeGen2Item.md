@@ -35,6 +35,7 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: Create a directory with specified permission, Umask, properties, and metadata
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Directory -Permission rwxrwxrwx -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 

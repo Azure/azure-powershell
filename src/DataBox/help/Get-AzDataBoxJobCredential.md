@@ -23,6 +23,7 @@ This method gets the unencrypted secrets related to the job.
 ## EXAMPLES
 
 ### Example 1: Get databoxHeavy job credential
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Get-AzDataBoxJobCredential -Name "DtbxPowershell" -ResourceGroupName "resourceGroupName"
 

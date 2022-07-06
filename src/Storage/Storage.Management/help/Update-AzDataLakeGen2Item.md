@@ -35,6 +35,7 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: Create an ACL object with 3 ACL entry, and update ACL to all items in a Filesystem recursively
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx 
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
@@ -53,6 +54,7 @@ dir2                 True                         2020-03-23 09:28:36Z rwxrw-rw-
 This command first creates an ACL object with 3 acl entry (use -InputObject parameter to add acl entry to existing acl object), then get all items in a filesystem and update acl on the items.
 
 ### Example 2: Update all properties on a file, and show them
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $file = Update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" `
                  -Acl $acl `
@@ -128,6 +130,7 @@ AccessTierChangedOn   : 1/1/0001 12:00:00 AM +00:00
 This command updates all properties on a file (ACL, permission,owner, group, metadata, property can be updated with any conbination), and show them in Powershell console.
 
 ### Example 3: Add an ACL entry to a directory
+<!-- Skip: Output cannot be splitted from code -->
 ```
 ## Get the origin ACL
 PS C:\> $acl = (Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path 'dir1/dir3/').ACL
