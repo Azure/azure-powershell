@@ -156,8 +156,6 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
-            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
-
             var options = new FilterDenyAssignmentsOptions()
             {
                 DenyAssignmentId = Id,
