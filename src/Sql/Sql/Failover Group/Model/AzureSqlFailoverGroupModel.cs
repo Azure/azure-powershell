@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
 {
@@ -53,6 +54,11 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         /// Gets or sets the partner servers
         /// </summary>
         public IList<FailoverGroupPartnerServer> PartnerServers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Id of partner subscription id
+        /// </summary>
+        public Guid PartnerSubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the partner resource group name

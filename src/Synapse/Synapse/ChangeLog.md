@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the issue that update spark pool version fail by `Update-AzSynapseSparkPool`
 
 ## Version 1.4.0
 * Added support for Synapse Link for Azure Sql Database
