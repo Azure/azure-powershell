@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzDataProtectionMSIPermis
 }
 
 Describe 'Set-AzDataProtectionMSIPermission' {
-    It 'DiskGrantPermission' {
+    It 'DiskGrantPermission' -skip {
         $VaultName = $env.TestGrantPermission.VaultName
         $VaultRG = $env.TestGrantPermission.VaultRG
         $SubscriptionId = $env.TestGrantPermission.SubscriptionId
@@ -59,7 +59,7 @@ Describe 'Set-AzDataProtectionMSIPermission' {
         Set-AzContext -SubscriptionId $sub
     }
 
-    It 'BlobGrantPermission' {
+    It 'BlobGrantPermission' -skip {
         $VaultName = $env.TestGrantPermission.VaultName
         $VaultRG = $env.TestGrantPermission.VaultRG
         $BlobPolicyName = $env.TestGrantPermission.BlobPolicyName       
@@ -107,7 +107,7 @@ Describe 'Set-AzDataProtectionMSIPermission' {
         $OssPolicyName = $env.TestGrantPermission.OssPolicyName
         $ossId = $env.TestGrantPermission.OssId
         $keyURI = $env.TestGrantPermission.KeyURI
-        $keyvaultId = $env.TestGrantPermission.KeyvaultId
+        $KeyVaultId = $env.TestGrantPermission.KeyVaultId
         $ossrg = $env.TestGrantPermission.Ossrg
 
         $SubscriptionId = $env.TestGrantPermission.SubscriptionId
@@ -133,7 +133,7 @@ Describe 'Set-AzDataProtectionMSIPermission' {
             $check = $err.Exception.Message.Contains("permissions")
             ($check -eq $true) | Should be $true
            
-            Set-AzDataProtectionMSIPermission -KeyvaultId $keyvaultId -BackupInstance $instance -VaultResourceGroup $VaultRG -VaultName $TestBkpVault.Name -PermissionsScope "ResourceGroup" -Confirm:$false
+            Set-AzDataProtectionMSIPermission -KeyVaultId $KeyVaultId -BackupInstance $instance -VaultResourceGroup $VaultRG -VaultName $TestBkpVault.Name -PermissionsScope "ResourceGroup" -Confirm:$false
             
             Start-Sleep -Seconds 30
 

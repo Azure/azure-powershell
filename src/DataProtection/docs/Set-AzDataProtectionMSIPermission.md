@@ -14,7 +14,7 @@ Grants required permissions to the backup vault to configure backup
 
 ```
 Set-AzDataProtectionMSIPermission -BackupInstance <IBackupInstanceResource> -PermissionsScope <String>
- -VaultName <String> -VaultResourceGroup <String> [-KeyvaultId <String>] [-Confirm] [-WhatIf]
+ -VaultName <String> -VaultResourceGroup <String> [-KeyVaultId <String>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -40,12 +40,12 @@ The above command is used to assign permissions to the backup vault "Vaultname" 
 
 ### Example 3: Grant Permissions for Azure Database For PostgreSQL
 ```powershell
-PS C:\> Set-AzDataProtectionMSIPermission -KeyvaultId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/testjeyvault"  -BackupInstance $instance -VaultResourceGroup "VaultRG"" -VaultName "Vaultname"" -PermissionsScope "Resource"
+PS C:\> Set-AzDataProtectionMSIPermission -KeyVaultId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/testjeyvault"  -BackupInstance $instance -VaultResourceGroup "VaultRG"" -VaultName "Vaultname"" -PermissionsScope "Resource"
 
 ```
 
 The above command is used to assign permissions to the backup vault "Vaultname" under resource group "VaultRG" at the "Rresource" scope of the  Azure Database For PostgreSQL.
-It takes an additional keyvaultid parameter to assign the necessary permissions to the backup vault on the keyvault.
+It takes an additional KeyVaultId parameter to assign the necessary permissions to the backup vault on the keyvault.
 
 ## PARAMETERS
 
@@ -65,7 +65,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyvaultId
+### -KeyVaultId
 ID of the keyvault
 
 ```yaml
@@ -174,7 +174,9 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BACKUPINSTANCE <IBackupInstanceResource>: Backup instance request object which will be used to configure backup
+`BACKUPINSTANCE <IBackupInstanceResource>`: Backup instance request object which will be used to configure backup
+  - `[Tag <IDppProxyResourceTags>]`: Proxy Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Property <IBackupInstance>]`: BackupInstanceResource properties
     - `DataSourceInfo <IDatasource>`: Gets or sets the data source information.
       - `ResourceId <String>`: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
