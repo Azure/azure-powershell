@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
-                   HelpMessage = "Filter on Moniter Service")]
+                   HelpMessage = "Filter on Monitor Service")]
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
-                   HelpMessage = "Filter on Moniter Service")]
+                   HelpMessage = "Filter on Monitor Service")]
         [PSArgumentCompleter("Application Insights", "ActivityLog Administrative", "ActivityLog Security",
                                 "ActivityLog Recommendation", "ActivityLog Policy", "ActivityLog Autoscale",
                                 "Log Analytics", "Nagios", "Platform", "SCOM", "ServiceHealth", "SmartDetector",

@@ -193,8 +193,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         // Run a selected module list instead of run all the modules to speed up the CI process.
         private List<string> GetSelectedModuleList()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"./tools/BuildPackagesTask/Microsoft.Azure.Build.Tasks/SelectedModuleList.txt");
-            return new List<string>(lines);
+            return new List<string>(Environment.GetEnvironmentVariable("SELECTEDMODULELIST").Split(';'));
         }
 
         private List<string> GetTestCsprojList(string moduleName, Dictionary<string, string[]> csprojMap)

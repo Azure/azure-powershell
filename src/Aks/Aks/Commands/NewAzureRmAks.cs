@@ -38,7 +38,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [GenericBreakingChange("New-AzAks will be removed in the next major release. Please use New-AzAksCluster instead of New-AzAks")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSKubernetesCluster))]
     public class NewAzureRmAks : CreateOrUpdateKubeBase
@@ -138,6 +137,10 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The resource Id of public IP prefix for node pool.")]
         public string NodePublicIPPrefixID { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Availability zones for cluster. Must use VirtualMachineScaleSets AgentPoolType.")]
+        public string[] AvailabilityZone { get; set; }
 
         private AcsServicePrincipal acsServicePrincipal;
 
@@ -356,6 +359,8 @@ namespace Microsoft.Azure.Commands.Aks
                 networkProfile: networkProfile,
                 apiServerAccessProfile: apiServerAccessProfile);
 
+            SetIdentity(managedCluster);
+
             if (EnableRbac.IsPresent)
             {
                 managedCluster.EnableRBAC = EnableRbac;
@@ -467,6 +472,11 @@ namespace Microsoft.Azure.Commands.Aks
                     defaultAgentPoolProfile.NodeLabels.Add(key.ToString(), NodePoolLabel[key].ToString());
                 }
             }
+            if (this.IsParameterBound(c => c.AvailabilityZone))
+            {
+                defaultAgentPoolProfile.AvailabilityZones = AvailabilityZone;
+            }
+
             defaultAgentPoolProfile.Mode = NodePoolMode;
 
             return defaultAgentPoolProfile;

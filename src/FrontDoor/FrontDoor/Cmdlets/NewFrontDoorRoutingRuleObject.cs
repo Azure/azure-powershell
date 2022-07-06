@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public string CustomFragment { get; set; }
 
         /// <summary>
-        /// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
+        /// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in {key}={value} format. The first ? and &amp; will be added automatically so do not include them in the front, but do separate multiple query strings with &amp;.
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.")]
         public string CustomQueryString { get; set; }

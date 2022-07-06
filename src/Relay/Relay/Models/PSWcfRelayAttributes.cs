@@ -25,27 +25,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// <summary>
         /// Initializes a new instance of the WcfRelay class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="relayType">WCFRelay Type. Possible values include:
-        /// 'NetTcp', 'Http'</param>
-        /// <param name="createdAt">The time the WCFRelay was created.</param>
-        /// <param name="updatedAt">The time the namespace was updated.</param>
-        /// <param name="listenerCount">The number of listeners for this relay.
-        /// min : 1 and max:25 supported</param>
-        /// <param name="requiresClientAuthorization">true if client
-        /// authorization is needed for this relay; otherwise, false.</param>
-        /// <param name="requiresTransportSecurity">true if transport security
-        /// is needed for this relay; otherwise, false.</param>
-        /// <param name="isDynamic">true if the relay is dynamic; otherwise,
-        /// false.</param>
-        /// <param name="userMetadata">usermetadata is a placeholder to store
-        /// user-defined string data for the HybridConnection endpoint.e.g. it
-        /// can be used to store  descriptive data, such as list of teams and
-        /// their contact information also user-defined configuration settings
-        /// can be stored.</param>        
-
+        /// <param name="wcfRelay"></param>
         public PSWcfRelayAttributes(WcfRelay wcfRelay)
         {
             Id = wcfRelay.Id;

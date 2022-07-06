@@ -12,36 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Reservations.Test.ScenarioTests.ScenarioTest;
-using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Reservations.Test.ScenarioTests
 {
-    public class ReservationOrderTests
+    public class ReservationOrderTests : ReservationsTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public ReservationOrderTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ReservationOrderTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetReservationOrder()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetReservationOrder");
+            TestRunner.RunTestScript("Test-GetReservationOrder");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListReservationOrders()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListReservationOrders");
+            TestRunner.RunTestScript("Test-ListReservationOrders");
         }
     }
 }

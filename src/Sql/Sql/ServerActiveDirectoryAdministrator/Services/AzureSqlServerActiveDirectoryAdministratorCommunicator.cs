@@ -53,8 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <summary>
         /// Creates a communicator for Azure SQL Server Active Directory administrator
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlServerActiveDirectoryAdministratorCommunicator(IAzureContext context)
         {
             Context = context;

@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCI-help.xml
+external help file:
 Module Name: Az.StackHCI
 online version: https://docs.microsoft.com/powershell/module/az.stackhci/disable-azstackhciattestation
 schema: 2.0.0
@@ -13,8 +13,8 @@ Disable-AzStackHCIAttestation disables IMDS Attestation on the host
 ## SYNTAX
 
 ```
-Disable-AzStackHCIAttestation [[-ComputerName] <String>] [-Credential <PSCredential>] [-RemoveVM] [-Force]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Disable-AzStackHCIAttestation [[-ComputerName] <String>] [-Credential <PSCredential>] [-Force] [-RemoveVM]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,17 +22,18 @@ Disable-AzStackHCIAttestation disables IMDS Attestation on the host
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1: 
 ```powershell
 Disable-AzStackHCIAttestation -RemoveVM
 ```
 
-Remove all guests from IMDS Attestation before disabling on cluster nodes.
-
-### EXAMPLE 2
-```powershell
-Disable-AzStackHCIAttestation -ComputerName "host1"
+```output
+ComputerName   Status Expiration
+------------   ------ ----------
+HCINODE2     Inactive
 ```
+
+Remove all guests from IMDS Attestation before disabling on cluster nodes.
 
 ## PARAMETERS
 
@@ -45,7 +46,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -62,7 +63,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: [System.Management.Automation.PSCredential]::Empty
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -77,7 +78,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -93,7 +94,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -114,7 +115,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -135,10 +137,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### PSCustomObject. Returns following Properties in PSCustomObject
-### Cluster:     Name of cluster
-### Node:        Name of the host.
-### Attestation: IMDS Attestation status.
+### System.Management.Automation.PSObject
+
 ## NOTES
 
+ALIASES
+
 ## RELATED LINKS
+

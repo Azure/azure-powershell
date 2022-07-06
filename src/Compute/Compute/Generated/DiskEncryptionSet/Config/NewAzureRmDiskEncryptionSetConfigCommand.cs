@@ -79,6 +79,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Gets or sets set this flag to true to enable auto-updating of this disk encryption")]
         public bool? RotationToLatestKeyVersionEnabled { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Multi-tenant application client id to access key vault in a different tenant.")]
+        public string FederatedClientId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of user identities associated with the disk encryption set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
+        public Hashtable UserAssignedIdentity { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -127,6 +138,32 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vActiveKey.KeyUrl = this.KeyUrl;
             }
 
+            if (this.IsParameterBound(c => c.UserAssignedIdentity))
+            {
+                if (vIdentity == null)
+                {
+                    vIdentity = new EncryptionSetIdentity();
+                }
+                if (vIdentity.UserAssignedIdentities == null)
+                {
+                    vIdentity.UserAssignedIdentities = new Dictionary<string, EncryptionSetIdentityUserAssignedIdentitiesValue>();
+                }
+
+                foreach (DictionaryEntry de in this.UserAssignedIdentity)
+                {
+                    if (((Hashtable)de.Value).Count == 0)
+                    {
+                        vIdentity.UserAssignedIdentities.Add(de.Key.ToString(), new EncryptionSetIdentityUserAssignedIdentitiesValue());
+                    }
+                    else
+                    {
+                        string principalId = ((Hashtable)de.Value)["principalId"]?.ToString();
+                        string clientId = ((Hashtable)de.Value)["clientId"]?.ToString();
+                        vIdentity.UserAssignedIdentities.Add(de.Key.ToString(), new EncryptionSetIdentityUserAssignedIdentitiesValue(principalId, clientId));
+                    }
+                }
+            }
+
             var vDiskEncryptionSet = new PSDiskEncryptionSet
             {
                 Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
@@ -134,7 +171,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 EncryptionType = this.IsParameterBound(c => c.EncryptionType) ? this.EncryptionType : null,
                 Identity = vIdentity,
                 ActiveKey = vActiveKey,
-                RotationToLatestKeyVersionEnabled = this.IsParameterBound(c => c.RotationToLatestKeyVersionEnabled) ? this.RotationToLatestKeyVersionEnabled : null
+                RotationToLatestKeyVersionEnabled = this.IsParameterBound(c => c.RotationToLatestKeyVersionEnabled) ? this.RotationToLatestKeyVersionEnabled : null,
+                FederatedClientId = this.IsParameterBound(c => c.FederatedClientId) ? this.FederatedClientId : null
             };
 
             WriteObject(vDiskEncryptionSet);

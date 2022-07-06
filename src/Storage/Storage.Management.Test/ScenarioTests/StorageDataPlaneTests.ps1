@@ -56,6 +56,7 @@ function Test-File
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName1
+        Assert-NotNull $file[0].ListFileProperties.Properties.ETag
 
 		if ($Env:OS -eq "Windows_NT")
 		{
@@ -65,16 +66,17 @@ function Test-File
 		{
 			Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path $objectName1 -Force -Context $storageContext
 		}
-        $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
+        $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext 
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName1
+        Assert-NotNull $file[0].ListFileProperties.Properties.ETag
 		if ($Env:OS -eq "Windows_NT")
 		{
 			$file[0].CloudFile.FetchAttributes()
 			$localFileProperties = Get-ItemProperty $localSrcFile
-			Assert-AreEqual $localFileProperties.CreationTime.ToUniversalTime().Ticks $file[0].CloudFile.Properties.CreationTime.ToUniversalTime().Ticks
-			Assert-AreEqual $localFileProperties.LastWriteTime.ToUniversalTime().Ticks $file[0].CloudFile.Properties.LastWriteTime.ToUniversalTime().Ticks
-			Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].CloudFile.Properties.NtfsAttributes.ToString()
+			Assert-AreEqual $localFileProperties.CreationTime.ToUniversalTime().Ticks $file[0].ListFileProperties.Properties.CreatedOn.ToUniversalTime().Ticks
+			Assert-AreEqual $localFileProperties.LastWriteTime.ToUniversalTime().Ticks $file[0].ListFileProperties.Properties.LastWrittenOn.ToUniversalTime().Ticks
+			Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].ListFileProperties.FileAttributes.ToString()
 		}
 
         Start-AzStorageFileCopy -SrcShareName $shareName -SrcFilePath $objectName1 -DestShareName $shareName -DestFilePath $objectName2 -Force -Context $storageContext -DestContext $storageContext
@@ -103,9 +105,9 @@ function Test-File
 		{
 			$file = Get-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
 			$localFileProperties = Get-ItemProperty $localSrcFile
-			Assert-AreEqual $localFileProperties.CreationTime.ToUniversalTime().Ticks $file[0].CloudFile.Properties.CreationTime.ToUniversalTime().Ticks
-			Assert-AreEqual $localFileProperties.LastWriteTime.ToUniversalTime().Ticks $file[0].CloudFile.Properties.LastWriteTime.ToUniversalTime().Ticks
-			Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].CloudFile.Properties.NtfsAttributes.ToString()
+			Assert-AreEqual $localFileProperties.CreationTime.ToUniversalTime().Ticks $file[0].FileProperties.SmbProperties.FileCreatedOn.ToUniversalTime().Ticks
+			Assert-AreEqual $localFileProperties.LastWriteTime.ToUniversalTime().Ticks $file[0].FileProperties.SmbProperties.FileLastWrittenOn.ToUniversalTime().Ticks
+			Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].FileProperties.SmbProperties.FileAttributes.ToString()
 		}
 
         Remove-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
@@ -115,12 +117,14 @@ function Test-File
 
          $dirName = "filetestdir"
         New-AzStorageDirectory -ShareName $shareName -Path $dirName -Context $storageContext    
-        $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
+        $file = Get-AzStorageShare -Name $shareName -Context $storageContext | Get-AzStorageFile -ExcludeExtendedInfo
         Assert-AreEqual $file.Count 2
-        Assert-AreEqual $file[0].Name $objectName2
-        Assert-AreEqual $file[0].GetType().Name "AzureStorageFile"
-        Assert-AreEqual $file[1].Name $dirName
-        Assert-AreEqual $file[1].GetType().Name "AzureStorageFileDirectory"
+        Assert-AreEqual $file[0].Name $dirName
+        Assert-AreEqual $file[0].GetType().Name "AzureStorageFileDirectory"
+        Assert-Null $file[0].ListFileProperties.Properties.ETag
+        Assert-AreEqual $file[1].Name $objectName2
+        Assert-AreEqual $file[1].GetType().Name "AzureStorageFile"
+        Assert-Null $file[1].ListFileProperties.Properties.ETag
         Get-AzStorageFile -ShareName $shareName -Path $dirName -Context $storageContext | Remove-AzStorageDirectory
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
@@ -846,7 +850,9 @@ function Test-DatalakeGen2
                 -Permission rw-rw--wx `
                 -Owner '$superuser' `
                 -Group '$superuser'
-		$file1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1
+        $sas = New-AzDataLakeGen2SasToken -FileSystem $filesystemName -Path $filePath1 -Permission rw -Context $storageContext
+        $ctxsas = New-AzStorageContext -StorageAccountName $StorageAccountName -SasToken $sas
+		$file1 = Get-AzDataLakeGen2Item -Context $ctxsas -FileSystem $filesystemName -Path $filePath1
 		Assert-AreEqual $file1.Path $filePath1
         Assert-AreEqual $file1.Permissions.ToSymbolicPermissions() "rw-rw--wx"
         Assert-AreEqual $file1.Properties.ContentType $ContentType

@@ -19,7 +19,21 @@
 -->
 
 ## Upcoming Release
-* Set UploadedTimestamp when adding package to spark pool by `Update-AzSynapseSparkPool`
+* Fixed the issue that update spark pool version fail by `Update-AzSynapseSparkPool`
+
+## Version 1.4.0
+* Added support for Synapse Link for Azure Sql Database
+    - Added `Get-AzSynapseLinkConnection` cmdlet
+    - Added `Get-AzSynapseLinkConnectionDetailedStatus` cmdlet
+    - Added `Set-AzSynapseLinkConnection` cmdlet
+    - Added `Remove-AzSynapseLinkConnection` cmdlet
+    - Added `Start-AzSynapseLinkConnection` cmdlet
+    - Added `Stop-AzSynapseLinkConnection` cmdlet
+    - Added `Set-AzSynapseLinkConnectionLinkTable` cmdlet
+    - Added `Get-AzSynapseLinkConnectionLinkTable` cmdlet
+    - Added `Get-AzSynapseLinkConnectionLinkTableStatus` cmdlet
+    - Added `Update-AzSynapseLinkConnectionLandingZoneCredential` cmdlet
+* Set `UploadedTimestamp` when adding package to spark pool by `Update-AzSynapseSparkPool`
 
 ## Version 1.3.0
 * Added support for Synapse Azure Active Directory (Azure AD) only authentication

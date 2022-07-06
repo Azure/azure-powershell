@@ -15,13 +15,12 @@ Creates or updates a FHIR Service resource with the specified parameters.
 ```
 New-AzHealthcareFhirService -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
  -Kind <FhirServiceKind> -Location <String> [-SubscriptionId <String>]
- [-AccessPolicy <IFhirServiceAccessPolicyEntry[]>] [-AcrConfigurationLoginServer <String[]>]
- [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>] [-AuthenticationConfigurationAudience <String>]
- [-AuthenticationConfigurationAuthority <String>] [-AuthenticationConfigurationSmartProxyEnabled]
- [-CorConfigurationAllowCredentials] [-CorConfigurationHeader <String[]>] [-CorConfigurationMaxAge <Int32>]
- [-CorConfigurationMethod <String[]>] [-CorConfigurationOrigin <String[]>] [-Etag <String>]
- [-ExportConfigurationStorageAccountName <String>] [-IdentityType <ServiceManagedIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-AccessPolicyObjectId <IFhirServiceAccessPolicyEntry[]>] [-AcrConfigurationLoginServer <String[]>]
+ [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>] [-AllowCorsCredential] [-Audience <String>]
+ [-Authority <String>] [-CorsHeader <String[]>] [-CorsMaxAge <Int32>] [-CorsMethod <String[]>]
+ [-CorsOrigin <String[]>] [-EnableSmartProxy] [-Etag <String>] [-ExportStorageAccountName <String>]
+ [-IdentityType <ServiceManagedIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-PublicNetworkAccess <PublicNetworkAccess>]
  [-ResourceVersionPolicyConfigurationDefault <FhirResourceVersionPolicy>]
  [-ResourceVersionPolicyConfigurationResourceTypeOverride <Hashtable>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -34,8 +33,10 @@ Creates or updates a FHIR Service resource with the specified parameters.
 
 ### Example 1: Creates or updates a FHIR Service resource with the specified parameters.
 ```powershell
-PS C:\> New-AzHealthcareFhirService -Name azpsfhirservice -ResourceGroupName azps_test_group -WorkspaceName azpshcws -Location eastus2 -Kind 'fhir-R4' -AuthenticationConfigurationAuthority "https://login.microsoftonline.com/{DirectoryID}" -AuthenticationConfigurationAudience "https://azpshcws-{FhirServiceName}.fhir.azurehealthcareapis.com"
+New-AzHealthcareFhirService -Name azpsfhirservice -ResourceGroupName azps_test_group -WorkspaceName azpshcws -Location eastus2 -Kind 'fhir-R4' -Authority "https://login.microsoftonline.com/{DirectoryID}" -Audience "https://azpshcws-{FhirServiceName}.fhir.azurehealthcareapis.com"
+```
 
+```output
 Location Name                     Kind    ResourceGroupName
 -------- ----                     ----    -----------------
 eastus2  azpshcws/azpsfhirservice fhir-R4 azps_test_group
@@ -45,9 +46,9 @@ Creates or updates a FHIR Service resource with the specified parameters.
 
 ## PARAMETERS
 
-### -AccessPolicy
+### -AccessPolicyObjectId
 Fhir Service access policies.
-To construct, see NOTES section for ACCESSPOLICY properties and create a hash table.
+To construct, see NOTES section for ACCESSPOLICYOBJECTID properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirServiceAccessPolicyEntry[]
@@ -92,6 +93,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AllowCorsCredential
+If credentials are allowed via CORS.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -107,7 +123,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AuthenticationConfigurationAudience
+### -Audience
 The audience url for the service
 
 ```yaml
@@ -122,7 +138,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AuthenticationConfigurationAuthority
+### -Authority
 The authority url for the service
 
 ```yaml
@@ -137,37 +153,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AuthenticationConfigurationSmartProxyEnabled
-If the SMART on FHIR proxy is enabled
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CorConfigurationAllowCredentials
-If credentials are allowed via CORS.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CorConfigurationHeader
+### -CorsHeader
 The headers to be allowed via CORS.
 
 ```yaml
@@ -182,7 +168,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CorConfigurationMaxAge
+### -CorsMaxAge
 The max age to be allowed via CORS.
 
 ```yaml
@@ -197,7 +183,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CorConfigurationMethod
+### -CorsMethod
 The methods to be allowed via CORS.
 
 ```yaml
@@ -212,7 +198,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CorConfigurationOrigin
+### -CorsOrigin
 The origins to be allowed via CORS.
 
 ```yaml
@@ -242,6 +228,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSmartProxy
+If the SMART on FHIR proxy is enabled
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Etag
 An etag associated with the resource, used for optimistic concurrency when editing it.
 
@@ -257,7 +258,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExportConfigurationStorageAccountName
+### -ExportStorageAccountName
 The name of the default export storage account.
 
 ```yaml
@@ -518,7 +519,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ACCESSPOLICY <IFhirServiceAccessPolicyEntry[]>: Fhir Service access policies.
+ACCESSPOLICYOBJECTID <IFhirServiceAccessPolicyEntry[]>: Fhir Service access policies.
   - `ObjectId <String>`: An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
 
 ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Container Initiative (OCI) artifacts.

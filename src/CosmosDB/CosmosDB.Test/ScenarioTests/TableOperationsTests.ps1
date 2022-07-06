@@ -150,7 +150,7 @@ Test Table throughput cmdlets using all parameter sets
 #>
 function Test-TableThroughputCmdlets
 {
-  $AccountName = "table-db2530"
+  $AccountName = "table-db2527"
   $rgName = "CosmosDBResourceGroup34"
   $TableName = "tableName3"
   $apiKind = "Table"

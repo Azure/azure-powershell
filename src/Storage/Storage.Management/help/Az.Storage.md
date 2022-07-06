@@ -197,6 +197,9 @@ Move a file or directory to another a file or directory in same Storage account.
 ### [New-AzDataLakeGen2Item](New-AzDataLakeGen2Item.md)
 Create a file or directory in a filesystem.
 
+### [New-AzDataLakeGen2SasToken](New-AzDataLakeGen2SasToken.md)
+Generates a SAS token for an Azure storage blob.
+
 ### [New-AzRmStorageContainer](New-AzRmStorageContainer.md)
 Creates a Storage blob container
 

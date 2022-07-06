@@ -348,7 +348,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CONTACTDETAIL <IContactDetails>: Contact details for notification and shipping.
+CONTACTDETAIL `<IContactDetails>`: Contact details for notification and shipping.
   - `ContactName <String>`: Contact name of the person.
   - `EmailList <String[]>`: List of Email-ids to be notified about job progress.
   - `Phone <String>`: Phone number of the contact person.
@@ -358,7 +358,7 @@ CONTACTDETAIL <IContactDetails>: Contact details for notification and shipping.
     - `StageName <NotificationStageName>`: Name of the stage.
   - `[PhoneExtension <String>]`: Phone extension number of the contact person.
 
-KEYENCRYPTIONKEY <IKeyEncryptionKey>: Key encryption key for the job.
+KEYENCRYPTIONKEY `<IKeyEncryptionKey>`: Key encryption key for the job.
   - `KekType <KekType>`: Type of encryption key used for key encryption.
   - `[IdentityProperty <IIdentityProperties>]`: Managed identity properties used for key encryption.
     - `[Type <String>]`: Managed service identity type.
@@ -366,7 +366,7 @@ KEYENCRYPTIONKEY <IKeyEncryptionKey>: Key encryption key for the job.
   - `[KekUrl <String>]`: Key encryption key. It is required in case of Customer managed KekType.
   - `[KekVaultResourceId <String>]`: Kek vault resource id. It is required in case of Customer managed KekType.
 
-SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
+SHIPPINGADDRESS `<IShippingAddress>`: Shipping address of the customer.
   - `Country <String>`: Name of the Country.
   - `StreetAddress1 <String>`: Street Address line 1.
   - `[AddressType <AddressType?>]`: Type of address.

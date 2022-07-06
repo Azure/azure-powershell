@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
@@ -19,11 +20,14 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using System;
 using System.Collections;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Net.Http;
 using System.Security;
 using Track2Sdk = Azure.Security.KeyVault.Keys;
 
@@ -49,12 +53,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string InteractiveCreateParameterSet = "InteractiveCreate";
         private const string InputObjectCreateParameterSet = "InputObjectCreate";
         private const string ResourceIdCreateParameterSet = "ResourceIdCreate";
+        
         private const string InteractiveImportParameterSet = "InteractiveImport";
         private const string InputObjectImportParameterSet = "InputObjectImport";
         private const string ResourceIdImportParameterSet = "ResourceIdImport";
+        
         private const string HsmInteractiveCreateParameterSet = "HsmInteractiveCreate";
         private const string HsmInputObjectCreateParameterSet = "HsmInputObjectCreate";
         private const string HsmResourceIdCreateParameterSet = "HsmResourceIdCreate";
+        
         private const string HsmInteractiveImportParameterSet = "HsmInteractiveImport";
         private const string HsmInputObjectImportParameterSet = "HsmInputObjectImport";
         private const string HsmResourceIdImportParameterSet = "HsmResourceIdImport";
@@ -64,6 +71,12 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
+        #region Constants 
+
+        private const string DefaultCVMPolicyUrl = "https://cvmprivatepreviewsa.blob.core.windows.net/cvmpublicpreviewcontainer/skr-policy.json";
+        
+        #endregion
+        
         #region Input Parameter Definitions
 
         /// <summary>
@@ -314,12 +327,58 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ResourceIdImportParameterSet)]
         [PSArgumentCompleter("P-256", "P-256K", "P-384", "P-521")]
         public string CurveName { get; set; }
+
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInteractiveCreateParameterSet,
+            HelpMessage = "Indicates if the private key can be exported.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmResourceIdCreateParameterSet)]
+        public SwitchParameter Exportable { get; set; }
+
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInteractiveCreateParameterSet,
+            HelpMessage = "Sets the release policy as immutable state. Once marked immutable, this flag cannot be reset and the policy cannot be changed under any circumstances.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmResourceIdCreateParameterSet)]
+        public SwitchParameter Immutable { get; set; }
+
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInteractiveCreateParameterSet,
+            HelpMessage = "A path to a file containing JSON policy definition. The policy rules under which a key can be exported.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmResourceIdCreateParameterSet)]
+        public string ReleasePolicyPath { get; set; }
+
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInteractiveCreateParameterSet,
+            HelpMessage = "Specifies to use default policy under which the key can be exported for CVM disk encryption.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmResourceIdCreateParameterSet)]
+        public SwitchParameter UseDefaultCVMPolicy { get; set; }
         #endregion
+
+        private PSKeyReleasePolicy ReleasePolicy { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            // Preprocess relative path
+            KeyFilePath = this.TryResolvePath(KeyFilePath);
+            ReleasePolicyPath = this.TryResolvePath(ReleasePolicyPath);
+            base.BeginProcessing();
+        }
 
         public override void ExecuteCmdlet()
         {
+            ValidateParameters();
             NormalizeKeySourceParameters();
-            ValidateKeyExchangeKey();
             if (ShouldProcess(Name, Properties.Resources.AddKey))
             {
                 PSKeyVaultKey keyBundle;
@@ -359,9 +418,37 @@ namespace Microsoft.Azure.Commands.KeyVault
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
                 HsmName = resourceIdentifier.ResourceName;
             }
+
+            if (this.UseDefaultCVMPolicy.IsPresent)
+            {
+                try
+                {
+                    using (var client = new HttpClient())
+                    {
+                        ReleasePolicy = new PSKeyReleasePolicy()
+                        {
+                            PolicyContent = client.GetStringAsync(DefaultCVMPolicyUrl).ConfigureAwait(true).GetAwaiter().GetResult(),
+                            Immutable = this.Immutable.IsPresent
+                        };
+                    }
+                }
+                catch(Exception e)
+                {
+                    // Swallow exception to fetch default policy
+                    WriteWarning(string.Format(Resources.FetchDefaultCVMPolicyFailed, e.Message));
+                }
+            }
+
+            if(this.IsParameterBound(c => c.ReleasePolicyPath))
+            {
+                ReleasePolicy = new PSKeyReleasePolicy(this.ReleasePolicyPath)
+                {
+                    Immutable = this.Immutable.IsPresent
+                };
+            }
         }
 
-        private void ValidateKeyExchangeKey()
+        private void ValidateParameters()
         {
             if (KeyOps != null && KeyOps.Contains(Constants.KeyOpsImport))
             {
@@ -369,6 +456,29 @@ namespace Microsoft.Azure.Commands.KeyVault
                 if (KeyOps.Length > 1) { throw new ArgumentException(Resources.KeyOpsImportIsExclusive); }
                 // When KeyOps is 'import', KeyType MUST be RSA-HSM
                 if (Destination != HsmDestination) { throw new ArgumentException(Resources.KEKMustBeHSM); }
+            }
+
+            if (this.IsParameterBound(c => c.Exportable) && !this.IsParameterBound(c => c.ReleasePolicyPath))
+            {
+                throw new AzPSArgumentException("Exportable keys must have release policy.", nameof(ReleasePolicyPath), ErrorKind.UserError);
+            }
+            else if (this.IsParameterBound(c => c.ReleasePolicyPath) && !this.IsParameterBound(c => c.Exportable))
+            {
+                throw new AzPSArgumentException("Non-exportable keys must not have release policy.", nameof(ReleasePolicyPath), ErrorKind.UserError);
+            }
+
+            if (this.IsParameterBound(c => c.Immutable) && !this.IsParameterBound(c => c.ReleasePolicyPath))
+            {
+                throw new AzPSArgumentException("Please provide release policy when Immutable is present.", nameof(Immutable), ErrorKind.UserError);
+            }
+
+            // Verify the ReleasePolicyPath whether exists
+            if(this.IsParameterBound(c => c.ReleasePolicyPath))
+            {
+                if (!File.Exists(ReleasePolicyPath))
+                {
+                    throw new AzPSArgumentException(string.Format(Resources.FileNotFound, this.ReleasePolicyPath), nameof(ReleasePolicyPath));
+                }
             }
         }
 
@@ -407,7 +517,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             else
             {
-                WriteWarning("Specifying parameter `Disable`, `Expires`, `NotBefore` and `Tag` is not supported when importing key on Managed HSM. Please use `Update-AzKeyVaultKey` after importing.");
+                WriteWarning("Specifying parameter `Disable`, `Expires`, `NotBefore`, `Tag`, `Exportable`, `ReleasePolicy` and `Immutable` is not supported when importing key on Managed HSM. Please use `Update-AzKeyVaultKey` after importing.");
                 return this.Track2DataClient.ImportManagedHsmKey(
                     HsmName, Name,
                     CreateTrack2WebKeyFromFile());
@@ -431,13 +541,17 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
             }
 
-            return new Models.PSKeyVaultKeyAttributes(
-                !Disable.IsPresent,
-                Expires,
-                NotBefore,
-                KeyType,
-                KeyOps,
-                Tag);
+            return new PSKeyVaultKeyAttributes()
+            {
+                Enabled = !this.Disable.IsPresent,
+                Expires = this.Expires,
+                NotBefore = this.NotBefore,
+                KeyType = this.KeyType,
+                KeyOps = this.KeyOps,
+                Exportable = this.Exportable.IsPresent ? true as bool? : null,
+                ReleasePolicy = ReleasePolicy ,
+                Tags = Tag
+            };
         }
 
         internal JsonWebKey CreateWebKeyFromFile()
@@ -447,7 +561,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.KeyFilePath));
             if (!keyFile.Exists)
             {
-                throw new FileNotFoundException(string.Format(Resources.KeyFileNotFound, this.KeyFilePath));
+                throw new FileNotFoundException(string.Format(Resources.FileNotFound, this.KeyFilePath));
             }
 
             var converterChain = WebKeyConverterFactory.CreateConverterChain();
@@ -478,7 +592,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.KeyFilePath));
             if (!keyFile.Exists)
             {
-                throw new FileNotFoundException(string.Format(Resources.KeyFileNotFound, this.KeyFilePath));
+                throw new FileNotFoundException(string.Format(Resources.FileNotFound, this.KeyFilePath));
             }
 
             var converterChain = WebKeyConverterFactory.CreateConverterChain();

@@ -12,57 +12,50 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
 {
-    public class ActionsTests
+    public class ActionsTests : SecurityInsightsTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public ActionsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ActionsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListByAlertRule()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSentinelAlertRuleAction-ListByAlertRule");
+            TestRunner.RunTestScript("Get-AzSentinelAlertRuleAction-ListByAlertRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAction()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSentinelAlertRuleAction-GetAction");
+            TestRunner.RunTestScript("Get-AzSentinelAlertRuleAction-GetAction");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateAction()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSentinelAlertRuleAction-Create");
+            TestRunner.RunTestScript("New-AzSentinelAlertRuleAction-Create");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateAction()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSentinelAlertRuleAction-Update");
+            TestRunner.RunTestScript("Update-AzSentinelAlertRuleAction-Update");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAction()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzSentinelAlertRuleAction-Delete");
+            TestRunner.RunTestScript("Remove-AzSentinelAlertRuleAction-Delete");
         }
     }
 }

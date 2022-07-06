@@ -542,5 +542,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ConfVMSetAzDiskSecurityProfileNoDES");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineGuestAttestation()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineGuestAttestation");
+        }
     }
 }

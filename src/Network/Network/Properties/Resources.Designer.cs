@@ -1577,6 +1577,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The {0} doesn&apos;t register private endpoint connection..
+        /// </summary>
+        internal static string UnsupportPrivateEndpointConnectionType {
+            get {
+                return ResourceManager.GetString("UnsupportPrivateEndpointConnectionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The {0} doesn&apos;t register private link resource..
+        /// </summary>
+        internal static string UnsupportPrivateLinkResourceType {
+            get {
+                return ResourceManager.GetString("UnsupportPrivateLinkResourceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating resource with ResourceGroupName {0}, ResourceName {1}..
         /// </summary>
         internal static string UpdatingLongRunningOperationMessage {

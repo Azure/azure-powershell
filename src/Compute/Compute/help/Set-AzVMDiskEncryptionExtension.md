@@ -140,7 +140,7 @@ $aadClientCertThumbprint= $cert.Thumbprint
 
 #Upload pfx to KeyVault 
 $KeyVaultSecretName = "MyAADCert"
-$FileContentBytes = get-content $CertPath -Encoding Byte
+$FileContentBytes = Get-Content $CertPath -Encoding Byte
 $FileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 $JSONObject = @"
     { 
@@ -219,7 +219,7 @@ $AADClientCertThumbprint= $Cert.Thumbprint
 
 #Upload pfx to KeyVault 
 $KeyVaultSecretName = "MyAADCert"
-$FileContentBytes = get-content $CertPath -Encoding Byte
+$FileContentBytes = Get-Content $CertPath -Encoding Byte
 $FileContentEncoded = [System.Convert]::ToBase64String($FileContentBytes)
 $JSONObject = @"
     { 
@@ -498,7 +498,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Azure Resource Manager resource that represents the extension. If the *Name* parameter is omitted, the installed extension will be named AzureDiskEncryption on Windows virtual machines and AzureDiskEncryptionForLinux on Linux virtual machines.
+Specifies the name of the Azure Resource Manager resource that represents the extension. If the *Name* parameter is omitted, the installed extension will be named AzureDiskEncryption on Windows virtual machines and AzureDiskEncryptionForLinux on Linux virtual machines.
 
 
 ```yaml

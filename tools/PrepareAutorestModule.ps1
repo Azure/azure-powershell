@@ -17,11 +17,11 @@
 
 param(
 )
-$ChangedFiles = Get-Content -Path "$PSScriptRoot\..\FilesChanged.txt"
+$ChangedFiles = Get-Content -Path "$PSScriptRoot\..\artifacts\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
 
-$SKIP_MODULES = @("OperationalInsights")
+$SKIP_MODULES = @()
 
 #Region Detect which module should be processed
 $ModuleSet = New-Object System.Collections.Generic.HashSet[string]
@@ -46,7 +46,7 @@ foreach ($file in $ChangedFiles)
 }
 if ($ModuleSet.Contains($ALL_MODULE))
 {
-    $ModuleList = (Get-ChildItem "$PSScriptRoot\..\src\" -Directory -Exclude helpers,lib).Name | Where-Object { $SKIP_MODULES -notcontains $_ }
+    $ModuleList = (Get-ChildItem "$PSScriptRoot\..\src\" -Directory -Exclude helpers,lib).Name | Where-Object { $SKIP_MODULES -notcontains $_ -and (Get-Item env:SELECTEDMODULELIST).Value.Split(';') -contains $_ }
 }
 else
 {
@@ -77,6 +77,11 @@ Copy-Item -Path "$TmpFolder\tools\Common*.targets" -Destination "$PSScriptRoot\.
 Install-Module Az.Accounts -Repository PSGallery -Force
 Import-Module Az.Accounts
 Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
+
+If ($ModuleSet.Contains("Compute"))
+{
+    Copy-Item -Path "$TmpFolder\src\Resources\Resources.Test" -Destination "$PSScriptRoot\..\src\Resources\Resources.Test" -Force -Recurse
+}
 #EndRegion
 
 #Region generate the code and make the struture same with main branch.

@@ -139,6 +139,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             System.Diagnostics.Trace.WriteLine("Recording GetSuggestion");
 #endif
         }
+
         /// <inheritdoc/>
         public virtual void OnSuggestionDisplayed(SuggestionDisplayedTelemetryData telemetryData)
         {
@@ -179,6 +180,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 #endif
         }
 
+        /// <inheritdoc/>
+        public virtual void OnGeneralException(GeneralExceptionTelemetryData telemetryData)
+        {
+            PostTelemetryData(telemetryData);
+
+#if TELEMETRY_TRACE && DEBUG
+            System.Diagnostics.Trace.WriteLine("Recording GeneralException");
+#endif
+        }
+
         /// <summary>
         /// Gets the client that can send telemetry via Application Insight.
         /// </summary>
@@ -215,6 +226,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                     break;
                 case CommandLineParsingTelemetryData commandLineParsing:
                     ProcessTelemetryData(commandLineParsing);
+                    break;
+                case GeneralExceptionTelemetryData exception:
+                    ProcessTelemetryData(exception);
                     break;
             }
         }
@@ -550,6 +564,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 };
 
                 SendException("An error occurred when parsing command line.", telemetryData, telemetryData.Exception, properties);
+            }
+        }
+
+        /// <summary>
+        /// Processes the telemetry with the exception.
+        /// </summary>
+        private void ProcessTelemetryData(GeneralExceptionTelemetryData telemetryData)
+        {
+            if (telemetryData.Exception != null)
+            {
+                SendException("An error occurred that wasn't caught in any scenarios.", telemetryData, telemetryData.Exception);
             }
         }
 

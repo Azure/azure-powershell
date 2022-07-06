@@ -25,6 +25,7 @@ using StaticAnalysis.HelpAnalyzer;
 using StaticAnalysis.BreakingChangeAnalyzer;
 using StaticAnalysis.DependencyAnalyzer;
 using StaticAnalysis.SignatureVerifier;
+using StaticAnalysis.ExampleAnalyzer;
 
 namespace StaticAnalysis.IssueChecker
 {
@@ -39,6 +40,7 @@ namespace StaticAnalysis.IssueChecker
             ("MissingAssemblies.csv", typeof(MissingAssembly).FullName),
             ("ExtraAssemblies.csv", typeof(ExtraAssembly).FullName),
             ("SignatureIssues.csv", typeof(SignatureIssue).FullName),
+            ("ExampleIssues.csv", typeof(ExampleIssue).FullName),
         };
         public AnalysisLogger Logger { get; set; }
 

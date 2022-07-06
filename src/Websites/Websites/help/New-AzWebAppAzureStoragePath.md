@@ -25,11 +25,11 @@ Creates an object that represent an Azure Storage path to be mounted inside a We
 
 ### Example 1
 ```powershell
-$storagePath1 = New-AzWebAppAzureStoragePath -Name "RemoteStorageAccount1" -AccountName "myaccount.files.core.windows.net" -Type AzureFiles -ShareName "someShareName" -AccessKey "some access key"
--MountPath "C:\myFolderInsideTheContainerWebApp" 
+$storagePath1 = New-AzWebAppAzureStoragePath -Name "RemoteStorageAccount1" -AccountName "myaccount.files.core.windows.net" -Type AzureFiles -ShareName "someShareName" -AccessKey "some access key" `
+-MountPath "C:\myFolderInsideTheContainerWebApp"
 
-$storagePath2 = New-AzWebAppAzureStoragePath -Name "RemoteStorageAccount2" -AccountName "myaccount2.files.core.windows.net" -Type AzureFiles -ShareName "someShareName2" -AccessKey "some access key 2"
--MountPath "C:\myFolderInsideTheContainerWebApp2" 
+$storagePath2 = New-AzWebAppAzureStoragePath -Name "RemoteStorageAccount2" -AccountName "myaccount2.files.core.windows.net" -Type AzureFiles -ShareName "someShareName2" -AccessKey "some access key 2" `
+-MountPath "C:\myFolderInsideTheContainerWebApp2"
 
 Set-AzWebApp -ResourceGroupName myresourcegroup -Name myapp -AzureStoragePath $storagepath1, $storagePath2
 ```

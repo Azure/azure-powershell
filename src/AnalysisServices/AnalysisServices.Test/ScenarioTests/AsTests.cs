@@ -18,91 +18,87 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
     using ServiceManagement.Common.Models;
     using Xunit;
 
-    public class AsTests : AsTestsBase
+    public class AsTests : AnalysisServicesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public AsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAnalysisServicesServer()
         {
-            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServer");
+            TestRunner.RunTestScript("Test-AnalysisServicesServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAnalysisServicesServerScaleUpDown()
         {
-            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerScaleUpDown");
+            TestRunner.RunTestScript("Test-AnalysisServicesServerScaleUpDown");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAnalysisServicesServerScaleOutIn()
         {
-            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerScaleOutIn");
+            TestRunner.RunTestScript("Test-AnalysisServicesServerScaleOutIn");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAnalysisServicesServerFirewall()
         {
-            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerFirewall");
+            TestRunner.RunTestScript("Test-AnalysisServicesServerFirewall");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerDisableBackup()
         {
-            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerDisableBackup");
+            TestRunner.RunTestScript("Test-AnalysisServicesServerDisableBackup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativeAnalysisServicesServer()
         {
-            NewInstance.RunPsTest(_logger, "Test-NegativeAnalysisServicesServer");
+            TestRunner.RunTestScript("Test-NegativeAnalysisServicesServer");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerLogExport()
         {
-            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerLogExport");
+            TestRunner.RunTestScript("Test-AnalysisServicesServerLogExport");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerRestart()
         {
-            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerRestart");
+            TestRunner.RunTestScript("Test-AnalysisServicesServerRestart");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerSynchronizeSingle()
         {
-            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerSynchronizeSingle");
+            TestRunner.RunTestScript("Test-AnalysisServicesServerSynchronizeSingle");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerLoginWithSPN()
         {
-            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerLoginWithSPN");
+            TestRunner.RunTestScript("Test-AnalysisServicesServerLoginWithSPN");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerGateway()
         {
-            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerGateway");
+            TestRunner.RunTestScript("Test-AnalysisServicesServerGateway");
         }
 
     }
