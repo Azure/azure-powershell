@@ -15,7 +15,7 @@ enum RuleNames {
     Mismatched_Parameter_Value_Type
 }
 
-$global:UtilityOutputTypePair = @{"ConvertTo-Json" = "string"; "ConvertFrom-Json" = "hashtable"}
+$global:UtilityOutputTypePair = @{"ConvertTo-Json" = [string]; "ConvertFrom-Json" = [hashtable]}
 
 <#
     .SYNOPSIS
@@ -37,13 +37,24 @@ function Get-ParameterNameNotAlias {
     Gets the final actual value from ast.
 #>
 function Get-FinalVariableValue {
-    param([System.Management.Automation.Language.Ast]$CommandElementAst)
+    param([System.Management.Automation.Language.Ast]$CommandElementAst,
+    [System.Management.Automation.Language.VariableExpressionAst]$VariableExpressionAst = $null)
     while ($true) {
         if ($null -ne $CommandElementAst.Expression) {
             $CommandElementAst = $CommandElementAst.Expression
         }
-        elseif ($null -ne $CommandElementAst.Right) {
-            $CommandElementAst = $CommandElementAst.Right
+        elseif ($null -ne $CommandElementAst.Left) {
+            if($CommandElementAst.Left -eq $VariableExpressionAst){
+                if($CommandElementAst.Right -eq $VariableExpressionAst){
+                    $CommandElementAst = $null
+                }
+                else{
+                    $CommandElementAst = $CommandElementAst.Right
+                }
+            }
+            else{
+                $CommandElementAst = $CommandElementAst.Left
+            }
         }
         elseif ($null -ne $CommandElementAst.Target) {
             $CommandElementAst = $CommandElementAst.Target
@@ -53,6 +64,7 @@ function Get-FinalVariableValue {
         }
         elseif ($null -ne $CommandElementAst.PipelineElements) {
             $LastElement = $CommandElementAst.PipelineElements[-1].Extent.Text
+            # If the LastElement contains "where" or "sort", then the type isnot changed. 
             if($LastElement -match "where" -or $LastElement -match "sort"){
                 $CommandElementAst = $CommandElementAst.PipelineElements[0]
             }
@@ -187,7 +199,7 @@ function Get-AssignedParameterExpression {
             break
         }
         # Get the actual value
-        $CommandElement_Copy = Get-FinalVariableValue $global:AssignmentLeftAndRight.($CommandElement_Copy.Extent.Text)
+        $CommandElement_Copy = Get-FinalVariableValue $global:AssignmentLeftAndRight.($CommandElement_Copy.Extent.Text) $CommandElement_Copy
         if ($null -eq $CommandElement_Copy) {
             # Variable is not assigned with a value.
             # Unassigned_Variable
@@ -195,7 +207,8 @@ function Get-AssignedParameterExpression {
             return $ExpressionToParameter
         }
     }
-    if($CommandElement_Copy.Extent.Text -match "foreach" -or $CommandElement_Copy.Extent.Text -match "Select-Object"){
+    if($CommandElement_Copy.Extent.Text -match "foreach" -or $CommandElement_Copy.Extent.Text -match "select"){
+        Write-Debug "The CommandElement contains 'foreach' or 'select'. This situation can not be handled now."
         return $null
     }
     $ExpectedType = $GetCommand.Parameters.$ParameterNameNotAlias.ParameterType
@@ -236,7 +249,7 @@ function Get-AssignedParameterExpression {
             }
             $OutputTypes = @()
             if($global:UtilityOutputTypePair.ContainsKey($GetElementCommand.Name)){
-                $OutputType = $global:UtilityOutputTypePair.($GetElementCommand.Name) -as [Type]
+                $OutputType = $global:UtilityOutputTypePair.($GetElementCommand.Name)
                 $OutputTypes += $OutputType
             }
             else{
@@ -256,7 +269,10 @@ function Get-AssignedParameterExpression {
             if($null -eq $ActualType){
                 Continue
             }
-            $flag = !(Measure-IsTypeMatched $ExpectedType $ActualType)
+            if(Measure-IsTypeMatched $ExpectedType $ActualType){
+                $flag = $false
+                break
+            }
         }
         if($flag){
             # Mismatched_Parameter_Value_Type
