@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the warning messages for MSGraph migration [#18856]
 * Added parameter `CommandContextAttachmentZip` for `Invoke-AzAksRunCommand`. [#17454]
 * Added ManagedIdentity support for Aks[#15656].
 * Added property `PowerState` for the output of `Get-AzAksCluster`[#18271]
