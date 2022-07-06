@@ -190,7 +190,8 @@ if($Reverse.IsPresent){
     [array]::Reverse($resourceTestCommands)
 }
 
-$resourceCommands=$resourceSetUpCommands+$resourceTestCommands+$resourceCleanUpCommands+$generalCommands
+#$resourceCommands=$resourceSetUpCommands+$resourceTestCommands+$resourceCleanUpCommands+$generalCommands
+$resourceCommands=$resourceSetUpCommands+$resourceTestCommands+$resourceCleanUpCommands
 
 $startTime = Get-Date
 $resourceCommands | ForEach-Object {
