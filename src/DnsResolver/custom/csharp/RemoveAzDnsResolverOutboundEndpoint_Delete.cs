@@ -7,7 +7,7 @@ using Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
 {
-    public partial class RemoveAzDnsResolverInboundEndpoint_DeleteViaIdentity
+    public partial class RemoveAzDnsResolverOutboundEndpoint_Delete
     {
         partial void overrideOnDefault(HttpResponseMessage responseMessage, Task<ICloudError> errorResponseTask, ref Task<bool> returnNow)
         {
