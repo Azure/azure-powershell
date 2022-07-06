@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         /// <summary>
         /// Gets or sets whether or not to create dns record.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Parameter which indicates whether should DNS alias have DNS record.")]
+        [Parameter(Mandatory = false, HelpMessage = "Parameter which indicates whether the DNS alias should have a DNS record.")]
         public SwitchParameter HasDnsRecord { get; set; }
 
         /// <summary>

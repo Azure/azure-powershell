@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -810,6 +810,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Moving DNS alias named &apos;{0}&apos; from managed instance named &apos;{1}&apos; located in resource group &apos;{2}&apos; to managed instance named &apos;{3}&apos; located in resource group &apos;{4}&apos;..
+        /// </summary>
+        internal static string MoveAzureSqlInstanceDnsAliasDescription {
+            get {
+                return ResourceManager.GetString("MoveAzureSqlInstanceDnsAliasDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to move DNS alias named &apos;{0}&apos; from managed instance named &apos;{1}&apos; located in resource group &apos;{2}&apos; to managed instance named &apos;{3}&apos; located in resource group &apos;{4}&apos;..
+        /// </summary>
+        internal static string MoveAzureSqlInstanceDnsAliasWarning {
+            get {
+                return ResourceManager.GetString("MoveAzureSqlInstanceDnsAliasWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You need to provide at least one email address or set EmailAdmins to True..
         /// </summary>
         internal static string NeedToProvideEmail {
@@ -1584,7 +1602,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Setting dns alias named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Setting DNS alias named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
         /// </summary>
         internal static string SetAzureSqlInstanceDnsAliasDescription {
             get {
@@ -1593,7 +1611,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to set dns alias named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to set DNS alias named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
         /// </summary>
         internal static string SetAzureSqlInstanceDnsAliasWarning {
             get {

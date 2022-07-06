@@ -240,8 +240,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
 
             // messages describing behavior with -WhatIf and -Confirm flags
             if (ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAzureSqlInstanceDnsAliasDescription, ResourceGroupName, InstanceName, SourceName),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAzureSqlInstanceDnsAliasWarning, ResourceGroupName, InstanceName, SourceName),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resources.MoveAzureSqlInstanceDnsAliasDescription, ResourceGroupName, InstanceName, SourceName),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resources.MoveAzureSqlInstanceDnsAliasWarning, ResourceGroupName, InstanceName, SourceName),
                 Properties.Resources.ShouldProcessCaption))
             {
                 base.ExecuteCmdlet();

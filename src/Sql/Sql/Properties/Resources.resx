@@ -749,9 +749,15 @@
     <value>Are you sure you want to remove the instance DNS alias named '{2}' from managed instance '{1}' located in resource group '{0}'?</value>
   </data>
   <data name="SetAzureSqlInstanceDnsAliasDescription" xml:space="preserve">
-    <value>Setting dns alias named '{2}' on managed instance '{1}' located in resource group '{0}'.</value>
+    <value>Setting DNS alias named '{2}' on managed instance '{1}' located in resource group '{0}'.</value>
   </data>
   <data name="SetAzureSqlInstanceDnsAliasWarning" xml:space="preserve">
-    <value>Are you sure you want to set dns alias named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
+    <value>Are you sure you want to set DNS alias named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
+  <data name="MoveAzureSqlInstanceDnsAliasDescription" xml:space="preserve">
+    <value>Moving DNS alias named '{0}' from managed instance named '{1}' located in resource group '{2}' to managed instance named '{3}' located in resource group '{4}'.</value>
+  </data>
+  <data name="MoveAzureSqlInstanceDnsAliasWarning" xml:space="preserve">
+    <value>Are you sure you want to move DNS alias named '{0}' from managed instance named '{1}' located in resource group '{2}' to managed instance named '{3}' located in resource group '{4}'.</value>
   </data>
 </root>

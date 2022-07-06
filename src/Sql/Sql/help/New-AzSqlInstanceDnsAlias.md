@@ -26,16 +26,52 @@ New-AzSqlInstanceDnsAlias [-Name] <String> [-InstanceObject] <AzureSqlManagedIns
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates new Azure SQL Managed Instance DNS Alias that is pointing to specified managed instance.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a new managed instance DNS alias
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName>
+
+ResourceGroupName    : <rgName>
+ManagedInstanceName  : <managedInstanceName>
+DnsAliasName         : <dnsAliasName>
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
+AzureDnsRecord       :
+PublicAzureDnsRecord :
 ```
 
-{{ Add example description here }}
+This command creates a new managed instance DNS alias.
+
+### Example 2: Create a new managed instance DNS alias on previously fetched managed instance
+```powershell
+PS C:\> $managedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
+PS C:\> New-AzSqlInstanceDnsAlias -InstanceObject $managedInstance -Name <dnsAliasName>
+
+ResourceGroupName    : <rgName>
+ManagedInstanceName  : <managedInstanceName>
+DnsAliasName         : <dnsAliasName>
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
+AzureDnsRecord       :
+PublicAzureDnsRecord :
+```
+
+This command creates a new managed instance DNS alias by passing the instance object.
+
+### Example 3: Create a new managed instance DNS alias
+```powershell
+PS C:\> New-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName> -CreateDnsRecord
+
+ResourceGroupName    : <rgName>
+ManagedInstanceName  : <managedInstanceName>
+DnsAliasName         : <dnsAliasName>
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
+AzureDnsRecord       : <dnsAliasName>.xxxxxxxxxxxx.xxxxxxxx.xxxxxxx.xxx
+PublicAzureDnsRecord :
+```
+
+This command creates a new managed instance DNS alias and creates the AzureDnsRecord.
 
 ## PARAMETERS
 
