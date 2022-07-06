@@ -39,7 +39,7 @@ This command restores an API Management service from Azure storage blob.
 
 ### Example 2: Restore an API Management service using Managed Identity Credentials
 
-``` powershell
+```powershell
 PS D:> $storageContext=New-AzStorageContext -StorageAccountName apimbackupmsi
 PS D:> $resourceGroupName="ContosoGroup02";
 PS D:> $apiManagementName="contosoapi";

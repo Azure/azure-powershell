@@ -574,7 +574,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
+EXTENSIONPARAMETER `<IMachineExtension>`: Describes a Machine Extension.
   - `Location <String>`: The geo-location where the resource lives
   - `[Tag <ITrackedResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
@@ -603,7 +603,7 @@ EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
   - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
   - `[TypeHandlerVersion <String>]`: Specifies the version of the script handler.
 
-INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedMachineIdentity>`: Identity Parameter
   - `[ExtensionName <String>]`: The name of the machine extension.
   - `[GroupName <String>]`: The name of the private link resource.
   - `[Id <String>]`: Resource identity path

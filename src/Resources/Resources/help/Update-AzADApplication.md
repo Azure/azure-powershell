@@ -747,7 +747,7 @@ ADDIN <IMicrosoftGraphAddIn[]>: Defines custom behavior that a consuming service
     - `[Value <String>]`: Value.
   - `[Type <String>]`: 
 
-API <IMicrosoftGraphApiApplication>: apiApplication
+API `<IMicrosoftGraphApiApplication>`: apiApplication
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[AcceptMappedClaim <Boolean?>]`: When true, allows an application to use claims mapping without specifying a custom signing key.
   - `[KnownClientApplication <String[]>]`: Used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app. If you set the appID of the client app to this value, the user only consents once to the client app. Azure AD knows that consenting to the client means implicitly consenting to the web API and automatically provisions service principals for both APIs at the same time. Both the client and the web API app must be registered in the same tenant.
@@ -784,14 +784,14 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: .
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory
 
-INFO <IMicrosoftGraphInformationalUrl>: informationalUrl
+INFO `<IMicrosoftGraphInformationalUrl>`: informationalUrl
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[MarketingUrl <String>]`: Link to the application's marketing page. For example, https://www.contoso.com/app/marketing
   - `[PrivacyStatementUrl <String>]`: Link to the application's privacy statement. For example, https://www.contoso.com/app/privacy
   - `[SupportUrl <String>]`: Link to the application's support page. For example, https://www.contoso.com/app/support
   - `[TermsOfServiceUrl <String>]`: Link to the application's terms of service statement. For example, https://www.contoso.com/app/termsofservice
 
-INPUTOBJECT <IMicrosoftGraphApplication>: key: application object
+INPUTOBJECT `<IMicrosoftGraphApplication>`: key: application object
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory
@@ -919,7 +919,7 @@ INPUTOBJECT <IMicrosoftGraphApplication>: key: application object
     - `[LogoutUrl <String>]`: Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
     - `[RedirectUri <String[]>]`: Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 
-OPTIONALCLAIM <IMicrosoftGraphOptionalClaims>: optionalClaims
+OPTIONALCLAIM `<IMicrosoftGraphOptionalClaims>`: optionalClaims
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[AccessToken <IMicrosoftGraphOptionalClaim[]>]`: The optional claims returned in the JWT access token.
     - `[AdditionalProperty <String[]>]`: Additional properties of the claim. If a property exists in this collection, it modifies the behavior of the optional claim specified in the name property.
@@ -929,7 +929,7 @@ OPTIONALCLAIM <IMicrosoftGraphOptionalClaims>: optionalClaims
   - `[IdToken <IMicrosoftGraphOptionalClaim[]>]`: The optional claims returned in the JWT ID token.
   - `[Saml2Token <IMicrosoftGraphOptionalClaim[]>]`: The optional claims returned in the SAML token.
 
-PARENTALCONTROLSETTING <IMicrosoftGraphParentalControlSettings>: parentalControlSettings
+PARENTALCONTROLSETTING `<IMicrosoftGraphParentalControlSettings>`: parentalControlSettings
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[CountriesBlockedForMinor <String[]>]`: Specifies the two-letter ISO country codes. Access to the application will be blocked for minors from the countries specified in this list.
   - `[LegalAgeGroupRule <String>]`: Specifies the legal age group rule that applies to users of the app. Can be set to one of the following values: ValueDescriptionAllowDefault. Enforces the legal minimum. This means parental consent is required for minors in the European Union and Korea.RequireConsentForPrivacyServicesEnforces the user to specify date of birth to comply with COPPA rules. RequireConsentForMinorsRequires parental consent for ages below 18, regardless of country minor rules.RequireConsentForKidsRequires parental consent for ages below 14, regardless of country minor rules.BlockMinorsBlocks minors from using the app.
@@ -960,7 +960,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory
 
-WEB <IMicrosoftGraphWebApplication>: webApplication
+WEB `<IMicrosoftGraphWebApplication>`: webApplication
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[HomePageUrl <String>]`: Home page or landing page of the application.
   - `[ImplicitGrantSetting <IMicrosoftGraphImplicitGrantSettings>]`: implicitGrantSettings

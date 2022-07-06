@@ -14,8 +14,21 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\bin</OutputPath>
     <PublishDir>$(OutputPath)</PublishDir>
+    <!-- warning CS1998: This async method lacks 'await' operators and will run synchronously -->
     <!-- Some methods are marked async and don't have an await in them -->
-    <NoWarn>1998</NoWarn>
+    <NoWarn>$(NoWarn);1998</NoWarn>
+  </PropertyGroup>
+
+<!-- Generate XML file-->
+  <PropertyGroup>
+    <!-- warning CS1570: XML comment has badly formed XML -->
+    <!-- warning CS1572: XML comment on 'construct' has a param tag for 'parameter', but there is no parameter by that name -->
+    <!-- warning CS1573: Parameter 'parameter' has no matching param tag in the XML comment for 'parameter' -->
+    <!-- warning CS1574: XML comment has cref attribute 'sourceValue' -->
+    <!-- warning CS1584: XML comment on 'member' has syntactically incorrect cref attribute 'invalid_syntax' -->
+    <!-- warning CS1587: XML comment is not placed on a valid language element -->
+    <!-- warning CS1571: XML comment has a duplicate param tag for 'serverName' -->
+    <NoWarn>$(NoWarn);1570, 1571, 1572, 1573, 1574, 1584, 1587</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

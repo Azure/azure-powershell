@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Storage</PsModuleName>
@@ -32,4 +32,6 @@
       <HintPath>$(RepoSrc)lib\Microsoft.Azure.Storage.DataMovement.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

@@ -37,8 +37,10 @@ Gets details of the Source Control Configuration.
 
 ### Example 1: List details of the Source Control Configuration.
 ```powershell
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters
+Get-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters
+```
 
+```output
 Name                 RepositoryUrl          ResourceGroupName
 ----                 -------------          -----------------
 azpstestk8s          http://github.com/xxxx azpstest_gp
@@ -49,8 +51,10 @@ List details of the Source Control Configuration.
 
 ### Example 2: Gets details of the Source Control Configuration.
 ```powershell
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestk8s
+Get-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestk8s
+```
 
+```output
 Name        RepositoryUrl          ResourceGroupName
 ----        -------------          -----------------
 azpstestk8s http://github.com/xxxx azpstest_gp
@@ -190,7 +194,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
+INPUTOBJECT `<IKubernetesConfigurationIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the kubernetes cluster.
   - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
   - `[ClusterRp <String>]`: The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.

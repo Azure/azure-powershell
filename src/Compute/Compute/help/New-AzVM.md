@@ -228,7 +228,7 @@ This example deploys a Windows VM from the marketplace in one resource group wit
 ```
 $resourceGroupName= <Resource Group Name>
 $domainNameLabel = <Domain Name Label Name>
-$vmname = "<Virtual Machine Name>
+$vmname = "<Virtual Machine Name>"
 $platformFaultDomainVMDefaultSet = 2
 $securePassword = <Password> | ConvertTo-SecureString -AsPlainText -Force
 $user = <Username>

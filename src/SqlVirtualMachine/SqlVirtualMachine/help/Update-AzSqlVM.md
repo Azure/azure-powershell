@@ -46,8 +46,10 @@ The Update-AzSqlVM cmdlet updates a sql virtual machine.
 ### Example 1
 ```powershell
 $tags = @{'key'='value'}
-$vm = Update-AzSqlVM -InputObject $vm -Tag $tags
-$group.Tags
+$vm = Get-AzSqlVM -ResourceGroupName "ResourceGroup01" -Name "vm"
+$vm.Tags = $tags
+$vm = Update-AzSqlVM -ResourceGroupName "ResourceGroup01" -Name "vm" -InputObject $vm
+$vm.Tags
 ```
 
 ```output

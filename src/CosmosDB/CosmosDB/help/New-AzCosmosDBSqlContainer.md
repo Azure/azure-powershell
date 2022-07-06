@@ -62,8 +62,7 @@ $includedPath2 = [Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionInc
 $listofIncludedPaths = New-Object Collections.Generic.List[Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionIncludedPath]
 $listofIncludedPaths.Add($includedPath1)
 $listofIncludedPaths.Add($includedPath2)
-$newClientEncryptionPolicy = New-Object Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionPolicy
-$newClientEncryptionPolicy.IncludedPaths = $listofIncludedPaths
+$newClientEncryptionPolicy =  [Microsoft.Azure.Management.CosmosDB.Models.ClientEncryptionPolicy]::new($listofIncludedPaths, 2)
 $newPSSqlClientEncryptionPolicy = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlClientEncryptionPolicy]::new($newClientEncryptionPolicy)
 New-AzCosmosDBSqlContainer -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -Name myContainerName -PartitionKeyPath /a/b/c -PartitionKeyKind Hash -ClientEncryptionPolicy $newPSSqlClientEncryptionPolicy
 ```

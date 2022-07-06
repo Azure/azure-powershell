@@ -53,7 +53,7 @@ This command updates the landing zone credential with sas token "exampleSasToken
 
 ### Example 3
 ```powershell
-$lc = Get-AzSynpaseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+$lc = Get-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
 $lc | Update-AzSynapseLinkConnectionLandingZoneCredential -SasToken "SampleSasToken"
 ```
 

@@ -343,5 +343,95 @@
 				</ListEntries> 
 			</ListControl>
 		</View>
+		<View>
+		  <Name>Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateEndpointConnectionAttributes</Name>
+		  <ViewSelectedBy>
+			  <TypeName>Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateEndpointConnectionAttributes</TypeName>
+		  </ViewSelectedBy>
+		  <ListControl>
+			  <ListEntries>
+				  <ListEntry>
+					  <ListItems>
+						  <ListItem>
+							  <Label>Id</Label>
+							  <PropertyName>Id</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Name</Label>
+							  <PropertyName>Name</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Location</Label>
+							  <PropertyName>Location</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Type</Label>
+							  <PropertyName>Type</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>ProvisioningState</Label>
+							  <PropertyName>ProvisioningState</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>PrivateEndpoint</Label>
+							  <ScriptBlock>
+								  "{ Id: "+$_.PrivateEndpoint.Id+" }"
+							  </ScriptBlock>
+						  </ListItem>
+						  <ListItem>
+							  <Label>ConnectionState</Label>
+							  <PropertyName>ConnectionState</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Description</Label>
+							  <PropertyName>Description</PropertyName>
+						  </ListItem>
+					  </ListItems>
+				  </ListEntry>
+			  </ListEntries>
+		  </ListControl>
+	  </View>
+		<View>
+		  <Name>Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateLinkResourceAttributes</Name>
+		  <ViewSelectedBy>
+			  <TypeName>Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateLinkResourceAttributes</TypeName>
+		  </ViewSelectedBy>
+		  <ListControl>
+			  <ListEntries>
+				  <ListEntry>
+					  <ListItems>
+						  <ListItem>
+							  <Label>Id</Label>
+							  <PropertyName>Id</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Name</Label>
+							  <PropertyName>Name</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Type</Label>
+							  <PropertyName>Type</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>GroupId</Label>
+							  <PropertyName>GroupId</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>RequiredMembers</Label>
+							  <ScriptBlock>
+								  $_.RequiredMembers -join "`n"
+							  </ScriptBlock>
+						  </ListItem>
+						  <ListItem>
+							  <Label>RequiredZoneNames</Label>
+							  <ScriptBlock>
+								  $_.RequiredZoneNames -join "`n"
+							  </ScriptBlock>
+						  </ListItem>
+					  </ListItems>
+				  </ListEntry>
+			  </ListEntries>
+		  </ListControl>
+	  </View>
 	</ViewDefinitions>
 </Configuration>
