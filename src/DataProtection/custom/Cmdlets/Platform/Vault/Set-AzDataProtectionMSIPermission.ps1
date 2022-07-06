@@ -11,7 +11,7 @@
         [Parameter(Mandatory=$false, HelpMessage='ID of the keyvault')]
         [ValidatePattern("/subscriptions/([A-z0-9\-]+)/resourceGroups/(?<rg>.+)/(?<id>.+)")]
         [System.String]
-        ${KeyvaultId},
+        ${KeyVaultId},
 
         [Parameter(Mandatory, HelpMessage='Resource group of the backup vault')]
         [System.String]
@@ -45,25 +45,27 @@
           
           $AllRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $vault.IdentityPrincipalId
 
+          # If more DataSourceTypes support this then we can make it manifest driven
           if($DatasourceType -eq "AzureDatabaseForPostgreSQL")
             {
                 CheckPostgreSqlModuleDependency
                 CheckKeyVaultModuleDependency
 
-                if($KeyvaultId -eq "")
-                    {
-                        Write-Error "KeyvaultId not provided. Please note that permissions on keyvault may not be successfully assigned."          
-                    }
-                $KeyvaultName = GetResourceNameFromArmId -Id $KeyvaultId
-                $KeyvaultRGName = GetResourceGroupNameFromArmId -Id $KeyvaultId
+                if($KeyVaultId -eq "" -or $KeyVaultId -eq $null)
+                {
+                    Write-Error "KeyVaultId not provided. Please provide the KeyVaultId parameter to successfully assign the permissions on the keyvault."
+                }
+
+                $KeyvaultName = GetResourceNameFromArmId -Id $KeyVaultId
+                $KeyvaultRGName = GetResourceGroupNameFromArmId -Id $KeyVaultId
                 $ServerName = GetResourceNameFromArmId -Id $DataSourceId
                 $ServerRG = GetResourceGroupNameFromArmId -Id $DataSourceId
                   
-                $KeyvaultArray = $KeyvaultId.Split("/")
-                $KeyvaultRG = GetResourceGroupIdFromArmId -Id $KeyvaultId
-                $KeyvaultSubscriptionName = GetSubscriptionNameFromArmId -Id $KeyvaultId
+                $KeyvaultArray = $KeyVaultId.Split("/")
+                $KeyvaultRG = GetResourceGroupIdFromArmId -Id $KeyVaultId
+                $KeyvaultSubscriptionName = GetSubscriptionNameFromArmId -Id $KeyVaultId
 
-                if ($PSCmdlet.ShouldProcess("Keyvault:$($KeyvaultName) and PostgreSQLserver:$($ServerName)","
+                if ($PSCmdlet.ShouldProcess("KeyVault: $($KeyvaultName) and PostgreSQLServer: $($ServerName)","
                             1.'Allow All Azure services' under network connectivity in the Postgres Server
                             2.'Allow Trusted Azure services' under network connectivity in the Key vault")) 
                 {
@@ -139,11 +141,9 @@
                       $KeyvaultAccessPolicyPermissions+="Get"
                       $KeyvaultAccessPolicyPermissions+="List"
                       [String[]]$FinalKeyvaultAccessPolicyPermissions = $KeyvaultAccessPolicyPermissions
-                      $FinalKeyvaultAccessPolicyPermissions = $FinalKeyvaultAccessPolicyPermissions | select -uniq
+                      $FinalKeyvaultAccessPolicyPermissions = $FinalKeyvaultAccessPolicyPermissions | select -uniq                      
                       
-                      
-                      Set-AzKeyVaultAccessPolicy -VaultName $KeyvaultName -ObjectId $vault.IdentityPrincipalId -PermissionsToSecrets $FinalKeyvaultAccessPolicyPermissions -Confirm:$False
-                 
+                      Set-AzKeyVaultAccessPolicy -VaultName $KeyvaultName -ObjectId $vault.IdentityPrincipalId -PermissionsToSecrets $FinalKeyvaultAccessPolicyPermissions -Confirm:$False                 
                  }
                  catch{$err = $_
                  throw $err
@@ -153,7 +153,7 @@
               else
               {
                   $CheckPermission = $AllRoles
-                  | Where-Object { ($_.Scope -eq $KeyvaultId -or $_.Scope -eq $KeyvaultRG -or  $_.Scope -eq $KeyvaultSubscription) -and $_.RoleDefinitionName -eq $Permission}
+                  | Where-Object { ($_.Scope -eq $KeyVaultId -or $_.Scope -eq $KeyvaultRG -or  $_.Scope -eq $KeyvaultSubscription) -and $_.RoleDefinitionName -eq $Permission}
               
                   if($CheckPermission -ne $null)
                   {
@@ -166,7 +166,7 @@
 
                       Write-Host "Assigning $($Permission) permission to the backup vault."
 
-                      AssignMissingRoles -ObjectId $vault.IdentityPrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $KeyvaultId -ResourceGroup $KeyvaultRG -Subscription $KeyvaultSubscriptionName
+                      AssignMissingRoles -ObjectId $vault.IdentityPrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $KeyVaultId -ResourceGroup $KeyvaultRG -Subscription $KeyvaultSubscriptionName
 
                       Write-Host "Assigned $($Permission) permission to the backup vault."
                       
