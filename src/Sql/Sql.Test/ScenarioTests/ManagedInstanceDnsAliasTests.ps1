@@ -65,7 +65,7 @@ function Test-ManagedInstanceDnsAliasCRUDOperations
 
         #Create, update and delete by name. Also use -AsJob in order to test that functionality.
 
-        $testAliasName = "testalias"
+        $testAliasName = $managedInstanceName + "-testalias"
 
         #Create by name parameter set
         Write-Debug "Creating by name"
@@ -170,7 +170,7 @@ function Test-ManagedInstanceDnsAliasGetAndMoveOperations
 
         $rgName = $rg.ResourceGroupName
 
-        $testAliasName = "testalias"
+        $testAliasName = $sourceManagedInstanceName + "-testalias"
 
         #Create new DNS alias on source instance.
         Write-Debug("Creating source DNS alias")
@@ -295,7 +295,7 @@ function Test-ManagedInstanceDnsAliasPipingScenarios
 
         $rgName = $rg.ResourceGroupName
 
-        $testAliasName = "testalias"
+        $testAliasName = $sourceManagedInstanceName + "-testalias"
 
         #Create MI DNS alias by piping the MI object
         $createdInstanceDnsAlias = $sourceManagedInstance | New-AzSqlInstanceDnsAlias -Name $testAliasName -CreateDnsRecord
@@ -415,7 +415,7 @@ function Test-ManagedInstanceDnsAliasErrorHandling
 
         $rgName = $rg.ResourceGroupName
 
-        $testAliasName = "testalias"
+        $testAliasName = $managedInstanceName + "-testalias"
         $invalidMIName = "invalidname"
 
         #Test whether required parameters are validated to not be null or empty
