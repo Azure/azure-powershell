@@ -162,36 +162,35 @@ $resourceTestCommands = @(
     @{Name = "Az.Websites";                   Command = {Get-AzWebApp -ResourceGroupName $resourceGroupName}}
 )
 
-# $generalCommands = @(
-#     @{
-#         Name = "Import Az.Accounts in Parallel";
-#         Command = {
-#             if ($null -ne $env:SYSTEM_DEFINITIONID) {
-#                 Write-Host "Skipping because 'Start-Job' is not supported by design in scenarios where PowerShell is being hosted in other applications."
-#                 return
-#             }
-#             $importJobs = @()
-#             1..10 | ForEach-Object {
-#                 $importJobs += Start-Job -name "import-no.$_" -ScriptBlock { Import-Module Az.Accounts; Get-AzConfig; }
-#             }
-#             $importJobs | Wait-Job
-#             $importJobs | Receive-Job
-#             $importJobs | ForEach-Object {
-#                 if ("Completed" -ne $_.State) {
-#                     throw "Some jobs have failed."
-#                 }
-#             }
-#         };
-#         Retry = 0; # no need to retry
-#     }
-# )
+$generalCommands = @(
+    @{
+        Name = "Import Az.Accounts in Parallel";
+        Command = {
+            if ($null -ne $env:SYSTEM_DEFINITIONID) {
+                Write-Host "Skipping because 'Start-Job' is not supported by design in scenarios where PowerShell is being hosted in other applications."
+                return
+            }
+            $importJobs = @()
+            1..10 | ForEach-Object {
+                $importJobs += Start-Job -name "import-no.$_" -ScriptBlock { Import-Module Az.Accounts; Get-AzConfig; }
+            }
+            $importJobs | Wait-Job
+            $importJobs | Receive-Job
+            $importJobs | ForEach-Object {
+                if ("Completed" -ne $_.State) {
+                    throw "Some jobs have failed."
+                }
+            }
+        };
+        Retry = 0; # no need to retry
+    }
+)
 
 if($Reverse.IsPresent){
     [array]::Reverse($resourceTestCommands)
 }
 
-#$resourceCommands=$resourceSetUpCommands+$resourceTestCommands+$resourceCleanUpCommands+$generalCommands
-$resourceCommands=$resourceSetUpCommands+$resourceTestCommands+$resourceCleanUpCommands
+$resourceCommands=$resourceSetUpCommands+$resourceTestCommands+$resourceCleanUpCommands+$generalCommands
 
 $startTime = Get-Date
 $resourceCommands | ForEach-Object {
