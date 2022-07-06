@@ -65,4 +65,25 @@ Describe 'New-AzRedisEnterpriseCache' {
         $cache.ResourceState | Should -Be "Running"
         $cache.Database.Count | Should -Be 0
     }
+
+    It 'Create a cache without a database to create a georeplicated database later' {
+        $splat = @{
+            Name = $env.ClusterName3
+            ResourceGroupName = $env.ResourceGroupName
+            Location = $env.Location
+            SubscriptionId = $env.SubscriptionId
+            Sku = "EnterpriseFlash_F300"
+            NoDatabase = $true
+        }
+        $cache = New-AzRedisEnterpriseCache @splat
+        $cache.Name | Should -Be $splat.Name
+        $cache.Location | Should -Be $splat.Location
+        $cache.SkuName | Should -Be $splat.Sku
+        $cache.SkuCapacity | Should -Be 3
+        $cache.Type | Should -Be "Microsoft.Cache/redisEnterprise"
+        $cache.ProvisioningState | Should -Be "Succeeded"
+        $cache.ResourceState | Should -Be "Running"
+        $cache.Database.Count | Should -Be 0
+    }
+
 }
