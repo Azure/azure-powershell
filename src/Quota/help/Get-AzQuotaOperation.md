@@ -21,23 +21,23 @@ List all the operations supported by the Microsoft.Quota resource provider.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the quota operation
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Get-AzQuotaOperation
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name                               Origin
+----                               ------
+Microsoft.Quota/quotas/read              
+Microsoft.Quota/quotas/write             
+Microsoft.Quota/quotaRequests/read       
+Microsoft.Quota/usages/read              
+Microsoft.Quota/operations/read          
+Microsoft.Quota/register/action          
 ```
 
-{{ Add description here }}
+This command lists all the operations supported by the Microsoft.Quota resource provider.
 
 ## PARAMETERS
 

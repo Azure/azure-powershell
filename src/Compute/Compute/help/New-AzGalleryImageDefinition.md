@@ -89,8 +89,8 @@ $publisherName = "GreatPublisher"
 $offerName = "GreatOffer"
 $skuName = "GreatSku"
 $description = "My gallery"
-$IsHibernateSupported = @{​​​​​Name='IsHibernateSupported';Value='True'}​​​​​ 
-$IsAcceleratedNetworkSupported = @{​​​​​Name='IsAcceleratedNetworkSupported';Value='False'}​​​​​
+$IsHibernateSupported = @{Name='IsHibernateSupported';Value='True'}
+$IsAcceleratedNetworkSupported = @{Name='IsAcceleratedNetworkSupported';Value='False'}
 $features = @($IsHibernateSupported,$IsAcceleratedNetworkSupported)
 New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Windows" -Description $description -Feature $features
 ```

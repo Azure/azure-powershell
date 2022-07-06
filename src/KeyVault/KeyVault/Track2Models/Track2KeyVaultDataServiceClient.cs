@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         public PSKeyVaultCertificate MergeCertificate(string vaultName, string name, byte[] certBytes, Dictionary<string, string> tags)
         {
-            return VaultClient.MergeCertifcate(vaultName, name, certBytes, tags);
+            return VaultClient.MergeCertificate(vaultName, name, certBytes, tags);
         }
 
         public void PurgeCertificate(string vaultName, string certName)

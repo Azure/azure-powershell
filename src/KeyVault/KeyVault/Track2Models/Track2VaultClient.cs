@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSKeyVaultCertificate(certClient.ImportCertificate(options));
         }
 
-        public PSKeyVaultCertificate MergeCertifcate(string vaultName, string certName, byte[] certificate, IDictionary<string, string> tags)
+        public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, byte[] certificate, IDictionary<string, string> tags)
         {
             var certClient = CreateCertificateClient(vaultName);
             var options = new MergeCertificateOptions(certName, new List<byte[]> { certificate });

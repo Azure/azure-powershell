@@ -19,9 +19,13 @@
 -->
 ## Upcoming Release
 * Removed the warning messages for MSGraph migration [#18856] 
+
+## Version 3.10.0
+* Added `GeoZone` option to `BackupStorageRedundancy` parameter to `New-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary`, and `Restore-AzSqlDatabase` to enable create, update, copy, geo secondary and PITR support for GeoZone hyperscale databases
 * Added additional input validation to `Stop-AzSqlInstanceDatabaseLogReplay` cmdlet to ensure the target database was created by log replay service
 * Bug fix for cmdlet `Restore-AzSqlDatabase`. The optional property `Tags` was not working as expected
 * Added isManagedIdentityInUse get parameter for `Get-AzSqlServerAudit` and `Get-AzSqlDatabaseAudit`
+* Added new cmdlet `Set-AzSqlInstanceDatabase`
 
 ## Version 3.9.0
 * Added new cmdlet `Get-AzSqlInstanceEndpointCertificate`

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.7.0
 * Supported BaseBlob DaysAfterCreationGreaterThan in Management Policy
     -  `Add-AzStorageAccountManagementPolicyAction`
 

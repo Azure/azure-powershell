@@ -32,7 +32,7 @@ Rejects a private endpoint connection for an eventhub namespace.
 
 ### Example 1
 ```powershell
-PS C:\> Deny-AzEventHubPrivateEndpointConnection -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name 00000000000
+Deny-AzEventHubPrivateEndpointConnection -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name 00000000000
 ```
 
 Denies a private endpoint connection `00000000000` to connect to EventHub namespace `mynamespace`. 
