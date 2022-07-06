@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the warning messages for MSGraph migration [#18856] 
 * Added additional input validation to `Stop-AzSqlInstanceDatabaseLogReplay` cmdlet to ensure the target database was created by log replay service
 * Bug fix for cmdlet `Restore-AzSqlDatabase`. The optional property `Tags` was not working as expected
 * Added isManagedIdentityInUse get parameter for `Get-AzSqlServerAudit` and `Get-AzSqlDatabaseAudit`
