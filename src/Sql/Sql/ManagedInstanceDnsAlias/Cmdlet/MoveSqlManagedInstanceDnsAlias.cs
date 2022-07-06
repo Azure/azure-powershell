@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
 
         private const string ManagedInstanceDnsAliasResourceIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/managedInstances/{2}/dnsAliases/{3}";
 
-        // <summary>
+        /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = MoveByNamesParameterSet, Position = 0, HelpMessage = "Name of the target resource group.")]
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         [ValidateNotNullOrEmpty]
         public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
-        // <summary>
+        /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = MoveByNamesParameterSet, Position = 2, HelpMessage = "Name of the source resource group.")]

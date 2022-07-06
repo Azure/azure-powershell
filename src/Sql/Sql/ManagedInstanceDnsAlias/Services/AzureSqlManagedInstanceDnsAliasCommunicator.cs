@@ -45,8 +45,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Managed Instance DNS Aliases
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
         public AzureSqlManagedInstanceDnsAliasCommunicator(IAzureContext context)
         {
             Context = context;
