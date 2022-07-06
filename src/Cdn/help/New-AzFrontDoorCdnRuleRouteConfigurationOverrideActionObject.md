@@ -26,27 +26,19 @@ Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction
 ```powershell
-{{ Add code here }}
+$originGroupId = "xxxx"
+New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name RouteConfigurationOverride -OriginGroupOverrideForwardingProtocol HttpOnly -OriginGroupId $originGroupId
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+RouteConfigurationOverride
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

@@ -167,7 +167,7 @@ CONFIGURATIONFILTER <IConfigurationFilters[]>: Holds details about product hiera
     - `SupportedValue <String[]>`: Values to be filtered.
     - `Type <SupportedFilterTypes>`: Type of product filter.
 
-CUSTOMERSUBSCRIPTIONDETAIL <ICustomerSubscriptionDetails>: Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details
+CUSTOMERSUBSCRIPTIONDETAIL `<ICustomerSubscriptionDetails>`: Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details
   - `QuotaId <String>`: Quota ID of a subscription
   - `[LocationPlacementId <String>]`: Location placement Id of a subscription
   - `[RegisteredFeature <ICustomerSubscriptionRegisteredFeatures[]>]`: List of registered feature flags for subscription

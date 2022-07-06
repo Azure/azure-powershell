@@ -191,7 +191,8 @@
       <BuildAction Condition="'$(Configuration)' != 'Release'">build</BuildAction>
       <BuildAction Condition="'$(Configuration)' == 'Release'">publish</BuildAction>
     </PropertyGroup>
-    <Exec Command="dotnet $(BuildAction) $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration)" />
+    <Exec Command="dotnet $(BuildAction) $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration)" Condition="$(GenerateDocumentationFile) != 'false'"/>
+    <Exec Command="dotnet $(BuildAction) $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration) -p:GenerateDocumentationFile=false" Condition="$(GenerateDocumentationFile) == 'false'"/>
 
     <!-- Build version controller -->
     <Exec Command="dotnet build $(RepoTools)VersionController/VersionController.Netcore.csproj -c $(Configuration)" />
@@ -265,7 +266,7 @@
 
   <Target Name="StaticAnalysisExample" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build" AfterTargets="StaticAnalysisHelp">
     <Message Importance="high" Text="Running static analysis for PowerShell examples..." />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/StaticAnalysis/ExampleAnalyzer/Measure-MarkdownOrScript.ps1 -MarkdownPaths $(RepoArtifacts)/FilesChanged.txt -RulePaths $(RepoTools)/StaticAnalysis/ExampleAnalyzer/AnalyzeRules/*.psm1 -Recurse -AnalyzeScriptsInFile -OutputScriptsInFile -OutputResultsByModule &quot;"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/StaticAnalysis/ExampleAnalyzer/Measure-MarkdownOrScript.ps1 -MarkdownPaths $(RepoArtifacts)/FilesChanged.txt -RulePaths $(RepoTools)/StaticAnalysis/ExampleAnalyzer/AnalyzeRules/*.psm1 -AnalyzeScriptsInFile -OutputScriptsInFile &quot;"/>
   </Target>
 
   <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisBreakingChange;StaticAnalysisDependency;StaticAnalysisSignature;StaticAnalysisHelp;StaticAnalysisExample">

@@ -55,9 +55,12 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     else{
         $MarkdownPath = $MarkdownPaths
     }
-    foreach($_ in Get-ChildItem $MarkdownPath){
+    foreach($_ in Get-ChildItem $MarkdownPath -Recurse:$Recurse.IsPresent){
         # Filter the .md of overview in "\help\"
         if ((Get-Item -Path $_.FullName).Directory.Name -eq "help" -and $_.FullName -cmatch ".*\.md" -and $_.BaseName -cmatch "^[A-Z][a-z]+-([A-Z][a-z0-9]*)+$") {
+            if((Get-Item -Path $_.FullName).Directory.Parent.Name -eq "netcoreapp3.1"){
+                continue
+            }
             Write-Output "Searching in file $($_.FullName) ..."
             $module = (Get-Item -Path $_.FullName).Directory.Parent.Name
             $cmdlet = $_.BaseName

@@ -40,13 +40,13 @@ Cmdlet can be used to enable or disable application group connections and set th
 
 ### Example 1: Add throttling policies to an already existing application group.
 ```powershell
-PS C:\> $policyToBeAppended = New-AzEventHubThrottlingPolicyConfig -Name policy1 -MetricId IncomingBytes -RateLimitThreshold 12345
+$policyToBeAppended = New-AzEventHubThrottlingPolicyConfig -Name policy1 -MetricId IncomingBytes -RateLimitThreshold 12345
 
-PS C:\> $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup
+$appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup
 
-PS C:\> $appGroup.ThrottlingPolicy += $policyToBeAppended
+$appGroup.ThrottlingPolicy += $policyToBeAppended
 
-PS C:\> Set-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup -ThrottlingPolicy $appGroup.ThrottlingPolicy
+Set-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup -ThrottlingPolicy $appGroup.ThrottlingPolicy
 ```
 
 `-ThrottlingPolicy` takes an array of PSEventHubThrottlingPolicyAttributes objects. It represents the entire set of throttling policies

@@ -32,17 +32,15 @@ This will delete the YAML file used to set up the Source control configuration, 
 
 ### Example 1: Remove a configuation of Kubernetes Cluster by name
 ```powershell
-PS C:\> Remove-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name  azpstestk8s -ClusterType ConnectedClusters
-
+Remove-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name  azpstestk8s -ClusterType ConnectedClusters
 ```
 
 This command removes a configuation of Kubernetes Cluster by name.
 
 ### Example 2: Remove a configuation of Kubernetes Cluster by object
 ```powershell
-PS C:\> $kubConf = Get-AzKubernetesConfiguration -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azpstest_gp -Name azpstestk8s-operator
+$kubConf = Get-AzKubernetesConfiguration -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azpstest_gp -Name azpstestk8s-operator
 Remove-AzKubernetesConfiguration -InputObject $kubConf
-
 ```
 
 This command removes a configuation of Kubernetes Cluster by object.
@@ -255,7 +253,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
+INPUTOBJECT `<IKubernetesConfigurationIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the kubernetes cluster.
   - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
   - `[ClusterRp <String>]`: The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.

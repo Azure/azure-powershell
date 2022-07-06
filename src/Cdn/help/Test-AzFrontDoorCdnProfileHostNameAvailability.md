@@ -30,27 +30,18 @@ Check the name availability of a host name.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Test the availability of a host name under the AzureFrontDoor profile
 ```powershell
-{{ Add code here }}
+Test-AzFrontDoorCdnProfileHostNameAvailability -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -HostName hello1.dev.cdn.azure.cn
 ```
 
 ```output
-{{ Add output here }}
+Message NameAvailable Reason
+------- ------------- ------
+        True
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

@@ -57,6 +57,7 @@ steps:
     targetType: inline
     script: "$SdkVersion=(dotnet --list-sdks | Select-String '6.0.\\d{3}').Matches[0].Value; dotnet new globaljson --sdk-version $SdkVersion --force;dotnet msbuild tools/Az.Tools.Predictor/build.proj /t:\"clean;build;test\""
     pwsh: true
+  continueOnError: true
 
 - template: publish-artifacts-steps.yml
   parameters:

@@ -748,15 +748,9 @@ function New-AzADServicePrincipal {
       if ($spScope) {
         $param['Scope'] = $spScope
       }
-      for ($i = 0; $i -lt 6; $i++) {
-        try {
-          $ra = New-AzRoleAssignment @param
-          Write-Verbose "Role assignment with role $($ra.RoleDefinitionName) and scope $($ra.Scope) successfully created for the created service principal."
-          break
-        } catch {
-
-        }
-      }
+      $param['ObjectType'] = "ServicePrincipal"
+      $ra = New-AzRoleAssignment @param
+      Write-Verbose "Role assignment with role $($ra.RoleDefinitionName) and scope $($ra.Scope) successfully created for the created service principal."
     }
   }
 }

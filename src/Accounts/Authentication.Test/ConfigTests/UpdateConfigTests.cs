@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.Authentication.Config;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Moq;

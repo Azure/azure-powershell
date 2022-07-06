@@ -23,6 +23,7 @@
 * Added property `PowerState` for the output of `Get-AzAksCluster`[#18271]
 * Updated the logic of `Set-AzAksCluster` for parameter `NodeImageOnly`.
 * Added parameter `NodeImageOnly` for `Update-AzAksNodePool`.
+* Added parameter `AvailabilityZone` for `New-AzAksCluster`. [#18658]
 
 ## Version 4.1.0
 * Removed these aliases:

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>EventHub</PsModuleName>
@@ -18,5 +18,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="5.0.0" />
   </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

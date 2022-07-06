@@ -151,7 +151,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CUSTOMERSUBSCRIPTIONDETAIL <ICustomerSubscriptionDetails>: Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details
+CUSTOMERSUBSCRIPTIONDETAIL `<ICustomerSubscriptionDetails>`: Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details
   - `QuotaId <String>`: Quota ID of a subscription
   - `[LocationPlacementId <String>]`: Location placement Id of a subscription
   - `[RegisteredFeature <ICustomerSubscriptionRegisteredFeatures[]>]`: List of registered feature flags for subscription

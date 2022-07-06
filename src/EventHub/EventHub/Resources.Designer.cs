@@ -363,5 +363,71 @@ namespace Microsoft.Azure.Commands.EventHub {
                 return ResourceManager.GetString("RemoveApplicationGroup", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Schema Group NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string ApproveNamespacePrivateEndpoints
+        {
+            get
+            {
+                return ResourceManager.GetString("ApproveNamespacePrivateEndpoints", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Schema Group NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string RejectNamespacePrivateEndpoints
+        {
+            get
+            {
+                return ResourceManager.GetString("RejectNamespacePrivateEndpoints", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Schema Group NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string RemoveNamespacePrivateEndpoints
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveNamespacePrivateEndpoints", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Schema Group NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string GetNamespacePrivateLinks
+        {
+            get
+            {
+                return ResourceManager.GetString("GetNamespacePrivateLinks", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Schema Group NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string GetNamespacePrivateEndpoints
+        {
+            get
+            {
+                return ResourceManager.GetString("GetNamespacePrivateEndpoints", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Schema Group NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string ListNamespacePrivateEndpoints
+        {
+            get
+            {
+                return ResourceManager.GetString("ListNamespacePrivateEndpoints", resourceCulture);
+            }
+        }
     }
 }

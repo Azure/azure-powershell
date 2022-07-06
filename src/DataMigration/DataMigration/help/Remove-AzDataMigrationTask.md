@@ -38,8 +38,7 @@ The Remove-AzDataMigrationTask cmdlet removes an Azure Database Migration Servic
 
 ### Example 1
 ```powershell
-Remove-AzDataMigrationTask -TaskName TestTask -ProjectName myTestProject -ServiceName MyTestService
- -ResourceGroupName MyResourceGroup
+Remove-AzDataMigrationTask -TaskName TestTask -ProjectName myTestProject -ServiceName MyTestService -ResourceGroupName MyResourceGroup
 ```
 
 The preceding example removes an Azure Database Migration Service task named TestTask from Azure based on task name parameter.
