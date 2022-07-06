@@ -18,9 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-<<<<<<< HEAD
 * Removed the warning messages for MSGraph migration [#18856]
-=======
 
 ## Version 4.2.0
 >>>>>>> 7ae17008faf9dacdb4a167c016c6fba8d626b961
