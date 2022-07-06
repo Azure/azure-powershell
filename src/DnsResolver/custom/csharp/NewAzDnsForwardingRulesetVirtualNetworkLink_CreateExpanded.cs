@@ -3,7 +3,7 @@
 
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview;
+using Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
 {
