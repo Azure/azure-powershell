@@ -923,7 +923,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ProtectableContainerResource unregisteredVmContainer = unregisteredVmContainers.Find(
                 vmContainer => string.Compare(vmContainer.Name.Split(';').Last(),
                 containerName, true) == 0);
-
+                        
             if (unregisteredVmContainer != null || container != null)
             {
                 protectionContainerResource =

@@ -26,6 +26,7 @@ using ScheduleRunType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using SystemNet = System.Net;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -108,6 +109,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 return unregisteredVmContainers;
             }            
+        }
+
+        public void RegisterContainerByPass(string vaultId, string vaultName, string vaultResourceGroupName, string resourceId = null, Boolean refresh = false)
+        {
+            //Trigger Discovery
+            ODataQuery<BMSRefreshContainersQueryObject> queryParam = new ODataQuery<BMSRefreshContainersQueryObject>(
+                q => q.BackupManagementType
+                    == ServiceClientModel.BackupManagementType.AzureWorkload);
+
+            if (refresh)
+            {
+                RefreshContainer(vaultName, vaultResourceGroupName, queryParam);
+            }
+
+            ProtectionContainerResource protectionContainerResource = null;
+            
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(resourceId);
+            string vmResourceGroup = HelperUtils.GetResourceGroupNameFromId(keyValueDict, resourceId);
+            string vmName = HelperUtils.GetVMNameFromId(keyValueDict, resourceId);
+
+            string containerName = "VMAppContainer;Compute;" + vmResourceGroup + ";" + vmName;
+            string containerId = vaultId + "/backupFabrics/Azure/protectableContainers/" + containerName;           
+            string friendlyName = (resourceId != null) ? resourceId.Split('/')[8] : null;
+
+            /*Logger.Instance.WriteDebug("\n \n ######    containerName " + containerName);
+            Logger.Instance.WriteDebug("\n \n ######    containerId " + containerId);
+            Logger.Instance.WriteDebug("\n \n ######    friendlyName " + friendlyName);*/
+
+            protectionContainerResource = new ProtectionContainerResource(containerId, containerName);
+
+            AzureVMAppContainerProtectionContainer azureVMContainer = new AzureVMAppContainerProtectionContainer(
+                friendlyName: friendlyName,
+                backupManagementType: ServiceClientModel.BackupManagementType.AzureWorkload.ToString(),
+                sourceResourceId: resourceId,
+                workloadType: ServiceClientModel.WorkloadType.SQLDataBase.ToString(),
+                operationType: OperationType.Register);
+
+            protectionContainerResource.Properties = azureVMContainer;
+
+            // Logger.Instance.WriteDebug("\n \n ######   protectionContainer to be registered " + JsonConvert.SerializeObject(protectionContainerResource));
+            RegisterContainer(containerName, protectionContainerResource, vaultName, vaultResourceGroupName);
         }
 
         public void RegisterContainer(string containerName,

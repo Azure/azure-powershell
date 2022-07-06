@@ -203,7 +203,8 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'Get-AzRecoveryServicesResourceGuardMapping', 
                'Remove-AzRecoveryServicesResourceGuardMapping', 
                'Set-AzRecoveryServicesResourceGuardMapping',
-               'Get-AzRecoveryServicesBackupProtectableContainer'
+               'Get-AzRecoveryServicesBackupProtectableContainer',
+               'Register-AzRecoveryServicesBackupContainerByPass'
 
 # Variables to export from this module
 # VariablesToExport = @()
