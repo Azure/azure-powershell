@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2022-07-01 
 
 ## Version 0.2.0
 * Preview release for module Az.DnsResolver
