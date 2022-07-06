@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdlets for managing Managed Instance DNS aliases
+    - `New-AzSqlInstanceDnsAlias`
+    - `Get-AzSqlInstanceDnsAlias`
+    - `Set-AzSqlInstanceDnsAlias`
+    - `Move-AzSqlInstanceDnsAlias`
+    - `Remove-AzSqlInstanceDnsAlias`
 
 ## Version 3.9.0
 * Added new cmdlet `Get-AzSqlInstanceEndpointCertificate`
