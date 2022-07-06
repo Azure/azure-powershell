@@ -123,7 +123,7 @@ Set-Content -Path cert.pfx -Value $secret -PassThru
 -----END CERTIFICATE-----
 ```
 
-This command gets the certificate named TestCert01 from the key vault named ContosoKV01. To download the certificate as pfx file, run following command. These commands access SecretId and then save the content as a pfx file.
+This command gets the certificate named `$certName` from the key vault named `$vaultName`. These commands access secret `$cert.Name` and then save the content as a pfx file.
 
 ### Example 3: Get all the certificates that have been deleted but not purged for this key vault.
 ```powershell
