@@ -74,7 +74,7 @@ This example closes a specific incident with the **Classification** of "False Po
 
 ### Example 4
 ```powershell
-Update-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" 
+Update-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" `
 -IncidentID "561c5184-f8da-4d8b-8544-c89e422bbf6f" -Classification FalsePositive  -ClassificationComment "my comment" -ClassificationReason InaccurateData -Status "Closed"
 ```
 

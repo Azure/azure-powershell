@@ -37,7 +37,7 @@ The **Remove-AzP2sVpnGateway** cmdlet enables you to remove an existing P2SVpnGa
 
 ### Example 1
 ```powershell
-Remove-AzP2sVpnGateway -Name 683482ade8564515aed4b8448c9757ea-westus-gw-ResourceGroupName P2SCortexGATesting -Force -PassThru
+Remove-AzP2sVpnGateway -Name 683482ade8564515aed4b8448c9757ea-westus-gw -ResourceGroupName P2SCortexGATesting -Force -PassThru
 ```
 
 The **Remove-AzP2sVpnGateway** cmdlet enables you to remove an existing P2SVpnGateway under VirtualHub.

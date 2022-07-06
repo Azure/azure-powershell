@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Provide
         /// Builds the <see cref="JsonStreamConfigurationProvider"/> for this source.
         /// </summary>
         /// <param name="builder">The <see cref="IConfigurationBuilder"/>.</param>
+        /// <param name="id"></param>
         /// <returns>An <see cref="JsonStreamConfigurationProvider"/></returns>
         public override IConfigurationProvider Build(IConfigurationBuilder builder, string id)
             => new JsonStreamConfigurationProvider(this, id);

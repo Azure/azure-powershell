@@ -1818,6 +1818,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot stop the log replay as database {0} on the instance {1} in the resource group {2} was not created with log replay service..
+        /// </summary>
+        internal static string StopLogReplayErrorDatabaseOrigin {
+            get {
+                return ResourceManager.GetString("StopLogReplayErrorDatabaseOrigin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find a storage account with the name &apos;{0}&apos;. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it..
         /// </summary>
         internal static string StorageAccountNotFound {

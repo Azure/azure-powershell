@@ -24,8 +24,8 @@ Add-AzVhd [-ResourceGroupName] <String> [-Destination] <Uri> [-LocalFilePath] <F
 ```
 Add-AzVhd [-ResourceGroupName] <String> [-LocalFilePath] <FileInfo> -DiskName <String> [-Location] <String>
  [-DiskSku <String>] [-DiskZone <String[]>] [-DiskHyperVGeneration <String>]
- [-DiskOsType <OperatingSystemTypes>] [[-NumberOfUploaderThreads] <Int32>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DiskOsType <OperatingSystemTypes>] [[-NumberOfUploaderThreads] <Int32>] [-DataAccessAuthMode <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,6 +122,21 @@ Aliases: bs
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DataAccessAuthMode
+Additional authentication requirements when exporting or uploading to a disk or snapshot. Possible options are: "AzureActiveDirectory" and "None".
+
+```yaml
+Type: System.String
+Parameter Sets: DirectUploadToManagedDiskSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -299,19 +314,7 @@ Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: DefaultParameterSet
-Aliases:
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: DirectUploadToManagedDiskSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True

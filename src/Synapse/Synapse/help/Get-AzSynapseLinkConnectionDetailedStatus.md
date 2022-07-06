@@ -31,31 +31,31 @@ The **Get-AzSynapseLinkConnectionDetailedStatus** cmdlet gets detail status abou
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseLinkConnectionDetailedStatus -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+Get-AzSynapseLinkConnectionDetailedStatus -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
 ```
 
 Gets detail status about link connection ContosoLinkConnection in the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseLinkConnectionDetailedStatus -Name ContosoLinkConnection
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseLinkConnectionDetailedStatus -Name ContosoLinkConnection
 ```
 
 This command gets detail status about link connection ContosoLinkConnection under a workspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> Start-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
-PS C:\> Get-AzSynapseLinkConnectionDetailedStatus -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+Start-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+Get-AzSynapseLinkConnectionDetailedStatus -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
 ```
 
 Starts a link connection named ContosoLinkConnection in workspace ContosoWorkspace, it will cost some time to start, then you can call **Get-AzSynapseLinkConnectionDetailedStatus** to monitor its status.
 
 ### Example 4
 ```powershell
-PS C:\> Stop-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
-PS C:\> Get-AzSynapseLinkConnectionDetailedStatus -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+Stop-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+Get-AzSynapseLinkConnectionDetailedStatus -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
 ```
 
 Stops a link connection named ContosoLinkConnection in workspace ContosoWorkspace, it will cost some time from running to stop, then you can call **Get-AzSynapseLinkConnectionDetailedStatus** to monitor its status.

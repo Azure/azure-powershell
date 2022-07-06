@@ -20,6 +20,14 @@
 -->
 ## Upcoming Release
 
+## Version 1.10.0
+* Added cmdlets for manual approval of Service Bus Private Endpoint Connections. The added cmdlets include,
+    -Approve-AzServiceBusPrivateEndpointConnection
+    -Deny-AzServiceBusPrivateEndpointConnection
+    -Get-AzServiceBusPrivateEndpointConnection
+    -Remove-AzServiceBusPrivateEndpointConnection
+    -Get-AzServiceBusPrivateLink
+
 ## Version 1.9.0
 * Fixed miscellaneous network rule set typos across module.
 * Add `TrustedServiceAccessEnabled` to `Set-AzServiceBusNetworkRuleSet`

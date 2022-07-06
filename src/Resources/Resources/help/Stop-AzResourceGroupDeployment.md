@@ -48,7 +48,8 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 --     ----            -------------   -----         -----------     --------             -------
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzResourceGro...
 
- Stop-AzResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg
+Stop-AzResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg
+
 True
 
 Get-Job 1

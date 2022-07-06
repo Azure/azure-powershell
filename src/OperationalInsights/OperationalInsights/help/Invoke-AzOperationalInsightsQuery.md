@@ -63,11 +63,11 @@ The results from this query will be limited to the past 24 hours.
 ```powershell
 $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10" -IncludeRender -IncludeStatistics
 $queryResults.Results
-...
+
 $queryResults.Render
-...
+
 $queryResults.Statistics
-...
+
 ```
 
 See [https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions](https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions) for details on the render and statistics info.

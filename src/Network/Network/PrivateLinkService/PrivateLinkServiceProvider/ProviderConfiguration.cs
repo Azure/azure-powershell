@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.ApiManagement/service", "2021-04-01-preview", true, true);
             RegisterConfiguration("Microsoft.AppConfiguration/configurationStores", "2020-06-01", true, true);
             RegisterConfiguration("Microsoft.Attestation/attestationProviders", "2020-10-01", true, true);
-            RegisterConfiguration("Microsoft.Authorization/resourceManagementPrivateLinks", "2020-05-01", false);
+            RegisterConfiguration("Microsoft.Authorization/resourceManagementPrivateLinks", "2020-05-01", true, false, true);
             RegisterConfiguration("Microsoft.Automation/automationAccounts", "2020-01-13-preview", true, false);
-            RegisterConfiguration("Microsoft.Batch/batchAccounts", "2020-03-01", true, true);
+            RegisterConfiguration("Microsoft.Batch/batchAccounts", "2022-06-01", true, true);
             RegisterConfiguration("Microsoft.Cache/Redis", "2021-06-01", true, true);
             RegisterConfiguration("Microsoft.Cache/redisEnterprise", "2021-03-01", true, false);
             RegisterConfiguration("Microsoft.CognitiveServices/accounts", "2017-04-18", true, false);
@@ -110,6 +110,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         /// Generate a runtime parameter with ValidateSet matching the current context
         /// </summary>
         /// <param name="name">The name of the parameter</param>
+        /// <param name="parameterSetName">The name of the parameter set</param>
         /// <param name="runtimeParameter">The returned runtime parameter for context, with appropriate validate set</param>
         /// <returns>True if one or more contexts were found, otherwise false</returns>
         public static bool TryGetEndpointConnectionServiceParameter(string name, string parameterSetName, out RuntimeDefinedParameter runtimeParameter)
@@ -140,6 +141,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         /// Generate a runtime parameter with ValidateSet matching the current context
         /// </summary>
         /// <param name="name">The name of the parameter</param>
+        /// <param name="parameterSetName">The name of the parameter set</param>
         /// <param name="runtimeParameter">The returned runtime parameter for context, with appropriate validate set</param>
         /// <returns>True if one or more contexts were found, otherwise false</returns>
         public static bool TryGetLinkResourceServiceParameter(string name, string parameterSetName, out RuntimeDefinedParameter runtimeParameter)

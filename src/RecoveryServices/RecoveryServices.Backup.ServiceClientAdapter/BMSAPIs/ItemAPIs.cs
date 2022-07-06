@@ -32,6 +32,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="containerName">Name of the container which this item belongs to</param>
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="request">Protected item create or update request</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <param name="auxiliaryAccessToken"></param>
+        /// <param name="isMUAProtected"></param>
         /// <returns>Job created in the service for this operation</returns>
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> CreateOrUpdateProtectedItem(
             string containerName,
@@ -69,7 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                         customHeaders.Add("x-ms-authorization-auxiliary", new List<string> { "Bearer " + auxiliaryAccessToken });
                     }
                     else
-                    {                        
+                    {
                         throw new ArgumentException(String.Format(Resources.UnexpectedParameterToken, "ModifyProtection"));
                     }
                 }
@@ -91,6 +95,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="containerName">Name of the container which this item belongs to</param>
         /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <param name="auxiliaryAccessToken"></param>
+        /// <param name="protectedItemUri"></param>
         /// <returns>Job created in the service for this operation</returns>
         public RestAzureNS.AzureOperationResponse DeleteProtectedItem(
             string containerName,
@@ -108,25 +116,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             string operationRequest = null;
 
-            // unlock 
-            UnlockDeleteRequest unlockDeleteRequest = new UnlockDeleteRequest();                       
+            // unlock
+            UnlockDeleteRequest unlockDeleteRequest = new UnlockDeleteRequest();
 
             List<ResourceGuardProxyBaseResource> resourceGuardMapping = ListResourceGuardMapping(vaultName, resourceGroupName);
 
             if (resourceGuardMapping != null && resourceGuardMapping.Count != 0)
-            {                
+            {
                 foreach (ResourceGuardOperationDetail operationDetail in resourceGuardMapping[0].Properties.ResourceGuardOperationDetails)
                 {
                     if (operationDetail.VaultCriticalOperation == "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete") operationRequest = operationDetail.DefaultResourceRequest;
                 }
-                               
+
                 if(operationRequest != null)
                 {
                     unlockDeleteRequest.ResourceGuardOperationRequests = new List<string>();
                     unlockDeleteRequest.ResourceGuardOperationRequests.Add(operationRequest);
 
                     if(protectedItemUri == null)
-                    {                        
+                    {
                         throw new ArgumentException(String.Format(Resources.ProtectedItemURICantBeNull));
                     }
 
@@ -134,7 +142,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     UnlockDeleteResponse unlockDeleteResponse = BmsAdapter.Client.ResourceGuardProxy.UnlockDeleteWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), resourceGuardMapping[0].Name, unlockDeleteRequest, customHeaders).Result.Body;
                 }
                 else if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
-                {   
+                {
                     throw new ArgumentException(String.Format(Resources.UnexpectedParameterToken, "Delete protection with DeleteBackupData"));
                 }
             }
@@ -148,7 +156,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName,
                 containerName,
-                protectedItemName,                
+                protectedItemName,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 
@@ -158,6 +166,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="containerName">Name of the container which this item belongs to</param>
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="queryFilter">Query filter</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Protected item</returns>
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> GetProtectedItem(
             string containerName,
@@ -175,13 +185,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 queryFilter,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
-        
+
         /// <summary>
         /// List protected items protected by the Recovery Services vault according to the query params 
         /// and pagination params.
         /// </summary>
         /// <param name="queryFilter">Query params</param>
         /// <param name="skipToken">Skip token used for pagination</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>List of protected items</returns>
         public List<ProtectedItemResource> ListProtectedItem(
             ODataQuery<ProtectedItemQueryObject> queryFilter,
@@ -211,13 +223,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="queryFilter">Query params</param>
         /// <param name="skipToken">Skip token used for pagination</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>List of protected items</returns>
         public List<CrrModel.ProtectedItemResource> ListProtectedItemCrr(
             ODataQuery<CrrModel.ProtectedItemQueryObject> queryFilter,
             string skipToken = default(string),
             string vaultName = null,
             string resourceGroupName = null)
-        {            
+        {
             Func<RestAzureNS.IPage<CrrModel.ProtectedItemResource>> listAsync =
                 () => CrrAdapter.Client.BackupProtectedItemsCrr.ListWithHttpMessagesAsync(
                     vaultName ?? BmsAdapter.GetResourceName(),
@@ -234,14 +248,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             var result = HelperUtils.GetPagedListCrr(listAsync, listNextAsync);
             
             return result;
-        }       
+        }
 
         /// <summary>
         /// Triggers backup on the specified item
         /// </summary>
         /// <param name="containerName">Name of the container which this item belongs to</param>
         /// <param name="itemName">Name of the item</param>
-        /// <param name="expiryDateTimeUtc">Date when the recovery points created by this backup operation will expire</param>
+        /// <param name="triggerBackupRequest"></param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Job created by this operation</returns>
         public RestAzureNS.AzureOperationResponse TriggerBackup(
             string containerName,
@@ -296,6 +312,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="request">Protected item create or update request</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Job created in the service for this operation</returns>
         public RestAzureNS.AzureOperationResponse<ProtectionIntentResource> CreateOrUpdateProtectionIntent(
             string protectedItemName,
@@ -316,7 +334,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Deletes a protection intent
         /// </summary>
         /// <param name="protectedItemName">Name of the item</param>
-        /// <param name="request">Protected item create or update request</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Job created in the service for this operation</returns>
         public RestAzureNS.AzureOperationResponse DeleteProtectionIntent(
             string protectedItemName,
@@ -364,9 +383,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>
         /// Lists workload items according to the query filter and the pagination params
         /// </summary>
-        /// <param name="containrName">Query filter</param>
+        /// <param name="containerName">Name of the container which this item belongs to</param>
         /// <param name="queryFilter">Query filter</param>
         /// <param name="skipToken">Skip token for pagination</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>List of protectable items</returns>
         public List<WorkloadItemResource> ListWorkloadItem(
             string containerName,

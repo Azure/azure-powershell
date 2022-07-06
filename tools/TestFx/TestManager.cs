@@ -246,7 +246,12 @@ namespace Microsoft.Azure.Commands.TestFx
                 throw new ArgumentNullException($"Both {nameof(_callingClassName)} and {nameof(_newPsScriptFilename)} are null");
 
             var allScripts = CommonPsScripts;
-            allScripts.Add(_newPsScriptFilename ?? $"{_callingClassName}.ps1");
+
+            if(_newPsScriptFilename != null)
+            {
+                allScripts.Add(_newPsScriptFilename);
+            }
+            
 
             var allScriptsWithPath = _projectSubfolderForTestsName == null
                 ? allScripts
