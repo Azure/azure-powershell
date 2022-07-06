@@ -142,7 +142,6 @@ function Get-RecoveredValueType{
     return $Type
 }
 
-
 <#
     .SYNOPSIS
     Measure whether the actual type matches the expected type.
@@ -196,7 +195,6 @@ function Get-AssignedParameterExpression {
             return $ExpressionToParameter
         }
     }
-
     if($CommandElement_Copy.Extent.Text -match "foreach" -or $CommandElement_Copy.Extent.Text -match "Select-Object"){
         return $null
     }
