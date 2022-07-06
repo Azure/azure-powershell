@@ -125,19 +125,16 @@ function Get-RecoveredValueType{
             }
             $Member = $Type.GetMembers() | Where-Object {$_.Name -eq $Items[$j]}
             if($null -eq $Member -and $null -ne $Type.ImplementedInterfaces){
-                
-                    for($i = 0; $i -lt $Type.ImplementedInterfaces.Length; $i++){
-                        $Member = $Type.ImplementedInterfaces[$i].GetMembers() | Where-Object {$_.Name -eq $Items[$j]}
-                        if($null -ne $Member){
-                            break
-                        }
-                    
+                for($i = 0; $i -lt $Type.ImplementedInterfaces.Length; $i++){
+                    $Member = $Type.ImplementedInterfaces[$i].GetMembers() | Where-Object {$_.Name -eq $Items[$j]}
+                    if($null -ne $Member){
+                        break
+                    }
                 }
-
             }
-       if($null -eq $Member){
-             return $null
-        }
+            if($null -eq $Member){
+                 return $null
+            }
             if($Member -is [array]){
                 $Member = $Member[0]
             }
