@@ -48,9 +48,12 @@ Purchase `ReservationOrder` and create resource under the specified URI.
 ### [Rename-AzReservationsReservationOrderDirectory](Rename-AzReservationsReservationOrderDirectory.md)
 Change directory (tenant) of `ReservationOrder` and all `Reservation` under it to specified tenant id
 
+### [Split-AzReservation](Split-AzReservation.md)
+Split a `Reservation` into two `Reservation`s with specified quantity distribution.
+
 ### [Split-AzReservation1](Split-AzReservation1.md)
 Split a Reservation order.
 
-### [Update-AzReservationsReservation](Update-AzReservationsReservation.md)
+### [Update-AzReservation](Update-AzReservation.md)
 Updates the applied scopes of the `Reservation`.
 

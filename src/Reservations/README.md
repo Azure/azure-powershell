@@ -138,6 +138,13 @@ directive:
       verb: Merge
       subject-prefix: ''
       subject: Reservation
+  - where:
+      verb: Update
+      subject: Reservation
+    set:
+      verb: Update
+      subject-prefix: ''
+      subject: Reservation
 
   ### Rename property name
   - where:
@@ -265,11 +272,24 @@ directive:
       parameter-name: Source
     set:
       parameter-name: ReservationId
+  ## Update-AzReservation
+  - where:
+      verb: Update
+      subject-prefix: ''
+      subject: Reservation
+      parameter-name: Parameter
+    set:
+      parameter-name: Reservation
 
+  ### Set parameter alias
   - where:
       parameter-name: OrderId
     set:
-      alias: ReservationOrderId
+      alias: ReservationOrderId  
+  - where:
+      parameter-name: Id
+    set:
+      alias: ReservationId
 
   ### Format output table
   - where:
@@ -357,4 +377,5 @@ directive:
     - BillingInformation
     - ReservationSplitProperties
     - ReservationMergeProperties
+    - PatchPropertiesRenewProperties
 ```

@@ -102,7 +102,7 @@ Order Id of the reservation
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: ReservationOrderId
+Aliases: ReservationOrderId, ReservationId
 
 Required: True
 Position: Named
