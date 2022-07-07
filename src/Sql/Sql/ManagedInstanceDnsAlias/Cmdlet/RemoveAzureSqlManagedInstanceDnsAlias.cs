@@ -12,7 +12,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDnsAlias",
         DefaultParameterSetName = DeleteByNameParameterSet,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true),
+        OutputType(typeof(bool))]
     public class RemoveAzureSqlManagedInstanceDnsAlias : AzureSqlManagedInstanceDnsAliasCmdletBase
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";

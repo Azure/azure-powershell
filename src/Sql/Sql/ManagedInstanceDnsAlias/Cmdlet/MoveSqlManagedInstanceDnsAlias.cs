@@ -14,7 +14,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
     [Cmdlet(VerbsCommon.Move,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDnsAlias",
         DefaultParameterSetName = MoveByNameAndSourceResourceIdParameterSet,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true),
+        OutputType(typeof(AzureSqlManagedInstanceDnsAliasModel))]
     public class MoveSqlManagedInstanceDnsAlias : AzureSqlManagedInstanceDnsAliasCmdletBase
     {
         // Move by name of the target managed instance dns alias and by different ways for source managed instance dns alias.
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         /// <summary>
         /// Gets or sets the name of the Azure Sql Managed Instance DNS Alias
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = MoveByNamesParameterSet, Position = 4, HelpMessage = "Name of the source DNS alias.")]
+        [Parameter(Mandatory = true, ParameterSetName = MoveByNamesParameterSet, HelpMessage = "Name of the source DNS alias.")]
         [Parameter(Mandatory = true, ParameterSetName = MoveByParentObjectAndSourceNameParameterSet, Position = 3, HelpMessage = "Name of the source DNS alias.")]
         [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceParentObjectParameterSet, Position = 3, HelpMessage = "Name of the source DNS alias.")]
         [Parameter(Mandatory = true, ParameterSetName = MoveByParentObjectsParameterSet, Position = 2, HelpMessage = "Name of the source DNS alias.")]
