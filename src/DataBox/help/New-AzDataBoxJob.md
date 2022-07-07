@@ -28,7 +28,6 @@ Existing job cannot be updated with this API and should instead be updated with 
 ## EXAMPLES
 
 ### Example 1: Create a databox import job 
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $dataAccount = New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName"
 $contactDetail = New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
