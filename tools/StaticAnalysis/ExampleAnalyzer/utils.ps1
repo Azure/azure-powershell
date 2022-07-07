@@ -109,84 +109,25 @@ function Get-ExamplesDetailsFromMd {
             if ($description -ne "") {
                 $exampleDescriptions += $description
             }
-
-            # If there is no ```output``` split codelines and outputlines
-            if ($exampleOutputBlocks.Count -eq 0) {
-                foreach ($exampleCodeBlock in $exampleCodeBlocks) {
-                    $codeRegex = "(\n|\r\n)("+
-                    "(.*ForEach-Object {((.*(\n|\r\n))|(\w*=.*))*\s*})|"+
-                    "((.*[A-Za-z]\w+-[A-Za-z]\w+\s*(``(\n|\r\n))?)((\s*-.*``(\n|\r\n))*(.*@{((.*(\n|\r\n))|(\w*=.*))*\s*}\s*``?)+)+(?=\n|\r\n))|"+
-                    "((([A-Za-z \t])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*)*[ \t]*((([A-Za-z]\w+-[A-Za-z]\w+\b(.ps1)?(?!(-|   +\w)))|(" +
-                    "(@?\((?>\((?<pair>)|[^\(\)]+|\)(?<-pair>))*(?(pair)(?!))\) *[|.-] *\w)|" + # match ()
-                    "(\[(?>\[(?<pair>)|[^\[\]]+|\](?<-pair>))*(?(pair)(?!))\]\$)|" + # match []
-                    "((\$\w*\s*=.*)?@{(?>{(?<pair>)|[^{}]+|}(?<-pair>))*(?(pair)(?!))})|" + # match @{}
-                    "('(?>'(?<pair>)|[^']+|'(?<-pair>))*(?(pair)(?!))' *[|.-] *\w)|" + # match ''
-                    "((?<!``)`"(?>(?<!``)`"(?<pair>)|[\s\S]|(?<!``)`"(?<-pair>))*(?(pair)(?!))(?<!``)`" *[|.-] *\w)|" + # match ""
-                    "(\$\w*\s*=.*)?(@`"\s*(\n|\r\n)?(\{\s*)?)(.*(\n|\r\n))*((\s*\})?\s*(\n|\r\n)?`"@)|"+ # match @" "@
-                    "\$))(?!\.)([\w-~``'`"$= \t:;<>@()\[\]{},.+*/|\\&!?%#]*[``|][ \t]*(\n|\r\n)?)*([\w-~``'`"$= \t:;<>@()\[\]{},.+*/|\\&!?%#]*(?=\n|\r\n|#))))"+
-                    ")"
-                    $exampleCodeLines = ($exampleCodeBlock.Value | Select-String -Pattern $codeRegex -CaseSensitive -AllMatches).Matches
-                    if ($exampleCodeLines.Count -eq 0) {
-                        $exampleCodes = @()
-                        $exampleOutputs = @()
-                    }
-                    else {
-                        for ($i = 0; $i -lt $exampleCodeLines.Count; $i++) {
-                            # If a codeline contains " :", it's not a codeline but an output line of "Format-List".
-                            if ($exampleCodeLines[$i].Value -notmatch " : *\w") {
-                                $exampleCodes += $exampleCodeLines[$i].Value.Trim()
-                                # Content before the first codeline, between codelines, and after the last codeline is output.
-                                if ($i -eq 0) {
-                                    $startIndex = $exampleCodeBlock.Value.IndexOf("`n")
-                                    $output = $exampleCodeBlock.Value.Substring($startIndex, $exampleCodeLines[$i].Index - $startIndex).Trim()
-                                    if ($output -ne "" -and $output.Trim() -notlike "#*") {
-                                        $exampleOutputs += $output
-                                    }
-                                }
-                                $startIndex = $exampleCodeLines[$i].Index + $exampleCodeLines[$i].Length
-                                if ($i -lt $exampleCodeLines.Count - 1) {
-                                    $nextStartIndex = $exampleCodeLines[$i + 1].Index
-                                }
-                                else {
-                                    $nextStartIndex = $exampleCodeBlock.Value.LastIndexOf("`n")
-                                }
-                                # If an output line starts with "-", it's an incomplete codeline, but it should still be added to output.
-                                $output = $exampleCodeBlock.Value.Substring($startIndex, $nextStartIndex - $startIndex).Trim()
-                                if ($output -match "^-+\w") {
-                                    $exampleOutputs += $output
-                                }
-                                elseif ($output -ne "" -and $output.Trim() -notlike "#*") {
-                                    $exampleOutputs += $output
-                                }
-                            }
-                        }
-                    }
+            # Extract code from the first "\n" to the last "\n"
+            foreach ($exampleCodeBlock in $exampleCodeBlocks) {
+                $code = $exampleCodeBlock.Value.Substring($exampleCodeBlock.Value.IndexOf("`n"), $exampleCodeBlock.Value.LastIndexOf("`n") - $exampleCodeBlock.Value.IndexOf("`n"))
+                if ($code -ne ""-and $code -notmatch "{{ Add code here }}") {
+                    $exampleCodes += $code
                 }
             }
-            # If there is ```output```
-            else {
-                # Extract code from the first "\n" to the last "\n"
-                foreach ($exampleCodeBlock in $exampleCodeBlocks) {
-                    $code = $exampleCodeBlock.Value.Substring($exampleCodeBlock.Value.IndexOf("`n"), $exampleCodeBlock.Value.LastIndexOf("`n") - $exampleCodeBlock.Value.IndexOf("`n")).Trim()
-                    if ($code -ne ""-and $code -notmatch "{{ Add code here }}") {
-                        $exampleCodes += $code
-                    }
-                }
-                # Extract output from the first "\n" to the last "\n"
-                foreach ($exampleOutputBlock in $exampleOutputBlocks) {
-                    $output = $exampleOutputBlock.Value.Substring($exampleOutputBlock.Value.IndexOf("`n"), $exampleOutputBlock.Value.LastIndexOf("`n") - $exampleOutputBlock.Value.IndexOf("`n")).Trim()
-                    if ($output -ne "") {
-                        $exampleOutputs += $output
-                    }
+            # Extract output from the first "\n" to the last "\n"
+            foreach ($exampleOutputBlock in $exampleOutputBlocks) {
+                $output = $exampleOutputBlock.Value.Substring($exampleOutputBlock.Value.IndexOf("`n"), $exampleOutputBlock.Value.LastIndexOf("`n") - $exampleOutputBlock.Value.IndexOf("`n")).Trim()
+                if ($output -ne "") {
+                    $exampleOutputs += $output
                 }
             }
-
             # From the end of the last codeblock to the end is example description. 
             if($null -ne $exampleOutputBlocks){
                 $description = $exampleContent.SubString($exampleOutputBlocks[-1].Index + $exampleOutputBlocks[-1].Length).Trim()
             }
             else{
-                
                 $description = $exampleContent.SubString($exampleCodeBlocks[-1].Index + $exampleCodeBlocks[-1].Length).Trim()
             }
             if ($description -ne "") {
@@ -198,7 +139,6 @@ function Get-ExamplesDetailsFromMd {
             Num = $exampleNumber + 1
             Title = $exampleTitle
             Codes = $exampleCodes
-            CodeBlocks = $exampleCodeBlocks
             Outputs = $exampleOutputs
             OutputBlocks = $exampleOutputBlocks
             Description = ([string]$exampleDescriptions).Trim()
@@ -350,12 +290,13 @@ function Measure-SectionMissingAndOutputScript {
     else {
         foreach ($exampleDetails in $examplesDetails) {
             $exampleNumber = $exampleDetails.Num
+            $exampleCodes = $exampleDetails.Codes
             $_missingExampleTitle = ($exampleDetails.Title | Select-String -Pattern "{{[A-Za-z ]*}}").Count
             $_missingExampleCode = ($exampleDetails.Codes | Select-String -Pattern "{{[A-Za-z ]*}}").Count
             $_missingExampleOutput = ($exampleDetails.Outputs | Select-String -Pattern "{{[A-Za-z ]*}}").Count
             $_missingExampleDescription = ($exampleDetails.Description | Select-String -Pattern "{{[A-Za-z ]*}}").Count
-            $_needDeleting = ($exampleDetails.CodeBlocks | Select-String -Pattern "\n([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*" -CaseSensitive).Count +
-                ($exampleDetails.CodeBlocks | Select-String -Pattern "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1" -CaseSensitive).Count
+            $_needDeleting = ($exampleDetails.Codes | Select-String -Pattern "`n([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*" -CaseSensitive).Count +
+                ($exampleDetails.Codes | Select-String -Pattern "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1" -CaseSensitive).Count
             switch ($exampleDetails) {
                 {$exampleDetails.Title -eq "" -or $_missingExampleTitle -ne 0} {
                     $missingExampleTitle ++
@@ -402,21 +343,6 @@ function Measure-SectionMissingAndOutputScript {
                     }
                     $results += $result
                 }
-                {$exampleDetails.OutputBlocks.Count -eq 0 -and $exampleDetails.Outputs.Count -ne 0} {
-                    $needSplitting++
-                    $result = [AnalysisOutput]@{
-                        Module = $Module
-                        Cmdlet = $Cmdlet
-                        Example = $exampleDetails.Num
-                        Description = "The output need to be split from example."
-                        RuleName = "NeedSplitting"
-                        Severity = $missingSeverity
-                        Extent = "$Module\help\$Cmdlet.md"
-                        ProblemID = 5051
-                        Remediation = "Split output from example."
-                    }
-                    $results += $result
-                }
                 {$exampleDetails.Description -eq "" -or $_missingExampleDescription -ne 0} {
                     $missingExampleDescription++
                     $result = [AnalysisOutput]@{
@@ -442,30 +368,28 @@ function Measure-SectionMissingAndOutputScript {
                         RuleName = "NeedDeleting"
                         Severity = $missingSeverity
                         Extent = "$Module\help\$Cmdlet.md"
-                        ProblemID = 5052
+                        ProblemID = 5051
                         Remediation = "Delete the prompt of example."
                     }
                     $results += $result
+                    $newCode = $exampleCodes -replace "`n([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*", "`n"
+                    $newCode = $newCode -replace "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1"
+                    $exampleCodes = $newCode
                 }
             }
 
-            # Delete prompts
-            $exampleCodes = $exampleDetails.Codes
-            for ($i = $exampleCodes.Count - 1; $i -ge 0; $i--) {
-                $newCode = $exampleDetails.Codes[$i] -replace "([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*", ""
-                $newCode = $newCode -replace "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1", ""
-                $exampleCodes[$i] = $newCode
-            }
             
             # Output example codes to "TempScript.ps1"
             if ($OutputScriptsInFile.IsPresent) {
                 $cmdletExamplesScriptPath = "$OutputFolder\TempScript.ps1"
-                $functionHead = "function $Module-$Cmdlet-$exampleNumber{"
-                Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionHead
-                $exampleCodes = $exampleCodes -join "`n"
-                Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $exampleCodes
-                $functionTail = "}`n"
-                Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionTail
+                if($exampleCodes -ne $null){
+                    $exampleCodes = $exampleCodes.Trim()
+                    $functionHead = "function $Module-$Cmdlet-$exampleNumber{"
+                    Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionHead
+                    Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $exampleCodes
+                    $functionTail = "}`n"
+                    Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionTail
+                }
             }
         }
     }
