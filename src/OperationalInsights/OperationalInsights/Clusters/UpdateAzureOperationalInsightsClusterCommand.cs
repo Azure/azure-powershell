@@ -109,12 +109,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
                 this.ClusterName = resourceIdentifier.ResourceName;
             }
 
-            PSClusterPatch parameters = new PSClusterPatch();
+            PSCluster parameters = new PSCluster();
 
             if (this.IsParameterBound(c => c.InputCluster))
             {
                 parameters.KeyVaultProperties = PSKeyVaultProperties.CreateKVProperties(InputCluster.KeyVaultProperties?.KeyVaultUri, InputCluster.KeyVaultProperties?.KeyName, InputCluster.KeyVaultProperties?.KeyVersion);
-                parameters.Sku = InputCluster.Sku;
+                parameters.CapacityReservationProperties = InputCluster.CapacityReservationProperties;
                 parameters.Tags = InputCluster.Tags;
                 parameters.Identity = InputCluster.Identity;
                 parameters.BillingType = InputCluster.BillingType;
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
             else
             {
                 parameters.KeyVaultProperties = PSKeyVaultProperties.CreateKVProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion);
-                parameters.Sku = this.SkuCapacity == null ? null :  new PSClusterSku(this.SkuName ?? AllowedClusterServiceTiers.CapacityReservation.ToString(), this.SkuCapacity);
+                parameters.CapacityReservationProperties = this.SkuCapacity == null ? null : new PSCapacityReservationProperties(this.SkuCapacity, this.SkuName ?? AllowedClusterServiceTiers.CapacityReservation.ToString());
                 parameters.Tags = this.Tag;
                 parameters.Identity = new PSIdentity(IdentityType);
                 parameters.BillingType = BillingType;

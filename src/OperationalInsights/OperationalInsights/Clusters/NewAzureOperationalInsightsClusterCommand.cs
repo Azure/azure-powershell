@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
                 Name = this.ClusterName,
                 Location = this.Location,
                 Identity = new PSIdentity(this.IdentityType),
-                Sku = new PSClusterSku(this.SkuName ?? AllowedClusterServiceTiers.CapacityReservation.ToString(), this.SkuCapacity),
+                CapacityReservationProperties = new PSCapacityReservationProperties(maxCapacity: this.SkuCapacity, skuName: this.SkuName ?? AllowedClusterServiceTiers.CapacityReservation.ToString()),
                 Tags = this.Tag,
                 IsDoubleEncryptionEnabled = this.IsDoubleEncryptionEnabled,
                 IsAvailabilityZonesEnabled = this.IsAvailabilityZonesEnabled,

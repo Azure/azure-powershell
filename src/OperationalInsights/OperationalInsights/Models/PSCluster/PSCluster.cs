@@ -16,47 +16,33 @@ using System.Collections.Generic;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 using System.Linq;
 using System.Management.Automation;
-using System.Text.RegularExpressions;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 {
+    public enum AllowedClusterServiceTiers
+    {
+        CapacityReservation
+    }
+
     public class PSCluster
     {
         public PSCluster() { }
 
-        public PSCluster(string location, PSIdentity identity = default, PSClusterSku sku = default, string id = default, string provisioningState = default, bool isDoubleEncryptionEnabled = default, bool isAvailabilityZonesEnabled = default, string billingType = default, PSKeyVaultProperties keyVaultProperties = default, string lastModifiedDate = default, string createdDate = default, IList<AssociatedWorkspace> associatedWorkspaces = default, CapacityReservationProperties capacityReservationProperties = default, Hashtable tags = default, string name = default, string type = default, string nextLink = default, string clusterId = default)
-        {
-            Identity = identity;
-            Sku = sku;
-            Id = id;
-            ProvisioningState = provisioningState;
-            IsDoubleEncryptionEnabled = isDoubleEncryptionEnabled;
-            IsAvailabilityZonesEnabled = isAvailabilityZonesEnabled;
-            BillingType = billingType;
-            KeyVaultProperties = keyVaultProperties;
-            LastModifiedDate = lastModifiedDate;
-            CreatedDate = createdDate;
-            AssociatedWorkspaces = associatedWorkspaces;
-            CapacityReservationProperties = new PSCapacityReservationProperties(capacityReservationProperties);
-            Tags = tags;
-            Location = location;
-            Name = name;
-            Type = type;
-            ClusterId = clusterId;
-            validateClusterName();
-        }
-
+        /// <summary>
+        /// Creates a PSCluster instance from SDK response.
+        /// </summary>
+        /// <param name="cluster"></param>
         public PSCluster(Cluster cluster)
         {
+            if (cluster == null)
+            {
+                throw new PSInvalidOperationException("Input cluster cannot be null - unable to create instance.");
+            }
+
             if (cluster.Identity != null)
             {
                 Identity = new PSIdentity(cluster.Identity);
-            }
-
-            if (cluster.Sku != null)
-            {
-                Sku = new PSClusterSku(cluster.Sku);
             }
 
             ClusterId = cluster.ClusterId;//cluster's GUID
@@ -68,7 +54,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
             LastModifiedDate = cluster.LastModifiedDate;
             CreatedDate = cluster.CreatedDate;
             AssociatedWorkspaces = cluster.AssociatedWorkspaces;
-            CapacityReservationProperties = new PSCapacityReservationProperties(cluster.CapacityReservationProperties);
+            CapacityReservationProperties = new PSCapacityReservationProperties(cluster.CapacityReservationProperties, cluster.Sku);
 
             if (cluster.Tags != null)
             {
@@ -78,11 +64,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
             Location = cluster.Location;
             Name = cluster.Name;
             Type = cluster.Type;
-            Id = cluster.Id;//resource ID
+            Id = cluster.Id; //resource ID
         }
 
         public PSIdentity Identity { get; set; }
-        public PSClusterSku Sku { get; set; }
         public string ClusterId { get; private set; }
         public string ProvisioningState { get; private set; }
         public bool? IsDoubleEncryptionEnabled { get; set; }
@@ -100,41 +85,46 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
         public Hashtable Tags { get; set; }
         public string NextLink { get; set; }//this is not in use anymore - removing this will cause the build to fail
 
-        private IDictionary<string, string> getTags()
+        private IDictionary<string, string> GetTags()
         {
             return Tags?.Cast<DictionaryEntry>().ToDictionary(kv => (string)kv.Key, kv => (string)kv.Value);
         }
 
-        public Cluster getCluster()
+        public Cluster GetCluster()
         {
             return new Cluster(
-                name: Name,
-                location: Location,
-                tags: getTags(),
-                identity: Identity?.getIdentity(),
-                sku: Sku?.getClusterSku(),
-                isDoubleEncryptionEnabled: IsDoubleEncryptionEnabled,
-                isAvailabilityZonesEnabled: IsAvailabilityZonesEnabled,
-                billingType: BillingType,
-                keyVaultProperties: KeyVaultProperties?.GetKeyVaultProperties()
+                name: this.Name,
+                location: this.Location,
+                tags: this.GetTags(),
+                identity: this.Identity?.GetIdentity(),
+                sku: this.CreateClusterSku(),
+                isDoubleEncryptionEnabled: this.IsDoubleEncryptionEnabled,
+                isAvailabilityZonesEnabled: this.IsAvailabilityZonesEnabled,
+                billingType: this.BillingType,
+                keyVaultProperties: this.KeyVaultProperties?.GetKeyVaultProperties(),
+                capacityReservationProperties: this.CapacityReservationProperties.GetCapacityReservationProperties()
                 );
         }
 
-        private const string Pattern = "^[A-Za-z0-9][A-Za-z0-9-]+[A-Za-z0-9]$";
-
-        private void validateClusterName()
+        public ClusterPatch GetClusterPatch()
         {
-            Regex regex = new Regex(Pattern);
-            if (!regex.Match(Name).Success)
+            return new ClusterPatch(
+                keyVaultProperties: this.KeyVaultProperties?.GetKeyVaultProperties(),
+                billingType: this.BillingType,
+                identity: this.Identity.GetIdentity(),
+                sku: this.CreateClusterSku(),
+                tags: this.GetTags()
+            );
+        }
+
+        private ClusterSku CreateClusterSku()
+        {
+            if (this.CapacityReservationProperties == null)
             {
-                throw new PSArgumentException("ClusterName should starts/ends with numerical or alphabetical characters only");
+                return null;
             }
 
-            if (Name.Length < 4 || Name.Length > 63)
-            {
-                throw new PSArgumentException("length of ClusterName need to be in range ''");
-            }
+            return new ClusterSku(name: this.CapacityReservationProperties.SkuName, capacity: this.CapacityReservationProperties.MaxCapacity);
         }
     }
-
 }

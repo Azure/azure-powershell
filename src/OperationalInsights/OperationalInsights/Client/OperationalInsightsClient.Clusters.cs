@@ -71,10 +71,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 throw new PSInvalidOperationException(string.Format("cluster: '{0}' already exists in '{1}'. Please use Update-AzOperationalInsightsCluster for updating.", clusterName, resourceGroupName));
             }
 
-            return new PSCluster(this.OperationalInsightsManagementClient.Clusters.CreateOrUpdate(resourceGroupName, clusterName, parameters.getCluster()));
+            return new PSCluster(this.OperationalInsightsManagementClient.Clusters.CreateOrUpdate(resourceGroupName, clusterName, parameters.GetCluster()));
         }
 
-        public virtual PSCluster UpdatePSCluster(string resourceGroupName, string clusterName, PSClusterPatch parameters)
+        public virtual PSCluster UpdatePSCluster(string resourceGroupName, string clusterName, PSCluster parameters)
         {
             PSCluster existingCluster;
             try
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 ? existingCluster.BillingType
                 : parameters.BillingType;
 
-            parameters.Sku = parameters.Sku != null ? parameters.Sku : existingCluster.Sku;
+            parameters.CapacityReservationProperties = parameters.CapacityReservationProperties ?? existingCluster.CapacityReservationProperties;
 
             var response = this.OperationalInsightsManagementClient.Clusters.Update(resourceGroupName, clusterName, parameters.GetClusterPatch());
 

@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 {
     public class PSCapacityReservationProperties
     {
-
         /// <summary>
         /// The last time Sku was updated.
         /// </summary>
@@ -28,10 +27,34 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
         /// </summary>
         public long? MinCapacity { get; private set; }
 
-        public PSCapacityReservationProperties(CapacityReservationProperties capacityReservationProperties)
+        /// <summary>
+        /// CapacityReservation value in GB.
+        /// </summary>
+        public long? MaxCapacity { get; private set; }
+
+        /// <summary>
+        /// SKU name can be 'CapacityReservation'
+        /// </summary>
+        public string SkuName { get; set; }
+
+        public PSCapacityReservationProperties(long? maxCapacity, string skuName)
         {
-            this.LastSkuUpdate = capacityReservationProperties.LastSkuUpdate;
-            this.MinCapacity = capacityReservationProperties.MinCapacity;
+            this.MinCapacity = maxCapacity;
+            this.SkuName = skuName;
+            this.LastSkuUpdate = null;
+            this.MinCapacity = null;
+        }
+
+        public PSCapacityReservationProperties(CapacityReservationProperties capacityReservationProperties, ClusterSku sku)
+        {
+            this.LastSkuUpdate = capacityReservationProperties?.LastSkuUpdate;
+            this.MinCapacity = capacityReservationProperties?.MinCapacity;
+            this.MaxCapacity = sku?.Capacity;
+            this.SkuName = sku?.Name;
+        }
+        internal CapacityReservationProperties GetCapacityReservationProperties()
+        {
+            return new CapacityReservationProperties(LastSkuUpdate, MinCapacity);
         }
     }
 }
