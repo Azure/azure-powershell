@@ -61,7 +61,8 @@ Accept wildcard characters: False
 ```
 
 ### -Column
-The table columns passed as @{ ColName1 = Type; ColName2 = Type; ColName3 = Type}.
+The table columns passed as Hashtable.
+for example: @{ ColName1 = Type; ColName2 = Type; ColName3 = Type}.
 
 ```yaml
 Type: System.Collections.Hashtable

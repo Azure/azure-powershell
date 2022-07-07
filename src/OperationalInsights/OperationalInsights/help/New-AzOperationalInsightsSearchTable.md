@@ -167,6 +167,7 @@ Accept wildcard characters: False
 
 ### -TableName
 The table name.
+For Search table the name should end with '_SRCH'
 
 ```yaml
 Type: System.String

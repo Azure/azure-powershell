@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-the identity type, value can be 'SystemAssigned', 'None'.
+the identity type, value can be 'SystemAssigned', 'None', 'UserAssigned'.
 
 ```yaml
 Type: System.String

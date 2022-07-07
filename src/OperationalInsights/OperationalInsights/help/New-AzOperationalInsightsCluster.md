@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-the identity type, value can be 'SystemAssigned', 'None'.
+the identity type, value can be 'SystemAssigned', 'None', 'UserAssigned'.
 
 ```yaml
 Type: System.String
@@ -238,7 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuCapacity
-Sku Capacity, value need to be multiple of 100 and in the range of 1000-2000.
+Sku Capacity, value need to be multiple of 100 and at least 1000.
 
 ```yaml
 Type: System.Int64
