@@ -114,6 +114,10 @@ namespace StaticAnalysis.IssueChecker
                         hasError = true;
                         errorText.AppendLine(record.FormatRecord());
                     }
+                    elseif (record.Severity > 1 && reportRecordTypeName.Equals(typeof(ExampleIssue).FullName))
+                    {
+                        errorText.AppendLine(record.FormatRecord());
+                    }
                 }
                 if (hasError)
                 {
