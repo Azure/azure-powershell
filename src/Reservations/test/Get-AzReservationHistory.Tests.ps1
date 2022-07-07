@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzReservationHistory'))
 
 Describe 'Get-AzReservationHistory' {
     It 'Get' {
-        $response =Get-AzReservationHistory -ReservationOrderId "10000000-aaaa-bbbb-cccc-100000000001" -ReservationId "50000000-aaaa-bbbb-cccc-100000000003"
+        $response = Get-AzReservationHistory -ReservationOrderId "10000000-aaaa-bbbb-cccc-100000000001" -ReservationId "50000000-aaaa-bbbb-cccc-100000000003"
     
         $response | Should -Not -Be $null
         $response.Count | Should -BeGreaterThan 0

@@ -44,12 +44,12 @@ $reservationToPurchase2Properties = @{
 }
 $reservationToPurchase1 = @{
     Location = "westeurope"
-    SkuName = "Standard_B12ms"
+    Sku = "Standard_B12ms"
     Properties = $reservationToPurchase1Properties
 }
 $reservationToPurchase2 = @{
     Location = "westeurope"
-    SkuName = "Standard_B8ms"
+    Sku = "Standard_B8ms"
     Properties = $reservationToPurchase2Properties
 }
 $reservationsToPurchase = @($reservationToPurchase1, $reservationToPurchase2)
