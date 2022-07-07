@@ -179,7 +179,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [Parameter(ParameterSetName = VMwareToAzureWithDiskType)]
         [Parameter(ParameterSetName = VMwareToAzureParameterSet)]
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
         [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput)]
