@@ -1,12 +1,12 @@
 ### Example 1: Create or update the metadata of an IoT Central application.
 ```powershell
-New-AzIoTCentralApp -Name azpstest-iot -ResourceGroupName jinpei-gp -Location westus -SkuName ST2 -DisplayName "My IoT Central App" -IdentityType 'SystemAssigned' -Subdomain "my-iot-central-app" -Template "iotc-pnp-preview@1.0.0" -Tag @{"IoTCentral"="apiversion20220601"}
+New-AzIoTCentralApp -Name azpstest-iot -ResourceGroupName azpstest-gp -Location westus -SkuName ST2 -DisplayName "My IoT Central App" -IdentityType 'SystemAssigned' -Subdomain "my-iot-central-app" -Template "iotc-pnp-preview@1.0.0" -Tag @{"IoTCentral"="apiversion20220601"}
 ```
 
 ```output
 Location Name         ResourceGroupName
 -------- ----         -----------------
-westus   azpstest-iot jinpei-gp
+westus   azpstest-iot azpstest-gp
 ```
 
 Create or update the metadata of an IoT Central application.
