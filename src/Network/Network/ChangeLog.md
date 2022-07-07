@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed bug that causes an overflow due to incorrect SNAT private ranges IP validation.
 * Added new cmdlets to create/manage L4(TCP/TLS) objects for ApplicationGateway:
 	- `Get-AzApplicationGatewayListener`	
 	- `New-AzApplicationGatewayListener`	

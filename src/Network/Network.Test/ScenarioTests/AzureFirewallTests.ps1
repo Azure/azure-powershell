@@ -1350,7 +1350,7 @@ function Test-AzureFirewallPrivateRangeCRUD {
     $publicIpName = Get-ResourceName
 
     $privateRange1 = @("IANAPrivateRanges", "0.0.0.0/0", "66.92.0.0/16")
-    $privateRange2 = @("3.3.0.0/24", "98.0.0.0/8")
+    $privateRange2 = @("3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20","10.226.0.0/16")
     
     try {
         # Create the resource group
