@@ -67,11 +67,26 @@ The Storage Insight consumes data from the WADWindowsEventLogsTable table in the
 
 ## PARAMETERS
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Containers
 Specifies the list of containers that contain the data.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +101,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -101,7 +116,7 @@ Accept wildcard characters: False
 The ETag of the StorageInsight.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +131,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -131,7 +146,7 @@ Accept wildcard characters: False
 Specifies the name of the Storage Insight.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +161,7 @@ Accept wildcard characters: False
 Specifies the name of an Azure resource group that contains a workspace.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByWorkspaceName
 Aliases:
 
@@ -161,7 +176,7 @@ Accept wildcard characters: False
 Specifies the access key for the storage account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +192,7 @@ Specifies the Azure resource of a storage account.
 This can be retrieved by executing the Get-AzStorageAccount cmdlet and accessing the *Id* parameter of the result.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -192,7 +207,7 @@ Accept wildcard characters: False
 Specifies the list of tables that provide the data.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -207,7 +222,7 @@ Accept wildcard characters: False
 Tags of the Storage Insight
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -218,11 +233,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Workspace
 Specifies the workspace for the new Storage Insight.
 
 ```yaml
-Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+Type: PSWorkspace
 Parameter Sets: ByWorkspaceObject
 Aliases:
 
@@ -237,7 +268,7 @@ Accept wildcard characters: False
 Specifies the name of an existing workspace.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByWorkspaceName
 Aliases:
 
@@ -245,37 +276,6 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -49,11 +49,26 @@ Properties        : {"state":"OnPremiseDisabled"}
 
 ## PARAMETERS
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,7 +83,7 @@ Accept wildcard characters: False
 Specifies the name of a resource group that contains computers.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByWorkspaceName
 Aliases:
 
@@ -79,11 +94,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Workspace
 Specifies a workspace in which this cmdlet operates.
 
 ```yaml
-Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+Type: PSWorkspace
 Parameter Sets: ByWorkspaceObject
 Aliases:
 
@@ -98,7 +129,7 @@ Accept wildcard characters: False
 Specifies the name of a workspace in which this cmdlet operates.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByWorkspaceName
 Aliases:
 
@@ -106,37 +137,6 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -78,7 +78,7 @@ See [https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions](htt
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 If specified, rendering information for metric queries will be included in the response.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 If specified, query statistics will be included in the response.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 The query to execute.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 The timespan to bound the query by.
 
 ```yaml
-Type: System.Nullable`1[System.TimeSpan]
+Type: TimeSpan
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +169,7 @@ Puts an upper bound on the amount of time the server will spend processing the q
 See: https://dev.loganalytics.io/documentation/Using-the-API/Timeouts
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +184,7 @@ Accept wildcard characters: False
 The workspace
 
 ```yaml
-Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+Type: PSWorkspace
 Parameter Sets: ByWorkspaceObject
 Aliases:
 
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 The workspace ID.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByWorkspaceId
 Aliases:
 

@@ -52,7 +52,7 @@ Update a data source.
 Specifies the data source that this cmdlet updates.
 
 ```yaml
-Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource
+Type: PSDataSource
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 

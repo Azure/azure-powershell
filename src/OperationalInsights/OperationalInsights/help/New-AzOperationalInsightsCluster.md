@@ -59,7 +59,7 @@ Create cluster
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 Billing type can be set as 'Cluster' or 'Workspaces'
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Cluster, Workspaces
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 The cluster name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -101,11 +101,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -120,7 +135,7 @@ Accept wildcard characters: False
 the identity type, value can be 'SystemAssigned', 'None', 'UserAssigned'.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: SystemAssigned, None, UserAssigned
@@ -136,7 +151,7 @@ Accept wildcard characters: False
 Flag for availability Zones,can be set to true only in supported regions
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +166,7 @@ Accept wildcard characters: False
 Flag for Double Encryption, can be set to true only in supported regions
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +181,7 @@ Accept wildcard characters: False
 Key Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -181,7 +196,7 @@ Accept wildcard characters: False
 Key Vault Uri
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +211,7 @@ Accept wildcard characters: False
 Key Version
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -211,7 +226,7 @@ Accept wildcard characters: False
 The geographic region that the cluster will be deployed.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -226,7 +241,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -241,7 +256,7 @@ Accept wildcard characters: False
 Sku Capacity, value need to be multiple of 100 and at least 1000.
 
 ```yaml
-Type: System.Int64
+Type: Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -256,7 +271,7 @@ Accept wildcard characters: False
 Sku Name, now can be 'CapacityReservation' only
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: CapacityReservation
@@ -272,24 +287,9 @@ Accept wildcard characters: False
 Tags of the cluster
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -303,7 +303,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

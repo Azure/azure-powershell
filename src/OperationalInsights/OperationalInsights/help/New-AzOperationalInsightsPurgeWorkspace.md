@@ -44,7 +44,7 @@ Purges data in an Log Analytics workspace's table
 The column of the table over which the given query should run
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: CreateByNameParameterSet
 Aliases:
 
@@ -55,11 +55,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -74,7 +89,7 @@ Accept wildcard characters: False
 Don't ask for confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +104,7 @@ Accept wildcard characters: False
 When filtering over custom dimensions, this key will be used as the name of the custom dimension.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: CreateByNameParameterSet
 Aliases:
 
@@ -105,7 +120,7 @@ A query operator to evaluate over the provided column and value(s).
 Supported operators are ==, =~, in, in~, \>, \>=, \<, \<=, between, and have the same behavior as they would in a KQL query.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: CreateByNameParameterSet
 Aliases:
 
@@ -120,7 +135,7 @@ Accept wildcard characters: False
 Specifies the table and filters to be purged.
 
 ```yaml
-Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspacePurgeBody
+Type: PSWorkspacePurgeBody
 Parameter Sets: CreateByObjectParameterSet
 Aliases:
 
@@ -135,7 +150,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: CreateByNameParameterSet
 Aliases:
 
@@ -147,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: CreateByObjectParameterSet
 Aliases:
 
@@ -162,7 +177,7 @@ Accept wildcard characters: False
 Table name from which to purge data.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: CreateByNameParameterSet
 Aliases:
 
@@ -178,7 +193,7 @@ the value for the operator to function over.
 This can be a number (e.g., \> 100), a string (timestamp \>= '2017-09-01') or array of values.
 
 ```yaml
-Type: System.Object
+Type: Object
 Parameter Sets: CreateByNameParameterSet
 Aliases:
 
@@ -189,11 +204,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 The name of the workspace to purge.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: CreateByNameParameterSet
 Aliases:
 
@@ -205,43 +236,12 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: CreateByObjectParameterSet
 Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
