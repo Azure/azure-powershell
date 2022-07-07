@@ -29,27 +29,19 @@ Returns one or more `Reservations` in exchange for one or more `Reservation` pur
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Proceed reservations exchange with session ID obtained from Invoke-AzReservationCalculateExchange
 ```powershell
-{{ Add code here }}
+Invoke-AzReservationExchange -SessionId 8982593c-679e-4d4e-b971-c48b6d824cba
 ```
 
 ```output
-{{ Add output here }}
+SessionId                            Status   
+---------                            ------   
+8982593c-679e-4d4e-b971-c48b6d824cba Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Proceed reservations exchange with session ID obtained from Invoke-AzReservationCalculateExchange.
+This is a long running POST operation which can take around 10ish mins.
 
 ## PARAMETERS
 

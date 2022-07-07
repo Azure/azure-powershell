@@ -47,27 +47,19 @@ Purchase `ReservationOrder` and create resource under the specified URI.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new reservation
 ```powershell
-{{ Add code here }}
+New-AzReservation -AppliedScopeType 'Shared' -BillingPlan 'Upfront' -billingScopeId '/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665' -DisplayName 'TestVm2222' -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y' -ReservationOrderId '846655fa-d9e7-4fb8-9512-3ab7367352f1'
 ```
 
 ```output
-{{ Add output here }}
+ReservationOrderId                   DisplayName Term State     Quantity
+------------------                   ----------- ---- -----     --------
+846655fa-d9e7-4fb8-9512-3ab7367352f1 TestVm2222  P1Y  Succeeded 1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Proceed reservations purchase with reservation order ID obtained from Get-AzReservationQuote.
+This is a long running POST operation which can take around 10ish mins.
 
 ## PARAMETERS
 

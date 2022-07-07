@@ -43,7 +43,7 @@ The two `Reservation`s being merged must have same properties.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Merge two reservations into one single reservation
 ```powershell
 {{ Add code here }}
 ```
@@ -52,18 +52,8 @@ The two `Reservation`s being merged must have same properties.
 {{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Merge two reservations into one single reservation.
+The two reservations must have the same reservation order id
 
 ## PARAMETERS
 

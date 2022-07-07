@@ -32,27 +32,91 @@ Calculate price for placing a `ReservationOrder`.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get reservation price with 'Upfront' billing plan
 ```powershell
-{{ Add code here }}
+Get-AzReservationQuote -AppliedScopeType 'Shared' -BillingPlan 'Upfront' -billingScopeId '/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665' -DisplayName {your RI name} -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y'
 ```
 
 ```output
-{{ Add output here }}
+BillingCurrencyTotal    : {
+                            "currencyCode": "GBP",
+                            "amount": 24
+                          }
+GrandTotal              : 0
+IsBillingPartnerManaged : 
+IsTaxIncluded           : 
+NetTotal                : 0
+PaymentSchedule         : 
+PricingCurrencyTotal    : {
+                            "currencyCode": "GBP",
+                            "amount": 24
+                          }
+ReservationOrderId      : 846655fa-d9e7-4fb8-9512-3ab7367352f1
+SkuDescription          : Standard_b1ls
+SkuTitle                : Reserved VM Instance, Standard_B1ls, US West, 1 Year
+TaxTotal                : 0
 ```
 
-{{ Add description here }}
+Get reservation price with 'Upfront' billing plan
 
-### Example 2: {{ Add title here }}
+### Example 2: Get reservation price with 'Monthly' billing plan
 ```powershell
-{{ Add code here }}
+Get-AzReservationQuote -AppliedScopeType 'Shared' -BillingPlan 'Monthly' -billingScopeId '/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665' -DisplayName {your RI name} -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y'
 ```
 
 ```output
-{{ Add output here }}
+BillingCurrencyTotal    : {
+                            "currencyCode": "GBP",
+                            "amount": 24
+                          }
+GrandTotal              : 0
+IsBillingPartnerManaged : 
+IsTaxIncluded           : 
+NetTotal                : 0
+PaymentSchedule         : {{
+                            "dueDate": "2022-07-07",
+                            "pricingCurrencyTotal": {
+                              "currencyCode": "GBP",
+                              "amount": 2
+                            },
+                            "billingCurrencyTotal": {
+                              "currencyCode": "GBP",
+                              "amount": 2
+                            },
+                            "status": "Scheduled"
+                          }, {
+                            "dueDate": "2022-08-07",
+                            "pricingCurrencyTotal": {
+                              "currencyCode": "GBP",
+                              "amount": 2
+                            },
+                            "status": "Scheduled"
+                          }, {
+                            "dueDate": "2022-09-07",
+                            "pricingCurrencyTotal": {
+                              "currencyCode": "GBP",
+                              "amount": 2
+                            },
+                            "status": "Scheduled"
+                          }, {
+                            "dueDate": "2022-10-07",
+                            "pricingCurrencyTotal": {
+                              "currencyCode": "GBP",
+                              "amount": 2
+                            },
+                            "status": "Scheduled"
+                          }…}
+PricingCurrencyTotal    : {
+                            "currencyCode": "GBP",
+                            "amount": 24
+                          }
+ReservationOrderId      : 23d4106a-8ec0-4709-839f-0e8073459e83
+SkuDescription          : Standard_b1ls
+SkuTitle                : Reserved VM Instance, Standard_B1ls, US West, 1 Year
+TaxTotal                : 0
 ```
 
-{{ Add description here }}
+Get reservation price with 'Monthly' billing plan
 
 ## PARAMETERS
 
