@@ -146,6 +146,20 @@ function New-AzRedisEnterpriseCache {
         ${EvictionPolicy},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [System.String]
+        # Name for the group of linked database resources
+        ${GroupNickname},
+
+        [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.ILinkedDatabase[]]
+        # List of database resources to link with this database
+        # To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
+        ${LinkedDatabase},
+
+        [Parameter(ParameterSetName='CreateClusterWithDatabase')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy]
@@ -273,7 +287,7 @@ function New-AzRedisEnterpriseCache {
         $null = $GetPSBoundParameters.Remove("RdbPersistenceEnabled")
         $null = $GetPSBoundParameters.Remove("RdbPersistenceFrequency")
         $null = $GetPSBoundParameters.Remove("GroupNickname")
-        $null = $GetPSBoundParameters.Remove("LinkedDatabases")
+        $null = $GetPSBoundParameters.Remove("LinkedDatabase")
         $cluster = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCache @GetPSBoundParameters
 
         if (('CreateClusterOnly') -contains $PSCmdlet.ParameterSetName)
