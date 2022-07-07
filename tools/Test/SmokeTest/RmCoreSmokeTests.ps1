@@ -166,8 +166,8 @@ $generalCommands = @(
     @{
         Name = "Import Az.Accounts in Parallel";
         Command = {
-            gci env:
-            if ($null -ne $env:SYSTEM_DEFINITIONID -or $null -ne $env:TF_BUILD) {
+            gci env: | write-output
+            if ($null -ne $env:SYSTEM_DEFINITIONID -or $null -ne $env:Release_DefinitionId) {
                 Write-Host "Skipping because 'Start-Job' is not supported by design in scenarios where PowerShell is being hosted in other applications."
                 return
             }
