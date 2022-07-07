@@ -36,8 +36,8 @@ Describe 'New-AzRedisEnterpriseCacheDatabase' {
     }
     #>
     It 'Create a georeplicated database' {
-        $idCluster3 = "`"{{id:`"/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Cache/redisEnterprise/{2}/databases/default`"}}`"" -f $env.SubscriptionId,$env.ResourceGroupName,$env.ClusterName3
-        $idCluster4 = "`"{{id:`"/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Cache/redisEnterprise/{2}/databases/default`"}}`"" -f $env.SubscriptionId,$env.ResourceGroupName,$env.ClusterName4
+        $idCluster3 = "{{id:`"/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Cache/redisEnterprise/{2}/databases/default`"}}" -f $env.SubscriptionId,$env.ResourceGroupName,$env.ClusterName3
+        $idCluster4 = "{{id:`"/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Cache/redisEnterprise/{2}/databases/default`"}}" -f $env.SubscriptionId,$env.ResourceGroupName,$env.ClusterName4
         $splat = @{
             Name = $env.ClusterName3
             ResourceGroupName = $env.ResourceGroupName
@@ -62,7 +62,7 @@ Describe 'New-AzRedisEnterpriseCacheDatabase' {
         $database.ResourceState | Should -Be "Running"
         $database.GeoReplicationGroupNickname | Should -Be $splat.GroupNickname
         $id = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Cache/redisEnterprise/{2}/databases/default" -f $env.SubscriptionId,$env.ResourceGroupName,$env.ClusterName3
-        $database.GeoReplicationLinkedDatabase[1].Id | Should -Be $id
+        $database.GeoReplicationLinkedDatabase[0].Id | Should -Be $id
     }
         <#Create another cache with other command for linking*/#>
 }

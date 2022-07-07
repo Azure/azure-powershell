@@ -112,8 +112,9 @@ Describe 'New-AzRedisEnterpriseCache' {
         $cache.Type | Should -Be "Microsoft.Cache/redisEnterprise"
         $cache.ProvisioningState | Should -Be "Succeeded"
         $cache.ResourceState | Should -Be "Running"
-        $cache.Database.GeoReplicationGroupNickname | Should -Be $splat.GroupNickname
+        $databaseName = "default"
+        $cache.Database[$databaseName].GeoReplicationGroupNickname | Should -Be $splat.GroupNickname
         $id = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Cache/redisEnterprise/{2}/databases/default" -f $env.SubscriptionId,$env.ResourceGroupName,$env.ClusterName4
-        $cache.Database.GeoReplicationLinkedDatabase[0].Id | Should -Be $id
+        $cache.Database[$databaseName].GeoReplicationLinkedDatabase[0].Id | Should -Be $id
     }
 }
