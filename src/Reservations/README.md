@@ -145,6 +145,20 @@ directive:
       verb: Update
       subject-prefix: ''
       subject: Reservation
+  - where:
+      verb: Rename
+      subject: ReservationOrderDirectory
+    set:
+      verb: Move
+      subject-prefix: Reservation
+      subject: Directory
+    
+  ### Hide cmdlet
+  - where:
+      verb: Split
+      subject-prefix: ''
+      subject: Reservation
+    hide: true
 
   ### Rename property name
   - where:

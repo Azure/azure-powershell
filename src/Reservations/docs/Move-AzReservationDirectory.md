@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/powershell/module/az.reservations/rename-azreservationsreservationorderdirectory
+online version: https://docs.microsoft.com/powershell/module/az.reservations/move-azreservationdirectory
 schema: 2.0.0
 ---
 
-# Rename-AzReservationsReservationOrderDirectory
+# Move-AzReservationDirectory
 
 ## SYNOPSIS
 Change directory (tenant) of `ReservationOrder` and all `Reservation` under it to specified tenant id
@@ -14,26 +14,26 @@ Change directory (tenant) of `ReservationOrder` and all `Reservation` under it t
 
 ### ChangeExpanded (Default)
 ```
-Rename-AzReservationsReservationOrderDirectory -ReservationOrderId <String> [-DestinationTenantId <String>]
+Move-AzReservationDirectory -ReservationOrderId <String> [-DestinationTenantId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Change
 ```
-Rename-AzReservationsReservationOrderDirectory -ReservationOrderId <String> -Body <IChangeDirectoryRequest>
+Move-AzReservationDirectory -ReservationOrderId <String> -Body <IChangeDirectoryRequest>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ChangeViaIdentity
 ```
-Rename-AzReservationsReservationOrderDirectory -InputObject <IReservationsIdentity>
- -Body <IChangeDirectoryRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Move-AzReservationDirectory -InputObject <IReservationsIdentity> -Body <IChangeDirectoryRequest>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ChangeViaIdentityExpanded
 ```
-Rename-AzReservationsReservationOrderDirectory -InputObject <IReservationsIdentity>
- [-DestinationTenantId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Move-AzReservationDirectory -InputObject <IReservationsIdentity> [-DestinationTenantId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -42,16 +42,13 @@ Get Available Scopes for `Reservation`.\n
 Merge the specified `Reservation`s into a new `Reservation`.
 The two `Reservation`s being merged must have same properties.
 
+### [Move-AzReservationDirectory](Move-AzReservationDirectory.md)
+Change directory (tenant) of `ReservationOrder` and all `Reservation` under it to specified tenant id
+
 ### [New-AzReservation](New-AzReservation.md)
 Purchase `ReservationOrder` and create resource under the specified URI.
 
-### [Rename-AzReservationsReservationOrderDirectory](Rename-AzReservationsReservationOrderDirectory.md)
-Change directory (tenant) of `ReservationOrder` and all `Reservation` under it to specified tenant id
-
 ### [Split-AzReservation](Split-AzReservation.md)
-Split a `Reservation` into two `Reservation`s with specified quantity distribution.
-
-### [Split-AzReservation1](Split-AzReservation1.md)
 Split a Reservation order.
 
 ### [Update-AzReservation](Update-AzReservation.md)
