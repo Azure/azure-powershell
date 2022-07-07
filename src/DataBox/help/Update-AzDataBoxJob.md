@@ -25,6 +25,7 @@ Updates the properties of an existing job.
 ## EXAMPLES
 
 ### Example 1: Update databox job encryption from microsoft managed to customer managed with user assigned identities 
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 
@@ -55,6 +56,7 @@ Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonSchedu
 Update databox job encryption from microsoft managed to customer managed with user assigned identities.
 
 ### Example 2: Update databox job encryption from microsoft managed to customer managed with system identities in 2 updates
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $databoxUpdate = Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "SystemAssigned"
 

@@ -25,6 +25,7 @@ The **Add-AzKeyVaultCertificate** cmdlet starts the process of enrolling for a c
 ## EXAMPLES
 
 ### Example 1: Add a certificate
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
 Add-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01" -CertificatePolicy $Policy

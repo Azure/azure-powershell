@@ -46,6 +46,7 @@ To update other fields use the CreateOrUpdate method.
 ## EXAMPLES
 
 ### Example 1: Update the tags of a private link scope
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $scope = Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
 
