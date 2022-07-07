@@ -111,7 +111,7 @@ function Get-ExamplesDetailsFromMd {
             }
             # Extract code from the first "\n" to the last "\n"
             foreach ($exampleCodeBlock in $exampleCodeBlocks) {
-                $code = $exampleCodeBlock.Value.Substring($exampleCodeBlock.Value.IndexOf("`n"), $exampleCodeBlock.Value.LastIndexOf("`n") - $exampleCodeBlock.Value.IndexOf("`n")).Trim()
+                $code = $exampleCodeBlock.Value.Substring($exampleCodeBlock.Value.IndexOf("`n"), $exampleCodeBlock.Value.LastIndexOf("`n") - $exampleCodeBlock.Value.IndexOf("`n"))
                 if ($code -ne ""-and $code -notmatch "{{ Add code here }}") {
                     $exampleCodes += $code
                 }
@@ -291,12 +291,13 @@ function Measure-SectionMissingAndOutputScript {
     else {
         foreach ($exampleDetails in $examplesDetails) {
             $exampleNumber = $exampleDetails.Num
+            $exampleCodes = $exampleDetails.Codes
             $_missingExampleTitle = ($exampleDetails.Title | Select-String -Pattern "{{[A-Za-z ]*}}").Count
             $_missingExampleCode = ($exampleDetails.Codes | Select-String -Pattern "{{[A-Za-z ]*}}").Count
             $_missingExampleOutput = ($exampleDetails.Outputs | Select-String -Pattern "{{[A-Za-z ]*}}").Count
             $_missingExampleDescription = ($exampleDetails.Description | Select-String -Pattern "{{[A-Za-z ]*}}").Count
-            $_needDeleting = ($exampleDetails.CodeBlocks | Select-String -Pattern "\n([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*" -CaseSensitive).Count +
-                ($exampleDetails.CodeBlocks | Select-String -Pattern "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1" -CaseSensitive).Count
+            $_needDeleting = ($exampleDetails.Codes | Select-String -Pattern "`n([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*" -CaseSensitive).Count +
+                ($exampleDetails.Codes | Select-String -Pattern "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1" -CaseSensitive).Count
             switch ($exampleDetails) {
                 {$exampleDetails.Title -eq "" -or $_missingExampleTitle -ne 0} {
                     $missingExampleTitle ++
@@ -372,26 +373,24 @@ function Measure-SectionMissingAndOutputScript {
                         Remediation = "Delete the prompt of example."
                     }
                     $results += $result
+                    $newCode = $exampleCodes -replace "`n([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*", "`n"
+                    $newCode = $newCode -replace "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1"
+                    $exampleCodes = $newCode
                 }
             }
 
-            # Delete prompts
-            $exampleCodes = $exampleDetails.Codes
-            for ($i = $exampleCodes.Count - 1; $i -ge 0; $i--) {
-                $newCode = $exampleDetails.Codes[$i] -replace "^(([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*)"
-                $newCode = $newCode -replace "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1"
-                $exampleCodes[$i] = $newCode
-            }
             
             # Output example codes to "TempScript.ps1"
             if ($OutputScriptsInFile.IsPresent) {
                 $cmdletExamplesScriptPath = "$OutputFolder\TempScript.ps1"
-                $functionHead = "function $Module-$Cmdlet-$exampleNumber{"
-                Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionHead
-                $exampleCodes = $exampleCodes -join "`n"
-                Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $exampleCodes
-                $functionTail = "}`n"
-                Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionTail
+                if($exampleCodes -ne $null){
+                    $exampleCodes = $exampleCodes.Trim()
+                    $functionHead = "function $Module-$Cmdlet-$exampleNumber{"
+                    Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionHead
+                    Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $exampleCodes
+                    $functionTail = "}`n"
+                    Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionTail
+                }
             }
         }
     }
