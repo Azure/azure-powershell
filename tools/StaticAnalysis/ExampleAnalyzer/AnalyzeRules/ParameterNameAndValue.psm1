@@ -169,10 +169,10 @@ function Measure-IsTypeMatched{
     }
     $Converter = [System.ComponentModel.TypeDescriptor]::GetConverter($ExpectedType)  
     if ($ActualType -eq $ExpectedType -or
-    $ActualType.GetInterfaces().Contains($ExpectedType) -or 
-    $ExpectedType.GetInterfaces().Contains($ActualType) -or 
-    $ActualType.IsSubclassOf($ExpectedType) -or 
-    $Converter.CanConvertFrom($ActualType)) {
+        $ActualType.GetInterfaces().Contains($ExpectedType) -or 
+        $ExpectedType.GetInterfaces().Contains($ActualType) -or 
+        $ActualType.IsSubclassOf($ExpectedType) -or 
+        $Converter.CanConvertFrom($ActualType)) {
         return $true
     }
     return $false
@@ -231,9 +231,11 @@ function Get-AssignedParameterExpression {
         if($CommandElement_Copy.CommandElements[0].Extent.Text -eq "New-Object"){
             if($CommandElement_Copy.CommandElements[1].Extent.Text -eq "-TypeName"){
                 $TypeName = $CommandElement_Copy.CommandElements[2].Extent.Text -replace "`""
+                $TypeName = $TypeName -replace "'"
             }
             else{
-                $TypeName = $CommandElement_Copy.CommandElements[1].Extent.Text
+                $TypeName = $CommandElement_Copy.CommandElements[1].Extent.Text -replace "`""
+                $TypeName = $TypeName -replace "'"
             }
             $OutputType = $TypeName -as [Type]
             $OutputTypes = @() + $OutputType
