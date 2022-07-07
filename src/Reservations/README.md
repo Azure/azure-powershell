@@ -51,7 +51,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/reservations.json
+  - $(repo)/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/reservations.json
 module-version: 0.1.0
 title: Reservations
 subject-prefix: $(service-name)

@@ -18,7 +18,7 @@ Split-AzReservation -OrderId <String> -Quantity <Int32[]> -ReservationId <String
 ```
 
 ## DESCRIPTION
-Split a new Reservation order.
+Split a Reservation order.
 
 ## EXAMPLES
 
