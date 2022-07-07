@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 
         public PSCapacityReservationProperties(long? maxCapacity, string skuName)
         {
-            this.MinCapacity = maxCapacity;
+            this.MaxCapacity = maxCapacity;
             this.SkuName = skuName;
             this.LastSkuUpdate = null;
             this.MinCapacity = null;
