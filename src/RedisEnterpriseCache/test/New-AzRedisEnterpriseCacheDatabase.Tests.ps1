@@ -12,6 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzRedisEnterpriseCacheDatabase' {
+    <#
     It 'Create' {
         $splat = @{
             Name = $env.ClusterName2
@@ -33,8 +34,9 @@ Describe 'New-AzRedisEnterpriseCacheDatabase' {
         $database.ProvisioningState | Should -Be "Succeeded"
         $database.ResourceState | Should -Be "Running"
     }
+    #>
     It 'Create a georeplicated database' {
-        $id = "{{id:`"/subscriptions/{0}/resourceGroups/{1}/Microsoft.Cache/redisEnterprise/{2}/databases/default`"}}"
+        $id = "{{id:`"/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Cache/redisEnterprise/{2}/databases/default`"}}"
         $splat = @{
             Name = $env.ClusterName3
             ResourceGroupName = $env.ResourceGroupName
@@ -45,8 +47,11 @@ Describe 'New-AzRedisEnterpriseCacheDatabase' {
             GroupNickname = "GroupName" 
             LinkedDatabase = $id -f $env.SubscriptionId,$env.ResourceGroupName,$env.ClusterName3
         }
+        Write-Host $splat.Name
+        Write-Host $splat.LinkedDatabase
         $database = New-AzRedisEnterpriseCacheDatabase @splat
         $databaseName = "default"
+        Write-Host ($database | Format-Table | Out-String)
         $database.Name | Should -Be $databaseName
         $database.Type | Should -Be "Microsoft.Cache/redisEnterprise/databases"
         $database.ClientProtocol | Should -Be $splat.ClientProtocol
@@ -54,8 +59,9 @@ Describe 'New-AzRedisEnterpriseCacheDatabase' {
         $database.EvictionPolicy | Should -Be $splat.EvictionPolicy
         $database.ProvisioningState | Should -Be "Succeeded"
         $database.ResourceState | Should -Be "Running"
-        $database.GeoReplication.GroupNickname | Should -Be "GroupName"
-        $database.GeoReplication.LinkedDatabase | Should -Be "/subscriptions/{0}/resourceGroups/{1}/Microsoft.Cache/redisEnterprise/{2}/databases/default" -f $env.SubscriptionId,$env.ResourceGroupName,$env.ClusterName3
+        $database.GeoReplicationGroupNickname | Should -Be $splat.GroupNickname
+        $id = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Cache/redisEnterprise/{2}/databases/default" -f $env.SubscriptionId,$env.ResourceGroupName,$env.ClusterName3
+        $database.GeoReplicationLinkedDatabase[0].Id | Should -Be $id
     }
         <#Create another cache with other command for linking*/#>
 }
