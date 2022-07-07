@@ -60,10 +60,9 @@ Get-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp
 ```
 
 ```output
-Name                     Location NoradId TitleLine   ResourceGroupName
-----                     -------- ------- ---------   -----------------
-azpstest-test-spacecraft westus2  12345   ISS (ZARYA) azpstest-gp
-azps-orbitalspacecraft   eastus   12345   ISS (ZARYA) azpstest-gp
+Name                   Location NoradId TitleLine ResourceGroupName
+----                   -------- ------- --------- -----------------
+azps-orbitalspacecraft westus2  27424   AQUA      azpstest-gp
 ```
 
 Gets the specified spacecraft in a specified resource group.
@@ -74,9 +73,9 @@ Get-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name azps-orbitalspacecr
 ```
 
 ```output
-Name                   Location NoradId TitleLine   ResourceGroupName
-----                   -------- ------- ---------   -----------------
-azps-orbitalspacecraft eastus   12345   ISS (ZARYA) azpstest-gp
+Name                   Location NoradId TitleLine ResourceGroupName
+----                   -------- ------- --------- -----------------
+azps-orbitalspacecraft westus2  27424   AQUA      azpstest-gp
 ```
 
 Get the specified spacecraft in a specified Name.

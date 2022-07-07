@@ -1,31 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Gets the specified  available ground station.
 ```powershell
 Get-AzOrbitalAvailableGroundStation -Capability 'EarthObservation'
 ```
 
 ```output
-Location      Name             ResourceGroupName
---------      ----             -----------------
-westus2       WESTUS2_0
-westus2       SVALSAT
-westus2       AWARUA
-westus2       HARTEBEESTHOEK
-westus2       LONG_BEACH
-westus2       WESTUS2_1
-swedencentral MICROSOFT_SWEDEN
-swedencentral SWEDENCENTRAL_0
+Location      Name             ProviderName City
+--------      ----             ------------ ----
+westus2       WESTUS2_0        Microsoft    Quincy
+westus2       SVALSAT          KSAT         Svalbard
+westus2       AWARUA           KSAT         Awarua
+westus2       HARTEBEESTHOEK   KSAT         Hartebeesthoek
+westus2       LONG_BEACH       KSAT         LongBeach
+westus2       WESTUS2_1        Microsoft    Quincy-preview
+westus2       ATHENS           KSAT         Athens
+swedencentral MICROSOFT_SWEDEN Microsoft    Gavle
+swedencentral SWEDENCENTRAL_0  Microsoft    Gavle
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Gets the specified  available ground station.

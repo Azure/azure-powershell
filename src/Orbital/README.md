@@ -134,7 +134,7 @@ directive:
     set:
       parameter-name: Name
       alias: GroundStationName
-  # Re-name and custom it
+  # The following are commented out and their generated cmdlets may be renamed and custom logic
   # - model-cmdlet:
   #     - ContactProfileLinkChannel
   #     - SpacecraftLink

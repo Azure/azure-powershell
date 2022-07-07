@@ -35,9 +35,9 @@ Update-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name azps-orbitalspac
 ```
 
 ```output
-Name                   Location NoradId TitleLine   ResourceGroupName
-----                   -------- ------- ---------   -----------------
-azps-orbitalspacecraft eastus   12345   ISS (ZARYA) azpstest-gp
+Name                   Location NoradId TitleLine ResourceGroupName
+----                   -------- ------- --------- -----------------
+azps-orbitalspacecraft westus2  27424   AQUA      azpstest-gp
 ```
 
 Updates the specified spacecraft tags.
@@ -49,9 +49,9 @@ Update-AzOrbitalSpacecraft -InputObject $spacecraftObject -Tag @{"123"="abc"}
 ```
 
 ```output
-Name                   Location NoradId TitleLine   ResourceGroupName
-----                   -------- ------- ---------   -----------------
-azps-orbitalspacecraft eastus   12345   ISS (ZARYA) azpstest-gp
+Name                   Location NoradId TitleLine ResourceGroupName
+----                   -------- ------- --------- -----------------
+azps-orbitalspacecraft westus2  27424   AQUA      azpstest-gp
 ```
 
 Updates the specified spacecraft tags.
