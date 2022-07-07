@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.10.0
 * Added cmdlets for manual approval of Service Bus Private Endpoint Connections. The added cmdlets include,
     -Approve-AzServiceBusPrivateEndpointConnection
     -Deny-AzServiceBusPrivateEndpointConnection

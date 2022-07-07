@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added check for storage account sas token is secured with the storage account key.
+    -  `New-AzStorageAccountSASToken`
+
+## Version 4.7.0
 * Supported BaseBlob DaysAfterCreationGreaterThan in Management Policy
     -  `Add-AzStorageAccountManagementPolicyAction`
 

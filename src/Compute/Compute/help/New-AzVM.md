@@ -35,7 +35,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
 New-AzVM [-ResourceGroupName] <String> [-Location] <String> [-EdgeZone <String>] [-VM] <PSVirtualMachine>
  [[-Zone] <String[]>] [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
  [-OSDiskDeleteOption <String>] [-DataDiskDeleteOption <String>] [-SshKeyName <String>] [-GenerateSshKey]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DisableIntegrityMonitoring] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,8 +49,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-UserAssignedIdentity <String>] [-AsJob] [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>]
  [-DataDiskDeleteOption <String>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>]
  [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
- [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
- [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
+ [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>] [-ImageReferenceId <String>]
+ [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -149,7 +149,7 @@ You can confirm your login status by using the **Get-AzSubscription** cmdlet.
 ### Example 3: Create a VM from a marketplace image without a Public IP
 ```powershell
 $VMLocalAdminUser = "LocalAdminUser"
-$VMLocalAdminSecurePassword = ConvertTo-SecureString <password> -AsPlainText -Force
+$VMLocalAdminSecurePassword = ConvertTo-SecureString "password" -AsPlainText -Force
 $LocationName = "westus"
 $ResourceGroupName = "MyResourceGroup"
 $ComputerName = "MyVM"
@@ -206,7 +206,7 @@ $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -UserData;
 The UserData value must always be Base64 encoded. 
 
 ### Example 5: Creating a new VM with an existing subnet in another resource group
-```
+```powershell
 $UserName = "User"
 $Password = ConvertTo-SecureString "############" -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($UserName, $Password)
@@ -225,20 +225,84 @@ New-AzVm -ResourceGroupName ResourceGroup1 -Location SouthCentralUS -VM $Virtual
 This example deploys a Windows VM from the marketplace in one resource group with an existing subnet in another resource group.
 
 ### Example 6: Creating a new VM as part of a VMSS with a PlatformFaultDomain value.
-```
-$resourceGroupName= <Resource Group Name>
-$domainNameLabel = <Domain Name Label Name>
-$vmname = "<Virtual Machine Name>"
+```powershell
+$resourceGroupName= "Resource Group Name"
+$domainNameLabel = "Domain Name Label Name"
+$vmname = "Virtual Machine Name"
 $platformFaultDomainVMDefaultSet = 2
-$securePassword = <Password> | ConvertTo-SecureString -AsPlainText -Force
-$user = <Username>
+$securePassword = "Password" | ConvertTo-SecureString -AsPlainText -Force
+$user = "Username"
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
-$vmssName = <Vmss Name>;
+$vmssName = "Vmss Name";
 
 $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain;
 $vmss = New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $vmssConfig;
 
 $vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id
+```
+
+### Example 7: Creating a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
+```
+$rgname = <RESOURCE GROUP NAME>;
+$loc = <AZURE REGION>;
+New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+# VM Profile & Hardware
+$vmname = 'vm' + $rgname;
+$domainNameLabel = "d1" + $rgname;
+$vnetname = "myVnet";
+$vnetAddress = "10.0.0.0/16";
+$subnetname = "slb" + $rgname;
+$subnetAddress = "10.0.2.0/24";
+$OSDiskName = $vmname + "-osdisk";
+$NICName = $vmname+ "-nic";
+$NSGName = $vmname + "-NSG";
+$OSDiskSizeinGB = 128;
+$VMSize = "Standard_DS2_v2";
+$PublisherName = "MicrosoftWindowsServer";
+$Offer = "WindowsServer";
+$SKU = "2019-DATACENTER-GENSECOND";
+$securityType = "TrustedLaunch";
+$secureboot = $true;
+$vtpm = $true;
+
+# Default extension and identity values.
+$extDefaultName = "GuestAttestation";
+$vmGADefaultIDentity = "SystemAssigned";
+
+# Credential
+$password = <PASSWORD>;
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+$user = <USER NAME>;
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+# Network resources
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+$vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+$nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+# VM creation
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize;
+Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred;
+Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest;
+Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+$vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType;
+$vmConfig = Set-AzVmUefi -VM $vmConfig -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
+New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig;
+
+# Verify values
+$vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
+$vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
+# Check the default extension has been installed, and the Identity.Type defaulted to SystemAssigned.
+# $vmExt.Name
+# $vm.Identity.Type
+
+# Use the DisableIntegrityMonitoring parameter
+Remove-AzVm -ResourceGroupName $rgname -Name $vmname -Force;
+New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig -DisableIntegrityMonitoring;
+# This VM does not have the Guest Attestation extension installed on it, and the Identity is not set to SystemAssigned by default.
 ```
 
 ## PARAMETERS
@@ -811,7 +875,6 @@ Specified the shared gallery image unique id for vm deployment. This can be fetc
 Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
-
 Required: False
 Position: Named
 Default value: None
@@ -968,6 +1031,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DisableIntegrityMonitoring
+This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCI-help.xml
+external help file:
 Module Name: Az.StackHCI
 online version: https://docs.microsoft.com/powershell/module/az.stackhci/set-azstackhci
 schema: 2.0.0
@@ -13,10 +13,10 @@ Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud
 ## SYNTAX
 
 ```
-Set-AzStackHCI [[-ComputerName] <String>] [-Credential <PSCredential>] [-ResourceId <String>]
- [-EnableWSSubscription <Boolean>] [-DiagnosticLevel <DiagnosticLevel>] [-TenantId <String>]
- [-ArmAccessToken <String>] [-GraphAccessToken <String>] [-AccountId <String>] [-EnvironmentName <String>]
- [-UseDeviceAuthentication] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzStackHCI [[-ComputerName] <String>] [-AccountId <String>] [-ArmAccessToken <String>]
+ [-Credential <PSCredential>] [-DiagnosticLevel <DiagnosticLevel>] [-EnableWSSubscription <Boolean>]
+ [-EnvironmentName <String>] [-Force] [-GraphAccessToken <String>] [-ResourceId <String>] [-TenantId <String>]
+ [-UseDeviceAuthentication] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1: 
 ```powershell
 Set-AzStackHCI -EnableWSSubscription $true
 ```
@@ -35,7 +35,7 @@ Result: Success
 
 Invoking on one of the cluster node to enable Windows Server Subscription feature
 
-### EXAMPLE 2
+### Example 2: 
 ```powershell
 Set-AzStackHCI -ComputerName ClusterNode1 -DiagnosticLevel Basic
 ```
@@ -89,7 +89,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -118,7 +118,6 @@ Specifies the diagnostic level for the cluster.
 Type: DiagnosticLevel
 Parameter Sets: (All)
 Aliases:
-Accepted values: Off, Basic, Enhanced
 
 Required: False
 Position: Named
@@ -138,7 +137,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -155,7 +154,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: $AzureCloud
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -170,7 +169,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -192,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifies the fully qualified resource ID, including the subscription, as in the following example: \`/Subscriptions/\`subscription ID\`/providers/Microsoft.AzureStackHCI/clusters/MyCluster\`
+Specifies the fully qualified resource ID, including the subscription, as in the following example: `/Subscriptions/`subscription ID`/providers/Microsoft.AzureStackHCI/clusters/MyCluster`
 
 ```yaml
 Type: System.String
@@ -231,7 +230,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -274,8 +273,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### PSCustomObject. Returns following Properties in PSCustomObject
-### Result: Success or Failed or Cancelled.
+### System.Management.Automation.PSObject
+
 ## NOTES
 
+ALIASES
+
 ## RELATED LINKS
+
