@@ -139,7 +139,6 @@ function Get-ExamplesDetailsFromMd {
             Num = $exampleNumber + 1
             Title = $exampleTitle
             Codes = $exampleCodes
-            CodeBlocks = $exampleCodeBlocks
             Outputs = $exampleOutputs
             OutputBlocks = $exampleOutputBlocks
             Description = ([string]$exampleDescriptions).Trim()
@@ -329,7 +328,7 @@ function Measure-SectionMissingAndOutputScript {
                     }
                     $results += $result
                 }
-                {$exampleDetails.Outputs.Count -eq 0 -or $_missingExampleOutput -ne 0} {
+                {($exampleDetails.OutputBlocks.Count -ne 0 -and $exampleDetails.Outputs.Count -eq 0) -or $_missingExampleOutput -ne 0} {
                     $missingExampleOutput++
                     $result = [AnalysisOutput]@{
                         Module = $Module
