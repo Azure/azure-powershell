@@ -1,6 +1,6 @@
 ### Example 1: Simple Example
 ```powershell
-Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -Location $location -RunCommandName 'firstruncommand' 
+pPS C: Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -Location 'eastus' -RunCommandName 'firstruncommand' 
 
 Location Name             Type
 -------- ----             ----
