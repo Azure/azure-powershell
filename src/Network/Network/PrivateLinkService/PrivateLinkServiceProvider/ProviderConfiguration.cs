@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.DesktopVirtualization/workspaces", "2021-09-03-preview", true, false);
             RegisterConfiguration("Microsoft.Devices/IotHubs", "2020-03-01", true, true);
             RegisterConfiguration("Microsoft.Devices/ProvisioningServices", "2020-03-01", true, true);
+            RegisterConfiguration("Microsoft.DeviceUpdate/accounts", "2020-03-01-preview", true, true);
             RegisterConfiguration("Microsoft.DigitalTwins/digitalTwinsInstances", "2020-12-01", true, true);
             RegisterConfiguration("Microsoft.DocumentDB/databaseAccounts", "2019-08-01-preview", true, true);
             RegisterConfiguration("Microsoft.EventGrid/topics", "2020-04-01-preview", true, true);
