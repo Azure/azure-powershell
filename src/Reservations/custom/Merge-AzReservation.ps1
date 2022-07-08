@@ -14,11 +14,11 @@
 
 <#
 .Synopsis
-Split a Reservation order.
+Merge two reservations into one reservation within the same reservation order.
 .Description
-Split a Reservation order.
+Merge two reservations into one reservation within the same reservation order.
 #>
-function Split-AzReservation {
+function Merge-AzReservation {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
@@ -30,21 +30,14 @@ function Split-AzReservation {
         # Reservation Order Id.
         ${OrderId},
     
-        [Parameter(Mandatory, HelpMessage='Reservation Id.')]
+        [Parameter(Mandatory, HelpMessage='Reservation Ids.')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-        [System.String]
-        # Reservation Id.
+        [System.String[]]
+        # Reservation Ids.
         ${ReservationId},
 
-        [Parameter(Mandatory, HelpMessage='Quantity.')]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-        [int[]]
-        # Quantity.
-        ${Quantity},
-
-         [Parameter()]
+        [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
@@ -94,19 +87,24 @@ function Split-AzReservation {
     
     process {
         try {
-            $re = "\/(?i)\bproviders\/Microsoft.Capacity\/reservationOrders\/[a-zA-Z0-9_-]*\/reservations\/[a-zA-Z0-9_-]*\b"
-            if ((-not ($PSBoundParameters['ReservationId'] -match $re)) -AND (-not [guid]::TryParse($PSBoundParameters['ReservationId'], $([ref][guid]::Empty)))) {
-                Write-Error "Should supply a valid Reservation Id in one of these forms:
+            $arr = @()
+            foreach ($id in $PSBoundParameters['ReservationId'])
+            {
+                $re = "\/(?i)\bproviders\/Microsoft.Capacity\/reservationOrders\/[a-zA-Z0-9_-]*\/reservations\/[a-zA-Z0-9_-]*\b"
+                if ((-not ($id -match $re)) -AND (-not [guid]::TryParse($id, $([ref][guid]::Empty)))) {
+                    Write-Error "One or more IDs in ReservationId array does not match one of these forms:
                                 1. /providers/Microsoft.Capacity/reservationOrders/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/reservations/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
                                 2. xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-                throw
+                    throw
+                }
+                if((-not ($id -match $re))) {
+                    $arr += '/providers/Microsoft.Capacity/reservationOrders/' + $PSBoundParameters['OrderId'] + '/reservations/' + $id
+                } else {
+                    $arr += $id
+                }
             }
-
-            if((-not ($PSBoundParameters['ReservationId'] -match $re))) {
-                $PSBoundParameters['ReservationId'] = '/providers/Microsoft.Capacity/reservationOrders/' + $PSBoundParameters['OrderId'] + '/reservations/' + $PSBoundParameters['ReservationId']
-            }
-            
-            Az.Reservations.internal\Split-AzReservation @PSBoundParameters
+            $PSBoundParameters['ReservationId'] = $arr
+            Az.Reservations.internal\Merge-AzReservation @PSBoundParameters
           } catch {
               throw
           }

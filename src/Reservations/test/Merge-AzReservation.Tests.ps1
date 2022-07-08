@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Merge-AzReservation'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-$reservationId1 = "/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007"
-$reservationId2 = "/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/50000000-aaaa-bbbb-cccc-200000000007"
+$reservationId1 = "/providers/Microsoft.Capacity/reservationOrders/c615c897-aaaa-4123-8527-c42cc0da41e0/reservations/7ab831c6-046a-4938-9ace-4a236e409d88"
+$reservationId2 = "/providers/Microsoft.Capacity/reservationOrders/c615c897-aaaa-4123-8527-c42cc0da41e0/reservations/7ab831c6-046a-4938-9ace-4a236e409d88"
 
 function ExecuteTestCases([object]$response) {
     $response | Should -Not -Be $null

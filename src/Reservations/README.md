@@ -159,6 +159,11 @@ directive:
       subject-prefix: ''
       subject: Reservation
     hide: true
+  - where:
+      verb: Merge
+      subject-prefix: ''
+      subject: Reservation
+    hide: true
 
   ### Rename property name
   - where:

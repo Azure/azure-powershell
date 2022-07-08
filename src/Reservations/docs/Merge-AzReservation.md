@@ -8,85 +8,39 @@ schema: 2.0.0
 # Merge-AzReservation
 
 ## SYNOPSIS
-Merge the specified `Reservation`s into a new `Reservation`.
-The two `Reservation`s being merged must have same properties.
+Merge two reservations into one reservation within the same reservation order.
 
 ## SYNTAX
 
-### MergeExpanded (Default)
 ```
-Merge-AzReservation -OrderId <String> [-ReservationId <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Merge
-```
-Merge-AzReservation -OrderId <String> -Body <IMergeRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### MergeViaIdentity
-```
-Merge-AzReservation -InputObject <IReservationsIdentity> -Body <IMergeRequest> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### MergeViaIdentityExpanded
-```
-Merge-AzReservation -InputObject <IReservationsIdentity> [-ReservationId <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Merge-AzReservation -OrderId <String> -ReservationId <String[]> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Merge the specified `Reservation`s into a new `Reservation`.
-The two `Reservation`s being merged must have same properties.
+Merge two reservations into one reservation within the same reservation order.
 
 ## EXAMPLES
 
 ### Example 1: Merge two reservations into one single reservation
 ```powershell
-{{ Add code here }}
+$arr=@("72bc398d-b201-4a2e-a1fa-60fb48a85b23", "34f2474f-b4d7-41ec-a96d-d4bb7c2f85b6")
+Merge-AzReservation -ReservationOrderId "79ebddac-4030-4296-ab93-1ad90f032058" -ReservationId $arr
 ```
 
 ```output
-{{ Add output here }}
+Location   ReservationOrderId/ReservationId                                            Sku           State     BenefitStartTime    ExpiryDate           LastUpdatedDateTime SkuDescription
+--------   --------------------------------                                            ---           -----     ----------------    ----------           ------------------- --------------
+westeurope 79ebddac-4030-4296-ab93-1ad90f032058/72bc398d-b201-4a2e-a1fa-60fb48a85b23/5 Standard_B1ls Cancelled 7/5/2022 1:24:21 AM 7/5/2025 12:00:00 AM 7/8/2022 1:09:29 AM Reserved VM Instan…
+westeurope 79ebddac-4030-4296-ab93-1ad90f032058/34f2474f-b4d7-41ec-a96d-d4bb7c2f85b6/4 Standard_B1ls Cancelled 7/5/2022 1:24:21 AM 7/5/2025 12:00:00 AM 7/8/2022 1:09:29 AM Reserved VM Instan…
+westeurope 79ebddac-4030-4296-ab93-1ad90f032058/5a91b7d0-9276-4bc9-adae-2a3f5c2ee076/2 Standard_B1ls Succeeded 7/5/2022 1:24:21 AM 7/5/2025 12:00:00 AM 7/8/2022 1:09:29 AM Reserved VM Instan…
 ```
 
 Merge two reservations into one single reservation.
-The two reservations must have the same reservation order id
+The two reservations must have the same reservation order id.
+ReservationId can be either GUID form or fully qulified reservation id form "providers/Microsoft.Capacity/reservationOrders/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/reservations/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IMergeRequest
-Parameter Sets: Merge, MergeViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -103,43 +57,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
-Parameter Sets: MergeViaIdentity, MergeViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -OrderId
-Order Id of the reservation
+Reservation Order Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Merge, MergeExpanded
+Parameter Sets: (All)
 Aliases: ReservationOrderId
 
 Required: True
@@ -150,14 +73,14 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationId
-Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
+Reservation Ids.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: MergeExpanded, MergeViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -200,10 +123,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IMergeRequest
-
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
@@ -211,20 +130,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-BODY <IMergeRequest>: .
-  - `[Source <String[]>]`: Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
-
-INPUTOBJECT <IReservationsIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the Reservation Item
-  - `[ReservationOrderId <String>]`: Order Id of the reservation
-  - `[SubscriptionId <String>]`: Id of the subscription
 
 ## RELATED LINKS
 

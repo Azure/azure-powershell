@@ -45,27 +45,18 @@ Updates the applied scopes of the `Reservation`.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update Reservation's properties
 ```powershell
-{{ Add code here }}
+Update-AzReservation -ReservationOrderId "fe784288-6510-4b2b-8a56-3d4e38295a18" -ReservationId "271d8e0b-da88-44d8-b276-2620b8f1c7d1" -Name "testName"
 ```
 
 ```output
-{{ Add output here }}
+Location   ReservationOrderId/ReservationId                                             Sku           State     BenefitStartTime     ExpiryDate            LastUpdatedDateTime  SkuDescription
+--------   --------------------------------                                             ---           -----     ----------------     ----------            -------------------  --------------
+westeurope fe784288-6510-4b2b-8a56-3d4e38295a18/271d8e0b-da88-44d8-b276-2620b8f1c7d1/16 Standard_B4ms Succeeded 6/14/2022 9:41:17 PM 6/14/2025 12:00:00 AM 7/7/2022 11:37:58 PM Reserved VM In…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update Reservation's properties including name, renew, appliedScopeType, appliedScope
 
 ## PARAMETERS
 

@@ -39,8 +39,7 @@ Returns one or more `Reservations` in exchange for one or more `Reservation` pur
 Get Available Scopes for `Reservation`.\n
 
 ### [Merge-AzReservation](Merge-AzReservation.md)
-Merge the specified `Reservation`s into a new `Reservation`.
-The two `Reservation`s being merged must have same properties.
+Merge two reservations into one reservation within the same reservation order.
 
 ### [Move-AzReservationDirectory](Move-AzReservationDirectory.md)
 Change directory (tenant) of `ReservationOrder` and all `Reservation` under it to specified tenant id
