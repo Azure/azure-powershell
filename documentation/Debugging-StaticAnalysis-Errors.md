@@ -55,7 +55,7 @@ Signature issues occur when your cmdlets do not follow PowerShell standards.  Pl
 Most help issues that cause StaticAnalysis to fail occur when help has not been added for a particular cmdlet.  If you have not generated help for your new cmdlets, please follow the instructions [here](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/help-generation.md). If this is not the issue, follow the steps listed under "Remediation" for each violation listed in HelpIssues.csv.
 
 ### Example Issues
-Example issues occur when your changed markdown files in the `help` folder (_e.g.,_ `src/Accounts/Accounts/help`) violate PowerShell language best practices. Please follow the suggestion displayed in "Remediation" entry for each violation listed in `ExampleIssues.csv`. Issues with severity 0 or 1 must be addressed, while issues with severity 2 are advisory. If you have an issue with severity 0 or 1 that has been approved by the Azure PowerShell team, you can suppress them following these steps:
+Example issues occur when your changed markdown files in the `help` folder (_e.g.,_ `src/Accounts/Accounts/help`) violate PowerShell language best practices. Please follow the suggestion displayed in "Remediation" entry for each violation listed in `ExampleIssues.csv`. Issues with severity 0 or 1 must be addressed, while issues with severity 2 are advisory. To better standardize the writing of documents, please also check the warning issues with severity 2 in log or download the `ExampleIssues.csv` file. If you have an issue with severity 0 or 1 that has been approved by the Azure PowerShell team, you can suppress them following these steps:
 
 - Download the `ExampleIssues.csv` file from the CI pipeline artifacts
 - Open the file using a text editor (such as VS Code) and copy each of the errors you'd like to suppress
@@ -64,4 +64,3 @@ Example issues occur when your changed markdown files in the `help` folder (_e.g
 - Push the changes to the .csv file and ensure the errors no longer show up in the `ExampleIssues.csv` file output from the CI pipeline artifacts.
 
 If you have unexpected errors, please check whether you have splitted outputs from codes. If outputs cannot be separated from codes, then please add the tag `<!-- Skip: Output cannot be splitted from code -->` to the next line of the example title and in front of the code block.
-To better standardize the writing of documents, please also check the warning issues with severity 2 in log or download the `ExampleIssues.csv` file.
