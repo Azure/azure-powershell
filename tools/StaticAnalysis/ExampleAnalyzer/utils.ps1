@@ -381,7 +381,7 @@ function Measure-SectionMissingAndOutputScript {
             # Output example codes to "TempScript.ps1"
             if ($OutputScriptsInFile.IsPresent) {
                 $cmdletExamplesScriptPath = "$OutputFolder\TempScript.ps1"
-                if($null -ne $exampleCodes){
+                if($null -ne $exampleCodes -and $exampleCodes -ne ""){
                     $exampleCodes = $exampleCodes.Trim()
                     $functionHead = "function $Module-$Cmdlet-$exampleNumber{"
                     Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionHead
