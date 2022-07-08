@@ -199,14 +199,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             Track2Models.InventoryRuleType.Inventory,
                             PSBlobInventoryPolicy.ParseBlobInventoryPolicyRules(this.Rule));
                         blobInventoryPolicyResource = this.StorageClientTrack2
-                            .GetBlobInventoryPolicyResource(this.ResourceGroupName, this.StorageAccountName, "default")
+                            .GetBlobInventoryPolicyResource(this.ResourceGroupName, this.StorageAccountName, DefaultPolicyName)
                             .Update(WaitUntil.Completed, data).Value;
                         break;
                     case AccountObjectPolicyObjectParameterSet:
                     case AccountNamePolicyObjectParameterSet:
                     case AccountResourceIdPolicyObjectParameterSet:
                         blobInventoryPolicyResource = this.StorageClientTrack2
-                            .GetBlobInventoryPolicyResource(this.ResourceGroupName, this.StorageAccountName, "default")
+                            .GetBlobInventoryPolicyResource(this.ResourceGroupName, this.StorageAccountName, DefaultPolicyName)
                             .Update(WaitUntil.Completed, this.Policy.ParseBlobInventoryPolicy()).Value;
                         break;
                     default:

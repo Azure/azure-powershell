@@ -61,6 +61,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         internal const string StandardGZRS = "Standard_GZRS";
         internal const string StandardRAGZRS = "Standard_RAGZRS";
 
+        protected const string DefaultPolicyName = "default";
+
         protected struct AccountAccessTier
         {
             internal const string Hot = "Hot";
@@ -197,9 +199,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected static Track2Models.Encryption ParseEncryption(bool storageEncryption = false, bool keyVaultEncryption = false, string keyName = null, string keyVersion = null, string keyVaultUri = null)
         {
-            // TODO: Fix the KeySource value. It should be null or empty. Input KeyVault for a placeholder.
-            Track2Models.Encryption accountEncryption =
-                new Track2Models.Encryption(Track2Models.KeySource.MicrosoftKeyvault);
+            Track2Models.Encryption accountEncryption = new Track2Models.Encryption();
 
             if (storageEncryption)
             {

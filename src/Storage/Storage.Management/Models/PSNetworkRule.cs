@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
     public struct PSResourceAccessRule
     {
-        public string TenantId;
+        public Guid? TenantId;
         public string ResourceId;
     }
 
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             PSIpRule returnRule = new PSIpRule
             {
-                Action = ipRule.Action != null ? ParsePSNetworkRuleAction(ipRule.Action) : null,
+                Action = ipRule.Action != null ? ParsePSNetworkRuleAction(ipRule.Action?.ToString()) : null,
                 IPAddressOrRange = ipRule.IPAddressOrRange
             };
             return returnRule;
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public static PSVirtualNetworkRule ParsePSNetworkRuleVirtualNetworkRule(Track2Models.VirtualNetworkRule virtualNetworkRule)
         {
             PSVirtualNetworkRule returnRule = new PSVirtualNetworkRule();
-            returnRule.Action = ParsePSNetworkRuleAction(virtualNetworkRule.Action);
+            returnRule.Action = ParsePSNetworkRuleAction(virtualNetworkRule.Action?.ToString());
             returnRule.VirtualNetworkResourceId = virtualNetworkRule.VirtualNetworkResourceId;
             returnRule.State = virtualNetworkRule.State.ToString();
 

@@ -22,8 +22,8 @@
   </ItemGroup>
   <ItemGroup>
     <!-- <PackageReference Include="Azure.Core" Version="1.24.0" /> -->
-    <PackageReference Include="Azure.ResourceManager" Version="1.0.0" />
-    <PackageReference Include="Azure.ResourceManager.Storage" Version="1.0.0-beta.9" />
+    <PackageReference Include="Azure.ResourceManager" Version="1.1.1" />
+    <PackageReference Include="Azure.ResourceManager.Storage" Version="1.0.0-beta.10" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="24.0.0" />
     <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.2.2" />
     <PackageReference Include="Microsoft.Azure.Storage.File" Version="11.2.2" />

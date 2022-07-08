@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             HelpMessage = "Storage Account ResourceAccessRule TenantId  in string.",
             ParameterSetName = ResourceAccessRuleStringParameterSet)]
-        public string TenantId { get; set; }
+        public Guid? TenantId { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             foreach (Track2Models.ResourceAccessRule rule in ruleList)
             {
-                if (rule.TenantId.Equals(ruleToRemove.TenantId, System.StringComparison.InvariantCultureIgnoreCase)
+                if (rule.TenantId.Equals(ruleToRemove.TenantId)
                    && rule.ResourceId.Equals(ruleToRemove.ResourceId, System.StringComparison.InvariantCultureIgnoreCase))
                 {
                     ruleList.Remove(rule);
