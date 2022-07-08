@@ -99,6 +99,19 @@ function Get-RecoveredValueType{
         if ($global:AssignmentLeftAndRight.ContainsKey($CommandElementAst.Extent.Text)){
             $CommandElementAst = $global:AssignmentLeftAndRight.($CommandElementAst.Extent.Text)
         }
+        elseif ($null -ne $CommandElementAst.Left) {
+            if($CommandElementAst.Left -eq $VariableExpressionAst){
+                if($CommandElementAst.Right -eq $VariableExpressionAst){
+                    $CommandElementAst = $null
+                }
+                else{
+                    $CommandElementAst = $CommandElementAst.Right
+                }
+            }
+            else{
+                $CommandElementAst = $CommandElementAst.Left
+            }
+        }
         elseif ($null -ne $CommandElementAst.Expression) {
             if($null -ne $CommandElementAst.Member){
                 $Items += $CommandElementAst.Member
@@ -161,6 +174,9 @@ function Measure-IsTypeMatched{
         [System.Reflection.TypeInfo]$ExpectedType,
         [System.Reflection.TypeInfo]$ActualType
     )
+    if($ActualType -eq $null) {
+        return $false
+    }
     if($ActualType.IsArray) {
         $ActualType = $ActualType.GetElementType()
     }
@@ -218,6 +234,9 @@ function Get-AssignedParameterExpression {
             return $ExpressionToParameter
         }
         return $null
+    }
+    if($CommandElement_Copy -is [System.Management.Automation.Language.ConvertExpressionAst]){
+        $CommandElement_Copy = $CommandElement_Copy.Type
     }
     while ($ExpectedType.IsArray) {
         $ExpectedType = $ExpectedType.GetElementType()
@@ -283,7 +302,12 @@ function Get-AssignedParameterExpression {
     elseif($CommandElement_Copy -is [System.Management.Automation.Language.TypeExpressionAst] -or
     $CommandElement_Copy -is [System.Management.Automation.Language.TypeConstraintAst]){
         $ReturnType = $CommandElement_Copy.TypeName.ToString() -as [Type]
-        $ActualType = Get-RecoveredValueType $CommandElement $ReturnType
+        if($null -eq $ReturnType){
+            $ActualType = $null
+        }
+        else{
+            $ActualType = Get-RecoveredValueType $CommandElement $ReturnType
+        }
         if (!(Measure-IsTypeMatched $ExpectedType $ActualType)) {
             # Mismatched_Parameter_Value_Type
             $ExpressionToParameter = "$($CommandElement.Extent.Text)-#-$ExpectedType. Now the type is $ActualType.(Type)"
@@ -293,6 +317,7 @@ function Get-AssignedParameterExpression {
     elseif($CommandElement_Copy -is [System.Management.Automation.Language.ExpressionAst]) {
         # Value is a constant expression                   
         $ConvertedObject = $CommandElement_Copy.Extent.text -as $ExpectedType
+        # Value of Automatic Variable
         if($null -eq $ConvertedObject){
             if($null -ne (Get-Variable | Where-Object {$_.Name -eq $CommandElement_Copy.VariablePath})){
                 $value = (Get-Variable | Where-Object {$_.Name -eq $CommandElement_Copy.VariablePath}).Value
@@ -682,21 +707,21 @@ function Measure-ParameterNameAndValue {
                     $RuleName = [RuleNames]::Invalid_Parameter_Name
                     $Severity = "Error"
                     $RuleSuppressionID = "5011"
-                    $Remediation = "Check validity of the parameter $($CommandParameterPair[$i].ParameterName)."
+                    $Remediation = "Check validity of the parameter -$($CommandParameterPair[$i].ParameterName)."
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter -eq "<duplicate>") {
                     $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-#@#$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) appeared more than once."
                     $RuleName = [RuleNames]::Duplicate_Parameter_Name
                     $Severity = "Error"
                     $RuleSuppressionID = "5012"
-                    $Remediation = "Remove redundant parameter $($CommandParameterPair[$i].ParameterName)."
+                    $Remediation = "Remove redundant parameter -$($CommandParameterPair[$i].ParameterName)."
                 }
                 elseif ($null -eq $global:CommandParameterPair[$i].ExpressionToParameter) {
                     $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-#@#$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) must be assigned with a value."
                     $RuleName = [RuleNames]::Unassigned_Parameter
                     $Severity = "Error"
                     $RuleSuppressionID = "5013"
-                    $Remediation = "Assign value for the parameter $($CommandParameterPair[$i].ParameterName)."
+                    $Remediation = "Assign value for the parameter -$($CommandParameterPair[$i].ParameterName)."
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter.EndsWith(" is a null-valued parameter value.")) {
                     $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-#@#$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) $($CommandParameterPair[$i].ExpressionToParameter)"

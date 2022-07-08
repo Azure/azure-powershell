@@ -149,7 +149,7 @@ function Get-ExamplesDetailsFromMd {
 }
 <#
     .SYNOPSIS
-    Except the suppressed records
+    Except the suppressed records. It is independent of ExampleIssues.cs.
 #>
 function Get-NonExceptionRecord{
     param(
@@ -190,7 +190,7 @@ function Measure-SectionMissingAndOutputScript {
         [string]$OutputFolder
     )
     $results = @()
-    $missingSeverity = 2
+    $missingSeverity = 1
 
     $fileContent = Get-Content $MarkdownPath -Raw
 
@@ -207,7 +207,6 @@ function Measure-SectionMissingAndOutputScript {
     $missingExampleOutput = 0
     $missingExampleDescription = 0
     $needDeleting = 0
-    $needSplitting = 0
 
     # If Synopsis section exists
     if ($indexOfSynopsis -ne -1) {
@@ -382,7 +381,7 @@ function Measure-SectionMissingAndOutputScript {
             # Output example codes to "TempScript.ps1"
             if ($OutputScriptsInFile.IsPresent) {
                 $cmdletExamplesScriptPath = "$OutputFolder\TempScript.ps1"
-                if($exampleCodes -ne $null){
+                if($null -ne $exampleCodes -and $exampleCodes -ne ""){
                     $exampleCodes = $exampleCodes.Trim()
                     $functionHead = "function $Module-$Cmdlet-$exampleNumber{"
                     Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionHead
@@ -391,38 +390,6 @@ function Measure-SectionMissingAndOutputScript {
                     Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionTail
                 }
             }
-        }
-    }
-
-    # ScaleTable
-    $examples = $examplesDetails.Count
-    $scale = [Scale]@{
-        Module = $module
-        Cmdlet = $cmdlet
-        Examples = $examples
-    }
-
-    # MissingTable
-    if ($missingSynopsis -ne 0 -or $missingDescription -ne 0 -or $missingExampleTitle -ne 0 -or $missingExampleCode -ne 0 -or $missingExampleOutput -ne 0 -or $missingExampleDescription -ne 0) {
-        $missing = [Missing]@{
-            Module = $module
-            Cmdlet = $cmdlet
-            MissingSynopsis = $missingSynopsis
-            MissingDescription = $missingDescription
-            MissingExampleTitle = $missingExampleTitle
-            MissingExampleCode = $missingExampleCode
-            MissingExampleOutput = $missingExampleOutput
-            MissingExampleDescription = $missingExampleDescription
-        }
-    }
-
-    # DeletePromptAndSeparateOutputTable
-    if ($needDeleting -ne 0 -or $needSplitting -ne 0) {
-        $deletePromptAndSeparateOutput = [DeletePromptAndSeparateOutput]@{
-            Module = $module
-            Cmdlet = $cmdlet
-            NeedDeleting = $needDeleting
-            NeedSplitting = $needSplitting
         }
     }
 
@@ -484,16 +451,16 @@ function Get-ScriptAnalyzerResult {
     $results = @()
     foreach($analysisResult in $analysisResults){
         if($analysisResult.Severity -eq "ParseError"){
-            $Severity = 2
+            $Severity = 1
         }
         elseif($analysisResult.Severity -eq "Error"){
-            $Severity = 2
+            $Severity = 1
         }
         elseif($analysisResult.Severity -eq "Warning"){
-            $Severity = 3
+            $Severity = 2
         }
         elseif($analysisResult.Severity -eq "Information"){
-            $Severity = 4
+            $Severity = 3
         }
         if($analysisResult.RuleSuppressionID -ge 5000 -and $analysisResult.RuleSuppressionID -le 5199){
             $result = [AnalysisOutput]@{
