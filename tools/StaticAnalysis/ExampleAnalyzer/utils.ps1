@@ -149,7 +149,7 @@ function Get-ExamplesDetailsFromMd {
 }
 <#
     .SYNOPSIS
-    Except the suppressed records
+    Except the suppressed records. It is independent of ExampleIssues.cs.
 #>
 function Get-NonExceptionRecord{
     param(
