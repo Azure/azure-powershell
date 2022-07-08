@@ -8,20 +8,24 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Profile.Utilities
 {
+    /// <summary>
+    /// Helper class to provide suggestions when the command is not found.
+    /// </summary>
     public static class CommandNotFoundHelper
     {
         private static CommandInvocationIntrinsics Cii = null;
-
         private static Lazy<AllCommandInfo> LazyAllCommandInfo = new Lazy<AllCommandInfo>(LoadAllCommandInfo);
-        private static Lazy<IDictionary<string, CommandInfo>> LazyCommandMappings = new Lazy<IDictionary<string, CommandInfo>>(() =>
+        private static Lazy<IDictionary<string, string>> LazyCommandToModuleMappings = new Lazy<IDictionary<string, string>>(() =>
         {
-            var caseSensitiveMapping = LazyAllCommandInfo.Value.Commands;
-            var mapping = new Dictionary<string, CommandInfo>(StringComparer.CurrentCultureIgnoreCase);
-            foreach (var key in caseSensitiveMapping.Keys)
+            var moduleToCommandMapping = LazyAllCommandInfo.Value.Modules;
+            var mapping = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var moduleName in moduleToCommandMapping.Keys)
             {
-                mapping.Add(key, caseSensitiveMapping[key]);
+                foreach (var commandName in moduleToCommandMapping[moduleName].Keys)
+                {
+                    mapping.Add(commandName, moduleName);
+                }
             }
-
             return mapping;
         });
 
@@ -30,11 +34,11 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = "Microsoft.Azure.Commands.Profile.Utilities.CommandMappings.json";
 
+            // todo: need try-catch? How much does it slow down the method?
             using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             using (StreamReader reader = new StreamReader(stream))
             {
-                AllCommandInfo raw = JsonConvert.DeserializeObject<AllCommandInfo>(reader.ReadToEnd());
-                return raw;
+                return JsonConvert.DeserializeObject<AllCommandInfo>(reader.ReadToEnd());
             }
         }
 
@@ -73,16 +77,7 @@ Run 'Install-Module {moduleName}' to install it.");
 
         private static bool TryGetModuleOfCommand(string commandName, out string moduleName)
         {
-            if (LazyCommandMappings.Value.TryGetValue(commandName, out var data))
-            {
-                moduleName = data.Module;
-                return true;
-            }
-            else
-            {
-                moduleName = null;
-                return false;
-            }
+            return LazyCommandToModuleMappings.Value.TryGetValue(commandName, out moduleName);
         }
 
         private static ScriptBlock GetWriteWarningScript(string message)
@@ -99,14 +94,14 @@ Run 'Install-Module {moduleName}' to install it.");
     #region JSON models
     public class AllCommandInfo
     {
-        [JsonProperty("commands")]
-        public IDictionary<string, CommandInfo> Commands { get; set; }
-    }
-
-    public class CommandInfo
-    {
-        [JsonProperty("module")]
-        public string Module { get; set; }
+        /// <summary>
+        /// Dictionary of modules. Key is the name of the module.
+        /// </summary>
+        /// <value>
+        /// Dictionary of commands (cmdlet, function, alias), whose key is the name of the command, value is empty for now.
+        /// </value>
+        [JsonProperty("modules")]
+        public IDictionary<string, IDictionary<string, object>> Modules { get; set; }
     }
     #endregion
 }
