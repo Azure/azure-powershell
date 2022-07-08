@@ -115,7 +115,7 @@ namespace StaticAnalysis.IssueChecker
                         hasError = true;
                         errorText.AppendLine(record.FormatRecord());
                     }
-                    else if (record.Severity > 1 && outputWarning)
+                    else if (record.Severity == 2 && outputWarning)
                     {
                         errorText.AppendLine(record.FormatRecord());
                     }
