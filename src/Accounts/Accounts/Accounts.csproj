@@ -41,6 +41,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="AzureRmAlias\Mappings.json" />
+    <EmbeddedResource Include="Utilities\CommandMappings.json" />
   </ItemGroup>
    
   <ItemGroup>
