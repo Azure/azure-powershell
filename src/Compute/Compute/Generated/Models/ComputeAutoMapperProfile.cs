@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                     .ForMember(c => c.Type1, o => o.MapFrom(r => r.Type));
 
                 cfg.CreateMap<FROM.DiskAccess, TO.PSDiskAccess>();
-                cfg.CreateMap<FROM2.DiskAccessResource, TO.PSDiskAccess>();
+                cfg.CreateMap<FROM2.DiskAccessData, TO.PSDiskAccess>();
                 cfg.CreateMap<TO.PSDiskAccess, FROM.DiskAccess>();
                 cfg.CreateMap<FROM.DiskAccess, TO.PSDiskAccessList>();
                 cfg.CreateMap<TO.PSDiskAccessList, TO.PSDiskAccess>();

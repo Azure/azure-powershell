@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Location { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
-        public string Type { get; set; }
+        public string Type 
+        {
+            get
+            {
+                return "Microsoft.Compute/diskAccesses";
+            } 
+        }
         public IDictionary<string, string> Tags { get; set; }
     }
 }

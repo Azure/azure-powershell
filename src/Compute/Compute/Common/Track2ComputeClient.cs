@@ -10,7 +10,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Compute.Track2Models
+namespace Microsoft.Azure.Commands.Compute.Track2
 {
     public class Track2ComputeClient
     {

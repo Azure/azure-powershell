@@ -37,7 +37,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Commands.Compute.Track2Models;
+using Microsoft.Azure.Commands.Compute.Track2;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {

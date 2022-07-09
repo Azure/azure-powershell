@@ -13,14 +13,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.ResourceManager.Compute" Version="1.0.0-beta.9" />
+    <PackageReference Include="Azure.ResourceManager" Version="1.0.0" />
     <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="54.0.0" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
     <PackageReference Include="System.Management" Version="4.5.0" />
-    <PackageReference Include="Azure.ResourceManager.Compute" Version="1.0.0-beta.8" />
-    <PackageReference Include="Azure.ResourceManager" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
