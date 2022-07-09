@@ -15,12 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzRedisEnterpriseCache
 }
 
 Describe 'Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink' {
+    $id = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Cache/redisEnterprise/{2}/databases/default" -f $env.SubscriptionId,$env.ResourceGroupName,$env.ClusterName4
     It 'Force unlink database from group' {
         $splat = @{
             SubscriptionId = $env.SubscriptionId
             ResourceGroupName = $env.ResourceGroupName
             ClusterName = $env.ClusterName3
-            Id = "@(`"/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Cache/redisEnterprise/{2}/databases/default`")" -f $env.SubscriptionId,$env.ResourceGroupName,$env.ClusterName4
+            Id = @($id)
         }
         $database = Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink @splat
     }
