@@ -9,11 +9,11 @@
 [ ] I have read the [_Submitting Changes_](../blob/main/CONTRIBUTING.md#submitting-changes) section of [`CONTRIBUTING.md`](../blob/main/CONTRIBUTING.md) and below information
 
 - **SHOULD** select appropriate branch. Cmdlets from Autorest.PowerShell should go to `generation` branch. 
-- **SHOULD** make the title of the PR clear and informative, and in the present imperative tense. 
+- **SHOULD** make the title of PR clear and informative, and in the present imperative tense. 
 - **SHOULD** update `ChangeLog.md` file(s) appropriately
     - For any service, the `ChangeLog.md` file can be found at `src/{{SERVICE}}/{{SERVICE}}/ChangeLog.md`
-    - A snippet outlining the change(s) made in the PR should be written under the `## Upcoming Release` header in the past tense
-    - Should not change `ChangeLog.md` if no new release is required, such as fixing test case only.
+    - A snippet outlining the change(s) made in the PR should be written under the `## Upcoming Release` header in the past tense. Add changelog in description section if PR goes into `generation` branch.
+    - Should **not** change `ChangeLog.md` if no new release is required, such as fixing test case only.
 - **SHOULD** have approved design review for the changes in [this repository](https://github.com/Azure/azure-powershell-cmdlet-review-pr) (_Microsoft internal only_) with following situations
     - Create new module from the scratch
     - Create new resource types which cannot conform to [Azure PowerShell Design Guidelines](../blob/main/documentation/development-docs/design-guidelines)
@@ -22,5 +22,5 @@
 - **SHOULD** update markdown help files if there is cmdlet API change. [Instruction](../blob/main/documentation/development-docs/help-generation.md#updating-all-markdown-files-in-a-module)
 - **SHOULD** have proper test coverage for changes in pull request.
 - **SHOULD NOT** introduce [breaking changes](../blob/main/documentation/breaking-changes/breaking-changes-definition.md) in Az minor release except preview version.
-- **SHOULD NOT** change version label in pull request 
+- **SHOULD NOT** change version in pull request
 
