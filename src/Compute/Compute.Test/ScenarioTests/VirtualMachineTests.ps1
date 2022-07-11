@@ -6046,6 +6046,11 @@ function Test-ConfidentialVMSetAzVmOsDiskDESId
         $desIdentity = (Get-AzDiskEncryptionSet -Name $desName -ResourceGroupName $rgName).Identity.PrincipalId;
         Set-AzKeyVaultAccessPolicy -VaultName $kvName -ResourceGroupName $rgname -ObjectId $desIdentity -PermissionsToKeys wrapKey,unwrapKey,get;
         
+         # IGVM Access
+        $cvmAgent = az ad sp show --id "bf7b6499-ff71-4aa2-97a4-f372087be7f0" | Out-String | ConvertFrom-Json;
+        $KeyVaultIGVM = (Get-AzKeyVault -VaultName $kvName -ResourceGroupName $rgName).VaultName;
+        az keyvault set-policy --name $KeyVaultIGVM --object-id $cvmAgent.appid --key-permissions get release;
+
 
         # Set-AzVmOsDisk test, DiskWithVMGuestState scenario. 
 
