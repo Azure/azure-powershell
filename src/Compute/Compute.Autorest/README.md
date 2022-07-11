@@ -224,4 +224,34 @@ directive:
       subject: VmssVMRunCommand|VMRunCommand
       variant: ^GetViaIdentity1
     remove: true
+  - where:
+      model-name: VirtualMachineRunCommand
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - RunAsUser
+          - AsyncExecution
+          - ErrorBlobUri
+          - Id
+          - InstanceViewEndTime
+          - InstanceViewError
+          - InstanceViewExecutionMessage
+          - InstanceViewExeutionStage
+          - InstanceViewExitCode
+          - InstanceViewOutput
+          - InstanceViewStartTime
+          - InstanceViewStatuses
+          - OutputBlobUri
+          - Paramater
+          - ProtectedParameter
+          - ProvisioningStage
+          - RunAsPassword
+          - SourceCommandId
+          - SourceScript
+          - SourceScriptUri
+          - Tag
+          - TimeoutInSecond
+          - Type
 ```
