@@ -12,7 +12,6 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzRedisEnterpriseCache' {
-    <#
     It 'Create' {
         $splat = @{
             Name = $env.ClusterName
@@ -66,7 +65,6 @@ Describe 'New-AzRedisEnterpriseCache' {
         $cache.ResourceState | Should -Be "Running"
         $cache.Database.Count | Should -Be 0
     }
-    #>
 
     It 'Create a cache without a database to create a georeplicated database later' {
         $splat = @{
