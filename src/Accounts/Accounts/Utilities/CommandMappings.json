@@ -6202,5 +6202,11 @@
       "Remove-AzWindowsIotServicesDevice": {},
       "Update-AzWindowsIotServicesDevice": {}
     }
+  },
+  "migration": {
+    "Get-AzAks": {
+      "replacement": "Get-AzAksCluster",
+      "since": "Az 8.0.0"
+    }
   }
 }
