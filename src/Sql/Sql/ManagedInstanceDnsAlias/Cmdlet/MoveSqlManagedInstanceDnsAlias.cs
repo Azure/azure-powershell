@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Model;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -18,13 +32,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         OutputType(typeof(AzureSqlManagedInstanceDnsAliasModel))]
     public class MoveSqlManagedInstanceDnsAlias : AzureSqlManagedInstanceDnsAliasCmdletBase
     {
-        // Move by name of the target managed instance dns alias and by different ways for source managed instance dns alias.
+        // Move by name of the destination managed instance dns alias and by different ways for source managed instance dns alias.
         private const string MoveByNamesParameterSet = "MoveByNamesParameterSet";
         private const string MoveByNameAndSourceParentObjectParameterSet = "MoveByNameAndSourceParentObjectParameterSet";
         private const string MoveByNameAndSourceInputObjectParameterSet = "MoveByNameAndSourceInputObjectParameterSet";
         private const string MoveByNameAndSourceResourceIdParameterSet = "MoveByNameAndSourceResourceIdParameterSet";
 
-        // Move by parent object of the target managed instance dns alias and by different ways for source managed instance dns alias.
+        // Move by parent object of the destination managed instance dns alias and by different ways for source managed instance dns alias.
         private const string MoveByParentObjectAndSourceNameParameterSet = "MoveByParentObjectAndSourceNameParameterSet";
         private const string MoveByParentObjectsParameterSet = "MoveByParentObjectsParameterSet";
         private const string MoveByParentObjectAndSourceInputObjectParameterSet = "MoveByParentObjectAndSourceInputObjectParameterSet";
@@ -35,33 +49,36 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = MoveByNamesParameterSet, Position = 0, HelpMessage = "Name of the target resource group.")]
-        [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceParentObjectParameterSet, Position = 0, HelpMessage = "Name of the target resource group.")]
-        [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceInputObjectParameterSet, Position = 0, HelpMessage = "Name of the target resource group.")]
-        [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceResourceIdParameterSet, Position = 0, HelpMessage = "Name of the target resource group.")]
+        [Parameter(Mandatory = true, ParameterSetName = MoveByNamesParameterSet, Position = 0, HelpMessage = "Name of the destination resource group.")]
+        [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceParentObjectParameterSet, Position = 0, HelpMessage = "Name of the destination resource group.")]
+        [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceInputObjectParameterSet, Position = 0, HelpMessage = "Name of the destination resource group.")]
+        [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceResourceIdParameterSet, Position = 0, HelpMessage = "Name of the destination resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [Alias("DestResourceGroupName")]
         public override string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of target managed instance.
+        /// Gets or sets the name of destination managed instance.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = MoveByNamesParameterSet, Position = 1, HelpMessage = "Name of the target managed instance.")]
-        [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceParentObjectParameterSet, Position = 1, HelpMessage = "Name of the target managed instance.")]
-        [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceInputObjectParameterSet, Position = 1, HelpMessage = "Name of the target managed instance.")]
-        [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceResourceIdParameterSet, Position = 1, HelpMessage = "Name of the target managed instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = MoveByNamesParameterSet, Position = 1, HelpMessage = "Name of the destination managed instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceParentObjectParameterSet, Position = 1, HelpMessage = "Name of the destination managed instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceInputObjectParameterSet, Position = 1, HelpMessage = "Name of the destination managed instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceResourceIdParameterSet, Position = 1, HelpMessage = "Name of the destination managed instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
+        [Alias("DestInstanceName")]
         public string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the instance Object
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MoveByParentObjectAndSourceNameParameterSet, Position = 0, HelpMessage = "Input object of the target managed instance.")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MoveByParentObjectsParameterSet, Position = 0, HelpMessage = "Input object of the target managed instance.")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MoveByParentObjectAndSourceInputObjectParameterSet, Position = 0, HelpMessage = "Input object of the target managed instance.")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MoveByParentObjectAndSourceResourceIdParameterSet, Position = 0, HelpMessage = "Input object of the target managed instance.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MoveByParentObjectAndSourceNameParameterSet, Position = 0, HelpMessage = "Input object of the destination managed instance.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MoveByParentObjectsParameterSet, Position = 0, HelpMessage = "Input object of the destination managed instance.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MoveByParentObjectAndSourceInputObjectParameterSet, Position = 0, HelpMessage = "Input object of the destination managed instance.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MoveByParentObjectAndSourceResourceIdParameterSet, Position = 0, HelpMessage = "Input object of the destination managed instance.")]
         [ValidateNotNullOrEmpty]
+        [Alias("DestInstanceObject")]
         public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
@@ -74,7 +91,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         public string SourceResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of target managed instance.
+        /// Gets or sets the name of destination managed instance.
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = MoveByNamesParameterSet, Position = 3, HelpMessage = "Name of the source managed instance.")]
         [Parameter(Mandatory = true, ParameterSetName = MoveByParentObjectAndSourceNameParameterSet, Position = 2, HelpMessage = "Name of the source managed instance.")]
@@ -131,14 +148,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
             // we can do it now, since ModelAdapter is initialized at this point (it was initialized after entering the base.ExecuteCmdlet method).
             if(ParameterSetName == MoveByNamesParameterSet)
             {
-                ConstructSourceResourceId(SourceResourceGroupName, SourceInstanceName, SourceName, ModelAdapter.Context.Subscription.Id);
+                string sourceResourceId = ConstructSourceDnsAliasResourceId(SourceResourceGroupName, SourceInstanceName, SourceName, ModelAdapter.Context.Subscription.Id);
+                SourceResourceId = sourceResourceId;
             }
             return ModelAdapter.ListManagedInstanceDnsAliases(this.ResourceGroupName, this.InstanceName);
         }
  
-        private void ConstructSourceResourceId(string sourceResourceGroupName, string sourceManagedInstanceName, string sourceDnsAliasName, string subscriptionId)
+        private string ConstructSourceDnsAliasResourceId(string sourceResourceGroupName, string sourceManagedInstanceName, string sourceDnsAliasName, string subscriptionId)
         {
-            SourceResourceId = string.Format(
+            return string.Format(
                     ManagedInstanceDnsAliasResourceIdTemplate,
                     subscriptionId,
                     sourceResourceGroupName,
@@ -146,32 +164,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
                     sourceDnsAliasName);
         }
 
-        private void ConstructSourceResourceId(AzureSqlManagedInstanceModel sourceInstance, string sourceDnsAliasName, string subscriptionId)
+        private string ConstructSourceDnsAliasResourceId(AzureSqlManagedInstanceModel sourceInstance, string sourceDnsAliasName, string subscriptionId)
         {
-            SourceResourceId = string.Format(
+            return string.Format(
                     ManagedInstanceDnsAliasResourceIdTemplate,
                     subscriptionId,
                     sourceInstance.ResourceGroupName,
                     sourceInstance.ManagedInstanceName,
                     sourceDnsAliasName);
-        }
-
-        private void ConstructSourceResourceId(AzureSqlManagedInstanceDnsAliasModel sourceDnsAlias)
-        {
-            SourceResourceId = sourceDnsAlias.Id;
-            SourceName = sourceDnsAlias.DnsAliasName;
-        }
-
-        private void ParseParentObjectParameters()
-        {
-            ResourceGroupName = InstanceObject.ResourceGroupName;
-            InstanceName = InstanceObject.ManagedInstanceName;
-        }
-
-        private string ExtractSubscriptionIdFromManagedInstanceResourceId(string instanceResourceId)
-        {
-            var resourceInfo = new ResourceIdentifier(instanceResourceId);
-            return resourceInfo.Subscription;
         }
 
         /// <summary>
@@ -199,7 +199,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
                     break;
                 case MoveByParentObjectAndSourceResourceIdParameterSet:
                     SourceName = SourceResourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-                    ParseParentObjectParameters();
+                    ResourceGroupName = InstanceObject.ResourceGroupName;
+                    InstanceName = InstanceObject.ManagedInstanceName;
                     break;
 
                 // Parameter sets with source name as input.
@@ -209,33 +210,44 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
                     break;
                 case MoveByParentObjectAndSourceNameParameterSet:
                     {
-                        ParseParentObjectParameters();
-                        string subscriptionId = ExtractSubscriptionIdFromManagedInstanceResourceId(InstanceObject.Id);
-                        ConstructSourceResourceId(SourceResourceGroupName, SourceInstanceName, SourceName, subscriptionId);
+                        ResourceGroupName = InstanceObject.ResourceGroupName;
+                        InstanceName = InstanceObject.ManagedInstanceName;
+                        var resourceInfo = new ResourceIdentifier(InstanceObject.Id);
+                        string subscriptionId = resourceInfo.Subscription;
+                        string sourceResourceId = ConstructSourceDnsAliasResourceId(SourceResourceGroupName, SourceInstanceName, SourceName, subscriptionId);
+                        SourceResourceId = sourceResourceId;
                         break;
                     }
                 // Parameter sets with source parent object as input.
                 case MoveByNameAndSourceParentObjectParameterSet:
                     {
-                        string subscriptionId = ExtractSubscriptionIdFromManagedInstanceResourceId(SourceInstanceObject.Id);
-                        ConstructSourceResourceId(SourceInstanceObject, SourceName, subscriptionId);
+                        var resourceInfo = new ResourceIdentifier(SourceInstanceObject.Id);
+                        string subscriptionId = resourceInfo.Subscription;
+                        string sourceResourceId = ConstructSourceDnsAliasResourceId(SourceInstanceObject, SourceName, subscriptionId);
+                        SourceResourceId = sourceResourceId;
                         break;
                     }
                 case MoveByParentObjectsParameterSet:
                     {
-                        ParseParentObjectParameters();
-                        string subscriptionId = ExtractSubscriptionIdFromManagedInstanceResourceId(InstanceObject.Id);
-                        ConstructSourceResourceId(SourceInstanceObject, SourceName, subscriptionId);
+                        ResourceGroupName = InstanceObject.ResourceGroupName;
+                        InstanceName = InstanceObject.ManagedInstanceName;
+                        var resourceInfo = new ResourceIdentifier(InstanceObject.Id);
+                        string subscriptionId = resourceInfo.Subscription;
+                        string sourceResourceId = ConstructSourceDnsAliasResourceId(SourceInstanceObject, SourceName, subscriptionId);
+                        SourceResourceId = sourceResourceId;
                         break;
                     }
 
                 // Parameter sets with source input object.
                 case MoveByNameAndSourceInputObjectParameterSet:
-                    ConstructSourceResourceId(SourceInputObject);
+                    SourceResourceId = SourceInputObject.Id;
+                    SourceName = SourceInputObject.DnsAliasName;
                     break;
                 case MoveByParentObjectAndSourceInputObjectParameterSet:
-                    ParseParentObjectParameters();
-                    ConstructSourceResourceId(SourceInputObject);
+                    ResourceGroupName = InstanceObject.ResourceGroupName;
+                    InstanceName = InstanceObject.ManagedInstanceName;
+                    SourceResourceId = SourceInputObject.Id;
+                    SourceName = SourceInputObject.DnsAliasName;
                     break;
             }
 

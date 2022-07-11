@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancednsalias
 schema: 2.0.0
 ---
 
@@ -43,15 +43,17 @@ Removes a specific Azure SQL Managed Instance DNS Alias.
 
 ### Example 1: Removes a managed instance DNS alias
 ```powershell
-PS C:\> Remove-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName>
+Remove-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName>
 ```
 
 This command removes the specified managed instance DNS alias.
 
 ### Example 2: Removes a managed instance DNS alias and displays the removed DNS alias
 ```powershell
-PS C:\> Remove-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName> -PassThru
+Remove-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName> -PassThru
+```
 
+```output
 ResourceGroupName    : <rgName>
 ManagedInstanceName  : <managedInstanceName>
 DnsAliasName         : <dnsAliasName>
@@ -64,23 +66,23 @@ This command removes the specified managed instance DNS alias.
 
 ### Example 3: Removes a managed instance DNS alias for a previously fetched managed instance
 ```powershell
-PS C:\> $managedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
-PS C:\> Remove-AzSqlInstanceDnsAlias -InstanceObject $managedInstance -Name <dnsAliasName>
+$managedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
+Remove-AzSqlInstanceDnsAlias -InstanceObject $managedInstance -Name <dnsAliasName>
 ```
 
 This command removes a managed instance DNS alias from a previously fetched managed instance.
 
 ### Example 4: Removes a previously fetched managed instance DNS alias
 ```powershell
-PS C:\> $managedInstanceAlias = Get-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName>
-PS C:\> Remove-AzSqlInstanceDnsAlias -InputObject $managedInstanceAlias
+$managedInstanceAlias = Get-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName>
+Remove-AzSqlInstanceDnsAlias -InputObject $managedInstanceAlias
 ```
 
 This command removes a previously fetched managed instance DNS alias.
 
 ### Example 5: Removes a managed instance DNS alias with the given resource ID
 ```powershell
-PS C:\> Remove-AzSqlInstanceDnsAlias /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
+Remove-AzSqlInstanceDnsAlias /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
 ```
 
 This command removes a managed instance DNS alias by passing the resource ID of the alias.

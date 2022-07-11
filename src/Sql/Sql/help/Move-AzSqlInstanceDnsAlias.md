@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.sql/move-azsqlinstancednsalias
 schema: 2.0.0
 ---
 
@@ -73,8 +73,10 @@ Moves an Azure SQL Managed Instance DNS Alias from a source managed instance to 
 
 ### Example 1: Moves a managed instance DNS alias to the target managed instance
 ```powershell
-PS C:\> Move-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <targetManagedInstanceName> -SourceResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<sourceResourceGroupName>/providers/Microsoft.Sql/managedInstances/<sourceManagedInstanceName>/dnsAliases/<dnsAliasName>
+Move-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <targetManagedInstanceName> -SourceResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<sourceResourceGroupName>/providers/Microsoft.Sql/managedInstances/<sourceManagedInstanceName>/dnsAliases/<dnsAliasName>
+```
 
+```output
 ResourceGroupName    : <rgName>
 ManagedInstanceName  : <managedInstanceName>
 DnsAliasName         : <dnsAliasName>
@@ -87,8 +89,10 @@ This command moves a DNS alias designated with -SourceResourceId to the target m
 
 ### Example 2: Moves a managed instance DNS alias with the given name, source managed instance and source resource group to the target managed instance
 ```powershell
-PS C:\> Move-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <targetManagedInstanceName> -SourceResourceGroupName <sourceResourceGroupName> -SourceInstanceName <sourceManagedInstanceName> -SourceName <dnsAliasName>
+Move-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <targetManagedInstanceName> -SourceResourceGroupName <sourceResourceGroupName> -SourceInstanceName <sourceManagedInstanceName> -SourceName <dnsAliasName>
+```
 
+```output
 ResourceGroupName    : <rgName>
 ManagedInstanceName  : <managedInstanceName>
 DnsAliasName         : <dnsAliasName>
@@ -101,9 +105,11 @@ This command moves a managed instance DNS alias <dnsAliasName> from the source m
 
 ### Example 3: Moves a managed instance DNS alias from a previously fetched managed instance to the target managed instance.
 ```powershell
-PS C:\> $managedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
-PS C:\> Move-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -SourceInstanceObject $managedInstance -SourceName <dnsAliasName>
+$managedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
+Move-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -SourceInstanceObject $managedInstance -SourceName <dnsAliasName>
+```
 
+```output
 ResourceGroupName    : <rgName>
 ManagedInstanceName  : <managedInstanceName>
 DnsAliasName         : <dnsAliasName>
@@ -116,9 +122,11 @@ This command moves a managed instance DNS alias <dnsAliasName> from the previous
 
 ### Example 4: Moves a previously fetched managed instance DNS alias to the target managed instance
 ```powershell
-PS C:\> $managedInstanceAlias = Get-AzSqlInstanceDnsAlias -ResourceGroupName <sourceResourceGroupName> -InstanceName <sourceManagedInstanceName> -Name <dnsAliasName>
-PS C:\> Move-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -SourceInputObject $managedInstanceAlias
+$managedInstanceAlias = Get-AzSqlInstanceDnsAlias -ResourceGroupName <sourceResourceGroupName> -InstanceName <sourceManagedInstanceName> -Name <dnsAliasName>
+Move-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -SourceInputObject $managedInstanceAlias
+```
 
+```output
 ResourceGroupName    : <rgName>
 ManagedInstanceName  : <managedInstanceName>
 DnsAliasName         : <dnsAliasName>
@@ -131,9 +139,11 @@ This command moves a previously fetched managed instance DNS alias to the target
 
 ### Example 5: Moves a managed instance DNS alias with the given name, source managed instance and source resource group to a previously fetched target managed instance
 ```powershell
-PS C:\> $targetmanagedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
-PS C:\> Move-AzSqlInstanceDnsAlias -InstanceObject $targetmanagedInstance -SourceResourceGroupName <sourceResourceGroupName> -SourceInstanceName <sourceManagedInstanceName> -SourceName <dnsAliasName>
+$targetmanagedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
+Move-AzSqlInstanceDnsAlias -InstanceObject $targetmanagedInstance -SourceResourceGroupName <sourceResourceGroupName> -SourceInstanceName <sourceManagedInstanceName> -SourceName <dnsAliasName>
+```
 
+```output
 ResourceGroupName    : <rgName>
 ManagedInstanceName  : <managedInstanceName>
 DnsAliasName         : <dnsAliasName>
@@ -146,10 +156,12 @@ This command moves a managed instance DNS alias <dnsAliasName> from the source m
 
 ### Example 6: Moves a managed instance DNS alias from a previously fetched source managed instance to a previously fetched target managed instance
 ```powershell
-PS C:\> $targetmanagedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
-PS C:\> $sourcemanagedInstance = Get-AzSqlInstance -ResourceGroupName <sourceResourceGroupName> -Name <sourceManagedInstanceName>
-PS C:\> Move-AzSqlInstanceDnsAlias -InstanceObject $targetmanagedInstance -SourceInstanceObject $managedInstance -SourceName <dnsAliasName>
+$targetmanagedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
+$sourcemanagedInstance = Get-AzSqlInstance -ResourceGroupName <sourceResourceGroupName> -Name <sourceManagedInstanceName>
+Move-AzSqlInstanceDnsAlias -InstanceObject $targetmanagedInstance -SourceInstanceObject $managedInstance -SourceName <dnsAliasName>
+```
 
+```output
 ResourceGroupName    : <rgName>
 ManagedInstanceName  : <managedInstanceName>
 DnsAliasName         : <dnsAliasName>
@@ -162,10 +174,12 @@ This command moves a managed instance DNS alias from a previously fetched source
 
 ### Example 7: Moves a previously fetched managed instance DNS alias to a previously fetched target managed instance
 ```powershell
-PS C:\> $targetmanagedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
-PS C:\> $managedInstanceAlias = Get-AzSqlInstanceDnsAlias -ResourceGroupName <sourceResourceGroupName> -InstanceName <sourceManagedInstanceName> -Name <dnsAliasName>
-PS C:\> Move-AzSqlInstanceDnsAlias -InstanceObject $targetmanagedInstance -SourceInputObject $managedInstanceAlias
+$targetmanagedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
+$managedInstanceAlias = Get-AzSqlInstanceDnsAlias -ResourceGroupName <sourceResourceGroupName> -InstanceName <sourceManagedInstanceName> -Name <dnsAliasName>
+Move-AzSqlInstanceDnsAlias -InstanceObject $targetmanagedInstance -SourceInputObject $managedInstanceAlias
+```
 
+```output
 ResourceGroupName    : <rgName>
 ManagedInstanceName  : <managedInstanceName>
 DnsAliasName         : <dnsAliasName>
@@ -178,9 +192,11 @@ This command moves a previously fetched managed instance DNS alias to the previo
 
 ### Example 8: Moves a managed instance DNS alias to a previously fetched target managed instance
 ```powershell
-PS C:\> $targetmanagedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
-PS C:\> Move-AzSqlInstanceDnsAlias -InstanceObject $targetmanagedInstance -SourceResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<sourceResourceGroupName>/providers/Microsoft.Sql/managedInstances/<sourceManagedInstanceName>/dnsAliases/<dnsAliasName>
+$targetmanagedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
+Move-AzSqlInstanceDnsAlias -InstanceObject $targetmanagedInstance -SourceResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<sourceResourceGroupName>/providers/Microsoft.Sql/managedInstances/<sourceManagedInstanceName>/dnsAliases/<dnsAliasName>
+```
 
+```output
 ResourceGroupName    : <rgName>
 ManagedInstanceName  : <managedInstanceName>
 DnsAliasName         : <dnsAliasName>

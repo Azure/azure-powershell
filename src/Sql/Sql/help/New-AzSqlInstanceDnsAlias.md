@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancednsalias
 schema: 2.0.0
 ---
 
@@ -32,8 +32,10 @@ Creates new Azure SQL Managed Instance DNS Alias that is pointing to specified m
 
 ### Example 1: Create a new managed instance DNS alias
 ```powershell
-PS C:\> New-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName>
+New-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName>
+```
 
+```output
 ResourceGroupName    : <rgName>
 ManagedInstanceName  : <managedInstanceName>
 DnsAliasName         : <dnsAliasName>
@@ -46,9 +48,11 @@ This command creates a new managed instance DNS alias.
 
 ### Example 2: Create a new managed instance DNS alias on previously fetched managed instance
 ```powershell
-PS C:\> $managedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
-PS C:\> New-AzSqlInstanceDnsAlias -InstanceObject $managedInstance -Name <dnsAliasName>
+$managedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
+New-AzSqlInstanceDnsAlias -InstanceObject $managedInstance -Name <dnsAliasName>
+```
 
+```output
 ResourceGroupName    : <rgName>
 ManagedInstanceName  : <managedInstanceName>
 DnsAliasName         : <dnsAliasName>
@@ -61,8 +65,10 @@ This command creates a new managed instance DNS alias by passing the instance ob
 
 ### Example 3: Create a new managed instance DNS alias
 ```powershell
-PS C:\> New-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName> -CreateDnsRecord
+New-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName> -CreateDnsRecord
+```
 
+```output
 ResourceGroupName    : <rgName>
 ManagedInstanceName  : <managedInstanceName>
 DnsAliasName         : <dnsAliasName>
