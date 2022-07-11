@@ -230,36 +230,13 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
 
             PSSubnet firewallSubnet = null;
-            if (publicIpAddresses != null)
+            try
             {
-                try
-                {
-                    firewallSubnet = virtualNetwork.Subnets.Single(subnet => AzureFirewallSubnetName.Equals(subnet.Name));
-                }
-                catch (InvalidOperationException)
-                {
-                    throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {AzureFirewallSubnetName}");
-                }
-                this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
-
-                if (publicIpAddresses.Count() > 0)
-                {
-                    for (var i = 0; i < publicIpAddresses.Count(); i++)
-                    {
-                        this.IpConfigurations.Add(
-                            new PSAzureFirewallIpConfiguration
-                            {
-                                Name = $"{AzureFirewallIpConfigurationName}{i}",
-                                PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
-                            });
-                    }
-                }
-                else
-                {
-                    this.IpConfigurations.Add(new PSAzureFirewallIpConfiguration { Name = $"{AzureFirewallIpConfigurationName}{0}" });
-                }
-
-                this.IpConfigurations[0].Subnet = new PSResourceId { Id = firewallSubnet.Id };
+                firewallSubnet = virtualNetwork.Subnets.Single(subnet => AzureFirewallSubnetName.Equals(subnet.Name));
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {AzureFirewallSubnetName}");
             }
 
             this.ManagementIpConfiguration = new PSAzureFirewallIpConfiguration
@@ -269,6 +246,26 @@ namespace Microsoft.Azure.Commands.Network.Models
                 Subnet = new PSResourceId { Id = firewallMgmtSubnet.Id }
             };
 
+            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
+
+            if (publicIpAddresses != null && publicIpAddresses.Count() > 0)
+            {
+                for (var i = 0; i < publicIpAddresses.Count(); i++)
+                {
+                    this.IpConfigurations.Add(
+                        new PSAzureFirewallIpConfiguration
+                        {
+                            Name = $"{AzureFirewallIpConfigurationName}{i}",
+                            PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
+                        });
+                }
+            }
+            else
+            {
+                this.IpConfigurations.Add(new PSAzureFirewallIpConfiguration { Name = $"{AzureFirewallIpConfigurationName}{0}" });
+            }
+
+            this.IpConfigurations[0].Subnet = new PSResourceId { Id = firewallSubnet.Id };
         }
         public void Deallocate()
         {
