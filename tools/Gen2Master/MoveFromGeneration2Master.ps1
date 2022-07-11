@@ -361,7 +361,7 @@ Function Update-MappingJson {
         $MappingPath = Join-Path -Path (Join-Path -Path $PSScriptRoot -ChildPath '..') -ChildPath "CreateMappings_rules.json"
         $MappingObject = Get-Content -Path $MappingPath | ConvertFrom-Json
         Foreach ($Item in $MappingObject) {
-            If ($ModuleName -eq $Item.module) {
+            If ($ModuleName -eq $Item.regex -or $ModuleName -eq $Item.module) {
                 return
             }
         }
