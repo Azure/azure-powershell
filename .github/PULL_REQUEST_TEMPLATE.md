@@ -22,5 +22,5 @@
 - **SHOULD** regenerate markdown help files if there is cmdlet API change. [Instruction](../blob/main/documentation/development-docs/help-generation.md#updating-all-markdown-files-in-a-module)
 - **SHOULD** have proper test coverage for changes in pull request.
 - **SHOULD NOT** introduce [breaking changes](../blob/main/documentation/breaking-changes/breaking-changes-definition.md) in Az minor release except preview version.
-- **SHOULD NOT** change version in pull request
+- **SHOULD NOT** change version of module in pull request
 
