@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         public string InstanceName { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = DeleteByNameParameterSet, Position = 2, HelpMessage = "Name of the DNS alias.")]
-        [Parameter(Mandatory = true, ParameterSetName = DeleteByParentObjectParameterSet, Position = 1, HelpMessage = "Name of the DNS alias.")]
+        [Parameter(Mandatory = true, ParameterSetName = DeleteByParentObjectParameterSet, Position = 2, HelpMessage = "Name of the DNS alias.")]
         [ValidateNotNullOrEmpty]
         [Alias("DnsAliasName")]
         public string Name { get; set; }

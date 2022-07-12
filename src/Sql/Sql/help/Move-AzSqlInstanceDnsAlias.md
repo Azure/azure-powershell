@@ -21,13 +21,13 @@ Move-AzSqlInstanceDnsAlias [-ResourceGroupName] <String> [-InstanceName] <String
 ### MoveByNamesParameterSet
 ```
 Move-AzSqlInstanceDnsAlias [-ResourceGroupName] <String> [-InstanceName] <String>
- [-SourceResourceGroupName] <String> [-SourceInstanceName] <String> [-SourceName] <String> [-AsJob]
+ [-SourceResourceGroupName] <String> [-SourceInstanceName] <String> -SourceName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveByNameAndSourceParentObjectParameterSet
 ```
-Move-AzSqlInstanceDnsAlias [-ResourceGroupName] <String> [-InstanceName] <String> [-SourceName] <String>
+Move-AzSqlInstanceDnsAlias [-ResourceGroupName] <String> [-InstanceName] <String> -SourceName <String>
  [-SourceInstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -42,13 +42,13 @@ Move-AzSqlInstanceDnsAlias [-ResourceGroupName] <String> [-InstanceName] <String
 ### MoveByParentObjectAndSourceNameParameterSet
 ```
 Move-AzSqlInstanceDnsAlias [-InstanceObject] <AzureSqlManagedInstanceModel> [-SourceResourceGroupName] <String>
- [-SourceInstanceName] <String> [-SourceName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-SourceInstanceName] <String> -SourceName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveByParentObjectsParameterSet
 ```
-Move-AzSqlInstanceDnsAlias [-InstanceObject] <AzureSqlManagedInstanceModel> [-SourceName] <String>
+Move-AzSqlInstanceDnsAlias [-InstanceObject] <AzureSqlManagedInstanceModel> -SourceName <String>
  [-SourceInstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -245,7 +245,7 @@ Name of the target managed instance.
 ```yaml
 Type: System.String
 Parameter Sets: MoveByNameAndSourceResourceIdParameterSet, MoveByNamesParameterSet, MoveByNameAndSourceParentObjectParameterSet, MoveByNameAndSourceInputObjectParameterSet
-Aliases:
+Aliases: DestInstanceName
 
 Required: True
 Position: 1
@@ -260,7 +260,7 @@ Input object of the target managed instance.
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 Parameter Sets: MoveByParentObjectAndSourceNameParameterSet, MoveByParentObjectsParameterSet, MoveByParentObjectAndSourceInputObjectParameterSet, MoveByParentObjectAndSourceResourceIdParameterSet
-Aliases:
+Aliases: DestInstanceObject
 
 Required: True
 Position: 0
@@ -275,7 +275,7 @@ Name of the target resource group.
 ```yaml
 Type: System.String
 Parameter Sets: MoveByNameAndSourceResourceIdParameterSet, MoveByNamesParameterSet, MoveByNameAndSourceParentObjectParameterSet, MoveByNameAndSourceInputObjectParameterSet
-Aliases:
+Aliases: DestResourceGroupName
 
 Required: True
 Position: 0
@@ -293,7 +293,7 @@ Parameter Sets: MoveByNameAndSourceInputObjectParameterSet
 Aliases:
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -305,7 +305,7 @@ Parameter Sets: MoveByParentObjectAndSourceInputObjectParameterSet
 Aliases:
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -320,7 +320,7 @@ Parameter Sets: MoveByNamesParameterSet, MoveByParentObjectAndSourceNameParamete
 Aliases:
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -335,7 +335,7 @@ Parameter Sets: MoveByNameAndSourceParentObjectParameterSet
 Aliases:
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -347,7 +347,7 @@ Parameter Sets: MoveByParentObjectsParameterSet
 Aliases:
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -362,10 +362,10 @@ Parameter Sets: MoveByNamesParameterSet, MoveByNameAndSourceParentObjectParamete
 Aliases: SourceDnsAliasName
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -SourceResourceGroupName
@@ -377,7 +377,7 @@ Parameter Sets: MoveByNamesParameterSet, MoveByParentObjectAndSourceNameParamete
 Aliases:
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -388,13 +388,25 @@ Resource ID of the source managed instance DNS alias.
 
 ```yaml
 Type: System.String
-Parameter Sets: MoveByNameAndSourceResourceIdParameterSet, MoveByParentObjectAndSourceResourceIdParameterSet
+Parameter Sets: MoveByNameAndSourceResourceIdParameterSet
 Aliases: Id
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: MoveByParentObjectAndSourceResourceIdParameterSet
+Aliases: Id
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

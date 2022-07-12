@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         /// Gets or sets the name of the resource group to use.
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = MoveByNamesParameterSet, Position = 2, HelpMessage = "Name of the source resource group.")]
-        [Parameter(Mandatory = true, ParameterSetName = MoveByParentObjectAndSourceNameParameterSet, Position = 1, HelpMessage = "Name of the source resource group.")]
+        [Parameter(Mandatory = true, ParameterSetName = MoveByParentObjectAndSourceNameParameterSet, Position = 2, HelpMessage = "Name of the source resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string SourceResourceGroupName { get; set; }
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         /// Gets or sets the name of destination managed instance.
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = MoveByNamesParameterSet, Position = 3, HelpMessage = "Name of the source managed instance.")]
-        [Parameter(Mandatory = true, ParameterSetName = MoveByParentObjectAndSourceNameParameterSet, Position = 2, HelpMessage = "Name of the source managed instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = MoveByParentObjectAndSourceNameParameterSet, Position = 3, HelpMessage = "Name of the source managed instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string SourceInstanceName { get; set; }
@@ -103,9 +103,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         /// Gets or sets the name of the Azure Sql Managed Instance DNS Alias
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = MoveByNamesParameterSet, HelpMessage = "Name of the source DNS alias.")]
-        [Parameter(Mandatory = true, ParameterSetName = MoveByParentObjectAndSourceNameParameterSet, Position = 3, HelpMessage = "Name of the source DNS alias.")]
-        [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceParentObjectParameterSet, Position = 3, HelpMessage = "Name of the source DNS alias.")]
-        [Parameter(Mandatory = true, ParameterSetName = MoveByParentObjectsParameterSet, Position = 2, HelpMessage = "Name of the source DNS alias.")]
+        [Parameter(Mandatory = true, ParameterSetName = MoveByParentObjectAndSourceNameParameterSet, HelpMessage = "Name of the source DNS alias.")]
+        [Parameter(Mandatory = true, ParameterSetName = MoveByNameAndSourceParentObjectParameterSet, HelpMessage = "Name of the source DNS alias.")]
+        [Parameter(Mandatory = true, ParameterSetName = MoveByParentObjectsParameterSet, HelpMessage = "Name of the source DNS alias.")]
         [Alias("SourceDnsAliasName")]
         [ValidateNotNullOrEmpty]
         public string SourceName { get; set; }
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         /// Gets or sets the instance Object
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MoveByNameAndSourceParentObjectParameterSet, Position = 2, HelpMessage = "Input object of the source managed instance.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = MoveByParentObjectsParameterSet, Position = 1, HelpMessage = "Input object of the source managed instance.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = MoveByParentObjectsParameterSet, Position = 2, HelpMessage = "Input object of the source managed instance.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlManagedInstanceModel SourceInstanceObject { get; set; }
 
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         /// Gets or sets the instance dns alias object.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MoveByNameAndSourceInputObjectParameterSet, Position = 2, HelpMessage = "Input object of the source managed instance DNS alias.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = MoveByParentObjectAndSourceInputObjectParameterSet, Position = 1, HelpMessage = "Input object of the source managed instance DNS alias.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = MoveByParentObjectAndSourceInputObjectParameterSet, Position = 2, HelpMessage = "Input object of the source managed instance DNS alias.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlManagedInstanceDnsAliasModel SourceInputObject { get; set; }
 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         /// Gets or sets the instance dns alias resource id
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MoveByNameAndSourceResourceIdParameterSet, Position = 2, HelpMessage = "Resource ID of the source managed instance DNS alias.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = MoveByParentObjectAndSourceResourceIdParameterSet, Position = 1, HelpMessage = "Resource ID of the source managed instance DNS alias.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = MoveByParentObjectAndSourceResourceIdParameterSet, Position = 2, HelpMessage = "Resource ID of the source managed instance DNS alias.")]
         [ValidateNotNullOrEmpty]
         [Alias("Id")]
         public string SourceResourceId { get; set; }

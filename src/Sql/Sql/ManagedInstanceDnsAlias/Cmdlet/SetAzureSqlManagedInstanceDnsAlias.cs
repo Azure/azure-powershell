@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDnsAlias.Cmdlet
         /// Gets or sets the name of the Azure Sql Managed Instance DNS Alias
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = SetByNameParameterSet, Position = 2, HelpMessage = "Name of the managed instance DNS alias.")]
-        [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet, Position = 1, HelpMessage = "Name of the managed instance DNS alias.")]
+        [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet, Position = 2, HelpMessage = "Name of the managed instance DNS alias.")]
         [ValidateNotNullOrEmpty]
         [Alias("DnsAliasName")]
         public string Name { get; set; }
