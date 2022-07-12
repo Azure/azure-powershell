@@ -27,11 +27,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceTestRunner
+    public class ResourcesTestRunner
     {
         protected readonly ITestRunner TestRunner;
 
-        protected ResourceTestRunner(ITestOutputHelper output)
+        protected ResourcesTestRunner(ITestOutputHelper output)
         {
             TestRunner = TestManager.CreateInstance(output)
                 .WithNewPsScriptFilename($"{GetType().Name}.ps1")
