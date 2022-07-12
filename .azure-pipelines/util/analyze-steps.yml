@@ -31,6 +31,9 @@ steps:
 
 - pwsh: 'Install-Module "platyPS", "PSScriptAnalyzer" -Force -Confirm:$false -Scope CurrentUser'
   displayName: 'Install PowerShell Dependencies'
+
+- pwsh: 'New-Item -ItemType Directory -Path "Az-Cmdlets-latest"; Invoke-WebRequest -Uri "https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-latest.tar.gz" -OutFile "Az-Cmdlets-latest/Az-Cmdlets-latest.tar.gz"; . Az-Cmdlets-latest/InstallModule.ps1'
+  displayName: 'Install latest modules'
   
 - task: DotNetCoreCLI@2
   displayName: 'Generate Help'

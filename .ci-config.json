@@ -87,7 +87,7 @@
         "src/{ModuleName}/**/*.md$"
       ],
       "phases": [
-        "build:related-module",
+        "build:module",
         "help:module"
       ]
     },
