@@ -8,11 +8,11 @@
 
 - [ ] **I have read the [_Submitting Changes_](../blob/main/CONTRIBUTING.md#submitting-changes) section of [`CONTRIBUTING.md`](../blob/main/CONTRIBUTING.md) and below information:**
 
-* **SHOULD** select appropriate branch. Cmdlets from Autorest.PowerShell should go to `generation` branch. 
+* **SHOULD** select appropriate branch. Cmdlets from Autorest.PowerShell should go to [`generation`](https://github.com/Azure/azure-powershell/tree/generation) branch. 
 * **SHOULD** make the title of PR clear and informative, and in the present imperative tense. 
 * **SHOULD** update `ChangeLog.md` file(s) appropriately
     * For any service, the `ChangeLog.md` file can be found at `src/{{SERVICE}}/{{SERVICE}}/ChangeLog.md`
-    * A snippet outlining the change(s) made in the PR should be written under the `## Upcoming Release` header in the past tense. Add changelog in description section if PR goes into `generation` branch.
+    * A snippet outlining the change(s) made in the PR should be written under the `## Upcoming Release` header in the past tense. Add changelog in description section if PR goes into [`generation`](https://github.com/Azure/azure-powershell/tree/generation) branch.
     * Should **not** change `ChangeLog.md` if no new release is required, such as fixing test case only.
 * **SHOULD** have approved design review for the changes in [this repository](https://github.com/Azure/azure-powershell-cmdlet-review-pr) ([_Microsoft internal only_](../blob/main/CONTRIBUTING.md#onboarding)) with following situations
     * Create new module from the scratch
