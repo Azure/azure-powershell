@@ -16,7 +16,7 @@
     * Should **not** change `ChangeLog.md` if no new release is required, such as fixing test case only.
 * **SHOULD** have approved design review for the changes in [this repository](https://github.com/Azure/azure-powershell-cmdlet-review-pr) ([_Microsoft internal only_](../blob/main/CONTRIBUTING.md#onboarding)) with following situations
     * Create new module from the scratch
-    * Create new resource types which cannot conform to [Azure PowerShell Design Guidelines](../blob/main/documentation/development-docs/design-guidelines)
+    * Create new resource types which are not easy to conform to [Azure PowerShell Design Guidelines](../blob/main/documentation/development-docs/design-guidelines)
     * Create new resource type which name doesn't use module name as prefix
     * Have design question before implementation
 * **SHOULD** regenerate markdown help files if there is cmdlet API change. [Instruction](../blob/main/documentation/development-docs/help-generation.md#updating-all-markdown-files-in-a-module)
