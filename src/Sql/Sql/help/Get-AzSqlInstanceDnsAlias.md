@@ -37,14 +37,14 @@ Get the specific Azure SQL Managed Instance DNS Alias or lists all Managed Insta
 
 ### Example 1: Get a specific managed instance DNS alias
 ```powershell
-Get-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName>
+Get-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1 -Name DnsAlias1
 ```
 
 ```output
-ResourceGroupName    : <rgName>
-ManagedInstanceName  : <managedInstanceName>
-DnsAliasName         : <dnsAliasName>
-Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
+ResourceGroupName    : ResourceGroup1
+ManagedInstanceName  : ManagedInstance1
+DnsAliasName         : DnsAlias1
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
 AzureDnsRecord       :
 PublicAzureDnsRecord :
 ```
@@ -53,21 +53,21 @@ This command gets a specific managed instance DNS alias.
 
 ### Example 2: Lists managed instance DNS aliases for the specified managed instance
 ```powershell
-Get-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName>
+Get-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1
 ```
 
 ```output
-ResourceGroupName    : <rgName>
-ManagedInstanceName  : <managedInstanceName>
-DnsAliasName         : <dnsAliasName>
-Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
+ResourceGroupName    : ResourceGroup1
+ManagedInstanceName  : ManagedInstance1
+DnsAliasName         : DnsAlias1
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
 AzureDnsRecord       :
 PublicAzureDnsRecord :
 
-ResourceGroupName    : <rgName>
-ManagedInstanceName  : <managedInstanceName>
-DnsAliasName         : <dnsAliasName>
-Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
+ResourceGroupName    : ResourceGroup1
+ManagedInstanceName  : ManagedInstance1
+DnsAliasName         : DnsAlias1
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
 AzureDnsRecord       :
 PublicAzureDnsRecord :
 ```
@@ -76,16 +76,16 @@ This command gets a list of managed instance DNS aliases.
 
 ### Example 3: Get a specific managed instance DNS alias for a previously fetched managed instance
 ```powershell
-$managedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
-Get-AzSqlInstanceDnsAlias -InstanceObject $managedInstance -Name <dnsAliasName>
+$managedInstance = Get-AzSqlInstance -ResourceGroupName ResourceGroup1 -Name ManagedInstance1
+Get-AzSqlInstanceDnsAlias -InstanceObject $managedInstance -Name DnsAlias1
 ```
 
 ```output
-ResourceGroupName    : <rgName>
-ManagedInstanceName  : <managedInstanceName>
-DnsAliasName         : <dnsAliasName>
-Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
-AzureDnsRecord       : <dnsAliasName>.xxxxxxxxxxxx.xxxxxxxx.xxxxxxx.xxx
+ResourceGroupName    : ResourceGroup1
+ManagedInstanceName  : ManagedInstance1
+DnsAliasName         : DnsAlias1
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
+AzureDnsRecord       : DnsAlias1.xxxxxxxxxxxx.xxxxxxxx.xxxxxxx.xxx
 PublicAzureDnsRecord :
 ```
 
@@ -93,14 +93,14 @@ This command gets a managed instance DNS alias by passing the instance object.
 
 ### Example 4: Get a managed instance DNS alias with the given resource ID
 ```powershell
-Get-AzSqlInstanceDnsAlias -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
+Get-AzSqlInstanceDnsAlias -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
 ```
 
 ```output
-ResourceGroupName    : <rgName>
-ManagedInstanceName  : <managedInstanceName>
-DnsAliasName         : <dnsAliasName>
-Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
+ResourceGroupName    : ResourceGroup1
+ManagedInstanceName  : ManagedInstance1
+DnsAliasName         : DnsAlias1
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
 AzureDnsRecord       :
 PublicAzureDnsRecord :
 ```

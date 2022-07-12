@@ -32,14 +32,14 @@ Creates new Azure SQL Managed Instance DNS Alias that is pointing to specified m
 
 ### Example 1: Create a new managed instance DNS alias
 ```powershell
-New-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName>
+New-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1 -Name DnsAlias1
 ```
 
 ```output
-ResourceGroupName    : <rgName>
-ManagedInstanceName  : <managedInstanceName>
-DnsAliasName         : <dnsAliasName>
-Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
+ResourceGroupName    : ResourceGroup1
+ManagedInstanceName  : ManagedInstance1
+DnsAliasName         : DnsAlias1
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
 AzureDnsRecord       :
 PublicAzureDnsRecord :
 ```
@@ -48,15 +48,15 @@ This command creates a new managed instance DNS alias.
 
 ### Example 2: Create a new managed instance DNS alias on previously fetched managed instance
 ```powershell
-$managedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
-New-AzSqlInstanceDnsAlias -InstanceObject $managedInstance -Name <dnsAliasName>
+$managedInstance = Get-AzSqlInstance -ResourceGroupName ResourceGroup1 -Name ManagedInstance1
+New-AzSqlInstanceDnsAlias -InstanceObject $managedInstance -Name DnsAlias1
 ```
 
 ```output
-ResourceGroupName    : <rgName>
-ManagedInstanceName  : <managedInstanceName>
-DnsAliasName         : <dnsAliasName>
-Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
+ResourceGroupName    : ResourceGroup1
+ManagedInstanceName  : ManagedInstance1
+DnsAliasName         : DnsAlias1
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
 AzureDnsRecord       :
 PublicAzureDnsRecord :
 ```
@@ -65,15 +65,15 @@ This command creates a new managed instance DNS alias by passing the instance ob
 
 ### Example 3: Create a new managed instance DNS alias
 ```powershell
-New-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName> -CreateDnsRecord
+New-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1 -Name DnsAlias1 -CreateDnsRecord
 ```
 
 ```output
-ResourceGroupName    : <rgName>
-ManagedInstanceName  : <managedInstanceName>
-DnsAliasName         : <dnsAliasName>
-Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
-AzureDnsRecord       : <dnsAliasName>.xxxxxxxxxxxx.xxxxxxxx.xxxxxxx.xxx
+ResourceGroupName    : ResourceGroup1
+ManagedInstanceName  : ManagedInstance1
+DnsAliasName         : DnsAlias1
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
+AzureDnsRecord       : DnsAlias1.xxxxxxxxxxxx.xxxxxxxx.xxxxxxx.xxx
 PublicAzureDnsRecord :
 ```
 

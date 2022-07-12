@@ -43,32 +43,32 @@ Updates the properties of Azure SQL Managed Instance DNS alias by adding or remo
 
 ### Example 1: Sets a managed instance DNS alias to have DNS record
 ```powershell
-Set-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName> -HasDnsRecord
+Set-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1 -Name DnsAlias1 -HasDnsRecord
 ```
 
 ```output
-ResourceGroupName    : <rgName>
-ManagedInstanceName  : <managedInstanceName>
-DnsAliasName         : <dnsAliasName>
-Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
-AzureDnsRecord       : <dnsAliasName>.xxxxxxxxxxxx.xxxxxxxx.xxxxxxx.xxx
+ResourceGroupName    : ResourceGroup1
+ManagedInstanceName  : ManagedInstance1
+DnsAliasName         : DnsAlias1
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
+AzureDnsRecord       : DnsAlias1.xxxxxxxxxxxx.xxxxxxxx.xxxxxxx.xxx
 PublicAzureDnsRecord :
 ```
 
 This command sets a managed instance DNS alias to have DNS record.
 
-### Example 2: Sets a managed instance DNS alias with the name <dnsAliasName> on the previously fetched managed instance to have DNS record
+### Example 2: Sets a managed instance DNS alias with the name DnsAlias1 on the previously fetched managed instance to have DNS record
 ```powershell
-$managedInstance = Get-AzSqlInstance -ResourceGroupName <resourceGroupName> -Name <managedInstanceName>
-Set-AzSqlInstanceDnsAlias -InstanceObject $managedInstance -Name <dnsAliasName> -HasDnsRecord
+$managedInstance = Get-AzSqlInstance -ResourceGroupName ResourceGroup1 -Name ManagedInstance1
+Set-AzSqlInstanceDnsAlias -InstanceObject $managedInstance -Name DnsAlias1 -HasDnsRecord
 ```
 
 ```output
-ResourceGroupName    : <rgName>
-ManagedInstanceName  : <managedInstanceName>
-DnsAliasName         : <dnsAliasName>
-Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
-AzureDnsRecord       : <dnsAliasName>.xxxxxxxxxxxx.xxxxxxxx.xxxxxxx.xxx
+ResourceGroupName    : ResourceGroup1
+ManagedInstanceName  : ManagedInstance1
+DnsAliasName         : DnsAlias1
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
+AzureDnsRecord       : DnsAlias1.xxxxxxxxxxxx.xxxxxxxx.xxxxxxx.xxx
 PublicAzureDnsRecord :
 ```
 
@@ -77,16 +77,16 @@ This command sets a managed instance DNS alias to have DNS record. The managed i
 ### Example 3: Remove the DNS record from the previously created managed instance DNS alias
 ```powershell
 #First, create a managed instance DNS alias with DNS record
-$managedInstanceAlias = New-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName> -HasDnsRecord
+$managedInstanceAlias = New-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1 -Name DnsAlias1 -HasDnsRecord
 # Remove the DNS record from the alias by not specifying the -HasDnsRecord parameter
-Set-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName>
+Set-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1 -Name DnsAlias1
 ```
 
 ```output
-ResourceGroupName    : <rgName>
-ManagedInstanceName  : <managedInstanceName>
-DnsAliasName         : <dnsAliasName>
-Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
+ResourceGroupName    : ResourceGroup1
+ManagedInstanceName  : ManagedInstance1
+DnsAliasName         : DnsAlias1
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
 AzureDnsRecord       :
 PublicAzureDnsRecord :
 ```
@@ -95,16 +95,16 @@ This command removes the DNS record from the alias which was previously created 
 
 ### Example 4: Sets a previously fetched managed instance DNS alias to have DNS record
 ```powershell
-$managedInstanceAlias = New-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName>
-Set-AzSqlInstanceDnsAlias -ResourceGroupName <resourceGroupName> -InstanceName <managedInstanceName> -Name <dnsAliasName> -HasDnsRecord
+$managedInstanceAlias = New-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1 -Name DnsAlias1
+Set-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1 -Name DnsAlias1 -HasDnsRecord
 ```
 
 ```output
-ResourceGroupName    : <rgName>
-ManagedInstanceName  : <managedInstanceName>
-DnsAliasName         : <dnsAliasName>
-Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
-AzureDnsRecord       : <dnsAliasName>.xxxxxxxxxxxx.xxxxxxxx.xxxxxxx.xxx
+ResourceGroupName    : ResourceGroup1
+ManagedInstanceName  : ManagedInstance1
+DnsAliasName         : DnsAlias1
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
+AzureDnsRecord       : DnsAlias1.xxxxxxxxxxxx.xxxxxxxx.xxxxxxx.xxx
 PublicAzureDnsRecord :
 ```
 
@@ -112,15 +112,15 @@ This command sets a managed instance DNS alias, which was fetched with Get-AzSql
 
 ### Example 5: Sets a managed instance DNS alias, specified by a resource ID, to have DNS record
 ```powershell
-Set-AzSqlInstanceDnsAlias -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName> -HasDnsRecord
+Set-AzSqlInstanceDnsAlias -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1 -HasDnsRecord
 ```
 
 ```output
-ResourceGroupName    : <rgName>
-ManagedInstanceName  : <managedInstanceName>
-DnsAliasName         : <dnsAliasName>
-Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/managedInstances/<managedInstanceName>/dnsAliases/<dnsAliasName>
-AzureDnsRecord       : <dnsAliasName>.xxxxxxxxxxxx.xxxxxxxx.xxxxxxx.xxx
+ResourceGroupName    : ResourceGroup1
+ManagedInstanceName  : ManagedInstance1
+DnsAliasName         : DnsAlias1
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
+AzureDnsRecord       : DnsAlias1.xxxxxxxxxxxx.xxxxxxxx.xxxxxxx.xxx
 PublicAzureDnsRecord :
 ```
 
