@@ -53,12 +53,20 @@ function Measure-CommandName {
                         $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
                         if ($null -eq $GetCommand) {
                             # CommandName is not valid.
-                            $global:CommandParameterPair += @{
-                                CommandName = $CommandName
-                                ParameterName = "<is not valid>"
-                                ModuleCmdletExNum = $ModuleCmdletExNum
+                            # Retry import-module
+                            Get-Item $modulePath | Import-Module -Global
+                            $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
+                            if ($null -eq $GetCommand){
+                                $global:CommandParameterPair += @{
+                                    CommandName = $CommandName
+                                    ParameterName = "<is not valid>"
+                                    ModuleCmdletExNum = $ModuleCmdletExNum
+                                }
+                                return $true
                             }
-                            return $true
+                            else{
+                                Write-debug "Succeed by retrying import-module"
+                            }
                         }
                         else {
                             if ($GetCommand.CommandType -eq "Alias") {

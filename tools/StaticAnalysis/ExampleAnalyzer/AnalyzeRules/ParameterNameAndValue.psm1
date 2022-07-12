@@ -398,7 +398,15 @@ function Measure-ParameterNameAndValue {
 
                     # Skip parameters for invaild cmdlet
                     if ($null -eq $GetCommand) {
-                        return $false
+                        # Retry import-module
+                        Get-Item $modulePath | Import-Module -Global
+                        $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
+                        if ($null -eq $GetCommand) {
+                            return $false
+                        }
+                        else{
+                            Write-debug "Succeed by retrying import-module"
+                        }
                     }
                     # Get command from alias
                     if ($GetCommand.CommandType -eq "Alias") {
