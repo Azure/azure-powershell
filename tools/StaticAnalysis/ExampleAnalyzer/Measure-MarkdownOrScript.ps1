@@ -72,7 +72,7 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
 if ($PSCmdlet.ParameterSetName -eq "Script" -or $AnalyzeScriptsInFile.IsPresent) {
     # Read and analyze ".ps1" in \ScriptsByExample
     Write-Output "Analyzing file ..."
-    $analysisResultsTable += Get-ScriptAnalyzerResult (Get-Item -Path $ScriptPaths) $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -ErrorAction SilentlyContinue
+    $analysisResultsTable += Get-ScriptAnalyzerResult (Get-Item -Path $ScriptPaths) $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -ErrorAction Continue
     
     # Summarize analysis results, output in Result.csv
     if($analysisResultsTable){

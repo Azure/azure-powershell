@@ -108,6 +108,7 @@ namespace StaticAnalysis.IssueChecker
                 }
                 var errorText = new StringBuilder();
                 errorText.AppendLine(recordList.First().PrintHeaders());
+                var warningText = new StringBuilder();
                 foreach (IReportRecord record in recordList)
                 {
                     if (record.Severity < 2)
@@ -117,13 +118,14 @@ namespace StaticAnalysis.IssueChecker
                     }
                     else if (record.Severity == 2 && outputWarning)
                     {
-                        errorText.AppendLine(record.FormatRecord());
+                        warningText.AppendLine(record.FormatRecord());
                     }
                 }
                 if (hasError)
                 {
                     Console.WriteLine("{0} Errors", exceptionFilePath);
                     Console.WriteLine(errorText.ToString());
+                    Console.WriteLine(warningText.ToString());
                 }
             }
             return hasError;

@@ -594,11 +594,17 @@ function Measure-ParameterNameAndValue {
                                 if ($null -eq $NextCommandElement -or $NextCommandElement -is [System.Management.Automation.Language.CommandParameterAst]) {
                                     # Parameter is not assigned with a value.
                                     # Unassigned_Parameter
-                                    $global:CommandParameterPair += @{
+                                    # Exclude parameters assigned by <Type>, and analyze the next item.
+                                    if($CommandElementAst.Parent.Extent.Text -match "-$ParameterName\s*<[!<>]+>"){
+                                        $global:SkipNextCommandElementAst = $true
+                                    }
+                                    else{
+                                        $global:CommandParameterPair += @{
                                         CommandName = $CommandName
                                         ParameterName = $ParameterName
                                         ExpressionToParameter = $null
                                         ModuleCmdletExNum = $ModuleCmdletExNum
+                                        }
                                     }
                                     return $true
                                 }
