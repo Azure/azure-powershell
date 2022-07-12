@@ -4,7 +4,7 @@ Module Name: Az.Compute
 ms.assetid: 6BCB36BC-F5E6-4EDD-983C-8BDE7A9B004D
 online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiskencryptionextension
 schema: 2.0.0
----
+--- 
 
 # Set-AzVMDiskEncryptionExtension
 
