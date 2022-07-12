@@ -480,6 +480,10 @@ function Measure-ParameterNameAndValue {
                                     }
                                     else {
                                         # not a SwitchParameter
+                                        # If the parameter is assigned by <Type>, donot record it
+                                        if($CommandElement.Parent.Extent.Text -match "-$ParameterName\s*<.*?>"){
+                                            continue
+                                        }
                                         if ($null -eq $NextCommandElement -or $NextCommandElement -is [System.Management.Automation.Language.CommandParameterAst]) {
                                             # NonSwitchParameter + Parameter
                                             # Parameter must be assigned with a value.
@@ -591,20 +595,18 @@ function Measure-ParameterNameAndValue {
 
                             if ($GetCommand.Parameters.$ParameterNameNotAlias.SwitchParameter -eq $false) {
                                 # Parameter is not a SwitchParameter.
+                                # Exclude parameters assigned by <Type>
+                                if($CommandElementAst.Parent.Extent.Text -match "-$ParameterName\s*<.*?>"){
+                                    return $false
+                                }
                                 if ($null -eq $NextCommandElement -or $NextCommandElement -is [System.Management.Automation.Language.CommandParameterAst]) {
                                     # Parameter is not assigned with a value.
                                     # Unassigned_Parameter
-                                    # Exclude parameters assigned by <Type>, and analyze the next item.
-                                    if($CommandElementAst.Parent.Extent.Text -match "-$ParameterName\s*<[!<>]+>"){
-                                        $global:SkipNextCommandElementAst = $true
-                                    }
-                                    else{
-                                        $global:CommandParameterPair += @{
-                                        CommandName = $CommandName
-                                        ParameterName = $ParameterName
-                                        ExpressionToParameter = $null
-                                        ModuleCmdletExNum = $ModuleCmdletExNum
-                                        }
+                                    $global:CommandParameterPair += @{
+                                    CommandName = $CommandName
+                                    ParameterName = $ParameterName
+                                    ExpressionToParameter = $null
+                                    ModuleCmdletExNum = $ModuleCmdletExNum
                                     }
                                     return $true
                                 }
