@@ -110,14 +110,14 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             HelpMessage = "Specifies the Federated client ID of the server when using Cross-Tenant CMK, Do not set this value if you do not intent to use Cross-Tenant CMK")]
         public Guid? FederatedClientId { get; set; }
 
-        // <summary>
+        /// <summary>
         /// List of user assigned identities.
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "List of user assigned identities")]
         public List<string> UserAssignedIdentityId { get; set; }
 
-        // <summary>
+        /// <summary>
         /// Type of identity to be assigned to the server..
         /// </summary>
         [Parameter(Mandatory = false,

@@ -25,6 +25,7 @@ using StaticAnalysis.HelpAnalyzer;
 using StaticAnalysis.BreakingChangeAnalyzer;
 using StaticAnalysis.DependencyAnalyzer;
 using StaticAnalysis.SignatureVerifier;
+using StaticAnalysis.ExampleAnalyzer;
 
 namespace StaticAnalysis.IssueChecker
 {
@@ -39,6 +40,7 @@ namespace StaticAnalysis.IssueChecker
             ("MissingAssemblies.csv", typeof(MissingAssembly).FullName),
             ("ExtraAssemblies.csv", typeof(ExtraAssembly).FullName),
             ("SignatureIssues.csv", typeof(SignatureIssue).FullName),
+            ("ExampleIssues.csv", typeof(ExampleIssue).FullName),
         };
         public AnalysisLogger Logger { get; set; }
 
@@ -77,7 +79,8 @@ namespace StaticAnalysis.IssueChecker
                 {
                     continue;
                 }
-                if (IsSingleExceptionFileHasCriticalIssue(exceptionFilePath, recordTypeName))
+                bool outputWarning = recordTypeName.Equals(typeof(ExampleIssue).FullName);
+                if (IsSingleExceptionFileHasCriticalIssue(exceptionFilePath, recordTypeName, outputWarning))
                 {
                     hasCriticalIssue = true;
                 }
@@ -90,7 +93,7 @@ namespace StaticAnalysis.IssueChecker
             }
         }
 
-        private bool IsSingleExceptionFileHasCriticalIssue(string exceptionFilePath, string reportRecordTypeName) 
+        private bool IsSingleExceptionFileHasCriticalIssue(string exceptionFilePath, string reportRecordTypeName, bool outputWarning) 
         {
             bool hasError = false;
             using (var reader = new StreamReader(exceptionFilePath))
@@ -110,6 +113,10 @@ namespace StaticAnalysis.IssueChecker
                     if (record.Severity < 2)
                     {
                         hasError = true;
+                        errorText.AppendLine(record.FormatRecord());
+                    }
+                    else if (record.Severity == 2 && outputWarning)
+                    {
                         errorText.AppendLine(record.FormatRecord());
                     }
                 }

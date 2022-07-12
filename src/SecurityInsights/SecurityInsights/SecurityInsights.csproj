@@ -10,4 +10,6 @@
     <PackageReference Include="Microsoft.Azure.Management.SecurityInsights" Version="1.0.0" />
   </ItemGroup>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

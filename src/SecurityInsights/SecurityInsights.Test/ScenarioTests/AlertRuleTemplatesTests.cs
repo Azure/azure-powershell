@@ -12,36 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
 {
-    public class AlertRuleTemplatesTests
+    public class AlertRuleTemplatesTests : SecurityInsightsTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public AlertRuleTemplatesTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AlertRuleTemplatesTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void List()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSentinelAlertRuleTemplate-List");
+            TestRunner.RunTestScript("Get-AzSentinelAlertRuleTemplate-List");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Get()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSentinelAlertRuleTemplate-Get");
+            TestRunner.RunTestScript("Get-AzSentinelAlertRuleTemplate-Get");
         }
     }
 }

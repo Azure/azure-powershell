@@ -155,7 +155,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IAksIdentity>: Identity Parameter
+INPUTOBJECT `<IAksIdentity>`: Identity Parameter
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The name of a supported Azure region.

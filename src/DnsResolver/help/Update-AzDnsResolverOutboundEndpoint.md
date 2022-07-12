@@ -30,9 +30,9 @@ Updates an outbound endpoint for a DNS resolver.
 
 ## EXAMPLES
 
-### Example 1: Update Outbound Endpoint by name (adding metadata)
+### Example 1: Update Outbound Endpoint by name (adding tag)
 ```powershell
-Update-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -Name sampleOutbound -ResourceGroupName sampleResourceGroup -Metadata @{"value0" = "value1"}
+Update-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -Name sampleOutbound -ResourceGroupName sampleResourceGroup -Tag @{"value0" = "value1"}
 ```
 
 ```output
@@ -41,12 +41,12 @@ Name         Type                                             Etag
 sampleOutbound Microsoft.Network/dnsResolvers/outboundEndpoints "02001eab-0000-0800-0000-60e792500000"
 ```
 
-This command updates Outbound Endpoint by name (adding metadata)
+This command updates Outbound Endpoint by name (adding tag)
 
-### Example 2: Update Outbound Endpoint via identity (adding metadata)
+### Example 2: Update Outbound Endpoint via identity (adding tag)
 ```powershell
 $inputObject = Get-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -Name sampleOutbound -ResourceGroupName sampleResourceGroup
-Update-AzDnsResolverOutboundEndpoint -InputObject $inputObject -Metadata @{"value0" = "value1"}
+Update-AzDnsResolverOutboundEndpoint -InputObject $inputObject -Tag @{"value0" = "value1"}
 ```
 
 ```output
@@ -55,7 +55,7 @@ Name         Type                                             Etag
 sampleOutbound Microsoft.Network/dnsResolvers/outboundEndpoints "02001eab-0000-0800-0000-60e792500000"
 ```
 
-This command updates Outbound Endpoint via identity (adding metadata)
+This command updates Outbound Endpoint via identity (adding tag)
 
 ## PARAMETERS
 
@@ -264,7 +264,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
+INPUTOBJECT `<IDnsResolverIdentity>`: Identity Parameter
   - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
   - `[DnsResolverName <String>]`: The name of the DNS resolver.
   - `[ForwardingRuleName <String>]`: The name of the forwarding rule.

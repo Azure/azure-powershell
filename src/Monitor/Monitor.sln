@@ -20,9 +20,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationInsights", "..\ApplicationInsights\ApplicationInsights\ApplicationInsights.csproj", "{1390E45D-BF3A-4ACD-BEBC-88007B3E75E5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.ApplicationInsights", "..\ApplicationInsights\ApplicationInsights.Autorest\Az.ApplicationInsights.csproj", "{5CF89B68-7FA6-44A1-AF48-463EB560D79E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.ApplicationInsights", "..\ApplicationInsights\Az.ApplicationInsights.csproj", "{1390E45D-BF3A-4ACD-BEBC-88007B3E75E5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights", "..\OperationalInsights\OperationalInsights\OperationalInsights.csproj", "{F9305976-EF6B-4502-BC38-ACFA47CB6DF6}"
 EndProject

@@ -323,6 +323,7 @@ ZoneRedundant            : false
 This command gets information about the instance named managedInstance1.
 
 ### Example 8: Get all instances assigned to a resource group with external administrator information
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $val = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
 
@@ -380,6 +381,7 @@ AzureADOnlyAuthentication : True
 This command gets information about all instances assigned to the resource group ResourceGroup01. .
 
 ### Example 9: Get information about an instance with external administrator information
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $val = Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
 

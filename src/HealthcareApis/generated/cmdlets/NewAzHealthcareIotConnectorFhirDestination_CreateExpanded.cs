@@ -36,6 +36,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>IoT Connector FHIR destination definition.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotFhirDestination _iotFhirDestinationBody = new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IotFhirDestination();
+
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Runtime)]
@@ -69,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"An etag associated with the resource, used for optimistic concurrency when editing it.",
         SerializedName = @"etag",
         PossibleTypes = new [] { typeof(string) })]
-        public string Etag { get => IotFhirDestinationBody.Etag ?? null; set => IotFhirDestinationBody.Etag = value; }
+        public string Etag { get => _iotFhirDestinationBody.Etag ?? null; set => _iotFhirDestinationBody.Etag = value; }
 
         /// <summary>Backing field for <see cref="FhirDestinationName" /> property.</summary>
         private string _fhirDestinationName;
@@ -95,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The mapping.",
         SerializedName = @"content",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotMappingPropertiesContent) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotMappingPropertiesContent FhirMappingContent { get => IotFhirDestinationBody.FhirMappingContent ?? null /* object */; set => IotFhirDestinationBody.FhirMappingContent = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotMappingPropertiesContent FhirMappingContent { get => _iotFhirDestinationBody.FhirMappingContent ?? null /* object */; set => _iotFhirDestinationBody.FhirMappingContent = value; }
 
         /// <summary>Fully qualified resource id of the FHIR service to connect to.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Fully qualified resource id of the FHIR service to connect to.")]
@@ -106,7 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"Fully qualified resource id of the FHIR service to connect to.",
         SerializedName = @"fhirServiceResourceId",
         PossibleTypes = new [] { typeof(string) })]
-        public string FhirServiceResourceId { get => IotFhirDestinationBody.FhirServiceResourceId ?? null; set => IotFhirDestinationBody.FhirServiceResourceId = value; }
+        public string FhirServiceResourceId { get => _iotFhirDestinationBody.FhirServiceResourceId ?? null; set => _iotFhirDestinationBody.FhirServiceResourceId = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -137,12 +140,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Path)]
         public string IotConnectorName { get => this._iotConnectorName; set => this._iotConnectorName = value; }
 
-        /// <summary>Backing field for <see cref="IotFhirDestinationBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotFhirDestination _iotFhirDestinationBody= new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IotFhirDestination();
-
-        /// <summary>IoT Connector FHIR destination definition.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotFhirDestination IotFhirDestinationBody { get => this._iotFhirDestinationBody; set => this._iotFhirDestinationBody = value; }
-
         /// <summary>The resource location.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource location.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Body)]
@@ -152,14 +149,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         Description = @"The resource location.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => IotFhirDestinationBody.Location ?? null; set => IotFhirDestinationBody.Location = value; }
+        public string Location { get => _iotFhirDestinationBody.Location ?? null; set => _iotFhirDestinationBody.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -215,7 +212,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         SerializedName = @"resourceIdentityResolutionType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.IotIdentityResolutionType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.IotIdentityResolutionType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.IotIdentityResolutionType ResourceIdentityResolutionType { get => IotFhirDestinationBody.ResourceIdentityResolutionType; set => IotFhirDestinationBody.ResourceIdentityResolutionType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.IotIdentityResolutionType ResourceIdentityResolutionType { get => _iotFhirDestinationBody.ResourceIdentityResolutionType; set => _iotFhirDestinationBody.ResourceIdentityResolutionType = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -310,7 +307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.IotFhirDestinationBody = this.IotFhirDestinationBody;
+            clone._iotFhirDestinationBody = this._iotFhirDestinationBody;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.SubscriptionId = this.SubscriptionId;
             clone.WorkspaceName = this.WorkspaceName;
@@ -477,12 +474,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.IotConnectorFhirDestinationCreateOrUpdate(ResourceGroupName, SubscriptionId, WorkspaceName, IotConnectorName, FhirDestinationName, IotFhirDestinationBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.IotConnectorFhirDestinationCreateOrUpdate(ResourceGroupName, SubscriptionId, WorkspaceName, IotConnectorName, FhirDestinationName, _iotFhirDestinationBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,SubscriptionId=SubscriptionId,WorkspaceName=WorkspaceName,IotConnectorName=IotConnectorName,FhirDestinationName=FhirDestinationName,body=IotFhirDestinationBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,SubscriptionId=SubscriptionId,WorkspaceName=WorkspaceName,IotConnectorName=IotConnectorName,FhirDestinationName=FhirDestinationName,body=_iotFhirDestinationBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -528,14 +525,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IErrorDetails>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, WorkspaceName=WorkspaceName, IotConnectorName=IotConnectorName, FhirDestinationName=FhirDestinationName, body=IotFhirDestinationBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, WorkspaceName=WorkspaceName, IotConnectorName=IotConnectorName, FhirDestinationName=FhirDestinationName, body=_iotFhirDestinationBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, WorkspaceName=WorkspaceName, IotConnectorName=IotConnectorName, FhirDestinationName=FhirDestinationName, body=IotFhirDestinationBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, WorkspaceName=WorkspaceName, IotConnectorName=IotConnectorName, FhirDestinationName=FhirDestinationName, body=_iotFhirDestinationBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

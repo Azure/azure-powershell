@@ -20,19 +20,19 @@ Get the metadata of a service instance.
 .Description
 Get the metadata of a service instance.
 .Example
-PS C:\>  Get-AzHealthcareAPIsService
+PS C:\>  Get-AzHealthcareApisService
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
 eastus2  azpsapiservice fhir azps_test_group
 .Example
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group
+PS C:\> Get-AzHealthcareApisService -ResourceGroupName azps_test_group
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
 eastus2  azpsapiservice fhir azps_test_group
 .Example
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice
+PS C:\> Get-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
@@ -64,7 +64,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareapisservice
 #>
-function Get-AzHealthcareAPIsService {
+function Get-AzHealthcareApisService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
@@ -171,10 +171,10 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsService_Get';
-            GetViaIdentity = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsService_GetViaIdentity';
-            List = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsService_List';
-            List1 = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsService_List1';
+            Get = 'Az.HealthcareApis.private\Get-AzHealthcareApisService_Get';
+            GetViaIdentity = 'Az.HealthcareApis.private\Get-AzHealthcareApisService_GetViaIdentity';
+            List = 'Az.HealthcareApis.private\Get-AzHealthcareApisService_List';
+            List1 = 'Az.HealthcareApis.private\Get-AzHealthcareApisService_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
@@ -231,20 +231,20 @@ Gets the properties of the specified workspace.
 .Description
 Gets the properties of the specified workspace.
 .Example
-PS C:\> Get-AzHealthcareAPIsWorkspace
+PS C:\> Get-AzHealthcareApisWorkspace
 
 Location Name       ResourceGroupName
 -------- ----       -----------------
 eastus2  azpshcws   azps_test_group
 eastus2  azpshcws02 azps_test_group
 .Example
-PS C:\> Get-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group
+PS C:\> Get-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group
 
 Location Name     ResourceGroupName
 -------- ----     -----------------
 eastus2  azpshcws azps_test_group
 .Example
-PS C:\> Get-AzHealthcareAPIsWorkspace -ResourceGroupName azps_test_group
+PS C:\> Get-AzHealthcareApisWorkspace -ResourceGroupName azps_test_group
 
 Location Name       ResourceGroupName
 -------- ----       -----------------
@@ -277,7 +277,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareapisworkspace
 #>
-function Get-AzHealthcareAPIsWorkspace {
+function Get-AzHealthcareApisWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
@@ -385,10 +385,10 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsWorkspace_Get';
-            GetViaIdentity = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsWorkspace_GetViaIdentity';
-            List = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsWorkspace_List';
-            List1 = 'Az.HealthcareApis.private\Get-AzHealthcareAPIsWorkspace_List1';
+            Get = 'Az.HealthcareApis.private\Get-AzHealthcareApisWorkspace_Get';
+            GetViaIdentity = 'Az.HealthcareApis.private\Get-AzHealthcareApisWorkspace_GetViaIdentity';
+            List = 'Az.HealthcareApis.private\Get-AzHealthcareApisWorkspace_List';
+            List1 = 'Az.HealthcareApis.private\Get-AzHealthcareApisWorkspace_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
@@ -1455,10 +1455,10 @@ Delete a service instance.
 .Description
 Delete a service instance.
 .Example
-PS C:\> Remove-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice
+PS C:\> Remove-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice
 
 .Example
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice | Remove-AzHealthcareAPIsService
+PS C:\> Get-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice | Remove-AzHealthcareApisService
 
 
 .Inputs
@@ -1487,7 +1487,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareapisservice
 #>
-function Remove-AzHealthcareAPIsService {
+function Remove-AzHealthcareApisService {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -1609,8 +1609,8 @@ begin {
         }
 
         $mapping = @{
-            Delete = 'Az.HealthcareApis.private\Remove-AzHealthcareAPIsService_Delete';
-            DeleteViaIdentity = 'Az.HealthcareApis.private\Remove-AzHealthcareAPIsService_DeleteViaIdentity';
+            Delete = 'Az.HealthcareApis.private\Remove-AzHealthcareApisService_Delete';
+            DeleteViaIdentity = 'Az.HealthcareApis.private\Remove-AzHealthcareApisService_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
@@ -1667,10 +1667,10 @@ Deletes a specified workspace.
 .Description
 Deletes a specified workspace.
 .Example
-PS C:\> Remove-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group
+PS C:\> Remove-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group
 
 .Example
-PS C:\> Get-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group | Remove-AzHealthcareAPIsWorkspace
+PS C:\> Get-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group | Remove-AzHealthcareApisWorkspace
 
 
 .Inputs
@@ -1699,7 +1699,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareapisworkspace
 #>
-function Remove-AzHealthcareAPIsWorkspace {
+function Remove-AzHealthcareApisWorkspace {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -1822,8 +1822,8 @@ begin {
         }
 
         $mapping = @{
-            Delete = 'Az.HealthcareApis.private\Remove-AzHealthcareAPIsWorkspace_Delete';
-            DeleteViaIdentity = 'Az.HealthcareApis.private\Remove-AzHealthcareAPIsWorkspace_DeleteViaIdentity';
+            Delete = 'Az.HealthcareApis.private\Remove-AzHealthcareApisWorkspace_Delete';
+            DeleteViaIdentity = 'Az.HealthcareApis.private\Remove-AzHealthcareApisWorkspace_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
@@ -2975,13 +2975,13 @@ Update the metadata of a service instance.
 .Description
 Update the metadata of a service instance.
 .Example
-PS C:\> Update-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice -Tag @{"abc"="123"}
+PS C:\> Update-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice -Tag @{"abc"="123"}
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
 eastus2  azpsapiservice fhir azps_test_group
 .Example
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice | Update-AzHealthcareAPIsService -Tag @{"abc"="123"}
+PS C:\> Get-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice | Update-AzHealthcareApisService -Tag @{"abc"="123"}
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
@@ -3013,7 +3013,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/update-azhealthcareapisservice
 #>
-function Update-AzHealthcareAPIsService {
+function Update-AzHealthcareApisService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -3143,8 +3143,8 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareAPIsService_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareAPIsService_UpdateViaIdentityExpanded';
+            UpdateExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareApisService_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareApisService_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
@@ -3201,13 +3201,13 @@ Patch workspace details.
 .Description
 Patch workspace details.
 .Example
-PS C:\> Update-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
+PS C:\> Update-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 
 Location Name     ResourceGroupName
 -------- ----     -----------------
 eastus2  azpshcws azps_test_group
 .Example
-PS C:\> Get-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group | Update-AzHealthcareAPIsWorkspace -Tag @{"abc"="123"}
+PS C:\> Get-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group | Update-AzHealthcareApisWorkspace -Tag @{"abc"="123"}
 
 Location Name     ResourceGroupName
 -------- ----     -----------------
@@ -3239,7 +3239,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/update-azhealthcareapisworkspace
 #>
-function Update-AzHealthcareAPIsWorkspace {
+function Update-AzHealthcareApisWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -3363,8 +3363,8 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareAPIsWorkspace_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareAPIsWorkspace_UpdateViaIdentityExpanded';
+            UpdateExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareApisWorkspace_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareApisWorkspace_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
@@ -4147,7 +4147,7 @@ Create or update the metadata of a service instance.
 .Description
 Create or update the metadata of a service instance.
 .Example
-PS C:\> New-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice -Kind 'fhir' -Location eastus2 -CosmoDbConfigurationOfferThroughput 400
+PS C:\> New-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice -Kind 'fhir' -Location eastus2 -CosmosOfferThroughput 400
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
@@ -4160,7 +4160,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-ACCESSPOLICY <IServiceAccessPolicyEntry[]>: The access policies of the service instance.
+ACCESSPOLICYOBJECTID <IServiceAccessPolicyEntry[]>: The access policies of the service instance.
   ObjectId <String>: An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
 
 ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Container Initiative (OCI) artifacts.
@@ -4175,7 +4175,7 @@ PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: The list of private en
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisservice
 #>
-function New-AzHealthcareAPIsService {
+function New-AzHealthcareApisService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -4215,15 +4215,15 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.Int32]
     # The provisioned throughput for the backing database.
-    ${CosmoDbConfigurationOfferThroughput},
+    ${CosmosOfferThroughput},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceAccessPolicyEntry[]]
     # The access policies of the service instance.
-    # To construct, see NOTES section for ACCESSPOLICY properties and create a hash table.
-    ${AccessPolicy},
+    # To construct, see NOTES section for ACCESSPOLICYOBJECTID properties and create a hash table.
+    ${AccessPolicyObjectId},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -4242,60 +4242,60 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If credentials are allowed via CORS.
+    ${AllowCorsCredential},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String]
     # The audience url for the service
-    ${AuthenticationConfigurationAudience},
+    ${Audience},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String]
     # The authority url for the service
-    ${AuthenticationConfigurationAuthority},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # If the SMART on FHIR proxy is enabled
-    ${AuthenticationConfigurationSmartProxyEnabled},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # If credentials are allowed via CORS.
-    ${CorConfigurationAllowCredentials},
+    ${Authority},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String[]]
     # The headers to be allowed via CORS.
-    ${CorConfigurationHeader},
+    ${CorsHeader},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.Int32]
     # The max age to be allowed via CORS.
-    ${CorConfigurationMaxAge},
+    ${CorsMaxAge},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String[]]
     # The methods to be allowed via CORS.
-    ${CorConfigurationMethod},
+    ${CorsMethod},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String[]]
     # The origins to be allowed via CORS.
-    ${CorConfigurationOrigin},
+    ${CorsOrigin},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String]
     # The URI of the customer-managed key for the backing database.
-    ${CosmoDbConfigurationKeyVaultKeyUri},
+    ${CosmosKeyVaultKeyUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If the SMART on FHIR proxy is enabled
+    ${EnableSmartProxy},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
@@ -4307,7 +4307,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String]
     # The name of the default export storage account.
-    ${ExportConfigurationStorageAccountName},
+    ${ExportStorageAccountName},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ManagedServiceIdentityType])]
@@ -4424,7 +4424,7 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.HealthcareApis.custom\New-AzHealthcareAPIsService';
+            CreateExpanded = 'Az.HealthcareApis.custom\New-AzHealthcareApisService';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
@@ -4481,7 +4481,7 @@ Creates or updates a workspace resource with the specified parameters.
 .Description
 Creates or updates a workspace resource with the specified parameters.
 .Example
-PS C:\> New-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group -Location eastus2
+PS C:\> New-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group -Location eastus2
 
 Location Name     ResourceGroupName
 -------- ----     -----------------
@@ -4492,7 +4492,7 @@ Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace
 .Link
 https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisworkspace
 #>
-function New-AzHealthcareAPIsWorkspace {
+function New-AzHealthcareApisWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -4628,7 +4628,7 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.HealthcareApis.custom\New-AzHealthcareAPIsWorkspace';
+            CreateExpanded = 'Az.HealthcareApis.custom\New-AzHealthcareApisWorkspace';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
@@ -4911,7 +4911,7 @@ Creates or updates a FHIR Service resource with the specified parameters.
 .Description
 Creates or updates a FHIR Service resource with the specified parameters.
 .Example
-PS C:\> New-AzHealthcareFhirService -Name azpsfhirservice -ResourceGroupName azps_test_group -WorkspaceName azpshcws -Location eastus2 -Kind 'fhir-R4' -AuthenticationConfigurationAuthority "https://login.microsoftonline.com/{DirectoryID}" -AuthenticationConfigurationAudience "https://azpshcws-{FhirServiceName}.fhir.azurehealthcareapis.com"
+PS C:\> New-AzHealthcareFhirService -Name azpsfhirservice -ResourceGroupName azps_test_group -WorkspaceName azpshcws -Location eastus2 -Kind 'fhir-R4' -Authority "https://login.microsoftonline.com/{DirectoryID}" -Audience "https://azpshcws-{FhirServiceName}.fhir.azurehealthcareapis.com"
 
 Location Name                     Kind    ResourceGroupName
 -------- ----                     ----    -----------------
@@ -4924,7 +4924,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-ACCESSPOLICY <IFhirServiceAccessPolicyEntry[]>: Fhir Service access policies.
+ACCESSPOLICYOBJECTID <IFhirServiceAccessPolicyEntry[]>: Fhir Service access policies.
   ObjectId <String>: An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
 
 ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Container Initiative (OCI) artifacts.
@@ -4982,8 +4982,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirServiceAccessPolicyEntry[]]
     # Fhir Service access policies.
-    # To construct, see NOTES section for ACCESSPOLICY properties and create a hash table.
-    ${AccessPolicy},
+    # To construct, see NOTES section for ACCESSPOLICYOBJECTID properties and create a hash table.
+    ${AccessPolicyObjectId},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -5002,54 +5002,54 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If credentials are allowed via CORS.
+    ${AllowCorsCredential},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String]
     # The audience url for the service
-    ${AuthenticationConfigurationAudience},
+    ${Audience},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String]
     # The authority url for the service
-    ${AuthenticationConfigurationAuthority},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # If the SMART on FHIR proxy is enabled
-    ${AuthenticationConfigurationSmartProxyEnabled},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # If credentials are allowed via CORS.
-    ${CorConfigurationAllowCredentials},
+    ${Authority},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String[]]
     # The headers to be allowed via CORS.
-    ${CorConfigurationHeader},
+    ${CorsHeader},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.Int32]
     # The max age to be allowed via CORS.
-    ${CorConfigurationMaxAge},
+    ${CorsMaxAge},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String[]]
     # The methods to be allowed via CORS.
-    ${CorConfigurationMethod},
+    ${CorsMethod},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String[]]
     # The origins to be allowed via CORS.
-    ${CorConfigurationOrigin},
+    ${CorsOrigin},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If the SMART on FHIR proxy is enabled
+    ${EnableSmartProxy},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
@@ -5061,7 +5061,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String]
     # The name of the default export storage account.
-    ${ExportConfigurationStorageAccountName},
+    ${ExportStorageAccountName},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType])]

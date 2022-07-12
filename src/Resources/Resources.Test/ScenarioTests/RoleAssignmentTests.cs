@@ -21,7 +21,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class RoleAssignmentTests : ResourceTestRunner
+    public class RoleAssignmentTests : ResourcesTestRunner
     {
         public XunitTracingInterceptor _logger;
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeleteByPSRoleAssignment()
         {
             TestRunner.RunTestScript("Test-RaDeleteByPSRoleAssignment");

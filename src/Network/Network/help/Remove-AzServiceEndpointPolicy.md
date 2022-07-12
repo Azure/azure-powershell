@@ -44,7 +44,7 @@ This command removes a service endpoint policy with name Policy1 which belongs t
 
 ### Example 2: Remove a service endpoint policy using input object
 ```powershell
-Remove-AzServiceEndpointPolicy -InputObject $Policy1 -ResourceGroupName "resourcegroup1"
+Remove-AzServiceEndpointPolicy -InputObject $Policy1
 ```
 
 This command removes a service endpoint policy object Policy1 which belongs to resourcegroup with name "resourcegroup1"

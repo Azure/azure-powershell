@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Syncs function trigger metadata to the management database
+Syncs function trigger metadata to the management database
 .Description
-Description for Syncs function trigger metadata to the management database
+Syncs function trigger metadata to the management database
 .Example
 {{ Add code here }}
 .Example
@@ -186,6 +186,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Sync = 'Az.Functions.private\Sync-AzFunction_Sync';
             SyncViaIdentity = 'Az.Functions.private\Sync-AzFunction_SyncViaIdentity';
@@ -199,6 +200,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -207,15 +209,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

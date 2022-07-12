@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.0
+* Updated the API version to stable 2022-03-10
+* Added cmdlet Update-AzConnectedMachine
+* Added ResourceGroup to the display table
+* Fixed the issue of extension settings not being able to serialize correctly
+
 ## Version 0.3.0
 * Upgraded API version to 2021-05-20
     - Added cmdlets for private link scope scenarios

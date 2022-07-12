@@ -23,7 +23,7 @@ function CreateModelCmdlet {
     }
 
     $ModelCsPath = Join-Path (Join-Path $PSScriptRoot 'generated\api') 'Models'
-    $ModuleName = 'Az.KubernetesConfiguration'.Split(".")[1]
+    $ModuleName = ''
     $OutputDir = Join-Path $PSScriptRoot 'custom\autogen-model-cmdlets'
     $null = New-Item -ItemType Directory -Force -Path $OutputDir
 
@@ -112,13 +112,22 @@ function CreateModelCmdlet {
                     $ParameterDefinePropertyList.Add("HelpMessage=`"${Description}.`"")
                 }
                 $ParameterDefineProperty = [System.String]::Join(", ", $ParameterDefinePropertyList)
+                # check whether completer is needed
+                $completer = '';
+                if($Type.Split('.').Split('.')[-2] -eq 'Support') {
+                    # If Type is an array, need to strip []
+                    $strippedType = $Type.Replace('[]', '')
+                    $completer += "`n        [ArgumentCompleter([${strippedType}])]"
+                }
                 $ParameterDefineScript = "
-        [Parameter($ParameterDefineProperty)]
+        [Parameter($ParameterDefineProperty)]${completer}
         [${Type}]
         `$${Identifier}"
                 $ParameterDefineScriptList.Add($ParameterDefineScript)
                 $ParameterAssignScriptList.Add("
-        `$Object.${Identifier} = `$${Identifier}")
+        if (`$PSBoundParameters.ContainsKey('${Identifier}')) {
+            `$Object.${Identifier} = `$${Identifier}
+        }")
             }
         }
         $ParameterDefineScript = $ParameterDefineScriptList | Join-String -Separator ","
@@ -142,9 +151,9 @@ function CreateModelCmdlet {
 
 <#
 .Synopsis
-Create a in-memory object for ${ObjectType}
+Create an in-memory object for ${ObjectType}.
 .Description
-Create a in-memory object for ${ObjectType}
+Create an in-memory object for ${ObjectType}.
 
 .Outputs
 ${ObjectTypeWithNamespace}

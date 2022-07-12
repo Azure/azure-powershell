@@ -12,78 +12,71 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
 {
-    public class QueryOptionTests
+    public class QueryOptionTests : PolicyInsightsTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public QueryOptionTests(Xunit.Abstractions.ITestOutputHelper output)
+        public QueryOptionTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void QueryResultsWithFrom()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithFrom");
+            TestRunner.RunTestScript("QueryOptions-QueryResultsWithFrom");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void QueryResultsWithTo()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithTo");
+            TestRunner.RunTestScript("QueryOptions-QueryResultsWithTo");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void QueryResultsWithTop()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithTop");
+            TestRunner.RunTestScript("QueryOptions-QueryResultsWithTop");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void QueryResultsWithOrderBy()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithOrderBy");
+            TestRunner.RunTestScript("QueryOptions-QueryResultsWithOrderBy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void QueryResultsWithSelect()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithSelect");
+            TestRunner.RunTestScript("QueryOptions-QueryResultsWithSelect");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void QueryResultsWithFilter()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithFilter");
+            TestRunner.RunTestScript("QueryOptions-QueryResultsWithFilter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void QueryResultsWithApply()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithApply");
+            TestRunner.RunTestScript("QueryOptions-QueryResultsWithApply");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void QueryResultsWithExpandPolicyEvaluationDetails()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithExpandPolicyEvaluationDetails");
+            TestRunner.RunTestScript("QueryOptions-QueryResultsWithExpandPolicyEvaluationDetails");
         }
     }
 }

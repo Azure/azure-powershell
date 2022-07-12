@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.Eventhub
         public const string SystemAssignedUserAssigned = "SystemAssigned, UserAssigned";
         public const string None = "None";
 
+        public const int maxApplicationGroups = 100;
+
         #region Namespace
         public PSNamespaceAttributes GetNamespace(string resourceGroupName, string namespaceName)
         {
@@ -61,19 +63,65 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public IEnumerable<PSNamespaceAttributes> ListNamespacesByResourceGroup(string resourceGroupName)
         {
-            var response = Client.Namespaces.ListByResourceGroup(resourceGroupName);
-            var resourceList = response.Select(resource => new PSNamespaceAttributes(resource));
-            return resourceList;
+            var listOfNamespaces = new List<PSNamespaceAttributes>();
+
+            string nextPageLink = null;
+
+            do
+            {
+                var pageOfNamespaces = new List<PSNamespaceAttributes>();
+
+                if (!String.IsNullOrEmpty(nextPageLink))
+                {
+                    var result = Client.Namespaces.ListByResourceGroupNext(nextPageLink);
+                    nextPageLink = result.NextPageLink;
+                    pageOfNamespaces = result.Select(resource => new PSNamespaceAttributes(resource)).ToList();
+                }
+                else
+                {
+                    var result = Client.Namespaces.ListByResourceGroup(resourceGroupName);
+                    nextPageLink = result.NextPageLink;
+                    pageOfNamespaces = result.Select(resource => new PSNamespaceAttributes(resource)).ToList();
+                }
+
+                listOfNamespaces.AddRange(pageOfNamespaces);
+            
+            } while (!String.IsNullOrEmpty(nextPageLink));
+
+            return listOfNamespaces;
         }
 
         public IEnumerable<PSNamespaceAttributes> ListNamespacesBySubscription()
         {
-            var response = Client.Namespaces.List();
-            var resourceList = response.Select(resource => new PSNamespaceAttributes(resource));
-            return resourceList;
+            var listOfNamespaces = new List<PSNamespaceAttributes>();
+
+            string nextPageLink = null;
+
+            do
+            {
+                var pageOfNamespaces = new List<PSNamespaceAttributes>();
+
+                if (!String.IsNullOrEmpty(nextPageLink))
+                {
+                    var result = Client.Namespaces.ListNext(nextPageLink);
+                    nextPageLink = result.NextPageLink;
+                    pageOfNamespaces = result.Select(resource => new PSNamespaceAttributes(resource)).ToList();
+                }
+                else
+                {
+                    var result = Client.Namespaces.List();
+                    nextPageLink = result.NextPageLink;
+                    pageOfNamespaces = result.Select(resource => new PSNamespaceAttributes(resource)).ToList();
+                }
+
+                listOfNamespaces.AddRange(pageOfNamespaces);
+
+            } while (!String.IsNullOrEmpty(nextPageLink));
+
+            return listOfNamespaces;
         }
 
-        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isAutoInflateEnabled, int? maximumThroughputUnits, bool isKafkaEnabled, string clusterARMId, bool isZoneRedundant, bool isDisableLocalAuth, bool isIdentity
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isAutoInflateEnabled, int? maximumThroughputUnits, bool isKafkaEnabled, string clusterARMId, bool isZoneRedundant, bool isDisableLocalAuth
             , string identityType, string[] identityId, PSEncryptionConfigAttributes[] encryptionConfigs)
         {
             EHNamespace parameter = new EHNamespace();
@@ -117,9 +165,6 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             if (isDisableLocalAuth)
                 parameter.DisableLocalAuth = isDisableLocalAuth;
-
-            if (isIdentity)
-                parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned};
 
             if (identityType != null)
             {
@@ -182,7 +227,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSNamespaceAttributes(response);
         }
 
-        // Update Namespace                                                     (ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ZoneRedundant.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperties));                    
+        // Update Namespace (ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ZoneRedundant.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperties));                    
         public PSNamespaceAttributes BeginUpdateNamespace(string resourceGroupName,
             string namespaceName,
             string location,
@@ -191,19 +236,13 @@ namespace Microsoft.Azure.Commands.Eventhub
             Dictionary<string, string> tags,
             bool isAutoInflateEnabled,
             int? maximumThroughputUnits,
-            bool isKafkaEnabled, bool isIdentity, string identityUserDefined, string keySource, List<string []> KeyProperties, bool isDisableLocalAuth, 
+            bool isKafkaEnabled, bool isDisableLocalAuth,
             string[] identityId, string identityType, PSEncryptionConfigAttributes[] encryptionConfigs)
-        {          
+        {
 
             EHNamespace parameter = Client.Namespaces.Get(resourceGroupName, namespaceName);
 
-            if (parameter.Identity != null && parameter.Encryption != null && KeyProperties != null)
-            {
-                parameter.Encryption = new Encryption();
-                parameter.Encryption.KeyVaultProperties = new List<KeyVaultProperties>();
-            }
-
-            if(location != null)
+            if (location != null)
             {
                 parameter.Location = location;
             }
@@ -237,117 +276,22 @@ namespace Microsoft.Azure.Commands.Eventhub
             if (isKafkaEnabled)
                 parameter.KafkaEnabled = isKafkaEnabled;
 
-            if (isIdentity) { 
-                if(parameter.Identity == null)
-                {
-                    parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned };
-                }
-                else
-                {
-                    if(parameter.Identity.Type == ManagedServiceIdentityType.None)
-                    {
-                        parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned };
-                    }
-                    if (parameter.Identity.Type == ManagedServiceIdentityType.UserAssigned)
-                    {
-                        parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssignedUserAssigned };
-                    }
-                }
-            }
-
             if (isDisableLocalAuth)
                 parameter.DisableLocalAuth = isDisableLocalAuth;
 
-
-            //IdentityUserDefined, KeySource, KeyProperties
-            if (!String.IsNullOrEmpty(identityUserDefined) && identityUserDefined.ToLower() == "none")
-            {
-                parameter.Identity = new Identity() { Type = null};
-            }
-
-            if (!String.IsNullOrEmpty(keySource))
-            {
-                if (parameter.Encryption == null)
-                {
-                    parameter.Encryption = new Encryption()
-                    {
-                        KeySource = KeySource.MicrosoftKeyVault
-                    };
-                }
-                else
-                {
-                    parameter.Encryption.KeySource = KeySource.MicrosoftKeyVault;
-                }
-            }
-
-            if (KeyProperties != null)
-            {
-                parameter.Encryption.KeyVaultProperties = new List<KeyVaultProperties>();
-
-                if (KeyProperties.Count > 2)
-                {
-                    if (KeyProperties[0].Length == 1)
-                    {
-                        KeyVaultProperties item = new KeyVaultProperties();
-
-                        switch (KeyProperties.Count)
-                        {
-                            case 2:
-                                {
-                                    item.KeyName = KeyProperties[0].ToString();
-                                    item.KeyVaultUri = KeyProperties[0].ToString();
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    item.KeyName = KeyProperties[0].GetValue(0).ToString();
-                                    item.KeyVaultUri = KeyProperties[1].GetValue(0).ToString();
-                                    item.KeyVersion = KeyProperties[2].GetValue(0).ToString();
-                                    break;
-                                }
-                        }
-                        parameter.Encryption.KeyVaultProperties.Add(item);
-                    }
-                    else
-                    {
-                        foreach (string[] item in KeyProperties)
-                        {
-                            KeyVaultProperties singleItem = new KeyVaultProperties();
-                            switch (item.Length)
-                            {
-                                case 2:
-                                    {
-                                        singleItem.KeyName = item[0];
-                                        singleItem.KeyVaultUri = item[1];
-                                        break;
-                                    }
-                                case 3:
-                                    {
-                                        singleItem.KeyName = item[0];
-                                        singleItem.KeyVaultUri = item[1];
-                                        singleItem.KeyVersion = item[2];
-                                        break;
-                                    }
-                            }
-
-                            parameter.Encryption.KeyVaultProperties.Add(singleItem);
-                        }
-                    }
-                }                
-            }
             if (identityType != null)
             {
-                if(parameter.Identity == null)
+                if (parameter.Identity == null)
                 {
                     parameter.Identity = new Identity();
                 }
 
                 parameter.Identity.Type = FindIdentity(identityType);
 
-                if(parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
+                /*if(parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
                 {
                     parameter.Identity.UserAssignedIdentities = null;
-                }
+                }*/
             }
 
             if (identityId != null)
@@ -364,7 +308,12 @@ namespace Microsoft.Azure.Commands.Eventhub
                 {
                     parameter.Identity.UserAssignedIdentities = UserAssignedIdentities;
                 }
-                if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
+
+                if (identityId.Length == 0)
+                {
+                    parameter.Identity.UserAssignedIdentities = null;
+                }
+                else if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
                 {
                     throw new Exception("Please change -IdentityType to UserAssigned or 'SystemAssigned, UserAssigned' if you want to add User Assigned Identities");
                 }
@@ -469,7 +418,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSListKeysAttributes(listKeys);
         }
 
-        public PSListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys, string keyValue=null)
+        public PSListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys, string keyValue = null)
         {
             AccessKeys regenerateKeyslistKeys;
             RegenerateAccessKeyParameters regenParam = new RegenerateAccessKeyParameters();
@@ -629,7 +578,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             var resourceList = response.Select(resource => new PSSharedAccessAuthorizationRuleAttributes(resource));
             return resourceList;
         }
-                
+
         public PSSharedAccessAuthorizationRuleAttributes CreateOrUpdateEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, PSSharedAccessAuthorizationRuleAttributes parameters)
         {
             var parameter1 = new AuthorizationRule()
@@ -703,7 +652,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             if (!string.IsNullOrEmpty(parameter.AlternateName))
                 Parameter1.AlternateName = parameter.AlternateName;
 
-            var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias,Parameter1.PartnerNamespace, Parameter1.AlternateName);
+            var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias, Parameter1.PartnerNamespace, Parameter1.AlternateName);
 
             return new PSEventHubDRConfigurationAttributes(response);
         }
@@ -818,7 +767,7 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public PSCheckNameAvailabilityResultAttributes GetAliasCheckNameAvailability(string resourceGroup, string namespaceName, string aliasName)
         {
-            var response = Client.DisasterRecoveryConfigs.CheckNameAvailability(resourceGroup,namespaceName, aliasName);
+            var response = Client.DisasterRecoveryConfigs.CheckNameAvailability(resourceGroup, namespaceName, aliasName);
             return new PSCheckNameAvailabilityResultAttributes(response);
         }
 
@@ -881,7 +830,7 @@ namespace Microsoft.Azure.Commands.Eventhub
                 networkRuleSet.PublicNetworkAccess = publicNetworkAccess;
             }
 
-            if (trustedServiceAccessEnabled == true)
+            if (trustedServiceAccessEnabled != null)
             {
                 networkRuleSet.TrustedServiceAccessEnabled = trustedServiceAccessEnabled;
             }
@@ -972,6 +921,191 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         #endregion
 
+        #region ApplicationGroup
+
+        public PSEventHubApplicationGroupAttributes CreateApplicationGroup(string resourceGroupName, string namespaceName, 
+            string appGroupName, string clientAppGroupIdentifier, bool? isEnabled, PSEventHubThrottlingPolicyConfigAttributes[] throttlingPolicy)
+        {
+            ApplicationGroup appGroup = new ApplicationGroup();
+
+            appGroup.ClientAppGroupIdentifier = clientAppGroupIdentifier;
+            
+            appGroup.IsEnabled = isEnabled;
+
+            if(throttlingPolicy != null)
+            {
+                appGroup.Policies = new List<ApplicationGroupPolicy>();
+
+                foreach(var policy in throttlingPolicy)
+                {
+                    ThrottlingPolicy sdkpolicy = new ThrottlingPolicy()
+                    {
+                        Name = policy.Name,
+                        RateLimitThreshold = policy.RateLimitThreshold,
+                        MetricId = policy.MetricId
+                    };
+                    appGroup.Policies.Add(sdkpolicy);
+                }
+            }
+
+            var response = Client.ApplicationGroup.CreateOrUpdateApplicationGroup(resourceGroupName, namespaceName, appGroupName, appGroup);
+
+            return new PSEventHubApplicationGroupAttributes(response);
+        }
+
+        public PSEventHubApplicationGroupAttributes UpdateApplicationGroup(string resourceGroupName, string namespaceName,
+            string appGroupName, bool? isEnabled, PSEventHubThrottlingPolicyConfigAttributes[] throttlingPolicy)
+        {
+            var appGroup = Client.ApplicationGroup.Get(resourceGroupName, namespaceName, appGroupName);
+
+            if (isEnabled != null)
+            {
+                appGroup.IsEnabled = isEnabled;
+            }
+
+            if (throttlingPolicy != null)
+            {
+                appGroup.Policies = new List<ApplicationGroupPolicy>();
+
+                foreach (var policy in throttlingPolicy)
+                {
+                    ThrottlingPolicy sdkpolicy = new ThrottlingPolicy()
+                    {
+                        Name = policy.Name,
+                        RateLimitThreshold = policy.RateLimitThreshold,
+                        MetricId = policy.MetricId
+                    };
+
+                    appGroup.Policies.Add(sdkpolicy);
+                }
+            }
+
+            var response = Client.ApplicationGroup.CreateOrUpdateApplicationGroup(resourceGroupName, namespaceName, appGroupName, appGroup);
+
+            return new PSEventHubApplicationGroupAttributes(response);
+        }
+
+        public PSEventHubApplicationGroupAttributes GetApplicationGroup(string resourceGroupName, string namespaceName, 
+            string appGroupName)
+        {
+            var response = Client.ApplicationGroup.Get(resourceGroupName, namespaceName, appGroupName);
+
+            return new PSEventHubApplicationGroupAttributes(response);
+        }
+
+        public IEnumerable<PSEventHubApplicationGroupAttributes> ListApplicationGroup(string resourceGroupName, string namespaceName)
+        {
+            var listOfAppGroups = new List<PSEventHubApplicationGroupAttributes>();
+
+            string nextPageLink = null;
+
+            do
+            {
+                var fetchAppGroups = new List<PSEventHubApplicationGroupAttributes>();
+
+                if (!String.IsNullOrEmpty(nextPageLink))
+                {
+                    var result = Client.ApplicationGroup.ListByNamespaceNext(nextPageLink);
+                    nextPageLink = result.NextPageLink;
+                    fetchAppGroups = result.Select(resource => new PSEventHubApplicationGroupAttributes(resource)).ToList();
+                }
+                else
+                {
+                    var result = Client.ApplicationGroup.ListByNamespace(resourceGroupName, namespaceName);
+                    nextPageLink = result.NextPageLink;
+                    fetchAppGroups = result.Select(resource => new PSEventHubApplicationGroupAttributes(resource)).ToList();
+                }
+                    
+                listOfAppGroups.AddRange(fetchAppGroups);
+
+            } while (!String.IsNullOrEmpty(nextPageLink));
+            
+            return listOfAppGroups;
+        }
+
+        public void DeleteApplicationGroup(string resourceGroupName, string namespaceName, string appGroupName)
+        {
+            Client.ApplicationGroup.Delete(resourceGroupName, namespaceName, appGroupName);
+        }
+
+        #endregion
+
+        #region PrivateEndpoints
+
+        public PSEventHubPrivateEndpointConnectionAttributes UpdatePrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName, string connectionState, string description = null)
+        {
+            var privateEndpointConnection = Client.PrivateEndpointConnections.Get(resourceGroupName, namespaceName, privateEndpointName);
+
+            if(connectionState != null)
+            {
+                privateEndpointConnection.PrivateLinkServiceConnectionState.Status = connectionState;
+            }
+
+            if(description != null)
+            {
+                privateEndpointConnection.PrivateLinkServiceConnectionState.Description = description;
+            }
+            
+            privateEndpointConnection = Client.PrivateEndpointConnections.CreateOrUpdate(resourceGroupName, namespaceName, privateEndpointName, privateEndpointConnection);
+
+            return new PSEventHubPrivateEndpointConnectionAttributes(privateEndpointConnection);
+
+        }
+
+        public PSEventHubPrivateEndpointConnectionAttributes GetPrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName)
+        {
+
+            var privateEndpointConnection = Client.PrivateEndpointConnections.Get(resourceGroupName, namespaceName, privateEndpointName);
+
+            return new PSEventHubPrivateEndpointConnectionAttributes(privateEndpointConnection);
+
+        }
+
+        public IEnumerable<PSEventHubPrivateEndpointConnectionAttributes> ListPrivateEndpointConnection(string resourceGroupName, string namespaceName)
+        {
+            var listOfPrivateEndpoints = new List<PSEventHubPrivateEndpointConnectionAttributes>();
+
+            string nextPageLink = null;
+
+            do
+            {
+                var pageOfPrivateEndpoints = new List<PSEventHubPrivateEndpointConnectionAttributes>();
+
+                if (!String.IsNullOrEmpty(nextPageLink))
+                {
+                    var result = Client.PrivateEndpointConnections.ListNext(nextPageLink);
+                    nextPageLink = result.NextPageLink;
+                    pageOfPrivateEndpoints = result.Select(resource => new PSEventHubPrivateEndpointConnectionAttributes(resource)).ToList();
+                }
+                else
+                {
+                    var result = Client.PrivateEndpointConnections.List(resourceGroupName, namespaceName);
+                    nextPageLink = result.NextPageLink;
+                    pageOfPrivateEndpoints = result.Select(resource => new PSEventHubPrivateEndpointConnectionAttributes(resource)).ToList();
+                }
+
+                listOfPrivateEndpoints.AddRange(pageOfPrivateEndpoints);
+
+            } while (!String.IsNullOrEmpty(nextPageLink));
+
+            return listOfPrivateEndpoints;
+        }
+
+        public void DeletePrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName)
+        {
+            Client.PrivateEndpointConnections.Delete(resourceGroupName, namespaceName, privateEndpointName);
+        }
+
+        public IEnumerable<PSEventHubPrivateLinkResourceAttributes> GetPrivateLinkResource(string resourceGroupName, string namespaceName)
+        {
+            var privateLinks = Client.PrivateLinkResources.Get(resourceGroupName, namespaceName).Value.ToList();
+
+            var resourceList = privateLinks.Select(resource => new PSEventHubPrivateLinkResourceAttributes(resource));
+
+            return resourceList;
+        }
+
+        #endregion
 
         public static int ReturnmaxCountvalueForSwtich(int? maxcount)
         {

@@ -12,56 +12,50 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests
 {
-    public class AgreementsTests
+    public class AgreementsTests : MarketplaceOrderingTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public AgreementsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AgreementsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAgreement()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAgreementTerms");
+            TestRunner.RunTestScript("Test-GetAgreementTerms");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAgreementNotAccepted()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetAgreementTermsNotAccepted");
+            TestRunner.RunTestScript("Test-SetAgreementTermsNotAccepted");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAgreementAccepted()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetAgreementTermsAccepted");
+            TestRunner.RunTestScript("Test-SetAgreementTermsAccepted");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAgreementAcceptedPipeline()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetAgreementTermsAcceptedPipelineGet");
+            TestRunner.RunTestScript("Test-SetAgreementTermsAcceptedPipelineGet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAgreementRejectPipeline()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetAgreementTermsRejectedPipelineGet");
+            TestRunner.RunTestScript("Test-SetAgreementTermsRejectedPipelineGet");
         }
     }
 }

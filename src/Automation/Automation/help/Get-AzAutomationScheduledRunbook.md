@@ -68,8 +68,14 @@ This command gets all scheduled runbooks for the runbook Runbk01 in the Azure Au
 ```powershell
 Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -ScheduleName "Schedule01"
 ```
-
 This command gets all scheduled runbooks for the schedule Schedule01 in the Azure Automation account named Contoso17.
+
+### Example 4: Get Parameters given to a particular Scheduled Runbook
+
+```powershell
+Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -JobScheduleId “2b1d7738-093d-4ff7-b87b-e4b2321319e5”
+```
+This is currently not supported for jobs created with complex parameters (for example - array) through Azure portal.
 
 ## PARAMETERS
 

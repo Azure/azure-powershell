@@ -25,7 +25,7 @@ The **New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet** creates an
 
 ### Example 1
 ```powershell
-$managedRuleSet = New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet -RuleSetType $ruleSetType 
+$managedRuleSet = New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet -RuleSetType $ruleSetType `
 -RuleSetVersion $ruleSetVersion -RuleGroup $ruleGroup1, $ruleGroup2
 ```
 

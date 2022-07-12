@@ -27,6 +27,7 @@ Use cmdlet "New-AzFrontDoorRulesEngineMatchConditionObject" to create PSRulesEng
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority 0 -Action $rulesEngineAction -MatchProcessingBehavior Stop -MatchCondition $rulesEngineMatchCondition
 

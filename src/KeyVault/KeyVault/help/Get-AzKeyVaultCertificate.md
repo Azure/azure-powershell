@@ -107,15 +107,23 @@ Updated     : 2/8/2016 11:21:45 PM
 ```
 
 ### Example 2: Get cert and save it as pfx
-This command gets the certificate named TestCert01 from the key vault named ContosoKV01. To download the certificate as pfx file, run following command. These commands access SecretId and then save the content as a pfx file.
-
 ```powershell
 $cert = Get-AzKeyVaultCertificate -VaultName $vaultName -Name $certName
-$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name
-$secretByte = [Convert]::FromBase64String(($secret.SecretValue | ConvertFrom-SecureString -AsPlainText))
+$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name -AsPlainText
 # Write to a file
-[System.IO.File]::WriteAllBytes("cert.pfx", $secretByte)
+Set-Content -Path cert.pfx -Value $secret -PassThru
 ```
+
+```output
+-----BEGIN PRIVATE KEY-----
+******************************
+-----END PRIVATE KEY-----
+-----BEGIN CERTIFICATE-----
+******************************
+-----END CERTIFICATE-----
+```
+
+This command gets the certificate named `$certName` from the key vault named `$vaultName`. These commands access secret `$cert.Name` and then save the content as a pfx file.
 
 ### Example 3: Get all the certificates that have been deleted but not purged for this key vault.
 ```powershell

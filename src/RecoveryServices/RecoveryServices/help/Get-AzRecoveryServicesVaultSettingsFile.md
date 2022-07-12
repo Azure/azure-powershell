@@ -50,17 +50,10 @@ The last command gets the vault credentials file for $Vault01 using the credenti
 
 ### Example 2
 ```powershell
-$Credsfilename = Get-AzRecoveryServicesVaultSettingsFile -SiteIdentifier -Vault $Vault01
+$Credsfilename = Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault01
 ```
 
 The command gets the vault credentials file for $Vault01 of vault type siteRecovery.
-
-### Example 3: Register a Windows Server or DPM machine for Azure Backup
-```powershell
-$Credsfilename = Get-AzRecoveryServicesVaultSettingsFile -SiteIdentifier -Vault $Vault01
-```
-
-The command gets the vault credentials file for $Vault01.
 
 ## PARAMETERS
 
