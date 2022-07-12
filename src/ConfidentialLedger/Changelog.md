@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability of `Az.ConfidentialLedger`
 
 ## Version 0.1.1
 * Updated API version to 2022-05-13

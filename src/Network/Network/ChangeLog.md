@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Onboarded Device Update for IoT Hub to Private Link Common Cmdlets
 
 ## Version 4.18.0
 * Added support for CustomV2 ssl policies for Application Gateway.

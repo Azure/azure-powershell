@@ -30,7 +30,7 @@ $VM = Set-AzVmSecurityProfile -VM $VM -SecurityType "TrustedLaunch"
 
 The first command gets the virtual machine named ContosoVM07 by using **Get-AzVm**.
 The command stores it in the $VM variable.
-The second command sets the SecurityType enum to "TrustedLaunch"
+The second command sets the SecurityType enum to "TrustedLaunch". Trusted launch requires the creation of new virtual machines. You can't enable trusted launch on existing virtual machines that were initially created without it.
 
 ## PARAMETERS
 

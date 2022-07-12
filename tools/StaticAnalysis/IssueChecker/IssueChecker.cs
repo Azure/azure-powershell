@@ -79,7 +79,8 @@ namespace StaticAnalysis.IssueChecker
                 {
                     continue;
                 }
-                if (IsSingleExceptionFileHasCriticalIssue(exceptionFilePath, recordTypeName))
+                bool outputWarning = recordTypeName.Equals(typeof(ExampleIssue).FullName);
+                if (IsSingleExceptionFileHasCriticalIssue(exceptionFilePath, recordTypeName, outputWarning))
                 {
                     hasCriticalIssue = true;
                 }
@@ -92,7 +93,7 @@ namespace StaticAnalysis.IssueChecker
             }
         }
 
-        private bool IsSingleExceptionFileHasCriticalIssue(string exceptionFilePath, string reportRecordTypeName) 
+        private bool IsSingleExceptionFileHasCriticalIssue(string exceptionFilePath, string reportRecordTypeName, bool outputWarning) 
         {
             bool hasError = false;
             using (var reader = new StreamReader(exceptionFilePath))
@@ -112,6 +113,10 @@ namespace StaticAnalysis.IssueChecker
                     if (record.Severity < 2)
                     {
                         hasError = true;
+                        errorText.AppendLine(record.FormatRecord());
+                    }
+                    else if (record.Severity == 2 && outputWarning)
+                    {
                         errorText.AppendLine(record.FormatRecord());
                     }
                 }

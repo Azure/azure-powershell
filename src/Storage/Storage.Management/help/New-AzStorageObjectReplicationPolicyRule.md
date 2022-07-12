@@ -24,6 +24,7 @@ The **Get-AzStorageObjectReplicationPolicy** cmdlet creates an object replicatio
 ## EXAMPLES
 
 ### Example 1: Create an object replication policy rule with only source and destination account, and show its properties
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $rule1 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src1 -DestinationContainer dest1 
 
@@ -37,6 +38,7 @@ RuleId SourceContainer DestinationContainer Filters.PrefixMatch Filters.MinCreat
 This command creates an object replication policy rule with only source and destination account, and show its properties.
 
 ### Example 2: Create an object replication policy rule with all properties, and show its properties
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src -DestinationContainer dest -MinCreationTime 2019-01-01T16:00:00Z -PrefixMatch a,abc,dd
 
