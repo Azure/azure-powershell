@@ -480,14 +480,12 @@ function Measure-ParameterNameAndValue {
                                     }
                                     else {
                                         # not a SwitchParameter
-                                        # If the parameter is assigned by <Type>, donot record it
-                                        if($CommandElement.Parent.Extent.Text -match "-$ParameterName\s*<.*?>"){
-                                            continue
-                                        }
-                                        if ($null -eq $NextCommandElement -or $NextCommandElement -is [System.Management.Automation.Language.CommandParameterAst]) {
+                                        if ($null -eq $NextCommandElement -or $NextCommandElement -is [System.Management.Automation.Language.CommandParameterAst] -or
+                                        $CommandElement.Parent.Extent.Text -match "-$ParameterName\s*<.*?>") {
                                             # NonSwitchParameter + Parameter
                                             # Parameter must be assigned with a value.
                                             # will report later.
+                                            # If the parameter is assigned by <Type>, also record it as NoValue
                                             $global:ParameterExpressionPair += @{
                                                 ParameterName = $ParameterNameNotAlias
                                                 ExpressionToParameter = "<NoValue>"
