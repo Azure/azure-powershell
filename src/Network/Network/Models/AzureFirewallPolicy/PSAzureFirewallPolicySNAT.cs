@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSAzureFirewallPolicySNAT
     {
         public IList<string> PrivateRanges { get; set; }
+        public string AutoLearnPrivateRanges { get; set; }
 
     }
 }
