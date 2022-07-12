@@ -5,6 +5,7 @@ using System.Management.Automation;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
 {
@@ -12,13 +13,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
     {
         public static void WriteError(this Cmdlet cmdlet, HttpResponseMessage responseMessage, Task<ICloudError> errorResponseTask, ref Task<bool> returnNow)
         {
-            var errorString = responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-            cmdlet.WriteError(new ErrorRecord(new System.Exception(), null, ErrorCategory.InvalidOperation, null)
-            {
-                ErrorDetails = new ErrorDetails(errorString) { RecommendedAction = string.Empty }
-            });
+            var errorResponse = errorResponseTask?.ConfigureAwait(false).GetAwaiter().GetResult();
 
-            returnNow = Task.FromResult(true);
+            if (errorResponse?.Detail != null)
+            {
+                var errorDetail = errorResponse.Detail;
+                var errorDetailString = JsonConvert.SerializeObject(errorDetail);
+                
+                cmdlet.WriteError(new ErrorRecord(new System.Exception(), null, ErrorCategory.InvalidOperation, null)
+                {
+                    ErrorDetails = new ErrorDetails(errorDetailString) { RecommendedAction = string.Empty }
+                });
+                
+                returnNow = Task.FromResult(true);
+            }
+            else
+            {
+                returnNow = Task.FromResult(false);
+            }
         }
     }
 }
