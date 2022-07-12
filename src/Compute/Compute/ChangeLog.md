@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion` 
 
 ## Version 4.29.0
 * Added image alias 'Win2022AzureEditionCore'
