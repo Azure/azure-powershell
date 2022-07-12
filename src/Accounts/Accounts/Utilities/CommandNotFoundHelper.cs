@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -32,63 +33,77 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
     public static class CommandNotFoundHelper
     {
         public static bool EnableFuzzyString = true;
+        private const string dataResourceName = "Microsoft.Azure.Commands.Profile.Utilities.CommandMappings.json";
 
         private static CommandInvocationIntrinsics Cii = null;
-        private static Regex AzOrAzureRMRegex = new Regex(@"^\w+-az\w+$", RegexOptions.IgnoreCase);
-        private static Regex AzureRMRegex = new Regex(@"^\w+-azurerm\w+$", RegexOptions.IgnoreCase);
-        private static Lazy<AllCommandInfo> LazyAllCommandInfo = new Lazy<AllCommandInfo>(LoadAllCommandInfo);
-        private static Lazy<IDictionary<string, string>> LazyCommandToModuleMappings = new Lazy<IDictionary<string, string>>(() =>
+        private static readonly Regex AzOrAzureRMRegex = new Regex(@"^\w+-az\w+$", RegexOptions.IgnoreCase);
+        private static readonly Regex AzureRMRegex = new Regex(@"^\w+-azurerm\w+$", RegexOptions.IgnoreCase);
+        private static readonly Lazy<AllCommandInfo> LazyAllCommandInfo = new Lazy<AllCommandInfo>(LoadAllCommandInfo);
+
+        /// <summary>
+        /// Mappings from command names to their module names.
+        /// </summary>
+        private static readonly Lazy<IDictionary<string, string>> LazyCommandToModuleMappings = new Lazy<IDictionary<string, string>>(() =>
         {
-            var moduleToCommandMapping = LazyAllCommandInfo.Value.Modules;
-            var mapping = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            foreach (var moduleName in moduleToCommandMapping.Keys)
+            var moduleToCommandMappings = LazyAllCommandInfo.Value.Modules;
+            var mappings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var moduleName in moduleToCommandMappings.Keys)
             {
-                foreach (var commandName in moduleToCommandMapping[moduleName].Keys)
+                foreach (var commandName in moduleToCommandMappings[moduleName].Keys)
                 {
-                    mapping.Add(commandName, moduleName);
+                    mappings.Add(commandName, moduleName);
                 }
             }
-            return mapping;
+            return mappings;
         });
 
-        private static Lazy<IDictionary<string, MigrationDetails>> LazyCommandToMigrationMappings = new Lazy<IDictionary<string, MigrationDetails>>(() =>
+        /// <summary>
+        /// Mappings from command names to their migration guides.
+        /// </summary>
+        private static readonly Lazy<IDictionary<string, MigrationDetails>> LazyCommandToMigrationMappings = new Lazy<IDictionary<string, MigrationDetails>>(() =>
         {
-            return MakeDictionaryCaseInsensitive(LazyAllCommandInfo.Value.Migration);
+            var mappings = new Dictionary<string, MigrationDetails>(StringComparer.OrdinalIgnoreCase);
+            foreach (var pair in LazyAllCommandInfo.Value.Migration)
+            {
+                mappings.Add(pair.Key, pair.Value);
+            }
+            return mappings;
         });
 
-        private static Lazy<IDictionary<string, string>> LazyCommandLowercaseToNormal = new Lazy<IDictionary<string, string>>(() =>
+        /// <summary>
+        /// Mappings from lowercase command names to the original names.
+        /// </summary>
+        private static readonly Lazy<IDictionary<string, string>> LazyCommandLowercaseToNormal = new Lazy<IDictionary<string, string>>(() =>
         {
-            IDictionary<string, string> mapping = new Dictionary<string, string>();
+            IDictionary<string, string> mappings = new Dictionary<string, string>();
             foreach (var module in LazyAllCommandInfo.Value.Modules.Values)
             {
                 foreach (var commandName in module.Keys)
                 {
-                    mapping.Add(commandName.ToLowerInvariant(), commandName);
+                    mappings.Add(commandName.ToLowerInvariant(), commandName);
                 }
             }
-            return mapping;
+            return mappings;
         });
-
-        private static IDictionary<string, T> MakeDictionaryCaseInsensitive<T>(IDictionary<string, T> caseSensitiveMapping)
-        {
-            var mapping = new Dictionary<string, T>(StringComparer.OrdinalIgnoreCase);
-            foreach (var pair in caseSensitiveMapping)
-            {
-                mapping.Add(pair.Key, pair.Value);
-            }
-            return mapping;
-        }
 
         private static AllCommandInfo LoadAllCommandInfo()
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "Microsoft.Azure.Commands.Profile.Utilities.CommandMappings.json";
-
-            // todo: need try-catch? How much does it slow down the method?
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(dataResourceName))
+            using (var reader = new StreamReader(stream))
             {
-                return JsonConvert.DeserializeObject<AllCommandInfo>(reader.ReadToEnd());
+                try
+                {
+                    return JsonConvert.DeserializeObject<AllCommandInfo>(reader.ReadToEnd());
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error loading manifest resource {dataResourceName}. Exception: {ex.Message}");
+                    return new AllCommandInfo()
+                    {
+                        Migration = new Dictionary<string, MigrationDetails>(),
+                        Modules = new Dictionary<string, IDictionary<string, object>>()
+                    };
+                }
             }
         }
 
@@ -133,20 +148,6 @@ Run 'Install-Module {moduleName}' to install it.");
             args.StopSearch = false;
         }
 
-        private static string FormatFuzzyStringSuggestions(string commandName, IEnumerable<string> suggestions)
-        {
-            StringBuilder sb = new StringBuilder($"[todo] {commandName} is not found. The most similar Azure PowerShell commands are:");
-            sb.Append(Environment.NewLine);
-            foreach (var suggestion in suggestions)
-            {
-                sb.Append("\t");
-                sb.Append(suggestion);
-                sb.Append(Environment.NewLine);
-            }
-            string message = sb.ToString();
-            return message;
-        }
-
         private static bool IsAzOrAzureRMCmdlet(string commandName)
         {
             return AzOrAzureRMRegex.IsMatch(commandName);
@@ -170,22 +171,30 @@ Run 'Install-Module {moduleName}' to install it.");
 
         private static bool TryGetFuzzyStringSuggestions(string commandName, out IEnumerable<string> suggestions)
         {
-            // todo: refactor
-            var commandNamesInLowercase = LazyCommandLowercaseToNormal.Value.Keys;
             var suggestionsInLowercase = FuzzySharp.Process.ExtractTop(
                 commandName.ToLowerInvariant(),
-                commandNamesInLowercase,
-                processor: s => s, // ExtractTop by default do ToLowercase to every candidate. It's inefficient so we override it and cache a lowercase version of command names array.
+                LazyCommandLowercaseToNormal.Value.Keys,
+                processor: s => s, // ExtractTop by default converts strings to lowercase.
+                                   // It's redundant work so we override the behavior and cache lowercase command names.
                 scorer: ScorerCache.Get<DefaultRatioScorer>(),
                 cutoff: 80,
-                limit: 3)
-                .Select(x =>
-                {
-                    // Console.WriteLine(x.ToString());
-                    return x.Value;
-                });
-            suggestions = suggestionsInLowercase.Select(x => LazyCommandLowercaseToNormal.Value[x]);
+                limit: 3);
+            suggestions = suggestionsInLowercase.Select(x => LazyCommandLowercaseToNormal.Value[x.Value]);
             return suggestions.Any();
+        }
+
+        private static string FormatFuzzyStringSuggestions(string commandName, IEnumerable<string> suggestions)
+        {
+            StringBuilder sb = new StringBuilder($"[todo] {commandName} is not found. The most similar Azure PowerShell commands are:");
+            sb.Append(Environment.NewLine);
+            foreach (var suggestion in suggestions)
+            {
+                sb.Append("\t");
+                sb.Append(suggestion);
+                sb.Append(Environment.NewLine);
+            }
+            string message = sb.ToString();
+            return message;
         }
 
         private static void WriteWarning(string message)
