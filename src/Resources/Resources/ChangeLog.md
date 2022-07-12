@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed the warning messages for MSGraph migration [#18856]
 
 ## Version 6.0.1
 * Added feedback when deleting role assignments even if passthru is not used

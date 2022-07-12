@@ -51,6 +51,7 @@ RunbookName           : Deploy-NodeConfigurationToAutomationDscNodesV1
 ```
 
 ### Example 2: Get a deployment schedule
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $js = Get-AzAutomationDscNodeConfigurationDeploymentSchedule `
                  -AutomationAccountName "Contoso01" `

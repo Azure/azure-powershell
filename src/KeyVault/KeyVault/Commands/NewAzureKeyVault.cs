@@ -121,8 +121,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
-
             if (ShouldProcess(Name, Properties.Resources.CreateKeyVault))
             {
                 if (VaultExistsInCurrentSubscription(Name))

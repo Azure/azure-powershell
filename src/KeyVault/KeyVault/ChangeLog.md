@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the warning messages for MSGraph migration [#18856]
 
 ## Version 4.6.0
 * Supported importing pem certificate by `Import-AzKeyVaultCertificate` [#18494]
