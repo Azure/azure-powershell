@@ -77,7 +77,7 @@ This command sets a managed instance DNS alias to have DNS record. The managed i
 ### Example 3: Remove the DNS record from the previously created managed instance DNS alias
 ```powershell
 #First, create a managed instance DNS alias with DNS record
-$managedInstanceAlias = New-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1 -Name DnsAlias1 -HasDnsRecord
+$managedInstanceAlias = New-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1 -Name DnsAlias1 -CreateDnsRecord
 # Remove the DNS record from the alias by not specifying the -HasDnsRecord parameter
 Set-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1 -Name DnsAlias1
 ```

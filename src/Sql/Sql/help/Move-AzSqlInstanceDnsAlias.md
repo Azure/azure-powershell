@@ -158,7 +158,7 @@ This command moves a managed instance DNS alias DnsAlias1 from the source manage
 ```powershell
 $targetmanagedInstance = Get-AzSqlInstance -ResourceGroupName ResourceGroup2 -Name ManagedInstance2
 $sourcemanagedInstance = Get-AzSqlInstance -ResourceGroupName ResourceGroup1 -Name ManagedInstance1
-Move-AzSqlInstanceDnsAlias -InstanceObject $targetmanagedInstance -SourceInstanceObject $managedInstance -SourceName DnsAlias1
+Move-AzSqlInstanceDnsAlias -InstanceObject $targetmanagedInstance -SourceInstanceObject $sourcemanagedInstance -SourceName DnsAlias1
 ```
 
 ```output
