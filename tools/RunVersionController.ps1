@@ -383,10 +383,15 @@ switch ($PSCmdlet.ParameterSetName)
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
 
         Bump-AzVersion
+    }
+    
+    # Each release needs to update AzPreview.psd1 and dotnet csv
+    {$PSItem.StartsWith("Release")}
+    {
+         # Refresh AzPreview.psd1
+         Generate-AzPreview
 
-        Generate-AzPreview
-
-        # Generate dotnet csv
-        &$PSScriptRoot/Docs/GenerateDotNetCsv.ps1 -FeedPsd1FullPath "$PSScriptRoot\AzPreview\AzPreview.psd1" -CustomSource "https://www.powershellgallery.com/api/v2/"
+         # Generate dotnet csv
+         &$PSScriptRoot/Docs/GenerateDotNetCsv.ps1 -FeedPsd1FullPath "$PSScriptRoot\AzPreview\AzPreview.psd1" -CustomSource "https://www.powershellgallery.com/api/v2/" 
     }
 }
