@@ -400,7 +400,7 @@ function Measure-ParameterNameAndValue {
                     # Skip parameters for invaild cmdlet
                     if ($null -eq $GetCommand) {
                         # Redo import-module
-                        if(!Redo-ImportModule $CommandName){
+                        if(!(Redo-ImportModule $CommandName)){
                             return $false
                         }
                     }

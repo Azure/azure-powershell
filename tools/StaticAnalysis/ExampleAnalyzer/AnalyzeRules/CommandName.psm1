@@ -55,7 +55,7 @@ function Measure-CommandName {
                         if ($null -eq $GetCommand) {
                             # CommandName is not valid.
                             # Redo import-module
-                            if(!Redo-ImportModule $CommandName){
+                            if(!(Redo-ImportModule $CommandName)){
                                 $global:CommandParameterPair += @{
                                     CommandName = $CommandName
                                     ParameterName = "<is not valid>"
