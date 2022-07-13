@@ -48,7 +48,6 @@
             this.fixture = fixture;
             using (this.Context = new HpcCacheTestContext(this.GetType().Name))
             {
-                this.Context = new HpcCacheTestContext(this.GetType().Name);
                 this.StorageTarget = this.AddClfsStorageTarget(this.Context);
                 Match clfsTargetMatch = ClfsTargetRegex.Match(this.StorageTarget.Clfs.Target);
                 var storageAccountName = clfsTargetMatch.Groups["StorageAccountName"].Value;
