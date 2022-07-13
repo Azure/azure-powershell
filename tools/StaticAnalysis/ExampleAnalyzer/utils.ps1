@@ -185,27 +185,22 @@ function Get-RecordsNotInAllowList{
     param (
         [AnalysisOutput[]]$records
     )
-    $results = @()
-    foreach($record in $records){
-        $needAdd = $true
+    return $records | Where-Object {
         # Skip the unexpected error caused by using <xxx> to assign parameters
-        if($record.RuleName -eq "RedirectionNotSupported"){
-            $needAdd = $false
+        if($_.RuleName -eq "RedirectionNotSupported"){
+            return $false
         }
         # Skip the invaild cmdlet "<"
-        $CommandName = ($record.Description -split " ")[0]
+        $CommandName = ($_.Description -split " ")[0]
         if($CommandName -eq "<"){
-            $needAdd = $false
+            return $false
         }
         # Skip NeedDeleting in Storage
-        if($record.RuleName -eq "NeedDeleting" -and $record.Module -eq "Storage.Management"){
-            $needAdd = $false
+        if($_.RuleName -eq "NeedDeleting" -and $_.Module -eq "Storage.Management"){
+            return $false
         }
-        if($needAdd){
-            $results += $record
-        }
+        return $true
     }
-    return $results
 }
 
 <#
