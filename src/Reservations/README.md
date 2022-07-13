@@ -49,7 +49,6 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-# lock the commit
 input-file:
   - $(repo)/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/reservations.json
 module-version: 0.1.0
@@ -152,7 +151,14 @@ directive:
       verb: Move
       subject-prefix: Reservation
       subject: Directory
-    
+  - where:
+      verb: Invoke
+      subject: AvailableReservationScope
+    set:
+      verb: Get
+      subject-prefix: Reservation
+      subject: AvailableScopes
+
   ### Hide cmdlet
   - where:
       verb: Split

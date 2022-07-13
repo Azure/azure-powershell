@@ -14,6 +14,9 @@ Microsoft Azure PowerShell: Reservations cmdlets
 ### [Get-AzReservation](Get-AzReservation.md)
 Get specific `Reservation` details.
 
+### [Get-AzReservationAvailableScopes](Get-AzReservationAvailableScopes.md)
+Get Available Scopes for `Reservation`.\n
+
 ### [Get-AzReservationCatalog](Get-AzReservationCatalog.md)
 Get the regions and skus that are available for RI purchase for the specified Azure subscription.
 
@@ -34,9 +37,6 @@ Calculates price for exchanging `Reservations` if there are no policy errors.\n
 
 ### [Invoke-AzReservationExchange](Invoke-AzReservationExchange.md)
 Returns one or more `Reservations` in exchange for one or more `Reservation` purchases.\n
-
-### [Invoke-AzReservationsAvailableReservationScope](Invoke-AzReservationsAvailableReservationScope.md)
-Get Available Scopes for `Reservation`.\n
 
 ### [Merge-AzReservation](Merge-AzReservation.md)
 Merge two reservations into one reservation within the same reservation order.

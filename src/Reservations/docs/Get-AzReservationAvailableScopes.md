@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/powershell/module/az.reservations/invoke-azreservationsavailablereservationscope
+online version: https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationavailablescopes
 schema: 2.0.0
 ---
 
-# Invoke-AzReservationsAvailableReservationScope
+# Get-AzReservationAvailableScopes
 
 ## SYNOPSIS
 Get Available Scopes for `Reservation`.\n
@@ -14,27 +14,26 @@ Get Available Scopes for `Reservation`.\n
 
 ### AvailableExpanded (Default)
 ```
-Invoke-AzReservationsAvailableReservationScope -ReservationId <String> -ReservationOrderId <String>
- [-Scope <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzReservationAvailableScopes -ReservationId <String> -ReservationOrderId <String> [-Scope <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Available
 ```
-Invoke-AzReservationsAvailableReservationScope -ReservationId <String> -ReservationOrderId <String>
+Get-AzReservationAvailableScopes -ReservationId <String> -ReservationOrderId <String>
  -Body <IAvailableScopeRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### AvailableViaIdentity
 ```
-Invoke-AzReservationsAvailableReservationScope -InputObject <IReservationsIdentity>
- -Body <IAvailableScopeRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzReservationAvailableScopes -InputObject <IReservationsIdentity> -Body <IAvailableScopeRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AvailableViaIdentityExpanded
 ```
-Invoke-AzReservationsAvailableReservationScope -InputObject <IReservationsIdentity> [-Scope <String[]>]
+Get-AzReservationAvailableScopes -InputObject <IReservationsIdentity> [-Scope <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -45,7 +44,7 @@ Get Available Scopes for `Reservation`.\n
 
 ### Example 1: List available reservation scope
 ```powershell
-Invoke-AzReservationsAvailableReservationScope -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a  -ReservationOrderId 2b9b9372-24e1-4a07-a354-2078fe347cf9 -Scope "/subscriptions/3f0487ff-27ca-4b9c-2a23-000770724b1b"
+Get-AzReservationAvailableScopes -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a  -ReservationOrderId 2b9b9372-24e1-4a07-a354-2078fe347cf9 -Scope "/subscriptions/3f0487ff-27ca-4b9c-2a23-000770724b1b"
 ```
 
 ```output

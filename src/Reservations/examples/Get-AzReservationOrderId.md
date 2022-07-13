@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get list of applicable ReservationOrder Ids.
 ```powershell
 Get-AzReservationOrderId -SubscriptionId '10000000-aaaa-bbbb-cccc-100000000005'
 ```

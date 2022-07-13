@@ -1,5 +1,5 @@
 {
-  "Invoke-AzReservationsAvailableReservationScope+[NoContext]+AvailableExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01+1": {
+  "Get-AzReservationAvailableScopes+[NoContext]+AvailableExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01+1": {
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01",
@@ -37,7 +37,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsAvailableReservationScope+[NoContext]+Available+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01+1": {
+  "Get-AzReservationAvailableScopes+[NoContext]+Available+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01+1": {
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01",
@@ -75,7 +75,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsAvailableReservationScope+[NoContext]+AvailableViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01+1": {
+  "Get-AzReservationAvailableScopes+[NoContext]+AvailableViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01+1": {
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01",
@@ -113,7 +113,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationsAvailableReservationScope+[NoContext]+AvailableViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01+1": {
+  "Get-AzReservationAvailableScopes+[NoContext]+AvailableViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01+1": {
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01",

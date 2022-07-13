@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzReservationsAvailableReservationScope'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzReservationAvailableScopes'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzReservationsAvailableReservationScope.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzReservationAvailableScopes.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -20,16 +20,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzReservationsAvailabl
     $response.Valid | Should -Be "True"
 }
 
-Describe 'Invoke-AzReservationsAvailableReservationScope' {
+Describe 'Get-AzReservationAvailableScopes' {
     It 'AvailableExpanded' {
-        $response = Invoke-AzReservationsAvailableReservationScope -ReservationId "10000000-aaaa-bbbb-cccc-100000000001" -ReservationOrderId "50000000-aaaa-bbbb-cccc-100000000003" -Scope "/subscriptions/40000000-aaaa-bbbb-cccc-100000000003"
+        $response = Get-AzReservationAvailableScopes -ReservationId "10000000-aaaa-bbbb-cccc-100000000001" -ReservationOrderId "50000000-aaaa-bbbb-cccc-100000000003" -Scope "/subscriptions/40000000-aaaa-bbbb-cccc-100000000003"
 
         ExecuteTestCases($response)
     }
 
     It 'Available' {
         $param = @{Scope = "/subscriptions/40000000-aaaa-bbbb-cccc-100000000003"}        
-        $response = Invoke-AzReservationsAvailableReservationScope -ReservationId "10000000-aaaa-bbbb-cccc-100000000001" -ReservationOrderId "50000000-aaaa-bbbb-cccc-100000000003" -Body $param
+        $response = Get-AzReservationAvailableScopes -ReservationId "10000000-aaaa-bbbb-cccc-100000000001" -ReservationOrderId "50000000-aaaa-bbbb-cccc-100000000003" -Body $param
         
         ExecuteTestCases($response)
     }
@@ -40,7 +40,7 @@ Describe 'Invoke-AzReservationsAvailableReservationScope' {
                         ReservationOrderId = "50000000-aaaa-bbbb-cccc-100000000003"
                         ReservationId = "10000000-aaaa-bbbb-cccc-100000000001"
                     } 
-        $response = Invoke-AzReservationsAvailableReservationScope -InputObject $identity -Scope "/subscriptions/40000000-aaaa-bbbb-cccc-100000000003"
+        $response = Get-AzReservationAvailableScopes -InputObject $identity -Scope "/subscriptions/40000000-aaaa-bbbb-cccc-100000000003"
 
         ExecuteTestCases($response)
     }
@@ -51,7 +51,7 @@ Describe 'Invoke-AzReservationsAvailableReservationScope' {
                         ReservationOrderId = "50000000-aaaa-bbbb-cccc-100000000003"
                         ReservationId = "10000000-aaaa-bbbb-cccc-100000000001"
                     } 
-        $response = Invoke-AzReservationsAvailableReservationScope -InputObject $identity -Body $body
+        $response = Get-AzReservationAvailableScopes -InputObject $identity -Body $body
 
         ExecuteTestCases($response)
     }

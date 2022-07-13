@@ -60,7 +60,7 @@ In this case please get the single reservation with command in example 2 to get 
 
 Some data might be trucated due to the width of powershell view, appending this to the end of the command to show the truncated data: | ft -Wrap
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the reservation details given ReservationOrderId and ReservationId
 ```powershell
 Get-AzReservation -ReservationOrderId a87c1742-0080-5b4d-b953-8531ad46fdc8 -ReservationId cad6fef7-ae86-4d47-91d0-67c897934bfe
 ```
