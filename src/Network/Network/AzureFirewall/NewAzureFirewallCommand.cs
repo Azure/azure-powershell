@@ -330,9 +330,15 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.virtualNetwork != null)
                 {
-                    firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
+                    if (firewall.Sku != null && firewall.Sku.Tier.Equals(MNM.AzureFirewallSkuTier.Basic))
+                    {
+                        firewall.AllocateBasicSku(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
+                    }
+                    else
+                    {
+                        firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
+                    }
                 }
-
                 firewall.ValidateDNSProxyRequirements();
             }
 
