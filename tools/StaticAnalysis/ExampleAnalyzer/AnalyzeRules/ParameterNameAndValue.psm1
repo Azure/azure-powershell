@@ -4,6 +4,7 @@
     .NOTES
     File: ParameterNameAndValue.psm1
 #>
+. $PSScriptRoot\..\utils.ps1
 
 enum RuleNames {
     Unknown_Parameter_Set
@@ -398,14 +399,9 @@ function Measure-ParameterNameAndValue {
 
                     # Skip parameters for invaild cmdlet
                     if ($null -eq $GetCommand) {
-                        # Retry import-module
-                        Get-Item $modulePath | Import-Module -Global
-                        $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
-                        if ($null -eq $GetCommand) {
+                        # Redo import-module
+                        if(!Redo-ImportModule $CommandName){
                             return $false
-                        }
-                        else{
-                            Write-debug "Succeed by retrying import-module"
                         }
                     }
                     # Get command from alias
@@ -609,10 +605,10 @@ function Measure-ParameterNameAndValue {
                                     # Parameter is not assigned with a value.
                                     # Unassigned_Parameter
                                     $global:CommandParameterPair += @{
-                                    CommandName = $CommandName
-                                    ParameterName = $ParameterName
-                                    ExpressionToParameter = $null
-                                    ModuleCmdletExNum = $ModuleCmdletExNum
+                                        CommandName = $CommandName
+                                        ParameterName = $ParameterName
+                                        ExpressionToParameter = $null
+                                        ModuleCmdletExNum = $ModuleCmdletExNum
                                     }
                                     return $true
                                 }

@@ -125,7 +125,10 @@ namespace StaticAnalysis.IssueChecker
                 {
                     Console.WriteLine("{0} Errors", exceptionFilePath);
                     Console.WriteLine(errorText.ToString());
-                    Console.WriteLine(warningText.ToString());
+                    if(outputWarning && !String.IsNullOrEmpty(warningText.ToString())){
+                        Console.WriteLine("Following are warning issues. It is recommended to correct them as well.");
+                        Console.WriteLine(warningText.ToString());
+                    }
                 }
             }
             return hasError;

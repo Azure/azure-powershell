@@ -9,9 +9,10 @@
                 AnalysisOutput
         Functions:  Get-ExamplesDetailsFromMd
                     Get-NonExceptionRecord
+                    Get-RecordsNotInAllowList
                     Measure-SectionMissingAndOutputScript
-                    Measure-NotInWhiteList
                     Get-ScriptAnalyzerResult
+                    Redo-ImportModule
 #>
 
 $SYNOPSIS_HEADING = "## SYNOPSIS"
@@ -168,6 +169,37 @@ function Get-NonExceptionRecord{
                     break
                 }
             }
+        }
+        if($needAdd){
+            $results += $record
+        }
+    }
+    return $results
+}
+
+<#
+    .SYNOPSIS
+    Get AnalysisOutput entries not in the allow list.
+#>
+function Get-RecordsNotInAllowList{
+    param (
+        [AnalysisOutput[]]$records
+    )
+    $results = @()
+    foreach($record in $records){
+        $needAdd = $true
+        # Skip the unexpected error caused by using <xxx> to assign parameters
+        if($record.RuleName -eq "RedirectionNotSupported"){
+            $needAdd = $false
+        }
+        # Skip the invaild cmdlet "<"
+        $CommandName = ($record.Description -split " ")[0]
+        if($CommandName -eq "<"){
+            $needAdd = $false
+        }
+        # Skip NeedDeleting in Storage
+        if($record.RuleName -eq "NeedDeleting" -and $record.Module -eq "Storage.Management"){
+            $needAdd = $false
         }
         if($needAdd){
             $results += $record
@@ -370,7 +402,7 @@ function Measure-SectionMissingAndOutputScript {
                         ProblemID = 5051
                         Remediation = "Delete the prompt of example."
                     }
-                    $results += $result
+                    $results += $result 
                     $newCode = $exampleCodes -replace "`n([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*", "`n"
                     $newCode = $newCode -replace "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1"
                     $exampleCodes = $newCode
@@ -392,7 +424,8 @@ function Measure-SectionMissingAndOutputScript {
             }
         }
     }
-
+    # Except records in allow list
+    $results = Get-RecordsNotInAllowList $results
     # Except the suppressed records
     $results = Get-NonExceptionRecord $results
 
@@ -402,26 +435,6 @@ function Measure-SectionMissingAndOutputScript {
         DeletePromptAndSeparateOutput = $deletePromptAndSeparateOutput
         Errors = $results
     }
-}
-
-<#
-    .SYNOPSIS
-    Measure whether the AnalysisOutput entry is in white list.
-#>
-function Measure-InAllowList{
-    param (
-        [AnalysisOutput]$result
-    )
-    # Skip the unexpected error caused by using <xxx> to assign parameters
-    if($result.RuleName -eq "RedirectionNotSupported"){
-        return $false
-    }
-    # Skip the invaild cmdlet "<"
-    $CommandName = ($result.Description -split " ")[0]
-    if($CommandName -eq "<"){
-        return $false
-    }
-    return $true
 }
 
 <#
@@ -486,15 +499,34 @@ function Get-ScriptAnalyzerResult {
                 Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 ProblemID = 5200
                 Remediation = "Unexpected Error! Please check your example or contact the Azure Powershell Team. (Appeared in Line $($analysisResult.Line))"
-                }
             }
-        # Measure whether the result is in the white list
-        if(Measure-InAllowList $result){
-           $results += $result 
         }
+        $results += $result 
     }
-    #Except the suppressed records
+    # Except records in allow list
+    $results = Get-RecordsNotInAllowList $results
+    # Except the suppressed records
     $results = Get-NonExceptionRecord $results
 
     return $results
+}
+
+<#
+    .SYNOPSIS
+    Retry import-module
+#>
+function Redo-ImportModule {
+    param (
+        [string]$CommandName
+    )
+    $modulePath = "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1"
+    Get-Item $modulePath | Import-Module -Global
+    $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
+    if ($null -eq $GetCommand) {
+        return $false
+    }
+    else{
+        Write-Debug "Succeed by retrying import-module"
+        return $true
+    }
 }
