@@ -23,7 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Identity" Version="1.5.0" />
+    <PackageReference Include="Azure.Identity" Version="1.6.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,5 +36,7 @@
     </ItemGroup>
     <Copy SourceFiles="@(OutputAssembly)" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.Accounts\PreloadAssemblies" />
   </Target>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

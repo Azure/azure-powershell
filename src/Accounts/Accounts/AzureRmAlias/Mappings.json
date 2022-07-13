@@ -2068,6 +2068,10 @@
     "Remove-AzSearchQueryKey": "Remove-AzureRmSearchQueryKey"
   },
   "Az.Security": {
+    "New-AzAlertsSuppressionRuleScope": "New-AzureRmAlertsSuppressionRuleScope",
+    "Get-AzAlertsSuppressionRule": "Get-AzureRmAlertsSuppressionRule",
+    "Set-AzAlertsSuppressionRule": "Set-AzureRmAlertsSuppressionRule",
+    "Remove-AzAlertsSuppressionRule": "Remove-AzureRmAlertsSuppressionRule",
     "Get-AzSecurityAlert": "Get-AzureRmSecurityAlert",
     "Set-AzSecurityAlert": "Set-AzureRmSecurityAlert",
     "Get-AzSecurityAutoProvisioningSetting": "Get-AzureRmSecurityAutoProvisioningSetting",

@@ -264,6 +264,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.BgpServiceCommunity, CNM.PSBgpServiceCommunity>();
                 cfg.CreateMap<MNM.BGPCommunity, CNM.PSBgpCommunity>();
 
+                // Virtual Network Encryption
+                cfg.CreateMap<CNM.PSVirtualNetworkEncryption, MNM.VirtualNetworkEncryption>();
+                cfg.CreateMap<MNM.VirtualNetworkEncryption, CNM.PSVirtualNetworkEncryption>();
+
                 // Subnet
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSDhcpOptions, MNM.DhcpOptions>();
@@ -792,10 +796,12 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSExpressRoutePort, MNM.ExpressRoutePort>();
                 cfg.CreateMap<CNM.PSExpressRouteLink, MNM.ExpressRouteLink>();
+                cfg.CreateMap<CNM.PSExpressRoutePortAuthorization, MNM.ExpressRoutePortAuthorization>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ExpressRoutePort, CNM.PSExpressRoutePort>();
                 cfg.CreateMap<MNM.ExpressRouteLink, CNM.PSExpressRouteLink>();
+                cfg.CreateMap<MNM.ExpressRoutePortAuthorization, CNM.PSExpressRoutePortAuthorization>();
 
                 // ExpressRouteCircuit
                 // CNM to MNM
@@ -1233,6 +1239,8 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.P2SVpnGateway, CNM.PSP2SVpnGateway>();
                 cfg.CreateMap<MNM.P2SConnectionConfiguration, CNM.PSP2SConnectionConfiguration>();
+                cfg.CreateMap<MNM.VpnServerConfigurationPolicyGroup, CNM.PSVpnServerConfigurationPolicyGroup>();
+                cfg.CreateMap<MNM.VpnServerConfigurationPolicyGroupMember, CNM.PSVpnServerConfigurationPolicyGroupMember>();
                 cfg.CreateMap<MNM.VpnClientConnectionHealth, CNM.PSVpnClientConnectionHealth>();
                 cfg.CreateMap<MNM.P2SVpnConnectionHealth, CNM.PSP2SVpnConnectionHealth>();
                 cfg.CreateMap<MNM.VpnProfileResponse, CNM.PSVpnProfileResponse>();
@@ -1249,6 +1257,8 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSP2SVpnGateway, MNM.P2SVpnGateway>();
                 cfg.CreateMap<CNM.PSP2SConnectionConfiguration, MNM.P2SConnectionConfiguration>();
+                cfg.CreateMap<CNM.PSVpnServerConfigurationPolicyGroup, MNM.VpnServerConfigurationPolicyGroup>();
+                cfg.CreateMap<CNM.PSVpnServerConfigurationPolicyGroupMember, MNM.VpnServerConfigurationPolicyGroupMember>();
                 cfg.CreateMap<CNM.PSVpnClientConnectionHealth, MNM.VpnClientConnectionHealth>();
                 cfg.CreateMap<CNM.PSP2SVpnConnectionHealth, MNM.P2SVpnConnectionHealth>();
                 cfg.CreateMap<CNM.PSVpnProfileResponse, MNM.VpnProfileResponse>();

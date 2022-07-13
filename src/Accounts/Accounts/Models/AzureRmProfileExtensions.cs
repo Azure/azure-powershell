@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         /// <param name="profile">The profile to change the context for</param>
         /// <param name="newContext">The new context, with no token cache information.</param>
+        /// <param name="name"></param>
         public static void SetContextWithCache(this IAzureContextContainer profile, IAzureContext newContext, string name = null)
         {
             if (profile == null)

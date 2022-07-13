@@ -23,6 +23,7 @@ The **New-AzStorageAccountManagementPolicyFilter** cmdlet creates a ManagementPo
 ## EXAMPLES
 
 ### Example 1: Creates a ManagementPolicy rule filter object, then add it to a management policy rule and set to a Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch blobprefix1,blobprefix2 -BlobType appendBlob,blockBlob
 PS C:\>$filter 

@@ -24,8 +24,10 @@ Deletes the trigger associated with the scan
 
 ### Example 1: Remove trigger schedule for a scan
 ```powershell
-PS C:\> Remove-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK'
+Remove-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK'
+```
 
+```output
 CreatedAt                  : 2/17/2022 1:35:12 PM
 Id                         : datasources/DataScanTestData-Parv/scans/Scan-6HK/triggers/default
 IncrementalScanStartTime   :

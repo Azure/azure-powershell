@@ -12,44 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
 {
-    public class AttstationPolicyTests : RMTestBase
+    public class AttstationPolicyTests : AttestationTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public AttstationPolicyTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AttstationPolicyTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAttestationPolicy()
         {
-            AttestationController.NewInstance.RunDataPowerShellTest(_logger, "Test-GetAttestationPolicy");
+            TestRunner.RunTestScript("Test-GetAttestationPolicy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDefaultProviderPolicy()
         {
-            AttestationController.NewInstance.RunDataPowerShellTest(_logger, "Test-GetDefaultProviderPolicy");
+            TestRunner.RunTestScript("Test-GetDefaultProviderPolicy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResetAttestationPolicy()
         {
-            AttestationController.NewInstance.RunDataPowerShellTest(_logger, "Test-ResetAttestationPolicy");
+            TestRunner.RunTestScript("Test-ResetAttestationPolicy");
         }
 
         /// <summary>
@@ -73,7 +65,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestSetAttestationPolicy()
         {
-            AttestationController.NewInstance.RunDataPowerShellTest(_logger, "Test-SetAttestationPolicy");
+            TestRunner.RunTestScript("Test-SetAttestationPolicy");
         }
     }
 }

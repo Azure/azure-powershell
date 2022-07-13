@@ -539,10 +539,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     throw new Exception("UpgradePolicy is not currently supported for a VMSS with OrchestrationMode set to Flexible.");
                 }
-                else if (_cmdlet.SinglePlacementGroup == true)
-                {
-                    throw new Exception("The value provided for singlePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.");
-                }
             }
         }
 

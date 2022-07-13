@@ -13,8 +13,8 @@ Ip addresses assoicated to the firewall on virtual hub
 ## SYNTAX
 
 ```
-New-AzFirewallHubIpAddress [-PrivateIPAddress <String>] [-PublicIPs <PSAzureFirewallHubPublicIpAddresses>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFirewallHubIpAddress [-PrivateIPAddress <String>] [-PublicIP <PSAzureFirewallHubPublicIpAddresses>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,10 +25,10 @@ Ip addresses assoicated to the firewall on virtual hub. These can be public and 
 ### Example 1
 ```powershell
 $fwpips = New-AzFirewallHubPublicIpAddress -Count 2
-New-AzFirewallHubIpAddress -PublicIPs $fwpips
+New-AzFirewallHubIpAddress -PublicIP $fwpips
 ```
 
-This example creates a Hub Ip address object with a count of 2 public IPs. The HubIPAddress object is ssociated to the firewall on the virtual hub.
+This example creates a Hub Ip address object with a count of 2 public IPs. The HubIPAddress object is associated to the firewall on the virtual hub.
 
 ## PARAMETERS
 
@@ -36,7 +36,7 @@ This example creates a Hub Ip address object with a count of 2 public IPs. The H
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The private Ip Address of the Firewall attached to a Hub
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -62,43 +62,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIPs
+### -PublicIP
 The IP Addresses of the Firewall attached to a hub
 
 ```yaml
-Type: PSAzureFirewallHubPublicIpAddresses
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallHubPublicIpAddresses
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named

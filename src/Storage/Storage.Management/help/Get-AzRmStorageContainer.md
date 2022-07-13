@@ -52,6 +52,7 @@ PS C:\>Get-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "m
 This command gets a Storage blob container with Storage account object and container name.
 
 ### Example 4: List Storage blob container of a Storage account, include deleted containers.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -IncludeDeleted
 

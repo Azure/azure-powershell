@@ -25,7 +25,7 @@ Allows you to update contact information for a PeerAsn on the subscription.
 ### Example 1
 ```powershell
 #Get the Peer ASN object
-Get-AzPeerAsn -PeerName Contoso | Set-AzPeerAsn -Email noc1@contoso.com
+Get-AzPeerAsn -Name Contoso | Set-AzPeerAsn
 ```
 
 ```output

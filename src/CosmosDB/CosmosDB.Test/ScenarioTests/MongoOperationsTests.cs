@@ -17,42 +17,38 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 {
-    public class MongoOperationsTests
+    public class MongoOperationsTests : CosmosDBTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public MongoOperationsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public MongoOperationsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMongoOperationsCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MongoOperationsCmdlets");
+            TestRunner.RunTestScript("Test-MongoOperationsCmdlets");
         }
 
         [Fact(Skip = "The MAC signature found in the HTTP request is not the same as the computed signature.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMongoOperationsCmdletsUsingInputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MongoOperationsCmdletsUsingInputObject");
+            TestRunner.RunTestScript("Test-MongoOperationsCmdletsUsingInputObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMongoThroughputCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MongoThroughputCmdlets");
+            TestRunner.RunTestScript("Test-MongoThroughputCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMongoMigrateThroughputCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MongoMigrateThroughputCmdlets");
+            TestRunner.RunTestScript("Test-MongoMigrateThroughputCmdlets");
         }
     }
 }

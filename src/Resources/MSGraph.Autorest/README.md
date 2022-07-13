@@ -52,6 +52,7 @@ require:
 
 input-file:
   - ../OpenApiSpecs/v1.0/Applications.yml
+  - ../OpenApiSpecs/beta/Applications.yml
   - ../OpenApiSpecs/v1.0/Groups.yml
   - ../OpenApiSpecs/beta/Groups.yml
   - ../OpenApiSpecs/v1.0/Users.yml
@@ -136,9 +137,42 @@ directive:
     remove: true
 
   - where:
-      subject: ^application$|^group$|^serviceprincipal$|^user$
-      variant: ^Update$
+      subject: ^application$|^group$|^serviceprincipal$|^user$|^applicationfederatedidentitycredentials$
+      variant: ^Update$|^Create$
     remove: true
+
+  - where:
+      subject: ^applicationfederatedidentitycredentials$
+      parameter-name: applicationid
+    set:
+      parameter-name: ApplicationObjectId
+
+  - where:
+      subject: ^applicationfederatedidentitycredentials$
+      parameter-name: FederatedIdentityCredentialId
+    set:
+      parameter-name: Id
+
+  - where:
+      subject: ^applicationfederatedidentitycredentials$
+      verb: ^Update$
+      parameter-name: Name
+    hide: true
+
+  - where:
+      subject: ^applicationfederatedidentitycredentials$
+      verb: Get|New
+    hide: true
+
+  - where:
+      subject: ^applicationfederatedidentitycredential$|GroupGraphRefMember$|grouprefmember$|groupmember$
+    set:
+      preview-message: This cmdlet is using API version beta which is under preview.
+
+  - where:
+      subject: ^applicationfederatedidentitycredentials$
+    set: 
+      subject: AppFederatedIdentityCredential
 
   - where:
       subject: ^application$|^serviceprincipal$|^group$

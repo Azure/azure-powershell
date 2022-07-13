@@ -46,15 +46,15 @@ To update other fields use the CreateOrUpdate method.
 ## EXAMPLES
 
 ### Example 1: Update the tags of a private link scope
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
-```
+$scope = Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
 
-```output
-Name         Location    PublicNetworkAccess ProvisioningState Tag
-----         --------    ------------------- ----------------- ---
-name         eastus2euap Disabled            Succeeded         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.PrivateLinkScopesRes…
+Name         Location    PublicNetworkAccess ProvisioningState
+----         --------    ------------------- -----------------
+name         eastus2euap Disabled            Succeeded
 
+$scope.Tag
 ```
 
 Update the tags of a private link scope
@@ -97,7 +97,7 @@ A container holding only the Tags for a resource, allowing the user to update th
 To construct, see NOTES section for PRIVATELINKSCOPETAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.ITagsResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.ITagsResource
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -205,13 +205,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.ITagsResource
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.ITagsResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IHybridComputePrivateLinkScope
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope
 
 ## NOTES
 
@@ -222,7 +222,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedMachineIdentity>`: Identity Parameter
   - `[ExtensionName <String>]`: The name of the machine extension.
   - `[GroupName <String>]`: The name of the private link resource.
   - `[Id <String>]`: Resource identity path
@@ -234,7 +234,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-PRIVATELINKSCOPETAG <ITagsResource>: A container holding only the Tags for a resource, allowing the user to update the tags on a PrivateLinkScope instance.
+PRIVATELINKSCOPETAG `<ITagsResource>`: A container holding only the Tags for a resource, allowing the user to update the tags on a PrivateLinkScope instance.
   - `[Tag <ITagsResourceTags>]`: Resource tags
     - `[(Any) <String>]`: This indicates any property can be added to this object.
 

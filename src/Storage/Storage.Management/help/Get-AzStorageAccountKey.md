@@ -31,6 +31,7 @@ PS C:\>Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount
 This command gets the keys for the specified Azure Storage account.
 
 ### Example 2: Get a specific access key for a Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 This command gets a specific key for a Storage account. This command works for Azure PowerShell version 1.4, and later versions.
 PS C:\>(Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount")| Where-Object {$_.KeyName -eq "key1"}

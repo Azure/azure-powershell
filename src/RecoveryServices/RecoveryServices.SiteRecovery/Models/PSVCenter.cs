@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Initializes a new instance of the <see cref="ASRvCenter" /> class with required
         ///     parameters.
         /// </summary>
-        /// <param name="vServer">vCenter server object</param>
+        /// <param name="vCenterServer">vCenter server object</param>
         public ASRvCenter(VCenter vCenterServer)
         {
             this.ID = vCenterServer.Id;

@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
     /// <summary>
     /// Class CloudTieringFilesNotTieringConverter.
-    /// Implements the <see cref="Converters.ConverterBase{PSCloudTieringFilesNotTiering, StorageSyncModels.CloudTieringFilesNotTiering}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSCloudTieringFilesNotTiering, CloudTieringFilesNotTiering}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSCloudTieringFilesNotTiering, StorageSyncModels.CloudTieringFilesNotTiering}" />
+    /// <seealso cref="Converters.ConverterBase{PSCloudTieringFilesNotTiering, CloudTieringFilesNotTiering}" />
     public class CloudTieringFilesNotTieringConverter : ConverterBase<PSCloudTieringFilesNotTiering, StorageSyncModels.CloudTieringFilesNotTiering>
     {
         /// <summary>

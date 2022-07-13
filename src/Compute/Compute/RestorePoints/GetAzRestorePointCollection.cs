@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 string resourceGroup = this.ResourceGroupName;
                 string restorePointCollectionName = this.Name;
 
-                var result = RestorePointCollectionsClient.Get(resourceGroup, restorePointCollectionName);
+                var result = RestorePointCollectionsClient.Get(resourceGroup, restorePointCollectionName, "restorePoints");
                 var psObject = new PSRestorePointCollection();
                 ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePointCollection, PSRestorePointCollection>(result, psObject);
                 WriteObject(psObject);

@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// <value>The management endpoint URI.</value>
         public string ManagementEndpointUri { get; set; }
 
-        // <summary>
+        /// <summary>
         /// Gets or sets the monitoring endpoint URI.
         /// </summary>
         /// <value>The monitoring endpoint URI.</value>

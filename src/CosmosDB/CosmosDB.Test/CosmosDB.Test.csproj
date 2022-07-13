@@ -1,11 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PsModuleName>CosmosDB</PsModuleName>
   </PropertyGroup>
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Azure.Management.CosmosDB" Version="3.5.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="21.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.CosmosDB" Version="3.7.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="22.0.0" />
   </ItemGroup>
 </Project>

@@ -17,7 +17,7 @@ Modifies a Backup protection policy.
 ```
 Set-AzRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [[-RetentionPolicy] <RetentionPolicyBase>]
  [[-SchedulePolicy] <SchedulePolicyBase>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Token <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FixPolicyParamSet
@@ -159,6 +159,21 @@ Aliases:
 
 Required: False
 Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Token
+Auxiliary access token for authenticating critical operation to resource guard subscription
+
+```yaml
+Type: System.String
+Parameter Sets: ModifyPolicyParamSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

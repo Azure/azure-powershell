@@ -11,17 +11,6 @@
 Updates entity in users
 .Description
 Updates entity in users
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Outputs
-System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 

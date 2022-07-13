@@ -15,6 +15,7 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
 
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
         [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet, HelpMessage = "Indicates whether TrustedServiceAccessEnabled is enabled")]
         public SwitchParameter TrustedServiceAccessEnabled { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet,  Position = 2, HelpMessage = "List of IPRuleSet")]
+        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet,  Position = 2, HelpMessage = "List of IPRuleSet")]
         [ValidateNotNullOrEmpty]
         public PSNWRuleSetIpRulesAttributes[] IPRule { get; set; }
 
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
         [PSDefaultValue(Value = "Enabled")]
         public string PublicNetworkAccess { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet,  Position = 3, HelpMessage = "List of VirtualNetworkRules")]
+        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet,  Position = 3, HelpMessage = "List of VirtualNetworkRules")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasVirtualNetworkRule)]
         public PSNWRuleSetVirtualNetworkRulesAttributes[] VirtualNetworkRule { get; set; }
@@ -81,16 +82,20 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
                 {
                     if (ParameterSetName.Equals(NetwrokruleSetPropertiesParameterSet))
                     {
-                        PSNetworkRuleSetAttributes networkRuleSetAttributes = new PSNetworkRuleSetAttributes()
+                        bool? trustedServiceAccessEnabled = null;
+                            
+                        if(this.IsParameterBound(c => c.TrustedServiceAccessEnabled) == true)
                         {
-                            DefaultAction = DefaultAction,
-                            TrustedServiceAccessEnabled = TrustedServiceAccessEnabled.IsPresent,
-                            IpRules = IPRule.OfType<PSNWRuleSetIpRulesAttributes>().ToList(),
-                            VirtualNetworkRules = VirtualNetworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList(),
-                            PublicNetworkAccess = PublicNetworkAccess
-                        };
+                            trustedServiceAccessEnabled = TrustedServiceAccessEnabled.IsPresent;
+                        }
 
-                        WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSetAttributes));
+                        WriteObject(Client.UpdateNetworkRuleSet(resourceGroupName: ResourceGroupName,
+                                                                namespaceName: Name,
+                                                                publicNetworkAccess: PublicNetworkAccess,
+                                                                trustedServiceAccessEnabled: trustedServiceAccessEnabled,
+                                                                defaultAction: DefaultAction,
+                                                                iPRule: IPRule,
+                                                                virtualNetworkRule: VirtualNetworkRule));
                     }
 
                     if (ParameterSetName.Equals(NetwrokruleSetInputObjectParameterSet))

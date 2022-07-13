@@ -15,14 +15,16 @@ Update an existing P2SVpnGateway under VirtualHub for point to site connectivity
 ### ByP2SVpnGatewayNameNoVpnServerConfigurationUpdate (Default)
 ```
 Update-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> [-VpnClientAddressPool <String[]>]
- [-VpnGatewayScaleUnit <UInt32>] [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>]
- [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-VpnGatewayScaleUnit <UInt32>]
+ [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
+ [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayNameByVpnServerConfigurationObject
 ```
 Update-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> [-VpnClientAddressPool <String[]>]
+ [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>]
  [-VpnServerConfiguration <PSVpnServerConfiguration>] [-VpnGatewayScaleUnit <UInt32>]
  [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
  [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
@@ -32,23 +34,25 @@ Update-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> [-VpnClientAdd
 ### ByP2SVpnGatewayNameByVpnServerConfigurationResourceId
 ```
 Update-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> [-VpnClientAddressPool <String[]>]
- -VpnServerConfigurationId <String> [-VpnGatewayScaleUnit <UInt32>] [-CustomDnsServer <String[]>]
- [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByP2SVpnGatewayObjectNoVpnServerConfigurationUpdate
-```
-Update-AzP2sVpnGateway -InputObject <PSP2SVpnGateway> [-VpnClientAddressPool <String[]>]
+ [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] -VpnServerConfigurationId <String>
  [-VpnGatewayScaleUnit <UInt32>] [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>]
  [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByP2SVpnGatewayObjectNoVpnServerConfigurationUpdate
+```
+Update-AzP2sVpnGateway -InputObject <PSP2SVpnGateway> [-VpnClientAddressPool <String[]>]
+ [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-VpnGatewayScaleUnit <UInt32>]
+ [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
+ [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByP2SVpnGatewayObjectByVpnServerConfigurationObject
 ```
 Update-AzP2sVpnGateway -InputObject <PSP2SVpnGateway> [-VpnClientAddressPool <String[]>]
+ [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>]
  [-VpnServerConfiguration <PSVpnServerConfiguration>] [-VpnGatewayScaleUnit <UInt32>]
  [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
  [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
@@ -58,15 +62,16 @@ Update-AzP2sVpnGateway -InputObject <PSP2SVpnGateway> [-VpnClientAddressPool <St
 ### ByP2SVpnGatewayObjectByVpnServerConfigurationResourceId
 ```
 Update-AzP2sVpnGateway -InputObject <PSP2SVpnGateway> [-VpnClientAddressPool <String[]>]
- -VpnServerConfigurationId <String> [-VpnGatewayScaleUnit <UInt32>] [-CustomDnsServer <String[]>]
- [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] -VpnServerConfigurationId <String>
+ [-VpnGatewayScaleUnit <UInt32>] [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>]
+ [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayResourceIdNoVpnServerConfigurationUpdate
 ```
-Update-AzP2sVpnGateway -ResourceId <String> [-VpnClientAddressPool <String[]>] [-VpnGatewayScaleUnit <UInt32>]
+Update-AzP2sVpnGateway -ResourceId <String> [-VpnClientAddressPool <String[]>]
+ [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
  [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -75,6 +80,7 @@ Update-AzP2sVpnGateway -ResourceId <String> [-VpnClientAddressPool <String[]>] [
 ### ByP2SVpnGatewayResourceIdByVpnServerConfigurationObject
 ```
 Update-AzP2sVpnGateway -ResourceId <String> [-VpnClientAddressPool <String[]>]
+ [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>]
  [-VpnServerConfiguration <PSVpnServerConfiguration>] [-VpnGatewayScaleUnit <UInt32>]
  [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
  [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
@@ -84,10 +90,10 @@ Update-AzP2sVpnGateway -ResourceId <String> [-VpnClientAddressPool <String[]>]
 ### ByP2SVpnGatewayResourceIdByVpnServerConfigurationResourceId
 ```
 Update-AzP2sVpnGateway -ResourceId <String> [-VpnClientAddressPool <String[]>]
- -VpnServerConfigurationId <String> [-VpnGatewayScaleUnit <UInt32>] [-CustomDnsServer <String[]>]
- [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] -VpnServerConfigurationId <String>
+ [-VpnGatewayScaleUnit <UInt32>] [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>]
+ [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,7 +105,7 @@ The **Update-AzP2sVpnGateway** cmdlet enables you to update an existing P2SVpnGa
 ```powershell
 $vpnClientAddressSpaces = New-Object string[] 1 
 $vpnClientAddressSpaces[0] = "101.10.0.0/16"
-Update-AzP2sVpnGateway -ResourceGroupName P2SCortexGATesting -Name 683482ade8564515aed4b8448c9757ea-westus-gw -VpnClientAddressPool $vpnClientAddressSpaces -EnableInternetSecurityFlag                                
+Update-AzP2sVpnGateway -ResourceGroupName P2SCortexGATesting -Name 683482ade8564515aed4b8448c9757ea-westus-gw -VpnClientAddressPool $vpnClientAddressSpaces -EnableInternetSecurityFlag
 ```
 
 ```output
@@ -264,6 +270,21 @@ Parameter Sets: ByP2SVpnGatewayNameNoVpnServerConfigurationUpdate, ByP2SVpnGatew
 Aliases: ResourceName, P2SVpnGatewayName, GatewayName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -P2SConnectionConfiguration
+The list of P2SConnectionConfigurations that this P2SVpnGateway needs to have.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSP2SConnectionConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

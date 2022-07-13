@@ -19,7 +19,7 @@ using Xunit.Abstractions;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests
 {
     [Collection("SqlVirtualMachineTests")]
-    public class SqlVMTests : SqlVirtualMachineTestsBase
+    public class SqlVMTests : SqlVirtualMachineTestRunner
     {
         public SqlVMTests(ITestOutputHelper output) : base(output)
         {
@@ -29,28 +29,28 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlVirtualMachineCreate()
         {
-            RunPowerShellTest("Test-CreateSqlVirtualMachine");
+            TestRunner.RunTestScript("Test-CreateSqlVirtualMachine");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlVirtualMachineGet()
         {
-            RunPowerShellTest("Test-GetSqlVirtualMachine");
+            TestRunner.RunTestScript("Test-GetSqlVirtualMachine");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlVirtualMachineUpdate()
         {
-            RunPowerShellTest("Test-UpdateSqlVirtualMachine");
+            TestRunner.RunTestScript("Test-UpdateSqlVirtualMachine");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlVirtualMachineRemove()
         {
-            RunPowerShellTest("Test-RemoveSqlVirtualMachine");
+            TestRunner.RunTestScript("Test-RemoveSqlVirtualMachine");
         }
     }
 }

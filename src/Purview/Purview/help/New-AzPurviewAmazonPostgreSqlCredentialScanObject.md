@@ -27,8 +27,10 @@ Create an in-memory object for AmazonPostgreSqlCredentialScan.
 
 ### Example 1: Create Amazon Account PostgreSQL scan object
 ```powershell
-PS C:\> New-AzPurviewAmazonPostgreSqlCredentialScanObject -Kind 'AmazonPostgreSqlCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -Port 5432 -ScanRulesetName 'AmazonPostgreSql' -ScanRulesetType 'System' -ServerEndpoint 'DummyServer' -VpcEndpointServiceName 'com.amazonaws.ypce.wus.123456789'
+New-AzPurviewAmazonPostgreSqlCredentialScanObject -Kind 'AmazonPostgreSqlCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -Port 5432 -ScanRulesetName 'AmazonPostgreSql' -ScanRulesetType 'System' -ServerEndpoint 'DummyServer' -VpcEndpointServiceName 'com.amazonaws.ypce.wus.123456789'
+```
 
+```output
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference

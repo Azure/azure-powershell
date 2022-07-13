@@ -32,6 +32,7 @@ The **New-AzStorageBlobInventoryPolicyRule** cmdlet creates a blob inventory pol
 ## EXAMPLES
 
 ### Example 1: Create blob inventory policy rule objects, then sets blob inventory policy with the rule objects.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -Destination $containerName -Disabled -Format Csv -Schedule Daily -ContainerSchemaField Name,Metadata,PublicAccess,Last-mOdified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold -PrefixMatch con1,con2
 

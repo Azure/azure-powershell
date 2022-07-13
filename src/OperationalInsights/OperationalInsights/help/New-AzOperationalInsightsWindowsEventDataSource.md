@@ -48,7 +48,7 @@ foreach ($EventLogName in $EventLogNames) {
     -ResourceGroupName $ResourceGroupName `
     -WorkspaceName $WorkspaceName `
     -Name "Windows-event-$($Count)" `
-    -EventLogName $EventLogName `
+    -EventLogName $EventLogNames `
     -CollectErrors `
     -CollectWarnings `
     -CollectInformation

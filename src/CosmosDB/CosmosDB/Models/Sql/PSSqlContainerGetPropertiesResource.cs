@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             PartitionKey = new PSContainerPartitionKey(sqlContainerGetPropertiesResource.PartitionKey);
             DefaultTtl = sqlContainerGetPropertiesResource.DefaultTtl;
             UniqueKeyPolicy = new PSUniqueKeyPolicy(sqlContainerGetPropertiesResource.UniqueKeyPolicy);
+            ClientEncryptionPolicy = new PSClientEncryptionPolicy(sqlContainerGetPropertiesResource.ClientEncryptionPolicy);
             ConflictResolutionPolicy = new PSConflictResolutionPolicy(sqlContainerGetPropertiesResource.ConflictResolutionPolicy);
             AnalyticalStorageTtl = (int?)sqlContainerGetPropertiesResource.AnalyticalStorageTtl;
             _rid = sqlContainerGetPropertiesResource._rid;
@@ -68,6 +69,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the conflict resolution policy for the container.
         public PSConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the client encryption policy for the container.
+        public PSClientEncryptionPolicy ClientEncryptionPolicy { get; set; }
+
         //
         // Summary:
         //     Gets or sets analytical TTL.

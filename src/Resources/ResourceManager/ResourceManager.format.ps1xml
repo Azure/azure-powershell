@@ -109,6 +109,47 @@
                 <PropertyName>DisplayName</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Longitude</Label>
+                <PropertyName>Longitude</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Latitude</Label>
+                <PropertyName>Latitude</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PhysicalLocation</Label>
+                <PropertyName>PhysicalLocation</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RegionType</Label>
+                <PropertyName>RegionType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RegionCategory</Label>
+                <PropertyName>RegionCategory</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>GeographyGroup</Label>
+                <PropertyName>GeographyGroup</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PairedRegion</Label>
+                <ScriptBlock>
+                  if ($_.PairedRegion -ne $null)
+                  {
+                    ConvertTo-Json $_.PairedRegion -Depth 10
+                  }
+                  else
+                  {
+                    $_.PairedRegion;
+                  }
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
                 <Label>Providers</Label>
                 <PropertyName>Providers</PropertyName>
               </ListItem>

@@ -56,5 +56,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-StoragePrivateEndpoint");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestResourceManagerPrivateEndpoint()
+        {
+            TestRunner.RunTestScript("Test-ResourceManagerPrivateEndpoint");
+        }
     }
 }
