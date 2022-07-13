@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Force flag to login off userSession.
+Force flag to force userSession deletion
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
