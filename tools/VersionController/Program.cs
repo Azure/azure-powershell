@@ -193,7 +193,7 @@ namespace VersionController
                         // Bump one module, only remove its minimal version from MinimalVersion.csv content
                         if (!string.IsNullOrEmpty(bumpingModule) && !cols[0].Equals(bumpingModule))
                         {
-                            _minimalVersionContent.Add(string.Join(",", ('\"' + cols[0] + '\"'), ('\"' + cols[1] + '\"')));
+                            _minimalVersionContent.Add(line);
                         }
                     }
                 }
