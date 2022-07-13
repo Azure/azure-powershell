@@ -108,6 +108,7 @@ namespace StaticAnalysis.IssueChecker
                 }
                 var errorText = new StringBuilder();
                 errorText.AppendLine(recordList.First().PrintHeaders());
+                var warningText = new StringBuilder();
                 foreach (IReportRecord record in recordList)
                 {
                     if (record.Severity < 2)
@@ -117,13 +118,17 @@ namespace StaticAnalysis.IssueChecker
                     }
                     else if (record.Severity == 2 && outputWarning)
                     {
-                        errorText.AppendLine(record.FormatRecord());
+                        warningText.AppendLine(record.FormatRecord());
                     }
                 }
                 if (hasError)
                 {
                     Console.WriteLine("{0} Errors", exceptionFilePath);
                     Console.WriteLine(errorText.ToString());
+                    if(outputWarning && !String.IsNullOrEmpty(warningText.ToString())){
+                        Console.WriteLine("Following are warning issues. It is recommended to correct them as well.");
+                        Console.WriteLine(warningText.ToString());
+                    }
                 }
             }
             return hasError;

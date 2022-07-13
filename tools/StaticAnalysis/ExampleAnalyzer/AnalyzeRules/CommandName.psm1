@@ -4,6 +4,7 @@
     .NOTES
     File: CommandName.psm1
 #>
+. $PSScriptRoot\..\utils.ps1
 
 enum RuleNames {
     Invalid_Cmdlet
@@ -53,12 +54,15 @@ function Measure-CommandName {
                         $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
                         if ($null -eq $GetCommand) {
                             # CommandName is not valid.
-                            $global:CommandParameterPair += @{
-                                CommandName = $CommandName
-                                ParameterName = "<is not valid>"
-                                ModuleCmdletExNum = $ModuleCmdletExNum
+                            # Redo import-module
+                            if(!(Redo-ImportModule $CommandName)){
+                                $global:CommandParameterPair += @{
+                                    CommandName = $CommandName
+                                    ParameterName = "<is not valid>"
+                                    ModuleCmdletExNum = $ModuleCmdletExNum
+                                }
+                                return $true
                             }
-                            return $true
                         }
                         else {
                             if ($GetCommand.CommandType -eq "Alias") {
