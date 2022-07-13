@@ -177,6 +177,10 @@ namespace VersionController
                 var file = File.ReadAllLines(miniVersionFile);
                 var header = file.First();
                 var lines = file.Skip(1).Where(c => !string.IsNullOrEmpty(c));
+
+                var bumpingModule = _moduleNameFilter.Replace(Psd1NameExtension, "");
+                List<string> _minimalVersionContent = new List<string>() { header };
+
                 foreach (var line in lines)
                 {
                     var cols = line.Split(",").Select(c => c.StartsWith("\"") ? c.Substring(1) : c)
@@ -185,21 +189,16 @@ namespace VersionController
                     if (cols.Length >= 2)
                     {
                         _minimalVersion.Add(cols[0], new AzurePSVersion(cols[1]));
+
+                        // Bump one module, only remove its minimal version from MinimalVersion.csv content
+                        if (!string.IsNullOrEmpty(bumpingModule) && !cols[0].Equals(bumpingModule))
+                        {
+                            _minimalVersionContent.Add(string.Join(",", ('\"' + cols[0] + '\"'), ('\"' + cols[1] + '\"')));
+                        }
                     }
                 }
 
                 // Clean MinimalVersion.csv
-                List<string> _minimalVersionContent = new List<string>() { header };
-
-                if (!string.IsNullOrEmpty(_moduleNameFilter))
-                {
-                    // Bump one module, only remove its minimal version from MinimalVersion.csv
-                    var bumpingModule = _moduleNameFilter.Replace(Psd1NameExtension, "");
-                    _minimalVersionContent.AddRange(
-                                        _minimalVersion.Where( item => !item.Key.Equals(bumpingModule))
-                                        .Select(item => string.Join(",", ('\"' + item.Key + '\"'), ('\"' + item.Value.ToString() + '\"') )));
-                }
-
                 File.WriteAllLines(Path.Combine(_rootDirectory, @"tools\VersionController", "MinimalVersion.csv"), _minimalVersionContent.ToArray());
             }
 
