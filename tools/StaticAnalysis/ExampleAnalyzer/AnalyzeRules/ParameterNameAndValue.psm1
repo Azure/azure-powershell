@@ -490,12 +490,10 @@ function Measure-ParameterNameAndValue {
                                     }
                                     else {
                                         # not a SwitchParameter
-                                        if ($null -eq $NextCommandElement -or $NextCommandElement -is [System.Management.Automation.Language.CommandParameterAst] -or
-                                        $CommandElement.Parent.Extent.Text -match "-$ParameterName\s*<.*?>") {
+                                        if ($null -eq $NextCommandElement -or $NextCommandElement -is [System.Management.Automation.Language.CommandParameterAst]) {
                                             # NonSwitchParameter + Parameter
                                             # Parameter must be assigned with a value.
                                             # will report later.
-                                            # If the parameter is assigned by <Type>, also record it as NoValue
                                             $global:ParameterExpressionPair += @{
                                                 ParameterName = $ParameterNameNotAlias
                                                 ExpressionToParameter = "<NoValue>"
@@ -603,10 +601,6 @@ function Measure-ParameterNameAndValue {
 
                             if ($GetCommand.Parameters.$ParameterNameNotAlias.SwitchParameter -eq $false) {
                                 # Parameter is not a SwitchParameter.
-                                # Exclude parameters assigned by <Type>
-                                if($CommandElementAst.Parent.Extent.Text -match "-$ParameterName\s*<.*?>"){
-                                    return $false
-                                }
                                 if ($null -eq $NextCommandElement -or $NextCommandElement -is [System.Management.Automation.Language.CommandParameterAst]) {
                                     # Parameter is not assigned with a value.
                                     # Unassigned_Parameter
