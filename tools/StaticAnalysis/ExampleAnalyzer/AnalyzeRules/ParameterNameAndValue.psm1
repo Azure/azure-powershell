@@ -382,6 +382,12 @@ function Measure-ParameterNameAndValue {
                     [System.Management.Automation.Language.CommandElementAst]$CommandElementAst = $Ast
                     [System.Management.Automation.Language.CommandAst]$CommandAst = $CommandElementAst.Parent
 
+                    # Skip all the statements with -ParameterName <Type>
+                    if($Ast.Parent.Extent.Text -match "-\w+\s*<.*?>"){
+                        Write-Debug "Skip $($Ast.Parent.Extent.Text)"
+                        return $false
+                    }
+                    
                     if ($global:SkipNextCommandElementAst) {
                         $global:SkipNextCommandElementAst = $false
                         return $false
