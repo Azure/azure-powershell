@@ -5,7 +5,6 @@ using System.Management.Automation;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
 {
@@ -17,12 +16,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
 
             if (errorResponse?.Detail != null)
             {
-                var errorDetail = errorResponse.Detail;
-                var errorDetailString = JsonConvert.SerializeObject(errorDetail);
+                var errorDetails = errorResponse.Detail;
+                var errorDetailsString = "";
+               
+                foreach(var errorDetail in errorDetails)
+                {
+                    errorDetailsString += errorDetail.Message + " ";
+                }
                 
                 cmdlet.WriteError(new ErrorRecord(new System.Exception(), null, ErrorCategory.InvalidOperation, null)
                 {
-                    ErrorDetails = new ErrorDetails(errorDetailString) { RecommendedAction = string.Empty }
+                    ErrorDetails = new ErrorDetails(errorDetailsString) { RecommendedAction = string.Empty }
                 });
                 
                 returnNow = Task.FromResult(true);
