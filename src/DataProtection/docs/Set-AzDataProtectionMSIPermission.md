@@ -25,7 +25,7 @@ Grants required permissions to the backup vault to configure backup
 
 ### Example 1: Grant Permissions for Azure Disks
 ```powershell
-PS C:\> Set-AzDataProtectionMSIPermission -BackupInstance $instance -VaultResourceGroup "VaultRG"" -VaultName "Vaultname"" -PermissionsScope "ResourceGroup"
+Set-AzDataProtectionMSIPermission -BackupInstance $instance -VaultResourceGroup "VaultRG"" -VaultName "Vaultname"" -PermissionsScope "ResourceGroup"
 
 ```
 
@@ -33,14 +33,14 @@ The above command is used to assign permissions to the backup vault "Vaultname" 
 
 ### Example 2: Grant Permissions for Azure Blobs
 ```powershell
-PS C:\> Set-AzDataProtectionMSIPermission -BackupInstance $instance -VaultResourceGroup "VaultRG"" -VaultName "Vaultname"" -PermissionsScope "Subscription"
+Set-AzDataProtectionMSIPermission -BackupInstance $instance -VaultResourceGroup "VaultRG"" -VaultName "Vaultname"" -PermissionsScope "Subscription"
 ```
 
 The above command is used to assign permissions to the backup vault "Vaultname" under resource group "VaultRG" at the "Subscription" scope of the blob.
 
 ### Example 3: Grant Permissions for Azure Database For PostgreSQL
 ```powershell
-PS C:\> Set-AzDataProtectionMSIPermission -KeyVaultId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/testjeyvault"  -BackupInstance $instance -VaultResourceGroup "VaultRG"" -VaultName "Vaultname"" -PermissionsScope "Resource"
+Set-AzDataProtectionMSIPermission -KeyVaultId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/testjeyvault"  -BackupInstance $instance -VaultResourceGroup "VaultRG"" -VaultName "Vaultname"" -PermissionsScope "Resource"
 
 ```
 

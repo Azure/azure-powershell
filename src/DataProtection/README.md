@@ -36,7 +36,7 @@ This file contains the configuration for generating My API from the OpenAPI spec
 # it's the same options as command line options, just drop the double-dash!
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-input-file: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2022-05-01/dataprotection.json
+input-file: https://github.com/Azure/azure-rest-api-specs/blob/c0d5296b483a5fe4de7851fcd45acde14e736574/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2022-05-01/dataprotection.json
 title: DataProtection
 directive:
   - from: swagger-document
@@ -195,6 +195,16 @@ directive:
     set:
       subject: BackupInstanceReadiness
   - where:
+      verb: Test
+      subject: BackupInstanceReadiness
+      variant: ^Validate$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
+    hide: true
+  - where:
+      verb: Test
+      subject: BackupInstanceRestore
+      variant: ^Validate1$|^ValidateExpanded1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
+    hide: true
+  - where:
       property-name: AzureMonitorAlertSettingAlertsForAllJobFailure
     set:
       property-name: AzureMonitorAlertsForAllJobFailure
@@ -216,6 +226,7 @@ directive:
     - InnerError
     - BackupInstance
     - RestoreTargetInfo
+    - ValidateRestoreRequestObject
     - ItemLevelRestoreTargetInfo
     - RestoreFilesTargetInfo
     - RestoreTargetInfoBase

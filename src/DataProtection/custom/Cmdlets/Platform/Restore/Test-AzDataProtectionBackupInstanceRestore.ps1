@@ -1,31 +1,31 @@
 ﻿
 
-
-function New-AzDataProtectionBackupInstance {
-    [OutputType('')]
+function Test-AzDataProtectionBackupInstanceRestore
+{   
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IOperationJobExtendedInfo')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Configures Backup for supported azure resources')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Validates if Restore can be triggered for a DataSource')]
 
     param(
-        [Parameter(Mandatory=$false, HelpMessage='Subscription Id of the vault')]
+        [Parameter(ParameterSetName="ValidateRestore", Mandatory=$false, HelpMessage='Subscription Id of the backup vault')]
         [System.String]
         ${SubscriptionId},
 
-        [Parameter(Mandatory, HelpMessage='Resource Group of the backup vault')]
+        [Parameter(ParameterSetName="ValidateRestore", Mandatory, HelpMessage='The name of the resource group where the backup vault is present')]
         [System.String]
         ${ResourceGroupName},
 
-        [Parameter(Mandatory, HelpMessage='Name of the backup vault')]
+        [Parameter(ParameterSetName="ValidateRestore", Mandatory, HelpMessage='The name of the backup instance')]
+        [System.String]
+        ${Name},
+
+        [Parameter(ParameterSetName="ValidateRestore", Mandatory, HelpMessage='The name of the backup vault')]
         [System.String]
         ${VaultName},
 
-        [Parameter(Mandatory, HelpMessage='Backup instance request object which will be used to configure backup')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupInstanceResource]
-        ${BackupInstance},
-
-        [Parameter(Mandatory=$false, HelpMessage='Resource tags')]        
-        [Hashtable]
-        ${Tag},
+        [Parameter(ParameterSetName="ValidateRestore", Mandatory, HelpMessage='Restore request object for which to validate')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupRestoreRequest]
+        ${RestoreRequest},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -55,7 +55,7 @@ function New-AzDataProtectionBackupInstance {
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
-
+                
         [Parameter()]
         [System.Management.Automation.SwitchParameter]
         # Run the command as a job
@@ -65,7 +65,7 @@ function New-AzDataProtectionBackupInstance {
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
-    
+            
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [System.Management.Automation.PSCredential]
@@ -76,26 +76,16 @@ function New-AzDataProtectionBackupInstance {
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
-
-        
     )
 
-    process {
-        $name = $BackupInstance.BackupInstanceName
-        $null = $PSBoundParameters.Remove("BackupInstance")
+    process
+    {
+        $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.ValidateRestoreRequestObject]::new()
+        $Parameter.RestoreRequestObject = $RestoreRequest
+        $null = $PSBoundParameters.Remove("RestoreRequest")
+
+        $null = $PSBoundParameters.Add("Parameter", $Parameter)
         
-        if($Tag -ne $null)
-        {
-            $null = $PSBoundParameters.Remove("Tag")
-            $BackupInstance.Tag = $Tag
-        }
-
-        $null = $PSBoundParameters.Add("BackupInstance", $BackupInstance.Property)
-        $null = Az.DataProtection\Test-AzDataProtectionBackupInstanceReadiness @PSBoundParameters
-        $null = $PSBoundParameters.Remove("BackupInstance")
-        $null = $PSBoundParameters.Add("Name", $name)        
-        $null = $PSBoundParameters.Add("Parameter", $BackupInstance)
-        Az.DataProtection.Internal\New-AzDataProtectionBackupInstance @PSBoundParameters
+        Az.DataProtection.Internal\Test-AzDataProtectionBackupInstanceRestore @PSBoundParameters
     }
-
 }
