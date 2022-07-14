@@ -52,6 +52,7 @@ function Measure-CommandName {
                     if ($CommandAst.InvocationOperator -eq "Unknown") {
                         $CommandName = $CommandAst.CommandElements[0].Extent.Text
                         $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
+                        $ActualName = $GetCommand.Name
                         if ($null -eq $GetCommand) {
                             # CommandName is not valid.
                             # Redo import-module
@@ -74,10 +75,10 @@ function Measure-CommandName {
                                 }
                                 return $true
                             }
-                            if ($CommandName -cnotmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
+                            if ($CommandName -cnotmatch $ActualName) {
                                 # CommandName doesn't follow the Capitalization Conventions.
                                 $global:CommandParameterPair += @{
-                                    CommandName = $CommandName
+                                    CommandName = "$CommandName#@#$ActualName"
                                     ParameterName = "<doesn't follow the Capitalization Conventions>"
                                     ModuleCmdletExNum = $ModuleCmdletExNum
                                 }
@@ -108,20 +109,11 @@ function Measure-CommandName {
                     $Severity = "Warning"
                 }
                 if ($global:CommandParameterPair[$i].ParameterName -eq "<doesn't follow the Capitalization Conventions>") {
-                    $Message = "$($CommandParameterPair[$i].CommandName) doesn't follow the Capitalization Conventions."
+                    $CommandName = $($CommandParameterPair[$i].CommandName -split "#@#")[0]
+                    $CorrectName = $($CommandParameterPair[$i].CommandName -split "#@#")[1]
+                    $Message = "$CommandName doesn't follow the Capitalization Conventions."
                     $RuleName = [RuleNames]::Capitalization_Conventions_Violated
                     $RuleSuppressionID = "5101"
-                    $name = $($CommandParameterPair[$i].CommandName)
-                    $textInfo = (Get-Culture).TextInfo
-                    $CorrectName = $textInfo.ToTitleCase(($name -split "-")[0])
-                    if($name -match "Az"){
-                        $CorrectName += "-Az"
-                        $CorrectName += $textInfo.ToTitleCase(($name -split "Az")[1])
-                    }
-                    else{
-                        $CorrectName += "-"
-                        $CorrectName += $textInfo.ToTitleCase(($name -split "-")[1])
-                    }
                     $Remediation = "Check the Capitalization Conventions. Suggest format: $CorrectName"
                     $Severity = "Warning"
                 }
