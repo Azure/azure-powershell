@@ -74,5 +74,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The volume free space policy status.</value>
         public PSCloudTieringVolumeFreeSpacePolicyStatus VolumeFreeSpacePolicyStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date policy status.
+        /// </summary>
+        /// <value>The date policy status.</value>
+        public PSCloudTieringDatePolicyStatus DatePolicyStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets the low disk mode state.
+        /// </summary>
+        /// <value>The low disk mode state.</value>
+        public PSCloudTieringLowDiskMode LowDiskMode { get; set; }
     }
 }
