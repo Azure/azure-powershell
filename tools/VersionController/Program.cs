@@ -28,7 +28,6 @@ namespace VersionController
     public class Program
     {
         private static VersionBumper _versionBumper;
-        private static VersionValidator _versionValidator;
 
         private static Dictionary<string, AzurePSVersion> _minimalVersion = new Dictionary<string, AzurePSVersion>();
         private static List<string> _projectDirectories, _outputDirectories;
@@ -78,7 +77,6 @@ namespace VersionController
             ConsolidateExceptionFiles(exceptionsDirectory);
             ValidateManifest();
             BumpVersions();
-            ValidateVersionBump();
         }
 
         private static void ValidateManifest()
@@ -115,6 +113,7 @@ namespace VersionController
         {
             return File.Exists(Path.Combine(directory, "readme.md"));
         }
+
         /// <summary>
         /// Bump the version of changed modules or a specified module.
         /// </summary>
@@ -234,51 +233,7 @@ namespace VersionController
                 _versionBumper.BumpAllVersions();
             }
         }
-
-        /// <summary>
-        /// Validate version bump of changed modules or a specified module.
-        /// </summary>
-        private static void ValidateVersionBump()
-        {
-            var changedModules = new List<string>();
-            foreach (var directory in _projectDirectories)
-            {
-                var changeLogs = Directory.GetFiles(directory, "ChangeLog.md", SearchOption.AllDirectories)
-                                            .Where(f => !ModuleFilter.IsAzureStackModule(f))
-                                            .Select(f => GetModuleManifestPath(Directory.GetParent(f).FullName))
-                                            .Where(m => !string.IsNullOrEmpty(m) && m.Contains(_moduleNameFilter))
-                                            .ToList();
-                changedModules.AddRange(changeLogs);
-            }
-
-            foreach (var projectModuleManifestPath in changedModules)
-            {
-                var moduleFileName = Path.GetFileName(projectModuleManifestPath);
-                var moduleName = moduleFileName.Replace(".psd1", "");
-
-                var outputModuleManifest = _outputDirectories
-                                            .SelectMany(d => Directory.GetDirectories(d, moduleName))
-                                            .SelectMany(d => Directory.GetFiles(d, moduleFileName))
-                                            .ToList();
-                if (outputModuleManifest.Count == 0)
-                {
-                    throw new FileNotFoundException("No module manifest file found in output directories");
-                }
-                else if (outputModuleManifest.Count > 1)
-                {
-                    throw new IndexOutOfRangeException("Multiple module manifest files found in output directories");
-                }
-
-                var outputModuleManifestFile = outputModuleManifest.FirstOrDefault();
-
-                var validatorFileHelper = new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath);
-
-                _versionValidator = new VersionValidator(validatorFileHelper);
-
-                _versionValidator.ValidateAllVersionBumps();
-            }
-        }
-
+        
         /// <summary>
         /// Check if a change log has anything under the Upcoming Release header.
         /// </summary>
