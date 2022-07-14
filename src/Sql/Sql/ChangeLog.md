@@ -46,6 +46,8 @@
     - `Remove-AzSqlInstanceLink`
     - `Set-AzSqlInstanceLink`
 * Added support for DataWarehouse cross tenant and cross subscription restore operations to `Restore-AzSqlDatabase` cmdlet
+* Upgrading to usage of .NET SDK 3.1.0-preview
+* Declare breaking changes for the AdvancedDataSecurity and AdvancedThreatProtection cmdlets to be effective from 9.0.0.
 
 ## Version 3.7.1
 * Deprecation of Get-AzSqlDatabaseTransparentDataEncryptionActivity cmdlet
