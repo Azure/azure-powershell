@@ -29,6 +29,6 @@ Describe 'Remove-AzDnsResolver' {
         Remove-AzDnsResolver  -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME
 
         # ASSERT 
-        {Get-AzDnsResolver  -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME } | Should -Throw "not found"
+        {Get-AzDnsResolver  -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME } | Should -Throw
     }
 }
