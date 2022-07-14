@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Reformatted exception message for cmdlets
 * Upgraded API version to 2022-07-01 
 
 ## Version 0.2.0
