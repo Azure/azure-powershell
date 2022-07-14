@@ -48,7 +48,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponent
+https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights
 #>
 function Get-AzApplicationInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent], [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan])]

@@ -378,7 +378,7 @@ DISTRIBUTE <IImageTemplateDistributor[]>: The distribution targets where the ima
   - `[ArtifactTag <IImageTemplateDistributorArtifactTags>]`: Tags that will be applied to the artifact once it has been created/updated by the distributor.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-SOURCE <IImageTemplateSource>: Describes a virtual machine image source for building, customizing and distributing.
+SOURCE `<IImageTemplateSource>`: Describes a virtual machine image source for building, customizing and distributing.
   - `Type <String>`: Specifies the type of source image you want to start with.
 
 ## RELATED LINKS

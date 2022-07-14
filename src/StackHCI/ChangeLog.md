@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.0
+* Added support to Stack HCI Cluster
+* Added support to Stack HCI Extension
+* Added support to Stack HCI Arc Settings
+
 ## Version 1.2.0
 * Improved Registration process for Register-AzStackHCI cmdlet
     - All Azure AD related operations are now moved to HCI Cloud Services

@@ -79,7 +79,8 @@ namespace StaticAnalysis.IssueChecker
                 {
                     continue;
                 }
-                if (IsSingleExceptionFileHasCriticalIssue(exceptionFilePath, recordTypeName))
+                bool outputWarning = recordTypeName.Equals(typeof(ExampleIssue).FullName);
+                if (IsSingleExceptionFileHasCriticalIssue(exceptionFilePath, recordTypeName, outputWarning))
                 {
                     hasCriticalIssue = true;
                 }
@@ -92,7 +93,7 @@ namespace StaticAnalysis.IssueChecker
             }
         }
 
-        private bool IsSingleExceptionFileHasCriticalIssue(string exceptionFilePath, string reportRecordTypeName) 
+        private bool IsSingleExceptionFileHasCriticalIssue(string exceptionFilePath, string reportRecordTypeName, bool outputWarning) 
         {
             bool hasError = false;
             using (var reader = new StreamReader(exceptionFilePath))
@@ -107,6 +108,7 @@ namespace StaticAnalysis.IssueChecker
                 }
                 var errorText = new StringBuilder();
                 errorText.AppendLine(recordList.First().PrintHeaders());
+                var warningText = new StringBuilder();
                 foreach (IReportRecord record in recordList)
                 {
                     if (record.Severity < 2)
@@ -114,11 +116,19 @@ namespace StaticAnalysis.IssueChecker
                         hasError = true;
                         errorText.AppendLine(record.FormatRecord());
                     }
+                    else if (record.Severity == 2 && outputWarning)
+                    {
+                        warningText.AppendLine(record.FormatRecord());
+                    }
                 }
                 if (hasError)
                 {
                     Console.WriteLine("{0} Errors", exceptionFilePath);
                     Console.WriteLine(errorText.ToString());
+                    if(outputWarning && !String.IsNullOrEmpty(warningText.ToString())){
+                        Console.WriteLine("Following are warning issues. It is recommended to correct them as well.");
+                        Console.WriteLine(warningText.ToString());
+                    }
                 }
             }
             return hasError;

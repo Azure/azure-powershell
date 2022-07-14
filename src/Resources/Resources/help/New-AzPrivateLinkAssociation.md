@@ -25,9 +25,10 @@ The New-AzPrivateLinkAssociation cmdlet creates the private link assocaition at 
 
 ### Example 1
 ```powershell
-PS C:\> New-AzPrivateLinkAssociation -ManagementGroupId fc096d27-0434-4460-a3ea-110df0422a2d -Name 1d7942d1-288b-48de-8d0f-2d2aa8e03ad4 | fl
+New-AzPrivateLinkAssociation -ManagementGroupId fc096d27-0434-4460-a3ea-110df0422a2d -Name 1d7942d1-288b-48de-8d0f-2d2aa8e03ad4 | Format-List
+```
 
-
+```output
 Id         : /providers/Microsoft.Management/managementGroups/fc096d27-0434-4460-a3ea-110df0422a2d/providers/Microsoft.
              Authorization/privateLinkAssociations/1d7942d1-288b-48de-8d0f-2d2aa8e03ad4
 Type       : Microsoft.Authorization/privateLinkAssociations

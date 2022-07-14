@@ -31,14 +31,14 @@ Gets an application group from a namespace or lists all application groups in a 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup
+Get-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup
 ```
 
 Gets application group `myappgroup` of namespace `mynamespace`.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace
+Get-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace
 ```
 
 Lists all application groups of namespace `mynamespace`.

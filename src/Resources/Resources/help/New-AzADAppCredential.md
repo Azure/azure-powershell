@@ -128,9 +128,9 @@ Creates key credentials or password credentials for an application.
 $Id = "00000000-0000-0000-0000-000000000000"
 # $cert is Base64 encoded content of certificate
 $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
-                                 -Property @{'Key' = $cert; `
-                                 'Usage'       = 'Verify'; `
-                                 'Type'        = 'AsymmetricX509Cert' `
+                                 -Property @{'Key' = $cert;
+                                 'Usage'       = 'Verify';
+                                 'Type'        = 'AsymmetricX509Cert'
                                  }
 New-AzADAppCredential -ObjectId $Id -KeyCredentials $credential
 ```
@@ -372,7 +372,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be used as pipeline input.
+APPLICATIONOBJECT `<IMicrosoftGraphApplication>`: The application object, could be used as pipeline input.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

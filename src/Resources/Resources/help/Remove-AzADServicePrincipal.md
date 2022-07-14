@@ -259,7 +259,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-APPLICATIONOBJECT <IMicrosoftGraphApplication>: key: application object
+APPLICATIONOBJECT `<IMicrosoftGraphApplication>`: key: application object
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory
@@ -387,7 +387,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: key: application object
     - `[LogoutUrl <String>]`: Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
     - `[RedirectUri <String[]>]`: Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 
-INPUTOBJECT <IMicrosoftGraphServicePrincipal>: key: service principal object
+INPUTOBJECT `<IMicrosoftGraphServicePrincipal>`: key: service principal object
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

@@ -1,14 +1,14 @@
 ---
 Module Name: Az.StackHCI
-Module Guid: 8ff047e4-15bb-4b53-a728-75641c49958b
-Download Help Link: https://docs.microsoft.com/powershell/module/az.StackHCI
+Module Guid: 7a80d748-b6f0-42d1-a08d-215c5a006769
+Download Help Link: https://docs.microsoft.com/powershell/module/az.stackhci
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # Az.StackHCI Module
 ## Description
-Microsoft Azure PowerShell: Azure Stack HCI registration cmdlets
+Microsoft Azure PowerShell: StackHci cmdlets
 
 ## Az.StackHCI Cmdlets
 ### [Add-AzStackHCIVMAttestation](Add-AzStackHCIVMAttestation.md)
@@ -26,6 +26,15 @@ Enable-AzStackHCIAttestation configures the host and enables specified guests fo
 ### [Enable-AzStackHCIRemoteSupport](Enable-AzStackHCIRemoteSupport.md)
 Enables Remote Support.
 
+### [Get-AzStackHciArcSetting](Get-AzStackHciArcSetting.md)
+Get ArcSetting resource details of HCI Cluster.
+
+### [Get-AzStackHciCluster](Get-AzStackHciCluster.md)
+Get HCI cluster.
+
+### [Get-AzStackHciExtension](Get-AzStackHciExtension.md)
+Get particular Arc Extension of HCI Cluster.
+
 ### [Get-AzStackHCIRemoteSupportAccess](Get-AzStackHCIRemoteSupportAccess.md)
 Gets Remote Support Access.
 
@@ -38,8 +47,26 @@ Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on 
 ### [Install-AzStackHCIRemoteSupport](Install-AzStackHCIRemoteSupport.md)
 Installs Remote Support.
 
+### [New-AzStackHciArcSetting](New-AzStackHciArcSetting.md)
+Create ArcSetting for HCI cluster.
+
+### [New-AzStackHciCluster](New-AzStackHciCluster.md)
+Create an HCI cluster.
+
+### [New-AzStackHciExtension](New-AzStackHciExtension.md)
+Create Extension for HCI cluster.
+
 ### [Register-AzStackHCI](Register-AzStackHCI.md)
 Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and registers the on-premises cluster with Azure.
+
+### [Remove-AzStackHciArcSetting](Remove-AzStackHciArcSetting.md)
+Delete ArcSetting resource details of HCI Cluster.
+
+### [Remove-AzStackHciCluster](Remove-AzStackHciCluster.md)
+Delete an HCI cluster.
+
+### [Remove-AzStackHciExtension](Remove-AzStackHciExtension.md)
+Delete particular Arc Extension of HCI Cluster.
 
 ### [Remove-AzStackHCIRemoteSupport](Remove-AzStackHCIRemoteSupport.md)
 Removes Remote Support.
@@ -54,6 +81,9 @@ Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud
 Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
 
 ### [Unregister-AzStackHCI](Unregister-AzStackHCI.md)
-Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and unregisters the on-premise cluster with Azure.
+Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and unregisters the on-premises cluster with Azure.
 The registered information available on the cluster is used to unregister the cluster if no parameters are passed.
+
+### [Update-AzStackHciCluster](Update-AzStackHciCluster.md)
+Update an HCI cluster.
 

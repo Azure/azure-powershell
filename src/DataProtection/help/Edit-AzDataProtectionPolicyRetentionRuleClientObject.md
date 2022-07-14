@@ -166,7 +166,7 @@ LIFECYCLES <ISourceLifeCycle[]>: Life cycles associated with the retention rule.
     - `DataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
     - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
 
-POLICY <IBackupPolicy>: Backup Policy Object
+POLICY `<IBackupPolicy>`: Backup Policy Object
   - `DatasourceType <String[]>`: Type of datasource for the backup management
   - `ObjectType <String>`: 
   - `PolicyRule <IBasePolicyRule[]>`: Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc

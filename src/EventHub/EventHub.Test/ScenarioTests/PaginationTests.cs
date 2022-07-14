@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.CheckIn, Category.CheckIn)]
         public void ApplicationGroupPaginationTests()
         {
             TestRunner.RunTestScript("ApplicationGroupPagination");
@@ -36,6 +36,13 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         public void NamespacePaginationTests()
         {
             TestRunner.RunTestScript("NamespacePagination");
+        }
+
+        [Fact]
+        [Trait(Category.CheckIn, Category.CheckIn)]
+        public void PrivateEndpointPaginationTests()
+        {
+            TestRunner.RunTestScript("PrivateEndpointPagination");
         }
     }
 }

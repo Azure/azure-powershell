@@ -221,7 +221,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CONTACTDETAIL <IContactDetails>: Contact details for notification and shipping.
+CONTACTDETAIL `<IContactDetails>`: Contact details for notification and shipping.
   - `ContactName <String>`: Contact name of the person.
   - `EmailList <String[]>`: List of Email-ids to be notified about job progress.
   - `Phone <String>`: Phone number of the contact person.
@@ -257,7 +257,7 @@ DATAIMPORTDETAIL <IDataImportDetails[]>: Details of the data to be imported into
   - `AccountDetailDataAccountType <DataAccountType>`: Account Type of the data to be transferred.
   - `[AccountDetailSharePassword <String>]`: Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
 
-KEYENCRYPTIONKEY <IKeyEncryptionKey>: Details about which key encryption type is being used.
+KEYENCRYPTIONKEY `<IKeyEncryptionKey>`: Details about which key encryption type is being used.
   - `KekType <KekType>`: Type of encryption key used for key encryption.
   - `[IdentityProperty <IIdentityProperties>]`: Managed identity properties used for key encryption.
     - `[Type <String>]`: Managed service identity type.
@@ -265,15 +265,15 @@ KEYENCRYPTIONKEY <IKeyEncryptionKey>: Details about which key encryption type is
   - `[KekUrl <String>]`: Key encryption key. It is required in case of Customer managed KekType.
   - `[KekVaultResourceId <String>]`: Kek vault resource id. It is required in case of Customer managed KekType.
 
-PREFERENCE <IPreferences>: Preferences for the order.
+PREFERENCE `<IPreferences>`: Preferences for the order.
   - `[EncryptionPreferenceDoubleEncryption <DoubleEncryption?>]`: Defines secondary layer of software-based encryption enablement.
   - `[PreferredDataCenterRegion <String[]>]`: Preferred data center region.
   - `[TransportPreferencePreferredShipmentType <TransportShipmentTypes?>]`: Indicates Shipment Logistics type that the customer preferred.
 
-PREFERREDDISK <IDataBoxDiskJobDetailsPreferredDisks>: User preference on what size disks are needed for the job. The map is from the disk size in TB to the count. Eg. {2,5} means 5 disks of 2 TB size. Key is string but will be checked against an int.
+PREFERREDDISK `<IDataBoxDiskJobDetailsPreferredDisks>`: User preference on what size disks are needed for the job. The map is from the disk size in TB to the count. Eg. {2,5} means 5 disks of 2 TB size. Key is string but will be checked against an int.
   - `[(Any) <Int32>]`: This indicates any property can be added to this object.
 
-SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
+SHIPPINGADDRESS `<IShippingAddress>`: Shipping address of the customer.
   - `Country <String>`: Name of the Country.
   - `StreetAddress1 <String>`: Street Address line 1.
   - `[AddressType <AddressType?>]`: Type of address.

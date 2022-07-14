@@ -23,27 +23,19 @@ Create an in-memory object for CustomerCertificateParameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AzureFrontDoor CustomerCertificateParameters
 ```powershell
-{{ Add code here }}
+$secretSourceId = "xxxxxxxx"
+New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId               
 ```
 
 ```output
-{{ Add output here }}
+CertificateAuthority ExpirationDate SecretVersion Subject SubjectAlternativeName Thumbprint UseLatestVersion
+-------------------- -------------- ------------- ------- ---------------------- ---------- ----------------
+                                                          {}                                True
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

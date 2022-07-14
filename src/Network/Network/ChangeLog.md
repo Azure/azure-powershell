@@ -19,11 +19,15 @@
 --->
 
 ## Upcoming Release
+* Onboarded Device Update for IoT Hub to Private Link Common Cmdlets
+
+## Version 4.18.0
 * Added support for CustomV2 ssl policies for Application Gateway.
     - Added `CustomV2` to the validation set of `PolicyType`
     - Added `TLSv1_3` to the validation set of `MinProtocolVersion`
     - Removed validation for null or empty cipher suites list since there can be empty cipher suites list for min protocol version of tls1.3
 * [Breaking Change] Changed default value of `-PrivateEndpointNetworkPoliciesFlag` to `Disabled` in `Add-AzVirtualNetworkSubnetConfig` and `New-AzVirtualNetworkSubnetConfig`
+* Fixed bugs that cannot parse virtual network encryption paramemters when updating exsiting vnet.
 
 ## Version 4.17.0
 * Supported `Microsoft.Network/privateLinkServices` in `Get-AzPrivateEndpointConnection` [#16984].

@@ -54,7 +54,7 @@ Removes the Template Spec named 'MyTemplateSpec' and all of its versions within 
 
 ### Example 4: Removing a Template Spec and all versions by resource id
 ```powershell
-Remove-AzTemplateSpec -ResourceId '/subscriptions/{subId}/resourceGroups/myRG/providers/Microsoft.Resources/templateSpecs/MyTemplateSpec' -ResourceGroupName 'myRG'
+Remove-AzTemplateSpec -ResourceId '/subscriptions/{subId}/resourceGroups/myRG/providers/Microsoft.Resources/templateSpecs/MyTemplateSpec'
 ```
 
 Removes the Template Spec named 'MyTemplateSpec' and all of its versions within the resource group 'myRG' of subscription \{subId\}.

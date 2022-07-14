@@ -37,6 +37,7 @@ The **Restore-AzRmStorageShare** cmdlet restores a deleted file share within a v
 ## EXAMPLES
 
 ### Example 1: Remove and restore a share
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> Remove-AzRmStorageShare -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Name $shareName -Force
 

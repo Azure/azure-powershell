@@ -232,11 +232,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DIGITALTWINSPATCHDESCRIPTION <IDigitalTwinsPatchDescription>: The description of the DigitalTwins service.
+DIGITALTWINSPATCHDESCRIPTION `<IDigitalTwinsPatchDescription>`: The description of the DigitalTwins service.
   - `[Tag <IDigitalTwinsPatchDescriptionTags>]`: Instance tags
     - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+INPUTOBJECT `<IDigitalTwinsIdentity>`: Identity Parameter
   - `[EndpointName <String>]`: Name of Endpoint Resource.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location of DigitalTwinsInstance.

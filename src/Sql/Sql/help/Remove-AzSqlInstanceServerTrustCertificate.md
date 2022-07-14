@@ -44,52 +44,55 @@ Remove-AzSqlInstanceServerTrustCertificate [-ResourceId] <String> [-AsJob] [-Pas
 
 ### Example 1: Remove a server trust certificate
 ```powershell
-PS C:\> Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Certificate01"
+Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Certificate01"
 ```
 
 This command removes the server trust certificate "Certificate01" from managed instance "ManagedInstance01" and resource group "ResourceGroup1"
 
 ### Example 2: Remove a server trust certificate by its resource identifier
 ```powershell
-PS C:\> Remove-AzSqlInstanceServerTrustCertificate -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/serverTrustCertificates/Certificate01"
+Remove-AzSqlInstanceServerTrustCertificate -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/serverTrustCertificates/Certificate01"
 ```
 
 This command removes the server trust certificate with specified resource ID.
 
 ### Example 3: Remove a server trust certificate by its PowerShell object
 ```powershell
-PS C:\> $serverTrustCertificate = Get-AzSqlInstanceServerTrustCertificate -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Certificate01" 
-PS C:\> Remove-AzSqlInstanceServerTrustCertificate -InputObject $serverTrustCertificate
+$serverTrustCertificate = Get-AzSqlInstanceServerTrustCertificate -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Certificate01" 
+Remove-AzSqlInstanceServerTrustCertificate -InputObject $serverTrustCertificate
 ```
 
 This command removes the server trust certificate specified by certificate object.
 
 ### Example 4: Remove a server trust certificate by its parent instance object
 ```powershell
-PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" 
-PS C:\> Remove-AzSqlInstanceServerTrustCertificate -InstanceObject $instance -Name "Certificate01"
+$instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" 
+Remove-AzSqlInstanceServerTrustCertificate -InstanceObject $instance -Name "Certificate01"
 ```
 
 This command removes the server trust certificate "Certificate01" from the managed instance specified by the instance object.
 
 ### Example 5: Remove a server trust certificate using positional parameters
 ```powershell
-PS C:\> Remove-AzSqlInstanceServerTrustCertificate "ResourceGroup01" "ManagedInstance01" "Certificate01"
+Remove-AzSqlInstanceServerTrustCertificate "ResourceGroup01" "ManagedInstance01" "Certificate01"
 ```
 
 This command removes the server trust certificate "Certificate01" from the managed instance "ManagedInstance01" using positional parameters.
 
 ### Example 6: Remove all server trust certificate from its parent instance
 ```powershell
-PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" 
-PS C:\> $instance | Get-AzSqlInstanceServerTrustCertificate | Remove-AzSqlInstanceServerTrustCertificate
+$instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" 
+$instance | Get-AzSqlInstanceServerTrustCertificate | Remove-AzSqlInstanceServerTrustCertificate
 ```
 
 This command removes all server trust certificates from instance "ManagedInstance01".
 
 ### Example 7: Remove a server trust certificate and outputs the deleted certificate object
 ```powershell
-PS C:\> Remove-AzSqlInstanceServerTrustCertificate "ResourceGroup01" "ManagedInstance01" "Certificate01" -PassThru
+Remove-AzSqlInstanceServerTrustCertificate "ResourceGroup01" "ManagedInstance01" "Certificate01" -PassThru
+```
+
+```output
 ResourceGroupName : ResourceGroup01
 InstanceName      : ManagedInstance01
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/serverTrustCertificates/Certificate01

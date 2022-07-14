@@ -266,7 +266,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-USER <User>: 
+USER `<User>`: 
   - `Email <String>`: Email address of the user.
   - `[AdditionalUsageQuota <TimeSpan?>]`: The amount of usage quota time the user gets in addition to the lab usage quota.
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
