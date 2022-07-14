@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added `IdentifyTopFatFlows` parameter to `AzureFirewall`
+    - `New-AzFirewall`
 * Enabled Azure Firewall forced tunneling by default (AzureFirewallManagementSubnet and ManagementPublicIpAddress are required) whenever basic sku firewall is created.
     - `New-AzFirewall`
 * Fixed bug that causes an overflow due to incorrect SNAT private ranges IP validation.

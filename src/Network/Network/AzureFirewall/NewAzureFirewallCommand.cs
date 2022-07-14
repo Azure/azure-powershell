@@ -232,6 +232,12 @@ namespace Microsoft.Azure.Commands.Network
         )]
         public SwitchParameter AllowActiveFTP { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Identify Top Fat Flows. By default it is false."
+       )]
+        public SwitchParameter IdentifyTopFatFlows { get; set; }
+
         public override void Execute()
         {
             // Old params provided - Get the virtual network, get the public IP address
@@ -300,7 +306,8 @@ namespace Microsoft.Azure.Commands.Network
                     VirtualHub = VirtualHubId != null ? new MNM.SubResource(VirtualHubId) : null,
                     FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
                     HubIPAddresses = this.HubIPAddress,
-                    Zones = this.Zone == null ? null : this.Zone.ToList()
+                    Zones = this.Zone == null ? null : this.Zone.ToList(),
+                    IdentifyTopFatFlows = (this.IdentifyTopFatFlows.IsPresent ? "true" : null)
                 };
             }
             else
@@ -320,7 +327,8 @@ namespace Microsoft.Azure.Commands.Network
                     DNSEnableProxy = (this.EnableDnsProxy.IsPresent ? "true" : null),
                     DNSServer = this.DnsServer,
                     AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
-                    Sku = sku
+                    Sku = sku,
+                    IdentifyTopFatFlows = (this.IdentifyTopFatFlows.IsPresent ? "true" : null)
                 };
 
                 if (this.Zone != null)

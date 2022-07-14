@@ -152,5 +152,14 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureFirewallManagementNICBasicSku");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDIdentifyTopFatFlows()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDIdentifyTopFatFlows");
+        }
+    
     }
 }

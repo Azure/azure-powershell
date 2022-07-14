@@ -73,6 +73,7 @@ $pip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name publicIpName
 $firewall.Allocate($vnet, $pip)
 $firewall | Set-AzFirewall
 ```
+
 This example retrieves a Firewall, deallocates the firewall, and saves it. The Deallocate command removes the running 
 service but preserves the firewall's configuration. For changes to be reflected in cloud, Set-AzFirewall must be called.
 If user wants to start the service again, the Allocate method should be called on the firewall.
@@ -87,6 +88,7 @@ $mgmtPip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name MgmtPublicIpNam
 $firewall.Allocate($vnet, $pip, $mgmtPip)
 $firewall | Set-AzFirewall
 ```
+
 This example allocates the firewall with a management public IP address and subnet for forced tunneling scenarios. The VNet must contain a subnet called "AzureFirewallManagementSubnet".
 
 ### 6:	Add a Public IP address to an Azure Firewall
@@ -165,10 +167,21 @@ $Hub = Get-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub"
 $firewall.Allocate($Hub.Id)
 $firewall | Set-AzFirewall
 ```
+
 This example retrieves a Hub Firewall, deallocates the hub firewall, and saves it. The Deallocate command removes the reference 
 to the virtual hub but preserves the firewall's configuration. For changes to be reflected in cloud, Set-AzFirewall must be called.
 The Allocate method assigns the virtual hub reference to the firewall. Again, for changes to be reflected in cloud,
 Set-AzFirewall must be called.
+
+### 13:	Identify Top Fat Flows on Azure Firewall
+```powershell
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azFw.IdentifyTopFatFlows = $true
+
+$azFw | Set-AzFirewall
+```
+
+In this example, Identify Top Fat Flows is enabled on the Firewall.
 
 ## PARAMETERS
 
@@ -248,7 +261,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
