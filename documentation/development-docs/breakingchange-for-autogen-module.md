@@ -76,7 +76,7 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
   set:
     breaking-change:
       deprecated-by-version: 5.0.0
-      change-efective-date: 2022/05/30
+      change-effective-date: 2022/05/30
 ```
 
 ## Case 6 — Breaking change for a parameter
@@ -91,7 +91,7 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
       become-mandatory: true
       change-description: This is a custom message for the change.
       deprecated-by-version: 5.0.0
-      change-efective-date: 2022/05/30
+      change-effective-date: 2022/05/30
 ```
 
 ## Case 7 — Preview message
