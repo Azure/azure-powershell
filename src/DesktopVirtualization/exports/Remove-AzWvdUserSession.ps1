@@ -94,7 +94,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
     [System.Management.Automation.SwitchParameter]
-    # Force flag to login off userSession.
+    # Specify to force userSession deletion.
     ${Force},
 
     [Parameter()]
