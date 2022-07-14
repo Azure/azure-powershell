@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationavailablescopes
+online version: https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationavailablescope
 schema: 2.0.0
 ---
 
-# Get-AzReservationAvailableScopes
+# Get-AzReservationAvailableScope
 
 ## SYNOPSIS
 Get Available Scopes for `Reservation`.\n
@@ -14,26 +14,26 @@ Get Available Scopes for `Reservation`.\n
 
 ### AvailableExpanded (Default)
 ```
-Get-AzReservationAvailableScopes -ReservationId <String> -ReservationOrderId <String> [-Scope <String[]>]
+Get-AzReservationAvailableScope -ReservationId <String> -ReservationOrderId <String> [-Scope <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Available
 ```
-Get-AzReservationAvailableScopes -ReservationId <String> -ReservationOrderId <String>
+Get-AzReservationAvailableScope -ReservationId <String> -ReservationOrderId <String>
  -Body <IAvailableScopeRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### AvailableViaIdentity
 ```
-Get-AzReservationAvailableScopes -InputObject <IReservationsIdentity> -Body <IAvailableScopeRequest>
+Get-AzReservationAvailableScope -InputObject <IReservationsIdentity> -Body <IAvailableScopeRequest>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AvailableViaIdentityExpanded
 ```
-Get-AzReservationAvailableScopes -InputObject <IReservationsIdentity> [-Scope <String[]>]
+Get-AzReservationAvailableScope -InputObject <IReservationsIdentity> [-Scope <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ Get Available Scopes for `Reservation`.\n
 
 ### Example 1: List available reservation scope
 ```powershell
-Get-AzReservationAvailableScopes -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a  -ReservationOrderId 2b9b9372-24e1-4a07-a354-2078fe347cf9 -Scope "/subscriptions/3f0487ff-27ca-4b9c-2a23-000770724b1b"
+Get-AzReservationAvailableScope -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a  -ReservationOrderId 2b9b9372-24e1-4a07-a354-2078fe347cf9 -Scope "/subscriptions/3f0487ff-27ca-4b9c-2a23-000770724b1b"
 ```
 
 ```output
@@ -52,7 +52,6 @@ Scope                                               Valid
 -----                                               -----
 /subscriptions/3f0487fd-27ca-4f9c-8a23-000770724b1b True
 ```
-
 List available reservation scope
 
 ## PARAMETERS

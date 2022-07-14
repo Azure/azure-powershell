@@ -14,7 +14,7 @@ Microsoft Azure PowerShell: Reservations cmdlets
 ### [Get-AzReservation](Get-AzReservation.md)
 Get specific `Reservation` details.
 
-### [Get-AzReservationAvailableScopes](Get-AzReservationAvailableScopes.md)
+### [Get-AzReservationAvailableScope](Get-AzReservationAvailableScope.md)
 Get Available Scopes for `Reservation`.\n
 
 ### [Get-AzReservationCatalog](Get-AzReservationCatalog.md)

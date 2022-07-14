@@ -47,6 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: main
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -157,7 +158,7 @@ directive:
     set:
       verb: Get
       subject-prefix: Reservation
-      subject: AvailableScopes
+      subject: AvailableScope
 
   ### Hide cmdlet
   - where:
