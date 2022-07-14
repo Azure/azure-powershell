@@ -75,7 +75,7 @@ function Measure-CommandName {
                                 }
                                 return $true
                             }
-                            if ($CommandName -cnotmatch $ActualName) {
+                            if ($CommandName -cne $ActualName) {
                                 # CommandName doesn't follow the Capitalization Conventions.
                                 $global:CommandParameterPair += @{
                                     CommandName = "$CommandName#@#$ActualName"
@@ -109,8 +109,7 @@ function Measure-CommandName {
                     $Severity = "Warning"
                 }
                 if ($global:CommandParameterPair[$i].ParameterName -eq "<doesn't follow the Capitalization Conventions>") {
-                    $CommandName = $($CommandParameterPair[$i].CommandName -split "#@#")[0]
-                    $CorrectName = $($CommandParameterPair[$i].CommandName -split "#@#")[1]
+                    $CommandName, $CorrectName = $CommandParameterPair[$i].CommandName -split "#@#"
                     $Message = "$CommandName doesn't follow the Capitalization Conventions."
                     $RuleName = [RuleNames]::Capitalization_Conventions_Violated
                     $RuleSuppressionID = "5101"
