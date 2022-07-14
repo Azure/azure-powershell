@@ -1,7 +1,8 @@
 ### Example 1: List all Bookmarks
 ```powershell
-PS C:\> Get-AzSentinelBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
-
+ Get-AzSentinelBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+```
+```output
 DisplayName    	: SecurityAlert - 28b401e1e0c9
 CreatedByEmail	: john@contoso.com
 CreatedByName  	: John Contoso
@@ -15,8 +16,9 @@ This command lists all Bookmarks under a Microsoft Sentinel workspace.
 
 ### Example 2: Get a Bookmark
 ```powershell
-PS C:\> Get-AzSentinelBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "515fc035-2ed8-4fa1-ad7d-28b401e1e0c9"
-
+ Get-AzSentinelBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "515fc035-2ed8-4fa1-ad7d-28b401e1e0c9"
+```
+```output
 DisplayName    	: SecurityAlert - 28b401e1e0c9
 CreatedByEmail	: john@contoso.com
 CreatedByName  	: John Contoso

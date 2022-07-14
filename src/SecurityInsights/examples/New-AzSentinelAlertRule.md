@@ -1,35 +1,39 @@
 ### Example 1: Create the Fusion Alert rule
 ```powershell
-PS C:\> $AlertRuleTemplateName = "f71aba3d-28fb-450b-b192-4e76a83015c8"
-PS C:\> New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind Fusion -Enabled -AlertRuleTemplateName $AlertRuleTemplateName
-
+ $AlertRuleTemplateName = "f71aba3d-28fb-450b-b192-4e76a83015c8"
+ New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind Fusion -Enabled -AlertRuleTemplateName $AlertRuleTemplateName
+```
+```output
 ```
 
 This command creates an Alert Rule of the Fusion kind based on the template "Advanced Multistage Attack Detection"
 
 ### Example 2: Create the ML Behavior Analytics Alert Rule
 ```powershell
-PS C:\> $AlertRuleTemplateName = "fa118b98-de46-4e94-87f9-8e6d5060b60b"
-PS C:\> New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind MLBehaviorAnalytics -Enabled -AlertRuleTemplateName $AlertRuleTemplateName
-
+ $AlertRuleTemplateName = "fa118b98-de46-4e94-87f9-8e6d5060b60b"
+ New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind MLBehaviorAnalytics -Enabled -AlertRuleTemplateName $AlertRuleTemplateName
+```
+```output
 ```
 
 This command creates an Alert Rule of the MLBehaviorAnalytics kind based on the template "Anomalous SSH Login Detection"
 
 ### Example 2: Create the Threat Intelligence Alert Rule
 ```powershell
-PS C:\> $AlertRuleTemplateName = "0dd422ee-e6af-4204-b219-f59ac172e4c6"
-PS C:\> New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind ThreatIntelligence -Enabled -AlertRuleTemplateName $AlertRuleTemplateName
-
+ $AlertRuleTemplateName = "0dd422ee-e6af-4204-b219-f59ac172e4c6"
+ New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind ThreatIntelligence -Enabled -AlertRuleTemplateName $AlertRuleTemplateName
+```
+```output
 ```
 
 This command creates an Alert Rule of the ThreatIntelligence kind based on the template "Microsoft Threat Intelligence Analytics"
 
 ### Example 3: Create a Microsoft Security Incident Creation Alert Rule
 ```powershell
-PS C:\> $AlertRuleTemplateName = "a2e0eb51-1f11-461a-999b-cd0ebe5c7a72"
-PS C:\> New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind MicrosoftSecurityIncidentCreation -Enabled -AlertRuleTemplateName $AlertRuleTemplateName -DisplayName "Create incidents based on Microsoft Defender for IoT" -ProductFilter "Azure Security Center for IoT"
-
+ $AlertRuleTemplateName = "a2e0eb51-1f11-461a-999b-cd0ebe5c7a72"
+ New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind MicrosoftSecurityIncidentCreation -Enabled -AlertRuleTemplateName $AlertRuleTemplateName -DisplayName "Create incidents based on Microsoft Defender for IoT" -ProductFilter "Azure Security Center for IoT"
+```
+```output
 
 ```
 
@@ -38,7 +42,8 @@ This command creates an Alert Rule of the MicrosoftSecurityIncidentCreation kind
 ### Example 4: Create a Scheduled Alert Rule
 ```powershell
 PS C:> New-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind Scheduled -Enabled -DisplayName "Powershell Exection Alert (Several Times per Hour)" -Severity Low -Query "SecurityEvent | where EventId == 4688" -QueryFrequency (New-TimeSpan -Hours 1) -QueryPeriod (New-TimeSpan -Hours 1) -TriggerThreshold 10
-
+```
+```output
 ```
 
 This command creates an Alert Rule of the Scheduled kind. Please note that that query (parameter -Query) needs to be on a single line as as string.
@@ -46,7 +51,8 @@ This command creates an Alert Rule of the Scheduled kind. Please note that that 
 ### Example 5: Create a Near Realtime Alert Rule
 ```powershell
 PS C:> New-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind NRT -Enabled -DisplayName "Break glass account accessed" -Severity High -Query "let Break_Glass_Account = _GetWatchlist('break_glass_account')\n|project UPN;\nSigninLogs\n| where UserPrincipalName in (Break_Glass_Account)"
-
+```
+```output
 ```
 
 This command creates an Alert Rule of the NRT kind. Please note that that query (parameter -Query) needs to be on a single line as as string.

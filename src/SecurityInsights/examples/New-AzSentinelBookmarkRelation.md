@@ -1,7 +1,9 @@
 ### Example 1: Create a Bookmark Relation
 ```powershell
-PS C:\> $incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id "myIncidentId"
-PS C:\> $bookmarkRelation = New-AzSentinelBookmarkRelation -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -BookmarkId "myBookmarkId" -RelationName ((New-Guid).Guid) -RelatedResourceId ($incident.Id)
+ $incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id "myIncidentId"
+ $bookmarkRelation = New-AzSentinelBookmarkRelation -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -BookmarkId "myBookmarkId" -RelationName ((New-Guid).Guid) -RelatedResourceId ($incident.Id)
+```
+```output
 ```
 
 This command creates a Bookmark Relation connecting the Incident to the Bookmark.

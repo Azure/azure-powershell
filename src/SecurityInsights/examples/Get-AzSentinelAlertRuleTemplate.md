@@ -1,7 +1,8 @@
 ### Example 1: List all Alert Rule Templates
 ```powershell
-PS C:\> Get-AzSentinelAlertRuleTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
-
+ Get-AzSentinelAlertRuleTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+```
+```output
 DisplayName        : TI map IP entity to GitHub_CL
 Description        : Identifies a match in GitHub_CL table from any IP IOC from TI
 CreatedDateUtc     : 8/27/2019 12:00:00 AM
@@ -25,8 +26,9 @@ This command lists all Alert Rule Templates under a Microsoft Sentinel workspace
 
 ### Example 2: Get an Alert Rule Template
 ```powershell
-PS C:\> Get-AzSentinelAlertRuleTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myRuaac495a9-feb1-446d-b08e-a1164a539452leTemplateId"
-
+ Get-AzSentinelAlertRuleTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myRuaac495a9-feb1-446d-b08e-a1164a539452leTemplateId"
+```
+```output
 DisplayName        : TI map IP entity to GitHub_CL
 Description        : Identifies a match in GitHub_CL table from any IP IOC from TI
 CreatedDateUtc     : 8/27/2019 12:00:00 AM

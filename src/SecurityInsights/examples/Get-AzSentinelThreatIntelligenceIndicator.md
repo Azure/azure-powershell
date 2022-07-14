@@ -1,7 +1,8 @@
 ### Example 1: List all Threat Intelligence Indicators
 ```powershell
-PS C:\> Get-AzSentinelThreatIntelligenceIndicator -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
-
+ Get-AzSentinelThreatIntelligenceIndicator -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+```
+```output
 Kind : indicator
 Name : 8ff8f736-8f9b-a180-49a2-9a395cf088ca
 
@@ -13,8 +14,9 @@ This command lists all Threat Intelligence Indicators under a Microsoft Sentinel
 
 ### Example 2: Get a Threat Intelligence Indicator
 ```powershell
-PS C:\> Get-AzSentinelThreatIntelligenceIndicator -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Name "514840ce-5582-f7a4-8562-7996e29dc07a"
-
+ Get-AzSentinelThreatIntelligenceIndicator -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Name "514840ce-5582-f7a4-8562-7996e29dc07a"
+```
+```output
 Kind : indicator
 Name : 514840ce-5582-f7a4-8562-7996e29dc07a
 ```
@@ -23,8 +25,9 @@ This command gets a Threat Intelligence Indicator by name (Id)
 
 ### Example 3: Get the Threat Intelligence Indicator top 3
 ```powershell
-PS C:\> $tiIndicators = Get-AzSentinelThreatIntelligenceIndicator -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Top 3
-
+ $tiIndicators = Get-AzSentinelThreatIntelligenceIndicator -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Top 3
+```
+```output
 Kind : indicator
 Name : 8ff8f736-8f9b-a180-49a2-9a395cf088ca
 

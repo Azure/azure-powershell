@@ -1,7 +1,8 @@
 ### Example 1: List all Incident Comments for a given Incident 
 ```powershell
-PS C:\> Get-AzSentinelIncidentComment -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7a4c27ea-d61a-496b-b5c3-246770c857c1"
-
+ Get-AzSentinelIncidentComment -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7a4c27ea-d61a-496b-b5c3-246770c857c1"
+```
+```output
 AuthorEmail             : john@contoso.com
 AuthorName              : John Contoso
 AuthorUserPrincipalName : john@contoso.com
@@ -15,8 +16,9 @@ This command lists all Incident Comments for a given Incident.
 
 ### Example 2: Get an Incident Comment
 ```powershell
-PS C:\> Get-AzSentinelIncidentComment -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7a4c27ea-d61a-496b-b5c3-246770c857c1" -Id "da0957c9-2f1a-44a2-bc83-a2c0696b2bf1"
-
+ Get-AzSentinelIncidentComment -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7a4c27ea-d61a-496b-b5c3-246770c857c1" -Id "da0957c9-2f1a-44a2-bc83-a2c0696b2bf1"
+```
+```output
 AuthorEmail             : john@contoso.com
 AuthorName              : John Contoso
 AuthorUserPrincipalName : john@contoso.com

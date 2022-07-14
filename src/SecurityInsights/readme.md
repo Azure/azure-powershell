@@ -53,23 +53,23 @@ require:
 branch: 59eb5a7f1d09d0be2b80b8497785ffa2d784b5b6
 
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/AlertRules.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/AutomationRules.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Bookmarks.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Enrichment.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Entities.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/EntityQueries.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/EntityQueryTemplates.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Incidents.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Metadata.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/OfficeConsents.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/OnboardingStates.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Settings.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/SourceControls.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/ThreatIntelligence.json
-  #- https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Watchlists.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/dataConnectors.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/operations.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/AlertRules.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/AutomationRules.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Bookmarks.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Enrichment.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Entities.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/EntityQueries.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/EntityQueryTemplates.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Incidents.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Metadata.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/OfficeConsents.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/OnboardingStates.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Settings.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/SourceControls.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/ThreatIntelligence.json
+  #- $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Watchlists.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/dataConnectors.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/operations.json
 
 module-version: 1.2.0
 title: SecurityInsights

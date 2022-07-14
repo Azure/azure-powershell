@@ -1,7 +1,8 @@
 ### Example 1: Get Insights and Activities for an Entity
 ```powershell
-PS C:\> Get-AzSentinelEntityAcivity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
-
+ Get-AzSentinelEntityAcivity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
+```
+```output
 FriendlyName : WIN2019
 Kind         : Host
 Name         : 8d036a2d-f37d-e936-6cca-4e172687cb79
@@ -19,9 +20,10 @@ This command gets insights and activities for an Entity.
 
 ### Example 2: Get Insights and Activities for an Entity by Id
 ```powershell
-PS C:\> $Entity = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "4ebb68f3-a435-fac0-d3b6-94712d246f0a"
-PS C:\> $Entity | Get-AzSentinelEntityActivity
-
+ $Entity = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "4ebb68f3-a435-fac0-d3b6-94712d246f0a"
+ $Entity | Get-AzSentinelEntityActivity
+```
+```output
 ```
 
 This command gets insights and activies for an Entity by object

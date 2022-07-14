@@ -1,8 +1,9 @@
 ### Example 1: Create an Incident Teams Room
 ```powershell
-PS C:\> $incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id "myIncidentId"
-PS C:\> New-AzSentinelIncidentTeam -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId ($incident.Name) -TeamName ("Incident "+$incident.incidentNumber+": "+$incident.title)
-
+ $incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id "myIncidentId"
+ New-AzSentinelIncidentTeam -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId ($incident.Name) -TeamName ("Incident "+$incident.incidentNumber+": "+$incident.title)
+```
+```output
 Description         :
 Name                : Incident : NewIncident3
 PrimaryChannelUrl   : https://teams.microsoft.com/l/team/19:vYoGjeGlZmTEDmu0gTbrk9T_eDS4pKIkEU7UuM1IyZk1%40thread.tacv2/conversations?groupId=3c637cc5-caf1-46c7-93ac-069c6
