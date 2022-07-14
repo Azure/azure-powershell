@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Force flag to force userSession deletion
+Specify to force userSession deletion
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
