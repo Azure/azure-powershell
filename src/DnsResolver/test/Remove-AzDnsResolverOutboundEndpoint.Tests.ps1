@@ -33,6 +33,6 @@ Describe 'Remove-AzDnsResolverOutboundEndpoint' {
         Remove-AzDnsResolverOutboundEndpoint  -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME
 
         # ASSERT 
-        {Get-AzDnsResolverOutboundEndpoint  -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME } | Should -Throw "not found"
+        {Get-AzDnsResolverOutboundEndpoint  -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME } | Should -Throw
     }
 }
