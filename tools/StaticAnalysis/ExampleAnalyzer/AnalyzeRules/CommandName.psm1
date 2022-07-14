@@ -115,7 +115,7 @@ function Measure-CommandName {
                     $RuleName = [RuleNames]::Capitalization_Conventions_Violated
                     $RuleSuppressionID = "5101"
                     $Remediation = "Check the Capitalization Conventions. Suggest format: $CorrectName"
-                    $Severity = "Warning"
+                    $Severity = "Error"
                 }
                 $ModuleCmdletExNum = $($CommandParameterPair[$i].ModuleCmdletExNum)
                 $Result = [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
