@@ -1,22 +1,5 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
-```
+PS C:\> Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ResourceGroupName "MyGroup" -ClusterName "MyCache3" -Id @("<database-id>")
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Forcibly removes the link to the database resource whose id is given, from the group the specified cache belongs to

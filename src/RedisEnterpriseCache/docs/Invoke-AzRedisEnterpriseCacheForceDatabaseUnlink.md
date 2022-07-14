@@ -14,16 +14,16 @@ Forcibly removes the link to the specified database resource.
 
 ### ForceExpanded (Default)
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> -Id <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
+ -Id <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Force
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> -Parameter <IForceUnlinkParameters> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
+ -Parameter <IForceUnlinkParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ForceViaIdentity
@@ -46,25 +46,13 @@ Forcibly removes the link to the specified database resource.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
-```
+PS C:\\> Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ResourceGroupName "MyGroup" -ClusterName "MyCache3" -Id @("\<database-id\>")
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Forcibly removes the link to the database resource whose id is given, from the group the specified cache belongs to
 
 ## PARAMETERS
 
@@ -85,21 +73,6 @@ Accept wildcard characters: False
 
 ### -ClusterName
 The name of the RedisEnterprise cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: Force, ForceExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatabaseName
-The name of the database.
 
 ```yaml
 Type: System.String
