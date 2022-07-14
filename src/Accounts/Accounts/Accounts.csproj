@@ -19,8 +19,6 @@
 
   <ItemGroup>
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
-    <PackageReference Include="Microsoft.NetCore.App.Ref" Version="6.0.7" />
-    <!--<PackageReference Include="Microsoft.NETCore.App" Version="2.2.8" />-->
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">
