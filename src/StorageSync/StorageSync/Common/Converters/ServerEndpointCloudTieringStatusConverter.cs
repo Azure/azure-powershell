@@ -47,6 +47,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             PSCloudTieringCachePerformance cachePerformance = source.CachePerformance != null ? new CloudTieringCachePerformanceConverter().Convert(source.CachePerformance) : null;
             PSCloudTieringFilesNotTiering filesNotTiering = source.FilesNotTiering != null ? new CloudTieringFilesNotTieringConverter().Convert(source.FilesNotTiering) : null;
             PSCloudTieringVolumeFreeSpacePolicyStatus volumeFreeSpacePolicyStatus = source.VolumeFreeSpacePolicyStatus != null ? new CloudTieringVolumeFreeSpacePolicyStatusConverter().Convert(source.VolumeFreeSpacePolicyStatus) : null;
+            PSCloudTieringDatePolicyStatus datePolicyStatus = source.DatePolicyStatus != null ? new CloudTieringDatePolicyStatusConverter().Convert(source.DatePolicyStatus) : null;
+            PSCloudTieringLowDiskMode lowDiskMode = source.LowDiskMode != null ? new CloudTieringLowDiskModeConverter().Convert(source.LowDiskMode) : null;
 
             return new PSServerEndpointCloudTieringStatus()
             {
@@ -58,7 +60,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 SpaceSavings = spaceSavings,
                 CachePerformance = cachePerformance,
                 FilesNotTiering = filesNotTiering,
-                VolumeFreeSpacePolicyStatus = volumeFreeSpacePolicyStatus
+                VolumeFreeSpacePolicyStatus = volumeFreeSpacePolicyStatus,
+                DatePolicyStatus = datePolicyStatus,
+                LowDiskMode = lowDiskMode
             };
         }
     }
