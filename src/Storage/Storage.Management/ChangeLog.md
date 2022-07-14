@@ -22,7 +22,7 @@
     -  `New-AzStorageAccountSASToken`
 * Supported Management Policy rule filter BlobIndexMatch
     -  Added a new cmdlet `New-AzStorageAccountManagementPolicyBlobIndexMatchObject`
-    -  Added  a new parameter `BlobIndexMatch` in `New-AzStorageAccountManagementPolicyFilter`
+    -  Added a new parameter `BlobIndexMatch` in `New-AzStorageAccountManagementPolicyFilter`
 
 ## Version 4.7.0
 * Supported BaseBlob DaysAfterCreationGreaterThan in Management Policy
