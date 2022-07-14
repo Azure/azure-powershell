@@ -43,6 +43,7 @@ Operation to update an exiting resource.
 ## EXAMPLES
 
 ### Example 1: Update a Web PubSub resource
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $wps = Update-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
 -IdentityType SystemAssigned -LiveTraceEnabled true `
@@ -515,7 +516,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+INPUTOBJECT `<IWebPubSubIdentity>`: Identity Parameter
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region

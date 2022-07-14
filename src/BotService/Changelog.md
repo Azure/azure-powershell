@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Fixed issue of `-Location` in `New-AzBotService`[#17185]
 
 ## Version 0.3.2

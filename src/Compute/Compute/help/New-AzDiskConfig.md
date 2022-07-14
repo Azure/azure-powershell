@@ -51,6 +51,7 @@ set the disk encryption key and key encryption key settings for the disk object.
 takes the disk object and creates a disk with name 'Disk01' in resource group 'ResourceGroup01'.
 
 ### Example 2
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $diskconfig = New-AzDiskConfig -Location 'Central US' -DiskSizeGB 1023 -SkuName Standard_LRS -OsType Windows -CreateOption Upload -DiskIOPSReadWrite 500 -DiskMBpsReadWrite 8;
 New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;

@@ -35,7 +35,10 @@ The **New-AzSqlInstanceLink** cmdlet creates an Azure SQL Managed Instance link 
 
 ### Example 1: Create a new instance link
 ```powershell
-PS C:\> New-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Database01" -SourceEndpoint "TCP://SERVER01:5022"		
+New-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Database01" -SourceEndpoint "TCP://SERVER01:5022"
+```
+
+```output		
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
@@ -57,8 +60,11 @@ This command creates a new instance link with name "Link01".
 
 ### Example 2: Create a new instance link using an instance object
 ```powershell
-PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01"
-PS C:\> New-AzSqlInstanceLink -InstanceObject $instance -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Database01" -SourceEndpoint "TCP://SERVER01:5022"		
+$instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01"
+New-AzSqlInstanceLink -InstanceObject $instance -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Database01" -SourceEndpoint "TCP://SERVER01:5022"
+```
+
+```output		
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
@@ -80,8 +86,11 @@ This command creates a new instance link using a managed instance object as a pa
 
 ### Example 3: Create a new instance link by piping an instance object
 ```powershell
-PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01"
-PS C:\> $instance | New-AzSqlInstanceLink -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Database01" -SourceEndpoint "TCP://SERVER01:5022"		
+$instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01"
+$instance | New-AzSqlInstanceLink -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Database01" -SourceEndpoint "TCP://SERVER01:5022"
+```
+
+```output		
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups

@@ -47,7 +47,9 @@ This command updates the parameter query and tag by name.
 ```powershell
 $query =  Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t05 
 Update-AzResourceGraphQuery -InputObject $query -File './Query.kql'
+```
 
+```output
 Location Name      Type
 -------- ----      ----
 global   query-t05 microsoft.resourcegraph/queries
@@ -244,7 +246,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
+INPUTOBJECT `<IResourceGraphIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[ResourceName <String>]`: The name of the Graph Query resource.

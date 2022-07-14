@@ -62,7 +62,7 @@ Therefore, it uses the default value of the current time.
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $Jobs = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
 $Job = $Jobs[0]
-While ( $Job.Status -ne Completed ) {
+While ( $Job.Status -ne "Completed" ) {
     Write-Host -Object "Waiting for completion..."
     Start-Sleep -Seconds 10
     $Job = Get-AzRecoveryServicesBackupJob -Job $Job -VaultId $vault.ID
@@ -85,7 +85,7 @@ Note: You can use **Wait-AzRecoveryServicesBackupJob** cmdlet to wait for an Azu
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-$Jobs = Get-AzRecoveryServicesBackupJob  -VaultId $vault.ID  -Status Completed -From (Get-Date).AddDays(-2).ToUniversalTime() -BackupManagementType AzureVM
+$Jobs = Get-AzRecoveryServicesBackupJob -VaultId $vault.ID -Status Completed -From (Get-Date).AddDays(-2).ToUniversalTime() -BackupManagementType AzureVM
 ```
 
 First cmdlet fetches the vault object. Second cmdlet stores all the AzureVM jobs in the given vault which completed in last 2 days to $jobs. Change the value of BackupManagementType parameter to MAB in order to fetch MAB agent jobs.

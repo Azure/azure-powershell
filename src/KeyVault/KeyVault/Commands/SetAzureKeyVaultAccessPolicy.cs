@@ -466,8 +466,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
-
             if (InputObject != null)
             {
                 VaultName = InputObject.VaultName;

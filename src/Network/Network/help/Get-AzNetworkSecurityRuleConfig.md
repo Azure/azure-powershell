@@ -25,7 +25,7 @@ The **Get-AzNetworkSecurityRuleConfig** cmdlet gets a network security rule conf
 
 ### 1: Retrieving a network security rule config
 ```powershell
-Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 
+Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 `
     | Get-AzNetworkSecurityRuleConfig -Name AllowInternetOutBound -DefaultRules
 ```
 
@@ -33,7 +33,7 @@ This command retrieves the default rule named "AllowInternetOutBound" from Azure
 
 ### 2: Retrieving a network security rule config using only the name
 ```powershell
-Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 
+Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 `
     | Get-AzNetworkSecurityRuleConfig -Name "rdp-rule"
 ```
 

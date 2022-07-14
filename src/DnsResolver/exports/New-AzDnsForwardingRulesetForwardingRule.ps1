@@ -27,20 +27,20 @@ $targetIPConfig = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 10.0.
 New-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName dnsForwardingRuleset -Name sampleForwardingRule -ResourceGroupName sampleRG -TargetDnsServer $targetIPConfig -Metadata @{"key0" = "value0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
-  [IPAddress <String>]: DNS server IP address.
+  IPAddress <String>: DNS server IP address.
   [Port <Int32?>]: DNS server port.
 .Link
 https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetforwardingrule
 #>
 function New-AzDnsForwardingRulesetForwardingRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -85,11 +85,19 @@ param(
     # Other values will be ignored.
     ${IfNoneMatch},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
     [System.String]
     # The domain name for the forwarding rule.
     ${DomainName},
+
+    [Parameter(Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ITargetDnsServer[]]
+    # DNS servers to forward the DNS query to.
+    # To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
+    ${TargetDnsServer},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ForwardingRuleState])]
@@ -100,18 +108,10 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRulePropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRulePropertiesMetadata]))]
     [System.Collections.Hashtable]
     # Metadata attached to the forwarding rule.
     ${Metadata},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ITargetDnsServer[]]
-    # DNS servers to forward the DNS query to.
-    # To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
-    ${TargetDnsServer},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -168,6 +168,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             CreateExpanded = 'Az.DnsResolver.private\New-AzDnsForwardingRulesetForwardingRule_CreateExpanded';
         }
@@ -181,6 +199,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -189,15 +208,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

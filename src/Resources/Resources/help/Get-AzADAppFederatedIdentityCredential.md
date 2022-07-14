@@ -45,14 +45,14 @@ Get federatedIdentityCredentials by Id from applications.
 
 ### Example 1: List federated identity credentials for application
 ```powershell
-Get-AzADApplication -ObjectId $app | Get-AzADAppFederatedCredential
+Get-AzADApplication -ObjectId $app | Get-AzADAppFederatedIdentityCredential
 ```
 
 List federated identity credentials for application
 
 ### Example 2: Get federated identity credential by id
 ```powershell
-Get-AzADAppFederatedCredential -ApplicationObjectId $appObjectId -Id $credentialId
+Get-AzADAppFederatedIdentityCredential -ApplicationObjectId $appObjectId -Id $credentialId
 ```
 
 Get federated identity credential by id
@@ -258,7 +258,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-APPLICATIONOBJECT <MicrosoftGraphApplication>: application object
+APPLICATIONOBJECT `<MicrosoftGraphApplication>`: application object
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[AddIn <IMicrosoftGraphAddIn[]>]`: Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Office 365 call the application in the context of a document the user is working on.
     - `[Id <String>]`: 

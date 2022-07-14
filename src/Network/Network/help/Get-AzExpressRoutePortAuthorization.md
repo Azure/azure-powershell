@@ -13,7 +13,7 @@ Gets information about ExpressRoutePort authorizations.
 ## SYNTAX
 
 ```
-Get-AzExpressRoutePortAuthorization [-Name <String>] -ExpressRoutePort <PSExpressRoutePort>
+Get-AzExpressRoutePortAuthorization [-Name <String>] -ExpressRoutePortObject <PSExpressRoutePort>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -33,6 +33,7 @@ the authorization, can be viewed at any time by running
 ```powershell
 $ERPort = Get-AzExpressRoutePort -Name "ContosoPort" -ResourceGroupName "ContosoResourceGroup"
 ```
+
 ```output
 Name                       : ContosoPort
 ResourceGroupName          : ContosoResourceGroup
@@ -88,9 +89,11 @@ Links                      : [
                              ]
 Circuits                   : []
 ```
+
 ```powershell
-Get-AzExpressRoutePortAuthorization -ExpressRoutePort $ERPort
+Get-AzExpressRoutePortAuthorization -ExpressRoutePortObject $ERPort
 ```
+
 ```output
 Name                   : ContosoPortAuthorization
 Id                     : /subscriptions/62364504-2406-418e-971c-05822ff72fad/resourceGroups/ContosoResourceGroup/provid
@@ -127,8 +130,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpressRoutePort
-Specifies the ExpressRoutePort object that this cmdlet gets the authorization from.
+### -ExpressRoutePortObject
+The ExpressRoutePort Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSExpressRoutePort

@@ -56,6 +56,7 @@ The **Set-AzStorageAccountManagementPolicy** cmdlet creates or modifies the mana
 ## EXAMPLES
 
 ### Example 1: Create or update the management policy of a Storage account with ManagementPolicy rule objects.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -DaysAfterCreationGreaterThan 100
 PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50 -DaysAfterLastTierChangeGreaterThan 30
@@ -171,6 +172,7 @@ Rules              : [
 This command first create 2 ManagementPolicy rule objects, then creates or updates the management policy of a Storage account with the 2 ManagementPolicy rule objects.
 
 ### Example 2: Create or update the management policy of a Storage account with a Json format policy.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Policy (@{
     Rules=(@{

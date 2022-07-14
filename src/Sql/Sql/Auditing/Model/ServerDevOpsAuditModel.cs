@@ -48,5 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         [Hidden]
         internal string NextDiagnosticSettingsName { get; set; }
+
+        public bool? IsManagedIdentityInUse { get; set; }
     }
 }

@@ -38,14 +38,14 @@ This command gets tap configurations added for the given network interface.
 
 ### Example 2: Get a given tap configuration
 ```powershell
-Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -NetworkInterfaceName "sourceNicName" -Name "tapconfigName"
+Get-AzNetworkInterfaceTapConfig -ResourceGroupName "ResourceGroup1" -NetworkInterfaceName "sourceNicName" -Name "tapconfigName"
 ```
 
 This command gets specific tap configuration added for the given network interface.
 
 ### Example 3: Get a given tap configuration
 ```powershell
-Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -NetworkInterfaceName "sourceNicName" -Name "tapconfig*"
+Get-AzNetworkInterfaceTapConfig -ResourceGroupName "ResourceGroup1" -NetworkInterfaceName "sourceNicName" -Name "tapconfig*"
 ```
 
 This command gets tap configurations added for the given network interface with name starting with "tapconfig".

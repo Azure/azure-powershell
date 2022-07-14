@@ -32,7 +32,7 @@ Collect performance data for given SQL Server instance(s)
 
 ### Example 1: Run Performance Data Collection on given SQL Server using connection string
 ```powershell
-PS C:\> Get-AzDataMigrationPerformanceDataCollection -SqlConnectionStrings "Data Source=AALAB03-2K8.REDMOND.CORP.MICROSOFT.COM;Initial Catalog=master;Integrated Security=False;User Id=dummyUserId;Password=dummyPassword" -NumberOfIterations 2
+Get-AzDataMigrationPerformanceDataCollection -SqlConnectionStrings "Data Source=AALAB03-2K8.REDMOND.CORP.MICROSOFT.COM;Initial Catalog=master;Integrated Security=False;User Id=dummyUserId;Password=dummyPassword" -NumberOfIterations 2
 ```
 
 ```output
@@ -62,7 +62,7 @@ This command runs Performance Data Collection on given SQL Server using the conn
 
 ### Example 2: Run Performance Data Collection on given SQL Server using assessment config file
 ```powershell
-PS C:\> Get-AzDataMigrationAssessment -ConfigFilePath "C:\Users\user\document\config.json"
+Get-AzDataMigrationPerformanceDataCollection -ConfigFilePath "C:\Users\user\document\config.json"
 ```
 
 ```output
@@ -92,7 +92,7 @@ This command runs Performance Data Collection on given SQL Server using the conf
 
 ### Example 3: Run Performance Data Collection on given SQL Server that stops after a specified time
 ```powershell
-PS C:\> Get-AzDataMigrationAssessment -ConfigFilePath "C:\Users\user\document\config.json" -Time 120
+Get-AzDataMigrationPerformanceDataCollection -ConfigFilePath "C:\Users\user\document\config.json" -Time 120
 ```
 
 ```output

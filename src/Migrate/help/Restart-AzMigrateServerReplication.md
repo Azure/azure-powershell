@@ -172,7 +172,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMigrationItem>: Specifies the machine object of the replicating server.
+INPUTOBJECT `<IMigrationItem>`: Specifies the machine object of the replicating server.
   - `[Location <String>]`: Resource Location
   - `[ProviderSpecificDetail <IMigrationProviderSpecificSettings>]`: The migration provider custom settings.
 

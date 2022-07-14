@@ -329,7 +329,7 @@ PASSWORDCREDENTIALS <MicrosoftGraphPasswordCredential[]>: Password credentials a
   - `[KeyId <String>]`: The unique identifier for the password.
   - `[StartDateTime <DateTime?>]`: The date and time at which the password becomes valid. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
 
-SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal object, could be used as pipeline input.
+SERVICEPRINCIPALOBJECT `<IMicrosoftGraphServicePrincipal>`: The service principal object, could be used as pipeline input.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

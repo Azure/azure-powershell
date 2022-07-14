@@ -4,6 +4,7 @@
     .NOTES
     File: CommandName.psm1
 #>
+. $PSScriptRoot\..\utils.ps1
 
 enum RuleNames {
     Invalid_Cmdlet
@@ -53,12 +54,15 @@ function Measure-CommandName {
                         $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
                         if ($null -eq $GetCommand) {
                             # CommandName is not valid.
-                            $global:CommandParameterPair += @{
-                                CommandName = $CommandName
-                                ParameterName = "<is not valid>"
-                                ModuleCmdletExNum = $ModuleCmdletExNum
+                            # Redo import-module
+                            if(!(Redo-ImportModule $CommandName)){
+                                $global:CommandParameterPair += @{
+                                    CommandName = $CommandName
+                                    ParameterName = "<is not valid>"
+                                    ModuleCmdletExNum = $ModuleCmdletExNum
+                                }
+                                return $true
                             }
-                            return $true
                         }
                         else {
                             if ($GetCommand.CommandType -eq "Alias") {
@@ -110,14 +114,20 @@ function Measure-CommandName {
                     $name = $($CommandParameterPair[$i].CommandName)
                     $textInfo = (Get-Culture).TextInfo
                     $CorrectName = $textInfo.ToTitleCase(($name -split "-")[0])
-                    $CorrectName += "-Az"
-                    $CorrectName += $textInfo.ToTitleCase(($name -split "Az")[1])
+                    if($name -match "Az"){
+                        $CorrectName += "-Az"
+                        $CorrectName += $textInfo.ToTitleCase(($name -split "Az")[1])
+                    }
+                    else{
+                        $CorrectName += "-"
+                        $CorrectName += $textInfo.ToTitleCase(($name -split "-")[1])
+                    }
                     $Remediation = "Check the Capitalization Conventions. Suggest format: $CorrectName"
                     $Severity = "Warning"
                 }
                 $ModuleCmdletExNum = $($CommandParameterPair[$i].ModuleCmdletExNum)
                 $Result = [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
-                    Message = "$ModuleCmdletExNum-@$Message@$Remediation";
+                    Message = "$ModuleCmdletExNum-#@#$Message#@#$Remediation";
                     Extent = $Asts[$i].Extent;
                     RuleName = $RuleName;
                     Severity = $Severity
