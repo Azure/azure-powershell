@@ -29,6 +29,8 @@ $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName
 Remove-AzVmssGalleryApplication -VirtualMachineScaleSetVM $vmss.VirtualMachineProfile -GalleryApplicationsReferenceId $refId
 ```
 
+Remove gallery application by reference Id
+
 ## PARAMETERS
 
 ### -DefaultProfile
