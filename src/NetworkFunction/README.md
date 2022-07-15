@@ -41,6 +41,6 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     hide: true
   - where:
-      verb: Set
+      subject: ^Operation$
     hide: true
 ```
