@@ -13,7 +13,7 @@ This cmdlet allows users to set the SecurityType enum for Virtual Machines scale
 ## SYNTAX
 
 ```
-Set-AzVmssSecurityProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-SecurityType] <SecurityTypes>]
+Set-AzVmssSecurityProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-SecurityType] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ The second command sets the SecurityType enum to "TrustedLaunch"
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -53,10 +53,9 @@ Accept wildcard characters: False
 Enum that represents the security type (ex: Trusted Launch)
 
 ```yaml
-Type: SecurityTypes
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: TrustedLaunch
 
 Required: False
 Position: 1
@@ -69,7 +68,7 @@ Accept wildcard characters: False
 The virtual machine scale set profile.
 
 ```yaml
-Type: PSVirtualMachineScaleSet
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases:
 
