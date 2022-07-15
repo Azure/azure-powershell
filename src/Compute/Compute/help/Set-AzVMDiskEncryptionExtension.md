@@ -105,7 +105,7 @@ $params = New-Object PSObject -Property @{
     VolumeType = "All"
 }
 
-$params | Set-AzVmDiskEncryptionExtension
+$params | Set-AzVMDiskEncryptionExtension
 ```
 
 This example sends parameters using pipelined input to enable encryption on a VM, without specifying AD credentials.

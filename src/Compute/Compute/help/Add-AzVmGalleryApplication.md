@@ -25,7 +25,7 @@ Adds a GalleryApplication object to the PSVirtualMachine object.
 
 ### Example 1
 ```powershell
-$vm = Get-AzVm -ResourceGroupName $rgName -Name $vmName
+$vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
 $vmGal = New-AzVmGalleryApplication -PackageReferenceId $packageRefId -ConfigReferenceId $configRefId
 Add-AzVmGalleryApplication -VM $vm -GalleryApplication $vmGal -Order 1
 ```

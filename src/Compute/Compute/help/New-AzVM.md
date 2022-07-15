@@ -219,7 +219,7 @@ $VirtualMachine = New-AzVMConfig -VMName VirtualMachineName -VMSize Standard_D4s
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName computerName -Credential $psCred -ProvisionVMAgent -EnableAutoUpdate
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
 $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2022-datacenter-azure-edition-core' -Version latest
-New-AzVm -ResourceGroupName ResourceGroup1 -Location SouthCentralUS -VM $VirtualMachine
+New-AzVM -ResourceGroupName ResourceGroup1 -Location SouthCentralUS -VM $VirtualMachine
 ```
 
 This example deploys a Windows VM from the marketplace in one resource group with an existing subnet in another resource group.
@@ -235,8 +235,8 @@ $user = "Username"
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
 $vmssName = "Vmss Name";
 
-$vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain;
-$vmss = New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $vmssConfig;
+$vmssConfig = New-AzVMssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain;
+$vmss = New-AzVMss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $vmssConfig;
 
 $vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id
 ```
@@ -289,18 +289,18 @@ Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential
 Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest;
 Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
 $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType;
-$vmConfig = Set-AzVmUefi -VM $vmConfig -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
+$vmConfig = Set-AzVMUefi -VM $vmConfig -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
 New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig;
 
 # Verify values
-$vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
 $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
 # Check the default extension has been installed, and the Identity.Type defaulted to SystemAssigned.
 # $vmExt.Name
 # $vm.Identity.Type
 
 # Use the DisableIntegrityMonitoring parameter
-Remove-AzVm -ResourceGroupName $rgname -Name $vmname -Force;
+Remove-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
 New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig -DisableIntegrityMonitoring;
 # This VM does not have the Guest Attestation extension installed on it, and the Identity is not set to SystemAssigned by default.
 ```

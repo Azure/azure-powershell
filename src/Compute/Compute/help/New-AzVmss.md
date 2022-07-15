@@ -129,7 +129,7 @@ $ExtType = "BGInfo";
 $ExtVer = "2.1";
 
 #IP Config for the NIC
-$IPCfg = New-AzVmssIPConfig -Name "Test" `
+$IPCfg = New-AzVmssIpConfig -Name "Test" `
     -LoadBalancerInboundNatPoolsId $ExpectedLb.InboundNatPools[0].Id `
     -LoadBalancerBackendAddressPoolsId $ExpectedLb.BackendAddressPools[0].Id `
     -SubnetId $SubNetId;
@@ -138,7 +138,7 @@ $IPCfg = New-AzVmssIPConfig -Name "Test" `
 $VMSS = New-AzVmssConfig -Location $LOC -SkuCapacity 2 -SkuName "Standard_E4-2ds_v4" -UpgradePolicyMode "Automatic" `
     | Add-AzVmssNetworkInterfaceConfiguration -Name "Test" -Primary $True -IPConfiguration $IPCfg `
     | Add-AzVmssNetworkInterfaceConfiguration -Name "Test2"  -IPConfiguration $IPCfg `
-    | Set-AzVmssOSProfile -ComputerNamePrefix "Test"  -AdminUsername $AdminUsername -AdminPassword $AdminPassword `
+    | Set-AzVmssOsProfile -ComputerNamePrefix "Test"  -AdminUsername $AdminUsername -AdminPassword $AdminPassword `
     | Set-AzVmssStorageProfile -Name "Test"  -OsDiskCreateOption 'FromImage' -OsDiskCaching "None" `
     -ImageReferenceOffer $Offer -ImageReferenceSku $Sku -ImageReferenceVersion $Version `
     -ImageReferencePublisher $PublisherName -VhdContainer $VHDContainer `
@@ -164,7 +164,7 @@ The complex example above creates a VMSS, following is an explanation of what is
 * The fourteenth command uses the **New-AzLoadBalancerRuleConfig** to create a load balancer rule configuration and stores the result in the variable named $LBRule.
 * The fifteenth command uses the **New-AzLoadBalancer** cmdlet to create a load balancer and stores the result in the variable named $ActualLb.
 * The sixteenth command uses the **Get-AzLoadBalancer** to get information about the load balancer that was created in the fifteenth command and stores the information in the variable named $ExpectedLb.
-* The seventeenth command uses the **New-AzVmssIPConfig** cmdlet to create a VMSS IP configuration and stores the information in the variable named $IPCfg.
+* The seventeenth command uses the **New-AzVmssIpConfig** cmdlet to create a VMSS IP configuration and stores the information in the variable named $IPCfg.
 * The eighteenth command uses the **New-AzVmssConfig** cmdlet to create a VMSS configuration object and stores the result in the variable named $VMSS.
 * The nineteenth command uses the **New-AzVmss** cmdlet to create the VMSS.
 
@@ -217,11 +217,11 @@ $imgRef.PublisherName = $PublisherName;
 $imgRef.Offer = $Offer;
 $imgRef.Skus = $SKU;
 $imgRef.Version = "latest";
-$ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+$ipCfg = New-AzVmssIpConfig -Name 'test' -SubnetId $subnetId;
 
 $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
 | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-| Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+| Set-AzVmssOsProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
 | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
     -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
     -ImageReferencePublisher $imgRef.PublisherName ;
