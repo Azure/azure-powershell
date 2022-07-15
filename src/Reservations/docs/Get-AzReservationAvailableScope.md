@@ -52,6 +52,7 @@ Scope                                               Valid
 -----                                               -----
 /subscriptions/3f0487fd-27ca-4f9c-8a23-000770724b1b True
 ```
+
 List available reservation scope
 
 ## PARAMETERS
