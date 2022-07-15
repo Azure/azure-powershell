@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.30.0
 * Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion` 
 
 ## Version 4.29.0
