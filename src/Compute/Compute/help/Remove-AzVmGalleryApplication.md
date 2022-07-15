@@ -28,6 +28,8 @@ $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName
 Remove-AzVmGalleryApplication -VM $vm -GalleryApplicationsReferenceId $refId
 ```
 
+Remove gallery application by reference Id
+
 ## PARAMETERS
 
 ### -DefaultProfile

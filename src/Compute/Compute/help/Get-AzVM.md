@@ -236,6 +236,8 @@ TEST2               test4         westus Standard_DS1_v2 Windows          test4
 TEST2               test5         eastus Standard_DS1_v2 Windows          test5
 ```
 
+This command gets all virtual machines with names start with "test"
+
 ### Example 7: Get VM with UserData value
 ```powershell
 Get-AzVM -ResourceGroupName <Resource Group Name> -Name <VM Name> -UserData;

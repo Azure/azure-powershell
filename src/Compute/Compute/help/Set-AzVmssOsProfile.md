@@ -188,6 +188,8 @@ $vmss = New-AzVmss `
     -VirtualMachineScaleSet $vmssConfig;
 ```
 
+Set the operating system profile properties for a Vmss in Flexible mode with Hotpatching enabled
+
 ## PARAMETERS
 
 ### -AdditionalUnattendContent

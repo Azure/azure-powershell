@@ -187,6 +187,8 @@ New-AzVmss -ResourceGroupName $ResourceGroupName -Name $vmssName -Credential $vm
 $vmss = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $vmssName -InstanceView:$false -Userdata;
 ```
 
+Create a VMSS with a UserData value
+
 ### Example 4: Create a VMSS with the Guest Attestation extension installed with the TrustedLaunch security type.
 ```powershell
 # Common setup
@@ -235,6 +237,8 @@ $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSe
 $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 # This Vmss and its Vm instances has the GuestAttestation extension installed, and the Identity of SystemAssigned.
 ```
+
+Create a VMSS with the Guest Attestation extension installed with the TrustedLaunch security type
 
 ## PARAMETERS
 
