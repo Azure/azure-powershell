@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Converted Az.Reservations to autorest-based module
 
 ## Version 0.1.0
 * First preview release for module Az.Reservations
