@@ -20,6 +20,19 @@
 ## Upcoming Release
 * Converted Az.Reservations to autorest-based module
 
-## Version 0.1.0
-* First preview release for module Az.Reservations
+## Version 0.9.0
+* Added new reserved resource types.
 
+## Version 0.8.2
+* Spelling fix in the docs.
+
+## Version 0.8.1
+* Update references in .psd1 to use relative path
+
+## Version 0.8.0
+* Add billing plan details in getCatalog
+	- new object in the response of get-Catalog
+* Add new Api CalculatePrice
+	- new Api for calculate ReservationOrder price
+* Add new Api Purchase
+	- new Api for Purchase ReservationOrder in powershell
