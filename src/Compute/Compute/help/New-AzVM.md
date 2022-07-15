@@ -241,6 +241,8 @@ $vmss = New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -Virtua
 $vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id
 ```
 
+This example Creates a new VM as part of a VMSS with a PlatformFaultDomain value.
+
 ### Example 7: Creating a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
 ```
 $rgname = <RESOURCE GROUP NAME>;
@@ -304,6 +306,8 @@ Remove-AzVm -ResourceGroupName $rgname -Name $vmname -Force;
 New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig -DisableIntegrityMonitoring;
 # This VM does not have the Guest Attestation extension installed on it, and the Identity is not set to SystemAssigned by default.
 ```
+
+This example Creates a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
 
 ## PARAMETERS
 
