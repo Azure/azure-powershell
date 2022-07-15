@@ -37,8 +37,10 @@ Gets the action of alert rule.
 
 ### Example 1: List all Actions for a given Alert Rule
 ```powershell
-PS C:\> Get-AzSentinelAlertRuleAction -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -RuleId "myRuleId"
+ Get-AzSentinelAlertRuleAction -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -RuleId "myRuleId"
+```
 
+```output
 LogicAppResourceId : /subscriptions/174b1a81-c53c-4092-8d4a-7210f6a44a0c/resourceGroups/myResourceGroup/providers/Microsoft.Logic/workflows/A-Demo-1
 Name               : f32239c5-cb9c-48da-a3f6-bd5bd3d924a4
 WorkflowId         : 3c73d72560fa4cb6a72a0f10d3a80940
@@ -179,7 +181,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

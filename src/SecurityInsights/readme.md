@@ -325,6 +325,11 @@ directive:
       verb: ^New$|^Update$|^Remove$
       subject: Metadata
     hide: true
+  # Hide Source Control
+  - where:
+      verb: Get
+      subject: SourceControlRepository
+    hide: true
   # Hide UpdateViaId and Update
   - where:
       variant: ^Update$|^UpdateViaIdentity$

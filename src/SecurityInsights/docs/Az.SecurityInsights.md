@@ -83,9 +83,6 @@ Get Sentinel onboarding state
 ### [Get-AzSentinelSetting](Get-AzSentinelSetting.md)
 Gets a setting.
 
-### [Get-AzSentinelSourceControlRepository](Get-AzSentinelSourceControlRepository.md)
-Gets a list of repositories metadata.
-
 ### [Get-AzSentinelThreatIntelligenceIndicator](Get-AzSentinelThreatIntelligenceIndicator.md)
 View a threat intelligence indicator by name.
 

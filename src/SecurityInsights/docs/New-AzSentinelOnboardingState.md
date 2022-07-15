@@ -33,8 +33,7 @@ Create Sentinel onboarding state
 
 ### Example 1: Add Sentinel onboarding state
 ```powershell
-PS C:\>AzSentinelOnboardingState -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Name "default"
-
+AzSentinelOnboardingState -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Name "default"
 ```
 
 This command configures the onboarding state of Sentinel
@@ -200,7 +199,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-SENTINELONBOARDINGSTATEPARAMETER <ISentinelOnboardingState>: Sentinel onboarding state
+`SENTINELONBOARDINGSTATEPARAMETER <ISentinelOnboardingState>`: Sentinel onboarding state
   - `[Etag <String>]`: Etag of the azure resource
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.

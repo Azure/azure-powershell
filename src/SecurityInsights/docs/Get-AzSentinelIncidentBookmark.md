@@ -24,8 +24,10 @@ Gets all incident bookmarks.
 
 ### Example 1: List all Bookmarks for a given Incident
 ```powershell
-PS C:\> Get-AzSentinelIncidentBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7f40bbbc-e205-404b-bc2b-5d71cd1017a8"
+ Get-AzSentinelIncidentBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7f40bbbc-e205-404b-bc2b-5d71cd1017a8"
+```
 
+```output
 DisplayName    : My 2021 Bookmark
 FriendlyName   : My 2021 Bookmark
 Label          : {my Tags}

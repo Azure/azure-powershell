@@ -33,9 +33,11 @@ Creates a Microsoft team to investigate the incident by sharing information and 
 
 ### Example 1: Create an Incident Teams Room
 ```powershell
-PS C:\> $incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id "myIncidentId"
-PS C:\> New-AzSentinelIncidentTeam -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId ($incident.Name) -TeamName ("Incident "+$incident.incidentNumber+": "+$incident.title)
+ $incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id "myIncidentId"
+ New-AzSentinelIncidentTeam -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId ($incident.Name) -TeamName ("Incident "+$incident.incidentNumber+": "+$incident.title)
+```
 
+```output
 Description         :
 Name                : Incident : NewIncident3
 PrimaryChannelUrl   : https://teams.microsoft.com/l/team/19:vYoGjeGlZmTEDmu0gTbrk9T_eDS4pKIkEU7UuM1IyZk1%40thread.tacv2/conversations?groupId=3c637cc5-caf1-46c7-93ac-069c6
@@ -251,7 +253,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-TEAMPROPERTY <ITeamProperties>: Describes team properties
+`TEAMPROPERTY <ITeamProperties>`: Describes team properties
   - `TeamName <String>`: The name of the team
   - `[GroupId <String[]>]`: List of group IDs to add their members to the team
   - `[MemberId <String[]>]`: List of member IDs to add to the team

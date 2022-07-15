@@ -24,8 +24,10 @@ Gets all incident alerts.
 
 ### Example 1: List all Alerts for a given Incident
 ```powershell
-PS C:\> Get-AzSentinelIncidentAlert -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId"
+ Get-AzSentinelIncidentAlert -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId"
+```
 
+```output
 AlertDisplayName : (Preview) TI map IP entity to SigninLogs
 FriendlyName     : (Preview) TI map IP entity to SigninLogs
 Description      : Identifies a match in SigninLogs from any IP IOC from TI

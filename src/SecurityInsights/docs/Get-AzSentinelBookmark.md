@@ -37,8 +37,10 @@ Gets a bookmark.
 
 ### Example 1: List all Bookmarks
 ```powershell
-PS C:\> Get-AzSentinelBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+ Get-AzSentinelBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+```
 
+```output
 DisplayName    	: SecurityAlert - 28b401e1e0c9
 CreatedByEmail	: john@contoso.com
 CreatedByName  	: John Contoso
@@ -52,8 +54,10 @@ This command lists all Bookmarks under a Microsoft Sentinel workspace.
 
 ### Example 2: Get a Bookmark
 ```powershell
-PS C:\> Get-AzSentinelBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "515fc035-2ed8-4fa1-ad7d-28b401e1e0c9"
+ Get-AzSentinelBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "515fc035-2ed8-4fa1-ad7d-28b401e1e0c9"
+```
 
+```output
 DisplayName    	: SecurityAlert - 28b401e1e0c9
 CreatedByEmail	: john@contoso.com
 CreatedByName  	: John Contoso
@@ -178,7 +182,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

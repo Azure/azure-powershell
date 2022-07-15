@@ -37,8 +37,10 @@ Gets an entity query.
 
 ### Example 1: List all Entity Query Templates
 ```powershell
-PS C:\> Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+ Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+```
 
+```output
 Title           : The user has created an account
 Description     : This activity displays account creation events performed by the user
 InputEntityType : Account
@@ -56,8 +58,10 @@ This command lists all Entity Query Templates under a Microsoft Sentinel workspa
 
 ### Example 2: Get an Entity Query Template
 ```powershell
-PS C:\> Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "d6d08c94-455f-4ea5-8f76-fc6c0c442cfa"
+ Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "d6d08c94-455f-4ea5-8f76-fc6c0c442cfa"
+```
 
+```output
 Description     : This activity displays account creation events performed by the user
 InputEntityType : Account
 Kind            : Activity
@@ -68,9 +72,11 @@ This command gets an Entity Query Template.
 
 ### Example 3: Get an Entity Query Template by object Id
 ```powershell
-PS C:\> $EntityQueryTemplates = Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
-PS C:\> $EntityQueryTemplates[0] | Get-AzSentinelEntityQueryTemplate
+ $EntityQueryTemplates = Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+ $EntityQueryTemplates[0] | Get-AzSentinelEntityQueryTemplate
+```
 
+```output
 Description     : This activity displays account creation events performed by the user
 InputEntityType : Account
 Kind            : Activity
@@ -208,7 +214,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

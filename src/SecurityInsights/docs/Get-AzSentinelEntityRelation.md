@@ -38,23 +38,22 @@ Gets an entity relation.
 
 ### Example 1: List all Entity Relations for a given Entity 
 ```powershell
-PS C:\> Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
+ Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
 ```
 
 This command lists all Entity Relations for a given Entity.
 
 ### Example 2: Get an Entity Relation
 ```powershell
-PS C:\> Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId" -Id "myEntityRelationId"
+ Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId" -Id "myEntityRelationId"
 ```
 
 This command gets an Entity Relation for a given Entity.
 
 ### Example 3: Get an Entity Relation by object Id
 ```powershell
-PS C:\> $EntityRelations = Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
-PS C:\> $EntityRelations[0] | Get-AzSentinelEntityRelation
-
+ $EntityRelations = Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
+ $EntityRelations[0] | Get-AzSentinelEntityRelation
 ```
 
 This command gets a Entity Relation by object
@@ -253,7 +252,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

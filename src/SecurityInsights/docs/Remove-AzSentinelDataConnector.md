@@ -31,8 +31,7 @@ Delete the data connector.
 
 ### Example 1: Removes Sentinel Data Connector
 ```powershell
-PS C:\>Remove-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id 661b961f-53d8-4bd1-be97-24e808fd04f5
-
+Remove-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id 661b961f-53d8-4bd1-be97-24e808fd04f5
 ```
 
 This command removes a data connector.
@@ -197,7 +196,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

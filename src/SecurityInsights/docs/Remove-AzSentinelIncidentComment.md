@@ -32,12 +32,10 @@ Delete the incident comment.
 
 ### Example 1: Remove an incident comment
 ```powershell
-PS C:\>Remove-AzSentinelIncidentComment -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId 7cc984fe-61a2-43c2-a1a4-3583c8a89da2 -Id 7a4c27ea-d61a-496b-b5c3-246770c857c1
-
-This command removes an incident comment
+Remove-AzSentinelIncidentComment -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId 7cc984fe-61a2-43c2-a1a4-3583c8a89da2 -Id 7a4c27ea-d61a-496b-b5c3-246770c857c1
 ```
 
-
+This command removes an incident comment
 
 ## PARAMETERS
 
@@ -214,7 +212,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

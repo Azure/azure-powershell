@@ -37,8 +37,10 @@ Gets an entity.
 
 ### Example 1: List all Entities
 ```powershell
-PS C:\> Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+ Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+```
 
+```output
 FriendlyName 	: WIN2019
 Kind         	: Host
 Name         	: 8d036a2d-f37d-e936-6cca-4e172687cb79
@@ -52,8 +54,10 @@ This command lists all Entities under a Microsoft Sentinel workspace.
 
 ### Example 2: Get an Entity
 ```powershell
-PS C:\> Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "8d036a2d-f37d-e936-6cca-4e172687cb79"
+ Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "8d036a2d-f37d-e936-6cca-4e172687cb79"
+```
 
+```output
 FriendlyName 	: WIN2019
 Kind         	: Host
 Name         	: 8d036a2d-f37d-e936-6cca-4e172687cb79
@@ -63,9 +67,11 @@ This command gets an Entity.
 
 ### Example 3: Get a Entity by object Id
 ```powershell
-PS C:\> $Entitys = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
-PS C:\> $Entitys[0] | Get-AzSentinelEntity
+ $Entitys = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+ $Entitys[0] | Get-AzSentinelEntity
+```
 
+```output
 FriendlyName 	: WIN2019
 Kind         	: Host
 Name         	: 8d036a2d-f37d-e936-6cca-4e172687cb79
@@ -75,8 +81,10 @@ This command gets an Entity by object
 
 ### Example 4: Get a Entity by kind
 ```powershell
-PS C:\> Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" | Where-Object {$_.Kind -eq "CloudApplication"} 
+ Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" | Where-Object {$_.Kind -eq "CloudApplication"} 
+```
 
+```output
 FriendlyName : Office 365
 Kind         : CloudApplication
 Name         : 8fceb9c4-abe7-7174-aabf-f1dde96a945e
@@ -198,7 +206,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

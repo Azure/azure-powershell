@@ -37,8 +37,10 @@ Creates or updates the incident.
 
 ### Example 1: Create an Incident
 ```powershell
-PS C:\> New-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -Title "NewIncident" -Description "My Description" -Severity Low -Status New
+ New-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -Title "NewIncident" -Description "My Description" -Severity Low -Status New
+```
 
+```output
 Title          : NewIncident
 Description    : My Description
 Severity       : Low
@@ -422,7 +424,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INCIDENT <IIncident>: Represents an incident in Azure Security Insights.
+`INCIDENT <IIncident>`: Represents an incident in Azure Security Insights.
   - `[Etag <String>]`: Etag of the azure resource
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
@@ -448,7 +450,7 @@ INCIDENT <IIncident>: Represents an incident in Azure Security Insights.
   - `[Status <IncidentStatus?>]`: The status of the incident
   - `[Title <String>]`: The title of the incident
 
-LABEL <IIncidentLabel[]>: List of labels relevant to this incident
+`LABEL <IIncidentLabel[]>`: List of labels relevant to this incident
   - `LabelName <String>`: The name of the label
 
 ## RELATED LINKS

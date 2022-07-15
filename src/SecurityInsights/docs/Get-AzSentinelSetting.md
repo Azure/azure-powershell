@@ -37,8 +37,10 @@ Gets a setting.
 
 ### Example 1: List all Settings
 ```powershell
-PS C:\> Get-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+ Get-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+```
 
+```output
 Kind      : EntityAnalytics
 Name      : EntityAnalytics
 IsEnabled : True
@@ -63,8 +65,10 @@ This command lists all Settings under a Microsoft Sentinel workspace.
 
 ### Example 2: Get a Setting
 ```powershell
-PS C:\> Get-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -SettingsName "Anomalies"
+ Get-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -SettingsName "Anomalies"
+```
 
+```output
 Kind      : Anomalies
 Name      : Anomalies
 IsEnabled : True
@@ -74,9 +78,11 @@ This command gets a Setting.
 
 ### Example 3: Get a Setting by object Id
 ```powershell
-PS C:\> $Settings = Get-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
-PS C:\> $Settings[0] | Get-AzSentinelSetting
+ $Settings = Get-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+ $Settings[0] | Get-AzSentinelSetting
+```
 
+```output
 Kind      : Anomalies
 Name      : Anomalies
 IsEnabled : True
@@ -199,7 +205,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

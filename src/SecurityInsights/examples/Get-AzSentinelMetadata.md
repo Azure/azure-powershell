@@ -1,20 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get Solution metadata from the workspace
 ```powershell
- {{ Add code here }}
+ Get-AzSentinelMetadata -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
 ```
 ```output
-{{ Add output here }}
+Etag    Name                                                SystemDataCreatedAt     SystemDataCreatedBy SystemDataCreatedByType
+----    ----                                                -------------------     ------------------- -----------
+        azuresentinel.azure-sentinel-solution-slackaudit    3/11/2022 11:20:19 PM   user@domain.local   User       
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
- {{ Add code here }}
-```
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command lists all Solution metadata for a workspace.

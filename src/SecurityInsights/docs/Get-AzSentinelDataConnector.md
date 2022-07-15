@@ -37,8 +37,10 @@ Gets a data connector.
 
 ### Example 1: List all Data Connectors
 ```powershell
-PS C:\> Get-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+ Get-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+```
 
+```output
 Kind : AzureActiveDirectory
 Name : 8207e1f9-a793-4869-afb1-5ad4540d66d1
 
@@ -54,8 +56,10 @@ This command lists all DataConnectors under a Microsoft Sentinel workspace.
 
 ### Example 2: Get a specific Data Connector
 ```powershell
-PS C:\> Get-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" | Where-Object {$_.kind -eq "Office365"}
+ Get-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" | Where-Object {$_.kind -eq "Office365"}
+```
 
+```output
 Kind                         : Office365
 Name                         : 6323c716-83ae-4cfd-bf93-58235c8beb23
 SharePointState              : enabled
@@ -177,7 +181,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

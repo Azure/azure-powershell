@@ -1,20 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an Incident
 ```powershell
- {{ Add code here }}
+Update-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434" -OwnerAssignedTo "user@mydomain.local"
 ```
 ```output
-{{ Add output here }}
-```
+``` 
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
- {{ Add code here }}
-```
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command updates an incident by assigning an owner.

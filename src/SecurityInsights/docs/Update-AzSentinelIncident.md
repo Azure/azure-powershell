@@ -40,23 +40,12 @@ Creates or updates the incident.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an Incident
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Update-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434" -OwnerAssignedTo "user@mydomain.local"
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates an incident by assigning an owner.
 
 ## PARAMETERS
 
@@ -444,7 +433,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID
@@ -468,7 +457,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WorkspaceName <String>]`: The name of the workspace.
 
-LABEL <IIncidentLabel[]>: List of labels relevant to this incident
+`LABEL <IIncidentLabel[]>`: List of labels relevant to this incident
   - `LabelName <String>`: The name of the label
 
 ## RELATED LINKS

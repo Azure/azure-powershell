@@ -26,23 +26,18 @@ Query threat intelligence indicators as per filtering criteria.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Query all Threat Intelligence Indicators
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Invoke-AzSentinelThreatIntelligenceIndicatorQuery -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName"
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Etag                                    Kind        Name                                    SystemDataCreatedAt SystemDataCreatedBy
+----                                    ----        ----                                    ------------------- -------
+"b603878e-0000-0100-0000-62d1d0010000"  indicator   f4dd9aa3-081b-2f0b-a5d7-3805954e8a39
 ```
 
-{{ Add description here }}
+This command queries TI indicators.
 
 ## PARAMETERS
 
@@ -352,7 +347,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-SORTBY <IThreatIntelligenceSortingCriteria[]>: Columns to sort by and sorting order
+`SORTBY <IThreatIntelligenceSortingCriteria[]>`: Columns to sort by and sorting order
   - `[ItemKey <String>]`: Column name
   - `[SortOrder <ThreatIntelligenceSortingCriteriaEnum?>]`: Sorting order (ascending/descending/unsorted).
 
