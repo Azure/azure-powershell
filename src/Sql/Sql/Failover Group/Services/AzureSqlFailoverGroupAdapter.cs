@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             FailoverGroupPartnerServer partnerServer = new FailoverGroupPartnerServer();
             partnerServer.Id = string.Format(
                 AzureSqlFailoverGroupModel.PartnerServerIdTemplate,
-                model.PartnerSubscriptionId == Guid.Empty ? _subscription.Id.ToString() : model.PartnerSubscriptionId.ToString(),
+                model.PartnerSubscriptionId == null ? _subscription.Id.ToString() : model.PartnerSubscriptionId.ToString(),
                 model.PartnerResourceGroupName,
                 model.PartnerServerName);
             partnerServers.Add(partnerServer);
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             FailoverGroupPartnerServer partnerServer = failoverGroup.Properties.PartnerServers.FirstOrDefault();
             if (partnerServer != null)
             {
-                model.PartnerSubscriptionId = Guid.Parse(GetUriSegment(partnerServer.Id, 2));
+                model.PartnerSubscriptionId = GetUriSegment(partnerServer.Id, 2);
                 model.PartnerResourceGroupName = GetUriSegment(partnerServer.Id, 4);
                 model.PartnerServerName = GetUriSegment(partnerServer.Id, 8);
                 model.PartnerLocation = partnerServer.Location;

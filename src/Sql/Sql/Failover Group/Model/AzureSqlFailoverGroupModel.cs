@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         /// <summary>
         /// Gets or sets the Id of partner subscription id
         /// </summary>
-        public Guid PartnerSubscriptionId { get; set; }
+        public string PartnerSubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the partner resource group name
