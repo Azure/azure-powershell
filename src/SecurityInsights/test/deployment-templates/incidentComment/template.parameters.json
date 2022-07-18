@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "incidentCommentIncidentId": {
+      "value": "aa0c1725-78eb-4c1e-87b8-9dd801ebf670"
+    },
+    "incidentCommentId": {
+      "value": "c3bc7c2d-a384-4bb5-8fde-e2ee44fc18be"
+    },
+    "incidentCommentName": {
+      "value": "UpdateViaIdincidentCommentoq4cge"
+    },
+    "workspaceName": {
+      "value": "asptest8xu4wd"
+    }
+  }
+}
