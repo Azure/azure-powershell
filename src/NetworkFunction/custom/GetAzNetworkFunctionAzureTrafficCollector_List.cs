@@ -33,6 +33,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A flag to tell whether it is the first onOK call.</summary>
+        private bool _isFirst = true;
+
+        /// <summary>Link to retrieve next page.</summary>
+        private string _nextLink;
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.ParameterCategory.Runtime)]
@@ -301,7 +307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Cmdlets
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,SubscriptionId=SubscriptionId,Name=Name})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,SubscriptionId=SubscriptionId})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -347,14 +353,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, Name=Name })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, Name=Name })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -364,12 +370,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IAzureTrafficCollector">Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IAzureTrafficCollector</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IAzureTrafficCollector">Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IAzureTrafficCollectorListResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IAzureTrafficCollector> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IAzureTrafficCollectorListResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -393,7 +399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Cmdlets
                         if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
                         {
                             requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Method.Get );
-                            await ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                            await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                             await this.Client.AzureTrafficCollectorsByResourceGroupList_Call(requestMessage, onOk, onDefault, this, Pipeline);
                         }
                     }
