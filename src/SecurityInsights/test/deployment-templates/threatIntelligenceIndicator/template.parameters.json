@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "threatIntelligenceIndicatorId": {
+      "value": "05df7de8-16b9-4b58-a76a-6aafb8a9932a"
+    },
+    "threatIntelligenceIndicatorName": {
+      "value": "UpdateViaIdthreatIntelligenceIndicatorol6dht"
+    },
+    "threatIntelligenceIndicatorDate": {
+      "value": "Sun, 12 Dec 2021 01:00:00 GMT"
+    },
+    "ip": {
+      "value": "8.8.8.5"
+    },
+    "workspaceName": {
+      "value": "asptest8xu4wd"
+    }
+  }
+}

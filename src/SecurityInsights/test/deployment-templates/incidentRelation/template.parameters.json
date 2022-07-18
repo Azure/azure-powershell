@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "incidentRelationBookmarkId": {
+      "value": "f18e48e7-15f9-49c8-bb2b-fdf166e7cf9a"
+    },
+    "incidentRelationBookmarkName": {
+      "value": "UpdateViaIdincidentRelationBookmarkNamehd50fa"
+    },
+    "queryStartTime": {
+      "value": "2021-12-11T01:00:00.000Z"
+    },
+    "queryEndTime": {
+      "value": "2021-12-12T01:00:00.000Z"
+    },
+    "incidentRelationIncidentId": {
+      "value": "43aedae6-3726-41c1-b0e8-9876df66aa2d"
+    },
+    "incidentRelationIncidentName": {
+      "value": "UpdateViaIdincidentRelationIncidentNameewut32"
+    },
+    "incidentRelationId": {
+      "value": "b03e0e3c-97ce-4eb5-a1f0-e096bbeeddd4"
+    },
+    "workspaceName": {
+      "value": "asptest8xu4wd"
+    }
+  }
+}

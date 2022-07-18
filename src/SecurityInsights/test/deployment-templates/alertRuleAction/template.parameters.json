@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "alertRuleActionRuleId": {
+      "value": "a555c523-e318-4501-bfe8-b9c6da354af7"
+    },
+    "alertRuleActionRuleName": {
+      "value": "UpdateViaIdalertRuleActionRuleNameymswnj"
+    },
+    "alertRuleActionId": {
+      "value": "34ec4b87-3f90-443e-9034-c32e77c5fb6e"
+    },
+    "workspaceName": {
+      "value": "asptest8xu4wd"
+    },
+    "logicAppResourceId": {
+      "value": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.Logic/workflows/Block-AADUser-Alert"
+    },
+    "triggerUrl": {
+      "value": "https://prod-07.centralus.logic.azure.com:443/workflows/3647b421918e40f19a5e9346dc633c61/triggers/When_a_response_to_an_Azure_Sentinel_alert_is_triggered/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2FWhen_a_response_to_an_Azure_Sentinel_alert_is_triggered%2Frun&sv=1.0&sig=8SgwCaNwsGFFEsJ0yKJoTXy329Qt949c0AsSDlv48sQ"
+    }
+  }
+}
