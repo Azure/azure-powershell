@@ -128,17 +128,19 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
                 if (IsAzureRMCommand(args.CommandName))
                 {
-                    WriteWarning($@"[todo] The command {args.CommandName} is in the AzureRM PowerShell module, which is outdated. See [todo] fwlink https://docs.microsoft.com/en-us/powershell/azure/migrate-from-azurerm-to-az?view=azps-8.1.0 for instructions to migrate to Az.");
+                    WriteWarning($"[todo] The command {args.CommandName} is in the AzureRM PowerShell module, which is outdated."
+                        + " See [todo: fwlink] https://docs.microsoft.com/en-us/powershell/azure/migrate-from-azurerm-to-az?view=azps-8.1.0 for instructions to migrate to Az.");
                 }
                 else if (TryGetMigrationGuide(args.CommandName, out MigrationDetails details))
                 {
                     // todo: fill in the migration part in CommandMappings.json
-                    WriteWarning($@"[todo] The command {args.CommandName} has been deprecated and replaced by {details.Replacement} since {details.Since}. Please refer to the migration guide [todo]");
+                    WriteWarning($"[todo] The command {args.CommandName} has been deprecated and replaced by {details.Replacement} since {details.Since}."
+                        + " Please refer to the migration guide [todo]");
                 }
                 else if (TryGetModuleOfCommand(args.CommandName, out string moduleName))
                 {
-                    WriteWarning($@"[todo] The term {args.CommandName} is a cmdlet belongs to Azure PowerShell module {moduleName} and it is not installed.
-Run 'Install-Module {moduleName}' to install it.");
+                    WriteWarning($"[todo] The command {args.CommandName} is part of Azure PowerShell module \"{moduleName}\" and it is not installed."
+                        + $" Run \"Install-Module {moduleName}\" to install it.");
                 }
                 else if (EnableFuzzyString && TryGetFuzzyStringSuggestions(args.CommandName, out IEnumerable<string> suggestions))
                 {
@@ -177,15 +179,22 @@ Run 'Install-Module {moduleName}' to install it.");
                 processor: s => s, // ExtractTop by default converts strings to lowercase.
                                    // It's redundant work so we override the behavior and cache lowercase command names.
                 scorer: ScorerCache.Get<DefaultRatioScorer>(),
-                cutoff: 80,
-                limit: 3);
+                cutoff: 90);
             suggestions = suggestionsInLowercase.Select(x => LazyCommandLowercaseToNormal.Value[x.Value]);
             return suggestions.Any();
         }
 
         private static string FormatFuzzyStringSuggestions(string commandName, IEnumerable<string> suggestions)
         {
-            StringBuilder sb = new StringBuilder($"[todo] {commandName} is not found. The most similar Azure PowerShell commands are:");
+            StringBuilder sb = new StringBuilder($"[todo] {commandName} is not found. ");
+            if (suggestions.Count() > 1)
+            {
+                sb.Append("The most similar Azure PowerShell commands are:");
+            }
+            else
+            {
+                sb.Append("The most similar Azure PowerShell command is:");
+            }
             sb.Append(Environment.NewLine);
             foreach (var suggestion in suggestions)
             {
@@ -199,7 +208,7 @@ Run 'Install-Module {moduleName}' to install it.");
 
         private static void WriteWarning(string message)
         {
-            Cii.InvokeScript($"Write-Warning \"{message}\"");
+            Cii.InvokeScript($"Write-Warning '{message}'");
         }
     }
 
