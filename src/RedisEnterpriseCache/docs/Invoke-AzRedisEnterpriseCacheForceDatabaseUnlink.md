@@ -44,15 +44,12 @@ Forcibly removes the link to the specified database resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Unlink database
 ```powershell
-
+PS C:\> Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ResourceGroupName "MyGroup" -ClusterName "MyCache3" -Id @("<database-id>")
 ```
 
-```powershell
-PS C:\\> Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ResourceGroupName "MyGroup" -ClusterName "MyCache3" -Id @("\<database-id\>")
-
-Forcibly removes the link to the database resource whose id is given, from the group the specified cache belongs to
+Forcibly removes the link to the database resource whose id is given, from the georeplication group the specified cache belongs to
 
 ## PARAMETERS
 
