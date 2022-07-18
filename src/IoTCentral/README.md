@@ -30,11 +30,11 @@ For information on how to develop for `Az.IoTCentral`, see [how-to.md](how-to.md
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: b0cf39b0fd0713e6e0c449633b23a13c99e7fea2
+branch: 1809a66a915b28f9fdbefaf93a4dc8fed8bdb8c8
 require:
   - $(this-folder)/../readme.azure.noprofile.md 
 input-file:
-  - $(repo)/specification/iotcentral/resource-manager/Microsoft.IoTCentral/stable/2021-06-01/iotcentral.json
+  - $(repo)/specification/iotcentral/resource-manager/Microsoft.IoTCentral/preview/2021-11-01-preview/iotcentral.json
 
 module-version: 0.1.0
 title: IoTCentral
@@ -49,6 +49,9 @@ directive:
     remove: true
   - where:
       verb: Set|Test
+    remove: true
+  - where:
+      subject: PrivateEndpointConnection|PrivateLink
     remove: true
   - where:
       parameter-name: ResourceName

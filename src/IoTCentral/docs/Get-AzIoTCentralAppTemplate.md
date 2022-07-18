@@ -118,7 +118,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.IoTCentral.Models.Api20210601.IAppTemplate
+### Microsoft.Azure.PowerShell.Cmdlets.IoTCentral.Models.Api20211101Preview.IAppTemplate
 
 ## NOTES
 

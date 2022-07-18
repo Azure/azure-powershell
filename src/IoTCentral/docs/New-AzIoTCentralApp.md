@@ -16,8 +16,10 @@ The usual pattern to modify a property is to retrieve the IoT Central applicatio
 ```
 New-AzIoTCentralApp -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <AppSku>
  [-SubscriptionId <String>] [-DisplayName <String>] [-IdentityType <SystemAssignedServiceIdentityType>]
- [-Subdomain <String>] [-Tag <Hashtable>] [-Template <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NetworkRuleSetApplyToDevice] [-NetworkRuleSetApplyToIoTCentral]
+ [-NetworkRuleSetDefaultAction <NetworkAction>] [-NetworkRuleSetIPRule <INetworkRuleSetIPRule[]>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-Subdomain <String>] [-Tag <Hashtable>] [-Template <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The resource location.
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
@@ -132,11 +134,87 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkRuleSetApplyToDevice
+Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkRuleSetApplyToIoTCentral
+Whether these rules apply for connectivity via IoT Central web portal and APIs.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkRuleSetDefaultAction
+The default network action to apply.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTCentral.Support.NetworkAction
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkRuleSetIPRule
+List of IP rules.
+To construct, see NOTES section for NETWORKRULESETIPRULE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTCentral.Models.Api20211101Preview.INetworkRuleSetIPRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Whether requests from the public network are allowed.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTCentral.Support.PublicNetworkAccess
 Parameter Sets: (All)
 Aliases:
 
@@ -208,7 +286,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-The resource tags.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -276,11 +354,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.IoTCentral.Models.Api20210601.IApp
+### Microsoft.Azure.PowerShell.Cmdlets.IoTCentral.Models.Api20211101Preview.IApp
 
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+NETWORKRULESETIPRULE <INetworkRuleSetIPRule[]>: List of IP rules.
+  - `[FilterName <String>]`: The readable name of the IP rule.
+  - `[IPMask <String>]`: The CIDR block defining the IP range.
 
 ## RELATED LINKS
 
