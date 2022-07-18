@@ -156,9 +156,9 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
-        public void TestAzureFirewallCRUDIdentifyTopFatFlows()
+        public void TestAzureFirewallCRUDIdentifyTopFatFlow()
         {
-            TestRunner.RunTestScript("Test-AzureFirewallCRUDIdentifyTopFatFlows");
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDIdentifyTopFatFlow");
         }
     
     }

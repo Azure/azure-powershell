@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = false,
            HelpMessage = "Identify Top Fat Flows. By default it is false."
        )]
-        public SwitchParameter IdentifyTopFatFlows { get; set; }
+        public SwitchParameter IdentifyTopFatFlow { get; set; }
 
         public override void Execute()
         {
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Commands.Network
                     FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
                     HubIPAddresses = this.HubIPAddress,
                     Zones = this.Zone == null ? null : this.Zone.ToList(),
-                    IdentifyTopFatFlows = (this.IdentifyTopFatFlows.IsPresent ? "true" : null)
+                    IdentifyTopFatFlow = (this.IdentifyTopFatFlow.IsPresent ? "true" : null)
                 };
             }
             else
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Commands.Network
                     DNSServer = this.DnsServer,
                     AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
                     Sku = sku,
-                    IdentifyTopFatFlows = (this.IdentifyTopFatFlows.IsPresent ? "true" : null)
+                    IdentifyTopFatFlow = (this.IdentifyTopFatFlow.IsPresent ? "true" : null)
                 };
 
                 if (this.Zone != null)

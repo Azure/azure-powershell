@@ -1872,9 +1872,9 @@ function Test-AzureFirewallManagementNICBasicSku {
 }
 <#
 .SYNOPSIS
-Tests AzureFirewall IdentifyTopFatFlows
+Tests AzureFirewall IdentifyTopFatFlow
 #>
-function Test-AzureFirewallCRUDIdentifyTopFatFlows {
+function Test-AzureFirewallCRUDIdentifyTopFatFlow {
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
@@ -1896,18 +1896,18 @@ function Test-AzureFirewallCRUDIdentifyTopFatFlows {
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
 
         # Create AzureFirewall
-        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -IdentifyTopFatFlows
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -IdentifyTopFatFlow
 
         # Verify
         $azFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
-        Assert-AreEqual true $azFirewall.IdentifyTopFatFlows
+        Assert-AreEqual true $azFirewall.IdentifyTopFatFlow
 
-        # Reset the IdentifyTopFatFlows flag
-        $azFirewall.IdentifyTopFatFlows = $false
+        # Reset the IdentifyTopFatFlow flag
+        $azFirewall.IdentifyTopFatFlow = $false
         Set-AzFirewall -AzureFirewall $azFirewall
         $azfw = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
         
-        Assert-AreEqual false $azfw.IdentifyTopFatFlows
+        Assert-AreEqual false $azfw.IdentifyTopFatFlow
     }
     finally {
         # Cleanup
