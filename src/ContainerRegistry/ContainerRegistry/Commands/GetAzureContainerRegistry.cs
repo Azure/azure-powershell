@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public override void ExecuteCmdlet()
         {
+            // test
             if (string.Equals(ParameterSetName, ListRegistriesParameterSet))
             {
                 ListRegistry();
