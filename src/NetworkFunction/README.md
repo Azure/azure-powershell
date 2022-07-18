@@ -44,10 +44,10 @@ directive:
       subject: (.)*(ByResourceGroup)$
     hide: true
   - where:
-    subject: (.)*(BySubscription)$
+      subject: (.)*(BySubscription)$
     hide: true
   - where:
-    subject: (.)*(Operation)$
+      subject: (.)*(Operation)$
     hide: true
 
 ```
