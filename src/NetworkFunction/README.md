@@ -41,6 +41,13 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     hide: true
   - where:
-      subject: ^Operation$
+      subject: (.)*(ByResourceGroup)$
     hide: true
+  - where:
+    subject: (.)*(BySubscription)$
+    hide: true
+  - where:
+    subject: (.)*(Operation)$
+    hide: true
+
 ```
