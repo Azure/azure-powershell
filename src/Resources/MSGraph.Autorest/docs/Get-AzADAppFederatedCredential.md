@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.resources/get-az
 schema: 2.0.0
 ---
 
-# Get-AzADAppFederatedIdentityCredential
+# Get-AzADAppFederatedCredential
 
 ## SYNOPSIS
 Get federatedIdentityCredentials by Id from applications.
@@ -14,28 +14,28 @@ Get federatedIdentityCredentials by Id from applications.
 
 ### ListByApplicationObjectId (Default)
 ```
-Get-AzADAppFederatedIdentityCredential -ApplicationObjectId <String> [-Count] [-Expand <String[]>]
- [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-First <UInt64>]
- [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADAppFederatedCredential -ApplicationObjectId <String> [-Count] [-Expand <String[]>] [-Filter <String>]
+ [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByApplicationObject
 ```
-Get-AzADAppFederatedIdentityCredential -ApplicationObject <MicrosoftGraphApplication> -Id <String>
+Get-AzADAppFederatedCredential -ApplicationObject <MicrosoftGraphApplication> -FederatedCredentialId <String>
  [-Expand <String[]>] [-Select <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByApplicationObjectId
 ```
-Get-AzADAppFederatedIdentityCredential -ApplicationObjectId <String> -Id <String> [-Expand <String[]>]
- [-Select <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADAppFederatedCredential -ApplicationObjectId <String> -FederatedCredentialId <String>
+ [-Expand <String[]>] [-Select <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByApplicationObject
 ```
-Get-AzADAppFederatedIdentityCredential -ApplicationObject <MicrosoftGraphApplication> [-Count]
- [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
- [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADAppFederatedCredential -ApplicationObject <MicrosoftGraphApplication> [-Count] [-Expand <String[]>]
+ [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-First <UInt64>]
+ [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,14 +45,14 @@ Get federatedIdentityCredentials by Id from applications.
 
 ### Example 1: List federated identity credentials for application
 ```powershell
-Get-AzADApplication -ObjectId $app | Get-AzADAppFederatedIdentityCredential
+Get-AzADApplication -ObjectId $app | Get-AzADAppFederatedCredential
 ```
 
 List federated identity credentials for application
 
 ### Example 2: Get federated identity credential by id
 ```powershell
-Get-AzADAppFederatedIdentityCredential -ApplicationObjectId $appObjectId -Id $credentialId
+Get-AzADAppFederatedCredential -ApplicationObjectId $appObjectId -FederatedCredentialId $credentialId
 ```
 
 Get federated identity credential by id
@@ -135,6 +135,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FederatedCredentialId
+key: id of federatedIdentityCredential
+
+```yaml
+Type: System.String
+Parameter Sets: GetByApplicationObject, GetByApplicationObjectId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Filter
 Filter items by property values
 
@@ -159,21 +174,6 @@ Parameter Sets: ListByApplicationObject, ListByApplicationObjectId
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-key: id of federatedIdentityCredential
-
-```yaml
-Type: System.String
-Parameter Sets: GetByApplicationObject, GetByApplicationObjectId
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -247,7 +247,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IMicrosoftGraphFederatedIdentityCredential
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential
 
 ## NOTES
 
@@ -296,6 +296,12 @@ APPLICATIONOBJECT <MicrosoftGraphApplication>: application object
   - `[CreatedOnBehalfOfDisplayName <String>]`: The name displayed in directory
   - `[Description <String>]`: An optional description of the application. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
   - `[DisabledByMicrosoftStatus <String>]`: Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, NOT).
+  - `[FederatedIdentityCredentials <IMicrosoftGraphFederatedIdentityCredential[]>]`: Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).
+    - `[Audience <String[]>]`: Lists the audiences that can appear in the external token. This field is mandatory, and defaults to 'api://AzureADTokenExchange'. It says what Microsoft identity platform should accept in the aud claim in the incoming token. This value represents Azure AD in your external identity provider and has no fixed value across identity providers - you may need to create a new application registration in your identity provider to serve as the audience of this token. Required.
+    - `[Description <String>]`: The un-validated, user-provided description of the federated identity credential. Optional.
+    - `[Issuer <String>]`: The URL of the external identity provider and must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app. Required.
+    - `[Name <String>]`: is the unique identifier for the federated identity credential, which has a character limit of 120 characters and must be URL friendly. It is immutable once created. Required. Not nullable. Supports $filter (eq).
+    - `[Subject <String>]`: Required. The identifier of the external software workload within the external identity provider. Like the audience value, it has no fixed format, as each identity provider uses their own - sometimes a GUID, sometimes a colon delimited identifier, sometimes arbitrary strings. The value here must match the sub claim within the token presented to Azure AD. The combination of issuer and subject must be unique on the app. Supports $filter (eq).
   - `[GroupMembershipClaim <String>]`: Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
   - `[HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]`: 
     - `[AppliesTo <IMicrosoftGraphDirectoryObject[]>]`: 
