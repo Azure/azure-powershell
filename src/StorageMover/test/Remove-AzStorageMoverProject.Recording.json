@@ -1,0 +1,80 @@
+{
+  "Remove-AzStorageMoverProject+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover1034pjhl6/projects/testProject034pjhl6?api-version=2022-07-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover1034pjhl6/projects/testProject034pjhl6?api-version=2022-07-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "51" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00001e42-0000-3400-0000-62d524320000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "797e5e62-738a-47ff-8e5b-191630e7181c" ],
+        "x-ms-request-id": [ "daa982f9-4b2f-4219-818e-0671e1ad3542" ],
+        "x-ms-correlation-request-id": [ "6a73f8bd-5271-4fdd-b5b7-f84efb88d14e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220718T091322Z:6a73f8bd-5271-4fdd-b5b7-f84efb88d14e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 18 Jul 2022 09:13:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "578" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover1034pjhl6/projects/testProject034pjhl6\",\"name\":\"testProject034pjhl6\",\"type\":\"microsoft.storagemover/storagemovers/projects\",\"systemData\":{\"createdBy\":\"yifanzhang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-18T09:12:47.3855754Z\",\"lastModifiedBy\":\"yifanzhang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-18T09:13:22.2450807Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"description\":\"\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzStorageMoverProject+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover1034pjhl6/projects/testProject034pjhl6?api-version=2022-07-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover1034pjhl6/projects/testProject034pjhl6?api-version=2022-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "70a583b2-9b29-469f-979c-4d8efa515932" ],
+        "CommandName": [ "Remove-AzStorageMoverProject" ],
+        "FullCommandName": [ "Remove-AzStorageMoverProject_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.5", "Az.StorageMover/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-correlation-request-id": [ "aed39297-059b-4b8e-80e0-0452abcd8ac7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220718T091323Z:aed39297-059b-4b8e-80e0-0452abcd8ac7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 18 Jul 2022 09:13:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

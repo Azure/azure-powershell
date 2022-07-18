@@ -1,0 +1,44 @@
+{
+  "Start-AzStorageMoverJobDefinition+[NoContext]+Start+$POST+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover1/projects/testProject034pjhl6/jobDefinitions/testJob034pjhl6/startJob?api-version=2022-07-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover1/projects/testProject034pjhl6/jobDefinitions/testJob034pjhl6/startJob?api-version=2022-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "6dad56f0-edb5-4b53-8663-764ead6404a7" ],
+        "CommandName": [ "Start-AzStorageMoverJobDefinition" ],
+        "FullCommandName": [ "Start-AzStorageMoverJobDefinition_Start" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.5", "Az.StorageMover/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "d0842f58-1bf7-4f00-b0f9-53a4a122e287" ],
+        "x-ms-request-id": [ "baf24851-9483-4395-a312-4176541c3de6" ],
+        "x-ms-correlation-request-id": [ "569c15a5-f655-480c-9e03-9b170290a4b8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220718T091325Z:569c15a5-f655-480c-9e03-9b170290a4b8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 18 Jul 2022 09:13:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "276" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"jobRunResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover1/projects/testProject034pjhl6/jobDefinitions/testJob034pjhl6/jobRuns/aced0b63-f412-46c4-8f33-00d6604f4ad6\"}",
+      "isContentBase64": false
+    }
+  }
+}
