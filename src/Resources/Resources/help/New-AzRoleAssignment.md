@@ -132,6 +132,8 @@ Grant Reader role access to a user at a resource group scope with the Role Assig
 
 ### Example 2
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 Get-AzADGroup -SearchString "Christine Koch Team"
 
