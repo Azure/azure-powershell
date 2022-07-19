@@ -26,6 +26,9 @@ AutoRest does not generate authentication code for the module. Authentication is
 For information on how to develop for `Az.StorageMover`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
+### AutoRest Configuration
+> see https://aka.ms/autorest
+
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
 branch: main
