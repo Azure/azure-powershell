@@ -34,27 +34,32 @@ Gets an existing custom domain within an endpoint.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List AzureCDN custom domains under the AzureCDN endpoint
 ```powershell
-{{ Add code here }}
+Get-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
 ```
 
 ```output
-{{ Add output here }}
+Name            ResourceGroupName
+----            -----------------
+customdomain001 testps-rg-da16jm
+customdomain002 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+List AzureCDN custom domains under the AzureCDN endpoint
 
-### Example 2: {{ Add title here }}
+### Example 2: Get an AzureCDN custom domain under the AzureCDN endpoint
 ```powershell
-{{ Add code here }}
+Get-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001
 ```
 
 ```output
-{{ Add output here }}
+Name            ResourceGroupName
+----            -----------------
+customdomain001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+Get an AzureCDN custom domain under the AzureCDN endpoint
 
 ## PARAMETERS
 

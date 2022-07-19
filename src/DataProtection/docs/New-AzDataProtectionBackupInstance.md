@@ -58,10 +58,10 @@ New-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName "Reso
 Name                                                                Type                                                  BackupInstanceName
 ----                                                                ----                                                  ------------------
 xyz-postgresql-wus-empdb10-xxxxxxxx-xxxx-xxxx-a3ba-be75108d8b21 Microsoft.DataProtection/backupVaults/backupInstances xyz-postgresql-wus-empdb10-xxxxxxxx-xxxx-xxxx-a3ba-be75108d8b21
-
 ```
 
-The third command initializes the secretURI for secret store authentication. 
+The third command initializes the secretURI for secret store authentication.
+
 The fifth command gets the policy with which database will be protected.
 The sixth command initializes the backup instance request object.
 The last command configures backup of the given $dataSourceId in the backup vault.
@@ -88,7 +88,7 @@ Backup instance request object which will be used to configure backup
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupInstanceResource
 Parameter Sets: (All)
 Aliases:
 
@@ -249,6 +249,7 @@ BACKUPINSTANCE <IBackupInstanceResource>: Backup instance request object which w
     - `[DatasourceAuthCredentials <IAuthCredentials>]`: Credentials to use to authenticate with data source provider.
       - `ObjectType <String>`: Type of the specific object - used for deserializing
     - `[FriendlyName <String>]`: Gets or sets the Backup Instance friendly name.
+    - `[ValidationType <ValidationType?>]`: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 
 ## RELATED LINKS
 

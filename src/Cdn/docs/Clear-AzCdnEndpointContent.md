@@ -43,27 +43,12 @@ Removes a content from CDN.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get content of an AzureCDN Endpoint under the AzureCDN profile
 ```powershell
-{{ Add code here }}
+Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentPath @("/movies/*","/pictures/pic1.jpg") 
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get content of an AzureCDN Endpoint under the AzureCDN profile
 
 ## PARAMETERS
 

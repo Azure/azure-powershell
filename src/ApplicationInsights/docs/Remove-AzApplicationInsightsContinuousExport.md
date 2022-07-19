@@ -31,7 +31,7 @@ Delete a Continuous Export configuration of an Application Insights component.
 
 ### Example 1: Remove a continuous export configuration in an application insights resource
 ```powershell
-Remove-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" -ExportId "uGOoki0jQsyEs3IdQ83Q4QsNr4=" -PassThru
+Remove-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" -ExportId "uGOoki0jQsyEs3IdQ83Q4QsNr4="
 ```
 
 Remove a continuous export configuration in an application insights resource

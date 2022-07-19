@@ -1,0 +1,42 @@
+{
+  "New-AzMLWorkspaceComponentContainer+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/components/component-pwsh01?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/components/component-pwsh01?api-version=2022-05-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"isArchived\": true\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "52" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "d36e1bbb-e255-41c5-9d0b-fb1ab81140d6" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.937" ],
+        "x-ms-correlation-request-id": [ "d36e1bbb-e255-41c5-9d0b-fb1ab81140d6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T140454Z:d36e1bbb-e255-41c5-9d0b-fb1ab81140d6" ],
+        "Date": [ "Sun, 05 Jun 2022 14:04:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "600" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/components/component-pwsh01\",\n  \"name\": \"component-pwsh01\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/components\",\n  \"properties\": {\n    \"description\": \"\",\n    \"tags\": {},\n    \"properties\": {},\n    \"isArchived\": true,\n    \"latestVersion\": null,\n    \"nextVersion\": \"2022-06-05-14-04-54-2244775\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-06-05T13:54:44.4599673Z\",\n    \"lastModifiedAt\": \"2022-06-05T14:04:54.2081128Z\"\n  }\n}",
+      "isContentBase64": false
+    }
+  }
+}

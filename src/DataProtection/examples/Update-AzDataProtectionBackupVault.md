@@ -12,3 +12,15 @@ ETag IdentityPrincipalId                  IdentityTenantId                     I
 
 The first command creates a new tag hashtable with tags and their values. The second command adds the given tags to the backup vault.
 
+### Example 2: Disable Azure monitor alerts for job failures
+```powershell
+Update-AzDataProtectionBackupVault -ResourceGroupName "rgName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -AzureMonitorAlertsForAllJobFailure 'Disabled'
+```
+
+```output
+Name          Location      Type                                  IdentityType
+----          --------      ----                                  ------------
+vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned
+```
+
+This command disables the monitor alerts for all the job failures for the backup vault. Allowed values are: Enabled, Disabled. Note that by default this setting is enabled. 

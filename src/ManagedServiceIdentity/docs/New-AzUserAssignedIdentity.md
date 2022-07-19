@@ -25,8 +25,10 @@ Create or update an identity in the specified subscription and resource group.
 
 ### Example 1: Creates an user assigned identity in the specified subscription and resource group
 ```powershell
-PS C:\> New-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Location eastus
+New-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Location eastus
+```
 
+```output
 Location Name       ResourceGroupName
 -------- ----       -----------------
 eastus   uai-pwsh01 azure-rg-test

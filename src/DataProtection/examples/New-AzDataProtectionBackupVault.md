@@ -13,4 +13,3 @@ ETag IdentityPrincipalId IdentityTenantId IdentityType Location Name    Type
 
 This command creates a new backup vault.
 
-

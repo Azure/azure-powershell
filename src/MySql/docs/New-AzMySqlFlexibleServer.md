@@ -76,10 +76,10 @@ If you want to find the auto-generated password for your server, use ConvertFrom
 $Vnet = 'vnetname'
 New-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Vnet $Vnet
 
-or
+# or
 
 $Vnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellMySqlTest/providers/Microsoft.Network/virtualNetworks/vnetname'
-New-AzMySqlFlexibleServer  -ResourceGroupName PowershellMySqlTest -Vnet $Vnet
+New-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Vnet $Vnet
 ```
 
 ```output
@@ -409,7 +409,7 @@ Accept wildcard characters: False
 
 ### -SubnetPrefix
 The subnet IP address prefix to use when creating a new vnet in CIDR format.
-Default value is 10.0.0.0/24.
+Default value is 10.0.0.0/24.
 
 ```yaml
 Type: System.String
