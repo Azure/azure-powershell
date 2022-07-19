@@ -12,10 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Cmdlets
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNetworkFunctionCollectorPolicy_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ICollectorPolicy))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Description(@"Creates or updates a Collector Policy resource")]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Generated]
     public partial class NewAzNetworkFunctionCollectorPolicy_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.IEventListener
     {
