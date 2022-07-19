@@ -1,0 +1,123 @@
+{
+  "Remove-AzSentinelAlertRuleAction+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/alertRules/3e459759-acb2-48cd-b091-f325a2618fb6/actions/d359018e-774c-4345-aad4-eaf449a72b0c?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/alertRules/3e459759-acb2-48cd-b091-f325a2618fb6/actions/d359018e-774c-4345-aad4-eaf449a72b0c?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "272" ],
+        "x-ms-client-request-id": [ "dbc99097-45e4-4ce8-ad2c-ab0995cfdbaa" ],
+        "CommandName": [ "Remove-AzSentinelAlertRuleAction" ],
+        "FullCommandName": [ "Remove-AzSentinelAlertRuleAction_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-request-id": [ "acc2a458-3098-41cf-a945-7b2de7a674cb" ],
+        "x-ms-correlation-request-id": [ "acc2a458-3098-41cf-a945-7b2de7a674cb" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T021046Z:acc2a458-3098-41cf-a945-7b2de7a674cb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:10:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSentinelAlertRuleAction+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/alertRules/a2dda58f-98fd-44db-ac37-397a9ccd9e25/actions/49c62647-0f89-442a-8fc1-76a2159daa80?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/alertRules/a2dda58f-98fd-44db-ac37-397a9ccd9e25/actions/49c62647-0f89-442a-8fc1-76a2159daa80?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "273" ],
+        "x-ms-client-request-id": [ "a1ffcfe9-2e9f-4977-a742-bd67e6bfae66" ],
+        "CommandName": [ "Get-AzSentinelAlertRuleAction" ],
+        "FullCommandName": [ "Get-AzSentinelAlertRuleAction_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11937" ],
+        "x-ms-request-id": [ "f928eb20-886a-4e9f-ac2b-418095866ce6" ],
+        "x-ms-correlation-request-id": [ "f928eb20-886a-4e9f-ac2b-418095866ce6" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T021047Z:f928eb20-886a-4e9f-ac2b-418095866ce6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:10:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "660" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/alertRules/a2dda58f-98fd-44db-ac37-397a9ccd9e25/actions/49c62647-0f89-442a-8fc1-76a2159daa80\",\"name\":\"49c62647-0f89-442a-8fc1-76a2159daa80\",\"etag\":\"\\\"2600e554-0000-0300-0000-61b550330000\\\"\",\"type\":\"Microsoft.SecurityInsights/alertRules/actions\",\"properties\":{\"workflowId\":\"3647b421918e40f19a5e9346dc633c61\",\"logicAppResourceId\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.Logic/workflows/Block-AADUser-Alert\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSentinelAlertRuleAction+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/alertRules/a2dda58f-98fd-44db-ac37-397a9ccd9e25/actions/49c62647-0f89-442a-8fc1-76a2159daa80?api-version=2021-09-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/alertRules/a2dda58f-98fd-44db-ac37-397a9ccd9e25/actions/49c62647-0f89-442a-8fc1-76a2159daa80?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "274" ],
+        "x-ms-client-request-id": [ "75cd3713-b8a9-4013-b834-41d7af4399db" ],
+        "CommandName": [ "Remove-AzSentinelAlertRuleAction" ],
+        "FullCommandName": [ "Remove-AzSentinelAlertRuleAction_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "x-ms-request-id": [ "3f232c75-0ea5-4687-a3bf-22d656c9e5ef" ],
+        "x-ms-correlation-request-id": [ "3f232c75-0ea5-4687-a3bf-22d656c9e5ef" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T021048Z:3f232c75-0ea5-4687-a3bf-22d656c9e5ef" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:10:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

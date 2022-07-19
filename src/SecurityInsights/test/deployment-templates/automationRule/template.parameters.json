@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "automationRuleName": {
+      "value": "UpdateViaIdAutomationRulezi05h4"
+    },
+    "automationRuleId": {
+      "value": "61701d90-8353-4d61-b435-f9905a31142d"
+    },
+    "workspaceName": {
+      "value": "asptest8xu4wd"
+    },
+    "logicAppResourceId": {
+      "value": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.Logic/workflows/Block-AADUser-Incident"
+    }
+  }
+}
