@@ -114,6 +114,8 @@ Name                                 Type                                       
 4cd7e26b-8eca-425c-969d-ec708c88bf18 Microsoft.Authorization/roleEligibilitySchedules /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/…
 ```
 
+Get a role eligible schedules by scope and name
+
 ## PARAMETERS
 
 ### -DefaultProfile

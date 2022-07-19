@@ -47,6 +47,8 @@ TenantId    : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 DisplayName : TestGroupChildDisplayName
 ```
 
+Get all Management Groups
+
 ### Example 2: Get specific Management Group
 ```powershell
 Get-AzManagementGroup -GroupName TestGroup
@@ -64,6 +66,8 @@ ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupPa
 ParentName        : TestGroupParent
 ParentDisplayName : TestGroupParent
 ```
+
+Get specific Management Group
 
 ### Example 3: Get specific Management Group and first level of hierarchy
 <!-- Skip: Output cannot be splitted from code -->
@@ -132,6 +136,8 @@ Name        : TestRecurseChild
 DisplayName : TestRecurseChild
 Children    :
 ```
+
+Get specific Management Group and all levels of hierarchy
 
 ## PARAMETERS
 
