@@ -47,7 +47,7 @@ Dispaly RestorableTimeRange, note that this can be multiple dicrete ranges.
 ## PARAMETERS
 
 ### -BackupInstanceName
-The name of the backup instance for which to fetch the restorable time range.
+The name of the backup instance
 
 ```yaml
 Type: System.String
@@ -206,7 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IAzureBackupFindRestorableTimeRangesResponseResource
 
 ## NOTES
 

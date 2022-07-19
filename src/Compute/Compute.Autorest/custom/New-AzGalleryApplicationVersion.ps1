@@ -13,7 +13,7 @@ Create or update a gallery Application Version.
 Create or update a gallery Application Version.
 #>
 function New-AzGalleryApplicationVersion {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
@@ -120,7 +120,7 @@ function New-AzGalleryApplicationVersion {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ITargetRegion[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ITargetRegion[]]
         # The target regions where the Image Version is going to be replicated to.
         # This property is updatable.
         # To construct, see NOTES section for TARGETREGION properties and create a hash table.
@@ -192,7 +192,25 @@ function New-AzGalleryApplicationVersion {
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
-        ${ProxyUseDefaultCredentials}
+        ${ProxyUseDefaultCredentials},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [System.String]
+        # Optional.
+        # The name to assign the downloaded package file on the VM.
+        # This is limited to 4096 characters.
+        # If not specified, the package file will be named the same as the Gallery Application name.
+        ${PackageFileName},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [System.String]
+        # Optional.
+        # The name to assign the downloaded config file on the VM.
+        # This is limited to 4096 characters.
+        # If not specified, the config file will be named the Gallery Application name appended with "_config".
+        ${ConfigFileName}
     )
     process {
         Az.Compute.internal\New-AzGalleryApplicationVersion @PSBoundParameters

@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.DataMigration",
-  "ModuleVersion": "0.10.0",
+  "ModuleVersion": "0.11.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
               "ResourceGroupName": "System.String",
@@ -74,7 +74,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -157,7 +157,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -429,7 +429,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -736,7 +736,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
               "ResourceGroupName": "System.String",
@@ -794,7 +794,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
               "ResourceGroupName": "System.String",
@@ -867,7 +867,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -876,7 +876,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum"
             ]
@@ -917,7 +917,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -939,7 +939,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum"
                   ]
@@ -991,7 +991,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -1080,7 +1080,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -1135,7 +1135,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -1196,7 +1196,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum"
                   ]
@@ -1372,7 +1372,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -1463,7 +1463,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum"
                   ]
@@ -1699,7 +1699,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -1845,7 +1845,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.CommandTypeEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.CommandTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.CommandTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -1916,7 +1916,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.CommandTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.CommandTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.CommandTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2022,7 +2022,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.CommandTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.CommandTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.CommandTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2093,7 +2093,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSAzureActiveDirectoryApp",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSAzureActiveDirectoryApp, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSAzureActiveDirectoryApp, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AppKey": "System.Security.SecureString",
               "ApplicationId": "System.String",
@@ -2332,7 +2332,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -2367,7 +2367,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2762,7 +2762,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Setting": "Microsoft.Azure.Management.DataMigration.Models.MongoDbCollectionSettings",
               "Name": "System.String"
@@ -3029,7 +3029,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbDatabaseSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbDatabaseSetting, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbDatabaseSetting, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Setting": "Microsoft.Azure.Management.DataMigration.Models.MongoDbDatabaseSettings",
               "Name": "System.String"
@@ -3107,7 +3107,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting[], Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting[], Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting"
           },
           "ValidateNotNullOrEmpty": false
@@ -3187,7 +3187,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting[], Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting[], Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3244,7 +3244,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
               "ResourceGroupName": "System.String",
@@ -3302,7 +3302,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -3448,7 +3448,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -4541,7 +4541,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -5104,7 +5104,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
               "ResourceGroupName": "System.String",
@@ -5162,7 +5162,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
               "ResourceGroupName": "System.String",
@@ -5187,7 +5187,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -5273,7 +5273,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -5295,7 +5295,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -5374,7 +5374,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -5438,7 +5438,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -5562,7 +5562,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -5652,7 +5652,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
               "ResourceGroupName": "System.String",
@@ -5763,7 +5763,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -6178,7 +6178,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -6279,7 +6279,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -6678,7 +6678,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
               "ResourceGroupName": "System.String",
@@ -6789,7 +6789,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
                     "ResourceGroupName": "System.String",
@@ -7159,7 +7159,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -7242,7 +7242,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -7521,7 +7521,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -7604,7 +7604,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -7883,7 +7883,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
               "ResourceGroupName": "System.String",
@@ -7985,7 +7985,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
                     "ResourceGroupName": "System.String",
@@ -8527,6 +8527,15 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "Time",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int64",
+            "AssemblyQualifiedName": "System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ConfigFilePath",
           "Type": {
             "Namespace": "System",
@@ -8627,6 +8636,56 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "Time",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int64",
+                  "AssemblyQualifiedName": "System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Time",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int64",
+                  "AssemblyQualifiedName": "System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "PassThru",
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -8662,11 +8721,11 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "PassThru",
+                "Name": "Time",
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "Namespace": "System",
+                  "Name": "System.Int64",
+                  "AssemblyQualifiedName": "System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8674,12 +8733,7 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "__AllParameterSets",
-          "Parameters": [
+            },
             {
               "ParameterMetadata": {
                 "Name": "PassThru",
@@ -9120,7 +9174,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IntegrationRuntimeState": "System.String",
               "ProvisioningState": "System.String"
@@ -9168,7 +9222,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ManagedInstanceName": "System.String",
@@ -9209,7 +9263,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -9219,7 +9273,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -9354,7 +9408,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9370,7 +9424,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9516,7 +9570,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9532,7 +9586,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9663,7 +9717,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9679,7 +9733,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9760,7 +9814,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ManagedInstanceName": "System.String",
@@ -9819,7 +9873,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9835,7 +9889,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9950,7 +10004,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9966,7 +10020,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10054,7 +10108,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IAuthenticationKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IAuthenticationKeys, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IAuthenticationKeys, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthKey1": "System.String",
               "AuthKey2": "System.String"
@@ -10121,7 +10175,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -10131,7 +10185,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -10263,7 +10317,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10279,7 +10333,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10367,7 +10421,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IIntegrationRuntimeMonitoringData",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IIntegrationRuntimeMonitoringData, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IIntegrationRuntimeMonitoringData, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Node": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringData[]",
               "Name": "System.String"
@@ -10434,7 +10488,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -10444,7 +10498,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -10576,7 +10630,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10592,7 +10646,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10680,7 +10734,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigration",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigration, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigration, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType]",
@@ -10771,7 +10825,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -10781,7 +10835,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -10913,7 +10967,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10929,7 +10983,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11017,7 +11071,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "MigrationStatusDetailListOfCopyProgressDetail": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ICopyProgressDetails[]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType]",
@@ -11106,7 +11160,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ManagedInstanceName": "System.String",
@@ -11165,7 +11219,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -11175,7 +11229,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -11352,7 +11406,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11368,7 +11422,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11449,7 +11503,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ManagedInstanceName": "System.String",
@@ -11538,7 +11592,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11554,7 +11608,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11699,7 +11753,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11715,7 +11769,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11803,7 +11857,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "MigrationStatusDetail": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationStatusDetails",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType]",
@@ -11893,7 +11947,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ManagedInstanceName": "System.String",
@@ -11952,7 +12006,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -11962,7 +12016,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -12139,7 +12193,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12155,7 +12209,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12236,7 +12290,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ManagedInstanceName": "System.String",
@@ -12325,7 +12379,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12341,7 +12395,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12486,7 +12540,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12502,7 +12556,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12590,7 +12644,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "MigrationStatusDetail": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationStatusDetails",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType]",
@@ -12680,7 +12734,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ManagedInstanceName": "System.String",
@@ -12739,7 +12793,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -12749,7 +12803,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -12926,7 +12980,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12942,7 +12996,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13023,7 +13077,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ManagedInstanceName": "System.String",
@@ -13112,7 +13166,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13128,7 +13182,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13273,7 +13327,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13289,7 +13343,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13466,7 +13520,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -13476,7 +13530,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -13661,7 +13715,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13677,7 +13731,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -13869,7 +13923,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -13879,7 +13933,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -14064,7 +14118,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14080,7 +14134,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14183,7 +14237,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IntegrationRuntimeState": "System.String",
               "ProvisioningState": "System.String"
@@ -14279,7 +14333,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -14289,7 +14343,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -14477,7 +14531,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14493,7 +14547,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14596,7 +14650,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IRegenAuthKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IRegenAuthKeys, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IRegenAuthKeys, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthKey1": "System.String",
               "AuthKey2": "System.String",
@@ -14690,7 +14744,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -14700,7 +14754,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -14876,7 +14930,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14892,7 +14946,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -14980,7 +15034,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "MigrationStatusDetailListOfCopyProgressDetail": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ICopyProgressDetails[]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType]",
@@ -15068,7 +15122,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -15262,7 +15316,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -15272,7 +15326,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -15393,7 +15447,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -15713,7 +15767,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -15729,7 +15783,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -15832,7 +15886,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "MigrationStatusDetail": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationStatusDetails",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType]",
@@ -15975,7 +16029,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -16141,7 +16195,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -16151,7 +16205,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -16362,7 +16416,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -16636,7 +16690,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -16652,7 +16706,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -16755,7 +16809,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "MigrationStatusDetail": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationStatusDetails",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType]",
@@ -16898,7 +16952,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -17064,7 +17118,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -17074,7 +17128,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -17285,7 +17339,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -17559,7 +17613,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -17575,7 +17629,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -17824,7 +17878,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ManagedInstanceName": "System.String",
@@ -17874,7 +17928,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -17884,7 +17938,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -18042,7 +18096,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -18058,7 +18112,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -18154,7 +18208,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ManagedInstanceName": "System.String",
@@ -18228,7 +18282,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -18244,7 +18298,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -18389,7 +18443,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -18405,7 +18459,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -18508,7 +18562,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDeleteNode",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDeleteNode, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDeleteNode, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IntegrationRuntimeName": "System.String",
               "NodeName": "System.String"
@@ -18552,7 +18606,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ManagedInstanceName": "System.String",
@@ -18611,7 +18665,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -18621,7 +18675,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -18782,7 +18836,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -18798,7 +18852,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -18879,7 +18933,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ManagedInstanceName": "System.String",
@@ -18968,7 +19022,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -18984,7 +19038,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -19129,7 +19183,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -19145,7 +19199,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -19282,7 +19336,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ManagedInstanceName": "System.String",
@@ -19341,7 +19395,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -19351,7 +19405,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -19536,7 +19590,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -19552,7 +19606,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -19648,7 +19702,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ManagedInstanceName": "System.String",
@@ -19737,7 +19791,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -19753,7 +19807,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -19913,7 +19967,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -19929,7 +19983,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -20121,7 +20175,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -20131,7 +20185,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -20316,7 +20370,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -20332,7 +20386,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -20524,7 +20578,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -20534,7 +20588,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -20719,7 +20773,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -20735,7 +20789,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -20927,7 +20981,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -20937,7 +20991,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -21122,7 +21176,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -21138,7 +21192,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -21241,7 +21295,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IntegrationRuntimeState": "System.String",
               "ProvisioningState": "System.String"
@@ -21288,7 +21342,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ManagedInstanceName": "System.String",
@@ -21347,7 +21401,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -21357,7 +21411,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -21530,7 +21584,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -21546,7 +21600,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -21642,7 +21696,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ManagedInstanceName": "System.String",
@@ -21731,7 +21785,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -21747,7 +21801,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -21907,7 +21961,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -21923,7 +21977,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -22853,7 +22907,7 @@
     "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum": {
       "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
       "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -23200,7 +23254,7 @@
     "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting": {
       "Namespace": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb",
       "Name": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.MongoDb.MongoDbCollectionSetting, Microsoft.Azure.PowerShell.Cmdlets.DataMigration, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Setting": "Microsoft.Azure.Management.DataMigration.Models.MongoDbCollectionSettings",
         "Name": "System.String"
@@ -23468,7 +23522,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -23641,13 +23695,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringData[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringData[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringData[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringData[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringData"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringData": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringData",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringData, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringData, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AdditionalProperty": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringDataAdditionalProperties",
         "ReceivedByte": "System.Nullable`1[System.Double]",
@@ -23663,7 +23717,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringDataAdditionalProperties": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringDataAdditionalProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringDataAdditionalProperties, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.INodeMonitoringDataAdditionalProperties, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "System.Nullable`1[System.Double]": {
       "Namespace": "System",
@@ -23676,7 +23730,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType"
       ]
@@ -23684,7 +23738,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.CreatedByType, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -23762,7 +23816,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType"
       ]
@@ -23770,7 +23824,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -23848,13 +23902,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ICopyProgressDetails[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ICopyProgressDetails[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ICopyProgressDetails[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ICopyProgressDetails[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ICopyProgressDetails"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ICopyProgressDetails": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ICopyProgressDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ICopyProgressDetails, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ICopyProgressDetails, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CopyStart": "System.Nullable`1[System.DateTime]",
         "CopyThroughput": "System.Nullable`1[System.Double]",
@@ -23886,7 +23940,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationStatusDetails": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationStatusDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationStatusDetails, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationStatusDetails, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "FullBackupSetInfoListOfBackupFile": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupFileInfo[]",
         "LastRestoredBackupSetInfoListOfBackupFile": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupFileInfo[]",
@@ -23926,13 +23980,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupFileInfo[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupFileInfo[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupFileInfo[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupFileInfo[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupFileInfo"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupFileInfo": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupFileInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupFileInfo, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupFileInfo, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CopyThroughput": "System.Nullable`1[System.Double]",
         "CopyDuration": "System.Nullable`1[System.Int32]",
@@ -23947,13 +24001,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupSetInfo[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupSetInfo[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupSetInfo[], Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupSetInfo[], Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupSetInfo"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupSetInfo": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupSetInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupSetInfo, Az.DataMigration.private, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupSetInfo, Az.DataMigration.private, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ListOfBackupFile": "Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlBackupFileInfo[]",
         "HasBackupChecksum": "System.Nullable`1[System.Boolean]",
