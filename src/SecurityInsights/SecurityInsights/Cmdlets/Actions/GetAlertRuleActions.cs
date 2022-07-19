@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
 
         public override void ExecuteCmdlet()
         {
+            // test
             switch (ParameterSetName)
             {
                 case ParameterSetNames.AlertRuleId:
