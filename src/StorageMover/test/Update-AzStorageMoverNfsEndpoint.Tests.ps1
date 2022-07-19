@@ -21,8 +21,8 @@ Describe 'Update-AzStorageMoverNfsEndpoint' {
         $updateDescription = "update Nfs endpoint Description"
         $nfsVersion = "NFSv3"
         $endpointHost = "10.0.0.1"
-        $remoteExport = "/"
-        $nfsEndpoint = New-AzStorageMoverNfsEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Host $endpointHost -RemoteExport $remoteExport -NfsVersion $nfsVersion -Description $description 
+        $export = "/"
+        $nfsEndpoint = New-AzStorageMoverNfsEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Host $endpointHost -Export $export -NfsVersion $nfsVersion -Description $description 
         $nfsEndpoint = Update-AzStorageMoverNfsEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Description $updateDescription    
         $nfsEndpoint.Name | Should -Be $endpointName
         $nfsEndpoint.Property.Description | Should -Be $updateDescription 

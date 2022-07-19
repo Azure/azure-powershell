@@ -20,17 +20,17 @@ Describe 'New-AzStorageMoverNfsEndpoint' {
         $description = "Nfs endpoint description"
         $nfsVersion = "NFSv3"
         $endpointHost = "10.0.0.1"
-        $remoteExport = "/"
-        $nfsEndpoint = New-AzStorageMoverNfsEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Host $endpointHost -RemoteExport $remoteExport -NfsVersion $nfsVersion -Description $description 
+        $export = "/"
+        $nfsEndpoint = New-AzStorageMoverNfsEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Host $endpointHost -Export $export -NfsVersion $nfsVersion -Description $description 
         $nfsEndpoint.Name | Should -Be $endpointName
         $nfsEndpoint.Property.endpointType | Should -Be "NfsMount"
         $nfsEndpoint.Property.host | Should -Be $endpointHost 
-        $nfsEndpoint.Property.remoteExport | Should -Be $remoteExport
+        $nfsEndpoint.Property.export | Should -Be $export
 
         $nfsEndpoint = Get-AzStorageMoverEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName
         $nfsEndpoint.Name | Should -Be $endpointName
         $nfsEndpoint.Property.endpointType | Should -Be "NfsMount"
         $nfsEndpoint.Property.host | Should -Be $endpointHost 
-        $nfsEndpoint.Property.remoteExport | Should -Be $remoteExport
+        $nfsEndpoint.Property.export | Should -Be $export
     }
 }

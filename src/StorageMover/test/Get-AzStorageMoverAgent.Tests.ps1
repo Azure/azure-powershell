@@ -24,5 +24,4 @@ Describe 'Get-AzStorageMoverAgent' {
         $agent =  Get-AzStorageMoverAgent -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Name $env.AgentName
         $agent.Name | Should -Be $env.AgentName
     }
-
 }

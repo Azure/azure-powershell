@@ -22,7 +22,7 @@ Properties not specified in the request body will be unchanged.
 Updates properties for a Nfs endpoint resource.
 Properties not specified in the request body will be unchanged.
 .Example
-Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpointName -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMover -Description "Update Description"}
+Update-AzStorageMoverNfsEndpoint -Name myEndpointName -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMover -Description "Update Description"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpointBaseUpdateParameters

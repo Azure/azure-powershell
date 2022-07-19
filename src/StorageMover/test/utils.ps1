@@ -46,7 +46,7 @@ function setupEnv() {
     $env.ContainerEndpointName = "containerEndpoint" + $env.RandomString
     $env.NfsEndpointName = "nfsEndpoint" + $env.RandomString
     $containerEndpoint = New-AzStorageMoverAzStorageContainerEndpoint -Name $env.ContainerEndpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -BlobContainerName $env.ContainerName -StorageAccountResourceId $env.StoraccId
-    $nfsEndpoint = New-AzStorageMoverNfsEndpoint -Name $env.NfsEndpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Host "10.0.0.1" -RemoteExport "/"
+    $nfsEndpoint = New-AzStorageMoverNfsEndpoint -Name $env.NfsEndpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Host "10.0.0.1" -Export "/"
 
     $env.ProjectName = "testProject" + $env.RandomString
     $env.ProjectName2 = "testProject2" + $env.RandomString

@@ -37,8 +37,8 @@ input-file:
 #  - https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/storagemover/resource-manager/Microsoft.StorageMover/preview/2022-07-01-preview/storagemover.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-# - D:\code\swagger\specification\storagemover\resource-manager\Microsoft.StorageMover\preview\2022-07-01-preview\storagemover.json
- - $(this-folder)/swagger/specification/storagemover/resource-manager/Microsoft.StorageMover/preview/2022-07-01-preview/storagemover.json
+# - D:\code\swaggerrepo\specification\storagemover\resource-manager\Microsoft.StorageMover\preview\2022-07-01-preview\storagemover.json
+ - $(this-folder)/../StorageMoverSwagger/swagger/specification/storagemover/resource-manager/Microsoft.StorageMover/preview/2022-07-01-preview/storagemover.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0

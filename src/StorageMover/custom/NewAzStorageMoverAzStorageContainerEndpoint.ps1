@@ -152,9 +152,6 @@ function New-AzStorageMoverAzStorageContainerEndpoint {
         if ($PSBoundParameters.ContainsKey('StorageAccountResourceId')) {
             $null = $PSBoundParameters.Remove("StorageAccountResourceId")
         }
-        if ($PSBoundParameters.ContainsKey('RemoteExport')) {
-            $null = $PSBoundParameters.Remove("RemoteExport")
-        }
         if ($PSBoundParameters.ContainsKey('Description')) {
             $null = $PSBoundParameters.Remove("Description")
         }

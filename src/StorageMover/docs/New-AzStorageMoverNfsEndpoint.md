@@ -14,8 +14,8 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 
 ```
 New-AzStorageMoverNfsEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- -Host <String> -RemoteExport <String> [-SubscriptionId <String>] [-Description <String>]
- [-NfsVersion <NfsVersion>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Export <String> -Host <String> [-SubscriptionId <String>] [-Description <String>] [-NfsVersion <NfsVersion>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 
 ### Example 1: Create a NFS endpoint
 ```powershell
- New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "x.x.x.x" -RemoteExport "/" -NfsVersion NFSv3 -Description "Description"
+ New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "x.x.x.x" -Export "/" -NfsVersion NFSv3 -Description "Description"
 ```
 
 ```output
@@ -35,7 +35,7 @@ Property                     : {
                                  "endpointType": "NfsMount",
                                  "provisioningState": "Succeeded",
                                  "host": "x.x.x.x",
-                                 "remoteExport": "x"
+                                 "export": "/"
                                }
 SystemDataCreatedAt          : 7/18/2022 7:28:30 AM
 SystemDataCreatedBy          : xxxxxxx
@@ -74,6 +74,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Export
+The directory being exported from the server.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,21 +134,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RemoteExport
-The directory being exported from the server.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "2022-07-01-preview",
-    "title": "StorageMoverClient",
+    "title": "StorageMover",
     "description": "The Azure Storage Mover REST API."
   },
   "host": "management.azure.com",
@@ -1306,6 +1306,10 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/startJob": {
       "post": {
+        "consumes":[
+          "application/json",
+          "application/x-www-form-urlencoded"
+        ],
         "tags": [
           "JobDefinitions"
         ],
@@ -1354,6 +1358,10 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/stopJob": {
       "post": {
+        "consumes":[
+          "application/json",
+          "application/x-www-form-urlencoded"
+        ],
         "tags": [
           "JobDefinitions"
         ],
@@ -1535,12 +1543,12 @@
         "agentStatus": {
           "description": "The agent status.",
           "enum": [
-            "Provisioning",
+            "Registering",
             "Offline",
             "Online",
             "Executing",
             "RequiresAttention",
-            "Deprovisioning"
+            "Unregistering"
           ],
           "type": "string",
           "x-ms-enum": {
@@ -1570,6 +1578,12 @@
           "type": "integer",
           "format": "int64",
           "description": "Available compute cores reported by the agent.",
+          "readOnly": true
+        },
+        "uptimeInSeconds": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Uptime of the agent in seconds.",
           "readOnly": true
         },
         "errorDetails": {
@@ -1907,7 +1921,7 @@
             "create"
           ]
         },
-        "remoteExport": {
+        "export": {
           "description": "The directory being exported from the server.",
           "type": "string",
           "x-ms-mutability": [
@@ -1918,7 +1932,7 @@
       },
       "required": [
         "host",
-        "remoteExport"
+        "export"
       ],
       "allOf": [
         {
@@ -2202,10 +2216,10 @@
           "format": "date-time",
           "description": "End time of the run. Null if agent has not reported that the job has ended."
         },
-        "lastUpdatedTime": {
+        "lastStatusUpdate": {
           "type": "string",
           "format": "date-time",
-          "description": "Last update time.",
+          "description": "The last updated time of the job run.",
           "readOnly": true
         },
         "itemsScanned": {
@@ -2230,12 +2244,6 @@
           "type": "integer",
           "format": "int64",
           "description": "Number of items that will not be transferred, as they are already found on target (e.g. mirror mode).",
-          "readOnly": true
-        },
-        "itemsDesignatedForTransfer": {
-          "type": "integer",
-          "format": "int64",
-          "description": "Number of items identified for transferring so far in scan.",
           "readOnly": true
         },
         "itemsFailed": {
@@ -2272,12 +2280,6 @@
           "type": "integer",
           "format": "int64",
           "description": "Bytes of data that will not be transferred, as they are already found on target (e.g. mirror mode).",
-          "readOnly": true
-        },
-        "bytesDesignatedForTransfer": {
-          "type": "integer",
-          "format": "int64",
-          "description": "Bytes of data identified for transferring so far in scan.",
           "readOnly": true
         },
         "bytesFailed": {

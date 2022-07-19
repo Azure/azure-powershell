@@ -28,6 +28,6 @@ Describe 'Get-AzStorageMoverEndpoint' {
         $nfsEndpoint = Get-AzStorageMoverEndpoint -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Name $env.NfsEndpointName
         $nfsEndpoint.Property.endpointType | Should -Be "NfsMount"
         $nfsEndpoint.Property.host | Should -Be "10.0.0.1"
-        $nfsEndpoint.Property.remoteExport | Should -Be "/"
+        $nfsEndpoint.Property.export | Should -Be "/"
     }
 }

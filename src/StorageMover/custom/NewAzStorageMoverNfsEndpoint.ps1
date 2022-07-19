@@ -20,7 +20,7 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 .Description
 Creates a Nfs endpoint resource, which represents a data transfer source or destination.
 .Example
-New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "x.x.x.x" -RemoteExport "/" -NfsVersion NFSv3 -Description "Description"
+New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "x.x.x.x" -Export "/" -NfsVersion NFSv3 -Description "Description"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint
@@ -74,7 +74,7 @@ function New-AzStorageMoverNfsEndpoint {
         [Parameter(ParameterSetName = 'CreateExpanded')]
         [Parameter(Mandatory, HelpMessage="The directory being exported from the server.")]
         [string]
-        ${RemoteExport},
+        ${Export},
     
         [Parameter(ParameterSetName = 'CreateExpanded')]
         [Parameter(HelpMessage="A description for the endpoint.")]
@@ -144,8 +144,8 @@ function New-AzStorageMoverNfsEndpoint {
         if ($PSBoundParameters.ContainsKey('NfsVersion')) {
             $Properties.NfsVersion = $NfsVersion
         }
-        if ($PSBoundParameters.ContainsKey('RemoteExport')) {
-            $Properties.RemoteExport = $RemoteExport
+        if ($PSBoundParameters.ContainsKey('Export')) {
+            $Properties.Export = $Export
         }
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Properties.Description = $Description
@@ -160,8 +160,8 @@ function New-AzStorageMoverNfsEndpoint {
         if ($PSBoundParameters.ContainsKey('NfsVersion')) {
             $null = $PSBoundParameters.Remove("NfsVersion")
         }
-        if ($PSBoundParameters.ContainsKey('RemoteExport')) {
-            $null = $PSBoundParameters.Remove("RemoteExport")
+        if ($PSBoundParameters.ContainsKey('Export')) {
+            $null = $PSBoundParameters.Remove("Export")
         }
         if ($PSBoundParameters.ContainsKey('Description')) {
             $null = $PSBoundParameters.Remove("Description")
