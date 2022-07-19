@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "64fe7dde-0cf2-452c-8e51-76d4a1239713" ],
+        "x-ms-client-request-id": [ "77e2045b-6b77-480d-9222-0631745aaea0" ],
         "CommandName": [ "Get-AzStorageMoverAgent" ],
         "FullCommandName": [ "Get-AzStorageMoverAgent_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,21 +22,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "8ebcaa6e-c0ee-4722-8330-6be94ac8382f" ],
-        "x-ms-correlation-request-id": [ "cfb60113-3f96-4ec4-8646-9c43a40b789c" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220718T091254Z:cfb60113-3f96-4ec4-8646-9c43a40b789c" ],
+        "x-ms-request-id": [ "45bb1361-79de-4d89-9dfd-369a021c629f" ],
+        "x-ms-correlation-request-id": [ "bceea80e-a69d-4334-b70a-9369349806e4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220719T014643Z:bceea80e-a69d-4334-b70a-9369349806e4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 18 Jul 2022 09:12:53 GMT" ]
+        "Date": [ "Tue, 19 Jul 2022 01:46:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "824" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/microsoft.storagemover/storagemovers/testStorageMover1/agents/testagent7\",\"name\":\"testagent7\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"yifanzhang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-18T03:20:31.6263047Z\",\"lastModifiedBy\":\"yifanzhang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-18T08:30:33.9023541Z\"},\"properties\":{\"arcResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.HybridCompute/machines/testagent7\",\"arcVmUuid\":\"ce1bf277-5ae4-5b4f-9ed9-8d23b0e1906c\",\"agentStatus\":\"Provisioning\",\"provisioningState\":\"Succeeded\",\"description\":\"update agent description\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/microsoft.storagemover/storagemovers/testStorageMover1/agents/testagent7\",\"name\":\"testagent7\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"yifanzhang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-18T03:20:31.6263047Z\",\"lastModifiedBy\":\"yifanzhang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-18T09:13:27.9169781Z\"},\"properties\":{\"arcResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.HybridCompute/machines/testagent7\",\"arcVmUuid\":\"ce1bf277-5ae4-5b4f-9ed9-8d23b0e1906c\",\"agentStatus\":\"Provisioning\",\"provisioningState\":\"Succeeded\",\"description\":\"update agent description\"}}]}",
       "isContentBase64": false
     }
   },
@@ -48,7 +48,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "569e3be0-f337-4d69-8b28-0f6a54127a9e" ],
+        "x-ms-client-request-id": [ "e199fab1-2d0b-4001-9bc7-62ca4839abac" ],
         "CommandName": [ "Get-AzStorageMoverAgent" ],
         "FullCommandName": [ "Get-AzStorageMoverAgent_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -63,22 +63,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"01009950-0000-3400-0000-62d51a2a0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "ETag": [ "\"0100b350-0000-3400-0000-62d524380000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "ca0cedc3-bbfc-4fe6-88e9-f6706245b215" ],
-        "x-ms-correlation-request-id": [ "0746f0f0-2fa8-40ee-9a4d-f77e843106d4" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220718T091255Z:0746f0f0-2fa8-40ee-9a4d-f77e843106d4" ],
+        "x-ms-request-id": [ "5dd63491-554b-4cf1-949e-5c2be186b6d7" ],
+        "x-ms-correlation-request-id": [ "7a39650d-ee8c-4421-b1d3-5655c7211963" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220719T014644Z:7a39650d-ee8c-4421-b1d3-5655c7211963" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 18 Jul 2022 09:12:54 GMT" ]
+        "Date": [ "Tue, 19 Jul 2022 01:46:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "812" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/microsoft.storagemover/storagemovers/testStorageMover1/agents/testagent7\",\"name\":\"testagent7\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"yifanzhang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-18T03:20:31.6263047Z\",\"lastModifiedBy\":\"yifanzhang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-18T08:30:33.9023541Z\"},\"properties\":{\"arcResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.HybridCompute/machines/testagent7\",\"arcVmUuid\":\"ce1bf277-5ae4-5b4f-9ed9-8d23b0e1906c\",\"agentStatus\":\"Provisioning\",\"provisioningState\":\"Succeeded\",\"description\":\"update agent description\"}}",
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/microsoft.storagemover/storagemovers/testStorageMover1/agents/testagent7\",\"name\":\"testagent7\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"yifanzhang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-18T03:20:31.6263047Z\",\"lastModifiedBy\":\"yifanzhang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-18T09:13:27.9169781Z\"},\"properties\":{\"arcResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.HybridCompute/machines/testagent7\",\"arcVmUuid\":\"ce1bf277-5ae4-5b4f-9ed9-8d23b0e1906c\",\"agentStatus\":\"Provisioning\",\"provisioningState\":\"Succeeded\",\"description\":\"update agent description\"}}",
       "isContentBase64": false
     }
   }

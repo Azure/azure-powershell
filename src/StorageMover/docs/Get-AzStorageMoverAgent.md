@@ -36,7 +36,7 @@ Gets an agent resource.
 
 ### Example 1: Get all agents under a Storage mover
 ```powershell
-Get-AzStorageMoverAgent -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMoverName
+Get-AzStorageMoverAgent -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover
 ```
 
 ```output
@@ -49,7 +49,7 @@ This command gets all the agents under a Storage mover
 
 ### Example 2: Get a specific Storage mover
 ```powershell
-Get-AzStorageMoverAgent -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMoverName -Name myAgentName
+Get-AzStorageMoverAgent -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myAgent
 ```
 
 ```output

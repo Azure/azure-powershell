@@ -25,12 +25,12 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 
 ### Example 1: Create a NFS endpoint
 ```powershell
- New-AzStorageMoverNfsEndpoint -Name myEndpointName -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMoverName -Host "x.x.x.x" -RemoteExport "/" -NfsVersion NFSv3 -Description "Description"
+ New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "x.x.x.x" -RemoteExport "/" -NfsVersion NFSv3 -Description "Description"
 ```
 
 ```output
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint2
-Name                         : myEndpointName
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint
+Name                         : myEndpoint
 Property                     : {
                                  "endpointType": "NfsMount",
                                  "provisioningState": "Succeeded",

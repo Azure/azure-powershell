@@ -32,13 +32,13 @@ Creates or updates a top-level Storage Mover resource.
 
 ### Example 1: Create a Storage mover
 ```powershell
-New-AzStorageMover -ResourceGroupName myResourceGroupName -Name myStorageMoverName -Location eastus -Description "Description"
+New-AzStorageMover -ResourceGroupName myResourceGroupName -Name myStorageMover -Location eastus -Description "Description"
 ```
 
 ```output
 Location    Name
 --------    ----
-eastus	    myStorageMoverName
+eastus	    myStorageMover
 ```
 
 This command creates a Storage mover for a resource group.

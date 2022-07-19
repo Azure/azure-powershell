@@ -33,13 +33,13 @@ Creates or updates a project resource, which is a logical grouping of related jo
 
 ### Example 1: Create a project
 ```powershell
-New-AzStorageMoverProject -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMoverName -Name myProjectName -Description "description"
+New-AzStorageMoverProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMoverName -Name myProject -Description "description"
 ```
 
 ```output
 Name
 ----
-myProjectName
+myProject
 ```
 
 This command creates a project for a Storage mover.

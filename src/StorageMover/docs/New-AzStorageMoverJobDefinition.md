@@ -34,7 +34,7 @@ Creates or updates a job definition resource, which contains configuration for a
 
 ### Example 1: Create a job definition
 ```powershell
-New-AzStorageMoverJobDefinition -Name myJobName -ProjectName myProjectName -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMoverName -AgentName myAgentName -SourceName myNfsEndpointName -TargetName myContainerEndpointName -CopyMode "Additive"
+New-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -AgentName myAgent -SourceName myNfsEndpoint -TargetName myContainerEndpoint -CopyMode "Additive"
 ``
 
 ```
@@ -42,7 +42,7 @@ New-AzStorageMoverJobDefinition -Name myJobName -ProjectName myProjectName -Reso
 ```output
 Name
 ----
-myJobName
+myJob
 ```
 
 This command creates a job definition.

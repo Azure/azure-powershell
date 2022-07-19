@@ -37,27 +37,27 @@ Gets a job definition resource.
 
 ### Example 1: Get all job definitions under a Storage mover
 ```powershell
-Get-AzStorageMoverJobDefinition -ProjectName myProjectName -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMoverName 
+Get-AzStorageMoverJobDefinition -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover 
 ```
 
 ```output
 Name
 ----
-testJob1
-testJob2
+myJob1
+myJob2
 ```
 
 This command gets all the job definitions under a specific Storage mover.
 
 ### Example 2: Get a specific job definition
 ```powershell
-Get-AzStorageMoverJobDefinition -ProjectName myProjectName -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMoverName -Name myJobDefinitionName
+Get-AzStorageMoverJobDefinition -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myJob1
 ```
 
 ```output
 Name
 ----
-testJob1
+myJob1
 ```
 
 This command gets a specific job definition.

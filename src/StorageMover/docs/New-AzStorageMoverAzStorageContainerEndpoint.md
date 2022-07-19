@@ -26,17 +26,17 @@ Creates an AzStorageContainer endpoint resource, which represents a data transfe
 
 ### Example 1: Create a AzStorageContainer endpoint
 ```powershell
-New-AzStorageMoverAzStorageContainerEndpoint -Name myendpointName -ResourceGroupName myResourceGroupName -BlobContainerName myContainerName -StorageMoverName myStorageMoverName -StorageAccountResourceId myAccountResourceId
+New-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -BlobContainerName myContainer -StorageMoverName myStorageMover -StorageAccountResourceId myAccountResourceId
 ```
 
 ```output
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint1
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint
 Name                         : containerEndpointo3q8xlbr
 Property                     : {
                                  "endpointType": "AzureStorageBlobContainer",
                                  "provisioningState": "Succeeded",
                                  "storageAccountResourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myStorageMover/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
-                                 "blobContainerName": "myBlobContainer"
+                                 "blobContainerName": "myContainer"
                                }
 SystemDataCreatedAt          : 7/18/2022 7:28:29 AM
 SystemDataCreatedBy          : xxxxxxxxxx

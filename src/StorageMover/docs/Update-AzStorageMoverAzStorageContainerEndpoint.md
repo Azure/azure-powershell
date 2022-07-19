@@ -34,7 +34,7 @@ Properties not specified in the request body will be unchanged.
 
 ### Example 1: Update an AzStorageContainer endpoint
 ```powershell
-Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpointName -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMover -Description "Update Description"
+Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Description "Update Description"
 ```
 
 ```output
@@ -45,7 +45,7 @@ Property                     : {
                                  "description": "Update Description",
                                  "provisioningState": "Succeeded",
                                  "storageAccountResourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myStorageMover/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
-                                 "blobContainerName": "myBlobContainer"
+                                 "blobContainerName": "myContainer"
                                }
 SystemDataCreatedAt          : 7/18/2022 7:28:29 AM
 SystemDataCreatedBy          : xxxxxxxxxx

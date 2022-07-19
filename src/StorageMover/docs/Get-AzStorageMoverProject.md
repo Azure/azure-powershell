@@ -37,7 +37,7 @@ Gets a project resource.
 
 ### Example 1: Get all projects under a Storage mover 
 ```powershell
-$projectList = Get-AzStorageMoverProject -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMoverName
+$projectList = Get-AzStorageMoverProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover
 ```
 
 ```output
@@ -51,13 +51,13 @@ This command gets all the projects under a Storage mover.
 
 ### Example 2: Get a specific project
 ```powershell
-$projectList = Get-AzStorageMoverProject -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMoverName -Name myProjectName 
+$projectList = Get-AzStorageMoverProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myProject
 ```
 
 ```output
 Name
 ----
-myProject1
+myProject
 ```
 
 This command gets a specific project under a Storage mover.

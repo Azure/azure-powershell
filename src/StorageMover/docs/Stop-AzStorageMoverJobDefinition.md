@@ -30,27 +30,12 @@ Requests the agent of any active instance of this job definition to stop.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Stop a job definition
 ```powershell
-{{ Add code here }}
+Stop-AzStorageMoverJobDefinition -JobDefinitionName myJobDefinition -ProjectName myProjectName -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command stops a job definition.
 
 ## PARAMETERS
 

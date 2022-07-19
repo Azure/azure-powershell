@@ -37,7 +37,7 @@ Gets an endpoint resource.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-Get-AzStorageMoverEndpoint -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMoverName
+Get-AzStorageMoverEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover
 ```
 
 ```output
@@ -82,8 +82,8 @@ Get-AzStorageMoverEndpoint -ResourceGroupName myResourceGroupName -StorageMoverN
 ```
 
 ```output
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint2
-Name                         : nfsEndpointo3q8xlbr
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpointName
+Name                         : myEndpointName
 Property                     : {
                                  "endpointType": "NfsMount",
                                  "provisioningState": "Succeeded",
@@ -99,7 +99,7 @@ SystemDataLastModifiedByType : User
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command gets a specific endpoint.
+This command gets a specific endpoint under a Storage mover.
 
 ## PARAMETERS
 

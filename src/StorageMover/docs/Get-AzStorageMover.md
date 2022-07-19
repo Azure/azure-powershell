@@ -55,7 +55,7 @@ This command gets all the Storage movers in a subscription.
 
 ### Example 2: Get all Storage movers in a resource group
 ```powershell
-Get-AzStorageMover -ResourceGroup myResourceGroup
+Get-AzStorageMover -ResourceGroupName myResourceGroup
 ```
 
 ```output
@@ -69,13 +69,13 @@ This command gets all the Storage movers in a resource group.
 
 ### Example 2: Get a specific Storage mover
 ```powershell
-Get-AzStorageMover -ResourceGroup myResourceGroup -Name myStorageMover1
+Get-AzStorageMover -ResourceGroupName myResourceGroup -Name myStorageMover
 ```
 
 ```output
 Location    Name
 --------    ----
-eastus		myStorageMover1
+eastus		myStorageMover
 ```
 
 This command gets a specific Storage mover.

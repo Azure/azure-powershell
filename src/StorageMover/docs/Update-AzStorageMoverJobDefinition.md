@@ -49,13 +49,13 @@ Properties not specified in the request body will be unchanged.
 
 ### Example 1: Update a job definition
 ```powershell
-Update-AzStorageMoverJobDefinition -Name myJobName -ProjectName myProjectName -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Description "Update Description"
+Update-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Description "Update Description"
 ```
 
 ```output
 Name
 ----
-myJobName
+myJob
 ```
 
 This command updates the description of a job definition.
