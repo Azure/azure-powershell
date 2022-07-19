@@ -46,7 +46,7 @@ Forcibly removes the link to the specified database resource.
 
 ### Example 1: Unlink database
 ```powershell
-PS C:\> Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ResourceGroupName "MyGroup" -ClusterName "MyCache3" -Id @("<database-id>")
+Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ResourceGroupName "MyGroup" -ClusterName "MyCache3" -Id @("<database-id>")
 ```
 
 Forcibly removes the link to the database resource whose id is given, from the georeplication group the specified cache belongs to
@@ -259,7 +259,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
+`INPUTOBJECT <IRedisEnterpriseCacheIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the RedisEnterprise cluster.
   - `[DatabaseName <String>]`: The name of the database.
   - `[Id <String>]`: Resource identity path
@@ -269,7 +269,7 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-PARAMETER <IForceUnlinkParameters>: Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
+`PARAMETER <IForceUnlinkParameters>`: Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
   - `Id <String[]>`: The resource IDs of the database resources to be unlinked.
 
 ## RELATED LINKS

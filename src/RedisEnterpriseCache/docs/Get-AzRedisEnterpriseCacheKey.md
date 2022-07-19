@@ -143,9 +143,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-### Get-AzRedisEnterpriseCacheDatabaseKey
+Get-AzRedisEnterpriseCacheDatabaseKey
 
-### Get-AzRedisEnterpriseCacheAccessKey
+Get-AzRedisEnterpriseCacheAccessKey
 
 ## RELATED LINKS
 
