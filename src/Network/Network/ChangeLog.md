@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Made properties `ApplicationSecurityGroups` and `IpConfigurations` for `PrivateEndpoint` updatable in the cmdlet `Set-AzPrivateEndpoint`
 * Onboarded Device Update for IoT Hub to Private Link Common Cmdlets
 
 ## Version 4.18.0
