@@ -74,6 +74,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             Action zipDeployAction = () =>
             {
+                if (!Path.IsPathRooted(ArchivePath))
+                    ArchivePath = (this.SessionState.Path.CurrentFileSystemLocation).Path + ArchivePath.Split(new string[] { ".." }, StringSplitOptions.None)[1];
                 using (var s = File.OpenRead(ArchivePath))
                 {
                     HttpClient client = new HttpClient();
