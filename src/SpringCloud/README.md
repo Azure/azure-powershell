@@ -318,6 +318,16 @@ directive:
       subject: ^App$
     hide: true
 
+  - where:
+      model-name: BindingResource
+    set:
+      format-table:
+        properties:
+          - ResourceName
+          - Name
+          - ResourceGroupName
+          - ResourceType
+          
   - no-inline:
     - UserSourceInfo
 
