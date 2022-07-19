@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 * Removed the warning messages for MSGraph migration [#18856]
+* [Breaking Change] Renamed `-Id` to `-FederatedCredentialId` which is consistent to CLI, API spec and service team's feedback
+* [Breaking Change] Renamed cmdlet to `{}-AzADAppFederatedCredential` which aligns to Azure CLI. It also makes cmdlet name shorter
+* [Breaking Change] Upgraded API version to 1.0 as feature will GA soon
 
 ## Version 6.0.1
 * Added feedback when deleting role assignments even if passthru is not used
