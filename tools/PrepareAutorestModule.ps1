@@ -47,7 +47,8 @@ foreach ($file in $ChangedFiles)
 if ($ModuleSet.Contains($ALL_MODULE))
 {
     $Null = $ModuleSet.Remove($ALL_MODULE)
-    $ModuleSet.Add((Get-ChildItem "$PSScriptRoot\..\src\").Name | Where-Object { (Get-Item env:SELECTEDMODULELIST).Value.Split(';') -contains $_ })
+    $SelectedModuleList = (Get-ChildItem "$PSScriptRoot\..\src\").Name | Where-Object { (Get-Item env:SELECTEDMODULELIST).Value.Split(';') -contains $_ }
+    $ModuleSet.Add($SelectedModuleList)
     $ModuleList = $ModuleSet | Where-Object { $SKIP_MODULES -notcontains $_ }
 }
 else
