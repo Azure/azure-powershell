@@ -181,10 +181,7 @@ function New-AzNetworkFunctionCollectorPolicy {
               }
               [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
           }
-  
-          $mapping = @{
-              CreateExpanded = 'Az.NetworkFunction.private\New-AzNetworkFunctionCollectorPolicy_CreateExpanded';
-          }
+
           if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
               $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
           }
