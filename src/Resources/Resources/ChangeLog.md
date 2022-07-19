@@ -25,7 +25,7 @@
     - `Get-AzADAppFederatedCredential`
     - `Remove-AzADAppFederatedCredential`
     - `Update-AzADAppFederatedCredential`
-* [Breaking Change] Upgraded API version from Beta to 1.0
+* Upgraded API version from Beta to 1.0
 
 ## Version 6.0.1
 * Added feedback when deleting role assignments even if passthru is not used
