@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.resources/new-az
 schema: 2.0.0
 ---
 
-# New-AzADAppFederatedIdentityCredential
+# New-AzADAppFederatedCredential
 
 ## SYNOPSIS
 Create federatedIdentityCredential for applications.
@@ -13,7 +13,7 @@ Create federatedIdentityCredential for applications.
 ## SYNTAX
 
 ```
-New-AzADAppFederatedIdentityCredential -ApplicationObjectId <String> -Audience <String[]> -Issuer <String>
+New-AzADAppFederatedCredential -ApplicationObjectId <String> -Audience <String[]> -Issuer <String>
  -Name <String> -Subject <String> [-AdditionalProperties <Hashtable>] [-Description <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Create federatedIdentityCredential for applications.
 
 ### Example 1: Create federated identity credential for application
 ```powershell
-New-AzADappfederatedidentitycredential -ApplicationObjectId $appObjectId -Audience api://AzureADTokenExchange -Issuer https://login.microsoftonline.com/3d1e2be9-a10a-4a0c-8380-7ce190f98ed9/v2.0 -name 'test-cred' -Subject 'subject'
+New-AzADAppFederatedCredential -ApplicationObjectId $appObjectId -Audience api://AzureADTokenExchange -Issuer https://login.microsoftonline.com/3d1e2be9-a10a-4a0c-8380-7ce190f98ed9/v2.0 -name 'test-cred' -Subject 'subject'
 ```
 
 Create federated identity credential for application
@@ -206,7 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IMicrosoftGraphFederatedIdentityCredential
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential
 
 ## NOTES
 

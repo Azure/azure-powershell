@@ -1,31 +1,31 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/update-azadappfederatedidentitycredential
+online version: https://docs.microsoft.com/powershell/module/az.resources/update-azadappfederatedcredential
 schema: 2.0.0
 ---
 
-# Update-AzADAppFederatedIdentityCredential
+# Update-AzADAppFederatedCredential
 
 ## SYNOPSIS
-Update the federatedIdentityCredentials in applications.
+Update the navigation property federatedIdentityCredentials in applications
 
 ## SYNTAX
 
 ```
-Update-AzADAppFederatedIdentityCredential -ApplicationObjectId <String> -Id <String>
+Update-AzADAppFederatedCredential -ApplicationObjectId <String> -FederatedCredentialId <String>
  [-AdditionalProperties <Hashtable>] [-Audience <String[]>] [-Description <String>] [-Issuer <String>]
  [-Subject <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the federatedIdentityCredentials in applications.
+Update the navigation property federatedIdentityCredentials in applications
 
 ## EXAMPLES
 
 ### Example 1: Update subject for federated identity credential
 ```powershell
-Update-AzADappfederatedidentitycredential -ApplicationObjectId $appObjectId -Id $credentialId -Subject 'subject'
+Update-AzADAppFederatedCredential -ApplicationObjectId $appObjectId -FederatedCredentialId $credentialId -Subject 'subject'
 ```
 
 Update subject for federated identity credential
@@ -112,7 +112,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
+### -FederatedCredentialId
 key: id of federatedIdentityCredential
 
 ```yaml
