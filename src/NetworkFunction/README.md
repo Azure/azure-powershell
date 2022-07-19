@@ -38,6 +38,10 @@ nested-object-to-string: true
 
 directive:
   - where:
+      subject: ^AzureTrafficCollector(.*)
+    set:
+      subject: TrafficCollector$1
+  - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     hide: true
   - where:

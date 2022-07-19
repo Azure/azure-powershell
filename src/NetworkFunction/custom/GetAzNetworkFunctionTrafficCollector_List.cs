@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IAzureTrafficCollector))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Description(@"Return list of Azure Traffic Collectors in a Resource Group")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Generated]
-    public partial class GetAzNetworkFunctionAzureTrafficCollector_List : global::System.Management.Automation.PSCmdlet,
+    public partial class GetAzNetworkFunctionTrafficCollector_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -181,9 +181,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="GetAzNetworkFunctionAzureTrafficCollector_List" /> cmdlet class.
+        /// Intializes a new instance of the <see cref="GetAzNetworkFunctionTrafficCollector_List" /> cmdlet class.
         /// </summary>
-        public GetAzNetworkFunctionAzureTrafficCollector_List()
+        public GetAzNetworkFunctionTrafficCollector_List()
         {
 
         }
