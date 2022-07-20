@@ -78,4 +78,6 @@ directive:
 
   - model-cmdlet:
     - AlertRuleAnyOfOrLeafCondition
+    - AlertRuleLeafCondition
+    - ActionGroup
 ```
