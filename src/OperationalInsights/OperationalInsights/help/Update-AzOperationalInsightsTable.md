@@ -27,10 +27,11 @@ Update a Log Analytics workspace table.
 ### Example 1
 ```powershell
 PS C:\> Update-AzOperationalInsightsTable  -ResourceGroupName {rgName} -WorkspaceName {wsName} -TableName {tableName_CL} -RetentionInDays 30 -TotalRetentionInDays 35
+```
 
+```output
 TableName            : {tableName_CL}
-ResourceId           : /subscriptions/{SubId}/resourcegroups/{rgName}/providers/Micros
-                       oft.OperationalInsights/workspaces/{wsName}/tables/dabenhamPocTable_CL
+ResourceId           : /subscriptions/{SubId}/resourcegroups/{rgName}/providers/Microsoft.OperationalInsights/workspaces/{wsName}/tables/dabenhamPocTable_CL
 RetentionInDays      : 30
 TotalRetentionInDays : 35
 Plan                 : Analytics
