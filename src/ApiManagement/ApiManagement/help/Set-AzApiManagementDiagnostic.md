@@ -45,6 +45,7 @@ The cmdlet **Set-AzApiManagementDiagnostic** updates the diagnostics which is co
 ## EXAMPLES
 
 ### Example 1: Modify a diagnostic at the Global scope
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $context =New-AzApiManagementContext -ResourceGroupName Api-Default-WestUS -ServiceName contoso
 $diagnostic=Get-AzApiManagementDiagnostic -Context $context -DiagnosticId "applicationinsights"

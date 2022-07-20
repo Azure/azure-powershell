@@ -33,6 +33,16 @@ The **New-AzSynapseManagedPrivateEndpoint** cmdlet creates or updates a managed 
 
 ### Example 1
 ```powershell
+<#
+endpoint.json
+{
+	"name": "ContosoManagedPrivateEndpoint",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/contosoResourceGroup/providers/Microsoft.Storage/storageAccounts/contosoStorageAccount",
+		"groupId": "file"
+	}
+}
+#>
 New-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint -DefinitionFile "C:\\endpoint.json"
 ```
 

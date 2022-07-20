@@ -25,6 +25,7 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: List the direct sub items from a Filesystem
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" 
 
@@ -39,6 +40,7 @@ dir2                 True                         2020-03-23 09:28:36Z rwxr-x---
 This command lists the direct sub items from a Filesystem
 
 ### Example 2: List recursively from a directory, and fetch Properties/ACL
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Path "dir1/" -Recurse -FetchProperty
 

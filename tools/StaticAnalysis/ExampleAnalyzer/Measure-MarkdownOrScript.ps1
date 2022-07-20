@@ -22,23 +22,16 @@ param (
     [string]$OutputFolder = "$PSScriptRoot\..\..\..\artifacts\StaticAnalysisResults\ExampleAnalysis",
     [switch]$AnalyzeScriptsInFile,
     [switch]$OutputScriptsInFile,
-    [switch]$OutputResultsByModule,
     [switch]$CleanScripts
 )
 
 . $PSScriptRoot\utils.ps1
 
-if ($PSCmdlet.ParameterSetName -eq "Markdown") {
-    $scaleTable = @()
-    $missingTable = @()
-    $deletePromptAndSeparateOutputTable = @()
-}
 $analysisResultsTable = @()
 
 # Clean caches, remove files in "output" folder
 if ($OutputScriptsInFile.IsPresent) {
     Remove-Item $OutputFolder\TempScript.ps1 -ErrorAction SilentlyContinue
-    Remove-Item $OutputFolder\*.csv -Recurse -ErrorAction SilentlyContinue
     Remove-Item $PSScriptRoot\..\..\..\artifacts\StaticAnalysisResults\ExampleIssues.csv -ErrorAction SilentlyContinue
     Remove-Item $OutputFolder -ErrorAction SilentlyContinue
 }
@@ -67,24 +60,11 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
             $result = Measure-SectionMissingAndOutputScript $module $cmdlet $_.FullName `
                 -OutputScriptsInFile:$OutputScriptsInFile.IsPresent `
                 -OutputFolder $OutputFolder
-            $scaleTable += $result.Scale
-            $missingTable += $result.Missing
-            $deletePromptAndSeparateOutputTable += $result.DeletePromptAndSeparateOutput
             $analysisResultsTable += $result.Errors
         }
     }
     if ($AnalyzeScriptsInFile.IsPresent) {
         $ScriptPaths = "$OutputFolder\TempScript.ps1"
-    }
-    # Summarize searching results
-    if($scaleTable){
-         $scaleTable | Where-Object {$_ -ne $null} | Export-Csv "$OutputFolder\Scale.csv" -NoTypeInformation
-    }
-    if($missingTable){
-        $missingTable | Where-Object {$_ -ne $null} | Export-Csv "$OutputFolder\Missing.csv" -NoTypeInformation
-    }
-    if($deletePromptAndSeparateOutputTable){
-        $deletePromptAndSeparateOutputTable | Where-Object {$_ -ne $null} | Export-Csv "$OutputFolder\DeletingSeparating.csv" -NoTypeInformation
     }
 }
 
