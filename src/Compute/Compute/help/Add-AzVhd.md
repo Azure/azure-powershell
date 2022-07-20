@@ -16,8 +16,8 @@ Uploads a virtual hard disk from an on-premises machine to Azure (managed disk o
 ### DefaultParameterSet (Default)
 ```
 Add-AzVhd [-ResourceGroupName] <String> [-Destination] <Uri> [-LocalFilePath] <FileInfo>
- [[-NumberOfUploaderThreads] <Int32>] [[-BaseImageUriToPatch] <Uri>] [-OverWrite] [-SkipResizing]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-NumberOfUploaderThreads] <Int32>] [[-BaseImageUriToPatch] <Uri>] [-OverWrite] [-SkipResizing] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DirectUploadToManagedDiskSet

@@ -24,7 +24,7 @@ The **Publish-AzBicepModule** cmdlet publishes a Bicep file to a registry as a m
 
 ### Example 1
 ```powershell
-Publish-AzBicepModule -FilePath main.bicep -Target br:{registry}/{moduleName}:{tag}
+Publish-AzBicepModule -FilePath 'main.bicep' -Target 'br:{registry}/{moduleName}:{tag}'
 ```
 
 Publishes `main.bicep` to `br:{registry}/{moduleName}:{tag}`.

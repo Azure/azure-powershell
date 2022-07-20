@@ -28,6 +28,7 @@ To aid the user to prerequisite the operation the client can call operation with
 ## EXAMPLES
 
 ### Example 1: Validate the dependecies before prepare of the resources. Get the required dependent resources that also need to be prepared.
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $resp = Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemovm') -ValidateOnly
 

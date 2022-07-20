@@ -1,5 +1,9 @@
 [
   {
+    "alias": "Container Apps",
+    "module": "App"
+  },  
+  {
     "alias": "Confidential Ledger",
     "module": "ConfidentialLedger"
   },
@@ -8,14 +12,13 @@
     "alias": "API Management"
   },
   {
-    "regex": "MachineLearning",
+    "module": "MachineLearning",
     "group": "ML Studio (Classic)",
     "alias": "ML Studio (Classic)"
   },
   {
-    "regex": "Ml",
-    "group": "ML Studio (Classic)",
-    "alias": "ML Studio (Classic)"
+    "module": "MachineLearningServices",
+    "alias": "Machine Learning"
   },
   {
     "regex": "ImageBuilder",
@@ -33,6 +36,10 @@
     "regex": "Snapshot",
     "group": "Virtual Machines",
     "alias": "VM Snapshots"
+  },
+  {
+    "regex": "FluidRelay",
+    "alias": "Fluid Relay"
   },
   {
     "regex": "Image",
@@ -734,5 +741,9 @@
   {
     "alias": "ServiceLinker",
     "module": "ServiceLinker"
+  },
+  {
+    "alias": "NetworkFunction",
+    "module": "NetworkFunction"
   }
 ]

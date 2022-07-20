@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * Fixed parameters for Set-AzApplicationInsightsDailyCap [#18315]
+* Fixed parameter `DocumentType` for `New-AzApplicationInsightsContinuousExport` and `Set-AzApplicationInsightsContinuousExport` [#18350]
+* Fixed parameter `ResourceId` for `Get-AzApplicationInsights` [#18707]
 
 ## Version 2.0.0
 * Upgraded API version for ApplicationInsights component to 2020-02-02

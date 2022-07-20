@@ -237,7 +237,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PROPERTY <IPlacementPolicyProperties>: placement policy properties
+PROPERTY `<IPlacementPolicyProperties>`: placement policy properties
   - `Type <PlacementPolicyType>`: placement policy type
   - `[DisplayName <String>]`: Display name of the placement policy
   - `[State <PlacementPolicyState?>]`: Whether the placement policy is enabled or disabled

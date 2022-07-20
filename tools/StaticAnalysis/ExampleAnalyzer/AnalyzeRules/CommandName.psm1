@@ -4,6 +4,7 @@
     .NOTES
     File: CommandName.psm1
 #>
+. $PSScriptRoot\..\utils.ps1
 
 enum RuleNames {
     Invalid_Cmdlet
@@ -51,14 +52,18 @@ function Measure-CommandName {
                     if ($CommandAst.InvocationOperator -eq "Unknown") {
                         $CommandName = $CommandAst.CommandElements[0].Extent.Text
                         $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
+                        $ActualName = $GetCommand.Name
                         if ($null -eq $GetCommand) {
                             # CommandName is not valid.
-                            $global:CommandParameterPair += @{
-                                CommandName = $CommandName
-                                ParameterName = "<is not valid>"
-                                ModuleCmdletExNum = $ModuleCmdletExNum
+                            # Redo import-module
+                            if(!(Redo-ImportModule $CommandName)){
+                                $global:CommandParameterPair += @{
+                                    CommandName = $CommandName
+                                    ParameterName = "<is not valid>"
+                                    ModuleCmdletExNum = $ModuleCmdletExNum
+                                }
+                                return $true
                             }
-                            return $true
                         }
                         else {
                             if ($GetCommand.CommandType -eq "Alias") {
@@ -70,10 +75,10 @@ function Measure-CommandName {
                                 }
                                 return $true
                             }
-                            if ($CommandName -cnotmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
+                            if ($CommandName -cne $ActualName) {
                                 # CommandName doesn't follow the Capitalization Conventions.
                                 $global:CommandParameterPair += @{
-                                    CommandName = $CommandName
+                                    CommandName = "$CommandName#@#$ActualName"
                                     ParameterName = "<doesn't follow the Capitalization Conventions>"
                                     ModuleCmdletExNum = $ModuleCmdletExNum
                                 }
@@ -104,20 +109,16 @@ function Measure-CommandName {
                     $Severity = "Warning"
                 }
                 if ($global:CommandParameterPair[$i].ParameterName -eq "<doesn't follow the Capitalization Conventions>") {
-                    $Message = "$($CommandParameterPair[$i].CommandName) doesn't follow the Capitalization Conventions."
+                    $CommandName, $CorrectName = $CommandParameterPair[$i].CommandName -split "#@#"
+                    $Message = "$CommandName doesn't follow the Capitalization Conventions."
                     $RuleName = [RuleNames]::Capitalization_Conventions_Violated
                     $RuleSuppressionID = "5101"
-                    $name = $($CommandParameterPair[$i].CommandName)
-                    $textInfo = (Get-Culture).TextInfo
-                    $CorrectName = $textInfo.ToTitleCase(($name -split "-")[0])
-                    $CorrectName += "-Az"
-                    $CorrectName += $textInfo.ToTitleCase(($name -split "Az")[1])
                     $Remediation = "Check the Capitalization Conventions. Suggest format: $CorrectName"
-                    $Severity = "Warning"
+                    $Severity = "Error"
                 }
                 $ModuleCmdletExNum = $($CommandParameterPair[$i].ModuleCmdletExNum)
                 $Result = [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
-                    Message = "$ModuleCmdletExNum-@$Message@$Remediation";
+                    Message = "$ModuleCmdletExNum-#@#$Message#@#$Remediation";
                     Extent = $Asts[$i].Extent;
                     RuleName = $RuleName;
                     Severity = $Severity

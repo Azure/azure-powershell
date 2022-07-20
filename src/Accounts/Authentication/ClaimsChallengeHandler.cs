@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// </summary>
         /// <remarks>This implementation handles common authentication challenges such as claims challenges. Service client libraries may derive from this and extend to handle service specific authentication challenges.</remarks>
         /// <param name="requestMessage">The HttpMessage to be authenticated.</param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">Cancelation token</param>
         /// <param name="responseMessage"></param>
         /// <returns>A boolean indicated whether the request should be retried</returns>
         protected virtual async Task<bool> OnChallengeAsync(HttpRequestMessage requestMessage, HttpResponseMessage responseMessage, CancellationToken cancellationToken)

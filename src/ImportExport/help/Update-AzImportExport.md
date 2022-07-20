@@ -550,7 +550,7 @@ DRIVELIST <IDriveStatus[]>: List of drives that comprise the job.
   - `[State <DriveState?>]`: The drive's current state. 
   - `[VerboseLogUri <String>]`: A URI that points to the blob containing the verbose log for the data transfer operation. 
 
-INPUTOBJECT <IImportExportIdentity>: Identity Parameter
+INPUTOBJECT `<IImportExportIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[JobName <String>]`: The name of the import/export job.
   - `[LocationName <String>]`: The name of the location. For example, West US or westus.

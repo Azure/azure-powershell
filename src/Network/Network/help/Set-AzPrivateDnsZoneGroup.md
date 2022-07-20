@@ -24,6 +24,7 @@ The **Set-AzPrivateDnsZoneGroup** cmdlet updates DNS zone group.
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Get-AzPrivateDnsZoneGroup -ResourceGroupName rg -PrivateEndpointName my-pr-endpoint -name dnsgroup1
 

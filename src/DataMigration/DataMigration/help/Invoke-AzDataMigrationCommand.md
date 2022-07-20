@@ -25,7 +25,7 @@ The Invoke-AzDataMigrationCommand cmdlet creates a new command task to be run on
 
 ### Example 1
 ```powershell
-$command = Invoke-AzDataMigrationCommand -CommandType CompleteSqlDBSync -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName -TaskName $taskName
+$command = Invoke-AzDataMigrationCommand -CommandType CompleteSqlDBSync -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $projectName -TaskName $taskName
 ```
 
 The above examples uses the Invoke-AzDataMigrationCommand cmdlet to create a command for an existing service, project, and task

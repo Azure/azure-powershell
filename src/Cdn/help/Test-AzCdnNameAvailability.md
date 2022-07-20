@@ -31,27 +31,18 @@ This is needed for resources where name is globally unique, such as a CDN endpoi
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check AzureCDN endpint name availability
 ```powershell
-{{ Add code here }}
+Test-AzCdnNameAvailability -Name endptest001 -Type Microsoft.Cdn/Profiles/Endpoints
 ```
 
 ```output
-{{ Add output here }}
+Message            NameAvailable Reason
+-------            ------------- ------
+Name not available False         Name is already in use
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Check AzureCDN endpint name availability
 
 ## PARAMETERS
 
