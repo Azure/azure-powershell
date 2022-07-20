@@ -38,7 +38,7 @@ input-file:
 
 title: Monitor
 module-version: 0.1.0
-subject-prefix: $(service-name)
+subject-prefix: ""
 resourcegroup-append: true
 nested-object-to-string: true
 
@@ -53,4 +53,13 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
+  # Remove Set cmdlet
+  - where:
+      verb: Set
+    remove: true
+  # Hide New/Update for ActivityLogAlert
+  - where:
+      subject: ActivityLogAlert
+      verb: New|Update
+    hide: true
 ```
