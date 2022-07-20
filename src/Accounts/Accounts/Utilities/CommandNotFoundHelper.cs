@@ -193,7 +193,13 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             link = null;
             if (!string.IsNullOrEmpty(release))
             {
-                link = "[todo: fwlink]";
+                // if release is like "Az x.x.x", we can provide a link to migration guide
+                var match = new Regex(@"^Az\s*(\d+\.\d+\.\d+)$", RegexOptions.IgnoreCase).Match(release);
+                if (match.Success)
+                {
+                    var version = match.Groups[0];
+                    link = $"[todo: fwlink]https://aka.ms/migration?release={version}";
+                }
             }
             return !string.IsNullOrEmpty(link);
         }
