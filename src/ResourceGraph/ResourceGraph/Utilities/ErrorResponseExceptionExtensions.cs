@@ -35,7 +35,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
                 Converters = new List<JsonConverter>
                 {
                     new Iso8601TimeSpanConverter()
-                }
+                },
+                MaxDepth = 128
             };
 
         /// <summary>
