@@ -16,7 +16,6 @@ using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
-using Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 {

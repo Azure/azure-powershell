@@ -13,7 +13,7 @@
 
 using Microsoft.Azure.Management.OperationalInsights.Models;
 
-namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
+namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSCapacityReservationProperties
     {

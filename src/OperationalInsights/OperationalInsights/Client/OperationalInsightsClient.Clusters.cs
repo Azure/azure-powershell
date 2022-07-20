@@ -19,7 +19,7 @@ using System.Management.Automation;
 using System.Net;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
-using Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster;
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {

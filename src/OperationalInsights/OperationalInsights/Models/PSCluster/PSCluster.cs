@@ -18,7 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 
-namespace Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
+namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public enum AllowedClusterServiceTiers
     {

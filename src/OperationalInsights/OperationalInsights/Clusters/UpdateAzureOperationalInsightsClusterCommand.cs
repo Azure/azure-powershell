@@ -19,7 +19,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 {
