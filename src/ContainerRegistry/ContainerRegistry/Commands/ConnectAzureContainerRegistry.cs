@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             AddDebuggingFilter(new Regex("(\\s*access_token\\s*=\\s*)[^\"]+"));
             AddDebuggingFilter(new Regex("(\\s*refresh_token\\s*=\\s*)[^\"]+"));
             AddDebuggingFilter(new Regex("(\\s*\"refresh_token\"\\s*:\\s*)\"[^\"]+\""));
+            // random change to test CI
             base.InitDebuggingFilter();
         }
 
