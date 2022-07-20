@@ -23,6 +23,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using FuzzySharp.SimilarityRatio;
 using FuzzySharp.SimilarityRatio.Scorer.StrategySensitive;
+using Microsoft.Azure.Commands.Profile.Properties;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Profile.Utilities
@@ -133,12 +134,10 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
                 if (IsAzureRMCommand(args.CommandName))
                 {
-                    WriteWarning($"The command {args.CommandName} is in the AzureRM PowerShell module, which is outdated."
-                        + " See [todo: fwlink] for instructions to migrate to Az.");
+                    WriteWarning(string.Format(Resources.CommandNotFoundAzureRM, args.CommandName, "todo: fwlink"));
                 }
                 else if (TryGetMigrationGuide(args.CommandName, out MemoryMigrationDetails details))
                 {
-                    // todo: fill in the migration part in CommandMappings.json
                     WriteWarning(FormatCommandDeprecationMessage(args.CommandName, details));
                 }
                 else if (TryGetModuleOfCommand(args.CommandName, out string moduleName))
@@ -174,16 +173,16 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             string message;
             if (string.IsNullOrEmpty(details.Replacement))
             {
-                message = $"The command {commandName} has been deprecated in {details.Release}.";
+                message = string.Format(Resources.CommandNotFoundDeprecated, commandName, details.Release);
             }
             else
             {
-                message = $"The command {commandName} has been deprecated and replaced by {details.Replacement} in {details.Release}.";
+                message = string.Format(Resources.CommandNotFoundReplaced, commandName, details.Replacement, details.Release);
             }
             if (TryGetExternalLinkToMigrationGuide(details.Release, out string link))
             {
 
-                message += $" Please refer to the migration guide {link}";
+                message += " " + string.Format(Resources.SeeMigrationGuide, link);
             }
             return message;
         }
@@ -227,11 +226,11 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             StringBuilder sb = new StringBuilder($"{commandName} is not found. ");
             if (suggestions.Count() > 1)
             {
-                sb.Append("The most similar Azure PowerShell commands are:");
+                sb.Append(string.Format(Resources.CommandNotFoundFuzzyStringPlural, commandName));
             }
             else
             {
-                sb.Append("The most similar Azure PowerShell command is:");
+                sb.Append(string.Format(Resources.CommandNotFoundFuzzyStringSingle, commandName));
             }
             foreach (var suggestion in suggestions)
             {
