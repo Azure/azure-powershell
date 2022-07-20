@@ -74,6 +74,8 @@ Get-AzOperationalInsightsDataSource `
    -WorkspaceName $WorkspaceName `
    -Kind 'LinuxSyslog'
 ```
+Adds a syslog data source to connected Linux computers in a workspace.
+Azure Operational Insights can collect syslog data.
 
 ## PARAMETERS
 
