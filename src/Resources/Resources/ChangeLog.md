@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 * Removed the warning messages for MSGraph migration [#18856]
+* [Breaking Change] Renamed cmdlet from `{}-AzADAppFederatedIdentityCredential` to `{}-AzADAppFederatedCredential`
+* [Breaking Change] Renamed `-Id` to `-FederatedCredentialId` for
+    - `Get-AzADAppFederatedCredential`
+    - `Remove-AzADAppFederatedCredential`
+    - `Update-AzADAppFederatedCredential`
+* Upgraded API version from Beta to 1.0
 
 ## Version 6.0.1
 * Added feedback when deleting role assignments even if passthru is not used
