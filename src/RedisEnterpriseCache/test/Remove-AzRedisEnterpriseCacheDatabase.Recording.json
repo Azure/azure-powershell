@@ -1,8 +1,10 @@
 {
-  "Remove-AzRedisEnterpriseCacheDatabase+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-zk63isw4/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-ijh7dpwt?api-version=2022-01-01+1": {
+  "Remove-AzRedisEnterpriseCacheDatabase+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/
+  
+  ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2?api-version=2022-01-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-zk63isw4/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-ijh7dpwt?api-version=2022-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2?api-version=2022-01-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "86" ],
