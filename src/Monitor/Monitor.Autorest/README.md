@@ -62,4 +62,20 @@ directive:
       subject: ActivityLogAlert
       verb: New|Update
     hide: true
+  # Rename parameter name for New-AzActivityLogAlert
+  - where:
+      subject: ActivityLogAlert
+      verb: New
+      parameter-name: ConditionAllOf
+    set:
+      parameter-name: Condition
+  - where:
+      subject: ActivityLogAlert
+      verb: New
+      parameter-name: ActionGroup
+    set:
+      parameter-name: Action
+
+  - model-cmdlet:
+    - AlertRuleAnyOfOrLeafCondition
 ```
