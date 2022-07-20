@@ -1,8 +1,8 @@
 {
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-ho6d48ju/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-rtmgwpys?api-version=2022-01-01+1": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1?api-version=2022-01-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-ho6d48ju/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-rtmgwpys?api-version=2022-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1?api-version=2022-01-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "46" ],
@@ -21,7 +21,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-ho6d48ju/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-rtmgwpys/operationresults/cc9a85f3-841c-421b-b04d-d4baa7b7d70b?api-version=2022-01-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1/operationresults/cc9a85f3-841c-421b-b04d-d4baa7b7d70b?api-version=2022-01-01" ],
         "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East%20US/operationsStatus/cc9a85f3-841c-421b-b04d-d4baa7b7d70b?api-version=2022-01-01" ],
         "x-ms-request-id": [ "4dd54238-b763-44e4-8c82-9a9f507a6d6f" ],
         "x-rp-server-mvid": [ "a16a8967-ff32-4f76-ad37-63467a1c5564" ],
@@ -38,7 +38,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"location\": \"East US\",\r\n  \"name\": \"ps-cache-test1-rtmgwpys\",\r\n  \"id\": \"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-ho6d48ju/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-rtmgwpys\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"Enterprise_E10\",\r\n    \"capacity\": 4\r\n  },\r\n  \"properties\": {\r\n    \"minimumTlsVersion\": \"1.2\",\r\n    \"hostName\": \"ps-cache-test1-rtmgwpys.eastus.redisenterprise.cache.azure.net\",\r\n    \"provisioningState\": \"Deleting\",\r\n    \"resourceState\": \"Deleting\",\r\n    \"privateEndpointConnections\": []\r\n  },\r\n  \"zones\": [\r\n    \"1\",\r\n    \"2\",\r\n    \"3\"\r\n  ]\r\n}"
+      "Content": "{\r\n  \"location\": \"East US\",\r\n  \"name\": \"ps-cache-test1\",\r\n  \"id\": \"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"Enterprise_E10\",\r\n    \"capacity\": 4\r\n  },\r\n  \"properties\": {\r\n    \"minimumTlsVersion\": \"1.2\",\r\n    \"hostName\": \"ps-cache-test1.eastus.redisenterprise.cache.azure.net\",\r\n    \"provisioningState\": \"Deleting\",\r\n    \"resourceState\": \"Deleting\",\r\n    \"privateEndpointConnections\": []\r\n  },\r\n  \"zones\": [\r\n    \"1\",\r\n    \"2\",\r\n    \"3\"\r\n  ]\r\n}"
     }
   },
   "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East US/operationsStatus/cc9a85f3-841c-421b-b04d-d4baa7b7d70b?api-version=2022-01-01+2": {
@@ -841,10 +841,10 @@
       "Content": "{\"id\":\"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East US/operationsStatus/cc9a85f3-841c-421b-b04d-d4baa7b7d70b\",\"name\":\"cc9a85f3-841c-421b-b04d-d4baa7b7d70b\",\"status\":\"Succeeded\",\"startTime\":\"2022-07-14T12:05:45.3910538+00:00\",\"endTime\":\"2022-07-14T12:15:04.618136+00:00\"}"
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-ho6d48ju/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-03ti8x4h?api-version=2022-01-01+22": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2?api-version=2022-01-01+22": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-ho6d48ju/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-03ti8x4h?api-version=2022-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2?api-version=2022-01-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "67" ],
