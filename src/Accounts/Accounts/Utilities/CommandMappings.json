@@ -2993,8 +2993,7 @@
       "Set-AzMarketplaceBulkPrivateStoreCollectionAction": {},
       "Set-AzMarketplacePrivateStore": {},
       "Set-AzMarketplacePrivateStoreCollection": {},
-      "Set-AzMarketplacePrivateStoreCollectionOffer": {},
-      "": {}
+      "Set-AzMarketplacePrivateStoreCollectionOffer": {}
     },
     "Az.MarketplaceOrdering": {
       "Get-AzMarketplaceTerms": {},
@@ -6204,9 +6203,237 @@
     }
   },
   "migration": {
-    "Get-AzAks": {
-      "replacement": "Get-AzAksCluster",
-      "since": "Az 8.0.0"
+    "Az 8.0.0": {
+      "Get-AzAks": {
+        "replacement": "Get-AzAksCluster"
+      },
+      "New-AzAks": {
+        "replacement": "New-AzAksCluster"
+      },
+      "Set-AzAks": {
+        "replacement": "Set-AzAksCluster"
+      },
+      "Remove-AzAks": {
+        "replacement": "Remove-AzAksCluster"
+      },
+      "New-AzCdnDeliveryPolicy": {},
+      "New-AzCdnDeliveryRule": {
+        "replacement": "New-AzCdnDeliveryRuleObject"
+      },
+      "Set-AzCdnProfile": {
+        "replacement": "Update-AzCdnProfile"
+      },
+      "Set-AzCdnEndpoint": {
+        "replacement": "Update-AzCdnEndpoint"
+      },
+      "Set-AzCdnOriginGroup": {
+        "replacement": "Update-AzCdnOriginGroup"
+      },
+      "Set-AzCdnOrigin": {
+        "replacement": "Update-AzCdnOrigin"
+      },
+      "Set-AzHealthcareApisService": {
+        "replacement": "New-AzHealthcareApisService"
+      }
+    },
+    "Az 6.0.0": {
+      "Set-AzRecoveryServicesBackupProperties": {
+        "replacement": "Set-AzRecoveryServicesBackupProperty"
+      },
+      "Get-AzRecoveryServicesBackupJobDetails": {
+        "replacement": "Get-AzRecoveryServicesBackupJobDetail"
+      },
+      "Add-AzServiceFabricClusterCertificate": {},
+      "Remove-AzServiceFabricClusterCertificate": {}
+    },
+    "Az 4.1.0": {
+      "Get-AzApiManagementProperty": {
+        "replacement": "Get-AzApiManagementNamedValue"
+      },
+      "New-AzApiManagementProperty": {
+        "replacement": "New-AzApiManagementNamedValue"
+      },
+      "Remove-AzApiManagementProperty": {
+        "replacement": "Remove-AzApiManagementNamedValue"
+      },
+      "Set-AzApiManagementProperty": {
+        "replacement": "Set-AzApiManagementNamedValue"
+      },
+      "New-AzKeyVaultCertificateOrganizationDetails": {
+        "replacement": "New-AzKeyVaultCertificateOrganizationDetail"
+      },
+      "New-AzKeyVaultCertificateAdministratorDetails": {
+        "replacement": "New-AzKeyVaultCertificateAdministratorDetail"
+      },
+      "Get-AzOperationalInsightsSavedSearchResult": {},
+      "Get-AzOperationalInsightsSearchResult": {},
+      "Get-AzOperationalInsightsLinkTarget": {}
+    },
+    "Az 3.0.0": {
+      "Get-AzBatchNodeAgentSku": {
+        "replacement": "Get-AzBatchSupportedImage"
+      },
+      "Add-AzHDInsightConfigValues": {
+        "replacement": "Add-AzHDInsightConfigValue"
+      },
+      "Disable-AzHDInsightOperationsManagementSuite": {
+        "replacement": "Disable-AzHDInsightMonitoring"
+      },
+      "Disable-AzHDInsightOMS": {
+        "replacement": "Disable-AzHDInsightMonitoring"
+      },
+      "Enable-AzHDInsightOperationsManagementSuite": {
+        "replacement": "Enable-AzHDInsightMonitoring"
+      },
+      "Enable-AzHDInsightOMS": {
+        "replacement": "Enable-AzHDInsightMonitoring"
+      },
+      "Get-AzHDInsightOperationsManagementSuite": {
+        "replacement": "Get-AzHDInsightMonitoring"
+      },
+      "Get-AzHDInsightOMS": {
+        "replacement": "Get-AzHDInsightMonitoring"
+      },
+      "Get-AzHDInsightProperties": {
+        "replacement": "Get-AzHDInsightProperty"
+      },
+      "Grant-AzHDInsightRdpServicesAccess": {},
+      "Revoke-AzHDInsightRdpServicesAccess": {},
+      "New-AzIotHubImportDevices": {
+        "replacement": "New-AzIotHubImportDevice"
+      },
+      "New-AzIotHubExportDevices": {
+        "replacement": "New-AzIotHubExportDevice"
+      },
+      "Add-ServiceFabricApplicationCertificate": {
+        "replacement": "Add-AzVmssSecret"
+      },
+      "Get-AzSqlDatabaseIndexRecommendations": {
+        "replacement": "Get-AzSqlDatabaseIndexRecommendation"
+      },
+      "Get-AzSqlDatabaseRestorePoints": {
+        "replacement": "Get-AzSqlDatabaseRestorePoint"
+      },
+      "Get-AzSqlDatabaseAuditing": {
+        "replacement": "Get-AzSqlDatabaseAudit"
+      },
+      "Set-AzSqlDatabaseAuditing": {
+        "replacement": "Set-AzSqlDatabaseAudit"
+      },
+      "Get-AzSqlServerAuditing": {
+        "replacement": "Get-AzSqlServerAudit"
+      },
+      "Set-AzSqlServerAuditing": {
+        "replacement": "Set-AzSqlServerAudit"
+      },
+      "Get-AzSqlServerAdvancedThreatProtectionSettings": {
+        "replacement": "Get-AzSqlServerAdvancedThreatProtectionSetting"
+      },
+      "Clear-AzSqlServerAdvancedThreatProtectionSettings": {
+        "replacement": "Clear-AzSqlServerAdvancedThreatProtectionSetting"
+      },
+      "Update-AzSqlServerAdvancedThreatProtectionSettings": {
+        "replacement": "Update-AzSqlServerAdvancedThreatProtectionSetting"
+      },
+      "Get-AzSqlDatabaseAdvancedThreatProtectionSettings": {
+        "replacement": "Get-AzSqlDatabaseAdvancedThreatProtectionSetting"
+      },
+      "Update-AzSqlDatabaseAdvancedThreatProtectionSettings": {
+        "replacement": "Update-AzSqlDatabaseAdvancedThreatProtectionSetting"
+      },
+      "Clear-AzSqlDatabaseAdvancedThreatProtectionSettings": {
+        "replacement": "Clear-AzSqlDatabaseAdvancedThreatProtectionSetting"
+      },
+      "Update-AzSqlDatabaseVulnerabilityAssessmentSettings": {
+        "replacement": "Update-AzSqlDatabaseVulnerabilityAssessmentSetting"
+      },
+      "Get-AzSqlDatabaseVulnerabilityAssessmentSettings": {
+        "replacement": "Get-AzSqlDatabaseVulnerabilityAssessmentSetting"
+      },
+      "Clear-AzSqlDatabaseVulnerabilityAssessmentSettings": {
+        "replacement": "Clear-AzSqlDatabaseVulnerabilityAssessmentSetting"
+      },
+      "Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings": {
+        "replacement": "Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting"
+      },
+      "Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings": {
+        "replacement": "Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting"
+      },
+      "Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings": {
+        "replacement": "Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting"
+      },
+      "Update-AzSqlInstanceVulnerabilityAssessmentSettings": {
+        "replacement": "Update-AzSqlInstanceVulnerabilityAssessmentSetting"
+      },
+      "Get-AzSqlInstanceVulnerabilityAssessmentSettings": {
+        "replacement": "Get-AzSqlInstanceVulnerabilityAssessmentSetting"
+      },
+      "Clear-AzSqlInstanceVulnerabilityAssessmentSettings": {
+        "replacement": "Clear-AzSqlInstanceVulnerabilityAssessmentSetting"
+      },
+      "Update-AzSqlServerVulnerabilityAssessmentSettings": {
+        "replacement": "Update-AzSqlServerVulnerabilityAssessmentSetting"
+      },
+      "Get-AzSqlServerVulnerabilityAssessmentSettings": {
+        "replacement": "Get-AzSqlServerVulnerabilityAssessmentSetting"
+      },
+      "Clear-AzSqlServerVulnerabilityAssessmentSettings": {
+        "replacement": "Clear-AzSqlServerVulnerabilityAssessmentSetting"
+      },
+      "Get-AzSqlServerAdvancedThreatProtectionPolicy": {},
+      "Get-AzSqlServerThreatDetectionPolicy": {
+        "replacement": "Get-AzSqlServerThreatDetectionSetting"
+      },
+      "Remove-AzSqlServerThreatDetectionPolicy": {
+        "replacement": "Clear-AzSqlServerAdvancedThreatProtectionSetting"
+      },
+      "Set-AzSqlServerThreatDetectionPolicy": {
+        "replacement": "Update-AzSqlServerAdvancedThreatProtectionSetting"
+      },
+      "Get-AzSqlDatabaseThreatDetectionPolicy": {
+        "replacement": "Get-AzSqlDatabaseThreatDetectionSetting"
+      },
+      "Set-AzSqlDatabaseThreatDetectionPolicy": {
+        "replacement": "Update-AzSqlDatabaseAdvancedThreatProtectionSetting"
+      },
+      "Remove-AzSqlDatabaseThreatDetectionPolicy": {
+        "replacement": "Clear-AzSqlDatabaseAdvancedThreatProtectionSetting"
+      }
+    },
+    "Az 2.0.0": {
+      "Set-AzVMBootDiagnostics": {
+        "replacement": "Set-AzVMBootDiagnostic"
+      },
+      "Export-AzLogAnalyticThrottledRequests": {
+        "replacement": "Export-AzLogAnalyticThrottledRequest"
+      },
+      "Grant-AzHDInsightHttpServicesAccess": {
+        "replacement": "Set-AzHDInsightGatewayCredential"
+      },
+      "Revoke-AzHDInsightHttpServicesAccess": {}
+    },
+    "Az.Resources 6.1.0": {
+      "Get-AzADAppFederatedIdentityCredential": {
+        "replacement": "Get-AzADAppFederatedCredential"
+      },
+      "New-AzADAppFederatedIdentityCredential": {
+        "replacement": "New-AzADAppFederatedCredential"
+      },
+      "Remove-AzADAppFederatedIdentityCredential": {
+        "replacement": "Remove-AzADAppFederatedCredential"
+      },
+      "Update-AzADAppFederatedIdentityCredential": {
+        "replacement": "Update-AzADAppFederatedCredential"
+      }
+    },
+    "Az.Compute 4.10.0": {
+      "Add-AzContainerServiceAgentPoolProfile": {},
+      "Get-AzContainerService": {},
+      "New-AzContainerService": {},
+      "New-AzContainerServiceConfig": {},
+      "Remove-AzContainerService": {},
+      "Remove-AzContainerServiceAgentPoolProfile": {},
+      "Update-AzContainerService": {}
     }
   }
 }

@@ -1,0 +1,47 @@
+{
+    "description": "This is a schema for command mapping.",
+    "type": "object",
+    "properties": {
+        "modules": {
+            "type": "object",
+            "patternProperties": {
+                "^Az\\.\\w+$": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^\\w+-\\w+$": {
+                            "type": "object"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        },
+        "migration": {
+            "type": "object",
+            "patternProperties": {
+                "^Az.* \\d+\\.\\d+\\.\\d+$": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^\\w+-\\w+$": {
+                            "type": "object",
+                            "properties": {
+                                "replacement": {
+                                    "type": "string"
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "required": [
+        "modules",
+        "migration"
+    ],
+    "additionalProperties": false
+}

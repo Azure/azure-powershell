@@ -60,15 +60,20 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         /// <summary>
         /// Mappings from command names to their migration guides.
         /// </summary>
-        private static readonly Lazy<IDictionary<string, MigrationDetails>> LazyCommandToMigrationMappings = new Lazy<IDictionary<string, MigrationDetails>>(() =>
-        {
-            var mappings = new Dictionary<string, MigrationDetails>(StringComparer.OrdinalIgnoreCase);
-            foreach (var pair in LazyAllCommandInfo.Value.Migration)
+        private static readonly Lazy<IDictionary<string, MemoryMigrationDetails>> LazyCommandToMigrationMappings
+            = new Lazy<IDictionary<string, MemoryMigrationDetails>>(() =>
             {
-                mappings.Add(pair.Key, pair.Value);
-            }
-            return mappings;
-        });
+                var mappings = new Dictionary<string, MemoryMigrationDetails>(StringComparer.OrdinalIgnoreCase);
+                foreach (var pair in LazyAllCommandInfo.Value.Migration)
+                {
+                    foreach (var migration in pair.Value)
+                    {
+                        mappings.Add(migration.Key,
+                            new MemoryMigrationDetails() { Replacement = migration.Value.Replacement, Release = pair.Key });
+                    }
+                }
+                return mappings;
+            });
 
         /// <summary>
         /// Mappings from lowercase command names to the original names.
@@ -100,7 +105,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                     Debug.WriteLine($"Error loading manifest resource {dataResourceName}. Exception: {ex.Message}");
                     return new AllCommandInfo()
                     {
-                        Migration = new Dictionary<string, MigrationDetails>(),
+                        Migration = new Dictionary<string, IDictionary<string, MigrationDetails>>(),
                         Modules = new Dictionary<string, IDictionary<string, object>>()
                     };
                 }
@@ -128,23 +133,22 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
                 if (IsAzureRMCommand(args.CommandName))
                 {
-                    WriteWarning($"[todo] The command {args.CommandName} is in the AzureRM PowerShell module, which is outdated."
-                        + " See [todo: fwlink] https://docs.microsoft.com/en-us/powershell/azure/migrate-from-azurerm-to-az?view=azps-8.1.0 for instructions to migrate to Az.");
+                    WriteWarning($"The command {args.CommandName} is in the AzureRM PowerShell module, which is outdated."
+                        + " See [todo: fwlink] for instructions to migrate to Az.");
                 }
-                else if (TryGetMigrationGuide(args.CommandName, out MigrationDetails details))
+                else if (TryGetMigrationGuide(args.CommandName, out MemoryMigrationDetails details))
                 {
                     // todo: fill in the migration part in CommandMappings.json
-                    WriteWarning($"[todo] The command {args.CommandName} has been deprecated and replaced by {details.Replacement} since {details.Since}."
-                        + " Please refer to the migration guide [todo]");
+                    WriteWarning(FormatCommandDeprecationMessage(args.CommandName, details));
                 }
                 else if (TryGetModuleOfCommand(args.CommandName, out string moduleName))
                 {
-                    WriteWarning($"[todo] The command {args.CommandName} is part of Azure PowerShell module \"{moduleName}\" and it is not installed."
+                    WriteWarning($"The command {args.CommandName} is part of Azure PowerShell module \"{moduleName}\" and it is not installed."
                         + $" Run \"Install-Module {moduleName}\" to install it.");
                 }
                 else if (EnableFuzzyString && TryGetFuzzyStringSuggestions(args.CommandName, out IEnumerable<string> suggestions))
                 {
-                    WriteWarning(FormatFuzzyStringSuggestions(args.CommandName, suggestions));
+                    WriteWarning(FormatFuzzyStringMessage(args.CommandName, suggestions));
                 }
             }
             args.StopSearch = false;
@@ -160,10 +164,38 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             return AzureRMRegex.IsMatch(commandName);
         }
 
-
-        private static bool TryGetMigrationGuide(string commandName, out MigrationDetails details)
+        private static bool TryGetMigrationGuide(string commandName, out MemoryMigrationDetails details)
         {
             return LazyCommandToMigrationMappings.Value.TryGetValue(commandName, out details);
+        }
+
+        private static string FormatCommandDeprecationMessage(string commandName, MemoryMigrationDetails details)
+        {
+            string message;
+            if (string.IsNullOrEmpty(details.Replacement))
+            {
+                message = $"The command {commandName} has been deprecated in {details.Release}.";
+            }
+            else
+            {
+                message = $"The command {commandName} has been deprecated and replaced by {details.Replacement} in {details.Release}.";
+            }
+            if (TryGetExternalLinkToMigrationGuide(details.Release, out string link))
+            {
+
+                message += $" Please refer to the migration guide {link}";
+            }
+            return message;
+        }
+
+        private static bool TryGetExternalLinkToMigrationGuide(string release, out string link)
+        {
+            link = null;
+            if (!string.IsNullOrEmpty(release))
+            {
+                link = "[todo: fwlink]";
+            }
+            return !string.IsNullOrEmpty(link);
         }
 
         private static bool TryGetModuleOfCommand(string commandName, out string moduleName)
@@ -184,9 +216,9 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             return suggestions.Any();
         }
 
-        private static string FormatFuzzyStringSuggestions(string commandName, IEnumerable<string> suggestions)
+        private static string FormatFuzzyStringMessage(string commandName, IEnumerable<string> suggestions)
         {
-            StringBuilder sb = new StringBuilder($"[todo] {commandName} is not found. ");
+            StringBuilder sb = new StringBuilder($"{commandName} is not found. ");
             if (suggestions.Count() > 1)
             {
                 sb.Append("The most similar Azure PowerShell commands are:");
@@ -195,12 +227,11 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
                 sb.Append("The most similar Azure PowerShell command is:");
             }
-            sb.Append(Environment.NewLine);
             foreach (var suggestion in suggestions)
             {
+                sb.Append(Environment.NewLine);
                 sb.Append("\t");
                 sb.Append(suggestion);
-                sb.Append(Environment.NewLine);
             }
             string message = sb.ToString();
             return message;
@@ -211,6 +242,21 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             Cii.InvokeScript($"Write-Warning '{message}'");
         }
     }
+
+    #region memory models
+    internal class MemoryMigrationDetails
+    {
+        /// <summary>
+        /// If not null, another command to replace the deprecated command.
+        /// </summary>
+        public string Replacement { get; set; }
+        /// <summary>
+        /// The release of Az or module when the command was deprecated.
+        /// </summary>
+        /// <value></value>
+        public string Release { get; set; }
+    }
+    #endregion
 
     #region JSON models
     public class AllCommandInfo
@@ -225,22 +271,23 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         public IDictionary<string, IDictionary<string, object>> Modules { get; set; }
 
         /// <summary>
-        /// Dictionary of cmdlet deprecation and migration between Az releases.
-        /// Key is the name of the command being deprecated.
+        /// Dictionary of cmdlet deprecation/migration.
+        /// Key is the release of Az or module when the command was deprecated.
         /// </summary>
         /// <value>
-        /// A <see cref="MigrationDetails" /> object describing the migration.
+        /// Dictionary from commands to <see cref="MigrationDetails" /> objects describing the deprecation/migration.
         /// </value>
         [JsonProperty("migration")]
-        public IDictionary<string, MigrationDetails> Migration { get; set; }
+        public IDictionary<string, IDictionary<string, MigrationDetails>> Migration { get; set; }
     }
 
     public class MigrationDetails
     {
+        /// <summary>
+        /// If not null, another command to replace the deprecated command.
+        /// </summary>
         [JsonProperty("replacement")]
         public string Replacement { get; set; }
-        [JsonProperty("since")]
-        public string Since { get; set; }
     }
     #endregion
 }
