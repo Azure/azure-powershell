@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public override void ExecuteCmdlet() {
 
+            // test
             this.RegistryDataPlaneClient.SetEndPoint(this.Name);
 
             if (ParameterSetName.Equals(WithoutNameAndPasswordParameterSet))
