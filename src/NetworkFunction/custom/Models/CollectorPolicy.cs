@@ -13,9 +13,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ICollectorPolicyInternal,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.IValidates
     {
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ITrackedResource"
+        /// />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ITrackedResource __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.TrackedResource();
+
         /// <summary>Resource location.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ITrackedResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ITrackedResourceInternal)__resource).Location = value ?? null; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
     }
     /// Collector policy resource.
     public partial interface ICollectorPolicy :

@@ -25,6 +25,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Cmdlets
         Description = @"Resource location.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => ParametersBody.Location; set => ParametersBody.Location = value; }
+        public string Location { get => _parametersBody.Location; set => _parametersBody.Location = value; }
     }
 }
