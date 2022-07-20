@@ -131,7 +131,10 @@ function Start-AzMigrateTestMigration {
             Import-module -Name Az.Compute
             Import-module -Name Az.Network
             $AvSetName = $AvSetId.Split("/")[-1];
-            $AvSetRg = $AvSetId.Split("/")[-5];
+            $AvSetRg = $AvSetId.Split("/")[-5];            
+            $TargetSubscriptionId = $AvSetId.Split("/")[-7];
+            $SourceSubscriptionId = (Get-AzContext -ErrorVariable notPresent -ErrorAction SilentlyContinue).Subscription.Id
+            Set-AzContext -SubscriptionId $TargetSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
             $AvSet = Get-AzAvailabilitySet -ResourceGroupName $AvSetRg -Name $AvSetName -ErrorVariable notPresent -ErrorAction SilentlyContinue
             if (!$AvSet)
             {
@@ -161,6 +164,7 @@ function Start-AzMigrateTestMigration {
                     }
                 }
             }
+            Set-AzContext -SubscriptionId $SourceSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
         }
 
         if ($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'TestMigrate' )) {
