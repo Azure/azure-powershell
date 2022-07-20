@@ -53,7 +53,7 @@ $schedule = New-AzAutomationSchedule -ResourceGroupName "mygroup" `
 New-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" `
                                                  -AutomationAccountName "myaccount" `
                                                  -Schedule $schedule `
-                                                 -Windows `                                                 
+                                                 -Windows `
                                                  -AzureQuery $AzureQueries `
                                                  -IncludedUpdateClassification Critical `
                                                  -Duration $duration

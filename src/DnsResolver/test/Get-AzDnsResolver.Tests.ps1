@@ -24,10 +24,9 @@ function CreateDnsResolver([String]$DnsResolverName, [String]$VirtualNetworkName
     if ($TestMode -eq "Record")
         {
             $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $VirtualNetworkName;
-            $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $VirtualNetworkName;
         }
 
-    New-AzDnsResolver -Name $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetwork.Id -Location $LOCATION
+    New-AzDnsResolver -Name $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
 }
 
 Describe 'Get-AzDnsResolver' {
@@ -35,6 +34,7 @@ Describe 'Get-AzDnsResolver' {
         # ARRANGE
         $dnsResolverName = "psdnsresolvername62";
         $virtualNetworkName = "psvirtualnetworkname62";
+        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
 
         CreateDnsResolver -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
 
@@ -49,6 +49,7 @@ Describe 'Get-AzDnsResolver' {
         # ARRANGE
         $dnsResolverName = "psdnsresolvername63";
         $virtualNetworkName = "psvirtualnetworkname63";
+        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
 
         CreateDnsResolver -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
         

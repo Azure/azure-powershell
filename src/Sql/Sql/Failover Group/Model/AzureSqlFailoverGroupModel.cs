@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         /// </summary>
         /// <param name="resourceGroupName">Resource group</param>
         /// <param name="serverName">Server name</param>
-        /// <param name="advisorName">Advisor name</param>
+        /// <param name="failoverGroupName">The name of the Azure Sql Database FailoverGroup</param>
         /// <param name="failoverGroup">Recommended Action object</param>
         public AzureSqlFailoverGroupModel(string resourceGroupName, string serverName, string failoverGroupName, Management.Sql.LegacySdk.Models.FailoverGroup failoverGroup)
         {

@@ -43,28 +43,28 @@ The **Get-AzServiceBusKey** cmdlet returns the primary and secondary connection 
 
 ### Example 1
 ```powershell
-Get-AzServiceBusKey -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Name AuthoRule1
+Get-AzServiceBusKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Name AuthoRule1
 ```
 
 Primary and secondary connection string to the specified namespace.
 
 ### Example 2
 ```powershell
-Get-AzServiceBusKey -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Queue SBQueue -Name AuthoRule1
+Get-AzServiceBusKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Queue SBQueue -Name AuthoRule1
 ```
 
 Primary and secondary connection string to the specified queue.
 
 ### Example 3
 ```powershell
-Get-AzServiceBusKey -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Topic SBTopic -Name AuthoRule1
+Get-AzServiceBusKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Topic SBTopic -Name AuthoRule1
 ```
 
 Primary and secondary connection string to the specified topic.
 
 ### Example 4
 ```powershell
-Get-AzServiceBusKey -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -AliasName SBAlias -Name AuthoRule1
+Get-AzServiceBusKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -AliasName SBAlias -Name AuthoRule1
 ```
 
 Primary and secondary connection string to the specified namespace and alias.

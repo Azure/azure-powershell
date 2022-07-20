@@ -1436,7 +1436,7 @@ function Test-AzureFirewallPolicyPremiumFeatures {
         # Intrusion Detection Settings
         $bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name $bypassTestName -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "10.0.0.0"
         $sigOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
-        $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $sigOverride -BypassTraffic $bypass
+        $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $sigOverride -BypassTraffic $bypass -PrivateRange @("10.0.0.0/8", "172.16.0.0/12")
 
         # Create AzureFirewallPolicy (with Intrusion Detection, TransportSecurity and Identity parameters)
         $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier $tier -IntrusionDetection $intrusionDetection  -UserAssignedIdentityId $identity.Id
@@ -1455,8 +1455,11 @@ function Test-AzureFirewallPolicyPremiumFeatures {
         Assert-AreEqual "Alert" $getAzureFirewallPolicy.IntrusionDetection.Mode
         Assert-NotNull $getAzureFirewallPolicy.IntrusionDetection.Configuration.SignatureOverrides
         Assert-NotNull $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings
+        Write-Host $getAzureFirewallPolicy.IntrusionDetection.Configuration
+        Assert-NotNull $getAzureFirewallPolicy.IntrusionDetection.Configuration.PrivateRanges
         Assert-AreEqual "123456798" $getAzureFirewallPolicy.IntrusionDetection.Configuration.SignatureOverrides[0].Id
         Assert-AreEqual "Deny" $getAzureFirewallPolicy.IntrusionDetection.Configuration.SignatureOverrides[0].Mode
+        Assert-AreEqual "10.0.0.0/8" $getAzureFirewallPolicy.IntrusionDetection.Configuration.PrivateRanges[0]
         Assert-AreEqual $bypassTestName $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings[0].Name
         Assert-AreEqual "TCP" $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings[0].Protocol
         Assert-AreEqual "80" $getAzureFirewallPolicy.IntrusionDetection.Configuration.BypassTrafficSettings[0].DestinationPorts[0]

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Create function for web site, or a deployment slot.
+Create function for web site, or a deployment slot.
 .Description
-Description for Create function for web site, or a deployment slot.
+Create function for web site, or a deployment slot.
 .Example
 {{ Add code here }}
 .Example
@@ -329,6 +329,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzFunction_Create';
             CreateExpanded = 'Az.Functions.private\New-AzFunction_CreateExpanded';
@@ -344,6 +345,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -352,15 +354,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

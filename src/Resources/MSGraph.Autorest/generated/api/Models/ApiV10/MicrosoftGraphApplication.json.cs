@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         partial void AfterFromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json);
 
         /// <summary>
-        /// <c>AfterToJson</c> will be called after the json erialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject"
+        /// <c>AfterToJson</c> will be called after the json serialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject"
         /// /> before it is returned. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="container">The JSON container that the serialization result will be placed in.</param>
@@ -33,7 +33,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// <summary>
         /// <c>BeforeFromJson</c> will be called before the json deserialization has commenced, allowing complete customization of
         /// the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name= "returnNow" />
+        /// output parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="json">The JsonNode that should be deserialized into this object.</param>
@@ -45,7 +46,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// <summary>
         /// <c>BeforeToJson</c> will be called before the json serialization has commenced, allowing complete customization of the
         /// object before it is serialized.
-        /// If you wish to disable the default serialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default serialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="container">The JSON container that the serialization result will be placed in.</param>
@@ -63,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphApplication(json, new global::System.Collections.Generic.HashSet<string>(){ @"id",@"deletedDateTime",@"displayName",@"@odata.type",@"@odata.id",@"addIns",@"api",@"appId",@"applicationTemplateId",@"appRoles",@"createdDateTime",@"description",@"disabledByMicrosoftStatus",@"groupMembershipClaims",@"identifierUris",@"info",@"isDeviceOnlyAuthSupported",@"isFallbackPublicClient",@"keyCredentials",@"logo",@"notes",@"oauth2RequirePostResponse",@"optionalClaims",@"parentalControlSettings",@"passwordCredentials",@"publicClient",@"publisherDomain",@"requiredResourceAccess",@"signInAudience",@"spa",@"tags",@"tokenEncryptionKeyId",@"web",@"createdOnBehalfOf",@"extensionProperties",@"homeRealmDiscoveryPolicies",@"owners",@"tokenIssuancePolicies",@"tokenLifetimePolicies" }) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphApplication(json, new global::System.Collections.Generic.HashSet<string>(){ @"id",@"deletedDateTime",@"displayName",@"@odata.type",@"@odata.id",@"addIns",@"api",@"appId",@"applicationTemplateId",@"appRoles",@"createdDateTime",@"description",@"disabledByMicrosoftStatus",@"groupMembershipClaims",@"identifierUris",@"info",@"isDeviceOnlyAuthSupported",@"isFallbackPublicClient",@"keyCredentials",@"logo",@"notes",@"oauth2RequirePostResponse",@"optionalClaims",@"parentalControlSettings",@"passwordCredentials",@"publicClient",@"publisherDomain",@"requiredResourceAccess",@"signInAudience",@"spa",@"tags",@"tokenEncryptionKeyId",@"web",@"createdOnBehalfOf",@"extensionProperties",@"federatedIdentityCredentials",@"homeRealmDiscoveryPolicies",@"owners",@"tokenIssuancePolicies",@"tokenLifetimePolicies" }) : null;
         }
 
         /// <summary>
@@ -104,10 +106,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray>("tags"), out var __jsonTags) ? If( __jsonTags as Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray, out var ___p) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(___p, (___o)=>(string) (___o is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString ___n ? (string)(___n.ToString()) : null)) ))() : null : Tag;}
             {_tokenEncryptionKeyId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("tokenEncryptionKeyId"), out var __jsonTokenEncryptionKeyId) ? (string)__jsonTokenEncryptionKeyId : (string)TokenEncryptionKeyId;}
             {_extensionProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray>("extensionProperties"), out var __jsonExtensionProperties) ? If( __jsonExtensionProperties as Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray, out var ___k) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphExtensionProperty[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(___k, (___j)=>(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphExtensionProperty) (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphExtensionProperty.FromJson(___j) )) ))() : null : ExtensionProperty;}
-            {_homeRealmDiscoveryPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray>("homeRealmDiscoveryPolicies"), out var __jsonHomeRealmDiscoveryPolicies) ? If( __jsonHomeRealmDiscoveryPolicies as Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray, out var ___f) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(___f, (___e)=>(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy) (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphHomeRealmDiscoveryPolicy.FromJson(___e) )) ))() : null : HomeRealmDiscoveryPolicy;}
-            {_owner = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray>("owners"), out var __jsonOwners) ? If( __jsonOwners as Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray, out var ___a) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(___a, (____z)=>(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject) (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphDirectoryObject.FromJson(____z) )) ))() : null : Owner;}
-            {_tokenIssuancePolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray>("tokenIssuancePolicies"), out var __jsonTokenIssuancePolicies) ? If( __jsonTokenIssuancePolicies as Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray, out var ____v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(____v, (____u)=>(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy) (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphTokenIssuancePolicy.FromJson(____u) )) ))() : null : TokenIssuancePolicy;}
-            {_tokenLifetimePolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray>("tokenLifetimePolicies"), out var __jsonTokenLifetimePolicies) ? If( __jsonTokenLifetimePolicies as Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray, out var ____q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(____q, (____p)=>(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy) (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphTokenLifetimePolicy.FromJson(____p) )) ))() : null : TokenLifetimePolicy;}
+            {_federatedIdentityCredentials = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray>("federatedIdentityCredentials"), out var __jsonFederatedIdentityCredentials) ? If( __jsonFederatedIdentityCredentials as Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray, out var ___f) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(___f, (___e)=>(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential) (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphFederatedIdentityCredential.FromJson(___e) )) ))() : null : FederatedIdentityCredentials;}
+            {_homeRealmDiscoveryPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray>("homeRealmDiscoveryPolicies"), out var __jsonHomeRealmDiscoveryPolicies) ? If( __jsonHomeRealmDiscoveryPolicies as Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray, out var ___a) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(___a, (____z)=>(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy) (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphHomeRealmDiscoveryPolicy.FromJson(____z) )) ))() : null : HomeRealmDiscoveryPolicy;}
+            {_owner = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray>("owners"), out var __jsonOwners) ? If( __jsonOwners as Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray, out var ____v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(____v, (____u)=>(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject) (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphDirectoryObject.FromJson(____u) )) ))() : null : Owner;}
+            {_tokenIssuancePolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray>("tokenIssuancePolicies"), out var __jsonTokenIssuancePolicies) ? If( __jsonTokenIssuancePolicies as Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray, out var ____q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(____q, (____p)=>(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy) (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphTokenIssuancePolicy.FromJson(____p) )) ))() : null : TokenIssuancePolicy;}
+            {_tokenLifetimePolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray>("tokenLifetimePolicies"), out var __jsonTokenLifetimePolicies) ? If( __jsonTokenLifetimePolicies as Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonArray, out var ____l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(____l, (____k)=>(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy) (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphTokenLifetimePolicy.FromJson(____k) )) ))() : null : TokenLifetimePolicy;}
             {_api = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject>("api"), out var __jsonApi) ? Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphApiApplication.FromJson(__jsonApi) : Api;}
             {_info = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject>("info"), out var __jsonInfo) ? Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphInformationalUrl.FromJson(__jsonInfo) : Info;}
             {_optionalClaim = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject>("optionalClaims"), out var __jsonOptionalClaims) ? Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphOptionalClaims.FromJson(__jsonOptionalClaims) : OptionalClaim;}
@@ -238,44 +241,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                     container.Add("extensionProperties",___l);
                 }
             }
-            if (null != this._homeRealmDiscoveryPolicy)
+            if (null != this._federatedIdentityCredentials)
             {
                 var ___g = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.XNodeArray();
-                foreach( var ___h in this._homeRealmDiscoveryPolicy )
+                foreach( var ___h in this._federatedIdentityCredentials )
                 {
                     AddIf(___h?.ToJson(null, serializationMode) ,___g.Add);
                 }
-                container.Add("homeRealmDiscoveryPolicies",___g);
+                container.Add("federatedIdentityCredentials",___g);
+            }
+            if (null != this._homeRealmDiscoveryPolicy)
+            {
+                var ___b = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.XNodeArray();
+                foreach( var ___c in this._homeRealmDiscoveryPolicy )
+                {
+                    AddIf(___c?.ToJson(null, serializationMode) ,___b.Add);
+                }
+                container.Add("homeRealmDiscoveryPolicies",___b);
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeReadOnly))
             {
                 if (null != this._owner)
                 {
-                    var ___b = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.XNodeArray();
-                    foreach( var ___c in this._owner )
+                    var ____w = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.XNodeArray();
+                    foreach( var ____x in this._owner )
                     {
-                        AddIf(___c?.ToJson(null, serializationMode) ,___b.Add);
+                        AddIf(____x?.ToJson(null, serializationMode) ,____w.Add);
                     }
-                    container.Add("owners",___b);
+                    container.Add("owners",____w);
                 }
             }
             if (null != this._tokenIssuancePolicy)
             {
-                var ____w = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.XNodeArray();
-                foreach( var ____x in this._tokenIssuancePolicy )
-                {
-                    AddIf(____x?.ToJson(null, serializationMode) ,____w.Add);
-                }
-                container.Add("tokenIssuancePolicies",____w);
-            }
-            if (null != this._tokenLifetimePolicy)
-            {
                 var ____r = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.XNodeArray();
-                foreach( var ____s in this._tokenLifetimePolicy )
+                foreach( var ____s in this._tokenIssuancePolicy )
                 {
                     AddIf(____s?.ToJson(null, serializationMode) ,____r.Add);
                 }
-                container.Add("tokenLifetimePolicies",____r);
+                container.Add("tokenIssuancePolicies",____r);
+            }
+            if (null != this._tokenLifetimePolicy)
+            {
+                var ____m = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.XNodeArray();
+                foreach( var ____n in this._tokenLifetimePolicy )
+                {
+                    AddIf(____n?.ToJson(null, serializationMode) ,____m.Add);
+                }
+                container.Add("tokenLifetimePolicies",____m);
             }
             AddIf( null != this._api ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) this._api.ToJson(null,serializationMode) : null, "api" ,container.Add );
             AddIf( null != this._info ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) this._info.ToJson(null,serializationMode) : null, "info" ,container.Add );

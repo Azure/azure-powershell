@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifyParameterValues()
         {
-            var predictionContext = PredictionContext.Create("Get-AzContext");
+            var predictionContext = PredictionContext.Create("Set-Content");
 
             Action actual = () => this._service.GetSuggestion(null, 1, 1, CancellationToken.None);
             Assert.Throws<ArgumentNullException>(actual);
@@ -116,14 +116,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// Verifies that the prediction comes from the command based list, not the fallback list.
         /// </summary>
         [Theory]
-        [InlineData("CONNECT-AZACCOUNT")]
-        [InlineData("set-azstorageaccount ")]
-        [InlineData("Get-AzResourceG")]
-        [InlineData("Get-AzStorageAcco")]
-        [InlineData("Get-AzKeyVault -VaultName")]
-        [InlineData("GET-AZSTORAGEACCOUNTKEY -NAME ")]
-        [InlineData("new-azresourcegroup -name hello")]
-        [InlineData("new-azresourcegroup hello")]
+        [InlineData("SET-CONTENT")]
+        [InlineData("get-logproperties ")]
+        [InlineData("Clear-C")]
+        [InlineData("compare-")]
+        [InlineData("Clear-Variable -Name")]
+        [InlineData("CLEAR-CONTENT -PATH test")]
+        [InlineData("Clear-content -path test")]
+        [InlineData("clear-content ./Test.log")]
         public void VerifyUsingCommandBasedPredictor(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
@@ -165,8 +165,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// Verifies that when no prediction is in the command based list, we'll use the fallback list.
         /// </summary>
         [Theory]
-        [InlineData("New-AzApiManagementContext -ResourceGroupName hello -Serv")]
-        [InlineData("Get-AzAlert -TimeRange '1h' -Incl")]
+        [InlineData("Set-Variable -Name desc -Value ")]
+        [InlineData("remove-ite")]
         public void VerifyUsingFallbackPredictor(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
@@ -209,12 +209,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// </summary>
         [Theory]
         [InlineData(AzPredictorConstants.CommandPlaceholder)]
+        [InlineData("Get-Help")]
         [InlineData("Get-ChildItem")]
-        [InlineData("new-azresourcegroup -NoExistingParam")]
-        [InlineData("get-azaccount ")]
-        [InlineData("NEW-AZCONTEXT")]
+        [InlineData("Remove-Item -NoExistingParam")]
+        [InlineData("get-childitem ")]
+        [InlineData("NEW-CHILDITEM ")]
         [InlineData("git status")]
-        [InlineData("Get-AzContext Name")]
+        [InlineData("get-item name")]
         public void VerifyNoPrediction(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
@@ -235,7 +236,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// Verify that it returns null when we cannot parse the user input.
         /// </summary>
         [Theory]
-        [InlineData("New-AzVM -Name A $Location")]
+        [InlineData("Remove-Item -Name A $Location")]
         public void VerifyFailToParseUserInput(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);

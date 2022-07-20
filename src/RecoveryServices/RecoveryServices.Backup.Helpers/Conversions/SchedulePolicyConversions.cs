@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     {
         #region ServiceClientToPSObject conversions
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert ps simple schedule policy from service response.
         /// </summary>
         public static SimpleSchedulePolicy GetPSSimpleSchedulePolicy(
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return psPolicy;
         }
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert ps simple schedule policy from service response.
         /// </summary>
         public static SimpleSchedulePolicyV2 GetPSSimpleSchedulePolicyV2(
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return psPolicy;
         }
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert ps log schedule policy from service response.
         /// </summary>
         public static LogSchedulePolicy GetPSLogSchedulePolicy(
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region PStoServiceClientObject conversions
 
-        // <summary>
+        /// <summary>
         /// Helper function to parse utc time from local time.
         /// </summary>
         public static List<DateTime> ParseDateTimesToUTC(IList<DateTime?> localTimes, string timeZone)
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return utcTimes;
         }
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert service simple schedule policy from ps schedule policy.
         /// </summary>
         public static ServiceClientModel.SchedulePolicy GetServiceClientSimpleSchedulePolicy(
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return serviceClientPolicy;
         }
 
-        // <summary>
+        /// <summary>
         /// Helper function to get nullable date time list from date time list.
         /// </summary>
         public static List<DateTime?> GetNullableDateTimeListFromDateTimeList(

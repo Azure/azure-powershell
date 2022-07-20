@@ -290,6 +290,9 @@ Gets all vulnerability assessment scan record(s) associated with a given managed
 ### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a managed database.
 
+### [Get-AzSqlInstanceEndpointCertificate](Get-AzSqlInstanceEndpointCertificate.md)
+Returns information about endpoint certificates.
+
 ### [Get-AzSqlInstanceKeyVaultKey](Get-AzSqlInstanceKeyVaultKey.md)
 Gets a SQL managed instance's Key Vault keys.
 
@@ -453,7 +456,7 @@ Creates a new target group
 Creates an elastic database pool for a SQL Database.
 
 ### [New-AzSqlInstance](New-AzSqlInstance.md)
-Creates an Azure SQL Database Managed Instance.
+Creates an Azure SQL Managed Instance.
 
 ### [New-AzSqlInstanceDatabase](New-AzSqlInstanceDatabase.md)
 Creates an Azure SQL Managed Instance database.
@@ -705,10 +708,13 @@ Updates auto execute status of an Azure SQL Elastic Pool Advisor.
 Updates the state of an Azure SQL Elastic Pool recommended action.
 
 ### [Set-AzSqlInstance](Set-AzSqlInstance.md)
-Sets properties for an Azure SQL Database Managed Instance.
+Sets properties for an Azure SQL Managed Instance.
 
 ### [Set-AzSqlInstanceActiveDirectoryAdministrator](Set-AzSqlInstanceActiveDirectoryAdministrator.md)
 Provisions an Azure AD administrator for SQL Managed Instance.
+
+### [Set-AzSqlInstanceDatabase](Set-AzSqlInstanceDatabase.md)
+Sets properties of an Azure SQL Managed Instance database.
 
 ### [Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy](Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy.md)
 The **Set-AzSqlInstanceDatabaseLongTermRetentionBackup** cmdlet sets a managed database's long term retention policy.

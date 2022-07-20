@@ -3,6 +3,7 @@
         "tools",
         ".azure-pipelines",
         "src/lib",
+        "src/shared",
         "build.proj",
         "src/Az.Test.props",
         "src/Az.autorest.hybrid.props",

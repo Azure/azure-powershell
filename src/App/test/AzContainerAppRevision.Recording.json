@@ -1,0 +1,266 @@
+{
+  "AzContainerAppRevision+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions?api-version=2022-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "58" ],
+        "x-ms-client-request-id": [ "774515ec-7878-4385-98b7-e232d8603ff7" ],
+        "CommandName": [ "Get-AzContainerAppRevision" ],
+        "FullCommandName": [ "Get-AzContainerAppRevision_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.App/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11959" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "6a7ae644-ff7d-49d9-9c22-90bea388572e" ],
+        "x-ms-correlation-request-id": [ "6a7ae644-ff7d-49d9-9c22-90bea388572e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220530T110225Z:6a7ae644-ff7d-49d9-9c22-90bea388572e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 May 2022 11:02:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "893" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions/containerapp6950--0q3cj82\",\"name\":\"containerapp6950--0q3cj82\",\"type\":\"Microsoft.App/containerapps/revisions\",\"properties\":{\"createdTime\":\"2022-05-30T10:56:53+00:00\",\"fqdn\":\"containerapp6950--0q3cj82.mangocoast-70f752be.canadacentral.azurecontainerapps.io\",\"template\":{\"containers\":[{\"image\":\"mcr.microsoft.com/azuredocs/containerapps-helloworld:latest\",\"name\":\"containerapp6950\",\"resources\":{\"cpu\":2.00,\"memory\":\"4Gi\"},\"probes\":[{\"type\":\"Liveness\",\"httpGet\":{\"httpHeaders\":[{\"name\":\"Custom-Header\",\"value\":\"Awesome\"}],\"path\":\"/health\",\"port\":8080},\"initialDelaySeconds\":3,\"periodSeconds\":3}]}],\"scale\":{\"maxReplicas\":10}},\"active\":true,\"replicas\":0,\"trafficWeight\":100,\"healthState\":\"Healthy\",\"provisioningState\":\"Provisioned\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzContainerAppRevision+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions/containerapp6950--0q3cj82?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions/containerapp6950--0q3cj82?api-version=2022-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "59" ],
+        "x-ms-client-request-id": [ "a2c355f7-a83e-4f2b-9747-4fd219a3c68c" ],
+        "CommandName": [ "Get-AzContainerAppRevision" ],
+        "FullCommandName": [ "Get-AzContainerAppRevision_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.App/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11958" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "32a92137-ebd9-4085-b6ec-48ba3a8e0321" ],
+        "x-ms-correlation-request-id": [ "32a92137-ebd9-4085-b6ec-48ba3a8e0321" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220530T110226Z:32a92137-ebd9-4085-b6ec-48ba3a8e0321" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 May 2022 11:02:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "881" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions/containerapp6950--0q3cj82\",\"name\":\"containerapp6950--0q3cj82\",\"type\":\"Microsoft.App/containerapps/revisions\",\"properties\":{\"createdTime\":\"2022-05-30T10:56:53+00:00\",\"fqdn\":\"containerapp6950--0q3cj82.mangocoast-70f752be.canadacentral.azurecontainerapps.io\",\"template\":{\"containers\":[{\"image\":\"mcr.microsoft.com/azuredocs/containerapps-helloworld:latest\",\"name\":\"containerapp6950\",\"resources\":{\"cpu\":2.00,\"memory\":\"4Gi\"},\"probes\":[{\"type\":\"Liveness\",\"httpGet\":{\"httpHeaders\":[{\"name\":\"Custom-Header\",\"value\":\"Awesome\"}],\"path\":\"/health\",\"port\":8080},\"initialDelaySeconds\":3,\"periodSeconds\":3}]}],\"scale\":{\"maxReplicas\":10}},\"active\":true,\"replicas\":0,\"trafficWeight\":100,\"healthState\":\"Healthy\",\"provisioningState\":\"Provisioned\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzContainerAppRevision+[NoContext]+Disable+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions/containerapp6950--0q3cj82/deactivate?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions/containerapp6950--0q3cj82/deactivate?api-version=2022-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "60" ],
+        "x-ms-client-request-id": [ "92f02729-0b35-4389-be2b-1a7638a1886d" ],
+        "CommandName": [ "Disable-AzContainerAppRevision" ],
+        "FullCommandName": [ "Disable-AzContainerAppRevision_Deactivate" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.App/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "65d743dc-0360-4056-a5ec-3d1d9d2f38ae" ],
+        "x-ms-correlation-request-id": [ "65d743dc-0360-4056-a5ec-3d1d9d2f38ae" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220530T110229Z:65d743dc-0360-4056-a5ec-3d1d9d2f38ae" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 May 2022 11:02:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "\"Deactivate succeeded\"",
+      "isContentBase64": false
+    }
+  },
+  "AzContainerAppRevision+[NoContext]+Enable+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions/containerapp6950--0q3cj82/activate?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions/containerapp6950--0q3cj82/activate?api-version=2022-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "61" ],
+        "x-ms-client-request-id": [ "c1ec4bd2-e8b2-4cf6-acfc-a2c2bd0bb640" ],
+        "CommandName": [ "Enable-AzContainerAppRevision" ],
+        "FullCommandName": [ "Enable-AzContainerAppRevision_Activate" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.App/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "148bc0ba-61ec-4076-bc95-fd5a7d51cafa" ],
+        "x-ms-correlation-request-id": [ "148bc0ba-61ec-4076-bc95-fd5a7d51cafa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220530T110231Z:148bc0ba-61ec-4076-bc95-fd5a7d51cafa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 May 2022 11:02:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "20" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "\"Activate succeeded\"",
+      "isContentBase64": false
+    }
+  },
+  "AzContainerAppRevision+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions?api-version=2022-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "62" ],
+        "x-ms-client-request-id": [ "68b2bddb-a5fc-4357-b195-e50d1ecafc7f" ],
+        "CommandName": [ "Get-AzContainerAppRevision" ],
+        "FullCommandName": [ "Get-AzContainerAppRevision_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.App/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11957" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "70b46895-dc45-4b92-834d-73c6049a2b3b" ],
+        "x-ms-correlation-request-id": [ "70b46895-dc45-4b92-834d-73c6049a2b3b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220530T110232Z:70b46895-dc45-4b92-834d-73c6049a2b3b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 May 2022 11:02:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "893" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions/containerapp6950--0q3cj82\",\"name\":\"containerapp6950--0q3cj82\",\"type\":\"Microsoft.App/containerapps/revisions\",\"properties\":{\"createdTime\":\"2022-05-30T10:56:53+00:00\",\"fqdn\":\"containerapp6950--0q3cj82.mangocoast-70f752be.canadacentral.azurecontainerapps.io\",\"template\":{\"containers\":[{\"image\":\"mcr.microsoft.com/azuredocs/containerapps-helloworld:latest\",\"name\":\"containerapp6950\",\"resources\":{\"cpu\":2.00,\"memory\":\"4Gi\"},\"probes\":[{\"type\":\"Liveness\",\"httpGet\":{\"httpHeaders\":[{\"name\":\"Custom-Header\",\"value\":\"Awesome\"}],\"path\":\"/health\",\"port\":8080},\"initialDelaySeconds\":3,\"periodSeconds\":3}]}],\"scale\":{\"maxReplicas\":10}},\"active\":true,\"replicas\":0,\"trafficWeight\":100,\"healthState\":\"Healthy\",\"provisioningState\":\"Provisioned\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzContainerAppRevision+[NoContext]+Restart+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions/containerapp6950--0q3cj82/restart?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/containerApps/containerapp6950/revisions/containerapp6950--0q3cj82/restart?api-version=2022-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "63" ],
+        "x-ms-client-request-id": [ "3ac12c95-0b05-4add-9e4c-f094fad83365" ],
+        "CommandName": [ "Restart-AzContainerAppRevision" ],
+        "FullCommandName": [ "Restart-AzContainerAppRevision_Restart" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.App/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "17356f3c-a6f3-4777-ac7c-3e929e40fe18" ],
+        "x-ms-correlation-request-id": [ "17356f3c-a6f3-4777-ac7c-3e929e40fe18" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220530T110233Z:17356f3c-a6f3-4777-ac7c-3e929e40fe18" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 May 2022 11:02:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "19" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "\"Restart succeeded\"",
+      "isContentBase64": false
+    }
+  }
+}

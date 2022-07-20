@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
                 RemoteVolumeResourceId = DataProtectionVolumeId
             };
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.ApproveVolumeReplicationMessage, Name)))
             {
                 AzureNetAppFilesManagementClient.Volumes.AuthorizeReplication(ResourceGroupName, AccountName, PoolName, Name, authorizeRequest);
                 success = true;

@@ -1,7 +1,7 @@
 ---
-external help file: Az.StackHCI-help.xml
+external help file:
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/get-AzStackHCIVMAttestation
+online version: https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmattestation
 schema: 2.0.0
 ---
 
@@ -21,17 +21,43 @@ Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on 
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1: 
 ```powershell
 Get-AzStackHCIVMAttestation
 ```
 
-Get all guests on cluster.
+```output
+Name        AttestationHost    Status
+----        ---------------    ------
+183hcinode1 HCINODE2        Connected
+bhat2       HCINODE2        Connected
+ppnt3n1     HCINODE2        Connected
+ppt3n0      HCINODE2        Connected
+ppt5pn0     HCINODE2        Connected
+ppt6pn0     HCINODE2        Connected
+ppt7pn0     HCINODE2        Connected
+```
 
-### EXAMPLE 2
+Get all guests with IMDS Attestation on cluster.
+
+### Example 2: 
 ```powershell
 Get-AzStackHCIVMAttestation -Local
 ```
+
+```output
+Name        AttestationHost    Status
+----        ---------------    ------
+183hcinode1 HCINODE2        Connected
+bhat2       HCINODE2        Connected
+ppnt3n1     HCINODE2        Connected
+ppt3n0      HCINODE2        Connected
+ppt5pn0     HCINODE2        Connected
+ppt6pn0     HCINODE2        Connected
+ppt7pn0     HCINODE2        Connected
+```
+
+Gets guests with Attestation from the node executing the cmdlet.
 
 ## PARAMETERS
 
@@ -45,7 +71,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -57,10 +83,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### PSCustomObject. Returns following Properties in PSCustomObject.
-### Name:            Name of the VM.
-### AttestationHost: Host that VM is currently connected.
-### Status:          Connection status.
+### System.Management.Automation.PSObject
+
 ## NOTES
 
+ALIASES
+
 ## RELATED LINKS
+

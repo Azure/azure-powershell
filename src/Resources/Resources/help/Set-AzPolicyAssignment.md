@@ -133,6 +133,7 @@ The command stores that object in the $PolicyAssignment variable.
 The final command updates the parameter values on the policy assignment named PolicyAssignment.
 
 ### Example 5: Update policy assignment parameters with policy parameter file
+<!-- Skip: Output cannot be splitted from code -->
 Create a file called _AllowedLocations.json_ in the local working directory with the following content.
 
 ```

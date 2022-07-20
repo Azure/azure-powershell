@@ -20,28 +20,24 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
     /// <summary>
     /// Test for all media related cmdlets
     /// </summary>
-    public class MediaTests
+    public class MediaTests : MediaTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public MediaTests(Xunit.Abstractions.ITestOutputHelper output)
+        public MediaTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Old ResourceManager version in test controller. Udpate and re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMedia()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-Media");
+            TestRunner.RunTestScript("Test-Media");
         }
 
         [Fact(Skip = "Old ResourceManager version in test controller. Udpate and re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMediaWithPiping()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MediaWithPiping");
+            TestRunner.RunTestScript("Test-MediaWithPiping");
         }
     }
 }

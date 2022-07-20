@@ -58,6 +58,7 @@ The **Update-AzStorageEncryptionScope** cmdlet modifies an encryption scope for 
 ## EXAMPLES
 
 ### Example 1: Disable an encryption scope
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -State Disabled 
 
@@ -71,6 +72,7 @@ testscope Disabled Microsoft.Storage
 This command disables an encryption scope.
 
 ### Example 2: Enable an encryption scope
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -State Enabled 
 
@@ -84,6 +86,7 @@ testscope Enabled  Microsoft.Storage
 This command enables an encryption scope.
 
 ### Example 3: Update an encryption scope to use Storage Encryption
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -StorageEncryption
 
@@ -97,6 +100,7 @@ testscope Enabled  Microsoft.Storage
 This command updates an encryption scope to use Storage Encryption.
 
 ### Example 4: Update an encryption scope to use Keyvault Encryption
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EncryptionScopeName testscope -KeyvaultEncryption -KeyUri "https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57"
 

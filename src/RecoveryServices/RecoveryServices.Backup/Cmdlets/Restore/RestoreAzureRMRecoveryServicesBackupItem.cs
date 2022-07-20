@@ -314,6 +314,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RestoreVM.TargetSubnetName)]
         public string TargetSubnetName { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMCreateNewParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreVM.TargetSubscriptionId)]
+        public string TargetSubscriptionId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -328,6 +332,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string secondaryRegion = "";
                 if (RestoreToSecondaryRegion.IsPresent)
                 {
+                    if(TargetSubscriptionId != null)
+                    {                        
+                        throw new ArgumentException(Resources.CRRNotSupportedWIthCSR);
+                    }
                     if(VaultLocation != null)
                     {
                         secondaryRegion = BackupUtils.regionMap[VaultLocation];
@@ -400,6 +408,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(RestoreVMBackupItemParams.TargetVNetName, TargetVNetName);
                 providerParameters.Add(RestoreVMBackupItemParams.TargetVNetResourceGroup, TargetVNetResourceGroup);
                 providerParameters.Add(RestoreVMBackupItemParams.TargetSubnetName, TargetSubnetName);
+                providerParameters.Add(RestoreVMBackupItemParams.TargetSubscriptionId, TargetSubscriptionId);
 
                 if (DiskEncryptionSetId != null)
                 {

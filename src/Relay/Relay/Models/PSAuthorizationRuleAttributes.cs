@@ -38,11 +38,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// <summary>
         /// Initializes a new instance of the AuthorizationRule class.
         /// </summary>
-        /// <param name="rights">The rights associated with the rule.</param>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        
+        /// <param name="authorizationrule"></param>
         public PSAuthorizationRuleAttributes(AuthorizationRule authorizationrule)
         {
             Id = authorizationrule.Id;

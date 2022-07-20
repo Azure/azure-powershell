@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -561,6 +561,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string LocationCannotBeUpdateForExistingCluster {
             get {
                 return ResourceManager.GetString("LocationCannotBeUpdateForExistingCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please set &apos;-EnableManagedIdentity&apos; first if you want to set &apos;AssignIdentity&apos;..
+        /// </summary>
+        internal static string NeedEnableManagedIdentity {
+            get {
+                return ResourceManager.GetString("NeedEnableManagedIdentity", resourceCulture);
             }
         }
         

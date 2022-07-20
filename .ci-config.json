@@ -61,9 +61,9 @@
         "LICENSE.txt",
         "README.md",
         "ChangeLog.md",
-        "**/ChangeLog.md",
-        "**/readme.md",
-        "src/**/document/*",
+        "*/ChangeLog.md",
+        "*/readme.md",
+        "src/*/document/*",
         ".ci-config.json",
         "tools/PrepareAutorestModule.ps1",
         "tools/SyncFromMainBranch.ps1",
@@ -84,7 +84,7 @@
     },
     {
       "patterns": [
-        "src/{ModuleName}/**/*.md$"
+        "src/{ModuleName}/*/*.md$"
       ],
       "phases": [
         "build:module",
@@ -93,7 +93,7 @@
     },
     {
       "patterns": [
-        "src/{ModuleName}/**/*.csproj$"
+        "src/{ModuleName}/*/*.csproj$"
       ],
       "phases": [
         "build:related-module",
@@ -284,5 +284,20 @@
         "test:all"
       ]
     }
+  ],
+  "selectModuleList": [
+    "Accounts",
+    "Aks",
+    "ApplicationInsights",
+    "Compute",
+    "Functions",
+    "KeyVault",
+    "KubernetersConfiguration",
+    "Network",
+    "PostgreSql",
+    "Purview",
+    "Resources",
+    "Storage",
+    "Websites"
   ]
 }

@@ -126,7 +126,8 @@ New-AzBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir /s" -A
 
 ### Example 7: Add a task which runs in a container
 ```powershell
-New-AzBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir /s" -ContainerSettings New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskContainerSettings "containerImageName"
+$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
+New-AzBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir /s" -ContainerSettings (New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskContainerSettings "containerImageName") -BatchContext $Context
 ```
 
 ## PARAMETERS

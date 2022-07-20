@@ -15,9 +15,9 @@ Update the NetworkruleSet of the given Namespace in the current Azure subscripti
 ### NetworkRuleSetPropertiesSet (Default)
 ```
 Set-AzEventHubNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [-DefaultAction <String>]
- [-TrustedServiceAccessEnabled] [-IPRule] <PSNWRuleSetIpRulesAttributes[]> [-PublicNetworkAccess <String>]
- [-VirtualNetworkRule] <PSNWRuleSetVirtualNetworkRulesAttributes[]> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TrustedServiceAccessEnabled] [[-IPRule] <PSNWRuleSetIpRulesAttributes[]>] [-PublicNetworkAccess <String>]
+ [[-VirtualNetworkRule] <PSNWRuleSetVirtualNetworkRulesAttributes[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NetwrokruleSetInputObjectSet
@@ -142,7 +142,7 @@ Type: Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes[]
 Parameter Sets: NetworkRuleSetPropertiesSet
 Aliases:
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
@@ -159,6 +159,21 @@ Aliases: NamespaceName
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Public Network Access for NetwrokeuleSet
+
+```yaml
+Type: System.String
+Parameter Sets: NetworkRuleSetPropertiesSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -217,7 +232,7 @@ Type: Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAtt
 Parameter Sets: NetworkRuleSetPropertiesSet
 Aliases: VirtualNteworkRule
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False
@@ -256,8 +271,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
