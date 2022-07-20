@@ -16,8 +16,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-
-// test
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistry", DefaultParameterSetName = ListRegistriesParameterSet)]
