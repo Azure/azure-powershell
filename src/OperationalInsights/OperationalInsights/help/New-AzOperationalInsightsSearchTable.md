@@ -26,10 +26,12 @@ Create a Search table
 
 ### Example 1
 ```powershell
-PS C:\> New-AzOperationalInsightsSearchTable -ResourceGroupName {rgName} -WorkspaceName {wsName} -TableName {tableName_SRCH} -SearchQuery "Heartbeat"  -StartSearchTime "05-27-2022 12:26:36" -EndSearchTime "05-28-2022 12:26:36"
+New-AzOperationalInsightsSearchTable -ResourceGroupName RG-NAME -WorkspaceName WORKSPACE-NAME -TableName TABLE-NAME -SearchQuery "Heartbeat"  -StartSearchTime "05-27-2022 12:26:36" -EndSearchTime "05-28-2022 12:26:36"
+```
 
+```output
 TableName            : tableName_SRCH
-ResourceId           : /subscriptions/{subscriptionID}/resourcegroups/{rgName}/providers/Microsoft.OperationalInsights/workspaces/{wsName}/tables/{tableName_SRCH}
+ResourceId           : /subscriptions/subscriptionID/resourcegroups/RG-NAME/providers/Microsoft.OperationalInsights/workspaces/WORKSPACE-NAME/tables/TABLE-NAME
 RetentionInDays      : 30
 TotalRetentionInDays : 30
 Plan                 : Analytics

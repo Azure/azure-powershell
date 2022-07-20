@@ -24,7 +24,10 @@ Migrate a Log Analytics table from support of the Data Collector API and Custom 
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzOperationalInsightsMigrateTable -ResourceGroupName rgName -WorkspaceName dabenham-pshTest -TableName "dabenham2_CL"
+Invoke-AzOperationalInsightsMigrateTable -ResourceGroupName RG-NAME -WorkspaceName WORKSPACE-NAME -TableName TABLE-NAME
+```
+
+```output
 True
 ```
 

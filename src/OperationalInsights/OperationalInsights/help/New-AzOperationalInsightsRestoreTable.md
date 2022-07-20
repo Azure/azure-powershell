@@ -25,20 +25,20 @@ Create a Restore table
 
 ### Example 1
 ```powershell
-PS C:\> New-AzOperationalInsightsRestoreTable -ResourceGroupName {rgName} -WorkspaceName {wsName} -TableName {tableName_RST} -StartRestoreTime "05-25-2022 12:26:36" -EndRestoreTime "05-28-2022 12:26:36" -SourceTable "Usage"
+New-AzOperationalInsightsRestoreTable -ResourceGroupName RG-NAME -WorkspaceName WORKSPACE-NAME -TableName TABLE-NAME -StartRestoreTime "05-25-2022 12:26:36" -EndRestoreTime "05-28-2022 12:26:36" -SourceTable "Usage"
 ```
 
 ```output
-TableName            : {tableName_RST}
-ResourceId           : /subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/{rgName}/providers/Microsoft.OperationalInsights/workspaces/{wsName}/tables/dabenhamPoc22_RST
+TableName            : TABLE-NAME
+ResourceId           : /subscriptions/SUBSCRIPTION-ID/resourcegroups/RG-NAME/providers/Microsoft.OperationalInsights/workspaces/WORKSPACE-NAME/tables/TABLE-NAME
 RetentionInDays      :
 TotalRetentionInDays :
 Plan                 : Analytics
 Description          :
 Schema               : Microsoft.Azure.Management.OperationalInsights.Models.Schema
 ProvisioningState    : Succeeded
-ResourceGroupName    : {rgName}
-WorkspaceName        : {wsName}
+ResourceGroupName    : RG-NAME
+WorkspaceName        : WORKSPACE-NAME
 ```
 
 Create a Restore table

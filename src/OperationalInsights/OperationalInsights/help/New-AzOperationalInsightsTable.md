@@ -26,20 +26,20 @@ Creates a custom log table
 
 ### Example 1
 ```powershell
-PS C:\> New-AzOperationalInsightsTable -ResourceGroupName {rgName} -WorkspaceName {wsName} -TableName {tableName_CL} -RetentionInDays 25 -TotalRetentionInDays 30 -Column @{'ColName1' = 'string'; 'TimeGenerated' = 'DateTime'; 'ColName3' = 'int'}
+New-AzOperationalInsightsTable -ResourceGroupName RG-NAME -WorkspaceName WORKSPACE-NAME -TableName TABLE-NAME -RetentionInDays 25 -TotalRetentionInDays 30 -Column @{'ColName1' = 'string'; 'TimeGenerated' = 'DateTime'; 'ColName3' = 'int'}
 ```
 
 ```output
-TableName            : {tableName_CL}
-ResourceId           : /subscriptions/{subscriptionID}/resourcegroups/{rgName}/providers/Microsoft.OperationalInsights/workspaces/{wsName}/tables/{tableName_CL}
+TableName            : TABLE-NAME
+ResourceId           : /subscriptions/{subscriptionID}/resourcegroups/RG-NAME/providers/Microsoft.OperationalInsights/workspaces/WORKSPACE-NAME/tables/TABLE-NAME
 RetentionInDays      : 25
 TotalRetentionInDays : 30
 Plan                 : Analytics
 Description          :
 Schema               : Microsoft.Azure.Management.OperationalInsights.Models.Schema
 ProvisioningState    : Succeeded
-ResourceGroupName    : {rgName}
-WorkspaceName        : {wsName}
+ResourceGroupName    : RG-NAME
+WorkspaceName        : WORKSPACE-NAME
 ```
 
 Creates a custom log table with provided retention details and columns

@@ -24,7 +24,7 @@ Delete a Log Analytics workspace table.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzOperationalInsightsTable -ResourceGroupName dabenham-dev -WorkspaceName dabenham-pshTest -TableName dabenhamPoc22_SRCH
+Remove-AzOperationalInsightsTable -ResourceGroupName RG-NAME -WorkspaceName WS-NAME -TableName TABLE-NAME
 ```
 
 ```output
