@@ -20,58 +20,46 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ManagedInstanceKeyVaultKeyTests : SqlTestsBase
+    public class ManagedInstanceKeyVaultKeyTests : SqlTestRunner
     {
         public ManagedInstanceKeyVaultKeyTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/managedInstances"
-            };
-        }
 
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            var graphClient = GetGraphClient(context);
-            var networkClient = GetNetworkClient(context);
-            var keyVaultClient = GetKeyVaultClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient, graphClient, keyVaultClient);
         }
 
         [Fact(Skip = "Requires manual set up.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKeyCI()
         {
-            RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyCI");
+            TestRunner.RunTestScript("Test-ManagedInstanceKeyVaultKeyCI");
         }
 
         [Fact(Skip = "Requires manual set up.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKey()
         {
-            RunPowerShellTest("Test-ManagedInstanceKeyVaultKey");
+            TestRunner.RunTestScript("Test-ManagedInstanceKeyVaultKey");
         }
 
         [Fact(Skip = "Requires manual set up.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKeyInputObject()
         {
-            RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyInputObject");
+            TestRunner.RunTestScript("Test-ManagedInstanceKeyVaultKeyInputObject");
         }
 
         [Fact(Skip = "Requires manual set up.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKeyResourceId()
         {
-            RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyResourceId");
+            TestRunner.RunTestScript("Test-ManagedInstanceKeyVaultKeyResourceId");
         }
 
         [Fact(Skip = "Requires manual set up.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKeyPiping()
         {
-            RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyPiping");
+            TestRunner.RunTestScript("Test-ManagedInstanceKeyVaultKeyPiping");
         }
     }
 }

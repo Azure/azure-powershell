@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
@@ -43,17 +42,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 .WithExtraRmModules(helper => new[]
                 {
                     helper.RMResourceModule,
-                    helper.GetRMModulePath("AzureRM.Monitor.psd1"),
-                    helper.GetRMModulePath(@"Az.ManagedServiceIdentity.psd1"),
+                    helper.GetRMModulePath("Az.Monitor.psd1"),
+                    helper.GetRMModulePath("Az.ManagedServiceIdentity.psd1")
                 })
                 .WithRecordMatcher(
-                    (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
-                        new ResourcesRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore))
-                .WithExtraUserAgentsToIgnore(new Dictionary<string, string>
-                {
-                    {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2019-10-01"},
-                })
-                .WithMockContextAction(() =>
+                    (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => new ResourcesRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
+                )
+                .WithNewRecordMatcherArguments(
+                    userAgentsToIgnore: new Dictionary<string, string>
+                    {
+                        { "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2019-10-01" }
+                    },
+                    resourceProviders: new Dictionary<string, string>()
+                )
+                .WithMockContextAction(mockContext =>
                 {
                     var credentials = HttpMockServer.Mode != HttpRecorderMode.Playback
                         ? new Func<ServiceClientCredentials>(() =>
