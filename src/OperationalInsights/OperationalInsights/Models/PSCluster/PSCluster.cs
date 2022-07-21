@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             CreatedDate = cluster.CreatedDate;
             AssociatedWorkspaces = cluster.AssociatedWorkspaces;
             CapacityReservationProperties = new PSCapacityReservationProperties(cluster.CapacityReservationProperties, cluster.Sku);
+            Sku = new PSClusterSku(cluster.Sku);
 
             if (cluster.Tags != null)
             {
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public bool? IsDoubleEncryptionEnabled { get; set; }
         public bool? IsAvailabilityZonesEnabled { get; set; }
         public string BillingType { get; set; }
+        public PSClusterSku Sku { get; set; }
         public PSKeyVaultProperties KeyVaultProperties { get; set; }
         public string LastModifiedDate { get; set; }
         public string CreatedDate { get; set; }

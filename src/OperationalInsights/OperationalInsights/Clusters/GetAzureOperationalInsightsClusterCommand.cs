@@ -16,9 +16,12 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
+using System;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 {
+    [CmdletOutputBreakingChange(typeof(PSCluster), DeprecatedOutputProperties = new String[] { "NextLink", "Sku" })]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSCluster))]
     public class GetAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
     {

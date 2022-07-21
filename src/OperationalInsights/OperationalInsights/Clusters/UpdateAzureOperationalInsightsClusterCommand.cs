@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,14 +13,16 @@
 
 using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 {
+    [CmdletOutputBreakingChange(typeof(PSCluster), DeprecatedOutputProperties = new String[] { "NextLink", "Sku" })]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster", DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class UpdateAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
     {

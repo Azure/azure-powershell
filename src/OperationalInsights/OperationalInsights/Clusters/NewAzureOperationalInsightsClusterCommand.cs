@@ -16,9 +16,12 @@ using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 {
+    [CmdletOutputBreakingChange(typeof(PSCluster), DeprecatedOutputProperties = new String[] { "NextLink", "Sku" })]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class NewAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
     {
