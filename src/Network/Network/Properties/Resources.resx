@@ -752,6 +752,7 @@
   </data>
   <data name="SameTypeChildResourceAlreadyPresentInResourceGroup" xml:space="preserve">
     <value>Only one child allowed. A resource with name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead.</value>
+  </data>
   <data name="UnsupportPrivateEndpointConnectionType" xml:space="preserve">
     <value>{0} doesn't support private endpoint connection.</value>
   </data>
