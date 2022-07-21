@@ -138,6 +138,7 @@ function Start-AzMigrateTestMigration {
             $AvSet = Get-AzAvailabilitySet -ResourceGroupName $AvSetRg -Name $AvSetName -ErrorVariable notPresent -ErrorAction SilentlyContinue
             if (!$AvSet)
             {
+                Set-AzContext -SubscriptionId $SourceSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
                 throw "Availability Set '$($AvSetId)' does not exist."
             }
             if ($AvSet.VirtualMachinesReferences -And ($AvSet.VirtualMachinesReferences.Count -gt 0))
