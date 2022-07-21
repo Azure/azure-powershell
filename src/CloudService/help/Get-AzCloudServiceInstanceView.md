@@ -23,6 +23,7 @@ Gets the status of a cloud service.
 ## EXAMPLES
 
 ### Example 1: Get cloud service instance view
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $cloudServiceInstanceView = Get-AzCloudServiceInstanceView -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 

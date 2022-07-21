@@ -33,11 +33,9 @@ The **Get-AzVirtualNetworkSubnetConfig** cmdlet gets one or more subnet configur
 ### 1: Get a subnet in a virtual network
 ```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
-    $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet 
-    -AddressPrefix "10.0.1.0/24"
-    $virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName 
-    TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
-    Get-AzVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+$virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
+Get-AzVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork
 ```
 
 This example creates a resource group and a virtual network with a single subnet in that resource group. It then retrieves data about that subnet.

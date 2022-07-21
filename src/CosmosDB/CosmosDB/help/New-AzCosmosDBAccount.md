@@ -64,7 +64,7 @@ A new CosmosDB Account with name databaseAccountName is created in the ResourceG
 
 ### Example 2
 ```powershell
-New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name -Location "West US" -FromPointInTimeBackup -SourceRestorableDatabaseAccountId /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts/{instance-id} -RestoreTimesampInUtc 2020-07-20T17:19:25+0000
+New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name -Location "West US" -FromPointInTimeBackup -SourceRestorableDatabaseAccountId "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts/{instance-id}" -RestoreTimesampInUtc 2020-07-20T17:19:25+0000
 ```
 
 ```output

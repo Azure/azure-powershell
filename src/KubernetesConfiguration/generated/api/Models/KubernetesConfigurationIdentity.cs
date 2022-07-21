@@ -23,8 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         private string _clusterResourceName;
 
         /// <summary>
-        /// The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S
-        /// clusters).
+        /// The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
         public string ClusterResourceName { get => this._clusterResourceName; set => this._clusterResourceName = value; }
@@ -33,8 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         private string _clusterRp;
 
         /// <summary>
-        /// The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S
-        /// clusters).
+        /// The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
         public string ClusterRp { get => this._clusterRp; set => this._clusterRp = value; }
@@ -45,6 +43,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         /// <summary>Name of the Extension.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
         public string ExtensionName { get => this._extensionName; set => this._extensionName = value; }
+
+        /// <summary>Backing field for <see cref="FluxConfigurationName" /> property.</summary>
+        private string _fluxConfigurationName;
+
+        /// <summary>Name of the Flux Configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
+        public string FluxConfigurationName { get => this._fluxConfigurationName; set => this._fluxConfigurationName = value; }
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
@@ -63,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>The name of the resource group.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
@@ -77,9 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -101,24 +104,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         PossibleTypes = new [] { typeof(string) })]
         string ClusterName { get; set; }
         /// <summary>
-        /// The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S
-        /// clusters).
+        /// The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).",
+        Description = @"The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.",
         SerializedName = @"clusterResourceName",
         PossibleTypes = new [] { typeof(string) })]
         string ClusterResourceName { get; set; }
         /// <summary>
-        /// The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S
-        /// clusters).
+        /// The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).",
+        Description = @"The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.",
         SerializedName = @"clusterRp",
         PossibleTypes = new [] { typeof(string) })]
         string ClusterRp { get; set; }
@@ -130,6 +131,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         SerializedName = @"extensionName",
         PossibleTypes = new [] { typeof(string) })]
         string ExtensionName { get; set; }
+        /// <summary>Name of the Flux Configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the Flux Configuration.",
+        SerializedName = @"fluxConfigurationName",
+        PossibleTypes = new [] { typeof(string) })]
+        string FluxConfigurationName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
@@ -146,11 +155,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
         string OperationId { get; set; }
-        /// <summary>The name of the resource group.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the resource group.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
@@ -162,13 +171,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         SerializedName = @"sourceControlConfigurationName",
         PossibleTypes = new [] { typeof(string) })]
         string SourceControlConfigurationName { get; set; }
-        /// <summary>
-        /// The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)",
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -180,28 +187,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         /// <summary>The name of the kubernetes cluster.</summary>
         string ClusterName { get; set; }
         /// <summary>
-        /// The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S
-        /// clusters).
+        /// The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
         /// </summary>
         string ClusterResourceName { get; set; }
         /// <summary>
-        /// The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S
-        /// clusters).
+        /// The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
         /// </summary>
         string ClusterRp { get; set; }
         /// <summary>Name of the Extension.</summary>
         string ExtensionName { get; set; }
+        /// <summary>Name of the Flux Configuration.</summary>
+        string FluxConfigurationName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>operation Id</summary>
         string OperationId { get; set; }
-        /// <summary>The name of the resource group.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>Name of the Source Control Configuration.</summary>
         string SourceControlConfigurationName { get; set; }
-        /// <summary>
-        /// The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
 
     }

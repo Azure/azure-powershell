@@ -25,8 +25,10 @@ Create an in-memory object for AzureSynapseWorkspaceDataSource.
 
 ### Example 1: Create Azure Synapse workspace data source object
 ```powershell
-PS C:\> New-AzPurviewAzureSynapseWorkspaceDataSourceObject -Kind 'AzureSynapseWorkspace' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DedicatedSqlEndpoint 'g1euap.sql.azuresynapse.net' -ServerlessSqlEndpoint 'rg1euap-ondemand.sql.azuresynapse.net'
+New-AzPurviewAzureSynapseWorkspaceDataSourceObject -Kind 'AzureSynapseWorkspace' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DedicatedSqlEndpoint 'g1euap.sql.azuresynapse.net' -ServerlessSqlEndpoint 'rg1euap-ondemand.sql.azuresynapse.net'
+```
 
+```output
 CollectionLastModifiedAt :
 CollectionReferenceName  : parv-brs-2
 CollectionType           : CollectionReference

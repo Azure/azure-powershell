@@ -82,7 +82,7 @@ The **Set-AzDataBoxEdgeBandwidthSchedule** cmdlet updates a Bandwidth schedule f
 
 ### Example 1
 ```powershell
-Set-AzDataBoxEdgeBandwidthSchedule  -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule -UnlimitedBandwidth
+Set-AzDataBoxEdgeBandwidthSchedule  -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule -UnlimitedBandwidth $ture
 ```
 
 ```output

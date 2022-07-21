@@ -23,9 +23,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
     /// <summary>
     /// Class StorageSyncServiceConverter.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.Management.StorageSync.Models.StorageSyncService}" />
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{PSStorageSyncService, StorageSyncService}" />
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.Management.StorageSync.Models.StorageSyncService}" />
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{PSStorageSyncService, StorageSyncService}" />
     public class StorageSyncServiceConverter : ConverterBase<PSStorageSyncService, StorageSyncModels.StorageSyncService>
     {
 

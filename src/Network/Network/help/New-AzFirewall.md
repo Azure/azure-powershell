@@ -133,8 +133,8 @@ This example creates a Firewall with all available availability zones.
 ```powershell
 $rgName = "resourceGroupName"
 $vnet = Get-AzVirtualNetwork -Name "vnet" -ResourceGroupName $rgName
-$pip1 = New-AzPublicIpAddress -Name "AzFwPublicIp1" -ResourceGroupName "rg" -SkuName "AZFW_VNet" -SkuTier "Standard" -Location "centralus" -AllocationMethod Static
-$pip2 = New-AzPublicIpAddress -Name "AzFwPublicIp2" -ResourceGroupName "rg" -SkuName "AZFW_VNet" -SkuTier "Standard" -Location "centralus" -AllocationMethod Static
+$pip1 = New-AzPublicIpAddress -Name "AzFwPublicIp1" -ResourceGroupName "rg" -Sku "Basic" -Tier "Regional" -Location "centralus" -AllocationMethod Static
+$pip2 = New-AzPublicIpAddress -Name "AzFwPublicIp2" -ResourceGroupName "rg" -Sku "Basic" -Tier "Regional" -Location "centralus" -AllocationMethod Static
 New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress @($pip1, $pip2)
 ```
 
@@ -172,7 +172,7 @@ $rgName = "resourceGroupName"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
 $pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
 
-$tiWhitelist = New-AzFirewallThreatIntelWhitelist -FQDN @("www.microsoft.com") -IpAddresses @("8.8.8.8")
+$tiWhitelist = New-AzFirewallThreatIntelWhitelist -FQDN @("www.microsoft.com") -IpAddress @("8.8.8.8")
 New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -ThreatIntelWhitelist $tiWhitelist
 ```
 
@@ -235,8 +235,8 @@ $rgName = "resourceGroupName"
 $vHub = Get-AzVirtualHub -Name "hub"
 $vHubId = $vHub.Id
 $fwpips = New-AzFirewallHubPublicIpAddress -Count 2
-$hubIpAddresses = New-AzFirewallHubIpAddress -PublicIPs $fwpips
-$fw=New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location westus -SkuName AZFW_Hub -HubIPAddresses $hubIpAddresses -VirtualHubId $vHubId
+$hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwpips
+$fw=New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location westus -SkuName AZFW_Hub -HubIPAddress $hubIpAddresses -VirtualHubId $vHubId
 ```
 
 This example creates a Firewall attached to virtual hub "hub" in the same resource group as the firewall.

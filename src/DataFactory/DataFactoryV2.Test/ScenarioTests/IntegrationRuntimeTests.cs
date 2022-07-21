@@ -12,70 +12,66 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.DataFactoryV2.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
-    public class IntegrationRuntimeTests : DataFactoriesScenarioTestsBase
+    public class IntegrationRuntimeTests : DataFactoryV2TestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public IntegrationRuntimeTests(ITestOutputHelper output)
+        public IntegrationRuntimeTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSelfHostedIntegrationRuntime()
         {
-            RunPowerShellTest(_logger, "Test-SelfHosted-IntegrationRuntime");
+            TestRunner.RunTestScript("Test-SelfHosted-IntegrationRuntime");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureIntegrationRuntime()
         {
-            RunPowerShellTest(_logger, "Test-Azure-IntegrationRuntime");
+            TestRunner.RunTestScript("Test-Azure-IntegrationRuntime");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestIntegrationRuntimePiping()
         {
-            RunPowerShellTest(_logger, "Test-IntegrationRuntime-Piping");
+            TestRunner.RunTestScript("Test-IntegrationRuntime-Piping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSsisAzureIntegrationRuntime()
         {
-            RunPowerShellTest(_logger, "Test-SsisAzure-IntegrationRuntime");
+            TestRunner.RunTestScript("Test-SsisAzure-IntegrationRuntime");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSsisAzureIntegrationRuntimeWithSubnetId()
         {
-            RunPowerShellTest(_logger, "Test-Azure-IntegrationRuntime-SubnetId");
+            TestRunner.RunTestScript("Test-Azure-IntegrationRuntime-SubnetId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressSsisAzureIntegrationRuntime()
         {
-            RunPowerShellTest(_logger, "Test-Azure-Express-IntegrationRuntime");
+            TestRunner.RunTestScript("Test-Azure-Express-IntegrationRuntime");
         }
 
         [Fact(Skip = "New-AzureRMRoleAssignmentWithId and Remove-AzureRmRoleAssignment rely on Resources module. Needs fixed in AzureRM.Resources.ps1.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSharedIntegrationRuntime()
         {
-            RunPowerShellTest(_logger, "Test-Shared-IntegrationRuntime");
+            TestRunner.RunTestScript("Test-Shared-IntegrationRuntime");
         }
     }
 }

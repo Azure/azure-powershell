@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// <summary>
         /// Upper limit of throughput units when AutoInflate is enabled.
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 7, HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.")]
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 6, HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.")]
         [ValidateRange(0, 20)]
         public int? MaximumThroughputUnits { get; set; }
 
@@ -113,13 +113,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "ARM ID of Cluster where namespace is to be created")]
         [ValidateNotNullOrEmpty]
         public string ClusterARMId { get; set; }
-
-        /// <summary>
-        /// Indicates whether Identity is enabled.
-        /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
-        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
-        public SwitchParameter Identity { get; set; }
 
         /// <summary>
         /// Indicates whether DisableLocalAuth is enabled.
@@ -154,22 +147,21 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
                 try
                 {
                     WriteObject(Client.BeginCreateNamespace(
-                        ResourceGroupName,
-                        Name,
-                        Location,
-                        SkuName,
-                        SkuCapacity,
-                        tagDictionary,
-                        EnableAutoInflate.IsPresent,
-                        MaximumThroughputUnits,
-                        EnableKafka.IsPresent,
-                        ClusterARMId,
-                        ZoneRedundant.IsPresent,
-                        DisableLocalAuth.IsPresent,
-                        Identity.IsPresent,
-                        IdentityType,
-                        IdentityId,
-                        EncryptionConfig));
+                        resourceGroupName: ResourceGroupName,
+                        namespaceName: Name,
+                        location: Location,
+                        skuName: SkuName,
+                        skuCapacity: SkuCapacity,
+                        tags: tagDictionary,
+                        isAutoInflateEnabled: EnableAutoInflate.IsPresent,
+                        maximumThroughputUnits: MaximumThroughputUnits,
+                        isKafkaEnabled: EnableKafka.IsPresent,
+                        clusterARMId: ClusterARMId,
+                        isZoneRedundant: ZoneRedundant.IsPresent,
+                        isDisableLocalAuth: DisableLocalAuth.IsPresent,
+                        identityType: IdentityType,
+                        identityId: IdentityId,
+                        encryptionConfigs: EncryptionConfig));
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {

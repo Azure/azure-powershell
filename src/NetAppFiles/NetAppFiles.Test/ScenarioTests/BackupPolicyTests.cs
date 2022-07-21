@@ -17,28 +17,24 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 {
-    public class BackupPolicyTests
+    public class BackupPolicyTests : NetAppFilesTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public BackupPolicyTests(Xunit.Abstractions.ITestOutputHelper output)
+        public BackupPolicyTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestBackupPolicyCrud()
+            public void TestBackupPolicyCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-BackupPolicyCrud");
+            TestRunner.RunTestScript("Test-BackupPolicyCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBackupPolicyPipelines()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-BackupPolicyPipelines");
+            TestRunner.RunTestScript("Test-BackupPolicyPipelines");
         }
     }
 }

@@ -17,7 +17,8 @@ New-AzSnapshotUpdateConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemType
  [[-Tag] <Hashtable>] [-SupportsHibernation <Boolean>] [-EncryptionSettingsEnabled <Boolean>]
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
  [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-PublicNetworkAccess <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataAccessAuthMode <String>] [-Architecture <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,9 +29,9 @@ The **New-AzSnapshotUpdateConfig** cmdlet creates a configurable snapshot update
 ### Example 1
 ```powershell
 $snapshotupdateconfig = New-AzSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -EncryptionSettingsEnabled $true;
-$secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+$secretUrl = 'https://myvault.vault-int.azure-int.net/secrets/123/';
 $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
-$keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+$keyUrl = 'https://myvault.vault-int.azure-int.net/keys/456';
 $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
 $snapshotupdateconfig = Set-AzSnapshotUpdateDiskEncryptionKey -SnapshotUpdate $snapshotupdateconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
 $snapshotupdateconfig = Set-AzSnapshotUpdateKeyEncryptionKey -SnapshotUpdate $snapshotupdateconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
@@ -52,6 +53,36 @@ This command updates an existing snapshot with name 'Snapshot01' in resource gro
 'ResourceGroup01' to 10 GB disk size.
 
 ## PARAMETERS
+
+### -Architecture
+CPU architecture supported by an OS disk. Possible values are "X64" and "Arm64".
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DataAccessAuthMode
+Additional authentication requirements when exporting or uploading to a disk or snapshot.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.

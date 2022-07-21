@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Creates or updates an App Service Plan.
+Creates or updates an App Service Plan.
 .Description
-Description for Creates or updates an App Service Plan.
+Creates or updates an App Service Plan.
 .Example
 New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                       -Name MyPremiumPlan `
@@ -434,6 +434,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzFunctionAppPlan_Create';
             CreateExpanded = 'Az.Functions.private\New-AzFunctionAppPlan_CreateExpanded';
@@ -449,6 +450,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -457,15 +459,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

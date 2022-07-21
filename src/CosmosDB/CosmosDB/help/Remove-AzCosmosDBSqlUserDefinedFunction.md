@@ -32,7 +32,7 @@ The **Remove-AzCosmosDBSqlUserDefinedFunction** cmdlet deletes the CosmosDB Sql 
 
 ### Example 1
 ```powershell
-Remove-AzCosmosDBSqlUserDefinedFunction -ResourceGroupName {resourceGroupName} -AccountName {accountName} -DatabaseName {databaseName} -ContainerName {containerName} -Name {userDefinedFunctionName}
+Remove-AzCosmosDBSqlUserDefinedFunction -ResourceGroupName "resourceGroupName" -AccountName "accountName" -DatabaseName "databaseName" -ContainerName "containerName" -Name "userDefinedFunctionName"
 ```
 
 ## PARAMETERS

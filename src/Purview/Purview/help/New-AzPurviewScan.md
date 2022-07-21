@@ -24,9 +24,11 @@ Creates an instance of a scan
 
 ### Example 1: Create a scan instance under a data source
 ```powershell
-PS C:\> $obj = New-AzPurviewAzureStorageCredentialScanObject -Kind 'AzureStorageCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
+$obj = New-AzPurviewAzureStorageCredentialScanObject -Kind 'AzureStorageCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
 New-AzPurviewScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -Name 'ScanTest' -Body $obj
+```
 
+```output
 CollectionLastModifiedAt  : 2/15/2022 3:49:23 PM
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference
@@ -176,7 +178,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <IScan>: .
+BODY `<IScan>`: .
   - `Kind <ScanAuthorizationType>`: 
 
 ## RELATED LINKS

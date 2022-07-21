@@ -25,6 +25,7 @@ using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Identity.Client;
 using Microsoft.Azure.PowerShell.Authenticators.Identity;
+using ClientAssertionCredential = Microsoft.Azure.PowerShell.Authenticators.Identity.ClientAssertionCredential;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {

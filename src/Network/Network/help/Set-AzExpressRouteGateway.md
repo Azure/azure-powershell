@@ -42,9 +42,9 @@ The **Set-AzExpressRouteGateway** cmdlet enables you to update the scale units f
 ### Example 1
 
 ```powershell
-Set-AzResourceGroup -Location "West US" -Name "testRG"
-$virtualWan =Set-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
-$virtualHub =Set-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+New-AzResourceGroup -Location "West US" -Name "testRG"
+$virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+$virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
 New-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testergw" -VirtualHubId $virtualHub.Id -MinScaleUnits 2
 Set-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testergw" -MinScaleUnits 3
 ```
@@ -59,8 +59,8 @@ Type                : Microsoft.Network/expressRouteGateways
 ProvisioningState   : Succeeded
 ```
 
-The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in West US in "testRG" resource group in Azure. 
-An ExpressRoute gateway will be created thereafter in the Virtual Hub with 2 scale units which will then be modified to 3 scale units
+The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure.
+An ExpressRoute gateway will be created thereafter in the Virtual Hub with 2 scale units which will then be modified to 3 scale units.
 
 ## PARAMETERS
 

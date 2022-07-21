@@ -26,6 +26,7 @@ the database level settings for migration.
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $x = New-AzDataMigrationMongoDbCollectionSetting -Name myCollection -TargetRequestUnit 1000 -CanDelete -ShardKey "_id:-1,age:1,name"
 $x

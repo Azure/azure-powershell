@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Sql;
 using System.Collections.Generic;
@@ -7,7 +21,7 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Services
 {
     /// <summary>
-    /// This class is responsible for all the REST communication with the audit REST endpoints
+    /// This class is responsible for all the REST communication with the server trust certificate REST endpoints
     /// </summary>
     public class AzureSqlInstanceServerTrustCertificateCommunicator
     {
@@ -29,8 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Instance Server Trust Certificate
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlInstanceServerTrustCertificateCommunicator(IAzureContext context)
         {
             Context = context;
@@ -42,14 +55,14 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Services
         }
 
         /// <summary>
-        /// Creates or updates a Managed instance
+        /// Creates or updates a server trust certificate
         /// </summary>
         public Management.Sql.Models.ServerTrustCertificate CreateOrUpdate(string resourceGroupName, string instanceName, string certificateName, Management.Sql.Models.ServerTrustCertificate parameters)
         {
             return GetCurrentSqlClient().ServerTrustCertificates.CreateOrUpdate(resourceGroupName, instanceName, certificateName, parameters);
         }
         /// <summary>
-        /// Gets the Managed instance
+        /// Gets the server trust certificate
         /// </summary>
         public Management.Sql.Models.ServerTrustCertificate Get(string resourceGroupName, string instanceName, string certificateName)
         {
@@ -57,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Services
         }
 
         /// <summary>
-        /// Lists Managed instances
+        /// Lists server trust certificate on a managed instance
         /// </summary>
         public IList<Management.Sql.Models.ServerTrustCertificate> List(string resourceGroupName, string instanceName)
         {
@@ -65,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Services
         }
 
         /// <summary>
-        /// Deletes a user certificate from MI
+        /// Deletes a user certificate from managed instance
         /// </summary>
         public void Remove(string resourceGroupName, string instanceName, string certificateName)
         {

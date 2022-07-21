@@ -15,4 +15,6 @@
     <PackageReference Include="Microsoft.Azure.Management.Advisor" Version="0.9.5-preview" />
   </ItemGroup>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

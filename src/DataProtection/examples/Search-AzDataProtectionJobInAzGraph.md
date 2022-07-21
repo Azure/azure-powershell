@@ -1,9 +1,11 @@
 ### Example 1: Get all jobs in a certain time range
 ```powershell
-PS C:\> $endtime = get-date
-PS C:\> $starttime = $endtime.AddHours(-5)
-PS C:\> Search-AzDataProtectionJobInAzGraph -Subscription "xxx-xxx-xxx" -ResourceGroup sarath-rg -Vault sarath-vault -DatasourceType AzureDisk -StartTime $starttime -EndTime $endtime
+$endtime = Get-Date
+$starttime = $endtime.AddHours(-5)
+Search-AzDataProtectionJobInAzGraph -Subscription "xxx-xxx-xxx" -ResourceGroup sarath-rg -Vault sarath-vault -DatasourceType AzureDisk -StartTime $starttime -EndTime $endtime
+```
 
+```output
 Name                                 Type
 ----                                 ----
 1c1d56c2-b21a-4038-ba46-3c1a0089e66a microsoft.dataprotection/backupvaults/backupjobs
@@ -15,8 +17,10 @@ This command gets all jobs in a vault in last 5 hours.
 
 ### Example 2: Get all jobs of a certain operation type
 ```powershell
-PS C:\> Search-AzDataProtectionJobInAzGraph -Subscription "xxxx-xxx-xxx" -ResourceGroup sarath-rg -Vault sarath-vault -DatasourceType AzureDisk -Operation OnDemandBackup
+Search-AzDataProtectionJobInAzGraph -Subscription "xxxx-xxx-xxx" -ResourceGroup sarath-rg -Vault sarath-vault -DatasourceType AzureDisk -Operation OnDemandBackup
+```
 
+```output
 Name                                 Type
 ----                                 ----
 11bc277d-9448-446a-9e79-4721858524d6 microsoft.dataprotection/backupvaults/backupjobs

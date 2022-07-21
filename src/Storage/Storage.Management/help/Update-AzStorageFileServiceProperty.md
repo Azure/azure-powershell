@@ -45,6 +45,7 @@ The **Update-AzStorageFileServiceProperty** cmdlet modifies the service properti
 ## EXAMPLES
 
 ### Example 1: Enable File share softdelete
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableShareDeleteRetentionPolicy $true -ShareRetentionDays 5
 
@@ -62,6 +63,7 @@ ProtocolSettings.Smb.ChannelEncryption        :
 This command enables File share softdelete delete with retention days as 5
 
 ### Example 2: Enable Smb Multichannel
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableSmbMultichannel $true
 
@@ -79,6 +81,7 @@ ProtocolSettings.Smb.ChannelEncryption        :
 This command enables Smb Multichannel, only supported on Premium FileStorage account.
 
 ### Example 3: Updates secure smb settings
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `
 			-SMBProtocolVersion SMB2.1,SMB3.0,SMB3.1.1  `
@@ -100,6 +103,7 @@ ProtocolSettings.Smb.ChannelEncryption        : {AES-128-CCM, AES-128-GCM, AES-2
 This command updates secure smb settings.
 
 ### Example 4: Clear secure smb settings
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `
 			-SMBProtocolVersion @() `

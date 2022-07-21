@@ -77,11 +77,8 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
                             Parent = new CreateParentGroupInfo() {Id = ParentId}
                         });
 
-                    var response = ManagementGroupsApiClient.ManagementGroups.CreateOrUpdate(GroupName, createGroupRequest);
-                    var managementGroup =
-                        ((JObject) response).ToObject<ManagementGroup>(
-                            JsonSerializer.Create(ManagementGroupsApiClient.DeserializationSettings));
-                    WriteObject(new PSManagementGroup(managementGroup));
+                    var response = (ManagementGroup)ManagementGroupsApiClient.ManagementGroups.CreateOrUpdate(GroupName, createGroupRequest);
+                    WriteObject(new PSManagementGroup(response));
                 }
             }
             catch (ErrorResponseException ex)
