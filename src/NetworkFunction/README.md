@@ -44,12 +44,9 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     hide: true
-  - where:
-      subject: (.)*(ByResourceGroup)$
-    hide: true
-  - where:
-      subject: (.)*(BySubscription)$
-    hide: true
+  - from: swagger-document
+    where: $.paths..operationId
+    transform: return $.replace(/^(AzureTrafficCollectors)(.+)(_List)$/, "$1$3$2")
   - where:
       subject: (.)*(Operation)$
     hide: true
