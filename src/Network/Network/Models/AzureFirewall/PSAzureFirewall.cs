@@ -79,6 +79,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string AllowActiveFTP { get; set; }
 
+        public string IdentifyTopFatFlow { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {
