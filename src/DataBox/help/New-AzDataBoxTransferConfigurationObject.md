@@ -25,7 +25,7 @@ Create an in-memory object for TransferConfiguration.
 
 ### Example 1: In-memory object for export job transfer configuration 
 ```powershell
-$transferConfigurationType = New-AzDataBoxTransferConfigurationObject -Type "TransferAll" -TransferAllDetail @{"IncludeDataAccountType"="StorageAccount";"IncludeTransferAllBlob"= "True"; "IncludeTransferAllFile"="True"}
+New-AzDataBoxTransferConfigurationObject -Type "TransferAll" -TransferAllDetail @{"IncludeDataAccountType"="StorageAccount";"IncludeTransferAllBlob"= "True"; "IncludeTransferAllFile"="True"}
 ```
 
 Create a in-memory object for export jobs TransferConfiguration
@@ -99,12 +99,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-TRANSFERALLDETAIL <ITransferConfigurationTransferAllDetails>: Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll.
+TRANSFERALLDETAIL `<ITransferConfigurationTransferAllDetails>`: Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll.
   - `[IncludeDataAccountType <DataAccountType?>]`: Type of the account of data
   - `[IncludeTransferAllBlob <Boolean?>]`: To indicate if all Azure blobs have to be transferred
   - `[IncludeTransferAllFile <Boolean?>]`: To indicate if all Azure Files have to be transferred
 
-TRANSFERFILTERDETAIL <ITransferConfigurationTransferFilterDetails>: Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
+TRANSFERFILTERDETAIL `<ITransferConfigurationTransferFilterDetails>`: Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
   - `[AzureFileFilterDetailFilePathList <String[]>]`: List of full path of the files to be transferred.
   - `[AzureFileFilterDetailFilePrefixList <String[]>]`: Prefix list of the Azure files to be transferred.
   - `[AzureFileFilterDetailFileShareList <String[]>]`: List of file shares to be transferred.

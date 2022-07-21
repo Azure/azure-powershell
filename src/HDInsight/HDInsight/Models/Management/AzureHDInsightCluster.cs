@@ -221,7 +221,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Data Disks Group Properties for the Worker Role.
         /// </summary>
         public List<DataDisksGroups> WorkerNodeDataDisksGroups { get; set; }
-		
+
+        /// <summary>
         /// Gets or sets the security profile.
         /// </summary>
         /// <value>

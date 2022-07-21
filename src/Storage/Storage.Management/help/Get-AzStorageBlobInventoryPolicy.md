@@ -36,6 +36,7 @@ The **Get-AzStorageBlobInventoryPolicy** cmdlet gets blob inventory policy from 
 ## EXAMPLES
 
 ### Example 1: Get blob inventory policy from a Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $policy = Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 

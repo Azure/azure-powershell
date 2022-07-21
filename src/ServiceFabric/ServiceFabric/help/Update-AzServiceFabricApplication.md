@@ -69,7 +69,7 @@ This example will start an application upgrade to update the type version to "v2
 $resourceGroupName = "testRG"
 $clusterName = "testCluster"
 $appName = "testApp"
-Update-AzServiceFabricApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName -MinimumNodes 1 -MaximumNodes 4 -Verbose
+Update-AzServiceFabricApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName -MinimumNodeCount 1 -MaximumNodeCount 4 -Verbose
 ```
 
 This example will update the minimum and maximum number of nodes restriction for the application.

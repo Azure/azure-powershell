@@ -35,7 +35,7 @@ We recommend that you provision a dedicated Azure AD group as an administrator.
 
 ### Example 1: Provision an administrator group for a server
 ```powershell
-Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DisplayName "DBAs" 
+Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DisplayName "DBAs"
 ```
 
 ```output

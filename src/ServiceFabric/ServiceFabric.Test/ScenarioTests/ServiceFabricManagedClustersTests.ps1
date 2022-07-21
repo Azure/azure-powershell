@@ -21,8 +21,10 @@ function Test-CreateBasicCluster
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
+	$tags = @{"test"="tag"}
+
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
-		-AdminPassword $pass -Sku Basic -ClientCertThumbprint $testClientTp -Verbose
+		-AdminPassword $pass -Sku Basic -ClientCertThumbprint $testClientTp -Tag $tags -Verbose
 	Assert-AreEqual "Succeeded" $cluster.ProvisioningState
 	Assert-AreEqual "Automatic" $cluster.ClusterUpgradeMode
 	Assert-AreEqual "Wave0" $cluster.ClusterUpgradeCadence
@@ -34,14 +36,15 @@ function Test-CreateBasicCluster
 	# shouldn't be allowed to remove the only primary node type in the cluster
 	Assert-ThrowsContains { $pnt | Remove-AzServiceFabricManagedNodeType } "InvalidParameter"
 
-	$cluster = Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName
-	Assert-AreEqual "Deploying" $cluster.ClusterState
+	$clusterFromGet = Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+	Assert-AreEqual "Ready" $clusterFromGet.ClusterState
+	Assert-HashtableEqual $cluster.Tags $clusterFromGet.Tags
 
 	# scale primary node type
 	$pnt = Set-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 6
 	Assert-AreEqual 6 $pnt.VmInstanceCount
 
-	$removeResponse = $cluster | Remove-AzServiceFabricManagedCluster -PassThru
+	$removeResponse = $clusterFromGet | Remove-AzServiceFabricManagedCluster -PassThru
 	Assert-True { $removeResponse }
 	
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName } "NotFound"

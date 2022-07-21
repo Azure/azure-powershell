@@ -67,7 +67,7 @@ Returns the specified authorization rule description for a given WcfRelay.
 
 ### Example 3: HybridConnection
 ```powershell
-Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnections TestHybridConnection -Name AuthoRule1
+Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
 ```
 
 ```output

@@ -25,7 +25,7 @@ The **New-AzAlertRuleEmail** cmdlet creates an e-mail action for an alert rule.
 
 ### Example 1: Create an alert rule email action for service owners
 ```powershell
-New-AzAlertRuleEmail -SendToServiceOwners
+New-AzAlertRuleEmail -SendToServiceOwner
 ```
 
 This command creates an alert rule email action to send for its service owners when an alert rule is fired.
@@ -39,7 +39,7 @@ This command creates an alert rule email action for the specified email addresse
 
 ### Example 3: Create an alert rule email action for service owners and non-service owners
 ```powershell
-New-AzAlertRuleEmail -CustomEmail pattif@contoso.net -SendToServiceOwners
+New-AzAlertRuleEmail -CustomEmail pattif@contoso.net -SendToServiceOwner
 ```
 
 This command creates an alert rule email action for the specified address and for its service owners.

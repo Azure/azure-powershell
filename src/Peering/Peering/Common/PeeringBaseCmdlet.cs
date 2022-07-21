@@ -159,7 +159,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The peering.
         /// </param>
         /// <returns>
-        /// The <see cref="object"/>.
+        /// The <see cref="PSPeering"/>.
         /// </returns>
         public PSPeering ToPeeringPs(object peering)
         {
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// Base Cmdlet execute.
         /// </summary>
-        /// <exception cref="NetworkErrorResponseException"></exception>
+        /// <exception cref="ErrorResponseException"></exception>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -520,7 +520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The get azure region.
         /// </summary>
-        /// <param name="PeeringLocation">
+        /// <param name="peeringLocation">
         /// The InputObject location.
         /// </param>
         /// <param name="kind">
@@ -529,7 +529,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        /// <exception cref="Exception">
+        /// <exception cref="PSArgumentNullException">
         /// </exception>
         public string GetAzureRegion(string peeringLocation, string kind)
         {

@@ -40,42 +40,42 @@ The **New-AzServiceBusKey** cmdlet generates new primary or secondary connection
 
 ### Example 1
 ```powershell
-New-AzServiceBusKey -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Name AuthoRule1 -RegenerateKey PrimaryKey
+New-AzServiceBusKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Name AuthoRule1 -RegenerateKey PrimaryKey
 ```
 
 Regenerates the primary or secondary connection strings for the namespace.
 
 ### Example 2
 ```powershell
-New-AzServiceBusKey -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Name AuthoRule1 -RegenerateKey PrimaryKey -KeyValue {base64-encoded 256-bit key}
+New-AzServiceBusKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Name AuthoRule1 -RegenerateKey PrimaryKey -KeyValue "base64-encoded 256-bit key"
 ```
 
 Regenerates the primary or secondary connection strings with provided Key value for the namespace.
 
 ### Example 3
 ```powershell
-New-AzServiceBusKey -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Queue SBQueue -Name AuthoRule1 -RegenerateKey PrimaryKey
+New-AzServiceBusKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Queue SBQueue -Name AuthoRule1 -RegenerateKey PrimaryKey
 ```
 
 Regenerates the primary or secondary connection strings for the queue.
 
 ### Example 4
 ```powershell
-New-AzServiceBusKey -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Queue SBQueue -Name AuthoRule1 -RegenerateKey PrimaryKey -KeyValue {base64-encoded 256-bit key}
+New-AzServiceBusKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Queue SBQueue -Name AuthoRule1 -RegenerateKey PrimaryKey -KeyValue "base64-encoded 256-bit key"
 ```
 
 Regenerates the primary or secondary connection strings with provided Key value for the queue.
 
 ### Example 5
 ```powershell
-New-AzServiceBusKey -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Topic SBTopic -Name AuthoRule1 -RegenerateKey PrimaryKey
+New-AzServiceBusKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Topic SBTopic -Name AuthoRule1 -RegenerateKey PrimaryKey
 ```
 
 Regenerates the primary or secondary connection strings for the topic.
 
 ### Example 6
 ```powershell
-New-AzServiceBusKey -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Topic SBTopic -Name AuthoRule1 -RegenerateKey PrimaryKey -KeyValue {base64-encoded 256-bit key}
+New-AzServiceBusKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Topic SBTopic -Name AuthoRule1 -RegenerateKey PrimaryKey -KeyValue "base64-encoded 256-bit key"
 ```
 
 Regenerates the primary or secondary connection strings with provided Key value for the topic.

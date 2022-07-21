@@ -31,17 +31,15 @@ Deletes the specified device.
 
 ### Example 1: Remove-AzConnectedNetworkDevice via resource name and resource group
 ```powershell
-PS C:\> Remove-AzConnectedNetworkDevice -Name myMecDevice -ResourceGroupName myResources
-
+Remove-AzConnectedNetworkDevice -Name myMecDevice -ResourceGroupName myResources
 ```
 
 Deleting the NFM device with device name myMecDevice in resource group myResources.
 
 ### Example 2: Remove-AzConnectedNetworkDevice via Identity
 ```powershell
-PS C:\> $mecDevice = Get-AzConnectedNetworkDevice -Name myMecDevice2 -ResourceGroupName myResources
-PS C:\> Remove-AzConnectedNetworkDevice -InputObject $mecDevice
-
+$mecDevice = Get-AzConnectedNetworkDevice -Name myMecDevice2 -ResourceGroupName myResources
+Remove-AzConnectedNetworkDevice -InputObject $mecDevice
 ```
 
 Creating an identity with name myMecDevice2 and resource group name myResources.
@@ -222,7 +220,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedNetworkIdentity>`: Identity Parameter
   - `[DeviceName <String>]`: The name of the device resource.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.

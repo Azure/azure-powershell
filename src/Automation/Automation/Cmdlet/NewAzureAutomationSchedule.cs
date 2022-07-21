@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// The validate.
         /// </summary>
         /// <returns>
-        /// The <see cref="Schedule"/>.
+        /// The <see cref="Models.Schedule"/>.
         /// </returns>
         /// <exception cref="Exception">
         /// throws exception
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// The create weekly schedule model.
         /// </summary>
         /// <returns>
-        /// The <see cref="Schedule"/>.
+        /// The <see cref="Models.Schedule"/>.
         /// </returns>
         private Models.Schedule CreateWeeklyScheduleModel()
         {
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         private bool IsScheduleNameValid()
         {
             String pattern = "^[^\\r\\n\\f<>*%&:?.+/\\\\]{0,127}[^\\s\\r\\n\\f<>*%&:?.+/\\\\]$";
-		    return System.Text.RegularExpressions.Regex.IsMatch(this.Name, pattern);
+            return System.Text.RegularExpressions.Regex.IsMatch(this.Name, pattern);
         }
     }
 

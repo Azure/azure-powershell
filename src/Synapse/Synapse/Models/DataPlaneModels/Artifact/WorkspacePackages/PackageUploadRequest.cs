@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages
 {
     /// <summary>
-    /// Element of <see cref="PackageUploadRequestQueue">
+    /// Element of <see cref="PackageUploadRequestQueue" />
     /// </summary>
     public class PackageUploadRequest
     {

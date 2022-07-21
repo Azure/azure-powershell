@@ -12,64 +12,57 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
 {
-    public class IncidentsTests
+    public class IncidentsTests : SecurityInsightsTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public IncidentsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IncidentsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void List()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSentinelIncident-List");
+            TestRunner.RunTestScript("Get-AzSentinelIncident-List");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Get()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSentinelIncident-Get");
+            TestRunner.RunTestScript("Get-AzSentinelIncident-Get");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Create()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSentinelIncident-Create");
+            TestRunner.RunTestScript("New-AzSentinelIncident-Create");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Update()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSentinelIncident-Update");
+            TestRunner.RunTestScript("Update-AzSentinelIncident-Update");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSentinelIncident-InputObject");
+            TestRunner.RunTestScript("Update-AzSentinelIncident-InputObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Remove()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzSentinelIncident-Delete");
+            TestRunner.RunTestScript("Remove-AzSentinelIncident-Delete");
         }
     }
 }

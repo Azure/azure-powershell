@@ -12,29 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.IotCentral.Test.ScenarioTests
 {
-    public class IotCentralTests : RMTestBase
+    public class IotCentralTests : IotCentralTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public IotCentralTests(ITestOutputHelper output)
+        public IotCentralTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestIotCentralAppLifecycleManagement()
         {
-            IotCentralController.NewInstance.RunPsTest(_logger, "Test-IotCentralAppLifecycleManagement");
+            TestRunner.RunTestScript("Test-IotCentralAppLifecycleManagement");
         }
     }
 }

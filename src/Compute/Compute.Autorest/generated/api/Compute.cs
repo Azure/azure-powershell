@@ -29,9 +29,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGallery body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -75,15 +75,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGallery body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}'");
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleriesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleriesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -238,6 +238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -248,7 +249,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.Gallery.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.Gallery.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -283,7 +284,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleriesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGallery body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GalleriesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -311,7 +312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleriesDelete(string subscriptionId, string resourceGroupName, string galleryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -353,13 +354,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleriesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}'");
@@ -512,6 +513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -577,6 +579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <param name="resourceGroupName">The name of the resource group.</param>
         /// <param name="galleryName">The name of the Shared Image Gallery.</param>
         /// <param name="Select">The select expression to apply on the operation.</param>
+        /// <param name="Expand">The expand query option to apply on the operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -585,9 +588,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesGet(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.SelectPermissions? Select, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesGet(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.SelectPermissions? Select, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GalleryExpandParams? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -603,6 +606,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Select) ? global::System.String.Empty : "$select=" + global::System.Uri.EscapeDataString(Select))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -621,6 +626,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <summary>Retrieves information about a Shared Image Gallery.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="Select">The select expression to apply on the operation.</param>
+        /// <param name="Expand">The expand query option to apply on the operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -629,15 +635,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.SelectPermissions? Select, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.SelectPermissions? Select, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GalleryExpandParams? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}'");
@@ -659,6 +665,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Select) ? global::System.String.Empty : "$select=" + global::System.Uri.EscapeDataString(Select))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -684,7 +692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleriesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleriesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -702,7 +710,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.Gallery.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.Gallery.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -732,11 +740,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <param name="resourceGroupName">The name of the resource group.</param>
         /// <param name="galleryName">The name of the Shared Image Gallery.</param>
         /// <param name="Select">The select expression to apply on the operation.</param>
+        /// <param name="Expand">The expand query option to apply on the operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleriesGet_Validate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.SelectPermissions? Select, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GalleriesGet_Validate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.SelectPermissions? Select, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GalleryExpandParams? Expand, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -745,6 +754,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                 await eventListener.AssertNotNull(nameof(galleryName),galleryName);
                 await eventListener.AssertNotNull(nameof(Select),Select);
                 await eventListener.AssertEnum(nameof(Select),Select,@"Permissions");
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
+                await eventListener.AssertEnum(nameof(Expand),Expand,@"SharingProfile/Groups");
             }
         }
 
@@ -759,9 +770,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -799,9 +810,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -839,15 +850,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries'");
@@ -890,7 +901,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleriesListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleriesListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -908,7 +919,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -959,15 +970,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Compute/galleries$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Compute/galleries$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/galleries'");
@@ -1007,7 +1018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleriesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleriesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1025,7 +1036,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1079,9 +1090,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesUpdate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesUpdate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1125,15 +1136,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}'");
@@ -1182,7 +1193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleriesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleriesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1288,6 +1299,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -1298,7 +1310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.Gallery.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.Gallery.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1333,7 +1345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleriesUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GalleriesUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1364,9 +1376,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1414,15 +1426,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)/versions/(?<galleryApplicationVersionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)/versions/(?<galleryApplicationVersionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}'");
@@ -1479,7 +1491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1585,6 +1597,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -1595,7 +1608,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryApplicationVersion.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersion.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1634,7 +1647,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1666,7 +1679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryApplicationVersionsDelete(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1712,13 +1725,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryApplicationVersionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)/versions/(?<galleryApplicationVersionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)/versions/(?<galleryApplicationVersionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}'");
@@ -1877,6 +1890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -1956,9 +1970,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2004,15 +2018,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)/versions/(?<galleryApplicationVersionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)/versions/(?<galleryApplicationVersionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}'");
@@ -2065,7 +2079,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2083,7 +2097,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryApplicationVersion.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersion.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2148,9 +2162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsListByGalleryApplication(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsListByGalleryApplication(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2192,15 +2206,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsListByGalleryApplicationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsListByGalleryApplicationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)/versions$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)/versions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions'");
@@ -2251,7 +2265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsListByGalleryApplication_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsListByGalleryApplication_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2269,7 +2283,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryApplicationVersionList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersionList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2334,9 +2348,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2384,15 +2398,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)/versions/(?<galleryApplicationVersionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)/versions/(?<galleryApplicationVersionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}'");
@@ -2447,7 +2461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2553,6 +2567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -2563,7 +2578,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryApplicationVersion.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersion.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2602,7 +2617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersionUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2632,9 +2647,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2680,15 +2695,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}'");
@@ -2740,7 +2755,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2846,6 +2861,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -2856,7 +2872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryApplication.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplication.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2892,7 +2908,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2922,7 +2938,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryApplicationsDelete(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2966,13 +2982,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryApplicationsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}'");
@@ -3128,6 +3144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -3204,9 +3221,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3247,15 +3264,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}'");
@@ -3303,7 +3320,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3321,7 +3338,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryApplication.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplication.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3380,9 +3397,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsListByGallery(string subscriptionId, string resourceGroupName, string galleryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsListByGallery(string subscriptionId, string resourceGroupName, string galleryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3422,15 +3439,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsListByGalleryViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsListByGalleryViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications'");
@@ -3476,7 +3493,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationsListByGallery_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationsListByGallery_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3494,7 +3511,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryApplicationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3553,9 +3570,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3601,15 +3618,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/applications/(?<galleryApplicationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}'");
@@ -3661,7 +3678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3767,6 +3784,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -3777,7 +3795,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryApplication.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplication.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3813,7 +3831,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationsUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationsUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3844,9 +3862,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3894,15 +3912,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)/versions/(?<galleryImageVersionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)/versions/(?<galleryImageVersionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}'");
@@ -3957,7 +3975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImageVersionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImageVersionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4063,6 +4081,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -4073,7 +4092,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryImageVersion.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageVersion.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4111,7 +4130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImageVersionsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersion body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GalleryImageVersionsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -4143,7 +4162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImageVersionsDelete(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4189,13 +4208,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImageVersionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)/versions/(?<galleryImageVersionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)/versions/(?<galleryImageVersionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}'");
@@ -4354,6 +4373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -4433,9 +4453,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4481,15 +4501,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)/versions/(?<galleryImageVersionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)/versions/(?<galleryImageVersionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}'");
@@ -4542,7 +4562,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImageVersionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImageVersionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4560,7 +4580,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryImageVersion.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageVersion.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4625,9 +4645,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsListByGalleryImage(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsListByGalleryImage(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4669,15 +4689,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsListByGalleryImageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsListByGalleryImageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)/versions$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)/versions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions'");
@@ -4728,7 +4748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImageVersionsListByGalleryImage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImageVersionsListByGalleryImage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4746,7 +4766,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryImageVersionList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageVersionList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4810,9 +4830,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4860,15 +4880,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)/versions/(?<galleryImageVersionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)/versions/(?<galleryImageVersionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}'");
@@ -4923,7 +4943,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImageVersionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImageVersionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5029,6 +5049,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -5039,7 +5060,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryImageVersion.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageVersion.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -5077,7 +5098,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImageVersionsUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageVersionUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GalleryImageVersionsUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5107,9 +5128,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5155,15 +5176,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}'");
@@ -5215,7 +5236,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5321,6 +5342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -5331,7 +5353,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryImage.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImage.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -5367,7 +5389,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImage body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5397,7 +5419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesDelete(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5441,13 +5463,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}'");
@@ -5603,6 +5625,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -5678,9 +5701,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5721,15 +5744,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}'");
@@ -5777,7 +5800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImagesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImagesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5795,7 +5818,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryImage.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImage.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -5853,9 +5876,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesListByGallery(string subscriptionId, string resourceGroupName, string galleryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesListByGallery(string subscriptionId, string resourceGroupName, string galleryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5895,15 +5918,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesListByGalleryViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesListByGalleryViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images'");
@@ -5949,7 +5972,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImagesListByGallery_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImagesListByGallery_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5967,7 +5990,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryImageList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -6026,9 +6049,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6074,15 +6097,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/images/(?<galleryImageName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}'");
@@ -6134,7 +6157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImagesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImagesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6240,6 +6263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -6250,7 +6274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.GalleryImage.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImage.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -6286,7 +6310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImagesUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryImageUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GalleryImagesUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -6313,9 +6337,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GallerySharingProfileUpdate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ISharingUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ISharingUpdate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GallerySharingProfileUpdate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6360,15 +6384,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GallerySharingProfileUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ISharingUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ISharingUpdate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GallerySharingProfileUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2022-01-03";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/share$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/galleries/(?<galleryName>[^/]+)/share$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/share'");
@@ -6418,7 +6442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GallerySharingProfileUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ISharingUpdate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GallerySharingProfileUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6525,6 +6549,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -6535,7 +6560,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.SharingUpdate.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.SharingUpdate.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -6569,7 +6594,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GallerySharingProfileUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ISharingUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GallerySharingProfileUpdate_Validate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -6652,7 +6677,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<vmName>[^/]+)/runCommands/(?<runCommandName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<vmName>[^/]+)/runCommands/(?<runCommandName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}'");
@@ -6812,6 +6837,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -6937,7 +6963,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<vmName>[^/]+)/runCommands/(?<runCommandName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<vmName>[^/]+)/runCommands/(?<runCommandName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}'");
@@ -7093,6 +7119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -7265,7 +7292,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<vmName>[^/]+)/runCommands/(?<runCommandName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<vmName>[^/]+)/runCommands/(?<runCommandName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}'");
@@ -7398,7 +7425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Compute/locations/(?<location>[^/]+)/runCommands/(?<commandId>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Compute/locations/(?<location>[^/]+)/runCommands/(?<commandId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands/{commandId}'");
@@ -7608,7 +7635,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<vmName>[^/]+)/runCommands$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<vmName>[^/]+)/runCommands$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands'");
@@ -7737,7 +7764,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Compute/locations/(?<location>[^/]+)/runCommands$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Compute/locations/(?<location>[^/]+)/runCommands$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands'");
@@ -7907,7 +7934,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<vmName>[^/]+)/runCommands/(?<runCommandName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<vmName>[^/]+)/runCommands/(?<runCommandName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}'");
@@ -8065,6 +8092,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -8197,7 +8225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachineScaleSets/(?<vmScaleSetName>[^/]+)/virtualMachines/(?<instanceId>[^/]+)/runCommands/(?<runCommandName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachineScaleSets/(?<vmScaleSetName>[^/]+)/virtualMachines/(?<instanceId>[^/]+)/runCommands/(?<runCommandName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}'");
@@ -8360,6 +8388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -8490,7 +8519,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachineScaleSets/(?<vmScaleSetName>[^/]+)/virtualMachines/(?<instanceId>[^/]+)/runCommands/(?<runCommandName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachineScaleSets/(?<vmScaleSetName>[^/]+)/virtualMachines/(?<instanceId>[^/]+)/runCommands/(?<runCommandName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}'");
@@ -8651,6 +8680,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -8786,7 +8816,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachineScaleSets/(?<vmScaleSetName>[^/]+)/virtualMachines/(?<instanceId>[^/]+)/runCommands/(?<runCommandName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachineScaleSets/(?<vmScaleSetName>[^/]+)/virtualMachines/(?<instanceId>[^/]+)/runCommands/(?<runCommandName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}'");
@@ -8982,7 +9012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachineScaleSets/(?<vmScaleSetName>[^/]+)/virtualMachines/(?<instanceId>[^/]+)/runCommands$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachineScaleSets/(?<vmScaleSetName>[^/]+)/virtualMachines/(?<instanceId>[^/]+)/runCommands$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands'");
@@ -9174,7 +9204,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachineScaleSets/(?<vmScaleSetName>[^/]+)/virtualMachines/(?<instanceId>[^/]+)/runCommands/(?<runCommandName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachineScaleSets/(?<vmScaleSetName>[^/]+)/virtualMachines/(?<instanceId>[^/]+)/runCommands/(?<runCommandName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}'");
@@ -9337,6 +9367,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -9465,7 +9496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachineScaleSets/(?<vmScaleSetName>[^/]+)/virtualmachines/(?<instanceId>[^/]+)/runCommand$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachineScaleSets/(?<vmScaleSetName>[^/]+)/virtualmachines/(?<instanceId>[^/]+)/runCommand$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/runCommand'");
@@ -9621,6 +9652,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -9741,7 +9773,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<vmName>[^/]+)/runCommand$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<vmName>[^/]+)/runCommand$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommand'");
@@ -9894,6 +9926,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;

@@ -25,6 +25,7 @@ Updates the properties of an existing job.
 ## EXAMPLES
 
 ### Example 1: Update databox job encryption from microsoft managed to customer managed with user assigned identities 
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 
@@ -55,6 +56,7 @@ Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonSchedu
 Update databox job encryption from microsoft managed to customer managed with user assigned identities.
 
 ### Example 2: Update databox job encryption from microsoft managed to customer managed with system identities in 2 updates
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $databoxUpdate = Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "SystemAssigned"
 
@@ -87,7 +89,10 @@ For any failure re-run with $DebugPreference = "Continue" as mentioned in exampl
 ### Example 3: Update databox job from system assigned to user assigned with customer managed key encryption
 ```powershell
 $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
-$updateSystemToUserAssigned = Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "SystemAssigned,UserAssigned" -UserAssignedIdentity @{"/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName" = @{}}
+$contactDetail = New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
+$ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
+
+Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "SystemAssigned,UserAssigned" -UserAssignedIdentity @{"/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName" = @{}}
 ```
 
 Update databox job from system assigned to user assigned with customer managed key encryption.
@@ -345,7 +350,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CONTACTDETAIL <IContactDetails>: Contact details for notification and shipping.
+CONTACTDETAIL `<IContactDetails>`: Contact details for notification and shipping.
   - `ContactName <String>`: Contact name of the person.
   - `EmailList <String[]>`: List of Email-ids to be notified about job progress.
   - `Phone <String>`: Phone number of the contact person.
@@ -355,7 +360,7 @@ CONTACTDETAIL <IContactDetails>: Contact details for notification and shipping.
     - `StageName <NotificationStageName>`: Name of the stage.
   - `[PhoneExtension <String>]`: Phone extension number of the contact person.
 
-KEYENCRYPTIONKEY <IKeyEncryptionKey>: Key encryption key for the job.
+KEYENCRYPTIONKEY `<IKeyEncryptionKey>`: Key encryption key for the job.
   - `KekType <KekType>`: Type of encryption key used for key encryption.
   - `[IdentityProperty <IIdentityProperties>]`: Managed identity properties used for key encryption.
     - `[Type <String>]`: Managed service identity type.
@@ -363,7 +368,7 @@ KEYENCRYPTIONKEY <IKeyEncryptionKey>: Key encryption key for the job.
   - `[KekUrl <String>]`: Key encryption key. It is required in case of Customer managed KekType.
   - `[KekVaultResourceId <String>]`: Kek vault resource id. It is required in case of Customer managed KekType.
 
-SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
+SHIPPINGADDRESS `<IShippingAddress>`: Shipping address of the customer.
   - `Country <String>`: Name of the Country.
   - `StreetAddress1 <String>`: Street Address line 1.
   - `[AddressType <AddressType?>]`: Type of address.

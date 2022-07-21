@@ -15,7 +15,7 @@ Create a new Azure Firewall Policy Rule Collection Group
 ### SetByInputObjectParameterSet
 ```
 New-AzFirewallPolicyRuleCollectionGroup -Name <String> -Priority <UInt32>
- -RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]> -ResourceGroupName <String>
+ -RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>
  -FirewallPolicyObject <PSAzureFirewallPolicy> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -35,7 +35,7 @@ The **New-AzFirewallPolicyRuleCollectionGroup** cmdlet creates a rule collection
 
 ### Example 1
 ```powershell
-New-AzFirewallPolicyRuleCollectionGroup -Name rg1 -ResourceGroupName TestRg -Priority 200 -RuleCollection $filterRule1 -FirewallPolicyObject $fp
+New-AzFirewallPolicyRuleCollectionGroup -Name rg1 -Priority 200 -RuleCollection $filterRule1 -FirewallPolicyObject $fp
 ```
 
 This example creates a rule collection group in the firewall policy $fp

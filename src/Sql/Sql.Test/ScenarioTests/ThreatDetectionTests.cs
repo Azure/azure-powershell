@@ -20,56 +20,46 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ThreatDetectionTests : SqlTestsBase
+    public class ThreatDetectionTests : SqlTestRunner
     {
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var storageV2Client = GetStorageManagementClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, storageV2Client, newResourcesClient);
-        }
-
         public ThreatDetectionTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
+
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThreatDetectionGetDefaultPolicy()
         {
-            RunPowerShellTest("Test-ThreatDetectionGetDefaultPolicy");
+            TestRunner.RunTestScript("Test-ThreatDetectionGetDefaultPolicy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThreatDetectionDatabaseUpdatePolicy()
         {
-            RunPowerShellTest("Test-ThreatDetectionDatabaseUpdatePolicy");
+            TestRunner.RunTestScript("Test-ThreatDetectionDatabaseUpdatePolicy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThreatDetectionServerUpdatePolicy()
         {
-            RunPowerShellTest("Test-ThreatDetectionServerUpdatePolicy");
+            TestRunner.RunTestScript("Test-ThreatDetectionServerUpdatePolicy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisablingThreatDetection()
         {
-            RunPowerShellTest("Test-DisablingThreatDetection");
+            TestRunner.RunTestScript("Test-DisablingThreatDetection");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InvalidArgumentsThreatDetection()
         {
-            RunPowerShellTest("Test-InvalidArgumentsThreatDetection");
+            TestRunner.RunTestScript("Test-InvalidArgumentsThreatDetection");
         }
     }
 }

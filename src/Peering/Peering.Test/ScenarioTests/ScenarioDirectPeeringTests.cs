@@ -21,20 +21,16 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     /// <summary>
     /// The scenario exchange peering tests.
     /// </summary>
-    public class ScenarioDirectPeeringTests
+    public class ScenarioDirectPeeringTests : PeeringTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ScenarioExchangePeeringTests"/> class.
         /// </summary>
         /// <param name="output">
         /// The output.
         /// </param>
-        public ScenarioDirectPeeringTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ScenarioDirectPeeringTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         /// <summary>
@@ -44,7 +40,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateGetListRemovePeeringServicePrefix()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-CreateGetListRemovePeeringServicePrefix");
+            TestRunner.RunTestScript("Test-CreateGetListRemovePeeringServicePrefix");
         }
     }
 }

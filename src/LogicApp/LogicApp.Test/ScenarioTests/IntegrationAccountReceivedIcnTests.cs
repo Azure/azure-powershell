@@ -15,21 +15,15 @@
 namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
 
     /// <summary>
     /// Scenario tests for integration account received control number commands.
     /// </summary>
-    public class IntegrationAccountReceivedIcnTests : RMTestBase
+    public class IntegrationAccountReceivedIcnTests : LogicAppTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public IntegrationAccountReceivedIcnTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IntegrationAccountReceivedIcnTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -39,7 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetReceivedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetReceivedIcn");
+            TestRunner.RunTestScript("Test-GetReceivedIcn");
         }
 
         /// <summary>
@@ -49,7 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateReceivedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateReceivedIcn");
+            TestRunner.RunTestScript("Test-UpdateReceivedIcn");
         }
     }
 }
