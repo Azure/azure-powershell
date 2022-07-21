@@ -12,43 +12,38 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
 {
-    public class CommitmentPlanTests : RMTestBase
+    public class CommitmentPlanTests : MachineLearningTestRunner
     {
-        private readonly XunitTracingInterceptor interceptor;
-
-        public CommitmentPlanTests(ITestOutputHelper output)
+        public CommitmentPlanTests(ITestOutputHelper output) : base(output)
         {
-            this.interceptor = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(this.interceptor);
+
         }
 
         [Fact(Skip = "Old ResourceManager version in test controller. Update and re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateGetRemoveCommitmentPlan()
         {
-            CommitmentPlansTestController.NewInstance.RunPsTest(this.interceptor, "Test-CreateGetRemoveMLCommitmentPlan");
+            TestRunner.RunTestScript("Test-CreateGetRemoveMLCommitmentPlan");
         }
 
         [Fact(Skip = "Old ResourceManager version in test controller. Update and re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateCommitmentPlan()
         {
-            CommitmentPlansTestController.NewInstance.RunPsTest(this.interceptor, "Test-UpdateMLCommitmentPlan");
+            TestRunner.RunTestScript("Test-UpdateMLCommitmentPlan");
         }
 
         [Fact(Skip = "Old ResourceManager version in test controller. Update and re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListCommitmentPlans()
         {
-            CommitmentPlansTestController.NewInstance.RunPsTest(this.interceptor, "Test-ListMLCommitmentPlans");
+            TestRunner.RunTestScript("Test-ListMLCommitmentPlans");
         }
 
     }
