@@ -31,27 +31,27 @@ Updates the specified spacecraft tags.
 
 ### Example 1: Updates the specified spacecraft tags.
 ```powershell
-Update-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name azps-orbitalspacecraft -Tag @{"123"="abc"}
+Update-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name AQUA -Tag @{"123"="abc"}
 ```
 
 ```output
-Name                   Location NoradId TitleLine ResourceGroupName
-----                   -------- ------- --------- -----------------
-azps-orbitalspacecraft westus2  27424   AQUA      azpstest-gp
+Name Location NoradId TitleLine ResourceGroupName
+---- -------- ------- --------- -----------------
+AQUA westus2  27424   AQUA      azpstest-gp
 ```
 
 Updates the specified spacecraft tags.
 
 ### Example 2: Updates the specified spacecraft tags.
 ```powershell
-$spacecraftObject = Get-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name azps-orbitalspacecraft
+$spacecraftObject = Get-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name AQUA
 Update-AzOrbitalSpacecraft -InputObject $spacecraftObject -Tag @{"123"="abc"}
 ```
 
 ```output
-Name                   Location NoradId TitleLine ResourceGroupName
-----                   -------- ------- --------- -----------------
-azps-orbitalspacecraft westus2  27424   AQUA      azpstest-gp
+Name Location NoradId TitleLine ResourceGroupName
+---- -------- ------- --------- -----------------
+AQUA westus2  27424   AQUA      azpstest-gp
 ```
 
 Updates the specified spacecraft tags.
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Spacecraft ID
+Spacecraft ID.
 
 ```yaml
 Type: System.String
@@ -232,14 +232,14 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `INPUTOBJECT <IOrbitalIdentity>`: Identity Parameter
-  - `[ContactName <String>]`: Contact Name
-  - `[ContactProfileName <String>]`: Contact Profile Name
-  - `[GroundStationName <String>]`: Ground Station name
+  - `[ContactName <String>]`: Contact name.
+  - `[ContactProfileName <String>]`: Contact Profile name.
+  - `[GroundStationName <String>]`: Ground Station name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The name of Azure region.
   - `[OperationId <String>]`: The ID of an ongoing async operation.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SpacecraftName <String>]`: Spacecraft ID
+  - `[SpacecraftName <String>]`: Spacecraft ID.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS

@@ -151,17 +151,17 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `CHANNEL <IContactProfileLinkChannel[]>`: Contact Profile Link Channel.
-  - `BandwidthMHz <Single>`: Bandwidth in MHz
-  - `CenterFrequencyMHz <Single>`: Center Frequency in MHz
+  - `BandwidthMHz <Single>`: Bandwidth in MHz.
+  - `CenterFrequencyMHz <Single>`: Center Frequency in MHz.
   - `EndPointIPAddress <String>`: IP Address.
   - `EndPointName <String>`: Name of an end point.
   - `EndPointPort <String>`: TCP port to listen on to receive data.
   - `EndPointProtocol <Protocol>`: Protocol either UDP or TCP.
-  - `Name <String>`: Channel name
-  - `[DecodingConfiguration <String>]`: Configuration for decoding
-  - `[DemodulationConfiguration <String>]`: Configuration for demodulation
-  - `[EncodingConfiguration <String>]`: Configuration for encoding
-  - `[ModulationConfiguration <String>]`: Configuration for modulation
+  - `Name <String>`: Channel name.
+  - `[DecodingConfiguration <String>]`: Currently unused.
+  - `[DemodulationConfiguration <String>]`: Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx. Only valid for downlink directions. If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
+  - `[EncodingConfiguration <String>]`: Currently unused.
+  - `[ModulationConfiguration <String>]`: Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
 
 ## RELATED LINKS
 

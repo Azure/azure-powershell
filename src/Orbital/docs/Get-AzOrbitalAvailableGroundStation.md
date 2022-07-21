@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzOrbitalAvailableGroundStation
 
 ## SYNOPSIS
-Gets the specified  available ground station
+Gets the specified available ground station.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzOrbitalAvailableGroundStation -Capability <CapabilityParameter> [-Subscrip
 ```
 
 ## DESCRIPTION
-Gets the specified  available ground station
+Gets the specified available ground station.
 
 ## EXAMPLES
 
@@ -59,7 +59,7 @@ Gets the specified  available ground station.
 ## PARAMETERS
 
 ### -Capability
-Ground Station Capability
+Ground Station Capability.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.CapabilityParameter
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Ground Station name
+Ground Station name.
 
 ```yaml
 Type: System.String
@@ -155,14 +155,14 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `INPUTOBJECT <IOrbitalIdentity>`: Identity Parameter
-  - `[ContactName <String>]`: Contact Name
-  - `[ContactProfileName <String>]`: Contact Profile Name
-  - `[GroundStationName <String>]`: Ground Station name
+  - `[ContactName <String>]`: Contact name.
+  - `[ContactProfileName <String>]`: Contact Profile name.
+  - `[GroundStationName <String>]`: Ground Station name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The name of Azure region.
   - `[OperationId <String>]`: The ID of an ongoing async operation.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SpacecraftName <String>]`: Spacecraft ID
+  - `[SpacecraftName <String>]`: Spacecraft ID.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS

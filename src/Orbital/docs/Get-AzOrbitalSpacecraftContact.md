@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzOrbitalSpacecraftContact
 
 ## SYNOPSIS
-Gets the specified contact in a specified resource group
+Gets the specified contact in a specified resource group.
 
 ## SYNTAX
 
@@ -31,26 +31,13 @@ Get-AzOrbitalSpacecraftContact -InputObject <IOrbitalIdentity> [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-Gets the specified contact in a specified resource group
+Gets the specified contact in a specified resource group.
 
 ## EXAMPLES
 
-### Example 1: List the specified contact in a specified resource group.
+### Example 1: Get the specified contact.
 ```powershell
-Get-AzOrbitalSpacecraftContact -ResourceGroupName azpstest-gp -SpacecraftName azps-orbitalspacecraft
-```
-
-```output
-Name                 GroundStationName Status    ReservationStartTime     ReservationEndTime     ResourceGroupName
-----                 ----------------- ------    --------------------     ------------------     -----------------
-azps-orbital-contact KSAT_SVALBARD     scheduled 2022-06-23 09:13:05 AM   2022-06-24 09:13:10 AM azpstest-gp
-```
-
-List the specified contact in a specified resource group.
-
-### Example 2: Get the specified contact.
-```powershell
-Get-AzOrbitalSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azpstest-gp -SpacecraftName azps-orbitalspacecraft
+Get-AzOrbitalSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azpstest-gp -SpacecraftName AQUA
 ```
 
 ```output
@@ -95,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Contact Name
+Contact name.
 
 ```yaml
 Type: System.String
@@ -143,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -SpacecraftName
-Spacecraft ID
+Spacecraft ID.
 
 ```yaml
 Type: System.String
@@ -193,14 +180,14 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `INPUTOBJECT <IOrbitalIdentity>`: Identity Parameter
-  - `[ContactName <String>]`: Contact Name
-  - `[ContactProfileName <String>]`: Contact Profile Name
-  - `[GroundStationName <String>]`: Ground Station name
+  - `[ContactName <String>]`: Contact name.
+  - `[ContactProfileName <String>]`: Contact Profile name.
+  - `[GroundStationName <String>]`: Ground Station name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The name of Azure region.
   - `[OperationId <String>]`: The ID of an ongoing async operation.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SpacecraftName <String>]`: Spacecraft ID
+  - `[SpacecraftName <String>]`: Spacecraft ID.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzOrbitalSpacecraft
 
 ## SYNOPSIS
-Gets the specified spacecraft in a specified resource group
+Gets the specified spacecraft in a specified resource group.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Get-AzOrbitalSpacecraft -ResourceGroupName <String> [-SubscriptionId <String[]>]
 ```
 
 ## DESCRIPTION
-Gets the specified spacecraft in a specified resource group
+Gets the specified spacecraft in a specified resource group.
 
 ## EXAMPLES
 
@@ -49,7 +49,7 @@ Get-AzOrbitalSpacecraft
 Name                     Location NoradId TitleLine   ResourceGroupName
 ----                     -------- ------- ---------   -----------------
 azpstest-test-spacecraft westus2  12345   ISS (ZARYA) azpstest-gp
-azps-orbitalspacecraft   eastus   12345   ISS (ZARYA) azpstest-gp
+AQUA   eastus   12345   ISS (ZARYA) azpstest-gp
 ```
 
 List the specified spacecraft.
@@ -60,22 +60,22 @@ Get-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp
 ```
 
 ```output
-Name                   Location NoradId TitleLine ResourceGroupName
-----                   -------- ------- --------- -----------------
-azps-orbitalspacecraft westus2  27424   AQUA      azpstest-gp
+Name Location NoradId TitleLine ResourceGroupName
+---- -------- ------- --------- -----------------
+AQUA westus2  27424   AQUA      azpstest-gp
 ```
 
 Gets the specified spacecraft in a specified resource group.
 
 ### Example 3: Get the specified spacecraft in a specified Name.
 ```powershell
-Get-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name azps-orbitalspacecraft
+Get-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name AQUA
 ```
 
 ```output
-Name                   Location NoradId TitleLine ResourceGroupName
-----                   -------- ------- --------- -----------------
-azps-orbitalspacecraft westus2  27424   AQUA      azpstest-gp
+Name Location NoradId TitleLine ResourceGroupName
+---- -------- ------- --------- -----------------
+AQUA westus2  27424   AQUA      azpstest-gp
 ```
 
 Get the specified spacecraft in a specified Name.
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Spacecraft ID
+Spacecraft ID.
 
 ```yaml
 Type: System.String
@@ -197,14 +197,14 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `INPUTOBJECT <IOrbitalIdentity>`: Identity Parameter
-  - `[ContactName <String>]`: Contact Name
-  - `[ContactProfileName <String>]`: Contact Profile Name
-  - `[GroundStationName <String>]`: Ground Station name
+  - `[ContactName <String>]`: Contact name.
+  - `[ContactProfileName <String>]`: Contact Profile name.
+  - `[GroundStationName <String>]`: Ground Station name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The name of Azure region.
   - `[OperationId <String>]`: The ID of an ongoing async operation.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SpacecraftName <String>]`: Spacecraft ID
+  - `[SpacecraftName <String>]`: Spacecraft ID.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS

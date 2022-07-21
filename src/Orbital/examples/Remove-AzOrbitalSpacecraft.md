@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes a specified spacecraft resource.
 ```powershell
-{{ Add code here }}
+Remove-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name AQUA
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Deletes a specified spacecraft resource.

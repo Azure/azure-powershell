@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzOrbitalContactProfile
 
 ## SYNOPSIS
-Creates or updates a contact profile
+Creates or updates a contact profile.
 
 ## SYNTAX
 
@@ -21,17 +21,17 @@ New-AzOrbitalContactProfile -Name <String> -ResourceGroupName <String> -Location
 ```
 
 ## DESCRIPTION
-Creates or updates a contact profile
+Creates or updates a contact profile.
 
 ## EXAMPLES
 
 ### Example 1: Creates or updates a contact profile.
 ```powershell
-$linkChannel = New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 15 -CenterFrequencyMHz 8160 -EndPointIPAddress 10.0.1.0 -EndPointName AQUA_command -EndPointPort 4000 -EndPointProtocol TCP -Name channel1 -DecodingConfiguration na -DemodulationConfiguration na -EncodingConfiguration AQUA_CMD_CCSDS -ModulationConfiguration AQUA_UPLINK_BPSK
+$linkChannel = New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 15 -CenterFrequencyMHz 8160 -EndPointIPAddress 10.0.1.0 -EndPointName AQUA_command -EndPointPort 55555 -EndPointProtocol TCP -Name channel1 -DecodingConfiguration na -DemodulationConfiguration na -EncodingConfiguration AQUA_CMD_CCSDS -ModulationConfiguration AQUA_UPLINK_BPSK
 
 $profileLink = New-AzOrbitalContactProfileLinkObject -Channel $linkChannel -Direction Downlink -Name RHCP_UL -Polarization RHCP -EirpdBw 45 -GainOverTemperature 0
 
-New-AzOrbitalContactProfile -Name azps-orbital-contactprofile -ResourceGroupName azpstest-gp -Location westus2 -SubscriptionId 9e223dbe-3399-4e19-88eb-0975f02ac87f -AutoTrackingConfiguration xBand -EventHubUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0707 -Link $profileLink -MinimumElevationDegree 10 -MinimumViableContactDuration PT1M -NetworkConfigurationSubnetId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn
+New-AzOrbitalContactProfile -Name azps-orbital-contactprofile -ResourceGroupName azpstest-gp -Location westus2 -SubscriptionId 9e223dbe-3399-4e19-88eb-0975f02ac87f -AutoTrackingConfiguration xBand -EventHubUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test -Link $profileLink -MinimumElevationDegree 10 -MinimumViableContactDuration PT1M -NetworkConfigurationSubnetId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn
 ```
 
 ```output
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -AutoTrackingConfiguration
-Auto track configuration.
+Auto-tracking configuration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.AutoTrackingConfiguration
@@ -90,7 +90,8 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubUri
-The URI of the Event Hub used for telemetry
+ARM resource identifier of the Event Hub used for telemetry.
+Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
 
 ```yaml
 Type: System.String
@@ -105,7 +106,8 @@ Accept wildcard characters: False
 ```
 
 ### -Link
-Links of the Contact Profile
+Links of the Contact Profile.
+Describes RF links, modem processing, and IP endpoints.
 To construct, see NOTES section for LINK properties and create a hash table.
 
 ```yaml
@@ -137,6 +139,7 @@ Accept wildcard characters: False
 
 ### -MinimumElevationDegree
 Minimum viable elevation for the contact in decimal degrees.
+Used for listing the available contacts with a spacecraft at a given ground station.
 
 ```yaml
 Type: System.Single
@@ -152,6 +155,7 @@ Accept wildcard characters: False
 
 ### -MinimumViableContactDuration
 Minimum viable contact duration in ISO 8601 format.
+Used for listing the available contacts with a spacecraft at a given ground station.
 
 ```yaml
 Type: System.String
@@ -166,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Contact Profile Name
+Contact Profile name.
 
 ```yaml
 Type: System.String
@@ -181,7 +185,8 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkConfigurationSubnetId
-Customer subnet ARM resource identifier.
+ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways.
+Needs to be at least a class C subnet, and should not have any IP created in it.
 
 ```yaml
 Type: System.String
@@ -305,24 +310,24 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`LINK <IContactProfileLink[]>`: Links of the Contact Profile
-  - `Channel <IContactProfileLinkChannel[]>`: Contact Profile Link Channel
-    - `BandwidthMHz <Single>`: Bandwidth in MHz
-    - `CenterFrequencyMHz <Single>`: Center Frequency in MHz
+`LINK <IContactProfileLink[]>`: Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
+  - `Channel <IContactProfileLinkChannel[]>`: Contact Profile Link Channel.
+    - `BandwidthMHz <Single>`: Bandwidth in MHz.
+    - `CenterFrequencyMHz <Single>`: Center Frequency in MHz.
     - `EndPointIPAddress <String>`: IP Address.
     - `EndPointName <String>`: Name of an end point.
     - `EndPointPort <String>`: TCP port to listen on to receive data.
     - `EndPointProtocol <Protocol>`: Protocol either UDP or TCP.
-    - `Name <String>`: Channel name
-    - `[DecodingConfiguration <String>]`: Configuration for decoding
-    - `[DemodulationConfiguration <String>]`: Configuration for demodulation
-    - `[EncodingConfiguration <String>]`: Configuration for encoding
-    - `[ModulationConfiguration <String>]`: Configuration for modulation
-  - `Direction <Direction>`: Direction (uplink or downlink)
-  - `Name <String>`: Link name
-  - `Polarization <Polarization>`: polarization. eg (RHCP, LHCP)
-  - `[EirpdBw <Single?>]`: Effective Isotropic Radiated Power (EIRP) in dBW.
-  - `[GainOverTemperature <Single?>]`: Gain To Noise Temperature in db/K.
+    - `Name <String>`: Channel name.
+    - `[DecodingConfiguration <String>]`: Currently unused.
+    - `[DemodulationConfiguration <String>]`: Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx. Only valid for downlink directions. If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
+    - `[EncodingConfiguration <String>]`: Currently unused.
+    - `[ModulationConfiguration <String>]`: Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
+  - `Direction <Direction>`: Direction (uplink or downlink).
+  - `Name <String>`: Link name.
+  - `Polarization <Polarization>`: Polarization. e.g. (RHCP, LHCP).
+  - `[EirpdBw <Single?>]`: Effective Isotropic Radiated Power (EIRP) in dBW. It is the required EIRP by the customer. Not used yet.
+  - `[GainOverTemperature <Single?>]`: Gain To Noise Temperature in db/K. It is the required G/T by the customer. Not used yet.
 
 ## RELATED LINKS
 

@@ -26,16 +26,16 @@ Creates a contact.
 
 ### Example 1: Creates a contact.
 ```powershell
-$dateS = Get-Date -Day 23
-$dateE = Get-Date -Day 24
+$dateS = Get-Date -Day 22
+$dateE = Get-Date -Day 23
 
-New-AzOrbitalSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azpstest-gp -SpacecraftName azps-orbitalspacecraft -ContactProfileId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile" -GroundStationName "KSAT_SVALBARD" -ReservationStartTime $dateS -ReservationEndTime $dateE
+New-AzOrbitalSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azpstest-gp -SpacecraftName AQUA -ContactProfileId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile" -GroundStationName "WESTUS2_1" -ReservationStartTime $dateS -ReservationEndTime $dateE
 ```
 
 ```output
 Name                 GroundStationName Status    ReservationStartTime     ReservationEndTime     ResourceGroupName
 ----                 ----------------- ------    --------------------     ------------------     -----------------
-azps-orbital-contact KSAT_SVALBARD     scheduled 2022-06-23 09:13:05 AM   2022-06-24 09:13:10 AM azpstest-gp
+azps-orbital-contact WESTUS2_1         scheduled 2022-06-23 09:13:05 AM   2022-06-24 09:13:10 AM azpstest-gp
 ```
 
 Creates a contact.
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Contact Name
+Contact name.
 
 ```yaml
 Type: System.String
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationEndTime
-Reservation end time of a contact.
+Reservation end time of a contact (ISO 8601 UTC standard).
 
 ```yaml
 Type: System.DateTime
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationStartTime
-Reservation start time of a contact.
+Reservation start time of a contact (ISO 8601 UTC standard).
 
 ```yaml
 Type: System.DateTime
@@ -179,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -SpacecraftName
-Spacecraft ID
+Spacecraft ID.
 
 ```yaml
 Type: System.String

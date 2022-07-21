@@ -8,7 +8,8 @@ schema: 2.0.0
 # Get-AzOrbitalAvailableSpacecraftContact
 
 ## SYNOPSIS
-Return list of available contacts
+Returns list of available contacts.
+A contact is available if the spacecraft is visible from the ground station for more than the minimum viable contact duration provided in the contact profile.
 
 ## SYNTAX
 
@@ -27,34 +28,30 @@ Get-AzOrbitalAvailableSpacecraftContact -Name <String> -ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-Return list of available contacts
+Returns list of available contacts.
+A contact is available if the spacecraft is visible from the ground station for more than the minimum viable contact duration provided in the contact profile.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Returns list of available contacts.
 ```powershell
-$dateS = Get-Date -Day 23 -Month 6
-$dateE = Get-Date -Day 24 -Month 6
+$dateS = Get-Date -Day 22 -Month 7
+$dateE = Get-Date -Day 23 -Month 7
 
-Get-AzOrbitalAvailableSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azpstest-gp -EndTime $dateE -StartTime $dateS -GroundStationName WESTUS2_1
+Get-AzOrbitalAvailableSpacecraftContact -Name AQUA -ResourceGroupName azpstest-gp -EndTime $dateE -StartTime $dateS -GroundStationName WESTUS2_1 -ContactProfileId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile
 ```
 
 ```output
-{{ Add output here }}
+GroundStationName StartAzimuthDegree EndAzimuthDegree StartElevationDegree EndElevationDegree MaximumElevationDegree RxStartTime            RxEndTime
+----------------- ------------------ ---------------- -------------------- ------------------ ---------------------- -----------            ---------
+WESTUS2_1         33.65817           156.5579         10                   10                 29.905                 2022-07-22 09:14:48 AM 2022-07-22 09:23:09 AM
+WESTUS2_1         358.0121           228.2359         10                   10                 35.335                 2022-07-22 10:52:26 AM 2022-07-22 11:01:04 AM
+WESTUS2_1         141.8587           357.0999         10                   10                 46.502                 2022-07-22 08:23:26 AM 2022-07-22 08:32:32 AM
+WESTUS2_1         215.2225           319.5766         10                   10                 22.735                 2022-07-22 10:02:11 AM 2022-07-22 10:09:42 AM
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Returns list of available contacts.
+A contact is available if the spacecraft is visible from the ground station for more than the minimum viable contact duration provided in the contact profile.
 
 ## PARAMETERS
 
@@ -104,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -EndTime
-End time of a contact.
+End time of a contact (ISO 8601 UTC standard).
 
 ```yaml
 Type: System.DateTime
@@ -134,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Spacecraft ID
+Spacecraft ID.
 
 ```yaml
 Type: System.String
@@ -196,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-Start time of a contact.
+Start time of a contact (ISO 8601 UTC standard).
 
 ```yaml
 Type: System.DateTime
@@ -277,9 +274,9 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `PARAMETER <IContactParameters>`: Parameters that define the contact resource.
-  - `EndTime <DateTime>`: End time of a contact.
+  - `EndTime <DateTime>`: End time of a contact (ISO 8601 UTC standard).
   - `GroundStationName <String>`: Name of Azure Ground Station.
-  - `StartTime <DateTime>`: Start time of a contact.
+  - `StartTime <DateTime>`: Start time of a contact (ISO 8601 UTC standard).
   - `[ContactProfileId <String>]`: Resource ID.
 
 ## RELATED LINKS

@@ -7,7 +7,7 @@ Get-AzOrbitalSpacecraft
 Name                     Location NoradId TitleLine   ResourceGroupName
 ----                     -------- ------- ---------   -----------------
 azpstest-test-spacecraft westus2  12345   ISS (ZARYA) azpstest-gp
-azps-orbitalspacecraft   eastus   12345   ISS (ZARYA) azpstest-gp
+AQUA   eastus   12345   ISS (ZARYA) azpstest-gp
 ```
 
 List the specified spacecraft.
@@ -18,22 +18,22 @@ Get-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp
 ```
 
 ```output
-Name                   Location NoradId TitleLine ResourceGroupName
-----                   -------- ------- --------- -----------------
-azps-orbitalspacecraft westus2  27424   AQUA      azpstest-gp
+Name Location NoradId TitleLine ResourceGroupName
+---- -------- ------- --------- -----------------
+AQUA westus2  27424   AQUA      azpstest-gp
 ```
 
 Gets the specified spacecraft in a specified resource group.
 
 ### Example 3: Get the specified spacecraft in a specified Name.
 ```powershell
-Get-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name azps-orbitalspacecraft
+Get-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name AQUA
 ```
 
 ```output
-Name                   Location NoradId TitleLine ResourceGroupName
-----                   -------- ------- --------- -----------------
-azps-orbitalspacecraft westus2  27424   AQUA      azpstest-gp
+Name Location NoradId TitleLine ResourceGroupName
+---- -------- ------- --------- -----------------
+AQUA westus2  27424   AQUA      azpstest-gp
 ```
 
 Get the specified spacecraft in a specified Name.

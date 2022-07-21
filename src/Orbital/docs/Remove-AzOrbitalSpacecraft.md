@@ -29,27 +29,12 @@ Deletes a specified spacecraft resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Deletes a specified spacecraft resource.
 ```powershell
-{{ Add code here }}
+Remove-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name AQUA
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Deletes a specified spacecraft resource.
 
 ## PARAMETERS
 
@@ -100,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Spacecraft ID
+Spacecraft ID.
 
 ```yaml
 Type: System.String
@@ -227,14 +212,14 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `INPUTOBJECT <IOrbitalIdentity>`: Identity Parameter
-  - `[ContactName <String>]`: Contact Name
-  - `[ContactProfileName <String>]`: Contact Profile Name
-  - `[GroundStationName <String>]`: Ground Station name
+  - `[ContactName <String>]`: Contact name.
+  - `[ContactProfileName <String>]`: Contact Profile name.
+  - `[GroundStationName <String>]`: Ground Station name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The name of Azure region.
   - `[OperationId <String>]`: The ID of an ongoing async operation.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SpacecraftName <String>]`: Spacecraft ID
+  - `[SpacecraftName <String>]`: Spacecraft ID.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS

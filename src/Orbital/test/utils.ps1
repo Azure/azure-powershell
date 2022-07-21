@@ -18,6 +18,30 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+
+    $spacecraftName = "AQUA"
+    $env.Add("spacecraftName", $spacecraftName)
+
+    $spacecraftContact = "azps-orbital-contact"
+    $env.Add("spacecraftContact", $spacecraftContact)
+
+    $contactProfile = "azps-orbital-contactprofile"
+    $env.Add("contactProfile", $contactProfile)
+
+    $eventhub = "eventhub-test-0721"
+    $env.Add("eventhub", $eventhub)
+
+    $virtualnetwork = "orbital-virtualnetwork"
+    $env.Add("virtualnetwork", $virtualnetwork)
+
+    $virtualnetworkSubnets = "orbital-vn"
+    $env.Add("virtualnetworkSubnets", $virtualnetworkSubnets)
+
+    $env.Add("location", "westus2")
+
+    $resourceGroup = "azpstest-gp"
+    $env.Add("resourceGroup", $resourceGroup)
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

@@ -12,22 +12,23 @@ Microsoft Azure PowerShell: Orbital cmdlets
 
 ## Az.Orbital Cmdlets
 ### [Get-AzOrbitalAvailableGroundStation](Get-AzOrbitalAvailableGroundStation.md)
-Gets the specified  available ground station
+Gets the specified available ground station.
 
 ### [Get-AzOrbitalAvailableSpacecraftContact](Get-AzOrbitalAvailableSpacecraftContact.md)
-Return list of available contacts
+Returns list of available contacts.
+A contact is available if the spacecraft is visible from the ground station for more than the minimum viable contact duration provided in the contact profile.
 
 ### [Get-AzOrbitalContactProfile](Get-AzOrbitalContactProfile.md)
-Gets the specified contact Profile in a specified resource group
+Gets the specified contact Profile in a specified resource group.
 
 ### [Get-AzOrbitalSpacecraft](Get-AzOrbitalSpacecraft.md)
-Gets the specified spacecraft in a specified resource group
+Gets the specified spacecraft in a specified resource group.
 
 ### [Get-AzOrbitalSpacecraftContact](Get-AzOrbitalSpacecraftContact.md)
-Gets the specified contact in a specified resource group
+Gets the specified contact in a specified resource group.
 
 ### [New-AzOrbitalContactProfile](New-AzOrbitalContactProfile.md)
-Creates or updates a contact profile
+Creates or updates a contact profile.
 
 ### [New-AzOrbitalContactProfileLinkChannelObject](New-AzOrbitalContactProfileLinkChannelObject.md)
 Create an in-memory object for ContactProfileLinkChannel.
@@ -36,7 +37,7 @@ Create an in-memory object for ContactProfileLinkChannel.
 Create an in-memory object for ContactProfileLink.
 
 ### [New-AzOrbitalSpacecraft](New-AzOrbitalSpacecraft.md)
-Creates or updates a spacecraft resource
+Creates or updates a spacecraft resource.
 
 ### [New-AzOrbitalSpacecraftContact](New-AzOrbitalSpacecraftContact.md)
 Creates a contact.
@@ -51,7 +52,7 @@ Deletes a specified contact profile resource.
 Deletes a specified spacecraft resource.
 
 ### [Remove-AzOrbitalSpacecraftContact](Remove-AzOrbitalSpacecraftContact.md)
-Deletes a specified contact
+Deletes a specified contact.
 
 ### [Update-AzOrbitalContactProfile](Update-AzOrbitalContactProfile.md)
 Updates the specified contact profile tags.
