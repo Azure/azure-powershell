@@ -1,16 +1,16 @@
 ---
-Module Name: Az.Grafana
-Module Guid: 9d9a40ad-32cc-4718-9abb-a3dae5225322
-Download Help Link: https://docs.microsoft.com/powershell/module/az.grafana
+Module Name: Az.Dashboard
+Module Guid: 8475f339-2250-485a-a9cc-aba350de72d2
+Download Help Link: https://docs.microsoft.com/powershell/module/az.dashboard
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.Grafana Module
+# Az.Dashboard Module
 ## Description
-Microsoft Azure PowerShell: Grafana cmdlets
+Microsoft Azure PowerShell: Dashboard cmdlets
 
-## Az.Grafana Cmdlets
+## Az.Dashboard Cmdlets
 ### [Get-AzGrafana](Get-AzGrafana.md)
 Get the properties of a specific workspace for Grafana resource.
 

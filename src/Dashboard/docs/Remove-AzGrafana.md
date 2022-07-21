@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Grafana
-online version: https://docs.microsoft.com/powershell/module/az.grafana/remove-azgrafana
+Module Name: Az.Dashboard
+online version: https://docs.microsoft.com/powershell/module/az.dashboard/remove-azgrafana
 schema: 2.0.0
 ---
 
@@ -20,7 +20,7 @@ Remove-AzGrafana -Name <String> -ResourceGroupName <String> [-SubscriptionId <St
 
 ### DeleteViaIdentity
 ```
-Remove-AzGrafana -InputObject <IGrafanaIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+Remove-AzGrafana -InputObject <IDashboardIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -80,7 +80,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Grafana.Models.IGrafanaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -203,7 +203,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Grafana.Models.IGrafanaIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentity
 
 ## OUTPUTS
 
@@ -218,7 +218,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IGrafanaIdentity>`: Identity Parameter
+`INPUTOBJECT <IDashboardIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[PrivateEndpointConnectionName <String>]`: The private endpoint connection name of Azure Managed Grafana.
   - `[PrivateLinkResourceName <String>]`: 

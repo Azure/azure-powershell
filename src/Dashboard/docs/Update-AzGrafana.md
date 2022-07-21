@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Grafana
-online version: https://docs.microsoft.com/powershell/module/az.grafana/update-azgrafana
+Module Name: Az.Dashboard
+online version: https://docs.microsoft.com/powershell/module/az.dashboard/update-azgrafana
 schema: 2.0.0
 ---
 
@@ -22,7 +22,7 @@ Update-AzGrafana -Name <String> -ResourceGroupName <String> [-SubscriptionId <St
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzGrafana -InputObject <IGrafanaIdentity> [-ApiKey <ApiKey>]
+Update-AzGrafana -InputObject <IDashboardIdentity> [-ApiKey <ApiKey>]
  [-DeterministicOutboundIP <DeterministicOutboundIP>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
  [-ZoneRedundancy <ZoneRedundancy>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -65,7 +65,7 @@ Update a workspace for Grafana resource.
 The api key setting of the Grafana instance.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Grafana.Support.ApiKey
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ApiKey
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Whether a Grafana instance uses deterministic outbound IPs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Grafana.Support.DeterministicOutboundIP
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.DeterministicOutboundIP
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Grafana.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +143,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Grafana.Models.IGrafanaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 Indicate the state for enable or disable traffic over the public interface.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Grafana.Support.PublicNetworkAccess
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess
 Parameter Sets: (All)
 Aliases:
 
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 The zone redundancy setting of the Grafana instance.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Grafana.Support.ZoneRedundancy
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ZoneRedundancy
 Parameter Sets: (All)
 Aliases:
 
@@ -281,11 +281,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Grafana.Models.IGrafanaIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Grafana.Models.Api20220801.IManagedGrafana
+### Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana
 
 ## NOTES
 
@@ -296,7 +296,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IGrafanaIdentity>`: Identity Parameter
+`INPUTOBJECT <IDashboardIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[PrivateEndpointConnectionName <String>]`: The private endpoint connection name of Azure Managed Grafana.
   - `[PrivateLinkResourceName <String>]`: 

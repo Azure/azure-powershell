@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.Grafana
-This directory contains the PowerShell module for the Grafana service.
+# Az.Dashboard
+This directory contains the PowerShell module for the Dashboard service.
 
 ---
 ## Status
-[![Az.Grafana](https://img.shields.io/powershellgallery/v/Az.Grafana.svg?style=flat-square&label=Az.Grafana "Az.Grafana")](https://www.powershellgallery.com/packages/Az.Grafana/)
+[![Az.Dashboard](https://img.shields.io/powershellgallery/v/Az.Dashboard.svg?style=flat-square&label=Az.Dashboard "Az.Dashboard")](https://www.powershellgallery.com/packages/Az.Dashboard/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.Grafana`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.Dashboard`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ### AutoRest Configuration
@@ -36,9 +36,9 @@ require:
 input-file:
   - $(repo)/specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2022-08-01/grafana.json
 
-title: Grafana
+title: Dashboard
 module-version: 0.1.0
-subject-prefix: $(service-name)
+subject-prefix: Grafana
 
 identity-correction-for-post: true
 resourcegroup-append: true

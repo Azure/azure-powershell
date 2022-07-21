@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Grafana
-online version: https://docs.microsoft.com/powershell/module/az.grafana/get-azgrafana
+Module Name: Az.Dashboard
+online version: https://docs.microsoft.com/powershell/module/az.dashboard/get-azgrafana
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ Get-AzGrafana -Name <String> -ResourceGroupName <String> [-SubscriptionId <Strin
 
 ### GetViaIdentity
 ```
-Get-AzGrafana -InputObject <IGrafanaIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzGrafana -InputObject <IDashboardIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
@@ -100,7 +100,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Grafana.Models.IGrafanaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -162,11 +162,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Grafana.Models.IGrafanaIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Grafana.Models.Api20220801.IManagedGrafana
+### Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana
 
 ## NOTES
 
@@ -177,7 +177,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IGrafanaIdentity>`: Identity Parameter
+`INPUTOBJECT <IDashboardIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[PrivateEndpointConnectionName <String>]`: The private endpoint connection name of Azure Managed Grafana.
   - `[PrivateLinkResourceName <String>]`: 
