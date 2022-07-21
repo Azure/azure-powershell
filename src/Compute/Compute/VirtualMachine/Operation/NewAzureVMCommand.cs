@@ -653,6 +653,12 @@ namespace Microsoft.Azure.Commands.Compute
 
         async Task StrategyExecuteCmdletAsync(IAsyncCmdlet asyncCmdlet)
         {
+            //Add a PublicIpAddress and Allocation Method (Static?) checek here
+            if (!this.IsParameterBound(c => c.PublicIpAddressName) && this.AllocationMethod == "Static"){
+                WriteWarning("It is recommended to use parameter \"-AllocationMethod Standard\" to create new VM with Standard public IP. Please note that it will become the default behavior for VM creation in the future.");
+
+            }
+
             var client = new Client(DefaultProfile.DefaultContext);
 
             ResourceGroupName = ResourceGroupName ?? Name;
