@@ -31,16 +31,19 @@ For information on how to develop for `Az.StorageMover`, see [how-to.md](how-to.
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
+brach: 077c9d9f43e3869d9f90584cff27fb7f40a8789d
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
 #  - https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/storagemover/resource-manager/Microsoft.StorageMover/preview/2022-07-01-preview/storagemover.json
+#  - https://github.com/Azure/azure-rest-api-specs/blob/077c9d9f43e3869d9f90584cff27fb7f40a8789d/specification/storagemover/resource-manager/Microsoft.StorageMover/preview/2022-07-01-preview/storagemover.json
+  - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/preview/2022-07-01-preview/storagemover.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - D:\code\swaggerrepo\specification\storagemover\resource-manager\Microsoft.StorageMover\preview\2022-07-01-preview\storagemover.json
-  - $(this-folder)/../StorageMoverSwagger/swagger/specification/storagemover/resource-manager/Microsoft.StorageMover/preview/2022-07-01-preview/storagemover.json
+# - $(this-folder)/../StorageMoverSwagger/swagger/specification/storagemover/resource-manager/Microsoft.StorageMover/preview/2022-07-01-preview/storagemover.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
