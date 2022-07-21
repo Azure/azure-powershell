@@ -1448,7 +1448,7 @@ function Test-ConnectionMonitorWithVMSSAsSource
     # Setup
     $resourceGroupName = Get-NrpResourceGroupName
     $nwName = Get-NrpResourceName
-    $location = Get-CanaryLocation
+    $location = Get-PilotLocation
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-NrpResourceGroupName

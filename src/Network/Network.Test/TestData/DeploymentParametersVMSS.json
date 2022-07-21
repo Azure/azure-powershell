@@ -9,7 +9,7 @@
         "value": "PSVMSS"
     },
     "instanceCount": {
-        "value": 2
+        "value": 3
     },
     "singlePlacementGroup": {
         "value": true
@@ -21,7 +21,7 @@
         "value": "netanalytics-32Piyush-OMS-Test"
     },
     "location": {
-        "value": "centraluseuap"
+        "value": "westcentralus"
     },
     "platformFaultDomainCount": {
         "value": 1
