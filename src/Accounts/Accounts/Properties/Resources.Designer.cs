@@ -187,6 +187,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://go.microsoft.com/fwlink/?linkid=2202029.
+        /// </summary>
+        internal static string AzureRMToAzMigrationGuideLink {
+            get {
+                return ResourceManager.GetString("AzureRMToAzMigrationGuideLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please provide either a subscription ID or a subscription name..
         /// </summary>
         internal static string BothSubscriptionIdAndNameProvided {
@@ -363,6 +372,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string CommandNotFoundFuzzyStringSingle {
             get {
                 return ResourceManager.GetString("CommandNotFoundFuzzyStringSingle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The command {0} is part of Azure PowerShell module &quot;{1}&quot; and it is not installed. Run &quot;Install-Module {1}&quot; to install it..
+        /// </summary>
+        internal static string CommandNotFoundModuleNotInstalled {
+            get {
+                return ResourceManager.GetString("CommandNotFoundModuleNotInstalled", resourceCulture);
             }
         }
         

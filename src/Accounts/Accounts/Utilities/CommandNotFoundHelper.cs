@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
                 if (IsAzureRMCommand(args.CommandName))
                 {
-                    WriteWarning(string.Format(Resources.CommandNotFoundAzureRM, args.CommandName, "todo: fwlink"));
+                    WriteWarning(string.Format(Resources.CommandNotFoundAzureRM, args.CommandName, Resources.AzureRMToAzMigrationGuideLink));
                 }
                 else if (TryGetMigrationGuide(args.CommandName, out MemoryMigrationDetails details))
                 {
@@ -142,8 +142,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 }
                 else if (TryGetModuleOfCommand(args.CommandName, out string moduleName))
                 {
-                    WriteWarning($"The command {args.CommandName} is part of Azure PowerShell module \"{moduleName}\" and it is not installed."
-                        + $" Run \"Install-Module {moduleName}\" to install it.");
+                    WriteWarning(string.Format(Resources.CommandNotFoundModuleNotInstalled, args.CommandName, moduleName));
                 }
                 else if (EnableFuzzyString && TryGetFuzzyStringSuggestions(args.CommandName, out IEnumerable<string> suggestions))
                 {
@@ -194,9 +193,9 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
                 // if release is like "Az x.x.x", we can provide a link to migration guide
                 var match = new Regex(@"^Az\s*(\d+\.\d+\.\d+)$", RegexOptions.IgnoreCase).Match(release);
-                if (match.Success)
+                if (match.Success && match.Groups.Count >= 2)
                 {
-                    var version = match.Groups[0];
+                    var version = match.Groups[1];
                     link = $"[todo: fwlink]https://aka.ms/migration?release={version}";
                 }
             }
@@ -223,7 +222,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
 
         private static string FormatFuzzyStringMessage(string commandName, IEnumerable<string> suggestions)
         {
-            StringBuilder sb = new StringBuilder($"{commandName} is not found. ");
+            StringBuilder sb = new StringBuilder();
             if (suggestions.Count() > 1)
             {
                 sb.Append(string.Format(Resources.CommandNotFoundFuzzyStringPlural, commandName));
@@ -248,7 +247,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         }
     }
 
-    #region memory models
+    #region in-memory models
     internal class MemoryMigrationDetails
     {
         /// <summary>
@@ -270,7 +269,8 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         /// Dictionary of modules. Key is the name of the module.
         /// </summary>
         /// <value>
-        /// Dictionary of commands (cmdlet, function, alias), whose key is the name of the command, value is empty for now.
+        /// Dictionary of commands (cmdlet, function, alias), whose key is the name of the command,
+        /// value is an empty object for now.
         /// </value>
         [JsonProperty("modules")]
         public IDictionary<string, IDictionary<string, object>> Modules { get; set; }
