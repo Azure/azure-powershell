@@ -21,5 +21,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public IList<string> PrivateRanges { get; set; }
 
+        public string AutoLearnPrivateRanges { get; set; }
+
     }
 }
