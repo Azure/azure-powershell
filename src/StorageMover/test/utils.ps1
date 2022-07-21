@@ -26,7 +26,7 @@ function setupEnv() {
 
     $env.RandomString = (RandomString $false 8)
     $env.ResourceGroupName = "testStorageMover"
-    $env.StorageMoverNameWithAgent = "testStorageMover1"
+    $env.StorageMoverNameWithAgent = "testStorageMover2"
     $env.AgentName = "testagent7"
     $env.Location = "eastus2euap"
     $env.InitialStoMoverName = "testStoMover1" + $env.RandomString

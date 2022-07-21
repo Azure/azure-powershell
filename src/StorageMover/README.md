@@ -46,6 +46,7 @@ module-version: 0.1.0
 title: StorageMover
 subject-prefix: $(service-name)
 nested-object-to-string: true
+identity-correction-for-post: true 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
