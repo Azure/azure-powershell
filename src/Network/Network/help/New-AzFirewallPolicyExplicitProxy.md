@@ -27,7 +27,14 @@ The **New-AzFirewallPolicyExplicitProxy** cmdlet creates an explicit proxy
 ```powershell
  New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 100 -HttpsPort 101 -EnablePacFile  -PacFilePort 130 -PacFile "sampleurlfortesting.blob.core.windowsnet/nothing"
 ```
-
+```output
+		EnableExplicitProxy	: true	
+		EnablePacFile	    : true	
+		HttpPort	        : 100	
+		HttpsPort	        : 101	
+		PacFile	            : "sampleurlfortesting.blob.core.windowsnet/nothing"
+		PacFilePort	        : 130	
+```
 This example creates an explicit proxy with provided settings
 
 ## PARAMETERS
@@ -184,3 +191,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzFireWallPolicy](./New-AzFireWallPolicy.md)
+
+[Set-AzFireWallPolicy](./Set-AzFireWallPolicy.md)

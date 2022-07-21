@@ -73,7 +73,41 @@ This example creates a Firewall that treats "99.99.99.0/24" and "66.66.0.0/16" a
 $exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 100 -HttpsPort 101 -EnablePacFile  -PacFilePort 130 -PacFile "sampleurlfortesting.blob.core.windowsnet/nothing"
 New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ExplicitProxy $exProxy
 ```
-
+```output
+		BasePolicy	                : null	
+		DnsSettings  	            : null	
+		Etag	                    : null	
+		ExplicitProxy	
+			EnableExplicitProxy	    : true	
+			EnablePacFile	        : true	
+			HttpPort	            : 100	
+			HttpsPort	            : 101	
+			PacFile                 : "sampleurlfortesting.blob.core.windowsnet/nothing"
+			PacFilePort	            : 130	
+		Id	                        : null	
+		Identity	                : null	
+		IntrusionDetection	        : null	
+		Location	                : "westus2"	
+		Name	                    : "ps1291"	
+		PrivateRange	            : null
+		PrivateRangeText	        : "[]"
+		ProvisioningState	        : null	
+		ResourceGroupName	        : "ps9951"	
+		ResourceGuid	            : null	
+		RuleCollectionGroups	    : null	
+		Sku	
+			Tier	                : "Standard"	
+		Snat	
+			AutoLearnPrivateRanges	: null	
+			PrivateRanges	        : null	
+		SqlSetting	                : null	
+		Tag	                        : null	
+		TagsTable	                : null	
+		ThreatIntelMode	            : "Alert"	
+		ThreatIntelWhitelist	    : null	
+		TransportSecurity	        : null	
+		Type	                    : null	
+```
 This example creates a firewall policy with explicit proxy settings
 
 ## PARAMETERS
