@@ -12,28 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Reflection;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class JobScheduleTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class JobScheduleTests : BatchTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public JobScheduleTests(Xunit.Abstractions.ITestOutputHelper output)
+        public JobScheduleTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobScheduleCRUD()
         {
-            BatchController.NewInstance.RunPsTest(_logger, "Test-JobScheduleCRUD");
+            TestRunner.RunTestScript("Test-JobScheduleCRUD");
         }
 
 
@@ -41,24 +36,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableEnableTerminateJobSchedule()
         {
-            BatchController controller = BatchController.NewInstance;
             string jobScheduleId = "testDisableEnableTerminateJobSchedule";
 
             BatchAccountContext context = null;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () => { return new string[] { string.Format("Test-DisableEnableTerminateJobSchedule '{0}'", jobScheduleId) }; },
-                () =>
+            TestRunner.RunTestScript(
+                null,
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId, null);
+                    ScenarioTestHelpers.CreateTestJobSchedule(this, context, jobScheduleId, null);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteJobSchedule(controller, context, jobScheduleId);
+                    ScenarioTestHelpers.DeleteJobSchedule(this, context, jobScheduleId);
                 },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-DisableEnableTerminateJobSchedule '{jobScheduleId}'"
+            );
         }
     }
 }
