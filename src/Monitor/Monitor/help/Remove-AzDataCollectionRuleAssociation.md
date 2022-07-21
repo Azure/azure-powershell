@@ -14,36 +14,20 @@ Delete a data collection rule association.
 
 ### ByName (Default)
 ```
-Remove-AzDataCollectionRuleAssociation
-      -TargetResourceId <string> 
-      -AssociationName <string> 
-      [-PassThru]
-      [-DefaultProfile <IAzureContextContainer>]
-      [-WhatIf]
-      [-Confirm]
-      [<CommonParameters>]
+Remove-AzDataCollectionRuleAssociation -TargetResourceId <String> -AssociationName <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzDataCollectionRuleAssociation
-      -InputObject <PSDataCollectionRuleAssociationProxyOnlyResource>
-      [-PassThru]
-      [-DefaultProfile <IAzureContextContainer>]
-      [-WhatIf]
-      [-Confirm]
-      [<CommonParameters>]
+Remove-AzDataCollectionRuleAssociation -InputObject <PSDataCollectionRuleAssociationProxyOnlyResource>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzDataCollectionRuleAssociation
-      -AssociationId <string>
-      [-PassThru]
-      [-DefaultProfile <IAzureContextContainer>]
-      [-WhatIf]
-      [-Confirm]
-      [<CommonParameters>]
+Remove-AzDataCollectionRuleAssociation -AssociationId <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,28 +54,13 @@ Remove-AzDataCollectionRuleAssociation -AssociationId $dcrAssoc.Id
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetResourceId
-The associated resource ID.
+### -AssociationId
+The resource identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases: ResourceUri
+Parameter Sets: ByResourceId
+Aliases: ResourceId
 
 Required: True
 Position: Named
@@ -105,10 +74,25 @@ The name of the association resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName (Default)
+Parameter Sets: ByName
 Aliases: Name
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -126,17 +110,32 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -AssociationId
-The resource identifier.
+### -PassThru
+Return true upon successful removal.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetResourceId
+The associated resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
-Aliases: ResourceId
+Parameter Sets: ByName
+Aliases: ResourceUri
 
 Required: True
 Position: Named
@@ -181,7 +180,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-###Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleAssociationProxyOnlyResource
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleAssociationProxyOnlyResource
 
 ## OUTPUTS
 

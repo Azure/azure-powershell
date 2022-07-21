@@ -14,41 +14,21 @@ Updates (full replacement) a data collection rule.
 
 ### ByName (Default)
 ```
-Set-AzDataCollectionRule 
-   -Location <string>
-   -ResourceGroupName <string>
-   -RuleName <string>
-   -RuleFile <string>
-   [-Description <string>]
-   [-Tag <hashtable>]
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+Set-AzDataCollectionRule -Location <String> -ResourceGroupName <String> -RuleName <String> -RuleFile <String>
+ [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzDataCollectionRule 
-   -Location <string>
-   -RuleId <string>
-   -RuleFile <string>
-   [-Description <string>]
-   [-Tag <hashtable>]
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+Set-AzDataCollectionRule -Location <String> -RuleId <String> -RuleFile <String> [-Description <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Set-AzDataCollectionRule 
-   -InputObject <PSDataCollectionRuleResource> 
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+Set-AzDataCollectionRule -InputObject <PSDataCollectionRuleResource> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -221,51 +201,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Description
+The resource description
+
+```yaml
+Type: System.String
+Parameter Sets: ByName, ByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+PSDataCollectionRuleResource Object
+
+```yaml
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 The resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RuleFile
-The JSON file path
-
-```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
+Parameter Sets: ByName, ByResourceId
 Aliases:
 
 Required: True
@@ -290,13 +261,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleName
-The resource name
+### -RuleFile
+The JSON file path
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases: Name
+Parameter Sets: ByName, ByResourceId
+Aliases:
 
 Required: True
 Position: Named
@@ -316,31 +287,19 @@ Aliases: ResourceId
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Description
-The resource description
+### -RuleName
+The resource name
 
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases:
+Aliases: Name
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -352,40 +311,13 @@ The resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: ByName
+Parameter Sets: ByName, ByResourceId
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-PSDataCollectionRuleResource Object
-
-```yaml
-Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True
 Accept wildcard characters: False
 ```
 

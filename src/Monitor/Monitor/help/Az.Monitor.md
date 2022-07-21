@@ -15,7 +15,7 @@ This topic displays help topics for the Azure Insights Cmdlets.
 Creates an Autoscale setting.
 
 ### [Add-AzLogProfile](Add-AzLogProfile.md)
-Creates a new activity log profile. This profile is used to either archive the activity log to an Azure storage account or stream it to an Azure event hub in the same subscription. 
+Creates a new activity log profile. This profile is used to either archive the activity log to an Azure storage account or stream it to an Azure event hub in the same subscription.
 
 ### [Add-AzMetricAlertRule](Add-AzMetricAlertRule.md)
 Adds or updates a metric-based alert rule.
@@ -39,7 +39,7 @@ Gets action group(s).
 Retrieve Activity Log events.
 
 ### [Get-AzActivityLogAlert](Get-AzActivityLogAlert.md)
-Gets one or more activity log alert resources.
+Get an Activity Log Alert rule.
 
 ### [Get-AzAlertHistory](Get-AzAlertHistory.md)
 Gets the history of classic alert rules.
@@ -92,14 +92,26 @@ Get diagnostic setting categories for subscription.
 ### [New-AzActionGroup](New-AzActionGroup.md)
 Creates an ActionGroup reference object in memory.
 
+### [New-AzActionGroupObject](New-AzActionGroupObject.md)
+Create an in-memory object for ActionGroup.
+
 ### [New-AzActionGroupReceiver](New-AzActionGroupReceiver.md)
 Creates an new action group receiver.
+
+### [New-AzActivityLogAlert](New-AzActivityLogAlert.md)
+Create a new Activity Log Alert rule or update an existing one.
 
 ### [New-AzActivityLogAlertCondition](New-AzActivityLogAlertCondition.md)
 Creates an new activity log alert condition object in memory.
 
+### [New-AzAlertRuleAnyOfOrLeafConditionObject](New-AzAlertRuleAnyOfOrLeafConditionObject.md)
+Create an in-memory object for AlertRuleAnyOfOrLeafCondition.
+
 ### [New-AzAlertRuleEmail](New-AzAlertRuleEmail.md)
 Creates an email action for an alert rule.
+
+### [New-AzAlertRuleLeafConditionObject](New-AzAlertRuleLeafConditionObject.md)
+Create an in-memory object for AlertRuleLeafCondition.
 
 ### [New-AzAlertRuleWebhook](New-AzAlertRuleWebhook.md)
 Creates an alert rule webhook.
@@ -168,7 +180,7 @@ Creates an object of type Trigger Condition
 Removes an action group.
 
 ### [Remove-AzActivityLogAlert](Remove-AzActivityLogAlert.md)
-Removes an activity log alert.
+Delete an Activity Log Alert rule.
 
 ### [Remove-AzAlertRule](Remove-AzAlertRule.md)
 Removes an alert rule.
@@ -214,6 +226,11 @@ Sets the logs and metrics settings for the resource.
 
 ### [Set-AzScheduledQueryRule](Set-AzScheduledQueryRule.md)
 Updates a Log Alert Rule
+
+### [Update-AzActivityLogAlert](Update-AzActivityLogAlert.md)
+Updates 'tags' and 'enabled' fields in an existing Alert rule.
+This method is used to update the Alert rule tags, and to enable or disable the Alert rule.
+To update other fields use CreateOrUpdate operation.
 
 ### [Update-AzDataCollectionRule](Update-AzDataCollectionRule.md)
 Updates a data collection rule tags property.
