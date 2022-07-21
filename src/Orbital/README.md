@@ -136,25 +136,6 @@ directive:
           }
         }
       }
-  - from: swagger-document 
-    where: $.definitions.ContactsProperties.properties.status
-    transform: >-
-      return {
-          "type": "string",
-          "readOnly": true,
-          "enum": [
-            "scheduled",
-            "cancelled",
-            "succeeded",
-            "failed",
-            "providerCancelled"
-          ],
-          "x-ms-enum": {
-            "name": "ContactStatus",
-            "modelAsString": false
-          },
-          "description": "Status of a contact."
-      }
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
