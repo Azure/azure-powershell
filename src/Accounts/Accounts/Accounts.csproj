@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FuzzySharp" Version="2.0.2" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
 
@@ -49,6 +48,12 @@
     <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
     <ProjectReference Include="..\Authentication\Authentication.csproj" />
     <ProjectReference Include="..\Authenticators\Authenticators.csproj" />  
+  </ItemGroup>
+   
+  <ItemGroup>
+    <Reference Include="FuzzySharp">
+      <HintPath>..\..\lib\FuzzySharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
    
   <ItemGroup>

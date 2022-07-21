@@ -379,15 +379,24 @@ switch ($PSCmdlet.ParameterSetName)
     }
 
     {$PSItem.StartsWith("ReleaseAz")}
-    {
+    {        
         # clean the unnecessary SerializedCmdlets json file
         $ExistSerializedCmdletJsonFile = Get-ExistSerializedCmdletJsonFile
         $ExpectJsonHashSet = @{}
         $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "..\src"
-        foreach ($Psd1FilePath in (Get-Psd1Path))
+        foreach ($ModuleName in $(Get-ChildItem $SrcPath -Directory).Name)
         {
-            $ModuleName = [System.IO.Path]::GetFileName($Psd1FilePath) -replace ".psd1"
-            $ExpectJsonHashSet.Add("Az.${ModuleName}.json", $true)
+            $ModulePath = $(Join-Path -Path $SrcPath -ChildPath $ModuleName)
+            $Psd1FileName = "Az.{0}.psd1" -f $ModuleName
+            $Psd1FilePath = $(Get-ChildItem $ModulePath -Depth 2 -Recurse -Filter $Psd1FileName)
+            if ($null -ne $Psd1FilePath)
+            {
+                $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
+                if ($Psd1Object.ModuleVersion -ge "1.0.0")
+                {
+                    $ExpectJsonHashSet.Add("Az.${ModuleName}.json", $true)
+                }
+            }
         }
         foreach ($JsonFile in $ExistSerializedCmdletJsonFile)
         {
