@@ -81,7 +81,7 @@ update cluster with key vault properties and sku
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Billing type can be set as 'Cluster' or 'Workspaces'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 Accepted values: Cluster, Workspaces
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 The cluster name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
@@ -124,24 +124,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AllParameterSet
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -154,7 +139,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -169,7 +154,7 @@ Accept wildcard characters: False
 the identity type, value can be 'SystemAssigned', 'None', 'UserAssigned'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 Accepted values: SystemAssigned, None, UserAssigned
@@ -185,7 +170,7 @@ Accept wildcard characters: False
 Specifies the cluster to be updated.
 
 ```yaml
-Type: PSCluster
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 Parameter Sets: AllParameterSet
 Aliases:
 
@@ -197,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSCluster
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 Parameter Sets: UpdateByInputObjectParameterSet
 Aliases:
 
@@ -212,7 +197,7 @@ Accept wildcard characters: False
 Key Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
@@ -227,7 +212,7 @@ Accept wildcard characters: False
 Key Vault Uri, "Purge Protection" and "Soft Delete" have to be enabled for this keyvault
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
@@ -242,7 +227,7 @@ Accept wildcard characters: False
 Key Version
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
@@ -257,7 +242,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
@@ -269,7 +254,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AllParameterSet
 Aliases:
 
@@ -285,7 +270,7 @@ The destination resource ID.
 This can be copied from the Properties entry of the destination resource in Azure.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AllParameterSet
 Aliases:
 
@@ -297,7 +282,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByResourceIdParameterSet
 Aliases:
 
@@ -312,7 +297,7 @@ Accept wildcard characters: False
 Sku Capacity
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
@@ -327,7 +312,7 @@ Accept wildcard characters: False
 Sku Name, now can be 'CapacityReservation' only
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: CapacityReservation
@@ -343,9 +328,24 @@ Accept wildcard characters: False
 Tags of the cluster
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -359,7 +359,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -377,11 +377,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster.PSCluster
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster.PSCluster
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 
 ## NOTES
 

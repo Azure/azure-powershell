@@ -60,26 +60,11 @@ Updates a workspace's Data export.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DataExportName
 The data export name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
@@ -94,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -109,7 +94,7 @@ Accept wildcard characters: False
 The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
@@ -124,7 +109,7 @@ Accept wildcard characters: False
 Active when enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
@@ -141,7 +126,7 @@ Allows to define an Event Hub name.
 Not applicable when destination is Storage Account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
@@ -156,7 +141,7 @@ Accept wildcard characters: False
 Specifies the DataExport to be updated.
 
 ```yaml
-Type: PSDataExport
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport
 Parameter Sets: UpdateByInputObjectParameterSet
 Aliases:
 
@@ -171,7 +156,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
@@ -187,7 +172,7 @@ The destination resource ID.
 This can be copied from the Properties entry of the destination resource in Azure.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByResourceIdParameterSet
 Aliases:
 
@@ -202,9 +187,39 @@ Accept wildcard characters: False
 An array of tables to export, for example: \["Heartbeat, SecurityEvent"\].
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: UpdateByNameParameterSet
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+The name of the workspace that will contain the storage insight.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -218,26 +233,11 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkspaceName
-The name of the workspace that will contain the storage insight.
-
-```yaml
-Type: String
-Parameter Sets: UpdateByNameParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

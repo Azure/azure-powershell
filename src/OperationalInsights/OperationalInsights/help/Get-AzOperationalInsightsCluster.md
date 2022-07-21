@@ -68,7 +68,7 @@ Get cluster
 The cluster name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -138,7 +138,7 @@ The destination resource ID.
 This can be copied from the Properties entry of the destination resource in Azure.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
@@ -170,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster.PSCluster
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 
 ## NOTES
 

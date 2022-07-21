@@ -72,7 +72,7 @@ Get data sources.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -94,7 +94,7 @@ The acceptable values for this parameter are:
 - WindowsPerformanceCounter
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceNameByKind
 Aliases:
 Accepted values: AzureAuditLog, AzureActivityLog, CustomLog, LinuxPerformanceObject, LinuxSyslog, WindowsEvent, WindowsPerformanceCounter, ApplicationInsights
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceObjectByKind
 Aliases:
 Accepted values: AzureAuditLog, AzureActivityLog, CustomLog, LinuxPerformanceObject, LinuxSyslog, WindowsEvent, WindowsPerformanceCounter, ApplicationInsights
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 Specifies the name of a data source to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceObjectByName
 Aliases:
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceNameByName
 Aliases:
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 Specifies the name of a resource group that contains data sources to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceNameByKind
 Aliases:
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceNameByName
 Aliases:
 
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 Specifies a workspace in which this cmdlet operates.
 
 ```yaml
-Type: PSWorkspace
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 Parameter Sets: ByWorkspaceObjectByName
 Aliases:
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSWorkspace
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 Parameter Sets: ByWorkspaceObjectByKind
 Aliases:
 
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 Specifies the name of a workspace in which this cmdlet operates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceNameByKind
 Aliases:
 
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceNameByName
 Aliases:
 

@@ -67,7 +67,6 @@ $queryResults.Results
 $queryResults.Render
 
 $queryResults.Statistics
-
 ```
 
 See [https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions](https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions) for details on the render and statistics info.
@@ -78,7 +77,7 @@ See [https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions](htt
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +92,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -108,7 +107,7 @@ Accept wildcard characters: False
 If specified, rendering information for metric queries will be included in the response.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +122,7 @@ Accept wildcard characters: False
 If specified, query statistics will be included in the response.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -138,7 +137,7 @@ Accept wildcard characters: False
 The query to execute.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +152,7 @@ Accept wildcard characters: False
 The timespan to bound the query by.
 
 ```yaml
-Type: TimeSpan
+Type: System.Nullable`1[System.TimeSpan]
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +168,7 @@ Puts an upper bound on the amount of time the server will spend processing the q
 See: https://dev.loganalytics.io/documentation/Using-the-API/Timeouts
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +183,7 @@ Accept wildcard characters: False
 The workspace
 
 ```yaml
-Type: PSWorkspace
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 Parameter Sets: ByWorkspaceObject
 Aliases:
 
@@ -199,7 +198,7 @@ Accept wildcard characters: False
 The workspace ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceId
 Aliases:
 

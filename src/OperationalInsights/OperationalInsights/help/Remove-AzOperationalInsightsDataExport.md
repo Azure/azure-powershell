@@ -45,26 +45,11 @@ removed data export
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DataExportName
 The data export name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DeleteByNameParameterSet
 Aliases:
 
@@ -79,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -94,7 +79,7 @@ Accept wildcard characters: False
 Specifies the DataExport to be updated.
 
 ```yaml
-Type: PSDataExport
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport
 Parameter Sets: DeleteByInputObjectParameterSet
 Aliases:
 
@@ -109,7 +94,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DeleteByNameParameterSet
 Aliases:
 
@@ -125,7 +110,7 @@ The destination resource ID.
 This can be copied from the Properties entry of the destination resource in Azure.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DeleteByResourceIdParameterSet
 Aliases:
 
@@ -136,13 +121,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+### -WorkspaceName
+The name of the workspace that will contain the storage insight.
 
 ```yaml
-Type: SwitchParameter
+Type: System.String
+Parameter Sets: DeleteByNameParameterSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: wi
+Aliases: cf
 
 Required: False
 Position: Named
@@ -151,16 +151,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WorkspaceName
-The name of the workspace that will contain the storage insight.
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: String
-Parameter Sets: DeleteByNameParameterSet
-Aliases:
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
