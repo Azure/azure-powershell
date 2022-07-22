@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Commands.Network
                     FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
                     HubIPAddresses = this.HubIPAddress,
                     Zones = this.Zone == null ? null : this.Zone.ToList(),
-                    IdentifyTopFatFlow = (this.IdentifyTopFatFlow.IsPresent ? "true" : null)
+                    IdentifyTopFatFlow = (this.IdentifyTopFatFlow.IsPresent ? "True" : null)
                 };
             }
             else
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Commands.Network
                     DNSServer = this.DnsServer,
                     AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
                     Sku = sku,
-                    IdentifyTopFatFlow = (this.IdentifyTopFatFlow.IsPresent ? "true" : null)
+                    IdentifyTopFatFlow = (this.IdentifyTopFatFlow.IsPresent ? "True" : null)
                 };
 
                 if (this.Zone != null)
