@@ -98,6 +98,49 @@ function Get-TestResourcesDeployment([string]$rgn)
         New-AzResourceGroupDeployment  -Name "${rgn}" -ResourceGroupName "$rgn" -TemplateFile "$templateFile" -TemplateParameterFile $paramFile
 }
 
+
+function Get-TestResourcesDeploymentVMSS([string]$rgn)
+{
+        $paramFileVMSS = (Resolve-Path ".\TestData\DeploymentParametersVMSS.json").Path
+
+        $paramContentVMSS =
+@"
+{
+            "vmSku": {
+            "value": "Standard_D4s_v3"
+            },
+            "windowsOSVersion": {
+            "value": "2019-Datacenter"
+            },
+            "vmssName": {
+            "value": "$virtualMachineScaleSetName"
+            },
+            "instanceCount": {
+            "value": 3
+            },
+            "singlePlacementGroup": {
+            "value": true
+            },
+            "adminUsername": {
+            "value": "netanaytics12"
+            },
+            "adminPassword": {
+            "value": "netanalytics-32${resourceGroupName}"
+            },
+            "location": {
+            "value": "$location"
+            },
+            "platformFaultDomainCount": {
+            "value": 1
+            }
+}
+"@;
+
+        $stVMSS = Set-Content -Path $paramFileVMSS -Value $paramContentVMSS -Force;
+
+        New-AzResourceGroupDeployment  -Name "${rgn}" -ResourceGroupName "$rgn" -TemplateFile "$templateFileVMSS" -TemplateParameterFile $paramFileVMSS
+}
+
 function Get-NrpResourceName
 {
 	Get-ResourceName "psnrp";
@@ -1387,6 +1430,86 @@ function Test-ConnectionMonitor
         Assert-ThrowsLike { Get-AzNetworkWatcherConnectionMonitorReport -Location $locationMod -Name $cmName1 } "*There is no*"
         Assert-ThrowsLike { Stop-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 } "*There is no*"
         Assert-ThrowsLike { Start-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 } "*There is no*"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+        Clean-ResourceGroup $nwRgName
+    }
+}
+
+<#
+.SYNOPSIS
+Test ConnectionMonitor-2 APIs with VMSS as Source.
+#>
+function Test-ConnectionMonitorWithVMSSAsSource
+{
+    # Setup
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
+    $location = Get-PilotLocation
+    $resourceTypeParent = "Microsoft.Network/networkWatchers"
+    $nwLocation = Get-ProviderLocation $resourceTypeParent
+    $nwRgName = Get-NrpResourceGroupName
+    $securityGroupName = Get-NrpResourceName
+    $templateFileVMSS = (Resolve-Path ".\TestData\DeploymentVMSS.json").Path
+    $cmName1 = Get-NrpResourceName
+    # We need location version w/o spaces to work with ByLocationParamSet
+    $locationMod = ($location -replace " ","").ToLower()
+    $virtualMachineScaleSetName = Get-NrpResourceName
+    $vmssEndpoint = Get-NrpResourceName
+
+    try
+    {
+        ".\AzureRM.Resources.ps1"
+
+        # Create Resource group
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+
+        # Deploy resources
+        Get-TestResourcesDeploymentVMSS -rgn "$resourceGroupName"
+
+        # Create Resource group for Network Watcher
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
+
+        # Get Network Watcher
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
+
+        #Get Vmss and Instances
+        $vmss = Get-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $virtualMachineScaleSetName
+
+        #Install networkWatcherAgent on Vmss and Vmss Instances
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -AutoUpgradeMinorVersion $True
+        Update-AzVmss -ResourceGroupName "$resourceGroupName" -Name $virtualMachineScaleSetName -VirtualMachineScaleSet $vmss
+
+        # To update existing VMs in VMSS, manually upgrade is required since VMSS is in Manual upgrade policy
+        $instances = Get-AzVmssVM -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss.Name
+        foreach($item in $instances) {
+            Update-AzVmssInstance -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss.Name -InstanceId $item.InstanceID  # won't update simultaneously, one way is to use AsJob
+        }
+
+        $srcEndpointVMSS = New-AzNetworkWatcherConnectionMonitorEndpointObject -Name $vmssEndpoint -AzureVMSS -ResourceId $vmss.Id
+        $bingEndpoint = New-AzNetworkWatcherConnectionMonitorEndpointObject -ExternalAddress -name Bing -Address "www.bing.com"
+
+        $tcpProtocolConfiguration = New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject -TcpProtocol -Port 80
+        $tcpTestConfiguration = New-AzNetworkWatcherConnectionMonitorTestConfigurationObject -Name "tcp-tc" -TestFrequencySec 60 -ProtocolConfiguration $tcpProtocolConfiguration -SuccessThresholdChecksFailedPercent 20 -SuccessThresholdRoundTripTimeMs 30
+
+        $testGroup1 = New-AzNetworkWatcherConnectionMonitorTestGroupObject -Name "testGroup1" -TestConfiguration $tcpTestConfiguration -Source $srcEndpointVMSS -Destination $bingEndpoint
+
+        #Create connection monitor with VMSS as source.
+        $job1 = New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw.Name -ResourceGroupName $nw.ResourceGroupName -Name $cmName1 -TestGroup $testGroup1 -AsJob
+        $job1 | Wait-Job
+        $cm1 = $job1 | Receive-Job
+
+        $rmJob = Remove-AzNetworkWatcherConnectionMonitor -InputObject $cm1 -AsJob -PassThru
+        $rmJob | Wait-Job
+        $result = $rmJob | Receive-Job
+
+        #Validation
+        Assert-AreEqual $cm1.Name $cmName1
+        Assert-AreEqual $cm1.ProvisioningState Succeeded
+
     }
     finally
     {
