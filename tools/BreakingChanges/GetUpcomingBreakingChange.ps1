@@ -31,13 +31,21 @@ Function Get-AttributeSpecificMessage
     )
     If ($Null -ne $attribute.ChangeDescription)
     {
-        Return $attribute.ChangeDescription
+        $Message = $attribute.ChangeDescription
     }
-    # GenericBreakingChangeAttribute is the base class of the BreakingChangeAttribute classes and have a protected method named as Get-AttributeSpecIficMessage.
-    # We can use this to get the specIfic message to show on document.
-    $Method = $attribute.GetType().GetMethod('GetAttributeSpecificMessage', [System.Reflection.BindingFlags]::NonPublic -bor [System.Reflection.BindingFlags]::Instance)
-
-    Return $Method.Invoke($attribute, @()).Trim()
+    Else
+    {
+        # GenericBreakingChangeAttribute is the base class of the BreakingChangeAttribute classes and have a protected method named as Get-AttributeSpecIficMessage.
+        # We can use this to get the specIfic message to show on document.
+        $Method = $attribute.GetType().GetMethod('GetAttributeSpecificMessage', [System.Reflection.BindingFlags]::NonPublic -bor [System.Reflection.BindingFlags]::Instance)
+    
+        $Message = $Method.Invoke($attribute, @()).Trim()
+    }
+    If (-Not ($Message.StartsWith("-")))
+    {
+        $Message = "- $Message"
+    }
+    Return $Message
 }
 
 # Get the breaking change info of the cmdlet Parameter.
@@ -500,35 +508,37 @@ Function Export-BreakingChangeMessageOfCmdlet
         $CmdletBreakingChangeInfo
     )
     $Result = ''
-    $AllParameterSetsBreakingChange = ''
-    $AllParameterSetsParameterBreakingChange = @{}
-    ForEach ($ParameterSetName In ($CmdletBreakingChangeInfo.Keys | Sort))
+    ForEach ($ParameterSetName In ($CmdletBreakingChangeInfo.Keys | Sort-Object))
     {
         If ($CmdletBreakingChangeInfo[$ParameterSetName].ContainsKey('CmdletBreakingChange'))
         {
             If ($ParameterSetName -ne $AllParameterSetsName)
             {
-                $Result += "`n`n### Cmdlet breaking-change will happen to parameter set ``$ParameterSetName```n"
+                $Result += "`n- Cmdlet breaking-change will happen to parameter set ``$ParameterSetName```n`n"
+            }
+            Else
+            {
+                $Result += "`n- Cmdlet breaking-change will happen to all parameter set`n`n"
             }
             ForEach ($breakingChangeMsg In $CmdletBreakingChangeInfo[$ParameterSetName]['CmdletBreakingChange'])
             {
-                $Result += "$breakingChangeMsg"
+                $Result += (("$breakingChangeMsg" -Split "`n" | ForEach-Object { Return "  $_" }) -Join "`n")
             }
         }
         If ($CmdletBreakingChangeInfo[$ParameterSetName].ContainsKey('ParameterBreakingChange'))
         {
             If ($ParameterSetName -eq $AllParameterSetsName)
             {
-                $Result += "`n`n### Parameter breaking-change will happen to all parameter sets`n"
+                $Result += "`n- Parameter breaking-change will happen to all parameter sets`n"
             }
             Else
             {
-                $Result += "`n`n### Parameter breaking-change will happen to parameter set ``$ParameterSetName```n"
+                $Result += "`n- Parameter breaking-change will happen to parameter set ``$ParameterSetName```n"
             }
-            ForEach ($parameterName In ($CmdletBreakingChangeInfo[$ParameterSetName]['ParameterBreakingChange'].Keys | Sort))
+            ForEach ($parameterName In ($CmdletBreakingChangeInfo[$ParameterSetName]['ParameterBreakingChange'].Keys | Sort-Object))
             {
-                $Result += "`n#### $parameterName`n"
-                $Result += ($CmdletBreakingChangeInfo[$ParameterSetName]['ParameterBreakingChange'][$parameterName] + "`n")
+                $Result += "  - ``-$parameterName```n"
+                $Result += ((($CmdletBreakingChangeInfo[$ParameterSetName]['ParameterBreakingChange'][$parameterName] -Split "`n" | ForEach-Object { Return "    $_" }) -Join "`n") + "`n")
             }
         }
     }
@@ -555,9 +565,9 @@ Function Export-BreakingChangeMessageOfModule
     }
     $Result = "`n`n# $ModuleName`n"
 
-    ForEach ($CmdletName In ($ModuleBreakingChangeInfo.Keys | Sort))
+    ForEach ($CmdletName In ($ModuleBreakingChangeInfo.Keys | Sort-Object))
     {
-        $Result += "`n`n## $CmdletName`n"
+        $Result += "`n## ``$CmdletName```n"
         $Result += Export-BreakingChangeMessageOfCmdlet $ModuleBreakingChangeInfo[$CmdletName]
     }
 
@@ -576,7 +586,7 @@ Function Export-AllBreakingChangeMessageUnderArtifacts
         $MarkdownPath
     )
     $Result = ''
-    $AllModuleList = Get-ChildItem -Path $ArtifactsPath -Filter Az.* | % { $_.Name }
+    $AllModuleList = Get-ChildItem -Path $ArtifactsPath -Filter Az.* | ForEach-Object { $_.Name }
     ForEach ($ModuleName In $AllModuleList)
     {
         $Result += Export-BreakingChangeMessageOfModule -ArtifactsPath $ArtifactsPath -ModuleName $ModuleName
