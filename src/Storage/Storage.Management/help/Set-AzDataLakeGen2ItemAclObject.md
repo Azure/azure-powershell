@@ -45,7 +45,7 @@ This command creates an ACL object with 3 ACL entries (use -InputObject paramete
 ```
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
+PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rwt" -InputObject $acl
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission rwx -InputObject $acl 
 PS C:\>$acl
 
@@ -53,7 +53,7 @@ DefaultScope AccessControlType EntityId                             Permissions
 ------------ ----------------- --------                             -----------
 True         User                                                   rwx        
 False        Group                                                  rw-        
-False        Other                                                  rw-        
+False        Other                                                  rwt        
 False        User              ********-****-****-****-************ rwx        
 
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission r-x -InputObject $acl 
@@ -138,6 +138,8 @@ Accept wildcard characters: False
 ### -Permission
 The permission field is a 3-character sequence where the first character is 'r' to grant read access, the second character is 'w' to grant write access, and the third character is 'x' to grant execute permission.
 If access is not granted, the '-' character is used to denote that the permission is denied.
+The sticky bit is represented either by the letter t or T in the final character-place depending on whether the execution bit for the others category is set or unset respectively, absence of t or T indicates sticky bit not set.
+
 
 ```yaml
 Type: System.String

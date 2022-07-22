@@ -37,13 +37,13 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ### Example 1: Create a directory with specified permission, Umask, properties, and metadata
 <!-- Skip: Output cannot be splitted from code -->
 ```
-PS C:\>New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Directory -Permission rwxrwxrwx -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
+PS C:\>New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Directory -Permission rwxrwxrwt -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 
    FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
 ----                 -----------  ------          ------------         -----------  -----                -----               
-dir1/dir2            True                         2020-03-23 09:15:56Z rwx---rwx    $superuser           $superuser
+dir1/dir2            True                         2020-03-23 09:15:56Z rwx---rwt    $superuser           $superuser
 ```
 
 This command creates a directory with specified Permission, Umask, properties, and metadata
@@ -205,6 +205,7 @@ Accept wildcard characters: False
 ### -Permission
 Sets POSIX access permissions for the file owner, the file owning group, and others.
 Each class may be granted read, write, or execute permission.
+The sticky bit is represented either by the letter t or T in the final character-place depending on whether the execution bit for the others category is set or unset respectively, absence of t or T indicates sticky bit not set.
 Symbolic (rwxrw-rw-) is supported.
 
 ```yaml

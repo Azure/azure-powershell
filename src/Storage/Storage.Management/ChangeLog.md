@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported sticky bit in DataLakeGen2 permissions
+    - `New-AzDataLakeGen2Item`
+    - `Set-AzDataLakeGen2ItemAclObject`
+    - `Update-AzDataLakeGen2Item`
 * Added check for storage account sas token is secured with the storage account key.
     -  `New-AzStorageAccountSASToken`
 * Supported Management Policy rule filter BlobIndexMatch
