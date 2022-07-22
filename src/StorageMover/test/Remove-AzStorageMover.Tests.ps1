@@ -19,8 +19,8 @@ Describe 'Remove-AzStorageMover' {
     It 'Delete' {
         try {
             $storageMoverName = "testStoMover3" + $env.RandomString
-            StorageMover = New-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $storageMoverName -Location $env.Location -Description $description
-            Remove-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $storageMoverName
+            $StorageMover = New-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $storageMoverName -Location $env.Location -Description $description
+            Remove-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $storageMoverName -Force
             $stoMoverList = Get-AzStorageMover
             $stoMoverList.Name | Should -Not -Contain $storageMoverName
         } catch {

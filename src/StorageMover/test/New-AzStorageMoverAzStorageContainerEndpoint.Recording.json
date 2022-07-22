@@ -1,9 +1,9 @@
 {
-  "New-AzStorageMoverAzStorageContainerEndpoint+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover1d4ckuns0/endpoints/containerEndpoint1d4ckuns0?api-version=2022-07-01-preview+1": {
+  "New-AzStorageMoverAzStorageContainerEndpoint+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover10426e89i/endpoints/containerEndpoint10426e89i?api-version=2022-07-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover1d4ckuns0/endpoints/containerEndpoint1d4ckuns0?api-version=2022-07-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"AzureStorageBlobContainer\",\r\n    \"storageAccountResourceId\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.Storage/storageAccounts/storaccd4ckuns0\",\r\n    \"blobContainerName\": \"containerd4ckuns0\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover10426e89i/endpoints/containerEndpoint10426e89i?api-version=2022-07-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"AzureStorageBlobContainer\",\r\n    \"storageAccountResourceId\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.Storage/storageAccounts/storacc0426e89i\",\r\n    \"blobContainerName\": \"container0426e89i\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,35 +17,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"00005788-0000-3400-0000-62d8ec920000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "ETag": [ "\"0000e49a-0000-3400-0000-62da363e0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "df26a786-10f6-4d6a-8e39-a70ba8bc8de5" ],
-        "x-ms-request-id": [ "c8f95fe3-039b-47b3-a22d-404e3fb32c85" ],
-        "x-ms-correlation-request-id": [ "5407cb22-1c9e-4647-9be6-6e1a918cc5d2" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T060506Z:5407cb22-1c9e-4647-9be6-6e1a918cc5d2" ],
+        "mise-correlation-id": [ "0e34f8cf-87e9-4b9d-acf5-2a689f623a0a" ],
+        "x-ms-request-id": [ "8ea602ac-4b9c-478c-805b-9e2d13c660cc" ],
+        "x-ms-correlation-request-id": [ "0a84e44f-d8c7-41cc-b6d6-2fe1ab34eae2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220722T053142Z:0a84e44f-d8c7-41cc-b6d6-2fe1ab34eae2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Jul 2022 06:05:05 GMT" ]
+        "Date": [ "Fri, 22 Jul 2022 05:31:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "833" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover1d4ckuns0/endpoints/containerEndpoint1d4ckuns0\",\"name\":\"containerEndpoint1d4ckuns0\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"yifanzhang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-21T06:05:05.7432711Z\",\"lastModifiedBy\":\"yifanzhang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-21T06:05:05.7432711Z\"},\"properties\":{\"endpointType\":\"AzureStorageBlobContainer\",\"storageAccountResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.Storage/storageAccounts/storaccd4ckuns0\",\"blobContainerName\":\"containerd4ckuns0\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover10426e89i/endpoints/containerEndpoint10426e89i\",\"name\":\"containerEndpoint10426e89i\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"yifanzhang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-22T05:31:42.4645662Z\",\"lastModifiedBy\":\"yifanzhang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-22T05:31:42.4645662Z\"},\"properties\":{\"endpointType\":\"AzureStorageBlobContainer\",\"storageAccountResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.Storage/storageAccounts/storacc0426e89i\",\"blobContainerName\":\"container0426e89i\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzStorageMoverAzStorageContainerEndpoint+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover1d4ckuns0/endpoints/containerEndpoint1d4ckuns0?api-version=2022-07-01-preview+2": {
+  "New-AzStorageMoverAzStorageContainerEndpoint+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover10426e89i/endpoints/containerEndpoint10426e89i?api-version=2022-07-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover1d4ckuns0/endpoints/containerEndpoint1d4ckuns0?api-version=2022-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover10426e89i/endpoints/containerEndpoint10426e89i?api-version=2022-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "25" ],
-        "x-ms-client-request-id": [ "6d749684-7e8f-4738-aee4-981f434b9660" ],
+        "x-ms-client-request-id": [ "1aa34769-1c94-4eca-ba88-01756cf8e4c6" ],
         "CommandName": [ "Get-AzStorageMoverEndpoint" ],
         "FullCommandName": [ "Get-AzStorageMoverEndpoint_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -60,22 +60,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"00005788-0000-3400-0000-62d8ec920000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "ETag": [ "\"0000e49a-0000-3400-0000-62da363e0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "0b744477-542f-428e-be18-b43852ae7bf8" ],
-        "x-ms-correlation-request-id": [ "fe5d7ec4-fc2f-480b-969c-0188a604d888" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T060506Z:fe5d7ec4-fc2f-480b-969c-0188a604d888" ],
+        "x-ms-request-id": [ "7def7835-cd0e-4dcf-8404-0b0c3964b92e" ],
+        "x-ms-correlation-request-id": [ "2a44c634-ab34-4125-af80-fcde00064a3a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220722T053143Z:2a44c634-ab34-4125-af80-fcde00064a3a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Jul 2022 06:05:06 GMT" ]
+        "Date": [ "Fri, 22 Jul 2022 05:31:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "833" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover1d4ckuns0/endpoints/containerEndpoint1d4ckuns0\",\"name\":\"containerEndpoint1d4ckuns0\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"yifanzhang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-21T06:05:05.7432711Z\",\"lastModifiedBy\":\"yifanzhang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-21T06:05:05.7432711Z\"},\"properties\":{\"endpointType\":\"AzureStorageBlobContainer\",\"storageAccountResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.Storage/storageAccounts/storaccd4ckuns0\",\"blobContainerName\":\"containerd4ckuns0\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover10426e89i/endpoints/containerEndpoint10426e89i\",\"name\":\"containerEndpoint10426e89i\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"yifanzhang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-22T05:31:42.4645662Z\",\"lastModifiedBy\":\"yifanzhang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-22T05:31:42.4645662Z\"},\"properties\":{\"endpointType\":\"AzureStorageBlobContainer\",\"storageAccountResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.Storage/storageAccounts/storacc0426e89i\",\"blobContainerName\":\"container0426e89i\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStorageMoverProject'
 }
 
 Describe 'Remove-AzStorageMoverProject' {
-    It 'Delete'
+    It 'Delete' {
     # Adding try-catch here to record the response despite the pending fix server error.
         try {
             $projectName = "testProject" + $env.RandomString
@@ -27,4 +27,5 @@ Describe 'Remove-AzStorageMoverProject' {
         } catch {
             "Remove return code error"
         }
+    }
 }

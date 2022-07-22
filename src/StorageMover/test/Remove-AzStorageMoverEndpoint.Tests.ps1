@@ -21,7 +21,7 @@ Describe 'Remove-AzStorageMoverEndpoint' {
             $endpointName = "containerEndpoint2" + $env.RandomString
             $endpoint = New-AzStorageMoverAzStorageContainerEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -BlobContainerName $env.ContainerName -StorageMoverName $env.InitialStoMoverName -StorageAccountResourceId $env.StoraccId
 
-            Remove-AzStorageMoverEndpoint -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Name $endpointName
+            Remove-AzStorageMoverEndpoint -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Name $endpointName 
             $endpointList = Get-AzStorageMoverEndpoint -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent
             $endpointList.Name | Should -Not -Contain $endpointName
         } catch {
