@@ -79,6 +79,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string AllowActiveFTP { get; set; }
 
+        public string IdentifyTopFatFlow { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {
@@ -207,7 +209,66 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             this.IpConfigurations[0].Subnet = new PSResourceId { Id = firewallSubnet.Id };
         }
+        public void AllocateBasicSku(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses, PSPublicIpAddress ManagementPublicIpAddress)
+        {
+            if (virtualNetwork == null)
+            {
+                throw new ArgumentNullException(nameof(virtualNetwork), "Virtual Network cannot be null!");
+            }
 
+            if (ManagementPublicIpAddress == null)
+            {
+                throw new ArgumentNullException(nameof(ManagementPublicIpAddress), "ManagementPublicIpAddress is required for Azure Firewalls with Basic SKU!");
+            }
+
+            PSSubnet firewallMgmtSubnet = null;
+            try
+            {
+                firewallMgmtSubnet = virtualNetwork.Subnets.Single(subnet => AzureFirewallMgmtSubnetName.Equals(subnet.Name));
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {AzureFirewallMgmtSubnetName}");
+            }
+
+            PSSubnet firewallSubnet = null;
+            try
+            {
+                firewallSubnet = virtualNetwork.Subnets.Single(subnet => AzureFirewallSubnetName.Equals(subnet.Name));
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {AzureFirewallSubnetName}");
+            }
+
+            this.ManagementIpConfiguration = new PSAzureFirewallIpConfiguration
+            {
+                Name = AzureFirewallMgmtIpConfigurationName,
+                PublicIpAddress = new PSResourceId { Id = ManagementPublicIpAddress.Id },
+                Subnet = new PSResourceId { Id = firewallMgmtSubnet.Id }
+            };
+
+            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
+
+            if (publicIpAddresses != null && publicIpAddresses.Count() > 0)
+            {
+                for (var i = 0; i < publicIpAddresses.Count(); i++)
+                {
+                    this.IpConfigurations.Add(
+                        new PSAzureFirewallIpConfiguration
+                        {
+                            Name = $"{AzureFirewallIpConfigurationName}{i}",
+                            PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
+                        });
+                }
+            }
+            else
+            {
+                this.IpConfigurations.Add(new PSAzureFirewallIpConfiguration { Name = $"{AzureFirewallIpConfigurationName}{0}" });
+            }
+
+            this.IpConfigurations[0].Subnet = new PSResourceId { Id = firewallSubnet.Id };
+        }
         public void Deallocate()
         {
             if (this.Sku.Name.Equals("AZFW_Hub", StringComparison.OrdinalIgnoreCase))
@@ -452,8 +513,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             // validated that unmasked bits are 0
             var splittedIp = split[0].Split('.');
-            var ip = Int32.Parse(splittedIp[0]) << 24;
-            ip = ip + Int32.Parse(splittedIp[1]) << 16 + Int32.Parse(splittedIp[2]) << 8 + Int32.Parse(splittedIp[3]);
+            var ip = Int32.Parse(splittedIp[0]) << 24;            
+            ip += (Int32.Parse(splittedIp[1]) << 16) + (Int32.Parse(splittedIp[2]) << 8) + Int32.Parse(splittedIp[3]);
             if (ip << bit != 0)
                 throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address, bits not covered by subnet mask should be all 0", ipAddress));
         }

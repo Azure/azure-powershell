@@ -1492,7 +1492,7 @@ function Test-AzureFirewallPolicyPrivateRangeCRUD {
     $location = "westus2"
     $vnetName = Get-ResourceName
     $privateRange2 = @("IANAPrivateRanges", "0.0.0.0/0", "66.92.0.0/16")
-    $privateRange1 = @("3.3.0.0/24", "98.0.0.0/8")
+    $privateRange1 = @("3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20")
     $privateRange2Translated = @("0.0.0.0/0", "66.92.0.0/16", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "100.64.0.0/10")
 
     try {
@@ -1518,6 +1518,41 @@ function Test-AzureFirewallPolicyPrivateRangeCRUD {
         Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
         Assert-AreEqualArray $privateRange2Translated $getAzureFirewallPolicy.PrivateRange
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+<#
+.SYNOPSIS
+Tests AzureFirewall Policy Basic Sku
+#>
+function Test-AzureFirewallPolicyBasicSku {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
+    $location = "westus2"
+    $skuTier = "Basic"
+
+    try {
+
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        
+        # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier $skuTier -ThreatIntelMode "Off"
+
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
+        Assert-NotNull $getAzureFirewallPolicy.Sku
+        Assert-AreEqual $skuTier $getAzureFirewallPolicy.Sku.Tier
     }
     finally {
         # Cleanup

@@ -22,6 +22,41 @@
 * Added new cmdlets to create packet captures for Network Watcher:
     - `New-AzNetworkWatcherPacketCaptureV2`
     - `New-AzPacketCaptureScopeConfig`
+* Added support for CustomV2 ssl policies for Application Gateway.
+    - Added `CustomV2` to the validation set of `PolicyType`
+    - Added `TLSv1_3` to the validation set of `MinProtocolVersion`
+    - Removed validation for null or empty cipher suites list since there can be empty cipher suites list for min protocol version of tls1.3
+* Added `IdentifyTopFatFlow` parameter to `AzureFirewall`
+    - `New-AzFirewall`
+* Enabled Azure Firewall forced tunneling by default (AzureFirewallManagementSubnet and ManagementPublicIpAddress are required) whenever basic sku firewall is created.
+    - `New-AzFirewall`
+* Fixed bug that causes an overflow due to incorrect SNAT private ranges IP validation.
+* Added new cmdlets to create/manage L4(TCP/TLS) objects for ApplicationGateway:
+	- `Get-AzApplicationGatewayListener`	
+	- `New-AzApplicationGatewayListener`	
+	- `Add-AzApplicationGatewayListener`	
+	- `Set-AzApplicationGatewayListener`	
+	- `Remove-AzApplicationGatewayListener`
+	- `Get-AzApplicationGatewayBackendSetting`
+	- `New-AzApplicationGatewayBackendSetting`
+	- `Add-AzApplicationGatewayBackendSetting`
+	- `Set-AzApplicationGatewayBackendSetting`
+	- `Remove-AzApplicationGatewayBackendSetting`
+	- `Get-AzApplicationGatewayRoutingRule`
+	- `New-AzApplicationGatewayRoutingRule`
+	- `Add-AzApplicationGatewayRoutingRule`
+	- `Set-AzApplicationGatewayRoutingRule`
+	- `Remove-AzApplicationGatewayRoutingRule`
+* Updated cmdlet to add TCP/TLS Listener , BackendSetting , RoutingRule support for  Application Gateway:
+	- `New-AzApplicationGateway`
+* Updated cmdlets to add TCP/TLS protocol support for Application gateway Health Probe configuration:
+	- `Set-AzApplicationGatewayProbeConfig`
+	- `Add-AzApplicationGatewayProbeConfig`
+	- `New-AzApplicationGatewayProbeConfig`
+* Updated cmdlets to add basic sku support on Azure Firewall and Azure Firewall Policy:
+    - `New-AzFirewall`
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
 * Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
     - `Add-AzExpressRoutePortAuthorization`
     - `Get-AzExpressRoutePortAuthorization`
@@ -43,13 +78,21 @@
     - `New-AzVpnServerConfigurationPolicyGroup`
     - `Update-AzVpnServerConfigurationPolicyGroup`
     - `Remove-AzVpnServerConfigurationPolicyGroup`
-* Added support for CustomV2 ssl policies for Application Gateway.
-    - Added `CustomV2` to the validation set of `PolicyType`
-    - Added `TLSv1_3` to the validation set of `MinProtocolVersion`
-    - Removed validation for null or empty cipher suites list since there can be empty cipher suites list for min protocol version of tls1.3
+* Added new cmdlets for RoutingIntent child resource of VirtualHub.
+    -`Add-AzRoutingPolicy`
+    -`Get-AzRoutingPolicy`
+    -`New-AzRoutingPolicy`
+    -`Remove-AzRoutingPolicy`
+    -`Set-AzRoutingPolicy`
+    -`Get-AzRoutingIntent`
+    -`New-AzRoutingIntent`
+    -`Remove-AzRoutingIntent`
+    -`Set-AzRoutingIntent`
 * Updated cmdlets to add new option of `HubRoutingPreference` in RouteServer.
     - `New-AzRouteServer`
     - `Update-AzRouteServer`
+* Fixed bug that can't parse CustomIpPrefixParent parameter from swagger to powershell.
+* Added "Any" operator in New-AzApplicationGatewayFirewallCondition
 
 ## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
