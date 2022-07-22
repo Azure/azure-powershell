@@ -12,34 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Identity;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Identity.Client;
 using System;
-using System.Collections.Generic;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.ScenarioTest.Mocks
 {
-    public class MockAccessToken : IRenewableToken
+    public class MockPowerShellTokenCacheProvider : PowerShellTokenCacheProvider
     {
-        private string _tenantId = String.Empty;
-        public void AuthorizeRequest(Action<string, string> authTokenSetter)
+        public override TokenCachePersistenceOptions GetTokenCachePersistenceOptions()
         {
-            authTokenSetter("Bearer", AccessToken);
+            throw new NotImplementedException();
         }
 
-        public string AccessToken { get; set; }
-        public string UserId { get; set; }
-        public string LoginType { get; set; }
-
-        public string TenantId
+        public override byte[] ReadTokenData()
         {
-            get { return _tenantId; }
-            set { _tenantId = value; }
+            return null;
         }
 
-        public DateTimeOffset ExpiresOn { get; set; }
-
-        public string HomeAccountId => throw new NotImplementedException();
-
-        public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
+        protected override void RegisterCache(IPublicClientApplication client)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

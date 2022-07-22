@@ -193,7 +193,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         // Run a selected module list instead of run all the modules to speed up the CI process.
         private List<string> GetSelectedModuleList()
         {
-            return new List<string>(Environment.GetEnvironmentVariable("SELECTEDMODULELIST").Split(';'));
+            CIPhaseFilterConfig config = GetCIPhaseFilterConfig();
+            return config.SelectModuleList;
         }
 
         private List<string> GetTestCsprojList(string moduleName, Dictionary<string, string[]> csprojMap)
@@ -251,7 +252,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             {
                 List<string> phaseList = new List<string>();
                 bool isMatched = false;
-                string machedModuleName = "";
+                string matchedModuleName = "";
                 foreach ((Regex regex, List<string> phaseConfigList) in ruleList)
                 {
                     var regexResult = regex.Match(filePath);
@@ -261,7 +262,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                         isMatched = true;
                         if (regexResult.Groups[MODULE_NAME_PLACEHOLDER].Success)
                         {
-                            machedModuleName = regexResult.Groups[MODULE_NAME_PLACEHOLDER].Value;
+                            matchedModuleName = regexResult.Groups[MODULE_NAME_PLACEHOLDER].Value;
                         }
                         Console.WriteLine(string.Format("File {0} match rule: {1} and phaseConfig is: [{2}]", filePath, regex.ToString(), string.Join(", ", phaseConfigList)));
                         break;
@@ -294,7 +295,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                         }
                         else
                         {
-                            string moduleName = machedModuleName == "" ? filePath.Split('/')[1] : machedModuleName;
+                            string moduleName = matchedModuleName == "" ? filePath.Split('/')[1] : matchedModuleName;
                             if (scope.Equals(SingleModule))
                             {
                                 scopes.Add(moduleName);
@@ -411,7 +412,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             return influencedModuleInfo;
         }
 
-        private bool ProcessFileChanged(Dictionary<string, string[]> csprojMap)
+        private CIPhaseFilterConfig GetCIPhaseFilterConfig()
         {
             string configPath = Path.GetFullPath(TaskMappingConfigName);
             if (!File.Exists(configPath))
@@ -420,8 +421,14 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             }
             string content = File.ReadAllText(configPath);
 
-            CIPhaseFilterConfig config = JsonConvert.DeserializeObject<CIPhaseFilterConfig>(content);
-            List<(Regex, List<string>)> ruleList = config.Rules.Select(rule => (new Regex(string.Join("|", rule.Patterns.Select(ProcessSinglePattern))), rule.Phases)).ToList();
+            return JsonConvert.DeserializeObject<CIPhaseFilterConfig>(content);
+        }
+
+        private bool ProcessFileChanged(Dictionary<string, string[]> csprojMap)
+        {
+
+            CIPhaseFilterConfig config = GetCIPhaseFilterConfig();
+            List<(Regex, List<string>)> ruleList = config.Rules.Select(rule => (new Regex(string.Join("|", rule.Patterns.Select(ProcessSinglePattern).ToList())), rule.Phases)).ToList();
 
             DateTime startTime = DateTime.Now;
 
@@ -456,13 +463,28 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             }
             else if (FilesChanged != null)
             {
-                if (FilesChanged.Length > 0 && FilesChanged.Length < OCTOKIT_CHANGED_FILE_LIMIT)
+                if (FilesChanged.Length <= 0)
                 {
-                    return ProcessFileChanged(csprojMap);
+                    return false;
+                }
+                else if (FilesChanged.Length >= OCTOKIT_CHANGED_FILE_LIMIT)
+                {
+                    var selectedModuleList = GetSelectedModuleList();
+                    Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>
+                    {
+                        [BUILD_PHASE] = new HashSet<string>(selectedModuleList),
+                        [ANALYSIS_BREAKING_CHANGE_PHASE] = new HashSet<string>(selectedModuleList),
+                        [ANALYSIS_DEPENDENCY_PHASE] = new HashSet<string>(selectedModuleList),
+                        [ANALYSIS_HELP_PHASE] = new HashSet<string>(selectedModuleList),
+                        [ANALYSIS_SIGNATURE_PHASE] = new HashSet<string>(selectedModuleList),
+                        [TEST_PHASE] = new HashSet<string>(selectedModuleList)
+                    };
+                    FilterTaskResult.PhaseInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
+                    return true;
                 }
                 else
                 {
-                    return false;
+                    return ProcessFileChanged(csprojMap);
                 }
             }
             return true;

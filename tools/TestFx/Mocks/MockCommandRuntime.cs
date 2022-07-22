@@ -15,7 +15,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Management.Automation;
 using System.Management.Automation.Host;
@@ -44,16 +43,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return "MockCommand";
         }
 
-        [SuppressMessage("Microsoft.Design", "CA1065:DoNotRaiseExceptionsInUnexpectedLocations",
-            Justification = "Tests should not access this property")]
         public PSTransactionContext CurrentPSTransaction
         {
             get { throw new System.NotImplementedException(); }
         }
 
-        [SuppressMessage("Microsoft.Design", "CA1065:DoNotRaiseExceptionsInUnexpectedLocations",
-            Justification = "Tests should not access this property")]
-        public System.Management.Automation.Host.PSHost Host
+        public PSHost Host
         {
             get
             {
@@ -94,17 +89,17 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public void ThrowTerminatingError(ErrorRecord errorRecord)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public bool TransactionAvailable()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void WriteCommandDetail(string text)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void WriteDebug(string text)
@@ -184,7 +179,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         class MockPSHost : PSHost
         {
             PSHostUserInterface _hostUI = new MockPSHostUI();
-            Version _version = new Version(1, 0, 0);
             Guid _instanceId = Guid.NewGuid();
             public override CultureInfo CurrentCulture
             {

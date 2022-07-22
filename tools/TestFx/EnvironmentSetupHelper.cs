@@ -16,14 +16,13 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.TestFx.Mocks;
 using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Reflection;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -31,18 +30,18 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
+using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Text;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.Threading;
 
-namespace Microsoft.WindowsAzure.Commands.ScenarioTest
+namespace Microsoft.Azure.Commands.TestFx
 {
     public class EnvironmentSetupHelper
     {
-        private static string testEnvironmentName = "__test-environment";
+        private const string TestEnvironmentName = "__test-environment";
 
-        private static string testSubscriptionName = "__test-subscriptions";
+        private const string TestSubscriptionName = "__test-subscriptions";
 
         private AzureSubscription testSubscription;
 
@@ -51,20 +50,24 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private static string PackageDirectoryFromCommon { get; } = GetConfigDirectory();
 
         public static string PackageDirectory { get; }  = GetConfigDirectory();
+
         public static string StackDirectory { get; }  = GetConfigDirectory("Stack");
 
         public static string RmDirectory { get; }  = GetRMModuleDirectory();
+
         public static string StackRmDirectory { get; }  = GetRMModuleDirectory("Stack");
 
         public static string StorageDirectory { get; } = GetStorageDirectory();
+
         public static string StackStorageDirectory { get; } = GetStorageDirectory("Stack");
 
         protected List<string> modules;
 
         public XunitTracingInterceptor TracingInterceptor { get; set; }
+
         public EnvironmentSetupHelper()
         {
-            var module = GetModuleManifest(RmDirectory, "AzureRM.Accounts");
+            var module = GetModuleManifest(RmDirectory, "Az.Accounts");
             if (string.IsNullOrWhiteSpace(module))
             {
                 throw new InvalidOperationException("Could not find Accounts module");
@@ -72,37 +75,37 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             LogIfNotNull($"Accounts Module path: {module}");
             RMProfileModule = module;
-            module = GetModuleManifest(RmDirectory, "AzureRM.Resources");
+            module = GetModuleManifest(RmDirectory, "Az.Resources");
             LogIfNotNull($"Resources Module path: {module}");
             RMResourceModule = module;
-            module = GetModuleManifest(RmDirectory, "AzureRM.Insights");
+            module = GetModuleManifest(RmDirectory, "Az.Insights");
             LogIfNotNull($"Insights Module path: {module}");
             RMInsightsModule = module;
-            module = GetModuleManifest(RmDirectory, "AzureRM.Storage");
+            module = GetModuleManifest(RmDirectory, "Az.Storage");
             LogIfNotNull($"Storage Management Module path: {module}");
             RMStorageModule = module;
             module = GetModuleManifest(StorageDirectory, "Azure.Storage");
             LogIfNotNull($"Storage Data Plane Module path: {module}");
             RMStorageDataPlaneModule = module;
-            module = GetModuleManifest(RmDirectory, "AzureRM.OperationalInsights");
+            module = GetModuleManifest(RmDirectory, "Az.OperationalInsights");
             LogIfNotNull($"Storage Data Plane Module path: {module}");
             RMOperationalInsightsModule = module;
-            module = GetModuleManifest(RmDirectory, "AzureRM.Network");
+            module = GetModuleManifest(RmDirectory, "Az.Network");
             LogIfNotNull($"Network Module path: {module}");
             RMNetworkModule = module;
-            module = GetModuleManifest(RmDirectory, "AzureRM.EventHub");
+            module = GetModuleManifest(RmDirectory, "Az.EventHub");
             LogIfNotNull($"EventHub Module path: {module}");
             RMEventHubModule = module;
-            module = GetModuleManifest(RmDirectory, "AzureRM.Monitor");
+            module = GetModuleManifest(RmDirectory, "Az.Monitor");
             LogIfNotNull($"Monitor Module path: {module}");
             RMMonitorModule = module;
-            module = GetModuleManifest(StackRmDirectory, "AzureRM.Accounts");
+            module = GetModuleManifest(StackRmDirectory, "Az.Accounts");
             LogIfNotNull($"Stack Accounts Module path: {module}");
             StackRMProfileModule = module;
-            module = GetModuleManifest(StackRmDirectory, "AzureRM.Resources");
+            module = GetModuleManifest(StackRmDirectory, "Az.Resources");
             LogIfNotNull($"Stack Resources Module path: {module}");
             StackRMResourceModule = module;
-            module = GetModuleManifest(StackRmDirectory, "AzureRM.Storage");
+            module = GetModuleManifest(StackRmDirectory, "Az.Storage");
             LogIfNotNull($"Stack Storage Management Plane Module path: {module}");
             StackRMStorageModule = module;
             module = GetModuleManifest(StackStorageDirectory, "Azure.Storage");
@@ -157,11 +160,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public string RMMonitorModule { get; private set; }
 
-        //TODO: clarify (data plane should not be under ARM folder)
         public string RMStorageDataPlaneModule { get; private set; }
 
         public string RMNetworkModule { get; private set; }
-
 
         public string StackRMProfileModule { get; private set; }
 
@@ -175,7 +176,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private void LogIfNotNull(string message)
         {
-            if (this.TracingInterceptor != null)
+            if (TracingInterceptor != null)
             {
                 TracingInterceptor.Information($"[EnvironmentSetupHelper]: {message}");
             }
@@ -280,23 +281,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             return GetModuleManifest(StackRmDirectory, moduleDirectory);
         }
 
-
-        /// <summary>
-        /// Loads DummyManagementClientHelper with clients and throws exception if any client is missing.
-        /// </summary>
-        /// <param name="initializedManagementClients"></param>
-        public void SetupManagementClients(params object[] initializedManagementClients)
+        public void SetupManagementClients(MockContext context, params object[] initializedManagementClients)
         {
-            AzureSession.Instance.ClientFactory = new MockClientFactory(initializedManagementClients);
+            AzureSession.Instance.ClientFactory = new MockClientFactory(context, initializedManagementClients);
         }
 
-        /// <summary>
-        /// Loads DummyManagementClientHelper with clients and sets it up to create missing clients dynamically.
-        /// </summary>
-        /// <param name="initializedManagementClients"></param>
-        public void SetupSomeOfManagementClients(params object[] initializedManagementClients)
+        public void SetupSomeOfManagementClients(MockContext context, params object[] initializedManagementClients)
         {
-            AzureSession.Instance.ClientFactory = new MockClientFactory(initializedManagementClients, false);
+            AzureSession.Instance.ClientFactory = new MockClientFactory(context, initializedManagementClients);
         }
 
         public void SetupEnvironment(AzureModule mode)
@@ -307,101 +299,96 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public void SetEnvironmentVariableFromCredentialFile()
         {
             var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".azure", "testcredentials.json");
-            Dictionary<string, object> credentials;
+            Dictionary<string, object> testSettings;
             using (StreamReader r = new StreamReader(filePath))
             {
                 string json = r.ReadToEnd();
-                credentials = JsonUtilities.DeserializeJson(json);
+                testSettings = JsonUtilities.DeserializeJson(json);
             }
 
-            if (Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION") == null)
+            if (Environment.GetEnvironmentVariable(ConnectionStringKeys.TestCSMOrgIdConnectionStringKey) == null)
             {
                 StringBuilder formattedConnectionString = new StringBuilder();
-                formattedConnectionString.AppendFormat("SubscriptionId={0};HttpRecorderMode={1};Environment={2}", credentials["SubscriptionId"], credentials["HttpRecorderMode"], credentials["Environment"]);
+                formattedConnectionString.Append($"Environment={testSettings["Environment"]};SubscriptionId={testSettings["SubscriptionId"]};TenantId={testSettings["TenantId"]};HttpRecorderMode={testSettings["HttpRecorderMode"]};");
 
-                if (credentials.ContainsKey("UserId"))
+                if (testSettings.ContainsKey("UserId"))
                 {
-                    formattedConnectionString.AppendFormat(";UserId={0}", credentials["UserId"]);
+                    formattedConnectionString.Append($"UserId={testSettings["UserId"]};");
                 }
 
-                if (credentials.ContainsKey("ServicePrincipal"))
+                if (testSettings.ContainsKey("ServicePrincipal"))
                 {
-                    formattedConnectionString.AppendFormat(";ServicePrincipal={0}", credentials["ServicePrincipal"]);
-                    formattedConnectionString.AppendFormat(";ServicePrincipalSecret={0}", credentials["ServicePrincipalSecret"]);
+                    formattedConnectionString.Append($"ServicePrincipal={testSettings["ServicePrincipal"]};");
+                    formattedConnectionString.Append($"ServicePrincipalSecret={testSettings["ServicePrincipalSecret"]};");
                 }
 
-                if (credentials.ContainsKey("TenantId"))
+                if (testSettings.ContainsKey("ResourceManagementUri"))
                 {
-                    formattedConnectionString.AppendFormat(";AADTenant={0}", credentials["TenantId"]);
+                    formattedConnectionString.Append($"ResourceManagementUri={testSettings["ResourceManagementUri"]};");
                 }
 
-                if (credentials.ContainsKey("ResourceManagementUri"))
+                if (testSettings.ContainsKey("ServiceManagementUri"))
                 {
-                    formattedConnectionString.AppendFormat(";ResourceManagementUri={0}", credentials["ResourceManagementUri"]);
+                    formattedConnectionString.Append($"ServiceManagementUri={testSettings["ServiceManagementUri"]};");
                 }
 
-                if (credentials.ContainsKey("GraphUri"))
+                if (testSettings.ContainsKey("AADAuthUri"))
                 {
-                    formattedConnectionString.AppendFormat(";GraphUri={0}", credentials["GraphUri"]);
+                    formattedConnectionString.Append($"AADAuthUri={testSettings["AADAuthUri"]};");
                 }
 
-                if (credentials.ContainsKey("AADAuthUri"))
+                if (testSettings.ContainsKey("GraphUri"))
                 {
-                    formattedConnectionString.AppendFormat(";AADAuthUri={0}", credentials["AADAuthUri"]);
+                    formattedConnectionString.Append($"GraphUri={testSettings["GraphUri"]};");
                 }
 
-                if (credentials.ContainsKey("AADTokenAudienceUri"))
+                if (testSettings.ContainsKey("AADTokenAudienceUri"))
                 {
-                    formattedConnectionString.AppendFormat(";AADTokenAudienceUri={0}", credentials["AADTokenAudienceUri"]);
+                    formattedConnectionString.Append($"AADTokenAudienceUri={testSettings["AADTokenAudienceUri"]};");
                 }
 
-                if (credentials.ContainsKey("GraphTokenAudienceUri"))
+                if (testSettings.ContainsKey($"GraphTokenAudienceUri"))
                 {
-                    formattedConnectionString.AppendFormat(";GraphTokenAudienceUri={0}", credentials["GraphTokenAudienceUri"]);
+                    formattedConnectionString.Append($"GraphTokenAudienceUri={testSettings["GraphTokenAudienceUri"]};");
                 }
 
-                if (credentials.ContainsKey("IbizaPortalUri"))
+                if (testSettings.ContainsKey("IbizaPortalUri"))
                 {
-                    formattedConnectionString.AppendFormat(";IbizaPortalUri={0}", credentials["IbizaPortalUri"]);
+                    formattedConnectionString.Append($"IbizaPortalUri={testSettings["IbizaPortalUri"]};");
                 }
 
-                if (credentials.ContainsKey("ServiceManagementUri"))
+                if (testSettings.ContainsKey("RdfePortalUri"))
                 {
-                    formattedConnectionString.AppendFormat(";ServiceManagementUri={0}", credentials["ServiceManagementUri"]);
+                    formattedConnectionString.Append($"RdfePortalUri={testSettings["RdfePortalUri"]};");
                 }
 
-                if (credentials.ContainsKey("RdfePortalUri"))
+                if (testSettings.ContainsKey("GalleryUri"))
                 {
-                    formattedConnectionString.AppendFormat(";RdfePortalUri={0}", credentials["RdfePortalUri"]);
+                    formattedConnectionString.Append($"GalleryUri={testSettings["GalleryUri"]};");
                 }
 
-                if (credentials.ContainsKey("GalleryUri"))
+                if (testSettings.ContainsKey("DataLakeStoreServiceUri"))
                 {
-                    formattedConnectionString.AppendFormat(";GalleryUri={0}", credentials["GalleryUri"]);
+                    formattedConnectionString.Append($"DataLakeStoreServiceUri={testSettings["DataLakeStoreServiceUri"]};");
                 }
 
-                if (credentials.ContainsKey("DataLakeStoreServiceUri"))
+                if (testSettings.ContainsKey("DataLakeAnalyticsJobAndCatalogServiceUri"))
                 {
-                    formattedConnectionString.AppendFormat(";DataLakeStoreServiceUri={0}", credentials["DataLakeStoreServiceUri"]);
+                    formattedConnectionString.Append($"DataLakeAnalyticsJobAndCatalogServiceUri={testSettings["DataLakeAnalyticsJobAndCatalogServiceUri"]};");
                 }
 
-                if (credentials.ContainsKey("DataLakeAnalyticsJobAndCatalogServiceUri"))
-                {
-                    formattedConnectionString.AppendFormat(";DataLakeAnalyticsJobAndCatalogServiceUri={0}", credentials["DataLakeAnalyticsJobAndCatalogServiceUri"]);
-                }
-
-                Environment.SetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION", formattedConnectionString.ToString());
+                Environment.SetEnvironmentVariable(ConnectionStringKeys.TestCSMOrgIdConnectionStringKey, formattedConnectionString.ToString());
             }
 
-            if (Environment.GetEnvironmentVariable("AZURE_TEST_MODE") == null)
+            if (Environment.GetEnvironmentVariable(ConnectionStringKeys.AZURE_TEST_MODE_ENVKEY) == null)
             {
-                Environment.SetEnvironmentVariable("AZURE_TEST_MODE", credentials["HttpRecorderMode"].ToString());
+                Environment.SetEnvironmentVariable(ConnectionStringKeys.AZURE_TEST_MODE_ENVKEY, testSettings["HttpRecorderMode"].ToString());
             }
         }
 
         public void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
         {
-            TestEnvironment currentEnvironment = null;
+            TestEnvironment currentEnvironment;
             if (mode == AzureModule.AzureResourceManager)
             {
                 currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
@@ -416,8 +403,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 currentEnvironment.UserName = "fakeuser@microsoft.com";
             }
 
-            SetAuthenticationFactory(mode, currentEnvironment);
-            AzureEnvironment environment = new AzureEnvironment { Name = testEnvironmentName };
+            SetAuthenticationFactory(currentEnvironment);
+            AzureEnvironment environment = new AzureEnvironment { Name = TestEnvironmentName };
             Debug.Assert(currentEnvironment != null);
             environment.ActiveDirectoryAuthority = currentEnvironment.Endpoints.AADAuthUri.AbsoluteUri;
             environment.GalleryUrl = currentEnvironment.Endpoints.GalleryUri.AbsoluteUri;
@@ -431,20 +418,20 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId;
             environment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, "https://api.loganalytics.io/v1");
             environment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId, "https://api.loganalytics.io");
-            if (!AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable.ContainsKey(testEnvironmentName))
+            if (!AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable.ContainsKey(TestEnvironmentName))
             {
-                AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable[testEnvironmentName] = environment;
+                AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable[TestEnvironmentName] = environment;
             }
 
             if (currentEnvironment.SubscriptionId != null)
             {
-                testSubscription = new AzureSubscription()
+                testSubscription = new AzureSubscription
                 {
                     Id = currentEnvironment.SubscriptionId,
-                    Name = testSubscriptionName,
+                    Name = TestSubscriptionName,
                 };
 
-                testSubscription.SetEnvironment(testEnvironmentName);
+                testSubscription.SetEnvironment(TestEnvironmentName);
                 testSubscription.SetAccount(currentEnvironment.UserName);
                 testSubscription.SetDefault();
                 testSubscription.SetStorageAccount(Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT"));
@@ -457,20 +444,20 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 testAccount.SetSubscriptions(currentEnvironment.SubscriptionId);
                 var testTenant = new AzureTenant() { Id = Guid.NewGuid().ToString() };
-                if (!string.IsNullOrEmpty(currentEnvironment.Tenant))
+                if (!string.IsNullOrEmpty(currentEnvironment.TenantId))
                 {
-                    if (Guid.TryParse(currentEnvironment.Tenant, out Guid tenant))
+                    if (Guid.TryParse(currentEnvironment.TenantId, out _))
                     {
-                        testTenant.Id = currentEnvironment.Tenant;
+                        testTenant.Id = currentEnvironment.TenantId;
                     }
                 }
                 AzureRmProfileProvider.Instance.Profile.DefaultContext = new AzureContext(testSubscription, testAccount, environment, testTenant);
             }
         }
 
-        private void SetAuthenticationFactory(AzureModule mode, TestEnvironment environment)
+        private void SetAuthenticationFactory(TestEnvironment environment)
         {
-            if(environment.TokenInfo.ContainsKey(TokenAudience.Management))
+            if (environment.TokenInfo.ContainsKey(TokenAudience.Management))
             {
                 var httpMessage = new HttpRequestMessage();
                 environment.TokenInfo[TokenAudience.Management]
@@ -479,9 +466,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     .GetAwaiter()
                     .GetResult();
 
-                AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(
-                    environment.UserName,
-                    httpMessage.Headers.Authorization.Parameter);
+                AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(environment.UserName, httpMessage.Headers.Authorization.Parameter);
             }
         }
 
@@ -542,56 +527,35 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public virtual Collection<PSObject> RunPowerShellTest(params string[] scripts)
         {
-            // If a test customizes the reecord matcher, use the cutomized version otherwise use the default
-            // permissive record matcher.
-            if (HttpMockServer.Matcher == null || HttpMockServer.Matcher.GetType() == typeof(SimpleRecordMatcher))
+            using var powershell = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace);
+            SetupPowerShellModules(powershell);
+
+            Collection<PSObject> output = null;
+            foreach (var script in scripts)
             {
-                var d = new Dictionary<string, string>
-                {
-                    {"Microsoft.Resources", null},
-                    {"Microsoft.Features", null},
-                    {"Microsoft.Authorization", null},
-                    {"Microsoft.Compute", null},
-                };
-                var providersToIgnore = new Dictionary<string, string>
-                {
-                    {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
-                };
-                HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+                TracingInterceptor?.Information(script);
+                powershell.AddScript(script);
             }
-
-            using (var powershell = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace))
+            try
             {
-                SetupPowerShellModules(powershell);
+                output = powershell.Invoke();
+                if (powershell.Streams.Error.Count > 0)
+                {
+                    throw new RuntimeException($"Test failed due to a non-empty error stream. First error: {PowerShellExtensions.FormatErrorRecord(powershell.Streams.Error[0])}{(powershell.Streams.Error.Count > 0 ? "Check the error stream in the test log for additional errors." : "")}");
+                }
 
-                Collection<PSObject> output = null;
-                foreach (var script in scripts)
-                {
-                    TracingInterceptor?.Information(script);
-                    powershell.AddScript(script);
-                }
-                try
-                {
-                    output = powershell.Invoke();
-                    if (powershell.Streams.Error.Count > 0)
-                    {
-                        throw new RuntimeException(
-                            $"Test failed due to a non-empty error stream. First error: {PowerShellExtensions.FormatErrorRecord(powershell.Streams.Error[0])}{(powershell.Streams.Error.Count > 0 ? "Check the error stream in the test log for additional errors." : "")}");
-                    }
-
-                    return output;
-                }
-                catch (Exception psException)
-                {
-                    powershell.LogPowerShellException(psException, TracingInterceptor);
-                    powershell.LogPowerShellResults(output, TracingInterceptor);
-                    TracingInterceptor?.Flush();
-                    throw;
-                }
-                finally
-                {
-                    powershell.Streams.Error.Clear();
-                }   
+                return output;
+            }
+            catch (Exception psException)
+            {
+                powershell.LogPowerShellException(psException, TracingInterceptor);
+                powershell.LogPowerShellResults(output, TracingInterceptor);
+                TracingInterceptor?.Flush();
+                throw;
+            }
+            finally
+            {
+                powershell.Streams.Error.Clear();
             }
         }
 
@@ -601,19 +565,18 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 powershell.AddScript("Set-ExecutionPolicy Unrestricted -Scope Process -ErrorAction Ignore");
             }
-            powershell.AddScript("$error.clear()");
-            powershell.AddScript($"Write-Debug \"current directory: {System.AppDomain.CurrentDomain.BaseDirectory}\"");
-            powershell.AddScript(
-                $"Write-Debug \"current executing assembly: {Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\"");
-            powershell.AddScript($"cd \"{System.AppDomain.CurrentDomain.BaseDirectory}\"");
+            powershell.AddScript("$Error.clear()");
+            powershell.AddScript($"Write-Debug \"current directory: {AppDomain.CurrentDomain.BaseDirectory}\"");
+            powershell.AddScript($"Write-Debug \"current executing assembly: {Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\"");
+            powershell.AddScript($"cd \"{AppDomain.CurrentDomain.BaseDirectory}\"");
 
             foreach (var moduleName in modules)
             {
                 powershell.AddScript($"Import-Module \"{moduleName.AsAbsoluteLocation()}\"");
                 if (moduleName.EndsWith(".psd1"))
                 {
-                    var moduleShortName = moduleName.Split(new string[] { "\\" }, StringSplitOptions.None).Last().Split(new string[] { "/" }, StringSplitOptions.None).Last();
-                    powershell.AddScript("Enable-AzureRmAlias -Module " + moduleShortName.Substring(0, moduleShortName.Length - 5));
+                    var moduleShortName = moduleName.Split(new string[] { @"\" }, StringSplitOptions.None).Last().Split(new string[] { @"/" }, StringSplitOptions.None).Last();
+                    powershell.AddScript("Enable-AzureRmAlias -Module " + moduleShortName[..^5]);
                     if (moduleShortName.Equals("Az.Storage.psd1") && modules.Any(s => s.EndsWith("AzureRM.Storage.ps1")))
                     {
                         powershell.AddScript("Get-Alias | Where-Object {$_.Name -like '*-AzureRmStorage*'} | ForEach-Object { Remove-Item \"alias:\\$_\" }");
@@ -622,15 +585,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
 
             powershell.AddScript("Disable-AzureRmDataCollection -ErrorAction Ignore");
-            powershell.AddScript(
-                $"set-location \"{System.AppDomain.CurrentDomain.BaseDirectory}\"");
-            powershell.AddScript($@"$TestOutputRoot='{System.AppDomain.CurrentDomain.BaseDirectory}'");
+            powershell.AddScript($"Set-Location \"{AppDomain.CurrentDomain.BaseDirectory}\"");
+            powershell.AddScript($"$TestOutputRoot='{AppDomain.CurrentDomain.BaseDirectory}'");
             powershell.AddScript("$VerbosePreference='Continue'");
             powershell.AddScript("$DebugPreference='Continue'");
             powershell.AddScript("$ErrorActionPreference='Stop'");
             powershell.AddScript("Write-Debug \"AZURE_TEST_MODE = $($env:AZURE_TEST_MODE)\"");
             powershell.AddScript("Write-Debug \"TEST_HTTPMOCK_OUTPUT =  $($env:TEST_HTTPMOCK_OUTPUT)\"");
         }
-
     }
 }

@@ -12,18 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ResourceManager.Models;
+using System;
 using System.Collections.Generic;
-using System.Reflection;
+using System.Text;
 
-namespace Microsoft.WindowsAzure.Commands.ScenarioTest
+namespace Microsoft.Azure.Commands.TestFx
 {
-    public static class PageExtensions
+    public enum TokenAudience
     {
-        public static void SetItemValue<T>(this Page<T> pagableObj, List<T> collection)
-        {
-            var property = typeof(Page<T>).GetProperty("Items", BindingFlags.Instance | BindingFlags.NonPublic);
-            property.SetValue(pagableObj, collection);
-        }
+        Management,
+        Graph
     }
 }

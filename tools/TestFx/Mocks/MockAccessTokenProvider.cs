@@ -13,26 +13,26 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using System;
 using System.Security;
 
-namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
+namespace Microsoft.Azure.Commands.TestFx.Mocks
 {
     public class MockAccessTokenProvider : ITokenProvider
     {
-        private readonly IAccessToken accessToken;
+        private readonly IAccessToken _accessToken;
 
-        public MockAccessTokenProvider(string token)
-            : this(token, "user@live.com")
-        { }
+        public MockAccessTokenProvider(string token) : this(token, "MockUser")
+        {
+
+        }
 
         public MockAccessTokenProvider(string token, string userId)
         {
-            this.accessToken = new MockAccessToken()
+            _accessToken = new MockAccessToken
             {
                 AccessToken = token,
+                LoginType = LoginType.OrgId,
                 UserId = userId
             };
         }
@@ -41,23 +41,31 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             AdalConfiguration config,
             string promptBehavior,
             Action<string> promptAction,
-            string userId, 
+            string userId,
             SecureString password,
             string credentialType)
         {
-            return this.accessToken;
+            return _accessToken;
         }
 
 #if !NETSTANDARD
-        IAccessToken ITokenProvider.GetAccessTokenWithCertificate(AdalConfiguration config, string principalId, string certificateThumbprint,
+        IAccessToken ITokenProvider.GetAccessTokenWithCertificate(
+            AdalConfiguration config,
+            string principalId,
+            string certificateThumbprint,
             string credentialType)
         {
             return GetAccessTokenWithCertificate(config, principalId, certificateThumbprint, credentialType);
         }
 #endif
-        public IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string principalId, string certificateThumbprint, string credentialType)
+
+        public IAccessToken GetAccessTokenWithCertificate(
+            AdalConfiguration config,
+            string principalId,
+            string certificateThumbprint,
+            string credentialType)
         {
-            return this.accessToken;
+            return _accessToken;
         }
 
     }

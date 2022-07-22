@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Rest;
 using System;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.TestFx.Mocks
 {
     public class MockCertificateAuthenticationFactory : IAuthenticationFactory
     {
@@ -78,27 +77,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return new CertificateCloudCredentials(context.Subscription.Id.ToString(), Certificate);
         }
 
-
-        public Microsoft.Rest.ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
-        {
-            throw new System.NotImplementedException();
-        }
-
-
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context, string targetEndpoint)
         {
             return new CertificateCloudCredentials(context.Subscription.Id.ToString(), Certificate);
         }
 
-
-        public Rest.ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Rest.ServiceClientCredentials GetServiceClientCredentials(string accessToken, Func<string> renew = null)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(string accessToken, Func<string> renew = null)
+        {
+            throw new NotImplementedException();
         }
 
         public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)

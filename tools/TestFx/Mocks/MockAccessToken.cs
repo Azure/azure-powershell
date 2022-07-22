@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,31 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Azure.Identity;
-
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Microsoft.Azure.Commands.ScenarioTest.Mocks
+namespace Microsoft.Azure.Commands.TestFx.Mocks
 {
-    public class MockPowerShellTokenCacheProvider : PowerShellTokenCacheProvider
+    public class MockAccessToken : IRenewableToken
     {
-        public override TokenCachePersistenceOptions GetTokenCachePersistenceOptions()
+        public string TenantId { get; set; }
+
+        public string UserId { get; set; }
+
+        public string LoginType { get; set; }
+
+        public string AccessToken { get; set; }
+
+        public DateTimeOffset ExpiresOn { get; set; }
+
+        public void AuthorizeRequest(Action<string, string> authTokenSetter)
         {
-            throw new NotImplementedException();
+            authTokenSetter("Bearer", AccessToken);
         }
 
-        public override byte[] ReadTokenData()
-        {
-            return null;
-        }
+        public string HomeAccountId => throw new NotImplementedException();
 
-        protected override void RegisterCache(IPublicClientApplication client)
-        {
-            throw new NotImplementedException();
-        }
+        public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
     }
 }

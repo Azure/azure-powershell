@@ -15,9 +15,8 @@
 using System;
 using System.Management.Automation;
 using System.Reflection;
-using System.Threading;
 
-namespace Microsoft.WindowsAzure.Commands.ScenarioTest
+namespace Microsoft.Azure.Commands.TestFx
 {
     public static class PSCmdletExtensions
     {

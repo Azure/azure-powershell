@@ -13,15 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Test.HttpRecorder;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Microsoft.WindowsAzure.Commands.ScenarioTest
+namespace Microsoft.Azure.Commands.TestFx.Recorder
 {
     // Excludes api version when matching mocked records.
     // If alternate api version is provided, uses that to match records else removes the api-version matching.

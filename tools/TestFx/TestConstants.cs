@@ -1,5 +1,4 @@
-﻿
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,11 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+namespace Microsoft.Azure.Commands.TestFx
+{
+    public enum TestEnvironmentName
+    {
+        Prod,
+        Dogfood,
+        Next,
+        Current,
+        Custom
+    }
+
+    public class Variables
+    {
+        public const string SubscriptionId = "SubscriptionId";
+
+        public const string TenantId = "TenantId";
+
+        public const string Username = "Username";
+    }
+}
+
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
     public class Category
     {
-        // Service
         public const string Service = "Service";
 
         public const string All = "All";
@@ -54,12 +73,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public const string Network = "Network";
 
-        // Owners
         public const string Owner = "Owner";
 
         public const string OneSDK = "OneSDK";
 
-        // Acceptance type
         public const string AcceptanceType = "AcceptanceType";
 
         public const string CIT = "CIT";
@@ -67,33 +84,33 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public const string BVT = "BVT";
 
         public const string CheckIn = "CheckIn";
-        
+
         public const string Flaky = "Flaky";
 
-        // Run Type
         public const string RunType = "RunType";
 
-        // Run types to select by edition
         public const string CoreOnly = "CoreOnly";
+
         public const string DesktopOnly = "DesktopOnly";
 
         public const string LiveOnly = "LiveOnly";
-        //Uncomment when we need to tag on only run under mock
-        //public const string MockedOnly = "MockedOnly";
 
-
-        // Environment
         public const string Environment = "Environment";
 
         public const string WAPack = "WAPack";
     }
+}
 
-    public class Variables
+namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
+{
+    public static class TestTraits
     {
-        public const string SubscriptionId = "SubscriptionId";
+        public const string AcceptanceType = "AcceptanceType";
 
-        public const string Username = "Username";
+        public const string CheckIn = "CheckIn";
 
-        public const string Tenantd = "Tenantd";
+        public const string LiveBVT = "LiveBVT";
+
+        public const string MockedBVT = "MockedBVT";
     }
 }
