@@ -88,6 +88,58 @@
     - `Update-AzRouteServer`
 * Fixed bug that can't parse CustomIpPrefixParent parameter from swagger to powershell.
 * Added "Any" operator in New-AzApplicationGatewayFirewallCondition
+* Onboard Azure Virtual Network Manager Cmdlets
+    - `Get-AzNetworkManager` 
+    - `New-AzNetworkManager` 
+    - `Remove-AzNetworkManager` 
+    - `Get-AzNetworkManagerGroup` 
+    - `New-AzNetworkManagerGroup` 
+    - `Remove-AzNetworkManagerGroup`
+    - `Set-AzNetworkManager` 
+    - `Set-AzNetworkManagerGroup` 
+    - `Get-AzNetworkManagerConnectivityConfiguration` 
+    - `New-AzNetworkManagerConnectivityConfiguration` 
+    - `Remove-AzNetworkManagerConnectivityConfiguration` 
+    - `Set-AzNetworkManagerConnectivityConfiguration` 
+    - `Get-AzNetworkManagerSecurityAdminConfiguration` 
+    - `New-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Remove-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Set-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Get-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `New-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Remove-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Set-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Get-AzNetworkManagerSecurityAdminRule` 
+    - `New-AzNetworkManagerSecurityAdminRule` 
+    - `Remove-AzNetworkManagerSecurityAdminRule` 
+    - `Set-AzNetworkManagerSecurityAdminRule` 
+    - `Get-AzNetworkManagerActiveConnectivityConfigurationList` 
+    - `Get-AzNetworkManagerActiveSecurityAdminRuleList` 
+    - `Get-AzNetworkManagerEffectiveConnectivityConfigurationList` 
+    - `Get-AzNetworkManagerEffectiveSecurityAdminRuleList` 
+    - `Get-AzNetworkManagerEffectiveSecurityAdminRuleList` 
+    - `Deploy-AzNetworkManagerCommit` 
+    - `Get-AzNetworkManagerDeploymentStatusList` 
+    - `New-AzNetworkManagerAddressPrefixItem` 
+    - `New-AzNetworkManagerScope` 
+    - `New-AzNetworkManagerSecurityGroupItem`
+    - `New-AzNetworkManagerHub` 
+    - `New-AzNetworkManagerConnectivityGroupItem`
+    - `Get-AzNetworkManagerStaticMember` 
+    - `New-AzNetworkManagerStaticMember` 
+    - `Remove-AzNetworkManagerStaticMember` 
+    - `Get-AzNetworkManagerScopeConnection` 
+    - `New-AzNetworkManagerScopeConnection` 
+    - `Remove-AzNetworkManagerScopeConnection` 
+    - `Set-AzNetworkManagerScopeConnection` 
+    - `Get-AzNetworkManagerSubscriptionConnection` 
+    - `New-AzNetworkManagerSubscriptionConnection` 
+    - `Remove-AzNetworkManagerSubscriptionConnection` 
+    - `Set-AzNetworkManagerSubscriptionConnection` 
+    - `Get-AzNetworkManagerManagementGroupConnection` 
+    - `New-AzNetworkManagerManagementGroupConnection` 
+    - `Remove-AzNetworkManagerManagementGroupConnection` 
+    - `Set-AzNetworkManagerManagementGroupConnection`
 
 ## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.

@@ -29,16 +29,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The vnet name.")]
+           HelpMessage = "The virtual network name.")]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/virtualNetworks", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Network/virtualNetworks", "VirtualNetworkResourceGroupName")]
         [SupportsWildcards]
         public virtual string VirtualNetworkName { get; set; }
 
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
+           HelpMessage = "The virtual network resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
