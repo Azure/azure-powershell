@@ -86,7 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Sets POSIX access permissions for the file owner, the file owning group, and others. Each class may be granted read, write, or execute permission. Symbolic (rwxrw-rw-) is supported. " +
             "The sticky bit is also supported and its represented either by the letter t or T in the final character-place depending on whether the execution bit for the others category is set or unset respectively, absence of t or T indicates sticky bit not set.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("([r-][w-][x-]){2}[r-][w-][xtT-][+]{0,1}")]
+        [ValidatePattern("([r-][w-][x-]){2}[r-][w-][xtT-]")]
         public string Permission { get; set; }
 
 
