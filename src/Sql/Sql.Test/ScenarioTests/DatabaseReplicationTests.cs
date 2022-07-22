@@ -100,14 +100,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateCopyDatabaseWithGeoZoneBackupStorageRedundancy()
         {
-            RunPowerShellTest("Test-CreateCopyDatabaseWithGeoZoneBackupStorageRedundancy");
+            TestRunner.RunTestScript("Test-CreateCopyDatabaseWithGeoZoneBackupStorageRedundancy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateSecondaryDatabaseWithGeoZoneBackupStorageRedundancy()
         {
-            RunPowerShellTest("Test-CreateSecondaryDatabaseWithGeoZoneBackupStorageRedundancy");
+            TestRunner.RunTestScript("Test-CreateSecondaryDatabaseWithGeoZoneBackupStorageRedundancy");
         }
 
         [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
