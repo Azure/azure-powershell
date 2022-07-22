@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +57,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Connectivity Group.")]
+        public List<PSNetworkManagerConnectivityGroupItem> AppliesToGroup { get; set; }
+
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
            HelpMessage = "Connectivity Type.")]
         public string ConnectivityTopology { get; set; }
 
@@ -70,12 +77,6 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Hub Id list.")]
         public List<PSNetworkManagerHub> Hub { get; set; }
-
-        [Parameter(
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Connectivity Group.")]
-        public List<PSNetworkManagerConnectivityGroupItem> AppliesToGroup { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -120,6 +121,18 @@ namespace Microsoft.Azure.Commands.Network
             mncc.Name = this.Name;
             mncc.ConnectivityTopology = this.ConnectivityTopology;
 
+            if(this.ConnectivityTopology == "HubAndSpoke")
+            {
+                if (this.Hub != null)
+                {
+                    mncc.Hubs = this.Hub;
+                }
+                else
+                {
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.HubRequiredForHubAndSpokeTopology));
+                }
+            }
+
             if(this.DeleteExistingPeering)
             {
                 mncc.DeleteExistingPeering = "True";
@@ -136,11 +149,6 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 mncc.IsGlobal = "False";
-            }
-
-            if (this.Hub != null)
-            {
-                mncc.Hubs = this.Hub;
             }
 
             if (!string.IsNullOrEmpty(this.Description))

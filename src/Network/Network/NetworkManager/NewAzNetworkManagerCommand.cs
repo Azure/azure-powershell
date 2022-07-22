@@ -56,12 +56,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
          Mandatory = false,
          ValueFromPipelineByPropertyName = true,
-         HelpMessage = "DisplayName.")]
-        public virtual string DisplayName { get; set; }
-
-        [Parameter(
-         Mandatory = false,
-         ValueFromPipelineByPropertyName = true,
          HelpMessage = "Description.")]
         public virtual string Description { get; set; }
 
@@ -118,10 +112,6 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.Description))
             {
                 networkManager.Description = this.Description;
-            }
-            if (!string.IsNullOrEmpty(this.DisplayName))
-            {
-                networkManager.DisplayName = this.DisplayName;
             }
 
             // Map to the sdk object

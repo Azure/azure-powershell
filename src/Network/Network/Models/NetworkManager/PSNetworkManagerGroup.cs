@@ -22,6 +22,5 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 
     public class PSNetworkManagerGroup : PSNetworkManagerBaseResource
     {
-        public string MemberType { get; set; }
     }
 }

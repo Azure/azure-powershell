@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string ResourceGroupName { get; set; }
+        public virtual string VirtualNetworkResourceGroupName { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network
                 parameter.SkipToken = this.SkipToken;
             }
                 
-            var networkManagerEffectiveAdminRuleListResult = this.NetworkClient.NetworkManagementClient.ListNetworkManagerEffectiveSecurityAdminRules(parameter, this.ResourceGroupName, this.VirtualNetworkName);
+            var networkManagerEffectiveAdminRuleListResult = this.NetworkClient.NetworkManagementClient.ListNetworkManagerEffectiveSecurityAdminRules(parameter, this.VirtualNetworkResourceGroupName, this.VirtualNetworkName);
             var pSNetworkManagerEffectiveSecurityAdminRulesList = new List<PSNetworkManagerEffectiveBaseSecurityAdminRule>();
 
             foreach (var rule in networkManagerEffectiveAdminRuleListResult.Value)

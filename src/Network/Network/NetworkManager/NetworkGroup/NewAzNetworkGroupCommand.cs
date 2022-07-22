@@ -61,12 +61,6 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Description { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Member type.")]
-        public string MemberType { get; set; }
-
-        [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "If match header.")]
@@ -101,7 +95,6 @@ namespace Microsoft.Azure.Commands.Network
         {
             var psNetworkGroup = new PSNetworkManagerGroup();
             psNetworkGroup.Name = this.Name;
-            psNetworkGroup.MemberType = this.MemberType;
 
             if (!string.IsNullOrEmpty(this.Description))
             {

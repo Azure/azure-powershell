@@ -1527,9 +1527,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<ANM.PSNetworkManagerEffectiveDefaultSecurityAdminRule, MNM.EffectiveDefaultSecurityAdminRule>();
                 cfg.CreateMap<ANM.PSNetworkManagerEffectiveSecurityAdminRule, MNM.EffectiveSecurityAdminRule>();
                 cfg.CreateMap<ANM.PSNetworkManagerEffectiveSecurityAdminRuleListResult, MNM.NetworkManagerEffectiveSecurityAdminRulesListResult>();
-                cfg.CreateMap<ANM.PSNetworkManagerEffectiveVirtualNetwork, MNM.EffectiveVirtualNetwork>();
-                cfg.CreateMap<ANM.PSNetworkManagerEffectiveVirtualNetworksListResult, MNM.EffectiveVirtualNetworksListResult>();
-                cfg.CreateMap<ANM.PSNetworkManagerEffectiveVirtualNetworksParameter, MNM.EffectiveVirtualNetworksParameter>();
                 cfg.CreateMap<ANM.PSNetworkManagerGroup, MNM.NetworkGroup>();
                 cfg.CreateMap<ANM.PSNetworkManagerStaticMember, MNM.StaticMember>();
                 cfg.CreateMap<ANM.PSNetworkManagerHub, MNM.Hub>();
@@ -1568,9 +1565,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.EffectiveDefaultSecurityAdminRule, ANM.PSNetworkManagerEffectiveDefaultSecurityAdminRule>();
                 cfg.CreateMap<MNM.EffectiveSecurityAdminRule, ANM.PSNetworkManagerEffectiveSecurityAdminRule>();
                 cfg.CreateMap<MNM.NetworkManagerEffectiveSecurityAdminRulesListResult, ANM.PSNetworkManagerEffectiveSecurityAdminRuleListResult>();
-                cfg.CreateMap<MNM.EffectiveVirtualNetwork, ANM.PSNetworkManagerEffectiveVirtualNetwork>();
-                cfg.CreateMap<MNM.EffectiveVirtualNetworksListResult, ANM.PSNetworkManagerEffectiveVirtualNetworksListResult>();
-                cfg.CreateMap<MNM.EffectiveVirtualNetworksParameter, ANM.PSNetworkManagerEffectiveVirtualNetworksParameter>();
                 cfg.CreateMap<MNM.NetworkGroup, ANM.PSNetworkManagerGroup>();
                 cfg.CreateMap<MNM.StaticMember, ANM.PSNetworkManagerStaticMember>();
                 cfg.CreateMap<MNM.Hub, ANM.PSNetworkManagerHub>();

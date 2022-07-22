@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string ResourceGroupName { get; set; }
+        public virtual string VirtualNetworkResourceGroupName { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network
                 parameter.SkipToken = this.SkipToken;
             }
                 
-            var networkManagerEffectiveConnectivityConfiguration = this.NetworkClient.NetworkManagementClient.ListNetworkManagerEffectiveConnectivityConfigurations(parameter, this.ResourceGroupName, this.VirtualNetworkName);
+            var networkManagerEffectiveConnectivityConfiguration = this.NetworkClient.NetworkManagementClient.ListNetworkManagerEffectiveConnectivityConfigurations(parameter, this.VirtualNetworkResourceGroupName, this.VirtualNetworkName);
             var psEffectiveConnectivityConfigurationList = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerEffectiveConnectivityConfigurationListResult>(networkManagerEffectiveConnectivityConfiguration);
             WriteObject(psEffectiveConnectivityConfigurationList);
         }
