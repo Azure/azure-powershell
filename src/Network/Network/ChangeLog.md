@@ -26,6 +26,8 @@
     - Added `CustomV2` to the validation set of `PolicyType`
     - Added `TLSv1_3` to the validation set of `MinProtocolVersion`
     - Removed validation for null or empty cipher suites list since there can be empty cipher suites list for min protocol version of tls1.3
+* Network Watcher Feature Change: Added new paramenter i.e. AzureVMSS as source endpoint in ConnectionMonitor.
+    - `New-AzNetworkWatcherConnectionMonitorEndpointObject`
 * Added `IdentifyTopFatFlow` parameter to `AzureFirewall`
     - `New-AzFirewall`
 * Enabled Azure Firewall forced tunneling by default (AzureFirewallManagementSubnet and ManagementPublicIpAddress are required) whenever basic sku firewall is created.
