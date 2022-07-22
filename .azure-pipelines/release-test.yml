@@ -14,15 +14,15 @@ parameters:
 - name: win_ps
   displayName: Windows PowerShell Version
   type: string
-  default: macOS-11
+  default: 5.1.14
 - name: ps6
   displayName: PowerShell 6 Version
   type: string 
-  default: macOS-11
+  default: 6.2.4
 - name: ps7
   displayName: PowerShell 7 Version
   type: string
-  default: 6.2.4
+  default: 7.0.3
 - name: latest_ps
   displayName: PowerShell Latest Version
   type: string
