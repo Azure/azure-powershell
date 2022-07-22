@@ -4,6 +4,7 @@
     .NOTES
     File: ParameterNameAndValue.psm1
 #>
+. $PSScriptRoot\..\utils.ps1
 
 enum RuleNames {
     Unknown_Parameter_Set
@@ -381,6 +382,12 @@ function Measure-ParameterNameAndValue {
                     [System.Management.Automation.Language.CommandElementAst]$CommandElementAst = $Ast
                     [System.Management.Automation.Language.CommandAst]$CommandAst = $CommandElementAst.Parent
 
+                    # Skip all the statements with -ParameterName <Type>
+                    if($Ast.Parent.Extent.Text -match "-\w+\s*<.*?>"){
+                        Write-Debug "Skip $($Ast.Parent.Extent.Text)"
+                        return $false
+                    }
+                    
                     if ($global:SkipNextCommandElementAst) {
                         $global:SkipNextCommandElementAst = $false
                         return $false
@@ -398,7 +405,10 @@ function Measure-ParameterNameAndValue {
 
                     # Skip parameters for invaild cmdlet
                     if ($null -eq $GetCommand) {
-                        return $false
+                        # Redo import-module
+                        if(!(Redo-ImportModule $CommandName)){
+                            return $false
+                        }
                     }
                     # Get command from alias
                     if ($GetCommand.CommandType -eq "Alias") {

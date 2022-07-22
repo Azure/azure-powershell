@@ -518,6 +518,9 @@ The operation to delete the VMSS VM run command.
 ### [Repair-AzVmssServiceFabricUpdateDomain](Repair-AzVmssServiceFabricUpdateDomain.md)
 Manual platform update domain walk to update virtual machines in a service fabric virtual machine scale set.
 
+### [Restart-AzHost](Restart-AzHost.md)
+Restart the dedicated host.
+
 ### [Restart-AzVM](Restart-AzVM.md)
 Restarts an Azure virtual machine.
 

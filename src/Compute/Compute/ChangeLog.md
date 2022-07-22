@@ -21,6 +21,9 @@
 -->
 ## Upcoming Release
 
+## Version 4.30.0
+* Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion` 
+
 ## Version 4.29.0
 * Added image alias 'Win2022AzureEditionCore'
 * Added the `-DisableIntegrityMonitoring` switch parameter to the `New-AzVM` cmdlet. 

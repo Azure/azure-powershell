@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Set `ResourceGroupName` as optional for `Set-AzSynapseSqlAuditSetting` cmdlet
+* Added LastCommitId parameter to `New-AzureSynapseGitRepositoryConfig`
 * Fixed the issue that update spark pool version fail by `Update-AzSynapseSparkPool`
 
 ## Version 1.4.0

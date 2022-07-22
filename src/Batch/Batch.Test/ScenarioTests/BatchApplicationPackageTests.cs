@@ -12,24 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Reflection;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class BatchApplicationPackageTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class BatchApplicationPackageTests : BatchTestRunner
     {
         private readonly string filePath = "Resources\\TestApplicationPackage.zip".AsAbsoluteLocation();
         private const string version = "foo";
-        public XunitTracingInterceptor _logger;
 
-        public BatchApplicationPackageTests(Xunit.Abstractions.ITestOutputHelper output)
+        public BatchApplicationPackageTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+
         }
 
         [Fact]
@@ -38,29 +34,21 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             string id = "newApplicationPackage";
 
-            BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    return new string[]
-                    {
-                        string.Format(string.Format("Test-UploadApplicationPackage '{0}' '{1}' '{2}'", id, version, filePath))
-                    };
-                },
-                () =>
+            TestRunner.RunTestScript(
+                null,
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateApplicationPackage(controller, context, id, version, filePath);
+                    ScenarioTestHelpers.CreateApplicationPackage(this, context, id, version, filePath);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteApplicationPackage(controller, context, id, version);
-                    ScenarioTestHelpers.DeleteApplication(controller, context, id);
+                    ScenarioTestHelpers.DeleteApplicationPackage(this, context, id, version);
+                    ScenarioTestHelpers.DeleteApplication(this, context, id);
                 },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-UploadApplicationPackage '{id}' '{version}' '{filePath}'"
+            );
         }
 
         [Fact]
@@ -69,29 +57,21 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             string id = "updateApplicationPackage";
 
-            BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    return new string[]
-                    {
-                        string.Format(string.Format("Test-UpdateApplicationPackage '{0}' '{1}' '{2}'", id, version, filePath))
-                    };
-                },
-                () =>
+            TestRunner.RunTestScript(
+                null,
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateApplicationPackage(controller, context, id, version, filePath);
+                    ScenarioTestHelpers.CreateApplicationPackage(this, context, id, version, filePath);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteApplicationPackage(controller, context, id, version);
-                    ScenarioTestHelpers.DeleteApplication(controller, context, id);
+                    ScenarioTestHelpers.DeleteApplicationPackage(this, context, id, version);
+                    ScenarioTestHelpers.DeleteApplication(this, context, id);
                 },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-UpdateApplicationPackage '{id}' '{version}' '{filePath}'"
+            );
         }
 
         [Fact]
@@ -101,27 +81,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string id = "createPoolWithApplicationPackage";
             string poolId = "testCreatePoolWithAppPackages";
 
-            BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    return new string[]
-                    {
-                        string.Format(string.Format("Test-CreatePoolWithApplicationPackage '{0}' '{1}' '{2}'", id, version, poolId))
-                    };
-                },
-                () =>
+            TestRunner.RunTestScript(
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateApplicationPackage(controller, context, id, version, filePath);
+                    ScenarioTestHelpers.CreateApplicationPackage(this, context, id, version, filePath);
                 },
-                () =>
-                {
-                },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-CreatePoolWithApplicationPackage '{id}' '{version}' '{poolId}'"
+            );
         }
 
         [Fact]
@@ -131,31 +99,23 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string id = "updatePoolWithApplicationPackage";
             string poolId = "testUpdatePoolWithAppPackages";
 
-            BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    return new string[]
-                    {
-                        string.Format("Test-UpdatePoolWithApplicationPackage '{0}' '{1}' '{2}'", id, version, poolId)
-                    };
-                },
-                () =>
+            TestRunner.RunTestScript(
+                null,
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateApplicationPackage(controller, context, id, version, filePath);
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId, targetDedicated: 1, targetLowPriority: 0);
+                    ScenarioTestHelpers.CreateApplicationPackage(this, context, id, version, filePath);
+                    ScenarioTestHelpers.CreateTestPool(this, context, poolId, targetDedicated: 1, targetLowPriority: 0);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteApplicationPackage(controller, context, id, version);
-                    ScenarioTestHelpers.DeleteApplication(controller, context, id);
-                    ScenarioTestHelpers.DeletePool(controller, context, poolId);
+                    ScenarioTestHelpers.DeleteApplicationPackage(this, context, id, version);
+                    ScenarioTestHelpers.DeleteApplication(this, context, id);
+                    ScenarioTestHelpers.DeletePool(this, context, poolId);
                 },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-UpdatePoolWithApplicationPackage '{id}' '{version}' '{poolId}'"
+            );
         }
     }
 }

@@ -28,8 +28,10 @@ The operation to create or update the run command.
 
 ### Example 1: Simple Example
 ```powershell
-PS C:\> Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand' 
+Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand' 
+```
 
+```output
 Location Name             Type
 -------- ----             ----
 eastus   firstruncommand2 Microsoft.Compute/virtualMachines/runCommands
@@ -392,11 +394,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETER <IRunCommandInputParameter[]>: The parameters used by the script.
+`PARAMETER <IRunCommandInputParameter[]>`: The parameters used by the script.
   - `Name <String>`: The run command parameter name.
   - `Value <String>`: The run command parameter value.
 
-PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the script.
+`PROTECTEDPARAMETER <IRunCommandInputParameter[]>`: The parameters used by the script.
   - `Name <String>`: The run command parameter name.
   - `Value <String>`: The run command parameter value.
 

@@ -1,7 +1,9 @@
 ### Example 1: Simple Example
 ```powershell
-PS C:\> Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -Location 'eastus' -RunCommandName 'firstruncommand' 
+Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand' 
+```
 
+```output
 Location Name             Type
 -------- ----             ----
 eastus   firstruncommand Microsoft.Compute/virtualMachines/runCommands

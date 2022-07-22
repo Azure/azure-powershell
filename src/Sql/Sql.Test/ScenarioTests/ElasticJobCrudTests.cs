@@ -19,13 +19,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ElasticJobCrudTests : SqlTestsBase
+    public class ElasticJobCrudTests : SqlTestRunner
     {
         public ElasticJobCrudTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
+
         }
 
         #region Create Tests
@@ -37,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobCreate()
         {
-            RunPowerShellTest("Test-CreateJob");
+            TestRunner.RunTestScript("Test-CreateJob");
         }
 
         #endregion
@@ -48,7 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobUpdate()
         {
-            RunPowerShellTest("Test-UpdateJob");
+            TestRunner.RunTestScript("Test-UpdateJob");
         }
 
         #endregion
@@ -59,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobGet()
         {
-            RunPowerShellTest("Test-GetJob");
+            TestRunner.RunTestScript("Test-GetJob");
         }
 
         #endregion
@@ -70,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobRemove()
         {
-            RunPowerShellTest("Test-RemoveJob");
+            TestRunner.RunTestScript("Test-RemoveJob");
         }
 
         #endregion
