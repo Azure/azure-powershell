@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.Azure.Commands.TestFx.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using System;
@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
                 Type = AzureAccount.AccountType.User,
             };
             account.SetSubscriptions(newGuid.ToString());
-            var subscription = new AzureSubscription { Id = newGuid.ToString(), Name = "test"};
+            var subscription = new AzureSubscription { Id = newGuid.ToString(), Name = "test" };
             subscription.SetAccount("test");
             subscription.SetEnvironment(EnvironmentName.AzureCloud);
             currentProfile.DefaultContext = new AzureContext(

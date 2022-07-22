@@ -12,16 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Rest;
 using System;
 using System.Security;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.TestFx.Mocks
 {
     public class MockTokenAuthenticationFactory : IAuthenticationFactory, IHyakAuthenticationFactory
     {
@@ -33,9 +30,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         {
             Token = new MockAccessToken
             {
-                UserId = "Test",
+                UserId = "MockUser",
                 LoginType = LoginType.OrgId,
-                AccessToken = "abc"
+                AccessToken = "MockAccessToken"
             };
 
             TokenProvider = (account, environment, tenant) => Token = new MockAccessToken
@@ -56,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 AccessToken = accessToken,
             };
 
-            TokenProvider = ((account, environment, tenant) => Token);
+            TokenProvider = (account, environment, tenant) => Token;
         }
 
         public MockTokenAuthenticationFactory(string userId, string accessToken, string tenantId)
@@ -69,23 +66,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 TenantId = tenantId
             };
 
-            TokenProvider = ((account, environment, tenant) => Token);
+            TokenProvider = (account, environment, tenant) => Token;
         }
 
-
-        public IAccessToken Authenticate(
-            IAzureAccount account,
-            IAzureEnvironment environment,
-            string tenant,
-            SecureString password,
-            string promptBehavior,
-            Action<string> promptActionr,
-            IAzureTokenCache tokenCache,
-            string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+        public IAccessToken Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Action<string> promptAction, IAzureTokenCache tokenCache, string resourceId = "ActiveDirectoryServiceEndpointResourceId")
         {
             if (account.Id == null)
             {
-                account.Id = "test";
+                account.Id = "MockAccount";
             }
 
             if (TokenProvider == null)
@@ -103,16 +91,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
         }
 
-        public IAccessToken Authenticate(
-            IAzureAccount account,
-            IAzureEnvironment environment,
-            string tenant,
-            SecureString password,
-            string promptBehavior,
-            Action<string> promptAction,
-            string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+        public IAccessToken Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Action<string> promptAction, string resourceId = "ActiveDirectoryServiceEndpointResourceId")
         {
             return Authenticate(account, environment, tenant, password, promptBehavior, promptAction, AzureSession.Instance.TokenCache, resourceId);
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        {
+            return new TokenCredentials(Token.AccessToken);
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        {
+            return new TokenCredentials(Token.AccessToken);
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(string accessToken, Func<string> renew = null)
+        {
+            throw new NotImplementedException();
         }
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context)
@@ -120,26 +116,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return new AccessTokenCredential(context.Subscription.GetId(), Token);
         }
 
-        public Microsoft.Rest.ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
-        {
-            return new RenewingTokenCredential(Token);
-        }
-
-
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context, string targetEndpoint)
         {
             return new AccessTokenCredential(context.Subscription.GetId(), Token);
-        }
-
-
-        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
-        {
-            return new RenewingTokenCredential(Token);
-        }
-
-        public Rest.ServiceClientCredentials GetServiceClientCredentials(string accessToken, Func<string> renew = null)
-        {
-            throw new System.NotImplementedException();
         }
 
         public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)

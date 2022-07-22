@@ -16,21 +16,17 @@ using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
 using System.Reflection;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.ServiceManagement.Common.Models
 {
-    public class XunitTracingInterceptor : Hyak.Common.ICloudTracingInterceptor
+    public class XunitTracingInterceptor : ICloudTracingInterceptor
     {
-        private readonly string callingAssembly;
-
         public XunitTracingInterceptor(ITestOutputHelper output)
         {
             traceOutput = output;
-            callingAssembly = Assembly.GetCallingAssembly().FullName.Split(new[] { ',' })[0];
         }
 
         public ITestOutputHelper traceOutput;

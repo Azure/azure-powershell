@@ -12,19 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.Commands.TestFx;
 using System;
 
 namespace Microsoft.Azure.Commands.TestFx
 {
-    public interface ITestRunner
+    public static class TestEnvironmentFactory
     {
-        void RunTestScript(params string[] scripts);
-
-        void RunTestScript(Action<MockContext> contextAction, params string[] scripts);
-
-        void RunTestScript(Action setUp, Action tearDown, params string[] scripts);
-
-        void RunTestScript(Action setUp, Action<MockContext> contextAction, Action tearDown, params string[] scripts);
+        public static TestEnvironment GetTestEnvironment()
+        {
+            string envStr = Environment.GetEnvironmentVariable(ConnectionStringKeys.TestCSMOrgIdConnectionStringKey);
+            return new TestEnvironment(envStr);
+        }
     }
 }

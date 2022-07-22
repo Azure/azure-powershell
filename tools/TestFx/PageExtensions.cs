@@ -12,19 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using System;
+using Microsoft.Azure.Management.ResourceManager.Models;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.TestFx
 {
-    public interface ITestRunner
+    public static class PageExtensions
     {
-        void RunTestScript(params string[] scripts);
-
-        void RunTestScript(Action<MockContext> contextAction, params string[] scripts);
-
-        void RunTestScript(Action setUp, Action tearDown, params string[] scripts);
-
-        void RunTestScript(Action setUp, Action<MockContext> contextAction, Action tearDown, params string[] scripts);
+        public static void SetItemValue<T>(this Page<T> pagableObj, List<T> collection)
+        {
+            var property = typeof(Page<T>).GetProperty("Items", BindingFlags.Instance | BindingFlags.NonPublic);
+            property.SetValue(pagableObj, collection);
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.ScenarioTest.Extensions
+namespace Microsoft.Azure.Commands.TestFx
 {
     public static class TestModelExtensions
     {
@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.Extensions
         /// <returns>true if the models are equal, or false otherwise</returns>
         public static bool CheckExtensionsEqual(this IExtensibleModel model, IExtensibleModel other)
         {
-            return model != null && other != null
-                && CheckEquality(model.ExtendedProperties, other.ExtendedProperties);
+            return model != null && other != null && CheckEquality(model.ExtendedProperties, other.ExtendedProperties);
         }
 
         /// <summary>
@@ -81,7 +80,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.Extensions
         /// <returns>Treu fi the elements of the environment are equal, otherwise false</returns>
         public static bool IsEqual(this IAzureEnvironment environment, IAzureEnvironment other)
         {
-            return (environment == null && other == null) 
+            return (environment == null && other == null)
                 || environment.CheckExtensionsEqual(other);
         }
 
@@ -148,6 +147,5 @@ namespace Microsoft.Azure.Commands.ScenarioTest.Extensions
 
             return result;
         }
-
     }
 }

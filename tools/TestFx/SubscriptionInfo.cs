@@ -12,19 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using System;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.TestFx
 {
-    public interface ITestRunner
+    public class SubscriptionInfo
     {
-        void RunTestScript(params string[] scripts);
+        public SubscriptionInfo(JObject resultObject)
+        {
+            Id = (string)(resultObject["id"]);
+            SubscriptionId = (string)(resultObject["subscriptionId"]);
+            DisplayName = (string)(resultObject["displayName"]);
+            State = (string)(resultObject["state"]);
+        }
 
-        void RunTestScript(Action<MockContext> contextAction, params string[] scripts);
+        public string Id { get; set; }
 
-        void RunTestScript(Action setUp, Action tearDown, params string[] scripts);
+        public string SubscriptionId { get; set; }
 
-        void RunTestScript(Action setUp, Action<MockContext> contextAction, Action tearDown, params string[] scripts);
+        public string DisplayName { get; set; }
+
+        public string State { get; set; }
     }
 }

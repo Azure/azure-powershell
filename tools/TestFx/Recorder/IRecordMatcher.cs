@@ -12,19 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using System;
+using System.Net.Http;
 
-namespace Microsoft.Azure.Commands.TestFx
+namespace Microsoft.Azure.Commands.TestFx.Recorder
 {
-    public interface ITestRunner
+    public interface IRecordMatcher
     {
-        void RunTestScript(params string[] scripts);
+        string GetMatchingKey(RecordEntry recordEntry);
 
-        void RunTestScript(Action<MockContext> contextAction, params string[] scripts);
-
-        void RunTestScript(Action setUp, Action tearDown, params string[] scripts);
-
-        void RunTestScript(Action setUp, Action<MockContext> contextAction, Action tearDown, params string[] scripts);
+        string GetMatchingKey(HttpRequestMessage request);
     }
 }
