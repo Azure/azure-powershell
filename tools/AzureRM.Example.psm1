@@ -123,9 +123,9 @@ if ($Env:ACC_CLOUD -eq $null)
         foreach ($key in $global:PSDefaultParameterValues.Keys)
         {
             if ($_ -like "$key")
-                {
+            {
                 $existingDefault = $true
-                }
+            }
         }
 
         if (!$existingDefault)

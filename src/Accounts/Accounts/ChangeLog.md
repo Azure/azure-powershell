@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Supported giving suggestions if an Azure PowerShell command cannot be found, for example when there is a typo in command name.
 
 ## Version 2.9.0
 * Supported exporting and importing configurations by `Export-AzConfig` and `Import-AzConfig`.

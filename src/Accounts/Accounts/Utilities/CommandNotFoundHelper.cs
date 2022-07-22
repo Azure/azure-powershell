@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
                 foreach (var commandName in moduleToCommandMappings[moduleName].Keys)
                 {
-                    mappings.Add(commandName, moduleName);
+                    mappings[commandName] = moduleName;
                 }
             }
             return mappings;
@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {
                     foreach (var migration in pair.Value)
                     {
-                        mappings.Add(migration.Key,
-                            new MemoryMigrationDetails() { Replacement = migration.Value.Replacement, Release = pair.Key });
+                        mappings[migration.Key] =
+                            new MemoryMigrationDetails() { Replacement = migration.Value.Replacement, Release = pair.Key };
                     }
                 }
                 return mappings;
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
                 foreach (var commandName in module.Keys)
                 {
-                    mappings.Add(commandName.ToLowerInvariant(), commandName);
+                    mappings[commandName.ToLowerInvariant()] = commandName;
                 }
             }
             return mappings;
@@ -195,8 +195,9 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 var match = new Regex(@"^Az\s*(\d+\.\d+\.\d+)$", RegexOptions.IgnoreCase).Match(release);
                 if (match.Success && match.Groups.Count >= 2)
                 {
-                    var version = match.Groups[1];
-                    link = $"[todo: fwlink]https://aka.ms/migration?release={version}";
+                    // as of today fwlink does not support parameters
+                    // if it will, we can have more accurate links to specific releases
+                    link = "https://go.microsoft.com/fwlink/?linkid=2201860";
                 }
             }
             return !string.IsNullOrEmpty(link);
