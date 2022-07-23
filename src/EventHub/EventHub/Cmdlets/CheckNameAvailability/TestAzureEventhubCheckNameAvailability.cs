@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             {
                 if (ParameterSetName.Equals(NamespaceCheckNameAvailabilityParameterSet))
                 {
-                    PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetCheckNameAvailability(Namespace);
+                    PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = UtilityClient.GetCheckNameAvailability(Namespace);
                     WriteObject(checkNameAvailabilityResult, true);
                 }
 
                 if (ParameterSetName.Equals(AliasCheckNameAvailabilityParameterSet))
                 {
-                    PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetAliasCheckNameAvailability(ResourceGroupName, Namespace, AliasName);
+                    PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = UtilityClient.GetAliasCheckNameAvailability(ResourceGroupName, Namespace, AliasName);
                     WriteObject(checkNameAvailabilityResult, true);
                 }
             }

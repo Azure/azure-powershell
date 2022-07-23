@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
                 {
                     try
                     {
-                        Client.DeleteNamespaceSchemaGroup(ResourceGroupName, Namespace, Name);
+                        UtilityClient.DeleteNamespaceSchemaGroup(ResourceGroupName, Namespace, Name);
                         if (PassThru)
                         {
                             WriteObject(true);
