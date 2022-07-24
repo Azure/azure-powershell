@@ -160,6 +160,7 @@ function Start-AzMigrateTestMigration {
 
                         if ($TestNetworkID -ne $VnetID)
                         {
+                            Set-AzContext -SubscriptionId $SourceSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
                             throw "Virtual Machines in the availability set '$AvSetName' can only be connected to virtual network '$VnetID'. Change the virtual network selected for the test or update the availability set for the machines, and retry the operation."
                         }
                     }
