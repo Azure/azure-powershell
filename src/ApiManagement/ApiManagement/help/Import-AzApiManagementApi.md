@@ -142,6 +142,14 @@ ServiceName                   : contoso
 
 This command imports an API from the specified Open 3.0 specification document and create a new ApiVersion.
 
+### Example 7: Import an API from a GraphQL link
+```powershell
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Import-AzApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "GraphQL" -SpecificationUrl "http://contoso.com/graphql" -Path "apis"
+```
+
+This command imports an API from the GraphQL link.
+
 ## PARAMETERS
 
 ### -ApiId
@@ -182,7 +190,7 @@ This parameter is optional with a default value of Http. The Soap option is only
 Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Http, Soap
+Accepted values: Http, Soap, WebSocket, GraphQL
 
 Required: False
 Position: Named
@@ -276,7 +284,7 @@ Web API protocols (http, https). Protocols over which API is made available. Thi
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSchema[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Http, Https
+Accepted values: Http, Https, Ws, Wss
 
 Required: False
 Position: Named
@@ -308,7 +316,7 @@ psdx_paramvalues Wadl, Wsdl, and Swagger.
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiFormat
 Parameter Sets: (All)
 Aliases:
-Accepted values: Wadl, Swagger, Wsdl, OpenApi, OpenApiJson
+Accepted values: Wadl, Swagger, Wsdl, OpenApi, OpenApiJson, GraphQL
 
 Required: True
 Position: Named
