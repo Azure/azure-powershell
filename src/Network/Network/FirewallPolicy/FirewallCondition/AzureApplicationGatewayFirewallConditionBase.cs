@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "Describes operator to be matched.")]
-        [ValidateSet("IPMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "Regex", "GeoMatch", IgnoreCase = true)]
+        [ValidateSet("IPMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "Regex", "GeoMatch", "Any", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Operator { get; set; }
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
         public bool NegationCondition { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Match value.")]
         [ValidateNotNullOrEmpty]
         public string[] MatchValue { get; set; }
@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
+            ValidateArguments();
             base.ExecuteCmdlet();
         }
 
@@ -69,6 +70,21 @@ namespace Microsoft.Azure.Commands.Network
                 MatchValues = this.MatchValue?.ToList(),
                 Transforms = this.Transform?.ToList()
             };
+        }
+
+        private string OperatorAny = "Any";
+
+        private void ValidateArguments()
+        {
+            if (Operator == OperatorAny && MatchValue != null)
+            {
+                throw new PSArgumentException(nameof(MatchValue));
+            }
+
+            if (Operator != OperatorAny && (MatchValue == null || MatchValue.Length == 0))
+            {
+                throw new PSArgumentNullException(nameof(MatchValue));
+            }
         }
     }
 }
