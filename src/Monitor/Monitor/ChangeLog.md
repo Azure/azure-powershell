@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Upgraded API version for ActivityLogAlert from 2017-04-01 to 2020-10-01
+
 ## Version 3.0.2
 * Added optional parameter `Location` for Adding/Update action group cmdlet
 
