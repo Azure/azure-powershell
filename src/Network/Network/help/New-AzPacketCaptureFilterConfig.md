@@ -180,7 +180,7 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 [New-AzNetworkWatcherPacketCapture](./New-AzNetworkWatcherPacketCapture.md)
 
-[New-AzPacketCaptureFilterConfig](./New-AzPacketCaptureFilterConfig.md)
+[New-AzPacketCaptureScopeConfig](./New-AzPacketCaptureScopeConfig.md)
 
 [Get-AzNetworkWatcherPacketCapture](./Get-AzNetworkWatcherPacketCapture.md)
 

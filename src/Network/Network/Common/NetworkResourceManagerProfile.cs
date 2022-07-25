@@ -466,6 +466,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSPacketCaptureResult, MNM.PacketCaptureResult>();
                 cfg.CreateMap<CNM.PSStorageLocation, MNM.PacketCaptureStorageLocation>();
                 cfg.CreateMap<CNM.PSPacketCaptureFilter, MNM.PacketCaptureFilter>();
+                cfg.CreateMap<CNM.PSPacketCaptureMachineScope, MNM.PacketCaptureMachineScope>();
                 cfg.CreateMap<CNM.PSPacketCaptureStatus, MNM.PacketCaptureQueryStatusResult>();
 
                 // MNM to CNM
@@ -473,6 +474,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.PacketCaptureResult, CNM.PSPacketCaptureResult>();
                 cfg.CreateMap<MNM.PacketCaptureStorageLocation, CNM.PSStorageLocation>();
                 cfg.CreateMap<MNM.PacketCaptureFilter, CNM.PSPacketCaptureFilter>();
+                cfg.CreateMap<MNM.PacketCaptureMachineScope, CNM.PSPacketCaptureMachineScope>();
                 cfg.CreateMap<MNM.PacketCaptureQueryStatusResult, CNM.PSPacketCaptureStatus>();
 
                 // Topology
