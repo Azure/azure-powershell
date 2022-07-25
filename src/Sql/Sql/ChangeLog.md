@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Supported cross-subscription Failover Group creation using `PartnerSubscriptionId` parameter in `New-AzSqlDatabaseFailoverGroup` cmdlet
+
 ## Version 3.10.0
 
 * Added `GeoZone` option to `BackupStorageRedundancy` parameter to `New-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary`, and `Restore-AzSqlDatabase` to enable create, update, copy, geo secondary and PITR support for GeoZone hyperscale databases
