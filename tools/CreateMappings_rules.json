@@ -38,7 +38,7 @@
     "alias": "VM Snapshots"
   },
   {
-    "regex": "Orbital",
+    "module": "Orbital",
     "alias": "Orbital"
   },
   {
