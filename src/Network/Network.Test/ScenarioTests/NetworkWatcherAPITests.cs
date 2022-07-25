@@ -114,6 +114,14 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ConnectionMonitor");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestConnectionMonitorWithVMSSAsSource()
+        {
+            TestRunner.RunTestScript("Test-ConnectionMonitorWithVMSSAsSource");
+        }
+
         [Fact(Skip = "Server returns empty array")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
