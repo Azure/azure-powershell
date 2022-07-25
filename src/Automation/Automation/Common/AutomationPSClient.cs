@@ -2013,7 +2013,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             var fileExtension = IsGraphRunbook(runbookType) ? Constants.SupportedFileExtensions.Graph : Constants.SupportedFileExtensions.PowerShellScript;
 
-            var outputFilePath = outputFolderFullPath + "\\" + runbookName + fileExtension;
+            char seperator = Path.DirectorySeparatorChar;
+            var outputFilePath = outputFolderFullPath + seperator + runbookName + fileExtension;
 
             // file exists and overwrite Not specified
             if (File.Exists(outputFilePath) && !overwriteExistingFile)
