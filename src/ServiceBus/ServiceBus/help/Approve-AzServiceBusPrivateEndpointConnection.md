@@ -32,7 +32,7 @@ Approves a private endpoint connection for an Service Bus namespace.
 
 ### Example 1
 ```powershell
-Approve-AzServiceBusPrivateEndpointConnection -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name 00000000000
+PS C:\> Approve-AzServiceBusPrivateEndpointConnection -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name 00000000000
 ```
 
 Approves a private endpoint connection `00000000000` to connect to Service Bus namespace `mynamespace`. 
