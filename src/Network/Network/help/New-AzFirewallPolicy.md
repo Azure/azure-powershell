@@ -88,11 +88,11 @@ New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ExplicitProxy $exProxy
 		Identity	                : null	
 		IntrusionDetection	        : null	
 		Location	                : "westus2"	
-		Name	                    : "ps1291"	
+		Name	                    : "fp1"	
 		PrivateRange	            : null
 		PrivateRangeText	        : "[]"
 		ProvisioningState	        : null	
-		ResourceGroupName	        : "ps9951"	
+		ResourceGroupName	        : "TestRg"	
 		ResourceGuid	            : null	
 		RuleCollectionGroups	    : null	
 		Sku	
