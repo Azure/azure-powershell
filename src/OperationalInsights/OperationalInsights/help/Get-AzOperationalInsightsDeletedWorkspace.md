@@ -26,7 +26,7 @@ List deleted workspaces.
 ```powershell
 $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName "RG-NAME" -Name "WORKSPACE-NAME" -Location "LOCATION-VALUE"
 $workspace | Remove-AzOperationalInsightsWorkspace
-Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName "RG-NAME""
+Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName "RG-NAME"
 ```
 
 List deleted workspaces.
