@@ -66,7 +66,7 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String>
 ### MicrosoftCloudAppSecurity
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-Alerts <String>] [-DiscoveryLogs <String>]
+ [-DataConnectorId <String>] [-SubscriptionId <String>] [-Alerts <String>] [-DiscoveryLog <String>]
  [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -90,7 +90,7 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
 ### MicrosoftThreatProtection
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-Incidents <String>] [-TenantId <String>]
+ [-DataConnectorId <String>] [-SubscriptionId <String>] [-Incident <String>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -119,7 +119,7 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
 ### ThreatIntelligence
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-Indicators <String>] [-TenantId <String>]
+ [-DataConnectorId <String>] [-SubscriptionId <String>] [-Indicator <String>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -356,7 +356,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DiscoveryLogs
+### -DiscoveryLog
 
 
 ```yaml
@@ -401,7 +401,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Incidents
+### -Incident
 
 
 ```yaml
@@ -416,7 +416,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Indicators
+### -Indicator
 
 
 ```yaml

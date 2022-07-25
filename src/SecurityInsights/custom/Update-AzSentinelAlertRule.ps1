@@ -75,26 +75,26 @@ function Update-AzSentinelAlertRule {
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
 
-        [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateFusionMLTI', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${FusionMLorTI},
 
-        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${MicrosoftSecurityIncidentCreation},
 
-        [Parameter(ParameterSetName = 'UpdateNRT')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityNRT')]
+        [Parameter(ParameterSetName = 'UpdateNRT', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityNRT', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${NRT},
 
-        [Parameter(ParameterSetName = 'UpdateScheduled')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateScheduled', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${Scheduled},
