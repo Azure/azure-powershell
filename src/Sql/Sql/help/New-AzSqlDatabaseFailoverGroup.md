@@ -44,7 +44,24 @@ This command creates a new Failover Group with failover policy 'Manual' for two 
 
 ### Example 3
 ```powershell
-$failoverGroup = New-AzSqlDatabaseFailoverGroup -ResourceGroupName rg1 -ServerName primaryserver -PartnerSubscriptionId subscription2 -PartnerServerName secondaryserver1 -FailoverGroupName fg -FailoverPolicy Manual
+$sub2 = 'b3c40cd6-024f-428c-921b-cda6c6834c34'
+$failoverGroup = New-AzSqlDatabaseFailoverGroup -ServerName primaryserver -FailoverGroupName fg -PartnerSubscriptionId $sub2 -PartnerResourceGroupName rg2 -PartnerServerName secondaryserver1 -FailoverPolicy Manual -ResourceGroupName rg1
+```
+
+```output
+FailoverGroupName                    : fg
+Location                             : East US
+ResourceGroupName                    : rg1
+ServerName                           : primaryserver
+PartnerLocation                      : West US 2
+PartnerResourceGroupName             : rg2
+PartnerServerName                    : secondaryserver1
+PartnerSubscriptionId				 : b3c40cd6-024f-428c-921b-cda6c6834c34
+ReplicationRole                      : Primary
+ReplicationState                     : CATCH_UP
+ReadWriteFailoverPolicy              : Manual
+FailoverWithDataLossGracePeriodHours :
+DatabaseNames                        : {}
 ```
 
 This command creates a new Failover Group with failover policy 'Manual' for two servers in different subscriptions.

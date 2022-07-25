@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateFailoverGroup_CrossSubscription()
         {
-            RunPowerShellTest("Test-CreateFailoverGroup-CrossSubscription");
+            TestRunner.RunTestScript("Test-CreateFailoverGroup-CrossSubscription");
         }
 
         [Fact]
