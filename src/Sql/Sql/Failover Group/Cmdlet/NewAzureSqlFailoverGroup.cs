@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the secondary subscription id of the Azure SQL Database Failover Group.")]
+        [ValidateNotNullOrEmpty]
         public string PartnerSubscriptionId { get; set; }
 
         /// <summary>
