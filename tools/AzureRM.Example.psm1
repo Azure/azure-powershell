@@ -122,11 +122,11 @@ if ($Env:ACC_CLOUD -eq $null)
         $existingDefault = $false
         foreach ($key in $global:PSDefaultParameterValues.Keys)
         {
-    	    if ($_ -like "$key")
-    	        {
-        	    $existingDefault = $true
-    	        }
-	    }
+            if ($_ -like "$key")
+            {
+                $existingDefault = $true
+            }
+        }
 
         if (!$existingDefault)
         {
@@ -147,3 +147,5 @@ if ($Env:ACC_CLOUD -eq $null)
         }
     }
 }
+
+%COMMAND-NOT-FOUND%

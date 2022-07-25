@@ -300,7 +300,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [AlertsManagementGallery]:           https://www.powershellgallery.com/packages/Az.AlertsManagement/
 [AnalysisServicesGallery]:           https://www.powershellgallery.com/packages/Az.AnalysisServices/
 [ApiManagementGallery]:              https://www.powershellgallery.com/packages/Az.ApiManagement/
-[App]:                               https://www.powershellgallery.com/packages/Az.App/
+[AppGallery]:                        https://www.powershellgallery.com/packages/Az.App/
 [AppConfigurationGallery]:           https://www.powershellgallery.com/packages/Az.AppConfiguration/
 [ApplicationInsightsGallery]:        https://www.powershellgallery.com/packages/Az.ApplicationInsights/
 [AttestationGallery]:                https://www.powershellgallery.com/packages/Az.Attestation/
