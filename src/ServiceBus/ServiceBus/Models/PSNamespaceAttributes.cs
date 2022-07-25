@@ -83,14 +83,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                         }).ToArray();
                     }
                 }
-
-                if (evResource.PrivateEndpointConnections != null)
-                {
-                    PrivateEndpointConnections = evResource.PrivateEndpointConnections.Where(x => x != null).Select(x => new PSServiceBusPrivateEndpointConnectionAttributes(x)).ToArray();
-                }
-
-
-                if (evResource.Tags != null)
+                
+                if(evResource.Tags != null)
                 {
                     var tagDictionary = new Dictionary<string, string>(evResource.Tags);
                     Tag = new Hashtable(tagDictionary);
@@ -178,7 +172,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         public string[] IdentityId { get; set; }
 
         public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
-
-        public PSServiceBusPrivateEndpointConnectionAttributes[] PrivateEndpointConnections { get; set; }
     }
 }
